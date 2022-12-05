@@ -8,7 +8,9 @@ function App() {
   return (
     <BrowserRouter>
       <Layouts.Default>
-        <Routes>{/* <Route path="/" element={<Test />} /> */}</Routes>
+        <Routes>
+          <Route path="/" element={<Test />} />
+        </Routes>
       </Layouts.Default>
     </BrowserRouter>
   );

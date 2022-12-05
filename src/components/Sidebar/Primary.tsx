@@ -7,7 +7,7 @@ const Primary = () => {
   const location = useLocation();
   console.log(location.pathname);
   return (
-    <div className="fixed flex flex-col items-center  h-screen bg-gradient-to-r from-primary-ct-blue-60 to-secondary-blue-50 px-4 pb-4 pt-5">
+    <div className="fixed z-50 flex flex-col items-center  h-screen bg-gradient-to-r from-primary-ct-blue-60 to-secondary-blue-50 px-4 pb-4 pt-5">
       <Link to="/" className={`rounded-full`}>
         <img src={Icons.hamburger} alt="hamburger" className="w-6 h-6" />
       </Link>
