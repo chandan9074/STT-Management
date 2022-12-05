@@ -15,6 +15,9 @@ module.exports = {
       "heading-1": "72px",
     },
     extend: {
+      boxShadow: {
+        "light-blue": "0px 0px 12px #FFFFFF",
+      },
       colors: {
         "primary-ct-blue-60": "#2C79BE",
         "primary-ct-magenta-60": "#851F58",
