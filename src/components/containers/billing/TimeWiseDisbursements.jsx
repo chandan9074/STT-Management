@@ -1,5 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import manager from '../../../assets/Icons/manager.png'
+import {Input, Modal} from "antd";
+import {SearchOutlined} from "@ant-design/icons";
+import ManagerSearchModal from "./ManagerSearchModal";
 
 const TimeWiseDisbursements = ({data}) => {
 
@@ -14,6 +17,10 @@ const TimeWiseDisbursements = ({data}) => {
     // ]
 
     const [minValue, setMinValue] = useState([])
+
+
+    const [showModal, setShowModal] = React.useState(false);
+
 
     const sttRoles = [
         {
@@ -151,9 +158,10 @@ const TimeWiseDisbursements = ({data}) => {
                     {
                         isStt &&
                         sttRoles.map(m => (
-                            <div key={m.title} onClick={() => handleSttRole(m.title)} className={` ${isSttRoles === m.title ? 'bg-white text-[#2C79BE] font-bold' : 'text-[#5F7180] font-semibold'} h-[41px] text-[16px] rounded-t-[15px] flex justify-center items-center gap-x-4`} >
+                            <div key={m.title} onClick={() => handleSttRole(m.title)}
+                                 className={` ${isSttRoles === m.title ? 'bg-white text-[#2C79BE] font-bold' : 'text-[#5F7180] font-semibold'} h-[41px] text-[16px] rounded-t-[15px] flex justify-center items-center gap-x-4`}>
                                 <img className='w-4 h-4' src={manager} alt="manager"/>
-                                <button >
+                                <button>
                                     {m.title}
                                 </button>
                             </div>
@@ -163,9 +171,10 @@ const TimeWiseDisbursements = ({data}) => {
                     {
                         isTts &&
                         ttsRoles.map(m => (
-                            <div key={m.title} onClick={() => handleTtsRole(m.title)} className={` ${isTtsRoles === m.title ? 'bg-white text-[#2C79BE] font-bold' : 'text-[#5F7180] font-semibold'} h-[41px] text-[16px] rounded-t-[15px] flex justify-center items-center gap-x-4`} >
+                            <div key={m.title} onClick={() => handleTtsRole(m.title)}
+                                 className={` ${isTtsRoles === m.title ? 'bg-white text-[#2C79BE] font-bold' : 'text-[#5F7180] font-semibold'} h-[41px] text-[16px] rounded-t-[15px] flex justify-center items-center gap-x-4`}>
                                 <img className='w-4 h-4' src={manager} alt="manager"/>
-                                <button >
+                                <button>
                                     {m.title}
                                 </button>
                             </div>
@@ -204,10 +213,29 @@ const TimeWiseDisbursements = ({data}) => {
                     }
                 </div>
                 <div>
-                    <div>d</div>
-                    <div>d</div>
+                    <div>
+                        <Input
+                            size="large"
+                            // onClick={showModal}
+                            onClick={() => setShowModal(true)}
+                            placeholder="Search Manager by Id or Name"
+                            prefix={<SearchOutlined/>}
+                        />
+                    </div>
+                    <div>
+                        <h1 className='text-ct-blue-45 text-[13px] font-semibold'>Total Amount Disbursed </h1>
+                    </div>
+
+
                 </div>
             </div>
+
+            {showModal ? (
+                <ManagerSearchModal
+                    setShowModal={setShowModal}
+                />
+            ) : null}
+
         </div>
     );
 };

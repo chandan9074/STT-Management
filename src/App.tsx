@@ -5,25 +5,16 @@ import Test from "./test";
 import Layouts from "./components/Layouts";
 
 function App() {
-  return (
-<<<<<<< HEAD
-    <div>
+    return (
         <BrowserRouter>
-            <Routes>
-                <Route path='/test' element={<Test/>}/>
-            </Routes>
+            <Layouts.Default>
+                <Routes>
+                    {/*<Route path="/" element={<Test />} />*/}
+                    <Route path='/billing' element={<Test/>}/>
+                </Routes>
+            </Layouts.Default>
         </BrowserRouter>
-    </div>
-=======
-    <BrowserRouter>
-      <Layouts.Default>
-        <Routes>
-          <Route path="/" element={<Test />} />
-        </Routes>
-      </Layouts.Default>
-    </BrowserRouter>
->>>>>>> master
-  );
+    );
 }
 
 export default App;

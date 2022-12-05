@@ -14,6 +14,7 @@ const Primary = () => {
       <div className="mt-10">
         {sidebarMenu.category1.map((item, index) => (
           <Link
+              key={item.path}
             to={item.path}
             className={`p-1.5 rounded-full mb-4 hover:bg-ct-blue-20 block hover:bg-opacity-40 duration-300 border border-transparent hover:border-ct-blue-20 group ${
               location.pathname === item.path ? "shadow-light-blue " : null
