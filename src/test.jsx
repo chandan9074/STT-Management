@@ -1,5 +1,5 @@
 import React from 'react';
-import TimeWiseDisbursement from "./components/containers/billings/TimeWiseDisbursement";
+import TimeWiseDisbursement from "./components/containers/billing/TimeWiseDisbursement";
 
 const Test = () => {
 
