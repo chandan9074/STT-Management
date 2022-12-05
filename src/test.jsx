@@ -1,5 +1,5 @@
 import React from 'react';
-import TimeWiseDisbursement from "./components/containers/billing/TimeWiseDisbursement";
+import TimeWiseDisbursements from "./components/containers/billing/TimeWiseDisbursements";
 
 const Test = () => {
 
@@ -242,7 +242,7 @@ const Test = () => {
     ]
     return (
         <div>
-            <TimeWiseDisbursement
+            <TimeWiseDisbursements
                 data={disbursements}
             />
         </div>

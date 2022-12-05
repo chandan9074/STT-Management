@@ -1,10 +1,12 @@
-import React from 'react';
-import './App.css';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import React from "react";
+import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Test from "./test";
+import Layouts from "./components/Layouts";
 
 function App() {
   return (
+<<<<<<< HEAD
     <div>
         <BrowserRouter>
             <Routes>
@@ -12,6 +14,15 @@ function App() {
             </Routes>
         </BrowserRouter>
     </div>
+=======
+    <BrowserRouter>
+      <Layouts.Default>
+        <Routes>
+          <Route path="/" element={<Test />} />
+        </Routes>
+      </Layouts.Default>
+    </BrowserRouter>
+>>>>>>> master
   );
 }
 

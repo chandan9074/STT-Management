@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import manager from '../../../assets/Icons/manager.png'
 
-const TimeWiseDisbursement = ({data}) => {
+const TimeWiseDisbursements = ({data}) => {
 
     const [isStt, setIsStt] = useState(true);
     const [isTts, setIsTts] = useState(false);
@@ -137,12 +137,12 @@ const TimeWiseDisbursement = ({data}) => {
                         <button
                             className={`flex justify-center items-center w-[96px] h-[32px] ${isStt ? 'bg-[#2C79BE] text-white' : 'bg-white text-[#2C79BE] hover:bg-gray-300'} rounded-[24px]`}
                             onClick={onHandleStt}>
-                            Stt
+                            STT
                         </button>
                         <button
                             className={`flex justify-center items-center w-[96px] h-[32px] ${isTts ? 'bg-[#851F58] text-white' : 'bg-white text-[#851F58] hover:bg-gray-300'} rounded-[24px]`}
                             onClick={onHandleTtt}>
-                            Stt
+                            TTS
                         </button>
                     </div>
                 </div>
@@ -177,8 +177,8 @@ const TimeWiseDisbursement = ({data}) => {
 
             </div>
 
-            <div className='p-10'>
-                <div className='grid grid-cols-12 '>
+            <div className='p-10 grid grid-cols-4 gap-x-10'>
+                <div className='col-span-3 grid grid-cols-12 '>
                     {
                         data.map(m => (
                             <div key={m.id}>
@@ -203,9 +203,13 @@ const TimeWiseDisbursement = ({data}) => {
                         ))
                     }
                 </div>
+                <div>
+                    <div>d</div>
+                    <div>d</div>
+                </div>
             </div>
         </div>
     );
 };
 
-export default TimeWiseDisbursement;
+export default TimeWiseDisbursements;
