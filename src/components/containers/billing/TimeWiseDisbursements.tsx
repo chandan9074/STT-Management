@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import manager from '../../../assets/Icons/manager.png'
-import {Input, Modal} from "antd";
+import {Input} from "antd";
 import {SearchOutlined} from "@ant-design/icons";
 import ManagerSearchModal from "./ManagerSearchModal";
 
-const TimeWiseDisbursements = ({data}) => {
+const TimeWiseDisbursements = ({data}: {data:any}) => {
 
     const [isStt, setIsStt] = useState(true);
     const [isTts, setIsTts] = useState(false);
@@ -16,7 +16,7 @@ const TimeWiseDisbursements = ({data}) => {
     //     isSttManager, isSttTamLeader, isSttCollector, isSttSpeaker, isSttAudioChecker, isSttAnnotator, isSttValidator
     // ]
 
-    const [minValue, setMinValue] = useState([])
+    // const [minValue, setMinValue] = useState([])
 
 
     const [showModal, setShowModal] = React.useState(false);
@@ -77,26 +77,26 @@ const TimeWiseDisbursements = ({data}) => {
     }
 
     const getDataRatio = () => {
-        Array.prototype.min = function () {
-            return Math.min.apply(null, this);
-        }
-
-        let _data = data.map(m => {
-            // setTotalAmounts([...totalAMounts, m.totalAmounts]);
-
-            return m.totalAmounts
-        })
-
-        const min = _data.min();
-
-        const _ratioData = data.map(m => {
-            return m.totalAmounts / min;
-        });
-
-        setMinValue(_data.min());
+        // Array.prototype.min = function () {
+        //     return Math.min.apply(null, this);
+        // }
+        //
+        // let _data = data.map((m: any) => {
+        //     // setTotalAmounts([...totalAMounts, m.totalAmounts]);
+        //
+        //     return m.totalAmounts
+        // })
+        //
+        // const min = _data.min();
+        //
+        // const _ratioData = data.map((m: any) => {
+        //     return m.totalAmounts / min;
+        // });
+        //
+        // setMinValue(_data.min());
     }
 
-    const handleSttRole = (value) => {
+    const handleSttRole = (value: string) => {
         if (value === 'Manager') {
             setIsSttRoles(value);
         }
@@ -120,7 +120,7 @@ const TimeWiseDisbursements = ({data}) => {
         }
     }
 
-    const handleTtsRole = (value) => {
+    const handleTtsRole = (value: string) => {
         if (value === 'Speaker') {
             setIsTtsRoles(value);
         }
@@ -189,7 +189,7 @@ const TimeWiseDisbursements = ({data}) => {
             <div className='p-10 grid grid-cols-4 gap-x-10'>
                 <div className='col-span-3 grid grid-cols-12 '>
                     {
-                        data.map(m => (
+                        data.map((m:any) => (
                             <div key={m.id}>
                                 <div className="flex items-center duration-300">
                                     <div
