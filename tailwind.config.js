@@ -15,6 +15,15 @@ module.exports = {
       "heading-1": "72px",
     },
     extend: {
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
+      },
+      animation: {
+        fadeIn: "fadeIn 0.2s ease-in-out",
+      },
       boxShadow: {
         "light-blue": "0px 0px 12px #FFFFFF",
       },

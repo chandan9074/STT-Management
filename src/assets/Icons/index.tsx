@@ -9,7 +9,21 @@ import songDashboard from "./songDashboard.svg";
 import target from "./target.svg";
 import user2 from "./user2.svg";
 import settings from "./settings.svg";
+import whiteDropArrow from "./whiteDropArrow.svg";
 
-const Icons = { currency, user1, hamburger, post_add, activity, dashboard, group, songDashboard, target, user2, settings };
+const Icons = {
+  currency,
+  user1,
+  hamburger,
+  post_add,
+  activity,
+  dashboard,
+  group,
+  songDashboard,
+  target,
+  user2,
+  settings,
+  whiteDropArrow,
+};
 
 export default Icons;
