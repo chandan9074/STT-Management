@@ -7,6 +7,7 @@ import powerRoundedImg from '../../../assets/Icons/power_rounded.png';
 import deleteIcon from '../../../assets/Icons/delete_icon.png';
 import {isEmpty} from "../../../helpers/Utils";
 import faceImage from '../../../assets/Icons/face.png';
+import './ManagerSearchModal.css';
 
 const {Option} = Select;
 
@@ -16,29 +17,44 @@ const ManagerSearchModal = ({setShowModal, managerContext}: { setShowModal: any,
 
     const [loading, setLoading] = useState<boolean>(false);
     const {managerDatas, singleManager} = managerContext;
-    // const [singleManager, setSingleManager] = useState<any>({});
 
-
-    // setManagerDatas,
-    //     managerDatas
+    const [isDropDownVisible, setIsDropDownVisible] = useState<boolean>(false);
+    const [dropDownCount, setDropDownCount] = useState<number>(0);
 
     useEffect(() => {
         managerContext.getManager();
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        if (dropDownCount === 2) {
+            setIsDropDownVisible(false);
+            setDropDownCount(0);
+        }
+    }, [dropDownCount]);
 
 
-    const handleMangerChange = (id: any, p:any) => {
-        // setSingleManager(p);
+    const handleMangerChange = (id: any, p: any) => {
         console.log('p', p)
         managerContext.getManagerById(p.key);
         form.resetFields();
     }
 
     const deleteManager = (id: any) => {
-        // managerContext.getManager();
         managerContext.setSingleManager({});
         form.resetFields();
-        // form.setFieldsValue({profileFront: url})
+    }
+
+    const onDropDownVisible = (e: any) => {
+
+        setIsDropDownVisible(true);
+        setDropDownCount(dropDownCount+1)
+
+    }
+
+    console.log('count', dropDownCount)
+
+    const onDropDownCLose = () => {
+        console.log('close')
     }
 
 
@@ -67,7 +83,7 @@ const ManagerSearchModal = ({setShowModal, managerContext}: { setShowModal: any,
                                 </button>
                             </div>
 
-                            <div className='bg-white px-6 py-8 mt-4 rounded-[4px] h-[100px]'>
+                            <div className='bg-white px-6 py-8 mt-4 rounded-[px] h-[100px]'>
                                 <div>
                                     <Form
                                         layout='vertical'
@@ -77,43 +93,42 @@ const ManagerSearchModal = ({setShowModal, managerContext}: { setShowModal: any,
                                         <Form.Item
                                             name="managerId"
                                         >
-                                            {/*<Select*/}
-                                            {/*    allowClear*/}
-                                            {/*    showSearch*/}
-                                            {/*    filterOption={(inputValue:any, option:any) =>*/}
-                                            {/*        option.value.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0 ||*/}
-                                            {/*        option.value.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0*/}
-                                            {/*    }*/}
-                                            {/*>*/}
-                                            {/*    {managerDatas.map((option: any)=> (*/}
-                                            {/*        <Option key={option.name} >{option.name}</Option>*/}
-                                            {/*    ))}*/}
-                                            {/*</Select>*/}
 
-                                            <Select
-                                                showSearch
-                                                placeholder="Select Manager by Login ID/ Name"
-                                                className='w-full'
-                                                // style={{height: '44px', borderRadius: '40px'}}
-                                                onChange={(value, p) => handleMangerChange(value, p)}
-                                                disabled={!isEmpty(singleManager)}
-                                                filterOption={(inputValue:any, option:any) =>
-                                                    option.value.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0 ||
-                                                    option.contact.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0
-                                                }
+                                            <div className={`relative ${!isEmpty(singleManager) && 'bg-blue-gray-20'} border-[1px] ${isDropDownVisible ? 'border-secondary-blue-50' : 'border-blue-gray-20'}  rounded-[7px] h-[44px] flex flex-col justify-center`}>
 
-                                            >
-                                                {
-                                                    managerDatas.map((m: any) => (
-                                                        <Option key={m.id} value={m.name} contact={m.contact}>
-                                                            <div className='flex gap-x-4'>
-                                                                <img className='h-[18px] w-[18px]' src={m.image} alt=""/>
-                                                                <h1 className='text-blue-gray-90 text-[14px]'>{m.contact} - {m.name}</h1>
-                                                            </div>
-                                                        </Option>
-                                                    ))
-                                                }
-                                            </Select>
+                                                <Select
+                                                    onDropdownVisibleChange={onDropDownVisible}
+                                                    onClear={onDropDownCLose}
+                                                    showSearch
+                                                    placeholder="Select Manager by Login ID/ Name"
+                                                    className={`w-full ${!isEmpty(singleManager) && 'bg-blue-gray-20'}`}
+                                                    style={{border: 'none'}}
+                                                    // style={{height: '44px', borderRadius: '40px'}}
+                                                    onChange={(value, p) => handleMangerChange(value, p)}
+                                                    disabled={!isEmpty(singleManager)}
+                                                    filterOption={(inputValue: any, option: any) =>
+                                                        option.value.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0 ||
+                                                        option.contact.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0
+                                                    }
+
+                                                >
+                                                    {
+                                                        managerDatas.map((m: any) => (
+                                                            <Option key={m.id} value={m.name} contact={m.contact}>
+                                                                <div className='flex gap-x-4'>
+                                                                    <img className='h-[18px] w-[18px]' src={m.image}
+                                                                         alt=""/>
+                                                                    <h1 className='text-blue-gray-90 text-[14px]'>{m.contact} - {m.name}</h1>
+                                                                </div>
+                                                            </Option>
+                                                        ))
+                                                    }
+                                                </Select>
+                                            </div>
+                                            {/*<div className={isDropDownVisible ? 'bg-red-400 block w-[fit-content]' : 'hidden'}>*/}
+                                            <div className={'bg-white px-[6px] block w-[fit-content] absolute bottom-[34px] left-[12px]'}>
+                                                <p className='text-blue-gray-80 text-[12px]'>Manager</p>
+                                            </div>
                                         </Form.Item>
                                     </Form>
                                 </div>
