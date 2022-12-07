@@ -11,12 +11,12 @@ const Primary = () => {
       <Link to="/" className={`rounded-full`}>
         <img src={Icons.hamburger} alt="hamburger" className="w-6 h-6" />
       </Link>
-      <div className="mt-10">
+      <div className="mt-14">
         {sidebarMenu.category1.map((item, index) => (
           <Link
               key={item.path}
             to={item.path}
-            className={`p-1.5 rounded-full mb-4 hover:bg-ct-blue-20 block hover:bg-opacity-40 duration-300 border border-transparent hover:border-ct-blue-20 group ${
+            className={`p-1.5 rounded-full mb-5 hover:bg-ct-blue-20 block hover:bg-opacity-40 duration-300 border border-transparent hover:border-ct-blue-20 group ${
               location.pathname === item.path ? "shadow-light-blue " : null
             }`}
           >

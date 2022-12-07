@@ -1,16 +1,21 @@
-import React, {useEffect, useState} from 'react';
-import manager from '../../../assets/Icons/manager.png'
+import React, {useContext, useEffect, useState} from 'react';
+import managerImage from '../../../assets/Icons/manager.png'
 import {Input} from "antd";
 import {SearchOutlined} from "@ant-design/icons";
 import ManagerSearchModal from "./ManagerSearchModal";
+import {ManagerContext} from "../../../context/ManagerProvider";
 
-const TimeWiseDisbursements = ({data}: {data:any}) => {
+const TimeWiseDisbursements = () => {
+
+    const managerContext = useContext(ManagerContext);
+    const {managerDisbursementData, singleManager} = managerContext;
+
 
     const [isStt, setIsStt] = useState(true);
     const [isTts, setIsTts] = useState(false);
 
-    const [isSttRoles, setIsSttRoles] = useState('Manager')
-    const [isTtsRoles, setIsTtsRoles] = useState('Speaker')
+    const [isSttRoles, setIsSttRoles] = useState('Manager');
+    const [isTtsRoles, setIsTtsRoles] = useState('Speaker');
 
     // const isSttRoles = [
     //     isSttManager, isSttTamLeader, isSttCollector, isSttSpeaker, isSttAudioChecker, isSttAnnotator, isSttValidator
@@ -18,8 +23,13 @@ const TimeWiseDisbursements = ({data}: {data:any}) => {
 
     // const [minValue, setMinValue] = useState([])
 
+    useEffect(() => {
+        managerContext.getManagerDisbursement();
+    }, []);
+
 
     const [showModal, setShowModal] = React.useState(false);
+
 
 
     const sttRoles = [
@@ -160,7 +170,7 @@ const TimeWiseDisbursements = ({data}: {data:any}) => {
                         sttRoles.map(m => (
                             <div key={m.title} onClick={() => handleSttRole(m.title)}
                                  className={` ${isSttRoles === m.title ? 'bg-white text-[#2C79BE] font-bold' : 'text-[#5F7180] font-semibold'} h-[41px] text-[16px] rounded-t-[15px] flex justify-center items-center gap-x-4`}>
-                                <img className='w-4 h-4' src={manager} alt="manager"/>
+                                <img className='w-4 h-4' src={managerImage} alt="manager"/>
                                 <button>
                                     {m.title}
                                 </button>
@@ -173,7 +183,7 @@ const TimeWiseDisbursements = ({data}: {data:any}) => {
                         ttsRoles.map(m => (
                             <div key={m.title} onClick={() => handleTtsRole(m.title)}
                                  className={` ${isTtsRoles === m.title ? 'bg-white text-[#2C79BE] font-bold' : 'text-[#5F7180] font-semibold'} h-[41px] text-[16px] rounded-t-[15px] flex justify-center items-center gap-x-4`}>
-                                <img className='w-4 h-4' src={manager} alt="manager"/>
+                                <img className='w-4 h-4' src={managerImage} alt="manager"/>
                                 <button>
                                     {m.title}
                                 </button>
@@ -189,7 +199,8 @@ const TimeWiseDisbursements = ({data}: {data:any}) => {
             <div className='p-10 grid grid-cols-4 gap-x-10'>
                 <div className='col-span-3 grid grid-cols-12 '>
                     {
-                        data.map((m:any) => (
+                        managerDisbursementData.length !== 0 &&
+                        managerDisbursementData.map((m:any) => (
                             <div key={m.id}>
                                 <div className="flex items-center duration-300">
                                     <div
@@ -233,6 +244,7 @@ const TimeWiseDisbursements = ({data}: {data:any}) => {
             {showModal ? (
                 <ManagerSearchModal
                     setShowModal={setShowModal}
+                    managerContext={managerContext}
                 />
             ) : null}
 
