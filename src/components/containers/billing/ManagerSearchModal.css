@@ -14,3 +14,12 @@
     align-items: center !important;
 }
 
+:where(.css-dev-only-do-not-override-1ij74fp).ant-select-single .ant-select-selector .ant-select-selection-search {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+:where(.css-dev-only-do-not-override-1ij74fp).ant-select .ant-select-arrow {
+    display: none !important;
+}

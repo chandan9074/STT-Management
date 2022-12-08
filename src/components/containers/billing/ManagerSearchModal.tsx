@@ -8,6 +8,7 @@ import deleteIcon from '../../../assets/Icons/delete_icon.png';
 import {isEmpty} from "../../../helpers/Utils";
 import faceImage from '../../../assets/Icons/face.png';
 import './ManagerSearchModal.css';
+import arrowDropDownIcon from '../../../assets/Icons/arrow_drop_down.png';
 
 const {Option} = Select;
 
@@ -20,6 +21,8 @@ const ManagerSearchModal = ({setShowModal, managerContext}: { setShowModal: any,
 
     const [isDropDownVisible, setIsDropDownVisible] = useState<boolean>(false);
     const [dropDownCount, setDropDownCount] = useState<number>(0);
+
+    const [isInputKeyDown, setIsInputKeyDown] = useState<boolean>(false);
 
     useEffect(() => {
         managerContext.getManager();
@@ -51,10 +54,16 @@ const ManagerSearchModal = ({setShowModal, managerContext}: { setShowModal: any,
 
     }
 
-    console.log('count', dropDownCount)
 
-    const onDropDownCLose = () => {
-        console.log('close')
+    const onInputKeyDown = () => {
+        setIsInputKeyDown(true);
+        console.log('input down')
+    }
+
+    console.log('////', isDropDownVisible)
+
+    const onSelect = () => {
+        console.log('select')
     }
 
 
@@ -83,7 +92,7 @@ const ManagerSearchModal = ({setShowModal, managerContext}: { setShowModal: any,
                                 </button>
                             </div>
 
-                            <div className='bg-white px-6 py-8 mt-4 rounded-[px] h-[100px]'>
+                            <div className='bg-white px-6 py-7 mt-4 rounded-[px] h-[100px]'>
                                 <div>
                                     <Form
                                         layout='vertical'
@@ -94,14 +103,15 @@ const ManagerSearchModal = ({setShowModal, managerContext}: { setShowModal: any,
                                             name="managerId"
                                         >
 
-                                            <div className={`relative ${!isEmpty(singleManager) && 'bg-blue-gray-20'} border-[1px] ${isDropDownVisible ? 'border-secondary-blue-50' : 'border-blue-gray-20'}  rounded-[7px] h-[44px] flex flex-col justify-center`}>
+                                            <div className={`relative ${!isEmpty(singleManager) && 'bg-blue-gray-20'} border-[1px] ${isDropDownVisible ? 'border-secondary-blue-50' : 'border-blue-gray-20'} rounded-[7px] h-[44px] flex justify-center items-center`}>
 
                                                 <Select
                                                     onDropdownVisibleChange={onDropDownVisible}
-                                                    onClear={onDropDownCLose}
+                                                    onInputKeyDown={onInputKeyDown}
+                                                    onClear={onSelect}
                                                     showSearch
                                                     placeholder="Select Manager by Login ID/ Name"
-                                                    className={`w-full ${!isEmpty(singleManager) && 'bg-blue-gray-20'}`}
+                                                    className={`w-[90%] ${!isEmpty(singleManager) && 'bg-blue-gray-20'}`}
                                                     style={{border: 'none'}}
                                                     // style={{height: '44px', borderRadius: '40px'}}
                                                     onChange={(value, p) => handleMangerChange(value, p)}
@@ -124,9 +134,14 @@ const ManagerSearchModal = ({setShowModal, managerContext}: { setShowModal: any,
                                                         ))
                                                     }
                                                 </Select>
+                                                <div className={!isDropDownVisible ? 'bg-whitelock h-[24px] w-[24px] flex justify-center items-center pr-[15px]' : 'hidden'}>
+                                                    <img className='' src={arrowDropDownIcon} alt=""/>
+                                                </div>
                                             </div>
-                                            {/*<div className={isDropDownVisible ? 'bg-red-400 block w-[fit-content]' : 'hidden'}>*/}
-                                            <div className={'bg-white px-[6px] block w-[fit-content] absolute bottom-[34px] left-[12px]'}>
+
+
+
+                                            <div className={isDropDownVisible ? 'bg-white px-[6px] block w-[fit-content] absolute bottom-[34px] left-[12px]' : 'hidden'}>
                                                 <p className='text-blue-gray-80 text-[12px]'>Manager</p>
                                             </div>
                                         </Form.Item>
@@ -167,6 +182,11 @@ const ManagerSearchModal = ({setShowModal, managerContext}: { setShowModal: any,
                                             <img className='deleteIcon' src={deleteIcon} alt=""/>
                                         </button>
                                     </div>
+                                   <div className='w-full flex justify-center items-center mt-[25px]'>
+                                       <button className='w-[237px] h-[44px] text-white text-[16px] bg-primary-ct-blue-60 rounded-[6px]'>
+                                           Search Payment History
+                                       </button>
+                                   </div>
                                 </div> :
                                 <div className='p-6 h-[195px] flex flex-col justify-center items-center'>
                                     <div
