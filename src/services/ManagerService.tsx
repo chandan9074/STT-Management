@@ -4,7 +4,7 @@ const managerDisbursementsDatas = {
     data: [
         {
             id: 1,
-            totalAmounts: 200,
+            totalAmounts: 900,
             totalValid: 50,
             year: 2022,
             month: 'January',

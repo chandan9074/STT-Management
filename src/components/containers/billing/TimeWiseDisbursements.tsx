@@ -11,6 +11,8 @@ const TimeWiseDisbursements = () => {
     const managerContext = useContext(ManagerContext);
     const {managerDisbursementData, singleManager} = managerContext;
 
+    const [dimensionValue, setDimensionValue] = useState<any>([]);
+
 
     const [isStt, setIsStt] = useState(true);
     const [isTts, setIsTts] = useState(false);
@@ -95,28 +97,47 @@ const TimeWiseDisbursements = () => {
 
 
         const min = Math.min(..._data);
+        const max = Math.max(..._data);
 
-        const firstDim = 60;
-        const lastDim = 160;
+        const firstDim = min;
+        const maxDim = 70;
+        const firstValue = min;
+        const lastValue = max;
         // .1 = 1px
         const startPoint = .1;
 
         let findPercent = managerDisbursementData.map((m: any) => {
-            const percent = ((100 * m.totalAmounts) / 100);
-            const newPercent = percent - 100;
-            const dimension = (startPoint * newPercent) + firstDim;
-            let finalData ;
-            if (dimension > lastDim) {
-                finalData = 160;
-            } else {
-                finalData = dimension;
-            }
+            const percent = ((100 * m.totalAmounts) / lastValue);
+            const dimension = (maxDim * percent) / 100;
+            return dimension;
 
-            return finalData;
         });
+        console.log('fin', findPercent)
 
-        console.log('percent', findPercent)
+        setDimensionValue(findPercent);
 
+        // const firstDim = 30;
+        // const lastDim = 70;
+        // // .1 = 1px
+        // const startPoint = .1;
+        //
+        // let findPercent = managerDisbursementData.map((m: any) => {
+        //     const percent = ((100 * m.totalAmounts) / 100);
+        //     const newPercent = percent - 100;
+        //     const dimension = (startPoint * newPercent) + firstDim;
+        //     let finalData ;
+        //     if (dimension > lastDim) {
+        //         finalData = lastDim;
+        //     } else {
+        //         finalData = dimension;
+        //     }
+        //
+        //     // finalData = dimension;
+        //
+        //     return finalData;
+        // });
+        //
+        // setDimensionValue(findPercent);
 
         setMinValue(min);
     }
@@ -216,7 +237,7 @@ const TimeWiseDisbursements = () => {
                 <div className='col-span-3 grid grid-cols-12 '>
                     {
                         managerDisbursementData.length !== 0 &&
-                        managerDisbursementData.map((m: any) => (
+                        managerDisbursementData.map((m: any, i: any) => (
                             <div key={m.id}>
                                 <div className="flex items-center duration-300">
                                     <div
@@ -224,7 +245,8 @@ const TimeWiseDisbursements = () => {
                                     />
                                     <div
                                         // className={`text-sm font-medium px-2.5 py-1 bg-red-400 rounded-full`}
-                                        className={`text-sm font-medium h-[60px] w-[60px] py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center`}
+                                        // className={`text-sm font-medium ${0 === i ? `h-[${dimensionValue[0]}px] w-[${dimensionValue[0]}px]` : 'h-[30px] w-[30px]'}  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center`}
+                                        className={`text-sm font-medium 'h-[70px] w-[70px]'}  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center`}
                                     >
                                         {m.totalAmounts}
                                     </div>
