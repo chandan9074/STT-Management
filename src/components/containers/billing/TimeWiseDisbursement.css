@@ -1,0 +1,15 @@
+.input .ant-input-affix-wrapper >input.ant-input {
+    background-color: #F3F4F6 !important;
+    font-size: 14px;
+}
+
+/*.input .ant-input-affix-wrapper >input.ant-input:hover {*/
+/*   background-color: #9099A1 !important;*/
+/*    height: 100% !important;*/
+/*}*/
+
+.input ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #1F384C !important;
+    opacity: 70% !important; /* Firefox */
+}
+

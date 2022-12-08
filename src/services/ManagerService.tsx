@@ -162,7 +162,7 @@ const managerDisbursementsDatas = {
         },
         {
             id: 8,
-            totalAmounts: 1500,
+            totalAmounts: 3500,
             totalValid: 400,
             year: 2022,
             month: 'September',

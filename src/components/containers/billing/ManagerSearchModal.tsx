@@ -60,8 +60,6 @@ const ManagerSearchModal = ({setShowModal, managerContext}: { setShowModal: any,
         console.log('input down')
     }
 
-    console.log('////', isDropDownVisible)
-
     const onSelect = () => {
         console.log('select')
     }

@@ -4,6 +4,7 @@ import {Input} from "antd";
 import {SearchOutlined} from "@ant-design/icons";
 import ManagerSearchModal from "./ManagerSearchModal";
 import {ManagerContext} from "../../../context/ManagerProvider";
+import './TimeWiseDisbursement.css';
 
 const TimeWiseDisbursements = () => {
 
@@ -21,7 +22,7 @@ const TimeWiseDisbursements = () => {
     //     isSttManager, isSttTamLeader, isSttCollector, isSttSpeaker, isSttAudioChecker, isSttAnnotator, isSttValidator
     // ]
 
-    // const [minValue, setMinValue] = useState([])
+    const [minValue, setMinValue] = useState<number>()
 
     useEffect(() => {
         managerContext.getManagerDisbursement();
@@ -29,7 +30,6 @@ const TimeWiseDisbursements = () => {
 
 
     const [showModal, setShowModal] = React.useState(false);
-
 
 
     const sttRoles = [
@@ -72,9 +72,9 @@ const TimeWiseDisbursements = () => {
     ]
 
     useEffect(() => {
-        getDataRatio();
+        getChart();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [managerDisbursementData]);
 
     const onHandleStt = () => {
         setIsStt(true);
@@ -86,25 +86,41 @@ const TimeWiseDisbursements = () => {
         setIsTts(true);
     }
 
-    const getDataRatio = () => {
-        // Array.prototype.min = function () {
-        //     return Math.min.apply(null, this);
-        // }
-        //
-        // let _data = data.map((m: any) => {
-        //     // setTotalAmounts([...totalAMounts, m.totalAmounts]);
-        //
-        //     return m.totalAmounts
-        // })
-        //
-        // const min = _data.min();
-        //
-        // const _ratioData = data.map((m: any) => {
-        //     return m.totalAmounts / min;
-        // });
-        //
-        // setMinValue(_data.min());
+    const getChart = () => {
+        let _data = managerDisbursementData.map((m: any) => {
+            // setTotalAmounts([...totalAMounts, m.totalAmounts]);
+
+            return m.totalAmounts
+        })
+
+
+        const min = Math.min(..._data);
+
+        const firstDim = 60;
+        const lastDim = 160;
+        // .1 = 1px
+        const startPoint = .1;
+
+        let findPercent = managerDisbursementData.map((m: any) => {
+            const percent = ((100 * m.totalAmounts) / 100);
+            const newPercent = percent - 100;
+            const dimension = (startPoint * newPercent) + firstDim;
+            let finalData ;
+            if (dimension > lastDim) {
+                finalData = 160;
+            } else {
+                finalData = dimension;
+            }
+
+            return finalData;
+        });
+
+        console.log('percent', findPercent)
+
+
+        setMinValue(min);
     }
+
 
     const handleSttRole = (value: string) => {
         if (value === 'Manager') {
@@ -200,7 +216,7 @@ const TimeWiseDisbursements = () => {
                 <div className='col-span-3 grid grid-cols-12 '>
                     {
                         managerDisbursementData.length !== 0 &&
-                        managerDisbursementData.map((m:any) => (
+                        managerDisbursementData.map((m: any) => (
                             <div key={m.id}>
                                 <div className="flex items-center duration-300">
                                     <div
@@ -223,18 +239,46 @@ const TimeWiseDisbursements = () => {
                         ))
                     }
                 </div>
-                <div>
-                    <div>
+                <div className='w-[273px]'>
+                    <div className='input'>
                         <Input
+
                             size="large"
                             // onClick={showModal}
+                            className='h-[32px] border-none bg-blue-gray-10 hover:bg-blue-gray-60'
+                            // className='h-[32px] border-none bg-blue-gray-10 '
                             onClick={() => setShowModal(true)}
                             placeholder="Search Manager by Id or Name"
-                            prefix={<SearchOutlined/>}
+                            // prefix={<SearchOutlined style={{color: '#5F707F'}}/>}
                         />
                     </div>
-                    <div>
-                        <h1 className='text-ct-blue-45 text-[13px] font-semibold'>Total Amount Disbursed </h1>
+
+                    {/*Box*/}
+                    <div
+                        className='relative mt-[15px] w-full py-2 px-2 h-[140px] border-[1px] border-border-light-blue rounded-[4px]'>
+                        <h1 className='text-ct-blue-45 text-[13px] font-medium'>Total Amount Disbursed </h1>
+                        <div className='flex'>
+                            <h1 className='mt-[9px] text-ct-blue-90-70% text-[14px] mr-[4px]'>BDT</h1>
+                            <h1 className="text-[32px] bg-gradient-to-r from-[#F405FE] via-[#136EE5] to-[#EAA678] text-transparent bg-clip-text">
+                                55,000
+                            </h1>
+                        </div>
+
+                        <div className="absolute flex w-full h-[110px] top-6 left-2 justify-center items-start">
+                            <div
+                                className="w-[2px] h-[92px] rotate-[18deg] bg-gradient-to-r from-border-light via-green-10 to-border-light"/>
+                        </div>
+
+                        <div className='absolute bottom-[2px] right-2 gap-y-0'>
+                            <h1 className='text-ct-blue-90-70% text-[14px] '>
+                                Total Valid
+                            </h1>
+                            <span
+                                className="text-[32px] bg-gradient-to-r from-[#F405FE] via-[#136EE5] to-[#EAA678] text-transparent bg-clip-text">
+                                9,400hr
+                            </span>
+                        </div>
+
                     </div>
 
 
