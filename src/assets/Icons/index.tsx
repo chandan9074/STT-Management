@@ -10,6 +10,7 @@ import target from "./target.svg";
 import user2 from "./user2.svg";
 import settings from "./settings.svg";
 import whiteDropArrow from "./whiteDropArrow.svg";
+import blackDropArrow from "./blackDropArrow.svg";
 
 const Icons = {
   currency,
@@ -24,6 +25,7 @@ const Icons = {
   user2,
   settings,
   whiteDropArrow,
+  blackDropArrow,
 };
 
 export default Icons;

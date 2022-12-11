@@ -16,13 +16,16 @@ const Type1 = ({ data }: { data: number[] }) => {
         <img src={Icons.whiteDropArrow} alt="" className="w-2 h-1.5" />
       </button>
       <div
-        className={`bg-white rounded-[4px] overflow-hidden absolute w-full animate-fadeIn ${
+        className={`bg-white z-50 rounded-[4px] overflow-hidden absolute w-full animate-fadeIn ${
           open ? "block" : "hidden"
         }`}
       >
         {data.map((item) => (
           <button
-            onClick={() => {setCurrent(item); setOpen(false)}}
+            onClick={() => {
+              setCurrent(item);
+              setOpen(false);
+            }}
             className={`py-2.5 w-full ${
               current === item ? "bg-blue-10" : "bg-white"
             }`}
