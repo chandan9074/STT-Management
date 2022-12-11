@@ -82,7 +82,8 @@ const TimeWiseDisbursements = () => {
     ]
 
     useEffect(() => {
-        getChart();
+        // getChart();
+        getDimensionValue();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [managerDisbursementData]);
 
@@ -95,6 +96,69 @@ const TimeWiseDisbursements = () => {
         setIsStt(false);
         setIsTts(true);
     }
+
+    const getDimensionValue = () => {
+
+        let _data = managerDisbursementData.map((m: any) => {
+            // setTotalAmounts([...totalAMounts, m.totalAmounts]);
+
+            return m.totalAmounts
+        });
+
+        const min = Math.min(..._data);
+        const max = Math.max(..._data);
+
+        const firstDim = min;
+        const maxDim = 70;
+        const minDim = 30;
+        const firstValue = min;
+        const lastValue = max;
+        // .1 = 1px
+        const startPoint = .12;
+
+        const newData = managerDisbursementData.filter((m: any)=> m.totalAmounts != max && m.totalAmounts != min);
+
+
+        let findPercent = managerDisbursementData.map((m: any) => {
+
+            let finalDimension: any;
+
+            if (m.totalAmounts === max) {
+                finalDimension = maxDim
+            } if (m.totalAmounts === min) {
+                finalDimension = minDim;
+            } if ((m.totalAmounts < max && m.totalAmounts) >= (max/2) ) {
+                const percent = ((100 * m.totalAmounts) / lastValue);
+                finalDimension = (maxDim * percent) / 100;
+                console.log('greater', m.totalAmounts)
+            } if (m.totalAmounts < (max/2) && min < m.totalAmounts) {
+
+                const percent = ((100 * m.totalAmounts) / lastValue);
+                let dimension = (maxDim * percent) / 100;
+
+                const _dimension = (startPoint * dimension) + minDim;
+                finalDimension = _dimension;
+                // console.log('m.to', m.totalAmounts)
+                // if (_dimension < minDim) {
+                //     finalDimension = minDim;
+                // } else {
+                //     finalDimension = dimension;
+                // }
+
+            }
+
+
+
+            // return (dimension / 16);
+            return (finalDimension / 16);
+
+
+
+        });
+
+        setDimensionValue(findPercent);
+    }
+
 
     const getChart = () => {
         let _data = managerDisbursementData.map((m: any) => {
@@ -109,6 +173,7 @@ const TimeWiseDisbursements = () => {
 
         const firstDim = min;
         const maxDim = 70;
+        const minDim = 30;
         const firstValue = min;
         const lastValue = max;
         // .1 = 1px
@@ -116,10 +181,31 @@ const TimeWiseDisbursements = () => {
 
         let findPercent = managerDisbursementData.map((m: any) => {
             const percent = ((100 * m.totalAmounts) / lastValue);
-            const dimension = (maxDim * percent) / 100;
+            let dimension = (maxDim * percent) / 100;
+
+            const _dimension = (startPoint * dimension) + minDim;
+
+            // let finalData ;
+            // if (_dimension > maxDim) {
+            //     finalData = maxDim;
+            //     console.log('dime,,,,,,,,,,,,,', maxDim)
+            // } else {
+            //     finalData = _dimension;
+            // }
+            // return (_dimension / 16);
+            // return (finalData / 16);
 
             // calculate in rem
-            return (dimension / 16);
+            let finalData ;
+            if (dimension < minDim) {
+                finalData = minDim;
+            } else {
+                finalData = dimension;
+            }
+            // return (dimension / 16);
+            return (finalData / 16);
+
+
 
         });
 
@@ -281,7 +367,7 @@ const TimeWiseDisbursements = () => {
                         }
                     </div>
 
-                    <div className='grid grid-cols-12 mt-10'>
+                    <div className='grid grid-cols-12 mt-8'>
                         {
                             managerDisbursementData.length !== 0 &&
                             managerDisbursementData.map((m: any, i: any) => (
@@ -297,18 +383,26 @@ const TimeWiseDisbursements = () => {
 
 
                 <div className='w-[273px]'>
-                    <div className='input'>
-                        <Input
 
-                            size="large"
-                            // onClick={showModal}
-                            className='h-[32px] border-none bg-blue-gray-10 hover:bg-blue-gray-60'
-                            // className='h-[32px] border-none bg-blue-gray-10 '
-                            onClick={() => setShowModal(true)}
-                            placeholder="Search Manager by Id or Name"
-                            // prefix={<SearchOutlined style={{color: '#5F707F'}}/>}
-                        />
-                    </div>
+                     <div className='px-2 flex items-center h-[32px] border-none bg-blue-gray-10 hover:bg-blue-gray-40 rounded-[6px] gap-x-2'
+                          onClick={() => setShowModal(true)}
+                     >
+                         <SearchOutlined style={{color: '#5F707F'}} />
+                         <h1 className='text-[14px] text-ct-blue-90'>Search Manager by Id or Name</h1>
+                     </div>
+
+                    {/*<div className='input'>*/}
+                        {/*<Input*/}
+                        {/*    disabled={true}*/}
+                        {/*    size="large"*/}
+                        {/*    // onClick={showModal}*/}
+                        {/*    className='h-[32px] border-none bg-blue-gray-10 hover:bg-blue-gray-60'*/}
+                        {/*    // className='h-[32px] border-none bg-blue-gray-10 '*/}
+                        {/*    onClick={() => setShowModal(true)}*/}
+                        {/*    placeholder="Search Manager by Id or Name"*/}
+                        {/*    // prefix={<SearchOutlined style={{color: '#5F707F'}}/>}*/}
+                        {/*/>*/}
+                    {/*</div>*/}
 
                     {/*Box*/}
                     <div
