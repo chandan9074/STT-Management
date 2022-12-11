@@ -4,7 +4,7 @@ const managerDisbursementsDatas = {
     data: [
         {
             id: 1,
-            totalAmounts: 5000,
+            totalAmounts: 50000,
             totalValid: 50,
             year: 2022,
             month: 'January',
@@ -23,7 +23,7 @@ const managerDisbursementsDatas = {
         },
         {
             id: 2,
-            totalAmounts: 6000,
+            totalAmounts: 60000,
             totalValid: 80,
             year: 2022,
             month: 'February',
@@ -42,7 +42,7 @@ const managerDisbursementsDatas = {
         },
         {
             id: 3,
-            totalAmounts: 1500,
+            totalAmounts: 15000,
             totalValid: 150,
             year: 2022,
             month: 'March',
@@ -80,7 +80,7 @@ const managerDisbursementsDatas = {
         },
         {
             id: 5,
-            totalAmounts: 700,
+            totalAmounts: 7000,
             totalValid: 200,
             year: 2022,
             month: 'May',
@@ -119,7 +119,7 @@ const managerDisbursementsDatas = {
         },
         {
             id: 6,
-            totalAmounts: 4000,
+            totalAmounts: 40000,
             totalValid: 250,
             year: 2022,
             month: 'July',
@@ -162,7 +162,7 @@ const managerDisbursementsDatas = {
         },
         {
             id: 8,
-            totalAmounts: 3500,
+            totalAmounts: 35000,
             totalValid: 400,
             year: 2022,
             month: 'September',
@@ -200,7 +200,7 @@ const managerDisbursementsDatas = {
         },
         {
             id: 10,
-            totalAmounts: 3000,
+            totalAmounts: 30000,
             totalValid: 500,
             year: 2022,
             month: 'November',
@@ -219,7 +219,7 @@ const managerDisbursementsDatas = {
         },
         {
             id: 11,
-            totalAmounts: 2500,
+            totalAmounts: 25000,
             totalValid: 40,
             year: 2022,
             month: 'December',
