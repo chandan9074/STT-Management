@@ -6,6 +6,14 @@ import ManagerSearchModal from "./ManagerSearchModal";
 import {ManagerContext} from "../../../context/ManagerProvider";
 import './TimeWiseDisbursement.css';
 
+const circleColor: any = [
+    '#FFD3D3', '#FFF5CC', '#E2FBD7', '#CCF8FE', '#CCDDFE'
+]
+
+const monthName: any = [
+    'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
+]
+
 const TimeWiseDisbursements = () => {
 
     const managerContext = useContext(ManagerContext);
@@ -109,10 +117,11 @@ const TimeWiseDisbursements = () => {
         let findPercent = managerDisbursementData.map((m: any) => {
             const percent = ((100 * m.totalAmounts) / lastValue);
             const dimension = (maxDim * percent) / 100;
-            return dimension;
+
+            // calculate in rem
+            return (dimension / 16);
 
         });
-        console.log('fin', findPercent)
 
         setDimensionValue(findPercent);
 
@@ -182,6 +191,8 @@ const TimeWiseDisbursements = () => {
         }
     }
 
+    console.log('dime', dimensionValue)
+
     return (
         <div>
             <div className='h-[153px] bg-[#F4F7FA] pt-6 relative'>
@@ -234,33 +245,57 @@ const TimeWiseDisbursements = () => {
             </div>
 
             <div className='p-10 grid grid-cols-4 gap-x-10'>
-                <div className='col-span-3 grid grid-cols-12 '>
-                    {
-                        managerDisbursementData.length !== 0 &&
-                        managerDisbursementData.map((m: any, i: any) => (
-                            <div key={m.id}>
-                                <div className="flex items-center duration-300">
-                                    <div
-                                        className={`h-[2px] border border-dashed flex-1 rounded-tl-md rounded-bl-md bg-[#D1D3D6]`}
-                                    />
-                                    <div
-                                        // className={`text-sm font-medium px-2.5 py-1 bg-red-400 rounded-full`}
-                                        // className={`text-sm font-medium ${0 === i ? `h-[${dimensionValue[0]}px] w-[${dimensionValue[0]}px]` : 'h-[30px] w-[30px]'}  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center`}
-                                        className={`text-sm font-medium 'h-[70px] w-[70px]'}  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center`}
-                                    >
-                                        {m.totalAmounts}
+
+                <div className='col-span-3 h-[140px]'>
+                    <h1 className='text-4 text-ct-blue-45 font-semibold mb-[25px]'>Time wise disbursement</h1>
+                    <div className='grid grid-cols-12 '>
+                        {
+                            managerDisbursementData.length !== 0 &&
+                            managerDisbursementData.map((m: any, i: any) => (
+                                <div key={m.id} className='flex flex-col justify-center'>
+                                    <div className="flex items-center duration-300">
+                                        <div
+                                            className={`h-[2px] border border-dashed flex-1 rounded-tl-md rounded-bl-md bg-[#D1D3D6]`}
+                                        />
+                                        <div
+                                            style={{
+                                                height: i === 0 ? `${dimensionValue[0]}rem` : `` || i === 1 ? `${dimensionValue[1]}rem` : `` || i === 2 ? `${dimensionValue[2]}rem` : `` || i === 3 ? `${dimensionValue[3]}rem` : `` || i === 4 ? `${dimensionValue[4]}rem` : `` || i === 5 ? `${dimensionValue[5]}rem` : `` || i === 6 ? `${dimensionValue[6]}rem` : `` || i === 7 ? `${dimensionValue[7]}rem` : `` || i === 8 ? `${dimensionValue[8]}rem` : `` || i === 9 ? `${dimensionValue[9]}rem` : `` || i === 10 ? `${dimensionValue[10]}rem` : `` || i === 11 ? `${dimensionValue[11]}rem` : ``,
+                                                width: i === 0 ? `${dimensionValue[0]}rem` : `` || i === 1 ? `${dimensionValue[1]}rem` : `` || i === 2 ? `${dimensionValue[2]}rem` : `` || i === 3 ? `${dimensionValue[3]}rem` : `` || i === 4 ? `${dimensionValue[4]}rem` : `` || i === 5 ? `${dimensionValue[5]}rem` : `` || i === 6 ? `${dimensionValue[6]}rem` : `` || i === 7 ? `${dimensionValue[7]}rem` : `` || i === 8 ? `${dimensionValue[8]}rem` : `` || i === 9 ? `${dimensionValue[9]}rem` : `` || i === 10 ? `${dimensionValue[10]}rem` : `` || i === 11 ? `${dimensionValue[11]}rem` : ``,
+                                                backgroundColor: i === 0 ? `${circleColor[0]}` : `` || i === 1 ? `` : `` || i === 2 ? `${circleColor[1]}` : `` || i === 3 ? `${circleColor[2]}` : `` || i === 4 ? `${circleColor[3]}` : `` || i === 5 ? `${circleColor[4]}` : `` || i === 6 ? `${circleColor[0]}` : `` || i === 7 ? `${circleColor[1]}` : `` || i === 8 ? `${circleColor[2]}` : `` || i === 9 ? `${circleColor[3]}` : `` || i === 10 ? `${circleColor[4]}` : `` || i === 11 ? `${circleColor[0]}` : ``,
+                                            }}
+
+
+                                            className={`text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center`}
+                                        >
+                                            <h1 className='text-[#453C38] text-[11px]'>
+                                                {m.totalAmounts}
+                                            </h1>
+
+                                        </div>
+                                        <div
+                                            className={`h-[2px] border border-dashed flex-1 rounded-tr-md rounded-br-md bg-[#D1D3D6]`}
+                                        />
                                     </div>
-                                    <div
-                                        className={`h-[2px] border border-dashed flex-1 rounded-tr-md rounded-br-md bg-[#D1D3D6]`}
-                                    />
                                 </div>
-                                <div className='flex justify-center items-center mt-5'>
-                                    {m.month.slice(0, 3)}
-                                </div>
-                            </div>
-                        ))
-                    }
+                            ))
+                        }
+                    </div>
+
+                    <div className='grid grid-cols-12 mt-10'>
+                        {
+                            managerDisbursementData.length !== 0 &&
+                            managerDisbursementData.map((m: any, i: any) => (
+                                    <div key={m.id} className='flex flex-col justify-center items-center h-[30px]'>
+                                        <div className='w-[1px] h-[4px] bg-blue-gray-A30'></div>
+                                        <h1>{m.month.slice(0, 3)}</h1>
+                                    </div>
+                                )
+                            )
+                        }
+                    </div>
                 </div>
+
+
                 <div className='w-[273px]'>
                     <div className='input'>
                         <Input
