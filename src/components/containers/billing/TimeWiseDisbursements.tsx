@@ -1,6 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
 import managerImage from '../../../assets/Icons/manager.png'
-import {Input} from "antd";
 import {SearchOutlined} from "@ant-design/icons";
 import ManagerSearchModal from "./ManagerSearchModal";
 import {ManagerContext} from "../../../context/ManagerProvider";
@@ -16,11 +15,14 @@ const monthName: any = [
 
 const TimeWiseDisbursements = () => {
 
+    const [isMouseOver, setIsMouseOver] = useState<boolean>(false);
+
     const managerContext = useContext(ManagerContext);
-    const {managerDisbursementData, singleManager} = managerContext;
+    const {disbursementData, singleManager} = managerContext;
 
     const [dimensionValue, setDimensionValue] = useState<any>([]);
 
+    console.log('dimen', dimensionValue)
 
     const [isStt, setIsStt] = useState(true);
     const [isTts, setIsTts] = useState(false);
@@ -83,9 +85,11 @@ const TimeWiseDisbursements = () => {
 
     useEffect(() => {
         // getChart();
-        getDimensionValue();
+        if (disbursementData?.yearData?.length > 0) {
+            getDimensionValue();
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [managerDisbursementData]);
+    }, [disbursementData?.yearData]);
 
     const onHandleStt = () => {
         setIsStt(true);
@@ -99,11 +103,11 @@ const TimeWiseDisbursements = () => {
 
     const getDimensionValue = () => {
 
-        let _data = managerDisbursementData.map((m: any) => {
-            // setTotalAmounts([...totalAMounts, m.totalAmounts]);
-
+        let _data = disbursementData?.yearData?.map((m: any) => {
             return m.totalAmounts
         });
+
+        console.log('data', _data)
 
         const min = Math.min(..._data);
         const max = Math.max(..._data);
@@ -116,43 +120,39 @@ const TimeWiseDisbursements = () => {
         // .1 = 1px
         const startPoint = .12;
 
-        const newData = managerDisbursementData.filter((m: any)=> m.totalAmounts != max && m.totalAmounts != min);
-
-
-        let findPercent = managerDisbursementData.map((m: any) => {
+        let findPercent = disbursementData?.yearData?.map((m: any) => {
 
             let finalDimension: any;
 
-            if (m.totalAmounts === max) {
-                finalDimension = maxDim
-            } if (m.totalAmounts === min) {
+            const percent = ((100 * m.totalAmounts) / lastValue);
+
+            console.log('percent', percent)
+
+            if (percent <= minDim) {
                 finalDimension = minDim;
-            } if ((m.totalAmounts < max && m.totalAmounts) >= (max/2) ) {
-                const percent = ((100 * m.totalAmounts) / lastValue);
+            } else {
                 finalDimension = (maxDim * percent) / 100;
-                console.log('greater', m.totalAmounts)
-            } if (m.totalAmounts < (max/2) && min < m.totalAmounts) {
-
-                const percent = ((100 * m.totalAmounts) / lastValue);
-                let dimension = (maxDim * percent) / 100;
-
-                const _dimension = (startPoint * dimension) + minDim;
-                finalDimension = _dimension;
-                // console.log('m.to', m.totalAmounts)
-                // if (_dimension < minDim) {
-                //     finalDimension = minDim;
-                // } else {
-                //     finalDimension = dimension;
-                // }
-
             }
 
 
 
-            // return (dimension / 16);
+            // if (m.totalAmounts === max) {
+            //     finalDimension = maxDim
+            // } if (m.totalAmounts === min) {
+            //     finalDimension = minDim;
+            // } if ((m.totalAmounts < max && m.totalAmounts) >= (max/2) ) {
+            //     const percent = ((100 * m.totalAmounts) / lastValue);
+            //     finalDimension = (maxDim * percent) / 100;
+            // } if (m.totalAmounts < (max/2) && min < m.totalAmounts) {
+            //
+            //     const percent = ((100 * m.totalAmounts) / lastValue);
+            //     let dimension = (maxDim * percent) / 100;
+            //
+            //     const _dimension = (startPoint * dimension) + minDim;
+            //     finalDimension = _dimension;
+            // }
+
             return (finalDimension / 16);
-
-
 
         });
 
@@ -161,7 +161,7 @@ const TimeWiseDisbursements = () => {
 
 
     const getChart = () => {
-        let _data = managerDisbursementData.map((m: any) => {
+        let _data = disbursementData?.yearData?.map((m: any) => {
             // setTotalAmounts([...totalAMounts, m.totalAmounts]);
 
             return m.totalAmounts
@@ -179,7 +179,7 @@ const TimeWiseDisbursements = () => {
         // .1 = 1px
         const startPoint = .1;
 
-        let findPercent = managerDisbursementData.map((m: any) => {
+        let findPercent = disbursementData?.yearData?.map((m: any) => {
             const percent = ((100 * m.totalAmounts) / lastValue);
             let dimension = (maxDim * percent) / 100;
 
@@ -196,7 +196,7 @@ const TimeWiseDisbursements = () => {
             // return (finalData / 16);
 
             // calculate in rem
-            let finalData ;
+            let finalData;
             if (dimension < minDim) {
                 finalData = minDim;
             } else {
@@ -204,7 +204,6 @@ const TimeWiseDisbursements = () => {
             }
             // return (dimension / 16);
             return (finalData / 16);
-
 
 
         });
@@ -216,7 +215,7 @@ const TimeWiseDisbursements = () => {
         // // .1 = 1px
         // const startPoint = .1;
         //
-        // let findPercent = managerDisbursementData.map((m: any) => {
+        // let findPercent = disbursementData?.yearData?.map((m: any) => {
         //     const percent = ((100 * m.totalAmounts) / 100);
         //     const newPercent = percent - 100;
         //     const dimension = (startPoint * newPercent) + firstDim;
@@ -277,7 +276,14 @@ const TimeWiseDisbursements = () => {
         }
     }
 
-    console.log('dime', dimensionValue)
+    const circleMouseOver = () => {
+        console.log('on mouse over')
+    }
+
+    const circleMouseleave = () => {
+        console.log('on mouse leave')
+    }
+
 
     return (
         <div>
@@ -336,20 +342,21 @@ const TimeWiseDisbursements = () => {
                     <h1 className='text-4 text-ct-blue-45 font-semibold mb-[25px]'>Time wise disbursement</h1>
                     <div className='grid grid-cols-12 '>
                         {
-                            managerDisbursementData.length !== 0 &&
-                            managerDisbursementData.map((m: any, i: any) => (
+                            disbursementData.length !== 0 &&
+                            disbursementData?.yearData?.map((m: any, i: any) => (
                                 <div key={m.id} className='flex flex-col justify-center'>
                                     <div className="flex items-center duration-300">
                                         <div
                                             className={`h-[2px] border border-dashed flex-1 rounded-tl-md rounded-bl-md bg-[#D1D3D6]`}
                                         />
                                         <div
+                                            onMouseOver={() => setIsMouseOver(true)}
+                                            onMouseLeave={() => setIsMouseOver(false)}
                                             style={{
                                                 height: i === 0 ? `${dimensionValue[0]}rem` : `` || i === 1 ? `${dimensionValue[1]}rem` : `` || i === 2 ? `${dimensionValue[2]}rem` : `` || i === 3 ? `${dimensionValue[3]}rem` : `` || i === 4 ? `${dimensionValue[4]}rem` : `` || i === 5 ? `${dimensionValue[5]}rem` : `` || i === 6 ? `${dimensionValue[6]}rem` : `` || i === 7 ? `${dimensionValue[7]}rem` : `` || i === 8 ? `${dimensionValue[8]}rem` : `` || i === 9 ? `${dimensionValue[9]}rem` : `` || i === 10 ? `${dimensionValue[10]}rem` : `` || i === 11 ? `${dimensionValue[11]}rem` : ``,
                                                 width: i === 0 ? `${dimensionValue[0]}rem` : `` || i === 1 ? `${dimensionValue[1]}rem` : `` || i === 2 ? `${dimensionValue[2]}rem` : `` || i === 3 ? `${dimensionValue[3]}rem` : `` || i === 4 ? `${dimensionValue[4]}rem` : `` || i === 5 ? `${dimensionValue[5]}rem` : `` || i === 6 ? `${dimensionValue[6]}rem` : `` || i === 7 ? `${dimensionValue[7]}rem` : `` || i === 8 ? `${dimensionValue[8]}rem` : `` || i === 9 ? `${dimensionValue[9]}rem` : `` || i === 10 ? `${dimensionValue[10]}rem` : `` || i === 11 ? `${dimensionValue[11]}rem` : ``,
                                                 backgroundColor: i === 0 ? `${circleColor[0]}` : `` || i === 1 ? `` : `` || i === 2 ? `${circleColor[1]}` : `` || i === 3 ? `${circleColor[2]}` : `` || i === 4 ? `${circleColor[3]}` : `` || i === 5 ? `${circleColor[4]}` : `` || i === 6 ? `${circleColor[0]}` : `` || i === 7 ? `${circleColor[1]}` : `` || i === 8 ? `${circleColor[2]}` : `` || i === 9 ? `${circleColor[3]}` : `` || i === 10 ? `${circleColor[4]}` : `` || i === 11 ? `${circleColor[0]}` : ``,
                                             }}
-
 
                                             className={`text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center`}
                                         >
@@ -369,8 +376,8 @@ const TimeWiseDisbursements = () => {
 
                     <div className='grid grid-cols-12 mt-8'>
                         {
-                            managerDisbursementData.length !== 0 &&
-                            managerDisbursementData.map((m: any, i: any) => (
+                            disbursementData?.yearData?.length !== 0 &&
+                            disbursementData?.yearData?.map((m: any, i: any) => (
                                     <div key={m.id} className='flex flex-col justify-center items-center h-[30px]'>
                                         <div className='w-[1px] h-[4px] bg-blue-gray-A30'></div>
                                         <h1>{m.month.slice(0, 3)}</h1>
@@ -384,24 +391,25 @@ const TimeWiseDisbursements = () => {
 
                 <div className='w-[273px]'>
 
-                     <div className='px-2 flex items-center h-[32px] border-none bg-blue-gray-10 hover:bg-blue-gray-40 rounded-[6px] gap-x-2'
-                          onClick={() => setShowModal(true)}
-                     >
-                         <SearchOutlined style={{color: '#5F707F'}} />
-                         <h1 className='text-[14px] text-ct-blue-90'>Search Manager by Id or Name</h1>
-                     </div>
+                    <div
+                        className='px-2 flex items-center h-[32px] border-none bg-blue-gray-10 hover:bg-blue-gray-40 rounded-[6px] gap-x-2'
+                        onClick={() => setShowModal(true)}
+                    >
+                        <SearchOutlined style={{color: '#5F707F'}}/>
+                        <h1 className='text-[14px] text-ct-blue-90'>Search Manager by Id or Name</h1>
+                    </div>
 
                     {/*<div className='input'>*/}
-                        {/*<Input*/}
-                        {/*    disabled={true}*/}
-                        {/*    size="large"*/}
-                        {/*    // onClick={showModal}*/}
-                        {/*    className='h-[32px] border-none bg-blue-gray-10 hover:bg-blue-gray-60'*/}
-                        {/*    // className='h-[32px] border-none bg-blue-gray-10 '*/}
-                        {/*    onClick={() => setShowModal(true)}*/}
-                        {/*    placeholder="Search Manager by Id or Name"*/}
-                        {/*    // prefix={<SearchOutlined style={{color: '#5F707F'}}/>}*/}
-                        {/*/>*/}
+                    {/*<Input*/}
+                    {/*    disabled={true}*/}
+                    {/*    size="large"*/}
+                    {/*    // onClick={showModal}*/}
+                    {/*    className='h-[32px] border-none bg-blue-gray-10 hover:bg-blue-gray-60'*/}
+                    {/*    // className='h-[32px] border-none bg-blue-gray-10 '*/}
+                    {/*    onClick={() => setShowModal(true)}*/}
+                    {/*    placeholder="Search Manager by Id or Name"*/}
+                    {/*    // prefix={<SearchOutlined style={{color: '#5F707F'}}/>}*/}
+                    {/*/>*/}
                     {/*</div>*/}
 
                     {/*Box*/}
@@ -442,6 +450,7 @@ const TimeWiseDisbursements = () => {
                     managerContext={managerContext}
                 />
             ) : null}
+
 
         </div>
     );

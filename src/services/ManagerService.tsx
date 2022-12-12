@@ -1,5 +1,135 @@
 import managerImage from "../assets/Icons/manager.png";
 
+const managerDisbursementData = {
+    data: [
+        {
+            id: 1,
+            year: 2022,
+            totalAmountsDisbursed: 500 ,
+            totalValid: 340,
+            yearData: [
+                {
+                    id: 100,
+                    // month: "Jan",
+                    month: '15 January',
+                    valid: 20,
+                    amount: 150,
+                    totalAmounts: 50000,
+                    totalValid: 80,
+                },
+                {
+                    id: 101,
+                    // month: "Jan",
+                    month: '1 February',
+                    valid: 20,
+                    amount: 150,
+                    totalAmounts: 60000,
+                    totalValid: 666,
+                },
+                {
+                    id: 102,
+                    // month: "Jan",
+                    month: '8 March',
+                    valid: 20,
+                    amount: 150,
+                    totalAmounts: 25000,
+                    totalValid: 64,
+                },
+                {
+                    id: 103,
+                    // month: "Jan",
+                    month: 'April',
+                    valid: 20,
+                    amount: 150,
+                    totalAmounts: 10000,
+                    totalValid: 132,
+                },
+                {
+                    id: 104,
+                    // month: "Jan",
+                    month: 'May',
+                    valid: 20,
+                    amount: 150,
+                    totalAmounts: 70000,
+                    totalValid: 13,
+                },
+                {
+                    id: 105,
+                    // month: "Jan",
+                    month: 'June',
+                    valid: 20,
+                    amount: 150,
+                    totalAmounts: 33000,
+                    totalValid: 56,
+                },
+                {
+                    id: 106,
+                    // month: "Jan",
+                    month: 'July',
+                    valid: 20,
+                    amount: 150,
+                    totalAmounts: 40000,
+                    totalValid:23,
+                },
+                {
+                    id: 107,
+                    // month: "Jan",
+                    month: 'August',
+                    valid: 20,
+                    amount: 150,
+                    totalAmounts: 98000,
+                    totalValid:44,
+                },
+                {
+                    id: 108,
+                    // month: "Jan",
+                    month: 'September',
+                    valid: 20,
+                    amount: 150,
+                    totalAmounts: 65000,
+                    totalValid: 50,
+                },
+                {
+                    id: 109,
+                    // month: "Jan",
+                    month: 'October',
+                    valid: 20,
+                    amount: 150,
+                    totalAmounts: 21000,
+                    totalValid: 50,
+                },
+                {
+                    id: 110,
+                    // month: "Jan",
+                    month: 'November',
+                    valid: 20,
+                    amount: 150,
+                    totalAmounts: 12000,
+                    totalValid: 50,
+                },
+                {
+                    id: 111,
+                    // month: "Jan",
+                    month: 'December',
+                    valid: 20,
+                    amount: 150,
+                    totalAmounts: 77000,
+                    totalValid: 50,
+                },
+            ]
+        },
+        {
+            year: 2021,
+            yearData: [
+                {
+                    month: "Jan",
+                    amount: 200
+                }
+            ]
+        }
+    ]
+}
+
 const managerDisbursementsDatas = {
     data: [
         {
@@ -240,7 +370,7 @@ const managerDisbursementsDatas = {
 }
 
 const managerData: any = {
-    data:  [
+    data: [
         {
             id: '1',
             name: 'Maksuda Alam',
@@ -282,17 +412,21 @@ export default class ManagerService {
 
     static getManagerDisbursement(params: any) {
         // return axios.get(GET_MANAGERS_URL, {params})
-        return managerDisbursementsDatas;
+        // return managerDisbursementsDatas;
+        return managerDisbursementData;
     }
+
 
     static getManager(params: any) {
         // return axios.get(GET_MANAGERS_URL, {params})
+        console.log('get manager')
         return managerData;
     }
 
     static getManagerById(id: any) {
+        console.log('by id')
         // return axios.get(`${GET_MANAGER_BY_ID_URL}/${id}`);
-       return (managerData.data.filter((m: any) => m.id === id));
+        return (managerData.data.filter((m: any) => m.id === id));
     }
 
     static deleteManager(id: any) {
