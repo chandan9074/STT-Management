@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {CloseOutlined} from "@ant-design/icons";
 import {Form, Select} from "antd";
 import militaryImg from '../../../assets/Icons/military_tech.png';
@@ -14,7 +14,6 @@ const {Option} = Select;
 
 const ManagerSearchModal = ({setShowModal, managerContext, role}: { setShowModal: any; managerContext: any; role: string }) => {
 
-    console.log('role', role)
     const [form] = Form.useForm();
 
     const [loading, setLoading] = useState<boolean>(false);
@@ -25,8 +24,10 @@ const ManagerSearchModal = ({setShowModal, managerContext, role}: { setShowModal
 
     const [isInputKeyDown, setIsInputKeyDown] = useState<boolean>(false);
 
+
     useEffect(() => {
         managerContext.getManager(role);
+        // document.addEventListener('click', handleClickOutside, true);
     }, []);
 
     useEffect(() => {

@@ -48,7 +48,7 @@ const managerDisbursementData = {
                             // month: "Jan",
                             month: 'February',
                             valid: 20,
-                            amount: 900000,
+                            amount: 90000,
                         },
                         {
                             id: 102,
@@ -62,7 +62,7 @@ const managerDisbursementData = {
                             // month: "Jan",
                             month: 'April',
                             valid: 20,
-                            amount: 10000,
+                            amount: 70000,
                         },
                         {
                             id: 104,
@@ -104,7 +104,7 @@ const managerDisbursementData = {
                             // month: "Jan",
                             month: 'October',
                             valid: 20,
-                            amount: 21000,
+                            amount: 81000,
                         },
                         {
                             id: 110,
@@ -414,10 +414,10 @@ const managerData: any = {
 
 export default class ManagerService {
 
-
     static getManagerDisbursement(params: any) {
         // return axios.get(GET_MANAGERS_URL, {params})
         // return managerDisbursementsDatas;
+        console.log('prams', params)
         return managerDisbursementData;
     }
 

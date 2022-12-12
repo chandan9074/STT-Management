@@ -297,9 +297,42 @@ const TimeWiseDisbursements = () => {
 
                 <div className='col-span-3 h-[140px]'>
                     <h1 className='text-4 text-ct-blue-45 font-semibold mb-[25px]'>Time wise disbursement</h1>
-                    <div className={`grid grid-cols-${disbursementData?.yearData?.length}`}>
+                    <div className={`grid grid-cols-12`}>
+                    {/*<div className='flex items-center'>*/}
                         {
-                            disbursementData.length !== 0 &&
+                            // disbursementData.length !== 0 &&
+                            // disbursementData?.yearData?.map((m: any, i: any) => (
+                            //     <div key={m.id} >
+                            //         <div className="flex items-center duration-300">
+                            //             <div
+                            //                 className={`h-[2px] w-[20px] border border-dashed flex-1 rounded-tl-md rounded-bl-md bg-[#D1D3D6]`}
+                            //             />
+                            //             <div
+                            //                 // onMouseOver={() => setIsMouseOver(true)}
+                            //                 // onMouseLeave={() => setIsMouseOver(false)}
+                            //
+                            //                 style={{
+                            //                     height: `${dimensionValue[i]}rem`,
+                            //                     width:  `${dimensionValue[i]}rem`,
+                            //                     // backgroundColor:  `${circleColor[i]}`
+                            //                     backgroundColor:  `${circleColor[Math.floor(Math.random() * circleColor.length)]}`
+                            //
+                            //                     // backgroundColor: i === 0 ? `${circleColor[0]}` : `` || i === 1 ? `` : `` || i === 2 ? `${circleColor[1]}` : `` || i === 3 ? `${circleColor[2]}` : `` || i === 4 ? `${circleColor[3]}` : `` || i === 5 ? `${circleColor[4]}` : `` || i === 6 ? `${circleColor[0]}` : `` || i === 7 ? `${circleColor[1]}` : `` || i === 8 ? `${circleColor[2]}` : `` || i === 9 ? `${circleColor[3]}` : `` || i === 10 ? `${circleColor[4]}` : `` || i === 11 ? `${circleColor[0]}` : ``,
+                            //                 }}
+                            //
+                            //                 className={`text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center`}
+                            //             >
+                            //                 <h1 className='text-[#453C38] text-[11px]'>
+                            //                     {m.amount}
+                            //                 </h1>
+                            //
+                            //             </div>
+                            //             <div
+                            //                 className={`h-[2px] border border-dashed flex-1 rounded-tr-md rounded-br-md bg-[#D1D3D6]`}
+                            //             />
+                            //         </div>
+                            //     </div>
+                            // ))
 
                             disbursementData?.yearData?.map((m: any, i: any) => (
                                 <div key={m.id} className='flex flex-col justify-center'>
