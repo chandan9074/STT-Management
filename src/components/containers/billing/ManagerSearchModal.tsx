@@ -12,8 +12,9 @@ import arrowDropDownIcon from '../../../assets/Icons/arrow_drop_down.png';
 
 const {Option} = Select;
 
-const ManagerSearchModal = ({setShowModal, managerContext}: { setShowModal: any, managerContext: any }) => {
+const ManagerSearchModal = ({setShowModal, managerContext, role}: { setShowModal: any; managerContext: any; role: string }) => {
 
+    console.log('role', role)
     const [form] = Form.useForm();
 
     const [loading, setLoading] = useState<boolean>(false);
@@ -25,7 +26,7 @@ const ManagerSearchModal = ({setShowModal, managerContext}: { setShowModal: any,
     const [isInputKeyDown, setIsInputKeyDown] = useState<boolean>(false);
 
     useEffect(() => {
-        managerContext.getManager();
+        managerContext.getManager(role);
     }, []);
 
     useEffect(() => {
@@ -78,7 +79,7 @@ const ManagerSearchModal = ({setShowModal, managerContext}: { setShowModal: any,
                         <div className='bg-ct-blue-05 h-[200px] p-5'>
                             <div className="flex items-start justify-between items-center ">
                                 <h3 className="titleParagraphMedium">
-                                    Search Manager
+                                    Search {role}
                                 </h3>
                                 <button
                                     className='bg-white rounded-[50%]'
@@ -108,7 +109,7 @@ const ManagerSearchModal = ({setShowModal, managerContext}: { setShowModal: any,
                                                     onInputKeyDown={onInputKeyDown}
                                                     onClear={onSelect}
                                                     showSearch
-                                                    placeholder="Select Manager by Login ID/ Name"
+                                                    placeholder={`Select ${role} by Login ID/ Name`}
                                                     className={`w-[90%] ${!isEmpty(singleManager) && 'bg-blue-gray-20'}`}
                                                     style={{border: 'none'}}
                                                     // style={{height: '44px', borderRadius: '40px'}}
@@ -140,7 +141,7 @@ const ManagerSearchModal = ({setShowModal, managerContext}: { setShowModal: any,
 
 
                                             <div className={isDropDownVisible ? 'bg-white px-[6px] block w-[fit-content] absolute bottom-[34px] left-[12px]' : 'hidden'}>
-                                                <p className='text-blue-gray-80 text-[12px]'>Manager</p>
+                                                <p className='text-blue-gray-80 text-[12px]'>{role}</p>
                                             </div>
                                         </Form.Item>
                                     </Form>
@@ -191,7 +192,7 @@ const ManagerSearchModal = ({setShowModal, managerContext}: { setShowModal: any,
                                         className='h-[40px] w-[40px] rounded-[50%] bg-blue-gray-05 flex items-center justify-center'>
                                         <img className='w-[18px] h-[18px]' src={faceImage} alt=""/>
                                     </div>
-                                    <h1 className='text-ct-blue-45 text-[13px] mt-[8px]'>By adding, Manager will be
+                                    <h1 className='text-ct-blue-45 text-[13px] mt-[8px]'>By adding, {role} will be
                                         shown here</h1>
                                 </div>
                         }

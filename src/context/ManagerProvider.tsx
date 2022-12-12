@@ -12,7 +12,8 @@ interface ContextProps {
     getManager: any;
     managerDatas: any,
     deleteManager: any
-    setSingleManager: any
+    setSingleManager: any,
+    totalDisbursed: any
 }
 
 export const ManagerContext = createContext({} as ContextProps);
@@ -23,12 +24,14 @@ const ManagerProvider = ({ children }: { children: any }) => {
     const [managerDatas, setManagerDatas] = useState<any>([]);
     const [singleManager, setSingleManager] = useState<any>({});
     const [managerLoading, setManagerLoading] = useState(true);
+    const [totalDisbursed, setTotalDisbursed] = useState<any>([])
 
     const getManagerDisbursement = async (data: any) => {
         try {
             setLoading(true);
             const res = await ManagerService.getManagerDisbursement(data);
-            setDisbursementData(res.data[0])
+            setDisbursementData(res.data.disbursementData[0]);
+            setTotalDisbursed(res.data);
             // setManagerData('This is manager data')
             setLoading(false);
 
@@ -96,7 +99,8 @@ const ManagerProvider = ({ children }: { children: any }) => {
                 getManager,
                 managerDatas,
                 deleteManager,
-                setSingleManager
+                setSingleManager,
+                totalDisbursed
             }}
         >
             {children}

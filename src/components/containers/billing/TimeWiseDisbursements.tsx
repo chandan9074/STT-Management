@@ -15,14 +15,15 @@ const monthName: any = [
 
 const TimeWiseDisbursements = () => {
 
+    const [randomElement, setRandomElement] = useState<any>([]);
+
     const [isMouseOver, setIsMouseOver] = useState<boolean>(false);
 
     const managerContext = useContext(ManagerContext);
-    const {disbursementData, singleManager} = managerContext;
+    const {disbursementData, singleManager, totalDisbursed} = managerContext;
+    console.log('total', totalDisbursed)
 
     const [dimensionValue, setDimensionValue] = useState<any>([]);
-
-    console.log('dimen', dimensionValue)
 
     const [isStt, setIsStt] = useState(true);
     const [isTts, setIsTts] = useState(false);
@@ -30,6 +31,13 @@ const TimeWiseDisbursements = () => {
     const [isSttRoles, setIsSttRoles] = useState('Manager');
     const [isTtsRoles, setIsTtsRoles] = useState('Speaker');
 
+    const initialData = {
+        year: 2022,
+        role: 'Manager',
+        type: 'stt'
+    }
+
+    const [search, setSearch] = useState<any>(initialData)
     // const isSttRoles = [
     //     isSttManager, isSttTamLeader, isSttCollector, isSttSpeaker, isSttAudioChecker, isSttAnnotator, isSttValidator
     // ]
@@ -37,8 +45,21 @@ const TimeWiseDisbursements = () => {
     const [minValue, setMinValue] = useState<number>()
 
     useEffect(() => {
-        managerContext.getManagerDisbursement();
-    }, []);
+        managerContext.getManagerDisbursement(search);
+
+        // const _data = getRandomColor();
+        // console.log('random', _data)
+    }, [search]);
+
+    const getRandomColor = () => {
+            for (let i = circleColor.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [circleColor[i], circleColor[j]] = [circleColor[j], circleColor[i]];
+            }
+
+        return circleColor;
+    }
+
 
 
     const [showModal, setShowModal] = React.useState(false);
@@ -94,27 +115,30 @@ const TimeWiseDisbursements = () => {
     const onHandleStt = () => {
         setIsStt(true);
         setIsTts(false);
+        setSearch({...search, role: 'Manager', type: 'stt'});
     }
 
-    const onHandleTtt = () => {
+    const onHandleTts = () => {
         setIsStt(false);
         setIsTts(true);
+        setSearch({...search, role: 'Speaker', type: 'tts'});
     }
+
+
 
     const getDimensionValue = () => {
 
         let _data = disbursementData?.yearData?.map((m: any) => {
-            return m.totalAmounts
+            return m.amount
         });
 
-        console.log('data', _data)
 
         const min = Math.min(..._data);
         const max = Math.max(..._data);
 
         const firstDim = min;
         const maxDim = 70;
-        const minDim = 30;
+        const minDim = 35;
         const firstValue = min;
         const lastValue = max;
         // .1 = 1px
@@ -124,33 +148,30 @@ const TimeWiseDisbursements = () => {
 
             let finalDimension: any;
 
-            const percent = ((100 * m.totalAmounts) / lastValue);
-
-            console.log('percent', percent)
-
-            if (percent <= minDim) {
-                finalDimension = minDim;
-            } else {
-                finalDimension = (maxDim * percent) / 100;
-            }
-
-
-
-            // if (m.totalAmounts === max) {
-            //     finalDimension = maxDim
-            // } if (m.totalAmounts === min) {
+            // Solution 1
+            // const percent = ((100 * m.amount) / lastValue);
+            // if (percent <= minDim) {
             //     finalDimension = minDim;
-            // } if ((m.totalAmounts < max && m.totalAmounts) >= (max/2) ) {
-            //     const percent = ((100 * m.totalAmounts) / lastValue);
+            // } else {
             //     finalDimension = (maxDim * percent) / 100;
-            // } if (m.totalAmounts < (max/2) && min < m.totalAmounts) {
-            //
-            //     const percent = ((100 * m.totalAmounts) / lastValue);
-            //     let dimension = (maxDim * percent) / 100;
-            //
-            //     const _dimension = (startPoint * dimension) + minDim;
-            //     finalDimension = _dimension;
             // }
+
+            // Solution 2
+            if (m.amount === max) {
+                finalDimension = maxDim
+            } if (m.amount === min) {
+                finalDimension = minDim;
+            } if ((m.amount < max && m.amount) >= (max/2) ) {
+                const percent = ((100 * m.amount) / lastValue);
+                finalDimension = (maxDim * percent) / 100;
+            } if (m.amount < (max/2) && min < m.amount) {
+
+                const percent = ((100 * m.amount) / lastValue);
+                let dimension = (maxDim * percent) / 100;
+
+                const _dimension = (startPoint * dimension) + minDim;
+                finalDimension = _dimension;
+            }
 
             return (finalDimension / 16);
 
@@ -160,119 +181,55 @@ const TimeWiseDisbursements = () => {
     }
 
 
-    const getChart = () => {
-        let _data = disbursementData?.yearData?.map((m: any) => {
-            // setTotalAmounts([...totalAMounts, m.totalAmounts]);
-
-            return m.totalAmounts
-        })
-
-
-        const min = Math.min(..._data);
-        const max = Math.max(..._data);
-
-        const firstDim = min;
-        const maxDim = 70;
-        const minDim = 30;
-        const firstValue = min;
-        const lastValue = max;
-        // .1 = 1px
-        const startPoint = .1;
-
-        let findPercent = disbursementData?.yearData?.map((m: any) => {
-            const percent = ((100 * m.totalAmounts) / lastValue);
-            let dimension = (maxDim * percent) / 100;
-
-            const _dimension = (startPoint * dimension) + minDim;
-
-            // let finalData ;
-            // if (_dimension > maxDim) {
-            //     finalData = maxDim;
-            //     console.log('dime,,,,,,,,,,,,,', maxDim)
-            // } else {
-            //     finalData = _dimension;
-            // }
-            // return (_dimension / 16);
-            // return (finalData / 16);
-
-            // calculate in rem
-            let finalData;
-            if (dimension < minDim) {
-                finalData = minDim;
-            } else {
-                finalData = dimension;
-            }
-            // return (dimension / 16);
-            return (finalData / 16);
-
-
-        });
-
-        setDimensionValue(findPercent);
-
-        // const firstDim = 30;
-        // const lastDim = 70;
-        // // .1 = 1px
-        // const startPoint = .1;
-        //
-        // let findPercent = disbursementData?.yearData?.map((m: any) => {
-        //     const percent = ((100 * m.totalAmounts) / 100);
-        //     const newPercent = percent - 100;
-        //     const dimension = (startPoint * newPercent) + firstDim;
-        //     let finalData ;
-        //     if (dimension > lastDim) {
-        //         finalData = lastDim;
-        //     } else {
-        //         finalData = dimension;
-        //     }
-        //
-        //     // finalData = dimension;
-        //
-        //     return finalData;
-        // });
-        //
-        // setDimensionValue(findPercent);
-
-        setMinValue(min);
-    }
 
 
     const handleSttRole = (value: string) => {
         if (value === 'Manager') {
             setIsSttRoles(value);
+            setSearch({...search, role: value, type: 'stt'});
         }
         if (value === 'Team Leader') {
             setIsSttRoles(value);
+            setSearch({...search, role: value, type: 'stt'});
         }
         if (value === 'Collector') {
             setIsSttRoles(value);
+            setSearch({...search, role: value, type: 'stt'});
         }
         if (value === 'Speaker') {
             setIsSttRoles(value);
+            setSearch({...search, role: value, type: 'stt'});
         }
         if (value === 'Audio Checker') {
             setIsSttRoles(value);
+            setSearch({...search, role: value, type: 'stt'});
         }
         if (value === 'Validator') {
             setIsSttRoles(value);
+            setSearch({...search, role: value, type: 'stt'});
         }
         if (value === 'Annotator') {
             setIsSttRoles(value);
+            setSearch({...search, role: value, type: 'stt'});
         }
     }
 
     const handleTtsRole = (value: string) => {
         if (value === 'Speaker') {
             setIsTtsRoles(value);
+            setSearch({...search, role: value, type: 'tts'});
         }
         if (value === 'Audio Checker') {
             setIsTtsRoles(value);
+            setSearch({...search, role: value, type: 'tts'});
         }
         if (value === 'Validator') {
             setIsTtsRoles(value);
+            setSearch({...search, role: value, type: 'tts'});
         }
         if (value === 'Annotator') {
             setIsTtsRoles(value);
+            setSearch({...search, role: value, type: 'tts'});
         }
     }
 
@@ -298,7 +255,7 @@ const TimeWiseDisbursements = () => {
                         </button>
                         <button
                             className={`flex justify-center items-center w-[96px] h-[32px] ${isTts ? 'bg-[#851F58] text-white' : 'bg-white text-[#851F58] hover:bg-gray-300'} rounded-[24px]`}
-                            onClick={onHandleTtt}>
+                            onClick={onHandleTts}>
                             TTS
                         </button>
                     </div>
@@ -340,9 +297,10 @@ const TimeWiseDisbursements = () => {
 
                 <div className='col-span-3 h-[140px]'>
                     <h1 className='text-4 text-ct-blue-45 font-semibold mb-[25px]'>Time wise disbursement</h1>
-                    <div className='grid grid-cols-12 '>
+                    <div className={`grid grid-cols-${disbursementData?.yearData?.length}`}>
                         {
                             disbursementData.length !== 0 &&
+
                             disbursementData?.yearData?.map((m: any, i: any) => (
                                 <div key={m.id} className='flex flex-col justify-center'>
                                     <div className="flex items-center duration-300">
@@ -350,18 +308,22 @@ const TimeWiseDisbursements = () => {
                                             className={`h-[2px] border border-dashed flex-1 rounded-tl-md rounded-bl-md bg-[#D1D3D6]`}
                                         />
                                         <div
-                                            onMouseOver={() => setIsMouseOver(true)}
-                                            onMouseLeave={() => setIsMouseOver(false)}
+                                            // onMouseOver={() => setIsMouseOver(true)}
+                                            // onMouseLeave={() => setIsMouseOver(false)}
+
                                             style={{
-                                                height: i === 0 ? `${dimensionValue[0]}rem` : `` || i === 1 ? `${dimensionValue[1]}rem` : `` || i === 2 ? `${dimensionValue[2]}rem` : `` || i === 3 ? `${dimensionValue[3]}rem` : `` || i === 4 ? `${dimensionValue[4]}rem` : `` || i === 5 ? `${dimensionValue[5]}rem` : `` || i === 6 ? `${dimensionValue[6]}rem` : `` || i === 7 ? `${dimensionValue[7]}rem` : `` || i === 8 ? `${dimensionValue[8]}rem` : `` || i === 9 ? `${dimensionValue[9]}rem` : `` || i === 10 ? `${dimensionValue[10]}rem` : `` || i === 11 ? `${dimensionValue[11]}rem` : ``,
-                                                width: i === 0 ? `${dimensionValue[0]}rem` : `` || i === 1 ? `${dimensionValue[1]}rem` : `` || i === 2 ? `${dimensionValue[2]}rem` : `` || i === 3 ? `${dimensionValue[3]}rem` : `` || i === 4 ? `${dimensionValue[4]}rem` : `` || i === 5 ? `${dimensionValue[5]}rem` : `` || i === 6 ? `${dimensionValue[6]}rem` : `` || i === 7 ? `${dimensionValue[7]}rem` : `` || i === 8 ? `${dimensionValue[8]}rem` : `` || i === 9 ? `${dimensionValue[9]}rem` : `` || i === 10 ? `${dimensionValue[10]}rem` : `` || i === 11 ? `${dimensionValue[11]}rem` : ``,
-                                                backgroundColor: i === 0 ? `${circleColor[0]}` : `` || i === 1 ? `` : `` || i === 2 ? `${circleColor[1]}` : `` || i === 3 ? `${circleColor[2]}` : `` || i === 4 ? `${circleColor[3]}` : `` || i === 5 ? `${circleColor[4]}` : `` || i === 6 ? `${circleColor[0]}` : `` || i === 7 ? `${circleColor[1]}` : `` || i === 8 ? `${circleColor[2]}` : `` || i === 9 ? `${circleColor[3]}` : `` || i === 10 ? `${circleColor[4]}` : `` || i === 11 ? `${circleColor[0]}` : ``,
+                                                height: `${dimensionValue[i]}rem`,
+                                                width:  `${dimensionValue[i]}rem`,
+                                                // backgroundColor:  `${circleColor[i]}`
+                                                backgroundColor:  `${circleColor[Math.floor(Math.random() * circleColor.length)]}`
+
+                                                // backgroundColor: i === 0 ? `${circleColor[0]}` : `` || i === 1 ? `` : `` || i === 2 ? `${circleColor[1]}` : `` || i === 3 ? `${circleColor[2]}` : `` || i === 4 ? `${circleColor[3]}` : `` || i === 5 ? `${circleColor[4]}` : `` || i === 6 ? `${circleColor[0]}` : `` || i === 7 ? `${circleColor[1]}` : `` || i === 8 ? `${circleColor[2]}` : `` || i === 9 ? `${circleColor[3]}` : `` || i === 10 ? `${circleColor[4]}` : `` || i === 11 ? `${circleColor[0]}` : ``,
                                             }}
 
                                             className={`text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center`}
                                         >
                                             <h1 className='text-[#453C38] text-[11px]'>
-                                                {m.totalAmounts}
+                                                {m.amount}
                                             </h1>
 
                                         </div>
@@ -396,7 +358,7 @@ const TimeWiseDisbursements = () => {
                         onClick={() => setShowModal(true)}
                     >
                         <SearchOutlined style={{color: '#5F707F'}}/>
-                        <h1 className='text-[14px] text-ct-blue-90'>Search Manager by Id or Name</h1>
+                        <h1 className='text-[14px] text-ct-blue-90'>Search {search.role} by Id or Name</h1>
                     </div>
 
                     {/*<div className='input'>*/}
@@ -419,7 +381,7 @@ const TimeWiseDisbursements = () => {
                         <div className='flex'>
                             <h1 className='mt-[9px] text-ct-blue-90-70% text-[14px] mr-[4px]'>BDT</h1>
                             <h1 className="text-[32px] bg-gradient-to-r from-[#F405FE] via-[#136EE5] to-[#EAA678] text-transparent bg-clip-text">
-                                55,000
+                                {totalDisbursed.totalAmountsDisbursed}
                             </h1>
                         </div>
 
@@ -434,7 +396,7 @@ const TimeWiseDisbursements = () => {
                             </h1>
                             <span
                                 className="text-[32px] bg-gradient-to-r from-[#F405FE] via-[#136EE5] to-[#EAA678] text-transparent bg-clip-text">
-                                9,400hr
+                                {totalDisbursed.totalValid}hr
                             </span>
                         </div>
 
@@ -448,6 +410,7 @@ const TimeWiseDisbursements = () => {
                 <ManagerSearchModal
                     setShowModal={setShowModal}
                     managerContext={managerContext}
+                    role={search?.role}
                 />
             ) : null}
 
