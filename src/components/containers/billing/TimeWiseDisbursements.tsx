@@ -21,7 +21,6 @@ const TimeWiseDisbursements = () => {
 
     const managerContext = useContext(ManagerContext);
     const {disbursementData, singleManager, totalDisbursed} = managerContext;
-    console.log('total', totalDisbursed)
 
     const [dimensionValue, setDimensionValue] = useState<any>([]);
 
@@ -132,7 +131,6 @@ const TimeWiseDisbursements = () => {
             return m.amount
         });
 
-
         const min = Math.min(..._data);
         const max = Math.max(..._data);
 
@@ -233,13 +231,13 @@ const TimeWiseDisbursements = () => {
         }
     }
 
-    const circleMouseOver = () => {
-        console.log('on mouse over')
-    }
-
-    const circleMouseleave = () => {
-        console.log('on mouse leave')
-    }
+    // const circleMouseOver = () => {
+    //     console.log('on mouse over')
+    // }
+    //
+    // const circleMouseleave = () => {
+    //     console.log('on mouse leave')
+    // }
 
 
     return (
@@ -293,7 +291,7 @@ const TimeWiseDisbursements = () => {
 
             </div>
 
-            <div className='p-10 grid grid-cols-4 gap-x-10'>
+            <div className='p-10 grid grid-cols-4 gap-x-14'>
 
                 <div className='col-span-3 h-[140px]'>
                     <h1 className='text-4 text-ct-blue-45 font-semibold mb-[25px]'>Time wise disbursement</h1>

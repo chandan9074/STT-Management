@@ -66,11 +66,16 @@ const ManagerSearchModal = ({setShowModal, managerContext, role}: { setShowModal
         console.log('select')
     }
 
+    const onClose = () => {
+        managerContext.setSingleManager({});
+        setShowModal(false)
+    }
+
 
     return (
         <>
             <div
-                className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+                className=" justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
             >
                 <div className="relative my-6 mx-auto max-w-3xl w-[640px] h-[377px]">
                     {/*content*/}
@@ -84,7 +89,7 @@ const ManagerSearchModal = ({setShowModal, managerContext, role}: { setShowModal
                                 </h3>
                                 <button
                                     className='bg-white rounded-[50%]'
-                                    onClick={() => setShowModal(false)}
+                                    onClick={() => onClose()}
                                 >
                                     <CloseOutlined
                                         className='m-[10px] text-ct-blue-30'
