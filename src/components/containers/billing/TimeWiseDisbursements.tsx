@@ -242,10 +242,10 @@ const TimeWiseDisbursements = () => {
 
     return (
         <div>
-            <div className='h-[153px] bg-[#F4F7FA] pt-6 relative'>
+            <div className='h-[153px] bg-[#F4F7FA]  relative'>
                 {/*TTS STT Tab*/}
                 <div className='flex flex-col justify-center items-center'>
-                    <div className='h-[36px] w-[197px] rounded-[150px] bg-white flex justify-center items-center'>
+                    <div className='h-[36px] w-[197px] rounded-[150px] bg-white flex justify-center items-center mt-[-17px]'>
                         <button
                             className={`flex justify-center items-center w-[96px] h-[32px] ${isStt ? 'bg-[#2C79BE] text-white' : 'bg-white text-[#2C79BE] hover:bg-gray-300'} rounded-[24px]`}
                             onClick={onHandleStt}>
@@ -293,81 +293,52 @@ const TimeWiseDisbursements = () => {
 
             <div className='p-10 grid grid-cols-4 gap-x-14'>
 
+                {/*<div className='col-span-3 h-[140px]'>*/}
                 <div className='col-span-3 h-[140px]'>
                     <h1 className='text-4 text-ct-blue-45 font-semibold mb-[25px]'>Time wise disbursement</h1>
-                    <div className={`grid grid-cols-12`}>
-                    {/*<div className='flex items-center'>*/}
-                        {
-                            // disbursementData.length !== 0 &&
-                            // disbursementData?.yearData?.map((m: any, i: any) => (
-                            //     <div key={m.id} >
-                            //         <div className="flex items-center duration-300">
-                            //             <div
-                            //                 className={`h-[2px] w-[20px] border border-dashed flex-1 rounded-tl-md rounded-bl-md bg-[#D1D3D6]`}
-                            //             />
-                            //             <div
-                            //                 // onMouseOver={() => setIsMouseOver(true)}
-                            //                 // onMouseLeave={() => setIsMouseOver(false)}
-                            //
-                            //                 style={{
-                            //                     height: `${dimensionValue[i]}rem`,
-                            //                     width:  `${dimensionValue[i]}rem`,
-                            //                     // backgroundColor:  `${circleColor[i]}`
-                            //                     backgroundColor:  `${circleColor[Math.floor(Math.random() * circleColor.length)]}`
-                            //
-                            //                     // backgroundColor: i === 0 ? `${circleColor[0]}` : `` || i === 1 ? `` : `` || i === 2 ? `${circleColor[1]}` : `` || i === 3 ? `${circleColor[2]}` : `` || i === 4 ? `${circleColor[3]}` : `` || i === 5 ? `${circleColor[4]}` : `` || i === 6 ? `${circleColor[0]}` : `` || i === 7 ? `${circleColor[1]}` : `` || i === 8 ? `${circleColor[2]}` : `` || i === 9 ? `${circleColor[3]}` : `` || i === 10 ? `${circleColor[4]}` : `` || i === 11 ? `${circleColor[0]}` : ``,
-                            //                 }}
-                            //
-                            //                 className={`text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center`}
-                            //             >
-                            //                 <h1 className='text-[#453C38] text-[11px]'>
-                            //                     {m.amount}
-                            //                 </h1>
-                            //
-                            //             </div>
-                            //             <div
-                            //                 className={`h-[2px] border border-dashed flex-1 rounded-tr-md rounded-br-md bg-[#D1D3D6]`}
-                            //             />
-                            //         </div>
-                            //     </div>
-                            // ))
+                    {/*<div className={`grid grid-cols-12`}>*/}
+                    <div className='relative'>
+                        <div className='flex justify-between w-full pl-4 pr-4'>
+                            {
 
-                            disbursementData?.yearData?.map((m: any, i: any) => (
-                                <div key={m.id} className='flex flex-col justify-center'>
-                                    <div className="flex items-center duration-300">
-                                        <div
-                                            className={`h-[2px] border border-dashed flex-1 rounded-tl-md rounded-bl-md bg-[#D1D3D6]`}
-                                        />
-                                        <div
-                                            // onMouseOver={() => setIsMouseOver(true)}
-                                            // onMouseLeave={() => setIsMouseOver(false)}
+                                disbursementData?.yearData?.map((m: any, i: any) => (
+                                    <div key={m.id} className='flex flex-col justify-center'>
+                                        <div className="flex items-center duration-300">
+                                            <div
+                                                className={`h-[2px] border border-dashed flex-1 rounded-tl-md rounded-bl-md bg-[#D1D3D6]`}
+                                            />
+                                            <div
+                                                // onMouseOver={() => setIsMouseOver(true)}
+                                                // onMouseLeave={() => setIsMouseOver(false)}
 
-                                            style={{
-                                                height: `${dimensionValue[i]}rem`,
-                                                width:  `${dimensionValue[i]}rem`,
-                                                // backgroundColor:  `${circleColor[i]}`
-                                                backgroundColor:  `${circleColor[Math.floor(Math.random() * circleColor.length)]}`
+                                                style={{
+                                                    height: `${dimensionValue[i]}rem`,
+                                                    width:  `${dimensionValue[i]}rem`,
+                                                    backgroundColor:  `${circleColor[Math.floor(Math.random() * circleColor.length)]}`
+                                                }}
 
-                                                // backgroundColor: i === 0 ? `${circleColor[0]}` : `` || i === 1 ? `` : `` || i === 2 ? `${circleColor[1]}` : `` || i === 3 ? `${circleColor[2]}` : `` || i === 4 ? `${circleColor[3]}` : `` || i === 5 ? `${circleColor[4]}` : `` || i === 6 ? `${circleColor[0]}` : `` || i === 7 ? `${circleColor[1]}` : `` || i === 8 ? `${circleColor[2]}` : `` || i === 9 ? `${circleColor[3]}` : `` || i === 10 ? `${circleColor[4]}` : `` || i === 11 ? `${circleColor[0]}` : ``,
-                                            }}
+                                                className={`relative z-20 text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center`}
+                                            >
+                                                <h1 className='text-[#453C38] text-[11px]'>
+                                                    {m.amount}
+                                                </h1>
 
-                                            className={`text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center`}
-                                        >
-                                            <h1 className='text-[#453C38] text-[11px]'>
-                                                {m.amount}
-                                            </h1>
-
+                                            </div>
+                                            <div
+                                                className={`h-[2px] border border-dashed flex-1 rounded-tr-md rounded-br-md bg-[#D1D3D6]`}
+                                            />
                                         </div>
-                                        <div
-                                            className={`h-[2px] border border-dashed flex-1 rounded-tr-md rounded-br-md bg-[#D1D3D6]`}
-                                        />
                                     </div>
-                                </div>
-                            ))
-                        }
+                                ))
+                            }
+                        </div>
+                        <div
+                            className={`absolute top-[35px] z-10 h-[2px] border border-dashed w-full rounded-tr-md rounded-br-md bg-[#D1D3D6]`}
+                        />
                     </div>
 
-                    <div className='grid grid-cols-12 mt-8'>
+                    {/*<div className='grid grid-cols-12 mt-8'>*/}
+                    <div className='flex justify-between mt-8'>
                         {
                             disbursementData?.yearData?.length !== 0 &&
                             disbursementData?.yearData?.map((m: any, i: any) => (

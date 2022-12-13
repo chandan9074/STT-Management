@@ -15,6 +15,15 @@ module.exports = {
       "heading-1": "72px",
     },
     extend: {
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
+      },
+      animation: {
+        fadeIn: "fadeIn 0.2s ease-in-out",
+      },
       boxShadow: {
         "light-blue": "0px 0px 12px #FFFFFF",
       },
@@ -99,6 +108,10 @@ module.exports = {
         "yellow-03": "#FCF9EB",
         "yellow-A10": "#FFF5CC",
         "magenta-70": "#621841",
+        "winter-wizard": "#A1E6FF",
+        "venetian-red": "#F7DEE1",
+        "sea-foam-green": "#A0E4CB",
+        "sea-serpent": "#59C1BD",
       },
     },
   },
