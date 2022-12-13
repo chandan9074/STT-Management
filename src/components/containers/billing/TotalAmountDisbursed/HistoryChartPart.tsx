@@ -34,18 +34,18 @@ const HistoryChartPart = ({
       <div className="mt-6 h-32 w-full flex items-start">
         <div className="flex flex-col justify-between items-start h-full">
           <h3 className="text-xxs text-ct-blue-20 mb-0 mr-2">
-            {currentData?.maxAmount}/-
+            {currentData?.maxDisbursed}/-
           </h3>
           <h3 className="text-xxs text-ct-blue-20 mb-0 mr-2">
-            {currentData?.maxAmount
-              ? Math.round(currentData?.maxAmount / 2) +
-                Math.round((currentData?.maxAmount * 16) / 125)
+            {currentData?.maxDisbursed
+              ? Math.round(currentData?.maxDisbursed / 2) +
+                Math.round((currentData?.maxDisbursed * 16) / 125)
               : 0}
             /-
           </h3>
           <h3 className="text-xxs text-ct-blue-20 mb-0 mr-2">
-            {currentData?.maxAmount
-              ? Math.round((currentData?.maxAmount * 16) / 125)
+            {currentData?.maxDisbursed
+              ? Math.round((currentData?.maxDisbursed * 16) / 125)
               : 0}
             /-
           </h3>
@@ -66,17 +66,17 @@ const HistoryChartPart = ({
                         "justify-center"
                   } group cursor-pointer`}
                 >
-                  {item.disbursed[0] && !item.disbursed[1] ? (
+                  {item.monthlyDisbursed[0] && !item.monthlyDisbursed[1] ? (
                     <div
                       className={`rounded-[12px] px-5 py-4 bg-[#212121] absolute ${
                         currentData.yearData.length - 2 <= i ? "-right-6" : ""
                       } z-50 hidden group-hover:block animate-fadeIn`}
                       style={{
                         bottom: `${
-                          item.disbursed[0]
+                          item.monthlyDisbursed[0]
                             ? Math.round(
-                                (125 * item.disbursed[0]?.amount) /
-                                  currentData?.maxAmount
+                                (125 * item.monthlyDisbursed[0]?.amount) /
+                                  currentData?.maxDisbursed
                               ) + 18
                             : 0
                         }px`,
@@ -99,17 +99,17 @@ const HistoryChartPart = ({
                       </div>
                       <div className="mt-4 flex justify-between w-[300px] bg-winter-wizard bg-opacity-25 py-1.5 px-2 rounded-[4px]">
                         <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
-                          <span className="mr-1">{item.disbursed[0].day}</span>
+                          <span className="mr-1">{item.monthlyDisbursed[0].day}</span>
                           <span>{item.month}</span>
                         </h3>
                         <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
                           <span className="mr-1">
-                            {item.disbursed[0].hours}
+                            {item.monthlyDisbursed[0].hours}
                           </span>
                           hr
                         </h3>
                         <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
-                          {item.disbursed[0].amount}/-
+                          {item.monthlyDisbursed[0].amount}/-
                         </h3>
                       </div>
                       <img
@@ -126,30 +126,30 @@ const HistoryChartPart = ({
 
                   <div
                     className={`absolute z-40 w-full  bg-[#59C1BD] bottom-0 ${
-                      !item.disbursed[1] ? "rounded-t-[3px]" : ""
+                      !item.monthlyDisbursed[1] ? "rounded-t-[3px]" : ""
                     }`}
                     style={{
                       height: `${
-                        item.disbursed[0]
+                        item.monthlyDisbursed[0]
                           ? Math.round(
-                              (125 * item.disbursed[0]?.amount) /
-                                currentData?.maxAmount
+                              (125 * item.monthlyDisbursed[0]?.amount) /
+                                currentData?.maxDisbursed
                             )
                           : 0
                       }px`,
                     }}
                   />
-                  {item.disbursed[1] && item.disbursed[0] ? (
+                  {item.monthlyDisbursed[1] && item.monthlyDisbursed[0] ? (
                     <div
                       className={`rounded-[12px] px-5 py-4 bg-[#212121] absolute ${
                         currentData.yearData.length - 2 <= i ? "-right-6" : ""
                       } z-50  hidden group-hover:block animate-fadeIn`}
                       style={{
                         bottom: `${
-                          item.disbursed[1]
+                          item.monthlyDisbursed[1]
                             ? Math.round(
-                                (125 * item.disbursed[1]?.amount) /
-                                  currentData?.maxAmount
+                                (125 * item.monthlyDisbursed[1]?.amount) /
+                                  currentData?.maxDisbursed
                               ) + 18
                             : 0
                         }px`,
@@ -172,32 +172,32 @@ const HistoryChartPart = ({
                       </div>
                       <div className="mt-4 flex justify-between w-[300px] bg-winter-wizard bg-opacity-25 py-1.5 px-2 rounded-[4px]">
                         <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
-                          <span className="mr-1">{item.disbursed[0].day}</span>
+                          <span className="mr-1">{item.monthlyDisbursed[0].day}</span>
                           <span>{item.month}</span>
                         </h3>
                         <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
                           <span className="mr-1">
-                            {item.disbursed[0].hours}
+                            {item.monthlyDisbursed[0].hours}
                           </span>
                           hr
                         </h3>
                         <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
-                          {item.disbursed[0].amount}/-
+                          {item.monthlyDisbursed[0].amount}/-
                         </h3>
                       </div>
                       <div className="mt-0.5 flex justify-between w-[300px] bg-blue-gray-85 py-1.5 px-2 rounded-[4px]">
                         <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
-                          <span className="mr-1">{item.disbursed[1].day}</span>
+                          <span className="mr-1">{item.monthlyDisbursed[1].day}</span>
                           <span>{item.month}</span>
                         </h3>
                         <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
                           <span className="mr-1">
-                            {item.disbursed[1].hours}
+                            {item.monthlyDisbursed[1].hours}
                           </span>
                           hr
                         </h3>
                         <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
-                          {item.disbursed[1].amount}/-
+                          {item.monthlyDisbursed[1].amount}/-
                         </h3>
                       </div>
                       <img
@@ -215,10 +215,10 @@ const HistoryChartPart = ({
                     className={`absolute z-30 w-full bg-[#A0E4CB] rounded-t-[3px] bottom-0`}
                     style={{
                       height: `${
-                        item.disbursed[1]
+                        item.monthlyDisbursed[1]
                           ? Math.round(
-                              (125 * item.disbursed[1]?.amount) /
-                                currentData?.maxAmount
+                              (125 * item.monthlyDisbursed[1]?.amount) /
+                                currentData?.maxDisbursed
                             )
                           : 0
                       }px`,

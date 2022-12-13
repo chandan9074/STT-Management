@@ -6,9 +6,7 @@ import HistoryChartPart from "./HistoryChartPart";
 import { BillingContext } from "../../../../context/BillingProvider";
 
 const TotalAmountDisbursed = () => {
-  const [currentYear, setCurrentYear] = useState(
-    amountDisbursed.yearlyHistory.yearList[0]
-  );
+  const [currentYear, setCurrentYear] = useState(amountDisbursed.yearList[0]);
   const [currentData, setCurrentData] = useState<yearlyDataDT>();
 
   const billingContext = useContext(BillingContext);
@@ -17,10 +15,9 @@ const TotalAmountDisbursed = () => {
     billingContext.GetAmountDisbursed();
 
     if (billingContext.amountDisbursed) {
-      const data =
-        billingContext.amountDisbursed.yearlyHistory.yearlyData.filter(
-          (item) => item.year === currentYear
-        );
+      const data = billingContext.amountDisbursed.yearlyData.filter(
+        (item) => item.year === currentYear
+      );
       if (data) {
         setCurrentData(data[0]);
       }
@@ -39,7 +36,7 @@ const TotalAmountDisbursed = () => {
         {currentData && (
           <HistoryChartPart
             currentData={currentData}
-            yearList={amountDisbursed.yearlyHistory.yearList}
+            yearList={amountDisbursed.yearList}
           />
         )}
       </div>
