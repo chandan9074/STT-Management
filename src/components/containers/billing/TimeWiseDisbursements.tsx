@@ -7,6 +7,7 @@ import './TimeWiseDisbursement.css';
 
 const circleColor: any = [
     '#FFD3D3', '#FFF5CC', '#E2FBD7', '#CCF8FE', '#CCDDFE'
+    // "red", "green", "yellow"
 ]
 
 const monthName: any = [
@@ -16,6 +17,7 @@ const monthName: any = [
 const TimeWiseDisbursements = () => {
 
     const [randomElement, setRandomElement] = useState<any>([]);
+    const [newCircleColor, setNewCircleColor] = useState<any>([])
 
     const [isMouseOver, setIsMouseOver] = useState<boolean>(false);
 
@@ -23,7 +25,6 @@ const TimeWiseDisbursements = () => {
     const {disbursementData, singleManager, totalDisbursed} = managerContext;
 
     const [dimensionValue, setDimensionValue] = useState<any>([]);
-
     const [isStt, setIsStt] = useState(true);
     const [isTts, setIsTts] = useState(false);
 
@@ -45,10 +46,28 @@ const TimeWiseDisbursements = () => {
 
     useEffect(() => {
         managerContext.getManagerDisbursement(search);
+        console.log("data length", disbursementData?.yearData?.length)
+        let c = 0;
 
+        for(let i = 0; i< disbursementData?.yearData?.length;  i++){
+            if(i % circleColor.length-1 === 0){
+                c=0;
+
+                setNewCircleColor([...newCircleColor, circleColor[c]])
+            }
+            else{
+                console.log("hello")
+                setNewCircleColor([...newCircleColor, circleColor[c+1]])
+                c++;
+                console.log("color",circleColor[c+1], c+1)
+            }
+        }
+        console.log("nice",newCircleColor)
         // const _data = getRandomColor();
         // console.log('random', _data)
-    }, [search]);
+    }, [search, disbursementData]);
+
+
 
     const getRandomColor = () => {
             for (let i = circleColor.length - 1; i > 0; i--) {
@@ -107,9 +126,12 @@ const TimeWiseDisbursements = () => {
         // getChart();
         if (disbursementData?.yearData?.length > 0) {
             getDimensionValue();
+            // getNewDimension();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [disbursementData?.yearData]);
+
+    console.log('dimension', dimensionValue);
 
     const onHandleStt = () => {
         setIsStt(true);
@@ -124,6 +146,36 @@ const TimeWiseDisbursements = () => {
     }
 
 
+    const getNewDimension = () => {
+        let _data = disbursementData?.yearData?.map((m: any) => {
+            return m.amount
+        });
+
+        const min = Math.min(..._data);
+        const max = Math.max(..._data);
+
+        const maxDim = 70;
+        const minDim = 35;
+        const minValue = min;
+        const maxValue = max;
+
+        const ratio = ((maxDim - minDim) + 1) / (maxValue - minValue);
+
+        const finalDimension = disbursementData?.yearData?.map((m: any) => {
+            let dimension;
+
+            if (m.amount === maxValue) {
+                dimension = maxValue
+            } if (m.amount === minValue) {
+                dimension = minValue
+            } else {
+                dimension = ((m.amount - minValue) * ratio)  + minDim
+            }
+            return dimension/16;
+        });
+
+        setDimensionValue(finalDimension);
+    }
 
     const getDimensionValue = () => {
 
@@ -315,6 +367,7 @@ const TimeWiseDisbursements = () => {
                                                     height: `${dimensionValue[i]}rem`,
                                                     width:  `${dimensionValue[i]}rem`,
                                                     backgroundColor:  `${circleColor[Math.floor(Math.random() * circleColor.length)]}`
+                                                    // backgroundColor:  `${newCircleColor[i]}`
                                                 }}
 
                                                 className={`relative z-20 text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center`}
@@ -338,18 +391,18 @@ const TimeWiseDisbursements = () => {
                     </div>
 
                     {/*<div className='grid grid-cols-12 mt-8'>*/}
-                    <div className='flex justify-between mt-8'>
-                        {
-                            disbursementData?.yearData?.length !== 0 &&
-                            disbursementData?.yearData?.map((m: any, i: any) => (
-                                    <div key={m.id} className='flex flex-col justify-center items-center h-[30px]'>
-                                        <div className='w-[1px] h-[4px] bg-blue-gray-A30'></div>
-                                        <h1>{m.month.slice(0, 3)}</h1>
-                                    </div>
-                                )
-                            )
-                        }
-                    </div>
+                    {/*<div className='flex justify-between mt-8'>*/}
+                    {/*    {*/}
+                    {/*        disbursementData?.yearData?.length !== 0 &&*/}
+                    {/*        disbursementData?.yearData?.map((m: any, i: any) => (*/}
+                    {/*                <div key={m.id} className='flex flex-col justify-center items-center h-[30px]'>*/}
+                    {/*                    <div className='w-[1px] h-[4px] bg-blue-gray-A30'></div>*/}
+                    {/*                    <h1>{m.month.slice(0, 3)}</h1>*/}
+                    {/*                </div>*/}
+                    {/*            )*/}
+                    {/*        )*/}
+                    {/*    }*/}
+                    {/*</div>*/}
                 </div>
 
 
