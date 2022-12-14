@@ -59,6 +59,7 @@ module.exports = {
         "ct-blue-90": "#1F384C",
         "ct-blue-80": "#2D516E",
         "ct-blue-70": "#2D6AA1",
+        "ct-blue-60": "#2C79BE",
         "ct-blue-45": "#677499",
         "ct-blue-40": "#8495BA",
         "ct-blue-30": "#ADBFD9",
