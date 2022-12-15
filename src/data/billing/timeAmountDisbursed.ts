@@ -57,7 +57,7 @@ export const amountDisbursed = {
           totalDisbursed: 1000,
           validHours: 200,
           monthlyDisbursed: [
-            { amount: 5000, hours: 200, day: "15" },
+            // { amount: 5000, hours: 200, day: "15" },
             { amount: 10000, hours: 300, day: "30" },
           ],
         },
