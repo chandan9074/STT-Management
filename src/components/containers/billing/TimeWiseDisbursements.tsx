@@ -278,10 +278,10 @@ const TimeWiseDisbursements = () => {
 
   return (
     <div>
-      <div className="h-[153px] bg-[#F4F7FA]  relative">
+      <div className="h-[153px] relative">
         {/*TTS STT Tab*/}
         <div className="flex flex-col justify-center items-center">
-          <div className="h-[36px] w-[197px] rounded-[150px] bg-white flex justify-center items-center mt-[-17px]">
+          <div className="h-[36px] w-[197px] rounded-[150px] bg-white flex justify-center items-center mt-[-17px] shadow-md">
             <button
               className={`flex justify-center items-center w-[96px] h-[32px] ${
                 isStt
@@ -345,7 +345,7 @@ const TimeWiseDisbursements = () => {
         {/*Roles Tab*/}
       </div>
 
-      <div className="p-10 grid grid-cols-4 gap-x-14">
+      <div className="p-10 grid grid-cols-4 gap-x-14 bg-white">
         {/*<div className='col-span-3 h-[140px]'>*/}
         <div className="col-span-3 h-[140px]">
           <h1 className="text-4 text-ct-blue-45 font-semibold mb-[25px]">

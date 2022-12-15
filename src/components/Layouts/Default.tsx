@@ -7,7 +7,7 @@ const Default = ({ children }: { children: any }) => {
     <div>
       <Navbar.Primary />
       <Sidebar.Primary />
-      <div className="pt-20 pl-20 relative pr-3">{children}</div>
+      <div className="pt-20 pl-20 relative pr-3 bg-[#F4F7FA]">{children}</div>
     </div>
   );
 };

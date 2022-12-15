@@ -26,6 +26,7 @@ module.exports = {
       },
       boxShadow: {
         "light-blue": "0px 0px 12px #FFFFFF",
+        "bottom-light-blue": "0px 3px 10px #2C79BE, 0px 0px 1px #2C79BE",
       },
       colors: {
         "primary-ct-blue-60": "#2C79BE",

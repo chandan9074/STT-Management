@@ -25,7 +25,7 @@ const TotalAmountDisbursed = () => {
   }, [currentYear, billingContext]);
 
   return (
-    <div className="py-4 px-6 rounded-md bg-primary-ct-blue-60 grid grid-cols-12">
+    <div className="py-4 px-6 rounded-md bg-primary-ct-blue-60 grid grid-cols-12 shadow-bottom-light-blue">
       <div className="col-span-4">
         <AmountPart
           totalAmount={amountDisbursed.totalAmount}

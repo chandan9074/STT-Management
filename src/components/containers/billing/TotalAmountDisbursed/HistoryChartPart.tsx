@@ -1,6 +1,7 @@
 import { yearlyDataDT } from "../../../../types/billingTypes";
 import Icons from "../../../../assets/Icons";
 import Dropdown from "../../../Dropdown";
+import { useState } from "react";
 
 const HistoryChartPart = ({
   currentData,
@@ -9,6 +10,7 @@ const HistoryChartPart = ({
   currentData: yearlyDataDT;
   yearList: number[];
 }) => {
+  const barHeight = 125;
   return (
     <>
       <div className="flex items-center justify-between">
@@ -39,13 +41,13 @@ const HistoryChartPart = ({
           <h3 className="text-xxs text-ct-blue-20 mb-0 mr-2">
             {currentData?.maxDisbursed
               ? Math.round(currentData?.maxDisbursed / 2) +
-                Math.round((currentData?.maxDisbursed * 16) / 125)
+                Math.round((currentData?.maxDisbursed * 16) / barHeight)
               : 0}
             /-
           </h3>
           <h3 className="text-xxs text-ct-blue-20 mb-0 mr-2">
             {currentData?.maxDisbursed
-              ? Math.round((currentData?.maxDisbursed * 16) / 125)
+              ? Math.round((currentData?.maxDisbursed * 16) / barHeight)
               : 0}
             /-
           </h3>
@@ -59,7 +61,17 @@ const HistoryChartPart = ({
               <div className={`flex flex-col items-center`}>
                 <div
                   className={`w-4 h-[125px] bg-ct-blue-70 bg-opacity-40 rounded-t-[3px] relative flex ${
-                    currentData.yearData.length - 2 <= i
+                    currentData.yearData.length - 2 <= i ||
+                    Math.round(barHeight / 2) <=
+                      Math.round(
+                        (barHeight * item.monthlyDisbursed[0]?.amount) /
+                          currentData?.maxDisbursed
+                      ) ||
+                    Math.round(barHeight / 2) <=
+                      Math.round(
+                        (barHeight * item.monthlyDisbursed[1]?.amount) /
+                          currentData?.maxDisbursed
+                      )
                       ? "justify-end"
                       : // : i === 0
                         // ? "justify-start"
@@ -69,16 +81,36 @@ const HistoryChartPart = ({
                   {item.monthlyDisbursed[0] && !item.monthlyDisbursed[1] ? (
                     <div
                       className={`rounded-[12px] px-5 py-4 bg-[#212121] absolute ${
-                        currentData.yearData.length - 2 <= i ? "-right-6" : ""
-                      } z-50 hidden group-hover:block animate-fadeIn`}
+                        currentData.yearData.length - 2 <= i &&
+                        Math.round(barHeight / 2) >=
+                          Math.round(
+                            (barHeight * item.monthlyDisbursed[0]?.amount) /
+                              currentData?.maxDisbursed
+                          )
+                          ? "-right-6"
+                          : Math.round(barHeight / 2) <=
+                            Math.round(
+                              (barHeight * item.monthlyDisbursed[0]?.amount) /
+                                currentData?.maxDisbursed
+                            )
+                          ? "right-10 -top-3"
+                          : ""
+                      } z-[60] hidden group-hover:block animate-fadeIn`}
                       style={{
                         bottom: `${
                           item.monthlyDisbursed[0]
-                            ? Math.round(
-                                (125 * item.monthlyDisbursed[0]?.amount) /
+                            ? Math.round(barHeight / 2) >=
+                              Math.round(
+                                (barHeight * item.monthlyDisbursed[0]?.amount) /
                                   currentData?.maxDisbursed
-                              ) + 18
-                            : 0
+                              )
+                              ? Math.round(
+                                  (barHeight *
+                                    item.monthlyDisbursed[0]?.amount) /
+                                    currentData?.maxDisbursed
+                                ) + 18
+                              : ""
+                            : ""
                         }px`,
                       }}
                     >
@@ -99,7 +131,9 @@ const HistoryChartPart = ({
                       </div>
                       <div className="mt-4 flex justify-between w-[300px] bg-winter-wizard bg-opacity-25 py-1.5 px-2 rounded-[4px]">
                         <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
-                          <span className="mr-1">{item.monthlyDisbursed[0].day}</span>
+                          <span className="mr-1">
+                            {item.monthlyDisbursed[0].day}
+                          </span>
                           <span>{item.month}</span>
                         </h3>
                         <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
@@ -115,10 +149,16 @@ const HistoryChartPart = ({
                       <img
                         src={Icons.blackDropArrow}
                         alt=""
-                        className={`w-10 h-6 absolute -bottom-3.5 ${
-                          currentData.yearData.length - 2 <= i
-                            ? "right-3"
-                            : "left-1/2 transform -translate-x-1/2"
+                        className={`w-10 h-6 absolute ${
+                          Math.round(barHeight / 2) <=
+                          Math.round(
+                            (barHeight * item.monthlyDisbursed[0]?.amount) /
+                              currentData?.maxDisbursed
+                          )
+                            ? "-right-6 -rotate-[90deg] top-1/2 transform -translate-y-1/2"
+                            : currentData.yearData.length - 2 <= i
+                            ? "right-3 -bottom-3.5"
+                            : "left-1/2 -bottom-3.5 transform -translate-x-1/2"
                         }`}
                       />
                     </div>
@@ -132,7 +172,7 @@ const HistoryChartPart = ({
                       height: `${
                         item.monthlyDisbursed[0]
                           ? Math.round(
-                              (125 * item.monthlyDisbursed[0]?.amount) /
+                              (barHeight * item.monthlyDisbursed[0]?.amount) /
                                 currentData?.maxDisbursed
                             )
                           : 0
@@ -142,16 +182,36 @@ const HistoryChartPart = ({
                   {item.monthlyDisbursed[1] && item.monthlyDisbursed[0] ? (
                     <div
                       className={`rounded-[12px] px-5 py-4 bg-[#212121] absolute ${
-                        currentData.yearData.length - 2 <= i ? "-right-6" : ""
-                      } z-50  hidden group-hover:block animate-fadeIn`}
+                        currentData.yearData.length - 2 <= i &&
+                        Math.round(barHeight / 2) >=
+                          Math.round(
+                            (barHeight * item.monthlyDisbursed[1]?.amount) /
+                              currentData?.maxDisbursed
+                          )
+                          ? "-right-6"
+                          : Math.round(barHeight / 2) <=
+                            Math.round(
+                              (barHeight * item.monthlyDisbursed[1]?.amount) /
+                                currentData?.maxDisbursed
+                            )
+                          ? "right-10 -top-3"
+                          : ""
+                      } z-[60] hidden group-hover:block animate-fadeIn`}
                       style={{
                         bottom: `${
                           item.monthlyDisbursed[1]
-                            ? Math.round(
-                                (125 * item.monthlyDisbursed[1]?.amount) /
+                            ? Math.round(barHeight / 2) >=
+                              Math.round(
+                                (barHeight * item.monthlyDisbursed[1]?.amount) /
                                   currentData?.maxDisbursed
-                              ) + 18
-                            : 0
+                              )
+                              ? Math.round(
+                                  (barHeight *
+                                    item.monthlyDisbursed[1]?.amount) /
+                                    currentData?.maxDisbursed
+                                ) + 18
+                              : ""
+                            : ""
                         }px`,
                       }}
                     >
@@ -172,7 +232,9 @@ const HistoryChartPart = ({
                       </div>
                       <div className="mt-4 flex justify-between w-[300px] bg-winter-wizard bg-opacity-25 py-1.5 px-2 rounded-[4px]">
                         <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
-                          <span className="mr-1">{item.monthlyDisbursed[0].day}</span>
+                          <span className="mr-1">
+                            {item.monthlyDisbursed[0].day}
+                          </span>
                           <span>{item.month}</span>
                         </h3>
                         <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
@@ -187,7 +249,9 @@ const HistoryChartPart = ({
                       </div>
                       <div className="mt-0.5 flex justify-between w-[300px] bg-blue-gray-85 py-1.5 px-2 rounded-[4px]">
                         <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
-                          <span className="mr-1">{item.monthlyDisbursed[1].day}</span>
+                          <span className="mr-1">
+                            {item.monthlyDisbursed[1].day}
+                          </span>
                           <span>{item.month}</span>
                         </h3>
                         <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
@@ -203,10 +267,16 @@ const HistoryChartPart = ({
                       <img
                         src={Icons.blackDropArrow}
                         alt=""
-                        className={`w-10 h-6 absolute -bottom-3.5 ${
-                          currentData.yearData.length - 2 <= i
-                            ? "right-3"
-                            : "left-1/2 transform -translate-x-1/2"
+                        className={`w-10 h-6 absolute ${
+                          Math.round(barHeight / 2) <=
+                          Math.round(
+                            (barHeight * item.monthlyDisbursed[1]?.amount) /
+                              currentData?.maxDisbursed
+                          )
+                            ? "-right-6 -rotate-[90deg] top-1/2 transform -translate-y-1/2"
+                            : currentData.yearData.length - 2 <= i
+                            ? "right-3 -bottom-3.5"
+                            : "left-1/2 -bottom-3.5 transform -translate-x-1/2"
                         }`}
                       />
                     </div>
@@ -217,7 +287,7 @@ const HistoryChartPart = ({
                       height: `${
                         item.monthlyDisbursed[1]
                           ? Math.round(
-                              (125 * item.monthlyDisbursed[1]?.amount) /
+                              (barHeight * item.monthlyDisbursed[1]?.amount) /
                                 currentData?.maxDisbursed
                             )
                           : 0
