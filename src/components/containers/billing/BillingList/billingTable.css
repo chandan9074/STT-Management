@@ -1,16 +1,31 @@
 .billing-table, .ant-table-row:nth-child(even) {
     background-color: #F9FAFC;
 }
-.billing-table, .ant-table-wrapper .ant-table-thead >tr>th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before{
+
+.billing-table, .ant-table-wrapper .ant-table-thead > tr > th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
     background-color: inherit;
 }
-.billing-table, .ant-table-wrapper .ant-table-thead >tr>th{
+
+.billing-table, .ant-table-wrapper .ant-table-thead > tr > th {
     background: inherit;
+    font-family: Fira Sans, serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #6B7B8C;
+
 }
 
-.billing-table, .ant-table-wrapper .ant-table-tbody >tr >td{
-   border-top: none;
+.billing-table, .ant-table-wrapper .ant-table-tbody > tr > td {
+    font-family: Fira Sans, serif;
+    font-size: 14px;
+    font-weight: 400;
+    border-top: none;
+    color: #464E5F;
 }
+
 .billing-table, .ant-table-tbody > tr.ant-table-row:hover > td {
     background: none !important;
+}
+.billing-table, .ant-table-wrapper .ant-table-tbody >tr:last-child>td {
+     border-bottom: none;
 }
