@@ -2,6 +2,7 @@ import React from "react";
 import TotalAmountDisbursed from "../components/containers/billing/TotalAmountDisbursed";
 import BillingListIndex from "../components/containers/billing/BillingList/BillingListIndex";
 import TimeWiseDisbursements from "../components/containers/billing/TimeWiseDisbursements";
+import CustomizeCalender from "../components/Calender/CustomizeCalender";
 
 const Billing = () => {
   return (
@@ -9,6 +10,7 @@ const Billing = () => {
       <TotalAmountDisbursed />
       <TimeWiseDisbursements />
       <BillingListIndex />
+        <CustomizeCalender/>
     </>
   );
 };

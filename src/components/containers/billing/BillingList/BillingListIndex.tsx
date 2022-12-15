@@ -138,7 +138,8 @@ const BillingListIndex = () => {
                     <Primary total={50}/>
                     <div className="flex items-center gap-2">
                         <button>Entry</button>
-                        <InputNumber className="w-9" controls={false} min={1} max={10} defaultValue={1} onChange={changeEntry}/>
+                        <InputNumber className="w-9" controls={false} min={1} max={10} defaultValue={1}
+                                     onChange={changeEntry}/>
                     </div>
                 </div>
             </div>
@@ -152,7 +153,8 @@ const BillingListIndex = () => {
 
                 <div className="flex items-center gap-2">
                     <button>Entry</button>
-                    <InputNumber controls={false} className="w-9" min={1} max={10} defaultValue={1} onChange={changeEntry}/>
+                    <InputNumber controls={false} className="w-9" min={1} max={10} defaultValue={1}
+                                 onChange={changeEntry}/>
                 </div>
             </div>
             <div className="mb-10">
