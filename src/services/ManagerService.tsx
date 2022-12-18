@@ -105,14 +105,14 @@ const managerDisbursementData = {
                             // month: "Jan",
                             month: 'October',
                             valid: 20,
-                            amount: 4568,
+                            amount: 568,
                         },
                         {
                             id: 110,
                             // month: "Jan",
                             month: 'November',
                             valid: 20,
-                            amount: 1,
+                            amount: 2359,
                         },
                         {
                             id: 111,
