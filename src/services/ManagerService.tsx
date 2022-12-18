@@ -1,4 +1,5 @@
 import managerImage from "../assets/Icons/manager.png";
+import {timeWiseDisbursement} from "../data/timeWiseDisbursement";
 
 interface managerDisbursementInterface {
     data: [
@@ -494,9 +495,8 @@ export default class ManagerService {
 
     static getManagerDisbursement(params: any) {
         // return axios.get(GET_MANAGERS_URL, {params})
-        // return managerDisbursementsDatas;
-        console.log('prams', params)
-        return managerDisbursementData;
+        // return managerDisbursementData;
+        return timeWiseDisbursement;
     }
 
 

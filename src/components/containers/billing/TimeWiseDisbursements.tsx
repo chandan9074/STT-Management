@@ -120,12 +120,13 @@ const TimeWiseDisbursements = () => {
 
   useEffect(() => {
     // getChart();
-    if (disbursementData?.yearData?.length > 0) {
+    console.log('*******', disbursementData)
+    if (disbursementData.length > 0) {
       // getDimensionValue();
       getNewDimension();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [disbursementData?.yearData]);
+  }, [disbursementData]);
 
   console.log('........', minDigit)
 
@@ -143,13 +144,16 @@ const TimeWiseDisbursements = () => {
   };
 
   const getNewDimension = () => {
-    let _data = disbursementData?.yearData?.map((m: any) => {
-      return m.amount;
+    let _data = disbursementData.map((m: any) => {
+      return m.totalAmount;
     });
+
+    console.log('data.....', _data)
 
     const min = Math.min(..._data);
     const max = Math.max(..._data);
 
+    console.log('min.............', min)
 
 
     const minValue = min;
@@ -159,16 +163,16 @@ const TimeWiseDisbursements = () => {
 
     const ratio = (maxDim - minDim + 1) / (maxValue - minValue);
 
-    const finalDimension = disbursementData?.yearData?.map((m: any) => {
+    const finalDimension = disbursementData.map((m: any) => {
       let dimension;
 
-      if (m.amount === maxValue) {
+      if (m.totalAmount === maxValue) {
         dimension = maxDim;
       }
-      if (m.amount === minValue) {
+      if (m.totalAmount === minValue) {
         dimension = minDim;
       } else {
-        dimension = (m.amount - minValue) * ratio + minDim;
+        dimension = (m.totalAmount - minValue) * ratio + minDim;
       }
       return dimension / 16;
     });
@@ -176,9 +180,11 @@ const TimeWiseDisbursements = () => {
     setDimensionValue(finalDimension);
   };
 
+  console.log('dimesion value', dimensionValue)
+
   const getDimensionValue = () => {
-    let _data = disbursementData?.yearData?.map((m: any) => {
-      return m.amount;
+    let _data = disbursementData.map((m: any) => {
+      return m.totalAmount;
     });
 
     const min = Math.min(..._data);
@@ -192,11 +198,11 @@ const TimeWiseDisbursements = () => {
     // .1 = 1px
     const startPoint = 0.12;
 
-    let findPercent = disbursementData?.yearData?.map((m: any) => {
+    let findPercent = disbursementData.map((m: any) => {
       let finalDimension: any;
 
       // Solution 1
-      // const percent = ((100 * m.amount) / lastValue);
+      // const percent = ((100 * m.totalAmount) / lastValue);
       // if (percent <= minDim) {
       //     finalDimension = minDim;
       // } else {
@@ -204,18 +210,18 @@ const TimeWiseDisbursements = () => {
       // }
 
       // Solution 2
-      if (m.amount === max) {
+      if (m.totalAmount === max) {
         finalDimension = maxDim;
       }
-      if (m.amount === min) {
+      if (m.totalAmount === min) {
         finalDimension = minDim;
       }
-      if ((m.amount < max && m.amount) >= max / 2) {
-        const percent = (100 * m.amount) / lastValue;
+      if ((m.totalAmount < max && m.totalAmount) >= max / 2) {
+        const percent = (100 * m.totalAmount) / lastValue;
         finalDimension = (maxDim * percent) / 100;
       }
-      if (m.amount < max / 2 && min < m.amount) {
-        const percent = (100 * m.amount) / lastValue;
+      if (m.totalAmount < max / 2 && min < m.totalAmount) {
+        const percent = (100 * m.totalAmount) / lastValue;
         let dimension = (maxDim * percent) / 100;
 
         const _dimension = startPoint * dimension + minDim;
@@ -366,8 +372,8 @@ const TimeWiseDisbursements = () => {
             {/*<div className={`grid grid-cols-12`}>*/}
             <div className="relative">
               <div className="flex justify-between w-full relative">
-                {disbursementData?.yearData?.map((m: any, i: any) => (
-                    <div key={m.id} className={`flex flex-col justify-center items-center mt-8 ${i===0 ? "pl-10":disbursementData.yearData.length -1 === i ? "pr-10":""}`}>
+                {disbursementData.map((m: any, i: any) => (
+                    <div key={m.id} className={`flex flex-col justify-center items-center mt-8 ${i===0  ? "pl-10":disbursementData.length -1 === i ? "pr-10":""}`}>
                     {/*<div key={m.id} className=" flex flex-col justify-center items-center ">*/}
                       <div className="flex items-center duration-300 absolute ">
                       {/*<div className="flex items-center duration-300">*/}
@@ -397,9 +403,9 @@ const TimeWiseDisbursements = () => {
                         >
                           {
                             // dimensionValue[i] - (30/16) >= (5/16) &&
-                            !(m.amount.toString().length >= 3 && dimensionValue[i] < (40/16)) ?
+                            !(m.totalAmount.toString().length >= 3 && dimensionValue[i] < (40/16)) ?
                                 <h1 className="text-[#453C38] text-[11px]">
-                                  {m.amount}
+                                  {m.totalAmount}
                                 </h1> : <h1></h1>
                           }
                         </div>
@@ -425,8 +431,8 @@ const TimeWiseDisbursements = () => {
             {/*<div className='grid grid-cols-12 mt-8'>*/}
             {/*<div className='flex justify-between w-full mt-8 h-[30px] pl-8 pr-8'>*/}
             {/*    {*/}
-            {/*        disbursementData?.yearData?.length !== 0 &&*/}
-            {/*        disbursementData?.yearData?.map((m: any, i: any) => (*/}
+            {/*        disbursementData.length !== 0 &&*/}
+            {/*        disbursementData.map((m: any, i: any) => (*/}
             {/*                <div key={m.id} className='flex flex-col justify-center items-center '>*/}
             {/*                    <div className='w-[1px] h-[4px] bg-blue-gray-A30'></div>*/}
             {/*                    <h1>{m.month.slice(0, 3)}</h1>*/}
@@ -471,7 +477,7 @@ const TimeWiseDisbursements = () => {
                   BDT
                 </h1>
                 <h1 className="text-[32px] bg-gradient-to-r from-[#F405FE] via-[#136EE5] to-[#EAA678] text-transparent bg-clip-text">
-                  {totalDisbursed.totalAmountsDisbursed}
+                  {totalDisbursed.totalDisbursedAmount}
                 </h1>
               </div>
 
@@ -482,7 +488,7 @@ const TimeWiseDisbursements = () => {
               <div className="absolute bottom-[2px] right-2 gap-y-0">
                 <h1 className="text-ct-blue-90-70% text-[14px] ">Total Valid</h1>
                 <span className="text-[32px] bg-gradient-to-r from-[#F405FE] via-[#136EE5] to-[#EAA678] text-transparent bg-clip-text">
-                {totalDisbursed.totalValid}hr
+                {totalDisbursed.totalValidHours}hr
               </span>
               </div>
             </div>

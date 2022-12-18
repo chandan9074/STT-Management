@@ -30,8 +30,8 @@ const ManagerProvider = ({ children }: { children: any }) => {
         try {
             setLoading(true);
             const res = await ManagerService.getManagerDisbursement(data);
-            setDisbursementData(res.data.disbursementData[0]);
-            setTotalDisbursed(res.data);
+            setDisbursementData(res.data);
+            setTotalDisbursed(res);
             // setManagerData('This is manager data')
             setLoading(false);
 
