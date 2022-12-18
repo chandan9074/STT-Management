@@ -365,10 +365,12 @@ const TimeWiseDisbursements = () => {
             </h1>
             {/*<div className={`grid grid-cols-12`}>*/}
             <div className="relative">
-              <div className="flex justify-between w-full pl-4 pr-4">
+              <div className="flex justify-between w-full relative">
                 {disbursementData?.yearData?.map((m: any, i: any) => (
-                    <div key={m.id} className="flex flex-col justify-center items-center">
-                      <div className="flex items-center duration-300">
+                    <div key={m.id} className={`flex flex-col justify-center items-center mt-8 ${i===0 ? "pl-10":disbursementData.yearData.length -1 === i ? "pr-10":""}`}>
+                    {/*<div key={m.id} className=" flex flex-col justify-center items-center ">*/}
+                      <div className="flex items-center duration-300 absolute ">
+                      {/*<div className="flex items-center duration-300">*/}
                         <div
                             className={`h-[2px] border border-dashed flex-1 rounded-tl-md rounded-bl-md bg-[#D1D3D6]`}
                         />
