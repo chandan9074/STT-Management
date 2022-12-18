@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 
-const Primary = ({total}: { total: number }) => {
+const Type2 = ({total}: { total: number }) => {
     const [currentPage, setCurrentPage] = useState(2);
     const [activePage, setActivePage] = useState(1);
 
@@ -154,4 +154,4 @@ const Primary = ({total}: { total: number }) => {
     );
 };
 
-export default Primary;
+export default Type2;
