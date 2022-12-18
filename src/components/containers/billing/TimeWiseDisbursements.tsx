@@ -29,6 +29,10 @@ const monthName: string[] = [
 ];
 
 const TimeWiseDisbursements = () => {
+
+  const maxDim = 70;
+  const minDim = 35;
+
   const [randomElement, setRandomElement] = useState<any>([]);
   const [newCircleColor, setNewCircleColor] = useState<any>([]);
 
@@ -111,16 +115,16 @@ const TimeWiseDisbursements = () => {
     },
   ];
 
+
   useEffect(() => {
     // getChart();
     if (disbursementData?.yearData?.length > 0) {
-      getDimensionValue();
-      // getNewDimension();
+      // getDimensionValue();
+      getNewDimension();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [disbursementData?.yearData]);
 
-  console.log("dimension", dimensionValue);
 
   const onHandleStt = () => {
     setIsStt(true);
@@ -142,10 +146,10 @@ const TimeWiseDisbursements = () => {
     const min = Math.min(..._data);
     const max = Math.max(..._data);
 
-    const maxDim = 70;
-    const minDim = 35;
+
     const minValue = min;
     const maxValue = max;
+
 
     const ratio = (maxDim - minDim + 1) / (maxValue - minValue);
 
@@ -153,10 +157,10 @@ const TimeWiseDisbursements = () => {
       let dimension;
 
       if (m.amount === maxValue) {
-        dimension = maxValue;
+        dimension = maxDim;
       }
       if (m.amount === minValue) {
-        dimension = minValue;
+        dimension = minDim;
       } else {
         dimension = (m.amount - minValue) * ratio + minDim;
       }
@@ -381,7 +385,13 @@ const TimeWiseDisbursements = () => {
                       }}
                       className={`relative z-20 text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center`}
                     >
-                      <h1 className="text-[#453C38] text-[11px]">{m.amount}</h1>
+                      {
+                          dimensionValue[i] - (28/16) >= (9/16) &&
+                          // (maxDim/16) - (33/16) >= (30/16) &&
+                        <h1 className="text-[#453C38] text-[11px]">
+                          {m.amount}
+                        </h1>
+                      }
                     </div>
                     <div
                       className={`h-[2px] border border-dashed flex-1 rounded-tr-md rounded-br-md bg-[#D1D3D6]`}
