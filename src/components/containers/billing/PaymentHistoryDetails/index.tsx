@@ -8,6 +8,7 @@ import {
 import Image from "../../../Image";
 import Table from "../../../Table";
 import Pagination from "../../../Pagination";
+import { Link } from "react-router-dom";
 
 const PaymentHistoryDetails = ({ data }: { data: paymentHistoryDT }) => {
   const columns: ColumnsType<paymentHistoryDataDT> = [
@@ -33,9 +34,9 @@ const PaymentHistoryDetails = ({ data }: { data: paymentHistoryDT }) => {
   return (
     <div>
       <div className="flex items-center">
-        <button>
+        <Link to="/billing">
           <img src={Icons.arrow_back} alt="arrow_back" className="w-5 h-5" />
-        </button>
+        </Link>
         <h1 className="text-heading-6 text-ct-blue-95 font-medium mb-0 ml-8">
           Payment History
         </h1>
