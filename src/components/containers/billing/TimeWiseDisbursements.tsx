@@ -5,6 +5,7 @@ import ManagerSearchModal from "./ManagerSearchModal";
 import { ManagerContext } from "../../../context/ManagerProvider";
 import "./TimeWiseDisbursement.css";
 import BillingListIndex from "./BillingList/BillingListIndex";
+import Icons from "../../../assets/Icons";
 
 const circleColor: string[] = [
   "#FFD3D3",
@@ -30,6 +31,8 @@ const monthName: string[] = [
 ];
 
 const TimeWiseDisbursements = () => {
+
+  const barHeight = 125;
 
   const maxDim = 70;
   const minDim = 35;
@@ -371,54 +374,140 @@ const TimeWiseDisbursements = () => {
             </h1>
             {/*<div className={`grid grid-cols-12`}>*/}
             <div className="relative">
-              <div className="flex justify-between w-full relative">
+              <div className="flex justify-between w-full relative px-10">
                 {disbursementData.map((m: any, i: any) => (
-                    <div key={m.id} className={`flex flex-col justify-center items-center mt-8 ${i===0  ? "pl-10":disbursementData.length -1 === i ? "pr-10":""}`}>
-                    {/*<div key={m.id} className=" flex flex-col justify-center items-center ">*/}
-                      <div className="flex items-center duration-300 absolute ">
-                      {/*<div className="flex items-center duration-300">*/}
-                        <div
-                            className={`h-[2px] border border-dashed flex-1 rounded-tl-md rounded-bl-md bg-[#D1D3D6]`}
-                        />
-                        <div
-                            // onMouseOver={() => setIsMouseOver(true)}
-                            // onMouseLeave={() => setIsMouseOver(false)}
+                    <div className="relative flex justify-center group">
 
-                            style={{
-                              height: `${dimensionValue[i]}rem`,
-                              width: `${dimensionValue[i]}rem`,
-                              backgroundColor: `${
-                                  i % 3 === 0
-                                      ? "#FFD3D3"
-                                      : i % 4 === 0
-                                          ? "#FFF5CC"
-                                          : i % 5 === 0
-                                              ? "#E2FBD7"
-                                              : i % 2 === 0
-                                                  ? "#CCF8FE"
-                                                  : "#CCDDFE"
-                              }`,
-                            }}
-                            className={`relative z-20 text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center`}
-                        >
-                          {
-                            // dimensionValue[i] - (30/16) >= (5/16) &&
-                            !(m.totalAmount.toString().length >= 3 && dimensionValue[i] < (40/16)) ?
-                                <h1 className="text-[#453C38] text-[11px]">
-                                  {m.totalAmount}
-                                </h1> : <h1></h1>
-                          }
+
+
+                      <div className="absolute w-10 h-10 group-hover:block hidden">
+                        <div className='absolute z-40 w-full  bg-[#59C1BD] bottom-0'>
+                          <div className='rounded-[12px] px-5 py-4 bg-[#212121] absolute'>
+                            <div className="flex items-center">
+                              <h1 className="text-base text-white mb-0 flex mr-4">
+                                Disbursed:
+                                <span className="font-bold flex ml-2">
+                            <span className="mr-1.5">BDT</span>{" "}
+                                  {/*{item.totalDisbursed}*/}
+                                  25
+                          </span>
+                              </h1>
+                              <h1 className="text-base text-white mb-0 flex">
+                                Valid:
+                                <span className="font-bold flex ml-2">
+                            {/*{item.validHours}hr*/}
+                                  20
+                          </span>
+                              </h1>
+                            </div>
+                            <div className="mt-4 flex justify-between w-[300px] bg-winter-wizard bg-opacity-25 py-1.5 px-2 rounded-[4px]">
+                              <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
+                          <span className="mr-1">
+                            {/*{item.monthlyDisbursed[0].day}*/}
+                            705
+                          </span>
+                                <span>
+                              january
+                                  {/*{item.month}*/}
+                            </span>
+                              </h3>
+                              <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
+                          <span className="mr-1">
+                            {/*{item.monthlyDisbursed[0].hours}*/}
+                            50
+                          </span>
+                                hr
+                              </h3>
+                              <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
+                                {/*{item.monthlyDisbursed[0].amount}/-*/}
+                                300
+                              </h3>
+                            </div>
+                            <div className="mt-0.5 flex justify-between w-[300px] bg-blue-gray-85 py-1.5 px-2 rounded-[4px]">
+                              <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
+                          <span className="mr-1">
+                            {/*{item.monthlyDisbursed[1].day}*/
+                              10}
+                          </span>
+                                {/*<span>{item.month}</span>*/}
+                                feb
+                              </h3>
+                              <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
+                          <span className="mr-1">
+                            {/*{item.monthlyDisbursed[1].hours}*/}
+                            50
+                          </span>
+                                hr
+                              </h3>
+                              <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
+                                {/*{item.monthlyDisbursed[1].amount}/-*/}
+                                200
+                              </h3>
+                            </div>
+                          </div>
                         </div>
-                        <div
-                            className={`h-[2px] border border-dashed flex-1 rounded-tr-md rounded-br-md bg-[#D1D3D6]`}
+
+                        <img
+                            src={Icons.blackDropArrow}
+                            alt=""
+                            className={`w-10 h-6 absolute
+                            
+                            `}
                         />
+
                       </div>
 
-                      <div key={m.id} className='absolute top-20 flex flex-col justify-center items-center h-[30px] mt-10'>
-                        <div className='w-[1px] h-[4px] bg-blue-gray-A30'></div>
-                        <h1>{m.month.slice(0, 3)}</h1>
-                      </div>
 
+
+                      <div key={m.id} className={`flex flex-col justify-center items-center mt-8`}>
+                        {/*<div key={m.id} className=" flex flex-col justify-center items-center ">*/}
+                        <div className="flex items-center duration-300 absolute ">
+                          {/*<div className="flex items-center duration-300">*/}
+                          <div
+                              className={`h-[2px] border border-dashed flex-1 rounded-tl-md rounded-bl-md bg-[#D1D3D6]`}
+                          />
+                          <div
+                              // onMouseOver={() => setIsMouseOver(true)}
+                              // onMouseLeave={() => setIsMouseOver(false)}
+
+                              style={{
+                                height: `${dimensionValue[i]}rem`,
+                                width: `${dimensionValue[i]}rem`,
+                                backgroundColor: `${
+                                    i % 3 === 0
+                                        ? "#FFD3D3"
+                                        : i % 4 === 0
+                                            ? "#FFF5CC"
+                                            : i % 5 === 0
+                                                ? "#E2FBD7"
+                                                : i % 2 === 0
+                                                    ? "#CCF8FE"
+                                                    : "#CCDDFE"
+                                }`,
+                              }}
+                              className={`relative z-20 text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center`}
+                          >
+                            {
+                              // dimensionValue[i] - (30/16) >= (5/16) &&
+                              !(m.totalAmount.toString().length >= 3 && dimensionValue[i] < (40/16)) ?
+                                  <h1 className="text-[#453C38] text-[11px]">
+                                    {m.totalAmount}
+                                  </h1> : <h1></h1>
+                            }
+                          </div>
+                          <div
+                              className={`h-[2px] border border-dashed flex-1 rounded-tr-md rounded-br-md bg-[#D1D3D6]`}
+                          />
+                        </div>
+
+                        <div key={m.id} className='absolute top-20 flex flex-col justify-center items-center h-[30px] mt-10'>
+                          <div className='w-[1px] h-[4px] bg-blue-gray-A30'></div>
+                          <h1>{m.month.slice(0, 3)}</h1>
+                        </div>
+
+
+
+                      </div>
                     </div>
                 ))}
               </div>

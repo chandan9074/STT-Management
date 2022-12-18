@@ -82,23 +82,137 @@ export const timeWiseDisbursement = {
         },
         {
             year: 2022,
-            month: "Jan",
-            totalAmount: 1000,
+            month: "May",
+            totalAmount: 90000,
             totalHours: 50,
             disbursed: [
                 {
-                    amount: 900,
-                    day: "15 jan",
+                    amount: 2000,
+                    day: "15 May",
                     hours: 30
                 },
                 {
-                    amount: 100,
-                    day: "30 jan",
+                    amount: 3000,
+                    day: "30 May",
                     hours: 20
                 },
 
             ]
-        }
+        },
+        {
+            year: 2022,
+            month: "May",
+            totalAmount: 90000,
+            totalHours: 50,
+            disbursed: [
+                {
+                    amount: 2000,
+                    day: "15 May",
+                    hours: 30
+                },
+                {
+                    amount: 3000,
+                    day: "30 May",
+                    hours: 20
+                },
+
+            ]
+        },
+        {
+            year: 2022,
+            month: "May",
+            totalAmount: 90000,
+            totalHours: 50,
+            disbursed: [
+                {
+                    amount: 2000,
+                    day: "15 May",
+                    hours: 30
+                },
+                {
+                    amount: 3000,
+                    day: "30 May",
+                    hours: 20
+                },
+
+            ]
+        },
+        {
+            year: 2022,
+            month: "May",
+            totalAmount: 90000,
+            totalHours: 50,
+            disbursed: [
+                {
+                    amount: 2000,
+                    day: "15 May",
+                    hours: 30
+                },
+                {
+                    amount: 3000,
+                    day: "30 May",
+                    hours: 20
+                },
+
+            ]
+        },
+        {
+            year: 2022,
+            month: "May",
+            totalAmount: 980000,
+            totalHours: 50,
+            disbursed: [
+                {
+                    amount: 2000,
+                    day: "15 May",
+                    hours: 30
+                },
+                {
+                    amount: 3000,
+                    day: "30 May",
+                    hours: 20
+                },
+
+            ]
+        },
+        {
+            year: 2022,
+            month: "May",
+            totalAmount: 850000,
+            totalHours: 50,
+            disbursed: [
+                {
+                    amount: 2000,
+                    day: "15 May",
+                    hours: 30
+                },
+                {
+                    amount: 3000,
+                    day: "30 May",
+                    hours: 20
+                },
+
+            ]
+        },
+        {
+            year: 2022,
+            month: "May",
+            totalAmount: 90000,
+            totalHours: 50,
+            disbursed: [
+                {
+                    amount: 2000,
+                    day: "15 May",
+                    hours: 30
+                },
+                {
+                    amount: 3000,
+                    day: "30 May",
+                    hours: 20
+                },
+
+            ]
+        },
     ]
 }
 //

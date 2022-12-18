@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {CloseOutlined} from "@ant-design/icons";
+import {CloseOutlined, StepBackwardOutlined} from "@ant-design/icons";
 import {Form, Select} from "antd";
 import militaryImg from '../../../assets/Icons/military_tech.png';
 import homeImg from '../../../assets/Icons/home.png';
@@ -9,6 +9,7 @@ import {isEmpty} from "../../../helpers/Utils";
 import faceImage from '../../../assets/Icons/face.png';
 import './ManagerSearchModal.css';
 import arrowDropDownIcon from '../../../assets/Icons/arrow_drop_down.png';
+import Icon from "antd/es/icon";
 
 const {Option} = Select;
 
@@ -108,6 +109,7 @@ const ManagerSearchModal = ({setShowModal, managerContext, role}: { setShowModal
                                         <div className={`relative ${!isEmpty(singleManager) && 'bg-blue-gray-20'} border-[1px] ${isDropDownVisible ? 'border-secondary-blue-50' : 'border-blue-gray-20'} rounded-[7px] h-[44px] flex justify-center items-center`}>
 
                                             <Select
+                                                // menuItemSelectedIcon={<Icon  />}
                                                 onDropdownVisibleChange={onDropDownVisible}
                                                 onInputKeyDown={onInputKeyDown}
                                                 onClear={onSelect}
