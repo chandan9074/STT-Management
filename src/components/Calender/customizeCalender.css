@@ -31,3 +31,23 @@
     border-start-end-radius: 50%;
     border-end-end-radius: 50%;
 }
+:where(.css-dev-only-do-not-override-1s3dcof).ant-picker-dropdown .ant-picker-panel-container .ant-picker-panel-focused {
+    border-color: white;
+}
+
+ :where(.css-dev-only-do-not-override-1s3dcof).ant-picker-dropdown .ant-picker-header {
+      border-bottom: none;
+     color: #FFFFFF;
+ }
+
+:where(.css-dev-only-do-not-override-1s3dcof).ant-picker-dropdown .ant-picker-panel .ant-picker-footer {
+    border-top: white;
+}
+:where(.css-dev-only-do-not-override-1s3dcof).ant-picker-dropdown .ant-picker-header button {
+    color: #FFFFFF;
+}
+:where(.css-dev-only-do-not-override-1s3dcof).ant-picker-dropdown .ant-picker-panel-container {
+
+    background: #1F1F1F;
+
+}
