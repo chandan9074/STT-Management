@@ -1,6 +1,7 @@
 import managerImage from "../assets/Icons/manager.png";
 import axios from "axios";
 import {GET_TIME_WISE_DISBURSEMENTS_URL} from "../helpers/APIURL";
+import {timeWiseDisbursement} from "../data/timeWiseDisbursement";
 
 interface managerDisbursementInterface {
     data: [
@@ -66,9 +67,8 @@ const managerData: any = {
 export default class TimeWiseDisbursementService {
 
     static getManagerDisbursement(params: any) {
-        return axios.get(GET_TIME_WISE_DISBURSEMENTS_URL, {params})
-        // return managerDisbursementData;
-        // return timeWiseDisbursement;
+        // return axios.get(GET_TIME_WISE_DISBURSEMENTS_URL, {params})
+        return timeWiseDisbursement;
     }
 
 

@@ -267,13 +267,13 @@ const TimeWiseDisbursements = () => {
             <div className="relative">
               <div className="flex justify-between w-full relative px-10">
                 {disbursementData.map((m: any, i: any) => (
-                    <div className={`relative flex ${disbursementData.length === 12 ? i<2 ? "justify-start":"justify-center":disbursementData.length >12 ? i < Math.round((2*disbursementData.length) /12) ? "justify-start":"justify-center": ""} group`}>
+                    <div className={`relative flex ${disbursementData.length === 12 ? i<2 ? "justify-start":"justify-center":disbursementData.length >12 ? i < Math.round((2*disbursementData.length) /12) ? "justify-start":"justify-center": disbursementData.length < 12 ? i === 0 ? "justify-start":"justify-center":""} group`}>
                         {/*<div className="absolute  bottom-20 text-white bg-black h-10">hello </div>*/}
                         <div
                             style={{bottom: `${(163/16)+(dimensionValue[i]/2)}rem`}}
                             className={`absolute z-40 w-[350px]  group-hover:block hidden
 
-                         bg-[#59C1BD] ${disbursementData.length === 12 ? i<2 ? "-left-10":"":disbursementData.length >12 ? i < Math.round((2*disbursementData.length) /12) ? "-left-10":"": ""}`}>
+                         bg-[#59C1BD] ${disbursementData.length === 12 ? i<2 ? "-left-10":"":disbursementData.length >12 ? i < Math.round((2*disbursementData.length) /12) ? "-left-10":"": disbursementData.length < 12 ? i === 0 ? "-left-10":"":""}`}>
                           <div className='rounded-[12px] px-5 py-4 bg-[#212121] absolute'>
                             <div className="flex items-center">
                               <h1 className="text-base text-white mb-0 flex mr-4">
@@ -342,7 +342,7 @@ const TimeWiseDisbursements = () => {
                         <img
                             src={Icons.blackDropArrow}
                             alt=""
-                            className={`w-10 h-6 absolute top-[8.5rem] ${disbursementData.length === 12 ? i<2 ? "left-5":"left-1/2 transform -translate-x-1/2":disbursementData.length >12 ? i < Math.round((2*disbursementData.length) /12) ? "left-5":"left-1/2 transform -translate-x-1/2": ""}`}
+                            className={`w-10 h-6 absolute top-[8.5rem] ${disbursementData.length === 12 ? i<2 ? "left-5":"left-1/2 transform -translate-x-1/2":disbursementData.length >12 ? i < Math.round((2*disbursementData.length) /12) ? "left-5":"left-1/2 transform -translate-x-1/2": disbursementData.length < 12 ? i === 0 ? "left-5":"left-1/2 transform -translate-x-1/2":""}`}
                         />
 
                       </div>
