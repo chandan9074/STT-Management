@@ -28,10 +28,10 @@ const ManagerProvider = ({ children }: { children: any }) => {
         try {
             setLoading(true);
             const res = await TimeWiseDisbursementService.getManagerDisbursement(data);
-            // setDisbursementData(res?.data?.data);
-            setDisbursementData(res?.data);
-            // setTotalDisbursed(res?.data);
-            setTotalDisbursed(res);
+            setDisbursementData(res?.data?.data);
+            // setDisbursementData(res?.data);
+            setTotalDisbursed(res?.data);
+            // setTotalDisbursed(res);
             setLoading(false);
 
         } catch (error) {

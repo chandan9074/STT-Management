@@ -67,8 +67,8 @@ const managerData: any = {
 export default class TimeWiseDisbursementService {
 
     static getManagerDisbursement(params: any) {
-        // return axios.get(GET_TIME_WISE_DISBURSEMENTS_URL, {params})
-        return timeWiseDisbursement;
+        return axios.get(GET_TIME_WISE_DISBURSEMENTS_URL, {params})
+        // return timeWiseDisbursement;
     }
 
 
