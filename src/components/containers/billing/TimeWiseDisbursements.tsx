@@ -292,11 +292,13 @@ const TimeWiseDisbursements = () => {
                           </span>
                               </h1>
                             </div>
+
+
                             <div className="mt-4 flex justify-between w-[300px] bg-winter-wizard bg-opacity-25 py-1.5 px-2 rounded-[4px]">
                               <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
                           <span className="mr-1">
                             {/*{item.monthlyDisbursed[0].day}*/}
-                            {m?.disbursed[0]?.day}
+                            {m?.disbursed[0]?.day ? m?.disbursed[0]?.day : '00'}
                           </span>
                                 <span>
                               {/*jan*/}
@@ -306,13 +308,13 @@ const TimeWiseDisbursements = () => {
                               <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
                           <span className="mr-1">
                             {/*{item.monthlyDisbursed[0].hours}*/}
-                            {m?.disbursed[0]?.hours}
+                            {m?.disbursed[0]?.hours ? m?.disbursed[0]?.hours : '0'}
                           </span>
                                 hr
                               </h3>
                               <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
                                 {/*{item.monthlyDisbursed[0].amount}/-*/}
-                                {m?.disbursed[0]?.amount}
+                                {m?.disbursed[0]?.amount ? m?.disbursed[0]?.amount : '0'} / -
                               </h3>
                             </div>
 
@@ -320,19 +322,19 @@ const TimeWiseDisbursements = () => {
                             <div className="mt-0.5 flex justify-between w-[300px] bg-blue-gray-85 py-1.5 px-2 rounded-[4px]">
                               <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
                           <span className="mr-1">
-                              {m?.disbursed[1]?.day}
+                              {m?.disbursed[1]?.day ? m?.disbursed[1]?.day : '00'}
                           </span>
                                 {/*<span>{item.month}</span>*/}
                                 {/*feb*/}
                               </h3>
                               <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
                           <span className="mr-1">
-                            {m?.disbursed[1]?.hours}
+                            {m?.disbursed[1]?.hours ? m?.disbursed[1]?.hours : '0'}
                           </span>
                                 hr
                               </h3>
                               <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
-                                {m?.disbursed[1]?.amount}
+                                {m?.disbursed[1]?.amount ? m?.disbursed[1]?.amount : '0'} / -
                               </h3>
                             </div>
 
