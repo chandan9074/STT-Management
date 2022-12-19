@@ -7,14 +7,6 @@ import "./TimeWiseDisbursement.css";
 import BillingListIndex from "./BillingList/BillingListIndex";
 import Icons from "../../../assets/Icons";
 
-const circleColor: string[] = [
-  "#FFD3D3",
-  "#FFF5CC",
-  "#E2FBD7",
-  "#CCF8FE",
-  "#CCDDFE",
-];
-
 const TimeWiseDisbursements = () => {
 
   const barHeight = 125;
@@ -35,29 +27,17 @@ const TimeWiseDisbursements = () => {
   const initialData = {
     role: "Manager",
     type: "stt",
-    start: '',
-    end: ''
+    // start: '01-12-2021',
+    // end: '20-01-2022'
   };
 
   const [search, setSearch] = useState<any>(initialData);
-  // const isSttRoles = [
-  //     isSttManager, isSttTamLeader, isSttCollector, isSttSpeaker, isSttAudioChecker, isSttAnnotator, isSttValidator
-  // ]
 
-  const [minValue, setMinValue] = useState<number>();
 
   useEffect(() => {
     managerContext.getManagerDisbursement(search);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
-
-  const getRandomColor = () => {
-    for (let i = circleColor.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      [circleColor[i], circleColor[j]] = [circleColor[j], circleColor[i]];
-    }
-
-    return circleColor;
-  };
 
   const [showModal, setShowModal] = React.useState(false);
 
@@ -154,58 +134,6 @@ const TimeWiseDisbursements = () => {
   };
 
   console.log('dimesion value', dimensionValue)
-
-  const getDimensionValue = () => {
-    let _data = disbursementData.map((m: any) => {
-      return m.totalAmount;
-    });
-
-    const min = Math.min(..._data);
-    const max = Math.max(..._data);
-
-    const firstDim = min;
-    const maxDim = 70;
-    const minDim = 35;
-    const firstValue = min;
-    const lastValue = max;
-    // .1 = 1px
-    const startPoint = 0.12;
-
-    let findPercent = disbursementData.map((m: any) => {
-      let finalDimension: any;
-
-      // Solution 1
-      // const percent = ((100 * m.totalAmount) / lastValue);
-      // if (percent <= minDim) {
-      //     finalDimension = minDim;
-      // } else {
-      //     finalDimension = (maxDim * percent) / 100;
-      // }
-
-      // Solution 2
-      if (m.totalAmount === max) {
-        finalDimension = maxDim;
-      }
-      if (m.totalAmount === min) {
-        finalDimension = minDim;
-      }
-      if ((m.totalAmount < max && m.totalAmount) >= max / 2) {
-        const percent = (100 * m.totalAmount) / lastValue;
-        finalDimension = (maxDim * percent) / 100;
-      }
-      if (m.totalAmount < max / 2 && min < m.totalAmount) {
-        const percent = (100 * m.totalAmount) / lastValue;
-        let dimension = (maxDim * percent) / 100;
-
-        const _dimension = startPoint * dimension + minDim;
-        finalDimension = _dimension;
-      }
-
-      return finalDimension / 16;
-    });
-
-    setDimensionValue(findPercent);
-  };
 
   const handleSttRole = (value: string) => {
     if (value === "Manager") {
@@ -339,12 +267,13 @@ const TimeWiseDisbursements = () => {
             <div className="relative">
               <div className="flex justify-between w-full relative px-10">
                 {disbursementData.map((m: any, i: any) => (
-                    <div className="relative flex justify-center group">
+                    <div className={`relative flex ${disbursementData.length === 12 ? i<2 ? "justify-start":"justify-center":disbursementData.length >12 ? i < Math.round((2*disbursementData.length) /12) ? "justify-start":"justify-center": ""} group`}>
+                        {/*<div className="absolute  bottom-20 text-white bg-black h-10">hello </div>*/}
+                        <div
+                            style={{bottom: `${(163/16)+(dimensionValue[i]/2)}rem`}}
+                            className={`absolute z-40 w-[350px]  group-hover:block hidden
 
-
-
-                      <div className="absolute w-10 h-10 group-hover:block hidden">
-                        <div className='absolute z-40 w-full  bg-[#59C1BD] bottom-0'>
+                         bg-[#59C1BD] ${disbursementData.length === 12 ? i<2 ? "-left-10":"":disbursementData.length >12 ? i < Math.round((2*disbursementData.length) /12) ? "-left-10":"": ""}`}>
                           <div className='rounded-[12px] px-5 py-4 bg-[#212121] absolute'>
                             <div className="flex items-center">
                               <h1 className="text-base text-white mb-0 flex mr-4">
@@ -386,8 +315,8 @@ const TimeWiseDisbursements = () => {
                                 {m?.disbursed[0]?.amount}
                               </h3>
                             </div>
-                            
-                            
+
+
                             <div className="mt-0.5 flex justify-between w-[300px] bg-blue-gray-85 py-1.5 px-2 rounded-[4px]">
                               <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
                           <span className="mr-1">
@@ -409,12 +338,11 @@ const TimeWiseDisbursements = () => {
 
 
                           </div>
-                        </div>
 
                         <img
                             src={Icons.blackDropArrow}
                             alt=""
-                            className={`w-10 h-6 absolute`}
+                            className={`w-10 h-6 absolute top-[8.5rem] ${disbursementData.length === 12 ? i<2 ? "left-5":"left-1/2 transform -translate-x-1/2":disbursementData.length >12 ? i < Math.round((2*disbursementData.length) /12) ? "left-5":"left-1/2 transform -translate-x-1/2": ""}`}
                         />
 
                       </div>
@@ -429,9 +357,6 @@ const TimeWiseDisbursements = () => {
                               className={`h-[2px] border border-dashed flex-1 rounded-tl-md rounded-bl-md bg-[#D1D3D6]`}
                           />
                           <div
-                              // onMouseOver={() => setIsMouseOver(true)}
-                              // onMouseLeave={() => setIsMouseOver(false)}
-
                               style={{
                                 height: `${dimensionValue[i]}rem`,
                                 width: `${dimensionValue[i]}rem`,
@@ -454,9 +379,10 @@ const TimeWiseDisbursements = () => {
                               !(m.totalAmount.toString().length > 3 && dimensionValue[i] < (45/16)) ?
                                   <h1 className="text-[#453C38] text-[11px]">
                                     {m.totalAmount}
-                                  </h1> : <h1></h1>
+                                  </h1> : <h1>{}</h1>
                             }
-                          </div>
+                          </div
+                              >
                           <div
                               className={`h-[2px] border border-dashed flex-1 rounded-tr-md rounded-br-md bg-[#D1D3D6]`}
                           />
