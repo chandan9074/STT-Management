@@ -11,7 +11,7 @@ const Billing = () => {
       <TotalAmountDisbursed />
       <TimeWiseDisbursements />
       <BillingListIndex />
-      {/*  <CustomizeCalender/>*/}
+        {/*<CustomizeCalender/>*/}
         <CustomRangeCalender/>
     </>
   );

@@ -57,7 +57,7 @@ const CustomizeCalender = () => {
                     bordered={false}
                     suffixIcon={null}
                     allowClear={false}
-                    // open={open}
+                    open={open}
                     separator={null}
                     // style={{ visibility: "hidden", width: 0 }}
                     // defaultValue={[dayjs('2022/12/01', dateFormat), dayjs('2022/12/05', dateFormat)]}

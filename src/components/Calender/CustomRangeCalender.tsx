@@ -4,6 +4,7 @@ import {DatePicker, Input} from "antd";
 import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
 import './customizeCalender.css'
+import CloseIcon from '../../assets/Icons/close.png'
 
 dayjs.extend(isBetween)
 
@@ -96,9 +97,20 @@ const CustomRangeCalender = () => {
 
         return false
     }
+    const handleClear = (type: any) => {
+        if (type === "start") {
+            setInputDate((prev: any) => ({...prev, start: ""}))
+            setDate((prev: any) => ({...prev, start: ""}))
+        }
+        if (type === "end") {
+            setInputDate((prev: any) => ({...prev, end: ""}))
+            setDate((prev: any) => ({...prev, end: ""}))
+        }
+    }
 
+    console.log('-------------------', inputDate.start.length)
     return (
-        <div>
+        <div className="custom-range-calender">
             <DatePicker
                 showToday={false}
                 open={true}
@@ -117,16 +129,21 @@ const CustomRangeCalender = () => {
                     }
 
                     if (inRange) {
-                        style.backgroundColor = "#e6f4ff"
+
+                        style.borderRadius = '50%';
+                        style.color = "#ffffff";
+                        style.backgroundColor = "red";
                     }
 
                     const isStartSelected = date && date.start && (current.isSame(date.start));
                     const isEndSelected = date && date.start && (current.isSame(date.end));
 
                     if (isStartSelected || isEndSelected) {
+                        style.borderRadius = '50%';
                         style.color = "#ffffff";
-                        style.backgroundColor = "#1677FF";
+                        style.backgroundColor = "#136EE5";
                     }
+
 
                     return (
                         <div
@@ -140,27 +157,46 @@ const CustomRangeCalender = () => {
                 renderExtraFooter={() =>
 
                     <div className="p-2">
-                        <p className='text-center mb-0'>Or</p>
-                        <div className="flex gap-2">
-                            <Input
-                                placeholder="Start Date"
-                                allowClear
-                                value={inputDate ? inputDate.start : ""}
-                                onClick={() => inputClickEvent("start")}
-                                onKeyDown={(e) => handleInputDateEnter(e, "start")}
-                                onChange={(e) => handleInputDateChange(e, "start")}
-                            />
-                            <Input
-                                placeholder="End Date"
-                                allowClear
-                                value={inputDate ? inputDate.end : ""}
-                                onClick={() => inputClickEvent("end")}
-                                onKeyDown={(e) => handleInputDateEnter(e, "end")}
-                                onChange={(e) => handleInputDateChange(e, "end")}
-                            />
+                        <p className='text-center text-white mb-0'>Or</p>
+                        <div
+                            onMouseDown={(e) => e.stopPropagation()}
+                            className="flex gap-2"
+                        >
+                            <div className="relative">
+                                <Input
+                                    suffix={inputDate.start ? <img
+                                        className="h-3 w-3 cursor-pointer"
+                                        src={CloseIcon}
+                                        alt="network-error"
+                                        onClick={()=>handleClear('start')}/> : null}
+                                    className="bg-black-90 text-white border-none "
+                                    // placeholder="Start Date"
+                                    value={inputDate ? inputDate.start : ""}
+                                    onClick={() => inputClickEvent("start")}
+                                    onKeyDown={(e) => handleInputDateEnter(e, "start")}
+                                    onChange={(e) => handleInputDateChange(e, "start")}
+                                />
+                                {/*<small style={{left:"12px",bottom:"32px"}} className="text-white bg-ct-blue-60 absolute">Start Date</small>*/}
+                            </div>
+                            <div className="relative">
+                                <Input
+                                    suffix={<img
+                                        className="h-3 w-3 cursor-pointer"
+                                        src={CloseIcon}
+                                        alt="network-error"
+                                        onClick={() => handleClear('end')}/>}
+                                    className="bg-black-90 text-white border-none "
+                                    value={inputDate ? inputDate.end : ""}
+                                    onClick={() => inputClickEvent("end")}
+                                    onKeyDown={(e) => handleInputDateEnter(e, "end")}
+                                    onChange={(e) => handleInputDateChange(e, "end")}
+                                />
+                            </div>
                         </div>
                         <div>
-                            <button className="bg-ct-blue-60 w-full text-white rounded-md mt-3"> Search Payment History</button>
+                            <button className="bg-ct-blue-60 w-full text-white rounded-md mt-3"> Search Payment
+                                History
+                            </button>
                         </div>
                     </div>
                 }
