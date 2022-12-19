@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import managerImage from "../../../assets/Icons/manager.png";
-import { SearchOutlined } from "@ant-design/icons";
+import {SearchOutlined} from "@ant-design/icons";
 import ManagerSearchModal from "./ManagerSearchModal";
-import { ManagerContext } from "../../../context/ManagerProvider";
+import {ManagerContext} from "../../../context/ManagerProvider";
 import "./TimeWiseDisbursement.css";
 import BillingListIndex from "./BillingList/BillingListIndex";
 import Icons from "../../../assets/Icons";
@@ -15,33 +15,12 @@ const circleColor: string[] = [
   "#CCDDFE",
 ];
 
-const monthName: string[] = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-
 const TimeWiseDisbursements = () => {
 
   const barHeight = 125;
 
   const maxDim = 70;
   const minDim = 35;
-  const [minDigit, setMinDigit] = useState<Number>();
-
-  const [randomElement, setRandomElement] = useState<any>([]);
-  const [newCircleColor, setNewCircleColor] = useState<any>([]);
-
-  const [isMouseOver, setIsMouseOver] = useState<boolean>(false);
 
   const managerContext = useContext(ManagerContext);
   const { disbursementData, singleManager, totalDisbursed } = managerContext;
@@ -54,9 +33,10 @@ const TimeWiseDisbursements = () => {
   const [isTtsRoles, setIsTtsRoles] = useState("Speaker");
 
   const initialData = {
-    year: 2022,
     role: "Manager",
     type: "stt",
+    start: '',
+    end: ''
   };
 
   const [search, setSearch] = useState<any>(initialData);
@@ -123,15 +103,12 @@ const TimeWiseDisbursements = () => {
 
   useEffect(() => {
     // getChart();
-    console.log('*******', disbursementData)
     if (disbursementData.length > 0) {
       // getDimensionValue();
       getNewDimension();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [disbursementData]);
-
-  console.log('........', minDigit)
 
 
   const onHandleStt = () => {
@@ -151,18 +128,11 @@ const TimeWiseDisbursements = () => {
       return m.totalAmount;
     });
 
-    console.log('data.....', _data)
-
     const min = Math.min(..._data);
     const max = Math.max(..._data);
 
-    console.log('min.............', min)
-
-
     const minValue = min;
     const maxValue = max;
-    setMinDigit(min.toString().length)
-
 
     const ratio = (maxDim - minDim + 1) / (maxValue - minValue);
 
@@ -287,13 +257,6 @@ const TimeWiseDisbursements = () => {
     }
   };
 
-  // const circleMouseOver = () => {
-  //     console.log('on mouse over')
-  // }
-  //
-  // const circleMouseleave = () => {
-  //     console.log('on mouse leave')
-  // }
 
   return (
     <div className='pb-[50px]'>
@@ -389,14 +352,14 @@ const TimeWiseDisbursements = () => {
                                 <span className="font-bold flex ml-2">
                             <span className="mr-1.5">BDT</span>{" "}
                                   {/*{item.totalDisbursed}*/}
-                                  25
+                                  {m?.totalAmount}
                           </span>
                               </h1>
                               <h1 className="text-base text-white mb-0 flex">
                                 Valid:
                                 <span className="font-bold flex ml-2">
                             {/*{item.validHours}hr*/}
-                                  20
+                                  {m?.totalHours}
                           </span>
                               </h1>
                             </div>
@@ -404,55 +367,54 @@ const TimeWiseDisbursements = () => {
                               <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
                           <span className="mr-1">
                             {/*{item.monthlyDisbursed[0].day}*/}
-                            705
+                            {m?.disbursed[0]?.day}
                           </span>
                                 <span>
-                              january
+                              {/*jan*/}
                                   {/*{item.month}*/}
                             </span>
                               </h3>
                               <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
                           <span className="mr-1">
                             {/*{item.monthlyDisbursed[0].hours}*/}
-                            50
+                            {m?.disbursed[0]?.hours}
                           </span>
                                 hr
                               </h3>
                               <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
                                 {/*{item.monthlyDisbursed[0].amount}/-*/}
-                                300
+                                {m?.disbursed[0]?.amount}
                               </h3>
                             </div>
+                            
+                            
                             <div className="mt-0.5 flex justify-between w-[300px] bg-blue-gray-85 py-1.5 px-2 rounded-[4px]">
                               <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
                           <span className="mr-1">
-                            {/*{item.monthlyDisbursed[1].day}*/
-                              10}
+                              {m?.disbursed[1]?.day}
                           </span>
                                 {/*<span>{item.month}</span>*/}
-                                feb
+                                {/*feb*/}
                               </h3>
                               <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
                           <span className="mr-1">
-                            {/*{item.monthlyDisbursed[1].hours}*/}
-                            50
+                            {m?.disbursed[1]?.hours}
                           </span>
                                 hr
                               </h3>
                               <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
-                                {/*{item.monthlyDisbursed[1].amount}/-*/}
-                                200
+                                {m?.disbursed[1]?.amount}
                               </h3>
                             </div>
+
+
                           </div>
                         </div>
 
                         <img
                             src={Icons.blackDropArrow}
                             alt=""
-                            className={`w-10 h-6 absolute
-                            
-                            `}
+                            className={`w-10 h-6 absolute`}
                         />
 
                       </div>
@@ -489,7 +451,7 @@ const TimeWiseDisbursements = () => {
                           >
                             {
                               // dimensionValue[i] - (30/16) >= (5/16) &&
-                              !(m.totalAmount.toString().length >= 3 && dimensionValue[i] < (40/16)) ?
+                              !(m.totalAmount.toString().length > 3 && dimensionValue[i] < (45/16)) ?
                                   <h1 className="text-[#453C38] text-[11px]">
                                     {m.totalAmount}
                                   </h1> : <h1></h1>
@@ -512,7 +474,7 @@ const TimeWiseDisbursements = () => {
                 ))}
               </div>
               <div
-                  className={`absolute top-[35px] z-10 h-[2px] border border-dashed w-full rounded-tr-md rounded-br-md bg-[#D1D3D6]`}
+                  className={`absolute top-[33px] z-10 h-[2px] border border-dashed w-full rounded-tr-md rounded-br-md bg-[#D1D3D6]`}
               />
             </div>
 

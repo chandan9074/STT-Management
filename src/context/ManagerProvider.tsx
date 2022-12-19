@@ -3,7 +3,6 @@ import ManagerService from "../services/ManagerService";
 
 interface ContextProps {
     loading: boolean;
-    errorMsg: string;
     disbursementData: any;
     getManagerDisbursement: any;
     singleManager: any;
@@ -19,7 +18,6 @@ interface ContextProps {
 export const ManagerContext = createContext({} as ContextProps);
 const ManagerProvider = ({ children }: { children: any }) => {
     const [loading, setLoading] = useState(true);
-    const [errorMsg, setErrorMsg] = useState("");
     const [disbursementData, setDisbursementData] = useState<any>([]);
     const [managerDatas, setManagerDatas] = useState<any>([]);
     const [singleManager, setSingleManager] = useState<any>({});
@@ -30,8 +28,8 @@ const ManagerProvider = ({ children }: { children: any }) => {
         try {
             setLoading(true);
             const res = await ManagerService.getManagerDisbursement(data);
-            setDisbursementData(res.data);
-            setTotalDisbursed(res);
+            setDisbursementData(res?.data?.data);
+            setTotalDisbursed(res?.data);
             // setManagerData('This is manager data')
             setLoading(false);
 
@@ -90,7 +88,6 @@ const ManagerProvider = ({ children }: { children: any }) => {
         <ManagerContext.Provider
             value={{
                 loading,
-                errorMsg,
                 disbursementData,
                 getManagerDisbursement,
                 singleManager,
