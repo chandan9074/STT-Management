@@ -193,7 +193,7 @@ const TimeWiseDisbursements = () => {
 
     return (
         <div className='pb-[50px]'>
-            <div className="h-[153px] relative ">
+            <div className="h-[153px] relative">
                 {/*TTS STT Tab*/}
                 <div className="flex flex-col justify-center items-center">
                     <div
