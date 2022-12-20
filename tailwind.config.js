@@ -23,6 +23,7 @@ module.exports = {
       },
       animation: {
         fadeIn: "fadeIn 0.2s ease-in-out",
+        fadeIn2: "fadeIn 2s ease-in-out",
       },
       boxShadow: {
         "light-blue": "0px 0px 12px #FFFFFF",

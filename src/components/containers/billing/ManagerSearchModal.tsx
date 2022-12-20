@@ -26,6 +26,8 @@ const ManagerSearchModal = ({
     const [isDropDownVisible, setIsDropDownVisible] = useState<boolean>(false);
     const [dropDownCount, setDropDownCount] = useState<number>(0);
     const [isDropDownSelect, setIsDropDownSelect] = useState<boolean>(false);
+    const [isDropItemClick, setIsDropItemClick] = useState<boolean>(false);
+    const [isDropDownOpen, setIsdropDownOpen] = useState<boolean>(false);
     const [count, setCount] = useState<Number>(0);
 
     const [isInputKeyDown, setIsInputKeyDown] = useState<boolean>(false);
@@ -36,11 +38,20 @@ const ManagerSearchModal = ({
         // document.addEventListener('click', handleClickOutside, true);
     }, []);
 
+    console.log('click...', isDropItemClick);
+    console.log('select########', isDropDownSelect);
+    console.log('visible^&^^^^^^^', isDropDownVisible);
+    console.log('opem$$$$$$', isDropDownOpen);
+
     useEffect(() => {
-        if (isDropDownSelect) {
-            setCount(1);
+        if (!isDropDownVisible) {
+            setIsDropItemClick(false);
+            setIsdropDownOpen(false)
         }
-    }, [isDropDownSelect]);
+        // if (isDropDownSelect) {
+        //     setCount(1);
+        // }
+    }, [isDropDownVisible]);
 
     useEffect(() => {
         if (dropDownCount === 2) {
@@ -51,7 +62,6 @@ const ManagerSearchModal = ({
 
 
     const handleMangerChange = (id: any, p: any) => {
-        console.log('p', p)
         managerContext.getManagerById(p.key);
         // form.resetFields();
     }
@@ -62,17 +72,16 @@ const ManagerSearchModal = ({
         form.resetFields();
     }
 
-    console.log('drop,,,', isDropDownSelect);
 
     const onDropDownVisible = (e: any) => {
-        console.log('........................')
         setIsDropDownVisible(true);
         setDropDownCount(dropDownCount + 1);
+        setIsDropItemClick(true);
 
-        if (count === 1) {
-            setIsDropDownSelect(false);
-            setCount(0);
-        }
+        // if (count === 1) {
+        //     setIsDropDownSelect(false);
+        //     setCount(0);
+        // }
 
     }
 
@@ -92,17 +101,27 @@ const ManagerSearchModal = ({
     }
 
     const onDropDownClick = () => {
+        setIsDropItemClick(true);
         // if (count === 1) {
         //     setIsDropDownSelect(false);
         //     setCount(0);
         // }
     }
 
+    const outsideModalClick = () => {
+        setShowModal(false);
+        managerContext.setSingleManager({});
+    }
+
+    const dropDownArrowClick = () => {
+        setIsdropDownOpen(true);
+    }
+
 
     return (
         <div className='fixed top-0 left-0 flex justify-center items-center w-full h-screen z-40'>
             <div className="fixed top-0 left-0 opacity-50 bg-black w-full h-screen z-40"
-                 onClick={() => setShowModal(false)}/>
+                 onClick={() => outsideModalClick()}/>
             <div className="relative z-50">
                 <div
                     className="border-0 rounded-lg shadow-lg relative flex flex-col w-[700px] bg-white outline-none focus:outline-none">
@@ -135,17 +154,20 @@ const ManagerSearchModal = ({
 
                                         <div
                                             // className={`relative ${!isEmpty(singleManager) && 'bg-blue-gray-20'} border-[1px] ${isDropDownVisible ? 'border-secondary-blue-50' : 'border-blue-gray-20'} rounded-[7px] h-[44px] flex justify-center items-center ${(isDropDownSelect)  && 'searchByRoleSelect'}`}>
-                                            className={`relative ${!isEmpty(singleManager) && 'bg-blue-gray-20'} border-[1px] ${isDropDownVisible ? 'border-secondary-blue-50' : 'border-blue-gray-20'} rounded-[7px] h-[44px] flex justify-center items-center ${(isDropDownSelect)  && 'searchByRoleSelect'}`}>
+                                            className={`relative ${!isEmpty(singleManager) && 'bg-blue-gray-20'} border-[1px] ${isDropDownVisible ? 'border-secondary-blue-50' : 'border-blue-gray-20'} rounded-[7px] h-[44px] flex justify-center items-center ${isDropItemClick ? '' : isDropDownSelect ? 'searchByRoleSelect' : ''} ${(!isDropDownVisible) ? 'select-icon' : ''}`}>
 
                                             <Select
+
+                                                // open={isDropItemClick ? true : isDropDownOpen}
                                                 // mode='multiple'
+                                                suffixIcon={<StepBackwardOutlined style={{display: 'none'}}/>}
                                                 onClick={onDropDownClick}
                                                 onDropdownVisibleChange={onDropDownVisible}
                                                 onInputKeyDown={onInputKeyDown}
                                                 onSelect={onSelect}
                                                 showSearch
                                                 placeholder={`Select ${role} by Login ID/ Name`}
-                                                className={`w-[90%] ${!isEmpty(singleManager) && 'bg-blue-gray-20'}`}
+                                                // className={`w-[90%] ${!isEmpty(singleManager) && 'bg-blue-gray-20'}`}
                                                 style={{border: 'none'}}
                                                 // style={{height: '44px', borderRadius: '40px'}}
                                                 onChange={(value, p) => handleMangerChange(value, p)}
@@ -169,8 +191,9 @@ const ManagerSearchModal = ({
                                                 }
                                             </Select>
                                             <div
-                                                className={(!isDropDownVisible) ? 'bg-whitelock h-[24px] w-[24px] flex justify-center items-center pr-[15px]' : 'hidden'}>
-                                                <img className='' src={arrowDropDownIcon} alt=""/>
+                                                // className={(!isDropDownVisible) ? 'bg-whitelock h-[24px] w-[24px] flex justify-center items-center pr-[15px]' : 'hidden'}>
+                                                className={(!isDropDownVisible) ? 'select-icon' : 'hidden'}>
+                                                {/*<img onClick={dropDownArrowClick} className='' src={arrowDropDownIcon} alt=""/>*/}
                                             </div>
                                         </div>
 
