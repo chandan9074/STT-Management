@@ -13,12 +13,6 @@ const TotalAmountDisbursed = () => {
 
   useEffect(() => {
     billingContext.GetAmountDisbursed();
-    console.log("askdfjalsdkfj aadsf");
-    // if (billingContext.amountDisbursed) {
-    //   billingContext.handleAmountDropDown(
-    //     billingContext.amountDisbursed.yearList[0]
-    //   );
-    // }
   }, []);
 
   useEffect(() => {
@@ -53,7 +47,7 @@ const TotalAmountDisbursed = () => {
         {billingContext.amountDisbursed ? (
           currentData ? (
             <HistoryChartPart
-              currentData={currentData}
+              currentData={currentData} 
               yearList={billingContext.amountDisbursed.yearList}
             />
           ) : null
