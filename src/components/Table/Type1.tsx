@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import { Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
-import type { TableRowSelection } from "antd/es/table/interface";
-import "./billingTable.css";
-import { InputNumber } from "antd";
-import { AllBillingDataType, BillingDataType } from "./BillingListIndex";
+import "../../assets/css/table.css";
+import { paymentHistoryDataDT } from "../../types/billingTypes";
 
 interface Props {
   columnsData: ColumnsType<any>;
-  dataSources: (AllBillingDataType | BillingDataType)[];
+  dataSources: paymentHistoryDataDT[];
 }
-const BillingTable = ({ columnsData, dataSources }: Props) => {
+const Type1 = ({ columnsData, dataSources }: Props) => {
   return (
     <div className="billing-table my-2">
       <Table
@@ -22,4 +20,4 @@ const BillingTable = ({ columnsData, dataSources }: Props) => {
   );
 };
 
-export default BillingTable;
+export default Type1;

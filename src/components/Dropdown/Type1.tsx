@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Icons from "../../assets/Icons";
+import { BillingContext } from "../../context/BillingProvider";
 
 const Type1 = ({ data }: { data: number[] }) => {
   const [current, setCurrent] = React.useState(data[0]);
   const [open, setOpen] = React.useState(false);
+
+  const billingContext = useContext(BillingContext);
+
   return (
     <div className="relative">
       <button
@@ -25,6 +29,7 @@ const Type1 = ({ data }: { data: number[] }) => {
             onClick={() => {
               setCurrent(item);
               setOpen(false);
+              billingContext.handleAmountDropDown(item);
             }}
             className={`py-2.5 w-full ${
               current === item ? "bg-blue-10" : "bg-white"

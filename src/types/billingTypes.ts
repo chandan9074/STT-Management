@@ -9,7 +9,7 @@ export type totalAmountDisbursedDT = {
 
 export type yearlyDataDT = {
   year: number;
-  maxDisbursed: number;
+  maxAmount: number;
   yearData: yearDataDT[];
 };
 
@@ -17,7 +17,7 @@ export type yearDataDT = {
   month: string;
   totalDisbursed: number | null;
   validHours: number | null;
-  monthlyDisbursed: disbursedDT[];
+  disbursed: disbursedDT[];
 };
 
 export type disbursedDT = {
@@ -25,3 +25,67 @@ export type disbursedDT = {
   hours: number;
   day: string;
 };
+
+export type paymentHistoryDT = {
+  id: string,
+  name: string,
+  role: string,
+  email: string,
+  phone: string,
+  address: string,
+  totalPaid: string,
+  totalHours: string,
+  noOfPayments: number,
+  paymentHistory: paymentHistoryDataDT[]
+}
+
+export type paymentHistoryDataDT = {
+  id: string,
+  date: string,
+  amount: number,
+  hours: number,
+}
+// BILLINGS TYPE----------------
+export type allBillingParamsDT={
+  pageSize:number;
+  type:string;
+  role:string
+}
+export type allBillingsDT={
+  role:string;
+  type:string;
+  billingInfo: billingInfoDT[];
+}
+
+export type billingInfoDT = {
+  id: number;
+  date: string;
+  hour: number;
+  amountPaid: number;
+}
+export type lastBillingParamsDT={
+  page:number;
+  pageSize:number;
+  type:string;
+  role:string
+}
+export type lastBillingsDT={
+  paid:number
+  dateOfPayment:string;
+  role:string;
+  type:string;
+  billingInfo: lastBillingInfoDT[];
+}
+
+export type lastBillingInfoDT = {
+  id: number;
+  manager:roleInfo
+  hour: number;
+  amountPaid: number;
+}
+export type roleInfo={
+  name:string;
+  locality:string;
+  image:string
+}
+
