@@ -271,7 +271,8 @@ const TimeWiseDisbursements = () => {
                                 Time wise disbursement
                             </h1>
 
-                            <button onClick={onDateSearch} className='rounded-[6px] flex px-4 items-center gap-x-3 bg-default h-8'>
+                            <button onClick={onDateSearch}
+                                    className='rounded-[6px] flex px-4 items-center gap-x-3 bg-default h-8'>
                                 <h1 className='text-ct-blue-90 text-[13px]'>2022</h1>
                                 <div className='h-[4px] w-[6px]'>
                                     <img src={arrowDropDownIcon} alt=""/>
@@ -288,7 +289,7 @@ const TimeWiseDisbursements = () => {
                                         {/*<div className="absolute  bottom-20 text-white bg-black h-10">hello </div>*/}
                                         <div
                                             style={{bottom: `${(163 / 16) + (dimensionValue[i] / 2)}rem`}}
-                                            className={`absolute z-40 w-[350px]  group-hover:block hidden
+                                            className={`absolute animate-fadeIn2 z-40 w-[350px]  group-hover:block hidden
 
                          bg-[#59C1BD] ${disbursementData.length === 12 ? i < 2 ? "-left-10" : "" : disbursementData.length > 12 ? i < Math.round((2 * disbursementData.length) / 12) ? "-left-10" : "" : disbursementData.length < 12 ? i === 0 ? "-left-10" : "" : ""}`}>
                                             <div className='rounded-[12px] px-5 py-4 bg-[#212121] absolute'>
@@ -369,7 +370,7 @@ const TimeWiseDisbursements = () => {
                                         </div>
 
 
-                                        <div key={m.id} className={`flex flex-col justify-center items-center mt-8`}>
+                                        <div key={m.id} className={`flex flex-col justify-center items-center mt-8 `}>
                                             {/*<div key={m.id} className=" flex flex-col justify-center items-center ">*/}
                                             <div className="flex items-center duration-300 absolute ">
                                                 {/*<div className="flex items-center duration-300">*/}
@@ -392,9 +393,9 @@ const TimeWiseDisbursements = () => {
                                                                             : "#CCDDFE"
                                                         }`,
                                                     }}
-                                                    className={`relative z-20 text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center ring-2 ${i % 3 === 0 ? 'ring-[#E5BEBE] hover:shadow-light-tomato' : (i % 4 === 0) ? 'ring-[#E8DFBA] hover:shadow-light-periwinkle' :  (i % 5 === 0) ? 'ring-[#D1E8C7] hover:shadow-light-onahau ' :  i % 2 === 0
+                                                    className={`relative z-20 text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center ring-2 ${i % 3 === 0 ? 'ring-[#E5BEBE] hover:shadow-light-tomato' : (i % 4 === 0) ? 'ring-[#E8DFBA] hover:shadow-light-periwinkle' : (i % 5 === 0) ? 'ring-[#D1E8C7] hover:shadow-light-onahau ' : i % 2 === 0
                                                         ? "ring-[#BAE3E8] hover:shadow-light-onahau"
-                                                        : "ring-[#BACAE8] hover:shadow-light-yellow" } hover:ring-offset-2 `}
+                                                        : "ring-[#BACAE8] hover:shadow-light-yellow"} hover:ring-offset-2 `}
                                                 >
                                                     {
                                                         // dimensionValue[i] - (30/16) >= (5/16) &&
@@ -429,7 +430,7 @@ const TimeWiseDisbursements = () => {
 
                     </div>
 
-                    <div className="w-[273px]">
+                    <div className="w-[273px] ml-auto">
                         <div
                             className="px-2 flex items-center h-[32px] border-none bg-blue-gray-10 hover:bg-blue-gray-40 rounded-[6px] gap-x-2"
                             onClick={() => setShowModal(true)}

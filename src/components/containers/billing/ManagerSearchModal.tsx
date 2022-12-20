@@ -119,7 +119,7 @@ const ManagerSearchModal = ({
 
 
     return (
-        <div className='fixed top-0 left-0 flex justify-center items-center w-full h-screen z-40'>
+        <div className='fixed top-0 left-0 flex justify-center items-center w-full h-screen z-40 animate-fadeIn2'>
             <div className="fixed top-0 left-0 opacity-50 bg-black w-full h-screen z-40"
                  onClick={() => outsideModalClick()}/>
             <div className="relative z-50">
