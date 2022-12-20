@@ -6,7 +6,9 @@ interface ContextProps {
   loading: boolean;
   errorMsg: string;
   GetAmountDisbursed: () => void;
+  handleAmountDropDown: (value: number) => void;
   amountDisbursed: totalAmountDisbursedDT | undefined;
+  amountDropDown: number | undefined;
 }
 
 export const BillingContext = createContext({} as ContextProps);
@@ -14,6 +16,7 @@ export const BillingContext = createContext({} as ContextProps);
 const BillingProvider = ({ children }: { children: any }) => {
   const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
+  const [amountDropDown, setAmountDropDown] = useState<number>();
   const [amountDisbursed, setAmountDisbursed] =
     useState<totalAmountDisbursedDT>();
 
@@ -21,9 +24,15 @@ const BillingProvider = ({ children }: { children: any }) => {
     setLoading(true);
     setErrorMsg("");
     // fetch data from api
-    const response = BillingService.amountDisbursed();
-    setAmountDisbursed(response);
+    const response = await BillingService.amountDisbursed();
+    // console.log("response", response.data);
+    setAmountDisbursed(response.data);
+    setAmountDropDown(response.data.yearList[0]);
     setLoading(false);
+  };
+
+  const handleAmountDropDown = (value: number) => {
+    setAmountDropDown(value);
   };
 
   return (
@@ -33,6 +42,8 @@ const BillingProvider = ({ children }: { children: any }) => {
         errorMsg,
         GetAmountDisbursed,
         amountDisbursed,
+        handleAmountDropDown,
+        amountDropDown,
       }}
     >
       {children}

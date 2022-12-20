@@ -11,7 +11,7 @@ const Primary = () => {
         </h3>
       </div>
       <div className="flex items-center">
-        <img src={Icons.user1} alt="user1" className="w-6 h-6 mr-2" />
+        <img src={Icons.admin} alt="user1" className="w-6 h-6 mr-2" />
         <div>
           <h4 className="text-xxs text-ct-blue-95 font-medium mb-0.5">
             Md. Jalal Uddin
