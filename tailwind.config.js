@@ -26,6 +26,11 @@ module.exports = {
       },
       boxShadow: {
         "light-blue": "0px 0px 12px #FFFFFF",
+        "light-tomato": "0px 2px 18px #FFD3D3",
+        "light-periwinkle": "0px 2px 18px #FFF5CC",
+        "light-onahau": "0px 2px 18px #E2FBD7",
+        "light-orinoco": "0px 2px 18px #CCF8FE",
+        "light-yellow": "0px 2px 18px #CCDDFE",
         "bottom-light-blue": "0px 3px 10px #2C79BE, 0px 0px 1px #2C79BE",
       },
       colors: {

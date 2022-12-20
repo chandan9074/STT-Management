@@ -10,9 +10,7 @@ const Billing = () => {
     <>
       <TotalAmountDisbursed />
       <TimeWiseDisbursements />
-      <BillingListIndex />
-        {/*<CustomizeCalender/>*/}
-        {/*<CustomRangeCalender/>*/}
+      {/*<BillingListIndex />*/}
     </>
   );
 };

@@ -31,10 +31,56 @@
 .ant-select-item-option-active {
     background: #E1EFFE !important;
 }
+
+.ant-select-item-option-active:after {
+    background-image: url('../../../assets/Icons/check.png');
+    margin-top: 5px;
+    background-size: 15px 10px;
+    display: inline-block;
+    width: 15px;
+    height: 10px;
+    content:"";
+    object-fit: contain;
+
+}
+
 .ant-select-item-option-active:hover {
     background: #E1EFFE !important;
 }
+.ant-select-single.ant-select-show-arrow .ant-select-selection-item {
+    display: flex;
+    align-items: center;
+    /*background: #E9EDF3;*/
+    height: 100%;
+}
 
+.ant-select-single.ant-select-show-arrow .ant-select-selection-item img {
+    margin-top: 6px !important;
+}
+
+ .searchByRoleSelect .ant-select-selector{
+     background: #E9EDF3 !important;
+}
+
+.searchByRoleSelect .ant-select-single.ant-select-show-arrow .ant-select-selection-item {
+    display: flex;
+    align-items: center;
+    background: #E9EDF3;
+    height: 100%;
+}
+
+ .notSelect .ant-select-selector{
+     background: white !important;
+}
+
+
+.ant-select-item-option-content {
+     /*background: ;*/
+}
+
+/* .ant-select-selector {*/
+/*    !*background: #E9EDF3;*!*/
+/*}*/
 
 
 /*.ant-select-selection {*/

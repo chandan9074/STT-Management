@@ -1,9 +1,8 @@
 import React, {createContext, useState} from 'react';
-import ManagerService from "../services/ManagerService";
+import TimeWiseDisbursementService from "../services/TimeWiseDisbursementService";
 
 interface ContextProps {
     loading: boolean;
-    errorMsg: string;
     disbursementData: any;
     getManagerDisbursement: any;
     singleManager: any;
@@ -19,7 +18,6 @@ interface ContextProps {
 export const ManagerContext = createContext({} as ContextProps);
 const ManagerProvider = ({ children }: { children: any }) => {
     const [loading, setLoading] = useState(true);
-    const [errorMsg, setErrorMsg] = useState("");
     const [disbursementData, setDisbursementData] = useState<any>([]);
     const [managerDatas, setManagerDatas] = useState<any>([]);
     const [singleManager, setSingleManager] = useState<any>({});
@@ -29,10 +27,11 @@ const ManagerProvider = ({ children }: { children: any }) => {
     const getManagerDisbursement = async (data: any) => {
         try {
             setLoading(true);
-            const res = await ManagerService.getManagerDisbursement(data);
-            setDisbursementData(res.data.disbursementData[0]);
-            setTotalDisbursed(res.data);
-            // setManagerData('This is manager data')
+            const res = await TimeWiseDisbursementService.getManagerDisbursement(data);
+            setDisbursementData(res?.data?.data);
+            // setDisbursementData(res?.data);
+            setTotalDisbursed(res?.data);
+            // setTotalDisbursed(res);
             setLoading(false);
 
         } catch (error) {
@@ -46,7 +45,7 @@ const ManagerProvider = ({ children }: { children: any }) => {
     const getManager = async (data: any) => {
         try {
             setLoading(true);
-            const res = await ManagerService.getManager(data);
+            const res = await TimeWiseDisbursementService.getManager(data);
             setManagerDatas(res.data)
             // setManagerData('This is manager data')
             setLoading(false);
@@ -62,7 +61,7 @@ const ManagerProvider = ({ children }: { children: any }) => {
     const getManagerById = async (id: any) => {
         try {
             setManagerLoading(true);
-            const response = await ManagerService.getManagerById(id);
+            const response = await TimeWiseDisbursementService.getManagerById(id);
             setSingleManager(response[0]);
             setManagerLoading(false);
         } catch (error) {
@@ -74,7 +73,7 @@ const ManagerProvider = ({ children }: { children: any }) => {
     const deleteManager = async (id: any) => {
         try {
             setLoading(true);
-            const res = await ManagerService.deleteManager(id);
+            const res = await TimeWiseDisbursementService.deleteManager(id);
             setManagerDatas(res);
             setLoading(false);
 
@@ -90,7 +89,6 @@ const ManagerProvider = ({ children }: { children: any }) => {
         <ManagerContext.Provider
             value={{
                 loading,
-                errorMsg,
                 disbursementData,
                 getManagerDisbursement,
                 singleManager,

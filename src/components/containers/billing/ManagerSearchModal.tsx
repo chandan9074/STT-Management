@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {CloseOutlined} from "@ant-design/icons";
+import {CloseOutlined, StepBackwardOutlined} from "@ant-design/icons";
 import {Form, Select} from "antd";
 import militaryImg from '../../../assets/Icons/military_tech.png';
 import homeImg from '../../../assets/Icons/home.png';
@@ -12,7 +12,11 @@ import arrowDropDownIcon from '../../../assets/Icons/arrow_drop_down.png';
 
 const {Option} = Select;
 
-const ManagerSearchModal = ({setShowModal, managerContext, role}: { setShowModal: any; managerContext: any; role: string }) => {
+const ManagerSearchModal = ({
+                                setShowModal,
+                                managerContext,
+                                role
+                            }: { setShowModal: any; managerContext: any; role: string }) => {
 
     const [form] = Form.useForm();
 
@@ -21,6 +25,8 @@ const ManagerSearchModal = ({setShowModal, managerContext, role}: { setShowModal
 
     const [isDropDownVisible, setIsDropDownVisible] = useState<boolean>(false);
     const [dropDownCount, setDropDownCount] = useState<number>(0);
+    const [isDropDownSelect, setIsDropDownSelect] = useState<boolean>(false);
+    const [count, setCount] = useState<Number>(0);
 
     const [isInputKeyDown, setIsInputKeyDown] = useState<boolean>(false);
 
@@ -29,6 +35,12 @@ const ManagerSearchModal = ({setShowModal, managerContext, role}: { setShowModal
         managerContext.getManager(role);
         // document.addEventListener('click', handleClickOutside, true);
     }, []);
+
+    useEffect(() => {
+        if (isDropDownSelect) {
+            setCount(1);
+        }
+    }, [isDropDownSelect]);
 
     useEffect(() => {
         if (dropDownCount === 2) {
@@ -41,29 +53,37 @@ const ManagerSearchModal = ({setShowModal, managerContext, role}: { setShowModal
     const handleMangerChange = (id: any, p: any) => {
         console.log('p', p)
         managerContext.getManagerById(p.key);
-        form.resetFields();
+        // form.resetFields();
     }
 
     const deleteManager = (id: any) => {
         managerContext.setSingleManager({});
+        setIsDropDownSelect(false);
         form.resetFields();
     }
 
-    const onDropDownVisible = (e: any) => {
+    console.log('drop,,,', isDropDownSelect);
 
+    const onDropDownVisible = (e: any) => {
+        console.log('........................')
         setIsDropDownVisible(true);
-        setDropDownCount(dropDownCount+1)
+        setDropDownCount(dropDownCount + 1);
+
+        if (count === 1) {
+            setIsDropDownSelect(false);
+            setCount(0);
+        }
 
     }
 
 
     const onInputKeyDown = () => {
         setIsInputKeyDown(true);
-        console.log('input down')
     }
 
     const onSelect = () => {
-        console.log('select')
+
+        setIsDropDownSelect(true);
     }
 
     const onClose = () => {
@@ -71,10 +91,18 @@ const ManagerSearchModal = ({setShowModal, managerContext, role}: { setShowModal
         setShowModal(false)
     }
 
+    const onDropDownClick = () => {
+        // if (count === 1) {
+        //     setIsDropDownSelect(false);
+        //     setCount(0);
+        // }
+    }
+
 
     return (
-        <div className='absolute top-0 left-0 flex justify-center items-center w-full h-screen z-40'>
-            <div className="absolute top-0 left-0 opacity-50 bg-black w-full h-screen z-40" onClick={()=> setShowModal(false)} />
+        <div className='fixed top-0 left-0 flex justify-center items-center w-full h-screen z-40'>
+            <div className="fixed top-0 left-0 opacity-50 bg-black w-full h-screen z-40"
+                 onClick={() => setShowModal(false)}/>
             <div className="relative z-50">
                 <div
                     className="border-0 rounded-lg shadow-lg relative flex flex-col w-[700px] bg-white outline-none focus:outline-none">
@@ -105,19 +133,23 @@ const ManagerSearchModal = ({setShowModal, managerContext, role}: { setShowModal
                                         name="managerId"
                                     >
 
-                                        <div className={`relative ${!isEmpty(singleManager) && 'bg-blue-gray-20'} border-[1px] ${isDropDownVisible ? 'border-secondary-blue-50' : 'border-blue-gray-20'} rounded-[7px] h-[44px] flex justify-center items-center`}>
+                                        <div
+                                            // className={`relative ${!isEmpty(singleManager) && 'bg-blue-gray-20'} border-[1px] ${isDropDownVisible ? 'border-secondary-blue-50' : 'border-blue-gray-20'} rounded-[7px] h-[44px] flex justify-center items-center ${(isDropDownSelect)  && 'searchByRoleSelect'}`}>
+                                            className={`relative ${!isEmpty(singleManager) && 'bg-blue-gray-20'} border-[1px] ${isDropDownVisible ? 'border-secondary-blue-50' : 'border-blue-gray-20'} rounded-[7px] h-[44px] flex justify-center items-center ${(isDropDownSelect)  && 'searchByRoleSelect'}`}>
 
                                             <Select
+                                                // mode='multiple'
+                                                onClick={onDropDownClick}
                                                 onDropdownVisibleChange={onDropDownVisible}
                                                 onInputKeyDown={onInputKeyDown}
-                                                onClear={onSelect}
+                                                onSelect={onSelect}
                                                 showSearch
                                                 placeholder={`Select ${role} by Login ID/ Name`}
                                                 className={`w-[90%] ${!isEmpty(singleManager) && 'bg-blue-gray-20'}`}
                                                 style={{border: 'none'}}
                                                 // style={{height: '44px', borderRadius: '40px'}}
                                                 onChange={(value, p) => handleMangerChange(value, p)}
-                                                disabled={!isEmpty(singleManager)}
+                                                // disabled={!isEmpty(singleManager)}
                                                 filterOption={(inputValue: any, option: any) =>
                                                     option.value.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0 ||
                                                     option.contact.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0
@@ -136,14 +168,15 @@ const ManagerSearchModal = ({setShowModal, managerContext, role}: { setShowModal
                                                     ))
                                                 }
                                             </Select>
-                                            <div className={!isDropDownVisible ? 'bg-whitelock h-[24px] w-[24px] flex justify-center items-center pr-[15px]' : 'hidden'}>
+                                            <div
+                                                className={(!isDropDownVisible) ? 'bg-whitelock h-[24px] w-[24px] flex justify-center items-center pr-[15px]' : 'hidden'}>
                                                 <img className='' src={arrowDropDownIcon} alt=""/>
                                             </div>
                                         </div>
 
 
-
-                                        <div className={isDropDownVisible ? 'bg-white px-[6px] block w-[fit-content] absolute bottom-[34px] left-[12px]' : 'hidden'}>
+                                        <div
+                                            className={isDropDownVisible ? 'bg-white px-[6px] block w-[fit-content] absolute bottom-[34px] left-[12px]' : 'hidden'}>
                                             <p className='text-blue-gray-80 text-[12px]'>{role}</p>
                                         </div>
                                     </Form.Item>
@@ -185,7 +218,8 @@ const ManagerSearchModal = ({setShowModal, managerContext, role}: { setShowModal
                                     </button>
                                 </div>
                                 <div className='w-full flex justify-center items-center mt-[25px]'>
-                                    <button className='w-[237px] h-[44px] text-white text-[16px] bg-primary-ct-blue-60 rounded-[6px]'>
+                                    <button
+                                        className='w-[237px] h-[44px] text-white text-[16px] bg-primary-ct-blue-60 rounded-[6px]'>
                                         Search Payment History
                                     </button>
                                 </div>
@@ -203,19 +237,6 @@ const ManagerSearchModal = ({setShowModal, managerContext, role}: { setShowModal
                 </div>
 
             </div>
-            {/*<div onClick={() => setShowModal(false)} className='absolute z-40 opacity-0 top-0 left-0 h-screen w-full bg-black'></div>*/}
-
-            {/*<div*/}
-            {/*    className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"*/}
-            {/*>*/}
-
-                {/*<div className="relative my-6 mx-auto max-w-3xl w-[640px] h-[377px]">*/}
-                {/*<div className="relative my-6 mx-auto max-w-3xl w-[640px] h-[377px]">*/}
-                    {/*content*/}
-
-                {/*</div>*/}
-            {/*</div>*/}
-            {/*<div onClick={() => console.log('clicked')} className="opacity-25 fixed inset-0 z-40 bg-black"></div>*/}
         </div>
     );
 };
