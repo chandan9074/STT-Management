@@ -5,11 +5,65 @@ import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
 import './customizeCalender.css'
 import CloseIcon from '../../assets/Icons/close.png'
+import {InputAdornment, styled, TextField} from "@mui/material";
 
 dayjs.extend(isBetween)
 
 
-const CustomRangeCalender = () => {
+const CssTextField = styled(TextField)({
+    '& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root': {
+        color: "white",
+        background: "black",
+        borderRadius: "4px"
+    },
+    '& .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root': {
+        background: "black",
+
+    },
+    '& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input': {
+        color: "white",
+        fontSize:"12px",
+        background: "black",
+    },
+    '& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {
+        color: "white",
+
+    },
+    '& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root': {
+        color: "white",
+        fontSize: "12px"
+
+    },
+    '& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
+        color: "white",
+        fontSize: "12px",
+        background: "black",
+        borderRadius: "4px"
+
+    },
+    '& label.Mui-focused': {
+        // color: 'green',
+    },
+    '& .MuiInput-underline:after': {
+        borderBottomColor: 'green',
+    },
+    '& .MuiOutlinedInput-root': {
+        '& fieldset': {
+            borderColor: 'none',
+        },
+        '&:hover fieldset': {
+            // borderColor: 'yellow',
+        },
+        '&.Mui-focused fieldset': {
+            // borderColor: 'green',
+            color: "white !important"
+        },
+    },
+});
+interface Props{
+    trigger:boolean
+}
+const CustomRangeCalender = ({trigger}:Props) => {
 
     const [fistClick, setFirstClick] = useState<boolean>(false);
 
@@ -108,15 +162,15 @@ const CustomRangeCalender = () => {
         }
     }
 
-    console.log('-------------------', inputDate.start.length)
+    // @ts-ignore
     return (
         <div className="custom-range-calender">
             <DatePicker
                 showToday={false}
-                open={true}
+                open={trigger}
                 onChange={getCalenderDate}
                 disabledDate={idDisabledDate}
-
+                suffixIcon={null}
                 value={date && (date.start || date.end)} // Important for render the component
                 dateRender={(current) => {
 
@@ -163,34 +217,83 @@ const CustomRangeCalender = () => {
                             className="flex gap-2"
                         >
                             <div className="relative">
-                                <Input
-                                    suffix={inputDate.start ? <img
-                                        className="h-3 w-3 cursor-pointer"
-                                        src={CloseIcon}
-                                        alt="network-error"
-                                        onClick={()=>handleClear('start')}/> : null}
+                                <CssTextField
+                                    id="startDate"
+                                    label="Start Date"
+                                    variant="outlined"
                                     className="bg-black-90 text-white border-none "
-                                    // placeholder="Start Date"
                                     value={inputDate ? inputDate.start : ""}
                                     onClick={() => inputClickEvent("start")}
                                     onKeyDown={(e) => handleInputDateEnter(e, "start")}
                                     onChange={(e) => handleInputDateChange(e, "start")}
+                                    InputProps={{
+                                        endAdornment: <InputAdornment
+                                            position="end"
+                                        >
+                                            {
+                                                inputDate.start && <img
+                                                    className="h-3 w-3 cursor-pointer"
+                                                    src={CloseIcon}
+                                                    alt="network-error"
+                                                    onClick={() => handleClear('start')}/>
+                                            }
+                                        </InputAdornment>,
+                                    }}
+
                                 />
+                                {/*<Input*/}
+                                {/*    suffix={inputDate.start ? <img*/}
+                                {/*        className="h-3 w-3 cursor-pointer"*/}
+                                {/*        src={CloseIcon}*/}
+                                {/*        alt="network-error"*/}
+                                {/*        onClick={()=>handleClear('start')}/> : null}*/}
+                                {/*    className="bg-black-90 text-white border-none "*/}
+                                {/*    // placeholder="Start Date"*/}
+                                {/*    value={inputDate ? inputDate.start : ""}*/}
+                                {/*    onClick={() => inputClickEvent("start")}*/}
+                                {/*    onKeyDown={(e) => handleInputDateEnter(e, "start")}*/}
+                                {/*    onChange={(e) => handleInputDateChange(e, "start")}*/}
+                                {/*/>*/}
                                 {/*<small style={{left:"12px",bottom:"32px"}} className="text-white bg-ct-blue-60 absolute">Start Date</small>*/}
                             </div>
                             <div className="relative">
-                                <Input
-                                    suffix={<img
-                                        className="h-3 w-3 cursor-pointer"
-                                        src={CloseIcon}
-                                        alt="network-error"
-                                        onClick={() => handleClear('end')}/>}
+                                <CssTextField
+                                    id="endDate"
+                                    label="End Date"
+                                    variant="outlined"
                                     className="bg-black-90 text-white border-none "
                                     value={inputDate ? inputDate.end : ""}
                                     onClick={() => inputClickEvent("end")}
                                     onKeyDown={(e) => handleInputDateEnter(e, "end")}
                                     onChange={(e) => handleInputDateChange(e, "end")}
+
+                                    InputProps={{
+                                        endAdornment: <InputAdornment
+                                            position="end"
+                                        >
+                                            {
+                                                inputDate.end &&  <img
+                                                    className="h-3 w-3 cursor-pointer"
+                                                    src={CloseIcon}
+                                                    alt="network-error"
+                                                    onClick={() => handleClear('end')}/>
+                                            }
+                                        </InputAdornment>,
+                                    }}
+
                                 />
+                                {/*<Input*/}
+                                {/*    suffix={<img*/}
+                                {/*        className="h-3 w-3 cursor-pointer"*/}
+                                {/*        src={CloseIcon}*/}
+                                {/*        alt="network-error"*/}
+                                {/*        onClick={() => handleClear('end')}/>}*/}
+                                {/*    className="bg-black-90 text-white border-none "*/}
+                                {/*    value={inputDate ? inputDate.end : ""}*/}
+                                {/*    onClick={() => inputClickEvent("end")}*/}
+                                {/*    onKeyDown={(e) => handleInputDateEnter(e, "end")}*/}
+                                {/*    onChange={(e) => handleInputDateChange(e, "end")}*/}
+                                {/*/>*/}
                             </div>
                         </div>
                         <div>

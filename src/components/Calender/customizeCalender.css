@@ -70,8 +70,11 @@
      border: none;
 
 }
-.custom-range-calender, .ant-input{
-    background: #121212;
-    color: #F9FAFC;
+
+:where(.css-dev-only-do-not-override-1s3dcof).ant-picker .ant-picker-input >input{
+    display: none;
+}
+:where(.css-dev-only-do-not-override-1s3dcof).ant-picker{
+    border: none;
 }
 

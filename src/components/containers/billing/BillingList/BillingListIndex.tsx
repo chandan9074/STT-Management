@@ -7,11 +7,12 @@ import ManagerIcon from "../../../../assets/images/BillingManagerAvatar.png"
 import BillingService from "../../../../services/billingService";
 import {allBillingParamsDT, lastBillingInfoDT, lastBillingParamsDT} from "../../../../types/billingTypes";
 import {BillingContext} from "../../../../context/BillingProvider";
+import CustomRangeCalender from "../../../Calender/CustomRangeCalender";
 
 interface Person {
     name: string;
     locality: string;
-    image?:string
+    image?: string
 }
 
 export interface BillingDataType {
@@ -91,9 +92,9 @@ const BillingListIndex = () => {
         type: "stt",
         role: "Manager"
     })
-    const [lastBillingsParams,setLastBillingsParams]=useState<lastBillingParamsDT>({
-        page:1,
-        pageSize:10,
+    const [lastBillingsParams, setLastBillingsParams] = useState<lastBillingParamsDT>({
+        page: 1,
+        pageSize: 10,
         type: "stt",
         role: "Manager"
     })
@@ -103,7 +104,7 @@ const BillingListIndex = () => {
         GetLastBillingsInfo,
         lastBillings,
         allBillings
-    }=billingContext
+    } = billingContext
     useEffect(() => {
         GetAllBillingInfo(billingsParam)
         GetLastBillingsInfo(lastBillingsParams)
@@ -116,13 +117,13 @@ const BillingListIndex = () => {
 
     }
 
-    const listedLastBillings:BillingDataType[]=[]
-    const _res=lastBillings?.billingInfo.map((data)=>{
+    const listedLastBillings: BillingDataType[] = []
+    const _res = lastBillings?.billingInfo.map((data) => {
         listedLastBillings.push({
             key: data.id,
             manager: {
-                name:data.manager.name,
-                locality:data.manager.locality
+                name: data.manager.name,
+                locality: data.manager.locality
             },
             hour: `${data.hour} hr`,
             amountPaid: ` ${data.amountPaid} /-`,
@@ -130,7 +131,7 @@ const BillingListIndex = () => {
     })
 
     const listedAllBillings: AllBillingDataType[] = []
-    const res=allBillings?.billingInfo.map((data)=>{
+    const res = allBillings?.billingInfo.map((data) => {
         listedAllBillings.push({
             key: data.id,
             date: data.date,
@@ -196,6 +197,8 @@ const BillingListIndex = () => {
                     columnsData={allBillingColumns}
                     dataSources={listedAllBillings}/>
             </div>
+
+            <CustomRangeCalender trigger={true}/>
 
         </div>
     );
