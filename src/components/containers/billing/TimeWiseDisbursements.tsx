@@ -392,7 +392,9 @@ const TimeWiseDisbursements = () => {
                                                                             : "#CCDDFE"
                                                         }`,
                                                     }}
-                                                    className={`relative z-20 text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center`}
+                                                    className={`relative z-20 text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center ring-2 ${i % 3 === 0 ? 'ring-[#E5BEBE] hover:shadow-light-tomato' : (i % 4 === 0) ? 'ring-[#E8DFBA] hover:shadow-light-periwinkle' :  (i % 5 === 0) ? 'ring-[#D1E8C7] hover:shadow-light-onahau ' :  i % 2 === 0
+                                                        ? "ring-[#BAE3E8] hover:shadow-light-onahau"
+                                                        : "ring-[#BACAE8] hover:shadow-light-yellow" } hover:ring-offset-2 `}
                                                 >
                                                     {
                                                         // dimensionValue[i] - (30/16) >= (5/16) &&
