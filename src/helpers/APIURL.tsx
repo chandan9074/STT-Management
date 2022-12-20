@@ -6,3 +6,7 @@ export const GET_MANAGER_BY_ID_URL = `${REACT_APP_BASE_URL}/managers/get-get-by-
 export const DELETE_MANAGER_BY_ID_URL = `${REACT_APP_BASE_URL}/managers/delete`;
 export const GET_TOTAL_AMOUNT_DISBURSEMENTS_URL = `${REACT_APP_BASE_URL}/total-amount-disbursed`;
 
+
+//Billing Info
+export const GET_ALL_BILLING_INFO_URL  =`${REACT_APP_BASE_URL}/all-billing-info`;
+export const GET_LAST_BILLING_INFO_URL  =`${REACT_APP_BASE_URL}/last-billing-info`;
