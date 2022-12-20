@@ -7,6 +7,7 @@ export const paymentHistory = {
   address: "Dhaka",
   totalPaid: "25,000",
   totalHours: "750",
+  noOfPayments: 30,
   paymentHistory: [
     {
       id: "1",

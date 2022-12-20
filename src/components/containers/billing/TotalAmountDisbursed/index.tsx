@@ -6,39 +6,58 @@ import HistoryChartPart from "./HistoryChartPart";
 import { BillingContext } from "../../../../context/BillingProvider";
 
 const TotalAmountDisbursed = () => {
-  const [currentYear, setCurrentYear] = useState(amountDisbursed.yearList[0]);
+  const [currentYear, setCurrentYear] = useState(0);
   const [currentData, setCurrentData] = useState<yearlyDataDT>();
 
   const billingContext = useContext(BillingContext);
 
   useEffect(() => {
     billingContext.GetAmountDisbursed();
+    console.log("askdfjalsdkfj aadsf");
+    // if (billingContext.amountDisbursed) {
+    //   billingContext.handleAmountDropDown(
+    //     billingContext.amountDisbursed.yearList[0]
+    //   );
+    // }
+  }, []);
 
-    if (billingContext.amountDisbursed) {
+  useEffect(() => {
+    console.log("billingContext.amountDropDown", billingContext.amountDropDown);
+    if (billingContext.amountDisbursed && billingContext.amountDropDown) {
       const data = billingContext.amountDisbursed.yearlyData.filter(
-        (item) => item.year === currentYear
+        (item) => item.year === billingContext.amountDropDown
       );
+      console.log("hello man", data);
       if (data) {
+        console.log("data", data[0]);
         setCurrentData(data[0]);
       }
     }
-  }, [currentYear, billingContext]);
+  }, [
+    currentData,
+    billingContext.amountDisbursed,
+    billingContext.amountDropDown,
+  ]);
 
   return (
     <div className="py-4 px-6 rounded-md bg-primary-ct-blue-60 grid grid-cols-12 shadow-bottom-light-blue">
       <div className="col-span-4">
-        <AmountPart
-          totalAmount={amountDisbursed.totalAmount}
-          totalHours={amountDisbursed.totalHours}
-        />
-      </div>
-      <div className="col-span-8 pl-16">
-        {currentData && (
-          <HistoryChartPart
-            currentData={currentData}
-            yearList={amountDisbursed.yearList}
+        {billingContext.amountDisbursed && (
+          <AmountPart
+            totalAmount={billingContext.amountDisbursed.totalAmount}
+            totalHours={billingContext.amountDisbursed.totalHours}
           />
         )}
+      </div>
+      <div className="col-span-8 pl-16">
+        {billingContext.amountDisbursed ? (
+          currentData ? (
+            <HistoryChartPart
+              currentData={currentData}
+              yearList={billingContext.amountDisbursed.yearList}
+            />
+          ) : null
+        ) : null}
       </div>
     </div>
   );

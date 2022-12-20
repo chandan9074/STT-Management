@@ -9,7 +9,7 @@ export type totalAmountDisbursedDT = {
 
 export type yearlyDataDT = {
   year: number;
-  maxDisbursed: number;
+  maxAmount: number;
   yearData: yearDataDT[];
 };
 
@@ -17,7 +17,7 @@ export type yearDataDT = {
   month: string;
   totalDisbursed: number | null;
   validHours: number | null;
-  monthlyDisbursed: disbursedDT[];
+  disbursed: disbursedDT[];
 };
 
 export type disbursedDT = {
@@ -35,6 +35,7 @@ export type paymentHistoryDT = {
   address: string,
   totalPaid: string,
   totalHours: string,
+  noOfPayments: number,
   paymentHistory: paymentHistoryDataDT[]
 }
 
