@@ -1,13 +1,17 @@
-import React from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import BillingTable from "./BillingTable";
 import {InputNumber} from "antd";
 import Primary from "./Primary";
 import {ColumnsType} from "antd/es/table";
 import ManagerIcon from "../../../../assets/images/BillingManagerAvatar.png"
+import BillingService from "../../../../services/billingService";
+import {allBillingParamsDT, lastBillingInfoDT, lastBillingParamsDT} from "../../../../types/billingTypes";
+import {BillingContext} from "../../../../context/BillingProvider";
 
 interface Person {
-    title: string;
-    subTitle: string;
+    name: string;
+    locality: string;
+    image?:string
 }
 
 export interface BillingDataType {
@@ -34,8 +38,8 @@ const lastBillingColumns: ColumnsType<BillingDataType | AllBillingDataType> = [
                 <div className="flex gap-2 items-start">
                     <img className="h-4 w-4 mt-1" src={ManagerIcon} alt=""/>
                     <div>
-                        <p className="font-sans font-medium text-xs">{data.title}</p>
-                        <p className="font-sans text-xxs text-blue-gray-75">{data.subTitle}</p>
+                        <p className="font-sans font-medium text-xs">{data.name}</p>
+                        <p className="font-sans text-xxs text-blue-gray-75">{data.locality}</p>
                     </div>
                 </div>
             </>
@@ -79,35 +83,61 @@ const allBillingColumns: ColumnsType<AllBillingDataType | BillingDataType> = [
     },
 ];
 
-const data: BillingDataType[] = [];
 
-for (let i = 0; i < 8; i++) {
-    data.push({
-        key: i,
-        manager: {
-            title: `Edward King ${i}`,
-            subTitle: `sub-title ${i}`,
-
-        },
-        hour: `${i} hr`,
-        amountPaid: ` ${i} /-`,
-    });
-
-
-}
-const anotherData: AllBillingDataType[] = []
-for (let i = 0; i < 8; i++) {
-    anotherData.push({
-        key: i,
-        date: `Date ${i}`,
-        hour: `${i} hr`,
-        amountPaid: ` ${i} /-`,
-    });
-}
 const BillingListIndex = () => {
-    const changeEntry = (value: any) => {
-        console.log('changed', value);
+    const [pageNumber, setPageNumber] = useState<number>(1)
+    const [billingsParam, setBillingsParam] = useState<allBillingParamsDT>({
+        pageSize: 1,
+        type: "stt",
+        role: "Manager"
+    })
+    const [lastBillingsParams,setLastBillingsParams]=useState<lastBillingParamsDT>({
+        page:1,
+        pageSize:10,
+        type: "stt",
+        role: "Manager"
+    })
+    const billingContext = useContext(BillingContext)
+    const {
+        GetAllBillingInfo,
+        GetLastBillingsInfo,
+        lastBillings,
+        allBillings
+    }=billingContext
+    useEffect(() => {
+        GetAllBillingInfo(billingsParam)
+        GetLastBillingsInfo(lastBillingsParams)
+    }, [billingsParam])
+    const changeEntry = (e: any) => {
+        setPageNumber(e)
     };
+    const handleChangeEntry = () => {
+        setBillingsParam((prev: any) => ({...prev, pageSize: pageNumber}))
+
+    }
+
+    const listedLastBillings:BillingDataType[]=[]
+    const _res=lastBillings?.billingInfo.map((data)=>{
+        listedLastBillings.push({
+            key: data.id,
+            manager: {
+                name:data.manager.name,
+                locality:data.manager.locality
+            },
+            hour: `${data.hour} hr`,
+            amountPaid: ` ${data.amountPaid} /-`,
+        });
+    })
+
+    const listedAllBillings: AllBillingDataType[] = []
+    const res=allBillings?.billingInfo.map((data)=>{
+        listedAllBillings.push({
+            key: data.id,
+            date: data.date,
+            hour: `${data.hour} hr`,
+            amountPaid: ` ${data.amountPaid} /-`,
+        });
+    })
     return (
         <div>
 
@@ -117,11 +147,11 @@ const BillingListIndex = () => {
                         Info</h2>
                     <div>
                         <p className="text-xxs text-ct-blue-90-70% mb-0">Paid</p>
-                        <p className="text-small text-ct-blue-95 font-medium">BDT 350</p>
+                        <p className="text-small text-ct-blue-95 font-medium">BDT {lastBillings?.paid}</p>
                     </div>
                     <div>
                         <p className="text-xxs text-ct-blue-90-70% mb-0">Date of Payment</p>
-                        <p className="text-small text-ct-blue-95 font-medium">30 Aug 2022</p>
+                        <p className="text-small text-ct-blue-95 font-medium">{lastBillings?.dateOfPayment}</p>
                     </div>
                 </div>
 
@@ -133,12 +163,12 @@ const BillingListIndex = () => {
 
             {/*    table------------------*/}
             <div>
-                <BillingTable columnsData={lastBillingColumns} dataSources={data}/>
+                <BillingTable columnsData={lastBillingColumns} dataSources={listedLastBillings}/>
                 <div className="my-4 w-100 flex items-center gap-8 justify-end">
                     <Primary total={50}/>
                     <div className="flex items-center gap-2">
                         <button>Entry</button>
-                        <InputNumber className="w-9" controls={false} min={1} max={10} defaultValue={1}
+                        <InputNumber className="w-12" controls={false} min={1} max={10} defaultValue={1}
                                      onChange={changeEntry}/>
                     </div>
                 </div>
@@ -152,13 +182,19 @@ const BillingListIndex = () => {
                 </div>
 
                 <div className="flex items-center gap-2">
-                    <button>Entry</button>
-                    <InputNumber controls={false} className="w-9" min={1} max={10} defaultValue={1}
-                                 onChange={changeEntry}/>
+                    <button onClick={handleChangeEntry}>Entry</button>
+                    <InputNumber
+                        controls={false}
+                        className="w-12"
+                        min={1}
+                        value={pageNumber}
+                        onChange={(e) => changeEntry(e)}/>
                 </div>
             </div>
             <div className="mb-10">
-                <BillingTable columnsData={allBillingColumns} dataSources={anotherData}/>
+                <BillingTable
+                    columnsData={allBillingColumns}
+                    dataSources={listedAllBillings}/>
             </div>
 
         </div>
