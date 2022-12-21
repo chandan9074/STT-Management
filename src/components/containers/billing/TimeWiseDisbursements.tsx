@@ -1,24 +1,24 @@
 import React, {useContext, useEffect, useState} from "react";
 import managerImage from "../../../assets/Icons/manager.png";
 import {SearchOutlined} from "@ant-design/icons";
-import ManagerSearchModal from "./ManagerSearchModal";
-import {ManagerContext} from "../../../context/ManagerProvider";
+import RoleSearchModal from "./RoleSearchModal";
+import {RoleInContext} from "../../../context/RoleProvider";
 import "./TimeWiseDisbursement.css";
 import BillingListIndex from "./BillingList/BillingListIndex";
 import Icons from "../../../assets/Icons";
 import arrowDropDownIcon from '../../../assets/Icons/arrow_drop_down.png';
+import {timeWiseDisbursementParamsDT, timeWiseYearDT} from "../../../types/billingTypes";
 
 const TimeWiseDisbursements = () => {
 
-    const barHeight = 125;
 
     const maxDim = 70;
     const minDim = 35;
 
-    const managerContext = useContext(ManagerContext);
-    const {disbursementData, singleManager, totalDisbursed} = managerContext;
+    const managerContext = useContext(RoleInContext);
+    const {disbursementData, totalDisbursed} = managerContext;
 
-    const [dimensionValue, setDimensionValue] = useState<any>([]);
+    const [dimensionValue, setDimensionValue] = useState<number[]>([]);
     const [isStt, setIsStt] = useState(true);
     const [isTts, setIsTts] = useState(false);
 
@@ -28,17 +28,18 @@ const TimeWiseDisbursements = () => {
     const initialData = {
         role: "Manager",
         type: "stt",
-        // start: '01-12-2021',
-        // end: '20-01-2022'
+        start: '',
+        end: ''
     };
 
-    const [search, setSearch] = useState<any>(initialData);
+    const [search, setSearch] = useState<timeWiseDisbursementParamsDT>(initialData);
 
 
     useEffect(() => {
         managerContext.getManagerDisbursement(search);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [search]);
+
 
     const [showModal, setShowModal] = React.useState(false);
 
@@ -84,12 +85,18 @@ const TimeWiseDisbursements = () => {
 
     useEffect(() => {
         // getChart();
-        if (disbursementData.length > 0) {
-            // getDimensionValue();
-            getNewDimension();
+        if (disbursementData) {
+            if (disbursementData.length > 0) {
+                // getDimensionValue();
+                getNewDimension();
+            }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [disbursementData]);
+
+    const handleModal = (value: boolean) => {
+        setShowModal(value)
+    }
 
 
     const onHandleStt = () => {
@@ -105,33 +112,37 @@ const TimeWiseDisbursements = () => {
     };
 
     const getNewDimension = () => {
-        let _data = disbursementData.map((m: any) => {
+        let _data = disbursementData?.map((m: timeWiseYearDT) => {
             return m.totalAmount;
         });
 
-        const min = Math.min(..._data);
-        const max = Math.max(..._data);
+        if (_data) {
+            const min = Math.min(..._data);
+            const max = Math.max(..._data);
 
-        const minValue = min;
-        const maxValue = max;
+            const minValue = min;
+            const maxValue = max;
 
-        const ratio = (maxDim - minDim + 1) / (maxValue - minValue);
+            const ratio = (maxDim - minDim + 1) / (maxValue - minValue);
 
-        const finalDimension = disbursementData.map((m: any) => {
-            let dimension;
+            const finalDimension = disbursementData?.map((m: timeWiseYearDT) => {
+                let dimension;
 
-            if (m.totalAmount === maxValue) {
-                dimension = maxDim;
+                if (m.totalAmount === maxValue) {
+                    dimension = maxDim;
+                }
+                if (m.totalAmount === minValue) {
+                    dimension = minDim;
+                } else {
+                    dimension = (m.totalAmount - minValue) * ratio + minDim;
+                }
+                return dimension / 16;
+            });
+
+            if (finalDimension) {
+                setDimensionValue(finalDimension);
             }
-            if (m.totalAmount === minValue) {
-                dimension = minDim;
-            } else {
-                dimension = (m.totalAmount - minValue) * ratio + minDim;
-            }
-            return dimension / 16;
-        });
-
-        setDimensionValue(finalDimension);
+        }
     };
 
     console.log('dimesion value', dimensionValue)
@@ -192,7 +203,7 @@ const TimeWiseDisbursements = () => {
 
 
     return (
-        <div className='pb-[50px]'>
+        <div className='pb-[50px] '>
             <div className="h-[153px] relative ">
                 {/*TTS STT Tab*/}
                 <div className="flex flex-col justify-center items-center">
@@ -258,12 +269,9 @@ const TimeWiseDisbursements = () => {
                             </div>
                         ))}
                 </div>
-
-                {/*Roles Tab*/}
             </div>
 
             <div className="p-10 bg-white shadow-md rounded-[8px]">
-                {/*<div className='col-span-3 h-[140px]'>*/}
                 <div className='grid grid-cols-4 gap-x-14'>
                     <div className="col-span-3 h-[140px]">
                         <div className='flex justify-between'>
@@ -271,7 +279,8 @@ const TimeWiseDisbursements = () => {
                                 Time wise disbursement
                             </h1>
 
-                            <button onClick={onDateSearch} className='rounded-[6px] flex px-4 items-center gap-x-3 bg-default h-8'>
+                            <button onClick={onDateSearch}
+                                    className='rounded-[6px] flex px-4 items-center gap-x-3 bg-default h-8'>
                                 <h1 className='text-ct-blue-90 text-[13px]'>2022</h1>
                                 <div className='h-[4px] w-[6px]'>
                                     <img src={arrowDropDownIcon} alt=""/>
@@ -282,31 +291,29 @@ const TimeWiseDisbursements = () => {
                         {/*<div className={`grid grid-cols-12`}>*/}
                         <div className="relative">
                             <div className="flex justify-between w-full relative px-10">
-                                {disbursementData.map((m: any, i: any) => (
+                                {disbursementData?.map((m: timeWiseYearDT, i: number) => (
                                     <div
-                                        className={`relative flex ${disbursementData.length === 12 ? i < 2 ? "justify-start" : "justify-center" : disbursementData.length > 12 ? i < Math.round((2 * disbursementData.length) / 12) ? "justify-start" : "justify-center" : disbursementData.length < 12 ? i === 0 ? "justify-start" : "justify-center" : ""} group`}>
+                                        key={m?.id}
+                                        className={`relative flex ${disbursementData?.length === 12 ? i < 2 ? "justify-start" : "justify-center" : disbursementData?.length > 12 ? i < Math.round((2 * disbursementData?.length) / 12) ? "justify-start" : "justify-center" : disbursementData?.length < 12 ? i === 0 ? "justify-start" : "justify-center" : ""} group`}>
                                         {/*<div className="absolute  bottom-20 text-white bg-black h-10">hello </div>*/}
                                         <div
-                                            style={{bottom: `${(163 / 16) + (dimensionValue[i] / 2)}rem`}}
-                                            className={`absolute z-40 w-[350px]  group-hover:block hidden
-
-                         bg-[#59C1BD] ${disbursementData.length === 12 ? i < 2 ? "-left-10" : "" : disbursementData.length > 12 ? i < Math.round((2 * disbursementData.length) / 12) ? "-left-10" : "" : disbursementData.length < 12 ? i === 0 ? "-left-10" : "" : ""}`}>
+                                            style={{bottom: `${(170 / 16) + (dimensionValue[i] / 2)}rem`}}
+                                            className={`absolute animate-fadeIn2 z-40 w-[350px]  group-hover:block hidden bg-[#59C1BD] ${disbursementData?.length === 12 ? i < 2 ? "-left-10" : "" : disbursementData?.length > 12 ? i < Math.round((2 * disbursementData?.length) / 12) ? "-left-10" : "" : disbursementData?.length < 12 ? i === 0 ? "-left-10" : "" : ""}`}>
                                             <div className='rounded-[12px] px-5 py-4 bg-[#212121] absolute'>
                                                 <div className="flex items-center">
                                                     <h1 className="text-base text-white mb-0 flex mr-4">
                                                         Disbursed:
                                                         <span className="font-bold flex ml-2">
-                            <span className="mr-1.5">BDT</span>{" "}
+                                                            <span className="mr-1.5">BDT</span>{" "}
                                                             {/*{item.totalDisbursed}*/}
                                                             {m?.totalAmount}
-                          </span>
+                                                        </span>
                                                     </h1>
                                                     <h1 className="text-base text-white mb-0 flex">
                                                         Valid:
                                                         <span className="font-bold flex ml-2">
-                            {/*{item.validHours}hr*/}
                                                             {m?.totalHours}
-                          </span>
+                                                        </span>
                                                     </h1>
                                                 </div>
 
@@ -314,20 +321,17 @@ const TimeWiseDisbursements = () => {
                                                 <div
                                                     className="mt-4 flex justify-between w-[300px] bg-winter-wizard bg-opacity-25 py-1.5 px-2 rounded-[4px]">
                                                     <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
-                          <span className="mr-1">
-                            {/*{item.monthlyDisbursed[0].day}*/}
-                              {m?.disbursed[0]?.day ? m?.disbursed[0]?.day : '00'}
-                          </span>
+                                                        <span className="mr-1">
+                                                            {m?.disbursed[0]?.day ? m?.disbursed[0]?.day : '00'}
+                                                        </span>
                                                         <span>
-                              {/*jan*/}
-                                                            {/*{item.month}*/}
-                            </span>
+                                                        </span>
                                                     </h3>
                                                     <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
-                          <span className="mr-1">
-                            {/*{item.monthlyDisbursed[0].hours}*/}
-                              {m?.disbursed[0]?.hours ? m?.disbursed[0]?.hours : '0'}
-                          </span>
+                                                        <span className="mr-1">
+                                                            {/*{item.monthlyDisbursed[0].hours}*/}
+                                                            {m?.disbursed[0]?.hours ? m?.disbursed[0]?.hours : '0'}
+                                                        </span>
                                                         hr
                                                     </h3>
                                                     <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
@@ -340,16 +344,17 @@ const TimeWiseDisbursements = () => {
                                                 <div
                                                     className="mt-0.5 flex justify-between w-[300px] bg-blue-gray-85 py-1.5 px-2 rounded-[4px]">
                                                     <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
-                          <span className="mr-1">
-                              {m?.disbursed[1]?.day ? m?.disbursed[1]?.day : '00'}
-                          </span>
+                                                        <span className="mr-1">
+
+                                                            {m?.disbursed[1]?.day ? m?.disbursed[1]?.day : '00'}
+                                                        </span>
                                                         {/*<span>{item.month}</span>*/}
                                                         {/*feb*/}
                                                     </h3>
                                                     <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
-                          <span className="mr-1">
-                            {m?.disbursed[1]?.hours ? m?.disbursed[1]?.hours : '0'}
-                          </span>
+                                                        <span className="mr-1">
+                                                            {m?.disbursed[1]?.hours ? m?.disbursed[1]?.hours : '0'}
+                                                            s</span>
                                                         hr
                                                     </h3>
                                                     <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
@@ -363,16 +368,14 @@ const TimeWiseDisbursements = () => {
                                             <img
                                                 src={Icons.blackDropArrow}
                                                 alt=""
-                                                className={`w-10 h-6 absolute top-[8.5rem] ${disbursementData.length === 12 ? i < 2 ? "left-5" : "left-1/2 transform -translate-x-1/2" : disbursementData.length > 12 ? i < Math.round((2 * disbursementData.length) / 12) ? "left-5" : "left-1/2 transform -translate-x-1/2" : disbursementData.length < 12 ? i === 0 ? "left-5" : "left-1/2 transform -translate-x-1/2" : ""}`}
+                                                className={`w-10 h-6 absolute top-[8.5rem] ${disbursementData?.length === 12 ? i < 2 ? "left-5" : "left-1/2 transform -translate-x-1/2" : disbursementData?.length > 12 ? i < Math.round((2 * disbursementData?.length) / 12) ? "left-5" : "left-1/2 transform -translate-x-1/2" : disbursementData?.length < 12 ? i === 0 ? "left-5" : "left-1/2 transform -translate-x-1/2" : ""}`}
                                             />
 
                                         </div>
 
 
-                                        <div key={m.id} className={`flex flex-col justify-center items-center mt-8`}>
-                                            {/*<div key={m.id} className=" flex flex-col justify-center items-center ">*/}
+                                        <div key={m.id} className={`flex flex-col justify-center items-center mt-8 `}>
                                             <div className="flex items-center duration-300 absolute ">
-                                                {/*<div className="flex items-center duration-300">*/}
                                                 <div
                                                     className={`h-[2px] border border-dashed flex-1 rounded-tl-md rounded-bl-md bg-[#D1D3D6]`}
                                                 />
@@ -392,9 +395,9 @@ const TimeWiseDisbursements = () => {
                                                                             : "#CCDDFE"
                                                         }`,
                                                     }}
-                                                    className={`relative z-20 text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center ring-2 ${i % 3 === 0 ? 'ring-[#E5BEBE] hover:shadow-light-tomato' : (i % 4 === 0) ? 'ring-[#E8DFBA] hover:shadow-light-periwinkle' :  (i % 5 === 0) ? 'ring-[#D1E8C7] hover:shadow-light-onahau ' :  i % 2 === 0
+                                                    className={`relative z-20 text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center ring-2 ${i % 3 === 0 ? 'ring-[#E5BEBE] hover:shadow-light-tomato' : (i % 4 === 0) ? 'ring-[#E8DFBA] hover:shadow-light-periwinkle' : (i % 5 === 0) ? 'ring-[#D1E8C7] hover:shadow-light-onahau ' : i % 2 === 0
                                                         ? "ring-[#BAE3E8] hover:shadow-light-onahau"
-                                                        : "ring-[#BACAE8] hover:shadow-light-yellow" } hover:ring-offset-2 `}
+                                                        : "ring-[#BACAE8] hover:shadow-light-yellow"} hover:ring-offset-2 transition duration-4000 ease-out hover:ease-in`}
                                                 >
                                                     {
                                                         // dimensionValue[i] - (30/16) >= (5/16) &&
@@ -429,7 +432,7 @@ const TimeWiseDisbursements = () => {
 
                     </div>
 
-                    <div className="w-[273px]">
+                    <div className="w-[273px] ml-auto">
                         <div
                             className="px-2 flex items-center h-[32px] border-none bg-blue-gray-10 hover:bg-blue-gray-40 rounded-[6px] gap-x-2"
                             onClick={() => setShowModal(true)}
@@ -440,20 +443,6 @@ const TimeWiseDisbursements = () => {
                             </h1>
                         </div>
 
-                        {/*<div className='input'>*/}
-                        {/*<Input*/}
-                        {/*    disabled={true}*/}
-                        {/*    size="large"*/}
-                        {/*    // onClick={showModal}*/}
-                        {/*    className='h-[32px] border-none bg-blue-gray-10 hover:bg-blue-gray-60'*/}
-                        {/*    // className='h-[32px] border-none bg-blue-gray-10 '*/}
-                        {/*    onClick={() => setShowModal(true)}*/}
-                        {/*    placeholder="Search Manager by Id or Name"*/}
-                        {/*    // prefix={<SearchOutlined style={{color: '#5F707F'}}/>}*/}
-                        {/*/>*/}
-                        {/*</div>*/}
-
-                        {/*Box*/}
                         <div
                             className="relative mt-[15px] w-full py-2 px-2 h-[140px] border-[1px] border-border-light-blue rounded-[4px]">
                             <h1 className="text-ct-blue-45 text-[13px] font-medium">
@@ -464,11 +453,11 @@ const TimeWiseDisbursements = () => {
                                     BDT
                                 </h1>
                                 <h1 className="text-[32px] bg-gradient-to-r from-[#F405FE] via-[#136EE5] to-[#EAA678] text-transparent bg-clip-text">
-                                    {totalDisbursed.totalDisbursedAmount}
+                                    {totalDisbursed?.totalDisbursedAmount}
                                 </h1>
                             </div>
 
-                            <div className="absolute flex w-full h-[110px] top-6 left-2 justify-center items-start">
+                            <div className="absolute flex w-full h-[110px] top-6 left-4 justify-center items-start">
                                 <div
                                     className="w-[2px] h-[92px] rotate-[18deg] bg-gradient-to-r from-border-light via-green-10 to-border-light"/>
                             </div>
@@ -477,7 +466,7 @@ const TimeWiseDisbursements = () => {
                                 <h1 className="text-ct-blue-90-70% text-[14px] ">Total Valid</h1>
                                 <span
                                     className="text-[32px] bg-gradient-to-r from-[#F405FE] via-[#136EE5] to-[#EAA678] text-transparent bg-clip-text">
-                {totalDisbursed.totalValidHours}hr
+                {totalDisbursed?.totalValidHours}hr
               </span>
                             </div>
                         </div>
@@ -494,10 +483,11 @@ const TimeWiseDisbursements = () => {
 
 
             {showModal ? (
-                <ManagerSearchModal
-                    setShowModal={setShowModal}
-                    managerContext={managerContext}
+                <RoleSearchModal
+                    // setShowModal={setShowModal}
+                    handleModal={handleModal}
                     role={search?.role}
+                    type={search?.type}
                 />
             ) : null}
         </div>

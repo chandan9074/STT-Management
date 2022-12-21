@@ -1,3 +1,5 @@
+import managerImage from "../../assets/Icons/manager.png";
+
 export const timeWiseDisbursement = {
     role: "Manager",
     type: "stt",
@@ -981,3 +983,34 @@ export const timeWiseDisbursement = {
 // queryParam:{
 //     role, type, from, to
 // }
+
+export const managerData: any =  [
+        {
+            id: '1',
+            name: 'Maksuda Alam',
+            role: 'Manager',
+            contact: '01738463449',
+            city: 'Dhaka',
+        },
+        {
+            id: '2',
+            name: 'Rahim',
+            role: 'Manager',
+            contact: '01938463449',
+            city: 'Cumilla',
+        },
+        {
+            id: '3',
+            name: 'Karim',
+            role: 'Manager',
+            contact: '016738463449',
+            city: 'Khulna',
+        },
+        {
+            id: '4',
+            name: 'Zobbar',
+            role: 'Manager',
+            contact: '01898463449',
+            city: 'Barishal',
+        }
+    ]

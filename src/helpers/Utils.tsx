@@ -1,7 +1,12 @@
 import moment from "moment";
+import {roleDT} from "../types/billingTypes";
 
-export const isEmpty = (obj: any) => {
-    return Object.keys(obj).length === 0;
+export const isEmpty = (obj: roleDT | undefined) => {
+    if (obj) {
+        return Object.keys(obj).length === 0;
+    }  else {
+        return true;
+    }
 }
 export const excelNameFormatter = (name:any, isDate:any) => {
     const date = moment

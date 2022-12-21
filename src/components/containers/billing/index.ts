@@ -1,2 +1,2 @@
-export * from "./ManagerSearchModal";
+export * from "./RoleSearchModal";
 export * from "./TimeWiseDisbursements";

@@ -1,6 +1,6 @@
 import BillingProvider from "./BillingProvider";
-import ManagerProvider from "./ManagerProvider";
+import RoleProvider from "./RoleProvider";
 
-const Context = { BillingProvider, ManagerProvider };
+const Context = { BillingProvider, ManagerProvider: RoleProvider };
 
 export default Context;

@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer components {
   .nameParagraph1 {
     @apply text-[14px] font-medium text-ct-blue-95
