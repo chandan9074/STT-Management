@@ -3,9 +3,9 @@ import type {DatePickerProps} from 'antd';
 import {DatePicker, Input} from "antd";
 import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
-import './customizeCalender.css'
 import CloseIcon from '../../assets/Icons/close.png'
 import {InputAdornment, styled, TextField} from "@mui/material";
+import './customizeCalender.css'
 
 dayjs.extend(isBetween)
 
@@ -60,14 +60,20 @@ const CssTextField = styled(TextField)({
         },
     },
 });
-interface Props{
-    trigger:boolean
+export type DateDT={
+    start:string;
+    end:string
+
 }
-const CustomRangeCalender = ({trigger}:Props) => {
+interface Props{
+    trigger:boolean;
+    setDateValue:any
+}
+const CustomRangeCalender = ({trigger,setDateValue}:Props) => {
 
     const [fistClick, setFirstClick] = useState<boolean>(false);
 
-    const _init = {start: "", end: ""};
+    const _init:DateDT = {start: "", end: ""};
 
     const [date, setDate] = useState<any>(_init)
 
@@ -77,10 +83,12 @@ const CustomRangeCalender = ({trigger}:Props) => {
         if (fistClick) {
             setDate((prev: any) => ({...prev, end: date}))
             setInputDate((prev: any) => ({...prev, end: date ? date.format("YYYY-MM-DD") : ""}))
+            setDateValue((prev:any)=>({...prev,end: date ? date.format("YYYY-MM-DD") : ""}))
         } else {
             setDate((prev: any) => ({...prev, start: date}))
             setInputDate((prev: any) => ({...prev, start: date ? date.format("YYYY-MM-DD") : ""}))
             setFirstClick(true);
+            setDateValue((prev:any)=>({...prev,start: date ? date.format("YYYY-MM-DD") : ""}))
         }
     };
 
@@ -120,9 +128,12 @@ const CustomRangeCalender = ({trigger}:Props) => {
 
         if (type === "start") {
             setInputDate((prev: any) => ({...prev, start: e.target.value}))
+            setDateValue((prev:any)=>({...prev,start:e.target.value }))
+
             setFirstClick(true);
         } else {
             setInputDate((prev: any) => ({...prev, end: e.target.value}))
+            setDateValue((prev:any)=>({...prev,end:e.target.value }))
         }
 
     }
@@ -155,22 +166,25 @@ const CustomRangeCalender = ({trigger}:Props) => {
         if (type === "start") {
             setInputDate((prev: any) => ({...prev, start: ""}))
             setDate((prev: any) => ({...prev, start: ""}))
+            setDateValue((prev: any) => ({...prev, start: ""}))
         }
         if (type === "end") {
             setInputDate((prev: any) => ({...prev, end: ""}))
             setDate((prev: any) => ({...prev, end: ""}))
+            setDateValue((prev: any) => ({...prev, end: ""}))
         }
     }
 
-    // @ts-ignore
     return (
-        <div className="custom-range-calender">
+        <div className="">
             <DatePicker
+                className="custom-date-picker"
                 showToday={false}
                 open={trigger}
                 onChange={getCalenderDate}
                 disabledDate={idDisabledDate}
                 suffixIcon={null}
+                bordered={false}
                 value={date && (date.start || date.end)} // Important for render the component
                 dateRender={(current) => {
 

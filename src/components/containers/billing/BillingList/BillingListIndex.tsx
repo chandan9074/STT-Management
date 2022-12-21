@@ -4,10 +4,12 @@ import {InputNumber} from "antd";
 import Primary from "./Primary";
 import {ColumnsType} from "antd/es/table";
 import ManagerIcon from "../../../../assets/images/BillingManagerAvatar.png"
-import BillingService from "../../../../services/billingService";
-import {allBillingParamsDT, lastBillingInfoDT, lastBillingParamsDT} from "../../../../types/billingTypes";
+import {allBillingParamsDT, lastBillingParamsDT} from "../../../../types/billingTypes";
 import {BillingContext} from "../../../../context/BillingProvider";
-import CustomRangeCalender from "../../../Calender/CustomRangeCalender";
+import CustomRangeCalender, {DateDT} from "../../../Calender/CustomRangeCalender";
+import ExportCsv from "../../../Common/ExportCsv";
+import {excelNameFormatter} from "../../../../helpers/Utils";
+
 
 interface Person {
     name: string;
@@ -86,6 +88,14 @@ const allBillingColumns: ColumnsType<AllBillingDataType | BillingDataType> = [
 
 
 const BillingListIndex = () => {
+    const billingContext = useContext(BillingContext)
+    const {
+        GetAllBillingInfo,
+        GetLastBillingsInfo,
+        lastBillings,
+        allBillings,
+        lastBillingsExcelData
+    } = billingContext
     const [pageNumber, setPageNumber] = useState<number>(1)
     const [billingsParam, setBillingsParam] = useState<allBillingParamsDT>({
         pageSize: 1,
@@ -98,13 +108,10 @@ const BillingListIndex = () => {
         type: "stt",
         role: "Manager"
     })
-    const billingContext = useContext(BillingContext)
-    const {
-        GetAllBillingInfo,
-        GetLastBillingsInfo,
-        lastBillings,
-        allBillings
-    } = billingContext
+    const [dateValue, setDateValue] = useState<DateDT>({start: "", end: ""})
+    const [open, setOpen] = useState<boolean>(false)
+
+
     useEffect(() => {
         GetAllBillingInfo(billingsParam)
         GetLastBillingsInfo(lastBillingsParams)
@@ -139,9 +146,16 @@ const BillingListIndex = () => {
             amountPaid: ` ${data.amountPaid} /-`,
         });
     })
+
+    // console.log("--=====---", lastBillingsExcelData)
+    const excelHeader = {
+        A1: "MANAGER",
+        B1: "HOUR",
+        C1: "AMOUNT PAID",
+
+    };
     return (
         <div>
-
             <div className="w-100 flex flex-row justify-between items-center gap-1 pt-10 ">
                 <div className="flex flex-row items-center gap-4 ">
                     <h2 className="mb-0 border-r-2 pr-3 text-heading-6 font-medium text-ct-blue-95">Last Billing
@@ -157,11 +171,15 @@ const BillingListIndex = () => {
                 </div>
 
                 <div>
-                    <button className="font-sans text-small text-ct-blue-60 font-medium ">Download in Excel
-                    </button>
+                    {/*<button className="font-sans text-small text-ct-blue-60 font-medium ">Download in Excel*/}
+                    {/*</button>*/}
+                    <ExportCsv
+                        csvData={lastBillingsExcelData}
+                        fileName={excelNameFormatter("Manager Table", true)}
+                        headerCells={excelHeader}
+                    />
                 </div>
             </div>
-
             {/*    table------------------*/}
             <div>
                 <BillingTable columnsData={lastBillingColumns} dataSources={listedLastBillings}/>
@@ -174,7 +192,6 @@ const BillingListIndex = () => {
                     </div>
                 </div>
             </div>
-
             <hr className="my-10"/>
             <div className="w-100 flex flex-row justify-between items-center gap-1 ">
                 <div className="flex flex-row items-center gap-4 ">
@@ -197,8 +214,8 @@ const BillingListIndex = () => {
                     columnsData={allBillingColumns}
                     dataSources={listedAllBillings}/>
             </div>
-
-            <CustomRangeCalender trigger={true}/>
+            <button onClick={() => setOpen(!open)}>Open cl</button>
+            <CustomRangeCalender trigger={open} setDateValue={setDateValue}/>
 
         </div>
     );

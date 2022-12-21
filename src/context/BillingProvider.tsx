@@ -7,7 +7,6 @@ import {
     lastBillingsDT,
     totalAmountDisbursedDT
 } from "../types/billingTypes";
-import {data} from "autoprefixer";
 
 interface ContextProps {
     loading: boolean;
@@ -19,7 +18,9 @@ interface ContextProps {
 
     allBillings: allBillingsDT | undefined;
     GetLastBillingsInfo: (data: lastBillingParamsDT) => void;
-    lastBillings:lastBillingsDT |undefined;
+    lastBillings: lastBillingsDT | undefined;
+    GetBillingExcelData: (data: any) => void;
+    lastBillingsExcelData: any;
 }
 
 export const BillingContext = createContext({} as ContextProps);
@@ -30,7 +31,8 @@ const BillingProvider = ({children}: { children: any }) => {
     const [amountDisbursed, setAmountDisbursed] =
         useState<totalAmountDisbursedDT>();
     const [allBillings, setAllBillings] = useState<allBillingsDT | undefined>()
-    const [lastBillings,setLastBillings]=useState<lastBillingsDT | undefined>()
+    const [lastBillings, setLastBillings] = useState<lastBillingsDT | undefined>()
+    const [lastBillingsExcelData, setLastBillingsExcelData] = useState<any>([])
 
     const GetAmountDisbursed = async () => {
         setLoading(true);
@@ -50,14 +52,26 @@ const BillingProvider = ({children}: { children: any }) => {
         setLoading(false);
     };
 
-    const GetLastBillingsInfo=async (data:lastBillingParamsDT)=>{
+    const GetLastBillingsInfo = async (data: lastBillingParamsDT) => {
         setLoading(true);
         setErrorMsg("");
         // fetch data from api
         const response = await BillingService.lastBillingInfo(data);
 
         setLastBillings(response.data);
+        GetBillingExcelData(response.data.billingInfo);
         setLoading(false);
+    }
+
+    const GetBillingExcelData = (data: any) => {
+        console.log("Context", data);
+        setLastBillingsExcelData(data?.map((lastBilling: any) => {
+            return {
+                name: `${lastBilling?.manager?.name}(${lastBilling?.manager?.name})`,
+                hour: lastBilling?.hour,
+                paidAmount: lastBilling?.amountPaid
+            }
+        }))
     }
 
     return (
@@ -70,7 +84,9 @@ const BillingProvider = ({children}: { children: any }) => {
                 GetAllBillingInfo,
                 allBillings,
                 GetLastBillingsInfo,
-                lastBillings
+                lastBillings,
+                GetBillingExcelData,
+                lastBillingsExcelData
             }}
         >
             {children}
