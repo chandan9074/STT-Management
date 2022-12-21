@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import type { ColumnsType } from "antd/es/table";
 import Icons from "../../../../assets/Icons";
 import {
@@ -9,8 +9,11 @@ import Image from "../../../Image";
 import Table from "../../../Table";
 import Pagination from "../../../Pagination";
 import { Link } from "react-router-dom";
+import CustomRangeCalender, { DateDT } from "../../../Calender/CustomRangeCalender";
 
 const PaymentHistoryDetails = ({ data }: { data: paymentHistoryDT }) => {
+  const [dateValue, setDateValue] = useState<DateDT>({ start: "", end: "" })
+  const [open, setOpen] = useState<boolean>(false)
   const columns: ColumnsType<paymentHistoryDataDT> = [
     {
       title: "DATE",
@@ -31,6 +34,7 @@ const PaymentHistoryDetails = ({ data }: { data: paymentHistoryDT }) => {
       render: (text) => <a>{text} /-</a>,
     },
   ];
+
   return (
     <div>
       <div className="flex items-center">
@@ -105,10 +109,14 @@ const PaymentHistoryDetails = ({ data }: { data: paymentHistoryDT }) => {
           <h1 className="text-heading-6 font-medium text-ct-blue-95 mb-0">
             All Payment History
           </h1>
-          <button className="p-1.5 rounded-[4px] bg-ct-blue-05">
+          <button
+            className="p-1.5 rounded-[4px] bg-ct-blue-05"
+            onClick={() => setOpen(!open)}
+          >
             <img src={Icons.calender} alt="calender" className="w-6 h-6" />
           </button>
         </div>
+        <CustomRangeCalender trigger={open} setDateValue={setDateValue} />
         <Table.Type1 columnsData={columns} dataSources={data.paymentHistory} />
         <div className="mt-7 w-full flex justify-end">
           <Pagination.Type1 total={50} />
