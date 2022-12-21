@@ -1,30 +1,36 @@
 import React, {createContext, useState} from 'react';
 import TimeWiseDisbursementService from "../services/TimeWiseDisbursementService";
+import {
+    roleDT,
+    roleParamsDT,
+    timeWiseDisbursementDT,
+    timeWiseDisbursementParamsDT,
+    timeWiseYearDT
+} from "../types/billingTypes";
 
 interface ContextProps {
     loading: boolean;
-    disbursementData: any;
-    getManagerDisbursement: any;
-    singleManager: any;
-    managerLoading: any;
-    getManagerById: any;
-    getManager: any;
-    managerDatas: any,
-    deleteManager: any
-    setSingleManager: any,
-    totalDisbursed: any
+    disbursementData: timeWiseYearDT[] | undefined;
+    getManagerDisbursement: (data: timeWiseDisbursementParamsDT) => void;
+    singleManager: roleDT | undefined;
+    managerLoading: boolean;
+    getManagerById: (id: string) => void;
+    getManager: (data: roleParamsDT) => void;
+    managerDatas: roleDT[] | undefined;
+    deleteManager: (id: string) => void;
+    totalDisbursed: timeWiseDisbursementDT | undefined
 }
 
 export const ManagerContext = createContext({} as ContextProps);
 const ManagerProvider = ({ children }: { children: any }) => {
-    const [loading, setLoading] = useState(true);
-    const [disbursementData, setDisbursementData] = useState<any>([]);
-    const [managerDatas, setManagerDatas] = useState<any>([]);
-    const [singleManager, setSingleManager] = useState<any>({});
-    const [managerLoading, setManagerLoading] = useState(true);
-    const [totalDisbursed, setTotalDisbursed] = useState<any>([])
+    const [loading, setLoading] = useState<boolean>(true);
+    const [disbursementData, setDisbursementData] = useState<timeWiseYearDT[] | undefined>();
+    const [managerDatas, setManagerDatas] = useState<roleDT[] | undefined>();
+    const [singleManager, setSingleManager] = useState<roleDT | undefined>();
+    const [managerLoading, setManagerLoading] = useState<boolean>(true);
+    const [totalDisbursed, setTotalDisbursed] = useState<timeWiseDisbursementDT | undefined>()
 
-    const getManagerDisbursement = async (data: any) => {
+    const getManagerDisbursement = async (data: timeWiseDisbursementParamsDT) => {
         try {
             setLoading(true);
             const res = await TimeWiseDisbursementService.getManagerDisbursement(data);
@@ -42,11 +48,11 @@ const ManagerProvider = ({ children }: { children: any }) => {
         }
     }
 
-    const getManager = async (data: any) => {
+    const getManager = async (data: roleParamsDT) => {
         try {
             setLoading(true);
             const res = await TimeWiseDisbursementService.getManager(data);
-            setManagerDatas(res.data)
+            setManagerDatas(res)
             // setManagerData('This is manager data')
             setLoading(false);
 
@@ -58,7 +64,7 @@ const ManagerProvider = ({ children }: { children: any }) => {
         }
     }
 
-    const getManagerById = async (id: any) => {
+    const getManagerById = async (id: string) => {
         try {
             setManagerLoading(true);
             const response = await TimeWiseDisbursementService.getManagerById(id);
@@ -70,7 +76,7 @@ const ManagerProvider = ({ children }: { children: any }) => {
         }
     }
 
-    const deleteManager = async (id: any) => {
+    const deleteManager = async (id: string) => {
         try {
             setLoading(true);
             const res = await TimeWiseDisbursementService.deleteManager(id);
@@ -97,7 +103,6 @@ const ManagerProvider = ({ children }: { children: any }) => {
                 getManager,
                 managerDatas,
                 deleteManager,
-                setSingleManager,
                 totalDisbursed
             }}
         >

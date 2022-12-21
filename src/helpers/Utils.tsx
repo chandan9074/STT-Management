@@ -1,3 +1,9 @@
-export const isEmpty = (obj: any) => {
-    return Object.keys(obj).length === 0;
+import {roleDT} from "../types/billingTypes";
+
+export const isEmpty = (obj: roleDT | undefined) => {
+    if (obj) {
+        return Object.keys(obj).length === 0;
+    }  else {
+        return true;
+    }
 }

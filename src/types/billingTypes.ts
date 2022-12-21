@@ -1,3 +1,5 @@
+import managerImage from "../assets/Icons/manager.png";
+
 export type totalAmountDisbursedDT = {
   // yearlyHistory: {
   yearList: number[];
@@ -87,5 +89,49 @@ export type roleInfo={
   name:string;
   locality:string;
   image:string
+}
+
+export type timeWiseDisbursementParamsDT = {
+  role: string;
+  type: string;
+  start?: string;
+  end?: string
+}
+
+export type timeWiseDisbursementDT = {
+  role: string;
+  type: string;
+  totalDisbursedAmount:number;
+  totalValidHours: number;
+  data: timeWiseYearDT[];
+}
+
+export type timeWiseYearDT = {
+  id: string;
+  year: number;
+  month: string;
+  totalAmount: number;
+  totalHours: number;
+  disbursed: timeWiseDisbursedDT[]
+}
+
+export type timeWiseDisbursedDT = {
+  amount: number;
+  day: string;
+  hours: number;
+}
+
+export type roleParamsDT = {
+  id: string;
+  type: string;
+  role: string;
+}
+
+export type roleDT = {
+  id:string;
+  name: string;
+  role: string;
+  contact: string
+  city: string;
 }
 

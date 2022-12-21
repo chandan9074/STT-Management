@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {CloseOutlined, StepBackwardOutlined} from "@ant-design/icons";
 import {Form, Select} from "antd";
 import militaryImg from '../../../assets/Icons/military_tech.png';
@@ -8,45 +8,52 @@ import deleteIcon from '../../../assets/Icons/delete_icon.png';
 import {isEmpty} from "../../../helpers/Utils";
 import faceImage from '../../../assets/Icons/face.png';
 import './ManagerSearchModal.css';
-import arrowDropDownIcon from '../../../assets/Icons/arrow_drop_down.png';
+import managerImage from "../../../assets/Icons/manager.png";
+import {ManagerContext} from "../../../context/ManagerProvider";
+import {roleDT} from "../../../types/billingTypes";
 
 const {Option} = Select;
 
 const ManagerSearchModal = ({
-                                setShowModal,
-                                managerContext,
-                                role
-                            }: { setShowModal: any; managerContext: any; role: string }) => {
+                                // setShowModal,
+                                handleModal,
+                                // managerContext,
+                                role,
+                                type
+                            }: {
+    // setShowModal: boolean;
+    handleModal: (value: boolean) => void,
+    role: string,
+    type: string
+}) => {
 
     const [form] = Form.useForm();
 
-    const [loading, setLoading] = useState<boolean>(false);
-    const {managerDatas, singleManager} = managerContext;
+    const managerContext = useContext(ManagerContext);
+    const {managerDatas} = managerContext;
+
+    const [singleManager, setSingleManger] = useState<roleDT | undefined>();
 
     const [isDropDownVisible, setIsDropDownVisible] = useState<boolean>(false);
     const [dropDownCount, setDropDownCount] = useState<number>(0);
     const [isDropDownSelect, setIsDropDownSelect] = useState<boolean>(false);
     const [isDropItemClick, setIsDropItemClick] = useState<boolean>(false);
-    const [isDropDownOpen, setIsdropDownOpen] = useState<boolean>(false);
-    const [count, setCount] = useState<Number>(0);
 
-    const [isInputKeyDown, setIsInputKeyDown] = useState<boolean>(false);
+    const managerParams = {
+        id: '',
+        role: role,
+        type: type
+    }
 
 
     useEffect(() => {
-        managerContext.getManager(role);
-        // document.addEventListener('click', handleClickOutside, true);
+        managerContext.getManager(managerParams);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    console.log('click...', isDropItemClick);
-    console.log('select########', isDropDownSelect);
-    console.log('visible^&^^^^^^^', isDropDownVisible);
-    console.log('opem$$$$$$', isDropDownOpen);
 
     useEffect(() => {
         if (!isDropDownVisible) {
             setIsDropItemClick(false);
-            setIsdropDownOpen(false)
         }
         // if (isDropDownSelect) {
         //     setCount(1);
@@ -61,13 +68,20 @@ const ManagerSearchModal = ({
     }, [dropDownCount]);
 
 
-    const handleMangerChange = (id: any, p: any) => {
-        managerContext.getManagerById(p.key);
+    const handleMangerChange = (id: string, p: any) => {
+        console.log('ppppppp', p)
+        // managerContext.getManagerById(p.key);
+        const _data = managerDatas?.filter((m: roleDT) => m.id === p.key)
+        if (_data) {
+            setSingleManger(_data[0]);
+        }
         // form.resetFields();
     }
 
-    const deleteManager = (id: any) => {
-        managerContext.setSingleManager({});
+
+    const deleteManager = (id: string | undefined) => {
+        // managerContext.setSingleManager({});
+        setSingleManger(undefined)
         setIsDropDownSelect(false);
         form.resetFields();
     }
@@ -87,7 +101,6 @@ const ManagerSearchModal = ({
 
 
     const onInputKeyDown = () => {
-        setIsInputKeyDown(true);
     }
 
     const onSelect = () => {
@@ -96,8 +109,9 @@ const ManagerSearchModal = ({
     }
 
     const onClose = () => {
-        managerContext.setSingleManager({});
-        setShowModal(false)
+        // managerContext.setSingleManager({});
+        setSingleManger(undefined)
+        handleModal(false)
     }
 
     const onDropDownClick = () => {
@@ -109,17 +123,16 @@ const ManagerSearchModal = ({
     }
 
     const outsideModalClick = () => {
-        setShowModal(false);
-        managerContext.setSingleManager({});
+        handleModal(false);
+        // managerContext.setSingleManager({});
+        setSingleManger(undefined)
     }
 
-    const dropDownArrowClick = () => {
-        setIsdropDownOpen(true);
-    }
+    console.log('.......................', isEmpty(singleManager))
 
 
     return (
-        <div className='fixed top-0 left-0 flex justify-center items-center w-full h-screen z-40 animate-fadeIn2'>
+        <div className='fixed top-0 left-0 flex justify-center items-center w-full h-screen z-40 animate-fadeIn2 '>
             <div className="fixed top-0 left-0 opacity-50 bg-black w-full h-screen z-40"
                  onClick={() => outsideModalClick()}/>
             <div className="relative z-50">
@@ -179,10 +192,10 @@ const ManagerSearchModal = ({
 
                                             >
                                                 {
-                                                    managerDatas.map((m: any) => (
+                                                    managerDatas?.map((m: roleDT) => (
                                                         <Option key={m.id} value={m.name} contact={m.contact}>
                                                             <div className='flex gap-x-4'>
-                                                                <img className='h-[18px] w-[18px]' src={m.image}
+                                                                <img className='h-[18px] w-[18px]' src={managerImage}
                                                                      alt=""/>
                                                                 <h1 className='text-blue-gray-90 text-[14px]'>{m.contact} - {m.name}</h1>
                                                             </div>
@@ -218,25 +231,25 @@ const ManagerSearchModal = ({
                                 <div className='border-[1px] px-3 py-4 border-blue-gray-20 flex justify-between '>
                                     <div className='flex items-center gap-x-4'>
                                         <div className='flex gap-x-2'>
-                                            <img className='h-[20px] w-[20px]' src={singleManager.image} alt=""/>
+                                            <img className='h-[20px] w-[20px]' src={managerImage} alt=""/>
                                             <h1 className='nameParagraph1'>
-                                                {singleManager.name}
+                                                {singleManager?.name}
                                             </h1>
                                         </div>
                                         <div className='flex items-center gap-x-2'>
                                             <img className='h-4 w-4' src={militaryImg} alt=""/>
-                                            <h1 className='titleParagraph'>{singleManager.role}</h1>
+                                            <h1 className='titleParagraph'>{singleManager?.role}</h1>
                                         </div>
                                         <div className='flex items-center gap-x-2'>
                                             <img className='h-4 w-4' src={powerRoundedImg} alt=""/>
-                                            <h1 className='titleParagraph'>{singleManager.contact}</h1>
+                                            <h1 className='titleParagraph'>{singleManager?.contact}</h1>
                                         </div>
                                         <div className='flex items-center gap-x-2'>
                                             <img className='h-4 w-4' src={homeImg} alt=""/>
-                                            <h1 className='titleParagraph'>{singleManager.city}</h1>
+                                            <h1 className='titleParagraph'>{singleManager?.city}</h1>
                                         </div>
                                     </div>
-                                    <button onClick={(id) => deleteManager(singleManager.id)}>
+                                    <button onClick={(id) => deleteManager(singleManager?.id)}>
                                         <img className='deleteIcon' src={deleteIcon} alt=""/>
                                     </button>
                                 </div>
