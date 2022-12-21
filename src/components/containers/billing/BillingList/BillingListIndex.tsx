@@ -1,7 +1,7 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useContext, useEffect, useState } from "react";
 import BillingTable from "./BillingTable";
 import {InputNumber} from "antd";
-import Primary from "./Primary";
+// import Primary from "./Primary";
 import {ColumnsType} from "antd/es/table";
 import ManagerIcon from "../../../../assets/images/BillingManagerAvatar.png"
 import {allBillingParamsDT, lastBillingParamsDT} from "../../../../types/billingTypes";
@@ -12,80 +12,72 @@ import {excelNameFormatter} from "../../../../helpers/Utils";
 
 
 interface Person {
-    name: string;
-    locality: string;
-    image?: string
+  name: string;
+  locality: string;
+  image?: string;
 }
 
 export interface BillingDataType {
-    key: React.Key;
-    manager: Person
-    hour: string;
-    amountPaid: string;
+  key: React.Key;
+  manager: Person;
+  hour: string;
+  amountPaid: string;
 }
 
 export interface AllBillingDataType {
-    key: React.Key;
-    date: any
-    hour: string;
-    amountPaid: string;
+  key: React.Key;
+  date: any;
+  hour: string;
+  amountPaid: string;
 }
 
 const lastBillingColumns: ColumnsType<BillingDataType | AllBillingDataType> = [
-    {
-        title: 'MANAGER',
-        dataIndex: 'manager',
-        width: 100,
-        render: (data) => (
-            <>
-                <div className="flex gap-2 items-start">
-                    <img className="h-4 w-4 mt-1" src={ManagerIcon} alt=""/>
-                    <div>
-                        <p className="font-sans font-medium text-xs">{data.name}</p>
-                        <p className="font-sans text-xxs text-blue-gray-75">{data.locality}</p>
-                    </div>
-                </div>
-            </>
-        )
-
-    },
-    {
-        title: 'HOUR ',
-        dataIndex: 'hour',
-        width: 100,
-
-
-    },
-    {
-        title: 'AMOUNT PAID',
-        dataIndex: 'amountPaid',
-        width: 100,
-
-    },
+  {
+    title: "MANAGER",
+    dataIndex: "manager",
+    width: 100,
+    render: (data) => (
+      <>
+        <div className="flex gap-2 items-start">
+          <img className="h-4 w-4 mt-1" src={ManagerIcon} alt="" />
+          <div>
+            <p className="font-sans font-medium text-xs">{data.name}</p>
+            <p className="font-sans text-xxs text-blue-gray-75">
+              {data.locality}
+            </p>
+          </div>
+        </div>
+      </>
+    ),
+  },
+  {
+    title: "HOUR ",
+    dataIndex: "hour",
+    width: 100,
+  },
+  {
+    title: "AMOUNT PAID",
+    dataIndex: "amountPaid",
+    width: 100,
+  },
 ];
-const allBillingColumns: ColumnsType<AllBillingDataType | BillingDataType> = [
-    {
-        title: 'DATE',
-        dataIndex: 'date',
-        width: 100,
-
-
-    },
-    {
-        title: 'HOUR ',
-        dataIndex: 'hour',
-        width: 100,
-
-
-    },
-    {
-        title: 'AMOUNT PAID',
-        dataIndex: 'amountPaid',
-        width: 100,
-
-    },
+const allBillingColumns: ColumnsType<AllBillingDataType> = [
+  {
+    title: "DATE",
+    dataIndex: "date",
+    width: 100,
+  },
+  {
+    title: "HOUR ",
+    dataIndex: "hour",
+    width: 100,
+  },
+  {
+    title: "AMOUNT PAID",
+    dataIndex: "amountPaid",
+    width: 100,
+  },
 ];
-
 
 const BillingListIndex = () => {
     const billingContext = useContext(BillingContext)
@@ -184,7 +176,7 @@ const BillingListIndex = () => {
             <div>
                 <BillingTable columnsData={lastBillingColumns} dataSources={listedLastBillings}/>
                 <div className="my-4 w-100 flex items-center gap-8 justify-end">
-                    <Primary total={50}/>
+                    {/* <Primary total={50}/> */}
                     <div className="flex items-center gap-2">
                         <button>Entry</button>
                         <InputNumber className="w-12" controls={false} min={1} max={10} defaultValue={1}
@@ -218,7 +210,7 @@ const BillingListIndex = () => {
             <CustomRangeCalender trigger={open} setDateValue={setDateValue}/>
 
         </div>
-    );
+  );
 };
 
 export default BillingListIndex;
