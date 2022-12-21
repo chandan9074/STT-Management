@@ -7,21 +7,18 @@ import powerRoundedImg from '../../../assets/Icons/power_rounded.png';
 import deleteIcon from '../../../assets/Icons/delete_icon.png';
 import {isEmpty} from "../../../helpers/Utils";
 import faceImage from '../../../assets/Icons/face.png';
-import './ManagerSearchModal.css';
+import './RoleSearchModal.css';
 import managerImage from "../../../assets/Icons/manager.png";
-import {ManagerContext} from "../../../context/ManagerProvider";
+import {RoleInContext} from "../../../context/RoleProvider";
 import {roleDT} from "../../../types/billingTypes";
 
 const {Option} = Select;
 
-const ManagerSearchModal = ({
-                                // setShowModal,
-                                handleModal,
-                                // managerContext,
-                                role,
-                                type
-                            }: {
-    // setShowModal: boolean;
+const RoleSearchModal = ({
+                             handleModal,
+                             role,
+                             type
+                         }: {
     handleModal: (value: boolean) => void,
     role: string,
     type: string
@@ -29,8 +26,8 @@ const ManagerSearchModal = ({
 
     const [form] = Form.useForm();
 
-    const managerContext = useContext(ManagerContext);
-    const {managerDatas} = managerContext;
+    const managerContext = useContext(RoleInContext);
+    const {roleDatas} = managerContext;
 
     const [singleManager, setSingleManger] = useState<roleDT | undefined>();
 
@@ -55,9 +52,6 @@ const ManagerSearchModal = ({
         if (!isDropDownVisible) {
             setIsDropItemClick(false);
         }
-        // if (isDropDownSelect) {
-        //     setCount(1);
-        // }
     }, [isDropDownVisible]);
 
     useEffect(() => {
@@ -68,14 +62,12 @@ const ManagerSearchModal = ({
     }, [dropDownCount]);
 
 
-    const handleMangerChange = (id: string, p: any) => {
+    const handleRoleChange = (id: string, p: any) => {
         console.log('ppppppp', p)
-        // managerContext.getManagerById(p.key);
-        const _data = managerDatas?.filter((m: roleDT) => m.id === p.key)
+        const _data = roleDatas?.filter((m: roleDT) => m.id === p.key)
         if (_data) {
             setSingleManger(_data[0]);
         }
-        // form.resetFields();
     }
 
 
@@ -91,12 +83,6 @@ const ManagerSearchModal = ({
         setIsDropDownVisible(true);
         setDropDownCount(dropDownCount + 1);
         setIsDropItemClick(true);
-
-        // if (count === 1) {
-        //     setIsDropDownSelect(false);
-        //     setCount(0);
-        // }
-
     }
 
 
@@ -109,27 +95,18 @@ const ManagerSearchModal = ({
     }
 
     const onClose = () => {
-        // managerContext.setSingleManager({});
         setSingleManger(undefined)
         handleModal(false)
     }
 
     const onDropDownClick = () => {
         setIsDropItemClick(true);
-        // if (count === 1) {
-        //     setIsDropDownSelect(false);
-        //     setCount(0);
-        // }
     }
 
     const outsideModalClick = () => {
         handleModal(false);
-        // managerContext.setSingleManager({});
         setSingleManger(undefined)
     }
-
-    console.log('.......................', isEmpty(singleManager))
-
 
     return (
         <div className='fixed top-0 left-0 flex justify-center items-center w-full h-screen z-40 animate-fadeIn2 '>
@@ -180,19 +157,16 @@ const ManagerSearchModal = ({
                                                 onSelect={onSelect}
                                                 showSearch
                                                 placeholder={`Select ${role} by Login ID/ Name`}
-                                                // className={`w-[90%] ${!isEmpty(singleManager) && 'bg-blue-gray-20'}`}
                                                 style={{border: 'none'}}
-                                                // style={{height: '44px', borderRadius: '40px'}}
-                                                onChange={(value, p) => handleMangerChange(value, p)}
-                                                // disabled={!isEmpty(singleManager)}
-                                                filterOption={(inputValue: any, option: any) =>
+                                                onChange={(value, p) => handleRoleChange(value, p)}
+                                                filterOption={(inputValue: string, option: any  ) =>
                                                     option.value.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0 ||
                                                     option.contact.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0
                                                 }
 
                                             >
                                                 {
-                                                    managerDatas?.map((m: roleDT) => (
+                                                    roleDatas?.map((m: roleDT) => (
                                                         <Option key={m.id} value={m.name} contact={m.contact}>
                                                             <div className='flex gap-x-4'>
                                                                 <img className='h-[18px] w-[18px]' src={managerImage}
@@ -246,7 +220,7 @@ const ManagerSearchModal = ({
                                         </div>
                                         <div className='flex items-center gap-x-2'>
                                             <img className='h-4 w-4' src={homeImg} alt=""/>
-                                            <h1 className='titleParagraph'>{singleManager?.city}</h1>
+                                            <h1 className='titleParagraph'>{singleManager?.address}</h1>
                                         </div>
                                     </div>
                                     <button onClick={(id) => deleteManager(singleManager?.id)}>
@@ -277,4 +251,4 @@ const ManagerSearchModal = ({
     );
 };
 
-export default ManagerSearchModal;
+export default RoleSearchModal;

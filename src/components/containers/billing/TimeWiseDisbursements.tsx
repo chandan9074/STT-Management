@@ -1,13 +1,13 @@
 import React, {useContext, useEffect, useState} from "react";
 import managerImage from "../../../assets/Icons/manager.png";
 import {SearchOutlined} from "@ant-design/icons";
-import ManagerSearchModal from "./ManagerSearchModal";
-import {ManagerContext} from "../../../context/ManagerProvider";
+import RoleSearchModal from "./RoleSearchModal";
+import {RoleInContext} from "../../../context/RoleProvider";
 import "./TimeWiseDisbursement.css";
 import BillingListIndex from "./BillingList/BillingListIndex";
 import Icons from "../../../assets/Icons";
 import arrowDropDownIcon from '../../../assets/Icons/arrow_drop_down.png';
-import {roleParamsDT, timeWiseDisbursementParamsDT, timeWiseYearDT} from "../../../types/billingTypes";
+import {timeWiseDisbursementParamsDT, timeWiseYearDT} from "../../../types/billingTypes";
 
 const TimeWiseDisbursements = () => {
 
@@ -15,7 +15,7 @@ const TimeWiseDisbursements = () => {
     const maxDim = 70;
     const minDim = 35;
 
-    const managerContext = useContext(ManagerContext);
+    const managerContext = useContext(RoleInContext);
     const {disbursementData, totalDisbursed} = managerContext;
 
     const [dimensionValue, setDimensionValue] = useState<number[]>([]);
@@ -272,7 +272,6 @@ const TimeWiseDisbursements = () => {
             </div>
 
             <div className="p-10 bg-white shadow-md rounded-[8px]">
-                {/*<div className='col-span-3 h-[140px]'>*/}
                 <div className='grid grid-cols-4 gap-x-14'>
                     <div className="col-span-3 h-[140px]">
                         <div className='flex justify-between'>
@@ -298,7 +297,7 @@ const TimeWiseDisbursements = () => {
                                         className={`relative flex ${disbursementData?.length === 12 ? i < 2 ? "justify-start" : "justify-center" : disbursementData?.length > 12 ? i < Math.round((2 * disbursementData?.length) / 12) ? "justify-start" : "justify-center" : disbursementData?.length < 12 ? i === 0 ? "justify-start" : "justify-center" : ""} group`}>
                                         {/*<div className="absolute  bottom-20 text-white bg-black h-10">hello </div>*/}
                                         <div
-                                            style={{bottom: `${(163 / 16) + (dimensionValue[i] / 2)}rem`}}
+                                            style={{bottom: `${(170 / 16) + (dimensionValue[i] / 2)}rem`}}
                                             className={`absolute animate-fadeIn2 z-40 w-[350px]  group-hover:block hidden bg-[#59C1BD] ${disbursementData?.length === 12 ? i < 2 ? "-left-10" : "" : disbursementData?.length > 12 ? i < Math.round((2 * disbursementData?.length) / 12) ? "-left-10" : "" : disbursementData?.length < 12 ? i === 0 ? "-left-10" : "" : ""}`}>
                                             <div className='rounded-[12px] px-5 py-4 bg-[#212121] absolute'>
                                                 <div className="flex items-center">
@@ -313,7 +312,6 @@ const TimeWiseDisbursements = () => {
                                                     <h1 className="text-base text-white mb-0 flex">
                                                         Valid:
                                                         <span className="font-bold flex ml-2">
-                            {/*{item.validHours}hr*/}
                                                             {m?.totalHours}
                                                         </span>
                                                     </h1>
@@ -377,9 +375,7 @@ const TimeWiseDisbursements = () => {
 
 
                                         <div key={m.id} className={`flex flex-col justify-center items-center mt-8 `}>
-                                            {/*<div key={m.id} className=" flex flex-col justify-center items-center ">*/}
                                             <div className="flex items-center duration-300 absolute ">
-                                                {/*<div className="flex items-center duration-300">*/}
                                                 <div
                                                     className={`h-[2px] border border-dashed flex-1 rounded-tl-md rounded-bl-md bg-[#D1D3D6]`}
                                                 />
@@ -447,20 +443,6 @@ const TimeWiseDisbursements = () => {
                             </h1>
                         </div>
 
-                        {/*<div className='input'>*/}
-                        {/*<Input*/}
-                        {/*    disabled={true}*/}
-                        {/*    size="large"*/}
-                        {/*    // onClick={showModal}*/}
-                        {/*    className='h-[32px] border-none bg-blue-gray-10 hover:bg-blue-gray-60'*/}
-                        {/*    // className='h-[32px] border-none bg-blue-gray-10 '*/}
-                        {/*    onClick={() => setShowModal(true)}*/}
-                        {/*    placeholder="Search Manager by Id or Name"*/}
-                        {/*    // prefix={<SearchOutlined style={{color: '#5F707F'}}/>}*/}
-                        {/*/>*/}
-                        {/*</div>*/}
-
-                        {/*Box*/}
                         <div
                             className="relative mt-[15px] w-full py-2 px-2 h-[140px] border-[1px] border-border-light-blue rounded-[4px]">
                             <h1 className="text-ct-blue-45 text-[13px] font-medium">
@@ -475,7 +457,7 @@ const TimeWiseDisbursements = () => {
                                 </h1>
                             </div>
 
-                            <div className="absolute flex w-full h-[110px] top-6 left-2 justify-center items-start">
+                            <div className="absolute flex w-full h-[110px] top-6 left-4 justify-center items-start">
                                 <div
                                     className="w-[2px] h-[92px] rotate-[18deg] bg-gradient-to-r from-border-light via-green-10 to-border-light"/>
                             </div>
@@ -501,7 +483,7 @@ const TimeWiseDisbursements = () => {
 
 
             {showModal ? (
-                <ManagerSearchModal
+                <RoleSearchModal
                     // setShowModal={setShowModal}
                     handleModal={handleModal}
                     role={search?.role}

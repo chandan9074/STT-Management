@@ -132,6 +132,6 @@ export type roleDT = {
   name: string;
   role: string;
   contact: string
-  city: string;
+  address: string;
 }
 
