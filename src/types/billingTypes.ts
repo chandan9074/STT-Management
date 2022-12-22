@@ -93,7 +93,7 @@ export type roleInfo={
 
 export type timeWiseDisbursementParamsDT = {
   role: string;
-  type: string;
+  module: string;
   start?: string;
   end?: string
 }

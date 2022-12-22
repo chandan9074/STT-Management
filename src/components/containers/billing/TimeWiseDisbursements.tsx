@@ -8,7 +8,7 @@ import BillingListIndex from "./BillingList/BillingListIndex";
 import Icons from "../../../assets/Icons";
 import arrowDropDownIcon from '../../../assets/Icons/arrow_drop_down.png';
 import {timeWiseDisbursementParamsDT, timeWiseYearDT} from "../../../types/billingTypes";
-import CustomRangeCalender, { DateDT } from "../../Calender/CustomRangeCalender";
+import CustomRangeCalender, {DateDT} from "../../Calender/CustomRangeCalender";
 
 const TimeWiseDisbursements = () => {
 
@@ -18,8 +18,8 @@ const TimeWiseDisbursements = () => {
 
     const managerContext = useContext(RoleInContext);
     const {disbursementData, totalDisbursed} = managerContext;
-    const [dateValue, setDateValue] = useState<DateDT>({ start: "", end: "" })
-  const [open, setOpen] = useState<boolean>(false)
+    const [dateValue, setDateValue] = useState<DateDT>({start: "", end: ""});
+    const [open, setOpen] = useState<boolean>(false);
 
     const [dimensionValue, setDimensionValue] = useState<number[]>([]);
     const [isStt, setIsStt] = useState(true);
@@ -30,10 +30,11 @@ const TimeWiseDisbursements = () => {
 
     const initialData = {
         role: "Manager",
-        type: "stt",
+        module: "stt",
         start: '',
         end: ''
     };
+
 
     const [search, setSearch] = useState<timeWiseDisbursementParamsDT>(initialData);
 
@@ -42,6 +43,12 @@ const TimeWiseDisbursements = () => {
         managerContext.getManagerDisbursement(search);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [search]);
+
+    useEffect(() => {
+        if (dateValue?.start && dateValue?.end) {
+            setSearch({...search, start: dateValue?.start, end: dateValue?.end});
+        }
+    }, [dateValue]);
 
 
     const [showModal, setShowModal] = React.useState(false);
@@ -105,13 +112,13 @@ const TimeWiseDisbursements = () => {
     const onHandleStt = () => {
         setIsStt(true);
         setIsTts(false);
-        setSearch({...search, role: "Manager", type: "stt"});
+        setSearch({...search, role: "Manager", module: "stt"});
     };
 
     const onHandleTts = () => {
         setIsStt(false);
         setIsTts(true);
-        setSearch({...search, role: "Speaker", type: "tts"});
+        setSearch({...search, role: "Speaker", module: "tts"});
     };
 
     const getNewDimension = () => {
@@ -148,60 +155,58 @@ const TimeWiseDisbursements = () => {
         }
     };
 
-    console.log('dimesion value', dimensionValue)
 
     const handleSttRole = (value: string) => {
         if (value === "Manager") {
             setIsSttRoles(value);
-            setSearch({...search, role: value, type: "stt"});
+            setSearch({...search, role: value, module: "stt"});
         }
         if (value === "Team Leader") {
             setIsSttRoles(value);
-            setSearch({...search, role: value, type: "stt"});
+            setSearch({...search, role: value, module: "stt"});
         }
         if (value === "Collector") {
             setIsSttRoles(value);
-            setSearch({...search, role: value, type: "stt"});
+            setSearch({...search, role: value, module: "stt"});
         }
         if (value === "Speaker") {
             setIsSttRoles(value);
-            setSearch({...search, role: value, type: "stt"});
+            setSearch({...search, role: value, module: "stt"});
         }
         if (value === "Audio Checker") {
             setIsSttRoles(value);
-            setSearch({...search, role: value, type: "stt"});
+            setSearch({...search, role: value, module: "stt"});
         }
         if (value === "Validator") {
             setIsSttRoles(value);
-            setSearch({...search, role: value, type: "stt"});
+            setSearch({...search, role: value, module: "stt"});
         }
         if (value === "Annotator") {
             setIsSttRoles(value);
-            setSearch({...search, role: value, type: "stt"});
+            setSearch({...search, role: value, module: "stt"});
         }
     };
 
     const handleTtsRole = (value: string) => {
         if (value === "Speaker") {
             setIsTtsRoles(value);
-            setSearch({...search, role: value, type: "tts"});
+            setSearch({...search, role: value, module: "tts"});
         }
         if (value === "Audio Checker") {
             setIsTtsRoles(value);
-            setSearch({...search, role: value, type: "tts"});
+            setSearch({...search, role: value, module: "tts"});
         }
         if (value === "Validator") {
             setIsTtsRoles(value);
-            setSearch({...search, role: value, type: "tts"});
+            setSearch({...search, role: value, module: "tts"});
         }
         if (value === "Annotator") {
             setIsTtsRoles(value);
-            setSearch({...search, role: value, type: "tts"});
+            setSearch({...search, role: value, module: "tts"});
         }
     };
 
     const onDateSearch = () => {
-        console.log('date search')
         setOpen(!open)
     }
 
@@ -492,7 +497,7 @@ const TimeWiseDisbursements = () => {
                     // setShowModal={setShowModal}
                     handleModal={handleModal}
                     role={search?.role}
-                    type={search?.type}
+                    type={search?.module}
                 />
             ) : null}
         </div>
