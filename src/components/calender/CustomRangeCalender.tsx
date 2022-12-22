@@ -70,7 +70,7 @@ interface Props{
     setDateValue:any
 }
 const CustomRangeCalender = ({trigger,setDateValue}:Props) => {
-
+ const DateFormat:string="DD-MM-YYYY"
     const [fistClick, setFirstClick] = useState<boolean>(false);
 
     const _init:DateDT = {start: "", end: ""};
@@ -82,13 +82,13 @@ const CustomRangeCalender = ({trigger,setDateValue}:Props) => {
     const getCalenderDate: DatePickerProps['onChange'] = (date, dateString) => {
         if (fistClick) {
             setDate((prev: any) => ({...prev, end: date}))
-            setInputDate((prev: any) => ({...prev, end: date ? date.format("YYYY-MM-DD") : ""}))
-            setDateValue((prev:any)=>({...prev,end: date ? date.format("YYYY-MM-DD") : ""}))
+            setInputDate((prev: any) => ({...prev, end: date ? date.format(DateFormat) : ""}))
+            setDateValue((prev:any)=>({...prev,end: date ? date.format(DateFormat) : ""}))
         } else {
             setDate((prev: any) => ({...prev, start: date}))
-            setInputDate((prev: any) => ({...prev, start: date ? date.format("YYYY-MM-DD") : ""}))
+            setInputDate((prev: any) => ({...prev, start: date ? date.format(DateFormat) : ""}))
             setFirstClick(true);
-            setDateValue((prev:any)=>({...prev,start: date ? date.format("YYYY-MM-DD") : ""}))
+            setDateValue((prev:any)=>({...prev,start: date ? date.format(DateFormat) : ""}))
         }
     };
 

@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layouts from "./components/Layouts";
 import Billing from "./pages/Billing";
 import PaymentHistory from "./pages/Billing/PaymentHistory";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   useEffect(() => {
@@ -27,6 +28,7 @@ function App() {
             path="/billing/payment-history/:id"
             element={<PaymentHistory />}
           />
+          <Route path="dashboard" element={<Dashboard/>}/>
         </Routes>
       </Layouts.Default>
     </BrowserRouter>

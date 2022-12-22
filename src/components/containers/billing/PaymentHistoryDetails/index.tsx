@@ -9,7 +9,7 @@ import Image from "../../../Image";
 import Table from "../../../Table";
 import Pagination from "../../../Pagination";
 import { Link } from "react-router-dom";
-import CustomRangeCalender, { DateDT } from "../../../Calender/CustomRangeCalender";
+import CustomRangeCalender, { DateDT } from "../../../calender/CustomRangeCalender";
 
 const PaymentHistoryDetails = ({ data }: { data: paymentHistoryDT }) => {
   const [dateValue, setDateValue] = useState<DateDT>({ start: "", end: "" })

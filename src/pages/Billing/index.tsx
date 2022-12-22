@@ -8,7 +8,7 @@ const Billing = () => {
     <>
       <TotalAmountDisbursed />
       <TimeWiseDisbursements />
-      <BillingListIndex />
+      {/*<BillingListIndex />*/}
     </>
   );
 };
