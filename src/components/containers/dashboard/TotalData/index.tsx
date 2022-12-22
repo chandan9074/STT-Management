@@ -1,10 +1,11 @@
 import React from 'react';
 import ProgressBar from "../../../common/ProgressBar";
+import GaugeComponent from "../../../common/Gauge";
 
 const TotalData = () => {
     return (
-        <div>
-            <div className="flex gap-1">
+        <div className="bg-amber-100 h-52">
+            <div className="flex gap-1 ">
                 <h1>Total Data</h1>
                 <p>Received : 900h</p>
             </div>
@@ -32,7 +33,7 @@ const TotalData = () => {
                     </div>
                 </div>
                 <div className="col-span-3">
-
+                    <GaugeComponent.Type1/>
                 </div>
             </div>
         </div>
