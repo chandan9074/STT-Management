@@ -1,13 +1,17 @@
-import React from 'react';
+import React from "react";
+import OverTheTime from "../../components/containers/dashboard/OverTheTime";
 import TotalData from "../../components/containers/dashboard/TotalData";
-
+import Layouts from "../../components/Layouts";
 
 const Dashboard = () => {
-    return (
-        <div>
-            <TotalData/>
-        </div>
-    );
+  return (
+    <Layouts.Secondary>
+      <div className="min-h-[calc(100vh-9.5vh)]">
+        <OverTheTime />
+        <TotalData/>
+      </div>
+    </Layouts.Secondary>
+  );
 };
 
 export default Dashboard;

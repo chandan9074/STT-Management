@@ -26,6 +26,9 @@ module.exports = {
         fadeIn2: "fadeIn 0.3s ease-in-out",
         transition1: "transition duration-900 ease-out hover:ease-in",
       },
+      dropShadow: {
+        "blue-gray": "drop-shadow(0px 2px 4px rgba(91, 124, 192, 0.25))",
+      },
       boxShadow: {
         "light-blue": "0px 0px 12px #FFFFFF",
         "light-tomato": "0px 2px 18px #FFD3D3",

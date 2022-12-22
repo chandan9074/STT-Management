@@ -1,15 +1,13 @@
-import React from "react";
 import TotalAmountDisbursed from "../../components/containers/billing/TotalAmountDisbursed";
-import BillingListIndex from "../../components/containers/billing/BillingList/BillingListIndex";
 import TimeWiseDisbursements from "../../components/containers/billing/TimeWiseDisbursements";
+import Layouts from "../../components/Layouts";
 
 const Billing = () => {
   return (
-    <>
+    <Layouts.Default>
       <TotalAmountDisbursed />
       <TimeWiseDisbursements />
-      {/*<BillingListIndex />*/}
-    </>
+    </Layouts.Default>
   );
 };
 
