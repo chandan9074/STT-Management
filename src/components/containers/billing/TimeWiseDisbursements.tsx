@@ -8,6 +8,7 @@ import BillingListIndex from "./BillingList/BillingListIndex";
 import Icons from "../../../assets/Icons";
 import arrowDropDownIcon from '../../../assets/Icons/arrow_drop_down.png';
 import {timeWiseDisbursementParamsDT, timeWiseYearDT} from "../../../types/billingTypes";
+import CustomRangeCalender, { DateDT } from "../../Calender/CustomRangeCalender";
 
 const TimeWiseDisbursements = () => {
 
@@ -17,6 +18,8 @@ const TimeWiseDisbursements = () => {
 
     const managerContext = useContext(RoleInContext);
     const {disbursementData, totalDisbursed} = managerContext;
+    const [dateValue, setDateValue] = useState<DateDT>({ start: "", end: "" })
+  const [open, setOpen] = useState<boolean>(false)
 
     const [dimensionValue, setDimensionValue] = useState<number[]>([]);
     const [isStt, setIsStt] = useState(true);
@@ -199,6 +202,7 @@ const TimeWiseDisbursements = () => {
 
     const onDateSearch = () => {
         console.log('date search')
+        setOpen(!open)
     }
 
 
@@ -288,6 +292,7 @@ const TimeWiseDisbursements = () => {
                             </button>
 
                         </div>
+                        <CustomRangeCalender trigger={open} setDateValue={setDateValue}/>
                         {/*<div className={`grid grid-cols-12`}>*/}
                         <div className="relative">
                             <div className="flex justify-between w-full relative px-10">
