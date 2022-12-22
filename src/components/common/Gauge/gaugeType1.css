@@ -3,6 +3,7 @@
     width: 300px;
     height: 150px;
     margin: 0 auto;
+    /*position: absolute;*/
 }
 
 .multigraph:before {
@@ -10,7 +11,7 @@
     width: 300px;
     height: 150px;
     position: absolute;
-    border: 30px solid rgba(0, 0, 0, 0.1);
+    border: 70px solid #DAD7FE;
     border-radius: 300px 300px 0 0;
     border-bottom: none;
 }
@@ -26,16 +27,19 @@
     color: #000;
     border: 1px solid gray;
     position: absolute;
-    left: 50%;
-    bottom: -40px;
+    left: 10%;
+    bottom: 50;
     margin: -40px;
-    transition: all 300ms ease-in-out;
+    /* transition: all 300ms ease-in-out; */
     box-shadow: 0 0 5px grey;
     opacity: 0;
     transform: scale(.1);
 }
 
+
+
 .multigraph:hover .tooltip {
+    left: -40px;
     bottom: 75%;
     opacity: .8;
     transform: scale(1);
@@ -49,12 +53,14 @@
 
 }
 
+
+
 .graph:before, .graph:after {
     width: 300px;
     height: 150px;
     position: absolute;
     top: 100%;
-    border: 30px solid #000;
+    border: 70px solid #CCF8FE;
     content: '';
     border-radius: 0 0 300px 300px;
     border-top: none;
@@ -63,7 +69,7 @@
 }
 
 .graph:after {
-    transform: rotate(10deg);
+    transform: rotate(90deg);
 }
 
 @keyframes demo {
