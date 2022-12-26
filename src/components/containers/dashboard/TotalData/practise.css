@@ -1,6 +1,7 @@
+
 .male-tt {
     display: none;
 }
 .male-body:hover ~ .male-tt {
-    display: block;
+ display: block;
 }

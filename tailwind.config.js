@@ -13,6 +13,7 @@ module.exports = {
       "heading-3": "24px",
       "heading-2": "32px",
       "heading-1": "72px",
+
     },
     extend: {
       keyframes: {
@@ -126,6 +127,8 @@ module.exports = {
         "venetian-red": "#F7DEE1",
         "sea-foam-green": "#A0E4CB",
         "sea-serpent": "#59C1BD",
+        "silver-tree":"#5BBC96",
+        "tacao":"#EAA678",
       },
     },
   },

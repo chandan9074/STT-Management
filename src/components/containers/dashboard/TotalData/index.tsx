@@ -9,17 +9,19 @@ const TotalData = () => {
                 <p className="text-heading-4 font-medium">Total Data</p>
                 <p className="text-small text-ct-blue-90-70% mb-1">Received : 900h</p>
             </div>
-            <div className="grid grid-cols-12 items-center h-full ">
-                <div className="col-span-3">
+            <div className="flex items-center justify-between h-full ">
+                <div className="">
                     <div className="flex gap-1 items-center">
-                        <h1 className="text-heading-1">33</h1>
+                        <h1 className="text-heading-1 text-transparent bg-clip-text bg-gradient-to-r from-primary-ct-blue-60 via-silver-tree to-tacao">33
+                            {/*<sup className="text-heading-2">eee</sup>*/}
+                        </h1>
                         <div>
                             <p className="text-heading-2">%</p>
                             <p className="text-xxs text-ct-blue-90-70%">Achieved</p>
                         </div>
                     </div>
                 </div>
-                <div className="col-span-6">
+                <div className="w-[850px]">
                     <ProgressBar.Type1/>
 
                     <div className='flex justify-between'>
@@ -32,8 +34,8 @@ const TotalData = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-span-3">
-                     <GaugeComponent.Type1/>
+                <div className="">
+                    <GaugeComponent.Type1/>
                 </div>
             </div>
         </div>
