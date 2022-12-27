@@ -25,6 +25,7 @@ import mail from "./mail.svg";
 import call from "./call.svg";
 import home from "./home.svg";
 import calender from "./calender.svg";
+import schedule from "./schedule.svg";
 
 const Icons = {
   currency,
@@ -54,6 +55,7 @@ const Icons = {
   call,
   home,
   calender,
+  schedule,
 };
 
 export default Icons;
