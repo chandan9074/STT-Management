@@ -1,0 +1,4 @@
+.ant-progress-circle:where(.css-dev-only-do-not-override-acm2ia).ant-progress-status-success .ant-progress-text {
+    color: #52c41a;
+
+}

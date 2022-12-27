@@ -22,24 +22,29 @@ const Type1 = () => {
     return (
         <div className="relative mb-[65px]">
             <div className="flex items-center rounded-t-full overflow-y-hidden w-[172px] h-[86px] relative z-[80]">
-                <div className={`bg-blue-A10 h-[86px] absolute w-[172px] -rotate-[135deg] origin-bottom z-[60]`}
+                <div className={`male-tt bg-blue-A10 h-[86px] absolute w-[172px] -rotate-[135deg] origin-bottom z-[60]`}
                      onMouseOver={MouseEventHandle}
-                     onMouseOut={MouseEventHandleOut}>
+                     onMouseOut={MouseEventHandleOut}
+                />
 
-                </div>
+
                 <div className="female-tt bg-purple-A10 h-[86px] absolute w-[172px] z-[50]"
                      onMouseOver={MouseEventHandle2}
                      onMouseOut={MouseEventHandleOut2}
-                >
+                />
 
-                </div>
-                <div
-                    className="w-24 h-12 rounded-t-full bg-white z-[90] absolute bottom-0 left-1/2 transform -translate-x-1/2">
-                </div>
+
+                <div className="w-24 h-12 rounded-t-full bg-white z-[90] absolute bottom-0 left-1/2 transform -translate-x-1/2"/>
+
+
             </div>
-            <div className="w-full text-center">
-                <p className="font-medium text-heading-5 text-ct-blue-95">43,258</p>
-                <p className="text-base text-ct-blue-45 font-semibold"> Total Speaker</p>
+            <div className="flex w-full">
+                <div className="w-[38px] h-[40px] bg-gradient-to-b from-onahau to-rgba(204, 248, 254, 0)"/>
+                <div className="w-[96px] text-center">
+                    <p className="font-medium text-heading-5 text-ct-blue-95 overflow-hidden truncate w-[90px] mx-auto">43,258</p>
+                    <p className="text-small text-ct-blue-45 font-medium"> Total Speaker</p>
+                </div>
+                <div className="w-[38px] h-[40px] bg-gradient-to-b from-fog to-rgba(218, 215, 254, 0)"/>
             </div>
             {/*-----------------------tooltip-----------------------------*/}
             {
