@@ -25,55 +25,8 @@ const BarChart = () => {
                     overTheTimeGData={overTheTimeGData}
                     index={index}
                   />
-                  {/* <div
-                    className="absolute w-10 h-20 bg-black"
-                    style={{
-                      bottom:
-                        item.hourData[0].hour &&
-                        item.hourData[1].hour &&
-                        item.hourData[2].hour
-                          ? Math.round(
-                              Math.round(
-                                barHeight * item.hourData[0]?.hour
-                              ) / overTheTimeGData.maxReceivedHour
-                            ) +
-                            Math.round(
-                              Math.round(
-                                barHeight * item.hourData[1]?.hour
-                              ) / overTheTimeGData.maxReceivedHour
-                            ) +
-                            Math.round(
-                              Math.round(
-                                barHeight * item.hourData[2]?.hour
-                              ) / overTheTimeGData.maxReceivedHour
-                            )
-                          : 0,
-                    }}
-                  ></div> */}
-                  {/* <div
-                    className={`absolute  bottom-0 w-9 z-[90] bg-gradient-to-b from-ct-blue-medium via-green-A10 to-orange-A10 group-hover:bg-none`}
-                    style={{
-                      height:
-                        item.hourData[0].hour &&
-                        item.hourData[1].hour &&
-                        item.hourData[2].hour
-                          ? Math.round(
-                              Math.round(barHeight * item.hourData[0]?.hour) /
-                                overTheTimeGData.maxReceivedHour
-                            ) +
-                            Math.round(
-                              Math.round(barHeight * item.hourData[1]?.hour) /
-                                overTheTimeGData.maxReceivedHour
-                            ) +
-                            Math.round(
-                              Math.round(barHeight * item.hourData[2]?.hour) /
-                                overTheTimeGData.maxReceivedHour
-                            )
-                          : 0,
-                    }}
-                  ></div> */}
                   <div
-                    className={`absolute bottom-0 w-9 bg-gradient-to-t from-orange-A10 to-orange-10 group-hover:to-orange-A10  duration-700 $`}
+                    className={`absolute bottom-0 w-9 bg-gradient-to-t from-orange-A10 to-orange-10`}
                     style={{
                       height: item.hourData[0].hour
                         ? `${Math.round(
@@ -82,9 +35,11 @@ const BarChart = () => {
                           )}px`
                         : "",
                     }}
-                  ></div>
+                  >
+                    <div className="opacity-0 group-hover:opacity-100 transition duration-300 absolute inset-0 h-full w-full bg-orange-A10" />
+                  </div>
                   <div
-                    className={`absolute w-9 bg-gradient-to-b from-winter-wizard via-green-A10 to-orange-10 group-hover:from-green-A10 group-hover:to-green-A10 $`}
+                    className={`absolute w-9 bg-gradient-to-b from-winter-wizard via-green-A10 to-orange-10`}
                     style={{
                       height: item.hourData[1].hour
                         ? `${Math.round(
@@ -99,9 +54,11 @@ const BarChart = () => {
                           )}px`
                         : "",
                     }}
-                  ></div>
+                  >
+                    <div className="opacity-0 group-hover:opacity-100 transition duration-300 absolute inset-0 h-full w-full bg-green-A10" />
+                  </div>
                   <div
-                    className={`absolute w-9 bg-gradient-to-b from-ct-blue-medium to-winter-wizard group-hover:to-winter-wizard group-hover:from-winter-wizard group-hover:duration-300 $`}
+                    className={`absolute w-9 bg-gradient-to-b from-ct-blue-medium to-winter-wizard`}
                     style={{
                       height: item.hourData[2].hour
                         ? `${Math.round(
@@ -123,7 +80,9 @@ const BarChart = () => {
                             }px`
                           : "",
                     }}
-                  ></div>
+                  >
+                    <div className="opacity-0 group-hover:opacity-100 transition duration-300 absolute inset-0 h-full w-full bg-winter-wizard" />
+                  </div>
                 </>
               )}
             </div>
@@ -138,13 +97,3 @@ const BarChart = () => {
 };
 
 export default BarChart;
-
-// item.hourData[0].hour &&
-//                         item.hourData[1].hour &&
-//                         item.hourData[2].hour
-//                           ? `${
-//                               item.hourData[0].hour +
-//                               item.hourData[1].hour +
-//                               item.hourData[2].hour
-//                             }px`
-//                           : ""

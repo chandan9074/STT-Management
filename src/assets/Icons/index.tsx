@@ -26,6 +26,8 @@ import call from "./call.svg";
 import home from "./home.svg";
 import calender from "./calender.svg";
 import schedule from "./schedule.svg";
+import left_indicator from "./left_indicator.svg";
+import right_indicator from "./right_indicator.svg";
 
 const Icons = {
   currency,
@@ -56,6 +58,8 @@ const Icons = {
   home,
   calender,
   schedule,
+  left_indicator,
+  right_indicator,
 };
 
 export default Icons;

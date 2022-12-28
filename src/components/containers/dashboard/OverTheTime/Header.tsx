@@ -1,4 +1,5 @@
 import React from "react";
+import Icons from "../../../../assets/Icons";
 
 const Header = () => {
   return (
@@ -22,7 +23,17 @@ const Header = () => {
           </h3>
         </div>
       </div>
-      <div></div>
+      <div className="flex items-center">
+        <button>
+          <img src={Icons.left_indicator} alt="" className="py-1.5 px-1.5" />
+        </button>
+        <div className="bg-ct-blue-05 rounded-[4px] py-1.5 px-4 text-small font-medium text-ct-blue-90 mx-2">
+          August'22
+        </div>
+        <button>
+          <img src={Icons.right_indicator} alt="" className="py-1.5 px-1.5" />
+        </button>
+      </div>
     </div>
   );
 };
