@@ -28,6 +28,10 @@ import calender from "./calender.svg";
 import schedule from "./schedule.svg";
 import left_indicator from "./left_indicator.svg";
 import right_indicator from "./right_indicator.svg";
+import BorderAll from "./border_all.png";
+import BrokenImg from "./broken_image.png";
+import PictureAsPdf from "./picture_as_pdf.png";
+import Print from "./print.png";
 
 const Icons = {
   currency,
@@ -60,6 +64,10 @@ const Icons = {
   schedule,
   left_indicator,
   right_indicator,
+  BorderAll,
+  BrokenImg,
+  PictureAsPdf,
+  Print,
 };
 
 export default Icons;

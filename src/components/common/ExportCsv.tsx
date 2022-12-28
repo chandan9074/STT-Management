@@ -39,8 +39,7 @@ const ExportCsv = ({csvData, fileName, headerCells}: Props) => {
             <div>
                 <button
                     onClick={() => exportToCSV(csvData, fileName)}
-                    className="font-sans text-small text-ct-blue-60 font-medium "
-
+                    className="border rounded-md border-white font-sans text-small text-ct-blue-60 font-medium hover:border-gray-400 duration-300 p-1.5"
                     id="csv"
                 >
                     Download in Excel
