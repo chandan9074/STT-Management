@@ -14,7 +14,7 @@ const Secondary = ({ children }: { children: any }) => {
     <div>
       <Navbar.Primary />
       <Sidebar.Primary />
-      <div className="absolute left-1/2 transform -translate-x-1/2 top-12 z-[100]">
+      <div className="absolute left-1/2 transform -translate-x-1/2 top-12 z-[90]">
         <Buttons.ToggleRounded
           first="STT"
           second="TTS"

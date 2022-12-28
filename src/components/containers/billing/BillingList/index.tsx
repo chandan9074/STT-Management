@@ -1,14 +1,14 @@
 import React, {useContext, useEffect, useState} from "react";
-import BillingTable from "./BillingTable";
 import {InputNumber} from "antd";
 // import Primary from "./Primary";
 import {ColumnsType} from "antd/es/table";
 import ManagerIcon from "../../../../assets/images/BillingManagerAvatar.png"
 import {allBillingParamsDT, lastBillingParamsDT} from "../../../../types/billingTypes";
 import {BillingContext} from "../../../../context/BillingProvider";
-import CustomRangeCalender, {DateDT} from "../../../calender/CustomRangeCalender";
+import {DateDT} from "../../../calender/CustomRangeCalender";
 import ExportCsv from "../../../common/ExportCsv";
 import {excelNameFormatter} from "../../../../helpers/Utils";
+import Table from "../../../Table";
 
 
 interface Person {
@@ -174,7 +174,7 @@ const BillingListIndex = () => {
             </div>
             {/*    table------------------*/}
             <div>
-                <BillingTable
+                <Table.Type2
                     columnsData={lastBillingColumns}
                     dataSources={listedLastBillings}
                 />
@@ -214,9 +214,10 @@ const BillingListIndex = () => {
                 </div>
             </div>
             <div className="mb-10">
-                <BillingTable
+                <Table.Type2
                     columnsData={allBillingColumns}
                     dataSources={listedAllBillings}/>
+
             </div>
 
         </div>

@@ -29,6 +29,11 @@ import BorderAll from './border_all.png'
 import BrokenImg from './broken_image.png'
 import PictureAsPdf from './picture_as_pdf.png'
 import Print from './print.png'
+import CloseIconButton from './close.svg'
+import sourceDistributionMenu from './MenuVector.svg'
+import blueDropArrow from './arrow_drop_down.svg'
+import CorrectIcon from './check.svg'
+
 
 const Icons = {
     currency,
@@ -61,7 +66,11 @@ const Icons = {
     BorderAll,
     BrokenImg,
     PictureAsPdf,
-    Print
+    Print,
+    CloseIconButton,
+    sourceDistributionMenu,
+    blueDropArrow,
+    CorrectIcon
 
 };
 

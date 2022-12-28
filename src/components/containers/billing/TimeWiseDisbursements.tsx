@@ -4,11 +4,11 @@ import {SearchOutlined} from "@ant-design/icons";
 import RoleSearchModal from "./RoleSearchModal";
 import {RoleInContext} from "../../../context/RoleProvider";
 import "./TimeWiseDisbursement.css";
-import BillingListIndex from "./BillingList/BillingListIndex";
 import Icons from "../../../assets/Icons";
 import arrowDropDownIcon from '../../../assets/Icons/arrow_drop_down.png';
 import {timeWiseDisbursementParamsDT, timeWiseYearDT} from "../../../types/billingTypes";
 import CustomRangeCalender, {DateDT} from "../../calender/CustomRangeCalender";
+import BillingListIndex from "./BillingList";
 
 const TimeWiseDisbursements = () => {
 
