@@ -1,6 +1,6 @@
 import React from 'react';
-import CreateData from "./CreateData";
 import CollectData from "./CollectData";
+import CreateData from "./Createdata";
 
 const DataContainer = () => {
     return (
