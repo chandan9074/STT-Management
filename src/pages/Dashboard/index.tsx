@@ -8,10 +8,9 @@ const Dashboard = () => {
     return (
         <Layouts.Secondary>
             <div className="min-h-[calc(100vh-9.5vh)]">
-                <OverTheTime/>
                 <TotalData/>
+                <OverTheTime/>
                 <DataContainer/>
-
             </div>
         </Layouts.Secondary>
     );
