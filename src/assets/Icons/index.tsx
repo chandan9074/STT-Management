@@ -25,6 +25,17 @@ import mail from "./mail.svg";
 import call from "./call.svg";
 import home from "./home.svg";
 import calender from "./calender.svg";
+import BorderAll from "./border_all.png";
+import BrokenImg from "./broken_image.png";
+import PictureAsPdf from "./picture_as_pdf.png";
+import Print from "./print.png";
+import CloseIconButton from "./close.svg";
+import sourceDistributionMenu from "./MenuVector.svg";
+import blueDropArrow from "./arrow_drop_down.svg";
+import CorrectIcon from "./check.svg";
+import schedule from "./schedule.svg";
+import left_indicator from "./left_indicator.svg";
+import right_indicator from "./right_indicator.svg";
 
 const Icons = {
   currency,
@@ -54,6 +65,54 @@ const Icons = {
   call,
   home,
   calender,
+  BorderAll,
+  BrokenImg,
+  PictureAsPdf,
+  Print,
+  CloseIconButton,
+  sourceDistributionMenu,
+  blueDropArrow,
+  CorrectIcon,
+  schedule,
+  left_indicator,
+  right_indicator,
 };
+
+// const Icons = {
+//   currency,
+//   admin,
+//   hamburger,
+//   post_add,
+//   activity,
+//   dashboard,
+//   group,
+//   songDashboard,
+//   target,
+//   user2,
+//   settings,
+//   whiteDropArrow,
+//   blackDropArrow,
+//   arrow_back,
+//   manager,
+//   teamLeader,
+//   collector,
+//   audioChecker,
+//   annotator,
+//   validator,
+//   speakerMale,
+//   speakerFemale,
+//   military_tech,
+//   mail,
+//   call,
+//   home,
+//   calender,
+//   schedule,
+//   left_indicator,
+//   right_indicator,
+//   BorderAll,
+//   BrokenImg,
+//   PictureAsPdf,
+//   Print,
+// };
 
 export default Icons;

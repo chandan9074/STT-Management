@@ -29,82 +29,82 @@ export type disbursedDT = {
 };
 
 export type paymentHistoryDT = {
-  id: string,
-  name: string,
-  role: string,
-  email: string,
-  phone: string,
-  address: string,
-  totalPaid: string,
-  totalHours: string,
-  noOfPayments: number,
-  paymentHistory: paymentHistoryDataDT[]
-}
+  id: string;
+  name: string;
+  role: string;
+  email: string;
+  phone: string;
+  address: string;
+  totalPaid: string;
+  totalHours: string;
+  noOfPayments: number;
+  paymentHistory: paymentHistoryDataDT[];
+};
 
 export type paymentHistoryDataDT = {
-  id: string,
-  date: string,
-  amount: number,
-  hours: number,
-}
+  id: string;
+  date: string;
+  amount: number;
+  hours: number;
+};
 // BILLINGS TYPE----------------
-export type allBillingParamsDT={
-  pageSize:number;
-  type:string;
-  role:string
-}
-export type allBillingsDT={
-  role:string;
-  type:string;
+export type allBillingParamsDT = {
+  pageSize: number;
+  type: string;
+  role: string;
+};
+export type allBillingsDT = {
+  role: string;
+  type: string;
   billingInfo: billingInfoDT[];
-}
+};
 
 export type billingInfoDT = {
   id: number;
   date: string;
   hour: number;
   amountPaid: number;
-}
-export type lastBillingParamsDT={
-  page:number;
-  pageSize:number;
-  type:string;
-  role:string
-}
-export type lastBillingsDT={
-  paid:number
-  dateOfPayment:string;
-  role:string;
-  type:string;
+};
+export type lastBillingParamsDT = {
+  page: number;
+  pageSize: number;
+  type: string;
+  role: string;
+};
+export type lastBillingsDT = {
+  paid: number;
+  dateOfPayment: string;
+  role: string;
+  type: string;
   billingInfo: lastBillingInfoDT[];
-}
+};
 
 export type lastBillingInfoDT = {
   id: number;
-  manager:roleInfo
+  userInfo: roleInfo;
   hour: number;
   amountPaid: number;
-}
-export type roleInfo={
-  name:string;
-  locality:string;
-  image:string
-}
+};
+export type roleInfo = {
+  name: string;
+  locality: string;
+  image: string;
+};
 
 export type timeWiseDisbursementParamsDT = {
   role: string;
   module: string;
   start?: string;
-  end?: string
-}
+  end?: string;
+};
 
 export type timeWiseDisbursementDT = {
   role: string;
   type: string;
-  totalDisbursedAmount:number;
+  totalDisbursedAmount: number;
   totalValidHours: number;
   data: timeWiseYearDT[];
-}
+};
 
 export type timeWiseYearDT = {
   id: string;
@@ -112,26 +112,25 @@ export type timeWiseYearDT = {
   month: string;
   totalAmount: number;
   totalHours: number;
-  disbursed: timeWiseDisbursedDT[]
-}
+  disbursed: timeWiseDisbursedDT[];
+};
 
 export type timeWiseDisbursedDT = {
   amount: number;
   day: string;
   hours: number;
-}
+};
 
 export type roleParamsDT = {
   id: string;
   type: string;
   role: string;
-}
+};
 
 export type roleDT = {
-  id:string;
+  id: string;
   name: string;
   role: string;
-  contact: string
+  contact: string;
   address: string;
-}
-
+};

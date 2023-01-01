@@ -9,3 +9,4 @@ export const AUDIO_PATH = "/audio-management";
 export const USER_PATH = "/user-management";
 export const ORGANIZER_PATH = "/organizer";
 export const SETTINGS_PATH = "/settings";
+export const BILLING_PAYMENT_HISTORY_PATH = "/billing/payment-history";

@@ -3,9 +3,10 @@ import "./App.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Layouts from "./components/Layouts";
 import Billing from "./pages/Billing";
 import PaymentHistory from "./pages/Billing/PaymentHistory";
+import * as PATH from "./helpers/Slug";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   useEffect(() => {
@@ -20,15 +21,14 @@ function App() {
   }, []);
   return (
     <BrowserRouter>
-      <Layouts.Default>
-        <Routes>
-          <Route path="/billing" element={<Billing />} />
-          <Route
-            path="/billing/payment-history/:id"
-            element={<PaymentHistory />}
-          />
-        </Routes>
-      </Layouts.Default>
+      <Routes>
+        <Route path={PATH.BILLING_PATH} element={<Billing />} />
+        <Route
+          path={`${PATH.BILLING_PAYMENT_HISTORY_PATH}/:id`}
+          element={<PaymentHistory />}
+        />
+        <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} />
+      </Routes>
     </BrowserRouter>
   );
 }

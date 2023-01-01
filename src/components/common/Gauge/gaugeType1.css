@@ -1,0 +1,13 @@
+/*.male-tt {*/
+/*    display: none;*/
+/*}*/
+/*.male-body:hover ~ .male-tt {*/
+/*    display: block;*/
+/*}*/
+.male-tt:hover {
+    background: #1F384C;
+}
+
+.female-tt:hover {
+    background: #8EBFFF;
+}
