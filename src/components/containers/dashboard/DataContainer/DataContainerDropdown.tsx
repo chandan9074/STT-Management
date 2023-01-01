@@ -21,7 +21,7 @@ const DataContainerDropdown = ({data, handleActivePanel}: Props) => {
 
             <div
                 onClick={() => setToggleOpen(!toggleOpen)}
-                className={`flex gap-2 items-center justify-centerl hover:bg-ct-blue-20 cursor-pointer px-2 py-1 rounded-[4px] w-[245px] 
+                className={`flex gap-2 items-center justify-centerl hover:bg-ct-blue-20 cursor-pointer px-2 py-1 rounded-[4px]  
                 ${toggleOpen ? "bg-ct-blue-20" : "bg-white"}
                 `}>
                 <p className="text-heading-6 font-medium text-ct-blue-60">{active}</p>

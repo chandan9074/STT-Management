@@ -147,6 +147,7 @@ module.exports = {
                 "pacific-blue": "#00A9C5",
                 "bright-turquoise": "#42F5D5",
                 "your-pink": "#FFCBCB",
+                "pale-sky":"#667487"
 
             },
         },

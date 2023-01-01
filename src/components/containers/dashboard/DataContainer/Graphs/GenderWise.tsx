@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PercentiseCard from "../../../../common/PercentiseCard";
+import Gauge from "../../../../common/Gauge";
+import CustomRangeCalender, {DateDT} from "../../../../calender/CustomRangeCalender";
 
 const GenderWise = () => {
+    const [dateValue, setDateValue] = useState<DateDT>({start: "", end: ""});
+    const [open, setOpen] = useState<boolean>(false);
     return (
         <div className="px-5">
             <div className="grid grid-cols-12 gap-2.5">
@@ -21,6 +25,10 @@ const GenderWise = () => {
                         BorderColor="border-b-your-pink"
                     />
                 </div>
+            </div>
+
+            <div className="flex items-center justify-center mt-5">
+                <Gauge.Type2 female={35} male={75} speakers={32500}/>
             </div>
 
         </div>

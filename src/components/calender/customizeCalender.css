@@ -93,3 +93,37 @@
 .custom-date-picker, .ant-picker-dropdown .ant-picker-panel .ant-picker-footer {
     border-top: none;
 }
+
+.ant-picker-cell-inner.date-in-range .date {
+    display: block;
+    width: 36px;
+    height: 24px;
+    background: rgba(19, 110, 229, 0.62);
+}
+
+.ant-picker-cell-inner.date-s-selected .date {
+    position: relative;
+    /*top: 3px;*/
+    /*left: 50%;*/
+    /*background: rgba(19, 110, 229, 0.62);*/
+}
+
+.ant-picker-cell-inner.date-s-selected .date::after {
+    position: absolute;
+    content: "";
+    width: 18px;
+    left: 50%;
+    height: 24px;
+    background: rgba(19, 110, 229, 0.62);
+    z-index: -1;
+}
+
+.ant-picker-cell-inner.date-e-selected .date::after {
+    position: absolute;
+    content: "";
+    width: 18px;
+    height: 24px;
+    right: 50%;
+    background: rgba(19, 110, 229, 0.62);
+    z-index: -1;
+}

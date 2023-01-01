@@ -197,10 +197,7 @@ const CustomRangeCalender = ({trigger,setDateValue}:Props) => {
                     }
 
                     if (inRange) {
-
-                        style.borderRadius = '50%';
                         style.color = "#ffffff";
-                        style.backgroundColor = "red";
                     }
 
                     const isStartSelected = date && date.start && (current.isSame(date.start));
@@ -212,13 +209,16 @@ const CustomRangeCalender = ({trigger,setDateValue}:Props) => {
                         style.backgroundColor = "#136EE5";
                     }
 
+                    const inRangeClass = inRange ? 'date-in-range' : '';
+                    const isSelectedStart = isStartSelected ? 'date-s-selected' : '';
+                    const isSelectedEnd = isEndSelected ? 'date-e-selected' : '';
 
                     return (
                         <div
-                            className="ant-picker-cell-inner"
+                            className={`ant-picker-cell-inner ${inRangeClass} ${isSelectedStart} ${isSelectedEnd}`}
                             style={style}
                         >
-                            {current.date()}
+                            <span className="date">{current.date()}</span>
                         </div>
                     );
                 }}
