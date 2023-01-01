@@ -13,7 +13,7 @@ type ToolTipProps = {
 const ToolTip = ({ currentData, barHeight, item, i, maxBar }: ToolTipProps) => {
   return (
     <div
-      className={`rounded-[12px] px-5 py-4 bg-[#212121] absolute ${
+      className={`rounded-[12px] px-5 py-4 bg-tooltip-bg absolute ${
         currentData.yearData.length - 2 <= i &&
         Math.round(barHeight / 2) >=
           Math.round(
@@ -77,32 +77,6 @@ const ToolTip = ({ currentData, barHeight, item, i, maxBar }: ToolTipProps) => {
           </h3>
         </div>
       ))}
-      {/* <div className="mt-4 flex justify-between w-[300px] bg-winter-wizard bg-opacity-25 py-1.5 px-2 rounded-[4px]">
-        <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
-          <span className="mr-1">{item.disbursed[0].day}</span>
-          <span>{item.month}</span>
-        </h3>
-        <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
-          <span className="mr-1">{item.disbursed[0].hours}</span>
-          hr
-        </h3>
-        <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
-          {item.disbursed[0].amount}/-
-        </h3>
-      </div>
-      <div className="mt-0.5 flex justify-between w-[300px] bg-blue-gray-85 py-1.5 px-2 rounded-[4px]">
-        <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
-          <span className="mr-1">{item.disbursed[1].day}</span>
-          <span>{item.month}</span>
-        </h3>
-        <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
-          <span className="mr-1">{item.disbursed[1].hours}</span>
-          hr
-        </h3>
-        <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
-          {item.disbursed[1].amount}/-
-        </h3>
-      </div> */}
       <img
         src={Icons.blackDropArrow}
         alt=""
