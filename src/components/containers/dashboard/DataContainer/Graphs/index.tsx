@@ -1,5 +1,10 @@
 import DistributionSourceWise from "./DistributionSourceWise";
+import GenderWise from "./GenderWise";
 
-const Graphs = {DistributionSourceWise};
+const Graphs = {
+    DistributionSourceWise,
+    GenderWise
 
-export default  Graphs;
+};
+
+export default Graphs;

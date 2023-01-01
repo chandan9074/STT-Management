@@ -54,7 +54,7 @@ const CreateData = () => {
         const Category1: any = {
             "Distribution Source-wise": <Graphs.DistributionSourceWise/>,
             "Domain-wise": <div></div>,
-            "Gender-wise": <div></div>,
+            "Gender-wise": <Graphs.GenderWise/>,
             "Age-wise": <div></div>,
             "Locality-wise": <div></div>,
             "Economic Situation-wise": <div></div>,
@@ -68,7 +68,7 @@ const CreateData = () => {
 
 
     return (
-        <div className="bg-white rounded-xl shadow-bottom-light-blue-10">
+        <div className="bg-white rounded-xl shadow-bottom-light-blue-10 h-[660px] mb-2.5">
             <Header
                 type="Create"
                 borderColor="border-border-teal"
