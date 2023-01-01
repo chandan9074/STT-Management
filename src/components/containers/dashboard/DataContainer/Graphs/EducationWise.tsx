@@ -1,29 +1,50 @@
 import React, {useEffect, useState} from 'react';
-import {getValueFromPercentage} from "../../../../../helpers/Utils";
+import {getValueFromHeight, getValueFromPercentage} from "../../../../../helpers/Utils";
+import {createCollectData} from "../../../../../data/dashboard/createCollectData";
 
 const EducationWise = () => {
-    const maxValue = 150;
-    const percentData = [100, 50, 25, 10]
+    const maxValue = 586;
+    const percentData = [100, 50, 25, 10];
+    // const percentData = [10, 25, 50,100];
     const [dimensionValue, setDimensionValue] = useState<number[]>([]);
+    const [educationWiseData, setEducationWiseData] = useState(createCollectData?.data[0]?.educationWise);
+    const [educationWiseDataHeights, setEducationWiseDataHeights] = useState<number[]>([]);
 
     useEffect(() => {
         const _dimensionValue = getValueFromPercentage(maxValue, percentData);
-        console.log('------------', _dimensionValue)
+
+        const _data = educationWiseData?.map(value => {
+            return value.contribution;
+        })
+
+        if (_data) {
+            const _timeWiseDataHeights = getValueFromHeight(maxValue, _data);
+            setEducationWiseDataHeights(_timeWiseDataHeights);
+        }
         setDimensionValue(_dimensionValue);
     }, []);
+
+    console.log('*************', educationWiseDataHeights)
+
     return (
-        <div className='pl-5 pt-5 pr-5 pb-10 relative'>
+        <div className='pl-5 pt-10 pr-5 pb-10 relative mb-10'>
             <div >
                 {
                     percentData?.map((value, index) => (
                         <div
-                            style={{marginBottom: `${dimensionValue[index]}px`}}
+                            key={index}
+                            // style={{marginBottom: dimensionValue[index]}}
+                            style={{marginBottom: dimensionValue.length -1 === index ? dimensionValue[index] : dimensionValue[index] - dimensionValue[index+1]-32}}
+
+                            // style={{marginBottom: `${index === 0 ? dimensionValue[index] : dimensionValue[index] - dimensionValue[index-1]}px`}}
                             className='flex justify-center items-center gap-x-2'
                         >
                             <div>
                                 {
+                                    // <h1>{dimensionValue.length -1 === index ? dimensionValue[index] : (dimensionValue[index] - dimensionValue[index+1])}</h1>
                                     value !== 100 &&
                                     <h1>{value}%</h1>
+
                                 }
                             </div>
                             {
@@ -35,13 +56,20 @@ const EducationWise = () => {
                 }
             </div>
             <div className='absolute w-full bottom-3'>
-                <div className='flex justify-between px-20'>
+                <div className='flex justify-between items-end px-20'>
                     {
-                        dimensionValue?.map(value => (
-                            <div >
-                                <div className='w-[84px] bg-[#DAD7FE]' id="triangle"></div>
-                                <div className='flex justify-center'>
-                                    <h1>primary</h1>
+                        educationWiseData?.map((value: any, index) => (
+                            <div key={index} className='flex flex-col justify-center items-center'>
+                                <div className='text-white flex justify-center w-[60px] bg-blue-gray-80 h-11 flex justify-center items-center'>
+                                    <h1>{Math.round((100 * educationWiseDataHeights[index]) / maxValue)}%</h1>
+                                </div>
+                                <div
+                                    style={{height: `${educationWiseDataHeights[index]}px`}}
+                                    className='w-[84px] bg-[#DAD7FE] ' id="triangle"
+                                >
+                                </div>
+                                <div className='flex justify-center '>
+                                    <h1>{value?.name}</h1>
                                 </div>
                             </div>
                         ))
