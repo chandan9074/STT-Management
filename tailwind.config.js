@@ -43,6 +43,7 @@ module.exports = {
         "bottom-light-blue-10":
           "0px 1px 2px rgba(31, 56, 76, 0.06), 0px 1px 3px rgba(31, 56, 76, 0.1)",
         "bottom-light-blue-20": "0px 4px 24px rgba(31, 56, 76, 0.12)",
+
       },
       colors: {
         "primary-ct-blue-60": "#2C79BE",
@@ -138,10 +139,13 @@ module.exports = {
         "sea-serpent": "#59C1BD",
         "silver-tree": "#5BBC96",
         "tooltip-bg": "#212121",
-        tacao: "#EAA678",
-        onahau: "#CCF8FE",
-        fog: "#DAD7FE",
+        "tacao": "#EAA678",
+        "onahau": "#CCF8FE",
+        "fog": "#DAD7FE",
         "cold-turkey": "#C4B0B2",
+        //   raihan
+        "pacific-blue":"#00A9C5",
+
       },
     },
   },
