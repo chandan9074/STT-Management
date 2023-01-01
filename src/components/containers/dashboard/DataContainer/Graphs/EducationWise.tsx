@@ -43,7 +43,7 @@ const EducationWise = () => {
                                 {
                                     // <h1>{dimensionValue.length -1 === index ? dimensionValue[index] : (dimensionValue[index] - dimensionValue[index+1])}</h1>
                                     value !== 100 &&
-                                    <h1>{value}%</h1>
+                                    <h1 className='text-ct-blue-45 text-[14px]'>{value}%</h1>
 
                                 }
                             </div>
@@ -60,8 +60,8 @@ const EducationWise = () => {
                     {
                         educationWiseData?.map((value: any, index) => (
                             <div key={index} className='flex flex-col justify-center items-center'>
-                                <div className='text-white flex justify-center w-[60px] bg-blue-gray-80 h-11 flex justify-center items-center'>
-                                    <h1>{Math.round((100 * educationWiseDataHeights[index]) / maxValue)}%</h1>
+                                <div className='rounded-[4px] text-white flex justify-center w-[50px] bg-blue-gray-80 h-8 flex justify-center items-center'>
+                                    <h1 className='text-[12px]'>{Math.round((100 * educationWiseDataHeights[index]) / maxValue)}%</h1>
                                 </div>
                                 <div
                                     style={{height: `${educationWiseDataHeights[index]}px`}}
@@ -69,13 +69,13 @@ const EducationWise = () => {
                                 >
                                 </div>
                                 <div className='flex justify-center '>
-                                    <h1>{value?.name}</h1>
+                                    <h1 className='text-ct-blue-90 text-[13px]'>{value?.name}</h1>
                                 </div>
                             </div>
                         ))
                     }
                 </div>
-                <div className="px-10 absolute w-full bottom-6">
+                <div className="px-10 absolute w-full bottom-5">
                     <div className='border-[1px] border-border-gray '></div>
                 </div>
 
