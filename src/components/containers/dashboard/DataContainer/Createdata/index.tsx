@@ -58,7 +58,7 @@ const CreateData = () => {
             "Age-wise": <div></div>,
             "Locality-wise": <div></div>,
             "Economic Situation-wise": <div></div>,
-            "Education-wise": <div></div>,
+            "Education-wise": <Graphs.EducationWise/>,
             "Profession-wise": <div></div>,
             "Recording Area": <div></div>,
             "Recording Distance": <div></div>,

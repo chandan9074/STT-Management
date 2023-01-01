@@ -21,3 +21,9 @@ export const excelNameFormatter = (name:any, isDate:any) => {
         return name;
     }
 };
+
+export const getValueFromPercentage = (maxValue: number, percentage: number[]) => {
+    return percentage?.map(value => {
+        return (maxValue * value) / 100;
+    });
+}
