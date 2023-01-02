@@ -2,17 +2,17 @@ import React, {useCallback, useEffect, useState} from "react";
 import {PieChart, Pie, Cell, Tooltip} from "recharts";
 import {createCollectData} from "../../../../../data/dashboard/createCollectData";
 
-const data = [
-    {name: "Group A", value: 100},
-    {name: "Group B", value: 500},
-    {name: "Group C", value: 300},
-    {name: "Group D", value: 300},
-    {name: "Group E", value: 300},
-    {name: "Group F", value: 300},
-    {name: "Group G", value: 300},
-    {name: "Group H", value: 300},
-    {name: "Group I", value: 300},
-];
+// const data = [
+//     {name: "Group A", value: 100},
+//     {name: "Group B", value: 500},
+//     {name: "Group C", value: 300},
+//     {name: "Group D", value: 300},
+//     {name: "Group E", value: 300},
+//     {name: "Group F", value: 300},
+//     {name: "Group G", value: 300},
+//     {name: "Group H", value: 300},
+//     {name: "Group I", value: 300},
+// ];
 
 const COLORS = ["#F5427F", "#00B86E", "#E4F542", "#42E0F5", "#3BA2F5", "#B336C8", "#F54542", "#F5AC42", "#FFD145"];
 
@@ -24,7 +24,8 @@ const renderCustomizedLabel = ({
                                    innerRadius,
                                    outerRadius,
                                    percent,
-                                   index
+                                   index,
+                                   data
                                }: any) => {
     const radius = innerRadius + (outerRadius - innerRadius) * 0.3;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
@@ -38,8 +39,7 @@ const renderCustomizedLabel = ({
             textAnchor={x > cx ? "start" : "end"}
             dominantBaseline="central"
         >
-            {/* {`${(percent * 100).toFixed(0)}%`} */}
-            {"abc"}
+            {`${(percent * 100).toFixed(0)}%`}
         </text>
     );
 };
@@ -61,7 +61,7 @@ const DomainWise = () => {
         })
     )
     return (
-        <div>
+        <div >
             <PieChart width={400} height={400}>
                 <Pie
                     data={domainData}
@@ -74,8 +74,10 @@ const DomainWise = () => {
                     paddingAngle={1}
                     fill="#8884d8"
                     dataKey="value"
+                    startAngle={90}
+                    endAngle={-360}
                 >
-                    {data.map((entry, index) => (
+                    {COLORS.map((entry: any, index: any) => (
                         <Cell
                             key={`cell-${index}`}
                             fill={COLORS[index % COLORS.length]}
