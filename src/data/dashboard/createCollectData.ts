@@ -353,7 +353,7 @@ export const createCollectData = {
           contribution: 3,
         },
       ],
-      EconomicSituationWise: [
+      economicSituationWise: [
         {
           id: "1",
           name: "Middle Class",

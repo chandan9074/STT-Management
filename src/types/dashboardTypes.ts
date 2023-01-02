@@ -21,15 +21,83 @@ export type hourDataDT = {
   hour: number;
 };
 
-// {
-//     id: string;
-//     validHour: number;
-//   },
-//   {
-//     id: string;
-//     inValidHour: number;
-//   },
-//   {
-//     id: string;
-//     notCheckedHour: number;
-//   }
+export type createCollectDT = {
+  id: string;
+  module: string;
+  role: string;
+  data: (createDataDT | collectDataDT)[];
+};
+
+export type createDataDT = {
+  id: string;
+  name: string;
+  target: string;
+  totalValid: number;
+  totalInvalid: number;
+  notChecked: number;
+  totalReceived: number;
+  lastUpdate: string;
+  achieved: number;
+  distributionSourceWise: distributionSourceWiseDT[];
+  domainWise: createCollectSimilarPropertyDT[];
+  genderWise: genderWiseDT[];
+  ageWise: createCollectSimilarPropertyDT[];
+  localityWise: createCollectSimilarPropertyDT[];
+  economicSituationWise: createCollectSimilarPropertyDT[];
+  educationWise: createCollectSimilarPropertyDT[];
+  professionWise: createCollectSimilarPropertyDT[];
+  recordingArea: createCollectSimilarPropertyDT[];
+  recordingDistance: createCollectSimilarPropertyDT[];
+};
+
+export type collectDataDT = {
+  id: string;
+  name: string;
+  target: string;
+  totalValid: number;
+  totalInvalid: number;
+  notChecked: number;
+  totalReceived: number;
+  lastUpdate: string;
+  achieved: number;
+  distributionSourceWise: distributionSourceWiseDT[];
+  domainWise: createCollectSimilarPropertyDT[];
+  genderWise: genderWiseDT[];
+  ageWise: createCollectSimilarPropertyDT[];
+  localityWise: createCollectSimilarPropertyDT[];
+};
+
+export type createCollectSimilarPropertyDT = {
+  id: string;
+  name: string;
+  totalReceived: number;
+  totalValid: number;
+  totalInvalid: number;
+  notChecked: number;
+  lastUpdate: string;
+  contribution: number;
+};
+
+export type distributionSourceWiseDT = {
+  id: string;
+  name: string;
+  target: number;
+  totalValid: number;
+  totalInvalid: number;
+  notChecked: number;
+  totalReceived: number;
+  lastUpdate: string;
+  achieved: number;
+};
+
+export type genderWiseDT = {
+  id: string;
+  name: string;
+  totalReceived: number;
+  totalValid: number;
+  totalInvalid: number;
+  notChecked: number;
+  lastUpdate: string;
+  contribution: number;
+  speakers: number;
+};
