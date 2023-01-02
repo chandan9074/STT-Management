@@ -4,8 +4,8 @@ import Gauge from "../../../../common/Gauge";
 import CustomRangeCalender, {DateDT} from "../../../../calender/CustomRangeCalender";
 
 const GenderWise = () => {
-    const [dateValue, setDateValue] = useState<DateDT>({start: "", end: ""});
-    const [open, setOpen] = useState<boolean>(false);
+
+
     return (
         <div className="px-5">
             <div className="grid grid-cols-12 gap-2.5">

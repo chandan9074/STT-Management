@@ -185,7 +185,7 @@ export const createCollectData = {
           contribution: 2.3,
         },
         {
-          id: "8",
+          id: "9",
           name: "Social & Community",
           totalReceived: 60,
           totalValid: 50,
@@ -385,6 +385,7 @@ export const createCollectData = {
           contribution: 5,
         },
       ],
+
       educationWise: [
         {
           id: "1",
