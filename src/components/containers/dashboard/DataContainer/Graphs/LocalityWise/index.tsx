@@ -1,12 +1,12 @@
-import React from "react";
-import Icons from "../../../../../../assets/Icons";
+import { createCollectSimilarPropertyDT } from "../../../../../../types/dashboardTypes";
 import Graph from "./Graph";
+import PropertyList from "./PropertyList";
 
-const LocalityWise = () => {
+const LocalityWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
   return (
-    <div className=" mt-3 flex">
-      <Graph />
-      <div></div>
+    <div className=" mt-3 flex items-center justify-between">
+      <Graph data={data} />
+      <PropertyList data={data} />
     </div>
   );
 };
