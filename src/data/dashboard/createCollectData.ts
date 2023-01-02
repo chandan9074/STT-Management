@@ -314,7 +314,7 @@ export const createCollectData = {
         },
         {
           id: "4",
-          name: "Rajbonshi",
+          name: "Rajbongshi",
           totalReceived: 60,
           totalValid: 50,
           totalInvalid: 10,

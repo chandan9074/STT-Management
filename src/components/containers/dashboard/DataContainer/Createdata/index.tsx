@@ -62,7 +62,7 @@ const CreateData = ({ data }: { data: createDataDT | collectDataDT }) => {
       "Domain-wise": <div></div>,
       "Gender-wise": <div></div>,
       "Age-wise": <div></div>,
-      "Locality-wise": <Graphs.LocalityWise />,
+      "Locality-wise": <Graphs.LocalityWise data={data.localityWise} />,
       "Economic Situation-wise": <div></div>,
       "Education-wise": <div></div>,
       "Profession-wise": <div></div>,
