@@ -13,7 +13,9 @@ const DataContainer = () => {
     <div className="grid grid-cols-12 gap-5 mt-4">
       <div className="col-span-6">
         {dashboardContext.createCollectData && (
-          <CreateData data={dashboardContext.createCollectData.data[0]} />
+          <CreateData
+            data={dashboardContext.createCollectData.data.createData}
+          />
         )}
       </div>
       <div className="col-span-6">
