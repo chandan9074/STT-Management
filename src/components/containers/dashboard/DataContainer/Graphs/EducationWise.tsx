@@ -8,7 +8,7 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
     const percentData = [100, 50, 25, 10];
     // const percentData = [10, 25, 50,100];
     const [dimensionValue, setDimensionValue] = useState<number[]>([]);
-    const [educationWiseData, setEducationWiseData] = useState(createCollectData?.data[0]?.educationWise);
+    const [educationWiseData, setEducationWiseData] = useState(createCollectData?.data.createData?.educationWise);
     const [educationWiseDataHeights, setEducationWiseDataHeights] = useState<number[]>([]);
 
     useEffect(() => {

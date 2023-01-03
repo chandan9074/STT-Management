@@ -8,7 +8,8 @@ import {
     createDataDT,
 } from "../../../../../types/dashboardTypes";
 
-const CreateData = ({data}: { data: createDataDT | collectDataDT }) => {
+
+const CreateData = ({data}: { data: createDataDT }) => {
     const CreateDropDownData = [
         {
             id: 1,
@@ -64,7 +65,7 @@ const CreateData = ({data}: { data: createDataDT | collectDataDT }) => {
             "Age-wise": <div></div>,
             "Locality-wise": <Graphs.LocalityWise data={data.localityWise} />,
             "Economic Situation-wise": <div></div>,
-            "Education-wise": <Graphs.EducationWise/>,
+            "Education-wise": <Graphs.EducationWise data={data.educationWise}/>,
             "Profession-wise": <div></div>,
             "Recording Area": <div></div>,
             "Recording Distance": <div></div>,
