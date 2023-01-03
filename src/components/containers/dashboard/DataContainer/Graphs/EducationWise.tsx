@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {getValueFromHeight, getValueFromPercentage} from "../../../../../helpers/Utils";
 import {createCollectData} from "../../../../../data/dashboard/createCollectData";
+import { createCollectSimilarPropertyDT } from '../../../../../types/dashboardTypes';
 
-const EducationWise = () => {
+const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
     const maxValue = 586;
     const percentData = [100, 50, 25, 10];
     // const percentData = [10, 25, 50,100];
