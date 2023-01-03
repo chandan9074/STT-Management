@@ -185,7 +185,7 @@ export const createCollectData = {
           contribution: 2.3,
         },
         {
-          id: "8",
+          id: "9",
           name: "Social & Community",
           totalReceived: 60,
           totalValid: 50,
@@ -314,7 +314,7 @@ export const createCollectData = {
         },
         {
           id: "4",
-          name: "Rajbonshi",
+          name: "Rajbongshi",
           totalReceived: 60,
           totalValid: 50,
           totalInvalid: 10,
@@ -353,7 +353,7 @@ export const createCollectData = {
           contribution: 3,
         },
       ],
-      EconomicSituationWise: [
+      economicSituationWise: [
         {
           id: "1",
           name: "Middle Class",
@@ -385,6 +385,7 @@ export const createCollectData = {
           contribution: 5,
         },
       ],
+
       educationWise: [
         {
           id: "1",

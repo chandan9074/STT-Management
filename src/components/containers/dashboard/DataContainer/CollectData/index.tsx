@@ -39,7 +39,7 @@ const CollectData = () => {
         const Category1: any = {
             "Distribution Source-wise": <Graphs.DistributionSourceWise/>,
             "Domain-wise": <div></div>,
-            "Gender-wise": <div></div>,
+            "Gender-wise": <Graphs.GenderWise/>,
             "Age-wise": <div></div>,
             "Locality-wise": <div></div>,
 
@@ -61,7 +61,7 @@ const CollectData = () => {
                 />
                 <DataContainerModal/>
             </div>
-            <div className="rounded-b-xl">
+            <div className="rounded-b-xl px-5 py-3">
                 {
                     DistributionDropdownMenu(activePanel)
                 }

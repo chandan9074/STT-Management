@@ -5,9 +5,17 @@
 /*    display: block;*/
 /*}*/
 .male-tt:hover {
-    background: #1F384C;
+    background: linear-gradient(66.48deg, #00A9C5 11.6%, #CCF8FE 85.97%);
 }
 
 .female-tt:hover {
-    background: #8EBFFF;
+    background: linear-gradient(153.38deg, #DAD7FE 15.38%, #8087F1 89.9%);
+}
+
+.male-drop-shadow {
+    background: linear-gradient(180deg, rgba(204, 248, 254, 0.55) 0%, rgba(204, 248, 254, 0) 100%);
+}
+
+.female-drop-shadow {
+    background: linear-gradient(180deg, rgba(218, 215, 254, 0.55) 0%, rgba(218, 215, 254, 0) 100%);
 }

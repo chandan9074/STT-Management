@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 import DashboardService from "../services/dashboardService";
-import { overTheTimeGDT } from "../types/dashboardTypes";
+import { createCollectDT, overTheTimeGDT } from "../types/dashboardTypes";
 
 interface ContextProps {
   loading: boolean;
@@ -12,6 +12,8 @@ interface ContextProps {
     year?: number,
     month?: string
   ) => void;
+  getCreateCollectData: () => void;
+  createCollectData: createCollectDT | undefined;
 }
 
 export const DashboardContext = createContext({} as ContextProps);
@@ -21,6 +23,9 @@ const DashboardProvider = ({ children }: { children: any }) => {
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [overTheTimeData, setOverTheTimeData] = useState<
     overTheTimeGDT | undefined
+  >();
+  const [createCollectData, setCreateCollectData] = useState<
+    createCollectDT | undefined
   >();
 
   const getOverTheTimeData = (
@@ -35,11 +40,26 @@ const DashboardProvider = ({ children }: { children: any }) => {
     // const response = await DashboardService.getOverTheTimeData();
     // console.log("response", response.data);
     // setOverTheTimeData(response.data);
-    const response = DashboardService.getOverTheTimeData(module, role, year, month);
+    const response = DashboardService.getOverTheTimeData(
+      module,
+      role,
+      year,
+      month
+    );
     setOverTheTimeData(response);
     setLoading(false);
   };
 
+  const getCreateCollectData = () => {
+    setLoading(true);
+    setErrorMsg("");
+    // fetch data from api
+    // const response = await DashboardService.getOverTheTimeData();
+    // console.log("response", response.data);
+    // setOverTheTimeData(response.data);
+    const response = DashboardService.getCollectCreateData();
+    setCreateCollectData(response);
+  };
   return (
     <DashboardContext.Provider
       value={{
@@ -47,6 +67,8 @@ const DashboardProvider = ({ children }: { children: any }) => {
         errorMsg,
         overTheTimeData,
         getOverTheTimeData,
+        getCreateCollectData,
+        createCollectData,
       }}
     >
       {children}

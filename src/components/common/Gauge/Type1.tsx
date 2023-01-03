@@ -39,12 +39,12 @@ const Type1 = () => {
 
             </div>
             <div className="flex w-full">
-                <div className="w-[38px] h-[40px] bg-gradient-to-b from-onahau to-rgba(204, 248, 254, 0)"/>
+                <div className="w-[38px] h-[40px] male-drop-shadow"/>
                 <div className="w-[96px] text-center">
                     <p className="font-medium text-heading-5 text-ct-blue-95 overflow-hidden truncate w-[90px] mx-auto">43,258</p>
                     <p className="text-small text-ct-blue-45 font-medium"> Total Speaker</p>
                 </div>
-                <div className="w-[38px] h-[40px] bg-gradient-to-b from-fog to-rgba(218, 215, 254, 0)"/>
+                <div className="w-[38px] h-[40px] female-drop-shadow"/>
             </div>
             {/*-----------------------tooltip-----------------------------*/}
             {

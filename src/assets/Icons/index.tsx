@@ -36,6 +36,13 @@ import CorrectIcon from "./check.svg";
 import schedule from "./schedule.svg";
 import left_indicator from "./left_indicator.svg";
 import right_indicator from "./right_indicator.svg";
+import Barendri from "./Barendri.svg";
+import MiddleEastBangla from "./MiddleEastBangla.svg";
+import NorthEastBangla from "./NorthEastBangla.svg";
+import Rajbongshi from "./Rajbongshi.svg";
+import SouthBangla from "./SouthBangla.svg";
+import SouthEastBangla from "./SouthEastBangla.svg";
+import Kamrupi from "./Kamrupi.svg";
 
 const Icons = {
   currency,
@@ -76,43 +83,13 @@ const Icons = {
   schedule,
   left_indicator,
   right_indicator,
+  Barendri,
+  MiddleEastBangla,
+  NorthEastBangla,
+  Rajbongshi,
+  SouthBangla,
+  SouthEastBangla,
+  Kamrupi,
 };
-
-// const Icons = {
-//   currency,
-//   admin,
-//   hamburger,
-//   post_add,
-//   activity,
-//   dashboard,
-//   group,
-//   songDashboard,
-//   target,
-//   user2,
-//   settings,
-//   whiteDropArrow,
-//   blackDropArrow,
-//   arrow_back,
-//   manager,
-//   teamLeader,
-//   collector,
-//   audioChecker,
-//   annotator,
-//   validator,
-//   speakerMale,
-//   speakerFemale,
-//   military_tech,
-//   mail,
-//   call,
-//   home,
-//   calender,
-//   schedule,
-//   left_indicator,
-//   right_indicator,
-//   BorderAll,
-//   BrokenImg,
-//   PictureAsPdf,
-//   Print,
-// };
 
 export default Icons;
