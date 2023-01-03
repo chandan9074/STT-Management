@@ -322,7 +322,7 @@ const TimeWiseDisbursements = () => {
                       style={{
                         bottom: `${170 / 16 + dimensionValue[i] / 2}rem`,
                       }}
-                      className={`absolute animate-fadeIn2 z-40 w-[350px]  group-hover:block hidden bg-[#59C1BD] ${
+                      className={`absolute animate-fadeIn2 z-40 w-[350px] hidden group-hover:block bg-[#59C1BD] ${
                         disbursementData?.length === 12
                           ? i < 2
                             ? "-left-10"

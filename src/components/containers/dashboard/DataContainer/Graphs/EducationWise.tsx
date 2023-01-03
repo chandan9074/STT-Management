@@ -1,20 +1,21 @@
-import React, {useEffect, useState} from 'react';
-import {getValueFromHeight, getValueFromPercentage} from "../../../../../helpers/Utils";
-import {createCollectData} from "../../../../../data/dashboard/createCollectData";
+import React, { useEffect, useState } from 'react';
+import { getValueFromHeight, getValueFromPercentage } from "../../../../../helpers/Utils";
+import { createCollectData } from "../../../../../data/dashboard/createCollectData";
 import { createCollectSimilarPropertyDT } from '../../../../../types/dashboardTypes';
+import GraphTooltip from '../GraphTooltip';
 
 const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
     const maxValue = 586;
     const percentData = [100, 50, 25, 10];
     // const percentData = [10, 25, 50,100];
     const [dimensionValue, setDimensionValue] = useState<number[]>([]);
-    const [educationWiseData, setEducationWiseData] = useState(createCollectData?.data.createData?.educationWise);
+    const [educationWiseData, setEducationWiseData] = useState<createCollectSimilarPropertyDT[] | undefined>(createCollectData?.data.createData?.educationWise);
     const [educationWiseDataHeights, setEducationWiseDataHeights] = useState<number[]>([]);
 
     useEffect(() => {
         const _dimensionValue = getValueFromPercentage(maxValue, percentData);
 
-        const _data = educationWiseData?.map(value => {
+        const _data = educationWiseData?.map((value: createCollectSimilarPropertyDT) => {
             return value.contribution;
         })
 
@@ -25,7 +26,6 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
         setDimensionValue(_dimensionValue);
     }, []);
 
-    console.log('*************', educationWiseDataHeights)
 
     return (
         <div className='pl-5 pt-10 pr-5 pb-10 relative mb-10'>
@@ -34,10 +34,11 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
                     percentData?.map((value, index) => (
                         <div
                             key={index}
-                            // style={{marginBottom: dimensionValue[index]}}
-                            style={{marginBottom: dimensionValue.length -1 === index ? dimensionValue[index] : dimensionValue[index] - dimensionValue[index+1]-32}}
+                            style={{
+                                marginBottom: dimensionValue.length - 1 === index ? dimensionValue[index] : dimensionValue[index] - dimensionValue[index + 1] - 32,
 
-                            // style={{marginBottom: `${index === 0 ? dimensionValue[index] : dimensionValue[index] - dimensionValue[index-1]}px`}}
+                            }}
+
                             className='flex justify-center items-center gap-x-2'
                         >
                             <div>
@@ -61,17 +62,50 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
                     {
                         educationWiseData?.map((value: any, index) => (
                             <div key={index} className='flex flex-col justify-center items-center'>
-                                <div className='rounded-[4px] text-white flex justify-center w-[50px] bg-blue-gray-80 h-8 flex justify-center items-center'>
+                                <div className='rounded-[4px] text-white flex justify-center w-[50px] bg-opacity-[85%] bg-blue-gray-85 h-8 flex justify-center items-center'>
                                     <h1 className='text-[12px]'>{Math.round((100 * educationWiseDataHeights[index]) / maxValue)}%</h1>
                                 </div>
-                                <div
-                                    style={{height: `${educationWiseDataHeights[index]}px`}}
-                                    className='w-[84px] bg-[#DAD7FE] ' id="triangle"
-                                >
+                                <div className='relative group'>
+                                    <div
+                                        style={{
+                                            height: `${educationWiseDataHeights[index]}px`,
+                                            backgroundColor: `${index % 3 === 0
+                                                ? "#DAD7FE"
+                                                : index % 4 === 0
+                                                    ? "#FFD3D3"
+                                                    : index % 5 === 0
+                                                        ? "#DAD7FE"
+                                                        : index % 2 === 0
+                                                            ? "#CCF8FE"
+                                                            : "#FFD3D3"
+                                                }`,
+                                        }}
+                                        className='w-[84px]' id="triangle"
+                                    >
+                                    </div>
+                                    <div className={`z-50 animate-fadeIn absolute top-[-203px] hidden group-hover:block`} >
+                                            <GraphTooltip
+                                                data={value}
+                                                validBgColor="bg-coral-90"
+                                                titleColor={`${index % 3 === 0
+                                                    ? "text-[#DAD7FE]"
+                                                    : index % 4 === 0
+                                                        ? "text-[#FFD3D3]"
+                                                        : index % 5 === 0
+                                                            ? "text-[#DAD7FE]"
+                                                            : index % 2 === 0
+                                                                ? "text-[#CCF8FE]"
+                                                                : "text-[#FFD3D3]"
+                                                    }`}
+                                                align="left"
+                                            />
+                                        </div>
                                 </div>
+
                                 <div className='flex justify-center '>
                                     <h1 className='text-ct-blue-90 text-[13px]'>{value?.name}</h1>
                                 </div>
+
                             </div>
                         ))
                     }
