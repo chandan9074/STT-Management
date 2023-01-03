@@ -25,7 +25,10 @@ export type createCollectDT = {
   id: string;
   module: string;
   role: string;
-  data: (createDataDT | collectDataDT)[];
+  data: {
+    createData: createDataDT;
+    collectData: collectDataDT;
+  };
 };
 
 export type createDataDT = {
