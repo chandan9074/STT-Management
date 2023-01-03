@@ -5,7 +5,7 @@ import { createCollectSimilarPropertyDT } from '../../../../../types/dashboardTy
 import GraphTooltip from '../GraphTooltip';
 
 const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
-    const maxValue = 370;
+    const maxValue = 324;
     const percentData = [100, 50, 25, 10];
     // const percentData = [10, 25, 50,100];
     const [dimensionValue, setDimensionValue] = useState<number[]>([]);
@@ -28,14 +28,14 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
 
 
     return (
-        <div className='pl-5 pt-10 pr-5 pb-5 relative h-[400px]'>
-            <div >
+        <div className=' pt-10  pb-5 relative h-[400px] mt-2'>
+            <div>
                 {
                     percentData?.map((value, index) => (
                         <div
                             key={index}
                             style={{
-                                marginBottom: dimensionValue.length - 1 === index ? dimensionValue[index] : dimensionValue[index] - dimensionValue[index + 1] - 32,
+                                marginBottom: dimensionValue.length - 1 === index ? dimensionValue[index] : dimensionValue[index] - dimensionValue[index + 1] -20,
 
                             }}
 
@@ -57,8 +57,8 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
                     ))
                 }
             </div>
-            <div className='absolute w-full bottom-10'>
-                <div className='flex justify-between items-end px-20 '>
+            <div className='absolute w-full bottom-12'>
+                <div className='flex justify-between items-end px-16 '>
                     {
                         educationWiseData?.map((value: any, index) => (
                             <div key={index} className='flex flex-col justify-center items-center'>
@@ -80,7 +80,7 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
                                                             : "#FFD3D3"
                                                 }`,
                                         }}
-                                        className='w-[84px]' id="triangle"
+                                        className={`w-[84px]`} id="triangle"
                                     >
                                     </div>
                                     <div className={`z-50 animate-fadeIn absolute top-[-203px] hidden group-hover:block`} >
@@ -113,7 +113,7 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
                         ))
                     }
                 </div>
-                <div className="px-10 absolute w-full bottom-0">
+                <div className="px-[16px] ml-[18px] absolute w-full bottom-0">
                     <div className='border-[1px] border-border-gray '></div>
                 </div>
 
