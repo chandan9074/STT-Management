@@ -19,7 +19,11 @@ const DataContainer = () => {
         )}
       </div>
       <div className="col-span-6">
-        <CollectData />
+        {dashboardContext.createCollectData && (
+          <CollectData
+            data={dashboardContext.createCollectData.data.collectData}
+          />
+        )}
       </div>
     </div>
   );

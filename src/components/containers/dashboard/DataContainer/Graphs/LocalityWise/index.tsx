@@ -17,13 +17,13 @@ const LocalityWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
           name={data[1].name}
           value={data[1].contribution}
           hour={data[1].totalValid}
-          BorderColor="border-[#EBC734]"
+          BorderColor="border-[#8D84F5]"
         />
         <PercentiseCard
           name={data[2].name}
           value={data[2].contribution}
           hour={data[2].totalValid}
-          BorderColor="border-[#EBC734]"
+          BorderColor="border-[#79F542]"
         />
       </div>
       <div className=" mt-3 flex items-center justify-between">
