@@ -2,8 +2,13 @@ import React, {useState} from 'react';
 import PercentiseCard from "../../../../common/PercentiseCard";
 import Gauge from "../../../../common/Gauge";
 import CustomRangeCalender, {DateDT} from "../../../../calender/CustomRangeCalender";
+import { genderWiseDT } from '../../../../../types/dashboardTypes';
 
-const GenderWise = () => {
+
+interface Props {
+    data:genderWiseDT[]
+}
+const GenderWise = ({data}:Props) => {
 
 
     return (

@@ -52,6 +52,8 @@ const CreateData = ({data}: { data: createDataDT }) => {
             value: "Recording Distance",
         },
     ];
+
+    console.log("------------------",data)
     const [activePanel, setActivePanel] = useState("");
 
     const handleActivePanel = (value: string) => {
@@ -61,7 +63,7 @@ const CreateData = ({data}: { data: createDataDT }) => {
         const Category1: any = {
             "Distribution Source-wise": <Graphs.DistributionSourceWise/>,
             "Domain-wise": <Graphs.DomainWise/>,
-            "Gender-wise": <Graphs.GenderWise/>,
+            "Gender-wise": <Graphs.GenderWise data={data.genderWise}/>,
             "Age-wise": <div></div>,
             "Locality-wise": <Graphs.LocalityWise data={data.localityWise} />,
             "Economic Situation-wise": <div></div>,

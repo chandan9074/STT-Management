@@ -1,6 +1,8 @@
 import React, { useCallback, useState } from "react";
 import { PieChart, Pie, Cell, Tooltip, Sector } from "recharts";
+import Icons from "../../../../../assets/Icons";
 import { createCollectData } from "../../../../../data/dashboard/createCollectData";
+import PropertyListType2 from "../../../../common/PropertyListType2";
 import GraphTooltip from "../GraphTooltip";
 
 // const data = [
@@ -45,7 +47,7 @@ const ActiveColor: any = {
         titeleColor: "text-[#42E0F5]",
         validBgColor: "bg-[#42E0F51F]"
     },
-    "commerce & Finance": {
+    "Commerce & Finance": {
         fillColor: "#0081D0",
         borderColor: "#3BA2F5",
         textColor: "",
@@ -129,14 +131,14 @@ const renderActiveShape = (props: any) => {
     } = props;
     const sin = Math.sin(-RADIAN * midAngle);
     const cos = Math.cos(-RADIAN * midAngle);
-    const sx = cx + (outerRadius - 180) * cos;
-    const sy = cy + (outerRadius - 180) * sin;
+    const sx = cx + (outerRadius - 120) * cos;
+    const sy = cy + (outerRadius - 120) * sin;
     return (
         <Sector
             cx={sx}
             cy={sy}
-            innerRadius={innerRadius - 2}
-            outerRadius={outerRadius + 2}
+            innerRadius={innerRadius - 1}
+            outerRadius={outerRadius + 1}
             startAngle={startAngle}
             endAngle={endAngle}
             fill={ActiveColor[payload.name]?.fillColor}
@@ -148,13 +150,11 @@ const renderActiveShape = (props: any) => {
 };
 const CustomTooltip = ({ payload }: any) => {
     const listData: any = createCollectData
-    // console.log("hello", listData.data[0].domainWise.filter((item:any) => item.name ===payload[0]?.payload?.name) [0]);
-    console.log('---------------', payload[0]?.payload)
     return (
-        <div className="flex justify-start">
+        <div>
             <GraphTooltip
-                align="center"
-                data={listData.data[0].domainWise.filter((item: any) => item.name === payload[0]?.payload?.name)[0]}
+                align="left"
+                data={listData.data.createData.domainWise.filter((item: any) => item.name === payload[0]?.payload?.name)[0]}
                 validBgColor={ActiveColor[payload[0]?.payload?.name]?.validBgColor}
                 titleColor={ActiveColor[payload[0]?.payload?.name]?.titeleColor}
             />
@@ -163,54 +163,45 @@ const CustomTooltip = ({ payload }: any) => {
 };
 const DomainWise = () => {
     const [activeIndex, setActiveIndex] = useState<any>(0);
-    const [activeData, setActiveData] = useState<any>()
+    const [activeData, setActiveData] = useState<any>({})
     const [top, setTop] = useState<number>(0);
     const [left, setLeft] = useState<number>(0)
-    // const onMouseOver = useCallback((data: any, index: any, event: any) => {
-    //     // if(index !== activeIndex){
-    //     //     setActiveIndex(index);
-    //     //     setTop(event.clientY)
-    //     //     setLeft(event.clientX)
-    //     //     setActiveData(data)
-    //     // }
-    //     setTop(event.clientY)
-    //     setLeft(event.clientX)
-    //     console.log("hello vasdi f adf", index, activeIndex)
-    // }, []);
+
     const onMouseOver = (data: any, index: any, event: any) => {
         setActiveIndex(index);
         setTop(event.clientY)
         setLeft(event.clientX)
         setActiveData(data)
-        console.log("asdkjfhak")
+       
     }
     const onMouseLeave = useCallback((data: any, index: any) => {
         setActiveIndex(null);
     }, []);
     const listData: any = createCollectData
     let domainData: any = []
-    listData.data[0].domainWise.map((e: any) =>
+    listData.data.createData.domainWise.map((e: any) =>
         domainData.push({
             name: e.name,
             value: e.contribution
         })
     )
 
-    // console.log("data", activeData)
+
 
     return (
-        <div>
-            <PieChart width={400} height={400}>
+        <div className="flex items-center justify-between">
+
+            <PieChart width={300} height={400}>
                 <Pie
                     isAnimationActive={false}
                     animationDuration={0}
                     data={domainData}
-                    cx={200}
-                    cy={200}
+                    cx="50%"
+                    cy="50%"
                     labelLine={false}
                     label={renderCustomizedLabel}
-                    innerRadius={120}
-                    outerRadius={180}
+                    innerRadius={70}
+                    outerRadius={120}
                     paddingAngle={1}
                     fill="#8884d8"
                     dataKey="value"
@@ -233,20 +224,15 @@ const DomainWise = () => {
 
                     ))}
                 </Pie>
-                {/* <Tooltip
-                    // wrapperStyle={{ top: tooltipPosition[activeIndex]?.top, left: tooltipPosition[activeIndex]?.left, display:"flex", justifyContent:"flex-start" }}
-                    content={<CustomTooltip />} /> */}
+                <Tooltip
+                    position={{
+                        x: activeData?.tooltipPosition?.x - 45,
+                        y: activeData?.tooltipPosition?.y - 230
+                    }}
+                    content={<CustomTooltip />} />
             </PieChart>
-            {activeIndex === 0 || activeIndex === 1 || activeIndex === 2 || activeIndex === 3 || activeIndex === 4 || activeIndex === 5 || activeIndex === 6 || activeIndex === 7 || activeIndex === 8 ? <div style={{ position: "absolute", top: top + 180, left: left - 50 }}>
 
-                {/* <h1 className="text-white">{activeData?.payload?.name}</h1> */}
-                <GraphTooltip
-                    align="left"
-                    data={listData.data[0].domainWise.filter((item: any) => item.name === activeData?.payload?.name)[0]}
-                    validBgColor={ActiveColor[activeData?.payload?.name]?.validBgColor}
-                    titleColor={ActiveColor[activeData?.payload?.name]?.titeleColor}
-                />
-            </div> : ""}
+            <PropertyListType2 data={listData.data.createData.domainWise} />
 
         </div>
     );

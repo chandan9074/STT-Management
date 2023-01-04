@@ -146,7 +146,7 @@ export const createCollectData = {
         },
         {
           id: "5",
-          name: "commerce & Finance",
+          name: "Commerce & Finance",
           totalReceived: 60,
           totalValid: 50,
           totalInvalid: 10,
