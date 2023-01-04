@@ -33,7 +33,7 @@ const GenderWise = ({data}:Props) => {
             </div>
 
             <div className="flex items-center justify-center mt-5">
-                <Gauge.Type2 female={35} male={75} speakers={32500}/>
+                <Gauge.Type2 data={data}/>
             </div>
 
         </div>

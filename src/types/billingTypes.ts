@@ -76,6 +76,7 @@ export type lastBillingsDT = {
   dateOfPayment: string;
   role: string;
   type: string;
+  numberOfBills:number
   billingInfo: lastBillingInfoDT[];
 };
 

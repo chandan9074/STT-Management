@@ -30,14 +30,12 @@ const GraphTooltip = ({
           className={`py-1 px-2 rounded-[4px] ${validBgColor} bg-opacity-[0.12] w-24`}
         >
           <h3 className="mb-0 text-white text-xxs">Valid</h3>
-          <h3 className="mb-0 text-blue-10 font-medium">
-            {data?.totalReceived}h
-          </h3>
+          <h3 className="mb-0 text-blue-10 font-medium">{data?.totalValid}h</h3>
         </div>
         <div className="py-1 px-2 rounded-[4px] bg-medium-purple-bg bg-opacity-[0.12] w-24">
-          <h3 className="mb-0 text-white text-xxs">Received</h3>
+          <h3 className="mb-0 text-white text-xxs">Contribution</h3>
           <h3 className="mb-0 text-blue-10 font-medium">
-            {data?.totalReceived}h
+            {data?.contribution}%
           </h3>
         </div>
       </div>

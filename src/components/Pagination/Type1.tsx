@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
-const Type1 = ({ total }: { total: number }) => {
+interface Props{
+  total:number
+}
+const Type1 = ({ total }:Props) => {
   const [currentPage, setCurrentPage] = useState(2);
   const [activePage, setActivePage] = useState(1);
 

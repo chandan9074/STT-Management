@@ -12,6 +12,7 @@ import { DateDT } from "../../../calender/CustomRangeCalender";
 import ExportCsv from "../../../common/ExportCsv";
 import { excelNameFormatter } from "../../../../helpers/Utils";
 import Table from "../../../Table";
+import Pagination from "../../../Pagination";
 
 interface Person {
   name: string;
@@ -42,9 +43,10 @@ const BillingListIndex = () => {
     allBillings,
     lastBillingsExcelData,
   } = billingContext;
-  const [pageNumber, setPageNumber] = useState<number>(1);
-  const [billingsParam, setBillingsParam] = useState<allBillingParamsDT>({
-    pageSize: 1,
+  const [pageNumberAllBilling, setPageNumberAllBilligs] = useState<number>(10);
+  const [pageNumberLastBilling, setPageNumberLastBilligs] = useState<number>(10);
+  const [allbillingsParam, setAllbillingsParam] = useState<allBillingParamsDT>({
+    pageSize: 10,
     type: "stt",
     role: "Manager",
   });
@@ -59,15 +61,27 @@ const BillingListIndex = () => {
   const [open, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    GetAllBillingInfo(billingsParam);
     GetLastBillingsInfo(lastBillingsParams);
-  }, [billingsParam]);
-  const changeEntry = (e: any) => {
-    setPageNumber(e);
+  }, [lastBillingsParams]);
+
+
+  useEffect(() => {
+    GetAllBillingInfo(allbillingsParam);
+  }, [allbillingsParam]);
+  const changeEntryLastBilling = (e: any) => {
+    setPageNumberLastBilligs(e);
   };
-  const handleChangeEntry = () => {
-    setBillingsParam((prev: any) => ({ ...prev, pageSize: pageNumber }));
+  const changeEntryAllBiling = (e: any) => {
+    setPageNumberAllBilligs(e);
   };
+  const handleChangeEntryLastBilling = () => {
+    console.log("last")
+    setLastBillingsParams((prev: any) => ({ ...prev, pageSize: pageNumberLastBilling }));
+  };
+  const handleChangeEntryAllBilling = () => {
+    setAllbillingsParam((prev: any) => ({ ...prev, pageSize: pageNumberAllBilling }));
+  };
+
 
   const listedLastBillings: BillingDataType[] = [];
   const _res = lastBillings?.billingInfo.map((data) => {
@@ -92,7 +106,7 @@ const BillingListIndex = () => {
     });
   });
 
-  // console.log("--=====---", lastBillingsExcelData)
+
   const excelHeader = {
     A1: "MANAGER",
     B1: "HOUR",
@@ -148,6 +162,8 @@ const BillingListIndex = () => {
     },
   ];
 
+  console.log("ggggg", lastBillings)
+
   return (
     <div>
       <div className="w-100 flex flex-row justify-between items-center gap-1 pt-10 ">
@@ -186,21 +202,27 @@ const BillingListIndex = () => {
           dataSources={listedLastBillings}
         />
         <div className="my-4 w-100 flex items-center gap-8 justify-end">
-          {/* <Primary total={50}/> */}
+          {lastBillings?.numberOfBills ? <Pagination.Type1 total={lastBillings?.numberOfBills}  /> : ""}
           <div className="flex items-center gap-2">
-            <button>Entry</button>
+            <button
+              onClick={handleChangeEntryLastBilling}
+              className="font-medium text-xxs text-ct-blue-90-70%"
+            >
+              Entry
+            </button>
             <InputNumber
-              className="w-12"
+              className="w-12 font-medium text-xs text-ct-blue-90-70%"
               controls={false}
               min={1}
               max={10}
-              defaultValue={1}
-              onChange={changeEntry}
+              value={pageNumberLastBilling}
+              onChange={changeEntryLastBilling}
             />
           </div>
         </div>
       </div>
       <hr className="my-10" />
+      {/* All Billing */}
       <div className="w-100 flex flex-row justify-between items-center gap-1 ">
         <div className="flex flex-row items-center gap-4 ">
           <h2 className="mb-0 pr-3 text-heading-6 font-medium text-ct-blue-95 font-sans">
@@ -209,13 +231,17 @@ const BillingListIndex = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <button onClick={handleChangeEntry}>Entry</button>
+          <button
+            onClick={handleChangeEntryAllBilling}
+            className="font-medium text-xxs text-ct-blue-90-70%"
+          >Entry</button>
           <InputNumber
             controls={false}
-            className="w-12"
+            className="w-12 font-medium text-xs text-ct-blue-90-70%"
             min={1}
-            value={pageNumber}
-            onChange={(e) => changeEntry(e)}
+            value={pageNumberAllBilling}
+            defaultValue={allbillingsParam.pageSize}
+            onChange={changeEntryAllBiling}
           />
         </div>
       </div>

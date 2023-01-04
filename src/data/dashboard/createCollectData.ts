@@ -61,7 +61,7 @@ export const createCollectData = {
         {
           id: "5",
           name: "Lecture",
-          target: 600,
+          target: 1800,
           achieved: 30,
           totalValid: 180,
           totalInvalid: 10,
@@ -215,7 +215,7 @@ export const createCollectData = {
           totalInvalid: 10,
           notChecked: 0,
           lastUpdate: "22 Aug 2022",
-          contribution: 35,
+          contribution: 5,
           speakers: 21125,
         },
       ],
