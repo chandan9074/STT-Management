@@ -48,14 +48,14 @@ const CreateData = ({ data }: { data: createDataDT }) => {
       value: "Recording Distance",
     },
   ];
-  const [activePanel, setActivePanel] = useState("");
+  const [activePanel, setActivePanel] = useState("Distribution Source-wise");
 
   const handleActivePanel = (value: string) => {
     setActivePanel(value);
   };
   const DistributionDropdownMenu = (key: string) => {
     const Category1: any = {
-      "Distribution Source-wise": <Graphs.DistributionSourceWise />,
+      "Distribution Source-wise": <Graphs.DistributionSourceWise data={data.distributionSourceWise} />,
       "Domain-wise": <Graphs.DomainWise />,
       "Gender-wise": <Graphs.GenderWise />,
       "Age-wise": <div></div>,

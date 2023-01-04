@@ -29,14 +29,16 @@ const CollectData = ({ data }: { data: collectDataDT }) => {
       value: "Locality-wise",
     },
   ];
-  const [activePanel, setActivePanel] = useState("");
+  const [activePanel, setActivePanel] = useState("Distribution Source-wise");
 
   const handleActivePanel = (value: string) => {
     setActivePanel(value);
   };
   const DistributionDropdownMenu = (key: string) => {
     const Category1: any = {
-      "Distribution Source-wise": <Graphs.DistributionSourceWise />,
+      "Distribution Source-wise": (
+        <Graphs.DistributionSourceWise data={data.distributionSourceWise} />
+      ),
       "Domain-wise": <div></div>,
       "Gender-wise": <Graphs.GenderWise />,
       "Age-wise": <div></div>,
