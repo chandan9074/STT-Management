@@ -33,3 +33,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+#triangle {
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
