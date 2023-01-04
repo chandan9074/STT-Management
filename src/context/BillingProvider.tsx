@@ -1,10 +1,13 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import BillingService from "../services/billingService";
+import { CommonContext } from "./CommonProvider";
 import {
   allBillingParamsDT,
   allBillingsDT,
   lastBillingParamsDT,
   lastBillingsDT,
+  paymentHistoryDT,
+  paymentHistoryParamsDT,
   totalAmountDisbursedDT,
 } from "../types/billingTypes";
 import { data } from "autoprefixer";
@@ -19,11 +22,31 @@ interface ContextProps {
 
   GetAllBillingInfo: (data: allBillingParamsDT) => void;
 
-    allBillings: allBillingsDT | undefined;
-    GetLastBillingsInfo: (data: lastBillingParamsDT) => void;
-    lastBillings: lastBillingsDT | undefined;
-    GetBillingExcelData: (data: any) => void;
-    lastBillingsExcelData: any;
+  allBillings: allBillingsDT | undefined;
+  GetLastBillingsInfo: (data: lastBillingParamsDT) => void;
+  lastBillings: lastBillingsDT | undefined;
+  GetBillingExcelData: (data: any) => void;
+  lastBillingsExcelData: any;
+  GetBillingPaymentHistoryData: (data: paymentHistoryParamsDT) => void;
+  paymentHistory: paymentHistoryDT | undefined;
+  query: {
+    page: number;
+    pageSize: number;
+    id: string;
+    start: string;
+    end: string;
+    module: string;
+  };
+  setQuery: React.Dispatch<
+    React.SetStateAction<{
+      page: number;
+      pageSize: number;
+      id: string;
+      start: string;
+      end: string;
+      module: string;
+    }>
+  >;
 }
 
 export const BillingContext = createContext({} as ContextProps);
@@ -38,7 +61,19 @@ const BillingProvider = ({ children }: { children: any }) => {
     lastBillingsDT | undefined
   >();
   const [amountDropDown, setAmountDropDown] = useState<number>();
-  const [lastBillingsExcelData, setLastBillingsExcelData] = useState<any>([])
+  const [lastBillingsExcelData, setLastBillingsExcelData] = useState<any>([]);
+  const [paymentHistory, setPaymentHistory] = useState<
+    paymentHistoryDT | undefined
+  >();
+  const commonContext = useContext(CommonContext);
+  const [query, setQuery] = useState({
+    page: 1,
+    pageSize: 6,
+    id: "",
+    start: "",
+    end: "",
+    module: commonContext.type,
+  });
 
   const GetAmountDisbursed = async () => {
     setLoading(true);
@@ -63,48 +98,67 @@ const BillingProvider = ({ children }: { children: any }) => {
     setLoading(false);
   };
 
-    const GetLastBillingsInfo = async (data: lastBillingParamsDT) => {
-        setLoading(true);
-        setErrorMsg("");
-        // fetch data from api
-        const response = await BillingService.lastBillingInfo(data);
+  const GetLastBillingsInfo = async (data: lastBillingParamsDT) => {
+    setLoading(true);
+    setErrorMsg("");
+    // fetch data from api
+    const response = await BillingService.lastBillingInfo(data);
 
-        setLastBillings(response.data);
-        GetBillingExcelData(response.data.billingInfo);
-        setLoading(false);
-    }
+    setLastBillings(response.data);
+    GetBillingExcelData(response.data.billingInfo);
+    setLoading(false);
+  };
 
-    const GetBillingExcelData = (data: any) => {
-        console.log("Context", data);
-        setLastBillingsExcelData(data?.map((lastBilling: any) => {
-            return {
-                name: `${lastBilling?.manager?.name}(${lastBilling?.manager?.name})`,
-                hour: lastBilling?.hour,
-                paidAmount: lastBilling?.amountPaid
-            }
-        }))
-    }
-
-    return (
-        <BillingContext.Provider
-            value={{
-                loading,
-                errorMsg,
-                GetAmountDisbursed,
-                amountDisbursed,
-                GetAllBillingInfo,
-                allBillings,
-                GetLastBillingsInfo,
-                lastBillings,
-                GetBillingExcelData,
-                handleAmountDropDown,
-                lastBillingsExcelData,
-                amountDropDown
-            }}
-        >
-            {children}
-        </BillingContext.Provider>
+  const GetBillingExcelData = (data: any) => {
+    console.log("Context", data);
+    setLastBillingsExcelData(
+      data?.map((lastBilling: any) => {
+        return {
+          name: `${lastBilling?.manager?.name}(${lastBilling?.manager?.name})`,
+          hour: lastBilling?.hour,
+          paidAmount: lastBilling?.amountPaid,
+        };
+      })
     );
+  };
+
+  const GetBillingPaymentHistoryData = async (data: paymentHistoryParamsDT) => {
+    setLoading(true);
+    setErrorMsg("");
+    // fetch data from api
+    const response = await BillingService.paymentHistory(data);
+    console.log("response", response.data);
+    setPaymentHistory(response.data);
+    console.log("dukche,,,,,,,");
+    // setLastBillings(response.data);
+    // console.log(data);
+    setLoading(false);
+  };
+
+  return (
+    <BillingContext.Provider
+      value={{
+        loading,
+        errorMsg,
+        GetAmountDisbursed,
+        amountDisbursed,
+        GetAllBillingInfo,
+        allBillings,
+        GetLastBillingsInfo,
+        lastBillings,
+        GetBillingExcelData,
+        handleAmountDropDown,
+        lastBillingsExcelData,
+        amountDropDown,
+        GetBillingPaymentHistoryData,
+        paymentHistory,
+        query,
+        setQuery,
+      }}
+    >
+      {children}
+    </BillingContext.Provider>
+  );
 };
 
 export default BillingProvider;

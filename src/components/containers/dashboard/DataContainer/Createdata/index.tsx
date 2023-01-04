@@ -55,7 +55,9 @@ const CreateData = ({ data }: { data: createDataDT }) => {
   };
   const DistributionDropdownMenu = (key: string) => {
     const Category1: any = {
-      "Distribution Source-wise": <Graphs.DistributionSourceWise data={data.distributionSourceWise} />,
+      "Distribution Source-wise": (
+        <Graphs.DistributionSourceWise data={data.distributionSourceWise} />
+      ),
       "Domain-wise": <Graphs.DomainWise />,
       "Gender-wise": <Graphs.GenderWise />,
       "Age-wise": <div></div>,
@@ -70,7 +72,7 @@ const CreateData = ({ data }: { data: createDataDT }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-bottom-light-blue-10">
+    <div>
       <Header
         type="Create"
         borderColor="border-border-teal"

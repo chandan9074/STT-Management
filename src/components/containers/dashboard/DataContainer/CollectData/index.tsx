@@ -47,7 +47,7 @@ const CollectData = ({ data }: { data: collectDataDT }) => {
     return Category1[key];
   };
   return (
-    <div className="bg-white rounded-xl shadow-bottom-light-blue-10">
+    <div>
       <Header
         borderColor="border-cold-turkey"
         type="Collect"

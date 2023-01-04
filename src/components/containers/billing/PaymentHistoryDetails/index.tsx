@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import type { ColumnsType } from "antd/es/table";
 import Icons from "../../../../assets/Icons";
 import {
@@ -9,11 +9,15 @@ import Image from "../../../Image";
 import Table from "../../../Table";
 import Pagination from "../../../Pagination";
 import { Link } from "react-router-dom";
-import CustomRangeCalender, { DateDT } from "../../../calender/CustomRangeCalender";
+import CustomRangeCalender, {
+  DateDT,
+} from "../../../calender/CustomRangeCalender";
+import { BillingContext } from "../../../../context/BillingProvider";
 
 const PaymentHistoryDetails = ({ data }: { data: paymentHistoryDT }) => {
-  const [dateValue, setDateValue] = useState<DateDT>({ start: "", end: "" })
-  const [open, setOpen] = useState<boolean>(false)
+  const [dateValue, setDateValue] = useState<DateDT>({ start: "", end: "" });
+  const [open, setOpen] = useState<boolean>(false);
+  const billingContext = useContext(BillingContext);
   const columns: ColumnsType<paymentHistoryDataDT> = [
     {
       title: "DATE",
@@ -34,6 +38,14 @@ const PaymentHistoryDetails = ({ data }: { data: paymentHistoryDT }) => {
       render: (text) => <a>{text} /-</a>,
     },
   ];
+
+  const handleDataChange = (value: number) => {
+    console.log("hello vai");
+    billingContext.setQuery({
+      ...billingContext.query,
+      page: value,
+    });
+  };
 
   return (
     <div>
@@ -119,7 +131,11 @@ const PaymentHistoryDetails = ({ data }: { data: paymentHistoryDT }) => {
         <CustomRangeCalender trigger={open} setDateValue={setDateValue} />
         <Table.Type1 columnsData={columns} dataSources={data.paymentHistory} />
         <div className="mt-7 w-full flex justify-end">
-          <Pagination.Type1 total={50} />
+          <Pagination.Type2
+            total={data.noOfPayments}
+            pageSize={6}
+            handleDataChange={handleDataChange}
+          />
         </div>
       </div>
     </div>
