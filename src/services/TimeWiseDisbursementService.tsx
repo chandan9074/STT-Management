@@ -1,5 +1,5 @@
 import axios from "axios";
-import {GET_TIME_WISE_DISBURSEMENTS_URL} from "../helpers/APIURL";
+import {GET_ROLE_LIST_URL, GET_TIME_WISE_DISBURSEMENTS_URL} from "../helpers/APIURL";
 import {managerData} from "../data/billing/timeWiseDisbursement";
 import {roleDT, roleParamsDT, timeWiseDisbursementParamsDT} from "../types/billingTypes";
 
@@ -12,8 +12,9 @@ export default class TimeWiseDisbursementService {
 
 
     static getManager(params: roleParamsDT) {
+        return axios.get(GET_ROLE_LIST_URL, {params});
         // return axios.get(GET_MANAGERS_URL, {params})
-        return managerData;
+        // return managerData;
     }
 
     static getManagerById(id: string) {
