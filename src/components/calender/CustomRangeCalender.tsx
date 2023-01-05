@@ -185,6 +185,7 @@ const CustomRangeCalender = ({ trigger, setDateValue, setOpen }: Props) => {
 
     const onSearch = (value: any) => {
         setDateValue(inputDate)
+        setOpen(false);
     }
 
     return (
