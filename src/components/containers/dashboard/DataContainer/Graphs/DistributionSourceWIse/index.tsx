@@ -20,15 +20,15 @@ const DistributionSourceWise = ({
     console.log(targetArray);
   }, [data]);
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center items-stretch">
       <div className="py-5 flex">
-        <div className="w-[90px] mr-4 flex items-center">
+        <div className="w-[90px] mr-4 flex mt-2.5">
           <TitleList data={data} />
         </div>
         <div className="mr-4" style={{ width: 420 }}>
           <Graph data={data} maxTarget={maxTarget} graphWidth={graphWidth} />
         </div>
-        <div className="col-span-1 mr-auto">
+        <div className="col-span-1 flex mt-2.5">
           <HourList data={data} />
         </div>
       </div>
