@@ -13,6 +13,7 @@ import CustomRangeCalender, {
   DateDT,
 } from "../../../calender/CustomRangeCalender";
 import { BillingContext } from "../../../../context/BillingProvider";
+import { getYearMonthDate } from "../../../../helpers/Utils";
 
 const PaymentHistoryDetails = ({ data }: { data: paymentHistoryDT }) => {
   const [dateValue, setDateValue] = useState<DateDT>({ start: "", end: "" });
@@ -46,6 +47,18 @@ const PaymentHistoryDetails = ({ data }: { data: paymentHistoryDT }) => {
       page: value,
     });
   };
+
+  useEffect(() => {
+    if (dateValue.start && dateValue.end) {
+      const _start = getYearMonthDate(dateValue.start);
+      const _end = getYearMonthDate(dateValue.end);
+      billingContext.setQuery({
+        ...billingContext.query,
+        start: _start,
+        end: _end,
+      });
+    }
+  }, [dateValue]);
 
   return (
     <div>
