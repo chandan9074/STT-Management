@@ -214,7 +214,7 @@ const TimeWiseDisbursements = () => {
   
 
   return (
-    <div className="pb-[32px] ">
+    <div className="pb-2">
       <div className="h-[153px] relative ">
         {/*TTS STT Tab*/}
         <div className="flex flex-col justify-center items-center">
@@ -299,7 +299,7 @@ const TimeWiseDisbursements = () => {
                 </div>
               </button>
             </div>
-            <CustomRangeCalender trigger={open} setDateValue={setDateValue} />
+            <CustomRangeCalender trigger={open} setOpen={setOpen} setDateValue={setDateValue} />
             {/*<div className={`grid grid-cols-12`}>*/}
             <div className="relative">
               <div className="flex justify-between w-full relative px-10">
@@ -553,7 +553,7 @@ const TimeWiseDisbursements = () => {
         <hr className="my-10 mt-20" />
 
         <div className="w-[100%]">
-          <BillingListIndex />
+          <BillingListIndex twDisbursement={search} />
         </div>
       </div>
 

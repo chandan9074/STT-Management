@@ -6,6 +6,7 @@ import ManagerIcon from "../../../../assets/images/BillingManagerAvatar.png";
 import {
   allBillingParamsDT,
   lastBillingParamsDT,
+  timeWiseDisbursementParamsDT,
 } from "../../../../types/billingTypes";
 import { BillingContext } from "../../../../context/BillingProvider";
 import { DateDT } from "../../../calender/CustomRangeCalender";
@@ -33,8 +34,11 @@ export interface AllBillingDataType {
   hour: string;
   amountPaid: string;
 }
+interface Props {
+  twDisbursement: timeWiseDisbursementParamsDT
+}
 
-const BillingListIndex = () => {
+const BillingListIndex = ({ twDisbursement }: Props) => {
   const billingContext = useContext(BillingContext);
   const {
     GetAllBillingInfo,
@@ -47,17 +51,17 @@ const BillingListIndex = () => {
   const [pageNumberLastBilling, setPageNumberLastBilligs] = useState<number>(5);
   const [allbillingsParam, setAllbillingsParam] = useState<allBillingParamsDT>({
     pageSize: 10,
-    type: "stt",
-    role: "Manager",
+    module: twDisbursement.module,
+    role: twDisbursement.role,
   });
   const [lastBillingsParams, setLastBillingsParams] =
     useState<lastBillingParamsDT>({
       page: 1,
       pageSize: pageNumberLastBilling,
-      type: "stt",
-      role: "Audio Checker",
+      module: twDisbursement.module,
+      role: twDisbursement.role,
     });
-  
+
   useEffect(() => {
     GetLastBillingsInfo(lastBillingsParams);
   }, [lastBillingsParams]);
@@ -67,9 +71,15 @@ const BillingListIndex = () => {
     GetAllBillingInfo(allbillingsParam);
   }, [allbillingsParam]);
 
-  const handlePageChange=(page:number)=>{
-    
-    setLastBillingsParams((prev: any) => ({ ...prev, pageSize: pageNumberLastBilling,page:page }));
+
+  useEffect(() => {
+    setLastBillingsParams((prev: any) => ({ ...prev, role: twDisbursement.role, module: twDisbursement.module }));
+    setAllbillingsParam((prev: any) => ({ ...prev, role: twDisbursement.role, module: twDisbursement.module }));
+  }, [twDisbursement]);
+
+  const handlePageChange = (page: number) => {
+
+    setLastBillingsParams((prev: any) => ({ ...prev, pageSize: pageNumberLastBilling, page: page }));
   }
   const changeEntryLastBilling = (e: any) => {
     setPageNumberLastBilligs(e);
@@ -78,7 +88,7 @@ const BillingListIndex = () => {
     setPageNumberAllBilligs(e);
   };
   const handleChangeEntryLastBilling = () => {
-    
+
     setLastBillingsParams((prev: any) => ({ ...prev, pageSize: pageNumberLastBilling }));
   };
   const handleChangeEntryAllBilling = () => {
@@ -116,7 +126,7 @@ const BillingListIndex = () => {
     C1: "AMOUNT PAID",
   };
 
- 
+
   const lastBillingColumns: ColumnsType<BillingDataType | AllBillingDataType> =
     [
       {
@@ -166,7 +176,9 @@ const BillingListIndex = () => {
     },
   ];
 
- 
+  console.log("params", lastBillingsParams, "role", twDisbursement);
+
+
 
   return (
     <div>
@@ -206,11 +218,11 @@ const BillingListIndex = () => {
           dataSources={listedLastBillings}
         />
         <div className="my-4 w-100 flex items-center gap-8 justify-end">
-          {lastBillings?.numberOfBills ? <Pagination.Type1 
-          
-          total={lastBillings?.numberOfBills} 
-          pageSize={pageNumberLastBilling}
-          handlePageChange={handlePageChange}
+          {lastBillings?.numberOfBills ? <Pagination.Type1
+
+            total={lastBillings?.numberOfBills}
+            pageSize={pageNumberLastBilling}
+            handlePageChange={handlePageChange}
           /> : ""}
           <div className="flex items-center gap-2">
             <button

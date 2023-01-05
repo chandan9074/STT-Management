@@ -50,7 +50,7 @@ export type paymentHistoryDataDT = {
 // BILLINGS TYPE----------------
 export type allBillingParamsDT = {
   pageSize: number;
-  type: string;
+  module: string;
   role: string;
 };
 export type allBillingsDT = {
@@ -68,7 +68,7 @@ export type billingInfoDT = {
 export type lastBillingParamsDT = {
   page: number;
   pageSize: number;
-  type: string;
+  module: string;
   role: string;
 };
 export type lastBillingsDT = {

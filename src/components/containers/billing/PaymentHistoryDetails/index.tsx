@@ -128,7 +128,7 @@ const PaymentHistoryDetails = ({ data }: { data: paymentHistoryDT }) => {
             <img src={Icons.calender} alt="calender" className="w-6 h-6" />
           </button>
         </div>
-        <CustomRangeCalender trigger={open} setDateValue={setDateValue} />
+        <CustomRangeCalender trigger={open} setOpen={setOpen} setDateValue={setDateValue} />
         <Table.Type1 columnsData={columns} dataSources={data.paymentHistory} />
         <div className="mt-7 w-full flex justify-end">
           <Pagination.Type2
