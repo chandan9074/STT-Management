@@ -134,3 +134,12 @@ export type roleDT = {
   contact: string;
   address: string;
 };
+
+export type paymentHistoryParamsDT = {
+  id: string;
+  module: string;
+  start?: string;
+  end?: string;
+  page: number;
+  pageSize: number;
+};

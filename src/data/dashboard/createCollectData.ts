@@ -61,7 +61,7 @@ export const createCollectData = {
         {
           id: "5",
           name: "Lecture",
-          target: 600,
+          target: 1800,
           achieved: 30,
           totalValid: 180,
           totalInvalid: 10,

@@ -11,15 +11,25 @@ const DataContainer = () => {
   });
   return (
     <div className="grid grid-cols-12 gap-5 mt-4">
-      <div className="col-span-6">
+      <div
+        className="col-span-6 rounded-xl shadow-bottom-light-blue-10"
+        style={{ background: "white" }}
+      >
         {dashboardContext.createCollectData && (
           <CreateData
             data={dashboardContext.createCollectData.data.createData}
           />
         )}
       </div>
-      <div className="col-span-6">
-        <CollectData />
+      <div
+        className="col-span-6 rounded-xl shadow-bottom-light-blue-10"
+        style={{ background: "white" }}
+      >
+        {dashboardContext.createCollectData && (
+          <CollectData
+            data={dashboardContext.createCollectData.data.collectData}
+          />
+        )}
       </div>
     </div>
   );
