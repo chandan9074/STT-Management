@@ -52,7 +52,7 @@ const RoleProvider = ({ children }: { children: any }) => {
         try {
             setLoading(true);
             const res = await TimeWiseDisbursementService.getManager(data);
-            setRoleDatas(res)
+            setRoleDatas(res.data)
             // setManagerData('This is manager data')
             setLoading(false);
 

@@ -12,3 +12,6 @@ export const GET_LAST_BILLING_INFO_URL = `${REACT_APP_BASE_URL}/last-billing-inf
 
 //Billing Payment
 export const GET_ALL_BILLING_PAYMENT_URL = `${REACT_APP_BASE_URL}/payment-history`;
+
+// Role List
+export const GET_ROLE_LIST_URL = `${REACT_APP_BASE_URL}/roles-list`;

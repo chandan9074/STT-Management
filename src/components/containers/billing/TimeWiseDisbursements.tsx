@@ -14,6 +14,7 @@ import CustomRangeCalender, {
   DateDT,
 } from "../../calender/CustomRangeCalender";
 import BillingListIndex from "./BillingList";
+import { getYearMonthDate } from "../../../helpers/Utils";
 
 const TimeWiseDisbursements = () => {
   const maxDim = 70;
@@ -48,7 +49,10 @@ const TimeWiseDisbursements = () => {
 
   useEffect(() => {
     if (dateValue?.start && dateValue?.end) {
-      setSearch({ ...search, start: dateValue?.start, end: dateValue?.end });
+
+      const _start = getYearMonthDate(dateValue?.start);
+      const _end = getYearMonthDate(dateValue?.end);
+      setSearch({ ...search, start: _start, end: _end });
     }
   }, [dateValue]);
 
@@ -207,6 +211,7 @@ const TimeWiseDisbursements = () => {
   const onDateSearch = () => {
     setOpen(!open);
   };
+  
 
   return (
     <div className="pb-[32px] ">
@@ -322,7 +327,7 @@ const TimeWiseDisbursements = () => {
                       style={{
                         bottom: `${170 / 16 + dimensionValue[i] / 2}rem`,
                       }}
-                      className={`absolute animate-fadeIn2 z-40 w-[350px]  group-hover:block hidden bg-[#59C1BD] ${
+                      className={`absolute animate-fadeIn2 z-40 w-[350px] hidden group-hover:block bg-[#59C1BD] ${
                         disbursementData?.length === 12
                           ? i < 2
                             ? "-left-10"

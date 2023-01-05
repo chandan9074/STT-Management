@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./App.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Billing from "./pages/Billing";
 import PaymentHistory from "./pages/Billing/PaymentHistory";
 import * as PATH from "./helpers/Slug";
@@ -19,9 +19,14 @@ function App() {
       duration: 1000,
     });
   }, []);
+
   return (
     <BrowserRouter>
       <Routes>
+        <Route
+          path="/"
+          element={<Navigate to={PATH.DASHBOARD_PATH} replace />}
+        />
         <Route path={PATH.BILLING_PATH} element={<Billing />} />
         <Route
           path={`${PATH.BILLING_PAYMENT_HISTORY_PATH}/:id`}
