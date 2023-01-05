@@ -123,22 +123,28 @@ const Type2 = ({
           >
             1
           </button>
-          {new Array(Math.floor(total / pageSize)).fill(0).map((_, index) => (
-            <button
-              onClick={() => {
-                setActivePage(index + currentPage);
-                handleDataChange(index + currentPage);
-              }}
-              key={index}
-              className={`text-sm font-bold py-1.5 px-2.5 ${
-                activePage === index + currentPage
-                  ? "text-white bg-ct-blue-60 "
-                  : ""
-              } duration-200 mr-2.5 rounded-[6px] outline-none`}
-            >
-              {index + currentPage}
-            </button>
-          ))}
+          {Math.floor(total / pageSize) > 1 && (
+            <>
+              {new Array(Math.floor(total / pageSize))
+                .fill(0)
+                .map((_, index) => (
+                  <button
+                    onClick={() => {
+                      setActivePage(index + currentPage);
+                      handleDataChange(index + currentPage);
+                    }}
+                    key={index}
+                    className={`text-sm font-bold py-1.5 px-2.5 ${
+                      activePage === index + currentPage
+                        ? "text-white bg-ct-blue-60 "
+                        : ""
+                    } duration-200 mr-2.5 rounded-[6px] outline-none`}
+                  >
+                    {index + currentPage}
+                  </button>
+                ))}
+            </>
+          )}
         </>
       )}
       <div className="sm:block hidden">
