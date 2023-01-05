@@ -83,12 +83,12 @@ const CustomRangeCalender = ({trigger,setDateValue}:Props) => {
         if (fistClick) {
             setDate((prev: any) => ({...prev, end: date}))
             setInputDate((prev: any) => ({...prev, end: date ? date.format(DateFormat) : ""}))
-            setDateValue((prev:any)=>({...prev,end: date ? date.format(DateFormat) : ""}))
+            // setDateValue((prev:any)=>({...prev,end: date ? date.format(DateFormat) : ""}))
         } else {
             setDate((prev: any) => ({...prev, start: date}))
             setInputDate((prev: any) => ({...prev, start: date ? date.format(DateFormat) : ""}))
             setFirstClick(true);
-            setDateValue((prev:any)=>({...prev,start: date ? date.format(DateFormat) : ""}))
+            // setDateValue((prev:any)=>({...prev,start: date ? date.format(DateFormat) : ""}))
         }
     };
 
@@ -128,12 +128,12 @@ const CustomRangeCalender = ({trigger,setDateValue}:Props) => {
 
         if (type === "start") {
             setInputDate((prev: any) => ({...prev, start: e.target.value}))
-            setDateValue((prev:any)=>({...prev,start:e.target.value }))
+            // setDateValue((prev:any)=>({...prev,start:e.target.value }))
 
             setFirstClick(true);
         } else {
             setInputDate((prev: any) => ({...prev, end: e.target.value}))
-            setDateValue((prev:any)=>({...prev,end:e.target.value }))
+            // setDateValue((prev:any)=>({...prev,end:e.target.value }))
         }
 
     }
@@ -166,14 +166,18 @@ const CustomRangeCalender = ({trigger,setDateValue}:Props) => {
         if (type === "start") {
             setInputDate((prev: any) => ({...prev, start: ""}))
             setDate((prev: any) => ({...prev, start: ""}))
-            setDateValue((prev: any) => ({...prev, start: ""}))
+            // setDateValue((prev: any) => ({...prev, start: ""}))
         }
         if (type === "end") {
             setInputDate((prev: any) => ({...prev, end: ""}))
             setDate((prev: any) => ({...prev, end: ""}))
-            setDateValue((prev: any) => ({...prev, end: ""}))
+            // setDateValue((prev: any) => ({...prev, end: ""}))
         }
     }
+
+    const onSearch = (value:any) => {
+      setDateValue(inputDate)
+    } 
 
     return (
         <div className="">
@@ -311,7 +315,7 @@ const CustomRangeCalender = ({trigger,setDateValue}:Props) => {
                             </div>
                         </div>
                         <div>
-                            <button className="bg-ct-blue-60 w-full text-white rounded-md mt-3"> Search Payment
+                            <button onClick={onSearch} className="bg-ct-blue-60 w-full text-white rounded-md mt-3"> Search Payment
                                 History
                             </button>
                         </div>

@@ -36,3 +36,8 @@ export const getValueFromHeight = (barHeight: number, data: number[]) => {
     })
     // return ((barHeight * value) / maxValue)
 }
+
+export const getYearMonthDate = (date: string) => {
+    const splitData = date.split('-').reverse().join('-').toString();
+    return splitData;
+}
