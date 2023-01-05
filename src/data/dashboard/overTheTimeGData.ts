@@ -3,6 +3,8 @@ export const overTheTimeGData = {
   year: 2022,
   month: "August",
   maxReceivedHour: 600,
+  module: "stt",
+  role: "Admin",
   dayData: [
     {
       id: "1",

@@ -3,6 +3,8 @@ export type overTheTimeGDT = {
   year: number;
   month: string;
   maxReceivedHour: number;
+  module: string;
+  role: string;
   dayData: dayDataDT[];
 };
 

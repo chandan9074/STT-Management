@@ -24,19 +24,19 @@ const PaymentHistoryDetails = ({ data }: { data: paymentHistoryDT }) => {
       title: "DATE",
       dataIndex: "date",
       key: "date",
-      render: (text) => <a>{text}</a>,
+      render: (text) => <span>{text}</span>,
     },
     {
       title: "HOUR",
       dataIndex: "hours",
       key: "hours",
-      render: (text) => <a>{text} hr</a>,
+      render: (text) => <span>{text} hr</span>,
     },
     {
       title: "AMOUNT PAID",
       dataIndex: "amount",
       key: "amount",
-      render: (text) => <a>{text} /-</a>,
+      render: (text) => <span>{text} /-</span>,
     },
   ];
 
