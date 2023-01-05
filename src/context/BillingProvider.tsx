@@ -4,6 +4,7 @@ import { CommonContext } from "./CommonProvider";
 import {
   allBillingParamsDT,
   allBillingsDT,
+  lastBillingInfoDT,
   lastBillingParamsDT,
   lastBillingsDT,
   paymentHistoryDT,
@@ -110,11 +111,12 @@ const BillingProvider = ({ children }: { children: any }) => {
   };
 
   const GetBillingExcelData = (data: any) => {
-    console.log("Context", data);
+    
     setLastBillingsExcelData(
       data?.map((lastBilling: any) => {
+       
         return {
-          name: `${lastBilling?.manager?.name}(${lastBilling?.manager?.name})`,
+          name: `${lastBilling?.userInfo?.name}(${lastBilling?.userInfo?.name})`,
           hour: lastBilling?.hour,
           paidAmount: lastBilling?.amountPaid,
         };

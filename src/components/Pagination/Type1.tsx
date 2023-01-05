@@ -1,35 +1,41 @@
 import React, { useState } from "react";
 
-interface Props{
-  total:number
+interface Props {
+  total: number,
+  pageSize: number,
+  handlePageChange: (page: number) => void
 }
-const Type1 = ({ total }:Props) => {
+const Type1 = ({ total, pageSize, handlePageChange }: Props) => {
   const [currentPage, setCurrentPage] = useState(2);
   const [activePage, setActivePage] = useState(1);
 
   const handleNext = () => {
     console.log("next");
     if (activePage > 1) {
-      if (currentPage < Math.floor(total / 5) - 2) {
+      if (currentPage < Math.floor(total / pageSize) - 2) {
         setCurrentPage(currentPage + 1);
       }
-      if (activePage < Math.floor(total / 5)) {
+      if (activePage < Math.floor(total / pageSize)) {
         setActivePage(activePage + 1);
+        handlePageChange(activePage + 1)
       }
     } else {
       setActivePage(activePage + 1);
+      handlePageChange(activePage + 1)
     }
   };
   const handlePrev = () => {
     console.log("prev");
     if (activePage > 2) {
-      if (currentPage > 2 && activePage < Math.floor(total / 5)) {
+      if (currentPage > 2 && activePage < Math.floor(total / pageSize)) {
         setCurrentPage(currentPage - 1);
       }
       setActivePage(activePage - 1);
+      handlePageChange(activePage - 1)
     } else {
       if (activePage > 1) {
         setActivePage(activePage - 1);
+        handlePageChange(activePage - 1)
       }
     }
   };
@@ -53,18 +59,18 @@ const Type1 = ({ total }:Props) => {
       <div className="sm:hidden block">
         <button onClick={handlePrev}>Prev</button>
       </div>
-      {Math.floor(total / 5) > 4 ? (
+      {Math.floor(total / pageSize) > 4 ? (
         <>
           <button
             onClick={() => {
               setActivePage(1);
               setCurrentPage(2);
+              handlePageChange(1)
             }}
-            className={`text-sm ${
-              activePage === 1
-                ? "text-white bg-ct-blue-60 border border-ct-blue-60"
-                : ""
-            } font-bold py-1.5 px-2.5  mr-2.5 ml-3 rounded-[6px] duration-200 outline-none`}
+            className={`text-sm ${activePage === 1
+              ? "text-white bg-ct-blue-60 border border-ct-blue-60"
+              : ""
+              } font-bold py-1.5 px-2.5  mr-2.5 ml-3 rounded-[6px] duration-200 outline-none`}
           >
             1
           </button>
@@ -72,60 +78,67 @@ const Type1 = ({ total }:Props) => {
             <>
               {index === 0 &&
                 currentPage > 2 &&
-                currentPage < Math.floor(total / 5) - 1 && (
+                currentPage < Math.floor(total / pageSize) - 1 && (
                   <span className="text-sm font-bold mr-2.5">. . .</span>
                 )}
               <button
-                onClick={() => setActivePage(currentPage + index)}
+                onClick={() => {
+                  setActivePage(currentPage + index)
+                  handlePageChange(currentPage + index)
+                }}
                 key={index}
-                className={`text-sm  font-bold py-1.5 px-2.5 ${
-                  activePage === index + currentPage
-                    ? "text-white bg-ct-blue-60 border border-ct-blue-60"
-                    : ""
-                } duration-200 mr-2.5 rounded-[6px] outline-none`}
+                className={`text-sm  font-bold py-1.5 px-2.5 ${activePage === index + currentPage
+                  ? "text-white bg-ct-blue-60 border border-ct-blue-60"
+                  : ""
+                  } duration-200 mr-2.5 rounded-[6px] outline-none`}
               >
                 {index + currentPage}
               </button>
               {index === 1 &&
                 currentPage >= 2 &&
-                currentPage < Math.floor(total / 5) - 2 && (
+                currentPage < Math.floor(total / pageSize) - 2 && (
                   <span className="text-sm font-bold mr-2.5">. . .</span>
                 )}
             </>
           ))}
           <button
             onClick={() => {
-              setActivePage(Math.floor(total / 5));
-              setCurrentPage(Math.floor(total / 5) - 2);
+              setActivePage(Math.floor(total / pageSize));
+              setCurrentPage(Math.floor(total / pageSize) - 2);
+              handlePageChange(Math.floor(total / pageSize))
             }}
-            className={`text-sm font-bold py-1.5 px-2.5 mr-2.5 ${
-              activePage === Math.floor(total / 5)
-                ? "text-white bg-ct-blue-60 "
-                : ""
-            } duration-200 rounded-[6px] outline-none`}
+            className={`text-sm font-bold py-1.5 px-2.5 mr-2.5 ${activePage === Math.floor(total / pageSize)
+              ? "text-white bg-ct-blue-60 "
+              : ""
+              } duration-200 rounded-[6px] outline-none`}
           >
-            {Math.floor(total / 5)}
+            {Math.floor(total / pageSize)}
           </button>
         </>
       ) : (
         <>
           <button
-            onClick={() => setActivePage(1)}
-            className={`text-sm font-bold py-1.5 px-2.5 mr-2.5 ml-3 ${
-              activePage === 1 ? "text-white bg-ct-blue-60 " : ""
-            } duration-200 rounded-[6px] outline-none`}
+            onClick={() => {
+
+              setActivePage(1)
+              handlePageChange(1)
+            }}
+            className={`text-sm font-bold py-1.5 px-2.5 mr-2.5 ml-3 ${activePage === 1 ? "text-white bg-ct-blue-60 " : ""
+              } duration-200 rounded-[6px] outline-none`}
           >
             1
           </button>
-          {new Array(Math.floor(total / 5)).fill(0).map((_, index) => (
+          {new Array(Math.floor(total / pageSize)).fill(0).map((_, index) => (
             <button
-              onClick={() => setActivePage(index + currentPage)}
+              onClick={() => {
+                setActivePage(index + currentPage)
+                handlePageChange(index + currentPage)
+              }}
               key={index}
-              className={`text-sm font-bold py-1.5 px-2.5 ${
-                activePage === index + currentPage
-                  ? "text-white bg-ct-blue-60 "
-                  : ""
-              } duration-200 mr-2.5 rounded-[6px] outline-none`}
+              className={`text-sm font-bold py-1.5 px-2.5 ${activePage === index + currentPage
+                ? "text-white bg-ct-blue-60 "
+                : ""
+                } duration-200 mr-2.5 rounded-[6px] outline-none`}
             >
               {index + currentPage}
             </button>

@@ -44,7 +44,7 @@ const BillingListIndex = () => {
     lastBillingsExcelData,
   } = billingContext;
   const [pageNumberAllBilling, setPageNumberAllBilligs] = useState<number>(10);
-  const [pageNumberLastBilling, setPageNumberLastBilligs] = useState<number>(10);
+  const [pageNumberLastBilling, setPageNumberLastBilligs] = useState<number>(5);
   const [allbillingsParam, setAllbillingsParam] = useState<allBillingParamsDT>({
     pageSize: 10,
     type: "stt",
@@ -53,13 +53,11 @@ const BillingListIndex = () => {
   const [lastBillingsParams, setLastBillingsParams] =
     useState<lastBillingParamsDT>({
       page: 1,
-      pageSize: 10,
+      pageSize: pageNumberLastBilling,
       type: "stt",
-      role: "Manager",
+      role: "Audio Checker",
     });
-  const [dateValue, setDateValue] = useState<DateDT>({ start: "", end: "" });
-  const [open, setOpen] = useState<boolean>(false);
-
+  
   useEffect(() => {
     GetLastBillingsInfo(lastBillingsParams);
   }, [lastBillingsParams]);
@@ -68,6 +66,11 @@ const BillingListIndex = () => {
   useEffect(() => {
     GetAllBillingInfo(allbillingsParam);
   }, [allbillingsParam]);
+
+  const handlePageChange=(page:number)=>{
+    
+    setLastBillingsParams((prev: any) => ({ ...prev, pageSize: pageNumberLastBilling,page:page }));
+  }
   const changeEntryLastBilling = (e: any) => {
     setPageNumberLastBilligs(e);
   };
@@ -75,7 +78,7 @@ const BillingListIndex = () => {
     setPageNumberAllBilligs(e);
   };
   const handleChangeEntryLastBilling = () => {
-    console.log("last")
+    
     setLastBillingsParams((prev: any) => ({ ...prev, pageSize: pageNumberLastBilling }));
   };
   const handleChangeEntryAllBilling = () => {
@@ -108,15 +111,16 @@ const BillingListIndex = () => {
 
 
   const excelHeader = {
-    A1: "MANAGER",
+    A1: `${lastBillings?.role.toUpperCase()}`,
     B1: "HOUR",
     C1: "AMOUNT PAID",
   };
 
+ 
   const lastBillingColumns: ColumnsType<BillingDataType | AllBillingDataType> =
     [
       {
-        title: "MANAGER",
+        title: `${lastBillings?.role.toUpperCase()}`,
         dataIndex: "userInfo",
         width: 100,
         render: (data) => (
@@ -162,7 +166,7 @@ const BillingListIndex = () => {
     },
   ];
 
-  console.log("ggggg", lastBillings)
+ 
 
   return (
     <div>
@@ -190,7 +194,7 @@ const BillingListIndex = () => {
           {/*</button>*/}
           <ExportCsv
             csvData={lastBillingsExcelData}
-            fileName={excelNameFormatter("Manager Table", true)}
+            fileName={excelNameFormatter(`${lastBillings?.role.toUpperCase()}`, true)}
             headerCells={excelHeader}
           />
         </div>
@@ -202,7 +206,12 @@ const BillingListIndex = () => {
           dataSources={listedLastBillings}
         />
         <div className="my-4 w-100 flex items-center gap-8 justify-end">
-          {lastBillings?.numberOfBills ? <Pagination.Type1 total={lastBillings?.numberOfBills}  /> : ""}
+          {lastBillings?.numberOfBills ? <Pagination.Type1 
+          
+          total={lastBillings?.numberOfBills} 
+          pageSize={pageNumberLastBilling}
+          handlePageChange={handlePageChange}
+          /> : ""}
           <div className="flex items-center gap-2">
             <button
               onClick={handleChangeEntryLastBilling}
