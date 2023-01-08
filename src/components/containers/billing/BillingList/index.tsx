@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { InputNumber } from "antd";
-// import Primary from "./Primary";
 import { ColumnsType } from "antd/es/table";
 import ManagerIcon from "../../../../assets/images/BillingManagerAvatar.png";
 import {
@@ -9,7 +8,6 @@ import {
   timeWiseDisbursementParamsDT,
 } from "../../../../types/billingTypes";
 import { BillingContext } from "../../../../context/BillingProvider";
-import { DateDT } from "../../../calender/CustomRangeCalender";
 import ExportCsv from "../../../common/ExportCsv";
 import { excelNameFormatter } from "../../../../helpers/Utils";
 import Table from "../../../Table";
@@ -97,7 +95,7 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
 
 
   const listedLastBillings: BillingDataType[] = [];
-  const _res = lastBillings?.billingInfo.map((data) => {
+  lastBillings?.billingInfo.map((data) => {
     listedLastBillings.push({
       key: data.id,
       userInfo: {
@@ -110,7 +108,7 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
   });
 
   const listedAllBillings: AllBillingDataType[] = [];
-  const res = allBillings?.billingInfo.map((data) => {
+  allBillings?.billingInfo.map((data) => {
     listedAllBillings.push({
       key: data.id,
       date: data.date,

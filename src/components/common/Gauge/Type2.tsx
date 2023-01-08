@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import polygon from "../../../assets/Icons/Polygon1.png";
 import { genderWiseDT } from '../../../types/dashboardTypes';
 import GraphTooltipType2 from '../GraphTooltipType2';
 import './gaugeType2.css'

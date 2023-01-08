@@ -8,9 +8,6 @@ type Props = {
 };
 
 const Graph = ({ data, maxTarget, graphWidth }: Props) => {
-    const handleColor = (name:string)=>{
-
-    }
   return (
     <div className="flex border-l border-blue-gray-20 py-2.5">
       <div className="w-full flex flex-col my-auto">

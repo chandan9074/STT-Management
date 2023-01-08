@@ -1,6 +1,5 @@
 // import * as PATH from "../Helpers/apiURL";
 // import {LOGIN_URL} from "../Helpers/apiURL";
-import { amountDisbursed } from "../data/billing/timeAmountDisbursed";
 import axios from "axios";
 import {
   GET_ALL_BILLING_INFO_URL,

@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-import {Button} from "antd";
 import Table from "../../../Table";
 import Icons from "../../../../assets/Icons";
-import {log} from "util";
 
 
 const DataContainerModal = () => {

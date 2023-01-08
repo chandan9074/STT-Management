@@ -1,7 +1,5 @@
 import { yearlyDataDT } from "../../../../types/billingTypes";
-import Icons from "../../../../assets/Icons";
 import Dropdown from "../../../Dropdown";
-import { useState } from "react";
 import ToolTip from "./ToolTip";
 
 const HistoryChartPart = ({

@@ -1,4 +1,3 @@
-import managerImage from "../../assets/Icons/manager.png";
 
 export const timeWiseDisbursement = {
     role: "Manager",
