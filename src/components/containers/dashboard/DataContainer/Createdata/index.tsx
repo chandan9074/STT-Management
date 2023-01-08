@@ -59,12 +59,12 @@ const CreateData = ({ data }: { data: createDataDT }) => {
         <Graphs.DistributionSourceWise data={data.distributionSourceWise} />
       ),
       "Domain-wise": <Graphs.DomainWise />,
-      "Gender-wise": <Graphs.GenderWise data={data.genderWise}/>,
+      "Gender-wise": <Graphs.GenderWise data={data.genderWise} />,
       "Age-wise": <div></div>,
       "Locality-wise": <Graphs.LocalityWise data={data.localityWise} />,
       "Economic Situation-wise": <div></div>,
       "Education-wise": <Graphs.EducationWise data={data.educationWise} />,
-      "Profession-wise": <div></div>,
+      "Profession-wise": <Graphs.ProfessionWise />,
       "Recording Area": <div></div>,
       "Recording Distance": <div></div>,
     };
