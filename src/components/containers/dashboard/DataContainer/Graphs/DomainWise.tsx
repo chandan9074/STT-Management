@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from "react";
 import { PieChart, Pie, Cell, Tooltip, Sector } from "recharts";
-import Icons from "../../../../../assets/Icons";
 import { createCollectData } from "../../../../../data/dashboard/createCollectData";
 import PropertyListType2 from "../../../../common/PropertyListType2";
 import GraphTooltip from "../GraphTooltip";
@@ -164,13 +163,13 @@ const CustomTooltip = ({ payload }: any) => {
 const DomainWise = () => {
     const [activeIndex, setActiveIndex] = useState<any>(0);
     const [activeData, setActiveData] = useState<any>({})
-    const [top, setTop] = useState<number>(0);
-    const [left, setLeft] = useState<number>(0)
+    // const [top, setTop] = useState<number>(0);
+    // const [left, setLeft] = useState<number>(0)
 
     const onMouseOver = (data: any, index: any, event: any) => {
         setActiveIndex(index);
-        setTop(event.clientY)
-        setLeft(event.clientX)
+        // setTop(event.clientY)
+        // setLeft(event.clientX)
         setActiveData(data)
        
     }

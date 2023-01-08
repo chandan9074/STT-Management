@@ -14,7 +14,7 @@ const DistributionSourceWise = ({
   const graphWidth = 420;
   useEffect(() => {
     data.filter((item) => {
-      targetArray.push(item.target);
+      return targetArray.push(item.target);
     });
     setMaxTarget(Math.max(...targetArray));
     console.log(targetArray);

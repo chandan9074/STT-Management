@@ -1,7 +1,5 @@
-import React, {useState} from 'react';
 import PercentiseCard from "../../../../common/PercentiseCard";
 import Gauge from "../../../../common/Gauge";
-import CustomRangeCalender, {DateDT} from "../../../../calender/CustomRangeCalender";
 import { genderWiseDT } from '../../../../../types/dashboardTypes';
 
 

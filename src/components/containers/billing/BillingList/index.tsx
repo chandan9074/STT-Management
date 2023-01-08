@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { InputNumber } from "antd";
-// import Primary from "./Primary";
 import { ColumnsType } from "antd/es/table";
 import ManagerIcon from "../../../../assets/images/BillingManagerAvatar.png";
 import {
@@ -9,7 +8,6 @@ import {
   timeWiseDisbursementParamsDT,
 } from "../../../../types/billingTypes";
 import { BillingContext } from "../../../../context/BillingProvider";
-import { DateDT } from "../../../calender/CustomRangeCalender";
 import ExportCsv from "../../../common/ExportCsv";
 import { excelNameFormatter } from "../../../../helpers/Utils";
 import Table from "../../../Table";
@@ -97,7 +95,7 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
 
 
   const listedLastBillings: BillingDataType[] = [];
-  const _res = lastBillings?.billingInfo.map((data) => {
+  lastBillings?.billingInfo.map((data) => {
     listedLastBillings.push({
       key: data.id,
       userInfo: {
@@ -110,7 +108,7 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
   });
 
   const listedAllBillings: AllBillingDataType[] = [];
-  const res = allBillings?.billingInfo.map((data) => {
+  allBillings?.billingInfo.map((data) => {
     listedAllBillings.push({
       key: data.id,
       date: data.date,
@@ -218,11 +216,13 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
           dataSources={listedLastBillings}
         />
         <div className="my-4 w-100 flex items-center gap-8 justify-end">
-          {lastBillings?.numberOfBills ? <Pagination.Type1
+          {lastBillings?.numberOfBills ? <Pagination.Type2
 
             total={lastBillings?.numberOfBills}
             pageSize={pageNumberLastBilling}
-            handlePageChange={handlePageChange}
+            // total={35}
+            // pageSize={5}
+            handleDataChange={handlePageChange}
           /> : ""}
           <div className="flex items-center gap-2">
             <button

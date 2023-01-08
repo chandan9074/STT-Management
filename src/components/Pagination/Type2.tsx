@@ -107,7 +107,7 @@ const Type2 = ({
                 : ""
             } duration-200 rounded-[6px] outline-none`}
           >
-            {Math.floor(total / pageSize)}
+            {Math.ceil(total / pageSize)}
           </button>
         </>
       ) : (
@@ -125,7 +125,7 @@ const Type2 = ({
           </button>
           {Math.floor(total / pageSize) > 1 && (
             <>
-              {new Array(Math.floor(total / pageSize))
+              {new Array(total % pageSize === 0 ? Math.floor(total / pageSize)-1:Math.floor(total / pageSize))
                 .fill(0)
                 .map((_, index) => (
                   <button

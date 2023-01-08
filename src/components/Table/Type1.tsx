@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import "../../assets/css/table.css";

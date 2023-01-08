@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { amountDisbursed } from "../../../../data/billing/timeAmountDisbursed";
 import { yearlyDataDT } from "../../../../types/billingTypes";
 import AmountPart from "./AmountPart";
 import HistoryChartPart from "./HistoryChartPart";
@@ -7,7 +6,7 @@ import { BillingContext } from "../../../../context/BillingProvider";
 import { LoadingSkeleton } from "../../../../assets/loadingSkeleton";
 
 const TotalAmountDisbursed = () => {
-  const [currentYear, setCurrentYear] = useState(0);
+  // const [currentYear, setCurrentYear] = useState(0);
   const [currentData, setCurrentData] = useState<yearlyDataDT>();
 
   const billingContext = useContext(BillingContext);

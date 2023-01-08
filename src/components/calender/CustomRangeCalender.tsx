@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ConfigProvider, DatePickerProps } from 'antd';
-import { DatePicker, Input } from "antd";
+import { DatePicker } from "antd";
 import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
 import CloseIcon from '../../assets/Icons/close.png'
