@@ -3,6 +3,7 @@ import PaymentHistoryDetails from "../../components/containers/billing/PaymentHi
 import Layouts from "../../components/Layouts";
 import { BillingContext } from "../../context/BillingProvider";
 import { useParams } from "react-router-dom";
+import { LoadingSkeleton } from "../../assets/loadingSkeleton";
 const PaymentHistory = () => {
   const billingContext = useContext(BillingContext);
   const { id } = useParams<{ id: string }>();
@@ -27,8 +28,17 @@ const PaymentHistory = () => {
   return (
     <Layouts.Default>
       <div className="min-h-[calc(100vh-9.5vh)]">
-        {billingContext.paymentHistory && (
+        {billingContext.paymentHistory ? (
           <PaymentHistoryDetails data={billingContext.paymentHistory} />
+        ) : (
+          <>
+            <img src={LoadingSkeleton.paymentHistoryHeader} alt="" />
+            <img
+              src={LoadingSkeleton.paymentHistoryBody}
+              alt=""
+              className="w-full h-[calc(100vh-14.5vh)]"
+            />
+          </>
         )}
       </div>
     </Layouts.Default>
