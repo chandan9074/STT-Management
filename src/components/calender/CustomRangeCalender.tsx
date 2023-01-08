@@ -9,8 +9,9 @@ import './customizeCalender.css'
 import updateLocale from "dayjs/plugin/updateLocale";
 import "dayjs/locale/zh-cn";
 import locale from "antd/es/locale/en_GB";
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 
-
+dayjs.extend(customParseFormat);
 dayjs.extend(isBetween)
 dayjs.extend(updateLocale)
 dayjs.updateLocale("en_GB", {
@@ -27,18 +28,27 @@ const CssTextField = styled(TextField)({
         background: "black",
 
     },
+   
     '& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input': {
         color: "white",
-        fontSize: "12px",
+        fontSize: "13px",
         background: "black",
+        fontWeight: "500",
+        borderRadius: "4px",
+        fontFamily:"Fira Sans"
+
     },
     '& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {
-        color: "white",
+        color: "#F9FAFC",
+        fontWeight: "500",
+        fontFamily:"Fira Sans"
 
     },
     '& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root': {
-        color: "white",
-        fontSize: "12px"
+        color: "#9FA3B2",
+        fontSize: "12px",
+        fontWeight: "500",
+        fontFamily:"Fira Sans"
 
     },
     '& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
@@ -75,7 +85,7 @@ export type DateDT = {
 interface Props {
     trigger: boolean;
     setDateValue: any
-    setOpen:React.Dispatch<boolean>;
+    setOpen: React.Dispatch<boolean>;
 }
 const CustomRangeCalender = ({ trigger, setDateValue, setOpen }: Props) => {
     const DateFormat: string = "DD-MM-YYYY"
@@ -107,7 +117,7 @@ const CustomRangeCalender = ({ trigger, setDateValue, setOpen }: Props) => {
 
         if (e.key === 'Enter') {
 
-            const _date = dayjs(e.target.value);
+            const _date = dayjs(e.target.value, DateFormat);
 
             if (type === "start") {
 
@@ -188,9 +198,10 @@ const CustomRangeCalender = ({ trigger, setDateValue, setOpen }: Props) => {
         setOpen(false);
     }
 
+
     return (
-        <div className=''>
-            <div onClick={()=> setOpen(false)} className={`fixed top-0 left-0 w-full h-screen bg-black bg-opacity-10 z-[80] animate-fadeIn ${trigger ? "block":"hidden"}`} />
+        <>
+            <div onClick={() => setOpen(false)} className={`fixed top-0 left-0 w-full h-screen bg-black bg-opacity-10 z-[80] animate-fadeIn ${trigger ? "block" : "hidden"}`} />
             <ConfigProvider locale={locale}>
                 <DatePicker
                     className="custom-date-picker"
@@ -200,6 +211,7 @@ const CustomRangeCalender = ({ trigger, setDateValue, setOpen }: Props) => {
                     disabledDate={idDisabledDate}
                     suffixIcon={null}
                     bordered={false}
+                    format={DateFormat}
                     value={date && (date.start || date.end)} // Important for render the component
                     dateRender={(current) => {
 
@@ -245,12 +257,13 @@ const CustomRangeCalender = ({ trigger, setDateValue, setOpen }: Props) => {
                                 onMouseDown={(e) => e.stopPropagation()}
                                 className="flex gap-2"
                             >
-                                <div className="relative">
+                                <div className="relative rounded">
                                     <CssTextField
                                         id="startDate"
                                         label="Start Date"
                                         variant="outlined"
-                                        className="bg-black-90 text-white border-none "
+                                        className="bg-black-90 text-white border-none rounded"
+                                        placeholder="DD-MM-YYYY"
                                         value={inputDate ? inputDate.start : ""}
                                         onClick={() => inputClickEvent("start")}
                                         onKeyDown={(e) => handleInputDateEnter(e, "start")}
@@ -268,34 +281,29 @@ const CustomRangeCalender = ({ trigger, setDateValue, setOpen }: Props) => {
                                                 }
                                             </InputAdornment>,
                                         }}
-
+                                        sx={{
+                                            input: {
+                                                "&::placeholder": {
+                                                    opacity: 1,
+                                                    color: "#5F6B7D",
+                                                    fontSize: "13px",
+                                                },
+                                            },
+                                        }}
                                     />
-                                    {/*<Input*/}
-                                    {/*    suffix={inputDate.start ? <img*/}
-                                    {/*        className="h-3 w-3 cursor-pointer"*/}
-                                    {/*        src={CloseIcon}*/}
-                                    {/*        alt="network-error"*/}
-                                    {/*        onClick={()=>handleClear('start')}/> : null}*/}
-                                    {/*    className="bg-black-90 text-white border-none "*/}
-                                    {/*    // placeholder="Start Date"*/}
-                                    {/*    value={inputDate ? inputDate.start : ""}*/}
-                                    {/*    onClick={() => inputClickEvent("start")}*/}
-                                    {/*    onKeyDown={(e) => handleInputDateEnter(e, "start")}*/}
-                                    {/*    onChange={(e) => handleInputDateChange(e, "start")}*/}
-                                    {/*/>*/}
-                                    {/*<small style={{left:"12px",bottom:"32px"}} className="text-white bg-ct-blue-60 absolute">Start Date</small>*/}
+
                                 </div>
-                                <div className="relative">
+                                <div className="relative rounded">
                                     <CssTextField
                                         id="endDate"
                                         label="End Date"
                                         variant="outlined"
-                                        className="bg-black-90 text-white border-none "
+                                        className="bg-black-90 text-white border-none rounded"
                                         value={inputDate ? inputDate.end : ""}
                                         onClick={() => inputClickEvent("end")}
                                         onKeyDown={(e) => handleInputDateEnter(e, "end")}
                                         onChange={(e) => handleInputDateChange(e, "end")}
-
+                                        placeholder="DD-MM-YYYY"
                                         InputProps={{
                                             endAdornment: <InputAdornment
                                                 position="end"
@@ -309,20 +317,17 @@ const CustomRangeCalender = ({ trigger, setDateValue, setOpen }: Props) => {
                                                 }
                                             </InputAdornment>,
                                         }}
-
+                                        sx={{
+                                            input: {
+                                                "&::placeholder": {
+                                                    opacity: 1,
+                                                    color: "#5F6B7D",
+                                                    fontSize: "13px",
+                                                },
+                                            },
+                                        }}
                                     />
-                                    {/*<Input*/}
-                                    {/*    suffix={<img*/}
-                                    {/*        className="h-3 w-3 cursor-pointer"*/}
-                                    {/*        src={CloseIcon}*/}
-                                    {/*        alt="network-error"*/}
-                                    {/*        onClick={() => handleClear('end')}/>}*/}
-                                    {/*    className="bg-black-90 text-white border-none "*/}
-                                    {/*    value={inputDate ? inputDate.end : ""}*/}
-                                    {/*    onClick={() => inputClickEvent("end")}*/}
-                                    {/*    onKeyDown={(e) => handleInputDateEnter(e, "end")}*/}
-                                    {/*    onChange={(e) => handleInputDateChange(e, "end")}*/}
-                                    {/*/>*/}
+
                                 </div>
                             </div>
                             <div>
@@ -335,7 +340,7 @@ const CustomRangeCalender = ({ trigger, setDateValue, setOpen }: Props) => {
 
                 />
             </ConfigProvider>
-        </div>
+        </>
     );
 };
 
