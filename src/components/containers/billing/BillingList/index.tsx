@@ -218,11 +218,13 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
           dataSources={listedLastBillings}
         />
         <div className="my-4 w-100 flex items-center gap-8 justify-end">
-          {lastBillings?.numberOfBills ? <Pagination.Type1
+          {lastBillings?.numberOfBills ? <Pagination.Type2
 
             total={lastBillings?.numberOfBills}
             pageSize={pageNumberLastBilling}
-            handlePageChange={handlePageChange}
+            // total={35}
+            // pageSize={5}
+            handleDataChange={handlePageChange}
           /> : ""}
           <div className="flex items-center gap-2">
             <button
