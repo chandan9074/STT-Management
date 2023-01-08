@@ -12,9 +12,9 @@ const Type1 = ({ data }: { data: number[] }) => {
     <div className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center px-3 py-1.5 rounded-[4px] bg-ct-blue-70 border border-transparent hover:border-ct-blue-20 duration-300"
+        className="flex items-center px-3 py-1 rounded-[4px] bg-ct-blue-70 border border-transparent hover:border-ct-blue-20 duration-300"
       >
-        <span className="text-xs font-medium text-ct-blue-10 mr-2">
+        <span className="text-xs font-medium text-ct-blue-10 mr-2.5">
           {current}
         </span>
         <img src={Icons.whiteDropArrow} alt="" className="w-2 h-1.5" />
@@ -36,7 +36,7 @@ const Type1 = ({ data }: { data: number[] }) => {
             }`}
           >
             <h3
-              className={`text-xs font-medium border-l-4 ${
+              className={`text-xs font-medium border-l-2 ${
                 current === item
                   ? "text-primary-ct-blue-60 border-primary-ct-blue-60"
                   : "text-blue-gray-80 border-transparent"
