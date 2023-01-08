@@ -50,14 +50,14 @@ const RoleProvider = ({ children }: { children: any }) => {
 
     const getManager = async (data: roleParamsDT) => {
         try {
-            setLoading(true);
+            // setLoading(true);
             const res = await TimeWiseDisbursementService.getManager(data);
             setRoleDatas(res.data)
             // setManagerData('This is manager data')
-            setLoading(false);
+            // setLoading(false);
 
         } catch (error) {
-            setLoading(false);
+            // setLoading(false);
             // const message = getErrorMessage(error);
             // Toast("error", "Error", message);
 

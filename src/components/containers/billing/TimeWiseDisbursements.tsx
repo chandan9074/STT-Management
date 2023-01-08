@@ -22,7 +22,7 @@ const TimeWiseDisbursements = () => {
   const minDim = 35;
 
   const managerContext = useContext(RoleInContext);
-  const { disbursementData, totalDisbursed } = managerContext;
+  const { disbursementData, totalDisbursed, loading } = managerContext;
   const [dateValue, setDateValue] = useState<DateDT>({ start: "", end: "" });
   const [open, setOpen] = useState<boolean>(false);
 
