@@ -130,12 +130,12 @@ const RoleSearchModal = ({
                                 onClick={() => onClose()}
                             >
                                 <CloseOutlined
-                                    className='m-[10px] text-ct-blue-30'
+                                    className='m-[10px] text-blue-gray-700'
                                 />
                             </button>
                         </div>
 
-                        <div className='bg-white px-6 py-7 mt-4 rounded-[px] h-[100px]'>
+                        <div className='rounded-md bg-white px-6 py-7 mt-4 rounded-[px] h-[100px]'>
                             <div>
                                 <Form
                                     layout='vertical'

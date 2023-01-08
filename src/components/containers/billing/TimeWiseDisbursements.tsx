@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import managerImage from "../../../assets/Icons/manager.png";
-import { SearchOutlined } from "@ant-design/icons";
+import { CaretDownOutlined, CloseOutlined, SearchOutlined } from "@ant-design/icons";
 import RoleSearchModal from "./RoleSearchModal";
 import { RoleInContext } from "../../../context/RoleProvider";
 import "./TimeWiseDisbursement.css";
@@ -15,6 +15,7 @@ import CustomRangeCalender, {
 } from "../../calender/CustomRangeCalender";
 import BillingListIndex from "./BillingList";
 import { getYearMonthDate } from "../../../helpers/Utils";
+import Image from "../../Image";
 
 const TimeWiseDisbursements = () => {
   const maxDim = 70;
@@ -115,13 +116,13 @@ const TimeWiseDisbursements = () => {
   const onHandleStt = () => {
     setIsStt(true);
     setIsTts(false);
-    setSearch({ ...search, role: "Manager", module: "stt" });
+    setSearch({ ...search, role: search?.role, module: "stt" });
   };
 
   const onHandleTts = () => {
     setIsStt(false);
     setIsTts(true);
-    setSearch({ ...search, role: "Speaker", module: "tts" });
+    setSearch({ ...search, role: search?.role, module: "tts" });
   };
 
   const getNewDimension = () => {
@@ -211,7 +212,12 @@ const TimeWiseDisbursements = () => {
   const onDateSearch = () => {
     setOpen(!open);
   };
-  
+
+  const onDateClose = () => {
+    setDateValue({ start: '', end: '' });
+    setSearch({ ...search, start: '', end: '' });
+  }
+                                                                                                                                                                                                                                                                                               
 
   return (
     <div className="pb-2">
@@ -220,21 +226,19 @@ const TimeWiseDisbursements = () => {
         <div className="flex flex-col justify-center items-center">
           <div className="h-[36px] w-[197px] rounded-[150px] bg-white flex justify-center items-center mt-[-17px] shadow-md">
             <button
-              className={`flex justify-center items-center w-[96px] h-[32px] ${
-                isStt
-                  ? "bg-[#2C79BE] text-white"
-                  : "bg-white text-[#2C79BE] hover:bg-gray-300"
-              } rounded-[24px]`}
+              className={`flex justify-center items-center w-[96px] h-[32px] ${isStt
+                ? "bg-[#2C79BE] text-white"
+                : "bg-white text-[#2C79BE] hover:bg-gray-300"
+                } rounded-[24px]`}
               onClick={onHandleStt}
             >
               STT
             </button>
             <button
-              className={`flex justify-center items-center w-[96px] h-[32px] ${
-                isTts
-                  ? "bg-[#851F58] text-white"
-                  : "bg-white text-[#851F58] hover:bg-gray-300"
-              } rounded-[24px]`}
+              className={`flex justify-center items-center w-[96px] h-[32px] ${isTts
+                ? "bg-[#851F58] text-white"
+                : "bg-white text-[#851F58] hover:bg-gray-300"
+                } rounded-[24px]`}
               onClick={onHandleTts}
             >
               TTS
@@ -243,22 +247,21 @@ const TimeWiseDisbursements = () => {
         </div>
 
         <div
-          className={`absolute bottom-0 w-[100%] grid ${
-            isStt ? "grid-cols-7" : "grid-cols-4"
-          }`}
+          className={`absolute bottom-0 w-[100%] grid ${isStt ? "grid-cols-7" : "grid-cols-4"
+            }`}
         >
           {isStt &&
             sttRoles.map((m) => (
               <div
                 key={m.title}
                 onClick={() => handleSttRole(m.title)}
-                className={` ${
-                  isSttRoles === m.title
-                    ? "bg-white text-[#2C79BE] font-bold"
-                    : "text-[#5F7180] font-semibold"
-                } h-[41px] text-[16px] rounded-t-[15px] flex justify-center items-center gap-x-4`}
+                className={` ${isSttRoles === m.title
+                  ? "bg-white text-[#2C79BE] font-bold"
+                  : "text-[#5F7180] "
+                  } h-[41px] text-[16px] rounded-t-[15px] flex justify-center items-center gap-x-4`}
               >
-                <img className="w-4 h-4" src={managerImage} alt="manager" />
+                {/* <img className="w-4 h-4" src={managerImage} alt="manager" /> */}
+                <Image.RoleImage role={m.title} />
                 <button>{m.title}</button>
               </div>
             ))}
@@ -268,13 +271,13 @@ const TimeWiseDisbursements = () => {
               <div
                 key={m.title}
                 onClick={() => handleTtsRole(m.title)}
-                className={` ${
-                  isTtsRoles === m.title
-                    ? "bg-white text-[#2C79BE] font-bold"
-                    : "text-[#5F7180] font-semibold"
-                } h-[41px] text-[16px] rounded-t-[15px] flex justify-center items-center gap-x-4`}
+                className={` ${isTtsRoles === m.title
+                  ? "bg-white text-[#2C79BE] font-bold"
+                  : "text-[#5F7180] font-semibold"
+                  } h-[41px] text-[16px] rounded-t-[15px] flex justify-center items-center gap-x-4`}
               >
-                <img className="w-4 h-4" src={managerImage} alt="manager" />
+                {/* <img className="w-4 h-4" src={managerImage} alt="manager" /> */}
+                <Image.RoleImage role={m.title} />
                 <button>{m.title}</button>
               </div>
             ))}
@@ -289,15 +292,43 @@ const TimeWiseDisbursements = () => {
                 Time wise disbursement
               </h1>
 
-              <button
-                onClick={onDateSearch}
-                className="rounded-[6px] flex px-4 items-center gap-x-3 bg-default h-8"
-              >
-                <h1 className="text-ct-blue-90 text-[13px]">2022</h1>
-                <div className="h-[4px] w-[6px]">
-                  <img src={arrowDropDownIcon} alt="" />
-                </div>
-              </button>
+
+              {
+                (dateValue?.start && dateValue?.end) ?
+                  <button
+                    className="duration-200 rounded-[6px] flex px-4 items-center gap-x-3 bg-ct-blue-20 h-8"
+                  >
+                    <h1 className="text-ct-blue-60 text-[13px] font-semibold">
+                      {dateValue?.start} - {dateValue?.end}
+                    </h1>
+                    <div onClick={onDateClose}>
+                      <CloseOutlined
+
+                        style={{ color: '#2C79BE', height: '10px', width: '10px' }}
+                      />
+                    </div>
+                  </button>
+                  :
+                  <button
+                    onClick={onDateSearch}
+                    className="duration-200 rounded-[6px] focus:bg-ct-blue-20 hover:bg-ct-blue-10 flex px-4 items-center gap-x-3 bg-default h-8"
+                  >
+                    <h1 className="text-ct-blue-90 text-[13px]">
+                      {/* 2022 */}
+                      {disbursementData ? disbursementData[0].year : ""}
+                    </h1>
+                    <div className="">
+                      {/* <img src={arrowDropDownIcon} alt="" /> */}
+                      <CaretDownOutlined
+                        style={{ color: `${open ? 'black' : '#9099A1'}`, width: '12px', height: '6px' }}
+                      />
+                    </div>
+                  </button>
+              }
+              {/* <h1 className="text-ct-blue-90 text-[13px]">
+                  2022
+                </h1> */}
+
             </div>
             <CustomRangeCalender trigger={open} setOpen={setOpen} setDateValue={setDateValue} />
             {/*<div className={`grid grid-cols-12`}>*/}
@@ -306,42 +337,40 @@ const TimeWiseDisbursements = () => {
                 {disbursementData?.map((m: timeWiseYearDT, i: number) => (
                   <div
                     key={m?.id}
-                    className={`relative flex ${
-                      disbursementData?.length === 12
-                        ? i < 2
-                          ? "justify-start"
-                          : "justify-center"
-                        : disbursementData?.length > 12
+                    className={`relative flex ${disbursementData?.length === 12
+                      ? i < 2
+                        ? "justify-start"
+                        : "justify-center"
+                      : disbursementData?.length > 12
                         ? i < Math.round((2 * disbursementData?.length) / 12)
                           ? "justify-start"
                           : "justify-center"
                         : disbursementData?.length < 12
-                        ? i === 0
-                          ? "justify-start"
-                          : "justify-center"
-                        : ""
-                    } group`}
+                          ? i === 0
+                            ? "justify-start"
+                            : "justify-center"
+                          : ""
+                      } group`}
                   >
                     {/*<div className="absolute  bottom-20 text-white bg-black h-10">hello </div>*/}
                     <div
                       style={{
                         bottom: `${170 / 16 + dimensionValue[i] / 2}rem`,
                       }}
-                      className={`absolute animate-fadeIn2 z-40 w-[350px] hidden group-hover:block bg-[#59C1BD] ${
-                        disbursementData?.length === 12
-                          ? i < 2
-                            ? "-left-10"
-                            : ""
-                          : disbursementData?.length > 12
+                      className={`absolute animate-fadeIn2 z-40 w-[350px] hidden group-hover:block bg-[#59C1BD] ${disbursementData?.length === 12
+                        ? i < 2
+                          ? "-left-10"
+                          : ""
+                        : disbursementData?.length > 12
                           ? i < Math.round((2 * disbursementData?.length) / 12)
                             ? "-left-10"
                             : ""
                           : disbursementData?.length < 12
-                          ? i === 0
-                            ? "-left-10"
+                            ? i === 0
+                              ? "-left-10"
+                              : ""
                             : ""
-                          : ""
-                      }`}
+                        }`}
                     >
                       <div className="rounded-[12px] px-5 py-4 bg-[#212121] absolute">
                         <div className="flex items-center">
@@ -367,7 +396,14 @@ const TimeWiseDisbursements = () => {
                               {m?.disbursed[0]?.day
                                 ? m?.disbursed[0]?.day
                                 : "00"}
+
                             </span>
+                            {
+                             (dateValue?.start && dateValue?.end) &&
+                             <span className='mr-1'>
+                              {m?.year}
+                             </span>
+                            }
                             <span></span>
                           </h3>
                           <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
@@ -395,6 +431,12 @@ const TimeWiseDisbursements = () => {
                                 ? m?.disbursed[1]?.day
                                 : "00"}
                             </span>
+                            {
+                             m?.year &&
+                             <span className='mr-1'>
+                              {m?.year}
+                             </span>
+                            }
                             {/*<span>{item.month}</span>*/}
                             {/*feb*/}
                           </h3>
@@ -419,22 +461,21 @@ const TimeWiseDisbursements = () => {
                       <img
                         src={Icons.blackDropArrow}
                         alt=""
-                        className={`w-10 h-6 absolute top-[8.5rem] ${
-                          disbursementData?.length === 12
-                            ? i < 2
-                              ? "left-5"
-                              : "left-1/2 transform -translate-x-1/2"
-                            : disbursementData?.length > 12
+                        className={`w-10 h-6 absolute top-[8.5rem] ${disbursementData?.length === 12
+                          ? i < 2
+                            ? "left-5"
+                            : "left-1/2 transform -translate-x-1/2"
+                          : disbursementData?.length > 12
                             ? i <
                               Math.round((2 * disbursementData?.length) / 12)
                               ? "left-5"
                               : "left-1/2 transform -translate-x-1/2"
                             : disbursementData?.length < 12
-                            ? i === 0
-                              ? "left-5"
-                              : "left-1/2 transform -translate-x-1/2"
-                            : ""
-                        }`}
+                              ? i === 0
+                                ? "left-5"
+                                : "left-1/2 transform -translate-x-1/2"
+                              : ""
+                          }`}
                       />
                     </div>
 
@@ -450,29 +491,27 @@ const TimeWiseDisbursements = () => {
                           style={{
                             height: `${dimensionValue[i]}rem`,
                             width: `${dimensionValue[i]}rem`,
-                            backgroundColor: `${
-                              i % 3 === 0
-                                ? "#FFD3D3"
-                                : i % 4 === 0
+                            backgroundColor: `${i % 3 === 0
+                              ? "#FFD3D3"
+                              : i % 4 === 0
                                 ? "#FFF5CC"
                                 : i % 5 === 0
-                                ? "#E2FBD7"
-                                : i % 2 === 0
-                                ? "#CCF8FE"
-                                : "#CCDDFE"
-                            }`,
+                                  ? "#E2FBD7"
+                                  : i % 2 === 0
+                                    ? "#CCF8FE"
+                                    : "#CCDDFE"
+                              }`,
                           }}
-                          className={`relative z-20 text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center ring-2 ${
-                            i % 3 === 0
-                              ? "ring-[#E5BEBE] hover:shadow-light-tomato"
-                              : i % 4 === 0
+                          className={`relative z-20 text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center ring-2 ${i % 3 === 0
+                            ? "ring-[#E5BEBE] hover:shadow-light-tomato"
+                            : i % 4 === 0
                               ? "ring-[#E8DFBA] hover:shadow-light-periwinkle"
                               : i % 5 === 0
-                              ? "ring-[#D1E8C7] hover:shadow-light-onahau "
-                              : i % 2 === 0
-                              ? "ring-[#BAE3E8] hover:shadow-light-onahau"
-                              : "ring-[#BACAE8] hover:shadow-light-yellow"
-                          } hover:ring-offset-2 transition duration-4000 ease-out hover:ease-in`}
+                                ? "ring-[#D1E8C7] hover:shadow-light-onahau "
+                                : i % 2 === 0
+                                  ? "ring-[#BAE3E8] hover:shadow-light-onahau"
+                                  : "ring-[#BACAE8] hover:shadow-light-yellow"
+                            } hover:ring-offset-2 transition duration-4000 ease-out hover:ease-in`}
                         >
                           {
                             // dimensionValue[i] - (30/16) >= (5/16) &&
@@ -484,7 +523,7 @@ const TimeWiseDisbursements = () => {
                                 {m.totalAmount}
                               </h1>
                             ) : (
-                              <h1>{}</h1>
+                              <h1>{ }</h1>
                             )
                           }
                         </div>
