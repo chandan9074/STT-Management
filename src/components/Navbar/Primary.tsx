@@ -18,6 +18,9 @@ const Primary = () => {
           </h4>
           <h5 className="text-xxs text-blue-gray-75 mb-0">Admin</h5>
         </div>
+        <button className="ml-5">
+          <img src={Icons.arrow_drop_down_blue_gray} alt="user1" />
+        </button>
       </div>
     </div>
   );

@@ -13,10 +13,14 @@ import CustomRangeCalender, {
   DateDT,
 } from "../../../calender/CustomRangeCalender";
 import { BillingContext } from "../../../../context/BillingProvider";
-import { getYearMonthDate } from "../../../../helpers/Utils";
+import {
+  getDateWithMonthName,
+  getYearMonthDate,
+} from "../../../../helpers/Utils";
 
 const PaymentHistoryDetails = ({ data }: { data: paymentHistoryDT }) => {
   const [dateValue, setDateValue] = useState<DateDT>({ start: "", end: "" });
+  const [btnDate, setBtnDate] = useState<DateDT>({ start: "", end: "" });
   const [open, setOpen] = useState<boolean>(false);
   const billingContext = useContext(BillingContext);
   const columns: ColumnsType<paymentHistoryDataDT> = [
@@ -40,6 +44,16 @@ const PaymentHistoryDetails = ({ data }: { data: paymentHistoryDT }) => {
     },
   ];
 
+  const handleDateRemove = () => {
+    setDateValue({ start: "", end: "" });
+    setBtnDate({ start: "", end: "" });
+    billingContext.setQuery({
+      ...billingContext.query,
+      start: "",
+      end: "",
+    });
+  };
+
   const handleDataChange = (value: number) => {
     console.log("hello vai");
     billingContext.setQuery({
@@ -52,6 +66,12 @@ const PaymentHistoryDetails = ({ data }: { data: paymentHistoryDT }) => {
     if (dateValue.start && dateValue.end) {
       const _start = getYearMonthDate(dateValue.start);
       const _end = getYearMonthDate(dateValue.end);
+
+      const newStart = getDateWithMonthName(_start);
+      const newEnd = getDateWithMonthName(_end);
+
+      setBtnDate({ start: newStart, end: newEnd });
+
       billingContext.setQuery({
         ...billingContext.query,
         start: _start,
@@ -134,14 +154,35 @@ const PaymentHistoryDetails = ({ data }: { data: paymentHistoryDT }) => {
           <h1 className="text-heading-6 font-medium text-ct-blue-95 mb-0">
             All Payment History
           </h1>
-          <button
-            className="p-1.5 rounded-[4px] bg-ct-blue-05"
-            onClick={() => setOpen(!open)}
-          >
-            <img src={Icons.calender} alt="calender" className="w-6 h-6" />
-          </button>
+
+          {btnDate.start && btnDate.end ? (
+            <button
+              className="py-2 px-3 rounded-[4px] animate-fadeIn flex items-center bg-ct-blue-20 hover:bg-ct-blue-30 duration-300"
+              onClick={handleDateRemove}
+            >
+              <h3 className="text-xs text-ct-blue-60 mb-0 font-medium mr-1">
+                {btnDate.start} - {btnDate.end}
+              </h3>
+              <img src={Icons.closeBlue} alt="" />
+            </button>
+          ) : (
+            <button
+              className="p-1.5 rounded-[4px] bg-ct-blue-05"
+              onClick={() => setOpen(!open)}
+            >
+              <img
+                src={Icons.calender}
+                alt="calender"
+                className="w-6 h-6 animate-fadeIn"
+              />
+            </button>
+          )}
         </div>
-        <CustomRangeCalender trigger={open} setOpen={setOpen} setDateValue={setDateValue} />
+        <CustomRangeCalender
+          trigger={open}
+          setOpen={setOpen}
+          setDateValue={setDateValue}
+        />
         <Table.Type1 columnsData={columns} dataSources={data.paymentHistory} />
         <div className="mt-7 w-full flex justify-end">
           <Pagination.Type2

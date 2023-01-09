@@ -43,7 +43,9 @@ import Rajbongshi from "./Rajbongshi.svg";
 import SouthBangla from "./SouthBangla.svg";
 import SouthEastBangla from "./SouthEastBangla.svg";
 import Kamrupi from "./Kamrupi.svg";
-
+import left_arrow_black from "./left_arrow_black.svg";
+import closeBlue from "./closeBlue.svg";
+import arrow_drop_down_blue_gray from "./arrow_drop_down_blue_gray.svg";
 const Icons = {
   currency,
   admin,
@@ -90,6 +92,9 @@ const Icons = {
   SouthBangla,
   SouthEastBangla,
   Kamrupi,
+  left_arrow_black,
+  closeBlue,
+  arrow_drop_down_blue_gray,
 };
 
 export default Icons;
