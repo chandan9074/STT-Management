@@ -33,7 +33,7 @@ function App() {
           path={`${PATH.BILLING_PAYMENT_HISTORY_PATH}/:id`}
           element={<PaymentHistory />}
         />
-        <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} />
+        {/* <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
