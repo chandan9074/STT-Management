@@ -258,7 +258,7 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
           >Entry</button>
           <InputNumber
             controls={false}
-            className="w-12 font-medium text-xs text-ct-blue-90-70%"
+            className="w-12 font-medium text-xs text-ct-blue-90-70% rounded-[7px]"
             min={1}
             value={pageNumberAllBilling}
             defaultValue={allbillingsParam.pageSize}
