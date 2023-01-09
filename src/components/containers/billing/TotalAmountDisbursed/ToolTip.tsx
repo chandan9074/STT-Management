@@ -15,7 +15,7 @@ const ToolTip = ({ currentData, barHeight, item, i, maxBar }: ToolTipProps) => {
     <div
       className={`rounded-[12px] px-5 py-4 bg-tooltip-bg absolute ${
         currentData.yearData.length - 2 <= i &&
-        Math.round(barHeight / 2) >=
+        Math.round(barHeight / 2) >
           Math.round(
             (barHeight * item.disbursed[maxBar]?.amount) /
               currentData?.maxAmount
@@ -41,8 +41,8 @@ const ToolTip = ({ currentData, barHeight, item, i, maxBar }: ToolTipProps) => {
                   (barHeight * item.disbursed[maxBar]?.amount) /
                     currentData?.maxAmount
                 ) + 18
-              : ""
-            : ""
+              : 0
+            : 0
         }px`,
       }}
     >
