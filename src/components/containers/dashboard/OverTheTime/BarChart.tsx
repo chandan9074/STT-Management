@@ -9,13 +9,16 @@ const BarChart = () => {
         <div className="flex flex-col items-center justify-end">
           {item.receivedHour > 0 ? (
             <div
-              className={`h-[${barHeight}px] w-9 relative flex ${
+              className={`w-9 relative flex ${
                 index < 4
                   ? "justify-start"
                   : overTheTimeGData.dayData.length - 6 < index
                   ? "justify-end"
                   : "justify-center"
               } group`}
+              style={{
+                height: `${barHeight}px`,
+              }}
             >
               {item.hourData.length > 0 && (
                 <>

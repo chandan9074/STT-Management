@@ -5,15 +5,15 @@ import Layouts from "../../components/Layouts";
 import DataContainer from "../../components/containers/dashboard/DataContainer";
 
 const Dashboard = () => {
-    return (
-        <Layouts.Secondary>
-            <div className="min-h-[calc(100vh-9.5vh)]">
-                <TotalData/>
-                <OverTheTime/>
-                <DataContainer/>
-            </div>
-        </Layouts.Secondary>
-    );
+  return (
+    <Layouts.Secondary>
+      <div className="min-h-[calc(100vh-9.5vh)]">
+        <TotalData />
+        <OverTheTime />
+        <DataContainer />
+      </div>
+    </Layouts.Secondary>
+  );
 };
 
 export default Dashboard;
