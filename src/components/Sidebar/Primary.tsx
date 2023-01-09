@@ -13,25 +13,35 @@ const Primary = () => {
       </Link>
       <div className="mt-14">
         {sidebarMenu.category1.map((item, index) => (
-          <Link
-            key={item.path}
-            to={item.path}
-            className={`p-1.5 rounded-full mb-5 hover:bg-ct-blue-20 block hover:bg-opacity-40 duration-300 border border-transparent hover:border-ct-blue-20 group ${
-              location.pathname.split("/")[1] === item.path.split("/")[1]
-                ? "shadow-light-blue "
-                : null
-            }`}
-          >
-            <img
-              src={item.menu_icon}
-              alt=""
-              className={`w-6 h-6 opacity-50 group-hover:opacity-100 duration-300 ${
+          <div className="mb-5 relative group">
+            <div className="bg-black-90 absolute left-14 py-1.5 px-3 rounded-[4px] text-ct-blue-05 whitespace-nowrap animate-fadeIn hidden group-hover:block">
+              {item.menu_title}
+              <img
+                src={Icons.left_arrow_black}
+                alt=""
+                className="absolute top-1/2 -translate-y-1/2 -left-1.5"
+              />
+            </div>
+            <Link
+              key={item.path}
+              to={item.path}
+              className={`p-1.5 rounded-full hover:bg-ct-blue-20 block hover:bg-opacity-40 duration-300 border border-transparent hover:border-ct-blue-20 group ${
                 location.pathname.split("/")[1] === item.path.split("/")[1]
-                  ? "opacity-100"
+                  ? "shadow-light-blue "
                   : null
               }`}
-            />
-          </Link>
+            >
+              <img
+                src={item.menu_icon}
+                alt=""
+                className={`w-6 h-6 opacity-50 group-hover:opacity-100 duration-300 ${
+                  location.pathname.split("/")[1] === item.path.split("/")[1]
+                    ? "opacity-100"
+                    : null
+                }`}
+              />
+            </Link>
+          </div>
         ))}
       </div>
     </div>
