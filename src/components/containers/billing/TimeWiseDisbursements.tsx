@@ -451,7 +451,7 @@ const TimeWiseDisbursements = () => {
                                       : "00"}
                                   </span>
                                   {
-                                    m?.year &&
+                                    (dateValue?.start && dateValue?.end) &&
                                     <span className='mr-1'>
                                       {m?.year}
                                     </span>
@@ -459,7 +459,7 @@ const TimeWiseDisbursements = () => {
                                   {/*<span>{item.month}</span>*/}
                                   {/*feb*/}
                                 </h3>
-                                <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
+                                <h3 className="flex items-center text-green-A10  text-base font-medium mb-0">
                                   <span className="mr-1">
                                     {m?.disbursed[1]?.hours
                                       ? m?.disbursed[1]?.hours
@@ -468,7 +468,7 @@ const TimeWiseDisbursements = () => {
                                   </span>
                                   hr
                                 </h3>
-                                <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
+                                <h3 className="flex items-center text-green-A10  text-base font-medium mb-0">
                                   {m?.disbursed[1]?.amount
                                     ? m?.disbursed[1]?.amount
                                     : "0"}{" "}
