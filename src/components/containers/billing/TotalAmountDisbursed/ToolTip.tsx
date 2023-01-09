@@ -61,18 +61,20 @@ const ToolTip = ({ currentData, barHeight, item, i, maxBar }: ToolTipProps) => {
       {item.disbursed.map((data, i) => (
         <div
           className={`${
-            i === 0 ? "mt-4 bg-winter-wizard" : "mt-0.5 bg-blue-gray-85"
+            i === 0
+              ? "mt-4 bg-winter-wizard text-winter-wizard"
+              : "mt-0.5 bg-blue-gray-85 text-[#E2FBD7]"
           } flex justify-between w-[300px] bg-opacity-25 py-1.5 px-2 rounded-[4px]`}
         >
-          <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
+          <h3 className="flex items-center text-base font-medium mb-0">
             <span className="mr-1">{data.day}</span>
             <span>{item.month}</span>
           </h3>
-          <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
+          <h3 className="flex items-center text-base font-medium mb-0">
             <span className="mr-1">{data.hours}</span>
             hr
           </h3>
-          <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
+          <h3 className="flex items-center text-base font-medium mb-0">
             {data.amount}/-
           </h3>
         </div>

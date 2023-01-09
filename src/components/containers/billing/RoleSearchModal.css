@@ -1,38 +1,31 @@
-.ant-select-show-search:where(.css-dev-only-do-not-override-1ij74fp).ant-select:not(:where(.css-dev-only-do-not-override-1ij74fp).ant-select-customize-input) .ant-select-selector {
+.ant-select-selector {
     border: none !important;
     height: 100% !important;
-}
-
-.ant-select-selector {
     box-shadow: none !important;
-}
-
-.ant-select-show-search:where(.css-dev-only-do-not-override-1ij74fp).ant-select:not(:where(.css-dev-only-do-not-override-1ij74fp).ant-select-customize-input) .ant-select-selector {
-   height: 42px !important;
+    height: 42px !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
 }
 
-:where(.css-dev-only-do-not-override-1ij74fp).ant-select-single .ant-select-selector .ant-select-selection-search {
+ .ant-select-selector .ant-select-selection-search {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+    
 }
 
 
 
 .select-icon .ant-select .ant-select-arrow {
     background-image: url('../../../assets/Icons/arrow_drop_down.png') !important;
-    background-size: 10px 7px !important;
+    background-size: 7px 5px !important;
     margin-top: -3px;
-    width: 10px !important;
-    height: 7px !important;
-    content:"" !important;
-}
-
-.ant-select-disabled:where(.css-dev-only-do-not-override-1ij74fp).ant-select:not(:where(.css-dev-only-do-not-override-1ij74fp).ant-select-customize-input) .ant-select-selector{
+    width: 7px !important;
+    height: 5px !important;
+    content: "" !important;
     background: #E9EDF3 !important;
+
 }
 
 .ant-select-item-option-active {
@@ -46,13 +39,14 @@
     display: inline-block;
     width: 15px;
     height: 10px;
-    content:"";
+    content: "";
     object-fit: contain;
 }
 
 .ant-select-item-option-active:hover {
     background: #E1EFFE !important;
 }
+
 .ant-select-single.ant-select-show-arrow .ant-select-selection-item {
     display: flex;
     align-items: center;
@@ -62,8 +56,8 @@
     margin-top: 6px !important;
 }
 
- .searchByRoleSelect .ant-select-selector{
-     background: #E9EDF3 !important;
+.searchByRoleSelect .ant-select-selector {
+    background: #E9EDF3 !important;
 }
 
 .searchByRoleSelect .ant-select-single.ant-select-show-arrow .ant-select-selection-item {
@@ -73,14 +67,24 @@
     height: 100%;
 }
 
- .notSelect .ant-select-selector{
-     background: white !important;
+.notSelect .ant-select-selector {
+    background: white !important;
+}
+
+/* placeholder style */
+.ant-select-selection-placeholder {
+    font-weight: bold !important;
+    color: #5F6B7D !important;
+    font-size: 14px !important;
+}
+
+.ant-select-selector input{
+    font-weight: bold;
+    color: #464E5F;
+    font-size: 14px;
 }
 
 
 .ant-select-item-option-content {
-     /*background: ;*/
+    /*background: ;*/
 }
-
-
-
