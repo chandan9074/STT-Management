@@ -24,10 +24,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={<Navigate to={PATH.DASHBOARD_PATH} replace />}
-        />
+        <Route path="/" element={<Navigate to={PATH.BILLING_PATH} replace />} />
         <Route path={PATH.BILLING_PATH} element={<Billing />} />
         <Route
           path={`${PATH.BILLING_PAYMENT_HISTORY_PATH}/:id`}
