@@ -118,9 +118,9 @@ const RoleSearchModal = ({
                 onClick={() => outsideModalClick()} />
             <div className="relative z-50">
                 <div
-                    className="border-0 rounded-lg shadow-lg relative flex flex-col w-[700px] bg-white outline-none focus:outline-none">
+                    className="border-0 overflow-hidden rounded-lg shadow-lg relative flex flex-col w-[700px] bg-white outline-none focus:outline-none">
                     {/*header*/}
-                    <div className='bg-ct-blue-05 h-[200px] p-5'>
+                    <div className='bg-ct-blue-05 h-[186px] p-5'>
                         <div className="flex items-start justify-between items-center ">
                             <h3 className="titleParagraphMedium">
                                 Search {role}
@@ -191,7 +191,7 @@ const RoleSearchModal = ({
 
                                         <div
                                             className={isDropDownVisible ? 'bg-white px-[6px] block w-[fit-content] absolute bottom-[34px] left-[12px]' : 'hidden'}>
-                                            <p className='text-blue-gray-80 text-[12px]'>{role}</p>
+                                            <p className='text-blue-gray-80 font-bold text-[12px]'>{role}</p>
                                         </div>
                                     </Form.Item>
                                 </Form>
