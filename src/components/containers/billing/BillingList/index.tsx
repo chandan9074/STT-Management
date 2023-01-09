@@ -182,9 +182,11 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
     <div>
       <div className="w-100 flex flex-row justify-between items-center gap-1 ">
         <div className="flex flex-row items-center gap-4 ">
-          <h2 className="mb-0 border-r-2 pr-3 text-heading-6 font-medium text-ct-blue-95">
-            Last Billing Info
-          </h2>
+          <div className="border-r-2 h-[40px] my-auto flex items-center">
+            <h2 className="mb-0 pr-4 text-heading-6 font-medium text-ct-blue-95">
+              Last Billing Info
+            </h2>
+          </div>
           <div>
             <p className="text-xxs text-ct-blue-90-70% mb-0">Paid</p>
             <p className="text-small text-ct-blue-95 font-medium">
@@ -200,8 +202,7 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
         </div>
 
         <div>
-          {/*<button className="border rounded-md border-white font-sans text-small text-ct-blue-60 font-medium hover:border-gray-400 duration-300 p-1.5">Download in Excel*/}
-          {/*</button>*/}
+         
           <ExportCsv
             csvData={lastBillingsExcelData}
             fileName={excelNameFormatter(`${lastBillings?.role.toUpperCase()}`, true)}
