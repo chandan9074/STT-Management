@@ -174,13 +174,13 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
     },
   ];
 
-  console.log("params", lastBillingsParams, "role", twDisbursement);
+
 
 
 
   return (
     <div>
-      <div className="w-100 flex flex-row justify-between items-center gap-1 pt-10 ">
+      <div className="w-100 flex flex-row justify-between items-center gap-1 ">
         <div className="flex flex-row items-center gap-4 ">
           <h2 className="mb-0 border-r-2 pr-3 text-heading-6 font-medium text-ct-blue-95">
             Last Billing Info
@@ -215,7 +215,7 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
           columnsData={lastBillingColumns}
           dataSources={listedLastBillings}
         />
-        <div className="my-4 w-100 flex items-center gap-8 justify-end">
+        <div className="w-100 flex items-center gap-8 justify-end">
           {lastBillings?.numberOfBills ? <Pagination.Type2
 
             total={lastBillings?.numberOfBills}
@@ -242,7 +242,7 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
           </div>
         </div>
       </div>
-      <hr className="my-10" />
+      <hr className="my-[32px]" />
       {/* All Billing */}
       <div className="w-100 flex flex-row justify-between items-center gap-1 ">
         <div className="flex flex-row items-center gap-4 ">
@@ -266,7 +266,7 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
           />
         </div>
       </div>
-      <div className="mb-10">
+      <div className="">
         <Table.Type2
           columnsData={allBillingColumns}
           dataSources={listedAllBillings}
