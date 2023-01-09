@@ -182,7 +182,7 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
     <div>
       <div className="w-100 flex flex-row justify-between items-center gap-1 ">
         <div className="flex flex-row items-center gap-4 ">
-          <div className="border-r-2 h-[40px] my-auto flex items-center">
+          <div className="border-r-2 border-border-light-blue h-[40px] my-auto flex items-center">
             <h2 className="mb-0 pr-4 text-heading-6 font-medium text-ct-blue-95">
               Last Billing Info
             </h2>

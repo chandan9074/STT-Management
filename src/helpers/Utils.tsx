@@ -52,3 +52,4 @@ export const getDateWithMonthName = (date: string) => {
   const day = splitData[2];
   return `${day} ${month} ${year}`;
 };
+
