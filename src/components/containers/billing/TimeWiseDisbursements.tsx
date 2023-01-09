@@ -1,11 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import managerImage from "../../../assets/Icons/manager.png";
 import { CaretDownOutlined, CloseOutlined, SearchOutlined } from "@ant-design/icons";
 import RoleSearchModal from "./RoleSearchModal";
 import { RoleInContext } from "../../../context/RoleProvider";
 import "./TimeWiseDisbursement.css";
 import Icons from "../../../assets/Icons";
-import arrowDropDownIcon from "../../../assets/Icons/arrow_drop_down.png";
 import {
   timeWiseDisbursementParamsDT,
   timeWiseYearDT,
@@ -14,7 +12,7 @@ import CustomRangeCalender, {
   DateDT,
 } from "../../calender/CustomRangeCalender";
 import BillingListIndex from "./BillingList";
-import { getYearMonthDate } from "../../../helpers/Utils";
+import { getDateWithMonthName, getYearMonthDate } from "../../../helpers/Utils";
 import Image from "../../Image";
 import { LoadingSkeleton } from "../../../assets/loadingSkeleton";
 
@@ -25,7 +23,10 @@ const TimeWiseDisbursements = () => {
 
   const managerContext = useContext(RoleInContext);
   const { disbursementData, totalDisbursed, loading } = managerContext;
+
   const [dateValue, setDateValue] = useState<DateDT>({ start: "", end: "" });
+
+
   const [open, setOpen] = useState<boolean>(false);
 
   const [dimensionValue, setDimensionValue] = useState<number[]>([]);
@@ -55,6 +56,7 @@ const TimeWiseDisbursements = () => {
 
       const _start = getYearMonthDate(dateValue?.start);
       const _end = getYearMonthDate(dateValue?.end);
+
       setSearch({ ...search, start: _start, end: _end });
     }
   }, [dateValue]);
@@ -118,13 +120,13 @@ const TimeWiseDisbursements = () => {
   const onHandleStt = () => {
     setIsStt(true);
     setIsTts(false);
-    setSearch({ ...search, role: search?.role, module: "stt" });
+    setSearch({ ...search, role: isSttRoles, module: "stt" });
   };
 
   const onHandleTts = () => {
     setIsStt(false);
     setIsTts(true);
-    setSearch({ ...search, role: search?.role, module: "tts" });
+    setSearch({ ...search, role: isTtsRoles, module: "tts" });
   };
 
   const getNewDimension = () => {
@@ -220,19 +222,15 @@ const TimeWiseDisbursements = () => {
     setSearch({ ...search, start: '', end: '' });
   }
 
-
   return (
     <div>
       {
         loading ?
-          <div>
-            <img src={LoadingSkeleton.timeWiseDisbursement} alt="" />
+          <div className="mt-[52px]">
+            <img className="w-full" src={LoadingSkeleton.timeWiseDisbursement} alt="" />
           </div>
           :
           <div className="pb-2">
-
-
-
             <div className="h-[153px] relative ">
               {/*TTS STT Tab*/}
               <div className="flex flex-col justify-center items-center">
@@ -272,7 +270,11 @@ const TimeWiseDisbursements = () => {
                         : "text-[#5F7180] "
                         } h-[41px] text-[16px] rounded-t-[15px] flex justify-center items-center gap-x-4`}
                     >
-                      <Image.RoleImage role={m.title} />
+                      {
+                        isSttRoles === m.title ?
+                         <Image.RoleImage role={m.title} />
+                         : <Image.RoleFilterImage role={m.title} />
+                      }
                       <button>{m.title}</button>
                     </div>
                   ))}
@@ -284,11 +286,16 @@ const TimeWiseDisbursements = () => {
                       onClick={() => handleTtsRole(m.title)}
                       className={` ${isTtsRoles === m.title
                         ? "bg-white text-[#2C79BE] font-bold"
-                        : "text-[#5F7180] font-semibold"
+                        : "text-[#5F7180] "
                         } h-[41px] text-[16px] rounded-t-[15px] flex justify-center items-center gap-x-4`}
                     >
                       {/* <img className="w-4 h-4" src={managerImage} alt="manager" /> */}
-                      <Image.RoleImage role={m.title} />
+                      {
+                        isTtsRoles === m.title ? 
+                        <Image.RoleImage role={m.title} />
+                        : <Image.RoleFilterImage role={m.title} />
+                      }
+                    
                       <button>{m.title}</button>
                     </div>
                   ))}
@@ -310,7 +317,8 @@ const TimeWiseDisbursements = () => {
                           className="duration-200 rounded-[6px] flex px-4 items-center gap-x-3 bg-ct-blue-20 h-8"
                         >
                           <h1 className="text-ct-blue-60 text-[13px] font-semibold">
-                            {dateValue?.start} - {dateValue?.end}
+                            {getDateWithMonthName(dateValue?.start)} - {getDateWithMonthName(dateValue?.end)}
+                            {/* {searchDate?.start} - {searchDate?.end} */}
                           </h1>
                           <div onClick={onDateClose}>
                             <CloseOutlined
@@ -443,7 +451,7 @@ const TimeWiseDisbursements = () => {
                                       : "00"}
                                   </span>
                                   {
-                                    m?.year &&
+                                    (dateValue?.start && dateValue?.end) &&
                                     <span className='mr-1'>
                                       {m?.year}
                                     </span>
@@ -451,7 +459,7 @@ const TimeWiseDisbursements = () => {
                                   {/*<span>{item.month}</span>*/}
                                   {/*feb*/}
                                 </h3>
-                                <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
+                                <h3 className="flex items-center text-green-A10  text-base font-medium mb-0">
                                   <span className="mr-1">
                                     {m?.disbursed[1]?.hours
                                       ? m?.disbursed[1]?.hours
@@ -460,7 +468,7 @@ const TimeWiseDisbursements = () => {
                                   </span>
                                   hr
                                 </h3>
-                                <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
+                                <h3 className="flex items-center text-green-A10  text-base font-medium mb-0">
                                   {m?.disbursed[1]?.amount
                                     ? m?.disbursed[1]?.amount
                                     : "0"}{" "}

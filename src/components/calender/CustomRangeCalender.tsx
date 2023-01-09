@@ -6,17 +6,18 @@ import isBetween from "dayjs/plugin/isBetween";
 import CloseIcon from '../../assets/Icons/close.png'
 import { InputAdornment, styled, TextField } from "@mui/material";
 import './customizeCalender.css'
-import updateLocale from "dayjs/plugin/updateLocale";
-import "dayjs/locale/zh-cn";
-import locale from "antd/es/locale/en_GB";
 import customParseFormat from 'dayjs/plugin/customParseFormat';
+import 'moment/locale/en-gb';
+import locale from 'antd/es/locale/en_GB';
+import moment from 'moment';
 
 dayjs.extend(customParseFormat);
 dayjs.extend(isBetween)
-dayjs.extend(updateLocale)
-dayjs.updateLocale("en_GB", {
-    weekStart: 1
-});
+moment.locale('en-gb', {
+    week: {
+      dow: 1, /// Date offset
+    },
+  });
 
 const CssTextField = styled(TextField)({
     '& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root': {

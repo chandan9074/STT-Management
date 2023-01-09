@@ -45,11 +45,20 @@ const Type2 = ({
   };
   return (
     <div className="flex items-center">
-      <div className="sm:block hidden">
-        <button onClick={handlePrev}>Prev</button>
+      <div className="sm:block hidden ">
+        <button
+          onClick={handlePrev}
+          className="text-small font-medium text-blue-gray-A30"
+        >
+          Prev</button>
       </div>
       <div className="sm:hidden block">
-        <button onClick={handlePrev}>Prev</button>
+        <button
+          onClick={handlePrev}
+          className="text-small font-medium text-blue-gray-A30"
+        >
+          Prev
+        </button>
       </div>
       {Math.floor(total / pageSize) > 4 ? (
         <>
@@ -59,11 +68,10 @@ const Type2 = ({
               setCurrentPage(2);
               handleDataChange(1);
             }}
-            className={`text-sm ${
-              activePage === 1
-                ? "text-white bg-ct-blue-60 border border-ct-blue-60"
-                : ""
-            } font-bold py-1.5 px-2.5  mr-2.5 ml-3 rounded-[6px] duration-200 outline-none`}
+            className={`text-small ${activePage === 1
+              ? "text-white bg-ct-blue-60 border border-ct-blue-60"
+              : "text-blue-gray-A30"
+              } font-bold py-1.5 px-2.5  mr-2.5 ml-3 rounded-[6px] duration-200 outline-none`}
           >
             1
           </button>
@@ -80,11 +88,10 @@ const Type2 = ({
                   handleDataChange(currentPage + index);
                 }}
                 key={index}
-                className={`text-sm  font-bold py-1.5 px-2.5 ${
-                  activePage === index + currentPage
-                    ? "text-white bg-ct-blue-60 border border-ct-blue-60"
-                    : ""
-                } duration-200 mr-2.5 rounded-[6px] outline-none`}
+                className={`text-sm  font-bold py-1.5 px-2.5 ${activePage === index + currentPage
+                  ? "text-white bg-ct-blue-60 border border-ct-blue-60"
+                  : "text-blue-gray-A30"
+                  } duration-200 mr-2.5 rounded-[6px] outline-none`}
               >
                 {index + currentPage}
               </button>
@@ -101,11 +108,10 @@ const Type2 = ({
               setCurrentPage(Math.floor(total / pageSize) - 2);
               handleDataChange(Math.floor(total / pageSize));
             }}
-            className={`text-sm font-bold py-1.5 px-2.5 mr-2.5 ${
-              activePage === Math.floor(total / pageSize)
-                ? "text-white bg-ct-blue-60 "
-                : ""
-            } duration-200 rounded-[6px] outline-none`}
+            className={`text-small h-[28px] w-[28px] font-bold mr-2.5 ${activePage === Math.floor(total / pageSize)
+              ? "text-white bg-ct-blue-60 "
+              : "text-blue-gray-A30"
+              } duration-200 rounded-[4px] outline-none`}
           >
             {Math.ceil(total / pageSize)}
           </button>
@@ -117,15 +123,14 @@ const Type2 = ({
               setActivePage(1);
               handleDataChange(1);
             }}
-            className={`text-sm font-bold py-1.5 px-2.5 mr-2.5 ml-3 ${
-              activePage === 1 ? "text-white bg-ct-blue-60 " : ""
-            } duration-200 rounded-[6px] outline-none`}
+            className={`text-small font-bold h-[28px] w-[28px]  mr-2.5 ml-3 ${activePage === 1 ? "text-white bg-ct-blue-60 " : "text-blue-gray-A30"
+              } duration-200 rounded-[4px] outline-none`}
           >
             1
           </button>
           {Math.floor(total / pageSize) > 1 && (
             <>
-              {new Array(total % pageSize === 0 ? Math.floor(total / pageSize)-1:Math.floor(total / pageSize))
+              {new Array(total % pageSize === 0 ? Math.floor(total / pageSize) - 1 : Math.floor(total / pageSize))
                 .fill(0)
                 .map((_, index) => (
                   <button
@@ -134,11 +139,10 @@ const Type2 = ({
                       handleDataChange(index + currentPage);
                     }}
                     key={index}
-                    className={`text-sm font-bold py-1.5 px-2.5 ${
-                      activePage === index + currentPage
-                        ? "text-white bg-ct-blue-60 "
-                        : ""
-                    } duration-200 mr-2.5 rounded-[6px] outline-none`}
+                    className={`text-small font-bold h-[28px] w-[28px] ${activePage === index + currentPage
+                      ? "text-white bg-ct-blue-60 "
+                      : "text-blue-gray-A30"
+                      } duration-200 mr-2.5 rounded-[4px] outline-none`}
                   >
                     {index + currentPage}
                   </button>
@@ -148,10 +152,20 @@ const Type2 = ({
         </>
       )}
       <div className="sm:block hidden">
-        <button onClick={handleNext}>Next</button>
+        <button
+          className="text-small font-medium text-blue-gray-A30"
+          onClick={handleNext}
+        >
+          Next
+        </button>
       </div>
       <div className="sm:hidden block">
-        <button onClick={handleNext}>Next</button>
+        <button
+          className="text-small font-medium text-blue-gray-A30"
+          onClick={handleNext}
+        >
+          Next
+        </button>
       </div>
     </div>
   );
