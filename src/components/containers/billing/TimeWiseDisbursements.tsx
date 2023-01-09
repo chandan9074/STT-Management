@@ -226,13 +226,10 @@ const TimeWiseDisbursements = () => {
       {
         loading ?
           <div>
-            <img src={LoadingSkeleton.timeWiseDisbursement} alt="" />
+            <img className="w-full" src={LoadingSkeleton.timeWiseDisbursement} alt="" />
           </div>
           :
           <div className="pb-2">
-
-
-
             <div className="h-[153px] relative ">
               {/*TTS STT Tab*/}
               <div className="flex flex-col justify-center items-center">
@@ -284,7 +281,7 @@ const TimeWiseDisbursements = () => {
                       onClick={() => handleTtsRole(m.title)}
                       className={` ${isTtsRoles === m.title
                         ? "bg-white text-[#2C79BE] font-bold"
-                        : "text-[#5F7180] font-semibold"
+                        : "text-[#5F7180] "
                         } h-[41px] text-[16px] rounded-t-[15px] flex justify-center items-center gap-x-4`}
                     >
                       {/* <img className="w-4 h-4" src={managerImage} alt="manager" /> */}
