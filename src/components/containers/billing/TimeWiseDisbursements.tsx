@@ -1,11 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import managerImage from "../../../assets/Icons/manager.png";
 import { CaretDownOutlined, CloseOutlined, SearchOutlined } from "@ant-design/icons";
 import RoleSearchModal from "./RoleSearchModal";
 import { RoleInContext } from "../../../context/RoleProvider";
 import "./TimeWiseDisbursement.css";
 import Icons from "../../../assets/Icons";
-import arrowDropDownIcon from "../../../assets/Icons/arrow_drop_down.png";
 import {
   timeWiseDisbursementParamsDT,
   timeWiseYearDT,
@@ -14,7 +12,7 @@ import CustomRangeCalender, {
   DateDT,
 } from "../../calender/CustomRangeCalender";
 import BillingListIndex from "./BillingList";
-import { getYearMonthDate } from "../../../helpers/Utils";
+import { getDateWithMonthName, getYearMonthDate } from "../../../helpers/Utils";
 import Image from "../../Image";
 import { LoadingSkeleton } from "../../../assets/loadingSkeleton";
 
@@ -25,7 +23,10 @@ const TimeWiseDisbursements = () => {
 
   const managerContext = useContext(RoleInContext);
   const { disbursementData, totalDisbursed, loading } = managerContext;
+
   const [dateValue, setDateValue] = useState<DateDT>({ start: "", end: "" });
+
+
   const [open, setOpen] = useState<boolean>(false);
 
   const [dimensionValue, setDimensionValue] = useState<number[]>([]);
@@ -55,6 +56,7 @@ const TimeWiseDisbursements = () => {
 
       const _start = getYearMonthDate(dateValue?.start);
       const _end = getYearMonthDate(dateValue?.end);
+
       setSearch({ ...search, start: _start, end: _end });
     }
   }, [dateValue]);
@@ -118,13 +120,13 @@ const TimeWiseDisbursements = () => {
   const onHandleStt = () => {
     setIsStt(true);
     setIsTts(false);
-    setSearch({ ...search, role: search?.role, module: "stt" });
+    setSearch({ ...search, role: isSttRoles, module: "stt" });
   };
 
   const onHandleTts = () => {
     setIsStt(false);
     setIsTts(true);
-    setSearch({ ...search, role: search?.role, module: "tts" });
+    setSearch({ ...search, role: isTtsRoles, module: "tts" });
   };
 
   const getNewDimension = () => {
@@ -220,12 +222,11 @@ const TimeWiseDisbursements = () => {
     setSearch({ ...search, start: '', end: '' });
   }
 
-
   return (
     <div>
       {
         loading ?
-          <div>
+          <div className="mt-[52px]">
             <img className="w-full" src={LoadingSkeleton.timeWiseDisbursement} alt="" />
           </div>
           :
@@ -269,7 +270,11 @@ const TimeWiseDisbursements = () => {
                         : "text-[#5F7180] "
                         } h-[41px] text-[16px] rounded-t-[15px] flex justify-center items-center gap-x-4`}
                     >
-                      <Image.RoleImage role={m.title} />
+                      {
+                        isSttRoles === m.title ?
+                         <Image.RoleImage role={m.title} />
+                         : <Image.RoleFilterImage role={m.title} />
+                      }
                       <button>{m.title}</button>
                     </div>
                   ))}
@@ -285,7 +290,12 @@ const TimeWiseDisbursements = () => {
                         } h-[41px] text-[16px] rounded-t-[15px] flex justify-center items-center gap-x-4`}
                     >
                       {/* <img className="w-4 h-4" src={managerImage} alt="manager" /> */}
-                      <Image.RoleImage role={m.title} />
+                      {
+                        isTtsRoles === m.title ? 
+                        <Image.RoleImage role={m.title} />
+                        : <Image.RoleFilterImage role={m.title} />
+                      }
+                    
                       <button>{m.title}</button>
                     </div>
                   ))}
@@ -307,7 +317,8 @@ const TimeWiseDisbursements = () => {
                           className="duration-200 rounded-[6px] flex px-4 items-center gap-x-3 bg-ct-blue-20 h-8"
                         >
                           <h1 className="text-ct-blue-60 text-[13px] font-semibold">
-                            {dateValue?.start} - {dateValue?.end}
+                            {getDateWithMonthName(dateValue?.start)} - {getDateWithMonthName(dateValue?.end)}
+                            {/* {searchDate?.start} - {searchDate?.end} */}
                           </h1>
                           <div onClick={onDateClose}>
                             <CloseOutlined
