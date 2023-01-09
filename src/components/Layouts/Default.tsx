@@ -15,11 +15,9 @@ const Default = ({ children }: { children: any }) => {
 
   useEffect(() => {
     const handleShadow = () => {
-      if (window.scrollY >= 270) {
-        // setShadow(true);
+      if (window.scrollY >= 250) {
         setShowToggle(true);
       } else {
-        // setShadow(false);
         setShowToggle(false);
       }
     };
