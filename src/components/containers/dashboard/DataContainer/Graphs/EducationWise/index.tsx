@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { getValueFromHeight, getValueFromPercentage } from "../../../../../helpers/Utils";
-import { createCollectData } from "../../../../../data/dashboard/createCollectData";
-import { createCollectSimilarPropertyDT } from '../../../../../types/dashboardTypes';
-import GraphTooltip from '../GraphTooltip';
+import { getValueFromHeight, getValueFromPercentage } from "../../../../../../helpers/Utils";
+import { createCollectData } from "../../../../../../data/dashboard/createCollectData";
+import { createCollectSimilarPropertyDT } from '../../../../../../types/dashboardTypes';
+import GraphTooltip from '../../GraphTooltip';
 
 const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
     const maxValue = 324;
@@ -78,7 +78,7 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
                                                     : index % 2 === 0
                                                         ? "bg-green-A10 hover:bg-[#94D676]"
                                                         : "bg-red-15 hover:bg-coral-90"
-                                            } duration-300`} id="triangle"
+                                        } duration-300`} id="triangle"
                                     >
                                     </div>
                                     <div className={`z-50 animate-fadeIn absolute top-[-208px] hidden group-hover:block`} >
@@ -94,7 +94,7 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
                                                         : index % 2 === 0
                                                             ? "text-green-A10"
                                                             : "text-red-15"
-                                                }`}
+                                            }`}
                                             align="left"
                                         />
                                     </div>
