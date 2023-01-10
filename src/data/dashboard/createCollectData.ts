@@ -460,7 +460,7 @@ export const createCollectData = {
           contribution: 30,
         },
         {
-          id: "3",
+          id: "4",
           name: "Student",
           totalReceived: 60,
           totalValid: 450,
