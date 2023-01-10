@@ -2,24 +2,22 @@ import React from 'react';
 import { createCollectSimilarPropertyDT } from '../../../types/dashboardTypes';
 
 interface Props {
-    bgColor: string;
-    ringColor: string;
-    textColor: string;
-    shadowColor: string;
+    bgColor: string | undefined;
+    ringColor: string | undefined;
+    textColor: string | undefined;
+    shadowColor: string | undefined;
     value: number;
     maxValue: number;
+    barHeight: number;
 }
 
-const Circle1 = ({ bgColor, ringColor, textColor, value, shadowColor, maxValue }: Props ) => {
-    const barHeight = 158;
+const Circle1 = ({ bgColor, ringColor, textColor, value, shadowColor, maxValue, barHeight }: Props ) => {
+    // const barHeight = 158;
+    // const barHeight = 95;
+
     return (
-        // <div className='h-[452px] w-[452px]'>
         <div>
             <div
-                // style={{
-                //     height: `${value}%`,
-                //     width: `${value}%`,
-                // }}
                 style={{
                     height: `${(barHeight*value)/maxValue}px`,
                     width: `${(barHeight*value)/maxValue}px`,
