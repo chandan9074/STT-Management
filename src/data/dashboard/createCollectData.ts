@@ -640,7 +640,7 @@ export const createCollectData = {
 
         {
           id: "5",
-          name: "Spontaenous",
+          name: "Spontaneous",
           target: 600,
           achieved: 100,
           totalValid: 180,

@@ -1,5 +1,6 @@
 import moment from "moment";
 import { roleDT } from "../types/billingTypes";
+import { colorForTitle } from "../data/dashboard/colorForTitle";
 
 export const isEmpty = (obj: roleDT | undefined) => {
   if (obj) {
@@ -54,3 +55,14 @@ export const getDateWithMonthName = (date: string) => {
   return `${day} ${month} ${year}`;
 };
 
+export const getTitleColor = (value: string, children: boolean) => {
+  if (children) {
+    const data = colorForTitle.filter((item) => item.name === value);
+    return data[0]?.children.hoverBg + " " + data[0]?.children.bgColor;
+  } else {
+    const data = colorForTitle.filter((item) => item.name === value);
+    const a = data[0]?.bgColor + " hover:" + data[0]?.hoverBg;
+    console.log("nice", a.split(" ")[0].split("-")[1]);
+    return data[0]?.bgColor + " hover:" + data[0]?.hoverBg;
+  }
+};

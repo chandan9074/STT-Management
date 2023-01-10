@@ -1,14 +1,14 @@
 import React from "react";
 import Icons from "../../../../assets/Icons";
-import { createCollectSimilarPropertyDT } from "../../../../types/dashboardTypes";
+import { distributionSourceWiseDT } from "../../../../types/dashboardTypes";
 
-const GraphTooltip = ({
+const SecondaryGraphTooltip = ({
   data,
   validBgColor,
   titleColor,
   align,
 }: {
-  data: createCollectSimilarPropertyDT;
+  data: distributionSourceWiseDT;
   validBgColor: string;
   titleColor: string;
   align: "left" | "right" | "center";
@@ -33,9 +33,9 @@ const GraphTooltip = ({
           <h3 className="mb-0 text-blue-10 font-medium">{data?.totalValid}h</h3>
         </div>
         <div className="py-1 px-2 rounded-[4px] bg-medium-purple-bg bg-opacity-[0.12] w-24">
-          <h3 className="mb-0 text-white text-xxs">Contribution</h3>
+          <h3 className="mb-0 text-white text-xxs">Achieved</h3>
           <h3 className="mb-0 text-blue-10 font-medium">
-            {data?.contribution}%
+            {data?.achieved}%
           </h3>
         </div>
       </div>
@@ -61,4 +61,4 @@ const GraphTooltip = ({
   );
 };
 
-export default GraphTooltip;
+export default SecondaryGraphTooltip;

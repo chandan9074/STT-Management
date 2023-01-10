@@ -161,7 +161,7 @@ export const overTheTimeGData = {
     {
       id: "1",
       day: "08",
-      receivedHour: 158,
+      receivedHour: 160,
       lastUpdate: "22 Aug 2022",
       hourData: [
         {
@@ -172,12 +172,12 @@ export const overTheTimeGData = {
         {
           id: "2",
           title: "Valid",
-          hour: 50,
+          hour: 152,
         },
         {
           id: "3",
           title: "Not Checked",
-          hour: 100,
+          hour: 200,
         },
       ],
       accuracy: 86,
@@ -209,72 +209,72 @@ export const overTheTimeGData = {
     {
       id: "1",
       day: "10",
-      receivedHour: 158,
+      receivedHour: 160,
       lastUpdate: "22 Aug 2022",
       hourData: [
-        // {
-        //   id: "1",
-        //   title: "Invalid"
-        //   hour: 8,
-        // },
-        // {
-        //   id: "2",
-        // title: "Valid",
-        //   hour: 50,
-        // },
-        // {
-        //   id: "3",
-        //   title: "Not Checked"
-        //   hour: 100,
-        // },
+        {
+          id: "1",
+          title: "Invalid",
+          hour: 8,
+        },
+        {
+          id: "2",
+          title: "Valid",
+          hour: 200,
+        },
+        {
+          id: "3",
+          title: "Not Checked",
+          hour: 250,
+        },
       ],
       accuracy: 86,
     },
     {
       id: "1",
       day: "11",
-      receivedHour: 158,
+      receivedHour: 170,
       lastUpdate: "22 Aug 2022",
       hourData: [
-        // {
-        //   id: "1",
-        //   title: "Invalid"
-        //   hour: 8,
-        // },
-        // {
-        //   id: "2",
-        // title: "Valid",
-        //   hour: 50,
-        // },
-        // {
-        //   id: "3",
-        //   title: "Not Checked"
-        //   hour: 100,
-        // },
+        {
+          id: "1",
+          title: "Invalid",
+          hour: 40,
+        },
+        {
+          id: "2",
+          title: "Valid",
+          hour: 280,
+        },
+        {
+          id: "3",
+          title: "Not Checked",
+          hour: 110,
+        },
       ],
       accuracy: 86,
     },
     {
       id: "1",
       day: "12",
-      receivedHour: 158,
+      receivedHour: 150,
       lastUpdate: "22 Aug 2022",
       hourData: [
-        // {
-        //   id: "1",
-        //   title: "Invalid"
-        //   hour: 8,
-        // },
-        // {
-        //   id: "2",
-        // title: "Valid",
-        //   hour: 50,
-        // },
-        // {
-        //   id: "3",
-        //   title: "Not Checked"
-        //   hour: 100,
-        // },
+        {
+          id: "1",
+          title: "Invalid",
+          hour: 108,
+        },
+        {
+          id: "2",
+          title: "Valid",
+          hour: 242,
+        },
+        {
+          id: "3",
+          title: "Not Checked",
+          hour: 150,
+        },
       ],
       accuracy: 86,
     },
@@ -308,45 +308,45 @@ export const overTheTimeGData = {
       receivedHour: 158,
       lastUpdate: "22 Aug 2022",
       hourData: [
-        // {
-        //   id: "1",
-        //   title: "Invalid"
-        //   hour: 8,
-        // },
-        // {
-        //   id: "2",
-        // title: "Valid",
-        //   hour: 50,
-        // },
-        // {
-        //   id: "3",
-        //   title: "Not Checked"
-        //   hour: 100,
-        // },
+        {
+          id: "1",
+          title: "Invalid",
+          hour: 88,
+        },
+        {
+          id: "2",
+          title: "Valid",
+          hour: 150,
+        },
+        {
+          id: "3",
+          title: "Not Checked",
+          hour: 180,
+        },
       ],
       accuracy: 86,
     },
     {
       id: "1",
       day: "15",
-      receivedHour: 158,
+      receivedHour: 180,
       lastUpdate: "22 Aug 2022",
       hourData: [
-        // {
-        //   id: "1",
-        //   title: "Invalid"
-        //   hour: 8,
-        // },
-        // {
-        //   id: "2",
-        // title: "Valid",
-        //   hour: 50,
-        // },
-        // {
-        //   id: "3",
-        //   title: "Not Checked"
-        //   hour: 100,
-        // },
+        {
+          id: "1",
+          title: "Invalid",
+          hour: 130,
+        },
+        {
+          id: "2",
+          title: "Valid",
+          hour: 280,
+        },
+        {
+          id: "3",
+          title: "Not Checked",
+          hour: 130,
+        },
       ],
       accuracy: 86,
     },
@@ -380,45 +380,45 @@ export const overTheTimeGData = {
       receivedHour: 158,
       lastUpdate: "22 Aug 2022",
       hourData: [
-        // {
-        //   id: "1",
-        //   title: "Invalid"
-        //   hour: 8,
-        // },
-        // {
-        //   id: "2",
-        // title: "Valid",
-        //   hour: 50,
-        // },
-        // {
-        //   id: "3",
-        //   title: "Not Checked"
-        //   hour: 100,
-        // },
+        {
+          id: "1",
+          title: "Invalid",
+          hour: 48,
+        },
+        {
+          id: "2",
+          title: "Valid",
+          hour: 130,
+        },
+        {
+          id: "3",
+          title: "Not Checked",
+          hour: 170,
+        },
       ],
       accuracy: 86,
     },
     {
       id: "1",
       day: "18",
-      receivedHour: 158,
+      receivedHour: 100,
       lastUpdate: "22 Aug 2022",
       hourData: [
-        // {
-        //   id: "1",
-        //   title: "Invalid"
-        //   hour: 8,
-        // },
-        // {
-        //   id: "2",
-        // title: "Valid",
-        //   hour: 50,
-        // },
-        // {
-        //   id: "3",
-        //   title: "Not Checked"
-        //   hour: 100,
-        // },
+        {
+          id: "1",
+          title: "Invalid",
+          hour: 40,
+        },
+        {
+          id: "2",
+          title: "Valid",
+          hour: 100,
+        },
+        {
+          id: "3",
+          title: "Not Checked",
+          hour: 240,
+        },
       ],
       accuracy: 86,
     },
@@ -476,21 +476,21 @@ export const overTheTimeGData = {
       receivedHour: 158,
       lastUpdate: "22 Aug 2022",
       hourData: [
-        // {
-        //   id: "1",
-        //   title: "Invalid"
-        //   hour: 8,
-        // },
-        // {
-        //   id: "2",
-        // title: "Valid",
-        //   hour: 50,
-        // },
-        // {
-        //   id: "3",
-        //   title: "Not Checked"
-        //   hour: 100,
-        // },
+        {
+          id: "1",
+          title: "Invalid",
+          hour: 28,
+        },
+        {
+          id: "2",
+          title: "Valid",
+          hour: 170,
+        },
+        {
+          id: "3",
+          title: "Not Checked",
+          hour: 200,
+        },
       ],
       accuracy: 86,
     },
@@ -500,21 +500,21 @@ export const overTheTimeGData = {
       receivedHour: 158,
       lastUpdate: "22 Aug 2022",
       hourData: [
-        // {
-        //   id: "1",
-        // title: "Valid",
-        //   hour: 50,
-        // },
-        // {
-        //   id: "2",
-        //   title: "Invalid"
-        //   hour: 8,
-        // },
-        // {
-        //   id: "3",
-        //   title: "Not Checked"
-        //   hour: 100,
-        // },
+        {
+          id: "1",
+          title: "Valid",
+          hour: 50,
+        },
+        {
+          id: "2",
+          title: "Invalid",
+          hour: 180,
+        },
+        {
+          id: "3",
+          title: "Not Checked",
+          hour: 250,
+        },
       ],
       accuracy: 86,
     },
@@ -548,21 +548,21 @@ export const overTheTimeGData = {
       receivedHour: 158,
       lastUpdate: "22 Aug 2022",
       hourData: [
-        // {
-        //   id: "1",
-        // title: "Valid",
-        //   hour: 50,
-        // },
-        // {
-        //   id: "2",
-        //   title: "Invalid"
-        //   hour: 8,
-        // },
-        // {
-        //   id: "3",
-        //   title: "Not Checked"
-        //   hour: 100,
-        // },
+        {
+          id: "1",
+          title: "Valid",
+          hour: 150,
+        },
+        {
+          id: "2",
+          title: "Invalid",
+          hour: 80,
+        },
+        {
+          id: "3",
+          title: "Not Checked",
+          hour: 200,
+        },
       ],
       accuracy: 86,
     },
@@ -599,17 +599,17 @@ export const overTheTimeGData = {
         {
           id: "1",
           title: "Invalid",
-          hour: 8,
+          hour: 80,
         },
         {
           id: "2",
           title: "Valid",
-          hour: 50,
+          hour: 150,
         },
         {
           id: "3",
           title: "Not Checked",
-          hour: 100,
+          hour: 200,
         },
       ],
       accuracy: 86,
@@ -647,12 +647,12 @@ export const overTheTimeGData = {
         {
           id: "1",
           title: "Invalid",
-          hour: 8,
+          hour: 100,
         },
         {
           id: "2",
           title: "Valid",
-          hour: 50,
+          hour: 150,
         },
         {
           id: "3",
@@ -671,17 +671,17 @@ export const overTheTimeGData = {
         {
           id: "1",
           title: "Invalid",
-          hour: 8,
+          hour: 120,
         },
         {
           id: "2",
           title: "Valid",
-          hour: 50,
+          hour: 130,
         },
         {
           id: "3",
           title: "Not Checked",
-          hour: 100,
+          hour: 120,
         },
       ],
       accuracy: 86,
@@ -719,17 +719,17 @@ export const overTheTimeGData = {
         {
           id: "1",
           title: "Invalid",
-          hour: 8,
+          hour: 90,
         },
         {
           id: "2",
           title: "Valid",
-          hour: 50,
+          hour: 150,
         },
         {
           id: "3",
           title: "Not Checked",
-          hour: 100,
+          hour: 300,
         },
       ],
       accuracy: 86,
