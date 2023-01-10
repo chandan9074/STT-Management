@@ -10,19 +10,19 @@ const value = [
         contribution: 33
     },
     {
-        contribution: 30
+        contribution: 33
     },
     {
         contribution: 12
     },
     {
+        contribution: 10
+    },
+    {
+        contribution: 8
+    },
+    {
         contribution: 7
-    },
-    {
-        contribution: 6
-    },
-    {
-        contribution: 5
     },
 ]
 
@@ -70,11 +70,11 @@ const color = [
 
 const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
 
-    const [barHeight, setBarHeight] = useState<number>(158);
+    const [barHeight, setBarHeight] = useState<number>(452);
 
     useEffect(() => {
         if ((value[0].contribution - value[1].contribution) < 11) {
-            setBarHeight(110)
+            setBarHeight(330)
         }
     }, [])
     console.log('value---------------', barHeight);
@@ -90,15 +90,15 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                             <div className={`
                             ${i === 0 ? '' :
                                     // i === 1 ? (barHeight === 110 ? 'absolute -top-[68px] left-[85px]' : 'absolute -top-[87px] left-[100px]') :
-                                    i === 1 ? (barHeight === 110 ? 'absolute -top-[98px] left-[85px]' : 'absolute -top-[87px] left-[100px]') :
-                                        i === 2 ? (barHeight === 110 ? 'absolute top-[13px] left-[120px]' : 'absolute top-[13px] left-[165px]') :
-                                            i === 3 ? (barHeight === 110 ? 'absolute -top-[52px] left-[35px]' : 'absolute -top-[67px] left-[35px]') :
-                                            i == 4 ? (barHeight === 110 ? 'absolute -top-[14px] left-[205px]' : 'absolute -top-[24px] left-[214px]') :
-                                                // i == 4 ? (barHeight === 110 ? 'absolute -top-[14px] left-[184px]' : 'absolute -top-[24px] left-[214px]') :
-                                                    // i === 5 ? (barHeight === 110 ? 'absolute -top-[48px] left-[178px]' : 'absolute -top-[65px] left-[208px]') :
-                                                    i === 5 ? (barHeight === 110 ? 'absolute -top-[48px] left-[200px]' : 'absolute -top-[65px] left-[208px]') :
-                                                        i === 6 ? (barHeight === 110 ? 'absolute -top-[35px] left-[235px]' : 'absolute -top-[55px] left-[250px]') : 
-                                                        // i === 6 ? (barHeight === 110 ? 'absolute -top-[35px] left-[220px]' : 'absolute -top-[55px] left-[250px]') : 
+                                    i === 1 ? (barHeight === 330 ? 'absolute -top-[98px] left-[85px]' : 'absolute -top-[87px] left-[100px]') :
+                                        i === 2 ? (barHeight === 330 ? 'absolute top-[13px] left-[120px]' : 'absolute top-[13px] left-[165px]') :
+                                            i === 3 ? (barHeight === 330 ? 'absolute -top-[52px] left-[35px]' : 'absolute -top-[67px] left-[35px]') :
+                                            i == 4 ? (barHeight === 330 ? 'absolute -top-[14px] left-[215px]' : 'absolute -top-[40px] left-[224px]') :
+                                                // i == 4 ? (barHeight === 330 ? 'absolute -top-[14px] left-[184px]' : 'absolute -top-[24px] left-[214px]') :
+                                                    // i === 5 ? (barHeight === 330 ? 'absolute -top-[48px] left-[178px]' : 'absolute -top-[65px] left-[208px]') :
+                                                    i === 5 ? (barHeight === 330 ? 'absolute -top-[58px] left-[210px]' : 'absolute -top-[88px] left-[210px]') :
+                                                        i === 6 ? (barHeight === 330 ? 'absolute -top-[40px] left-[250px]' : 'absolute -top-[75px] left-[260px]') : 
+                                                        // i === 6 ? (barHeight === 330 ? 'absolute -top-[35px] left-[220px]' : 'absolute -top-[55px] left-[250px]') : 
                                                         ''
                                                     }
                                `}>
