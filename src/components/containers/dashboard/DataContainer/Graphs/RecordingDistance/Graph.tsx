@@ -12,13 +12,13 @@ const value = [
         contribution: 30
     },
     {
-        contribution: 20
+        contribution: 18
     },
     {
         contribution: 12
     },
     {
-        contribution: 8
+        contribution: 10
     },
     {
         contribution: 8
@@ -113,6 +113,13 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                                         value[1].contribution - value[2].contribution >= 12 ? 111:
                                          155 :
 
+                                         i === 5 ?
+                                        value[1].contribution - value[2].contribution >= 12 ? 180:
+                                         220 :
+                                         i === 6 ?
+                                         value[1].contribution - value[2].contribution >= 12 ? 150:
+                                          195 :
+
                                          ''}px`,
 
                                         top: `${
@@ -135,6 +142,22 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                                                     value[1].contribution - value[2].contribution >= 5 && value[1].contribution - value[2].contribution < 12 ? 2:
                                                     value[1].contribution - value[2].contribution >= 12 ? -(value[1].contribution/2 + 10):
                                                   28)) :
+
+                                                  i === 5 ? ((158 + 
+                                                    (getValueFromPercentages(barHeight, value[2].contribution) > 149 ? 149 : getValueFromPercentages(barHeight, value[2].contribution))) -
+                                                     (
+                                                        value[1].contribution - value[2].contribution >= 5 && value[1].contribution - value[2].contribution < 12 ? 8:
+                                                        value[1].contribution - value[2].contribution >= 12 && value[1].contribution - value[2].contribution < 16 ? -(value[1].contribution/2 + 10):
+                                                        value[1].contribution - value[2].contribution >= 16 ? -(value[1].contribution/2 + 30):
+                                                      28)) :
+
+                                                      i === 6 ? ((158 + 
+                                                        (getValueFromPercentages(barHeight, value[2].contribution) > 149 ? 149 : getValueFromPercentages(barHeight, value[2].contribution))) -
+                                                         (
+                                                            value[1].contribution - value[2].contribution >= 5 && value[1].contribution - value[2].contribution < 12 ? -28:
+                                                            value[1].contribution - value[2].contribution >= 12 && value[1].contribution - value[2].contribution < 16 ? -(value[1].contribution/2 + 60):
+                                                            value[1].contribution - value[2].contribution >= 16 ? -(value[1].contribution/2 - 10):
+                                                          -18)) :
 
                                             // i === 4 ? 274 :
                                             
