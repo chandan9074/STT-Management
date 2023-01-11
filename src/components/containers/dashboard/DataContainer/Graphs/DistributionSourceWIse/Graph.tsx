@@ -1,6 +1,9 @@
 import React from "react";
 import { distributionSourceWiseDT } from "../../../../../../types/dashboardTypes";
-import { getTitleColor } from "../../../../../../helpers/Utils";
+import {
+  getTitleColor,
+  getValidBgColor,
+} from "../../../../../../helpers/Utils";
 import GraphTooltip from "../../GraphTooltip";
 import SecondaryGraphTooltip from "../../SecondaryGraphTooltip";
 
@@ -51,7 +54,7 @@ const Graph = ({ data, maxTarget, graphWidth }: Props) => {
                           (singleItem) => singleItem.name === item.name
                         )[0]
                       }
-                      validBgColor="bg-light-green-90"
+                      validBgColor={`${getValidBgColor(item.name)}`}
                       titleColor={`${
                         getTitleColor(item.name, true).split(" ")[2]
                       } bg-clip-text text-transparent`}

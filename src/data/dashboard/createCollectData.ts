@@ -27,7 +27,7 @@ export const createCollectData = {
         },
         {
           id: "2",
-          name: "Mono",
+          name: "Conversation- Mono",
           target: 300,
           achieved: 80,
           totalValid: 240,
@@ -38,7 +38,7 @@ export const createCollectData = {
         },
         {
           id: "3",
-          name: "Di",
+          name: "Conversation- Di",
           target: 600,
           achieved: 30,
           totalValid: 180,
@@ -49,7 +49,7 @@ export const createCollectData = {
         },
         {
           id: "4",
-          name: "Multi",
+          name: "Conversation- Multi",
           target: 300,
           achieved: 80,
           totalValid: 240,

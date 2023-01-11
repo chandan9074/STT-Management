@@ -10,7 +10,7 @@ const TitleList = ({ data }: { data: distributionSourceWiseDT[] }) => {
             data.length - 1 === index ? "" : "mb-8"
           } text-right leading-4`}
         >
-          {item.name}
+          {item.name.includes("-") ? item.name.split("-")[1] : item.name}
         </h3>
       ))}
     </div>

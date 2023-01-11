@@ -61,8 +61,12 @@ export const getTitleColor = (value: string, children: boolean) => {
     return data[0]?.children.hoverBg + " " + data[0]?.children.bgColor;
   } else {
     const data = colorForTitle.filter((item) => item.name === value);
-    const a = data[0]?.bgColor + " hover:" + data[0]?.hoverBg;
-    console.log("nice", a.split(" ")[0].split("-")[1]);
     return data[0]?.bgColor + " hover:" + data[0]?.hoverBg;
   }
+};
+
+export const getValidBgColor = (value: string) => {
+  const data = colorForTitle.filter((item) => item.name === value)[0];
+  console.log(data);
+  return data?.ttValidBg;
 };
