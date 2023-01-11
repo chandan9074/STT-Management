@@ -9,16 +9,16 @@ const value = [
         contribution: 33
     },
     {
-        contribution: 33
+        contribution: 30
     },
     {
-        contribution: 33
+        contribution: 20
     },
     {
         contribution: 12
     },
     {
-        contribution: 10
+        contribution: 8
     },
     {
         contribution: 8
@@ -75,45 +75,69 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
     // const [barHeight, setBarHeight] = useState<number>(452);
     const [barHeight, setBarHeight] = useState<number>(452);
     const [dimesion, setDimension] = useState<number[]>([]);
+    const [maxValueHeight, setMaxValueHeight] = useState<number>(158);
 
     useEffect(() => {
+        setMaxValueHeight(getValueFromPercentages(barHeight, value[0].contribution))
         getDimension();
         if ((value[0].contribution - value[1].contribution) < 11) {
             // setBarHeight(110)
         }
-    }, []);
+    }, [value]);
 
     const getDimension = () => {
 
     }
 
-    console.log('barheight--------', barHeight);
-
+    console.log('barheight--------', getValueFromPercentages(barHeight, value[2].contribution) > 149 ? 149 : getValueFromPercentages(barHeight, value[2].contribution));
 
 
     return (
         <div className='relative'>
             <div className='absolute -top-2'>
-                {/* <div className='relative'> */}
                 <div >
                     {
                         value?.map((m, i) => (
                             <div
                                 style={{
-                                    // right: `${
-                                    //     i === 1 ? -70 :
-                                    //     // i === 2 ? -160 :
-                                    //      ''
-                                    //     }px`,
+                                    right: `${
+                                        i === 3 ? 66 :
+                                        // i === 2 ? -160 :
+                                         ''
+                                        }px`,
                                     bottom: `${
-                                        i === 1 ? 158 - 4 : ''}px`,
+                                        i === 0 ? 0:
+                                        i === 1 ? 158 - 4 :
+                                        i === 3 ? 175 :
+                                        i === 4 ?
+                                        value[1].contribution - value[2].contribution >= 12 ? 111:
+                                         155 :
+
+                                         ''}px`,
+
                                         top: `${
-                                            i === 2 ? 0 :
+                                            i === 2 ? 10 :
+                                            
+                                        
                                              ''
                                         }px`,
                                         left: `${
+
+                                            i === 0 ? 0 :
+                                            i === 1 ? 110 :
+                                            
                                             i === 2 ? 172 :
-                                            // i === 2 ? -160 :
+                                            // i === 2 ? maxValueHeight + 18 :
+
+                                            i === 4 ? ((158 + 
+                                                (getValueFromPercentages(barHeight, value[2].contribution) > 149 ? 149 : getValueFromPercentages(barHeight, value[2].contribution))) -
+                                                 (
+                                                    value[1].contribution - value[2].contribution >= 5 && value[1].contribution - value[2].contribution < 12 ? 2:
+                                                    value[1].contribution - value[2].contribution >= 12 ? -(value[1].contribution/2 + 10):
+                                                  28)) :
+
+                                            // i === 4 ? 274 :
+                                            
                                              ''
                                             }px`,
                                 }}

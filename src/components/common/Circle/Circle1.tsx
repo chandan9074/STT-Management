@@ -13,9 +13,6 @@ interface Props {
 
 const Circle1 = ({ bgColor, ringColor, textColor, value, shadowColor, maxValue, barHeight }: Props) => {
 
-    console.log('pading-----', `${
-    (barHeight * value) / 100}px`);
-    
 
     return (
         <div
@@ -30,9 +27,13 @@ const Circle1 = ({ bgColor, ringColor, textColor, value, shadowColor, maxValue, 
                 //     width: `${value}%`,
                 // }}
                 style={{
-                    height: `${value === maxValue ? 158 : (barHeight * value) / 100 > 158 ? 158 :
+                    height: `${
+                        value === maxValue ? 158 :
+                         (barHeight * value) / 100 > 158 ? 158 :
                         (barHeight * value) / 100}px`,
-                    width: `${value === maxValue ? 158 : (barHeight * value) / 100 > 158 ? 158 :
+                    width: `${
+                        value === maxValue ? 158 :
+                         (barHeight * value) / 100 > 158 ? 158 :
                             (barHeight * value) / 100}px`,
                 }}
                 className={` z-20 text-sm font-medium  ${bgColor} rounded-full flex justify-center items-center ring-2 ${ringColor} hover:ring-white hover:ring-0  ${shadowColor} hover:ring-offset-2 transition duration-4000 ease-out hover:ease-in duration-300`}
