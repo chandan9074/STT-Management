@@ -58,7 +58,12 @@ export const getDateWithMonthName = (date: string) => {
 export const getTitleColor = (value: string, children: boolean) => {
   if (children) {
     const data = colorForTitle.filter((item) => item.name === value);
-    return data[0]?.children.hoverBg + " " + data[0]?.children.bgColor;
+    if (data[0].children) {
+      return data[0]?.children.hoverBg + " " + data[0]?.children.bgColor;
+    }
+    else{
+      return "";
+    }
   } else {
     const data = colorForTitle.filter((item) => item.name === value);
     return data[0]?.bgColor + " hover:" + data[0]?.hoverBg;

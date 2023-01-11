@@ -4,7 +4,7 @@ import DomainWise from "./DomainWise";
 import EducationWise from "./EducationWise";
 import DistributionSourceWise from "./DistributionSourceWIse";
 import ProfessionWise from "./ProfessionWise";
-
+import AgeWise from "./AgeWise";
 
 const Graphs = {
   LocalityWise,
@@ -13,6 +13,7 @@ const Graphs = {
   EducationWise,
   DistributionSourceWise,
   ProfessionWise,
+  AgeWise,
 };
 
 export default Graphs;

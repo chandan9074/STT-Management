@@ -4,6 +4,7 @@ import Graphs from "../Graphs";
 import DataContainerDropdown from "../DataContainerDropdown";
 import DataContainerModal from "../DataContainerModal";
 import { collectDataDT } from "../../../../../types/dashboardTypes";
+import AgeWise from "../Graphs/AgeWise";
 
 const CollectData = ({ data }: { data: collectDataDT }) => {
   const CollectDropDownData = [
@@ -40,8 +41,8 @@ const CollectData = ({ data }: { data: collectDataDT }) => {
         <Graphs.DistributionSourceWise data={data.distributionSourceWise} />
       ),
       "Domain-wise": <div></div>,
-      "Gender-wise": <Graphs.GenderWise data={data.genderWise}/>,
-      "Age-wise": <div></div>,
+      "Gender-wise": <Graphs.GenderWise data={data.genderWise} />,
+      "Age-wise": <AgeWise data={data.ageWise} />,
       "Locality-wise": <Graphs.LocalityWise data={data.localityWise} />,
     };
     return Category1[key];

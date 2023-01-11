@@ -4,6 +4,7 @@ import DataContainerDropdown from "../DataContainerDropdown";
 import DataContainerModal from "../DataContainerModal";
 import Graphs from "../Graphs";
 import { createDataDT } from "../../../../../types/dashboardTypes";
+import AgeWise from "../Graphs/AgeWise";
 
 const CreateData = ({ data }: { data: createDataDT }) => {
   const CreateDropDownData = [
@@ -60,7 +61,7 @@ const CreateData = ({ data }: { data: createDataDT }) => {
       ),
       "Domain-wise": <Graphs.DomainWise />,
       "Gender-wise": <Graphs.GenderWise data={data.genderWise} />,
-      "Age-wise": <div></div>,
+      "Age-wise": <AgeWise data={data.ageWise} />,
       "Locality-wise": <Graphs.LocalityWise data={data.localityWise} />,
       "Economic Situation-wise": <div></div>,
       "Education-wise": <Graphs.EducationWise data={data.educationWise} />,

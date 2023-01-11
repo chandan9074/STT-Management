@@ -89,27 +89,40 @@ export const colorForTitle = [
       hoverBg: "from-[#A66300] to-[#FFCC18]",
     },
   },
-];
-
-export const distributionValidBg = [
   {
-    name: "Read",
-    bgColor: "bg-[#F5427F] bg-opacity-[.12]",
+    name: "35-44",
+    bgColor: "bg-[#00B86E]",
+    hoverBg: "bg-gradient-to-r from-[#00A600] to-[#00FF0B]",
+    ttValidBg: "bg-[#00B86E] bg-opacity-[.10]",
   },
   {
-    name: "Mono",
-    bgColor: "bg-[#136EE5] bg-opacity-[.12]",
+    name: "25-34",
+    bgColor: "bg-[#42B9F5]",
+    hoverBg: "bg-gradient-to-r from-[#006FA5] to-[#00E0FF]",
+    ttValidBg: "bg-[#42B9F5] bg-opacity-[.10]",
   },
   {
-    name: "Lecture",
-    bgColor: "bg-[#ADC100] bg-opacity-[.12]",
+    name: "15-24",
+    bgColor: "bg-[#B336C8]",
+    hoverBg: "bg-gradient-to-r from-[#8E00A6] to-[#FA00FF]",
+    ttValidBg: "bg-[#B336C8] bg-opacity-[.10]",
   },
   {
-    name: "Noisy",
-    bgColor: "bg-[#42B9F5] bg-opacity-[.12]",
+    name: "45-59",
+    bgColor: "bg-[#F57142]",
+    hoverBg: "bg-gradient-to-r from-[#A62C00] to-[#FF7A00]",
+    ttValidBg: "bg-[#F54542] bg-opacity-[.10]",
   },
   {
-    name: "Conversation- Di",
-    bgColor: "bg-[#42B9F5] bg-opacity-[.12]",
+    name: "60-65",
+    bgColor: "bg-[#F5AC42]",
+    hoverBg: "bg-gradient-to-r from-[#A66300] to-[#FFCC18]",
+    ttValidBg: "bg-[#F5AC42] bg-opacity-[.10]",
+  },
+  {
+    name: "7-14",
+    bgColor: "bg-[#42F5D4]",
+    hoverBg: "bg-gradient-to-r from-[#006FA5] to-[#00E0FF]",
+    ttValidBg: "bg-[#42E0F5] bg-opacity-[.10]",
   },
 ];
