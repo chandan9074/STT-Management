@@ -7,7 +7,7 @@ interface Props {
     BorderColor: string
 }
 
-const PercentiseCard = ({name, value, hour, BorderColor}: Props) => {
+const PercentageCard = ({name, value, hour, BorderColor}: Props) => {
 
     return (
         <div className={`h-[100px] w-full rounded-b-[8px] border-b-2 ${BorderColor}`}>
@@ -22,4 +22,4 @@ const PercentiseCard = ({name, value, hour, BorderColor}: Props) => {
     );
 };
 
-export default PercentiseCard;
+export default PercentageCard;

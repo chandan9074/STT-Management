@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { createCollectSimilarPropertyDT } from '../../../../../types/dashboardTypes';
-import GraphTooltip from '../GraphTooltip';
+import GraphTooltip from "../../GraphTooltip";
+import {createCollectSimilarPropertyDT} from "../../../../../../types/dashboardTypes";
+
 interface Props {
     data: createCollectSimilarPropertyDT[]
 }
@@ -75,23 +76,23 @@ const ProfessionWise = ({ data }: Props) => {
             <div>
                 {
                     data.map((value) => <div
-                        style={{ height: `${value.contribution}%` }}
-                        className='flex items-center gap-1 '
-                    >
-                        <div className='w-[316px]'>
-                            <hr className='border-t-2 border-dashed border-[#B8BFCC]' />
-                        </div>
-                        <div className='flex h-full items-center justify-between w-[145px]'>
-                            <div className='flex items-center gap-3'>
-                                <div className={`w-3 h-3 rounded-full ${colorProperty[value.id].color}`} />
-                                <p className='text-xs text-blue-gray-75'>{value.name}</p>
+                            style={{ height: `${value.contribution}%` }}
+                            className='flex items-center gap-1 '
+                        >
+                            <div className='w-[316px]'>
+                                <hr className='border-t-2 border-dashed border-[#B8BFCC]' />
                             </div>
+                            <div className='flex h-full items-center justify-between w-[145px]'>
+                                <div className='flex items-center gap-3'>
+                                    <div className={`w-3 h-3 rounded-full ${colorProperty[value.id].color}`} />
+                                    <p className='text-xs text-blue-gray-75'>{value.name}</p>
+                                </div>
 
-                            <div>
-                                <p className='text-xs text-ct-blue-40'>{value.totalValid}h</p>
+                                <div>
+                                    <p className='text-xs text-ct-blue-40'>{value.totalValid}h</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     )
                 }
             </div>

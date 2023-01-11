@@ -1,6 +1,6 @@
-import PercentiseCard from "../../../../common/PercentiseCard";
-import Gauge from "../../../../common/Gauge";
-import { genderWiseDT } from '../../../../../types/dashboardTypes';
+import PercentageCard from "../../../../../common/PercentageCard";
+import {genderWiseDT} from "../../../../../../types/dashboardTypes";
+import Gauge from "../../../../../common/Gauge";
 
 
 interface Props {
@@ -13,7 +13,7 @@ const GenderWise = ({data}:Props) => {
         <div className="px-5">
             <div className="grid grid-cols-12 gap-2.5">
                 <div className="col-span-6">
-                    <PercentiseCard
+                    <PercentageCard
                         name="Male"
                         value={60}
                         hour={400}
@@ -21,7 +21,7 @@ const GenderWise = ({data}:Props) => {
                     />
                 </div>
                 <div className="col-span-6">
-                    <PercentiseCard
+                    <PercentageCard
                         name="Female"
                         value={50}
                         hour={300}

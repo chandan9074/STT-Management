@@ -707,7 +707,7 @@ export const createCollectData = {
           contribution: 31,
         },
         {
-          id: "6",
+          id: "3",
           name: "Leisure",
           totalReceived: 60,
           totalValid: 50,
@@ -717,8 +717,8 @@ export const createCollectData = {
           contribution: 19,
         },
         {
-          id: "7",
-          name: "Public / Institutional",
+          id: "4",
+          name: "Public/Institutional",
           totalReceived: 60,
           totalValid: 50,
           totalInvalid: 10,

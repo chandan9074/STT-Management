@@ -5,6 +5,39 @@ import DataContainerDropdown from "../DataContainerDropdown";
 import DataContainerModal from "../DataContainerModal";
 import { collectDataDT } from "../../../../../types/dashboardTypes";
 
+const COLORS = ["#42F5E4", "#3BA2F5", "#B336C8", "#F5E342"];
+const ActiveColor: any = {
+  "Education/Informative": {
+    fillColor: "#00B2C6",
+    borderColor: "#42F5E4",
+    textColor: "",
+    titeleColor: "text-[#42F5E4]",
+    validBgColor: "bg-[#42E0F51F]"
+  },
+  "Business": {
+    fillColor: "#0081D0",
+    borderColor: "#3BA2F5",
+    textColor: "",
+    titeleColor: "text-[#3BA2F5]",
+    validBgColor: "bg-[#3BA2F51F]"
+  },
+  "Leisure": {
+    fillColor: "#88009F",
+    borderColor: "#B336C8",
+    textColor: "",
+    titeleColor: "text-[#B336C8]",
+    validBgColor: "bg-[#B336C81F ]"
+  },
+  "Public/Institutional": {
+    fillColor: "#CBA302",
+    borderColor: "#F5E342",
+    textColor: "",
+    titeleColor: "text-[#F5E342]",
+    validBgColor: "bg-[#FFD1451F]"
+  },
+
+}
+
 const CollectData = ({ data }: { data: collectDataDT }) => {
   const CollectDropDownData = [
     {
@@ -36,11 +69,9 @@ const CollectData = ({ data }: { data: collectDataDT }) => {
   };
   const DistributionDropdownMenu = (key: string) => {
     const Category1: any = {
-      "Distribution Source-wise": (
-        <Graphs.DistributionSourceWise data={data.distributionSourceWise} />
-      ),
-      "Domain-wise": <div></div>,
-      "Gender-wise": <Graphs.GenderWise data={data.genderWise}/>,
+      "Distribution Source-wise": <Graphs.DistributionSourceWise data={data.distributionSourceWise} />,
+      "Domain-wise": <Graphs.DomainWise data={data.domainWise} colorsArray={COLORS} hoverTooltipsColors={ActiveColor} />,
+      "Gender-wise": <Graphs.GenderWise data={data.genderWise} />,
       "Age-wise": <div></div>,
       "Locality-wise": <Graphs.LocalityWise data={data.localityWise} />,
     };
