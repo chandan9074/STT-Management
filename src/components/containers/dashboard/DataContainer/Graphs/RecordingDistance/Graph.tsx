@@ -1,4 +1,6 @@
+import { abort } from 'process';
 import React, { useEffect, useState } from 'react';
+import { getValueFromPercentages } from '../../../../../../helpers/Utils';
 import { createCollectSimilarPropertyDT } from '../../../../../../types/dashboardTypes';
 import Circle1 from '../../../../../common/Circle/Circle1';
 
@@ -70,47 +72,94 @@ const color = [
 
 const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
 
+    // const [barHeight, setBarHeight] = useState<number>(452);
     const [barHeight, setBarHeight] = useState<number>(452);
+    const [dimesion, setDimension] = useState<number[]>([]);
 
     useEffect(() => {
+        getDimension();
         if ((value[0].contribution - value[1].contribution) < 11) {
-            setBarHeight(330)
+            // setBarHeight(110)
         }
-    }, [])
-    console.log('value---------------', barHeight);
+    }, []);
+
+    const getDimension = () => {
+
+    }
+
+    console.log('barheight--------', barHeight);
 
 
 
     return (
         <div className='relative'>
-            <div className='absolute -top-6'>
-                <div className='relative'>
+            <div className='absolute -top-2'>
+                {/* <div className='relative'> */}
+                <div >
                     {
                         value?.map((m, i) => (
-                            <div className={`
-                            ${i === 0 ? '' :
-                                    // i === 1 ? (barHeight === 110 ? 'absolute -top-[68px] left-[85px]' : 'absolute -top-[87px] left-[100px]') :
-                                    i === 1 ? (barHeight === 330 ? 'absolute -top-[98px] left-[85px]' : 'absolute -top-[87px] left-[100px]') :
-                                        i === 2 ? (barHeight === 330 ? 'absolute top-[13px] left-[120px]' : 'absolute top-[13px] left-[165px]') :
-                                            i === 3 ? (barHeight === 330 ? 'absolute -top-[52px] left-[35px]' : 'absolute -top-[67px] left-[35px]') :
-                                            i == 4 ? (barHeight === 330 ? 'absolute -top-[14px] left-[215px]' : 'absolute -top-[40px] left-[224px]') :
-                                                // i == 4 ? (barHeight === 330 ? 'absolute -top-[14px] left-[184px]' : 'absolute -top-[24px] left-[214px]') :
-                                                    // i === 5 ? (barHeight === 330 ? 'absolute -top-[48px] left-[178px]' : 'absolute -top-[65px] left-[208px]') :
-                                                    i === 5 ? (barHeight === 330 ? 'absolute -top-[58px] left-[210px]' : 'absolute -top-[88px] left-[210px]') :
-                                                        i === 6 ? (barHeight === 330 ? 'absolute -top-[40px] left-[250px]' : 'absolute -top-[75px] left-[260px]') : 
-                                                        // i === 6 ? (barHeight === 330 ? 'absolute -top-[35px] left-[220px]' : 'absolute -top-[55px] left-[250px]') : 
-                                                        ''
-                                                    }
-                               `}>
+                            <div
+                                style={{
+                                    // right: `${
+                                    //     i === 1 ? -70 :
+                                    //     // i === 2 ? -160 :
+                                    //      ''
+                                    //     }px`,
+                                    bottom: `${
+                                        i === 1 ? 158 - 4 : ''}px`,
+                                        top: `${
+                                            i === 2 ? 0 :
+                                             ''
+                                        }px`,
+                                        left: `${
+                                            i === 2 ? 172 :
+                                            // i === 2 ? -160 :
+                                             ''
+                                            }px`,
+                                }}
+                                // style={{
+                                //     left: `${
+
+                                //         i === 1 ? (value[0].contribution - 10):
+                                //         i === 2? (value[0].contribution + 5) :
+                                //          ''
+                                //     }%`,
+                                //     bottom: `${
+                                //         i === 1 ? 30 : 
+                                //         (i === 2 ) ? (value[0].contribution - 39):
+                                //         0
+                                //     }%`,
+
+
+                                // }}
+
+                                className={`
+                            ${
+                                    // i === 1 ? (barHeight === 330 ? 'absolute -top-[98px] left-[85px]' : 'absolute -top-[87px] left-[100px]') :
+                                    // i === 2 ? (barHeight === 330 ? 'absolute top-[13px] left-[125px]' : 'absolute top-[13px] left-[165px]') :
+
+
+                                    i === 0 ? '' :
+
+                                        i == 1 ? 'absolute' :
+                                            //     i === 2 ? (barHeight === 330 ? `absolute` : 'absolute top-[13px] left-[165px]') :
+                                            //         i === 3 ? (barHeight === 330 ? 'absolute -top-[52px] left-[35px]' : 'absolute -top-[67px] left-[35px]') :
+                                            //         i == 4 ? (barHeight === 330 ? 'absolute -top-[14px] left-[220px]' : 'absolute -top-[40px] left-[224px]') :
+                                            //                 i === 5 ? (barHeight === 330 ? 'absolute -top-[58px] left-[215px]' : 'absolute -top-[88px] left-[210px]') :
+                                            //                     i === 6 ? (barHeight === 330 ? 'absolute -top-[40px] left-[255px]' : 'absolute -top-[75px] left-[260px]') : 
+                                            'absolute'
+                                    }
+                               `}
+                            >
                                 <Circle1
                                     bgColor={color[i].bgColor}
                                     ringColor={color[i].ringColor}
                                     textColor='text-[#453D38]'
                                     shadowColor={color[i].shadowColor}
                                     value={m?.contribution}
-                                    maxValue={33}
+                                    // value={m?.contribution >= 35 ? 35 : m?.contribution}
+                                    maxValue={value[0].contribution}
                                     barHeight={barHeight}
-
                                 />
                             </div>
                         ))
