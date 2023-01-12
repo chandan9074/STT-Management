@@ -17,7 +17,7 @@ const GenderWise = ({data}:Props) => {
                         name="Male"
                         value={60}
                         hour={400}
-                        BorderColor="border-b-bright-turquoise"
+                        BorderColor="#42F5D5"
                     />
                 </div>
                 <div className="col-span-6">
@@ -25,7 +25,7 @@ const GenderWise = ({data}:Props) => {
                         name="Female"
                         value={50}
                         hour={300}
-                        BorderColor="border-b-your-pink"
+                        BorderColor="#FFCBCB"
                     />
                 </div>
             </div>

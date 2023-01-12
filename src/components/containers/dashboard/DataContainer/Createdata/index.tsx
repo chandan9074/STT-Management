@@ -152,7 +152,11 @@ const CreateData = ({ data }: { data: createDataDT }) => {
           data={CreateDropDownData}
           handleActivePanel={handleActivePanel}
         />
-        <DataContainerModal />
+        <DataContainerModal
+          data={data}
+          name="create"
+          activePanel={activePanel}
+        />
       </div>
       <div className="rounded-b-xl px-5 py-3">
         {DistributionDropdownMenu(activePanel)}

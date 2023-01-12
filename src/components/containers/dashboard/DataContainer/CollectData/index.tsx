@@ -26,7 +26,7 @@ const ActiveColor: any = {
     borderColor: "#B336C8",
     textColor: "",
     titeleColor: "text-[#B336C8]",
-    validBgColor: "bg-[#B336C81F ]"
+    validBgColor: "bg-[#B336C81F]"
   },
   "Public/Institutional": {
     fillColor: "#CBA302",
@@ -90,7 +90,7 @@ const CollectData = ({ data }: { data: collectDataDT }) => {
           data={CollectDropDownData}
           handleActivePanel={handleActivePanel}
         />
-        <DataContainerModal />
+        <DataContainerModal data={data} name="Collect" activePanel={activePanel} />
       </div>
       <div className="rounded-b-xl px-5 py-3">
         {DistributionDropdownMenu(activePanel)}

@@ -19,7 +19,7 @@ export const createCollectData = {
           name: "Read",
           target: 600,
           achieved: 30,
-          totalValid: 180,
+          totalValid: 0,
           totalInvalid: 10,
           totalReceived: 200,
           notChecked: 10,

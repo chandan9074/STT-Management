@@ -7,10 +7,13 @@ interface Props {
     BorderColor: string
 }
 
-const PercentageCard = ({name, value, hour, BorderColor}: Props) => {
+const PercentageCard = ({ name, value, hour, BorderColor }: Props) => {
 
     return (
-        <div className={`h-[100px] w-full rounded-b-[8px] border-b-2 ${BorderColor}`}>
+        <div
+            style={{borderColor:`${BorderColor}`}}
+            className={`h-[100px] w-full rounded-b-[8px] border-b-2`}
+        >
             <div className="p-5">
                 <p className="text-small font-normal text-ct-blue-90-70%">{name}</p>
                 <div className="flex gap-2.5 items-end">
