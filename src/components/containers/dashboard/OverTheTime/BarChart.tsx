@@ -90,7 +90,9 @@ const BarChart = () => {
               )}
             </div>
           ) : (
-            <div className="h-1.5 w-0.5 bg-blue-gray-A30" />
+            <div className="w-9 flex justify-center">
+              <div className="h-1.5 w-0.5 bg-blue-gray-A30" />
+            </div>
           )}
           <h4 className="mt-3 mb-0 text-xxs text-ct-blue-45">{item.day}</h4>
         </div>

@@ -14,7 +14,7 @@ const HistoryChartPart = ({
     <>
       <div className="flex items-center justify-between">
         <div className="flex items-center">
-          <h3 className="text-base font-semibold text-ct-blue-05 mb-0 mr-7">
+          <h3 className="text-heading-6 font-semibold text-ct-blue-05 mb-0 mr-7">
             Over the time
           </h3>
           <div className="flex items-center mr-6">
