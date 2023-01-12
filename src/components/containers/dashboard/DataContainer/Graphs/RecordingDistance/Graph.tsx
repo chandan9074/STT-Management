@@ -9,13 +9,10 @@ const value = [
         contribution: 35
     },
     {
-        contribution: 33
+        contribution: 29
     },
     {
-        contribution:  30
-    },
-    {
-        contribution: 10
+        contribution:  29
     },
     {
         contribution: 10
@@ -24,7 +21,10 @@ const value = [
         contribution: 10
     },
     {
-        contribution: 7
+        contribution: 2
+    },
+    {
+        contribution: 9
     },
 ]
 
