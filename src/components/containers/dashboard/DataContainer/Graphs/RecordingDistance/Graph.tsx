@@ -9,16 +9,16 @@ const value = [
         contribution: 60
     },
     {
-        contribution: 30
+        contribution: 19
     },
     {
-        contribution: 30
+        contribution: 19
     },
     {
         contribution: 20
     },
     {
-        contribution: 10
+        contribution: 16
     },
     {
         contribution: 8
@@ -81,10 +81,12 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
     const [circlePosition, setCirclePosition] = useState({
         circleOneBottom: 154,
         circleOneLeft: 113,
-        circleTwoTop: 2,
-        cicleTwoLeft: 165,
+        circleTwoTop: 25,
+        cicleTwoLeft: 164,
         circleThreeBottom: 167,
         circleThreeRight: 59,
+        circleFourBottom: 78,
+        circleFoureft: 46,
 
     })
 
@@ -92,7 +94,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
 
         const valueOnePercentage = (value[1].contribution * 100) / value[0].contribution;
         setheightPercentage(valueOnePercentage)
-        console.log('-----------', valueOnePercentage);
+        console.log('-----------', (barHeight * value[2].contribution) / value[0].contribution);
 
 
         // if ((value[0].contribution - value[1].contribution) <= 10) {
@@ -133,6 +135,11 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
             const _circleThreeBottom = ((166 * barHeight) / height - 24 + 30);
             const _circleThreeRight = ((59 * barHeight) / height - 24 + 30);
 
+            // const _circleFourBottom = (barHeight * value[2].contribution) / value[0].contribution +3 ;
+            // const _circleFourLeft = ((59 * barHeight) / height - 24 + 30)  + 20;
+
+            const _circleFourBottom = (barHeight * value[2].contribution) / value[0].contribution + 3 ;
+            const _circleFourLeft = (barHeight * value[2].contribution) / value[0].contribution - 20;
 
             //     circleTwoTop: 2,
             // cicleTwoLeft: 166,
@@ -140,12 +147,12 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                 ...circlePosition,
                 circleOneBottom: _cirlcleBottom ? _cirlcleBottom : circlePosition.circleOneBottom,
                 circleOneLeft: _cirlcleOneLeft ? _cirlcleOneLeft : circlePosition.circleOneLeft,
-
                 cicleTwoLeft: _circleTwoLeft ,
                 circleTwoTop: _circleTwoTop,
-
                 circleThreeBottom: _circleThreeBottom,
-                circleThreeRight: _circleThreeRight
+                circleThreeRight: _circleThreeRight,                
+                circleFourBottom: _circleFourBottom,
+                circleFoureft: _circleFourLeft
             });
 
         } else if (barHeight === 110) {
@@ -159,6 +166,9 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
             const _circleThreeBottom = ((166 * barHeight) / height - 24 + 30);
             const _circleThreeRight = ((59 * barHeight) / height - 24 + 30 - 15);
 
+            const _circleFourBottom = (barHeight * value[2].contribution) / value[0].contribution ;
+            const _circleFourLeft = ((59 * barHeight) / height - 24 + 30)  + 10;
+
             setCirclePosition({
                 ...circlePosition,
                 circleOneBottom: _cirlcleBottom ? _cirlcleBottom : circlePosition.circleOneBottom,
@@ -166,7 +176,9 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                 cicleTwoLeft: _circleTwoLeft ? _circleTwoLeft : circlePosition.cicleTwoLeft,
                 circleTwoTop: _circleTwoTop,
                 circleThreeBottom: _circleThreeBottom,
-                circleThreeRight: _circleThreeRight
+                circleThreeRight: _circleThreeRight,
+                circleFourBottom: _circleFourBottom,
+                circleFoureft: _circleFourLeft
             });
         } else {
 
@@ -174,10 +186,12 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                 ...circlePosition,
                 circleOneBottom: 154,
                 circleOneLeft: 113,
-                circleTwoTop: 2,
-                cicleTwoLeft: 165,
+                circleTwoTop: 25,
+                cicleTwoLeft: 164,
                 circleThreeBottom: 167,
                 circleThreeRight: 59,
+                circleFourBottom: (barHeight * value[2].contribution) / value[0].contribution ,
+                circleFoureft: (barHeight * value[2].contribution) / value[0].contribution - 21,
             });
         }
 
@@ -234,7 +248,8 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                         }}
                         className='absolute'
                     >
-                        <Circle1
+                       <div className='relative'>
+                       <Circle1
                             bgColor={color[2].bgColor}
                             ringColor={color[2].ringColor}
                             textColor='text-[#453D38]'
@@ -243,6 +258,23 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                             maxValue={value[0].contribution}
                             barHeight={barHeight}
                         />
+                        <div
+                        style={{
+                            bottom: `${circlePosition.circleFourBottom}px`,
+                            left: `${circlePosition.circleFoureft}px`
+                        }}
+                         className='absolute'>
+                        <Circle1
+                            bgColor={color[4].bgColor}
+                            ringColor={color[4].ringColor}
+                            textColor='text-[#453D38]'
+                            shadowColor={color[4].shadowColor}
+                            value={value[4].contribution}
+                            maxValue={value[0].contribution}
+                            barHeight={barHeight}
+                        />
+                        </div>
+                       </div>
                     </div>
 
                     <div

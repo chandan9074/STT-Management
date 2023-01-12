@@ -13,6 +13,11 @@ interface Props {
 
 const Circle1 = ({ bgColor, ringColor, textColor, value, shadowColor, maxValue, barHeight }: Props) => {
 
+    // console.log('barhe', barHeight);
+    // console.log('value', value);
+    // console.log('maxValue', maxValue);
+    
+    
 
     return (
         <div
