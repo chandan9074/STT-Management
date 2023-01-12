@@ -9,13 +9,13 @@ const value = [
         contribution: 60
     },
     {
-        contribution: 52
+        contribution: 30
     },
     {
-        contribution: 52
+        contribution: 30
     },
     {
-        contribution: 12
+        contribution: 20
     },
     {
         contribution: 10
@@ -82,7 +82,9 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
         circleOneBottom: 154,
         circleOneLeft: 113,
         circleTwoTop: 2,
-        cicleTwoLeft: 166,
+        cicleTwoLeft: 165,
+        circleThreeBottom: 167,
+        circleThreeRight: 59,
 
     })
 
@@ -126,7 +128,10 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
             const _cirlcleOneLeft = ((160 * barHeight) / height - 32);
 
             const _circleTwoLeft = ((166 * barHeight) / height - 24 + 30);
-            const _circleTwoTop =  ((2 * barHeight) / height - 24 + 30);
+            const _circleTwoTop = ((2 * barHeight) / height - 24 + 36);
+
+            const _circleThreeBottom = ((166 * barHeight) / height - 24 + 30);
+            const _circleThreeRight = ((59 * barHeight) / height - 24 + 30);
 
 
             //     circleTwoTop: 2,
@@ -136,8 +141,11 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                 circleOneBottom: _cirlcleBottom ? _cirlcleBottom : circlePosition.circleOneBottom,
                 circleOneLeft: _cirlcleOneLeft ? _cirlcleOneLeft : circlePosition.circleOneLeft,
 
-                cicleTwoLeft: _circleTwoLeft ? _circleTwoLeft : circlePosition.cicleTwoLeft,
-                circleTwoTop: _circleTwoTop
+                cicleTwoLeft: _circleTwoLeft ,
+                circleTwoTop: _circleTwoTop,
+
+                circleThreeBottom: _circleThreeBottom,
+                circleThreeRight: _circleThreeRight
             });
 
         } else if (barHeight === 110) {
@@ -146,18 +154,31 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
             const _cirlcleOneLeft = ((160 * barHeight) / height - 20);
 
             const _circleTwoLeft = ((166 * barHeight) / height - 24 + 30);
-            const _circleTwoTop =  ((2 * barHeight) / height - 24 + 35);
+            const _circleTwoTop = ((2 * barHeight) / height - 24 + 40);
+
+            const _circleThreeBottom = ((166 * barHeight) / height - 24 + 30);
+            const _circleThreeRight = ((59 * barHeight) / height - 24 + 30 - 15);
 
             setCirclePosition({
                 ...circlePosition,
                 circleOneBottom: _cirlcleBottom ? _cirlcleBottom : circlePosition.circleOneBottom,
                 circleOneLeft: _cirlcleOneLeft ? _cirlcleOneLeft : circlePosition.circleOneLeft,
                 cicleTwoLeft: _circleTwoLeft ? _circleTwoLeft : circlePosition.cicleTwoLeft,
-                circleTwoTop: _circleTwoTop
+                circleTwoTop: _circleTwoTop,
+                circleThreeBottom: _circleThreeBottom,
+                circleThreeRight: _circleThreeRight
             });
         } else {
 
-            setCirclePosition({ ...circlePosition, circleOneBottom: 154, circleOneLeft: 113 });
+            setCirclePosition({
+                ...circlePosition,
+                circleOneBottom: 154,
+                circleOneLeft: 113,
+                circleTwoTop: 2,
+                cicleTwoLeft: 165,
+                circleThreeBottom: 167,
+                circleThreeRight: 59,
+            });
         }
 
     }
@@ -219,6 +240,24 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                             textColor='text-[#453D38]'
                             shadowColor={color[2].shadowColor}
                             value={value[2].contribution}
+                            maxValue={value[0].contribution}
+                            barHeight={barHeight}
+                        />
+                    </div>
+
+                    <div
+                        style={{
+                            bottom: `${circlePosition.circleThreeBottom}px`,
+                            right: `${circlePosition.circleThreeRight}px`,
+                        }}
+                        className='absolute'
+                    >
+                        <Circle1
+                            bgColor={color[3].bgColor}
+                            ringColor={color[3].ringColor}
+                            textColor='text-[#453D38]'
+                            shadowColor={color[3].shadowColor}
+                            value={value[3].contribution}
                             maxValue={value[0].contribution}
                             barHeight={barHeight}
                         />
