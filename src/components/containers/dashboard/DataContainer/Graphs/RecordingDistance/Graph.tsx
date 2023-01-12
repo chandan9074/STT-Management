@@ -6,22 +6,22 @@ import Circle1 from '../../../../../common/Circle/Circle1';
 
 const value = [
     {
-        contribution: 60
+        contribution: 35
     },
     {
-        contribution: 19
+        contribution: 33
     },
     {
-        contribution: 19
+        contribution:  30
     },
     {
-        contribution: 20
+        contribution: 10
     },
     {
-        contribution: 16
+        contribution: 10
     },
     {
-        contribution: 8
+        contribution: 10
     },
     {
         contribution: 7
@@ -81,8 +81,10 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
     const [circlePosition, setCirclePosition] = useState({
         circleOneBottom: 154,
         circleOneLeft: 113,
-        circleTwoTop: 25,
-        cicleTwoLeft: 164,
+        // circleTwoTop: 25,
+        // cicleTwoLeft: 164,
+        circleTwoTop: 8,
+        cicleTwoLeft: 163,
         circleThreeBottom: 167,
         circleThreeRight: 59,
         circleFourBottom: 78,
@@ -167,7 +169,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
             const _circleThreeRight = ((59 * barHeight) / height - 24 + 30 - 15);
 
             const _circleFourBottom = (barHeight * value[2].contribution) / value[0].contribution ;
-            const _circleFourLeft = ((59 * barHeight) / height - 24 + 30)  + 10;
+            const _circleFourLeft = ((59 * barHeight) / height - 24 + 30)  + 20;
 
             setCirclePosition({
                 ...circlePosition,
@@ -186,8 +188,10 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                 ...circlePosition,
                 circleOneBottom: 154,
                 circleOneLeft: 113,
-                circleTwoTop: 25,
-                cicleTwoLeft: 164,
+                // circleTwoTop: 25,
+                // cicleTwoLeft: 164,
+                circleTwoTop: 8,
+                cicleTwoLeft: 163,
                 circleThreeBottom: 167,
                 circleThreeRight: 59,
                 circleFourBottom: (barHeight * value[2].contribution) / value[0].contribution ,
