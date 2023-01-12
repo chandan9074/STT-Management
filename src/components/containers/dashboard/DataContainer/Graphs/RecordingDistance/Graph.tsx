@@ -9,10 +9,10 @@ const value = [
         contribution: 60
     },
     {
-        contribution: 29
+        contribution: 52
     },
     {
-        contribution: 18
+        contribution: 52
     },
     {
         contribution: 12
@@ -79,8 +79,11 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
     const [dimesion, setDimension] = useState<number[]>([]);
 
     const [circlePosition, setCirclePosition] = useState({
-        circleOneBottom: 158,
-        circleOneLeft: 100
+        circleOneBottom: 154,
+        circleOneLeft: 113,
+        circleTwoTop: 2,
+        cicleTwoLeft: 166,
+
     })
 
     useEffect(() => {
@@ -88,24 +91,25 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
         const valueOnePercentage = (value[1].contribution * 100) / value[0].contribution;
         setheightPercentage(valueOnePercentage)
         console.log('-----------', valueOnePercentage);
-        
+
 
         // if ((value[0].contribution - value[1].contribution) <= 10) {
-            if(valueOnePercentage >= 83) {
-            setBarHeight(110)
-            // setBarHeight(83)
+        if (valueOnePercentage >= 83) {
 
-        } 
-        // else if ((value[0].contribution - value[1].contribution) <= 20) {
-            else if(valueOnePercentage >= 66) {
+            // setBarHeight(83)
             setBarHeight(95)
+
+        }
+        // else if ((value[0].contribution - value[1].contribution) <= 20) {
+        else if (valueOnePercentage >= 66) {
+            setBarHeight(110)
             // setBarHeight(66)
         }
-        else if(valueOnePercentage >= 50) {
-            // setBarHeight(80)
-            setBarHeight(95)
+        else if (valueOnePercentage >= 50) {
+            setBarHeight(110)
+
         }
-      
+
         else {
             setBarHeight(158);
         }
@@ -118,19 +122,42 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
     const getPosition = () => {
         // let _cirlcleBottom;
         if (barHeight === 95) {
-            const _cirlcleBottom = ((160 * barHeight) / height);
-            const _cirlcleOneLeft = ((160 * barHeight) / height - 24);
-            setCirclePosition({ ...circlePosition, circleOneBottom: _cirlcleBottom, circleOneLeft: _cirlcleOneLeft });
+            const _cirlcleBottom = ((160 * barHeight) / height) - 7;
+            const _cirlcleOneLeft = ((160 * barHeight) / height - 32);
+
+            const _circleTwoLeft = ((166 * barHeight) / height - 24 + 30);
+            const _circleTwoTop =  ((2 * barHeight) / height - 24 + 30);
+
+
+            //     circleTwoTop: 2,
+            // cicleTwoLeft: 166,
+            setCirclePosition({
+                ...circlePosition,
+                circleOneBottom: _cirlcleBottom ? _cirlcleBottom : circlePosition.circleOneBottom,
+                circleOneLeft: _cirlcleOneLeft ? _cirlcleOneLeft : circlePosition.circleOneLeft,
+
+                cicleTwoLeft: _circleTwoLeft ? _circleTwoLeft : circlePosition.cicleTwoLeft,
+                circleTwoTop: _circleTwoTop
+            });
 
         } else if (barHeight === 110) {
-            // _cirlcleBottom = ((160*barHeight)/height - 10)
 
             const _cirlcleBottom = ((160 * barHeight) / height - 10);
-            const _cirlcleOneLeft = ((160 * barHeight) / height - 14);
-            setCirclePosition({ ...circlePosition, circleOneBottom: _cirlcleBottom, circleOneLeft: _cirlcleOneLeft });
+            const _cirlcleOneLeft = ((160 * barHeight) / height - 20);
+
+            const _circleTwoLeft = ((166 * barHeight) / height - 24 + 30);
+            const _circleTwoTop =  ((2 * barHeight) / height - 24 + 35);
+
+            setCirclePosition({
+                ...circlePosition,
+                circleOneBottom: _cirlcleBottom ? _cirlcleBottom : circlePosition.circleOneBottom,
+                circleOneLeft: _cirlcleOneLeft ? _cirlcleOneLeft : circlePosition.circleOneLeft,
+                cicleTwoLeft: _circleTwoLeft ? _circleTwoLeft : circlePosition.cicleTwoLeft,
+                circleTwoTop: _circleTwoTop
+            });
         } else {
 
-            setCirclePosition({ ...circlePosition, circleOneBottom: 158, circleOneLeft: 100 });
+            setCirclePosition({ ...circlePosition, circleOneBottom: 154, circleOneLeft: 113 });
         }
 
     }
@@ -162,7 +189,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                             }}
                             className='absolute'
                         >
-                            <div>
+                            <div className='relative'>
                                 <Circle1
                                     bgColor={color[1].bgColor}
                                     ringColor={color[1].ringColor}
@@ -172,8 +199,29 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                                     maxValue={value[0].contribution}
                                     barHeight={barHeight}
                                 />
+
+
                             </div>
                         </div>
+                    </div>
+
+                    {/* Circle two */}
+                    <div
+                        style={{
+                            top: `${circlePosition.circleTwoTop}px`,
+                            left: `${circlePosition.cicleTwoLeft}px`
+                        }}
+                        className='absolute'
+                    >
+                        <Circle1
+                            bgColor={color[2].bgColor}
+                            ringColor={color[2].ringColor}
+                            textColor='text-[#453D38]'
+                            shadowColor={color[2].shadowColor}
+                            value={value[2].contribution}
+                            maxValue={value[0].contribution}
+                            barHeight={barHeight}
+                        />
                     </div>
 
                     {/* {
