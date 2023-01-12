@@ -6,10 +6,10 @@ import Circle1 from '../../../../../common/Circle/Circle1';
 
 const value = [
     {
-        contribution: 33
+        contribution: 60
     },
     {
-        contribution: 30
+        contribution: 29
     },
     {
         contribution: 18
@@ -73,30 +73,110 @@ const color = [
 const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
 
     // const [barHeight, setBarHeight] = useState<number>(452);
-    const [barHeight, setBarHeight] = useState<number>(452);
+    const height = 158;
+    const [barHeight, setBarHeight] = useState<number>(height);
+    const [heighPercentage, setheightPercentage] = useState(0);
     const [dimesion, setDimension] = useState<number[]>([]);
-    const [maxValueHeight, setMaxValueHeight] = useState<number>(158);
+
+    const [circlePosition, setCirclePosition] = useState({
+        circleOneBottom: 158,
+        circleOneLeft: 100
+    })
 
     useEffect(() => {
-        setMaxValueHeight(getValueFromPercentages(barHeight, value[0].contribution))
-        getDimension();
-        if ((value[0].contribution - value[1].contribution) < 11) {
-            // setBarHeight(110)
+
+        const valueOnePercentage = (value[1].contribution * 100) / value[0].contribution;
+        setheightPercentage(valueOnePercentage)
+        console.log('-----------', valueOnePercentage);
+        
+
+        // if ((value[0].contribution - value[1].contribution) <= 10) {
+            if(valueOnePercentage >= 83) {
+            setBarHeight(110)
+            // setBarHeight(83)
+
+        } 
+        // else if ((value[0].contribution - value[1].contribution) <= 20) {
+            else if(valueOnePercentage >= 66) {
+            setBarHeight(95)
+            // setBarHeight(66)
+        }
+        else if(valueOnePercentage >= 50) {
+            // setBarHeight(80)
+            setBarHeight(95)
+        }
+      
+        else {
+            setBarHeight(158);
         }
     }, [value]);
 
-    const getDimension = () => {
+    useEffect(() => {
+        getPosition();
+    }, [barHeight]);
+
+    const getPosition = () => {
+        // let _cirlcleBottom;
+        if (barHeight === 95) {
+            const _cirlcleBottom = ((160 * barHeight) / height);
+            const _cirlcleOneLeft = ((160 * barHeight) / height - 24);
+            setCirclePosition({ ...circlePosition, circleOneBottom: _cirlcleBottom, circleOneLeft: _cirlcleOneLeft });
+
+        } else if (barHeight === 110) {
+            // _cirlcleBottom = ((160*barHeight)/height - 10)
+
+            const _cirlcleBottom = ((160 * barHeight) / height - 10);
+            const _cirlcleOneLeft = ((160 * barHeight) / height - 14);
+            setCirclePosition({ ...circlePosition, circleOneBottom: _cirlcleBottom, circleOneLeft: _cirlcleOneLeft });
+        } else {
+
+            setCirclePosition({ ...circlePosition, circleOneBottom: 158, circleOneLeft: 100 });
+        }
 
     }
 
-    console.log('barheight--------', getValueFromPercentages(barHeight, value[2].contribution) > 149 ? 149 : getValueFromPercentages(barHeight, value[2].contribution));
+    // console.log('circleposition888888888', barHeight, circlePosition.circleOneLeft);
+
+
 
 
     return (
         <div className='relative'>
-            <div className='absolute -top-2'>
+            <div className='absolute -top-6'>
                 <div >
-                    {
+
+                    <div className='relative'>
+                        <Circle1
+                            bgColor={color[0].bgColor}
+                            ringColor={color[0].ringColor}
+                            textColor='text-[#453D38]'
+                            shadowColor={color[0].shadowColor}
+                            value={value[0].contribution}
+                            maxValue={value[0].contribution}
+                            barHeight={barHeight}
+                        />
+                        <div
+                            style={{
+                                bottom: `${circlePosition.circleOneBottom}px`,
+                                left: `${circlePosition.circleOneLeft}px`
+                            }}
+                            className='absolute'
+                        >
+                            <div>
+                                <Circle1
+                                    bgColor={color[1].bgColor}
+                                    ringColor={color[1].ringColor}
+                                    textColor='text-[#453D38]'
+                                    shadowColor={color[1].shadowColor}
+                                    value={value[1].contribution}
+                                    maxValue={value[0].contribution}
+                                    barHeight={barHeight}
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* {
                         value?.map((m, i) => (
                             <div
                                 style={{
@@ -164,28 +244,10 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                                              ''
                                             }px`,
                                 }}
-                                // style={{
-                                //     left: `${
-
-                                //         i === 1 ? (value[0].contribution - 10):
-                                //         i === 2? (value[0].contribution + 5) :
-                                //          ''
-                                //     }%`,
-                                //     bottom: `${
-                                //         i === 1 ? 30 : 
-                                //         (i === 2 ) ? (value[0].contribution - 39):
-                                //         0
-                                //     }%`,
-
-
-                                // }}
-
+                              
                                 className={`
                             ${
-                                    // i === 1 ? (barHeight === 330 ? 'absolute -top-[98px] left-[85px]' : 'absolute -top-[87px] left-[100px]') :
-                                    // i === 2 ? (barHeight === 330 ? 'absolute top-[13px] left-[125px]' : 'absolute top-[13px] left-[165px]') :
-
-
+                                  
                                     i === 0 ? '' :
 
                                         i == 1 ? 'absolute' :
@@ -210,19 +272,11 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                                 />
                             </div>
                         ))
-                    }
+                    } */}
 
-                    {/* <div className='absolute -top-[87px] left-[100px]'>
-                        <Circle1
-                            bgColor='bg-green-A10'
-                            ringColor='ring-[#E8C8C8]'
-                            textColor='text-[#453D38]'
-                            shadowColor='hover:shadow-green-A10'
-                            value={33}
-                            maxValue={33}
-                            barHeight={barHeight}
-                        />
-                    </div> */}
+
+
+
 
                     {/* <div className='absolute top-[13px] left-[165px]'>
                         <Circle1
@@ -234,7 +288,8 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                             maxValue={33}
                             barHeight={barHeight}
                         />
-                    </div> */}
+                    </div>  */}
+
 
                     {/* <div className='absolute -top-[67px] left-[35px]'>
                         <Circle1
@@ -246,7 +301,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                             maxValue={33}
                             barHeight={barHeight}
                         />
-                    </div> */}
+                    </div>  */}
 
                     {/* <div className='absolute -top-[42px] left-[205px]'>
                         <Circle1
@@ -258,7 +313,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                             maxValue={33}
                             barHeight={barHeight}
                         />
-                    </div> */}
+                    </div>  */}
 
                     {/* <div className='absolute -top-[90px] left-[210px]'>
                         <Circle1
@@ -282,7 +337,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                             maxValue={33}
                             barHeight={barHeight}
                         />
-                    </div> */}
+                    </div>  */}
 
                 </div>
             </div>

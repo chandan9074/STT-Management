@@ -16,26 +16,27 @@ const Circle1 = ({ bgColor, ringColor, textColor, value, shadowColor, maxValue, 
 
     return (
         <div
-        // style={{
-        //     height: `${barHeight}px`,
-        //     width: `${barHeight}px`
-        // }}
+
         >
             <div
-                // style={{
-                //     height: `${value}%`,
-                //     width: `${value}%`,
-                // }}
+
                 style={{
                     height: `${
-                        value === maxValue ? 158 :
-                         (barHeight * value) / 100 > 158 ? 158 :
-                        (barHeight * value) / 100}px`,
+                                (barHeight * value) / maxValue}px`,
                     width: `${
-                        value === maxValue ? 158 :
-                         (barHeight * value) / 100 > 158 ? 158 :
-                            (barHeight * value) / 100}px`,
+                                (barHeight * value) / maxValue}px`,
                 }}
+
+                // style={{
+                //     height: `${
+                //         value === maxValue ? 158 :
+                //          (barHeight * value) / 100 > 158 ? 158 :
+                //         (barHeight * value) / 100}px`,
+                //     width: `${
+                //         value === maxValue ? 158 :
+                //          (barHeight * value) / 100 > 158 ? 158 :
+                //             (barHeight * value) / 100}px`,
+                // }}
                 className={` z-20 text-sm font-medium  ${bgColor} rounded-full flex justify-center items-center ring-2 ${ringColor} hover:ring-white hover:ring-0  ${shadowColor} hover:ring-offset-2 transition duration-4000 ease-out hover:ease-in duration-300`}
             >
                 {
