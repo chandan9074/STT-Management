@@ -1,233 +1,141 @@
 export const createCollectData = {
-    id: "1",
-    module: "stt",
-    role: "Admin",
-    data: {
-      createData: {
-        id: "1",
-        name: "Create Data",
-        target: "6,000",
-        totalValid: 1000,
-        totalInvalid: 1000,
-        notChecked: 1000,
-        totalReceived: 1392,
-        lastUpdate: "22 Aug 2022",
-        achieved: 30,
-        distributionSourceWise: [
-          {
-            id: "1",
-            name: "Read",
-            target: 600,
-            achieved: 30,
-            totalValid: 180,
-            totalInvalid: 10,
-            totalReceived: 200,
-            notChecked: 10,
-            lastUpdate: "22 Aug 2022",
-          },
-          {
-            id: "2",
-            name: "Mono",
-            target: 300,
-            achieved: 80,
-            totalValid: 240,
-            totalInvalid: 10,
-            totalReceived: 250,
-            notChecked: 0,
-            lastUpdate: "22 Aug 2022",
-          },
-          {
-            id: "3",
-            name: "Di",
-            target: 600,
-            achieved: 30,
-            totalValid: 180,
-            totalInvalid: 10,
-            totalReceived: 200,
-            notChecked: 10,
-            lastUpdate: "22 Aug 2022",
-          },
-          {
-            id: "4",
-            name: "Multi",
-            target: 300,
-            achieved: 80,
-            totalValid: 240,
-            totalInvalid: 10,
-            totalReceived: 250,
-            notChecked: 0,
-            lastUpdate: "22 Aug 2022",
-          },
-          {
-            id: "5",
-            name: "Lecture",
-            target: 1800,
-            achieved: 30,
-            totalValid: 180,
-            totalInvalid: 10,
-            totalReceived: 200,
-            notChecked: 10,
-            lastUpdate: "22 Aug 2022",
-          },
-          {
-            id: "6",
-            name: "Command",
-            target: 300,
-            achieved: 80,
-            totalValid: 240,
-            totalInvalid: 10,
-            totalReceived: 250,
-            notChecked: 0,
-            lastUpdate: "22 Aug 2022",
-          },
-          {
-            id: "7",
-            name: "Miscellaneous",
-            target: 600,
-            achieved: 30,
-            totalValid: 180,
-            totalInvalid: 10,
-            totalReceived: 200,
-            notChecked: 10,
-            lastUpdate: "22 Aug 2022",
-          },
-          {
-            id: "8",
-            name: "Noisy",
-            target: 300,
-            achieved: 80,
-            totalValid: 240,
-            totalInvalid: 10,
-            totalReceived: 250,
-            notChecked: 0,
-            lastUpdate: "22 Aug 2022",
-          },
-        ],
-        domainWise: [
-          {
-            id: "1",
-            name: "Natural & Pure Science",
-            totalReceived: 60,
-            totalValid: 50,
-            totalInvalid: 10,
-            notChecked: 0,
-            lastUpdate: "22 Aug 2022",
-            contribution: 35,
-          },
-          {
-            id: "2",
-            name: "Arts",
-            totalReceived: 60,
-            totalValid: 50,
-            totalInvalid: 10,
-            notChecked: 0,
-            lastUpdate: "22 Aug 2022",
-            contribution: 22,
-          },
-          {
-            id: "3",
-            name: "Belief & Thought",
-            totalReceived: 60,
-            totalValid: 50,
-            totalInvalid: 10,
-            notChecked: 0,
-            lastUpdate: "22 Aug 2022",
-            contribution: 15,
-          },
-          {
-            id: "4",
-            name: "Applied Science",
-            totalReceived: 60,
-            totalValid: 50,
-            totalInvalid: 10,
-            notChecked: 0,
-            lastUpdate: "22 Aug 2022",
-            contribution: 10,
-          },
-          {
-            id: "5",
-            name: "Commerce & Finance",
-            totalReceived: 60,
-            totalValid: 50,
-            totalInvalid: 10,
-            notChecked: 0,
-            lastUpdate: "22 Aug 2022",
-            contribution: 8,
-          },
-          {
-            id: "6",
-            name: "Leisure",
-            totalReceived: 60,
-            totalValid: 50,
-            totalInvalid: 10,
-            notChecked: 0,
-            lastUpdate: "22 Aug 2022",
-            contribution: 5.5,
-          },
-          {
-            id: "7",
-            name: "Literature",
-            totalReceived: 60,
-            totalValid: 50,
-            totalInvalid: 10,
-            notChecked: 0,
-            lastUpdate: "22 Aug 2022",
-            contribution: 3,
-          },
-          {
-            id: "8",
-            name: "World & Current Affairs",
-            totalReceived: 60,
-            totalValid: 50,
-            totalInvalid: 10,
-            notChecked: 0,
-            lastUpdate: "22 Aug 2022",
-            contribution: 2.3,
-          },
-          {
-            id: "9",
-            name: "Social & Community",
-            totalReceived: 60,
-            totalValid: 50,
-            totalInvalid: 10,
-            notChecked: 0,
-            lastUpdate: "22 Aug 2022",
-            contribution: 1.7,
-          },
-        ],
-        genderWise: [
-         
-        ],
-        ageWise: [
-         
-        ],
-        localityWise: [
-          
-        ],
-        economicSituationWise: [
-          
-        ],
-  
-        educationWise: [
-          
-        ],
-        professionWise: [
-         
-        ],
-        recordingArea: [
-        ],
-        recordingDistance: [],
-      },
-      collectData: {
-        id: "2",
-        name: "Collect Data",
-       
-        distributionSourceWise: [],
-        domainWise: [],
-        genderWise: [],
-        ageWise: [],
-        localityWise: [],
-      },
+  id: "1",
+  module: "stt",
+  role: "Admin",
+  data: {
+    createData: {
+      id: "1",
+      name: "Create Data",
+
+      distributionSourceWise: [
+        {
+          id: "1",
+          name: "Read",
+          tableColor: "#F5427F"
+
+
+        },
+        {
+          id: "2",
+          name: "Mono",
+          tableColor: "#425EF5"
+        },
+        {
+          id: "3",
+          name: "Di",
+          tableColor: "#42E0F5"
+
+        },
+        {
+          id: "4",
+          name: "Multi",
+          tableColor: "#3EE545"
+
+        },
+        {
+          id: "5",
+          name: "Lecture",
+          tableColor: "#ADC100"
+
+        },
+        {
+          id: "6",
+          name: "Command",
+          tableColor: "#DB42F5"
+
+
+        },
+        {
+          id: "7",
+          name: "Miscellaneous",
+          tableColor: "#F57142"
+
+        },
+        {
+          id: "8",
+          name: "Noisy",
+          tableColor: "#42B9F5"
+        },
+      ],
+      domainWise: [
+        {
+          id: "1",
+          name: "Natural & Pure Science",
+
+        },
+        {
+          id: "2",
+          name: "Arts",
+
+        },
+        {
+          id: "3",
+          name: "Belief & Thought",
+
+        },
+        {
+          id: "4",
+          name: "Applied Science",
+
+        },
+        {
+          id: "5",
+          name: "Commerce & Finance",
+
+        },
+        {
+          id: "6",
+          name: "Leisure",
+
+        },
+        {
+          id: "7",
+          name: "Literature",
+
+        },
+        {
+          id: "8",
+          name: "World & Current Affairs",
+
+        },
+        {
+          id: "9",
+          name: "Social & Community",
+
+        },
+      ],
+      genderWise: [
+
+      ],
+      ageWise: [
+
+      ],
+      localityWise: [
+
+      ],
+      economicSituationWise: [
+
+      ],
+
+      educationWise: [
+
+      ],
+      professionWise: [
+
+      ],
+      recordingArea: [
+      ],
+      recordingDistance: [],
     },
-  };
-  
+    collectData: {
+      id: "2",
+      name: "Collect Data",
+
+      distributionSourceWise: [],
+      domainWise: [],
+      genderWise: [],
+      ageWise: [],
+      localityWise: [],
+    },
+  },
+};
