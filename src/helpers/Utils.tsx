@@ -1,4 +1,5 @@
 import moment from "moment";
+import { tableColorProperty } from "../data/dashboard/tableColorProperty";
 import { roleDT } from "../types/billingTypes";
 
 export const isEmpty = (obj: roleDT | undefined) => {
@@ -54,3 +55,7 @@ export const getDateWithMonthName = (date: string) => {
   return `${day} ${month} ${year}`;
 };
 
+export const getTableColorByName = (name: string) => {
+  const data = tableColorProperty.find((value) => value.name === name);
+  return data?.tableColor
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import { Table } from "antd";
 import './type2BillingTable.css'
 import { collectDataDT, createDataDT } from '../../types/dashboardTypes';
+import { getTableColorByName } from '../../helpers/Utils';
 interface Props {
     // data: createDataDT | collectDataDT ;
     data: any
@@ -10,133 +11,6 @@ interface Props {
 
 const Type3 = ({ data, activePanel }: Props) => {
     let professionWiseData = Object.assign([], data?.professionWise)
-    const bgColor: any = {
-        1: {
-            bgColor: "#F5427F"
-        },
-        2: {
-            bgColor: "#425EF5"
-        },
-        3: {
-            bgColor: "#42E0F5"
-        },
-        4: {
-            bgColor: "#3EE545"
-        },
-        5: {
-            bgColor: "#E4F542"
-        },
-        6: {
-            bgColor: "#DB42F5"
-        },
-        7: {
-            bgColor: "#F57142"
-        },
-        8: {
-            bgColor: "#42B9F5"
-        },
-    }
-    const dataSource = [
-        {
-            key: '1',
-            distribution_source: {
-                id: 1,
-                name: "dev"
-            },
-            target: 32,
-            received: 250,
-            valid_hr: 200,
-            valid_percent: " 15 %",
-            invalid_hr: 115,
-            last_update: "12 aug 2022"
-        },
-        {
-            key: '2',
-            distribution_source: {
-                id: 2,
-                name: "dev"
-            },
-            target: 32,
-            received: 250,
-            valid_hr: 200,
-            valid_percent: " 15 %",
-            invalid_hr: 115,
-            last_update: "12 aug 2022"
-        }, {
-            key: '3',
-            distribution_source: {
-                id: 3,
-                name: "dev"
-            },
-            target: 32,
-            received: 250,
-            valid_hr: 200,
-            valid_percent: " 15 %",
-            invalid_hr: 115,
-            last_update: "12 aug 2022"
-        }, {
-            key: '4',
-            distribution_source: {
-                id: 4,
-                name: "dev"
-            },
-            target: 32,
-            received: 250,
-            valid_hr: 200,
-            valid_percent: " 15 %",
-            invalid_hr: 115,
-            last_update: "12 aug 2022"
-        }, {
-            key: '5',
-            distribution_source: {
-                id: 5,
-                name: "dev"
-            },
-            target: 32,
-            received: 250,
-            valid_hr: 200,
-            valid_percent: " 15 %",
-            invalid_hr: 115,
-            last_update: "12 aug 2022"
-        }, {
-            key: '6',
-            distribution_source: {
-                id: 6,
-                name: "dev"
-            },
-            target: 32,
-            received: 250,
-            valid_hr: 200,
-            valid_percent: " 15 %",
-            invalid_hr: 115,
-            last_update: "12 aug 2022"
-        }, {
-            key: '7',
-            distribution_source: {
-                id: 7,
-                name: "jalal"
-            },
-            target: 32,
-            received: 250,
-            valid_hr: 200,
-            valid_percent: " 15 %",
-            invalid_hr: 115,
-            last_update: "12 aug 2022"
-        }, {
-            key: '8',
-            distribution_source: {
-                id: 8,
-                name: "dev"
-            },
-            target: 32,
-            received: 250,
-            valid_hr: 200,
-            valid_percent: " 15 %",
-            invalid_hr: 115,
-            last_update: "12 aug 2022"
-        },
-
-    ];
     const columns = [
         {
             title: `${activePanel.replace('-wise', '').toUpperCase()}`,
@@ -145,12 +19,12 @@ const Type3 = ({ data, activePanel }: Props) => {
             render: (data: any) => (
 
                 <>
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-2">
                         <div style={{
                             height: "8px",
                             width: "8px",
                             borderRadius: "50%",
-                            // background: `${bgColor[data.id].bgColor}`
+                            background: `${getTableColorByName(data)}`
                         }}></div>
                         <p className="-mb-[2px]">{data}</p>
                     </div>
@@ -161,6 +35,7 @@ const Type3 = ({ data, activePanel }: Props) => {
             title: 'RECEIVE (HOUR)',
             dataIndex: 'totalReceived',
             key: 'totalReceived',
+            align: 'right' as 'right',
             render: (data: any) => (
                 <>
                     <p className="-mb-[2px] text-small">{data === 0 ? "-" : data}</p>
@@ -171,6 +46,7 @@ const Type3 = ({ data, activePanel }: Props) => {
             title: 'VALID (HOUR)',
             dataIndex: 'totalValid',
             key: 'totalValid',
+            align: 'right' as 'right',
             render: (data: any) => (
                 <>
                     <p className="-mb-[2px] text-small">{data === 0 ? "-" : data}</p>
@@ -181,6 +57,7 @@ const Type3 = ({ data, activePanel }: Props) => {
             title: 'INVALID (HOUR)',
             dataIndex: 'totalInvalid',
             key: 'totalInvalid',
+            align: 'right' as 'right',
             render: (data: any) => (
                 <>
                     <p className="-mb-[2px] text-small">{data === 0 ? "-" : data}</p>
@@ -206,12 +83,12 @@ const Type3 = ({ data, activePanel }: Props) => {
             key: 'distribution_source',
             render: (data: any) => (
                 <>
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-2">
                         <div style={{
                             height: "8px",
                             width: "8px",
                             borderRadius: "50%",
-                            // background: `${bgColor[data.id].bgColor}`
+                            background: `${getTableColorByName(data)}`
                         }}></div>
                         <p className="-mb-[2px]">{data}</p>
                     </div>
@@ -222,6 +99,7 @@ const Type3 = ({ data, activePanel }: Props) => {
             title: 'TARGET(HOUR)',
             dataIndex: 'target',
             key: 'target',
+            align: 'right' as 'right',
             render: (data: any) => (
                 <>
                     <p className="-mb-[2px] text-small">{data === 0 ? "-" : data}</p>
@@ -232,6 +110,7 @@ const Type3 = ({ data, activePanel }: Props) => {
             title: 'RECEIVE (HOUR)',
             dataIndex: 'totalReceived',
             key: 'totalReceived',
+            align: 'right' as 'right',
             render: (data: any) => (
                 <>
                     <p className="-mb-[2px] text-small">{data === 0 ? "-" : data}</p>
@@ -242,6 +121,7 @@ const Type3 = ({ data, activePanel }: Props) => {
             title: 'VALID (HOUR)',
             dataIndex: 'totalValid',
             key: 'totalValid',
+            align: 'right' as 'right',
             render: (data: any) => (
                 <>
                     <p className="-mb-[2px] text-small">{data === 0 ? "-" : data}</p>
@@ -252,6 +132,7 @@ const Type3 = ({ data, activePanel }: Props) => {
             title: 'INVALID (HOUR)',
             dataIndex: 'totalInvalid',
             key: 'totalInvalid',
+            align: 'right' as 'right',
             render: (data: any) => (
                 <>
                     <p className="-mb-[2px] text-small">{data === 0 ? "-" : data}</p>
@@ -304,16 +185,16 @@ const Type3 = ({ data, activePanel }: Props) => {
                                     <p className="text-small text-blue-gray-80 font-bold">Total</p>
                                 </Table.Summary.Cell>
                                 {activePanel === "Distribution Source-wise" ? <Table.Summary.Cell index={1}>
-                                    <p className="text-small text-blue-gray-80 font-bold">{totalTarget}</p>
+                                    <p className="text-small text-blue-gray-80 font-bold text-right">{totalTarget}</p>
                                 </Table.Summary.Cell> : ""}
                                 <Table.Summary.Cell index={2}>
-                                    <p className="text-small text-blue-gray-80 font-bold">{totalReceive}</p>
+                                    <p className="text-small text-blue-gray-80 font-bold text-right">{totalReceive}</p>
                                 </Table.Summary.Cell>
                                 <Table.Summary.Cell index={3}>
-                                    <p className="text-small text-blue-gray-80 font-bold">{totalValid_hr}</p>
+                                    <p className="text-small text-blue-gray-80 font-bold text-right">{totalValid_hr}</p>
                                 </Table.Summary.Cell>
                                 <Table.Summary.Cell index={4}>
-                                    <p className="text-small text-blue-gray-80 font-bold">{totalInvalid_hr}</p>
+                                    <p className="text-small text-blue-gray-80 font-bold text-right">{totalInvalid_hr}</p>
                                 </Table.Summary.Cell>
                             </Table.Summary.Row>
 
