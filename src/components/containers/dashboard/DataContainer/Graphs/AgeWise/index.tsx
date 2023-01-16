@@ -1,6 +1,6 @@
 import React from "react";
 import { createCollectSimilarPropertyDT } from "../../../../../../types/dashboardTypes";
-import PercentiseCard from "../../../../../common/PercentiseCard";
+import PercentageCard from "../../../../../common/PercentageCard";
 import Graph from "./Graph";
 import TitleList from "./TitleList";
 
@@ -8,19 +8,19 @@ const AgeWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
   return (
     <>
       <div className="flex items-center gap-x-2">
-        <PercentiseCard
+        <PercentageCard
           name={data[0].name}
           value={data[0].contribution}
           hour={data[0].totalValid}
           BorderColor="border-[#42F54A]"
         />
-        <PercentiseCard
+        <PercentageCard
           name={data[1].name}
           value={data[1].contribution}
           hour={data[1].totalValid}
           BorderColor="border-[#42B9F5]"
         />
-        <PercentiseCard
+        <PercentageCard
           name={data[2].name}
           value={data[2].contribution}
           hour={data[2].totalValid}

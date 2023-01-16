@@ -18,7 +18,7 @@
 
 
 .select-icon .ant-select .ant-select-arrow {
-    background-image: url('../../../assets/Icons/arrow_drop_down.png') !important;
+    background-image: url('../../../../assets/Icons/arrow_drop_down.png') !important;
     background-size: 7px 5px !important;
     margin-top: -3px;
     width: 7px !important;
@@ -32,7 +32,7 @@
 }
 
 .ant-select-item-option-selected:after {
-    background-image: url('../../../assets/Icons/check.png');
+    background-image: url('../../../../assets/Icons/check.png');
     margin-top: 5px;
     background-size: 15px 10px;
     display: inline-block;

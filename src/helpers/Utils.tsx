@@ -1,4 +1,6 @@
+import exp from "constants";
 import moment from "moment";
+import { tableColorProperty } from "../data/dashboard/tableColorProperty";
 import { roleDT } from "../types/billingTypes";
 import { colorForTitle } from "../data/dashboard/colorForTitle";
 
@@ -23,11 +25,8 @@ export const excelNameFormatter = (name: any, isDate: any) => {
   }
 };
 
-export const getValueFromPercentage = (
-  maxValue: number,
-  percentage: number[]
-) => {
-  return percentage?.map((value) => {
+export const getValueFromPercentage = (maxValue: number, data: number[]) => {
+  return data?.map((value) => {
     return (maxValue * value) / 100;
   });
 };
@@ -60,8 +59,7 @@ export const getTitleColor = (value: string, children: boolean) => {
     const data = colorForTitle.filter((item) => item.name === value);
     if (data[0].children) {
       return data[0]?.children.hoverBg + " " + data[0]?.children.bgColor;
-    }
-    else{
+    } else {
       return "";
     }
   } else {
@@ -75,3 +73,10 @@ export const getValidBgColor = (value: string) => {
   console.log(data);
   return data?.ttValidBg;
 };
+export const getValueFromPercentages = (height: number, data: number) => {
+  return (height * data) / 100;
+};
+export const getTableColorByName = (name: string) => {
+  const data = tableColorProperty.find((value) => value.name === name);
+  return data?.tableColor
+}
