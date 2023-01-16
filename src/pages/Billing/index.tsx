@@ -1,6 +1,6 @@
 import TotalAmountDisbursed from "../../components/containers/billing/TotalAmountDisbursed";
-import TimeWiseDisbursements from "../../components/containers/billing/TimeWiseDisbursements";
 import Layouts from "../../components/Layouts";
+import TimeWiseDisbursements from "../../components/containers/billing/TimeWiseDisbursement";
 
 const Billing = () => {
   return (

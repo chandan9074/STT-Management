@@ -43,6 +43,7 @@ module.exports = {
         "bottom-light-blue-10":
           "0px 1px 2px rgba(31, 56, 76, 0.06), 0px 1px 3px rgba(31, 56, 76, 0.1)",
         "bottom-light-blue-20": "0px 4px 24px rgba(31, 56, 76, 0.12)",
+        'light-orange-shadow': "0px 2px 18px rgba(230, 206, 190, 0.12)"
       },
       colors: {
         "primary-ct-blue-60": "#2C79BE",

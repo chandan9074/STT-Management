@@ -1,10 +1,12 @@
 import LocalityWise from "./LocalityWise";
 import GenderWise from "./GenderWise";
 import DomainWise from "./DomainWise";
-import EducationWise from "./EducationWise";
 import DistributionSourceWise from "./DistributionSourceWIse";
 import ProfessionWise from "./ProfessionWise";
 import AgeWise from "./AgeWise";
+import EducationWise from "./EducationWise";
+import RecordingDistance from "./RecordingDistance"
+
 
 const Graphs = {
   LocalityWise,
@@ -14,6 +16,7 @@ const Graphs = {
   DistributionSourceWise,
   ProfessionWise,
   AgeWise,
+  RecordingDistance
 };
 
 export default Graphs;

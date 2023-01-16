@@ -1,3 +1,4 @@
+import exp from "constants";
 import moment from "moment";
 import { roleDT } from "../types/billingTypes";
 import { colorForTitle } from "../data/dashboard/colorForTitle";
@@ -25,9 +26,9 @@ export const excelNameFormatter = (name: any, isDate: any) => {
 
 export const getValueFromPercentage = (
   maxValue: number,
-  percentage: number[]
+  data: number[]
 ) => {
-  return percentage?.map((value) => {
+  return data?.map((value) => {
     return (maxValue * value) / 100;
   });
 };
@@ -75,3 +76,7 @@ export const getValidBgColor = (value: string) => {
   console.log(data);
   return data?.ttValidBg;
 };
+export const getValueFromPercentages = (height: number, data: number) => {
+  return ((height * data) / 100);
+}
+

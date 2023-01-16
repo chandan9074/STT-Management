@@ -67,7 +67,7 @@ const CreateData = ({ data }: { data: createDataDT }) => {
       "Education-wise": <Graphs.EducationWise data={data.educationWise} />,
       "Profession-wise": <Graphs.ProfessionWise />,
       "Recording Area": <div></div>,
-      "Recording Distance": <div></div>,
+      "Recording Distance": <Graphs.RecordingDistance data={data.recordingDistance} />,
     };
     return Category1[key];
   };
