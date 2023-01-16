@@ -24,10 +24,7 @@ export const excelNameFormatter = (name: any, isDate: any) => {
   }
 };
 
-export const getValueFromPercentage = (
-  maxValue: number,
-  data: number[]
-) => {
+export const getValueFromPercentage = (maxValue: number, data: number[]) => {
   return data?.map((value) => {
     return (maxValue * value) / 100;
   });
@@ -61,8 +58,7 @@ export const getTitleColor = (value: string, children: boolean) => {
     const data = colorForTitle.filter((item) => item.name === value);
     if (data[0].children) {
       return data[0]?.children.hoverBg + " " + data[0]?.children.bgColor;
-    }
-    else{
+    } else {
       return "";
     }
   } else {
@@ -77,6 +73,5 @@ export const getValidBgColor = (value: string) => {
   return data?.ttValidBg;
 };
 export const getValueFromPercentages = (height: number, data: number) => {
-  return ((height * data) / 100);
-}
-
+  return (height * data) / 100;
+};
