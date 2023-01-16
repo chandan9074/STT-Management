@@ -30,7 +30,8 @@ let sidebarMenu = {
       menu_title: "Audio Management",
       menu_icon: Icons.songDashboard,
       type_multi: null,
-      path: PATH.AUDIO_PATH,
+      // path: PATH.AUDIO_PATH,
+      path: PATH.TEST,
       permissions: [Permission.ALL],
     },
     {

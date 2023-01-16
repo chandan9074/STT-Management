@@ -8,6 +8,7 @@ import PaymentHistory from "./pages/Billing/PaymentHistory";
 import * as PATH from "./helpers/Slug";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
+import Test from "./pages/Test";
 
 function App() {
   useEffect(() => {
@@ -31,6 +32,7 @@ function App() {
           element={<PaymentHistory />}
         />
         <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} />
+        <Route path="/test" element={<Test />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

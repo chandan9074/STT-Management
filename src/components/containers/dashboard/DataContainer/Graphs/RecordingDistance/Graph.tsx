@@ -11,32 +11,32 @@ const color = [
     {
         bgColor: 'bg-green-A10',
         ringColor: 'ring-[#D1E8C7]',
-        shadowColor: 'hover:shadow-light-green',
+        shadowColor: 'hover:shadow-light-green2',
         tooltipTitleColor: 'text-green-A10'
     },
     {
         bgColor: 'bg-[#FFF5CC]',
         ringColor: 'ring-[#E8DFBA]',
-        shadowColor: 'hover:shadow-light-yellow',
+        shadowColor: 'hover:shadow-light-yellow2',
         tooltipTitleColor: 'text-yellow-A10'
     },
     {
         bgColor: 'bg-[#FFE5D3]',
         ringColor: 'ring-[#E8D0C0]',
-        shadowColor: 'hover:shadow-light-orange',
+        shadowColor: 'hover:shadow-light-orange2',
         tooltipTitleColor: 'text-blue-A10'
         
     },
     {
         bgColor: 'bg-[#CCF8FE]',
         ringColor: 'ring-[#BAE3E8]',
-        shadowColor: 'hover:shadow-light-blue',
+        shadowColor: 'hover:shadow-light-blue2',
         tooltipTitleColor: 'text-blue-A10'
     },
     {
         bgColor: 'bg-[#CCDDFE]',
         ringColor: 'ring-[#BACAE8]',
-        shadowColor: 'hover:shadow-light-blue2',
+        shadowColor: 'hover:shadow-light-blue3',
         tooltipTitleColor: 'text-blue-20'
     },
     {

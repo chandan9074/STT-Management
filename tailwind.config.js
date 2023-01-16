@@ -46,13 +46,11 @@ module.exports = {
          "light-tomato": "0px 2px 18px #FFD3D3",
 
          "light-tomato2": "0px 2px 18px #f0616f",
-         "light-tomato3": "0px 2px 18px #e6bebe",
-         "light-green": "0px 2px 18px #7fbb65",
-         "light-yellow": "0px 4px 4px #c5b268",
-         "light-yellow2": "0px 2px 18px #e6cebe",
-         "light-blue": "0px 4px 4px #b8e0e5",
-         "light-orange": "0px 2px 18px #d69d75",
-         "light-blue2": "0px 4px 4px #7c96c9",
+         "light-green2": "0px 2px 18px #7fbb65",
+         "light-yellow2": "0px 4px 4px #c5b268",
+         "light-blue2": "0px 4px 4px #b8e0e5",
+         "light-orange2": "0px 2px 18px #d69d75",
+         "light-blue3": "0px 4px 4px #7c96c9",
          "light-purple": "0px 4px 4px #a39ed8",
 
       },
