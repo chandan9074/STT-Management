@@ -36,7 +36,7 @@ const DataContainerDropdown = ({data, handleActivePanel}: Props) => {
                    <div>
                        <div className="fixed top-0 left-0 w-full h-screen z-[80]"
                             onClick={() => setToggleOpen(false)}/>
-                       <div className="absolute z-[99]">
+                       <div className="absolute z-[9999]">
                            <div
                                className="w-[245px] bg-white mt-1 rounded-[8px] py-[6px] shadow-bottom-light-blue-20">
 

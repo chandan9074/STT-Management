@@ -104,7 +104,7 @@ const CollectData = ({ data }: { data: collectDataDT }) => {
           activePanel={activePanel}
         />
       </div>
-      <div className="rounded-b-xl px-5 py-3">
+      <div className="rounded-b-xl px-5 pb-3 h-[452px]">
         {DistributionDropdownMenu(activePanel)}
       </div>
     </div>

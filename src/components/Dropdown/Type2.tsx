@@ -9,7 +9,7 @@ import {
     MenuList,
 } from "@mui/material";
 import './dropDown.css'
-import {MoreOutlined} from "@ant-design/icons";
+import { MoreOutlined } from "@ant-design/icons";
 import Icons from "../../assets/Icons";
 
 
@@ -23,7 +23,7 @@ const Type2 = () => {
         setAnchorEl(null);
     };
     return (
-        <div className="-mt-[14px]">
+        <div className="-mt-[14px] relative">
             <IconButton
                 aria-label="more"
                 id="long-button"
@@ -39,7 +39,7 @@ const Type2 = () => {
                             borderRadius: "50%",
                             padding: "5px",
                             color: "white"
-                        }}/> : <MoreOutlined
+                        }} /> : <MoreOutlined
                         style={{
                             background: "inherit",
                             borderRadius: "50%",
@@ -52,7 +52,7 @@ const Type2 = () => {
             </IconButton>
 
 
-            <Menu
+            {/* <Menu
                 id="basic-menu"
                 anchorEl={anchorEl}
                 open={open}
@@ -99,7 +99,61 @@ const Type2 = () => {
                         <ListItemText>Download as PDF</ListItemText>
                     </MenuItem>
                 </MenuList>
-            </Menu>
+            </Menu> */}
+
+            {
+                open ? <div>
+                    <div
+                        className='fixed top-0 left-0 w-full h-screen z-[80]'
+                        onClick={handleClose}
+                    />
+                    <div
+                        style={{ boxShadow: "0px 4px 24px rgba(31, 56, 76, 0.12)" }}
+                        className='w-[196px] absolute z-[99999] -left-[135px] bg-white rounded-[8px]'>
+                        <div className='px-4 py-3 flex flex-col gap-3'>
+                            <div className='flex gap-3'>
+                                <img
+                                    src={Icons.BorderAll}
+                                    alt=""
+                                    className='h-[24px] w-[24px]'
+                                />
+                                <p className='text-small font-medium text-blue-gray-80'>Download as Excel</p>
+                            </div>
+
+                            <div className='flex gap-3'>
+                                <img
+                                    src={Icons.BrokenImg}
+                                    alt=""
+                                    className='h-[24px] w-[24px]'
+                                />
+                                <p className='text-small font-medium text-blue-gray-80'>Download as Jpeg</p>
+                            </div>
+
+                            <div className='flex gap-3'>
+                                <img
+                                    src={Icons.PictureAsPdf}
+                                    alt=""
+                                    className='h-[24px] w-[24px]'
+                                />
+                                <p className='text-small font-medium text-blue-gray-80'>Download as PDF</p>
+                            </div>
+
+                        </div>
+                        <hr />
+                        <div
+                            className='flex gap-3 px-4 py-3'
+                        >
+                            <img
+                                src={Icons.Print}
+                                alt=""
+                                className='h-[24px] w-[24px]'
+                            />
+
+                            <p className='text-small font-medium text-blue-gray-80'>Print</p>
+                        </div>
+                    </div>
+                </div> : ""
+            }
 
         </div>
     );

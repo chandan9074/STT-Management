@@ -243,7 +243,7 @@ const CreateData = ({ data }: { data: createDataDT }) => {
           activePanel={activePanel}
         />
       </div>
-      <div className="rounded-b-xl px-5 py-3">
+      <div className="rounded-b-xl px-5 pb-3 h-[450px]">
         {DistributionDropdownMenu(activePanel)}
       </div>
     </div>
