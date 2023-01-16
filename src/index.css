@@ -53,3 +53,19 @@ pre {
 #triangle {
   clip-path: polygon(50% 0, 100% 100%, 0 100%);
 }
+
+/* for globally stop this  */
+.recharts-layer .recharts-pie-sector {
+  outline: none;
+}
+
+.recharts-layer .recharts-pie {
+  outline: none;
+}
+.recharts-layer{
+  outline: none;
+}
+
+.lable-text:hover .recharts-tooltip-wrapper .recharts-tooltip-wrapper-left .recharts-tooltip-wrapper-top{
+  visibility: visible !important;
+}

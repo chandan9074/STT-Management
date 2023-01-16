@@ -1,5 +1,6 @@
 import exp from "constants";
 import moment from "moment";
+import { tableColorProperty } from "../data/dashboard/tableColorProperty";
 import { roleDT } from "../types/billingTypes";
 import { colorForTitle } from "../data/dashboard/colorForTitle";
 
@@ -75,3 +76,7 @@ export const getValidBgColor = (value: string) => {
 export const getValueFromPercentages = (height: number, data: number) => {
   return (height * data) / 100;
 };
+export const getTableColorByName = (name: string) => {
+  const data = tableColorProperty.find((value) => value.name === name);
+  return data?.tableColor
+}

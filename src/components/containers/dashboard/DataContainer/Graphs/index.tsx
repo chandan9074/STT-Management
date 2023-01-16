@@ -11,12 +11,12 @@ import RecordingDistance from "./RecordingDistance"
 const Graphs = {
   LocalityWise,
   GenderWise,
-  DomainWise,
   EducationWise,
   DistributionSourceWise,
   ProfessionWise,
   AgeWise,
-  RecordingDistance
+  RecordingDistance,
+  DomainWise
 };
 
 export default Graphs;

@@ -12,14 +12,14 @@ const TotalData = () => {
             </div>
             <div className="flex items-center justify-between h-full ">
                 <div className="">
-                    <div className="flex gap-1">
+                    <div className="flex gap-2">
                         <h1 className="text-heading-1 text-transparent bg-clip-text bg-gradient-to-r from-primary-ct-blue-60 to-silver-tree">
                             33
 
                         </h1>
                         <div>
                             <p className="text-heading-2 text-transparent bg-clip-text bg-gradient-to-r from-silver-tree to-tacao mt-2.5">%</p>
-                            <p className="text-xxs text-ct-blue-90-70% mt-2">Achieved</p>
+                            <p className="text-xxs text-ct-blue-90-70% ">Achieved</p>
                         </div>
                     </div>
                 </div>

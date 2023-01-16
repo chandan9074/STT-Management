@@ -19,7 +19,7 @@ export const createCollectData = {
           name: "Read",
           target: 600,
           achieved: 30,
-          totalValid: 180,
+          totalValid: 0,
           totalInvalid: 10,
           totalReceived: 200,
           notChecked: 10,
@@ -460,7 +460,7 @@ export const createCollectData = {
           contribution: 30,
         },
         {
-          id: "3",
+          id: "4",
           name: "Student",
           totalReceived: 60,
           totalValid: 450,
@@ -707,7 +707,7 @@ export const createCollectData = {
           contribution: 31,
         },
         {
-          id: "6",
+          id: "3",
           name: "Leisure",
           totalReceived: 60,
           totalValid: 50,
@@ -717,8 +717,8 @@ export const createCollectData = {
           contribution: 19,
         },
         {
-          id: "7",
-          name: "Public / Institutional",
+          id: "4",
+          name: "Public/Institutional",
           totalReceived: 60,
           totalValid: 50,
           totalInvalid: 10,
