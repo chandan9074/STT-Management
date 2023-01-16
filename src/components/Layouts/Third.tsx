@@ -8,7 +8,7 @@ const Third = ({ children }: { children: any }) => {
             <Navbar.Secondary />
             <Sidebar.Primary />
             <Sidebar.SideDrawer />
-            <div className=" relative pr-3 pb-6 pl-[400px] pt-[90px]">
+            <div className=" relative h-[100vh] pr-3 pb-6 pl-[400px] pt-[90px] bg-default">
                 {children}
             </div>
         </div>

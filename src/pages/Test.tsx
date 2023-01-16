@@ -4,7 +4,7 @@ import Layouts from '../components/Layouts';
 const Test = () => {
     return (
         <Layouts.Third>
-            <div>
+            <div className='h-full'>
                 this is third
             </div>
         </Layouts.Third>

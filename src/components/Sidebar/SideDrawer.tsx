@@ -33,7 +33,7 @@ const SideDrawer = () => {
     }, []);
 
     return (
-        <div className=' py-4 z-[100] h-screen w-[300px] bg-slate-400 absolute left-[70px]'>
+        <div className=' py-4 z-[100] h-screen w-[300px] bg-white absolute left-[70px]'>
             <h1 className='text-black mb-10'>Collection Tool</h1>
             {
                 nav &&
