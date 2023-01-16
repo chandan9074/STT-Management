@@ -31,7 +31,6 @@ module.exports = {
       },
       boxShadow: {
         "light-blue": "0px 0px 12px #FFFFFF",
-        "light-tomato": "0px 2px 18px #FFD3D3",
         "light-periwinkle": "0px 2px 18px #FFF5CC",
         "light-onahau": "0px 2px 18px #E2FBD7",
         "light-orinoco": "0px 2px 18px #CCF8FE",
@@ -43,7 +42,19 @@ module.exports = {
         "bottom-light-blue-10":
           "0px 1px 2px rgba(31, 56, 76, 0.06), 0px 1px 3px rgba(31, 56, 76, 0.1)",
         "bottom-light-blue-20": "0px 4px 24px rgba(31, 56, 76, 0.12)",
-        'light-orange-shadow': "0px 2px 18px rgba(230, 206, 190, 0.12)"
+        'light-orange-shadow': "0px 2px 18px rgba(230, 206, 190, 0.12)",
+         "light-tomato": "0px 2px 18px #FFD3D3",
+
+         "light-tomato2": "0px 2px 18px #f0616f",
+         "light-tomato3": "0px 2px 18px #e6bebe",
+         "light-green": "0px 2px 18px #7fbb65",
+         "light-yellow": "0px 4px 4px #c5b268",
+         "light-yellow2": "0px 2px 18px #e6cebe",
+         "light-blue": "0px 4px 4px #b8e0e5",
+         "light-orange": "0px 2px 18px #d69d75",
+         "light-blue2": "0px 4px 4px #7c96c9",
+         "light-purple": "0px 4px 4px #a39ed8",
+
       },
       colors: {
         "primary-ct-blue-60": "#2C79BE",
