@@ -63,7 +63,7 @@ let SideDrawerLink = [
             },
             {
                 name: 'Upload Audio/Video',
-                route: '/upload-audio-video',
+                route: PATH.UPLOAD_AUDION_VIDEO_PATH,
                 links: []
             }
         ]

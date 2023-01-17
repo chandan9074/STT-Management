@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import Test from "./pages/Test";
 import CollectingAudio from "./pages/Test/CollectingAudio";
+import UploadAudioVideo from "./pages/Test/UploadAudioVideo";
 
 function App() {
   useEffect(() => {
@@ -38,6 +39,7 @@ function App() {
         {/* test */}
         <Route path="/test" element={<Test />} />
         <Route path={PATH.COLLECTING_AUDIO} element={<CollectingAudio />} />
+        <Route path={PATH.UPLOAD_AUDION_VIDEO_PATH} element={<UploadAudioVideo />} />
       </Routes>
     </BrowserRouter>
   );

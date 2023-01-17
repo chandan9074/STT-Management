@@ -21,7 +21,7 @@
   }
 
   .sideDrawerActiveNav {
-    @apply bg-blue-10 text-secondary-blue-50 rounded-[20px] px-[10px] py-[5px] flex justify-between items-center
+    @apply bg-blue-10 text-secondary-blue-50 font-medium rounded-[20px] px-[10px] py-[5px] flex justify-between items-center
   }
 
   .sideDrawerDeactiveNav {

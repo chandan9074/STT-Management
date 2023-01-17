@@ -32,11 +32,10 @@ const SideDrawer = () => {
         subRoute: ''
     });
 
-    console.log('##########', location.pathname);
-    
+    console.log('##########', location.pathname.split('/')[1]);
 
     useEffect(() => {
-        const _data = SideDrawerLink.filter(m => m.route === location.pathname);
+        const _data = SideDrawerLink.filter(m => m.route.split('/')[1] === location.pathname.split('/')[1]);
         if (_data) {
             setNav(_data[0]);
         }
@@ -74,18 +73,19 @@ const SideDrawer = () => {
                                     {
                                         navClickItem.mainRoute === m.route ?
                                             <button onClick={() => setNavClickItem({
-                                                ...navClickItem, mainRoute: ''
+                                                 mainRoute: '',
+                                                 subRoute: ''
                                             })}>
                                                 <img src={Icons.ArrowDropUp} className='w-[8px] h-[5px]' alt="" />
-                                            </button> : 
-                                            m?.links?.length > 0 ?
-                                            <button onClick={() => setNavClickItem({
-                                                ...navClickItem,
-                                                mainRoute: m.route
-                                            })}>
-                                                <img src={Icons.ArrowRight} className='w-[5px] h-[10px]' alt="" />
                                             </button> :
-                                            ''
+                                            m?.links?.length > 0 ?
+                                                <button onClick={() => setNavClickItem({
+                                                    subRoute: '',
+                                                    mainRoute: m.route
+                                                })}>
+                                                    <img src={Icons.ArrowRight} className='w-[5px] h-[10px]' alt="" />
+                                                </button> :
+                                                ''
                                     }
 
 
@@ -95,19 +95,51 @@ const SideDrawer = () => {
                                 {
                                     m?.links &&
                                     m?.links?.map((n, j) => (
-                                        <div className={`${navClickItem.mainRoute === m.route ? "block" : 'hidden'}`}>
-                                            <Link to={n.route}>
+                                        <div className={`my-[12px] ${navClickItem.mainRoute === m.route ? "block" : 'hidden'} pl-[12px]`}>
+                                            {/* <Link to={n.route}>
                                                 <h1 className='text-orange-300'>{n?.name}
                                                 </h1>
-                                            </Link>
+                                            </Link> */}
+                                            <div className={`${n.route === location.pathname ? 'sideDrawerActiveNav' : 'sideDrawerDeactiveNav'}`}>
+                                                <div className='flex items-center gap-x-[6px]'>
+
+                                                    <Link to={n.route} >
+                                                        <h1 className=''>
+                                                            {n.name}
+                                                        </h1>
+                                                    </Link>
+                                                </div>
+                                                {
+                                                    navClickItem.subRoute === n.route ?
+                                                        <button onClick={() => setNavClickItem({
+                                                            ...navClickItem, subRoute: ''
+                                                        })}>
+                                                            <img src={Icons.ArrowDropUp} className='w-[8px] h-[5px]' alt="" />
+                                                        </button> :
+                                                        n?.links?.length > 0 ?
+                                                            <button onClick={() => setNavClickItem({
+                                                                ...navClickItem,
+                                                                subRoute: n.route
+                                                            })}>
+                                                                <img src={Icons.ArrowRight} className='w-[5px] h-[10px]' alt="" />
+                                                            </button> :
+                                                            ''
+                                                }
+
+
+                                            </div>
                                             {
                                                 n?.links &&
                                                 n?.links?.map((value, k) => (
-                                                    <div>
+                                                    <div className={`${navClickItem.subRoute === n.route ? "block" : 'hidden'} pl-[16px]`}>
+                                                        <div className={`${value.route === location.pathname ? 'sideDrawerActiveNav' : 'sideDrawerDeactiveNav'}`}>
+                                                            <Link to={value.route}>
+                                                                <h1 >{value?.name}</h1>
+                                                            </Link>
 
-                                                        <Link to={value.route}>
-                                                            <h1 className='text-red-500'>{value?.name}</h1>
-                                                        </Link>
+                                                        </div>
+
+
                                                     </div>
                                                 ))
                                             }
