@@ -57,7 +57,7 @@ export const overTheTimeGData = {
     {
       id: "1",
       day: "03",
-      receivedHour: 158,
+      receivedHour: 0,
       lastUpdate: "22 Aug 2022",
       hourData: [
         // {
@@ -105,7 +105,7 @@ export const overTheTimeGData = {
     {
       id: "1",
       day: "05",
-      receivedHour: 158,
+      receivedHour: 0,
       lastUpdate: "22 Aug 2022",
       hourData: [
         // {
@@ -137,7 +137,7 @@ export const overTheTimeGData = {
     {
       id: "1",
       day: "07",
-      receivedHour: 158,
+      receivedHour: 0,
       lastUpdate: "22 Aug 2022",
       hourData: [
         // {
@@ -185,7 +185,7 @@ export const overTheTimeGData = {
     {
       id: "1",
       day: "09",
-      receivedHour: 158,
+      receivedHour: 0,
       lastUpdate: "22 Aug 2022",
       hourData: [
         // {
@@ -281,7 +281,7 @@ export const overTheTimeGData = {
     {
       id: "1",
       day: "13",
-      receivedHour: 158,
+      receivedHour: 0,
       lastUpdate: "22 Aug 2022",
       hourData: [
         // {
@@ -353,7 +353,7 @@ export const overTheTimeGData = {
     {
       id: "1",
       day: "16",
-      receivedHour: 158,
+      receivedHour: 0,
       lastUpdate: "22 Aug 2022",
       hourData: [
         // {
@@ -425,7 +425,7 @@ export const overTheTimeGData = {
     {
       id: "1",
       day: "19",
-      receivedHour: 158,
+      receivedHour: 0,
       lastUpdate: "22 Aug 2022",
       hourData: [
         // {
@@ -449,7 +449,7 @@ export const overTheTimeGData = {
     {
       id: "1",
       day: "20",
-      receivedHour: 158,
+      receivedHour: 0,
       lastUpdate: "22 Aug 2022",
       hourData: [
         // {
@@ -521,7 +521,7 @@ export const overTheTimeGData = {
     {
       id: "1",
       day: "23",
-      receivedHour: 158,
+      receivedHour: 0,
       lastUpdate: "22 Aug 2022",
       hourData: [
         // {
@@ -569,7 +569,7 @@ export const overTheTimeGData = {
     {
       id: "1",
       day: "25",
-      receivedHour: 158,
+      receivedHour: 0,
       lastUpdate: "22 Aug 2022",
       hourData: [
         // {

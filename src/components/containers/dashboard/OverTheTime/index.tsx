@@ -21,13 +21,13 @@ const OverTheTime = () => {
   }, [dashboardContext.overTheTimeData]);
   return (
     <div className="p-4 bg-white border-t border-blue-gray-30">
-      {overTheTimeData && (
+      {overTheTimeData?.module && (
         <>
           <Header
             year={overTheTimeData.year}
             activeMonth={overTheTimeData.month}
           />
-          <BarChart />
+          <BarChart overTheTimeGData={overTheTimeData} />
         </>
       )}
     </div>

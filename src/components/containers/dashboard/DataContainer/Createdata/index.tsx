@@ -5,6 +5,7 @@ import DataContainerModal from "../DataContainerModal";
 import Graphs from "../Graphs";
 import { createDataDT } from "../../../../../types/dashboardTypes";
 import AgeWise from "../Graphs/AgeWise";
+import EconomicSituationWise from "../Graphs/EconomicSituationWise";
 
 const domainWiseColors = [
   "#F5427F",
@@ -206,7 +207,7 @@ const CreateData = ({ data }: { data: createDataDT }) => {
       "Gender-wise": <Graphs.GenderWise data={data.genderWise} />,
       "Age-wise": <AgeWise data={data.ageWise} />,
       "Locality-wise": <Graphs.LocalityWise data={data.localityWise} />,
-      "Economic Situation-wise": <div></div>,
+      "Economic Situation-wise": <EconomicSituationWise data={data.economicSituationWise} />,
       "Education-wise": <Graphs.EducationWise data={data.educationWise} />,
       "Recording Distance": (
         <Graphs.RecordingDistance data={data.recordingDistance} />
