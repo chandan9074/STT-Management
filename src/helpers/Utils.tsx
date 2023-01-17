@@ -80,3 +80,11 @@ export const getTableColorByName = (name: string) => {
   const data = tableColorProperty.find((value) => value.name === name);
   return data?.tableColor
 }
+
+export const slugFormatter = (value: string) => {
+  if (!value) return;
+
+  const words = value.split("-");
+  return words.map(value => value[0].toUpperCase() + value.substring(1))
+      .join(" ");
+}

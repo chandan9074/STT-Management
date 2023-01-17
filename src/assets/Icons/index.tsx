@@ -47,8 +47,10 @@ import left_arrow_black from "./left_arrow_black.svg";
 import closeBlue from "./closeBlue.svg";
 import arrow_drop_down_blue_gray from "./arrow_drop_down_blue_gray.svg";
 import lyrics from "./lyrics.png";
-import ArrowRight from "./arrow_right.png"
-import ArrowDropUp from "./arrow_drop_up.svg"
+import ArrowRight from "./arrow_right.png";
+import ArrowDropUp from "./arrow_drop_up.svg";
+import ChevronRight from "./chevron_right.svg";
+
 const Icons = {
   currency,
   admin,
@@ -100,7 +102,8 @@ const Icons = {
   arrow_drop_down_blue_gray,
   lyrics,
   ArrowRight,
-  ArrowDropUp
+  ArrowDropUp,
+  ChevronRight
 };
 
 export default Icons;

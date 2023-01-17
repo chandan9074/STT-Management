@@ -43,7 +43,7 @@ const SideDrawer = () => {
 
     return (
         <div className='px-[9px] py-[15px] z-[100] h-screen w-[218px] bg-white absolute left-[70px]'>
-            <div className='mb-[52px] text-[18px] font-medium'>
+            <div className='mt-[6px] mb-[61px] text-[18px] font-medium'>
                 <span className='text-black '>Collection </span>
                 <span className='text-blue-gray-A50'>Tool</span>
             </div>
