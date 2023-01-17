@@ -1,11 +1,12 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import Layouts from '../../components/Layouts';
 
 const CollectingAudio = () => {
     return (
         // <Layouts.Third>
             <div className=''>
-                this collecting video
+                <Outlet />
             </div>
         // </Layouts.Third>
     );

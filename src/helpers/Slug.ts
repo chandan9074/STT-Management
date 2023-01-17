@@ -13,11 +13,10 @@ export const BILLING_PAYMENT_HISTORY_PATH = "/billing/payment-history";
 
 
 export const TEST = "/test";
-
 export const AUDIO_MANAGEMENT = '/audio-management'
 export const COLLECTING_AUDIO = `collection-audio`;
-export const CHECKING_STATUS = `/checking-status`;
-export const CHECKING = "/checking";
+export const CHECKING = "checking";
+export const CHECKING_STATUS = `checking-status`;
 export const ALL_CHECKED_AUDIOS = "/all-checked-audios";
 export const SENETENCE_LEVEL = "/sentence-level";
 export const WORD_LEVEL = "/word-level";
