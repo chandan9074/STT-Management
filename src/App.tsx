@@ -9,6 +9,7 @@ import * as PATH from "./helpers/Slug";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import Test from "./pages/Test";
+import CollectingAudio from "./pages/Test/CollectingAudio";
 
 function App() {
   useEffect(() => {
@@ -32,8 +33,11 @@ function App() {
           element={<PaymentHistory />}
         />
         <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} />
-        <Route path="/test" element={<Test />} />
         <Route path="*" element={<NotFound />} />
+
+        {/* test */}
+        <Route path="/test" element={<Test />} />
+        <Route path={PATH.COLLECTING_AUDIO} element={<CollectingAudio />} />
       </Routes>
     </BrowserRouter>
   );

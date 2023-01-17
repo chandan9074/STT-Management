@@ -46,6 +46,9 @@ import Kamrupi from "./Kamrupi.svg";
 import left_arrow_black from "./left_arrow_black.svg";
 import closeBlue from "./closeBlue.svg";
 import arrow_drop_down_blue_gray from "./arrow_drop_down_blue_gray.svg";
+import lyrics from "./lyrics.png";
+import ArrowRight from "./arrow_right.png"
+import ArrowDropUp from "./arrow_drop_up.svg"
 const Icons = {
   currency,
   admin,
@@ -95,6 +98,9 @@ const Icons = {
   left_arrow_black,
   closeBlue,
   arrow_drop_down_blue_gray,
+  lyrics,
+  ArrowRight,
+  ArrowDropUp
 };
 
 export default Icons;

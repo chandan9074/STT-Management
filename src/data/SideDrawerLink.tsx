@@ -4,7 +4,8 @@ let SideDrawerLink = [
     {
         name: 'Audio Management',
         // route: '/audio-management',
-        route: PATH.TEST,
+        // route: PATH.TEST,
+        route: PATH.COLLECTING_AUDIO,
         icon: '',
         links: [
             {
