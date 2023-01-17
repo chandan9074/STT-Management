@@ -1,7 +1,8 @@
 import { overTheTimeGData } from "../../../../data/dashboard/overTheTimeGData";
+import { overTheTimeGDT } from "../../../../types/dashboardTypes";
 import Tooltip from "./Tooltip";
 
-const BarChart = () => {
+const BarChart = ({overTheTimeGData}:{overTheTimeGData: overTheTimeGDT}) => {
   const barHeight = 200;
   return (
     <div className="flex justify-between mt-4">
