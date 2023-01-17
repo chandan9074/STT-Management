@@ -111,37 +111,37 @@ const Type2 = () => {
                         style={{ boxShadow: "0px 4px 24px rgba(31, 56, 76, 0.12)" }}
                         className='w-[196px] absolute z-[99999] -left-[135px] bg-white rounded-[8px]'>
                         <div className='px-4 py-3 flex flex-col gap-3'>
-                            <div className='flex gap-3'>
+                            <div className='flex gap-3 hover:bg-blue-gray-05 '>
                                 <img
                                     src={Icons.BorderAll}
                                     alt=""
                                     className='h-[24px] w-[24px]'
                                 />
-                                <p className='text-small font-medium text-blue-gray-80'>Download as Excel</p>
+                                <p className='text-small font-medium text-blue-gray-80 hover:text-ct-blue-60'>Download as Excel</p>
                             </div>
 
-                            <div className='flex gap-3'>
+                            <div className='flex gap-3 hover:bg-blue-gray-05 '>
                                 <img
                                     src={Icons.BrokenImg}
                                     alt=""
                                     className='h-[24px] w-[24px]'
                                 />
-                                <p className='text-small font-medium text-blue-gray-80'>Download as Jpeg</p>
+                                <p className='text-small font-medium text-blue-gray-80 hover:text-ct-blue-60'>Download as Jpeg</p>
                             </div>
 
-                            <div className='flex gap-3'>
+                            <div className='flex gap-3 hover:bg-blue-gray-05 '>
                                 <img
                                     src={Icons.PictureAsPdf}
                                     alt=""
                                     className='h-[24px] w-[24px]'
                                 />
-                                <p className='text-small font-medium text-blue-gray-80'>Download as PDF</p>
+                                <p className='text-small font-medium text-blue-gray-80 hover:text-ct-blue-60'>Download as PDF</p>
                             </div>
 
                         </div>
                         <hr />
                         <div
-                            className='flex gap-3 px-4 py-3'
+                            className='flex gap-3 px-4 py-3 hover:bg-blue-gray-05 '
                         >
                             <img
                                 src={Icons.Print}
@@ -149,7 +149,7 @@ const Type2 = () => {
                                 className='h-[24px] w-[24px]'
                             />
 
-                            <p className='text-small font-medium text-blue-gray-80'>Print</p>
+                            <p className='text-small font-medium text-blue-gray-80 hover:text-ct-blue-60'>Print</p>
                         </div>
                     </div>
                 </div> : ""

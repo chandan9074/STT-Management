@@ -15,3 +15,5 @@ export const GET_ALL_BILLING_PAYMENT_URL = `${REACT_APP_BASE_URL}/payment-histor
 
 // Role List
 export const GET_ROLE_LIST_URL = `${REACT_APP_BASE_URL}/roles-list`;
+// Dashboard
+export const GET_TOTAL_DATA_URL= `${REACT_APP_BASE_URL}/total-data-dashboard`;

@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 import './gaugeType1.css'
 import polygon from '../../../assets/Icons/Polygon1.png'
+import { totalDataResDT, totalDataSpeakerResDT } from '../../../types/dashboardTypes';
 
+interface Props {
+    data: totalDataResDT | undefined
+}
 
-const Type1 = () => {
+const Type1 = ({ data }: Props) => {
     const [openTooltip, setOpenTooltip] = useState<boolean>(false)
     const [openTooltip2, setOpenTooltip2] = useState<boolean>(false)
+    // const [progressDeg, setProgressDeg] = useState<number | undefined>(data?.speaker?.female?.contribution)
+    console.log("female", data?.speaker?.female?.contribution)
+    let progressDeg: number | undefined = (1.8 * 20)
     const MouseEventHandle = () => {
         setOpenTooltip(true)
     }
@@ -22,7 +29,9 @@ const Type1 = () => {
     return (
         <div className="relative mb-[65px]">
             <div className="flex items-center rounded-t-full overflow-y-hidden w-[172px] h-[86px] relative z-[80]">
-                <div className={`male-tt bg-blue-A10 h-[86px] absolute w-[172px] -rotate-[135deg] origin-bottom z-[60]`}
+                <div
+                    style={{ transform: `rotate(-${progressDeg}deg)` }}
+                    className={`male-tt bg-blue-A10 h-[86px] absolute w-[172px] origin-bottom z-[60]`}
                     onMouseOver={MouseEventHandle}
                     onMouseOut={MouseEventHandleOut}
                 />
@@ -57,7 +66,7 @@ const Type1 = () => {
                         <div className="flex bg-black-80 p-4 w-full rounded-xl gap-2 ">
                             <div className="text-white border-r border-dashed my-auto pr-2">
                                 <p className="font-semibold text-small">Male</p>
-                                <p className="text-heading-5 font-medium text-blue-A10">28,118</p>
+                                <p className="text-heading-5 font-medium text-blue-A10">{data?.speaker?.male?.value}</p>
                             </div>
                             <div className="flex text-white">
                                 <p className="text-[56px] font-normal">65</p>
@@ -80,7 +89,7 @@ const Type1 = () => {
                             <div className="flex bg-black-80 p-4 w-full rounded-xl gap-2 ">
                                 <div className="text-white border-r border-dashed my-auto pr-2">
                                     <p className="font-semibold text-small">Female</p>
-                                    <p className="text-heading-5 font-medium text-blue-A10">28,118</p>
+                                    <p className="text-heading-5 font-medium text-blue-A10">{data?.speaker?.female?.value}</p>
                                 </div>
                                 <div className="flex text-white">
                                     <p className="text-[56px] font-normal">35</p>

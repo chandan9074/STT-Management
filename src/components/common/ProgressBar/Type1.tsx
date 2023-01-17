@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface Props {
-    value: number
+    value: number | undefined
 }
 
 interface InerProps {
@@ -11,9 +11,9 @@ interface InerProps {
 
 }
 
-const Type1 = ({value}: Props) => {
+const Type1 = ({ value }: Props) => {
 
-    const ProgressBar = ({bgColor, progress, height}: InerProps) => {
+    const ProgressBar = ({ bgColor, progress, height }: InerProps) => {
 
         const Parentdiv: any = {
             height: height,
@@ -44,7 +44,7 @@ const Type1 = ({value}: Props) => {
             <ProgressBar
                 bgColor="linear-gradient(270deg, #FF24FB 2.01%, #4E2CBE 48.36%, #0093D9 98.4%)"
                 progress={`${value}`}
-                height={12}/>
+                height={12} />
         </div>
     );
 };
