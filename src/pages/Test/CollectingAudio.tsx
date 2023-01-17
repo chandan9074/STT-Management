@@ -3,11 +3,11 @@ import Layouts from '../../components/Layouts';
 
 const CollectingAudio = () => {
     return (
-        <Layouts.Third>
+        // <Layouts.Third>
             <div className=''>
                 this collecting video
             </div>
-        </Layouts.Third>
+        // </Layouts.Third>
     );
 };
 

@@ -1,12 +1,15 @@
 import React from 'react';
 import Layouts from '../components/Layouts';
+import { Outlet } from 'react-router-dom';
 
 const Test = () => {
     return (
         <Layouts.Third>
-            <div className='h-full'>
+            {/* <div className='h-full'>
                 this is third
-            </div>
+            </div> */}
+            {/* {children} */}
+            <Outlet />
         </Layouts.Third>
     );
 };

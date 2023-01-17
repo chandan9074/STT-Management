@@ -37,9 +37,10 @@ function App() {
         <Route path="*" element={<NotFound />} />
 
         {/* test */}
-        <Route path="/test" element={<Test />} />
+        <Route path="/test" element={<Test />} >
         <Route path={PATH.COLLECTING_AUDIO} element={<CollectingAudio />} />
         <Route path={PATH.UPLOAD_AUDION_VIDEO_PATH} element={<UploadAudioVideo />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

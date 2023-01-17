@@ -3,11 +3,11 @@ import Layouts from '../../components/Layouts';
 
 const UploadAudioVideo = () => {
     return (
-        <Layouts.Third>
+        // <Layouts.Third>
             <div className=''>
-                this collecting video
+                upload audio video
             </div>
-        </Layouts.Third>
+        // </Layouts.Third>
 
     );
 };

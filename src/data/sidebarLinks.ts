@@ -31,8 +31,8 @@ let sidebarMenu = {
       menu_icon: Icons.songDashboard,
       type_multi: null,
       // path: PATH.AUDIO_PATH,
-      path: PATH.COLLECTING_AUDIO,
-      // path: PATH.TEST,
+      // path: PATH.COLLECTING_AUDIO,
+      path: `${PATH.TEST}/${PATH.COLLECTING_AUDIO}`,
       permissions: [Permission.ALL],
     },
     {

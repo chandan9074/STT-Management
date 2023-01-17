@@ -32,10 +32,11 @@ const SideDrawer = () => {
         subRoute: ''
     });
 
-    console.log('##########', location.pathname.split('/')[1]);
+    console.log('##########', location.pathname.split('/')[2]);
 
     useEffect(() => {
         const _data = SideDrawerLink.filter(m => m.route.split('/')[1] === location.pathname.split('/')[1]);
+        
         if (_data) {
             setNav(_data[0]);
         }
@@ -61,9 +62,9 @@ const SideDrawer = () => {
                         nav?.links &&
                         nav?.links?.map((m, i) => (
                             <div key={i} className='mb-[12px]'>
-                                <div className={`${m.route === location.pathname ? 'sideDrawerActiveNav' : 'sideDrawerDeactiveNav'}`}>
+                                <div className={`${m.route === location.pathname.split('/')[2] ? 'sideDrawerActiveNav' : 'sideDrawerDeactiveNav'}`}>
                                     <div className='flex items-center gap-x-[6px]'>
-                                        <div className={`h-[6px] w-[6px] ${m.route === location.pathname ? 'bg-secondary-blue-50' : 'bg-blue-gray-A50 '} rounded-[50%]`} />
+                                        <div className={`h-[6px] w-[6px] ${m.route === location.pathname.split('/')[2] ? 'bg-secondary-blue-50' : 'bg-blue-gray-A50 '} rounded-[50%]`} />
                                         <Link to={m.route} >
                                             <h1 className=''>
                                                 {m.name}
@@ -73,8 +74,8 @@ const SideDrawer = () => {
                                     {
                                         navClickItem.mainRoute === m.route ?
                                             <button onClick={() => setNavClickItem({
-                                                 mainRoute: '',
-                                                 subRoute: ''
+                                                mainRoute: '',
+                                                subRoute: ''
                                             })}>
                                                 <img src={Icons.ArrowDropUp} className='w-[8px] h-[5px]' alt="" />
                                             </button> :
@@ -87,8 +88,6 @@ const SideDrawer = () => {
                                                 </button> :
                                                 ''
                                     }
-
-
                                 </div>
 
 
