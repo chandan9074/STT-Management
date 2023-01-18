@@ -50,6 +50,9 @@ import lyrics from "./lyrics.png";
 import ArrowRight from "./arrow_right.png";
 import ArrowDropUp from "./arrow_drop_up.svg";
 import ChevronRight from "./chevron_right.svg";
+import Link from "./link.svg";
+import AddLink from "./add_link.svg";
+import Backup from "./backup.svg";
 
 const Icons = {
   currency,
@@ -103,7 +106,10 @@ const Icons = {
   lyrics,
   ArrowRight,
   ArrowDropUp,
-  ChevronRight
+  ChevronRight,
+  Link, 
+  AddLink,
+  Backup
 };
 
 export default Icons;

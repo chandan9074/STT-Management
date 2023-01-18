@@ -13,6 +13,7 @@ import CollectingAudio from "./pages/Test/CollectingAudio";
 import UploadAudioVideo from "./pages/Test/UploadAudioVideo";
 import Checking from "./pages/Test/CollectiongAudio/Checking";
 import CheckingStatus from "./pages/Test/CollectiongAudio/Checking/CheckingStatus";
+import Script from "./pages/Script";
 
 function App() {
   useEffect(() => {
@@ -37,6 +38,8 @@ function App() {
         />
         <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} />
         <Route path="*" element={<NotFound />} />
+
+        <Route path={PATH.SCRIPT} element={<Script />} />
 
         {/* test */}
         <Route path="/test" element={<Test />} >

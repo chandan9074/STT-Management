@@ -67,6 +67,12 @@ let SideDrawerLink = [
                 links: []
             }
         ]
-    }
+    },
+    // {
+    //     name: 'Script',
+    //     route: PATH.SCRIPT,
+    //     icon: '',
+    //     link: []
+    // }
 ]
 export default SideDrawerLink;

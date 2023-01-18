@@ -27,6 +27,10 @@
   .sideDrawerDeactiveNav {
     @apply  text-blue-gray-A50 rounded-[20px] px-[10px] py-[5px] flex justify-between items-center
   }
+
+  .comboBoxLabel {
+    @apply font-medium text-blue-gray-80
+  }
 }
 
 body {

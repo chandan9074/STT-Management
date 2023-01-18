@@ -33,7 +33,7 @@ const SideDrawer = () => {
 
     useEffect(() => {
         const _data = SideDrawerLink.filter(m => m.route.split('/')[1] === location.pathname.split('/')[1]);
-
+        
         if (_data) {
             setNav(_data[0]);
         }
@@ -98,7 +98,7 @@ const SideDrawer = () => {
                                 {
                                     m?.links &&
                                     m?.links?.map((n, j) => (
-                                        <div className={`my-[12px] ${navClickItem.mainRoute === m.route ? "block" : 'hidden'} pl-[12px]`}>
+                                        <div key={j} className={`my-[12px] ${navClickItem.mainRoute === m.route ? "block" : 'hidden'} pl-[12px]`}>
                                             
                                             <div className={`${(n.route === location.pathname.split('/')[3] && location.pathname.split('/')?.length) === 4 ? 'sideDrawerActiveNav' : 'sideDrawerDeactiveNav'}`}>
                                                 <div className='flex items-center gap-x-[6px] w-[100%]'>
@@ -137,7 +137,7 @@ const SideDrawer = () => {
                                             {
                                                 n?.links &&
                                                 n?.links?.map((value, k) => (
-                                                    <div className={`${navClickItem.subRoute === n.route ? "block" : 'hidden'} pl-[16px] my-[12px]`}>
+                                                    <div key={k} className={`${navClickItem.subRoute === n.route ? "block" : 'hidden'} pl-[16px] my-[12px]`}>
                                                         <div className={`${value.route === location.pathname.split('/')[4] ? 'sideDrawerActiveNav' : 'sideDrawerDeactiveNav'}`}>
                                                             <Link className='w-full' to={`${nav.route}/${m.route}/${n.route}/${value.route}`}>
                                                                 <h1 >{value?.name}</h1>
