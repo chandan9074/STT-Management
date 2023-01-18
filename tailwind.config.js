@@ -43,7 +43,8 @@ module.exports = {
         "bottom-light-blue-10":
           "0px 1px 2px rgba(31, 56, 76, 0.06), 0px 1px 3px rgba(31, 56, 76, 0.1)",
         "bottom-light-blue-20": "0px 4px 24px rgba(31, 56, 76, 0.12)",
-        'light-orange-shadow': "0px 2px 18px rgba(230, 206, 190, 0.12)"
+        "light-orange-shadow": "0px 2px 18px rgba(230, 206, 190, 0.12)",
+        "light-gray-3": "0px 4px 24px 1px rgba(31, 56, 76, 0.08)",
       },
       colors: {
         "primary-ct-blue-60": "#2C79BE",
@@ -86,10 +87,10 @@ module.exports = {
         "ct-blue-05": "#F4F7FA",
         "ct-blue-03": "#FEFEFE",
         "ct-blue-medium": "#157AFF",
-        "ct-blue-90-88%": "#1F384C",
-        "ct-blue-90-70%": "#1F384C",
-        "ct-blue-90-68%": "#1F384C",
-        "ct-blue-90-55%": "#1F384C",
+        "ct-blue-90-88%": "rgba(31, 56, 76, 0.88)",
+        "ct-blue-90-70%": "rgba(31, 56, 76, 0.7)",
+        "ct-blue-90-68%": "rgba(31, 56, 76, 0.68)",
+        "ct-blue-90-55%": "rgba(31, 56, 76, 0.55)",
         "blue-gray-85": "#323640",
         "blue-gray-80": "#464E5F",
         "blue-gray-75": "#5F6B7D",
@@ -155,8 +156,8 @@ module.exports = {
         "bright-turquoise": "#42F5D5",
         "your-pink": "#FFCBCB",
         "pale-sky": "#667487",
-        "feijao":"#94D676",
-        "masala":"#453939"
+        feijao: "#94D676",
+        masala: "#453939",
       },
     },
   },
