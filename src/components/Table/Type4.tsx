@@ -1,7 +1,10 @@
-import { Divider, Radio, Table } from 'antd';
-import React, { useState } from 'react';
-import './type2BillingTable.css'
+import { Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
+import React, { useState } from 'react';
+import Icons from '../../assets/Icons';
+import { CustomModal } from '../common/CustomModal';
+import { SideDrawer } from '../common/SideDrawer';
+import './type2BillingTable.css';
 
 interface DataType {
     key: React.Key;
@@ -10,21 +13,6 @@ interface DataType {
     address: string;
 }
 
-const columns: ColumnsType<DataType> = [
-    {
-        title: 'Name',
-        dataIndex: 'name',
-        render: (text: string) => <a>{text}</a>,
-    },
-    {
-        title: 'Age',
-        dataIndex: 'age',
-    },
-    {
-        title: 'Address',
-        dataIndex: 'address',
-    },
-];
 
 const data: DataType[] = [
     {
@@ -65,21 +53,65 @@ const rowSelection = {
 };
 
 const Type4 = () => {
-    const [selectionType, setSelectionType] = useState<'checkbox' | 'radio'>('checkbox');
+    const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
+    const [open, setOpen] = useState(false);
+    const [drawerData, setDrawerData] = useState<any>();
+    const [modalOpen, setModalOpen] = useState<boolean>(false)
+
+    const showDrawer = (key: any) => {
+        setOpen(true);
+        setDrawerData(key)
+    };
+
+
+    const columns: ColumnsType<DataType> = [
+        {
+            title: `${"Data type".toLocaleUpperCase()}`,
+            dataIndex: 'name',
+            // render: (text: string) => <>{text}</>,
+        },
+        {
+            title: `${"ID".toLocaleUpperCase()}`,
+            dataIndex: 'age',
+        },
+        {
+            title: `${"distribution Source".toLocaleUpperCase()}`,
+            dataIndex: 'address',
+        },
+        {
+            title: `${"Script title".toLocaleUpperCase()}`,
+            dataIndex: 'address',
+        },
+        {
+            title: `${"Description".toLocaleUpperCase()}`,
+            dataIndex: 'address',
+        },
+        {
+            title: `${"Script Domain".toLocaleUpperCase()}`,
+            dataIndex: 'address',
+        },
+        {
+            title: `${"Details".toLocaleUpperCase()}`,
+            dataIndex: 'Details',
+            align: 'center',
+            render: (_, record: { key: React.Key }) => (
+                <>
+
+                    <div className='flex w-full justify-center items-center'>
+                        <img
+                            onClick={() => showDrawer(record)}
+                            className='w-[14px] h-[14px] cursor-pointer'
+                            src={Icons.open_in_new}
+                            alt="" />
+                    </div>
+
+                </>)
+        },
+    ];
+
 
     return (
         <div>
-            <Radio.Group
-                onChange={({ target: { value } }) => {
-                    setSelectionType(value);
-                }}
-                value={selectionType}
-            >
-                <Radio value="checkbox">Checkbox</Radio>
-                <Radio value="radio">radio</Radio>
-            </Radio.Group>
-
-            <Divider />
 
             <Table
                 rowSelection={{
@@ -90,7 +122,17 @@ const Type4 = () => {
                 dataSource={data}
                 pagination={false}
             />
-        </div>
+
+            <SideDrawer.Type1 open={open} setOpen={setOpen} drawerData={drawerData} />
+
+
+            <button
+                onClick={() => setModalOpen(true)}
+            >Open modal</button>
+
+            <CustomModal.Type1 open={modalOpen} setOpen={setModalOpen} />
+
+        </div >
     );
 };
 
