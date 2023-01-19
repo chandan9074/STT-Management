@@ -70,13 +70,16 @@ export type lastBillingParamsDT = {
   pageSize: number;
   module: string;
   role: string;
+  date?: string;
 };
 export type lastBillingsDT = {
   paid: number;
   dateOfPayment: string;
   role: string;
   type: string;
-  numberOfBills:number
+  numberOfBills:number;
+  payable: boolean;
+  amount: number;
   billingInfo: lastBillingInfoDT[];
 };
 

@@ -46,6 +46,15 @@ import Kamrupi from "./Kamrupi.svg";
 import left_arrow_black from "./left_arrow_black.svg";
 import closeBlue from "./closeBlue.svg";
 import arrow_drop_down_blue_gray from "./arrow_drop_down_blue_gray.svg";
+import lyrics from "./lyrics.png";
+import ArrowRight from "./arrow_right.png";
+import ArrowDropUp from "./arrow_drop_up.svg";
+import ChevronRight from "./chevron_right.svg";
+import Link from "./link.svg";
+import AddLink from "./add_link.svg";
+import Backup from "./backup.svg";
+import Add from "./add.svg";
+
 const Icons = {
   currency,
   admin,
@@ -95,6 +104,14 @@ const Icons = {
   left_arrow_black,
   closeBlue,
   arrow_drop_down_blue_gray,
+  lyrics,
+  ArrowRight,
+  ArrowDropUp,
+  ChevronRight,
+  Link, 
+  AddLink,
+  Backup, 
+  Add
 };
 
 export default Icons;
