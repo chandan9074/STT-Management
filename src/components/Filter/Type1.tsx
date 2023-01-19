@@ -2,9 +2,22 @@ import React, { useState } from "react";
 import Icons from "../../assets/Icons";
 import { FilterDT } from "../../types/script";
 
+type filterListDT = {
+  dataType: string[];
+  distributionSource: string[];
+  domain: string[];
+  subdomain: string[];
+};
+
 const Type1 = ({ filterData }: { filterData: FilterDT }) => {
   const [open, setOpen] = useState(true);
   const [currentState, setCurrentState] = useState<string>();
+  const [filterList, setFilterList] = useState<filterListDT>({
+    dataType: [],
+    distributionSource: [],
+    domain: [],
+    subdomain: [],
+  });
   return (
     <div className="relative flex justify-end">
       <button
@@ -25,52 +38,124 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
             </h3>
             <img src={Icons.CloseIconButton} alt="" />
           </div>
-          <div
-            className={`px-5 duration-200 ${
-              currentState === "dataType" ? "bg-blue-gray-05" : "bg-white"
-            }`}
-          >
-            <button
-              onClick={() =>
-                currentState === "dataType"
-                  ? setCurrentState("")
-                  : setCurrentState("dataType")
-              }
-              className="flex items-center py-2 w-full"
+          {[1, 2].map((item, dataIndex) => (
+            <div
+              className={`px-5 duration-200 ${
+                currentState ===
+                `${dataIndex === 0 ? "dataType" : "distributionSource"}`
+                  ? "bg-blue-gray-05"
+                  : "bg-white"
+              }`}
             >
-              {currentState === "dataType" ? (
-                <img
-                  src={Icons.dark_up_arrow}
-                  alt=""
-                  className="animate-fadeIn"
-                />
-              ) : (
-                <img
-                  src={Icons.dark_right_arrow}
-                  alt=""
-                  className="animate-fadeIn"
-                />
-              )}
-              <h6 className="text-small text-blue-gray-80 font-medium mb-0 ml-2">
-                Data Type
-              </h6>
-            </button>
-            <div className="flex items-center gap-x-2 pb-5 pt-3">
-              {filterData.dataType.map((item, index) => (
-                <button className="py-2 px-3 rounded-full bg-white mb-0 text-small font-medium text-blue-gray-75">
-                  {item}
+              <div className="flex items-center justify-between py-2 w-full">
+                <button
+                  onClick={() =>
+                    dataIndex === 0
+                      ? currentState === "dataType"
+                        ? setCurrentState("")
+                        : setCurrentState("dataType")
+                      : currentState === "distributionSource"
+                      ? setCurrentState("")
+                      : setCurrentState("distributionSource")
+                  }
+                  className="flex items-center w-full mr-5"
+                >
+                  {currentState ===
+                  `${dataIndex === 0 ? "dataType" : "distributionSource"}` ? (
+                    <img
+                      src={Icons.dark_up_arrow}
+                      alt=""
+                      className="animate-fadeIn"
+                    />
+                  ) : (
+                    <img
+                      src={Icons.dark_right_arrow}
+                      alt=""
+                      className="animate-fadeIn"
+                    />
+                  )}
+                  <h6 className="text-small text-blue-gray-80 font-medium mb-0 ml-2">
+                    {dataIndex === 0 ? "Data Source" : "Distribution Source"}{" "}
+                    {filterList[
+                      dataIndex === 0 ? "dataType" : "distributionSource"
+                    ][0] &&
+                      currentState !==
+                        `${
+                          dataIndex === 0 ? "dataType" : "distributionSource"
+                        }` && (
+                        <span className="animate-fadeIn text-xs font-medium text-ct-blue-60 ml-3">
+                          {
+                            filterList[
+                              dataIndex === 0
+                                ? "dataType"
+                                : "distributionSource"
+                            ][0]
+                          }
+                        </span>
+                      )}
+                  </h6>
                 </button>
-              ))}
+                {currentState ===
+                  `${dataIndex === 0 ? "dataType" : "distributionSource"}` && (
+                  <button
+                    onClick={() =>
+                      dataIndex === 0
+                        ? setFilterList({ ...filterList, dataType: [] })
+                        : setFilterList({
+                            ...filterList,
+                            distributionSource: [],
+                          })
+                    }
+                    className="text-xxs font-medium text-ct-blue-60 animate-fadeIn"
+                  >
+                    Reset
+                  </button>
+                )}
+              </div>
+              <div
+                className={`flex items-center gap-x-2 pb-5 pt-3 animate-fadeIn ${
+                  currentState ===
+                  `${dataIndex === 0 ? "dataType" : "distributionSource"}`
+                    ? "block"
+                    : "hidden"
+                }`}
+              >
+                {filterData[
+                  dataIndex === 0 ? "dataType" : "distributionSource"
+                ].map((item, index) => (
+                  <button
+                    onClick={() =>
+                      dataIndex === 0
+                        ? setFilterList({ ...filterList, dataType: [item] })
+                        : setFilterList({
+                            ...filterList,
+                            distributionSource: [item],
+                          })
+                    }
+                    className={`py-1.5 px-3 flex items-center border rounded-full duration-200 bg-white mb-0 text-small font-medium text-blue-gray-75 ${
+                      filterList[
+                        dataIndex === 0 ? "dataType" : "distributionSource"
+                      ][0] === item
+                        ? "bg-secondary-blue-50 bg-opacity-[0.12] border-secondary-blue-50"
+                        : "border-white"
+                    }`}
+                  >
+                    {filterList[
+                      dataIndex === 0 ? "dataType" : "distributionSource"
+                    ][0] === item && (
+                      <img
+                        src={Icons.CorrectIcon}
+                        alt=""
+                        className="w-[14px] h-[14px] mr-1.5 animate-fadeIn"
+                      />
+                    )}
+                    {item}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
-          <div className="px-5">
-            <button className="flex items-center py-2 w-full">
-              <img src={Icons.dark_right_arrow} alt="" />
-              <h6 className="text-small text-blue-gray-80 font-medium mb-0 ml-2">
-                Distribution Source
-              </h6>
-            </button>
-          </div>
+          ))}
+
           <div className="px-5">
             <button className="flex items-center py-2 w-full">
               <img src={Icons.dark_right_arrow} alt="" />
@@ -80,7 +165,13 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
             </button>
           </div>
           <div className="px-5 mb-3">
-            <button className="flex items-center py-2 w-full">
+            <button
+              className={`flex items-center py-2 w-full ${
+                filterList.domain.length > 0
+                  ? "cursor-pointer"
+                  : "cursor-not-allowed"
+              }`}
+            >
               <img src={Icons.dark_right_arrow} alt="" />
               <h6 className="text-small text-blue-gray-80 font-medium mb-0 ml-2">
                 Subdomain
