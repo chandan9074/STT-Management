@@ -213,7 +213,7 @@ const onHandleDisburse = () => {
          {
           lastBillings?.payable &&
           <div>
-            <button onClick={() => onHandleDisburse()} className="py-[8px] px-[16px] rounded-[6px] bg-primary-ct-magenta-60 text-white flex items-center gap-x-[4px]">
+            <button onClick={() => onHandleDisburse()} className="text-small py-[8px] pl-[16px] pr-[24px] rounded-[6px] bg-primary-ct-magenta-60 text-white flex items-center gap-x-[4px]">
             <img src={Icons.Add} className='w-5 h-5' alt="" />
             Disburse
             </button>

@@ -1,11 +1,55 @@
-.script-form .source-reference .ant-upload-wrapper .ant-upload-list {
-
-    /* background-color: white ; */
+.script-form .source-reference .file-upload-hidden .ant-upload-wrapper .ant-upload-list {
+    background-color: #F4F7FA !important;
+    padding: 8px 16px 14px 16px;
+    border-radius: 4px;
 }
 
 .ant-upload-wrapper .ant-upload-drag:not(.ant-upload-disabled):hover {
     border: none !important;
 }
-.ant-upload-wrapper .ant-upload-drag:not(.ant-upload-disabled) {
+
+.file-upload .ant-upload-wrapper .ant-upload-drag:not(.ant-upload-disabled) {
     border: none !important;
 }
+
+.file-upload-hidden .ant-upload-wrapper .ant-upload-drag:not(.ant-upload-disabled) {
+    display: none !important;
+}
+
+.MuiInput-input {
+    color: #464E5F !important;
+    font-size: 19px !important;
+}
+
+.button,
+optgroup,
+select,
+textarea {
+    color: #464E5F !important;
+    font-size: 19px !important;
+}
+
+.MuiAutocomplete-input {
+    font-size: 14px !important;
+    color: #464E5F !important;
+    font-weight: 600 !important;
+}
+
+.MuiAutocomplete-option[aria-selected="true"] {
+    background-color: #E1EFFE !important;
+}
+
+.MuiAutocomplete-option[aria-selected="true"]::after {
+    background-image: url('../../../../assets/Icons/check.png');
+    margin-left: auto;
+    background-size: 15px 10px;
+    width: 15px;
+    height: 10px;
+    content: "";
+}
+
+
+/* 
+ .css-gdh49b-MuiAutocomplete-listbox .MuiAutocomplete-option.Mui-focused {
+
+ } */

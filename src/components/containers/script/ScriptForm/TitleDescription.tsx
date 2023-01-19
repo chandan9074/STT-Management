@@ -9,18 +9,19 @@ const TitleDescription = () => {
                 style={{
                     width: '100%',
                     marginBottom: '14px',
-                
+
                 }}
                 id="outlined-basic" label="Title" variant="standard" />
 
             <TextareaAutosize
-            className='writeScriptfield'
+                className='writeScriptfield'
                 aria-label="minimum height"
                 minRows={4}
                 placeholder="Write Script"
-                style={{ 
+                style={{
                     width: '100%',
-                 }}
+                    border: 'none'
+                }}
             />
 
         </div>
