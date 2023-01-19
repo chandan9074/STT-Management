@@ -13,7 +13,7 @@ type ToolTipProps = {
 const ToolTip = ({ currentData, barHeight, item, i, maxBar }: ToolTipProps) => {
   return (
     <div
-      className={`rounded-[12px] px-5 pt-4 pb-6 bg-tooltip-bg absolute ${
+      className={`rounded-[12px] px-5 pt-5 pb-6 bg-tooltip-bg absolute ${
         currentData.yearData.length - 2 <= i &&
         Math.round(barHeight / 2) >
           Math.round(
@@ -26,7 +26,7 @@ const ToolTip = ({ currentData, barHeight, item, i, maxBar }: ToolTipProps) => {
               (barHeight * item.disbursed[maxBar]?.amount) /
                 currentData?.maxAmount
             )
-          ? "right-10 -top-3"
+          ? "right-10 -top-7"
           : ""
       } z-[90] hidden group-hover:block animate-fadeIn`}
       style={{
