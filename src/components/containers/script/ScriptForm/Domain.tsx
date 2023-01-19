@@ -9,17 +9,19 @@ const Domain = () => {
     const [inputValue, setInputValue] = React.useState('');
     const [domain, setDomain] = useState<string>('');
 
-    const onHandleChange = (e: any, value: any) => {        
+    const onHandleChange = (e: any, value: any) => {
+
         if (e === 'domain') {
-            console.log('%%%%', value); 
             setDomain(value);
-        } else if (e === 'sub-domain') {
-            console.log('sub domain');
+        }
+        if (value === null) {
+
+            setDomain('');
+        }
+        else if (e === 'sub-domain') {
 
         }
     }
-
-    console.log('value-------', domain);
 
 
     return (
@@ -54,7 +56,7 @@ const Domain = () => {
                             id="sub-domain"
                             style={{ width: '100%' }}
                             options={scriptSubDomain}
-                            // disabled={domain !== '' ? true : false}
+                            disabled={domain === ''}
                             onChange={(event: any, newValue: string | null) => {
                                 onHandleChange('sub-domain', newValue);
                             }}

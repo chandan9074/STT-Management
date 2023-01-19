@@ -11,17 +11,18 @@ import TextField from '@mui/material/TextField';
 import { scriptSourceType } from '../../../../data/Script/Domain';
 import { styled, lighten, darken } from '@mui/system';
 
+
 const GroupHeader = styled('div')(({ theme }) => ({
     position: 'sticky',
     top: '-8px',
     padding: '4px 10px',
     color: theme.palette.primary.main,
     backgroundColor:
-      theme.palette.mode === 'light'
-        ? lighten(theme.palette.primary.light, 0.85)
-        : darken(theme.palette.primary.main, 0.8),
-  }));
-  
+        theme.palette.mode === 'light'
+            ? lighten(theme.palette.primary.light, 0.85)
+            : darken(theme.palette.primary.main, 0.8),
+}));
+
 
 
 const SourceReference = () => {
@@ -29,7 +30,7 @@ const SourceReference = () => {
 
     useEffect(() => {
         console.log('file', file?.status);
-    }, [file])    
+    }, [file])
     const props: UploadProps = {
         name: 'file',
         multiple: true,
@@ -42,7 +43,7 @@ const SourceReference = () => {
             }
             if (status === 'done') {
                 message.success(`${info.file.name} file uploaded successfully.`);
-                
+
             } else if (status === 'error') {
                 message.error(`${info.file.name} file upload failed.`);
             }
@@ -51,9 +52,11 @@ const SourceReference = () => {
             console.log('Dropped files', e.dataTransfer.files);
         },
     };
-    
+
     return (
         <div className='mb-[28px] source-reference'>
+                                
+
             <h1 className='mb-[12px] text-blue-gray-80 text-[14px] font-medium'>source reference</h1>
 
             <div className=' border-[1px] border-[#D6E5F5] rounded-[7px] mb-[28px]'>
@@ -85,7 +88,7 @@ const SourceReference = () => {
                                     //     onHandleChange(event, newValue);
                                     // }}
                                     renderInput={(params) => (
-                                        
+
                                         <TextField required={true} {...params}
                                             label={<span className='comboBoxLabel'>Source Type</span>}
 
@@ -97,16 +100,19 @@ const SourceReference = () => {
 
                         <Grid item xs={6}>
                             <div>
-                                <TextField 
-                                style={{width: '100%'}}
-                                InputProps={{ 
-                                    style: {
-                                        color: '#464E5F',
-                                        fontWeight: '600',
-                                        fontSize: '15px'
-                                    }
-                                 }} 
-                                 id="outlined-basic" label="Source URL" variant="outlined" />
+
+                                    <TextField
+                                        style={{ width: '100%' }}
+                                        InputProps={{
+                                            style: {
+                                                color: '#464E5F',
+                                                fontWeight: '600',
+                                                fontSize: '15px'
+                                            }
+                                        }}
+                                        id="outlined-basic" label="Source URL" variant="outlined" />
+
+
                             </div>
                         </Grid>
                     </Grid>
@@ -133,26 +139,26 @@ const SourceReference = () => {
                 </Grid>
 
                 <div className={`bg-white w-[100%] ${(file === undefined || file?.status === 'removed') ? 'file-upload' : 'file-upload-hidden '}`} >
-                  <div className={`${(file === undefined || file?.status === 'removed') ? '' : 'py-[24px] px-[16px]'}`}>
-                  <Dragger
-                        style={{
-                            backgroundColor: 'white',
-                            borderRadius: 'none'
-                        }}
-                        {...props}>
-                        <div className={`
+                    <div className={`${(file === undefined || file?.status === 'removed') ? '' : 'py-[24px] px-[16px]'}`}>
+                        <Dragger
+                            style={{
+                                backgroundColor: 'white',
+                                borderRadius: 'none'
+                            }}
+                            {...props}>
+                            <div className={`
                         h-[114px] ant-upload-drag-icon flex flex-col justify-center items-center gap-y-[8px]`}>
-                            <div className='border-[1px] border-ct-blue-30 w-[160px] h-[36px] px-[18px] py-[8px] rounded-[6px] flex justify-center items-center gap-x-[5px]'>
-                                <img src={Icons.Backup} alt="" />
-                                <h1 className='text-ct-blue-80 text-[14px] font-medium'>Upload Script</h1>
+                                <div className='border-[1px] border-ct-blue-30 w-[160px] h-[36px] px-[18px] py-[8px] rounded-[6px] flex justify-center items-center gap-x-[5px]'>
+                                    <img src={Icons.Backup} alt="" />
+                                    <h1 className='text-ct-blue-80 text-[14px] font-medium'>Upload Script</h1>
+                                </div>
+                                <div>
+                                    <span className='text-[14px] font-medium text-blue-gray-90'>Click to upload </span>
+                                    <span className='text-[14px] font-medium text-blue-gray-75'>or Drag and Drop</span>
+                                </div>
                             </div>
-                            <div>
-                                <span className='text-[14px] font-medium text-blue-gray-90'>Click to upload </span>
-                                <span className='text-[14px] font-medium text-blue-gray-75'>or Drag and Drop</span>
-                            </div>
-                        </div>
-                    </Dragger>
-                  </div>
+                        </Dragger>
+                    </div>
                 </div>
             </div>
         </div>

@@ -10,6 +10,19 @@ import SourceReference from './SourceReference';
 import TitleDescription from './TitleDescription';
 import ActionButton from './ActionButton';
 import './ScriptForm.css';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme({
+
+    components: {
+        MuiFormLabel: {
+            styleOverrides: {
+                asterisk: { color: "red" },
+            },
+        },
+    },
+
+})
 
 const distributionList = ['Read', 'Lecture', 'Command', 'Miscellaneous']
 
@@ -17,6 +30,7 @@ const ScriptForms = () => {
 
     return (
         <div className='w-full flex justify-center script-form'>
+            <ThemeProvider theme={theme}>
             <div className='bg-white-gray-45 w-[885px]'>
                 <form>
                     <div className='px-[53px] py-[24px]'>
@@ -33,6 +47,7 @@ const ScriptForms = () => {
                 </form>
 
             </div>
+            </ThemeProvider>
         </div>
     );
 };

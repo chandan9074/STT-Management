@@ -22,11 +22,17 @@ const DistributionSource = () => {
 
             <div className='flex'>
                 <div className='w-[580px]'>
-                    <h1 className='text-[14px] font-medium text-blue-gray-75'>Distribution Source*</h1>
+                    {/* <h1 className='text-[14px] font-medium text-blue-gray-75'>Distribution Source*</h1> */}
 
                     <div>
                         <FormControl>
-                            {/* <FormLabel id="demo-controlled-radio-buttons-group">Gender</FormLabel> */}
+                            <FormLabel style={{
+                                color: '#5F6B7D',
+                                fontWeight: '600',
+                                fontSize: '14px'
+                            }}
+                            //  id="demo-controlled-radio-buttons-group"
+                            >Distribution Source</FormLabel>
                             <RadioGroup
                                 row
                                 // aria-labelledby="demo-controlled-radio-buttons-group"
@@ -36,7 +42,10 @@ const DistributionSource = () => {
                             >
                                 {
                                     distributionList?.map((value, i) => (
-                                        <FormControlLabel value={value} control={<Radio />} label={value} />
+                                        <FormControlLabel
+                                            value={value}
+                                            control={<Radio required={true} />}
+                                            label={value} />
                                     ))
                                 }
                             </RadioGroup>
@@ -47,7 +56,7 @@ const DistributionSource = () => {
                     <FormControl>
                         <h1 className='text-[14px] font-medium text-blue-gray-75 pl-[9px]'>Age</h1>
 
-                        <Checkbox  />
+                        <Checkbox />
                     </FormControl>
                 </div>
             </div>
