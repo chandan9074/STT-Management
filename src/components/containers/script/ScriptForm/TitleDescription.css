@@ -1,3 +1,7 @@
 /* .title-descrioption .MuiOutlinedInput-notchedOutline {
     border: none !important;
 } */
+
+.writeScriptfield:hover {
+    border: none !important;
+}

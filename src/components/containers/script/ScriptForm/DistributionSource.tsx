@@ -4,6 +4,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import { Checkbox } from '@mui/material';
 
 const distributionList = ['Read', 'Lecture', 'Command', 'Miscellaneous']
 
@@ -44,32 +45,12 @@ const DistributionSource = () => {
                 </div>
                 <div>
                     <FormControl>
-                        <h1 className='text-[14px] font-medium text-blue-gray-75'>Age</h1>
+                        <h1 className='text-[14px] font-medium text-blue-gray-75 pl-[9px]'>Age</h1>
 
-                        {/* <FormLabel id="demo-controlled-radio-buttons-group">Gender</FormLabel> */}
-                        <RadioGroup
-                            aria-required
-                            //   aria-labelledby="demo-controlled-radio-buttons-group"
-                            name="distribution-source-group"
-                            // value={value}
-                            onChange={handleChange}
-                        >
-
-                            <FormControlLabel value='child' control={<Radio />} label='child' />
-
-                        </RadioGroup>
+                        <Checkbox  />
                     </FormControl>
                 </div>
             </div>
-
-            {/* <Grid container spacing={2}>
-                  <Grid item xs={8}>
-                      <div className='bg-red-500'>kkk</div>
-                  </Grid>
-                  <Grid item xs={4}>
-                  <div className='bg-red-500'>kkk</div>
-                  </Grid>
-              </Grid> */}
         </div>
     );
 };

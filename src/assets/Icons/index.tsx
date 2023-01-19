@@ -53,6 +53,7 @@ import ChevronRight from "./chevron_right.svg";
 import Link from "./link.svg";
 import AddLink from "./add_link.svg";
 import Backup from "./backup.svg";
+import Add from "./add.svg";
 
 const Icons = {
   currency,
@@ -109,7 +110,8 @@ const Icons = {
   ChevronRight,
   Link, 
   AddLink,
-  Backup
+  Backup, 
+  Add
 };
 
 export default Icons;

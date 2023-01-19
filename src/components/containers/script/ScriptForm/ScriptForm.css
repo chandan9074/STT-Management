@@ -1,0 +1,11 @@
+.script-form .source-reference .ant-upload-wrapper .ant-upload-list {
+
+    /* background-color: white ; */
+}
+
+.ant-upload-wrapper .ant-upload-drag:not(.ant-upload-disabled):hover {
+    border: none !important;
+}
+.ant-upload-wrapper .ant-upload-drag:not(.ant-upload-disabled) {
+    border: none !important;
+}

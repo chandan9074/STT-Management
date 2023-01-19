@@ -5,11 +5,7 @@ import { slugFormatter } from '../../helpers/Utils';
 
 const Secondary = () => {
 
-  const location = useLocation();
-
-  console.log('---', location.pathname.split('/').length-1);
-  
-
+  const location = useLocation();  
 
   return (
     <div className="flex justify-between items-center py-4 pr-4 pl-[85px] shadow-md fixed w-full z-[90] bg-white">

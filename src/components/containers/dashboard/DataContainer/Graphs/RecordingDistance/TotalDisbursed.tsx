@@ -12,7 +12,7 @@ const TotalDisbursed = ({onOpenModal, search, totalDisbursed}: Prop) => {
         <div className="w-[273px] ml-auto">
             <div
                 className="px-2 flex items-center h-[32px] border-none bg-blue-gray-10 hover:bg-blue-gray-40 rounded-[6px] gap-x-2"
-                onClick={() => onOpenModal}
+                onClick={() => onOpenModal()}
             >
                 <SearchOutlined style={{ color: "#5F707F" }} />
                 <h1 className="text-[14px] text-ct-blue-90">

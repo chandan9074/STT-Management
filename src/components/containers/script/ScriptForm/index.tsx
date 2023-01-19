@@ -8,18 +8,30 @@ import DistributionSource from './DistributionSource';
 import Domain from './Domain';
 import SourceReference from './SourceReference';
 import TitleDescription from './TitleDescription';
+import ActionButton from './ActionButton';
+import './ScriptForm.css';
 
 const distributionList = ['Read', 'Lecture', 'Command', 'Miscellaneous']
 
 const ScriptForms = () => {
 
     return (
-        <div className='w-full flex justify-center'>
-            <div className='bg-white-gray-45 w-[885px] h-[1606px] px-[53px] py-[24px]'>
-                <DistributionSource />
-                <Domain />
-                <SourceReference />
-                <TitleDescription />
+        <div className='w-full flex justify-center script-form'>
+            <div className='bg-white-gray-45 w-[885px]'>
+                <form>
+                    <div className='px-[53px] py-[24px]'>
+                        <DistributionSource />
+                        <Domain />
+                        <SourceReference />
+                        <TitleDescription />
+                    </div>
+
+                    <div className='flex justify-end px-5 py-[28px] bg-white'>
+                        <ActionButton />
+                    </div>
+
+                </form>
+
             </div>
         </div>
     );

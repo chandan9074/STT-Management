@@ -42,9 +42,11 @@ const TimeWiseDisbursements = () => {
 
     const commonContext = useContext(CommonContext);
 
-    const onOpenModal = () => {
+    const onOpenModal = () => {        
         setShowModal(true);
     }
+
+    
 
     const handleType = (value: string) => {
         commonContext.handleModuleType(value);
@@ -155,6 +157,9 @@ const TimeWiseDisbursements = () => {
     const handleModal = (value: boolean) => {
         setShowModal(value);
     };
+
+    console.log('show modal------', showModal);
+
 
     const onHandleStt = () => {
         setIsStt(true);

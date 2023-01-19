@@ -5,16 +5,13 @@ import {roleDT, roleParamsDT, timeWiseDisbursementParamsDT} from "../types/billi
 
 export default class TimeWiseDisbursementService {
 
-    static getManagerDisbursement(params: timeWiseDisbursementParamsDT) {
+    static getManagerDisbursement(params: timeWiseDisbursementParamsDT) {        
         return axios.get(GET_TIME_WISE_DISBURSEMENTS_URL, {params})
-        // return timeWiseDisbursement;
     }
 
 
     static getManager(params: roleParamsDT) {
         return axios.get(GET_ROLE_LIST_URL, {params});
-        // return axios.get(GET_MANAGERS_URL, {params})
-        // return managerData;
     }
 
     static getManagerById(id: string) {
