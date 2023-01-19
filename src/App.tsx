@@ -36,13 +36,13 @@ function App() {
           path={`${PATH.BILLING_PAYMENT_HISTORY_PATH}/:id`}
           element={<PaymentHistory />}
         />
-        <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} />
+        {/* <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} /> */}
         <Route path="*" element={<NotFound />} />
 
-        <Route path={PATH.SCRIPT} element={<Script />} />
+        {/* <Route path={PATH.SCRIPT} element={<Script />} /> */}
 
         {/* test */}
-        <Route path="/test" element={<Test />} >
+        {/* <Route path="/test" element={<Test />} >
           <Route path={PATH.COLLECTING_AUDIO} element={<CollectingAudio />} >
             <Route path='' element={<div>Hello collection audio</div>} />
             <Route path={PATH.CHECKING} element={<Checking />} >
@@ -51,7 +51,7 @@ function App() {
             </Route>
           </Route>
           <Route path={PATH.UPLOAD_AUDION_VIDEO_PATH} element={<UploadAudioVideo />} />
-        </Route>
+        </Route> */}
       </Routes>
     </BrowserRouter>
   );
