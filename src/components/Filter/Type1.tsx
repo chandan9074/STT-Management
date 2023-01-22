@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Icons from "../../assets/Icons";
 import { FilterDT } from "../../types/script";
+import Dropdown from "../Dropdown";
 
 type filterListDT = {
   dataType: string[];
@@ -18,6 +19,35 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
     domain: [],
     subdomain: [],
   });
+
+  const handleFilter = (data: string, subdomain: boolean) => {
+    if (subdomain) {
+      if (filterList.subdomain.includes(data)) {
+        setFilterList({
+          ...filterList,
+          subdomain: filterList.subdomain.filter((item) => item !== data),
+        });
+      } else {
+        setFilterList({
+          ...filterList,
+          subdomain: [...filterList.subdomain, data],
+        });
+      }
+    } else {
+      if (filterList.domain.includes(data)) {
+        setFilterList({
+          ...filterList,
+          domain: filterList.domain.filter((item) => item !== data),
+        });
+      } else {
+        setFilterList({
+          ...filterList,
+          domain: [...filterList.domain, data],
+        });
+      }
+    }
+  }
+
   return (
     <div className="relative flex justify-end">
       <button
@@ -230,7 +260,12 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
                     : "hidden"
                 }`}
               >
-                
+                <Dropdown.Type3
+                  data={filterData[dataIndex === 0 ? "domain" : "subDomain"]}
+                  subdomain={dataIndex === 1}
+                  filterList={filterList}
+                  handleFilter={handleFilter}
+                />
               </div>
             </div>
           ))}
