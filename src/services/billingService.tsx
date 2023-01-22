@@ -21,13 +21,14 @@ export default class BillingService {
 
   static allBillingInfo(data: allBillingParamsDT) {
     return axios.get(
-      `${GET_ALL_BILLING_INFO_URL}/?pageSize=${data.pageSize}&type=${data.module}&role=${data.role}`
+      `${GET_ALL_BILLING_INFO_URL}/?pageSize=${data.pageSize}&module=${data.module}&role=${data.role}`
     );
   }
-  static lastBillingInfo(data: lastBillingParamsDT) {
-    return axios.get(
-      `${GET_LAST_BILLING_INFO_URL}/?page=${data.page}&pageSize=${data.pageSize}&type=${data.module}&role=${data.role}`
-    );
+  static lastBillingInfo(params: lastBillingParamsDT) {
+    return axios.get(GET_LAST_BILLING_INFO_URL, {params})
+    // return axios.get(
+    //   `${GET_LAST_BILLING_INFO_URL}/?page=${data.page}&pageSize=${data.pageSize}&type=${data.module}&role=${data.role}`
+    // );
   }
   static paymentHistory(data: paymentHistoryParamsDT) {
     return axios.get(

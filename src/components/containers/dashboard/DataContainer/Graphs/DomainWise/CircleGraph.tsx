@@ -20,15 +20,16 @@ const CircleGraph = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
     const [activeName, setActiveName] = useState<string>('')
     const [enter, setEnter] = useState(false);
 
-    const onMouseOver = (data: any, index: any, event: any) => {
+    const onMouseOver = (data: any, index: any, event: any): any => {
         setActiveIndex(index);
+
         setActiveData(data)
         setActiveName(data.name)
 
     }
     const onMouseLeave = useCallback((data: any, index: any) => {
         setActiveIndex(null);
-        setActiveData({name:""})
+        setActiveData({ name: "" })
         setActiveName("")
 
     }, []);
@@ -48,17 +49,14 @@ const CircleGraph = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
         innerRadius,
         outerRadius,
         percent,
-        index,
-        payload
-
+        payload,
+        index
     }: any) => {
         const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
         const x = cx + radius * Math.cos(-midAngle * RADIAN);
         const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
         let _percent: string = (percent * 100).toFixed(0)
-        console.log("payload", payload)
-
         return (
             <text
 
@@ -69,8 +67,8 @@ const CircleGraph = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
                 dominantBaseline="central"
                 font-size={14}
                 font-weight={500}
-                onMouseOver={()=> setEnter(true)}
-                onMouseLeave={()=> setEnter(false)}
+                onMouseOver={() => setActiveName(payload.name)}
+                onMouseLeave={() => setActiveName("")}
             >
 
                 {
@@ -78,7 +76,7 @@ const CircleGraph = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
                     (activeName === payload.name && parseInt(_percent) >= 3) ? `${_percent}%` : parseInt(_percent) >= 15 ? `${_percent}%` : ""
 
                 }
-            </text>
+            </text >
         );
     };
     const renderActiveShape = (props: any) => {
@@ -113,7 +111,7 @@ const CircleGraph = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
         );
     };
     const CustomTooltip = ({ payload, active }: any) => {
-       
+
         return (
             <div>
                 <GraphTooltip
@@ -130,7 +128,7 @@ const CircleGraph = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
     return (
         <div className="flex items-center justify-between">
 
-            <PieChart width={330} height={400}>
+            <PieChart width={330} height={370}>
                 <Pie
                     isAnimationActive={false}
                     animationDuration={0}
@@ -145,7 +143,7 @@ const CircleGraph = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
                     dataKey="value"
                     startAngle={90}
                     endAngle={-360}
-                    
+
                     activeIndex={activeIndex}
                     onMouseOver={onMouseOver}
                     onMouseLeave={onMouseLeave}
@@ -167,15 +165,14 @@ const CircleGraph = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
                     isAnimationActive={false}
                     animationEasing="linear"
                     wrapperStyle={{ outline: "none" }}
-                    active={true}
                     position={{
                         x: activeData?.tooltipPosition?.x - 45,
                         y: activeData?.tooltipPosition?.y - 230
                     }}
-                    content={<CustomTooltip active={true} />} />
+                    content={<CustomTooltip />} />
             </PieChart>
 
-            <PropertyListType2 data={data} colorsArray={colorsArray}/>
+            <PropertyListType2 data={data} colorsArray={colorsArray} />
 
         </div>
     );

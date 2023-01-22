@@ -121,7 +121,7 @@ const RoleSearchModal = ({
                     className="border-0 overflow-hidden rounded-lg shadow-lg relative flex flex-col w-[700px] bg-white outline-none focus:outline-none">
                     {/*header*/}
                     <div className='bg-ct-blue-05 h-[186px] p-5'>
-                        <div className="flex items-start justify-between items-center ">
+                        <div className="flex justify-between items-center ">
                             <h3 className="titleParagraphMedium">
                                 Search {role}
                             </h3>
@@ -135,7 +135,7 @@ const RoleSearchModal = ({
                             </button>
                         </div>
 
-                        <div className='rounded-md bg-white px-6 py-7 mt-4 rounded-[px] h-[100px]'>
+                        <div className='rounded-md bg-white px-6 py-7 mt-4 h-[100px]'>
                             <div>
                                 <Form
                                     layout='vertical'

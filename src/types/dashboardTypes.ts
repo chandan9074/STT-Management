@@ -106,3 +106,29 @@ export type genderWiseDT = {
   contribution: number;
   speakers: number;
 };
+
+// params Type
+export type totalDataParamsDT = {
+  module: string;
+  role: string;
+};
+
+// Api response Type
+export type totalDataResDT = {
+  module: string;
+  received: number;
+  achieved: number;
+  totalValid: number;
+  lastUpdate: string;
+  totalTarget: string;
+  speaker: totalDataSpeakerResDT;
+
+}
+export type totalDataSpeakerResDT = {
+  male: totalDataSpeakerMaleFemaleResDT,
+  female: totalDataSpeakerMaleFemaleResDT,
+}
+export type totalDataSpeakerMaleFemaleResDT = {
+  value: string;
+  contribution: number 
+}

@@ -9,9 +9,13 @@ import {
 } from "../../../../types/billingTypes";
 import { BillingContext } from "../../../../context/BillingProvider";
 import ExportCsv from "../../../common/ExportCsv";
-import { excelNameFormatter } from "../../../../helpers/Utils";
+import {
+  excelNameFormatter,
+  getMontNumberFormat,
+} from "../../../../helpers/Utils";
 import Table from "../../../Table";
 import Pagination from "../../../Pagination";
+import Icons from "../../../../assets/Icons";
 
 interface Person {
   name: string;
@@ -185,30 +189,55 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
     },
   ];
 
+  const onHandleDisburse = () => {
+    console.log("------", getMontNumberFormat(lastBillings?.dateOfPayment));
+
+    GetLastBillingsInfo({
+      ...lastBillingsParams,
+      date: getMontNumberFormat(lastBillings?.dateOfPayment),
+    });
+  };
+
   return (
     <div>
       <div className="w-100 flex flex-row justify-between items-center gap-1 ">
-        <div className="flex flex-row items-center ">
+        <div className="flex flex-row items-center gap-4 ">
           <div className="border-r-2 border-border-light-blue h-[40px] my-auto flex items-center">
-            <h2 className="mb-0 pr-6 text-heading-6 font-medium text-ct-blue-95">
+            <h2 className="mb-0 pr-4 text-heading-6 font-medium text-ct-blue-95">
               Last Billing Info
             </h2>
           </div>
-          <div className="ml-6 mr-8">
-            <p className="text-xs text-ct-blue-90-70% mb-0">Paid</p>
-            <p className="text-small text-ct-blue-95 font-medium">
-              BDT {lastBillings?.paid}
+          <div>
+            <p className="text-xxs text-ct-blue-90-70% mb-0">
+              {lastBillings?.payable ? "Payable" : "Paid"}
             </p>
+            {lastBillings?.payable && (
+              <p className="text-small text-ct-blue-95 font-medium">
+                BDT {lastBillings?.amount}
+              </p>
+            )}
           </div>
           <div>
-            <p className="text-xs text-ct-blue-90-70% mb-0">Date of Payment</p>
+            <p className="text-xxs text-ct-blue-90-70% mb-0">Date of Payment</p>
             <p className="text-small text-ct-blue-95 font-medium">
               {lastBillings?.dateOfPayment}
             </p>
           </div>
         </div>
 
-        <div>
+        <div className="flex items-center gap-x-2">
+          {lastBillings?.payable && (
+            <div>
+              <button
+                onClick={() => onHandleDisburse()}
+                className="text-small py-[8px] pl-[16px] pr-[24px] rounded-[6px] bg-primary-ct-magenta-60 text-white flex items-center gap-x-[4px]"
+              >
+                <img src={Icons.Add} className="w-5 h-5" alt="" />
+                Disburse
+              </button>
+            </div>
+          )}
+
           <ExportCsv
             csvData={lastBillingsExcelData}
             fileName={excelNameFormatter(

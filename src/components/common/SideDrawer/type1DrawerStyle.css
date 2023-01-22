@@ -1,0 +1,29 @@
+.ant-drawer .ant-drawer-header {
+    padding: 0;
+    border-bottom: none;
+}
+
+.ant-drawer .ant-drawer-body {
+    padding: 0;
+}
+
+.custom-script-body {
+    max-height: calc(100vh - 227px);
+    overflow-y: auto;
+
+}
+
+.custom-script-body::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+.custom-script-body::-webkit-scrollbar {
+    width: 8px;
+    background-color: #F5F5F5;
+}
+
+.custom-script-body::-webkit-scrollbar-thumb {
+    background-color: #EAF3FA;
+    border-radius: 12px;
+
+}

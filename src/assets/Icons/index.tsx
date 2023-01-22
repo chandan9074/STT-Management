@@ -47,11 +47,22 @@ import left_arrow_black from "./left_arrow_black.svg";
 import closeBlue from "./closeBlue.svg";
 import arrow_drop_down_blue_gray from "./arrow_drop_down_blue_gray.svg";
 import search from "./search.svg";
-import add from "./add.svg";
 import upload from "./upload.svg";
 import filter_list from "./filter_list.svg";
 import dark_right_arrow from "./dark_right_arrow.svg";
 import dark_up_arrow from "./dark_up_arrow.svg";
+import open_in_new from "./open_in_new.svg";
+import moreIcon from "./more_horiz.svg";
+import fileDownload from "./file_download.svg";
+import contentCopy from "./content_copy.svg";
+import lyrics from "./lyrics.png";
+import ArrowRight from "./arrow_right.png";
+import ArrowDropUp from "./arrow_drop_up.svg";
+import ChevronRight from "./chevron_right.svg";
+import Link from "./link.svg";
+import AddLink from "./add_link.svg";
+import Backup from "./backup.svg";
+import Add from "./add.svg";
 
 const Icons = {
   currency,
@@ -103,11 +114,22 @@ const Icons = {
   closeBlue,
   arrow_drop_down_blue_gray,
   search,
-  add,
   upload,
   filter_list,
   dark_right_arrow,
   dark_up_arrow,
+  open_in_new,
+  moreIcon,
+  fileDownload,
+  contentCopy,
+  lyrics,
+  ArrowRight,
+  ArrowDropUp,
+  ChevronRight,
+  Link,
+  AddLink,
+  Backup,
+  Add,
 };
 
 export default Icons;

@@ -1,7 +1,9 @@
 import { overTheTimeGData } from "../data/dashboard/overTheTimeGData";
 import { createCollectData } from "../data/dashboard/createCollectData";
-import { GET_OVER_THE_TIME_DATA_URL } from "../helpers/APIURL";
+import * as PATH from "../helpers/APIURL";
 import axios from "axios";
+import { totalDataParamsDT } from "../types/dashboardTypes";
+import { GET_OVER_THE_TIME_DATA_URL } from "../helpers/APIURL";
 
 export default class DashboardService {
   static getOverTheTimeData(
@@ -20,5 +22,11 @@ export default class DashboardService {
   }
   static getCollectCreateData() {
     return createCollectData;
+  }
+
+  static getTotalDataCollection(data: totalDataParamsDT) {
+    return axios.get(
+      `${PATH.GET_TOTAL_DATA_URL}/?role=${data.role}&module=${data.module}`
+    );
   }
 }

@@ -19,6 +19,18 @@
   .deleteIcon {
     @apply w-[20px] h-[20px]
   }
+
+  .sideDrawerActiveNav {
+    @apply bg-blue-10 text-secondary-blue-50 font-medium rounded-[20px] px-[10px] py-[5px] flex justify-between items-center
+  }
+
+  .sideDrawerDeactiveNav {
+    @apply  text-blue-gray-A50 rounded-[20px] px-[10px] py-[5px] flex justify-between items-center
+  }
+
+  .comboBoxLabel {
+    @apply font-medium text-blue-gray-80
+  }
 }
 
 body {

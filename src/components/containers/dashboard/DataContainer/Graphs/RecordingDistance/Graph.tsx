@@ -5,37 +5,45 @@ const color = [
     {
         bgColor: 'bg-red-15',
         ringColor: 'ring-[#E8C8C8]',
-        shadowColor: 'hover:shadow-light-tomato',
+        shadowColor: 'hover:shadow-light-tomato2',
+        tooltipTitleColor: 'text-red-15'
     },
     {
         bgColor: 'bg-green-A10',
         ringColor: 'ring-[#D1E8C7]',
-        shadowColor: 'hover:shadow-green-A10',
+        shadowColor: 'hover:shadow-light-green2',
+        tooltipTitleColor: 'text-green-A10'
     },
     {
         bgColor: 'bg-[#FFF5CC]',
         ringColor: 'ring-[#E8DFBA]',
-        shadowColor: 'hover:shadow-green-A10',
+        shadowColor: 'hover:shadow-light-yellow2',
+        tooltipTitleColor: 'text-yellow-A10'
     },
     {
         bgColor: 'bg-[#FFE5D3]',
         ringColor: 'ring-[#E8D0C0]',
-        shadowColor: 'hover:shadow-light-orange-shadow',
+        shadowColor: 'hover:shadow-light-orange2',
+        tooltipTitleColor: 'text-blue-A10'
+        
     },
     {
         bgColor: 'bg-[#CCF8FE]',
         ringColor: 'ring-[#BAE3E8]',
-        shadowColor: 'hover:shadow-green-A10',
+        shadowColor: 'hover:shadow-light-blue2',
+        tooltipTitleColor: 'text-blue-A10'
     },
     {
         bgColor: 'bg-[#CCDDFE]',
         ringColor: 'ring-[#BACAE8]',
-        shadowColor: 'hover:shadow-green-A10',
+        shadowColor: 'hover:shadow-light-blue3',
+        tooltipTitleColor: 'text-blue-20'
     },
     {
         bgColor: 'bg-[#DAD7FE]',
         ringColor: 'ring-[#CAC8E8]',
-        shadowColor: 'hover:shadow-green-A10',
+        shadowColor: 'hover:shadow-light-purple',
+        tooltipTitleColor: 'text-purple-A10'
     }
 
 
@@ -47,30 +55,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
     return (
         <div className='relative'>
             <div className='absolute -top-[27px]'>
-                {/* {
-                    value?.map((m, i) => (
-                        <div
-                            className={`${i === 0 ? 'bottom-0' :
-                                i === 1 ? 'bottom-10' :
-                                    ''
-                                } absolute`}
-                        >
-                            <Circle1
-                                bgColor={color[i].bgColor}
-                                ringColor={color[i].ringColor}
-                                textColor='text-[#453D38]'
-                                shadowColor={color[3].shadowColor}
-                                value={value[i].contribution}
-                                height={i === 0 ? 'w-[157px]' : i === 1 ? 'w-[106px]' : i === 2 ? 'w-[102px]' : i === 3 ? 'w-[60px]' : i === 4 ? 'w-[53px]' : i === 5 ? 'w-[30px]' : i === 6 ? '' : ''}
-                                width={i === 0 ? 'h-[157px]' : i === 1 ? 'h-[106px]' : i === 2 ? 'h-[102px]' : i === 3 ? 'h-[60px]' : i === 4 ? 'h-[53px]' : i === 5 ? 'h-[30px]' : i === 6 ? 'w-[21px]' : 'h-[21px]'}
-                                indexNumber={i}
-
-                            // data={m}
-
-                            />
-                        </div>
-                    ))
-                } */}
+               
                 <div className='relative'>
                     <Circle1
                         bgColor={color[0].bgColor}
@@ -82,7 +67,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                         width='h-[157px]'
                         indexNumber={0}
                         data={data[0]}
-                        tooltipTitleColor='text-red-15'
+                        tooltipTitleColor={color[0].tooltipTitleColor}
                     />
 
                     <div className='absolute -right-[60px] -top-[100px]'>
@@ -96,7 +81,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                             width='h-[106px]'
                             indexNumber={1}
                             data={data[1]}
-                            tooltipTitleColor='text-green-A10'
+                            tooltipTitleColor={color[1].tooltipTitleColor}
                         />
 
                     </div>
@@ -113,7 +98,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                                 width='h-[102px]'
                                 indexNumber={2}
                                 data={data[2]}
-                                tooltipTitleColor='text-yellow-A10'
+                                tooltipTitleColor={color[2].tooltipTitleColor}
                             />
 
                             <div className='absolute -top-[55px] -right-[12px]'>
@@ -128,7 +113,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                                         width='h-[53px]'
                                         indexNumber={4}
                                         data={data[4]}
-                                        tooltipTitleColor='text-blue-A10'
+                                        tooltipTitleColor={color[4].tooltipTitleColor}
                                     />
 
                                     <div className='absolute -top-[42px] left-[4px]'>
@@ -143,7 +128,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                                                 width='h-[30px]'
                                                 indexNumber={5}
                                                 data={data[5]}
-                                                tooltipTitleColor='text-blue-20'
+                                                tooltipTitleColor={color[5].tooltipTitleColor}
                                             />
 
                                             <div className='absolute top-[14px] -right-[34px]'>
@@ -157,7 +142,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                                                     width='h-[21px]'
                                                     indexNumber={6}
                                                     data={data[6]}
-                                                    tooltipTitleColor='text-purple-A10'
+                                                    tooltipTitleColor={color[6].tooltipTitleColor}
                                                 />
                                             </div>
                                         </div>
@@ -180,7 +165,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                             width='h-[60px]'
                             indexNumber={3}
                             data={data[3]}
-                            tooltipTitleColor='text-blue-A10'
+                            tooltipTitleColor={color[3].tooltipTitleColor}
                         />
                     </div>
                 </div>

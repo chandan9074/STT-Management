@@ -204,7 +204,7 @@ export const createCollectData = {
           totalInvalid: 10,
           notChecked: 0,
           lastUpdate: "22 Aug 2022",
-          contribution: 65,
+          contribution: 50,
           speakers: 21125,
         },
         {
@@ -215,7 +215,7 @@ export const createCollectData = {
           totalInvalid: 10,
           notChecked: 0,
           lastUpdate: "22 Aug 2022",
-          contribution: 5,
+          contribution: 50,
           speakers: 21125,
         },
       ],

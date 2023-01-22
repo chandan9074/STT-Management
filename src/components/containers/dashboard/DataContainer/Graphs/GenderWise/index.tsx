@@ -10,7 +10,7 @@ const GenderWise = ({data}:Props) => {
 
 
     return (
-        <div className="px-5">
+        <div className="h-full">
             <div className="grid grid-cols-12 gap-2.5">
                 <div className="col-span-6">
                     <PercentageCard
@@ -30,7 +30,7 @@ const GenderWise = ({data}:Props) => {
                 </div>
             </div>
 
-            <div className="flex items-center justify-center mt-5">
+            <div className="flex items-center justify-center h-[370px] ">
                 <Gauge.Type2 data={data}/>
             </div>
 

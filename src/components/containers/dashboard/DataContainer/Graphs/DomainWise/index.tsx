@@ -17,7 +17,7 @@ const RADIAN = Math.PI / 180;
 const DomainWise = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
 
     return (
-        <div>
+        <div className="h-full">
             <div className="grid grid-cols-12 gap-4">
                 <div className="col-span-4">
                     <PercentageCard
