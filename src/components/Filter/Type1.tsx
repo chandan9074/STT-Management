@@ -31,7 +31,7 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
         <img src={Icons.arrow_drop_down_blue_gray} alt="" className="" />
       </button>
       {open && (
-        <div className="border border-blue-gray-30 rounded-[8px] shadow-light-blue-2 absolute top-10 bg-white w-[442px]">
+        <div className="border border-blue-gray-30 rounded-[8px] shadow-light-blue-2 absolute z-50 top-10 bg-white w-[442px]">
           <div className="pt-4 pb-2 px-5 w-full flex justify-between items-center">
             <h3 className="text-base font-medium text-ct-blue-90-68% mb-0">
               Filter
@@ -156,15 +156,85 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
             </div>
           ))}
 
-          <div className="px-5">
-            <button className="flex items-center py-2 w-full">
-              <img src={Icons.dark_right_arrow} alt="" />
-              <h6 className="text-small text-blue-gray-80 font-medium mb-0 ml-2">
-                Domain
-              </h6>
-            </button>
-          </div>
-          <div className="px-5 mb-3">
+          {[1, 2].map((item, dataIndex) => (
+            <div
+              className={`px-5 duration-200 ${
+                currentState === `${dataIndex === 0 ? "domain" : "subdomain"}`
+                  ? "bg-blue-gray-05"
+                  : "bg-white"
+              } ${dataIndex === 1 && "mb-3"}`}
+            >
+              <div className="flex items-center justify-between py-2 w-full">
+                <button
+                  onClick={() =>
+                    dataIndex === 0
+                      ? currentState === "domain"
+                        ? setCurrentState("")
+                        : setCurrentState("domain")
+                      : currentState === "subdomain"
+                      ? setCurrentState("")
+                      : setCurrentState("subdomain")
+                  }
+                  className="flex items-center w-full mr-5"
+                >
+                  {currentState ===
+                  `${dataIndex === 0 ? "domain" : "subdomain"}` ? (
+                    <img
+                      src={Icons.dark_up_arrow}
+                      alt=""
+                      className="animate-fadeIn"
+                    />
+                  ) : (
+                    <img
+                      src={Icons.dark_right_arrow}
+                      alt=""
+                      className="animate-fadeIn"
+                    />
+                  )}
+                  <h6 className="text-small text-blue-gray-80 font-medium mb-0 ml-2">
+                    {dataIndex === 0 ? "Domain" : "Subdomain"}{" "}
+                    {filterList[dataIndex === 0 ? "domain" : "subdomain"][0] &&
+                      currentState !==
+                        `${dataIndex === 0 ? "domain" : "subdomain"}` && (
+                        <span className="animate-fadeIn text-xs font-medium text-ct-blue-60 ml-3">
+                          {
+                            filterList[
+                              dataIndex === 0 ? "domain" : "subdomain"
+                            ][0]
+                          }
+                        </span>
+                      )}
+                  </h6>
+                </button>
+                {currentState ===
+                  `${dataIndex === 0 ? "domain" : "subdomain"}` && (
+                  <button
+                    onClick={() =>
+                      dataIndex === 0
+                        ? setFilterList({ ...filterList, domain: [] })
+                        : setFilterList({
+                            ...filterList,
+                            subdomain: [],
+                          })
+                    }
+                    className="text-xxs font-medium text-ct-blue-60 animate-fadeIn"
+                  >
+                    Reset
+                  </button>
+                )}
+              </div>
+              <div
+                className={`pt-3 pb-5  animate-fadeIn ${
+                  currentState === `${dataIndex === 0 ? "domain" : "subdomain"}`
+                    ? "block"
+                    : "hidden"
+                }`}
+              >
+                
+              </div>
+            </div>
+          ))}
+          {/* <div className="px-5 mb-3">
             <button
               className={`flex items-center py-2 w-full ${
                 filterList.domain.length > 0
@@ -177,7 +247,7 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
                 Subdomain
               </h6>
             </button>
-          </div>
+          </div> */}
         </div>
       )}
     </div>

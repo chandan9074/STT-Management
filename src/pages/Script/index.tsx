@@ -1,14 +1,18 @@
 import React from "react";
-import ScriptForm from "./ScriptForm";
 import Layouts from "../../components/Layouts";
+import Header from "../../components/containers/script/Header";
+import ScriptForm from "./ScriptForm";
 import Table from "../../components/Table";
 
 const Script = () => {
   return (
-    <Layouts.Secondary>
-      <Table.Type4 />
-      <ScriptForm />
-    </Layouts.Secondary>
+    <Layouts.Forth>
+      <div className="min-h-[calc(100vh-9.5vh)]">
+        <Header />
+        <Table.Type4 />
+        {/* <ScriptForm /> */}
+      </div>
+    </Layouts.Forth>
   );
 };
 export default Script;

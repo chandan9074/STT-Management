@@ -8,7 +8,7 @@ import { filterData } from "../../../../data/script/filter";
 
 const Header = () => {
   return (
-    <div className="mt-3 flex items-center justify-between">
+    <div className="mt-3 flex items-center justify-between mb-5">
       <div>
         <h1 className="text-heading-6 text-ct-blue-95 font-medium">Script</h1>
         <p className="text-small text-ct-blue-90-70% mt-1.5">
