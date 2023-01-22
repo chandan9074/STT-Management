@@ -12,19 +12,19 @@ const AgeWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
           name={data[0].name}
           value={data[0].contribution}
           hour={data[0].totalValid}
-          BorderColor="border-[#42F54A]"
+          BorderColor="#42F54A"
         />
         <PercentageCard
           name={data[1].name}
           value={data[1].contribution}
           hour={data[1].totalValid}
-          BorderColor="border-[#42B9F5]"
+          BorderColor="#42B9F5"
         />
         <PercentageCard
           name={data[2].name}
           value={data[2].contribution}
           hour={data[2].totalValid}
-          BorderColor="border-[#B336C8]"
+          BorderColor="#B336C8"
         />
       </div>
       <div className="flex justify-center items-stretch">

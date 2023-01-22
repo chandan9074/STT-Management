@@ -36,7 +36,7 @@ const DataContainerDropdown = ({data, handleActivePanel}: Props) => {
                    <div>
                        <div className="fixed top-0 left-0 w-full h-screen z-[80]"
                             onClick={() => setToggleOpen(false)}/>
-                       <div className="absolute z-[99]">
+                       <div className="absolute z-[9999]">
                            <div
                                className="w-[245px] bg-white mt-1 rounded-[8px] py-[6px] shadow-bottom-light-blue-20">
 
@@ -48,7 +48,7 @@ const DataContainerDropdown = ({data, handleActivePanel}: Props) => {
                                                className={`flex justify-between items-center text-small font-medium ${active === data.value ?
                                                    "text-ct-blue-60 py-2 bg-ct-blue-10 cursor-pointer hover:bg-ct-blue-10 " :
                                                    "text-blue-gray-80 bg-white cursor-pointer hover:bg-purple-A10 duration-300 py-2"}`}>
-                                               <p className={active === data.value ? "border-l-2 border-ct-blue-60 px-2" : "border-l-2 border-white px-2"}>
+                                               <p className={active === data.value ? "border-ct-blue-60 px-2" : "border-white px-2"}>
                                                    {data.value}
                                                </p>
                                                {active === data.value ?

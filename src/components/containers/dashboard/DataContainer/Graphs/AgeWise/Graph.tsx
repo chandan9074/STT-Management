@@ -25,7 +25,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
               }
               validBgColor={`${getValidBgColor(item.name)}`}
               titleColor={`${
-                getTitleColor(item.name, true).split(" ")[2]
+                getTitleColor(item.name, false).split("hover:")[0]
               } bg-clip-text text-transparent`}
               align="left"
             />

@@ -12,9 +12,18 @@ type Props = {
 const Header = ({ year, activeMonth }: Props) => {
   // const [calender, setCalender] = React.useState(false);
   const [calenderBtn, setCalenderBtn] = useState(false);
+  const [currentYear, setCurrentYear] = useState(year);
 
   const commonContext = useContext(CommonContext);
   const dashboardContext = useContext(DashboardContext);
+
+  const handleYear = (year: number) => {
+    setCurrentYear(year);
+  };
+
+  const handleCalenderVisibility = () => {
+    setCalenderBtn(!calenderBtn);
+  }
 
   const handleOverTheTimeData = (year: number, month: string) => {
     dashboardContext.getOverTheTimeData(
@@ -40,7 +49,7 @@ const Header = ({ year, activeMonth }: Props) => {
           <h3 className="text-xxs font-medium text-ct-blue-90 mb-0">Invalid</h3>
         </div>
         <div className="flex items-center ml-7">
-          <div className="w-2 h-2 rounded-full bg-[#136EE5] mr-2" />
+          <div className="w-2 h-2 rounded-full bg-[#e1e4e8] mr-2" />
           <h3 className="text-xxs font-medium text-ct-blue-90 mb-0">
             Not Checked
           </h3>
@@ -75,9 +84,11 @@ const Header = ({ year, activeMonth }: Props) => {
         } animate-fadeIn`}
       >
         <MonthCalender
-          year={year}
+          year={currentYear}
+          handleYear={handleYear}
           activeMonth={activeMonth}
           handleOverTheTimeData={handleOverTheTimeData}
+          handleCalenderVisibility={handleCalenderVisibility}
         />
       </div>
     </div>

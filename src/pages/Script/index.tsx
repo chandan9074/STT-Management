@@ -1,14 +1,14 @@
-import React from 'react';
-import ScriptForms from '../../components/containers/script/ScriptForm';
-import Layouts from '../../components/Layouts';
-import ScriptForm from './ScriptForm';
+import React from "react";
+import ScriptForm from "./ScriptForm";
+import Layouts from "../../components/Layouts";
+import Table from "../../components/Table";
 
 const Script = () => {
-    return (
-        <Layouts.Default>
-            <ScriptForms />
-        </Layouts.Default>
-    );
+  return (
+    <Layouts.Secondary>
+      <Table.Type4 />
+      <ScriptForm />
+    </Layouts.Secondary>
+  );
 };
-
 export default Script;

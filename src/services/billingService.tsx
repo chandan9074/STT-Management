@@ -21,7 +21,7 @@ export default class BillingService {
 
   static allBillingInfo(data: allBillingParamsDT) {
     return axios.get(
-      `${GET_ALL_BILLING_INFO_URL}/?pageSize=${data.pageSize}&type=${data.module}&role=${data.role}`
+      `${GET_ALL_BILLING_INFO_URL}/?pageSize=${data.pageSize}&module=${data.module}&role=${data.role}`
     );
   }
   static lastBillingInfo(params: lastBillingParamsDT) {

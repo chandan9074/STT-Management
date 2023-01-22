@@ -46,6 +46,10 @@ import Kamrupi from "./Kamrupi.svg";
 import left_arrow_black from "./left_arrow_black.svg";
 import closeBlue from "./closeBlue.svg";
 import arrow_drop_down_blue_gray from "./arrow_drop_down_blue_gray.svg";
+import open_in_new from "./open_in_new.svg";
+import moreIcon from "./more_horiz.svg";
+import fileDownload from "./file_download.svg";
+import contentCopy from "./content_copy.svg";
 import lyrics from "./lyrics.png";
 import ArrowRight from "./arrow_right.png";
 import ArrowDropUp from "./arrow_drop_up.svg";
@@ -104,14 +108,18 @@ const Icons = {
   left_arrow_black,
   closeBlue,
   arrow_drop_down_blue_gray,
+  open_in_new,
+  moreIcon,
+  fileDownload,
+  contentCopy,
   lyrics,
   ArrowRight,
   ArrowDropUp,
   ChevronRight,
-  Link, 
+  Link,
   AddLink,
-  Backup, 
-  Add
+  Backup,
+  Add,
 };
 
 export default Icons;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import GraphTooltip from "../../GraphTooltip";
-import {createCollectSimilarPropertyDT} from "../../../../../../types/dashboardTypes";
+import { createCollectSimilarPropertyDT } from "../../../../../../types/dashboardTypes";
 
 interface Props {
     data: createCollectSimilarPropertyDT[]
@@ -43,39 +43,40 @@ const ProfessionWise = ({ data }: Props) => {
 
     return (
 
-        <div className="h-[300px] w-full flex justify-center">
+        <div className='h-full flex justify-center items-center'>
+            <div className="h-[350px] w-full flex justify-center">
 
-            <div className='relative flex flex-col items-center ml-12 '>
-                {
-                    data.map((value) => <div
-                        style={{ height: `${value.contribution}%` }}
-                        className='flex w-[65px] items-center gap-1'>
+                <div className='relative flex flex-col items-center ml-12 '>
+                    {
+                        data.map((value) => <div
+                            style={{ height: `${value.contribution}%` }}
+                            className='flex w-[65px] items-center gap-1'>
 
-                        <div
-                            onMouseOver={() => {
-                                setActiveValue(true)
-                                setId(value.id)
-                            }}
-                            onMouseOut={() => setActiveValue(false)}
-                            className={`${colorProperty[value.id].color} w-full h-full flex justify-center items-center ${colorProperty[value.id].activeColor} relative`} >
-                            <p className='text-xs text-masala'>{activeValue && id === value.id ? `${value.contribution}%` : value.contribution >= 15 && `${value.contribution}%`}</p>
+                            <div
+                                onMouseOver={() => {
+                                    setActiveValue(true)
+                                    setId(value.id)
+                                }}
+                                onMouseOut={() => setActiveValue(false)}
+                                className={`${colorProperty[value.id].color} w-full h-full flex justify-center items-center ${colorProperty[value.id].activeColor} relative`} >
+                                <p className='text-xs text-masala'>{activeValue && id === value.id ? `${value.contribution}%` : value.contribution >= 15 && `${value.contribution}%`}</p>
 
-                            {
-                                (activeValue && id === value.id) && <div className='absolute -top-[210px] -left-[8px] z-[99999]'>
-                                    <GraphTooltip data={value} validBgColor={colorProperty[value.id].tooltipBg} titleColor={colorProperty[value.id].textColor} align="left" />
-                                </div>
-                            }
-                        </div>
+                                {
+                                    (activeValue && id === value.id) && <div className='absolute -top-[210px] -left-[8px] z-[99999]'>
+                                        <GraphTooltip data={value} validBgColor={colorProperty[value.id].tooltipBg} titleColor={colorProperty[value.id].textColor} align="left" />
+                                    </div>
+                                }
+                            </div>
 
-                    </div>)
+                        </div>)
 
-                }
-                <div className='border-t-2 border-[#D1D3D6] absolute w-[158px] bottom-0' />
-            </div>
+                    }
+                    <div className='border-t-2 border-[#D1D3D6] absolute w-[158px] bottom-0' />
+                </div>
 
-            <div>
-                {
-                    data.map((value) => <div
+                <div>
+                    {
+                        data.map((value) => <div
                             style={{ height: `${value.contribution}%` }}
                             className='flex items-center gap-1 '
                         >
@@ -93,12 +94,10 @@ const ProfessionWise = ({ data }: Props) => {
                                 </div>
                             </div>
                         </div>
-                    )
-                }
+                        )
+                    }
+                </div>
             </div>
-
-
-
         </div>
     );
 };
