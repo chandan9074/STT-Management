@@ -48,8 +48,8 @@ export const getYearMonthDate = (date: string) => {
 export const getDateWithMonthName = (date: string) => {
   const splitData = date.split("-");
   const month = moment.months()[parseInt(splitData[1]) - 1];
-  const year = splitData[0];
-  const day = splitData[2];
+  const day = splitData[0];
+  const year = splitData[2];
 
   return `${day} ${month} ${year}`;
 };

@@ -13,6 +13,7 @@ import { RoleInContext } from "../../../../context/RoleProvider";
 import { roleDT } from "../../../../types/billingTypes";
 import { Link } from 'react-router-dom';
 import { BILLING_PAYMENT_HISTORY_PATH } from '../../../../helpers/Slug';
+import Icons from '../../../../assets/Icons';
 
 const { Option } = Select;
 
@@ -129,9 +130,8 @@ const RoleSearchModal = ({
                                 className='bg-white rounded-[50%]'
                                 onClick={() => onClose()}
                             >
-                                <CloseOutlined
-                                    className='m-[10px] text-blue-gray-700'
-                                />
+                                
+                                <img  className='m-[10px] w-[11px] h-[11px]' src={Icons.CloseIconButton} alt="" />
                             </button>
                         </div>
 

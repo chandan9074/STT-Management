@@ -4,6 +4,7 @@ import { CaretDownOutlined, CloseOutlined } from "@ant-design/icons";
 import CustomRangeCalender, { DateDT } from "../../../calender/CustomRangeCalender";
 import { timeWiseYearDT } from "../../../../types/billingTypes";
 import Icons from "../../../../assets/Icons";
+import './Graph.css';
 
 interface Props {
     dateValue: DateDT;
@@ -31,19 +32,16 @@ const Graph = ({ dateValue, onDateClose, onDateSearch, disbursementData, open, s
                     Time wise disbursement
                 </h1>
 
-
                 {
                     (dateValue?.start && dateValue?.end) ?
                         <button
-                            className="duration-200 rounded-[6px] flex px-4 items-center gap-x-3 bg-ct-blue-20 h-8"
+                            className="duration-200 rounded-[6px] flex px-4 items-center gap-x-3 bg-ct-blue-20 h-8 hover:bg-ct-blue-30"
                         >
                             <h1 className="text-ct-blue-60 text-[13px] font-semibold">
                                 {getDateWithMonthName(dateValue?.start)} - {getDateWithMonthName(dateValue?.end)}
-                                {/* {searchDate?.start} - {searchDate?.end} */}
                             </h1>
                             <div onClick={onDateClose}>
                                 <CloseOutlined
-
                                     style={{ color: '#2C79BE', height: '10px', width: '10px' }}
                                 />
                             </div>
@@ -58,20 +56,16 @@ const Graph = ({ dateValue, onDateClose, onDateSearch, disbursementData, open, s
                                 {disbursementData ? disbursementData[0]?.year : ""}
                             </h1>
                             <div className="">
-                                {/* <img src={arrowDropDownIcon} alt="" /> */}
                                 <CaretDownOutlined
                                     style={{ color: `${open ? 'black' : '#9099A1'}`, width: '12px', height: '6px' }}
                                 />
                             </div>
                         </button>
                 }
-                {/* <h1 className="text-ct-blue-90 text-[13px]">
-                  2022
-                </h1> */}
+            
 
             </div>
             <CustomRangeCalender trigger={open} setOpen={setOpen} setDateValue={setDateValue} />
-            {/*<div className={`grid grid-cols-12`}>*/}
             <div className="relative">
                 <div className="flex justify-between w-full relative px-10">
                     {disbursementData?.map((m: timeWiseYearDT, i: number) => (
@@ -92,7 +86,6 @@ const Graph = ({ dateValue, onDateClose, onDateSearch, disbursementData, open, s
                                         : ""
                                 } group`}
                         >
-                            {/*<div className="absolute  bottom-20 text-white bg-black h-10">hello </div>*/}
                             <div
                                 style={{
                                     bottom: `${170 / 16 + dimensionValue[i] / 2}rem`,
@@ -118,7 +111,6 @@ const Graph = ({ dateValue, onDateClose, onDateSearch, disbursementData, open, s
                                             Disbursed:
                                             <span className="font-bold flex ml-2">
                                                 <span className="mr-1.5">BDT</span>{" "}
-                                                {/*{item.totalDisbursed}*/}
                                                 {m?.totalAmount}
                                             </span>
                                         </h1>
@@ -148,7 +140,6 @@ const Graph = ({ dateValue, onDateClose, onDateSearch, disbursementData, open, s
                                         </h3>
                                         <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
                                             <span className="mr-1">
-                                                {/*{item.monthlyDisbursed[0].hours}*/}
                                                 {m?.disbursed[0]?.hours
                                                     ? m?.disbursed[0]?.hours
                                                     : "0"}
@@ -156,7 +147,6 @@ const Graph = ({ dateValue, onDateClose, onDateSearch, disbursementData, open, s
                                             hr
                                         </h3>
                                         <h3 className="flex items-center text-winter-wizard text-base font-medium mb-0">
-                                            {/*{item.monthlyDisbursed[0].amount}/-*/}
                                             {m?.disbursed[0]?.amount
                                                 ? m?.disbursed[0]?.amount
                                                 : "0"}{" "}
@@ -177,8 +167,7 @@ const Graph = ({ dateValue, onDateClose, onDateSearch, disbursementData, open, s
                                                     {m?.year}
                                                 </span>
                                             }
-                                            {/*<span>{item.month}</span>*/}
-                                            {/*feb*/}
+                                        
                                         </h3>
                                         <h3 className="flex items-center text-green-A10  text-base font-medium mb-0">
                                             <span className="mr-1">
@@ -225,7 +214,7 @@ const Graph = ({ dateValue, onDateClose, onDateSearch, disbursementData, open, s
                             >
                                 <div className="flex items-center duration-300 absolute ">
                                     <div
-                                        className={`h-[2px] border border-dashed flex-1 rounded-tl-md rounded-bl-md bg-[#D1D3D6]`}
+                                        className={`h-[2px] border border-dashed flex-1  rounded-tl-md rounded-bl-md bg-[#D1D3D6]`}
                                     />
                                     <div
                                         style={{
@@ -242,19 +231,19 @@ const Graph = ({ dateValue, onDateClose, onDateSearch, disbursementData, open, s
                                                             : "#CCDDFE"
                                                 }`,
                                         }}
-                                        className={`relative z-20 text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center ring-2 ${i % 3 === 0
-                                            ? "ring-[#E5BEBE] hover:shadow-light-tomato"
+                                  
+                                        className={`relative z-20 text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center border-[2px]  ${i % 3 === 0
+                                            ? "shadow-light-tomato-4 border-[#E5BEBE] hover:shadow-light-tomato"
                                             : i % 4 === 0
-                                                ? "ring-[#E8DFBA] hover:shadow-light-periwinkle"
+                                                ? "border-[#E8DFBA] hover:shadow-light-periwinkle shadow-light-periwinkle-4"
                                                 : i % 5 === 0
-                                                    ? "ring-[#D1E8C7] hover:shadow-light-onahau "
+                                                    ? "border-[#D1E8C7] hover:shadow-light-onahau shadow-light-onahau-4 "
                                                     : i % 2 === 0
-                                                        ? "ring-[#BAE3E8] hover:shadow-light-onahau"
-                                                        : "ring-[#BACAE8] hover:shadow-light-yellow"
-                                            } hover:ring-offset-2 transition duration-4000 ease-out hover:ease-in`}
+                                                        ? "border-[#BAE3E8] hover:shadow-light-onahau shadow-light-onahau-4"
+                                                        : "border-[#BACAE8] hover:shadow-light-yellow shadow-light-yellow-4"
+                                            }  hover:border-[white] transition duration-4000 ease-out hover:ease-in`}
                                     >
                                         {
-                                            // dimensionValue[i] - (30/16) >= (5/16) &&
                                             !(
                                                 m.totalAmount.toString().length > 3 &&
                                                 dimensionValue[i] < 45 / 16
@@ -277,7 +266,7 @@ const Graph = ({ dateValue, onDateClose, onDateSearch, disbursementData, open, s
                                     className="absolute top-20 flex flex-col justify-center items-center h-[30px] mt-10"
                                 >
                                     <div className="w-[1px] h-[4px] bg-blue-gray-A30"></div>
-                                    <h1>{m.month.slice(0, 3)}</h1>
+                                    <h1 className='text-[13px] text-ct-blue-45'>{m.month.slice(0, 3)}</h1>
                                 </div>
                             </div>
                         </div>

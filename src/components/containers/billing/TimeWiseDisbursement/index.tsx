@@ -158,9 +158,6 @@ const TimeWiseDisbursements = () => {
         setShowModal(value);
     };
 
-    console.log('show modal------', showModal);
-
-
     const onHandleStt = () => {
         setIsStt(true);
         setIsTts(false);
