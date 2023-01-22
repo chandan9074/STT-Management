@@ -37,7 +37,7 @@ function App() {
           element={<PaymentHistory />}
         />
         <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} />
-        <Route path={PATH.SCRIPT_PATH} element={<Script />} />
+        <Route path={PATH.CREATE_SCRIPT} element={<Script />} />
         {/* <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} /> */}
         <Route path="*" element={<NotFound />} />
 

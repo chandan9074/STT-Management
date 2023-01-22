@@ -11,7 +11,7 @@ export const ORGANIZER_PATH = "/organizer";
 export const SETTINGS_PATH = "/settings";
 export const BILLING_PAYMENT_HISTORY_PATH = "/billing/payment-history";
 
-export const SCRIPT = "/script/create-script";
+export const CREATE_SCRIPT = "/script/create-script";
 
 export const TEST = "/test";
 export const AUDIO_MANAGEMENT = '/audio-management'

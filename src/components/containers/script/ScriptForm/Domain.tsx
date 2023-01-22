@@ -43,6 +43,7 @@ const Domain = () => {
                                 <TextField
 
                                     required={true} {...params}
+                                   
                                     label={<span className='comboBoxLabel'>Domain</span>}
 
                                 />
@@ -54,6 +55,7 @@ const Domain = () => {
                     <div>
                         <Autocomplete
                             id="sub-domain"
+                            className={`${domain === '' && 'sub-domain'}`}
                             style={{ width: '100%' }}
                             options={scriptSubDomain}
                             disabled={domain === ''}
@@ -62,6 +64,14 @@ const Domain = () => {
                             }}
                             renderInput={(params) => (
                                 <TextField required={true} {...params}
+                                // InputProps={{
+                                //     ...params.InputProps,
+                                //     style: { 
+                                //         cursor: "not-allowed",
+                                //         // background: 'red'
+                                //      },
+                                //     // disabled: true
+                                //   }}
                                     label={<span className='comboBoxLabel'>Sub Domain</span>}
 
                                 />
