@@ -58,6 +58,9 @@ import Link from "./link.svg";
 import AddLink from "./add_link.svg";
 import Backup from "./backup.svg";
 import Add from "./add.svg";
+import ArrowRightBack from './arrow_right_alt.svg';
+import MusicIcon from './music 1.svg'
+import Title from './title.svg'
 
 const Icons = {
   currency,
@@ -120,6 +123,9 @@ const Icons = {
   AddLink,
   Backup,
   Add,
+  ArrowRightBack,
+  MusicIcon,
+  Title
 };
 
 export default Icons;

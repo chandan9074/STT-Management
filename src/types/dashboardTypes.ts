@@ -125,10 +125,11 @@ export type totalDataResDT = {
 
 }
 export type totalDataSpeakerResDT = {
-  male: totalDataSpeakerMaleFemaleResDT,
-  female: totalDataSpeakerMaleFemaleResDT,
+  totalSpeaker: string;
+  male: totalDataSpeakerMaleFemaleResDT;
+  female: totalDataSpeakerMaleFemaleResDT;
 }
 export type totalDataSpeakerMaleFemaleResDT = {
   value: string;
-  contribution: number 
+  contribution: number
 }

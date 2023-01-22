@@ -10,9 +10,7 @@ interface Props {
 const Type1 = ({ data }: Props) => {
     const [openTooltip, setOpenTooltip] = useState<boolean>(false)
     const [openTooltip2, setOpenTooltip2] = useState<boolean>(false)
-    // const [progressDeg, setProgressDeg] = useState<number | undefined>(data?.speaker?.female?.contribution)
-    console.log("female", data?.speaker?.female?.contribution)
-    let progressDeg: number | undefined = (1.8 * 20)
+    let progressDeg: number | undefined = data?.speaker?.female?.contribution
     const MouseEventHandle = () => {
         setOpenTooltip(true)
     }
@@ -30,7 +28,7 @@ const Type1 = ({ data }: Props) => {
         <div className="relative mb-[65px]">
             <div className="flex items-center rounded-t-full overflow-y-hidden w-[172px] h-[86px] relative z-[80]">
                 <div
-                    style={{ transform: `rotate(-${progressDeg}deg)` }}
+                    style={{ transform: `rotate(-${progressDeg ? progressDeg * 1.8 : 90}deg)` }}
                     className={`male-tt bg-blue-A10 h-[86px] absolute w-[172px] origin-bottom z-[60]`}
                     onMouseOver={MouseEventHandle}
                     onMouseOut={MouseEventHandleOut}
@@ -50,7 +48,7 @@ const Type1 = ({ data }: Props) => {
             <div className="flex w-full">
                 <div className="w-[38px] h-[40px] male-drop-shadow" />
                 <div className="w-[96px] text-center">
-                    <p className="font-medium text-heading-5 text-ct-blue-95 overflow-hidden truncate w-[90px] mx-auto">43,258</p>
+                    <p className="font-medium text-heading-5 text-ct-blue-95 overflow-hidden truncate w-[90px] mx-auto">{data?.speaker?.totalSpeaker}</p>
                     <p className="text-small text-ct-blue-45 font-medium"> Total Speaker</p>
                 </div>
                 <div className="w-[38px] h-[40px] female-drop-shadow" />
@@ -69,7 +67,7 @@ const Type1 = ({ data }: Props) => {
                                 <p className="text-heading-5 font-medium text-blue-A10">{data?.speaker?.male?.value}</p>
                             </div>
                             <div className="flex text-white">
-                                <p className="text-[56px] font-normal">65</p>
+                                <p className="text-[56px] font-normal">{data?.speaker?.male?.contribution}</p>
                                 <p className="text-heading-2">%</p>
                             </div>
                         </div>
@@ -92,7 +90,7 @@ const Type1 = ({ data }: Props) => {
                                     <p className="text-heading-5 font-medium text-blue-A10">{data?.speaker?.female?.value}</p>
                                 </div>
                                 <div className="flex text-white">
-                                    <p className="text-[56px] font-normal">35</p>
+                                    <p className="text-[56px] font-normal">{data?.speaker?.female?.contribution}</p>
                                     <p className="text-heading-2">%</p>
                                 </div>
                             </div>
