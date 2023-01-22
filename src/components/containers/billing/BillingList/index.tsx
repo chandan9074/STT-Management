@@ -190,7 +190,6 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
   ];
 
   const onHandleDisburse = () => {
-    console.log("------", getMontNumberFormat(lastBillings?.dateOfPayment));
 
     GetLastBillingsInfo({
       ...lastBillingsParams,

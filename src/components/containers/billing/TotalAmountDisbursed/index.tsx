@@ -16,14 +16,11 @@ const TotalAmountDisbursed = () => {
   }, []);
 
   useEffect(() => {
-    console.log("billingContext.amountDropDown", billingContext.amountDropDown);
     if (billingContext.amountDisbursed && billingContext.amountDropDown) {
       const data = billingContext.amountDisbursed.yearlyData.filter(
         (item) => item.year === billingContext.amountDropDown
       );
-      console.log("hello man", data);
       if (data) {
-        console.log("data", data[0]);
         setCurrentData(data[0]);
       }
     }

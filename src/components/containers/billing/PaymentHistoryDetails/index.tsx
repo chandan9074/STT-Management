@@ -55,7 +55,6 @@ const PaymentHistoryDetails = ({ data }: { data: paymentHistoryDT }) => {
   };
 
   const handleDataChange = (value: number) => {
-    console.log("hello vai");
     billingContext.setQuery({
       ...billingContext.query,
       page: value,
