@@ -31,19 +31,28 @@ module.exports = {
       },
       boxShadow: {
         "light-blue": "0px 0px 12px #FFFFFF",
-        "light-tomato": "0px 2px 18px #FFD3D3",
         "light-periwinkle": "0px 2px 18px #FFF5CC",
         "light-onahau": "0px 2px 18px #E2FBD7",
         "light-orinoco": "0px 2px 18px #CCF8FE",
         "light-yellow": "0px 2px 18px #CCDDFE",
-        "bottom-light-blue": "0px 3px 10px #2C79BE, 0px 0px 1px #2C79BE",
+        "bottom-light-blue": "0px 2px 32px #2C79BE, 0px 0px 1px #2C79BE",
         "light-gray":
           "0px 1px 2px rgba(31, 56, 76, 0.06), 0px 1px 3px rgba(31, 56, 76, 0.1)",
         "light-blue-2": "0px 4px 16px rgba(70, 78, 95, 0.35)",
         "bottom-light-blue-10":
           "0px 1px 2px rgba(31, 56, 76, 0.06), 0px 1px 3px rgba(31, 56, 76, 0.1)",
         "bottom-light-blue-20": "0px 4px 24px rgba(31, 56, 76, 0.12)",
-        'light-orange-shadow': "0px 2px 18px rgba(230, 206, 190, 0.12)"
+        'light-orange-shadow': "0px 2px 18px rgba(230, 206, 190, 0.12)",
+         "light-tomato": "0px 2px 18px #FFD3D3",
+
+         "light-tomato2": "0px 2px 18px #f0616f",
+         "light-green2": "0px 2px 18px #7fbb65",
+         "light-yellow2": "0px 4px 4px #c5b268",
+         "light-blue2": "0px 4px 4px #b8e0e5",
+         "light-orange2": "0px 2px 18px #d69d75",
+         "light-blue3": "0px 4px 4px #7c96c9",
+         "light-purple": "0px 4px 4px #a39ed8",
+
       },
       colors: {
         "primary-ct-blue-60": "#2C79BE",
@@ -147,16 +156,18 @@ module.exports = {
         "sea-serpent": "#59C1BD",
         "silver-tree": "#5BBC96",
         "tooltip-bg": "#212121",
-        "tacao": "#EAA678",
-        "onahau": "#CCF8FE",
-        "fog": "#DAD7FE",
+        tacao: "#EAA678",
+        onahau: "#CCF8FE",
+        fog: "#DAD7FE",
         "cold-turkey": "#C4B0B2",
         "pacific-blue": "#00A9C5",
         "bright-turquoise": "#42F5D5",
         "your-pink": "#FFCBCB",
         "pale-sky": "#667487",
         "feijao":"#94D676",
-        "masala":"#453939"
+        "masala":"#453939",
+        "blue-gray-A50" : "rgba(31, 56, 76, 0.7)",
+        'white-gray-45': 'rgba(255, 255, 255, 0.45)'
       },
     },
   },

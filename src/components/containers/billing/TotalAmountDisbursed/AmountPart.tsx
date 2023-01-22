@@ -9,13 +9,13 @@ const AmountPart = ({
 }) => {
   return (
     <>
-      <h1 className="text-small font-medium text-ct-blue-05 mb-2">
+      <h1 className="text-base font-medium text-ct-blue-05 -mb-0.5">
         Total Amount Disbursed
       </h1>
       <div className="relative w-full h-52">
         <div className="absolute top-0 left-0 flex items-start">
           <h6
-            className={`text-base font-medium text-ct-blue-10 ${
+            className={`text-heading-6 font-medium text-ct-blue-10 ${
               totalAmount.length <= 6
                 ? "mt-4"
                 : totalAmount.length <= 8
@@ -23,7 +23,7 @@ const AmountPart = ({
                 : totalAmount.length <= 11
                 ? "mt-2"
                 : "mt-1.5"
-            } mr-3 mb-0`}
+            } mr-2 mb-0`}
           >
             BDT
           </h6>
@@ -55,7 +55,7 @@ const AmountPart = ({
                 : totalHours.length <= 11
                 ? "text-[30px]"
                 : "text-[27px]"
-            } font-extrabold bg-gradient-to-r from-winter-wizard via-green-10 to-venetian-red text-transparent bg-clip-text`}
+            } leading-[57px] font-extrabold bg-gradient-to-r from-winter-wizard via-green-10 to-venetian-red text-transparent bg-clip-text`}
           >
             {totalHours}hr
           </h1>

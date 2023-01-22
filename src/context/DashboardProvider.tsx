@@ -34,7 +34,7 @@ const DashboardProvider = ({ children }: { children: any }) => {
     totalDataResDT | undefined
   >();
 
-  const getOverTheTimeData = (
+  const getOverTheTimeData = async (
     module: string,
     role: string,
     year?: number,
@@ -43,16 +43,21 @@ const DashboardProvider = ({ children }: { children: any }) => {
     setLoading(true);
     setErrorMsg("");
     // fetch data from api
-    // const response = await DashboardService.getOverTheTimeData();
-    // console.log("response", response.data);
-    // setOverTheTimeData(response.data);
-    const response = DashboardService.getOverTheTimeData(
+    const response = await DashboardService.getOverTheTimeData(
       module,
       role,
       year,
       month
     );
-    setOverTheTimeData(response);
+    console.log("response", response.data);
+    setOverTheTimeData(response.data);
+    // const response = DashboardService.getOverTheTimeData(
+    //   module,
+    //   role,
+    //   year,
+    //   month
+    // );
+    // setOverTheTimeData(response);
     setLoading(false);
   };
 

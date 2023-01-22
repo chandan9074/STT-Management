@@ -9,9 +9,10 @@ import {
 } from "../../../../types/billingTypes";
 import { BillingContext } from "../../../../context/BillingProvider";
 import ExportCsv from "../../../common/ExportCsv";
-import { excelNameFormatter } from "../../../../helpers/Utils";
+import { excelNameFormatter, getMontNumberFormat } from "../../../../helpers/Utils";
 import Table from "../../../Table";
 import Pagination from "../../../Pagination";
+import Icons from "../../../../assets/Icons";
 
 interface Person {
   name: string;
@@ -174,8 +175,11 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
     },
   ];
 
-
-
+const onHandleDisburse = () => {
+  console.log('------', getMontNumberFormat(lastBillings?.dateOfPayment));
+  
+  GetLastBillingsInfo({...lastBillingsParams, date: getMontNumberFormat(lastBillings?.dateOfPayment)});
+}
 
 
   return (
@@ -188,10 +192,13 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
             </h2>
           </div>
           <div>
-            <p className="text-xxs text-ct-blue-90-70% mb-0">Paid</p>
+            <p className="text-xxs text-ct-blue-90-70% mb-0">{lastBillings?.payable ? 'Payable' : 'Paid'}</p>
+           {
+            lastBillings?.payable &&
             <p className="text-small text-ct-blue-95 font-medium">
-              BDT {lastBillings?.paid}
+              BDT {lastBillings?.amount}
             </p>
+            }
           </div>
           <div>
             <p className="text-xxs text-ct-blue-90-70% mb-0">Date of Payment</p>
@@ -201,7 +208,17 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
           </div>
         </div>
 
-        <div>
+        <div className="flex items-center gap-x-2">
+
+         {
+          lastBillings?.payable &&
+          <div>
+            <button onClick={() => onHandleDisburse()} className="text-small py-[8px] pl-[16px] pr-[24px] rounded-[6px] bg-primary-ct-magenta-60 text-white flex items-center gap-x-[4px]">
+            <img src={Icons.Add} className='w-5 h-5' alt="" />
+            Disburse
+            </button>
+          </div>
+          }
          
           <ExportCsv
             csvData={lastBillingsExcelData}

@@ -13,7 +13,7 @@ type ToolTipProps = {
 const ToolTip = ({ currentData, barHeight, item, i, maxBar }: ToolTipProps) => {
   return (
     <div
-      className={`rounded-[12px] px-5 py-4 bg-tooltip-bg absolute ${
+      className={`rounded-[12px] px-5 pt-4 pb-6 bg-tooltip-bg absolute ${
         currentData.yearData.length - 2 <= i &&
         Math.round(barHeight / 2) >
           Math.round(
@@ -62,8 +62,8 @@ const ToolTip = ({ currentData, barHeight, item, i, maxBar }: ToolTipProps) => {
         <div
           className={`${
             i === 0
-              ? "mt-4 bg-winter-wizard text-winter-wizard"
-              : "mt-0.5 bg-blue-gray-85 text-[#E2FBD7]"
+              ? "mt-4 bg-winter-wizard text-winter-wizard bg-opacity-[0.1]"
+              : "mt-0.5  bg-[#E2FBD7] text-[#E2FBD7] bg-opacity-[0.1]"
           } flex justify-between w-[300px] bg-opacity-25 py-1.5 px-2 rounded-[4px]`}
         >
           <h3 className="flex items-center text-base font-medium mb-0">
