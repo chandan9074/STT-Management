@@ -77,7 +77,7 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
         <div className='mb-[28px] source-reference'>
 
 
-            <h1 className='mb-[12px] text-blue-gray-80 text-[14px] font-medium'>source reference</h1>
+            <h1 className='mb-[12px] text-blue-gray-80 text-[14px] font-medium'>Source Reference</h1>
 
             <div className=' border-[1px] border-[#D6E5F5] rounded-[7px] mb-[28px]'>
                 <Grid container >
