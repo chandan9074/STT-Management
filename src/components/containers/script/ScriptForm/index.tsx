@@ -11,6 +11,8 @@ import TitleDescription from './TitleDescription';
 import ActionButton from './ActionButton';
 import './ScriptForm.css';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 
 const theme = createTheme({
 
@@ -26,27 +28,53 @@ const theme = createTheme({
 
 const distributionList = ['Read', 'Lecture', 'Command', 'Miscellaneous']
 
+const validationSchema = yup.object({
+    // sourceurl: yup.string().required('Source URL is required'),
+    sourceType: yup.string().required('Source Type is required'),
+    domain: yup.string().required('Domain is required'),
+    subDomain: yup.string().required('Sub domain is required'),
+    distributionSource: yup.string().required('Distribution Source is required'),
+
+});
+
 const ScriptForms = () => {
+
+    const formik = useFormik({
+        initialValues: {
+            sourceurl: '',
+            sourceType: '',
+            domain: '',
+            subDomain: '',
+            distributionSource: '',
+            isAgeChecked: false,
+            title: '',
+            script: ''
+        },
+        validationSchema: validationSchema,
+        onSubmit: (values) => {
+            console.log('submit------', values);
+        },
+    });
 
     return (
         <div className='w-full flex justify-center script-form'>
             <ThemeProvider theme={theme}>
-            <div className='bg-white-gray-45 w-[885px]'>
-                <form>
-                    <div className='px-[53px] py-[24px]'>
-                        <DistributionSource />
-                        <Domain />
-                        <SourceReference />
-                        <TitleDescription />
-                    </div>
+                <div className='bg-white-gray-45 w-[885px]'>
+                    <form onSubmit={formik.handleSubmit}>
+                        <div className='px-[53px] py-[24px]'>
+                            <DistributionSource formik={formik} />
+                            <Domain formik={formik} />
+                            <SourceReference formik={formik} />
+                            <TitleDescription formik={formik} />
+                        </div>
 
-                    <div className='flex justify-end px-5 py-[28px] bg-white'>
-                        <ActionButton />
-                    </div>
+                        <div className='flex justify-end px-5 py-[28px] bg-white'>
+                            <ActionButton />
+                        </div>
 
-                </form>
+                    </form>
 
-            </div>
+                </div>
             </ThemeProvider>
         </div>
     );

@@ -48,11 +48,14 @@ textarea {
     content: "";
 }
 
-.MuiAutocomplete-inputRoot[disabled] {
-    cursor: not-allowed !important;
-    background-color: red !important;
-  }
 
+#sub-domain[disabled] {
+    cursor: not-allowed !important;
+}
+
+.disabled-cursor[disabled] {
+    cursor: not-allowed !important;
+}
 
 /* 
  .css-gdh49b-MuiAutocomplete-listbox .MuiAutocomplete-option.Mui-focused {

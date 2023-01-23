@@ -5,3 +5,11 @@
 .writeScriptfield:hover {
     border: none !important;
 }
+
+#script:focus {
+    outline: none !important;
+}
+
+.writeScriptfield:focus {
+    outline: none !important;
+}

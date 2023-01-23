@@ -25,7 +25,7 @@ const GroupHeader = styled('div')(({ theme }) => ({
 
 
 
-const SourceReference = () => {
+const SourceReference = ({ formik }: { formik: any }) => {
     const [file, setFile] = useState<any>();
 
     useEffect(() => {
@@ -55,7 +55,7 @@ const SourceReference = () => {
 
     return (
         <div className='mb-[28px] source-reference'>
-                                
+
 
             <h1 className='mb-[12px] text-blue-gray-80 text-[14px] font-medium'>source reference</h1>
 
@@ -81,16 +81,31 @@ const SourceReference = () => {
                         <Grid item xs={6}>
                             <div>
                                 <Autocomplete
-                                    id="source-type"
+                                    id="sourceType"
                                     style={{ width: '100%' }}
                                     options={scriptSourceType}
-                                    // onChange={(event: any, newValue: string | null) => {
-                                    //     onHandleChange(event, newValue);
-                                    // }}
+                                    value={formik.values.sourceType}
+                                    defaultValue={formik.values.sourceType}
+
+                                    onChange={(event, value) => {
+                                        if (typeof value === 'string') {
+                                            console.log('event', event);
+                                            
+                                            formik.setFieldValue('sourceType', value)
+                                        } else {
+                                          formik.setFieldValue('sourceType', '')
+                                        }
+                                      }}
+                                    
                                     renderInput={(params) => (
 
-                                        <TextField required={true} {...params}
-                                            label={<span className='comboBoxLabel'>Source Type</span>}
+                                        <TextField
+                                            {...params}
+                                            name="sourceType"
+                                            error={formik.touched.sourceType && Boolean(formik.errors.sourceType)}
+                                            helperText={formik.touched.sourceType && formik.errors.sourceType}
+
+                                            label={<span className='comboBoxLabel'>Source Type <span className='text-[red]'>*</span></span>}
 
                                         />
                                     )}
@@ -101,16 +116,24 @@ const SourceReference = () => {
                         <Grid item xs={6}>
                             <div>
 
-                                    <TextField
-                                        style={{ width: '100%' }}
-                                        InputProps={{
-                                            style: {
-                                                color: '#464E5F',
-                                                fontWeight: '600',
-                                                fontSize: '15px'
-                                            }
-                                        }}
-                                        id="outlined-basic" label="Source URL" variant="outlined" />
+                                <TextField
+                                    id="sourceurl"
+                                    name="sourceurl"
+                                    label="Source URL"
+
+                                    value={formik.values.sourceurl}
+                                    onChange={formik.handleChange}
+                                    // error={formik.touched.sourceurl && Boolean(formik.errors.sourceurl)}
+                                    // helperText={formik.touched.sourceurl && formik.errors.sourceurl}
+                                    style={{ width: '100%' }}
+                                    InputProps={{
+                                        style: {
+                                            color: '#464E5F',
+                                            fontWeight: '600',
+                                            fontSize: '15px'
+                                        }
+                                    }}
+                                    variant="outlined" />
 
 
                             </div>
