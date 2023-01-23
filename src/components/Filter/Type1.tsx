@@ -11,8 +11,8 @@ type filterListDT = {
 };
 
 const Type1 = ({ filterData }: { filterData: FilterDT }) => {
-  const [open, setOpen] = useState(true);
-  const [currentState, setCurrentState] = useState<string>();
+  const [open, setOpen] = useState(false);
+  const [currentState, setCurrentState] = useState<string>("dataType");
   const [filterList, setFilterList] = useState<filterListDT>({
     dataType: [],
     distributionSource: [],
@@ -46,7 +46,7 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
         });
       }
     }
-  }
+  };
 
   return (
     <div className="relative flex justify-end">
@@ -66,7 +66,9 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
             <h3 className="text-base font-medium text-ct-blue-90-68% mb-0">
               Filter
             </h3>
-            <img src={Icons.CloseIconButton} alt="" />
+            <button onClick={() => setOpen(!open)}>
+              <img src={Icons.CloseIconButton} alt="" />
+            </button>
           </div>
           {[1, 2].map((item, dataIndex) => (
             <div
@@ -104,24 +106,46 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
                       className="animate-fadeIn"
                     />
                   )}
-                  <h6 className="text-small text-blue-gray-80 font-medium mb-0 ml-2">
-                    {dataIndex === 0 ? "Data Source" : "Distribution Source"}{" "}
+                  <h6 className="text-small text-blue-gray-80 font-medium mb-0 ml-2 flex items-center">
+                    <span className="whitespace-nowrap">
+                      {dataIndex === 0 ? "Data Source" : "Distribution Source"}
+                    </span>{" "}
                     {filterList[
                       dataIndex === 0 ? "dataType" : "distributionSource"
-                    ][0] &&
+                    ].length > 0 &&
                       currentState !==
                         `${
                           dataIndex === 0 ? "dataType" : "distributionSource"
                         }` && (
-                        <span className="animate-fadeIn text-xs font-medium text-ct-blue-60 ml-3">
-                          {
-                            filterList[
-                              dataIndex === 0
-                                ? "dataType"
-                                : "distributionSource"
-                            ][0]
-                          }
-                        </span>
+                        // <span className="animate-fadeIn text-xs font-medium text-ct-blue-60 ml-3">
+                        //   {
+                        //     filterList[
+                        //       dataIndex === 0
+                        //         ? "dataType"
+                        //         : "distributionSource"
+                        //     ][0]
+                        //   }
+                        // </span>
+                        <h6 className="flex text-left w-72 selected-items">
+                          {filterList[
+                            dataIndex === 0 ? "dataType" : "distributionSource"
+                          ].map((item, index) => (
+                            <span
+                              className={`animate-fadeIn text-xs font-medium text-ct-blue-60 whitespace-nowrap ${
+                                index === 0 ? "ml-3" : "ml-1"
+                              }`}
+                            >
+                              {item}
+                              {filterList[
+                                dataIndex === 0
+                                  ? "dataType"
+                                  : "distributionSource"
+                              ].length -
+                                1 !==
+                                index && ","}
+                            </span>
+                          ))}
+                        </h6>
                       )}
                   </h6>
                 </button>
@@ -156,23 +180,45 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
                   <button
                     onClick={() =>
                       dataIndex === 0
-                        ? setFilterList({ ...filterList, dataType: [item] })
+                        ? filterList.dataType.includes(item)
+                          ? setFilterList({
+                              ...filterList,
+                              dataType: filterList.dataType.filter(
+                                (dataTypeItem) => dataTypeItem !== item
+                              ),
+                            })
+                          : setFilterList({
+                              ...filterList,
+                              dataType: [...filterList.dataType, item],
+                            })
+                        : filterList.distributionSource.includes(item)
+                        ? setFilterList({
+                            ...filterList,
+                            distributionSource:
+                              filterList.distributionSource.filter(
+                                (distributionSourceItem) =>
+                                  distributionSourceItem !== item
+                              ),
+                          })
                         : setFilterList({
                             ...filterList,
-                            distributionSource: [item],
+                            distributionSource: [
+                              ...filterList.distributionSource,
+                              item,
+                            ],
                           })
                     }
                     className={`py-1.5 px-3 flex items-center border rounded-full duration-200 bg-white mb-0 text-small font-medium text-blue-gray-75 ${
                       filterList[
                         dataIndex === 0 ? "dataType" : "distributionSource"
-                      ][0] === item
+                      ].includes(item)
                         ? "bg-secondary-blue-50 bg-opacity-[0.12] border-secondary-blue-50"
                         : "border-white"
                     }`}
                   >
                     {filterList[
                       dataIndex === 0 ? "dataType" : "distributionSource"
-                    ][0] === item && (
+                    ].includes(item) && (
                       <img
                         src={Icons.CorrectIcon}
                         alt=""
@@ -203,9 +249,17 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
                         : setCurrentState("domain")
                       : currentState === "subdomain"
                       ? setCurrentState("")
-                      : setCurrentState("subdomain")
+                      : filterList.domain.length > 0
+                      ? setCurrentState("subdomain")
+                      : setCurrentState("")
                   }
-                  className="flex items-center w-full mr-5"
+                  className={`flex items-center w-full mr-5 ${
+                    dataIndex === 1
+                      ? filterList.domain.length > 0
+                        ? "cursor-pointer"
+                        : "cursor-not-allowed"
+                      : ""
+                  }`}
                 >
                   {currentState ===
                   `${dataIndex === 0 ? "domain" : "subdomain"}` ? (
@@ -221,18 +275,29 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
                       className="animate-fadeIn"
                     />
                   )}
-                  <h6 className="text-small text-blue-gray-80 font-medium mb-0 ml-2">
+                  <h6 className="text-small text-blue-gray-80 font-medium mb-0 ml-2 flex items-center">
                     {dataIndex === 0 ? "Domain" : "Subdomain"}{" "}
                     {filterList[dataIndex === 0 ? "domain" : "subdomain"][0] &&
                       currentState !==
                         `${dataIndex === 0 ? "domain" : "subdomain"}` && (
-                        <span className="animate-fadeIn text-xs font-medium text-ct-blue-60 ml-3">
-                          {
-                            filterList[
-                              dataIndex === 0 ? "domain" : "subdomain"
-                            ][0]
-                          }
-                        </span>
+                        <h6 className="flex text-left w-72 selected-items">
+                          {filterList[
+                            dataIndex === 0 ? "domain" : "subdomain"
+                          ].map((item, index) => (
+                            <span
+                              className={`animate-fadeIn text-xs font-medium text-ct-blue-60 whitespace-nowrap ${
+                                index === 0 ? "ml-3" : "ml-1"
+                              }`}
+                            >
+                              {item}
+                              {filterList[
+                                dataIndex === 0 ? "domain" : "subdomain"
+                              ].length -
+                                1 !==
+                                index && ","}
+                            </span>
+                          ))}
+                        </h6>
                       )}
                   </h6>
                 </button>
@@ -261,10 +326,11 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
                 }`}
               >
                 <Dropdown.Type3
-                  data={filterData[dataIndex === 0 ? "domain" : "subDomain"]}
+                  domainData={filterData["domain"]}
                   subdomain={dataIndex === 1}
                   filterList={filterList}
                   handleFilter={handleFilter}
+                  subdomainData={filterData["subDomain"]}
                 />
               </div>
             </div>
