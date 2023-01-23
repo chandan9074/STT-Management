@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -8,6 +8,8 @@ import DistributionSource from './DistributionSource';
 import Domain from './Domain';
 import SourceReference from './SourceReference';
 import TitleDescription from './TitleDescription';
+
+
 import ActionButton from './ActionButton';
 import './ScriptForm.css';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -39,6 +41,14 @@ const validationSchema = yup.object({
 
 const ScriptForms = () => {
 
+    const [file, setFile] = useState<any>([]);
+
+    const getFile = (file: any) => {
+        setFile(file);
+        console.log('file---', file);
+
+    }
+
     const formik = useFormik({
         initialValues: {
             sourceurl: '',
@@ -48,11 +58,13 @@ const ScriptForms = () => {
             distributionSource: '',
             isAgeChecked: false,
             title: '',
+
             script: ''
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            console.log('submit------', values);
+            const _data = {...values, file: file}
+            console.log('submit------', _data);
         },
     });
 
@@ -64,8 +76,9 @@ const ScriptForms = () => {
                         <div className='px-[53px] py-[24px]'>
                             <DistributionSource formik={formik} />
                             <Domain formik={formik} />
-                            <SourceReference formik={formik} />
+                            <SourceReference getFile={getFile} formik={formik} />
                             <TitleDescription formik={formik} />
+
                         </div>
 
                         <div className='flex justify-end px-5 py-[28px] bg-white'>
