@@ -1,6 +1,7 @@
 import { Button } from '@mui/material';
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import Icons from '../../../assets/Icons';
+import Buttons from '../../Buttons';
 
 interface Props {
     open: boolean;
@@ -126,19 +127,38 @@ const Type1 = ({ open, setOpen, setData }: Props) => {
                                     </div>
 
                                     <div className='flex gap-3 px-5 pb-5 pt-10'>
-                                        <button
+                                        {/* <button
                                             onClick={() => handleSave()}
                                             className='px-8 py-2 bg-ct-blue-60 text-small font-medium text-white rounded-md hover:bg-ct-blue-70'
                                         >
                                             Start
-                                        </button>
+                                        </button> */}
 
-                                        <button
+                                        {/* <button
                                             onClick={() => setOpen(false)}
                                             className='px-8 py-2 border border-ct-blue-30 text-small font-medium text-ct-blue-80 rounded-md hover:bg-blue-gray-30'
                                         >
                                             Cancel
-                                        </button>
+                                        </button> */}
+
+                                        <Buttons.LabelButton.Primary
+
+                                            label='Start'
+                                            variant="CT-Blue"
+                                            size="small"
+                                            onClick={() => handleSave()}
+                                           
+                                        />
+
+                                        <Buttons.LabelButton.Secondary
+                                            label='Cancel'
+                                            variant="Blue"
+                                            size='small'
+                                            onClick={() => setOpen(false)}
+                                            
+                                            
+                                        />
+                                       
                                     </div>
 
 
