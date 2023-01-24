@@ -14,7 +14,7 @@ const GraphTooltipType2 = ({
     align: "left" | "right" | "center";
 }) => {
     return (
-        <div className="px-5 py-6 bg-tooltip-bg rounded-[12px]">
+        <div className="px-5 py-6 bg-tooltip-bg rounded-[12px] animate-fadeIn">
             <div className="flex justify-between">
             <h1 className={`text-base font-semibold ${titleColor} mb-0`}>
                 {data?.name}

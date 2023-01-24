@@ -15,16 +15,16 @@ const GenderWise = ({data}:Props) => {
                 <div className="col-span-6">
                     <PercentageCard
                         name="Male"
-                        value={60}
-                        hour={400}
+                        value={data[0].contribution}
+                        hour={data[0].totalValid}
                         BorderColor="#42F5D5"
                     />
                 </div>
                 <div className="col-span-6">
                     <PercentageCard
                         name="Female"
-                        value={50}
-                        hour={300}
+                        value={data[1].contribution}
+                        hour={data[1].totalValid}
                         BorderColor="#FFCBCB"
                     />
                 </div>

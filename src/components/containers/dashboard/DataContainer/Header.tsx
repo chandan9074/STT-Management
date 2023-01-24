@@ -4,19 +4,65 @@ import Dropdown from "../../../Dropdown";
 import { ClockCircleOutlined } from "@ant-design/icons";
 import { collectDataDT, createDataDT } from "../../../../types/dashboardTypes";
 import { CommonContext } from "../../../../context/CommonProvider";
+import { STTMODULE } from "../../../../helpers/ConditionVariable";
 
 interface Props {
-  type: string;
+  headerType: string;
   bgColor: string;
   targetColor: string;
   borderColor: string;
   data: createDataDT | collectDataDT
 }
+export type RingProgressDT = {
+  Create: {
+    trailColor: string;
+    stock1: string;
+    stock2: string;
+    textColor: string
 
-const Header = ({ bgColor, type, targetColor, borderColor, data }: Props) => {
+  }
+  Collect: {
+    trailColor: string;
+    stock1: string;
+    stock2: string;
+    textColor: string
 
+  }
+}
+const Header = ({ bgColor, headerType, targetColor, borderColor, data }: Props) => {
   const commonContext = useContext(CommonContext)
-  
+  const { type } = commonContext
+
+  const sttStyle: RingProgressDT = {
+    Create: {
+      trailColor: "#DEF7F0",
+      stock1: "#05956F",
+      stock2: "#00FFBB",
+      textColor: "text-green/50-05956F"
+    },
+    Collect: {
+      trailColor: "#F7DEE0",
+      stock1: "#940412",
+      stock2: "#FF0018",
+      textColor: "text-red-60"
+    }
+  }
+
+  const ttsStyle: RingProgressDT = {
+    Create: {
+      trailColor: "#F5EBF4",
+      stock1: "#C22EB6",
+      stock2: "#FF00EA",
+      textColor: "text-[#C22EB6]"
+    },
+    Collect: {
+      trailColor: "#E5E5DC8C",
+      stock1: "#88991C",
+      stock2: "#D0E108",
+      textColor: "text-[#88991C]"
+    }
+  }
+
 
   return (
     <div className="relative">
@@ -26,7 +72,7 @@ const Header = ({ bgColor, type, targetColor, borderColor, data }: Props) => {
         <div className="flex flex-col gap-3">
           <div className="flex gap-2 align-middle">
             <p className="text-heading-6 font-medium text-ct-blue-95">
-              {type} Data
+              {headerType} Data
             </p>
             <p className={`text-small font-medium my-auto ${targetColor}`}>
               Target : {data.target}h
@@ -54,7 +100,7 @@ const Header = ({ bgColor, type, targetColor, borderColor, data }: Props) => {
         </div>
 
         <div className="flex">
-          <RingProgressBar.Type1 type={type} value={data.achieved} />
+          <RingProgressBar.Type1 type={headerType} value={data.achieved} style={type === STTMODULE ? sttStyle : ttsStyle} />
           <Dropdown.Type2 />
         </div>
       </div>

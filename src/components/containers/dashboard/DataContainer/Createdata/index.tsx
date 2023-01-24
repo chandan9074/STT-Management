@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Header from "../Header";
 import DataContainerDropdown from "../DataContainerDropdown";
 import DataContainerModal from "../DataContainerModal";
@@ -6,6 +6,8 @@ import Graphs from "../Graphs";
 import { createDataDT } from "../../../../../types/dashboardTypes";
 import AgeWise from "../Graphs/AgeWise";
 import EconomicSituationWise from "../Graphs/EconomicSituationWise";
+import { CommonContext } from "../../../../../context/CommonProvider";
+import { STTMODULE } from "../../../../../helpers/ConditionVariable";
 
 const domainWiseColors = [
   "#F5427F",
@@ -145,7 +147,7 @@ const ActiveColorRecordingArea: any = {
 };
 
 const CreateData = ({ data }: { data: createDataDT }) => {
-  const CreateDropDownData = [
+  const sttCreateDropDownData = [
     {
       id: 1,
       value: "Distribution Source-wise",
@@ -187,7 +189,23 @@ const CreateData = ({ data }: { data: createDataDT }) => {
       value: "Recording Distance",
     },
   ];
+  const ttsCreateDropDownData = [
+    {
+      id: 1,
+      value: "Distribution Source-wise",
+    },
+    {
+      id: 2,
+      value: "Domain-wise",
+    },
+    {
+      id: 3,
+      value: "Gender-wise",
+    },
+    ];
   const [activePanel, setActivePanel] = useState("Distribution Source-wise");
+  const commonContext = useContext(CommonContext)
+  const { type } = commonContext
 
   const handleActivePanel = (value: string) => {
     setActivePanel(value);
@@ -227,16 +245,16 @@ const CreateData = ({ data }: { data: createDataDT }) => {
   return (
     <div>
       <Header
-        type="Create"
-        borderColor="border-border-teal"
-        bgColor="bg-green-05"
-        targetColor="text-green/50-05956F"
+        headerType="Create"
+        borderColor={type === STTMODULE ? "border-border-teal" : "border-[#80CBC4]"}
+        bgColor={type === STTMODULE ? "bg-green-05" : "bg-[#FCF7FC]"}
+        targetColor={type === STTMODULE ? "text-green/50-05956F" : "text-[#C22EB6]"}
         data={data}
       />
 
       <div className="flex justify-between p-5 bg-white rounded-b-xl">
         <DataContainerDropdown
-          data={CreateDropDownData}
+          data={type ===STTMODULE ? sttCreateDropDownData :ttsCreateDropDownData}
           handleActivePanel={handleActivePanel}
         />
         <DataContainerModal
