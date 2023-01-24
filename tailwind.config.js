@@ -35,6 +35,13 @@ module.exports = {
         "light-onahau": "0px 2px 18px #E2FBD7",
         "light-orinoco": "0px 2px 18px #CCF8FE",
         "light-yellow": "0px 2px 18px #CCDDFE",
+
+        "light-tomato-4": "0px 2px 18px #e6bebe",
+        "light-periwinkle-4": "0px 2px 18px #e6ddb8",
+        "light-onahau-4": "0px 2px 18px #cfe6c5",
+        "light-orinoco-4": "0px 2px 18px #b8e0e6",
+        "light-yellow-4": "0px 2px 18px #b8c8e6",
+
         "bottom-light-blue": "0px 2px 32px #2C79BE, 0px 0px 1px #2C79BE",
         "light-gray":
           "0px 1px 2px rgba(31, 56, 76, 0.06), 0px 1px 3px rgba(31, 56, 76, 0.1)",

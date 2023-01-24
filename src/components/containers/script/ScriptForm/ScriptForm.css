@@ -4,6 +4,37 @@
     border-radius: 4px;
 }
 
+.ant-upload-icon {
+    background-image: url('../../../../assets/Icons/picture_as_pdf.svg');
+    margin-left: auto;
+    background-size: 24px 24px;
+    width: 24px;
+    height: 24px;
+    content: "";
+}
+
+.ant-upload-wrapper .ant-upload-list .ant-upload-list-item-error .ant-upload-icon .anticon {
+    display: none !important;
+}
+
+.script-form .ant-upload-list-item-name {
+    color: #136EE5 !important;
+    font-size: 14px !important;
+}
+
+.ant-upload-wrapper .ant-upload-list .ant-upload-list-item .ant-upload-list-item-actions .ant-upload-list-item-action.ant-btn-sm {
+    background-image: url('../../../../assets/Icons/delete_icon.png');
+    margin-left: auto;
+    background-size: 20px 20px;
+    width: 20px;
+    height: 20px;
+    content: "";
+}
+
+.ant-upload-wrapper .ant-upload-list .ant-upload-list-item .ant-upload-list-item-actions .ant-upload-list-item-action.ant-btn-sm >span {
+    display: none;
+}
+
 .ant-upload-wrapper .ant-upload-drag:not(.ant-upload-disabled):hover {
     border: none !important;
 }
@@ -46,6 +77,19 @@ textarea {
     width: 15px;
     height: 10px;
     content: "";
+}
+
+
+#sub-domain[disabled] {
+    cursor: not-allowed !important;
+}
+
+.disabled-cursor[disabled] {
+    cursor: not-allowed !important;
+}
+
+.source-reference .css-honmcm-MuiGrid-root>.MuiGrid-item {
+padding-top: 0px !important;
 }
 
 

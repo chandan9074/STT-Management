@@ -14,6 +14,7 @@ import UploadAudioVideo from "./pages/Test/UploadAudioVideo";
 import Checking from "./pages/Test/CollectiongAudio/Checking";
 import CheckingStatus from "./pages/Test/CollectiongAudio/Checking/CheckingStatus";
 import Script from "./pages/Script";
+import ScriptForm from "./pages/Script/ScriptForm";
 
 function App() {
   useEffect(() => {
@@ -36,8 +37,10 @@ function App() {
           path={`${PATH.BILLING_PAYMENT_HISTORY_PATH}/:id`}
           element={<PaymentHistory />}
         />
-        {/* <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} /> */}
-        {/* <Route path={PATH.SCRIPT_PATH} element={<Script />} /> */}
+        <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} />
+        <Route path={PATH.SCRIPT_PATH} element={<Script />} />
+        <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} />
+        <Route path={PATH.CREATE_SCRIPT} element={<ScriptForm />} />
         {/* <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} /> */}
         <Route path="*" element={<NotFound />} />
 
