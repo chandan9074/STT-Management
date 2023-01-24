@@ -4,44 +4,44 @@ import Circle1 from '../../../../../common/Circle/Circle1';
 const color = [
     {
         bgColor: 'bg-red-15',
-        ringColor: 'ring-[#E8C8C8]',
+        ringColor: 'from-[#FFD3D3] via-[#E8C8C8] to-[#E5BEBE]',
         shadowColor: 'hover:shadow-light-tomato2',
         tooltipTitleColor: 'text-red-15'
     },
     {
         bgColor: 'bg-green-A10',
-        ringColor: 'ring-[#D1E8C7]',
+        ringColor: 'from-[#E2FBD7] via-[#D1E8C7] to-[#D1E8C7]',
         shadowColor: 'hover:shadow-light-green2',
         tooltipTitleColor: 'text-green-A10'
     },
     {
         bgColor: 'bg-[#FFF5CC]',
-        ringColor: 'ring-[#E8DFBA]',
+        ringColor: 'from-[#FFF5CC] via-[#E8DFBA] to-[#E8DFBA]',
         shadowColor: 'hover:shadow-light-yellow2',
         tooltipTitleColor: 'text-yellow-A10'
     },
     {
         bgColor: 'bg-[#FFE5D3]',
-        ringColor: 'ring-[#E8D0C0]',
+        ringColor: 'from-[#FFE5D3] via-[#E8D0C0] to-[#E8D0C0]',
         shadowColor: 'hover:shadow-light-orange2',
         tooltipTitleColor: 'text-blue-A10'
         
     },
     {
         bgColor: 'bg-[#CCF8FE]',
-        ringColor: 'ring-[#BAE3E8]',
+        ringColor: 'from-[#CCF8FE] via-[#BAE3E8] to-[#BAE3E8]',
         shadowColor: 'hover:shadow-light-blue2',
         tooltipTitleColor: 'text-blue-A10'
     },
     {
         bgColor: 'bg-[#CCDDFE]',
-        ringColor: 'ring-[#BACAE8]',
+        ringColor: 'from-[#CCDDFE] via-[#BACAE8] to-[#BACAE8]',
         shadowColor: 'hover:shadow-light-blue3',
         tooltipTitleColor: 'text-blue-20'
     },
     {
         bgColor: 'bg-[#DAD7FE]',
-        ringColor: 'ring-[#CAC8E8]',
+        ringColor: 'from-[#DAD7FE] via-[#CAC8E8] to-[#CAC8E8]',
         shadowColor: 'hover:shadow-light-purple',
         tooltipTitleColor: 'text-purple-A10'
     }

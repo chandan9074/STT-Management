@@ -24,6 +24,7 @@ interface Props {
         React.SetStateAction<boolean>
     >;
 }
+
 const Graph = ({ dateValue, onDateClose, onDateSearch, disbursementData, open, setOpen, setDateValue, dimensionValue }: Props) => {
     return (
         <div className="col-span-3 h-[140px]">
@@ -62,7 +63,7 @@ const Graph = ({ dateValue, onDateClose, onDateSearch, disbursementData, open, s
                             </div>
                         </button>
                 }
-            
+
 
             </div>
             <CustomRangeCalender trigger={open} setOpen={setOpen} setDateValue={setDateValue} />
@@ -167,7 +168,7 @@ const Graph = ({ dateValue, onDateClose, onDateSearch, disbursementData, open, s
                                                     {m?.year}
                                                 </span>
                                             }
-                                        
+
                                         </h3>
                                         <h3 className="flex items-center text-green-A10  text-base font-medium mb-0">
                                             <span className="mr-1">
@@ -216,45 +217,57 @@ const Graph = ({ dateValue, onDateClose, onDateSearch, disbursementData, open, s
                                     <div
                                         className={`h-[2px] border border-dashed flex-1  rounded-tl-md rounded-bl-md bg-[#D1D3D6]`}
                                     />
-                                    <div
-                                        style={{
-                                            height: `${dimensionValue[i]}rem`,
-                                            width: `${dimensionValue[i]}rem`,
-                                            backgroundColor: `${i % 3 === 0
-                                                ? "#FFD3D3"
+
+
+                                    <div className={`rounded-full hover:bg-white  hover:from-white hover:via-white hover:to-white bg-gradient-to-r p-[1px] h-full w-full ${i % 3 === 0 ? "from-[#FFD3D3] via-[#E8C8C8] to-[#E5BEBE]"
+                                                    : i % 4 === 0
+                                                        ? "from-[#FFF5CC] via-[#E8DFBA] to-[#E8DFBA]"
+                                                        : i % 5 === 0
+                                                            ? "from-[#E2FBD7] via-[#D1E8C7] to-[#D1E8C7]"
+                                                            : i % 2 === 0
+                                                                ? "from-[#CCF8FE] via-[#BAE3E8] to-[#BAE3E8]"
+                                                                : "from-[#CCDDFE] via-[#BACAE8] to-[#BACAE8]"
+                                                    }`}>
+                                        <div
+                                            style={{
+                                                height: `${dimensionValue[i]}rem`,
+                                                width: `${dimensionValue[i]}rem`,
+                                                backgroundColor: `${i % 3 === 0
+                                                    ? "#FFD3D3"
+                                                    : i % 4 === 0
+                                                        ? "#FFF5CC"
+                                                        : i % 5 === 0
+                                                            ? "#E2FBD7"
+                                                            : i % 2 === 0
+                                                                ? "#CCF8FE"
+                                                                : "#CCDDFE"
+                                                    }`,
+                                            }}
+
+                                            className={`relative z-20 text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center hover:border-[2px]  ${i % 3 === 0
+                                                ? "shadow-light-tomato-4 hover:shadow-light-tomato"
                                                 : i % 4 === 0
-                                                    ? "#FFF5CC"
+                                                    ? " hover:shadow-light-periwinkle shadow-light-periwinkle-4"
                                                     : i % 5 === 0
-                                                        ? "#E2FBD7"
+                                                        ? " hover:shadow-light-onahau shadow-light-onahau-4 "
                                                         : i % 2 === 0
-                                                            ? "#CCF8FE"
-                                                            : "#CCDDFE"
-                                                }`,
-                                        }}
-                                  
-                                        className={`relative z-20 text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center border-[2px]  ${i % 3 === 0
-                                            ? "shadow-light-tomato-4 border-[#E5BEBE] hover:shadow-light-tomato"
-                                            : i % 4 === 0
-                                                ? "border-[#E8DFBA] hover:shadow-light-periwinkle shadow-light-periwinkle-4"
-                                                : i % 5 === 0
-                                                    ? "border-[#D1E8C7] hover:shadow-light-onahau shadow-light-onahau-4 "
-                                                    : i % 2 === 0
-                                                        ? "border-[#BAE3E8] hover:shadow-light-onahau shadow-light-onahau-4"
-                                                        : "border-[#BACAE8] hover:shadow-light-yellow shadow-light-yellow-4"
-                                            }  hover:border-[white] transition duration-4000 ease-out hover:ease-in`}
-                                    >
-                                        {
-                                            !(
-                                                m.totalAmount.toString().length > 3 &&
-                                                dimensionValue[i] < 45 / 16
-                                            ) ? (
-                                                <h1 className="text-[#453C38] text-[11px]">
-                                                    {m.totalAmount}
-                                                </h1>
-                                            ) : (
-                                                <h1>{ }</h1>
-                                            )
-                                        }
+                                                            ? " hover:shadow-light-onahau shadow-light-onahau-4"
+                                                            : " hover:shadow-light-yellow shadow-light-yellow-4"
+                                                }  hover:border-[white] transition duration-4000 ease-out hover:ease-in`}
+                                        >
+                                            {
+                                                !(
+                                                    m.totalAmount.toString().length > 3 &&
+                                                    dimensionValue[i] < 45 / 16
+                                                ) ? (
+                                                    <h1 className="text-[#453C38] text-[11px]">
+                                                        {m.totalAmount}
+                                                    </h1>
+                                                ) : (
+                                                    <h1>{ }</h1>
+                                                )
+                                            }
+                                        </div>
                                     </div>
                                     <div
                                         className={`h-[2px] border border-dashed flex-1 rounded-tr-md rounded-br-md bg-[#D1D3D6]`}

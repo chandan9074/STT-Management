@@ -56,7 +56,7 @@ module.exports = {
          "light-green2": "0px 2px 18px #7fbb65",
          "light-yellow2": "0px 4px 4px #c5b268",
          "light-blue2": "0px 4px 4px #b8e0e5",
-         "light-orange2": "0px 2px 18px #d69d75",
+         "light-orange2": "0px 2px 18px #e6cebe",
          "light-blue3": "0px 4px 4px #7c96c9",
          "light-purple": "0px 4px 4px #a39ed8",
 
