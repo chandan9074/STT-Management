@@ -4,23 +4,8 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { scriptDomain, scriptSubDomain } from '../../../../data/Script/Domain';
 import { Grid } from '@mui/material';
 
-const Domain = () => {
-    const [value, setValue] = React.useState<string | null>(scriptDomain[0]);
-    const [inputValue, setInputValue] = React.useState('');
-    const [domain, setDomain] = useState<string>('');
-
-    const onHandleChange = (e: any, value: any) => {        
-        if (e === 'domain') {
-            console.log('%%%%', value); 
-            setDomain(value);
-        } else if (e === 'sub-domain') {
-            console.log('sub domain');
-
-        }
-    }
-
-    console.log('value-------', domain);
-
+const Domain = ({ formik }: { formik: any }) => {
+    const [domain, sebDomain] = useState<string>('');
 
     return (
         <div className='mb-[28px] domain'>
@@ -34,14 +19,29 @@ const Domain = () => {
                             }}
 
                             options={scriptDomain}
-                            onChange={(event: any, newValue: string | null) => {
-                                onHandleChange('domain', newValue);
+                            value={formik.values.domain}
+                            defaultValue={formik.values.domain}
+
+                            onChange={(event, value) => {
+                                if (typeof value === 'string') {
+
+                                    formik.setFieldValue('domain', value)
+                                    sebDomain(value);
+
+                                } else {
+                                    formik.setFieldValue('domain', '')
+                                    sebDomain('');
+
+                                }
                             }}
                             renderInput={(params) => (
                                 <TextField
+                                    name="domain"
+                                    error={formik.touched.domain && Boolean(formik.errors.domain)}
+                                    helperText={formik.touched.domain && formik.errors.domain}
+                                    {...params}
 
-                                    required={true} {...params}
-                                    label={<span className='comboBoxLabel'>Domain</span>}
+                                    label={<span className='comboBoxLabel'>Domain <span className='text-[red]'>*</span></span>}
 
                                 />
                             )}
@@ -51,16 +51,37 @@ const Domain = () => {
                 <Grid item xs={6}>
                     <div>
                         <Autocomplete
+                            disabled={domain === ''}
                             id="sub-domain"
-                            style={{ width: '100%' }}
+                            className={`${domain === '' && 'sub-domain'}`}
+                            style={{ width: '100%', cursor: 'pointer' }}
                             options={scriptSubDomain}
-                            // disabled={domain !== '' ? true : false}
-                            onChange={(event: any, newValue: string | null) => {
-                                onHandleChange('sub-domain', newValue);
+                            value={formik.values.subDomain}
+                            defaultValue={formik.values.subDomain}
+
+                            onChange={(event, value) => {
+                                if (typeof value === 'string') {
+
+                                    formik.setFieldValue('subDomain', value);
+                                } else {
+                                    formik.setFieldValue('subDomain', '');
+                              
+                                }
                             }}
+
                             renderInput={(params) => (
-                                <TextField required={true} {...params}
-                                    label={<span className='comboBoxLabel'>Sub Domain</span>}
+                                <TextField
+                                    name="subDomain"
+                                    error={formik.touched.subDomain && Boolean(formik.errors.subDomain)}
+                                    helperText={formik.touched.subDomain && formik.errors.subDomain}
+                                    {...params}
+                                    // InputProps={{
+                                    //     ...params.InputProps,
+                                    //     style: { 
+                                    //         cursor: `${domain === '' && 'not-allowed'}`,
+                                    //      },
+                                    //   }}
+                                    label={<span className='comboBoxLabel'>Sub Domain <span className='text-[red]'>*</span></span>}
 
                                 />
                             )}

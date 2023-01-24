@@ -35,6 +35,13 @@ module.exports = {
         "light-onahau": "0px 2px 18px #E2FBD7",
         "light-orinoco": "0px 2px 18px #CCF8FE",
         "light-yellow": "0px 2px 18px #CCDDFE",
+
+        "light-tomato-4": "0px 2px 18px #e6bebe",
+        "light-periwinkle-4": "0px 2px 18px #e6ddb8",
+        "light-onahau-4": "0px 2px 18px #cfe6c5",
+        "light-orinoco-4": "0px 2px 18px #b8e0e6",
+        "light-yellow-4": "0px 2px 18px #b8c8e6",
+
         "bottom-light-blue": "0px 2px 32px #2C79BE, 0px 0px 1px #2C79BE",
         "light-gray":
           "0px 1px 2px rgba(31, 56, 76, 0.06), 0px 1px 3px rgba(31, 56, 76, 0.1)",
@@ -44,7 +51,7 @@ module.exports = {
         "bottom-light-blue-20": "0px 4px 24px rgba(31, 56, 76, 0.12)",
         'light-orange-shadow': "0px 2px 18px rgba(230, 206, 190, 0.12)",
          "light-tomato": "0px 2px 18px #FFD3D3",
-
+         "light-gray-3": "0px 4px 24px 1px rgba(31, 56, 76, 0.08)",
          "light-tomato2": "0px 2px 18px #f0616f",
          "light-green2": "0px 2px 18px #7fbb65",
          "light-yellow2": "0px 4px 4px #c5b268",
@@ -95,10 +102,10 @@ module.exports = {
         "ct-blue-05": "#F4F7FA",
         "ct-blue-03": "#FEFEFE",
         "ct-blue-medium": "#157AFF",
-        "ct-blue-90-88%": "#1F384C",
-        "ct-blue-90-70%": "#1F384C",
-        "ct-blue-90-68%": "#1F384C",
-        "ct-blue-90-55%": "#1F384C",
+        "ct-blue-90-88%": "rgba(31, 56, 76, 0.88)",
+        "ct-blue-90-70%": "rgba(31, 56, 76, 0.7)",
+        "ct-blue-90-68%": "rgba(31, 56, 76, 0.68)",
+        "ct-blue-90-55%": "rgba(31, 56, 76, 0.55)",
         "blue-gray-85": "#323640",
         "blue-gray-80": "#464E5F",
         "blue-gray-75": "#5F6B7D",

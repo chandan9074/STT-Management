@@ -1,0 +1,6 @@
+.border-module {
+    border: 2px solid;
+  border-image: linear-gradient(to right, #ff0000, #ffff00) 1;
+  border-radius: 50%;
+}
+

@@ -1,6 +1,11 @@
 import React, { createContext, useState } from "react";
 import DashboardService from "../services/dashboardService";
-import { createCollectDT, overTheTimeGDT, totalDataParamsDT, totalDataResDT } from "../types/dashboardTypes";
+import {
+  createCollectDT,
+  overTheTimeGDT,
+  totalDataParamsDT,
+  totalDataResDT,
+} from "../types/dashboardTypes";
 
 interface ContextProps {
   loading: boolean;
@@ -12,11 +17,10 @@ interface ContextProps {
     year?: number,
     month?: string
   ) => void;
-  getCreateCollectData: () => void;
+  getCreateCollectData: (role: string, module: string) => void;
   createCollectData: createCollectDT | undefined;
   getTotalDataCollection: (data: totalDataParamsDT) => void;
-  totalDataCollection: totalDataResDT | undefined
-
+  totalDataCollection: totalDataResDT | undefined;
 }
 
 export const DashboardContext = createContext({} as ContextProps);
@@ -49,42 +53,33 @@ const DashboardProvider = ({ children }: { children: any }) => {
       year,
       month
     );
-    console.log("response", response.data);
     setOverTheTimeData(response.data);
-    // const response = DashboardService.getOverTheTimeData(
-    //   module,
-    //   role,
-    //   year,
-    //   month
-    // );
-    // setOverTheTimeData(response);
     setLoading(false);
   };
 
-  const getCreateCollectData = () => {
+  const getCreateCollectData = async (role: string, module: string) => {
     setLoading(true);
     setErrorMsg("");
     // fetch data from api
-    // const response = await DashboardService.getOverTheTimeData();
-    // console.log("response", response.data);
-    // setOverTheTimeData(response.data);
-    const response = DashboardService.getCollectCreateData();
-    setCreateCollectData(response);
+    const response = await DashboardService.getCreateCollectData({
+      role: role,
+      module: module,
+    });
+    setCreateCollectData(response.data);
+    // console.log(response.data);
   };
 
   const getTotalDataCollection = async (data: totalDataParamsDT) => {
-
     try {
       setLoading(true);
       setErrorMsg("");
       const response = await DashboardService.getTotalDataCollection(data);
       setTotalDataCollection(response.data);
       setLoading(false);
-    }
-    catch (error) {
+    } catch (error) {
       setErrorMsg("Something Went wrong.......");
     }
-  }
+  };
 
   return (
     <DashboardContext.Provider
@@ -96,8 +91,7 @@ const DashboardProvider = ({ children }: { children: any }) => {
         getCreateCollectData,
         createCollectData,
         getTotalDataCollection,
-        totalDataCollection
-
+        totalDataCollection,
       }}
     >
       {children}

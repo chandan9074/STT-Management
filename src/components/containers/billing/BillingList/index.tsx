@@ -9,7 +9,10 @@ import {
 } from "../../../../types/billingTypes";
 import { BillingContext } from "../../../../context/BillingProvider";
 import ExportCsv from "../../../common/ExportCsv";
-import { excelNameFormatter, getMontNumberFormat } from "../../../../helpers/Utils";
+import {
+  excelNameFormatter,
+  getMontNumberFormat,
+} from "../../../../helpers/Utils";
 import Table from "../../../Table";
 import Pagination from "../../../Pagination";
 import Icons from "../../../../assets/Icons";
@@ -34,7 +37,7 @@ export interface AllBillingDataType {
   amountPaid: string;
 }
 interface Props {
-  twDisbursement: timeWiseDisbursementParamsDT
+  twDisbursement: timeWiseDisbursementParamsDT;
 }
 
 const BillingListIndex = ({ twDisbursement }: Props) => {
@@ -65,21 +68,30 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
     GetLastBillingsInfo(lastBillingsParams);
   }, [lastBillingsParams]);
 
-
   useEffect(() => {
     GetAllBillingInfo(allbillingsParam);
   }, [allbillingsParam]);
 
-
   useEffect(() => {
-    setLastBillingsParams((prev: any) => ({ ...prev, role: twDisbursement.role, module: twDisbursement.module }));
-    setAllbillingsParam((prev: any) => ({ ...prev, role: twDisbursement.role, module: twDisbursement.module }));
+    setLastBillingsParams((prev: any) => ({
+      ...prev,
+      role: twDisbursement.role,
+      module: twDisbursement.module,
+    }));
+    setAllbillingsParam((prev: any) => ({
+      ...prev,
+      role: twDisbursement.role,
+      module: twDisbursement.module,
+    }));
   }, [twDisbursement]);
 
   const handlePageChange = (page: number) => {
-
-    setLastBillingsParams((prev: any) => ({ ...prev, pageSize: pageNumberLastBilling, page: page }));
-  }
+    setLastBillingsParams((prev: any) => ({
+      ...prev,
+      pageSize: pageNumberLastBilling,
+      page: page,
+    }));
+  };
   const changeEntryLastBilling = (e: any) => {
     setPageNumberLastBilligs(e);
   };
@@ -87,13 +99,17 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
     setPageNumberAllBilligs(e);
   };
   const handleChangeEntryLastBilling = () => {
-
-    setLastBillingsParams((prev: any) => ({ ...prev, pageSize: pageNumberLastBilling }));
+    setLastBillingsParams((prev: any) => ({
+      ...prev,
+      pageSize: pageNumberLastBilling,
+    }));
   };
   const handleChangeEntryAllBilling = () => {
-    setAllbillingsParam((prev: any) => ({ ...prev, pageSize: pageNumberAllBilling }));
+    setAllbillingsParam((prev: any) => ({
+      ...prev,
+      pageSize: pageNumberAllBilling,
+    }));
   };
-
 
   const listedLastBillings: BillingDataType[] = [];
   lastBillings?.billingInfo.map((data) => {
@@ -118,13 +134,11 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
     });
   });
 
-
   const excelHeader = {
     A1: `${lastBillings?.role.toUpperCase()}`,
     B1: "HOUR",
     C1: "AMOUNT PAID",
   };
-
 
   const lastBillingColumns: ColumnsType<BillingDataType | AllBillingDataType> =
     [
@@ -176,11 +190,12 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
   ];
 
   const onHandleDisburse = () => {
-    console.log('------', getMontNumberFormat(lastBillings?.dateOfPayment));
 
-    GetLastBillingsInfo({ ...lastBillingsParams, date: getMontNumberFormat(lastBillings?.dateOfPayment) });
-  }
-
+    GetLastBillingsInfo({
+      ...lastBillingsParams,
+      date: getMontNumberFormat(lastBillings?.dateOfPayment),
+    });
+  };
 
   return (
     <div>
@@ -211,20 +226,24 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
         </div>
 
         <div className="flex items-center gap-x-2">
-
-          {
-            lastBillings?.payable &&
+          {lastBillings?.payable && (
             <div>
-              <button onClick={() => onHandleDisburse()} className="text-small py-[8px] pl-[16px] pr-[24px] rounded-[6px] bg-primary-ct-magenta-60 text-white flex items-center gap-x-[4px]">
-                <img src={Icons.Add} className='w-5 h-5' alt="" />
+              <button
+                onClick={() => onHandleDisburse()}
+                className="text-small py-[8px] pl-[16px] pr-[24px] rounded-[6px] bg-primary-ct-magenta-60 text-white flex items-center gap-x-[4px]"
+              >
+                <img src={Icons.Add} className="w-5 h-5" alt="" />
                 Disburse
               </button>
             </div>
-          }
+          )}
 
           <ExportCsv
             csvData={lastBillingsExcelData}
-            fileName={excelNameFormatter(`${lastBillings?.role.toUpperCase()}`, true)}
+            fileName={excelNameFormatter(
+              `${lastBillings?.role.toUpperCase()}`,
+              true
+            )}
             headerCells={excelHeader}
           />
         </div>
@@ -236,14 +255,17 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
           dataSources={listedLastBillings}
         />
         <div className="w-100 flex items-center gap-8 justify-end">
-          {lastBillings?.numberOfBills ? <Pagination.Type2
-
-            total={lastBillings?.numberOfBills}
-            pageSize={pageNumberLastBilling}
-            // total={35}
-            // pageSize={5}
-            handleDataChange={handlePageChange}
-          /> : ""}
+          {lastBillings?.numberOfBills ? (
+            <Pagination.Type2
+              total={lastBillings?.numberOfBills}
+              pageSize={pageNumberLastBilling}
+              // total={35}
+              // pageSize={5}
+              handleDataChange={handlePageChange}
+            />
+          ) : (
+            ""
+          )}
           <div className="flex items-center gap-2">
             <button
               onClick={handleChangeEntryLastBilling}
@@ -275,7 +297,9 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
           <button
             onClick={handleChangeEntryAllBilling}
             className="font-medium text-xxs text-ct-blue-90-70%"
-          >Entry</button>
+          >
+            Entry
+          </button>
           <InputNumber
             controls={false}
             className="w-12 font-medium text-xs text-ct-blue-90-70% rounded-[7px]"

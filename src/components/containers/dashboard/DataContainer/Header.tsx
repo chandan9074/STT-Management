@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { RingProgressBar } from "../../../common/RingProgress";
 import Dropdown from "../../../Dropdown";
 import { ClockCircleOutlined } from "@ant-design/icons";
 import { collectDataDT, createDataDT } from "../../../../types/dashboardTypes";
+import { CommonContext } from "../../../../context/CommonProvider";
 
 interface Props {
   type: string;
@@ -13,6 +14,10 @@ interface Props {
 }
 
 const Header = ({ bgColor, type, targetColor, borderColor, data }: Props) => {
+
+  const commonContext = useContext(CommonContext)
+  
+
   return (
     <div className="relative">
       <div

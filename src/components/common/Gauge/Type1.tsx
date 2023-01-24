@@ -29,16 +29,20 @@ const Type1 = ({ data }: Props) => {
             <div className="flex items-center rounded-t-full overflow-y-hidden w-[172px] h-[86px] relative z-[80]">
                 <div
                     style={{ transform: `rotate(-${progressDeg ? progressDeg * 1.8 : 90}deg)` }}
-                    className={`male-tt bg-blue-A10 h-[86px] absolute w-[172px] origin-bottom z-[60]`}
+                    className={`male-tt bg-blue-A10 h-[86px] absolute w-[172px] origin-bottom z-[60] group`}
                     onMouseOver={MouseEventHandle}
                     onMouseOut={MouseEventHandleOut}
-                />
+                >
+                    <div className='bg-gradient-to-r from-[#00A9C5] to-[#CCF8FE] w-full h-full duration-300 opacity-0 group-hover:opacity-100' />
+                </div>
 
 
                 <div className="female-tt bg-purple-A10 h-[86px] absolute w-[172px] z-[50]"
                     onMouseOver={MouseEventHandle2}
                     onMouseOut={MouseEventHandleOut2}
-                />
+                >
+                    <div className='w-[172px] h-[86px] female-tt-child duration-300'></div>
+                </div>
 
 
                 <div className="w-24 h-12 rounded-t-full bg-white z-[90] absolute bottom-0 left-1/2 transform -translate-x-1/2" />
@@ -58,7 +62,7 @@ const Type1 = ({ data }: Props) => {
                 openTooltip ? <div
                     onMouseOver={MouseEventHandle}
                     onMouseOut={MouseEventHandleOut}
-                    className="absolute -top-[18px] -left-[236px] w-[211px] z-[999]"
+                    className="absolute -top-[18px] -left-[236px] w-[211px] z-[999] animate-fadeIn"
                 >
                     <div className="flex w-full relative">
                         <div className="flex bg-black-80 p-4 w-full rounded-xl gap-2 ">
@@ -81,7 +85,7 @@ const Type1 = ({ data }: Props) => {
                     <div
                         onMouseOver={MouseEventHandle2}
                         onMouseOut={MouseEventHandleOut2}
-                        className="absolute -top-[18px] -left-[165px] w-[211px] z-[999]"
+                        className="absolute -top-[18px] -left-[165px] w-[211px] z-[999] animate-fadeIn"
                     >
                         <div className="flex w-full relative">
                             <div className="flex bg-black-80 p-4 w-full rounded-xl gap-2 ">

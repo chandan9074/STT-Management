@@ -48,8 +48,8 @@ export const getYearMonthDate = (date: string) => {
 export const getDateWithMonthName = (date: string) => {
   const splitData = date.split("-");
   const month = moment.months()[parseInt(splitData[1]) - 1];
-  const year = splitData[0];
-  const day = splitData[2];
+  const day = splitData[0];
+  const year = splitData[2];
 
   return `${day} ${month} ${year}`;
 };
@@ -78,28 +78,31 @@ export const getValueFromPercentages = (height: number, data: number) => {
 };
 export const getTableColorByName = (name: string) => {
   const data = tableColorProperty.find((value) => value.name === name);
-  return data?.tableColor
-}
+  return data?.tableColor;
+};
 
 export const slugFormatter = (value: string) => {
   if (!value) return;
 
   const words = value.split("-");
-  return words.map(value => value[0].toUpperCase() + value.substring(1))
+  return words
+    .map((value) => value[0].toUpperCase() + value.substring(1))
     .join(" ");
-}
+};
 
 export const getMontNumberFormat = (date: string | undefined) => {
   // 15 Feb 2021
   // 2021-1-15
   if (date) {
-    const splitData = date.split(' ');
-  const month = new Date(`${date}`).getMonth() + 1;
-  let newMonth;
-  if(month > 0 && month <= 12) {
-    newMonth = (`0${month}`);
+    const splitData = date.split(" ");
+    const month = new Date(`${date}`).getMonth() + 1;
+    let newMonth;
+    if (month > 0 && month <= 9) {
+      newMonth = `0${month}`;
+    } else {
+      newMonth = month;
+    }
+    console.log("month", newMonth);
+    return `${splitData[2]}-${newMonth}-${splitData[0]}`;
   }
-  console.log('month', newMonth);
-  return (`${splitData[2]}-${newMonth}-${splitData[0]}`)
-  }
-}
+};

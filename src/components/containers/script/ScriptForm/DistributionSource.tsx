@@ -6,10 +6,15 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { Checkbox } from '@mui/material';
 
-const distributionList = ['Read', 'Lecture', 'Command', 'Miscellaneous']
+const distributionList = [
+    'Read',
+    'Lecture',
+    'Command',
+    'Miscellaneous'
+]
 
 
-const DistributionSource = () => {
+const DistributionSource = ({ formik }: { formik: any }) => {
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         console.log(((event.target as HTMLInputElement).value));
@@ -22,24 +27,42 @@ const DistributionSource = () => {
 
             <div className='flex'>
                 <div className='w-[580px]'>
-                    <h1 className='text-[14px] font-medium text-blue-gray-75'>Distribution Source*</h1>
+                    <h1 className='text-[14px] font-medium text-blue-gray-75'>Distribution Source <span className='text-[red]'>*</span></h1>
 
                     <div>
                         <FormControl>
-                            {/* <FormLabel id="demo-controlled-radio-buttons-group">Gender</FormLabel> */}
+                            <FormLabel style={{
+                                color: '#5F6B7D',
+                                fontWeight: '600',
+                                fontSize: '14px'
+                            }}
+
+                            >
+                            </FormLabel>
                             <RadioGroup
                                 row
-                                // aria-labelledby="demo-controlled-radio-buttons-group"
-                                name="distribution-source-group"
-                                // value={value}
-                                onChange={handleChange}
+                                // name="distribution-source-group"
+                                // onChange={handleChange}
+                                name="distributionSource"
+                                value={formik.values.distributionSource}
+                                onChange={formik.handleChange}
+                                onBlur={() => formik.setFieldTouched("distributionSource", true)}
                             >
                                 {
                                     distributionList?.map((value, i) => (
-                                        <FormControlLabel value={value} control={<Radio />} label={value} />
+                                        <FormControlLabel
+                                            key={i}
+                                            value={value}
+                                            control={<Radio
+                                                // required={true}
+                                            />}
+                                            label={value} />
                                     ))
                                 }
                             </RadioGroup>
+                            {formik.touched.distributionSource && formik.errors.distributionSource ? (
+                                <div className='text-red-600 text-[12px]'>{formik.errors.distributionSource}</div>
+                            ) : null}
                         </FormControl>
                     </div>
                 </div>
@@ -47,7 +70,11 @@ const DistributionSource = () => {
                     <FormControl>
                         <h1 className='text-[14px] font-medium text-blue-gray-75 pl-[9px]'>Age</h1>
 
-                        <Checkbox  />
+                        <Checkbox
+                            name="isAgeChecked"
+                            checked={formik.values.isAgeChecked}
+                            onChange={() => formik.setFieldValue("isAgeChecked", !formik.values.isAgeChecked)}
+                        />
                     </FormControl>
                 </div>
             </div>
