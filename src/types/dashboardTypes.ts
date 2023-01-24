@@ -122,13 +122,17 @@ export type totalDataResDT = {
   lastUpdate: string;
   totalTarget: string;
   speaker: totalDataSpeakerResDT;
-
-}
+};
 export type totalDataSpeakerResDT = {
-  male: totalDataSpeakerMaleFemaleResDT,
-  female: totalDataSpeakerMaleFemaleResDT,
-}
+  male: totalDataSpeakerMaleFemaleResDT;
+  female: totalDataSpeakerMaleFemaleResDT;
+};
 export type totalDataSpeakerMaleFemaleResDT = {
   value: string;
-  contribution: number 
-}
+  contribution: number;
+};
+
+export type createCollectParamsDT = {
+  module: string;
+  role: string;
+};
