@@ -15,41 +15,42 @@ dayjs.extend(customParseFormat);
 dayjs.extend(isBetween)
 moment.locale('en-gb', {
     week: {
-      dow: 1, /// Date offset
+        dow: 1, /// Date offset
     },
-  });
+});
 
 const CssTextField = styled(TextField)({
     '& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root': {
         color: "white",
         background: "black",
-        borderRadius: "4px"
+        borderRadius: "4px",
+        padding: "2px 4px"
     },
     '& .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root': {
         background: "black",
 
     },
-   
+
     '& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input': {
         color: "white",
-        fontSize: "13px",
+        fontSize: "16px",
         background: "black",
         fontWeight: "500",
         borderRadius: "4px",
-        fontFamily:"Fira Sans"
+        fontFamily: "Fira Sans"
 
     },
     '& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {
         color: "#F9FAFC",
         fontWeight: "500",
-        fontFamily:"Fira Sans"
+        fontFamily: "Fira Sans"
 
     },
     '& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root': {
         color: "#9FA3B2",
         fontSize: "12px",
         fontWeight: "500",
-        fontFamily:"Fira Sans"
+        fontFamily: "Fira Sans"
 
     },
     '& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
@@ -58,6 +59,9 @@ const CssTextField = styled(TextField)({
         background: "black",
         borderRadius: "4px"
 
+    },
+    '& .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+        borderColor: "#136EE5"
     },
     '& label.Mui-focused': {
         // color: 'green',

@@ -17,17 +17,14 @@ export default class DashboardService {
   ) {
     // return overTheTimeGData;
     const res = axios.get(
-      `${GET_OVER_THE_TIME_DATA_URL}/?role=${role}&module=${module}${
-        year ? `&year=${year}` : ""
+      `${GET_OVER_THE_TIME_DATA_URL}/?role=${role}&module=${module}${year ? `&year=${year}` : ""
       }${month ? `&month=${month}` : ""}`
     );
     return res;
   }
 
-  static getTotalDataCollection(data: totalDataParamsDT) {
-    return axios.get(
-      `${PATH.GET_TOTAL_DATA_URL}/?role=${data.role}&module=${data.module}`
-    );
+  static getTotalDataCollection(params: totalDataParamsDT) {
+    return axios.get(PATH.GET_TOTAL_DATA_URL, { params });
   }
 
   static getCreateCollectData(data: createCollectParamsDT) {

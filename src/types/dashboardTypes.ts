@@ -124,6 +124,7 @@ export type totalDataResDT = {
   speaker: totalDataSpeakerResDT;
 };
 export type totalDataSpeakerResDT = {
+  totalSpeaker: string;
   male: totalDataSpeakerMaleFemaleResDT;
   female: totalDataSpeakerMaleFemaleResDT;
 };

@@ -149,10 +149,10 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
         render: (data) => (
           <>
             <div className="flex gap-2 items-start">
-              <img className="h-4 w-4 mt-1" src={ManagerIcon} alt="" />
+              <img className="h-[18px] w-[18px] mt-1" src={ManagerIcon} alt="" />
               <div>
-                <p className="font-sans font-medium text-xs">{data.name}</p>
-                <p className="font-sans text-xxs text-blue-gray-75">
+                <p className="font-sans font-medium text-small">{data.name}</p>
+                <p className="font-sans text-xs text-blue-gray-75">
                   {data.locality}
                 </p>
               </div>
@@ -200,27 +200,28 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
   return (
     <div>
       <div className="w-100 flex flex-row justify-between items-center gap-1 ">
-        <div className="flex flex-row items-center gap-4 ">
+        <div className="flex flex-row items-center ">
           <div className="border-r-2 border-border-light-blue h-[40px] my-auto flex items-center">
-            <h2 className="mb-0 pr-4 text-heading-6 font-medium text-ct-blue-95">
+            <h2 className="mb-0 pr-6 text-heading-6 font-medium text-ct-blue-95">
               Last Billing Info
             </h2>
           </div>
-          <div>
-            <p className="text-xxs text-ct-blue-90-70% mb-0">
-              {lastBillings?.payable ? "Payable" : "Paid"}
-            </p>
-            {lastBillings?.payable && (
+          <div className='flex justify-center items-center gap-8 pl-6'>
+            <div>
+              <p className="text-xs text-ct-blue-90-70% mb-0">{lastBillings?.payable ? 'Payable' : 'Paid'}</p>
+              {
+                lastBillings?.payable &&
+                <p className="text-small text-ct-blue-95 font-medium">
+                  BDT {lastBillings?.amount}
+                </p>
+              }
+            </div>
+            <div>
+              <p className="text-xs text-ct-blue-90-70% mb-0">Date of Payment</p>
               <p className="text-small text-ct-blue-95 font-medium">
-                BDT {lastBillings?.amount}
+                {lastBillings?.dateOfPayment}
               </p>
-            )}
-          </div>
-          <div>
-            <p className="text-xxs text-ct-blue-90-70% mb-0">Date of Payment</p>
-            <p className="text-small text-ct-blue-95 font-medium">
-              {lastBillings?.dateOfPayment}
-            </p>
+            </div>
           </div>
         </div>
 

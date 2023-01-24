@@ -25,12 +25,36 @@
   }
 
   .sideDrawerDeactiveNav {
-    @apply text-blue-gray-A50 rounded-[20px] px-[10px] py-[5px] flex justify-between items-center;
+    @apply text-blue-gray-A50 rounded-[20px] px-[10px] py-[5px] flex justify-between items-center
   }
 
   .comboBoxLabel {
     @apply font-medium text-blue-gray-80;
   }
+
+  .xSmallButton {
+    @apply text-xxs font-medium py-2 px-7 rounded-md
+  }
+
+  .smallButton {
+    @apply text-small font-medium py-2 px-8 rounded-md
+  }
+
+  .mediumButton {
+    @apply text-base font-medium py-[10px] px-8 rounded-md
+  }
+  .xSmallIconButton {
+    @apply text-xxs font-medium py-2 rounded-md
+  }
+
+  .smallIconButton {
+    @apply text-small font-medium py-2 rounded-md
+  }
+
+  .mediumIconButton {
+    @apply text-base font-medium py-[10px] rounded-md
+  }
+
 }
 
 body {
