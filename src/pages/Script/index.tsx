@@ -10,7 +10,6 @@ const Script = () => {
       <div className="min-h-[calc(100vh-9.5vh)]">
         <Header />
         <Table.Type4 />
-        {/* <ScriptForm /> */}
       </div>
     </Layouts.Forth>
   );
