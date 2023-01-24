@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Icons from '../../assets/Icons';
 import { CustomModal } from '../common/CustomModal';
 import { SideDrawer } from '../common/SideDrawer';
-import './type2BillingTable.css';
+import './type4Table.css';
 
 interface DataType {
     key: React.Key;
@@ -57,6 +57,7 @@ const Type4 = () => {
     const [open, setOpen] = useState(false);
     const [drawerData, setDrawerData] = useState<any>();
     const [modalOpen, setModalOpen] = useState<boolean>(false)
+    const [modaData, setModalData] = useState<string>('')
 
     const showDrawer = (key: any) => {
         setOpen(true);
@@ -111,9 +112,10 @@ const Type4 = () => {
 
 
     return (
-        <div>
+        <div className='type4-table'>
 
             <Table
+               
                 rowSelection={{
                     type: selectionType,
                     ...rowSelection,
@@ -130,7 +132,11 @@ const Type4 = () => {
                 onClick={() => setModalOpen(true)}
             >Open modal</button>
 
-            <CustomModal.Type1 open={modalOpen} setOpen={setModalOpen} />
+            <CustomModal.Type1
+                open={modalOpen}
+                setOpen={setModalOpen}
+                setData={setModalData}
+            />
 
         </div >
     );

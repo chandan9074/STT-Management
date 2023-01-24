@@ -231,6 +231,7 @@ const CreateData = ({ data }: { data: createDataDT }) => {
         borderColor="border-border-teal"
         bgColor="bg-green-05"
         targetColor="text-green/50-05956F"
+        data={data}
       />
 
       <div className="flex justify-between p-5 bg-white rounded-b-xl">

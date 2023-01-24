@@ -66,7 +66,6 @@ const RoleSearchModal = ({
 
 
     const handleRoleChange = (id: string, p: any) => {
-        console.log('ppppppp', p)
         const _data = roleDatas?.filter((m: roleDT) => m.id === p.key)
         if (_data) {
             setSingleManger(_data[0]);

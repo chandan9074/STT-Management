@@ -88,6 +88,7 @@ const CollectData = ({ data }: { data: collectDataDT }) => {
   return (
     <div>
       <Header
+      data={data}
         borderColor="border-cold-turkey"
         type="Collect"
         bgColor="bg-red-03"

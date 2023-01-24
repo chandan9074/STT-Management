@@ -80,7 +80,6 @@ const BillingProvider = ({ children }: { children: any }) => {
     setErrorMsg("");
     // fetch data from api
     const response = await BillingService.amountDisbursed();
-    // console.log("response", response.data);
     setAmountDisbursed(response.data);
     setAmountDropDown(response.data.yearList[0]);
     setLoading(false);
@@ -110,10 +109,8 @@ const BillingProvider = ({ children }: { children: any }) => {
   };
 
   const GetBillingExcelData = (data: any) => {
-    
     setLastBillingsExcelData(
       data?.map((lastBilling: any) => {
-       
         return {
           name: `${lastBilling?.userInfo?.name}(${lastBilling?.userInfo?.name})`,
           hour: lastBilling?.hour,
@@ -128,11 +125,8 @@ const BillingProvider = ({ children }: { children: any }) => {
     setErrorMsg("");
     // fetch data from api
     const response = await BillingService.paymentHistory(data);
-    console.log("response", response.data);
     setPaymentHistory(response.data);
-    console.log("dukche,,,,,,,");
     // setLastBillings(response.data);
-    // console.log(data);
     setLoading(false);
   };
 

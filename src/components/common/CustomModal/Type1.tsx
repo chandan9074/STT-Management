@@ -1,11 +1,21 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import { Button } from '@mui/material';
+import React, { Dispatch, SetStateAction, useState } from 'react';
+import Icons from '../../../assets/Icons';
+import Buttons from '../../Buttons';
 
 interface Props {
     open: boolean;
     setOpen: Dispatch<SetStateAction<boolean>>;
+    setData: Dispatch<SetStateAction<string>>;
 }
 
-const Type1 = ({ open, setOpen }: Props) => {
+const Type1 = ({ open, setOpen, setData }: Props) => {
+    const [value, setValue] = useState<string>("STT")
+
+    const handleSave = () => {
+        setData(value)
+        setOpen(false)
+    }
     return (
         <div>
             {open ? (
@@ -28,15 +38,113 @@ const Type1 = ({ open, setOpen }: Props) => {
                                         <p className='text-small font-medium text-blue-gray-75'>Select Data Type</p>
 
                                         <div className='flex gap-2 mt-4'>
-                                            <div className='w-[160px] h-[61px] px-3 p-2 bg-blue-gray-05 rounded border border-[#E5E7EB]'>
-                                                <p className='text-small font-normal text-blue-gray-75'>STT (Speech-to-Text)</p>
+                                            <div
+                                                onClick={() => setValue("STT")}
+                                                className={`w-[160px] h-[61px] px-3 p-2  rounded border cursor-pointer ${value === "STT" ?
+                                                    'bg-blue-10 border-secondary-blue-50'
+                                                    : 'bg-blue-gray-05 border-[#E5E7EB]'
+                                                    }`}
+                                            >
+                                                <div className='flex gap-2 justify-center pb-2 items-center'>
+                                                    <img
+                                                        className='h-[18px] w-[18px]'
+                                                        style={{
+                                                            filter: value === "STT" ? "invert(36%) sepia(24%) saturate(6466%) hue-rotate(201deg) brightness(93%) contrast(97%)" : "inherit"
+                                                        }}
+                                                        src={Icons.MusicIcon}
+                                                        alt=""
+                                                    />
+                                                    <img
+                                                        className='h-[18px] w-[18px]'
+                                                        style={{
+                                                            filter: value === "STT" ? "invert(36%) sepia(24%) saturate(6466%) hue-rotate(201deg) brightness(93%) contrast(97%)" : "inherit"
+                                                        }}
+                                                        src={Icons.ArrowRightBack}
+                                                        alt=""
+                                                    />
+                                                    <img
+                                                        className='h-[14px] w-[14px]'
+                                                        style={{
+                                                            filter: value === "STT" ? "invert(36%) sepia(24%) saturate(6466%) hue-rotate(201deg) brightness(93%) contrast(97%)" : "inherit"
+                                                        }}
+                                                        src={Icons.Title}
+                                                        alt=""
+                                                    />
+                                                </div>
+                                                <p
+                                                    className={`text-small font-normal ${value === "STT" ?
+                                                        'text-secondary-blue-50'
+                                                        : ' text-blue-gray-75'}`}
+                                                >
+                                                    STT (Speech-to-Text)
+                                                </p>
                                             </div>
 
-                                            <div className='w-[160px] h-[61px] px-3 p-2 bg-blue-gray-05 rounded border border-[#E5E7EB]'>
-                                                <p className='text-small font-normal text-blue-gray-75'>STT (Speech-to-Text)</p>
+                                            <div
+                                                onClick={() => setValue("TTS")}
+                                                className={`w-[160px] h-[61px] px-3 p-2 cursor-pointer rounded border  ${value === "TTS" ?
+                                                    'bg-blue-10 border-secondary-blue-50'
+                                                    : 'bg-blue-gray-05 border-[#E5E7EB]'
+                                                    }`}
+                                            >
+                                                <div className='flex gap-2 justify-center pb-2 items-center'>
+                                                    <img
+                                                        className='h-[14px] w-[14px]'
+                                                        style={{
+                                                            filter: value === "TTS" ? "invert(36%) sepia(24%) saturate(6466%) hue-rotate(201deg) brightness(93%) contrast(97%)" : "inherit"
+                                                        }}
+                                                        src={Icons.Title}
+                                                        alt=""
+                                                    />
+                                                    <img
+                                                        className='h-[18px] w-[18px]'
+                                                        style={{
+                                                            filter: value === "TTS" ? "invert(36%) sepia(24%) saturate(6466%) hue-rotate(201deg) brightness(93%) contrast(97%)" : "inherit"
+                                                        }}
+                                                        src={Icons.ArrowRightBack}
+                                                        alt=""
+                                                    />
+                                                    <img
+                                                        className='h-[18px] w-[18px]'
+                                                        style={{
+                                                            filter: value === "TTS" ? "invert(36%) sepia(24%) saturate(6466%) hue-rotate(201deg) brightness(93%) contrast(97%)" : "inherit"
+                                                        }}
+                                                        src={Icons.MusicIcon}
+                                                        alt=""
+                                                    />
+                                                </div>
+
+                                                <p
+                                                    className={`text-small font-normal ${value === "TTS" ?
+                                                        'text-secondary-blue-50'
+                                                        : ' text-blue-gray-75'}`}
+                                                >
+                                                    TTS (Text-to-Speech)
+                                                </p>
                                             </div>
 
                                         </div>
+                                    </div>
+
+                                    <div className='flex gap-3 px-5 pb-5 pt-10'>
+                                        <Buttons.LabelButton.Primary
+
+                                            label='Start'
+                                            variant="CT-Blue"
+                                            size="small"
+                                            onClick={() => handleSave()}
+                                           
+                                        />
+
+                                        <Buttons.LabelButton.Secondary
+                                            label='Cancel'
+                                            variant="Blue"
+                                            size='small'
+                                            onClick={() => setOpen(false)}
+                                            
+                                            
+                                        />
+                                       
                                     </div>
 
 

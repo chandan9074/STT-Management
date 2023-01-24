@@ -8,7 +8,7 @@
 }
 
 .custom-script-body {
-    max-height: calc(100vh - 227px);
+    max-height: calc(100vh - 255px);
     overflow-y: auto;
 
 }

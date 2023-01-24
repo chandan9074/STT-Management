@@ -23,7 +23,6 @@ const Type1 = ({type,value}:Props) => {
 
     }
 
-
     return (
         <div>
             <Progress

@@ -4,12 +4,17 @@
 /*.male-body:hover ~ .male-tt {*/
 /*    display: block;*/
 /*}*/
-.male-tt:hover {
+/* .male-tt:hover {
     background: linear-gradient(66.48deg, #00A9C5 11.6%, #CCF8FE 85.97%);
+} */
+
+.female-tt-child {
+    background: linear-gradient(153.38deg, #DAD7FE 15.38%, #8087F1 89.9%);
+    opacity: 0;
 }
 
-.female-tt:hover {
-    background: linear-gradient(153.38deg, #DAD7FE 15.38%, #8087F1 89.9%);
+.female-tt:hover .female-tt-child{
+    opacity: 100;
 }
 
 .male-drop-shadow {
