@@ -36,11 +36,7 @@ module.exports = {
         "light-orinoco": "0px 2px 18px #CCF8FE",
         "light-yellow": "0px 2px 18px #CCDDFE",
 
-        "light-tomato-4": "0px 2px 18px #e6bebe",
-        "light-periwinkle-4": "0px 2px 18px #e6ddb8",
-        "light-onahau-4": "0px 2px 18px #cfe6c5",
-        "light-orinoco-4": "0px 2px 18px #b8e0e6",
-        "light-yellow-4": "0px 2px 18px #b8c8e6",
+
 
         "bottom-light-blue": "0px 2px 32px #2C79BE, 0px 0px 1px #2C79BE",
         "light-gray":
@@ -50,15 +46,23 @@ module.exports = {
           "0px 1px 2px rgba(31, 56, 76, 0.06), 0px 1px 3px rgba(31, 56, 76, 0.1)",
         "bottom-light-blue-20": "0px 4px 24px rgba(31, 56, 76, 0.12)",
         'light-orange-shadow': "0px 2px 18px rgba(230, 206, 190, 0.12)",
-         "light-tomato": "0px 2px 18px #FFD3D3",
+        "light-tomato": "0px 2px 18px rgba(240, 97, 111, 0.12)",
 
-         "light-tomato2": "0px 2px 18px #f0616f",
-         "light-green2": "0px 2px 18px #7fbb65",
-         "light-yellow2": "0px 4px 4px #c5b268",
-         "light-blue2": "0px 4px 4px #b8e0e5",
-         "light-orange2": "0px 2px 18px #e6cebe",
-         "light-blue3": "0px 4px 4px #7c96c9",
-         "light-purple": "0px 4px 4px #a39ed8",
+        "light-tomato2": "0px 2px 18px rgba(240, 97, 111, 0.50)",
+        "light-green2": "0px 2px 18px rgba(127, 187, 101, 0.50)",
+        "light-yellow2": "0px 4px 4px rgba(197, 178, 104, 0.50)",
+        "light-blue2": "0px 4px 4px rgba(184, 224, 229, 0.50 )",
+        "light-orange2": "0px 4px 4px rgba(197, 178, 104, 0.50)",
+        "light-blue3": "0px 4px 4px rgba(124, 150, 201, 0.50)",
+        "light-purple": "px 4px 4px rgba(163, 158, 216, 0.50)",
+
+        "light-tomato-4": "0px 2px 18px rgba(230, 190, 190, 1)",
+        "light-onahau-4": "0px 2px 18px rgba(207, 230, 197, 1)",
+        "light-periwinkle-4": "0px 2px 18px rgba(230, 221, 184, 1)",
+        "shadow-light-orange-4": "0px 2px 18px rgba(255, 229, 211, 1)",
+        "light-orinoco-4": "0px 2px 18px rgba(184, 224, 230, 1)",
+        "light-yellow-4": "0px 2px 18px rgba(184, 200, 230, 1)",
+        "light-purple-4": "0px 2px 18px rgba(184, 200, 230, 1)",
 
       },
       colors: {
@@ -171,9 +175,9 @@ module.exports = {
         "bright-turquoise": "#42F5D5",
         "your-pink": "#FFCBCB",
         "pale-sky": "#667487",
-        "feijao":"#94D676",
-        "masala":"#453939",
-        "blue-gray-A50" : "rgba(31, 56, 76, 0.7)",
+        "feijao": "#94D676",
+        "masala": "#453939",
+        "blue-gray-A50": "rgba(31, 56, 76, 0.7)",
         'white-gray-45': 'rgba(255, 255, 255, 0.45)'
       },
     },

@@ -219,7 +219,8 @@ const Graph = ({ dateValue, onDateClose, onDateSearch, disbursementData, open, s
                                     />
 
 
-                                    <div className={`rounded-full hover:bg-white  hover:from-white hover:via-white hover:to-white bg-gradient-to-r p-[1px] h-full w-full ${i % 3 === 0 ? "from-[#FFD3D3] via-[#E8C8C8] to-[#E5BEBE]"
+                                    <div className={`transition group animate-fadeIn duration-500 rounded-full 
+                                     hover:bg-white  hover:from-white hover:via-white hover:to-white bg-gradient-to-r p-[1px] h-full w-full ${i % 3 === 0 ? "from-[#FFD3D3] via-[#E8C8C8] to-[#E5BEBE]"
                                                     : i % 4 === 0
                                                         ? "from-[#FFF5CC] via-[#E8DFBA] to-[#E8DFBA]"
                                                         : i % 5 === 0
@@ -244,7 +245,7 @@ const Graph = ({ dateValue, onDateClose, onDateSearch, disbursementData, open, s
                                                     }`,
                                             }}
 
-                                            className={`relative z-20 text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center hover:border-[2px]  ${i % 3 === 0
+                                            className={`relative z-20 text-sm font-medium  py-1 bg-[#CCDDFE] rounded-full flex justify-center items-center border-[2px] border-transparent  ${i % 3 === 0
                                                 ? "shadow-light-tomato-4 hover:shadow-light-tomato"
                                                 : i % 4 === 0
                                                     ? " hover:shadow-light-periwinkle shadow-light-periwinkle-4"

@@ -7,6 +7,7 @@ interface Props {
     bgColor: string | undefined;
     ringColor: string | undefined;
     textColor: string | undefined;
+    inititalShadow: string | undefined;
     shadowColor: string | undefined;
     value: number;
     height: string;
@@ -17,19 +18,17 @@ interface Props {
 
 }
 
-const Circle1 = ({ bgColor, ringColor, textColor, value, shadowColor, height, width, indexNumber, data, tooltipTitleColor }: Props) => {
-
+const Circle1 = ({ bgColor, ringColor, textColor, value, shadowColor, height, width, indexNumber, data, tooltipTitleColor, inititalShadow }: Props) => {    
+    
     return (
         <div>
             <div
                 // style={{background: 'linear-gradient(to right, pink 50%, red 75%, yellow)'}} 
-                className={`rounded-full hover:bg-white  hover:from-white hover:via-white hover:to-white bg-gradient-to-r ${ringColor} p-[1px] h-full w-full`}>
+                className={`rounded-full  hover:bg-white  hover:from-white hover:via-white hover:to-white bg-gradient-to-r ${ringColor} p-[1px] h-full w-full `}>
 
                 <div
                     className={`${height} ${width} z-20 text-sm font-medium  ${bgColor} rounded-full flex justify-center items-center 
-                    
-                      hover:border-[2px] hover:border-white ${indexNumber === 0 ? 'shadow-light-tomato3' : indexNumber === 3 ? 'shadow-light-yellow2' : ''}  ${shadowColor} transition group animate-fadeIn duration-500`}
-
+                      border-[2px] border-transparent hover:border-white ${indexNumber === 0 ? 'shadow-light-tomato3' : indexNumber === 3 ? 'shadow-light-yellow2' : ''}  ${shadowColor} ${inititalShadow} transition group animate-fadeIn duration-500`}
                 >
                     <div className={`z-[120] animate-fadeIn absolute top-[-208px] hidden group-hover:block`} >
                         <GraphTooltip
