@@ -52,7 +52,7 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
     <div className="relative flex justify-end">
       <button
         onClick={() => setOpen(!open)}
-        className="py-2 px-2.5 bg-blue-gray-A10 rounded-[4px] flex items-center ml-2"
+        className="py-2 px-2.5 bg-blue-gray-A10 rounded-[4px] flex items-center ml-2 relative z-[110]"
       >
         <img src={Icons.filter_list} alt="" className="" />
         <h6 className="text-ct-blue-90-70% text-small mb-0 ml-1.5 mr-2.5">
@@ -61,7 +61,13 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
         <img src={Icons.arrow_drop_down_blue_gray} alt="" className="" />
       </button>
       {open && (
-        <div className="border border-blue-gray-30 rounded-[8px] shadow-light-blue-2 absolute z-50 top-10 bg-white w-[442px]">
+        <div
+          onClick={() => setOpen(!open)}
+          className="bg-transparent fixed top-0 left-0 w-full h-full z-[100] animate-fadeIn"
+        />
+      )}
+      {open && (
+        <div className="border border-blue-gray-30 rounded-[8px] shadow-light-blue-2 absolute z-[110] top-10 bg-white w-[442px] animate-fadeIn">
           <div className="pt-4 pb-2 px-5 w-full flex justify-between items-center">
             <h3 className="text-base font-medium text-ct-blue-90-68% mb-0">
               Filter

@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Buttons from "../../../Buttons";
 import Icons from "../../../../assets/Icons";
 import upload from "../../../../assets/Icons/upload.svg";
-import add from "../../../../assets/Icons/add.svg";
 import { Filter } from "../../../Filter";
 import { filterData } from "../../../../data/script/filter";
+import { ScriptContext } from "../../../../context/ScriptProvider";
 
 const Header = () => {
+  const scriptContext = useContext(ScriptContext);
   return (
     <div className="mt-3 flex items-center justify-between mb-5">
       <div>
@@ -65,7 +66,7 @@ const Header = () => {
           bgColor="bg-white"
           marginX="ml-6 mr-3"
         />
-        <Buttons.IconWithTitle
+        {/* <Buttons.IconWithTitle
           title="Create Script"
           paddingY="py-2"
           paddingX="px-4"
@@ -77,6 +78,13 @@ const Header = () => {
           duration="duration-300"
           borderRadius="rounded-[6px]"
           bgColor="bg-primary-ct-magenta-60"
+        /> */}
+        <Buttons.IconWithTextButton.Primary
+          label="Create Script"
+          size="small"
+          variant="Megenta"
+          icon={<img src={Icons.Add} alt="add" />}
+          onClick={() => scriptContext.setModalOpen(true)}
         />
       </div>
     </div>
