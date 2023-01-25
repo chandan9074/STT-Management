@@ -65,15 +65,9 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
                     {
                         educationWiseData?.map((value: any, index) => (
                             <div key={index} className='flex flex-col justify-center items-center '>
-                                {/* <div className='rounded-[4px] text-white bg-opacity-[85%] bg-blue-gray-85  items-center py-1 px-[6px] mb-[3px]'>
-                                    <h1 className='text-[12px]'>
-                                        {value.contribution}%
-                                        </h1>
-                                </div> */}
                                 <div className='relative group h-[324px] w-[84px] flex items-end justify-center'>
                                     <div
                                     style={{
-                                        // height: `${educationWiseDataHeights[index]}px`,
                                         bottom: `${value.contribution}%`
                                     }} 
                                     className='absolute z-50 rounded-[4px] text-white bg-opacity-[85%] bg-blue-gray-85  items-center py-1 px-[6px] mb-[3px]'>
@@ -83,7 +77,6 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
                                     </div>
                                     <div
                                         style={{
-                                            // height: `${educationWiseDataHeights[index]}px`,
                                             height: `${value.contribution}%`
                                         }}
                                         className={`w-[84px] ${index % 3 === 0
@@ -98,10 +91,24 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
                                         } duration-300`} id="triangle"
                                     >
                                     </div>
-                                    <div className={`z-50 animate-fadeIn absolute top-[-208px] hidden group-hover:block`} >
+                                    <div
+                                     style={{
+                                        bottom: `${value.contribution + 6}%`,
+                                        left: '0px'
+                                    }}
+                                     className={`z-50 animate-fadeIn absolute hidden group-hover:block`} >
                                         <GraphTooltip
                                             data={value}
-                                            validBgColor="bg-coral-90"
+                                            validBgColor={`${index % 3 === 0
+                                                ? "bg-[#8cf0fe]"
+                                                : index % 4 === 0
+                                                    ? "bg-[#a39cff]"
+                                                    : index % 5 === 0
+                                                        ? "bg-[#a39cff]"
+                                                        : index % 2 === 0
+                                                            ? "bg-[#94D676]"
+                                                            : "bg-[#FF8C8C]"
+                                            }`}
                                             titleColor={`${index % 3 === 0
                                                 ? "text-purple-A10"
                                                 : index % 4 === 0
