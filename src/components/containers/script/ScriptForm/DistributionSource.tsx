@@ -36,14 +36,15 @@ const DistributionSource = ({ formik }: { formik: any }) => {
                                 value={formik.values.distributionSource}
                                 onChange={formik.handleChange}
                                 onBlur={() => formik.setFieldTouched("distributionSource", true)}
+                            // defaultValue='Read'
                             >
                                 {
                                     distributionList?.map((value, i) => (
                                         <FormControlLabel
-                                        style={{
-                                            color: `${formik.values.distributionSource === value ? '#136EE5' : '#5F6B7D'} `,
-                                            fontSize: '14px',
-                                        }}
+                                            style={{
+                                                color: `${formik.values.distributionSource === value ? '#136EE5' : '#5F6B7D'} `,
+                                                fontSize: '14px',
+                                            }}
                                             key={i}
                                             value={value}
                                             control={<Radio

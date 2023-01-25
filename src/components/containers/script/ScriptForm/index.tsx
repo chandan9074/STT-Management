@@ -48,9 +48,9 @@ const ScriptForms = () => {
             sourceurl: '',
             dataType: 'STT',
             sourceType: '',
-            domain: distributionList && distributionList[0] ,
+            domain: '' ,
             subDomain: '',
-            distributionSource: '',
+            distributionSource: distributionList[0],
             isChild: false,
             title: '',
             script: '',
@@ -69,6 +69,7 @@ const ScriptForms = () => {
                 <div className='bg-white-gray-45 w-[885px]'>
                     <form onSubmit={formik.handleSubmit}>
                         <div className='px-[53px] py-[24px]'>
+
                             <DistributionSource formik={formik} />
                             <Domain formik={formik} />
                             <SourceReference getFile={getFile} formik={formik} />

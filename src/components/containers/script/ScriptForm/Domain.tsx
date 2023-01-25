@@ -104,8 +104,9 @@ const Domain = ({ formik }: { formik: any }) => {
                             className={`${domain === '' && 'sub-domain'}`}
                             style={{ width: '100%', cursor: 'pointer' }}
                             options={scriptSubDomain}
+                            // value={formik.values.subDomain || scriptSubDomain[0]}
                             value={formik.values.subDomain}
-                            defaultValue={formik.values.subDomain}
+                            // defaultValue={formik.values.subDomain}
 
                             onChange={(event, value) => {
                                 if (typeof value === 'string') {

@@ -12,6 +12,8 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
     const [educationWiseData, setEducationWiseData] = useState<createCollectSimilarPropertyDT[] | undefined>(createCollectData?.data.createData?.educationWise);
     const [educationWiseDataHeights, setEducationWiseDataHeights] = useState<number[]>([]);
 
+
+
     useEffect(() => {
         const _dimensionValue = getValueFromPercentage(maxValue, percentData);
 
@@ -44,7 +46,9 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
                             <div>
                                 {
                                     value !== 100 &&
-                                    <h1 className='text-ct-blue-45 text-[14px]'>{value}%</h1>
+                                    <h1 className='text-ct-blue-45 text-[14px]'>
+                                        {value}%
+                                        </h1>
 
                                 }
                             </div>
@@ -56,18 +60,31 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
                     ))
                 }
             </div>
-            <div className='absolute w-full bottom-12'>
-                <div className='flex justify-between items-end px-16 '>
+            <div className='absolute w-full bottom-[45px] '>
+                <div className='flex justify-between items-end pl-16 pr-[25px] '>
                     {
                         educationWiseData?.map((value: any, index) => (
-                            <div key={index} className='flex flex-col justify-center items-center'>
-                                <div className='rounded-[4px] text-white bg-opacity-[85%] bg-blue-gray-85  items-center py-1 px-[6px] mb-[3px]'>
-                                    <h1 className='text-[12px]'>{Math.round((100 * educationWiseDataHeights[index]) / maxValue)}%</h1>
-                                </div>
-                                <div className='relative group'>
+                            <div key={index} className='flex flex-col justify-center items-center '>
+                                {/* <div className='rounded-[4px] text-white bg-opacity-[85%] bg-blue-gray-85  items-center py-1 px-[6px] mb-[3px]'>
+                                    <h1 className='text-[12px]'>
+                                        {value.contribution}%
+                                        </h1>
+                                </div> */}
+                                <div className='relative group h-[324px] w-[84px] flex items-end justify-center'>
+                                    <div
+                                    style={{
+                                        // height: `${educationWiseDataHeights[index]}px`,
+                                        bottom: `${value.contribution}%`
+                                    }} 
+                                    className='absolute z-50 rounded-[4px] text-white bg-opacity-[85%] bg-blue-gray-85  items-center py-1 px-[6px] mb-[3px]'>
+                                        <h1 className='text-[12px]'>
+                                            {value.contribution}%
+                                            </h1>
+                                    </div>
                                     <div
                                         style={{
-                                            height: `${educationWiseDataHeights[index]}px`,
+                                            // height: `${educationWiseDataHeights[index]}px`,
+                                            height: `${value.contribution}%`
                                         }}
                                         className={`w-[84px] ${index % 3 === 0
                                             ? "bg-purple-A10 hover:bg-cobalite-90"
@@ -110,7 +127,7 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
                         ))
                     }
                 </div>
-                <div className="px-[16px] ml-[18px] absolute w-full bottom-0">
+                <div className="px-[16px] ml-[18px] absolute w-full -bottom-[0px]">
                     <div className='border-[1px] border-border-gray '></div>
                 </div>
 
