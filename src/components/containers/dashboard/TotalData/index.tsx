@@ -10,26 +10,18 @@ import { STTMODULE } from "../../../../helpers/ConditionVariable";
 const TotalData = () => {
   const dashboardContext = useContext(DashboardContext);
   const commonContext = useContext(CommonContext)
-  const { type } = commonContext
+  const { type, role } = commonContext
   const { getTotalDataCollection, totalDataCollection } = dashboardContext;
-  const [totalDataPrams, setTotalDataParams] = useState<totalDataParamsDT>({
-    module: "tts",
-    role: "Admin",
-  });
-
+ 
   useEffect(() => {
-    getTotalDataCollection(totalDataPrams);
-  }, [totalDataPrams]);
-
-  useEffect(() => {
-    setTotalDataParams((prev: totalDataParamsDT) => ({ ...prev, module: type }))
+    getTotalDataCollection({ module: type, role: role });
   }, [type]);
 
 
   return (
     <div className="bg-white h-52 p-5">
       <div className="flex gap-5 items-end">
-        <p className="text-heading-4 font-medium">Total Data</p>
+        <p className="text-heading-4 font-medium text-ct-blue-95">Total Data</p>
         <p className="text-small text-ct-blue-90-70% mb-1">
           Received : {totalDataCollection?.received}h
         </p>
