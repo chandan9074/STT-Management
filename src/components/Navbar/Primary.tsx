@@ -3,7 +3,7 @@ import Icons from "../../assets/Icons";
 
 const Primary = () => {
   return (
-    <div className="flex justify-between items-center py-3 pr-6 pl-[85px] shadow-md fixed w-full z-[90] bg-white">
+    <div className="flex justify-between items-center py-3 pr-6 pl-[85px] shadow-md fixed w-full z-[100] bg-white">
       <div className="flex items-center">
         <img src={Icons.currency} alt="currency" className="w-6 h-6" />
         <h3 className="text-heading-6 font-medium ml-2 bg-gradient-to-r from-[#FF24FB] via-secondary-blue-50 to-[#0093D9] text-transparent bg-clip-text">

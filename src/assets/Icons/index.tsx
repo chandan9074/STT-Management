@@ -67,6 +67,7 @@ import ArrowRightBack from './arrow_right_alt.svg';
 import MusicIcon from './music 1.svg'
 import Title from './title.svg'
 import DisableCursor from './disableCursor.svg'
+import arrow_drop_down_white from "./arrow_drop_down_white.svg";
 
 const Icons = {
   currency,
@@ -137,7 +138,8 @@ const Icons = {
   ArrowRightBack,
   MusicIcon,
   Title,
-  DisableCursor
+  DisableCursor,
+  arrow_drop_down_white,
 };
 
 export default Icons;

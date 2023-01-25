@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Icons from "../../assets/Icons";
 import { FilterDT } from "../../types/script";
+import Buttons from "../Buttons";
 import Dropdown from "../Dropdown";
 
 type filterListDT = {
@@ -13,12 +14,23 @@ type filterListDT = {
 const Type1 = ({ filterData }: { filterData: FilterDT }) => {
   const [open, setOpen] = useState(false);
   const [currentState, setCurrentState] = useState<string>("dataType");
+  const [count, setCount] = useState<number>(0)
   const [filterList, setFilterList] = useState<filterListDT>({
     dataType: [],
     distributionSource: [],
     domain: [],
     subdomain: [],
   });
+
+  useEffect(() => {
+    let count = 0;
+    for (const key in filterList) {
+      if(filterList[key as keyof filterListDT].length > 0){
+        count += 1
+      }
+    }
+    setCount(count)
+  }, [filterList]);
 
   const handleFilter = (data: string, subdomain: boolean) => {
     if (subdomain) {
@@ -50,24 +62,17 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
 
   return (
     <div className="relative flex justify-end">
-      <button
-        onClick={() => setOpen(!open)}
-        className="py-2 px-2.5 bg-blue-gray-A10 rounded-[4px] flex items-center ml-2 relative z-[110]"
-      >
-        <img src={Icons.filter_list} alt="" className="" />
-        <h6 className="text-ct-blue-90-70% text-small mb-0 ml-1.5 mr-2.5">
-          Filter
-        </h6>
-        <img src={Icons.arrow_drop_down_blue_gray} alt="" className="" />
-      </button>
+      <div className="relative z-[90]">
+        <Buttons.Filter label="Filter" count={count} onClick={()=>setOpen(!open)} />
+      </div>
       {open && (
         <div
           onClick={() => setOpen(!open)}
-          className="bg-transparent fixed top-0 left-0 w-full h-full z-[100] animate-fadeIn"
+          className="bg-transparent fixed top-0 left-0 w-full h-full z-[80] animate-fadeIn"
         />
       )}
       {open && (
-        <div className="border border-blue-gray-30 rounded-[8px] shadow-light-blue-2 absolute z-[110] top-10 bg-white w-[442px] animate-fadeIn">
+        <div className="border border-blue-gray-30 rounded-[8px] shadow-light-blue-2 absolute z-[80] top-10 bg-white w-[442px] animate-fadeIn">
           <div className="pt-4 pb-2 px-5 w-full flex justify-between items-center">
             <h3 className="text-base font-medium text-ct-blue-90-68% mb-0">
               Filter
