@@ -27,7 +27,7 @@ const color = [
         bgColor: 'bg-[#FFE5D3]',
         ringColor: 'from-[#FFE5D3] via-[#E8D0C0] to-[#E8D0C0]',
         shadowColor: 'hover:shadow-light-orange2',
-        tooltipTitleColor: 'text-blue-A10',
+        tooltipTitleColor: 'text-orange-A10',
         inititalShadow: 'shadow-light-orange-4'
         
     },
@@ -120,11 +120,11 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                                         textColor='text-[#453D38]'
                                         inititalShadow={color[4].inititalShadow}
                                         shadowColor={color[4].shadowColor}
-                                        value={data[4].contribution}
+                                        value={data[3].contribution}
                                         height="w-[53px]"
                                         width='h-[53px]'
-                                        indexNumber={4}
-                                        data={data[4]}
+                                        indexNumber={3}
+                                        data={data[3]}
                                         tooltipTitleColor={color[4].tooltipTitleColor}
                                     />
 
@@ -175,11 +175,11 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                             textColor='text-[#453D38]'
                             inititalShadow={color[3].inititalShadow}
                             shadowColor={color[3].shadowColor}
-                            value={data[3].contribution}
+                            value={data[4].contribution}
                             height="w-[60px]"
                             width='h-[60px]'
-                            indexNumber={3}
-                            data={data[3]}
+                            indexNumber={4}
+                            data={data[4]}
                             tooltipTitleColor={color[3].tooltipTitleColor}
                         />
                     </div>
