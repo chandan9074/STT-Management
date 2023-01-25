@@ -92,8 +92,22 @@ textarea {
 padding-top: 0px !important;
 }
 
+/* Select */
+.MuiMenuItem-root.Mui-selected {
+    background: #E1EFFE !important;
+}
 
-/* 
- .css-gdh49b-MuiAutocomplete-listbox .MuiAutocomplete-option.Mui-focused {
+.MuiMenuItem-root.Mui-selected::after {
+    background-image: url('../../../../assets/Icons/check.png');
+    margin-left: auto;
+    background-size: 15px 10px;
+    width: 15px;
+    height: 10px;
+    content: "";
+}
 
- } */
+.MuiOutlinedInput-input {
+    color: #464E5F !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+}
