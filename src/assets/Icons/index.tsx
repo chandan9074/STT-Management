@@ -74,6 +74,7 @@ import assignNav from "./assignNav.svg";
 import audioNav from "./audioNav.svg";
 import userNav from "./userNav.svg";
 import organizeNav from "./organizeNav.svg";
+import DottedDownArrow from './dotted-down-arrow.svg'
 
 const Icons = {
   currency,
@@ -152,6 +153,7 @@ const Icons = {
   audioNav,
   userNav,
   organizeNav,
+  DottedDownArrow
 };
 
 export default Icons;

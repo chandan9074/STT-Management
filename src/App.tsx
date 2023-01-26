@@ -15,6 +15,7 @@ import Checking from "./pages/Test/CollectiongAudio/Checking";
 import CheckingStatus from "./pages/Test/CollectiongAudio/Checking/CheckingStatus";
 import Script from "./pages/Script";
 import ScriptForm from "./pages/Script/ScriptForm";
+import UserManagement from "./pages/UserManagement";
 
 function App() {
   useEffect(() => {
@@ -41,6 +42,7 @@ function App() {
         <Route path={PATH.SCRIPT_PATH} element={<Script />} />
         <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} />
         <Route path={PATH.CREATE_SCRIPT} element={<ScriptForm />} />
+        <Route path={PATH.USER_PATH} element={<UserManagement />} />
         {/* <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} /> */}
         <Route path="*" element={<NotFound />} />
 

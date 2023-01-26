@@ -1,12 +1,19 @@
 .type2-female-drop-shadow {
     background: linear-gradient(180deg, rgba(255, 203, 203, 0.55) 0%, rgba(255, 203, 203, 0) 100%);
 }
+
 .type2-male-drop-shadow {
     background: linear-gradient(180deg, rgba(66, 245, 213, 0.55) 0%, rgba(204, 255, 249, 0) 100%);
 }
-.type2-male-tt:hover {
+
+/* .type2-male-tt:hover {
     background: linear-gradient(246.92deg, #42F5D5 10.81%, #00AA91 90.21%);
-}
-.type2-female-tt:hover {
+} */
+.type2-female-tt-child {
     background: linear-gradient(154.83deg, #FFCBCB 13.97%, #FF7AAB 92.89%);
+    opacity: 0;
+}
+
+.type2-female-tt:hover .type2-female-tt-child {
+    opacity: 100;
 }

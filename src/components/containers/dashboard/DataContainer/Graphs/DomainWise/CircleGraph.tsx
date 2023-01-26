@@ -57,6 +57,7 @@ const CircleGraph = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
         const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
         let _percent: string = (percent * 100).toFixed(0)
+       
         return (
             <text
 
@@ -73,7 +74,7 @@ const CircleGraph = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
 
                 {
 
-                    (activeName === payload.name && parseInt(_percent) >= 3) ? `${_percent}%` : parseInt(_percent) >= 15 ? `${_percent}%` : ""
+                    (activeName === payload.name && parseInt(_percent) >= 3) ? `${payload.value.toFixed(0)}%` : parseInt(_percent) >= 15 ? `${payload.value.toFixed(0)}%` : ""
 
                 }
             </text >
@@ -106,6 +107,7 @@ const CircleGraph = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
                 fill={hoverTooltipsColors[payload.name]?.fillColor}
                 stroke={hoverTooltipsColors[payload.name]?.borderColor}
                 strokeWidth={3}
+                
 
             />
         );
@@ -131,7 +133,8 @@ const CircleGraph = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
             <PieChart width={330} height={370}>
                 <Pie
                     isAnimationActive={false}
-                    animationDuration={0}
+                    animationDuration={300}
+                    animationBegin={300}
                     data={domainData}
                     cx="50%"
                     cy="50%"
@@ -164,6 +167,7 @@ const CircleGraph = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
                 <Tooltip
                     isAnimationActive={false}
                     animationEasing="linear"
+                    animationDuration={300}
                     wrapperStyle={{ outline: "none" }}
                     position={{
                         x: activeData?.tooltipPosition?.x - 45,

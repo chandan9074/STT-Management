@@ -70,15 +70,11 @@ const DashboardProvider = ({ children }: { children: any }) => {
   };
 
   const getTotalDataCollection = async (data: totalDataParamsDT) => {
-    try {
-      setLoading(true);
-      setErrorMsg("");
-      const response = await DashboardService.getTotalDataCollection(data);
-      setTotalDataCollection(response.data);
-      setLoading(false);
-    } catch (error) {
-      setErrorMsg("Something Went wrong.......");
-    }
+    setLoading(true);
+    setErrorMsg("");
+    const response = await DashboardService.getTotalDataCollection(data);
+    setTotalDataCollection(response.data);
+    setLoading(false);
   };
 
   return (

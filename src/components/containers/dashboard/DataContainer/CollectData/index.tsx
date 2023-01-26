@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Header from "../Header";
 import Graphs from "../Graphs";
 import DataContainerDropdown from "../DataContainerDropdown";
 import DataContainerModal from "../DataContainerModal";
 import { collectDataDT } from "../../../../../types/dashboardTypes";
 import AgeWise from "../Graphs/AgeWise";
+import { CommonContext } from "../../../../../context/CommonProvider";
+import { STTMODULE } from "../../../../../helpers/ConditionVariable";
 
 const COLORS = ["#42F5E4", "#3BA2F5", "#B336C8", "#F5E342"];
 const ActiveColor: any = {
@@ -39,7 +41,7 @@ const ActiveColor: any = {
 };
 
 const CollectData = ({ data }: { data: collectDataDT }) => {
-  const CollectDropDownData = [
+  const sttCollectDropDownData = [
     {
       id: 1,
       value: "Distribution Source-wise",
@@ -62,7 +64,23 @@ const CollectData = ({ data }: { data: collectDataDT }) => {
       value: "Locality-wise",
     },
   ];
+  const ttsCollectDropDownData = [
+    {
+      id: 1,
+      value: "Distribution Source-wise",
+    },
+    {
+      id: 2,
+      value: "Domain-wise",
+    },
+    {
+      id: 3,
+      value: "Gender-wise",
+    },
+  ];
   const [activePanel, setActivePanel] = useState("Distribution Source-wise");
+  const commonContext = useContext(CommonContext)
+  const { type } = commonContext
 
   const handleActivePanel = (value: string) => {
     setActivePanel(value);
@@ -88,15 +106,15 @@ const CollectData = ({ data }: { data: collectDataDT }) => {
   return (
     <div>
       <Header
-      data={data}
-        borderColor="border-cold-turkey"
-        type="Collect"
-        bgColor="bg-red-03"
-        targetColor="text-red-80"
+        data={data}
+        borderColor={type === STTMODULE ? "border-cold-turkey" : "border-[#C4B0B2]"}
+        headerType="Collect"
+        bgColor={type === STTMODULE ? "bg-red-03" : "bg-[#FCFCF7]"}
+        targetColor={type === STTMODULE ? "text-red-80" : "text-[#88991C]"}
       />
       <div className="flex justify-between p-5 bg-white rounded-b-xl">
         <DataContainerDropdown
-          data={CollectDropDownData}
+          data={type === STTMODULE ? sttCollectDropDownData : ttsCollectDropDownData}
           handleActivePanel={handleActivePanel}
         />
         <DataContainerModal

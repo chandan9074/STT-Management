@@ -16,9 +16,7 @@ const CustomizeCalender = () => {
     const dateFormat = 'YYYY-MM-DD';
     const getDateCalender: any = (date: any, dateString: any, info: any) => {
 
-        console.log("getDateCalender", date, dateString)
-
-        console.log("=-=-=-=-=--Date String", info);
+      
 
         if(dateString[0]) {
         // if(dateString[0]) {
@@ -43,12 +41,11 @@ const CustomizeCalender = () => {
     };
 
     const onFinishFailed = (errorInfo: any) => {
-        console.log('Failed:', errorInfo);
+      
     };
 
 
-    console.log("=-=-=-=-=-=", startDate);
-
+   
     return (
         <div className='cm-range-picker flex'>
             <button className="" onClick={() => setOpen(!open)}>Open calender</button>

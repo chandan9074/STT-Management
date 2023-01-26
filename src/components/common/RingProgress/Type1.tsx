@@ -1,28 +1,14 @@
 import React from 'react';
-import {Progress} from "antd";
+import { Progress } from "antd";
 import './ringProcess.css'
 
-interface Props{
-    type:string,
-    value:number
+interface Props {
+    type: string;
+    value: number;
+    style: any
 }
-const Type1 = ({type,value}:Props) => {
-    const style:any={
-        Create:{
-            trailColor:"#DEF7F0",
-            stock1:"#05956F",
-            stock2:"#00FFBB",
-            textColor:"text-green/50-05956F"
-        },
-        Collect:{
-            trailColor:"#F7DEE0",
-            stock1:"#940412",
-            stock2:"#FF0018",
-            textColor:"text-red-60"
-        }
 
-    }
-
+const Type1 = ({ type, value, style }: Props) => {
     return (
         <div>
             <Progress

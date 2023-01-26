@@ -13,7 +13,7 @@ const DataContainer = () => {
       commonContext.role,
       commonContext.type
     );
-  }, []);
+  }, [commonContext.type]);
   return (
     <div className="grid grid-cols-12 gap-5 mt-4">
       <div

@@ -180,7 +180,9 @@ module.exports = {
         "feijao": "#94D676",
         "masala": "#453939",
         "blue-gray-A50": "rgba(31, 56, 76, 0.7)",
-        'white-gray-45': 'rgba(255, 255, 255, 0.45)'
+        'white-gray-45': 'rgba(255, 255, 255, 0.45)',
+        "forest-green": "#26851F",
+        "pacifika":"#85821F"
       },
     },
   },
