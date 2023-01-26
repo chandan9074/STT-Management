@@ -1,33 +1,13 @@
-import { InboxOutlined } from '@ant-design/icons';
 import { Grid } from '@mui/material';
-import Button from '@mui/material/Button';
 import Dragger from 'antd/es/upload/Dragger';
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Icons from '../../../../assets/Icons';
-import type { UploadProps } from 'antd';
-import { message, Upload } from 'antd';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { scriptSourceType } from '../../../../data/Script/Domain';
-import { styled, lighten, darken } from '@mui/system';
-
-
-const GroupHeader = styled('div')(({ theme }) => ({
-    position: 'sticky',
-    top: '-8px',
-    padding: '4px 10px',
-    color: theme.palette.primary.main,
-    backgroundColor:
-        theme.palette.mode === 'light'
-            ? lighten(theme.palette.primary.light, 0.85)
-            : darken(theme.palette.primary.main, 0.8),
-}));
-
-
 
 const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any) => void }) => {
     const [file, setFile] = useState<any>([]);
-    const [fileType, setFileType] = useState<string>('');
     const [scriptSourceReference, setScriptSourceReference] = useState<{ isSource: boolean, isScript: boolean }>({
         isSource: true,
         isScript: false
@@ -49,39 +29,30 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
                 isScript: true
             })
         }
-    }
+    }    
 
-    console.log('value', scriptSourceReference.isScript);
-
-
-    function handleFileUpload(event: any) {
+     const handleFileUpload = (event: any) => {
 
         if (event.fileList?.length !== 0) {
             // let files = event.fileList || event.file || event.target.files;
-            let files = event.fileList[0]?.originFileObj;
+            let files = event.fileList[0];
             setFile(files);
-            setFileType(event.fileList[0]?.originFileObj?.type);
             getFile(event.fileList[0]?.originFileObj);
         } else {
             setFile([]);
-            setFileType('');
             getFile([]);
         }
-
-        // do something with the files, such as sending them to a server or displaying them on the page
     }
-
 
 
     return (
         <div className='mb-[28px] source-reference'>
 
-
             <h1 className='mb-[12px] text-blue-gray-80 text-[14px] font-medium'>Source Reference</h1>
 
             <div className=' border-[1px] border-[#D6E5F5] rounded-[7px] mb-[28px]'>
                 <Grid container >
-                    <Grid item xs={6} style={{cursor: 'pointer'}}>
+                    <Grid item xs={6} style={{ cursor: 'pointer' }}>
                         <div onClick={(value) => onSourceReferencehandle('source')} className={`cursor-pointer p-[8px] ${scriptSourceReference?.isSource ? 'bg-ct-blue-20' : 'bg-ct-blue-10'}  flex justify-center items-center gap-x-[15px]`}>
                             <img src={Icons.Link} className='h-[18px] w-[18px]' alt="" />
                             <h1 className='text-ct-blue-45 text-[14px] font-medium'>Add Source</h1>
@@ -106,8 +77,9 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
                                             id="sourceType"
                                             style={{ width: '100%' }}
                                             options={scriptSourceType}
-                                            value={formik.values.sourceType}
-                                            defaultValue={formik.values.sourceType}
+                                            value={formik.values.sourceType }
+                                            // value={formik.values.sourceType || scriptSourceType[0]}
+                                            // defaultValue={formik.values.sourceType}
 
                                             onChange={(event, value) => {
                                                 if (typeof value === 'string') {
@@ -165,23 +137,19 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
 
                         // file upload
                         <div className={`bg-white w-[100%] ${(file?.length === 0) ? 'file-upload' : 'file-upload-hidden '}`} >
+                            
                             <div className={`${(file?.length === 0) ? '' : 'py-[24px] px-[16px]'}`}>
-                                {/* <Dragger
-                        style={{
-                            backgroundColor: 'white',
-                            borderRadius: 'none'
-                        }}
-                        {...props}> */}
                                 <Dragger
+                                multiple={false}
+                                accept='.txt, .docx, .pdf, .jpg, .jpeg, .png, .tsx'
+                                // customRequest={selectFiles}
                                     style={{
                                         backgroundColor: 'white',
                                         borderRadius: 'none'
                                     }}
                                     onChange={(event) => handleFileUpload(event)}
-                                // {...props}
                                 >
-                                    <div className={`
-                    h-[114px] ant-upload-drag-icon flex flex-col justify-center items-center gap-y-[8px]`}>
+                                    <div className={`h-[114px] ant-upload-drag-icon flex flex-col justify-center items-center gap-y-[8px]`}>
                                         <div className='border-[1px] border-ct-blue-30 w-[160px] h-[36px] px-[18px] py-[8px] rounded-[6px] flex justify-center items-center gap-x-[5px]'>
                                             <img src={Icons.Backup} alt="" />
                                             <h1 className='text-ct-blue-80 text-[14px] font-medium'>Upload Script</h1>

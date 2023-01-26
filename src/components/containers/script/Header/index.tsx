@@ -1,12 +1,45 @@
-import React from "react";
+import React, { useContext, useRef } from "react";
 import Buttons from "../../../Buttons";
 import Icons from "../../../../assets/Icons";
 import upload from "../../../../assets/Icons/upload.svg";
-import add from "../../../../assets/Icons/add.svg";
 import { Filter } from "../../../Filter";
 import { filterData } from "../../../../data/script/filter";
+import { ScriptContext } from "../../../../context/ScriptProvider";
 
 const Header = () => {
+  const scriptContext = useContext(ScriptContext);
+  const csvRef = useRef<HTMLInputElement>(null);
+
+  const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    // console.log("file", file);
+    if (file) {
+      let formData = new FormData();
+      formData.append("file", file);
+      scriptContext?.uploadCsv(formData);
+
+      // const reader = new FileReader();
+      // reader.onload = (e) => {
+      //   const text = e.target?.result;
+      //   if (text) {
+      //     const data = text.toString().split("");
+      //     const script = data.map((item) => {
+      //       return {
+      //         script: item,
+      //       };
+      //     });
+      //     // scriptContext?.setScript(script);
+      //     // console.log("script data,,,,,,", script);
+      //   }
+      // };
+      // reader.readAsText(file);
+    }
+  };
+
+  const handleUpload = () => {
+    csvRef.current?.click();
+  };
+
   return (
     <div className="mt-3 flex items-center justify-between mb-5">
       <div>
@@ -50,33 +83,32 @@ const Header = () => {
           </div>
         </form>
         <Filter.Type1 filterData={filterData} />
-        <Buttons.IconWithTitle
-          title="Upload Script"
-          paddingY="py-2"
-          paddingX="px-4"
-          image={upload}
-          imageMargin="mr-1"
-          textColor="text-ct-blue-80"
-          fontSize="text-small"
-          fontWeight="font-medium"
-          duration="duration-300"
-          borderRadius="rounded-[6px]"
-          border="border border-ct-blue-30"
-          bgColor="bg-white"
-          marginX="ml-6 mr-3"
+        <input
+          type="file"
+          ref={csvRef}
+          accept=".csv"
+          className="hidden"
+          onChange={(e) => {
+            if (e.target.files) {
+              handleFile(e);
+            }
+          }}
         />
-        <Buttons.IconWithTitle
-          title="Create Script"
-          paddingY="py-2"
-          paddingX="px-4"
-          image={add}
-          imageMargin="mr-1"
-          textColor="text-white"
-          fontSize="text-small"
-          fontWeight="font-medium"
-          duration="duration-300"
-          borderRadius="rounded-[6px]"
-          bgColor="bg-primary-ct-magenta-60"
+        <Buttons.IconWithTextButton.Secondary
+          label="Upload Script"
+          size="small"
+          variant="Blue"
+          marginX="ml-6 mr-3"
+          iconAlign="start"
+          icon={<img src={Icons.upload} alt="upload" />}
+          onClick={handleUpload}
+        />
+        <Buttons.IconWithTextButton.Primary
+          label="Create Script"
+          size="small"
+          variant="Megenta"
+          icon={<img src={Icons.Add} alt="add" />}
+          onClick={() => scriptContext.setModalOpen(true)}
         />
       </div>
     </div>

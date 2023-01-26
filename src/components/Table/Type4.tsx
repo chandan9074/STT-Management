@@ -56,8 +56,6 @@ const Type4 = () => {
     const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
     const [drawerData, setDrawerData] = useState<any>();
-    const [modalOpen, setModalOpen] = useState<boolean>(false)
-    const [modaData, setModalData] = useState<string>('')
 
     const showDrawer = (key: any) => {
         setOpen(true);
@@ -126,18 +124,6 @@ const Type4 = () => {
             />
 
             <SideDrawer.Type1 open={open} setOpen={setOpen} drawerData={drawerData} />
-
-
-            <button
-                onClick={() => setModalOpen(true)}
-            >Open modal</button>
-
-            <CustomModal.Type1
-                open={modalOpen}
-                setOpen={setModalOpen}
-                setData={setModalData}
-            />
-
         </div >
     );
 };
