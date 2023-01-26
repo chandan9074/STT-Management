@@ -104,3 +104,11 @@ export const getMontNumberFormat = (date: string | undefined) => {
     return `${splitData[2]}-${newMonth}-${splitData[0]}`;
   }
 };
+
+export function camelizeWithUnderScore(text: string) {
+  let newStr = text.split(/(?=[A-Z])|[^a-zA-Z0-9]+/).join(" ");
+
+  const a = newStr.toLowerCase()
+    .replace(/[-_\s.]+(.)?/g, (_, c) => c ? ` ${c.toUpperCase()}` : '');
+  return a.substring(0, 1).toUpperCase() + a.substring(1);
+}
