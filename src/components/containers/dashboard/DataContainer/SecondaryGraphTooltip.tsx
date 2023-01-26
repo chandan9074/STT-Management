@@ -13,7 +13,7 @@ const SecondaryGraphTooltip = ({
   titleColor: string;
   align: "left" | "right" | "center";
 }) => {
-  console.log("data", titleColor);
+  
   return (
     <div className="px-5 py-6 bg-tooltip-bg rounded-[12px]">
       <h1 className={`text-base font-semibold ${titleColor} mb-0`}>

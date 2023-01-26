@@ -37,6 +37,7 @@ function App() {
         <Route path={PATH.SCRIPT_PATH} element={<Script />} />
         <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} />
         <Route path={PATH.CREATE_SCRIPT} element={<ScriptForm />} />
+        <Route path={PATH.USER_PATH} element={<UserManagement />} />
         {/* <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} /> */}
         <Route path="*" element={<NotFound />} />
 

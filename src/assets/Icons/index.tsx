@@ -65,8 +65,16 @@ import Backup from "./backup.svg";
 import Add from "./add.svg";
 import ArrowRightBack from './arrow_right_alt.svg';
 import MusicIcon from './music 1.svg'
-import Title from './title.svg';
-import DisableCursor from './disableCursor.svg';
+import Title from './title.svg'
+import DisableCursor from './disableCursor.svg'
+import arrow_drop_down_white from "./arrow_drop_down_white.svg";
+import dashboardNav from "./dashboardNav.svg";
+import scriptNav from "./scriptNav.svg";
+import assignNav from "./assignNav.svg";
+import audioNav from "./audioNav.svg";
+import userNav from "./userNav.svg";
+import organizeNav from "./organizeNav.svg";
+import DottedDownArrow from './dotted-down-arrow.svg'
 import Avatar from './Avatar.svg'
 
 const Icons = {
@@ -139,7 +147,15 @@ const Icons = {
   MusicIcon,
   Title,
   DisableCursor,
-  Avatar
+  Avatar,
+  arrow_drop_down_white,
+  dashboardNav,
+  scriptNav,
+  assignNav,
+  audioNav,
+  userNav,
+  organizeNav,
+  DottedDownArrow
 };
 
 export default Icons;

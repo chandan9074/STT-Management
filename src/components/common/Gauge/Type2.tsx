@@ -31,20 +31,20 @@ const Type2 = ({ data }: Props) => {
             <div className="flex items-center rounded-t-full overflow-y-hidden w-[448px] h-[224px] relative z-[80]">
                 <div
                     style={{ transform: `rotate(-${progressDeg}deg)` }}
-                    className={`type2-male-tt bg-bright-turquoise h-[224px] absolute w-[448px] origin-bottom z-[60]`}
+                    className={`type2-male-tt bg-bright-turquoise h-[224px] absolute w-[448px] origin-bottom z-[60] group`}
                     onMouseOver={MouseEventHandle}
                     onMouseOut={MouseEventHandleOut}
                 >
-                    <div className='absolute bg-black -top-[50] -left-12 '>
-                        <h1 className='text-white'>Hellow</h1>
-                    </div>
+                    <div className='bg-gradient-to-r from-[#00AA91] to-[#42F5D5]  w-full h-full duration-300 opacity-0 group-hover:opacity-100' />
                 </div>
 
 
                 <div className="type2-female-tt bg-your-pink h-[224px] absolute w-[448px] z-[50]"
                     onMouseOver={MouseEventHandle2}
                     onMouseOut={MouseEventHandleOut2}
-                />
+                >
+                    <div className='type2-female-tt-child duration-300 h-[224px] w-[448px]'></div>
+                </div>
 
                 <div
                     className="w-[300px] h-[150px] rounded-t-full bg-white z-[90] absolute bottom-0 left-1/2 transform -translate-x-1/2" />
@@ -79,7 +79,7 @@ const Type2 = ({ data }: Props) => {
                     <div
                         onMouseOver={MouseEventHandle}
                         onMouseOut={MouseEventHandleOut}
-                        className="absolute -top-[5%] -left-[3%] z-[99] group-hover:animate-fadeIn">
+                        className="absolute -top-[5%] -left-[3%] z-[99] animate-fadeIn">
                         <GraphTooltipType2
                             align={"left"}
                             data={data[0]}
@@ -93,7 +93,7 @@ const Type2 = ({ data }: Props) => {
                     <div
                         onMouseOver={MouseEventHandle2}
                         onMouseOut={MouseEventHandleOut2}
-                        className="absolute -top-[5%] left-[26%] z-[99] group-hover:animate-fadeIn">
+                        className="absolute -top-[5%] left-[26%] z-[99] animate-fadeIn">
                         <GraphTooltipType2
                             align={"right"}
                             data={data[1]}

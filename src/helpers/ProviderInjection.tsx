@@ -6,6 +6,7 @@ const providers = [
   Context.RoleProvider,
   Context.CommonProvider,
   Context.DashboardProvider,
+  Context.ScriptProvider,
 ];
 
 const ProviderInjection = ({ app }: { app: any }) => {

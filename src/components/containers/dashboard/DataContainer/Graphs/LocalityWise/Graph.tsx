@@ -4,7 +4,7 @@ import { createCollectSimilarPropertyDT } from "../../../../../../types/dashboar
 import GraphTooltip from "../../GraphTooltip";
 
 const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
-  console.log("hello", data.filter((item) => item.name === "Rajbongshi")[0]);
+ 
   return (
     <div className="w-[348px] h-full flex justify-center">
       <div className="w-[226px] h-[314px] relative">
