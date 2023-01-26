@@ -68,6 +68,12 @@ import MusicIcon from './music 1.svg'
 import Title from './title.svg'
 import DisableCursor from './disableCursor.svg'
 import arrow_drop_down_white from "./arrow_drop_down_white.svg";
+import dashboardNav from "./dashboardNav.svg";
+import scriptNav from "./scriptNav.svg";
+import assignNav from "./assignNav.svg";
+import audioNav from "./audioNav.svg";
+import userNav from "./userNav.svg";
+import organizeNav from "./organizeNav.svg";
 
 const Icons = {
   currency,
@@ -140,6 +146,12 @@ const Icons = {
   Title,
   DisableCursor,
   arrow_drop_down_white,
+  dashboardNav,
+  scriptNav,
+  assignNav,
+  audioNav,
+  userNav,
+  organizeNav,
 };
 
 export default Icons;

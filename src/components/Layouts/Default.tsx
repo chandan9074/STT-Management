@@ -29,9 +29,8 @@ const Default = ({ children }: { children: any }) => {
       <Navbar.Primary />
       <Sidebar.Primary />
       <div
-        className={`fixed left-1/2 transform -translate-x-1/2 top-12 z-[90] ml-8 animate-fadeIn ${
-          showToggle ? "block" : "hidden"
-        }`}
+        className={`fixed left-1/2 transform -translate-x-1/2 top-12 z-[100] ml-8 animate-fadeIn ${showToggle ? "block" : "hidden"
+          }`}
       >
         <Buttons.ToggleRounded
           first="STT"
