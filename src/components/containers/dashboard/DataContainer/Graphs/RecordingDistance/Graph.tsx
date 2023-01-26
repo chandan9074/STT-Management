@@ -4,46 +4,54 @@ import Circle1 from '../../../../../common/Circle/Circle1';
 const color = [
     {
         bgColor: 'bg-red-15',
-        ringColor: 'ring-[#E8C8C8]',
+        ringColor: 'from-[#FFD3D3] via-[#E8C8C8] to-[#E5BEBE]',
         shadowColor: 'hover:shadow-light-tomato2',
-        tooltipTitleColor: 'text-red-15'
+        tooltipTitleColor: 'text-red-15',
+        inititalShadow: 'shadow-light-tomato-4'
     },
     {
         bgColor: 'bg-green-A10',
-        ringColor: 'ring-[#D1E8C7]',
+        ringColor: 'from-[#E2FBD7] via-[#D1E8C7] to-[#D1E8C7]',
         shadowColor: 'hover:shadow-light-green2',
-        tooltipTitleColor: 'text-green-A10'
+        tooltipTitleColor: 'text-green-A10',
+        inititalShadow: 'shadow-light-onahau-4'
     },
     {
         bgColor: 'bg-[#FFF5CC]',
-        ringColor: 'ring-[#E8DFBA]',
+        ringColor: 'from-[#FFF5CC] via-[#E8DFBA] to-[#E8DFBA]',
         shadowColor: 'hover:shadow-light-yellow2',
-        tooltipTitleColor: 'text-yellow-A10'
+        tooltipTitleColor: 'text-yellow-A10',
+        inititalShadow: 'shadow-light-periwinkle-4'
     },
     {
         bgColor: 'bg-[#FFE5D3]',
-        ringColor: 'ring-[#E8D0C0]',
+        ringColor: 'from-[#FFE5D3] via-[#E8D0C0] to-[#E8D0C0]',
         shadowColor: 'hover:shadow-light-orange2',
-        tooltipTitleColor: 'text-blue-A10'
+        tooltipTitleColor: 'text-orange-A10',
+        inititalShadow: 'shadow-light-orange-4'
         
     },
     {
         bgColor: 'bg-[#CCF8FE]',
-        ringColor: 'ring-[#BAE3E8]',
+        ringColor: 'from-[#CCF8FE] via-[#BAE3E8] to-[#BAE3E8]',
         shadowColor: 'hover:shadow-light-blue2',
-        tooltipTitleColor: 'text-blue-A10'
+        tooltipTitleColor: 'text-blue-A10',
+        inititalShadow: 'shadow-light-orinoco-4'
     },
     {
         bgColor: 'bg-[#CCDDFE]',
-        ringColor: 'ring-[#BACAE8]',
+        ringColor: 'from-[#CCDDFE] via-[#BACAE8] to-[#BACAE8]',
         shadowColor: 'hover:shadow-light-blue3',
-        tooltipTitleColor: 'text-blue-20'
+        tooltipTitleColor: 'text-blue-20',
+        inititalShadow: 'shadow-light-yellow-4'
     },
     {
         bgColor: 'bg-[#DAD7FE]',
-        ringColor: 'ring-[#CAC8E8]',
+        ringColor: 'from-[#DAD7FE] via-[#CAC8E8] to-[#CAC8E8]',
         shadowColor: 'hover:shadow-light-purple',
-        tooltipTitleColor: 'text-purple-A10'
+        tooltipTitleColor: 'text-purple-A10',
+        inititalShadow: 'shadow-light-purple-4'
+
     }
 
 
@@ -61,6 +69,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                         bgColor={color[0].bgColor}
                         ringColor={color[0].ringColor}
                         textColor='text-[#453D38]'
+                        inititalShadow={color[0].inititalShadow}
                         shadowColor={color[0].shadowColor}
                         value={data[0].contribution}
                         height="w-[157px]"
@@ -75,6 +84,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                             bgColor={color[1].bgColor}
                             ringColor={color[1].ringColor}
                             textColor='text-[#453D38]'
+                            inititalShadow={color[1].inititalShadow}
                             shadowColor={color[1].shadowColor}
                             value={data[1].contribution}
                             height="w-[106px]"
@@ -92,6 +102,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                                 bgColor={color[2].bgColor}
                                 ringColor={color[2].ringColor}
                                 textColor='text-[#453D38]'
+                                inititalShadow={color[2].inititalShadow}
                                 shadowColor={color[2].shadowColor}
                                 value={data[2].contribution}
                                 height="w-[102px]"
@@ -107,12 +118,13 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                                         bgColor={color[4].bgColor}
                                         ringColor={color[4].ringColor}
                                         textColor='text-[#453D38]'
+                                        inititalShadow={color[4].inititalShadow}
                                         shadowColor={color[4].shadowColor}
-                                        value={data[4].contribution}
+                                        value={data[3].contribution}
                                         height="w-[53px]"
                                         width='h-[53px]'
-                                        indexNumber={4}
-                                        data={data[4]}
+                                        indexNumber={3}
+                                        data={data[3]}
                                         tooltipTitleColor={color[4].tooltipTitleColor}
                                     />
 
@@ -122,6 +134,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                                                 bgColor={color[5].bgColor}
                                                 ringColor={color[5].ringColor}
                                                 textColor='text-[#453D38]'
+                                                inititalShadow={color[5].inititalShadow}
                                                 shadowColor={color[5].shadowColor}
                                                 value={data[5].contribution}
                                                 height="w-[30px]"
@@ -136,6 +149,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                                                     bgColor={color[6].bgColor}
                                                     ringColor={color[6].ringColor}
                                                     textColor='text-[#453D38]'
+                                                    inititalShadow={color[6].inititalShadow}
                                                     shadowColor={color[6].shadowColor}
                                                     value={data[6].contribution}
                                                     height="w-[21px]"
@@ -159,12 +173,13 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                             bgColor={color[3].bgColor}
                             ringColor={color[3].ringColor}
                             textColor='text-[#453D38]'
+                            inititalShadow={color[3].inititalShadow}
                             shadowColor={color[3].shadowColor}
-                            value={data[3].contribution}
+                            value={data[4].contribution}
                             height="w-[60px]"
                             width='h-[60px]'
-                            indexNumber={3}
-                            data={data[3]}
+                            indexNumber={4}
+                            data={data[4]}
                             tooltipTitleColor={color[3].tooltipTitleColor}
                         />
                     </div>

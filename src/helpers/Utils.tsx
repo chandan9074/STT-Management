@@ -91,8 +91,6 @@ export const slugFormatter = (value: string) => {
 };
 
 export const getMontNumberFormat = (date: string | undefined) => {
-  // 15 Feb 2021
-  // 2021-1-15
   if (date) {
     const splitData = date.split(" ");
     const month = new Date(`${date}`).getMonth() + 1;

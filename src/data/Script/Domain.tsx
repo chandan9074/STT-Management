@@ -25,3 +25,10 @@ export const scriptSourceType = [
     'BSS',
     'Text Book'
 ]
+
+export const distributionList = [
+    'Read',
+    'Lecture',
+    'Command',
+    'Miscellaneous'
+]

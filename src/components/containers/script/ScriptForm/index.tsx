@@ -1,9 +1,4 @@
-import React, { useState } from 'react';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+import { useState } from 'react';
 import DistributionSource from './DistributionSource';
 import Domain from './Domain';
 import SourceReference from './SourceReference';
@@ -15,6 +10,7 @@ import './ScriptForm.css';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { distributionList } from '../../../../data/Script/Domain';
 
 const theme = createTheme({
 
@@ -28,10 +24,8 @@ const theme = createTheme({
 
 })
 
-const distributionList = ['Read', 'Lecture', 'Command', 'Miscellaneous']
 
 const validationSchema = yup.object({
-    // sourceurl: yup.string().required('Source URL is required'),
     sourceType: yup.string().required('Source Type is required'),
     domain: yup.string().required('Domain is required'),
     subDomain: yup.string().required('Sub domain is required'),
@@ -44,26 +38,27 @@ const ScriptForms = () => {
     const [file, setFile] = useState<any>([]);
 
     const getFile = (file: any) => {
-        setFile(file);
-        console.log('file---', file);
-
-    }
+        let formData = new FormData();
+        formData.append('file', file)
+        setFile(formData);
+    }    
 
     const formik = useFormik({
         initialValues: {
             sourceurl: '',
+            dataType: 'STT',
             sourceType: '',
-            domain: '',
+            domain: '' ,
             subDomain: '',
-            distributionSource: '',
-            isAgeChecked: false,
+            distributionSource: distributionList[0],
+            isChild: false,
             title: '',
-
-            script: ''
+            script: '',
+            file: file ? file : ''
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            const _data = {...values, file: file}
+            const _data = { ...values, file: file }
             console.log('submit------', _data);
         },
     });
@@ -74,6 +69,7 @@ const ScriptForms = () => {
                 <div className='bg-white-gray-45 w-[885px]'>
                     <form onSubmit={formik.handleSubmit}>
                         <div className='px-[53px] py-[24px]'>
+
                             <DistributionSource formik={formik} />
                             <Domain formik={formik} />
                             <SourceReference getFile={getFile} formik={formik} />
