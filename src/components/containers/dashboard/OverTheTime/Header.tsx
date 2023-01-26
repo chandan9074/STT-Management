@@ -49,7 +49,7 @@ const Header = ({ year, activeMonth }: Props) => {
           <h3 className="text-xxs font-medium text-ct-blue-90 mb-0">Invalid</h3>
         </div>
         <div className="flex items-center ml-7">
-          <div className="w-2 h-2 rounded-full bg-[#e1e4e8] mr-2" />
+          <div className="w-2 h-2 rounded-full bg-secondary-blue-50 mr-2" />
           <h3 className="text-xxs font-medium text-ct-blue-90 mb-0">
             Not Checked
           </h3>
@@ -57,9 +57,8 @@ const Header = ({ year, activeMonth }: Props) => {
       </div>
       <div
         onMouseDown={() => setCalenderBtn(!calenderBtn)}
-        className={`fixed top-0 left-0 w-full h-full bg-transparent bg-opacity-50 z-[80] animate-fadeIn ${
-          calenderBtn ? "block" : "hidden"
-        }`}
+        className={`fixed top-0 left-0 w-full h-full bg-transparent bg-opacity-50 z-[80] animate-fadeIn ${calenderBtn ? "block" : "hidden"
+          }`}
       ></div>
       <div className="flex items-center relative z-[80]">
         <button>
@@ -67,9 +66,8 @@ const Header = ({ year, activeMonth }: Props) => {
         </button>
         <button
           onClick={() => setCalenderBtn(!calenderBtn)}
-          className={`${
-            calenderBtn ? "bg-blue-gray-40" : "bg-ct-blue-05"
-          } rounded-[4px] py-1.5 px-4 text-small font-medium text-ct-blue-90 mx-2 border-2 border-transparent hover:border-blue-gray-40 duration-300`}
+          className={`${calenderBtn ? "bg-blue-gray-40" : "bg-ct-blue-05"
+            } rounded-[4px] py-1.5 px-4 text-small font-medium text-ct-blue-90 mx-2 border-2 border-transparent hover:border-blue-gray-40 duration-300`}
         >
           {activeMonth}'{year.toString().slice(2, 4)}
         </button>
@@ -79,9 +77,8 @@ const Header = ({ year, activeMonth }: Props) => {
       </div>
 
       <div
-        className={`absolute right-0 top-11 z-[100] ${
-          calenderBtn ? "block" : "hidden"
-        } animate-fadeIn`}
+        className={`absolute right-0 top-11 z-[100] ${calenderBtn ? "block" : "hidden"
+          } animate-fadeIn`}
       >
         <MonthCalender
           year={currentYear}

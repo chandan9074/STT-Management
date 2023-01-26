@@ -21,7 +21,7 @@ const MonthCalender = ({
     "February",
     "March",
     "April",
-    "Mei",
+    "May",
     "June",
     "July",
     "August",
@@ -30,7 +30,6 @@ const MonthCalender = ({
     "November",
     "December",
   ];
-  // const [currentYear, setCurrentYear] = React.useState(year);
   return (
     <div className=" p-6 bg-black rounded-[8px] shadow-light-blue-2">
       <div className="flex justify-between w-full mb-2 py-1">
@@ -49,9 +48,8 @@ const MonthCalender = ({
               handleOverTheTimeData(year, month);
               handleCalenderVisibility();
             }}
-            className={`text-base text-white font-medium w-[85px] h-[51px] ${
-              activeMonth === month ? "bg-secondary-blue-50" : ""
-            } rounded-[4px] duration-300 hover:bg-black-60`}
+            className={`text-base text-white font-medium w-[85px] h-[51px] ${activeMonth === month ? "bg-secondary-blue-50" : ""
+              } rounded-[4px] duration-300 hover:bg-black-60`}
           >
             {month.slice(0, 3)}
           </button>
@@ -64,9 +62,8 @@ const MonthCalender = ({
               handleOverTheTimeData(year, month);
               handleCalenderVisibility();
             }}
-            className={`text-base text-white font-medium w-[85px] h-[51px] ${
-              activeMonth === month ? "bg-secondary-blue-50" : ""
-            } rounded-[4px] duration-300 hover:bg-black-60`}
+            className={`text-base text-white font-medium w-[85px] h-[51px] ${activeMonth === month ? "bg-secondary-blue-50" : ""
+              } rounded-[4px] duration-300 hover:bg-black-60`}
           >
             {month.slice(0, 3)}
           </button>
@@ -79,9 +76,8 @@ const MonthCalender = ({
               handleOverTheTimeData(year, month);
               handleCalenderVisibility();
             }}
-            className={`text-base text-white font-medium w-[85px] h-[51px] ${
-              activeMonth === month ? "bg-secondary-blue-50" : ""
-            } rounded-[4px] duration-300 hover:bg-black-60`}
+            className={`text-base text-white font-medium w-[85px] h-[51px] ${activeMonth === month ? "bg-secondary-blue-50" : ""
+              } rounded-[4px] duration-300 hover:bg-black-60`}
           >
             {month.slice(0, 3)}
           </button>

@@ -22,7 +22,7 @@ const Secondary = ({ children }: { children: any }) => {
           handleType={handleType}
         />
       </div>
-      <div className="pt-20 pl-20 relative pr-3 pb-6 bg-[#F4F7FA]">
+      <div className="pt-[68px] pl-20 relative pr-3 pb-6 bg-[#F4F7FA]">
         {children}
       </div>
     </div>
