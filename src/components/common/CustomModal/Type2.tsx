@@ -6,6 +6,7 @@ import Table from '../../Table';
 
 const Type2 = () => {
     const [open, setOpen] = useState<boolean>(false)
+    const [confirm, setConfirm] = useState<boolean>(false)
 
     return (
         <div>
@@ -54,17 +55,12 @@ const Type2 = () => {
                             label='Cancel'
                             variant="Blue"
                             size='small'
-
-
-
                         />
                         <Buttons.LabelButton.Primary
-
                             label='Save'
                             variant="CT-Blue"
                             size="small"
-
-
+                            onClick={() => setConfirm(true)}
                         />
 
 
@@ -72,6 +68,11 @@ const Type2 = () => {
                     </div>
                 </div>
             </CustomModal.Primary>
+
+            <CustomModal.Type3
+                open={confirm}
+                setOpen={setConfirm}
+            />
         </div>
     );
 };

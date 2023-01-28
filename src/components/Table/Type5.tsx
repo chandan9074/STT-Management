@@ -13,7 +13,7 @@ interface DataType {
     name: string;
     age: number;
     address: string;
-    status: boolean
+    status: string
 }
 
 const data: DataType[] = [
@@ -22,28 +22,28 @@ const data: DataType[] = [
         name: 'John Brown',
         age: 32,
         address: 'New York No.',
-        status: false,
+        status: "Blocked",
     },
     {
         key: '2',
         name: 'Jim Green',
         age: 42,
         address: 'London No.',
-        status: true,
+        status: "Active",
     },
     {
         key: '3',
         name: 'Joe Black',
         age: 32,
         address: 'Sidney No',
-        status: true,
+        status: "Active",
     },
     {
         key: '4',
         name: 'Disabled User',
         age: 99,
         address: 'Sidney No. ',
-        status: true,
+        status: "Active",
     },
 ];
 const Type5 = () => {
@@ -95,11 +95,11 @@ const Type5 = () => {
         },
         {
             title: `${"Status".toLocaleUpperCase()}`,
-            dataIndex: 'status',
+             dataIndex: 'status',
             width: 136,
             align: "center",
             render: (data) => (<div>
-                <Status.Type1 check={data} />
+                <Status.Type2 status={data} label={data === "Active" ? "Active" : "Blocked"} />
             </div>)
         },
         {
