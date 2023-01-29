@@ -139,15 +139,6 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
                       currentState !==
                       `${dataIndex === 0 ? "dataType" : "distributionSource"
                       }` && (
-                        // <span className="animate-fadeIn text-xs font-medium text-ct-blue-60 ml-3">
-                        //   {
-                        //     filterList[
-                        //       dataIndex === 0
-                        //         ? "dataType"
-                        //         : "distributionSource"
-                        //     ][0]
-                        //   }
-                        // </span>
                         <h6 className="flex text-left w-72 selected-items">
                           {filterList[
                             dataIndex === 0 ? "dataType" : "distributionSource"

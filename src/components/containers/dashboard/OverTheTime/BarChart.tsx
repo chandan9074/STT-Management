@@ -2,7 +2,7 @@ import { overTheTimeGData } from "../../../../data/dashboard/overTheTimeGData";
 import { overTheTimeGDT } from "../../../../types/dashboardTypes";
 import Tooltip from "./Tooltip";
 
-const BarChart = ({overTheTimeGData}:{overTheTimeGData: overTheTimeGDT}) => {
+const BarChart = ({ overTheTimeGData }: { overTheTimeGData: overTheTimeGDT }) => {
   const barHeight = 200;
   return (
     <div className="flex justify-between mt-4">
@@ -10,13 +10,12 @@ const BarChart = ({overTheTimeGData}:{overTheTimeGData: overTheTimeGDT}) => {
         <div className="flex flex-col items-center justify-end">
           {item.receivedHour > 0 ? (
             <div
-              className={`w-9 relative flex ${
-                index < 4
+              className={`w-9 relative flex ${index < 5
                   ? "justify-start"
                   : overTheTimeGData.dayData.length - 6 < index
-                  ? "justify-end"
-                  : "justify-center"
-              } group`}
+                    ? "justify-end"
+                    : "justify-center"
+                } group`}
               style={{
                 height: `${barHeight}px`,
               }}
@@ -34,9 +33,9 @@ const BarChart = ({overTheTimeGData}:{overTheTimeGData: overTheTimeGDT}) => {
                     style={{
                       height: item.hourData[0].hour
                         ? `${Math.round(
-                            Math.round(barHeight * item.hourData[0]?.hour) /
-                              overTheTimeGData.maxReceivedHour
-                          )}px`
+                          Math.round(barHeight * item.hourData[0]?.hour) /
+                          overTheTimeGData.maxReceivedHour
+                        )}px`
                         : "",
                     }}
                   >
@@ -47,15 +46,15 @@ const BarChart = ({overTheTimeGData}:{overTheTimeGData: overTheTimeGDT}) => {
                     style={{
                       height: item.hourData[1].hour
                         ? `${Math.round(
-                            Math.round(barHeight * item.hourData[1]?.hour) /
-                              overTheTimeGData.maxReceivedHour
-                          )}px`
+                          Math.round(barHeight * item.hourData[1]?.hour) /
+                          overTheTimeGData.maxReceivedHour
+                        )}px`
                         : "",
                       bottom: item.hourData[0].hour
                         ? `${Math.round(
-                            Math.round(barHeight * item.hourData[0]?.hour) /
-                              overTheTimeGData.maxReceivedHour
-                          )}px`
+                          Math.round(barHeight * item.hourData[0]?.hour) /
+                          overTheTimeGData.maxReceivedHour
+                        )}px`
                         : "",
                     }}
                   >
@@ -66,22 +65,21 @@ const BarChart = ({overTheTimeGData}:{overTheTimeGData: overTheTimeGDT}) => {
                     style={{
                       height: item.hourData[2].hour
                         ? `${Math.round(
-                            Math.round(barHeight * item.hourData[2]?.hour) /
-                              overTheTimeGData.maxReceivedHour
-                          )}px`
+                          Math.round(barHeight * item.hourData[2]?.hour) /
+                          overTheTimeGData.maxReceivedHour
+                        )}px`
                         : "",
                       bottom:
                         item.hourData[1].hour && item.hourData[0].hour
-                          ? `${
-                              Math.round(
-                                Math.round(barHeight * item.hourData[1]?.hour) /
-                                  overTheTimeGData.maxReceivedHour
-                              ) +
-                              Math.round(
-                                Math.round(barHeight * item.hourData[0]?.hour) /
-                                  overTheTimeGData.maxReceivedHour
-                              )
-                            }px`
+                          ? `${Math.round(
+                            Math.round(barHeight * item.hourData[1]?.hour) /
+                            overTheTimeGData.maxReceivedHour
+                          ) +
+                          Math.round(
+                            Math.round(barHeight * item.hourData[0]?.hour) /
+                            overTheTimeGData.maxReceivedHour
+                          )
+                          }px`
                           : "",
                     }}
                   >
