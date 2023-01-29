@@ -9,12 +9,13 @@ import Header from '../../components/containers/userManagement/Header';
 
 const UserManagement = () => {
     const [date, setData] = useState<string>('')
+    const [open, setOpen] = useState<boolean>(false)
     return (
         <Layouts.Forth>
             <div className="min-h-[calc(100vh-9.5vh)]">
-                <Header />
-                <Table.Type5 />
-                <CustomModal.Type2 />
+                <Header open={open} setOpen={setOpen} />
+                <Table.Type5  />
+                <CustomModal.Type2 open={open} setOpen={setOpen} />
                 <Toast.Type1
                     massages='A user has been created'
                     iconSrc={Icons.home}

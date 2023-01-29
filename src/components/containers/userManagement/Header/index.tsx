@@ -5,7 +5,12 @@ import Buttons from '../../../Buttons'
 import { SearchBox } from '../../../SearchBox'
 import Icons from '../../../../assets/Icons'
 
-const Header = () => {
+type Props = {
+    open: boolean;
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Header = ({ open, setOpen }: Props) => {
     const [activeRole, setActiveRole] = React.useState<string>(userRoleDropdownData[0])
     const handleActivePanel = (value: string) => {
         setActiveRole(value)
@@ -17,8 +22,8 @@ const Header = () => {
                 <p className='text-ct-blue-90-70% text-small mt-0.5 mb-0 pl-2'>List of Users, Create and Manage</p>
             </div>
             <div className='flex items-center'>
-                <Buttons.LabelButton.Tertiary label='Manage' size='xSmall' variant='CT-Blue' marginX='mr-2' />
-                <SearchBox.Type1 />
+                <Buttons.LabelButton.Tertiary label='Manage' size='xSmall' variant='CT-Blue' marginX='mr-2' onClick={() => setOpen(!open)} />
+                <SearchBox.Type1 inputWidth="w-52" placeholder="Search with script ID, Title..." paddingX="px-3" paddingY="py-2" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
                 <Buttons.IconWithTextButton.Primary
                     label="Create User"
                     size="small"
