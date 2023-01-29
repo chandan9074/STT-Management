@@ -10,7 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import Script from "./pages/Script";
 import ScriptForm from "./pages/Script/ScriptForm";
-import UserManagement from "./components/containers/userManagement";
+import UserManagement from "./components/containers/userForm";
 
 function App() {
   useEffect(() => {

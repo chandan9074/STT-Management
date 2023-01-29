@@ -78,6 +78,8 @@ import DottedDownArrow from './dotted-down-arrow.svg';
 import Gavel from './gavel.svg';
 import Shadow_bg from './shadow_bg.png'
 import Avatar from './Avatar.svg'
+import Up from './up.svg'
+
 
 const Icons = {
   currency,
@@ -159,7 +161,8 @@ const Icons = {
   organizeNav,
   DottedDownArrow,
   Gavel,
-  Shadow_bg
+  Shadow_bg,
+  Up
 };
 
 export default Icons;

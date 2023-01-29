@@ -1,20 +1,31 @@
 import { Autocomplete, Box, Grid, TextField } from '@mui/material';
 import { useState } from 'react';
 import { homeDistrict } from '../../../../data/userManagement/UserManagementData';
+import HomeDistrictSelect from '../../../Form/HomeDistrictSelect';
 import Image from '../../../Image';
 
 
 const PersonalInformation = ({ formik }: { formik: any }) => {
-    const [selectedDivision, setSelectedDivision] = useState<any>(null);
-    const [selectedDistrict, setSelectedDistrict] = useState<any>(null);
+    const [divisionChangeName, setDivisionChangeName] = useState<string>('');
 
-    const handleDivisionChange = (event: any, newDivision: any) => {
-        setSelectedDivision(newDivision);
-    };
+    const [filteredDistrict, setFilteredDistrict] = useState<any>(homeDistrict);
 
-    const handleDistrictChange = (event: any, newDistrict: any) => {
-        setSelectedDistrict(newDistrict);
-    };
+    const handleSearch = (event: any) => {
+        const searchTerm = event.target.value;
+        const matchingDistricts = homeDistrict.filter(districtObj =>
+            districtObj.district.some(district => district.toLowerCase().includes(searchTerm.toLowerCase()))
+        );
+        const matchedDistrict = matchingDistricts.map(districtObj => {
+            return {
+                division: districtObj.division,
+                district: districtObj.district.filter(district => district.toLowerCase().includes(searchTerm.toLowerCase()))
+            }
+        });
+        setFilteredDistrict(matchedDistrict)
+        // console.log(matchedDistrict);
+    }
+
+
 
     return (
         <div>
@@ -185,46 +196,41 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
             <Grid container spacing={5}>
                 {/* Home District */}
                 <Grid item xs={6}>
-                    <Autocomplete
-                        id="homeDistrict"
-                        style={{ width: '100%' }}
 
-                        options={homeDistrict}
+                    <div className='relative'>
+                        <TextField
+                            id="homeDistrict"
+                            name="homeDistrict"
+                            label={<div>Home District <span className='text-[red]'>*</span></div>}
+                            // value={formik.values.homeDistrict}
+                            // onChange={formik.handleChange}
+                            onChange={handleSearch}
+                            error={formik.touched.homeDistrict && Boolean(formik.errors.homeDistrict)}
+                            helperText={formik.touched.homeDistrict && formik.errors.homeDistrict}
+                            style={{ width: '100%' }}
+                            InputProps={{
+                                style: {
+                                    color: '#464E5F',
+                                    fontWeight: '600',
+                                    fontSize: '15px'
+                                }
+                            }}
+                            variant="outlined" />
 
-                        // groupBy={(option) => option?.division}
-                        // getOptionLabel={(option) => option?.district}
-
-                        value={formik.values.homeDistrict}
-                        onChange={(event, value) => {
-                            if (typeof value === 'string') {
-                                console.log('event', value);
-
-                                formik.setFieldValue('homeDistrict', value)
-                            } else {
-                                formik.setFieldValue('homeDistrict', '')
-                            }
-                        }}
-
-                        renderOption={(props, option) => (
-                            <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
-                                {option.district}
-                            </Box>
-                        )}
-
-                        renderInput={(params) => (
-                            <TextField
-                                {...params}
-                                name="homeDistrict"
-                                error={formik.touched.homeDistrict && Boolean(formik.errors.homeDistrict)}
-                                helperText={formik.touched.homeDistrict && formik.errors.homeDistrict}
-                                label={<span className='comboBoxLabel'>Home District <span className='text-[red]'>*</span></span>}
-
+                        <div className=''>
+                            <HomeDistrictSelect
+                                filteredDistrict={filteredDistrict}
+                                formik={formik}
                             />
-                        )}
-                    />
+                        </div>
+
+                    </div>
                 </Grid>
 
             </Grid>
+
+
+
 
         </div >
     );
