@@ -12,7 +12,7 @@ const TotalData = () => {
   const commonContext = useContext(CommonContext)
   const { type, role } = commonContext
   const { getTotalDataCollection, totalDataCollection } = dashboardContext;
- 
+
   useEffect(() => {
     getTotalDataCollection({ module: type, role: role });
   }, [type]);
@@ -65,7 +65,7 @@ const TotalData = () => {
             </div>
             <div>
               <p className={`mt-3 text-small font-semibold ${type === STTMODULE ? "text-ct-blue-60" : "text-primary-ct-magenta-60"}`}>
-                Total Target : {totalDataCollection?.totalTarget}
+                Total Target : {totalDataCollection?.totalTarget}h
               </p>
             </div>
           </div>

@@ -2,13 +2,13 @@ import React, { Dispatch, SetStateAction, useState } from 'react';
 
 interface Props {
     tabLabel: string[];
-    // size: "xSmall" | "small" | "medium" | "large";
+    size: "small" | "medium";
     variant?: "Red" | "CT-Blue" | "Blue";
     // icon?: React.ReactElement;
     setActiveData: Dispatch<SetStateAction<string>>;
 }
 const Primary = (props: Props) => {
-    const { tabLabel, variant = "Blue", setActiveData } = props
+    const { tabLabel, variant = "Blue", setActiveData, size } = props
     const [activeButton, setActiveButton] = useState<number>(0)
 
     const handleActive = (data: string, active: number) => {
@@ -18,7 +18,10 @@ const Primary = (props: Props) => {
 
     const buttonVariantStyle: any = {
         "Red": {
-
+            text: "text-primary-ct-magenta-60",
+            hover: "hover:bg-red-03",
+            pressed: "active:bg-red-10 active:text-opacity-75",
+            selected: "bg-primary-ct-magenta-60 text-white"
         },
         "CT-Blue": {
 
@@ -29,18 +32,27 @@ const Primary = (props: Props) => {
             pressed: "active:bg-[#D6E5F5] active:text-opacity-75",
             selected: "bg-ct-blue-60 text-white"
         }
+    }
 
+    const buttonSizeStyle: any = {
+        "small": {
+            btnPadding: "p-[2px] shadow-md",
+            tabPadding: "py-[9px] leading-[14.4px] px-9",
+        },
+        "medium": {
+            btnPadding: "p-[3px]",
+            tabPadding: "py-3 px-9",
+        }
     }
     return (
         <div
-            style={{ boxShadow: "0px 1px 3px rgba(96, 108, 128, 0.05)" }}
-            className='flex p-[3px] rounded-[100px] bg-white'>
+            className={`flex ${buttonSizeStyle[size].btnPadding} rounded-[100px] bg-white`}>
             {tabLabel.map((data: string, index: number) =>
                 <button
                     key={index}
                     onClick={() => handleActive(data, index)}
-                    className={`py-2 rounded-[24px] px-3 text-xxs duration-300 font-bold ${activeButton === index ? `${buttonVariantStyle[variant]?.selected}` :
-                        `${buttonVariantStyle[variant]?.hover} ${buttonVariantStyle[variant]?.pressed} ${buttonVariantStyle[variant]?.text}`}`}
+                    className={`${buttonSizeStyle[size].tabPadding} rounded-[24px] text-xxs duration-300 ${activeButton === index ? `${buttonVariantStyle[variant]?.selected} font-bold` :
+                        `${buttonVariantStyle[variant]?.hover} ${buttonVariantStyle[variant]?.pressed} ${buttonVariantStyle[variant]?.text} font-bold`}`}
                 >
                     {data}
                 </button>
