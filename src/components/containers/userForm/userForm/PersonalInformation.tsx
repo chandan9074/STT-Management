@@ -1,6 +1,7 @@
 import { Autocomplete, Box, Grid, TextField } from '@mui/material';
 import { useState } from 'react';
 import { homeDistrict } from '../../../../data/userManagement/UserManagementData';
+import { homeDistrictSearch } from '../../../../helpers/Utils';
 import HomeDistrictSelect from '../../../Form/HomeDistrictSelect';
 import Image from '../../../Image';
 
@@ -13,18 +14,8 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
     const [filteredDistrict, setFilteredDistrict] = useState<any>(homeDistrict);
 
     const handleSearch = (event: any) => {
-        const searchTerm = event.target.value;
-        const matchingDistricts = homeDistrict.filter(districtObj =>
-            districtObj.district.some(district => district.toLowerCase().includes(searchTerm.toLowerCase()))
-        );
-        const matchedDistrict = matchingDistricts.map(districtObj => {
-            return {
-                division: districtObj.division,
-                district: districtObj.district.filter(district => district.toLowerCase().includes(searchTerm.toLowerCase()))
-            }
-        });
-        setFilteredDistrict(matchedDistrict)
-        // console.log(matchedDistrict);
+        const _data = homeDistrictSearch(event.target.value, homeDistrict);
+        setFilteredDistrict(_data)
     }
 
     const onHomeDistrictFocus = () => {
@@ -33,7 +24,7 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
 
     const onHomeDistrictValue = (value: string) => {
         setOnTextField(value);
-    } 
+    }
 
 
 
@@ -212,27 +203,27 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
                     <div className='relative z-[100]'>
 
                         <TextField
-                           onMouseDown={onHomeDistrictFocus}
-                           id="homeDistrict"
-                           name="homeDistrict"
-                           label={<div>Home District <span className='text-[red]'>*</span></div>}
-                           value={onTextField || ''}
-                           onChange={(e) => {
-                             handleSearch(e);
-                             setOnTextField(e.target.value);
-                           }}
-                           error={formik.touched.homeDistrict && Boolean(formik.errors.homeDistrict)}
-                           helperText={formik.touched.homeDistrict && formik.errors.homeDistrict}
-                           style={{ width: '100%' }}
-                           InputProps={{
-                             style: {
-                               color: '#464E5F',
-                               fontWeight: '600',
-                               fontSize: '15px'
-                             }
-                           }}
-                           variant="outlined"
-                             />
+                            onMouseDown={onHomeDistrictFocus}
+                            id="homeDistrict"
+                            name="homeDistrict"
+                            label={<div>Home District <span className='text-[red]'>*</span></div>}
+                            value={onTextField || ''}
+                            onChange={(e) => {
+                                handleSearch(e);
+                                setOnTextField(e.target.value);
+                            }}
+                            error={formik.touched.homeDistrict && Boolean(formik.errors.homeDistrict)}
+                            helperText={formik.touched.homeDistrict && formik.errors.homeDistrict}
+                            style={{ width: '100%' }}
+                            InputProps={{
+                                style: {
+                                    color: '#464E5F',
+                                    fontWeight: '600',
+                                    fontSize: '15px'
+                                }
+                            }}
+                            variant="outlined"
+                        />
 
                         {
                             isHomeDistrict &&
