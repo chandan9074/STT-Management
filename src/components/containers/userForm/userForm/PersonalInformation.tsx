@@ -1,23 +1,37 @@
 import { Autocomplete, Box, Grid, TextField } from '@mui/material';
 import { useState } from 'react';
 import { homeDistrict } from '../../../../data/userManagement/UserManagementData';
+import { homeDistrictSearch } from '../../../../helpers/Utils';
+import HomeDistrictSelect from '../../../Form/HomeDistrictSelect';
 import Image from '../../../Image';
 
 
 const PersonalInformation = ({ formik }: { formik: any }) => {
-    const [selectedDivision, setSelectedDivision] = useState<any>(null);
-    const [selectedDistrict, setSelectedDistrict] = useState<any>(null);
+    const [isHomeDistrict, setIsHomeDistrict] = useState<boolean>(false);
+    const [onTextField, setOnTextField] = useState<string>(formik.values.homeDistrict)
+    const [divisionChangeName, setDivisionChangeName] = useState<string>('');
 
-    const handleDivisionChange = (event: any, newDivision: any) => {
-        setSelectedDivision(newDivision);
-    };
+    const [filteredDistrict, setFilteredDistrict] = useState<any>(homeDistrict);
 
-    const handleDistrictChange = (event: any, newDistrict: any) => {
-        setSelectedDistrict(newDistrict);
-    };
+    const handleSearch = (event: any) => {
+        const _data = homeDistrictSearch(event.target.value, homeDistrict);
+        setFilteredDistrict(_data)
+    }
+
+    const onHomeDistrictFocus = () => {
+        setIsHomeDistrict(true)
+    }
+
+    const onHomeDistrictValue = (value: string) => {
+        setOnTextField(value);
+    }
+
+
+
 
     return (
         <div>
+            {/* <div className={`${!isHomeDistrict && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[90]`} onClick={() => setIsHomeDistrict(false)}></div> */}
             <Grid container spacing={5}>
                 {/* Primary Role */}
                 <Grid item xs={6}>
@@ -185,46 +199,58 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
             <Grid container spacing={5}>
                 {/* Home District */}
                 <Grid item xs={6}>
-                    <Autocomplete
-                        id="homeDistrict"
-                        style={{ width: '100%' }}
 
-                        options={homeDistrict}
+                    <div className=''>
 
-                        // groupBy={(option) => option?.division}
-                        // getOptionLabel={(option) => option?.district}
+                        {/* <TextField
+                            onMouseDown={onHomeDistrictFocus}
+                            id="homeDistrict"
+                            name="homeDistrict"
+                            label={<div>Home District <span className='text-[red]'>*</span></div>}
+                            value={onTextField || ''}
+                            onChange={(e) => {
+                                handleSearch(e);
+                                setOnTextField(e.target.value);
+                            }}
+                            error={formik.touched.homeDistrict && Boolean(formik.errors.homeDistrict)}
+                            helperText={formik.touched.homeDistrict && formik.errors.homeDistrict}
+                            style={{ width: '100%' }}
+                            InputProps={{
+                                style: {
+                                    color: '#464E5F',
+                                    fontWeight: '600',
+                                    fontSize: '15px'
+                                }
+                            }}
+                            variant="outlined"
+                        /> */}
 
-                        value={formik.values.homeDistrict}
-                        onChange={(event, value) => {
-                            if (typeof value === 'string') {
-                                console.log('event', value);
+                        {/* {
+                            isHomeDistrict && */}
+                            <div className=''>
+                                <HomeDistrictSelect
+                                    // filteredDistrict={filteredDistrict}
+                                    formikValues={formik.values.homeDistrict}
+                                    data={homeDistrict}
+                                    formikError={formik.errors.homeDistrict}
+                                    formikTouched={formik.touched.homeDistrict }
+                                    formik={formik}
+                                    name={'homeDistrict'}
+                                    // onHomeDistrictValue={onHomeDistrictValue}
 
-                                formik.setFieldValue('homeDistrict', value)
-                            } else {
-                                formik.setFieldValue('homeDistrict', '')
-                            }
-                        }}
+                                    // error={formik.touched.homeDistrict && Boolean(formik.errors.homeDistrict)}
+                                    // helperText={formik.touched.homeDistrict && formik.errors.homeDistrict}
+                                />
+                            </div>
+                        {/* } */}
 
-                        renderOption={(props, option) => (
-                            <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
-                                {option.district}
-                            </Box>
-                        )}
-
-                        renderInput={(params) => (
-                            <TextField
-                                {...params}
-                                name="homeDistrict"
-                                error={formik.touched.homeDistrict && Boolean(formik.errors.homeDistrict)}
-                                helperText={formik.touched.homeDistrict && formik.errors.homeDistrict}
-                                label={<span className='comboBoxLabel'>Home District <span className='text-[red]'>*</span></span>}
-
-                            />
-                        )}
-                    />
+                    </div>
                 </Grid>
 
             </Grid>
+
+
+
 
         </div >
     );

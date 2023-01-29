@@ -3,6 +3,7 @@ import moment from "moment";
 import { tableColorProperty } from "../data/dashboard/tableColorProperty";
 import { roleDT } from "../types/billingTypes";
 import { colorForTitle } from "../data/dashboard/colorForTitle";
+import { AnyARecord } from "dns";
 
 export const isEmpty = (obj: roleDT | undefined) => {
   if (obj) {
@@ -111,4 +112,19 @@ export function camelizeWithUnderScore(text: string) {
   const a = newStr.toLowerCase()
     .replace(/[-_\s.]+(.)?/g, (_, c) => c ? ` ${c.toUpperCase()}` : '');
   return a.substring(0, 1).toUpperCase() + a.substring(1);
+}
+
+export const homeDistrictSearch = (value: any, data: any) => {
+  const searchTerm = value;
+  const matchingDistricts = data.filter((districtObj: any) =>
+      districtObj.district.some((district: any) => district.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
+  const matchedDistrict = matchingDistricts.map((districtObj: any) => {
+      return {
+          division: districtObj.division,
+          district: districtObj.district.filter((district: any) => district.toLowerCase().includes(searchTerm.toLowerCase()))
+      }
+  });
+
+  return matchedDistrict;
 }
