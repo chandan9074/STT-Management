@@ -38,43 +38,7 @@ const Type6 = () => {
         block: false
     })
 
-    // const data = [
-    //     {
-    //         role: {
-    //             key: "1",
-    //             role: "Admin",
-    //             img: Icons.admin,
-    //             block: false,
-
-    //         }
-    //     },
-    //     {
-    //         role: {
-    //             key: "2",
-    //             role: "Manager",
-    //             img: Icons.manager,
-    //             block: false
-    //         }
-    //     },
-    //     {
-    //         role: {
-    //             key: "3",
-    //             role: "Team Leader",
-    //             img: Icons.teamLeader,
-    //             block: true
-    //         }
-    //     },
-    //     {
-    //         role: {
-    //             key: "4",
-    //             role: "Collector",
-    //             img: Icons.collector,
-    //             block: false
-    //         }
-
-    //     },
-    // ]
-
+    
 
 
     const handleBlock = (id: any, index: number, value: boolean) => {
@@ -85,7 +49,7 @@ const Type6 = () => {
 
         setTableData([...tableData]);
 
-        console.log("i am clicked", tableData);
+        
     }
     
 
@@ -129,7 +93,7 @@ const Type6 = () => {
 
     ];
 
-    console.log("------------------", block)
+    
     return (
         <div>
             <Table
