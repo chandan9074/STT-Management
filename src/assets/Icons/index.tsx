@@ -74,7 +74,9 @@ import assignNav from "./assignNav.svg";
 import audioNav from "./audioNav.svg";
 import userNav from "./userNav.svg";
 import organizeNav from "./organizeNav.svg";
-import DottedDownArrow from './dotted-down-arrow.svg'
+import DottedDownArrow from './dotted-down-arrow.svg';
+import Gavel from './gavel.svg';
+import Shadow_bg from './shadow_bg.png'
 
 const Icons = {
   currency,
@@ -153,7 +155,9 @@ const Icons = {
   audioNav,
   userNav,
   organizeNav,
-  DottedDownArrow
+  DottedDownArrow,
+  Gavel,
+  Shadow_bg
 };
 
 export default Icons;

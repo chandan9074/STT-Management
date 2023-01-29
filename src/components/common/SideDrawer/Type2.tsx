@@ -36,6 +36,17 @@ const Type2 = ({ open, setOpen, drawerData }: Props) => {
             designation: "Team Leader"
         },
     ]
+
+
+    // function camelizeWithUnderScore(text: string) {
+    // let newStr = text.split(/(?=[A-Z])|[^a-zA-Z0-9]+/).join(" ");
+
+    //     const a = newStr.toLowerCase()
+    //         .replace(/[-_\s.]+(.)?/g, (_, c) => c ? ` ${c.toUpperCase()}` : '');
+    //     return a.substring(0, 1).toUpperCase() + a.substring(1);
+    // }
+
+
     return (
         <div>
             <Drawer
@@ -52,17 +63,24 @@ const Type2 = ({ open, setOpen, drawerData }: Props) => {
                 <div className='animate-fadeIn relative'>
                     <div className='p-5 bg-ct-blue-05 border-b-ct-blue-20'>
                         <div className="flex w-full justify-between items-center">
-                            <div>
-                                <p className='text-heading-6 font-semibold text-ct-blue-95 mt-2'>Jacob Jones</p>
-                                <p className="text-xs font-normal text-ct-blue-90-70%">Script Title</p>
+                            <div className='flex items-start gap-3'>
+                                <img
+                                    src={Icons.speakerMale}
+                                    className=" w-7 h-7 mt-[2px]"
+                                    alt="" />
+                                <div>
+                                    <p className='text-heading-6 font-semibold text-ct-blue-95 '>Jacob Jones</p>
+                                    <p className="text-xs font-normal text-ct-blue-90-70%">Script Title</p>
 
+                                </div>
                             </div>
                             <div>
-                                <button
+                                {/* <button
                                     className='px-4 py-2 text-small font-medium text-ct-blue-60 rounded-md hover:bg-white'
                                 >
                                     Edit
-                                </button>
+                                </button> */}
+                                <Buttons.LabelButton.Tertiary label='Edit' size='xSmall' variant='Blue' />
                             </div>
 
                         </div>
@@ -150,6 +168,7 @@ const Type2 = ({ open, setOpen, drawerData }: Props) => {
                                 </div>
                             </div>
                             :
+                            // reporting..............
                             <div className='duration-300'>
                                 <p className='text-xxs font-normal text-blue-gray-75'>Reporting to</p>
 

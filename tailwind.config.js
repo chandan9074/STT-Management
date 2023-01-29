@@ -35,6 +35,7 @@ module.exports = {
         "light-onahau": "0px 2px 18px #E2FBD7",
         "light-orinoco": "0px 2px 18px #CCF8FE",
         "light-yellow": "0px 2px 18px #CCDDFE",
+        "toast-shadow":"0px 4px 12px rgba(31, 56, 76, 0.25)",
 
 
 
