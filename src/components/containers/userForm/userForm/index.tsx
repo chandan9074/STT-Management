@@ -27,7 +27,7 @@ const UserForm = () => {
             mobileNumber: '',
             nid: '',
             birthRegNumber: '',
-            homeDistrict: 'Bhola'
+            homeDistrict: ''
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {

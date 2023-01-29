@@ -31,7 +31,7 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
 
     return (
         <div>
-            <div className={`${!isHomeDistrict && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[90]`} onClick={() => setIsHomeDistrict(false)}></div>
+            {/* <div className={`${!isHomeDistrict && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[90]`} onClick={() => setIsHomeDistrict(false)}></div> */}
             <Grid container spacing={5}>
                 {/* Primary Role */}
                 <Grid item xs={6}>
@@ -200,9 +200,9 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
                 {/* Home District */}
                 <Grid item xs={6}>
 
-                    <div className='relative z-[100]'>
+                    <div className=''>
 
-                        <TextField
+                        {/* <TextField
                             onMouseDown={onHomeDistrictFocus}
                             id="homeDistrict"
                             name="homeDistrict"
@@ -223,18 +223,26 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
                                 }
                             }}
                             variant="outlined"
-                        />
+                        /> */}
 
-                        {
-                            isHomeDistrict &&
-                            <div className='absolute w-full '>
+                        {/* {
+                            isHomeDistrict && */}
+                            <div className=''>
                                 <HomeDistrictSelect
-                                    filteredDistrict={filteredDistrict}
+                                    // filteredDistrict={filteredDistrict}
+                                    formikValues={formik.values.homeDistrict}
+                                    data={homeDistrict}
+                                    formikError={formik.errors.homeDistrict}
+                                    formikTouched={formik.touched.homeDistrict }
                                     formik={formik}
-                                    onHomeDistrictValue={onHomeDistrictValue}
+                                    name={'homeDistrict'}
+                                    // onHomeDistrictValue={onHomeDistrictValue}
+
+                                    // error={formik.touched.homeDistrict && Boolean(formik.errors.homeDistrict)}
+                                    // helperText={formik.touched.homeDistrict && formik.errors.homeDistrict}
                                 />
                             </div>
-                        }
+                        {/* } */}
 
                     </div>
                 </Grid>
