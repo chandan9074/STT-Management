@@ -25,7 +25,7 @@ const Type1 = ({ data }: Props) => {
         setOpenTooltip2(false)
     }
     return (
-        <div className="relative mb-[65px]">
+        <div className="relative">
             <div className="flex items-center rounded-t-full overflow-y-hidden w-[172px] h-[86px] relative z-[80]">
                 <div
                     style={{ transform: `rotate(-${progressDeg ? progressDeg * 1.8 : 90}deg)` }}

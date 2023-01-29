@@ -81,7 +81,7 @@ const Header = ({ bgColor, headerType, targetColor, borderColor, data }: Props) 
           <hr className="bg-ct-blue-20" />
           <div className="flex gap-3">
             <p className="text-small font-semibold text-ct-blue-90-88%">
-              Total Valid : {data.totalValid}h
+              Total Valid : {data.totalValid}h;
             </p>
             <div className="flex gap-2 items-center">
               <ClockCircleOutlined
@@ -94,12 +94,12 @@ const Header = ({ bgColor, headerType, targetColor, borderColor, data }: Props) 
           </div>
           <div>
             <p className="text-small font-normal text-ct-blue-90-88%">
-              Received : {data.totalReceived}h
+             Total Received : {data.totalReceived}h
             </p>
           </div>
         </div>
 
-        <div className="flex">
+        <div className="flex h-full">
           <RingProgressBar.Type1 type={headerType} value={data.achieved} style={type === STTMODULE ? sttStyle : ttsStyle} />
           <Dropdown.Type2 />
         </div>
@@ -108,9 +108,9 @@ const Header = ({ bgColor, headerType, targetColor, borderColor, data }: Props) 
         className={` mx-6 border-dashed border-b-[2px] ${borderColor}`}
       ></div>
       <p
-        className={`${targetColor} bg-white w-fit py-1 px-2 absolute left-[42%] -bottom-[14px] rounded-[4px]`}
+        className={`${targetColor} bg-white w-fit py-1 px-2 absolute left-[41%] -bottom-[14px] rounded-[4px] text-small`}
       >
-        valid data start
+        valid data stat
       </p>
     </div>
   );

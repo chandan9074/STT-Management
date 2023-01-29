@@ -11,6 +11,7 @@ import {
 import './dropDown.css'
 import { MoreOutlined } from "@ant-design/icons";
 import Icons from "../../assets/Icons";
+import Buttons from '../Buttons';
 
 
 const Type2 = () => {
@@ -23,84 +24,32 @@ const Type2 = () => {
         setAnchorEl(null);
     };
     return (
-        <div className="-mt-[14px] relative">
-            <IconButton
-                aria-label="more"
-                id="long-button"
-                aria-controls={open ? 'long-menu' : undefined}
-                aria-expanded={open ? 'true' : undefined}
-                aria-haspopup="true"
+        <div className="-mt-[10px] relative -mr-[10px]">
+            <Buttons.IconButton.Circle
+                size='medium'
+                icon={open ? <MoreOutlined
+                    style={{
+                        background: "#B8BFCC",
+                        borderRadius: "50%",
+                        height:"100%",
+                        width:"100%",
+                        color: "white",
+                        display:"flex",
+                        justifyContent:"center",
+                        alignItems:"center"
+                    }} /> : <MoreOutlined
+                    style={{
+                        background: "inherit",
+                        borderRadius: "50%",
+                    }}
+                />}
+                variant="CT-Blue"
                 onClick={handleClick}
-            >
-                {
-                    open ? <MoreOutlined
-                        style={{
-                            background: "gray",
-                            borderRadius: "50%",
-                            padding: "5px",
-                            color: "white"
-                        }} /> : <MoreOutlined
-                        style={{
-                            background: "inherit",
-                            borderRadius: "50%",
-                            padding: "5px",
 
-                        }}
-                    />
-                }
-
-            </IconButton>
+            />
 
 
-            {/* <Menu
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                    'aria-labelledby': 'basic-button',
-                }}
-                anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'right',
-                }}
-                transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                }}
-            >
-                <MenuList>
-                    <MenuItem>
-                        <ListItemIcon>
-                            <img src={Icons.BorderAll} alt=""/>
-                        </ListItemIcon>
-                        <ListItemText>Download as Excel</ListItemText>
-
-                    </MenuItem>
-                    <MenuItem>
-                        <ListItemIcon>
-                            <img src={Icons.BrokenImg} alt=""/>
-                        </ListItemIcon>
-                        <ListItemText>Download as Jpeg</ListItemText>
-
-                    </MenuItem>
-                    <MenuItem>
-                        <ListItemIcon>
-                            <img src={Icons.PictureAsPdf} alt=""/>
-                        </ListItemIcon>
-                        <ListItemText>Download as PDF</ListItemText>
-
-                    </MenuItem>
-                    <Divider/>
-                    <MenuItem>
-                        <ListItemIcon>
-                            <img src={Icons.Print} alt=""/>
-                        </ListItemIcon>
-                        <ListItemText>Download as PDF</ListItemText>
-                    </MenuItem>
-                </MenuList>
-            </Menu> */}
-
+            
             {
                 open ? <div>
                     <div
@@ -109,7 +58,7 @@ const Type2 = () => {
                     />
                     <div
                         style={{ boxShadow: "0px 4px 24px rgba(31, 56, 76, 0.12)" }}
-                        className='w-[196px] absolute z-[99999] -left-[135px] bg-white rounded-[8px]'>
+                        className='w-[196px] absolute z-[99999] -left-[165px] bg-white rounded-[8px] mt-[1px]'>
                         <div className='px-4 py-3 flex flex-col gap-3'>
                             <div className='flex gap-3 hover:bg-blue-gray-05 '>
                                 <img
