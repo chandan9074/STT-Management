@@ -8,7 +8,7 @@ type homeDistrict = {
     district: string[]
 }
 
-const HomeDistrictSelect = ({ formik, filteredDistrict }: { formik: any, filteredDistrict: homeDistrict[] }) => {
+const HomeDistrictSelect = ({ formik, filteredDistrict, onHomeDistrictValue }: { formik: any, filteredDistrict: homeDistrict[], onHomeDistrictValue: (value: string) => void }) => {
     const [collapsed, setCollapsed] = useState<any>({});
 
     const handleArrowClick = (division: any) => {
@@ -20,10 +20,13 @@ const HomeDistrictSelect = ({ formik, filteredDistrict }: { formik: any, filtere
 
     const handleDistrictClick = (district: string) => {
         formik.setFieldValue('homeDistrict', district);
+        onHomeDistrictValue(district);
     }    
 
+    
+
     return (
-        <div className='w-full h-[482px] bg-white rounded-[8px] py-[6px]'>
+        <div className='w-full h-[482px] bg-white rounded-[8px] py-[6px] animate-fadeIn '>
             {filteredDistrict.map(({ division, district }) => (
                 <div key={division}>
                     <div className='bg-blue-gray-05 text-[12px] text-blue-gray-60 pl-[16px] flex justify-between items-center pr-[9px]'>

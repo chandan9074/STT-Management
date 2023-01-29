@@ -6,6 +6,8 @@ import Image from '../../../Image';
 
 
 const PersonalInformation = ({ formik }: { formik: any }) => {
+    const [isHomeDistrict, setIsHomeDistrict] = useState<boolean>(false);
+    const [onTextField, setOnTextField] = useState<string>(formik.values.homeDistrict)
     const [divisionChangeName, setDivisionChangeName] = useState<string>('');
 
     const [filteredDistrict, setFilteredDistrict] = useState<any>(homeDistrict);
@@ -25,10 +27,20 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
         // console.log(matchedDistrict);
     }
 
+    const onHomeDistrictFocus = () => {
+        setIsHomeDistrict(true)
+    }
+
+    const onHomeDistrictValue = (value: string) => {
+        setOnTextField(value);
+    } 
+
+
 
 
     return (
         <div>
+            <div className={`${!isHomeDistrict && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[90]`} onClick={() => setIsHomeDistrict(false)}></div>
             <Grid container spacing={5}>
                 {/* Primary Role */}
                 <Grid item xs={6}>
@@ -197,32 +209,41 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
                 {/* Home District */}
                 <Grid item xs={6}>
 
-                    <div className='relative'>
-                        <TextField
-                            id="homeDistrict"
-                            name="homeDistrict"
-                            label={<div>Home District <span className='text-[red]'>*</span></div>}
-                            // value={formik.values.homeDistrict}
-                            // onChange={formik.handleChange}
-                            onChange={handleSearch}
-                            error={formik.touched.homeDistrict && Boolean(formik.errors.homeDistrict)}
-                            helperText={formik.touched.homeDistrict && formik.errors.homeDistrict}
-                            style={{ width: '100%' }}
-                            InputProps={{
-                                style: {
-                                    color: '#464E5F',
-                                    fontWeight: '600',
-                                    fontSize: '15px'
-                                }
-                            }}
-                            variant="outlined" />
+                    <div className='relative z-[100]'>
 
-                        <div className=''>
-                            <HomeDistrictSelect
-                                filteredDistrict={filteredDistrict}
-                                formik={formik}
-                            />
-                        </div>
+                        <TextField
+                           onMouseDown={onHomeDistrictFocus}
+                           id="homeDistrict"
+                           name="homeDistrict"
+                           label={<div>Home District <span className='text-[red]'>*</span></div>}
+                           value={onTextField || ''}
+                           onChange={(e) => {
+                             handleSearch(e);
+                             setOnTextField(e.target.value);
+                           }}
+                           error={formik.touched.homeDistrict && Boolean(formik.errors.homeDistrict)}
+                           helperText={formik.touched.homeDistrict && formik.errors.homeDistrict}
+                           style={{ width: '100%' }}
+                           InputProps={{
+                             style: {
+                               color: '#464E5F',
+                               fontWeight: '600',
+                               fontSize: '15px'
+                             }
+                           }}
+                           variant="outlined"
+                             />
+
+                        {
+                            isHomeDistrict &&
+                            <div className='absolute w-full '>
+                                <HomeDistrictSelect
+                                    filteredDistrict={filteredDistrict}
+                                    formik={formik}
+                                    onHomeDistrictValue={onHomeDistrictValue}
+                                />
+                            </div>
+                        }
 
                     </div>
                 </Grid>
