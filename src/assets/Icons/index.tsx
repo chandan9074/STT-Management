@@ -77,6 +77,7 @@ import organizeNav from "./organizeNav.svg";
 import DottedDownArrow from './dotted-down-arrow.svg';
 import Gavel from './gavel.svg';
 import Shadow_bg from './shadow_bg.png'
+import Avatar from './Avatar.svg'
 
 const Icons = {
   currency,
@@ -148,6 +149,7 @@ const Icons = {
   MusicIcon,
   Title,
   DisableCursor,
+  Avatar,
   arrow_drop_down_white,
   dashboardNav,
   scriptNav,

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -8,14 +8,9 @@ import PaymentHistory from "./pages/Billing/PaymentHistory";
 import * as PATH from "./helpers/Slug";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
-import Test from "./pages/Test";
-import CollectingAudio from "./pages/Test/CollectingAudio";
-import UploadAudioVideo from "./pages/Test/UploadAudioVideo";
-import Checking from "./pages/Test/CollectiongAudio/Checking";
-import CheckingStatus from "./pages/Test/CollectiongAudio/Checking/CheckingStatus";
 import Script from "./pages/Script";
 import ScriptForm from "./pages/Script/ScriptForm";
-import UserManagement from "./pages/UserManagement";
+import UserManagement from "./components/containers/userManagement";
 
 function App() {
   useEffect(() => {
@@ -45,6 +40,8 @@ function App() {
         <Route path={PATH.USER_PATH} element={<UserManagement />} />
         {/* <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} /> */}
         <Route path="*" element={<NotFound />} />
+
+        <Route path={PATH.CREATE_USER_PATH} element={<UserManagement />} />
 
         {/* <Route path={PATH.SCRIPT} element={<Script />} /> */}
 
