@@ -14,7 +14,7 @@ const Tertiary = (props: Props) => {
             {
                 disabled ?
                     <button
-                        style={{cursor: `url("/disableCursor.svg"), auto`}}
+                        style={{ cursor: `url("/disableCursor.svg"), auto` }}
                         disabled
                         className={`bg-blue-gray-30 text-blue-gray-60 cursor-not-allowed
                                 ${size === "xSmall" ? "xSmallButton" : size === "small" ? "smallButton" : "mediumButton"}
@@ -25,7 +25,7 @@ const Tertiary = (props: Props) => {
                     </button>
                     :
                     <button {...rest}
-                        className={`border
+                        className={`duration-300 border
                                 ${variant === "CT-Blue" ? "text-ct-blue-60" : variant === "Blue" ? "text-secondary-blue-50" : ""}
                                 ${variant === "CT-Blue" ? "hover:border-blue-gray-A10" : "border-white"}
                                 ${variant === "Blue" ? "hover:border-blue-gray-A10" : "border-white"}

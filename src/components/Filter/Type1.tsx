@@ -32,6 +32,15 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
     setCount(count)
   }, [filterList]);
 
+  const handleClear = () => {
+    setFilterList({
+      dataType: [],
+      distributionSource: [],
+      domain: [],
+      subdomain: [],
+    });
+  };
+
   const handleFilter = (data: string, subdomain: boolean) => {
     if (subdomain) {
       if (filterList.subdomain.includes(data)) {
@@ -77,7 +86,9 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
             <h3 className="text-base font-medium text-ct-blue-90-68% mb-0">
               Filter
             </h3>
-            <div>
+            <div className="flex gap-x-2 animate-fadeIn">
+              {count > 0 && (<><Buttons.LabelButton.Primary label="Apply" size="xSmall" variant="CT-Blue" />
+                <Buttons.LabelButton.Tertiary label="Clear" size="xSmall" variant="CT-Blue" onClick={handleClear} /></>)}
               <button onClick={() => setOpen(!open)}>
                 <img src={Icons.CloseIconButton} alt="" />
               </button>
@@ -86,9 +97,9 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
           {[1, 2].map((item, dataIndex) => (
             <div
               className={`px-5 duration-200 ${currentState ===
-                  `${dataIndex === 0 ? "dataType" : "distributionSource"}`
-                  ? "bg-blue-gray-05"
-                  : "bg-white"
+                `${dataIndex === 0 ? "dataType" : "distributionSource"}`
+                ? "bg-blue-gray-05"
+                : "bg-white"
                 }`}
             >
               <div className="flex items-center justify-between py-2 w-full">
@@ -178,9 +189,9 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
               </div>
               <div
                 className={`flex items-center gap-x-2 pb-5 pt-3 animate-fadeIn ${currentState ===
-                    `${dataIndex === 0 ? "dataType" : "distributionSource"}`
-                    ? "block"
-                    : "hidden"
+                  `${dataIndex === 0 ? "dataType" : "distributionSource"}`
+                  ? "block"
+                  : "hidden"
                   }`}
               >
                 {filterData[
@@ -218,10 +229,10 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
                           })
                     }
                     className={`py-1.5 px-3 flex items-center border rounded-full duration-200 bg-white mb-0 text-small font-medium text-blue-gray-75 ${filterList[
-                        dataIndex === 0 ? "dataType" : "distributionSource"
-                      ].includes(item)
-                        ? "bg-secondary-blue-50 bg-opacity-[0.12] border-secondary-blue-50"
-                        : "border-white"
+                      dataIndex === 0 ? "dataType" : "distributionSource"
+                    ].includes(item)
+                      ? "bg-secondary-blue-50 bg-opacity-[0.12] border-secondary-blue-50"
+                      : "border-white"
                       }`}
                   >
                     {filterList[
@@ -243,8 +254,8 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
           {[1, 2].map((item, dataIndex) => (
             <div
               className={`px-5 duration-200 ${currentState === `${dataIndex === 0 ? "domain" : "subdomain"}`
-                  ? "bg-blue-gray-05"
-                  : "bg-white"
+                ? "bg-blue-gray-05"
+                : "bg-white"
                 } ${dataIndex === 1 && "mb-3"}`}
             >
               <div className="flex items-center justify-between py-2 w-full">
@@ -261,10 +272,10 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
                           : setCurrentState("")
                   }
                   className={`flex items-center w-full mr-5 ${dataIndex === 1
-                      ? filterList.domain.length > 0
-                        ? "cursor-pointer"
-                        : "cursor-not-allowed"
-                      : ""
+                    ? filterList.domain.length > 0
+                      ? "cursor-pointer"
+                      : "cursor-not-allowed"
+                    : ""
                     }`}
                 >
                   {currentState ===
@@ -325,8 +336,8 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
               </div>
               <div
                 className={`pt-3 pb-5  animate-fadeIn ${currentState === `${dataIndex === 0 ? "domain" : "subdomain"}`
-                    ? "block"
-                    : "hidden"
+                  ? "block"
+                  : "hidden"
                   }`}
               >
                 <Dropdown.Type3

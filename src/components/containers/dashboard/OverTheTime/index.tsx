@@ -14,7 +14,7 @@ const OverTheTime = () => {
 
   useEffect(() => {
     dashboardContext.getOverTheTimeData(commonContext.type, commonContext.role);
-  }, []);
+  }, [commonContext.type, commonContext.role]);
 
   useEffect(() => {
     setOverTheTimeData(dashboardContext.overTheTimeData);

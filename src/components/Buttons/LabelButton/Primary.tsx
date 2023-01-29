@@ -26,7 +26,7 @@ const Primary = (props: Props) => {
                         {label}
                     </button>
                     : <button {...rest}
-                        className={`${variant === "Megenta" ? "bg-primary-ct-magenta-60" : variant === "CT-Blue" ? "bg-ct-blue-60" : "bg-secondary-blue-50"}
+                        className={`duration-300 ${variant === "Megenta" ? "bg-primary-ct-magenta-60" : variant === "CT-Blue" ? "bg-ct-blue-60" : "bg-secondary-blue-50"}
                         ${variant === "Megenta" ? "hover:bg-magenta-70" : variant === "CT-Blue" ? "hover:bg-ct-blue-70" : "hover:bg-blue-60"}
                         ${variant === "Megenta" ? "active:bg-magenta-70 active:text-opacity-60" : variant === "CT-Blue" ? "active:bg-ct-blue-70 active:text-opacity-60" : "active:bg-blue-60 active:text-opacity-60"}
                          ${variant === "Megenta" ? "text-white" : variant === "CT-Blue" ? "text-[#FFFFFF]" : "text-white"}
