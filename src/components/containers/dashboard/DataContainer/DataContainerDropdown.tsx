@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Icons from "../../../../assets/Icons";
 
 interface Props {
@@ -6,7 +6,7 @@ interface Props {
     handleActivePanel: any;
 }
 
-const DataContainerDropdown = ({data, handleActivePanel}: Props) => {
+const DataContainerDropdown = ({ data, handleActivePanel }: Props) => {
 
     const [toggleOpen, setToggleOpen] = useState<boolean>(false)
     const [active, setActive] = useState<string>("Distribution Source-wise")
@@ -28,46 +28,46 @@ const DataContainerDropdown = ({data, handleActivePanel}: Props) => {
                 <img
                     className="h-[7px] w-[10px]"
                     src={Icons.blueDropArrow}
-                    alt=""/>
+                    alt="" />
             </div>
 
             {
                 toggleOpen ? <div >
-                   <div>
-                       <div className="fixed top-0 left-0 w-full h-screen z-[80]"
-                            onClick={() => setToggleOpen(false)}/>
-                       <div className="absolute z-[9999]">
-                           <div
-                               className="w-[245px] bg-white mt-1 rounded-[8px] py-[6px] shadow-bottom-light-blue-20">
+                    <div>
+                        <div className="fixed top-0 left-0 w-full h-screen z-[80]"
+                            onClick={() => setToggleOpen(false)} />
+                        <div className="absolute z-[9999]">
+                            <div
+                                className="w-[245px] bg-white mt-1 rounded-[8px] py-[6px] shadow-bottom-light-blue-20">
 
-                               {
-                                   data.map((data: any) =>
-                                       <div key={data.id}>
-                                           <div
-                                               onClick={() => handleActiveButton(data)}
-                                               className={`flex justify-between items-center text-small font-medium ${active === data.value ?
-                                                   "text-ct-blue-60 py-2 bg-ct-blue-10 cursor-pointer hover:bg-ct-blue-10 " :
-                                                   "text-blue-gray-80 bg-white cursor-pointer hover:bg-purple-A10 duration-300 py-2"}`}>
-                                               <p className={active === data.value ? "border-ct-blue-60 px-2" : "border-white px-2"}>
-                                                   {data.value}
-                                               </p>
-                                               {active === data.value ?
-                                                   <img
-                                                       src={Icons.CorrectIcon}
-                                                       className="w-[17px] h-[12px] mr-2.5"
-                                                       alt=""/>
-                                                   : null
-                                               }
-                                           </div>
-                                       </div>
-                                   )
-                               }
+                                {
+                                    data.map((data: any) =>
+                                        <div key={data.id}>
+                                            <div
+                                                onClick={() => handleActiveButton(data)}
+                                                className={`flex justify-between items-center text-small font-medium ${active === data.value ?
+                                                    "text-ct-blue-60 py-2 bg-ct-blue-10 cursor-pointer hover:bg-ct-blue-10 " :
+                                                    "text-blue-gray-80 bg-white cursor-pointer hover:bg-purple-A10 duration-300 py-2"}`}>
+                                                <p className={active === data.value ? "border-ct-blue-60 px-2" : "border-white px-2"}>
+                                                    {data.value}
+                                                </p>
+                                                {active === data.value ?
+                                                    <img
+                                                        src={Icons.CorrectIcon}
+                                                        className="w-[17px] h-[12px] mr-2.5"
+                                                        alt="" />
+                                                    : null
+                                                }
+                                            </div>
+                                        </div>
+                                    )
+                                }
 
 
-                           </div>
-                       </div>
-                       </div>
-                   </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                     : null
             }
         </div>

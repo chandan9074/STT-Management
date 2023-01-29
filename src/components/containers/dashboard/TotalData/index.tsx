@@ -19,8 +19,8 @@ const TotalData = () => {
 
 
   return (
-    <div className="bg-white h-52 p-5">
-      <div className="flex gap-5 items-end">
+    <div className="bg-white h-[180px] p-5">
+      <div className="flex gap-3 items-end -mb-3">
         <p className="text-heading-4 font-medium text-ct-blue-95">Total Data</p>
         <p className="text-small text-ct-blue-90-70% mb-1">
           Received : {totalDataCollection?.received}h
@@ -33,7 +33,7 @@ const TotalData = () => {
               {totalDataCollection?.achieved}
             </h1>
             <div>
-              <p className={`text-heading-2 text-transparent bg-clip-text mt-2.5 ${type === STTMODULE ? "bg-gradient-to-r from-silver-tree to-tacao" : "bg-gradient-to-r from-forest-green to-pacifika"}`}>
+              <p className={`text-heading-2 font-medium text-transparent bg-clip-text mt-2.5 ${type === STTMODULE ? "bg-gradient-to-r from-silver-tree to-tacao" : "bg-gradient-to-r from-forest-green to-pacifika"}`}>
                 %
               </p>
               <p className="text-xxs text-ct-blue-90-70% mt-1">Achieved</p>
@@ -70,7 +70,7 @@ const TotalData = () => {
             </div>
           </div>
         </div>
-        <div className="">
+        <div className="pb-[50px]">
           <GaugeComponent.Type1 data={totalDataCollection} />
         </div>
       </div>

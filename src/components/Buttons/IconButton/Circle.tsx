@@ -6,9 +6,10 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     variant: "Red" | "CT-Blue" | "Blue" | "Gray";
     icon?: React.ReactElement;
     border?: "none" | "border";
+    background?: "white" | "transparent"
 }
 const Circle = (props: Props) => {
-    const { size, variant, border = "none", icon, ...rest } = props
+    const { size, variant, background = "transparent", border = "none", icon, ...rest } = props
 
     const IconButtonVariantStyle: any = {
         "Red": {
@@ -54,7 +55,7 @@ const Circle = (props: Props) => {
 
     const IconBorderStyle: any = {
         "none": {
-            border: "border border-inherit rounded-full"
+            border: "border border-transparent rounded-full"
         },
         "border": {
             border: "border border-ct-blue-10 rounded-full"
@@ -63,7 +64,7 @@ const Circle = (props: Props) => {
     return (
         <>
             <button {...rest}
-                className={`duration-300  
+                className={`duration-300 flex items-center justify-center ${background === "white" ? "bg-white" : "bg-transparent"}
                 ${IconButtonSizeStyle[size].size} ${IconButtonVariantStyle[variant].hover} ${IconButtonVariantStyle[variant].active} ${IconBorderStyle[border].border}`}
             >
                 {icon}

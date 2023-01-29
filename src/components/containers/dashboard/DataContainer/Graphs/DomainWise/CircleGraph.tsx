@@ -57,13 +57,15 @@ const CircleGraph = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
         const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
         let _percent: string = (percent * 100).toFixed(0)
-       
+        console.log("domain wise collect", index)
+
         return (
             <text
 
                 x={x}
                 y={y}
-                fill={payload.fill === "#E4F542" || payload.fill === "#42E0F5" ? "black" : "white"}
+                // payload.fill === "#42E0F5" "#667487"
+                fill={(payload.fill === "#E4F542" || payload.fill === "#42F5E4" || payload.fill === "#E3F542") ? (activeName === payload.name ? "black":"#667487") : (payload.fill === "#42E0F5" ) ? "black" : "white"}
                 textAnchor="middle"
                 dominantBaseline="central"
                 font-size={14}
@@ -74,7 +76,7 @@ const CircleGraph = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
 
                 {
 
-                    (activeName === payload.name && parseInt(_percent) >= 3) ? `${payload.value.toFixed(0)}%` : parseInt(_percent) >= 15 ? `${payload.value.toFixed(0)}%` : ""
+                    (activeName === payload.name && parseInt(_percent) >= 3) ? `${Math.floor(payload.value)}%` : (index === 0 || index === 1 || index === 2) ? `${Math.floor(payload.value)}%` : ""
 
                 }
             </text >
@@ -107,7 +109,7 @@ const CircleGraph = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
                 fill={hoverTooltipsColors[payload.name]?.fillColor}
                 stroke={hoverTooltipsColors[payload.name]?.borderColor}
                 strokeWidth={3}
-                
+
 
             />
         );
@@ -140,7 +142,7 @@ const CircleGraph = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
                     cy="50%"
                     labelLine={false}
                     label={renderCustomizedLabel}
-                    innerRadius={80}
+                    innerRadius={90}
                     outerRadius={140}
                     paddingAngle={1}
                     dataKey="value"

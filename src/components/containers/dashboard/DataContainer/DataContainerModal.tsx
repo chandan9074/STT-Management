@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Table from "../../../Table";
 import Icons from "../../../../assets/Icons";
 import { collectDataDT, createDataDT } from '../../../../types/dashboardTypes';
+import Buttons from '../../../Buttons';
 
 interface Props {
     data: createDataDT | collectDataDT;
@@ -13,14 +14,16 @@ const DataContainerModal = ({ data, name, activePanel }: Props) => {
     const [open, setOpen] = useState<boolean>(false);
     return (
         <div className='relative'>
-            <div
-                className="w-[32px] h-[32px] rounded-full bg-white hover:bg-ct-blue-20 cursor-pointer flex items-center justify-center"
-                onClick={() => setOpen(true)}
-            >
-                <img
+            <Buttons.IconButton.Circle
+                size='medium'
+                variant='CT-Blue'
+                border='none'
+                icon={<img
                     src={Icons.sourceDistributionMenu}
-                    alt="" />
-            </div>
+                    alt="" />}
+                onClick={() => setOpen(true)}
+
+            />
 
             {open ? (
                 <div>
@@ -44,11 +47,15 @@ const DataContainerModal = ({ data, name, activePanel }: Props) => {
                                                 update: {data.lastUpdate})</p>
                                         </div>
 
-                                        <div
+
+                                        <Buttons.IconButton.Circle
+                                            size='medium'
+                                            variant="CT-Blue"
+                                            icon={<img src={Icons.CloseIconButton} alt="" />}
+                                            border='border'
                                             onClick={() => setOpen(false)}
-                                            className="h-[32px] w-[32px] rounded-full bg-white flex items-center justify-center hover:bg-ct-blue-20 active:bg-bg-ct-blue-20 focus:outline-none focus:ring focus:ring-ct-blue-05 cursor-pointer">
-                                            <img src={Icons.CloseIconButton} alt="" />
-                                        </div>
+                                            background="white"
+                                        />
 
 
                                     </div>
