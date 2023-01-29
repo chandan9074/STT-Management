@@ -1,5 +1,5 @@
 import { TextField } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Icons from '../../assets/Icons';
 import { homeDistrict } from '../../data/userManagement/UserManagementData';
 import { homeDistrictSearch } from '../../helpers/Utils';
@@ -12,7 +12,6 @@ type homeDistrict = {
 
 const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTouched, name }: { formikValues: any, formik: any, data: homeDistrict[], formikError: any, formikTouched: any, name: string }) => {
 
-    // const HomeDistrictSelect = ({ formik, filteredDistrict, onHomeDistrictValue }: { formik: any, filteredDistrict: homeDistrict[], onHomeDistrictValue: (value: string) => void }) => {
     const [collapsed, setCollapsed] = useState<any>({});
 
     const [onTextField, setOnTextField] = useState<string>(formikValues)
@@ -47,10 +46,11 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
         setFilteredDistrict(_data)
     }
 
-
-
-
-
+    // useEffect(() => {
+    //     if (isHomeDistrict) {
+    //         setFilteredDistrict(data);
+    //     }
+    // }, [isHomeDistrict])
 
     return (
         <div className='relative z-[100]'>
