@@ -13,6 +13,7 @@ import ScriptForm from "./pages/Script/ScriptForm";
 import UserManagement from "./pages/UserManagement";
 import Paragraph from "antd/es/skeleton/Paragraph";
 import Activity from "./pages/UserManagement/Activity";
+import UserForm from "./components/containers/userManagement/UserForm";
 // import UserManagement from "./components/containers/userManagement";
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
         <Route path={`${PATH.ACTIVE_USER_PATH}/:id`} element={<Activity />} />
         <Route path="*" element={<NotFound />} />
 
+        <Route path={PATH.CREATE_USER_PATH} element={<UserForm />} />
 
         {/* <Route path={PATH.SCRIPT} element={<Script />} /> */}
 

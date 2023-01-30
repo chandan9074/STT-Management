@@ -1,33 +1,10 @@
 import { Autocomplete, Box, Grid, TextField } from '@mui/material';
-import { useState } from 'react';
-import { homeDistrict } from '../../../../data/userManagement/UserManagementData';
-import { homeDistrictSearch } from '../../../../helpers/Utils';
+import { homeDistrict, lastDegreeAchived } from '../../../../data/userManagement/UserManagementData';
 import HomeDistrictSelect from '../../../Form/HomeDistrictSelect';
 import Image from '../../../Image';
 
 
 const PersonalInformation = ({ formik }: { formik: any }) => {
-    const [isHomeDistrict, setIsHomeDistrict] = useState<boolean>(false);
-    const [onTextField, setOnTextField] = useState<string>(formik.values.homeDistrict)
-    const [divisionChangeName, setDivisionChangeName] = useState<string>('');
-
-    const [filteredDistrict, setFilteredDistrict] = useState<any>(homeDistrict);
-
-    const handleSearch = (event: any) => {
-        const _data = homeDistrictSearch(event.target.value, homeDistrict);
-        setFilteredDistrict(_data)
-    }
-
-    const onHomeDistrictFocus = () => {
-        setIsHomeDistrict(true)
-    }
-
-    const onHomeDistrictValue = (value: string) => {
-        setOnTextField(value);
-    }
-
-
-
 
     return (
         <div>
@@ -155,11 +132,9 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
                             <TextField
                                 id="nid"
                                 name="nid"
-                                label={<div>Nid <span className='text-[red]'>*</span></div>}
+                                label={<div>Nid <span className='text-[red]'></span></div>}
                                 value={formik.values.nid}
                                 onChange={formik.handleChange}
-                                error={formik.touched.nid && Boolean(formik.errors.nid)}
-                                helperText={formik.touched.nid && formik.errors.nid}
                                 style={{ width: '100%', paddingRight: '9px' }}
                                 InputProps={{
                                     style: {
@@ -177,11 +152,9 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
                         <TextField
                             id="birthRegNumber"
                             name="birthRegNumber"
-                            label={<div>Birth Registration Number <span className='text-[red]'>*</span></div>}
+                            label={<div>Birth Registration Number <span className='text-[red]'></span></div>}
                             value={formik.values.birthRegNumber}
                             onChange={formik.handleChange}
-                            error={formik.touched.birthRegNumber && Boolean(formik.errors.birthRegNumber)}
-                            helperText={formik.touched.birthRegNumber && formik.errors.birthRegNumber}
                             style={{ width: '100%', paddingLeft: '7px' }}
                             InputProps={{
                                 style: {
@@ -199,57 +172,86 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
             <Grid container spacing={5}>
                 {/* Home District */}
                 <Grid item xs={6}>
-
                     <div className=''>
-
-                        {/* <TextField
-                            onMouseDown={onHomeDistrictFocus}
-                            id="homeDistrict"
-                            name="homeDistrict"
-                            label={<div>Home District <span className='text-[red]'>*</span></div>}
-                            value={onTextField || ''}
-                            onChange={(e) => {
-                                handleSearch(e);
-                                setOnTextField(e.target.value);
-                            }}
-                            error={formik.touched.homeDistrict && Boolean(formik.errors.homeDistrict)}
-                            helperText={formik.touched.homeDistrict && formik.errors.homeDistrict}
-                            style={{ width: '100%' }}
-                            InputProps={{
-                                style: {
-                                    color: '#464E5F',
-                                    fontWeight: '600',
-                                    fontSize: '15px'
-                                }
-                            }}
-                            variant="outlined"
-                        /> */}
-
-                        {/* {
-                            isHomeDistrict && */}
-                            <div className=''>
-                                <HomeDistrictSelect
-                                    // filteredDistrict={filteredDistrict}
-                                    formikValues={formik.values.homeDistrict}
-                                    data={homeDistrict}
-                                    formikError={formik.errors.homeDistrict}
-                                    formikTouched={formik.touched.homeDistrict }
-                                    formik={formik}
-                                    name={'homeDistrict'}
-                                    // onHomeDistrictValue={onHomeDistrictValue}
-
-                                    // error={formik.touched.homeDistrict && Boolean(formik.errors.homeDistrict)}
-                                    // helperText={formik.touched.homeDistrict && formik.errors.homeDistrict}
-                                />
-                            </div>
-                        {/* } */}
-
+                        <HomeDistrictSelect
+                            formikValues={formik.values.homeDistrict}
+                            data={homeDistrict}
+                            formikError={formik.errors.homeDistrict}
+                            formikTouched={formik.touched.homeDistrict}
+                            formik={formik}
+                            name={'homeDistrict'}
+                            fieldLabel='Home District'
+                        />
                     </div>
                 </Grid>
 
+                <Grid item xs={6}>
+                    <div className=''>
+                        <HomeDistrictSelect
+                            formikValues={formik.values.presentDistrict}
+                            data={homeDistrict}
+                            formikError={formik.errors.presentDistrict}
+                            formikTouched={formik.touched.presentDistrict}
+                            formik={formik}
+                            name={'presentDistrict'}
+                            fieldLabel='Present District'
+                        />
+                    </div>
+
+                </Grid>
+
+
+
+                <Grid item xs={6}>
+                    <Autocomplete
+                        id="lastDegreeAchived"
+                        style={{ width: '100%' }}
+                        options={lastDegreeAchived}
+                        value={formik.values.lastDegreeAchived}
+                        onChange={(event, value) => {
+                            if (typeof value === 'string') {
+                                console.log('event', event);
+
+                                formik.setFieldValue('lastDegreeAchived', value)
+                            } else {
+                                formik.setFieldValue('lastDegreeAchived', '')
+                            }
+                        }}
+
+                        renderInput={(params) => (
+
+                            <TextField
+                                {...params}
+                                name="lastDegreeAchived"
+                                error={formik.touched.lastDegreeAchived && Boolean(formik.errors.lastDegreeAchived)}
+                                helperText={formik.touched.lastDegreeAchived && formik.errors.lastDegreeAchived}
+
+                                label={<span className='comboBoxLabel'>Last Degree Achieved <span className='text-[red]'>*</span></span>}
+
+                            />
+                        )}
+                    />
+                </Grid>
+
+                <Grid item xs={6}>
+                    <TextField
+                        id="subjectInStudy"
+                        name="subjectInStudy"
+                        label={<div>Subject in study <span className='text-[red]'></span></div>}
+                        value={formik.values.subjectInStudy}
+                        onChange={formik.handleChange}
+                        style={{ width: '100%' }}
+                        InputProps={{
+                            style: {
+                                color: '#464E5F',
+                                fontWeight: '600',
+                                fontSize: '15px'
+                            }
+                        }}
+                        variant="outlined" />
+                </Grid>
+
             </Grid>
-
-
 
 
         </div >

@@ -78,9 +78,6 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
                                             style={{ width: '100%' }}
                                             options={scriptSourceType}
                                             value={formik.values.sourceType }
-                                            // value={formik.values.sourceType || scriptSourceType[0]}
-                                            // defaultValue={formik.values.sourceType}
-
                                             onChange={(event, value) => {
                                                 if (typeof value === 'string') {
                                                     console.log('event', event);
