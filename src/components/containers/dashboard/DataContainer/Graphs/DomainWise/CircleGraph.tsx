@@ -68,8 +68,8 @@ const CircleGraph = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
                 fill={(payload.fill === "#E4F542" || payload.fill === "#42F5E4" || payload.fill === "#E3F542") ? (activeName === payload.name ? "black":"#667487") : (payload.fill === "#42E0F5" ) ? "black" : "white"}
                 textAnchor="middle"
                 dominantBaseline="central"
-                font-size={14}
-                font-weight={500}
+                font-size={13}
+                font-weight={400}
                 onMouseOver={() => setActiveName(payload.name)}
                 onMouseLeave={() => setActiveName("")}
             >

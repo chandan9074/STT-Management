@@ -82,6 +82,7 @@ import Up from './up.svg'
 import createSkeleton from './createSkeleton.svg'
 import collectSkeleton from './collectSkeleton.svg'
 
+import Unfold_More from './unfold_more.svg'
 
 const Icons = {
   currency,
@@ -166,7 +167,8 @@ const Icons = {
   Shadow_bg,
   Up,
   createSkeleton,
-  collectSkeleton
+  collectSkeleton,
+  Unfold_More,
 };
 
 export default Icons;

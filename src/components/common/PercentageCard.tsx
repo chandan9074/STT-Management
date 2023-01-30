@@ -16,7 +16,7 @@ const PercentageCard = ({ name, value, hour, BorderColor }: Props) => {
       <div className="px-3">
         <p className="text-small font-normal text-ct-blue-90-70%">{name}</p>
         <div className="flex gap-2.5 items-end">
-          <p className="text-heading-2 font-normal text-ct-blue-80">{value}%</p>
+          <p className="text-heading-2 font-light text-ct-blue-80">{value}%</p>
           <p className="text-small font-normal text-ct-blue-90-70% mb-[6px]">
             {hour}h
           </p>
