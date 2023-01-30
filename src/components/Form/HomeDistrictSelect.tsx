@@ -53,18 +53,25 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
 
     const handleSearch = (event: any) => {
         const _data = homeDistrictSearch(event.target.value, homeDistrict);
-        setFilteredDistrict(_data)
+        setFilteredDistrict(_data);
+    }
+
+    const clickOutsideField = () => {
+        setIsHomeDistrict(false);
+        setOnTextField(formikValues);
+        setFilteredDistrict(data);
     }
 
     return (
         <div className='relative z-[100] homeDistrictSelect'>
 
-            <div className={`${!isHomeDistrict && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[90]`} onClick={() => setIsHomeDistrict(false)}></div>
+            <div className={`${!isHomeDistrict && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[90]`} onClick={() => clickOutsideField()}></div>
 
             <FormControl sx={{ width: '100%' }} variant="outlined">
                 <InputLabel htmlFor={name}>{<div>{fieldLabel} <span className='text-[red]'>*</span></div>}</InputLabel>
                 <OutlinedInput
                     id={name}
+                    autoComplete='off'
                     type='text'
                     onMouseDown={onHomeDistrictFocus}
                     name={name}
@@ -80,7 +87,7 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
                                 aria-label="toggle password visibility"
                                 edge="end"
                             > */}
-                                <CaretDownOutlined />
+                            <CaretDownOutlined />
                             {/* </IconButton> */}
                         </InputAdornment>
                     }

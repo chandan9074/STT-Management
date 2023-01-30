@@ -1,7 +1,6 @@
-import { UploadOutlined } from '@ant-design/icons';
 import { Autocomplete, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, TextField } from '@mui/material';
-import { Button, Typography, Upload } from 'antd';
-import React, { useState } from 'react';
+import { Typography, Upload } from 'antd';
+import { useState } from 'react';
 import Icons from '../../../../assets/Icons';
 import { adminData, reportingRoleData } from '../../../../data/userManagement/UserManagementData';
 import { Grid } from '@mui/material';

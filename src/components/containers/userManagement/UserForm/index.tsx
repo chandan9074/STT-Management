@@ -6,7 +6,6 @@ import ActionButton from '../../../Form/ActionButton';
 import PersonalInformation from './PersonalInformation';
 import FileReport from './FileReport';
 import './UserForm.css';
-import { adminData } from '../../../../data/userManagement/UserManagementData';
 
 const validationSchema = yup.object({
     role: yup.array().min(1, "Please select at least one role"),
