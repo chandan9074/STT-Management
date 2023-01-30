@@ -11,6 +11,7 @@ import NotFound from "./pages/NotFound";
 import Script from "./pages/Script";
 import ScriptForm from "./pages/Script/ScriptForm";
 import UserManagement from "./pages/UserManagement";
+import UserForm from "./components/containers/userManagement/UserForm";
 // import UserManagement from "./components/containers/userManagement";
 
 function App() {
@@ -42,7 +43,7 @@ function App() {
         {/* <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} /> */}
         <Route path="*" element={<NotFound />} />
 
-        <Route path={PATH.CREATE_USER_PATH} element={<UserManagement />} />
+        <Route path={PATH.CREATE_USER_PATH} element={<UserForm />} />
 
         {/* <Route path={PATH.SCRIPT} element={<Script />} /> */}
 

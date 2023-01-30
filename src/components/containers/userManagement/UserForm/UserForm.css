@@ -1,0 +1,13 @@
+.file-upload-hidden2 .ant-upload-select {
+    display: none !important;
+}
+
+.file-upload-hidden2 .ant-upload-wrapper .ant-upload-list .ant-upload-list-item-error .ant-upload-list-item-name {
+    padding-bottom: 5px !important;
+    margin-right: 100px ;
+    
+}
+
+.file-upload-hidden2 .ant-upload-wrapper .ant-upload-list .ant-upload-list-item-error{
+    margin-bottom: 5px !important;
+}

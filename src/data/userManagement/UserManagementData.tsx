@@ -27,8 +27,16 @@ export const homeDistrict = [
             'Brahmanbaria',
             'Chandpur'
         ]
-    }
+    },
+    
 ]
+
+
+export const lastDegreeAchived = [
+    'Honors',
+    'Masters'
+]
+
 
 export const userRoleDropdownData = [
     'Admin',
@@ -40,4 +48,46 @@ export const userRoleDropdownData = [
     'Validator',
     'Speaker-Male',
     "Speaker-Female"
+]
+
+export const reportingRoleData = [
+    'Admin',
+    'Manager',
+    'Team Leader',
+    'Audio Checker',
+    'Annotator',
+    'Validator'
+]
+
+export const adminData = [
+    {
+        id: 1,
+        name: 'Mohammad Miraz',
+        number: '01884654585'
+    },
+    {
+        id: 2,
+        name: 'Maksud Alam',
+        number: '018684610691'
+    },
+    {
+        id: 3,
+        name: 'Rohim',
+        number: '01884654585'
+    },
+    {
+        id: 4,
+        name: 'Jahir Uddin',
+        number: '018684660691'
+    },
+    {
+        id: 5,
+        name: 'Sammi',
+        number: '011684610691'
+    },
+    {
+        id: 6,
+        name: 'Savannah Nguyen',
+        number: '018687910691'
+    }
 ]

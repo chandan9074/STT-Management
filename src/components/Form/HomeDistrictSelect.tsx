@@ -1,16 +1,25 @@
-import { TextField } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import { CaretDownOutlined } from '@ant-design/icons';
+import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
+import { useState } from 'react';
 import Icons from '../../assets/Icons';
 import { homeDistrict } from '../../data/userManagement/UserManagementData';
 import { homeDistrictSearch } from '../../helpers/Utils';
+import { homeDistrictTypes } from '../../types/userManagementTypes';
 import Buttons from '../Buttons';
+import './HomeDistrictSelect.css';
 
-type homeDistrict = {
-    division: string,
-    district: string[]
-}
+type Prop =
+    {
+        formikValues?: any,
+        formik?: any,
+        data: homeDistrictTypes[],
+        formikError?: any,
+        formikTouched?: any,
+        name: string,
+        fieldLabel: string
+    }
 
-const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTouched, name }: { formikValues: any, formik: any, data: homeDistrict[], formikError: any, formikTouched: any, name: string }) => {
+const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTouched, name, fieldLabel }: Prop) => {
 
     const [collapsed, setCollapsed] = useState<any>({});
 
@@ -18,7 +27,7 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
 
     const [isHomeDistrict, setIsHomeDistrict] = useState<boolean>(false);
 
-    const [filteredDistrict, setFilteredDistrict] = useState<homeDistrict[]>(data);
+    const [filteredDistrict, setFilteredDistrict] = useState<homeDistrictTypes[]>(data);
 
     const handleArrowClick = (division: any) => {
         setCollapsed({
@@ -30,6 +39,7 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
     const handleDistrictClick = (district: string) => {
         formik.setFieldValue(name, district);
         onHomeDistrictValue(district);
+        setIsHomeDistrict(false)
     }
 
 
@@ -46,45 +56,39 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
         setFilteredDistrict(_data)
     }
 
-    // useEffect(() => {
-    //     if (isHomeDistrict) {
-    //         setFilteredDistrict(data);
-    //     }
-    // }, [isHomeDistrict])
-
     return (
-        <div className='relative z-[100]'>
+        <div className='relative z-[100] homeDistrictSelect'>
 
             <div className={`${!isHomeDistrict && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[90]`} onClick={() => setIsHomeDistrict(false)}></div>
 
-            <TextField
-                onMouseDown={onHomeDistrictFocus}
-                id={name}
-                name={name}
-                label={<div>Home District <span className='text-[red]'>*</span></div>}
-                value={onTextField || ''}
-                onChange={(e) => {
-                    handleSearch(e);
-                    setOnTextField(e.target.value);
-                }}
-
-                error={formikTouched && Boolean(formikError)}
-                helperText={formikTouched && formikError}
-
-                style={{ width: '100%' }}
-                InputProps={{
-                    style: {
-                        color: '#464E5F',
-                        fontWeight: '600',
-                        fontSize: '15px'
+            <FormControl sx={{ width: '100%' }} variant="outlined">
+                <InputLabel htmlFor={name}>{<div>{fieldLabel} <span className='text-[red]'>*</span></div>}</InputLabel>
+                <OutlinedInput
+                    id={name}
+                    type='text'
+                    onMouseDown={onHomeDistrictFocus}
+                    name={name}
+                    label={<div>{fieldLabel} <span className='text-[red]'>*</span></div>}
+                    value={onTextField || ''}
+                    onChange={(e) => {
+                        handleSearch(e);
+                        setOnTextField(e.target.value);
+                    }}
+                    endAdornment={
+                        <InputAdornment position="end">
+                            {/* <IconButton
+                                aria-label="toggle password visibility"
+                                edge="end"
+                            > */}
+                                <CaretDownOutlined />
+                            {/* </IconButton> */}
+                        </InputAdornment>
                     }
-                }}
-                variant="outlined"
-            />
-
+                />
+            </FormControl>
             {
                 isHomeDistrict &&
-                <div className='absolute w-full h-[482px] bg-white rounded-[8px] py-[6px] animate-fadeIn z-[100]'>
+                <div className='absolute w-full h-[482px] bg-white rounded-[8px] py-[6px] animate-fadeIn z-[100] overflow-auto'>
                     {filteredDistrict.map(({ division, district }) => (
                         <div key={division}>
                             <div className='bg-blue-gray-05 text-[12px] text-blue-gray-60 pl-[16px] flex justify-between items-center pr-[9px]'>
@@ -94,12 +98,12 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
                                         size='xSmall'
                                         variant='Gray'
                                         border='none'
-                                        icon={collapsed[division] ? <img src={Icons.Up} /> : <img src={Icons.dark_right_arrow} />}
+                                        icon={collapsed[division] ? <img src={Icons.Up} alt='' /> : <img src={Icons.dark_right_arrow} alt='' />}
                                     />
                                 </div>
                             </div>
                             {!collapsed[division] && (
-                                <div className='pl-[16px]'>
+                                <div className='pl-[16px] animate-fadeIn'>
                                     {district.map((name, i) => (
                                         <div
                                             key={i}
@@ -122,6 +126,10 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
             }
 
 
+
+            {formikTouched && formikError ? (
+                <div className='text-red-600 text-[12px] pl-[12px]'>{formikError}</div>
+            ) : null}
         </div>
     );
 };

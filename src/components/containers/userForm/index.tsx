@@ -1,6 +1,6 @@
 import React from 'react';
 import Layouts from '../../Layouts';
-import UserForm from './userForm';
+import UserForm from '../userManagement/UserForm';
 
 const UserManagement = () => {
     return (
