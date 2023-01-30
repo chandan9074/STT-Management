@@ -79,6 +79,8 @@ import Gavel from './gavel.svg';
 import Shadow_bg from './shadow_bg.png'
 import Avatar from './Avatar.svg'
 import Up from './up.svg'
+import createSkeleton from './createSkeleton.svg'
+import collectSkeleton from './collectSkeleton.svg'
 
 
 const Icons = {
@@ -162,7 +164,9 @@ const Icons = {
   DottedDownArrow,
   Gavel,
   Shadow_bg,
-  Up
+  Up,
+  createSkeleton,
+  collectSkeleton
 };
 
 export default Icons;

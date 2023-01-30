@@ -16,6 +16,7 @@ export const CREATE_SCRIPT = "/script/create-script";
 
 // User Management
 export const CREATE_USER_PATH = "/user/create-user";
+export const ACTIVE_USER_PATH = "/user-management/active";
 
 export const TEST = "/test";
 export const AUDIO_MANAGEMENT = '/audio-management'

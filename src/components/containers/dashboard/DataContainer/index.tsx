@@ -3,6 +3,7 @@ import CollectData from "./CollectData";
 import CreateData from "./Createdata";
 import { DashboardContext } from "../../../../context/DashboardProvider";
 import { CommonContext } from "../../../../context/CommonProvider";
+import Icons from "../../../../assets/Icons";
 
 const DataContainer = () => {
   const dashboardContext = useContext(DashboardContext);
@@ -20,21 +21,21 @@ const DataContainer = () => {
         className="col-span-6 rounded-xl shadow-bottom-light-blue-10"
         style={{ background: "white" }}
       >
-        {dashboardContext.createCollectData && (
+        {dashboardContext.createCollectData ? (
           <CreateData
             data={dashboardContext.createCollectData.data.createData}
           />
-        )}
+        ) : (<img src={Icons.createSkeleton} alt="loading" />)}
       </div>
       <div
         className="col-span-6 rounded-xl shadow-bottom-light-blue-10"
         style={{ background: "white" }}
       >
-        {dashboardContext.createCollectData && (
+        {dashboardContext.createCollectData ? (
           <CollectData
             data={dashboardContext.createCollectData.data.collectData}
           />
-        )}
+        ) : (<img src={Icons.collectSkeleton} alt="loading" />)}
       </div>
     </div>
   );

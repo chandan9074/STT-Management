@@ -7,6 +7,7 @@ import { Table } from 'antd';
 import Buttons from '../Buttons';
 import './type4Table.css';
 import { Status } from '../Status';
+import { redirect } from 'react-router-dom';
 
 interface DataType {
     key: React.Key;
@@ -109,6 +110,7 @@ const Type5 = () => {
             width: 150,
             render: (_, record: { key: React.Key }) => (<>
                 <Buttons.LabelButton.Tertiary
+                    onClick={() => redirect("")}
                     size='xSmall'
                     variant='Blue'
                     label='Check Activity'
