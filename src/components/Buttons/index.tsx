@@ -6,6 +6,8 @@ import BgHoverBtn from "./BgHoverBtn";
 import IconWithTitle from "./IconWithTitle";
 import Filter from "./Filter";
 import { TabButton } from "./TabButton";
+import Dropdown from "./Dropdown";
+import Date from "./Date";
 
 const Buttons = {
   ToggleRounded,
@@ -15,7 +17,9 @@ const Buttons = {
   IconWithTitle,
   IconWithTextButton,
   Filter,
-  TabButton
+  TabButton,
+  Dropdown,
+  Date
 };
 
 export default Buttons;

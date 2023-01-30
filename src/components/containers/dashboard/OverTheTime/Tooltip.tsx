@@ -15,31 +15,30 @@ const Tooltip = ({
 }) => {
   return (
     <div
-      className={`absolute  px-5 py-6 rounded-[12px] bg-tooltip-bg hidden group-hover:block animate-fadeIn z-[90] ${
-        index < 4
+      className={`absolute  px-5 py-6 rounded-[12px] bg-tooltip-bg hidden group-hover:block animate-fadeIn z-[90] ${index < 5
           ? "-left-5"
           : overTheTimeGData.dayData.length - 6 < index
-          ? "-right-5"
-          : ""
-      }`}
+            ? "-right-5"
+            : ""
+        }`}
       style={{
         bottom:
           item.hourData[0].hour &&
-          item.hourData[1].hour &&
-          item.hourData[2].hour
+            item.hourData[1].hour &&
+            item.hourData[2].hour
             ? Math.round(
-                Math.round(barHeight * item.hourData[0]?.hour) /
-                  overTheTimeGData.maxReceivedHour
-              ) +
-              Math.round(
-                Math.round(barHeight * item.hourData[1]?.hour) /
-                  overTheTimeGData.maxReceivedHour
-              ) +
-              Math.round(
-                Math.round(barHeight * item.hourData[2]?.hour) /
-                  overTheTimeGData.maxReceivedHour
-              ) +
-              17
+              Math.round(barHeight * item.hourData[0]?.hour) /
+              overTheTimeGData.maxReceivedHour
+            ) +
+            Math.round(
+              Math.round(barHeight * item.hourData[1]?.hour) /
+              overTheTimeGData.maxReceivedHour
+            ) +
+            Math.round(
+              Math.round(barHeight * item.hourData[2]?.hour) /
+              overTheTimeGData.maxReceivedHour
+            ) +
+            17
             : 0,
       }}
     >
@@ -52,13 +51,12 @@ const Tooltip = ({
       <div className="mt-4 flex items-center gap-x-1">
         {item.hourData.map((hourItem, index) => (
           <div
-            className={`py-1 px-2 rounded-[4px] w-[100px] ${
-              hourItem.title === "Valid"
+            className={`py-1 px-2 rounded-[4px] w-[100px] ${hourItem.title === "Valid"
                 ? "bg-green-bg-O25"
                 : hourItem.title === "Invalid"
-                ? "bg-orange-A10-O25"
-                : "bg-winter-wizard-O25"
-            }`}
+                  ? "bg-orange-A10-O25"
+                  : "bg-winter-wizard-O25"
+              }`}
           >
             <h3 className="text-xxs text-white mb-1">{hourItem.title}</h3>
             <h3 className="text-base text-white mb-0 font-semibold">
@@ -83,13 +81,12 @@ const Tooltip = ({
       <img
         src={Icons.blackDropArrow}
         alt=""
-        className={`w-10 h-6 absolute -bottom-3.5 ${
-          index < 4
+        className={`w-10 h-6 absolute -bottom-3.5 ${index < 5
             ? "left-5"
             : overTheTimeGData.dayData.length - 6 < index
-            ? "right-5"
-            : "left-1/2 transform -translate-x-1/2"
-        }`}
+              ? "right-5"
+              : "left-1/2 transform -translate-x-1/2"
+          }`}
       />
     </div>
   );

@@ -50,7 +50,7 @@ const ProfessionWise = ({ data }: Props) => {
                     {
                         data.map((value) => <div
                             style={{ height: `${value.contribution}%` }}
-                            className='flex w-[65px] items-center gap-1'>
+                            className='flex w-[65px] items-center gap-1 duration-500'>
 
                             <div
                                 onMouseOver={() => {
@@ -62,7 +62,7 @@ const ProfessionWise = ({ data }: Props) => {
                                 <p className='text-xs text-masala'>{activeValue && id === value.id ? `${value.contribution}%` : value.contribution >= 15 && `${value.contribution}%`}</p>
 
                                 {
-                                    (activeValue && id === value.id) && <div className='absolute -top-[210px] -left-[8px] z-[99999]'>
+                                    (activeValue && id === value.id) && <div className='absolute -top-[210px] -left-[8px] z-[99999] animate-fadeIn'>
                                         <GraphTooltip data={value} validBgColor={colorProperty[value.id].tooltipBg} titleColor={colorProperty[value.id].textColor} align="left" />
                                     </div>
                                 }

@@ -25,7 +25,7 @@ const Type1 = ({ data }: Props) => {
         setOpenTooltip2(false)
     }
     return (
-        <div className="relative mb-[65px]">
+        <div className="relative">
             <div className="flex items-center rounded-t-full overflow-y-hidden w-[172px] h-[86px] relative z-[80]">
                 <div
                     style={{ transform: `rotate(-${progressDeg ? progressDeg * 1.8 : 90}deg)` }}
@@ -45,17 +45,17 @@ const Type1 = ({ data }: Props) => {
                 </div>
 
 
-                <div className="w-24 h-12 rounded-t-full bg-white z-[90] absolute bottom-0 left-1/2 transform -translate-x-1/2" />
+                <div className="w-[87px] h-[42px] rounded-t-full bg-white z-[90] absolute bottom-0 left-1/2 transform -translate-x-1/2" />
 
 
             </div>
             <div className="flex w-full">
-                <div className="w-[38px] h-[40px] male-drop-shadow" />
-                <div className="w-[96px] text-center">
+                <div className="w-[42px] h-[40px] male-drop-shadow" />
+                <div className="w-[88px] text-center">
                     <p className="font-medium text-heading-5 text-ct-blue-95 overflow-hidden truncate w-[90px] mx-auto">{data?.speaker?.totalSpeaker}</p>
                     <p className="text-small text-ct-blue-45 font-medium"> Total Speaker</p>
                 </div>
-                <div className="w-[38px] h-[40px] female-drop-shadow" />
+                <div className="w-[42px] h-[40px] female-drop-shadow" />
             </div>
             {/*-----------------------tooltip-----------------------------*/}
             {

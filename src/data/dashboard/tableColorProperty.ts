@@ -4,16 +4,16 @@ export const tableColorProperty = [
     tableColor: "#F5427F"
   },
   {
-    name: "Mono",
+    name: "Conversation- Mono",
     tableColor: "#425EF5"
   },
   {
-    name: "Di",
+    name: "Conversation- Di",
     tableColor: "#42E0F5"
 
   },
   {
-    name: "Multi",
+    name: "Conversation- Multi",
     tableColor: "#3EE545"
 
   },

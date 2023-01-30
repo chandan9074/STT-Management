@@ -29,3 +29,15 @@ export const homeDistrict = [
         ]
     }
 ]
+
+export const userRoleDropdownData = [
+    'Admin',
+    'Manager',
+    'Team Leader',
+    'Collector',
+    'Audio Checker',
+    'Annotator',
+    'Validator',
+    'Speaker-Male',
+    "Speaker-Female"
+]

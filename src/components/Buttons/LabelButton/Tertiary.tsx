@@ -6,9 +6,11 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     size: "xSmall" | "small" | "medium";
     variant: "CT-Blue" | "Blue";
     disabled?: boolean
+    marginX?: string;
+    marginY?: string;
 }
 const Tertiary = (props: Props) => {
-    const { label, size, variant, disabled, ...rest } = props
+    const { label, size, variant, disabled, marginX, marginY, ...rest } = props
     return (
         <>
             {
@@ -16,7 +18,7 @@ const Tertiary = (props: Props) => {
                     <button
                         style={{ cursor: `url("/disableCursor.svg"), auto` }}
                         disabled
-                        className={`bg-blue-gray-30 text-blue-gray-60 cursor-not-allowed
+                        className={`bg-blue-gray-30 text-blue-gray-60 cursor-not-allowed ${marginX} ${marginY}
                                 ${size === "xSmall" ? "xSmallButton" : size === "small" ? "smallButton" : "mediumButton"}
                                 `}
 
@@ -25,11 +27,11 @@ const Tertiary = (props: Props) => {
                     </button>
                     :
                     <button {...rest}
-                        className={`duration-300 border
+                        className={`duration-300 border ${marginX} ${marginY}
                                 ${variant === "CT-Blue" ? "text-ct-blue-60" : variant === "Blue" ? "text-secondary-blue-50" : ""}
-                                ${variant === "CT-Blue" ? "hover:border-blue-gray-A10" : "border-white"}
-                                ${variant === "Blue" ? "hover:border-blue-gray-A10" : "border-white"}
-                                ${variant === "CT-Blue" ? "active:bg-blue-gray-A20" : variant === "Blue" ? "active:bg-blue-gray-A20" : ""}
+                                ${variant === "CT-Blue" ? "hover:border-blue-gray-A10 hover:bg-white" : "border-transparent bg-transparent"}
+                                ${variant === "Blue" ? "hover:border-blue-gray-A10 hover:bg-white" : "border-transparent bg-transparent"}
+                                ${variant === "CT-Blue" ? "active:bg-blue-gray-20" : variant === "Blue" ? "active:bg-blue-gray-A10" : ""}
                                 ${size === "xSmall" ? "xSmallButton" : size === "small" ? "smallButton" : "mediumButton"}
                                 `}
                     >

@@ -3,6 +3,7 @@ import Icons from "../../../../assets/Icons";
 import MonthCalender from "../../../calender/MonthCalender";
 import { CommonContext } from "../../../../context/CommonProvider";
 import { DashboardContext } from "../../../../context/DashboardProvider";
+import Buttons from "../../../Buttons";
 
 type Props = {
   year: number;
@@ -64,13 +65,7 @@ const Header = ({ year, activeMonth }: Props) => {
         <button>
           <img src={Icons.left_indicator} alt="" className="py-1.5 px-1.5" />
         </button>
-        <button
-          onClick={() => setCalenderBtn(!calenderBtn)}
-          className={`${calenderBtn ? "bg-blue-gray-40" : "bg-ct-blue-05"
-            } rounded-[4px] py-1.5 px-4 text-small font-medium text-ct-blue-90 mx-2 border-2 border-transparent hover:border-blue-gray-40 duration-300`}
-        >
-          {activeMonth}'{year.toString().slice(2, 4)}
-        </button>
+        <Buttons.Date activeMonth={activeMonth} year={year} calenderBtn={calenderBtn} setCalenderBtn={setCalenderBtn} />
         <button>
           <img src={Icons.right_indicator} alt="" className="py-1.5 px-1.5" />
         </button>

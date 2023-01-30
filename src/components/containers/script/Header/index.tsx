@@ -5,6 +5,7 @@ import upload from "../../../../assets/Icons/upload.svg";
 import { Filter } from "../../../Filter";
 import { filterData } from "../../../../data/script/filter";
 import { ScriptContext } from "../../../../context/ScriptProvider";
+import { SearchBox } from "../../../SearchBox";
 
 const Header = () => {
   const scriptContext = useContext(ScriptContext);
@@ -72,16 +73,7 @@ const Header = () => {
           hoverBgColor="hover:bg-white"
           marginX="mx-2"
         />
-        <form>
-          <div className="flex items-center py-2 px-3 bg-blue-gray-A10 rounded-[4px] focus-within:rounded-full">
-            <img src={Icons.search} alt="" className="mr-2" />
-            <input
-              type="text"
-              placeholder="Search with script ID, Title..."
-              className="bg-transparent text-small text-ct-blue-90-70% outline-none border-none w-52"
-            />
-          </div>
-        </form>
+        <SearchBox.Type1 inputWidth="w-52" placeholder="Search with script ID, Title..." paddingX="px-3" paddingY="py-2" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
         <Filter.Type1 filterData={filterData} />
         <input
           type="file"

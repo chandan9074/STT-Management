@@ -7,6 +7,7 @@ interface ContextProps {
   role: string;
   handleRole: (value: string) => void;
   handleModuleType: (value: string) => void;
+  setType: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const CommonContext = createContext({} as ContextProps);
@@ -28,6 +29,7 @@ const CommonProvider = ({ children }: { children: any }) => {
   return (
     <CommonContext.Provider
       value={{
+        setType,
         loading,
         errorMsg,
         type,
