@@ -117,14 +117,33 @@ export function camelizeWithUnderScore(text: string) {
 export const homeDistrictSearch = (value: any, data: any) => {
   const searchTerm = value;
   const matchingDistricts = data.filter((districtObj: any) =>
-      districtObj.district.some((district: any) => district.toLowerCase().includes(searchTerm.toLowerCase()))
+    districtObj.district.some((district: any) => district.toLowerCase().includes(searchTerm.toLowerCase()))
   );
   const matchedDistrict = matchingDistricts.map((districtObj: any) => {
-      return {
-          division: districtObj.division,
-          district: districtObj.district.filter((district: any) => district.toLowerCase().includes(searchTerm.toLowerCase()))
-      }
+    return {
+      division: districtObj.division,
+      district: districtObj.district.filter((district: any) => district.toLowerCase().includes(searchTerm.toLowerCase()))
+    }
   });
 
   return matchedDistrict;
+}
+
+
+export const compareWithCurrentMonthYear = (mn: string, yr: number) => {
+  const month = Number(new Date(Date.parse(mn + " 1, 2012")).getMonth() + 1);
+  const year = yr;
+  const currentMonth = Number(moment().format("MM"));
+  const currentYear = Number(moment().format("YYYY"));
+
+  console.log("hello", currentMonth, currentYear, month, year)
+
+  if (year <= currentYear) {
+    if (month <= currentMonth) {
+      return false;
+    }
+    return true;
+  } else {
+    return true;
+  }
 }

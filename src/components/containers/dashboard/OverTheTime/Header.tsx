@@ -4,6 +4,7 @@ import MonthCalender from "../../../calender/MonthCalender";
 import { CommonContext } from "../../../../context/CommonProvider";
 import { DashboardContext } from "../../../../context/DashboardProvider";
 import Buttons from "../../../Buttons";
+import { compareWithCurrentMonthYear } from "../../../../helpers/Utils";
 
 type Props = {
   year: number;
@@ -27,12 +28,19 @@ const Header = ({ year, activeMonth }: Props) => {
   }
 
   const handleOverTheTimeData = (year: number, month: string) => {
-    dashboardContext.getOverTheTimeData(
-      commonContext.type,
-      commonContext.role,
-      year,
-      month
-    );
+    const dateStatus = compareWithCurrentMonthYear(month, year);
+    if (dateStatus) {
+      return;
+    }
+    else {
+      console.log("dateStatus", dateStatus)
+      dashboardContext.getOverTheTimeData(
+        commonContext.type,
+        commonContext.role,
+        year,
+        month
+      );
+    }
   };
 
   return (
