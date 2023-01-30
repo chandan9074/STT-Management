@@ -67,6 +67,7 @@ const DashboardProvider = ({ children }: { children: any }) => {
     });
     setCreateCollectData(response.data);
     // console.log(response.data);
+    setLoading(false);
   };
 
   const getTotalDataCollection = async (data: totalDataParamsDT) => {

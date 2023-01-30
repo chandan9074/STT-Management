@@ -4,6 +4,7 @@ import Header from "./Header";
 import { DashboardContext } from "../../../../context/DashboardProvider";
 import { overTheTimeGDT } from "../../../../types/dashboardTypes";
 import { CommonContext } from "../../../../context/CommonProvider";
+import { LoadingSkeleton } from "../../../../assets/loadingSkeleton";
 
 const OverTheTime = () => {
   const [overTheTimeData, setOverTheTimeData] = useState<
@@ -21,7 +22,7 @@ const OverTheTime = () => {
   }, [dashboardContext.overTheTimeData]);
   return (
     <div className="p-4 bg-white border-t border-blue-gray-30">
-      {overTheTimeData?.module && (
+      {overTheTimeData?.module ?
         <>
           <Header
             year={overTheTimeData.year}
@@ -29,7 +30,9 @@ const OverTheTime = () => {
           />
           <BarChart overTheTimeGData={overTheTimeData} />
         </>
-      )}
+        :
+        <img src={LoadingSkeleton.overTheTimeSkeleton} className="w-full" />
+      }
     </div>
   );
 };
