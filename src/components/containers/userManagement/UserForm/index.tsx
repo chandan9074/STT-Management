@@ -6,6 +6,8 @@ import ActionButton from '../../../Form/ActionButton';
 import PersonalInformation from './PersonalInformation';
 import FileReport from './FileReport';
 import './UserForm.css';
+import PersonalInformation2 from './PersonalInformation2';
+import { useEffect, useState } from 'react';
 
 const validationSchema = yup.object({
     role: yup.array().min(1, "Please select at least one role"),
@@ -17,14 +19,33 @@ const validationSchema = yup.object({
     presentDistrict: yup.string().required('Present District is Required'),
     lastDegreeAchived: yup.string().required('Last Degree Achieved District is Required'),
     cvFile: yup.mixed().required("File is required"),
+
+
     // adminData: yup.string().required('Admin data is Required'),
+
+});
+
+
+const validationSchemaSpeaker = yup.object({
+    speakersName: yup.string().required('Speakers Name is Required'),
+    ageRange: yup.string().required('Age Range is Required'),
+    education: yup.string().required('Education is Required'),
+    educationSituation: yup.string().required('Education situation is Required'),
+    childhoodPlace: yup.string().required('Childhood place is Required'),
+    district: yup.string().required('District place is Required'),
+    upazilaCity: yup.string().required('Upazilla/ City is Required'),
+    villageArea: yup.string().required('Village/ Area is Required'),
 });
 
 
 const UserForm = () => {
+
+    const [isSpeaker, setIsSpeaker] = useState<boolean>(false);
+
+
     const formik = useFormik({
         initialValues: {
-            role: ['Admin', 'Speaker'],
+            role: [],
             primaryRole: '',
             name: '',
             email: '',
@@ -42,12 +63,43 @@ const UserForm = () => {
                 name: 'Jahir Uddin',
                 number: '018684660691'
             },
+
+            // Speaker
+            speakersName: '',
+            gender: '',
+            dateOfBirth: '',
+            ageRange: '',
+            education: '',
+            educationSituation: '',
+            childhoodPlace: '',
+            district: '',
+            upazilaCity: '',
+            villageArea: '',
+            smoking: 'Yes',
+            stutter: 'No',
+            hearingStatus: ''
         },
-        validationSchema: validationSchema,
+        validationSchema: isSpeaker ? validationSchemaSpeaker : validationSchema,
         onSubmit: (values) => {
             console.log('submit------', values);
         },
     });
+
+    useEffect(() => {
+
+        if (formik.values.role?.length === 0) {
+            setIsSpeaker(false);
+        }
+
+        formik.values.role?.map((value) => {
+            if (value === 'Speaker') {
+                setIsSpeaker(true);
+            }
+            else {
+                setIsSpeaker(false);
+            }
+        })
+    }, [formik.values.role]);
 
     const getFile = (file: any) => {
         console.log('file', file);
@@ -74,7 +126,12 @@ const UserForm = () => {
                             <Role formik={formik} />
                         </div>
 
-                        <PersonalInformation formik={formik} />
+
+                        {
+                            isSpeaker ?
+                                <PersonalInformation2 formik={formik} /> :
+                                <PersonalInformation formik={formik} />
+                        }
 
                         <div className='mt-[24px] mb-[48px]'>
                             <FileReport formik={formik} getFile={getFile} />

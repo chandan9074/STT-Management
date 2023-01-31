@@ -44,7 +44,6 @@ function App() {
         <Route path={PATH.USER_PATH} element={<UserManagement />} />
 
         {/* <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} /> */}
-        <Route path={PATH.CREATE_USER_PATH} element={<UserManagement />} />
         <Route path={`${PATH.ACTIVE_USER_PATH}/:id`} element={<Activity />} />
         <Route path="*" element={<NotFound />} />
 

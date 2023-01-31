@@ -14,11 +14,12 @@ interface Props {
     width: string;
     indexNumber: number;
     data: createCollectSimilarPropertyDT,
-    tooltipTitleColor: string
+    tooltipTitleColor: string,
+    toolTipValidColor: string
 
 }
 
-const Circle1 = ({ bgColor, ringColor, textColor, value, shadowColor, height, width, indexNumber, data, tooltipTitleColor, inititalShadow }: Props) => {    
+const Circle1 = ({ bgColor, ringColor, textColor, value, shadowColor, height, width, indexNumber, data, tooltipTitleColor, inititalShadow, toolTipValidColor }: Props) => {    
     
     return (
         <div>
@@ -33,7 +34,7 @@ const Circle1 = ({ bgColor, ringColor, textColor, value, shadowColor, height, wi
                     <div className={`z-[120] animate-fadeIn absolute top-[-208px] hidden group-hover:block`} >
                         <GraphTooltip
                             data={data && data}
-                            validBgColor="bg-coral-90"
+                            validBgColor={toolTipValidColor}
                             titleColor={tooltipTitleColor}
                             align="center"
                         />

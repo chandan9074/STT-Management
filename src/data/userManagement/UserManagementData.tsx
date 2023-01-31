@@ -91,3 +91,36 @@ export const adminData = [
         number: '018687910691'
     }
 ]
+
+export const gender = [
+    'Male',
+    'Female'
+]
+
+export const education = [
+    'Uneducated',
+    'Secondary',
+    'Higher Secondary',
+    'Graduate & Postgraduate'
+]
+
+export const educationSituation = [
+    'Lower Class',
+    'Middle Class',
+    'Upper Class            '
+]
+
+export const ageRange = [
+    '7-14',
+    '15-24',
+    '25-34',
+    '35-44',
+    '45-59',
+    '60-65'
+]
+
+export const yesNoPreferData = [
+    'Yes', 
+    'No',
+    'Prefer not to say'
+]

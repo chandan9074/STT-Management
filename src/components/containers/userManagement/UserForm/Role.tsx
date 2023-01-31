@@ -1,9 +1,12 @@
 import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
-import { Field, FormikProvider } from 'formik';
-import React from 'react';
+import { useState } from 'react';
+import { boolean } from 'yup';
 import { RoleData } from '../../../../data/userManagement/UserManagementData';
 
 const Role = ({ formik }: { formik: any }) => {
+
+    const [isSpeaker, setIsSpeaker] = useState<string>('');
+
     return (
         <div>
             <FormGroup row>
@@ -12,13 +15,23 @@ const Role = ({ formik }: { formik: any }) => {
                         <FormControlLabel
                             control={
                                 <Checkbox
+                                    // icon={formik.values.role.length > 0 && !formik.values.role.includes('Speaker') ? <div className='h-4 w-4 bg-blue-gray-40'></div> : undefined}
+
+                                    // disabled={formik.values.role.length === 0 ? false : formik.values.role.includes('Speaker') ? false : true}
+                                    // disabled={formik.values.role.length > 0 && value === "Speaker"}
                                     name={value}
                                     checked={formik.values.role.includes(value)}
                                     onChange={(e) => {
                                         if (e.target.checked) {
-                                            formik.setFieldValue("role", [...formik.values.role, value]);
+                                            if (value === "Speaker") {
+                                                formik.setFieldValue("role", [value]);
+                                                setIsSpeaker('Speaker');
+                                            } else {
+                                                formik.setFieldValue("role", [...formik.values.role.filter((item: string) => item !== "Speaker"), value]);
+                                                setIsSpeaker('not speaker')
+                                            }
                                         } else {
-                                            formik.setFieldValue("role", formik.values.role.filter((item: any) => item !== value));
+                                            formik.setFieldValue("role", formik.values.role.filter((item: string) => item !== value));
                                         }
                                     }}
                                 />
@@ -28,15 +41,15 @@ const Role = ({ formik }: { formik: any }) => {
                     </div>
                 ))}
 
-                
+
 
             </FormGroup>
 
             <div>
-              {formik.touched.role && formik.errors.role ? (
+                {formik.touched.role && formik.errors.role ? (
                     <div className='text-red-600 text-[12px]'>{formik.errors.role}</div>
                 ) : null}
-              </div>
+            </div>
         </div>
     );
 };

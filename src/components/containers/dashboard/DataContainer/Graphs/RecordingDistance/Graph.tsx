@@ -7,28 +7,32 @@ const color = [
         ringColor: 'from-[#FFD3D3] via-[#E8C8C8] to-[#E5BEBE]',
         shadowColor: 'hover:shadow-light-tomato2',
         tooltipTitleColor: 'text-red-15',
-        inititalShadow: 'shadow-light-tomato-4'
+        inititalShadow: 'shadow-light-tomato-4',
+        toolTipValidColor: 'bg-[#FF8C8C] bg-opacity-[12%]'
     },
     {
         bgColor: 'bg-green-A10',
         ringColor: 'from-[#E2FBD7] via-[#D1E8C7] to-[#D1E8C7]',
         shadowColor: 'hover:shadow-light-green2',
         tooltipTitleColor: 'text-green-A10',
-        inititalShadow: 'shadow-light-onahau-4'
+        inititalShadow: 'shadow-light-onahau-4',
+        toolTipValidColor: 'bg-[#94D676] bg-opacity-[12%]'
     },
     {
         bgColor: 'bg-[#FFF5CC]',
         ringColor: 'from-[#FFF5CC] via-[#E8DFBA] to-[#E8DFBA]',
         shadowColor: 'hover:shadow-light-yellow2',
         tooltipTitleColor: 'text-yellow-A10',
-        inititalShadow: 'shadow-light-periwinkle-4'
+        inititalShadow: 'shadow-light-periwinkle-4',
+        toolTipValidColor: 'bg-[#FFE98C] bg-opacity-[12%]'
     },
     {
         bgColor: 'bg-[#FFE5D3]',
         ringColor: 'from-[#FFE5D3] via-[#E8D0C0] to-[#E8D0C0]',
         shadowColor: 'hover:shadow-light-orange2',
         tooltipTitleColor: 'text-orange-A10',
-        inititalShadow: 'shadow-light-orange-4'
+        inititalShadow: 'shadow-light-orange-4',
+        toolTipValidColor: 'bg-[#FFBB8C] bg-opacity-[12%] '
         
     },
     {
@@ -36,21 +40,24 @@ const color = [
         ringColor: 'from-[#CCF8FE] via-[#BAE3E8] to-[#BAE3E8]',
         shadowColor: 'hover:shadow-light-blue2',
         tooltipTitleColor: 'text-blue-A10',
-        inititalShadow: 'shadow-light-orinoco-4'
+        inititalShadow: 'shadow-light-orinoco-4',
+        toolTipValidColor: 'bg-[#8CF0FE] bg-opacity-[12%]'
     },
     {
         bgColor: 'bg-[#CCDDFE]',
         ringColor: 'from-[#CCDDFE] via-[#BACAE8] to-[#BACAE8]',
         shadowColor: 'hover:shadow-light-blue3',
         tooltipTitleColor: 'text-blue-20',
-        inititalShadow: 'shadow-light-yellow-4'
+        inititalShadow: 'shadow-light-yellow-4',
+        toolTipValidColor: 'bg-[#8CB3FE] bg-opacity-[12%]'
     },
     {
         bgColor: 'bg-[#DAD7FE]',
         ringColor: 'from-[#DAD7FE] via-[#CAC8E8] to-[#CAC8E8]',
         shadowColor: 'hover:shadow-light-purple',
         tooltipTitleColor: 'text-purple-A10',
-        inititalShadow: 'shadow-light-purple-4'
+        inititalShadow: 'shadow-light-purple-4',
+        toolTipValidColor: 'bg-[#A39CFF] bg-opacity-[12%]'
 
     }
 
@@ -77,6 +84,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                         indexNumber={0}
                         data={data[0]}
                         tooltipTitleColor={color[0].tooltipTitleColor}
+                        toolTipValidColor={color[0].toolTipValidColor}
                     />
 
                     <div className='absolute -right-[60px] -top-[100px]'>
@@ -92,6 +100,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                             indexNumber={1}
                             data={data[1]}
                             tooltipTitleColor={color[1].tooltipTitleColor}
+                            toolTipValidColor={color[1].toolTipValidColor}
                         />
 
                     </div>
@@ -110,6 +119,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                                 indexNumber={2}
                                 data={data[2]}
                                 tooltipTitleColor={color[2].tooltipTitleColor}
+                                toolTipValidColor={color[2].toolTipValidColor}
                             />
 
                             <div className='absolute -top-[55px] -right-[12px]'>
@@ -126,6 +136,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                                         indexNumber={3}
                                         data={data[3]}
                                         tooltipTitleColor={color[4].tooltipTitleColor}
+                                        toolTipValidColor={color[4].toolTipValidColor}
                                     />
 
                                     <div className='absolute -top-[42px] left-[4px]'>
@@ -142,6 +153,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                                                 indexNumber={5}
                                                 data={data[5]}
                                                 tooltipTitleColor={color[5].tooltipTitleColor}
+                                                toolTipValidColor={color[5].toolTipValidColor}
                                             />
 
                                             <div className='absolute top-[14px] -right-[34px]'>
@@ -157,6 +169,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                                                     indexNumber={6}
                                                     data={data[6]}
                                                     tooltipTitleColor={color[6].tooltipTitleColor}
+                                                    toolTipValidColor={color[6].toolTipValidColor}
                                                 />
                                             </div>
                                         </div>
@@ -181,6 +194,7 @@ const Graph = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
                             indexNumber={4}
                             data={data[4]}
                             tooltipTitleColor={color[3].tooltipTitleColor}
+                            toolTipValidColor={color[3].toolTipValidColor}
                         />
                     </div>
                 </div>

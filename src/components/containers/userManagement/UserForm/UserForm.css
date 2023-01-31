@@ -4,10 +4,22 @@
 
 .file-upload-hidden2 .ant-upload-wrapper .ant-upload-list .ant-upload-list-item-error .ant-upload-list-item-name {
     padding-bottom: 5px !important;
-    margin-right: 100px ;
-    
+    margin-right: 100px;
+
 }
 
-.file-upload-hidden2 .ant-upload-wrapper .ant-upload-list .ant-upload-list-item-error{
+.file-upload-hidden2 .ant-upload-wrapper .ant-upload-list .ant-upload-list-item-error {
     margin-bottom: 5px !important;
+}
+
+.userFormDate .ant-picker .ant-picker-input {
+    display: none !important;
+    background-color: red;
+}
+
+.userFormDate .ant-picker-dropdown {
+    position: absolute !important;
+    top: calc(50% - -469px) !important;
+    left: calc(50% - 396px) !important;
+    z-index: 99999 !important;
 }
