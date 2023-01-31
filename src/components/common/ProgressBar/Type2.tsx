@@ -1,9 +1,52 @@
 import React from 'react';
 
-const Type2 = () => {
+interface Props {
+    value: number | undefined;
+    bgColor: string;
+    height: number
+}
+
+interface InerProps {
+    bgColor: string;
+    progress: string;
+    height: number;
+
+}
+
+const Type2 = ({ value, bgColor, height }: Props) => {
+
+    const ProgressBar = ({ bgColor, progress, height }: InerProps) => {
+
+        const Parentdiv: any = {
+            height: height,
+            width: '100%',
+            background: '#E9EDF3',
+            borderRadius: 40,
+        }
+
+        const Childdiv: any = {
+            height: '100%',
+            width: `${progress}%`,
+            background: bgColor,
+            borderRadius: value === 100 ? "40px" : "40px 0px 0px 40px",
+            textAlign: 'right'
+        }
+
+        return (
+            <div style={Parentdiv}>
+                <div style={Childdiv}>
+
+                </div>
+            </div>
+        )
+    }
     return (
         <div>
-            <h1>hello2</h1>
+
+            <ProgressBar
+                bgColor={bgColor}
+                progress={`${value}`}
+                height={height} />
         </div>
     );
 };

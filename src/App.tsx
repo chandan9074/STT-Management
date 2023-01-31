@@ -14,6 +14,7 @@ import UserManagement from "./pages/UserManagement";
 import Paragraph from "antd/es/skeleton/Paragraph";
 import Activity from "./pages/UserManagement/Activity";
 import UserForm from "./components/containers/userManagement/UserForm";
+import PdfContainer from "./components/PDF/PdfContainer";
 // import UserManagement from "./components/containers/userManagement";
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
 
         <Route path={PATH.CREATE_USER_PATH} element={<UserForm />} />
+        <Route path={PATH.ORGANIZER_PATH} element={<PdfContainer />} />
 
         {/* <Route path={PATH.SCRIPT} element={<Script />} /> */}
 

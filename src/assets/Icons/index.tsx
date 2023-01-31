@@ -81,6 +81,9 @@ import Avatar from './Avatar.svg'
 import Up from './up.svg'
 import createSkeleton from './createSkeleton.svg'
 import collectSkeleton from './collectSkeleton.svg'
+import Script from "./script.svg";
+import BlueMusicIcon from "./blueMusicArrow.svg";
+import BlueRightArrow from "./blueRightArrow.svg";
 
 import Unfold_More from './unfold_more.svg'
 
@@ -169,6 +172,9 @@ const Icons = {
   createSkeleton,
   collectSkeleton,
   Unfold_More,
+  Script,
+  BlueMusicIcon,
+  BlueRightArrow
 };
 
 export default Icons;

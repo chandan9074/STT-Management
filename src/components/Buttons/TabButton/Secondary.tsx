@@ -39,7 +39,7 @@ const Secondary = (props: Props) => {
                 <button
                     key={index}
                     onClick={() => handleActive(data, index)}
-                    className={`py-2 px-3 text-xxs duration-300 font-bold ${index === 0 ? "rounded-l-md" : ""} ${index === (tabLabel.length - 1) ? "rounded-r-md" : ""}
+                    className={`py-2 px-6 text-xxs duration-300 font-bold ${index === 0 ? "rounded-l-md" : ""} ${index === (tabLabel.length - 1) ? "rounded-r-md" : ""}
                     ${activeButton === index ? `${buttonVariantStyle[variant]?.selected}` :
                             `${buttonVariantStyle[variant]?.hover} ${buttonVariantStyle[variant]?.pressed} ${buttonVariantStyle[variant]?.text}
                         bg-blue-gray-A10 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Divider,
     IconButton,
@@ -13,9 +13,9 @@ import { MoreOutlined } from "@ant-design/icons";
 import Icons from "../../assets/Icons";
 import Buttons from '../Buttons';
 
-
 const Type2 = () => {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const [pdf, setPdf] = useState<boolean>(false)
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
@@ -31,12 +31,12 @@ const Type2 = () => {
                     style={{
                         background: "#B8BFCC",
                         borderRadius: "50%",
-                        height:"100%",
-                        width:"100%",
+                        height: "100%",
+                        width: "100%",
                         color: "white",
-                        display:"flex",
-                        justifyContent:"center",
-                        alignItems:"center"
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center"
                     }} /> : <MoreOutlined
                     style={{
                         background: "inherit",
@@ -49,7 +49,7 @@ const Type2 = () => {
             />
 
 
-            
+
             {
                 open ? <div>
                     <div
@@ -78,7 +78,10 @@ const Type2 = () => {
                                 <p className='text-small font-medium text-blue-gray-80 hover:text-ct-blue-60'>Download as Jpeg</p>
                             </div>
 
-                            <div className='flex gap-3 hover:bg-blue-gray-05 '>
+                            <div className='flex gap-3 hover:bg-blue-gray-05 '
+
+                                onClick={() => setPdf(true)}
+                            >
                                 <img
                                     src={Icons.PictureAsPdf}
                                     alt=""
@@ -103,6 +106,9 @@ const Type2 = () => {
                     </div>
                 </div> : ""
             }
+
+
+            
 
         </div>
     );

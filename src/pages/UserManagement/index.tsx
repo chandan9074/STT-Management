@@ -20,7 +20,7 @@ const UserManagement = () => {
                     massages='A user has been created'
                     iconSrc={Icons.home}
                 />
-                <Buttons.TabButton.Secondary setActiveData={setData} tabLabel={['Type1', "Type2", "Type3"]} />
+              
 
             </div>
         </Layouts.Forth>
