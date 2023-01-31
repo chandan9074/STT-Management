@@ -7,7 +7,7 @@ import { Table } from 'antd';
 import Buttons from '../Buttons';
 import './type4Table.css';
 import { Status } from '../Status';
-import { redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FilterValue, SorterResult } from 'antd/es/table/interface';
 
 interface DataType {
@@ -59,6 +59,7 @@ const Type5 = () => {
     const [open, setOpen] = useState(false);
     const [drawerData, setDrawerData] = useState<any>();
     const [active, setActive] = useState<string>("")
+    const navigate = useNavigate();
     // const [searchedColumn, setSearchedColumn] = useState("");
 
     const showDrawer = (key: any) => {
@@ -172,12 +173,12 @@ const Type5 = () => {
         },
         {
             title: `${"Activity".toLocaleUpperCase()}`,
-            // dataIndex: 'address',
+            dataIndex: 'age',
             align: "center",
             width: 150,
-            render: (_, record: { key: React.Key }) => (<>
+            render: (data) => (<>
                 <Buttons.LabelButton.Tertiary
-                    onClick={() => redirect("")}
+                    onClick={() => navigate(`/user-management/activity/${data}`)}
                     size='xSmall'
                     variant='Blue'
                     label='Check Activity'
