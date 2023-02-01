@@ -14,6 +14,8 @@ import UserManagement from "./pages/UserManagement";
 import Paragraph from "antd/es/skeleton/Paragraph";
 import Activity from "./pages/UserManagement/Activity";
 import UserForm from "./components/containers/userManagement/UserForm";
+import Assign from "./pages/Assign";
+import AudioManagement from "./pages/AudioManagement";
 // import UserManagement from "./components/containers/userManagement";
 
 function App() {
@@ -48,6 +50,11 @@ function App() {
         <Route path="*" element={<NotFound />} />
 
         <Route path={PATH.CREATE_USER_PATH} element={<UserForm />} />
+
+        <Route path={PATH.ASSIGN_PATH} element={<Assign />} />
+
+        <Route path={`${PATH.AUDIO_PATH}/${PATH.COLLECTING_AUDIO}`} element={<AudioManagement />} />
+        
 
         {/* <Route path={PATH.SCRIPT} element={<Script />} /> */}
 

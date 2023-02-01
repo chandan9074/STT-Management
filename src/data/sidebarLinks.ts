@@ -32,7 +32,7 @@ let sidebarMenu = {
       type_multi: null,
       // path: PATH.AUDIO_PATH,
       // path: PATH.COLLECTING_AUDIO,
-      path: `${PATH.TEST}/${PATH.COLLECTING_AUDIO}`,
+      path: `${PATH.AUDIO_PATH}/${PATH.COLLECTING_AUDIO}`,
       permissions: [Permission.ALL],
     },
     {

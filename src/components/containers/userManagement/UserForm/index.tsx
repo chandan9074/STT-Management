@@ -19,10 +19,7 @@ const validationSchema = yup.object({
     presentDistrict: yup.string().required('Present District is Required'),
     lastDegreeAchived: yup.string().required('Last Degree Achieved District is Required'),
     cvFile: yup.mixed().required("File is required"),
-
-
     // adminData: yup.string().required('Admin data is Required'),
-
 });
 
 
@@ -85,18 +82,15 @@ const UserForm = () => {
             },
         };
 
-        const handleSpeakerSubmit = (values: any) => {
-            // Handle the submission of values from the speaker form
-            console.log('Speaker form values:', values);
-            setIsSpeaker(isSpeaker);
-          }
-          
-          const handlePersonalInformationSubmit = (values: any) => {
-            // Handle the submission of values from the PersonalInformation form
-            console.log('Personal Information form values:', values);
-            setIsSpeaker(isSpeaker);
-          }
+    const handleSpeakerSubmit = (values: any) => {
+        console.log('Speaker form values:', values);
+        setIsSpeaker(isSpeaker);
+    }
 
+    const handlePersonalInformationSubmit = (values: any) => {
+        console.log('Personal Information form values:', values);
+        setIsSpeaker(isSpeaker);
+    }
 
     const formik = useFormik({
         initialValues: initialValues,
@@ -108,9 +102,6 @@ const UserForm = () => {
         // },
         onSubmit: isSpeaker ? handleSpeakerSubmit : handlePersonalInformationSubmit,
     });
-
-    console.log('ispeaker', isSpeaker);
-
 
     useEffect(() => {
 
@@ -125,17 +116,15 @@ const UserForm = () => {
             else {
                 setIsSpeaker(false);
             }
+            return isSpeaker
         })
     }, [formik.values.role]);
 
     const getFile = (file: any) => {
-        console.log('file', file);
         let formData = new FormData();
         formData.append('file', file)
         formik.setFieldValue('cvFile', formData);
-
     }
-
 
     return (
         <div className='w-full flex justify-center script-form bg-default'>
