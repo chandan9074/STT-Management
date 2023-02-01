@@ -81,7 +81,7 @@ import Avatar from './Avatar.svg'
 import Up from './up.svg'
 import createSkeleton from './createSkeleton.svg'
 import collectSkeleton from './collectSkeleton.svg'
-
+import double_up_arrow from './dubble_up_arrow.svg'
 import Unfold_More from './unfold_more.svg'
 
 const Icons = {
@@ -169,6 +169,7 @@ const Icons = {
   createSkeleton,
   collectSkeleton,
   Unfold_More,
+  double_up_arrow
 };
 
 export default Icons;
