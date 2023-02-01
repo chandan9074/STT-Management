@@ -80,7 +80,11 @@ textarea {
 }
 
 
-#sub-domain[disabled] {
+/* #sub-domain[disabled] {
+    cursor: not-allowed !important;
+} */
+
+[disabled] {
     cursor: not-allowed !important;
 }
 

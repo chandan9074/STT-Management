@@ -37,14 +37,34 @@ const validationSchemaSpeaker = yup.object({
     villageArea: yup.string().required('Village/ Area is Required'),
 });
 
-
 const UserForm = () => {
 
     const [isSpeaker, setIsSpeaker] = useState<boolean>(false);
-
-
-    const formik = useFormik({
-        initialValues: {
+    const initialValues = isSpeaker
+        ? {
+            // Speaker
+            role: [],
+            speakersName: '',
+            gender: '',
+            dateOfBirth: '',
+            ageRange: '',
+            education: '',
+            educationSituation: '',
+            childhoodPlace: '',
+            district: '',
+            upazilaCity: '',
+            villageArea: '',
+            smoking: 'Yes',
+            stutter: 'No',
+            hearingStatus: '',
+            reportingTo: '',
+            adminData: {
+                id: 4,
+                name: 'Jahir Uddin',
+                number: '018684660691'
+            },
+        }
+        : {
             role: [],
             primaryRole: '',
             name: '',
@@ -63,27 +83,34 @@ const UserForm = () => {
                 name: 'Jahir Uddin',
                 number: '018684660691'
             },
+        };
 
-            // Speaker
-            speakersName: '',
-            gender: '',
-            dateOfBirth: '',
-            ageRange: '',
-            education: '',
-            educationSituation: '',
-            childhoodPlace: '',
-            district: '',
-            upazilaCity: '',
-            villageArea: '',
-            smoking: 'Yes',
-            stutter: 'No',
-            hearingStatus: ''
-        },
+        const handleSpeakerSubmit = (values: any) => {
+            // Handle the submission of values from the speaker form
+            console.log('Speaker form values:', values);
+            setIsSpeaker(isSpeaker);
+          }
+          
+          const handlePersonalInformationSubmit = (values: any) => {
+            // Handle the submission of values from the PersonalInformation form
+            console.log('Personal Information form values:', values);
+            setIsSpeaker(isSpeaker);
+          }
+
+
+    const formik = useFormik({
+        initialValues: initialValues,
         validationSchema: isSpeaker ? validationSchemaSpeaker : validationSchema,
-        onSubmit: (values) => {
-            console.log('submit------', values);
-        },
+        // onSubmit: (values) => {
+        //     console.log('submit------', values);
+
+        //     setIsSpeaker(isSpeaker);
+        // },
+        onSubmit: isSpeaker ? handleSpeakerSubmit : handlePersonalInformationSubmit,
     });
+
+    console.log('ispeaker', isSpeaker);
+
 
     useEffect(() => {
 
@@ -129,16 +156,36 @@ const UserForm = () => {
 
                         {
                             isSpeaker ?
-                                <PersonalInformation2 formik={formik} /> :
-                                <PersonalInformation formik={formik} />
+                                <div>
+                                    <PersonalInformation2 formik={formik} />
+                                    <div className='mt-[24px] mb-[48px]'>
+                                        <FileReport formik={formik} getFile={getFile} />
+                                    </div>
+
+                                    <div>
+                                        <ActionButton />
+                                    </div>
+                                </div>
+                                :
+                                <div>
+                                    <PersonalInformation formik={formik} />
+                                    <div className='mt-[24px] mb-[48px]'>
+                                        <FileReport formik={formik} getFile={getFile} />
+                                    </div>
+
+                                    <div>
+                                        <ActionButton />
+                                    </div>
+                                </div>
                         }
 
-                        <div className='mt-[24px] mb-[48px]'>
+                        {/* <div className='mt-[24px] mb-[48px]'>
                             <FileReport formik={formik} getFile={getFile} />
                         </div>
+                        
                         <div>
                             <ActionButton />
-                        </div>
+                        </div> */}
 
                     </div>
                 </form>

@@ -79,10 +79,10 @@ import Gavel from './gavel.svg';
 import Shadow_bg from './shadow_bg.png'
 import Avatar from './Avatar.svg'
 import Up from './up.svg'
-import createSkeleton from './createSkeleton.svg'
-import collectSkeleton from './collectSkeleton.svg'
-
-import Unfold_More from './unfold_more.svg'
+import createSkeleton from './createSkeleton.svg';
+import collectSkeleton from './collectSkeleton.svg';
+import Unfold_More from './unfold_more.svg';
+import calenderIcon from './calender_icon.svg';
 
 const Icons = {
   currency,
@@ -169,6 +169,7 @@ const Icons = {
   createSkeleton,
   collectSkeleton,
   Unfold_More,
+  calenderIcon
 };
 
 export default Icons;

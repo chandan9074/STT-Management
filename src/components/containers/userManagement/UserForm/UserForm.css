@@ -17,9 +17,14 @@
     background-color: red;
 }
 
-.userFormDate .ant-picker-dropdown {
+.datePicker  {
     position: absolute !important;
     top: calc(50% - -469px) !important;
     left: calc(50% - 396px) !important;
     z-index: 99999 !important;
+}
+
+.datePicker .ant-picker-panel-container {
+    width: 378px !important;
+
 }

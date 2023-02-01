@@ -1,7 +1,7 @@
-import { CaretDownOutlined } from '@ant-design/icons';
-import { Autocomplete, FormControl, FormControlLabel, FormLabel, Grid, IconButton, InputAdornment, InputLabel, OutlinedInput, Radio, RadioGroup, TextField } from '@mui/material';
-import { DatePicker, DatePickerProps, Modal } from 'antd';
-import React, { useEffect, useRef, useState } from 'react';
+import { Autocomplete, FormControl, FormControlLabel, Grid, IconButton, InputAdornment, InputLabel, OutlinedInput, Radio, RadioGroup, TextField } from '@mui/material';
+import { DatePicker, DatePickerProps } from 'antd';
+import { useState } from 'react';
+import Icons from '../../../../assets/Icons';
 import { ageRange, education, educationSituation, gender, homeDistrict, yesNoPreferData } from '../../../../data/userManagement/UserManagementData';
 import '../../../calender/customizeCalender.css';
 import HomeDistrictSelect from '../../../Form/HomeDistrictSelect';
@@ -14,6 +14,12 @@ type Prop =
 const PersonalInformation2 = ({ formik }: Prop) => {
 
     const [openCalender, setOpenCalender] = useState<boolean>(false);
+
+    const onDateChange: DatePickerProps['onChange'] = (date, dateString) => {
+        console.log(dateString);
+        formik.setFieldValue("dateOfBirth", dateString)
+
+    };
 
     return (
         <div>
@@ -63,14 +69,11 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                                 id='dateOfBirth'
                                 autoComplete='off'
                                 type='text'
-                                // onMouseDown={onHomeDistrictFocus}
                                 name={formik.values.dateOfBirth}
                                 label={<div>Date of Birth <span className='text-[red]'>*</span></div>}
-                                // value={onTextField || ''}
-                                // onChange={(e) => {
-                                //     handleSearch(e);
-                                //     setOnTextField(e.target.value);
-                                // }}
+                                value={formik.values.dateOfBirth}
+                                onChange={formik.handleChange}
+                                onClick={() => setOpenCalender(true)}
                                 endAdornment={
                                     <InputAdornment position="end">
                                         <IconButton
@@ -79,7 +82,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                                             // edge="end"
                                             onClick={() => setOpenCalender(true)}
                                         >
-                                            <CaretDownOutlined />
+                                            <img src={Icons.calenderIcon} alt="" />
                                         </IconButton>
                                     </InputAdornment>
                                 }
@@ -88,11 +91,10 @@ const PersonalInformation2 = ({ formik }: Prop) => {
 
                         <div className='userFormDate relative'>
                             <DatePicker
-                                style={{
-                                    position: 'absolute',
-                                }}
                                 bordered={false}
                                 open={openCalender}
+                                popupClassName='datePicker'
+                                onChange={onDateChange}
                             />
                         </div>
                     </div>

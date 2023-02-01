@@ -19,6 +19,7 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
                         value={formik.values.primaryRole}
                         // value={formik.values.role || scriptrole[0]}
                         // defaultValue={formik.values.role}
+                        disabled={formik.values.role.length === 0}
 
                         onChange={(event, value) => {
                             if (typeof value === 'string') {

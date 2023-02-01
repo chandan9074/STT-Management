@@ -15,10 +15,8 @@ const Role = ({ formik }: { formik: any }) => {
                         <FormControlLabel
                             control={
                                 <Checkbox
-                                    // icon={formik.values.role.length > 0 && !formik.values.role.includes('Speaker') ? <div className='h-4 w-4 bg-blue-gray-40'></div> : undefined}
-
-                                    // disabled={formik.values.role.length === 0 ? false : formik.values.role.includes('Speaker') ? false : true}
-                                    // disabled={formik.values.role.length > 0 && value === "Speaker"}
+                                    icon={((formik.values.role.length > 0 && !formik.values.role.includes("Speaker") && value === "Speaker") || (formik.values.role.includes("Speaker") && value !== "Speaker")) ? <div className='h-4 w-4 bg-blue-gray-40'></div> : undefined}
+                                    disabled={(formik.values.role.length > 0 && !formik.values.role.includes("Speaker") && value === "Speaker") || (formik.values.role.includes("Speaker") && value !== "Speaker")}
                                     name={value}
                                     checked={formik.values.role.includes(value)}
                                     onChange={(e) => {
@@ -34,9 +32,10 @@ const Role = ({ formik }: { formik: any }) => {
                                             formik.setFieldValue("role", formik.values.role.filter((item: string) => item !== value));
                                         }
                                     }}
+
                                 />
                             }
-                            label={<h1 className={`text-[14px] font-medium ${formik.values.role.includes(value) ? 'text-secondary-blue-50' : 'text-blue-gray-75 '} `}>{value}</h1>}
+                            label={<h1 className={`text-[14px] font-medium ${formik.values.role.includes(value) ? 'text-secondary-blue-50' : ((formik.values.role.length > 0 && !formik.values.role.includes("Speaker") && value === "Speaker") || (formik.values.role.includes("Speaker") && value !== "Speaker")) ? 'text-blue-gray-45' : 'text-blue-gray-75 '} `}>{value}</h1>}
                         />
                     </div>
                 ))}
