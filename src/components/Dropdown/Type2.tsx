@@ -12,8 +12,15 @@ import './dropDown.css'
 import { MoreOutlined } from "@ant-design/icons";
 import Icons from "../../assets/Icons";
 import Buttons from '../Buttons';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import { PDF } from '../PDF';
 
-const Type2 = () => {
+interface Props {
+    data: any;
+    headerType: string,
+    module: string
+}
+const Type2 = ({ data, headerType, module }: Props) => {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [pdf, setPdf] = useState<boolean>(false)
     const open = Boolean(anchorEl);
@@ -87,7 +94,13 @@ const Type2 = () => {
                                     alt=""
                                     className='h-[24px] w-[24px]'
                                 />
-                                <p className='text-small font-medium text-blue-gray-80 hover:text-ct-blue-60'>Download as PDF</p>
+                                {/* <p className='text-small font-medium text-blue-gray-80 hover:text-ct-blue-60'>Download as PDF</p> */}
+
+                                <PDFDownloadLink document={<PDF.Type1 module={module} data={data} type={headerType} />} fileName="DashboardData.pdf">
+                                    {/* @ts-ignore */}
+                                    {({ blob, url, loading, error }) => (loading ? 'Loading document...'
+                                        : <p className='text-small font-medium text-blue-gray-80 hover:text-ct-blue-60'>Download as PDF</p>)}
+                                </PDFDownloadLink>
                             </div>
 
                         </div>
@@ -108,7 +121,7 @@ const Type2 = () => {
             }
 
 
-            
+
 
         </div>
     );
