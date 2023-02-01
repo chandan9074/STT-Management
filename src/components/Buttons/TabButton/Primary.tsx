@@ -3,7 +3,7 @@ import React, { Dispatch, SetStateAction, useState } from 'react';
 interface Props {
     tabLabel: string[];
     size: "small" | "medium";
-    variant?: "Red" | "CT-Blue" | "Blue";
+    variant?: "Red" | "White" | "Blue";
     // icon?: React.ReactElement;
     setActiveData: Dispatch<SetStateAction<string>>;
 }
@@ -23,21 +23,26 @@ const Primary = (props: Props) => {
             pressed: "active:bg-red-10 active:text-opacity-75",
             selected: "bg-primary-ct-magenta-60 text-white"
         },
-        "CT-Blue": {
-
+        "White": {
+            text: "text-white",
+            hover: "hover:bg-black  hover:bg-opacity-[0.1]",
+            pressed: "active:bg-[#D6E5F5] active:text-opacity-75",
+            selected: "bg-white text-ct-blue-60",
+            btnBg: "bg-black bg-opacity-[0.3]"
         },
         "Blue": {
             text: "text-[#2C79BE]",
             hover: "hover:bg-[#EAF3FA]",
             pressed: "active:bg-[#D6E5F5] active:text-opacity-75",
-            selected: "bg-ct-blue-60 text-white"
+            selected: "bg-ct-blue-60 text-white",
+            btnBg: "bg-white"
         }
     }
 
     const buttonSizeStyle: any = {
         "small": {
             btnPadding: "p-[2px] shadow-md",
-            tabPadding: "py-[9px] leading-[14.4px] px-9",
+            tabPadding: "py-[11px] leading-[14.4px] px-9",
         },
         "medium": {
             btnPadding: "p-[3px]",
@@ -46,7 +51,7 @@ const Primary = (props: Props) => {
     }
     return (
         <div
-            className={`flex ${buttonSizeStyle[size].btnPadding} rounded-[100px] bg-white`}>
+            className={`inline-flex ${buttonSizeStyle[size].btnPadding} rounded-[100px] ${buttonVariantStyle[variant].btnBg}`}>
             {tabLabel.map((data: string, index: number) =>
                 <button
                     key={index}
