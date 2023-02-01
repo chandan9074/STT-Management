@@ -4,12 +4,15 @@ export const REGISTER_PATH = "/register";
 export const BILLING_PATH = "/billing";
 export const SCRIPT_PATH = "/script";
 export const DASHBOARD_PATH = "/dashboard";
-export const ASSIGN_PATH = "/assign";
 export const AUDIO_PATH = "/audio-management";
 export const USER_PATH = "/user-management";
 export const ORGANIZER_PATH = "/organizer";
 export const SETTINGS_PATH = "/settings";
 export const BILLING_PAYMENT_HISTORY_PATH = "/billing/payment-history";
+// Assign
+export const ASSIGN_PATH = "/assign";
+export const ALL_TARGET_PTAH = 'all-target';
+
 
 // Script
 export const CREATE_SCRIPT = "/script/create-script";

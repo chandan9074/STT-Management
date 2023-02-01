@@ -23,7 +23,8 @@ let sidebarMenu = {
       menu_title: "Assign",
       menu_icon: Icons.target,
       type_multi: null,
-      path: PATH.ASSIGN_PATH,
+      // path: PATH.ASSIGN_PATH,
+      path: `${PATH.ASSIGN_PATH}/${PATH.ALL_TARGET_PTAH}`,
       permissions: [Permission.ALL],
     },
     {

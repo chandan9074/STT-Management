@@ -33,7 +33,6 @@ const SideDrawer = () => {
 
     useEffect(() => {
         const _data = SideDrawerLink.filter(m => m.route.split('/')[1] === location.pathname.split('/')[1]);
-        
         if (_data) {
             setNav(_data[0]);
         }

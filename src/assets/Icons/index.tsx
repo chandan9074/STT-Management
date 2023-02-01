@@ -84,6 +84,11 @@ import collectSkeleton from './collectSkeleton.svg'
 import double_up_arrow from './dubble_up_arrow.svg'
 import Unfold_More from './unfold_more.svg'
 import calenderIcon from './calender_icon.svg';
+import DoubleDarkICon from './double_dark_arrow_up.svg';
+import Vector from './Vector.svg';
+import Vector2 from './Vector2.svg';
+import DoubleArroDownDark from './double_dark_arrow_down.svg';
+
 
 const Icons = {
   currency,
@@ -171,7 +176,11 @@ const Icons = {
   collectSkeleton,
   Unfold_More,
   calenderIcon,
-  double_up_arrow
+  double_up_arrow,
+  DoubleDarkICon,
+  Vector,
+  Vector2,
+  DoubleArroDownDark
 };
 
 export default Icons;
