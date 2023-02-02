@@ -9,9 +9,10 @@ export const USER_PATH = "/user-management";
 export const ORGANIZER_PATH = "/organizer";
 export const SETTINGS_PATH = "/settings";
 export const BILLING_PAYMENT_HISTORY_PATH = "/billing/payment-history";
-// Assign
+// AssignContainer
 export const ASSIGN_PATH = "/assign";
 export const ALL_TARGET_PTAH = 'all-target';
+export const CREATE_TARGET_PATH = 'create-target';
 
 
 // Script

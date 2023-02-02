@@ -5,7 +5,6 @@ import Layouts from '../../components/Layouts';
 const Assign = () => {
     return (
         <Layouts.Third>
-            
             <Outlet></Outlet>
         </Layouts.Third>
 

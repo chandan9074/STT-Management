@@ -4,6 +4,7 @@ import totalAmountDisbursed from "./totalAmountDisbursed.svg";
 import timeWiseDisbursement from "./timeWiseDisbursement.svg";
 import totalDataAndOverTheTime from './totalDataSkeleton.png';
 import overTheTimeSkeleton from './overTheTimeSkeleton.png';
+import AssignTable from './AssignTable.png';
 
 
 export const LoadingSkeleton = {
@@ -12,5 +13,6 @@ export const LoadingSkeleton = {
   totalAmountDisbursed,
   timeWiseDisbursement,
   totalDataAndOverTheTime,
-  overTheTimeSkeleton
+  overTheTimeSkeleton,
+  AssignTable
 };
