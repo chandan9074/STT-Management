@@ -19,9 +19,20 @@ export type roleDataDT = {
     received: number,
     audios: number,
     audioStatus: audioStatusDT[]
+    localityData: localityDataDT[]
 }
 
 export type audioStatusDT = {
     name: string,
     hour: number
 }
+
+export type localityDataDT = {
+    id: string,
+    name: string,
+    collected: number,
+    duration: number,
+    speaker: number,
+    lastUpdate: string
+}
+

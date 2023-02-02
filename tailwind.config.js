@@ -183,7 +183,16 @@ module.exports = {
         "blue-gray-A50": "rgba(31, 56, 76, 0.7)",
         'white-gray-45': 'rgba(255, 255, 255, 0.45)',
         "forest-green": "#26851F",
-        "pacifika":"#85821F"
+        "pacifika":"#85821F",
+        "light-green-17%": "rgba(0, 255, 152, 0.17)",
+        "light-green-0%": "rgba(0, 184, 110, 0)",
+        "light-red-17%": "rgba(255, 0, 13, 0.17)",
+        "light-red-0%": "rgba(161, 0, 8, 0)",
+        "light-pink-17%": "rgba(255, 76, 73, 0.17)",
+        "light-pink-0%": "rgba(245, 69, 66, 0)",
+        "light-yellow-17%": "rgba(255, 152, 0, 0.17)",
+        "light-yellow-0%": "rgba(245, 172, 66, 0)",
+
       },
     },
   },

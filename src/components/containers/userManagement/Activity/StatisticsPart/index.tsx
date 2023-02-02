@@ -15,7 +15,7 @@ const StatisticsPart = () => {
   return (
     <>
       <Navigator.Back path={PATH.USER_PATH} title="Activity" />
-      <div className='rounded-[8px] overflow-hidden mt-3 shadow-bottom-light-blue-10'>
+      <div className='mt-3 shadow-bottom-light-blue-10'>
         {userManagementContext.activityStatistics && (
           <>
             <Header data={userManagementContext.activityStatistics} />
