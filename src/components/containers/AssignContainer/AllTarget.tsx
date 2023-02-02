@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import Icons from '../../../assets/Icons';
 import { CREATE_TARGET_PATH } from '../../../helpers/Slug';

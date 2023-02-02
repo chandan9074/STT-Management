@@ -88,6 +88,7 @@ import DoubleDarkICon from './double_dark_arrow_up.svg';
 import Vector from './Vector.svg';
 import Vector2 from './Vector2.svg';
 import DoubleArroDownDark from './double_dark_arrow_down.svg';
+import AddBlue from './add_blue.png';
 
 
 const Icons = {
@@ -180,7 +181,8 @@ const Icons = {
   DoubleDarkICon,
   Vector,
   Vector2,
-  DoubleArroDownDark
+  DoubleArroDownDark,
+  AddBlue
 };
 
 export default Icons;
