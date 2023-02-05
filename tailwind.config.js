@@ -182,6 +182,7 @@ module.exports = {
         "masala": "#453939",
         "blue-gray-A50": "rgba(31, 56, 76, 0.7)",
         'white-gray-45': 'rgba(255, 255, 255, 0.45)',
+        'white-gray-55': 'rgba(255, 255, 255, 0.55)',
         "forest-green": "#26851F",
         "pacifika":"#85821F",
         "light-green-17%": "rgba(0, 255, 152, 0.17)",

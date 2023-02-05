@@ -91,13 +91,13 @@ const MapChart = ({ data }: { data: localityDataDT[] }) => {
             className="opacity-50 group-hover:opacity-100 duration-200 cursor-pointer"
           />
         </div>
-        <div className="absolute top-[82.5px] left-[140px] flex justify-center group hover:z-[80]">
+        <div className="absolute top-[82.5px] left-[140px] flex justify-end group hover:z-[80]">
           <div className=" absolute bottom-[80px] z-50 hidden group-hover:block animate-fadeIn">
             <MapTooltip
               data={data.filter((item) => item.name === "North-East Bangla")[0]}
               validBgColor="bg-blue-gray-A40"
               titleColor="text-blue-gray-A40"
-              align="center"
+              align="right"
             />
           </div>
           <img
@@ -106,13 +106,13 @@ const MapChart = ({ data }: { data: localityDataDT[] }) => {
             className="opacity-50 group-hover:opacity-100 duration-200 cursor-pointer"
           />
         </div>
-        <div className="absolute top-[129px] left-[122px] flex justify-center group hover:z-[80]">
+        <div className="absolute top-[129px] left-[122px] flex justify-end group hover:z-[80]">
           <div className=" absolute bottom-[200px] z-50 hidden group-hover:block animate-fadeIn">
             <MapTooltip
               data={data.filter((item) => item.name === "South Bangla")[0]}
               validBgColor="bg-cobalite-90"
               titleColor="text-cobalite-90"
-              align="center"
+              align="right"
             />
           </div>
           <img
@@ -168,7 +168,7 @@ const MapList = ({ data }: { data: localityDataDT[] }) => {
             <span className="text-xs text-blue-gray-75">{item.name}</span>
           </div>
         ))}
-        <h3><span>Tribal</span></h3>
+        <h3 className="text-xs"><span className="text-blue-gray-75 mr-3">Tribal</span><span className="text-ct-blue-40">Received: 1220h</span></h3>
       </div>
     </div>
   )

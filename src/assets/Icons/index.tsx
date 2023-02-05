@@ -84,6 +84,10 @@ import collectSkeleton from './collectSkeleton.svg'
 import double_up_arrow from './dubble_up_arrow.svg'
 import Unfold_More from './unfold_more.svg'
 import calenderIcon from './calender_icon.svg';
+import info from './info.svg';
+import check_green from './check_green.svg';
+import warning from './warning.svg';
+import calender_white from './calender_white.svg';
 
 const Icons = {
   currency,
@@ -171,7 +175,11 @@ const Icons = {
   collectSkeleton,
   Unfold_More,
   calenderIcon,
-  double_up_arrow
+  double_up_arrow,
+  info,
+  check_green,
+  warning,
+  calender_white,
 };
 
 export default Icons;

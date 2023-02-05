@@ -18,8 +18,9 @@ export type roleDataDT = {
     target: number,
     received: number,
     audios: number,
-    audioStatus: audioStatusDT[]
-    localityData: localityDataDT[]
+    audioStatus: audioStatusDT[],
+    localityData: localityDataDT[],
+    overTheTimeData: overTheTimeDataDT,
 }
 
 export type audioStatusDT = {
@@ -36,3 +37,25 @@ export type localityDataDT = {
     lastUpdate: string
 }
 
+export type overTheTimeDataDT = {
+    id: string,
+    year: number,
+    month: string,
+    weekData: weekDataDT[]
+}
+
+export type weekDataDT = {
+    id: string,
+    week: number,
+    maxTarget: number,
+    dayData: dayDataDT[]
+}
+
+export type dayDataDT = {
+    day: string,
+    target: number,
+    uploaded: number,
+    pending: number,
+    deadline: string,
+    status: string
+}
