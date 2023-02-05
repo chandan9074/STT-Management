@@ -124,3 +124,10 @@ export const yesNoPreferData = [
     'No',
     'Prefer not to say'
 ]
+
+export const profession = [
+    'Self Employed',
+    'Job Holder',
+    'Student',
+    'Unemployed'
+]
