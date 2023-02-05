@@ -55,6 +55,15 @@ export const getDateWithMonthName = (date: string) => {
   return `${day} ${month} ${year}`;
 };
 
+export const getDateWithMonthName2 = (date: string) => {
+  const splitData = date.split("-");
+  const month = moment.months()[parseInt(splitData[1]) - 1];
+  const year = splitData[0];
+  const day = splitData[2];
+
+  return `${day} ${month.slice(0, 3)}`;
+};
+
 export const getTitleColor = (value: string, children: boolean) => {
   if (children) {
     const data = colorForTitle.filter((item) => item.name === value);

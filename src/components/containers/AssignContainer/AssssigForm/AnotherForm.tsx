@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import React, { useState } from 'react';
 import DrawerTargetElement from '../../../Drawer/DrawerTargetElement';
-import TargetElementForm from './TargetElementForm';
+import TargetElement from './TargetElemnt';
 
 const AnotherForm = () => {
     const [dataShow, setDataShow] = useState<boolean>(false);
@@ -26,7 +26,7 @@ const AnotherForm = () => {
                 drawerClose={drawerClose}
                 title='Create Critaria'
             >
-                <TargetElementForm />
+                <TargetElement />
             </DrawerTargetElement>
         </div>
     );
