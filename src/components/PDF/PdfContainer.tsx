@@ -98,7 +98,7 @@ const PdfContainer = () => {
                 </PDFViewer>
             </Fragment> */}
 
-            <Excel.Type2 />
+            {/* <Excel.Type2 /> */}
 
         </div>
     );

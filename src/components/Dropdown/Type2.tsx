@@ -14,6 +14,8 @@ import Icons from "../../assets/Icons";
 import Buttons from '../Buttons';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import { PDF } from '../PDF';
+import { Excel } from '../Excel';
+import { TTSMODULE } from '../../helpers/ConditionVariable';
 
 interface Props {
     data: any;
@@ -30,6 +32,85 @@ const Type2 = ({ data, headerType, module }: Props) => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const createData = [
+        {
+            name: "Distribution Source-wise",
+            data: data.distributionSourceWise
+        },
+        {
+            name: "Domain-wise",
+            data: data.domainWise
+        },
+        {
+            name: "Gender-wise",
+            data: data.genderWise
+        },
+        {
+            name: "Age-wise",
+            data: data.ageWise
+        },
+        {
+            name: "Locality-wise",
+            data: data.localityWise
+        },
+        {
+            name: "Economic Situation-wise",
+            data: data.economicSituationWise
+        },
+        {
+            name: "Education-wise",
+            data: data.educationWise
+        },
+        {
+            name: "Profession-wise",
+            data: data.professionWise
+        },
+        {
+            name: "Recording Area",
+            data: data.recordingArea
+        },
+        {
+            name: "Recording Distance",
+            data: data.recordingDistance
+        },
+    ]
+    const collectData = [
+        {
+            name: "Distribution Source-wise",
+            data: data.distributionSourceWise
+        },
+        {
+            name: "Domain-wise",
+            data: data.domainWise
+        },
+        {
+            name: "Gender-wise",
+            data: data.genderWise
+        },
+        {
+            name: "Age-wise",
+            data: data.ageWise
+        },
+        {
+            name: "Locality-wise",
+            data: data.localityWise
+        },
+    ]
+    const ttsDataCollection = [
+        {
+            name: "Distribution Source-wise",
+            data: data.distributionSourceWise
+        },
+        {
+            name: "Domain-wise",
+            data: data.domainWise
+        },
+        {
+            name: "Gender-wise",
+            data: data.genderWise
+        },
+    ]
     return (
         <div className="-mt-[10px] relative -mr-[10px]">
             <Buttons.IconButton.Circle
@@ -73,7 +154,13 @@ const Type2 = ({ data, headerType, module }: Props) => {
                                     alt=""
                                     className='h-[24px] w-[24px]'
                                 />
-                                <p className='text-small font-medium text-blue-gray-80 hover:text-ct-blue-60'>Download as Excel</p>
+                                <Excel.Type2
+                                    data={module === TTSMODULE ? ttsDataCollection : headerType === "Create" ? createData : collectData}
+                                    type={headerType}
+                                    module={module}
+                                />
+
+
                             </div>
 
                             <div className='flex gap-3 hover:bg-blue-gray-05 '>

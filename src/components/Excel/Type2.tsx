@@ -1,135 +1,279 @@
-// import React, { useCallback, useEffect, useState } from "react";
-// import { read, utils, writeFileXLSX } from 'xlsx';
-
-// interface Props {
-//     csvData: any;
-//     fileName: any;
-//     headerCells: any;
-// }
-
-// const Type2 = ({ csvData, fileName, headerCells }: Props) => {
-//     const [data, setData] = useState([
-//         {
-//             name: 'John Doe',
-//             age: 32,
-//             city: 'New York'
-//         },
-//         {
-//             name: 'Jane Doe',
-//             age: 29,
-//             city: 'San Francisco'
-//         }
-//     ]);
-
-//     /* get state data and export to XLSX */
-//     const handleExport = () => {
-//         const ws = utils.json_to_sheet(data);
-//         const sumRow = { name: 'Total', age: data.reduce((sum, { age }) => sum + age, 0) };
-//         ws['A' + (data.length + 2)] = { v: 'Total' };
-//         ws['B' + (data.length + 2)] = { v: sumRow.age, t: 'n' };
-//         const wb = utils.book_new();
-//         utils.book_append_sheet(wb, ws, 'Sheet1');
-//         writeFileXLSX(wb, 'data.xlsx');
-//     };
-
-//     return (
-//         <div>
-//             <button onClick={handleExport}>Export to XLSX</button>
-//         </div>
-//     );
-// };
-// export default Type2;
-
-
-
 import React, { useState } from 'react';
-import {
-    read, writeFileXLSX, SSF, utils, writeFile
-} from 'xlsx';
-// import * as XLSX from 'xlsx';
+import { Workbook, Worksheet } from 'exceljs';
+import { DISTRIBUSION_SOURCE } from '../../helpers/ConditionVariable';
 
-interface Person {
-    name: string;
-    age: number;
-    city: string;
+
+
+const arrData: any = [
+    {
+        name: "read",
+        target: 10,
+        receive: 20,
+        valid: 30,
+        invalid: 40,
+        lastUpdate: "22 aug 2022"
+    },
+    {
+        name: "mono",
+        target: 10,
+        receive: 20,
+        valid: 30,
+        invalid: 40,
+        lastUpdate: "22 aug 2022"
+    },
+    {
+        name: "Di",
+        target: 10,
+        receive: 20,
+        valid: 30,
+        invalid: 40,
+        lastUpdate: "22 aug 2022"
+    },
+    {
+        name: "Lecture",
+        target: 10,
+        receive: 20,
+        valid: 30,
+        invalid: 40,
+        lastUpdate: "22 aug 2022"
+    },
+
+]
+
+const worksheetlist: any = ["Distribution Source", "Domain", "Gender", "Age", "Locality", "Economic Situation", "Education Situation", "Profession", "Recording Area", "Recording Distance"]
+
+interface Props {
+    data: any;
+    type: string;
+    module: string
 }
 
-function Type2() {
-    const [data, setData] = useState<Person[]>([
-        {
-            name: 'John Doe',
-            age: 32,
-            city: 'New York'
-        },
-        {
-            name: 'Jane Doe',
-            age: 29,
-            city: 'San Francisco'
-        },
-        {
-            name: 'Jane Doe',
-            age: 29,
-            city: 'San Francisco'
-        },
-        {
-            name: 'Jane Doe',
-            age: 29,
-            city: 'San Francisco'
-        },
-        {
-            name: 'Jane Doe',
-            age: 29,
-            city: 'San Francisco'
-        },
-        {
-            name: 'Jane Doe',
-            age: 29,
-            city: 'San Francisco'
-        },
-        {
-            name: 'Jane Doe',
-            age: 29,
-            city: 'San Francisco'
-        },
-        {
-            name: '',
-            age: 0,
-            city: ''
-        }
-    ]);
-
-
+const Type2 = (props: Props) => {
+    const { data, type, module } = props
 
     // const handleExport = () => {
-    // const ws = utils.json_to_sheet(data);
-    // const range = utils.decode_range(ws['!ref'] as string);
-    // const formula = `SUM(B2:B${range.e.r + 1})`;
-    // ws['B' + (range.e.r + 2)] = {t: 'n', f: formula, v: SSF.parse_formula(formula)};
-    // const wb = utils.book_new();
-    // utils.book_append_sheet(wb, ws, 'Sheet1');
-    // writeFile(wb, 'data.xlsx');
-    //   };
+    //     const workbook = new Workbook();
+    //     const Worksheet = workbook.addWorksheet('Sheet1');
+    //     const Worksheet2 = workbook.addWorksheet('Sheet2');
+
+    //     Worksheet.mergeCells('A1');
+    //     Worksheet.getCell('A1').value = 'STT- CREATE DATA'
+    //     Worksheet.mergeCells('A2', 'D2');
+    //     Worksheet.getCell('A2').value = 'Distribution source-wise data distribution'
+    //     Worksheet.mergeCells('A3', 'C3');
+    //     Worksheet.getCell('A3').value = '(valid: 1000h, last update: 22 Aug 2022)'
+
+
+    //     /*Column headers*/
+    //     Worksheet.getRow(6).values = ['Distribution Source', 'Target (hour)', 'Received (hour)', 'Valid (hour)', 'Invalid (hour)', 'Last update'];
+    //     Worksheet.getRow(6).font = {
+    //         bold: true,
+    //     };
+    //     Worksheet.columns = [
+    //         { key: 'name', width: 30 },
+    //         { key: 'target', width: 20 },
+    //         { key: 'receive', width: 20 },
+    //         { key: 'valid', width: 20 },
+    //         { key: 'invalid', width: 20 },
+    //         { key: 'lastUpdate', width: 30 }
+    //     ]
+    //     arrData.forEach((item: any, index: number) =>
+    //         Worksheet.addRow({
+    //             name: item.name,
+    //             target: item.target,
+    //             receive: item.receive,
+    //             valid: item.valid,
+    //             invalid: item.invalid,
+    //             lastUpdate: item.lastUpdate,
+    //         })
+    //     )
+
+    //     const sumOfTarget = arrData.reduce((sum: any, value: any) => sum + value.target, 0);
+    //     const sumOfReceive = arrData.reduce((sum: any, value: any) => sum + value.receive, 0);
+    //     const sumOfValid = arrData.reduce((sum: any, value: any) => sum + value.valid, 0);
+    //     const sumOfInvalid = arrData.reduce((sum: any, value: any) => sum + value.invalid, 0);
+
+    //     const totalRow = Worksheet.addRow({
+    //         name: 'Total',
+    //         target: sumOfTarget,
+    //         receive: sumOfReceive,
+    //         valid: sumOfValid,
+    //         invalid: sumOfInvalid,
+    //     });
+
+    //     totalRow.font = {
+    //         bold: true,
+    //         color: { argb: 'FF0000' },
+    //     };
+
+    //     // for downlaod excel file 
+    //     workbook.xlsx.writeBuffer().then((buffer) => {
+    //         const blob = new Blob([buffer], { type: 'application/octet-stream' });
+    //         const link = document.createElement('a');
+    //         link.href = window.URL.createObjectURL(blob);
+    //         link.download = 'data.xlsx';
+    //         link.click();
+    //     });
+    // };
+
+
+
+    const handleWorksheet = (name: string, workbook: any, fullData: any) => {
+        const Worksheet = workbook.addWorksheet(name);
+
+        Worksheet.mergeCells('A1');
+        Worksheet.getCell('A1').value = `${module}-${type.toLocaleUpperCase()} DATA`
+        Worksheet.mergeCells('A2', 'D2');
+        Worksheet.getCell('A2').value = `${name}-wise data distribution`
+        Worksheet.mergeCells('A3', 'C3');
+        Worksheet.getCell('A3').value = '(valid: 1000h, last update: 22 Aug 2022)'
+
+
+        /*Column headers*/
+        if (name === "Distribution Source") {
+
+            Worksheet.getRow(6).values = [name, 'Target (hour)', 'Received (hour)', 'Valid (hour)', 'Invalid (hour)', 'Last update'];
+
+            Worksheet.columns = [
+                { key: 'name', width: 30 },
+                { key: 'target', width: 20 },
+                { key: 'receive', width: 20 },
+                { key: 'valid', width: 20 },
+                { key: 'invalid', width: 20 },
+                { key: 'lastUpdate', width: 30 }
+            ]
+            fullData.forEach((item: any, index: number) =>
+                Worksheet.addRow({
+                    name: item.name,
+                    target: item.target,
+                    receive: item.totalReceived,
+                    valid: item.totalValid,
+                    invalid: item.totalInvalid,
+                    lastUpdate: item.lastUpdate,
+                })
+            )
+
+            const sumOfTarget = fullData.reduce((sum: any, value: any) => sum + value.target, 0);
+            const sumOfReceive = fullData.reduce((sum: any, value: any) => sum + value.totalReceived, 0);
+            const sumOfValid = fullData.reduce((sum: any, value: any) => sum + value.totalValid, 0);
+            const sumOfInvalid = fullData.reduce((sum: any, value: any) => sum + value.totalInvalid, 0);
+
+            const totalRow = Worksheet.addRow({
+                name: 'Total',
+                target: sumOfTarget,
+                receive: sumOfReceive,
+                valid: sumOfValid,
+                invalid: sumOfInvalid,
+            });
+
+            totalRow.font = {
+                bold: true,
+                color: { argb: '000000' },
+            };
+        }
+        else {
+
+            Worksheet.getRow(6).values = [name, 'Received (hour)', 'Valid (hour)', 'Invalid (hour)', 'Last update'];
+            Worksheet.columns = [
+                { key: 'name', width: 30 },
+                { key: 'receive', width: 20 },
+                { key: 'valid', width: 20 },
+                { key: 'invalid', width: 20 },
+                { key: 'lastUpdate', width: 30 }
+            ]
+            fullData.forEach((item: any, index: number) =>
+                Worksheet.addRow({
+                    name: item.name,
+                    receive: item.totalReceived,
+                    valid: item.totalValid,
+                    invalid: item.totalInvalid,
+                    lastUpdate: item.lastUpdate,
+                })
+            )
+
+            const sumOfReceive = fullData.reduce((sum: any, value: any) => sum + value.totalReceived, 0);
+            const sumOfValid = fullData.reduce((sum: any, value: any) => sum + value.totalValid, 0);
+            const sumOfInvalid = fullData.reduce((sum: any, value: any) => sum + value.totalInvalid, 0);
+
+            const totalRow = Worksheet.addRow({
+                name: 'Total',
+                receive: sumOfReceive,
+                valid: sumOfValid,
+                invalid: sumOfInvalid,
+            });
+
+            totalRow.font = {
+                bold: true,
+                color: { argb: '000000' },
+            };
+
+        }
+
+
+        Worksheet.getRow(6).font = {
+            bold: true,
+        };
+
+        Worksheet.getCell("A6").fill = {
+            type: "pattern",
+            pattern: "solid",
+            fgColor: { argb: "D3D3D3" },
+        };
+        Worksheet.getCell("B6").fill = {
+            type: "pattern",
+            pattern: "solid",
+            fgColor: { argb: "D3D3D3" },
+        };
+        Worksheet.getCell("C6").fill = {
+            type: "pattern",
+            pattern: "solid",
+            fgColor: { argb: "D3D3D3" },
+        };
+        Worksheet.getCell("D6").fill = {
+            type: "pattern",
+            pattern: "solid",
+            fgColor: { argb: "D3D3D3" },
+        };
+        Worksheet.getCell("E6").fill = {
+            type: "pattern",
+            pattern: "solid",
+            fgColor: { argb: "D3D3D3" },
+        };
+
+    }
+
+
     const handleExport = () => {
+        const workbook = new Workbook();
+        // const Worksheet = workbook.addWorksheet('Sheet1');
+        // const Worksheet2 = workbook.addWorksheet('Sheet2');
 
-        const ws = utils.json_to_sheet(data);
-        const range = utils.decode_range(ws['!ref'] as string);
-        const sum = data.reduce((acc, current) => acc + current.age, 0);
-        ws[`A${range.e.r + 1}`] = { t: 's', v: 'Total' };
-        ws[`B${range.e.r + 1}`] = { t: 'n', v: sum };
-        const wb = utils.book_new();
-        utils.book_append_sheet(wb, ws, 'Sheet1');
-        writeFile(wb, 'data.xlsx');
+        const res = data.map((_data: any) => {
 
+            handleWorksheet(_data.name, workbook, _data.data)
+        })
 
 
+
+        // for downlaod excel file 
+        workbook.xlsx.writeBuffer().then((buffer) => {
+            const blob = new Blob([buffer], { type: 'application/octet-stream' });
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+
+            link.download = `Dashboard_${module}_${type} Data.xlsx`;
+            link.click();
+        });
     };
 
     return (
-        <div>
-            <button onClick={handleExport}>Export to XLSX</button>
-        </div>
+        <p
+            onClick={handleExport}
+            className='text-small font-medium text-blue-gray-80 hover:text-ct-blue-60 cursor-pointer'
+        >
+            Download as Excel
+        </p>
     );
 };
 
 export default Type2;
-
