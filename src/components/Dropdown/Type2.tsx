@@ -1,21 +1,13 @@
-import React, { useState } from 'react';
-import {
-    Divider,
-    IconButton,
-    ListItemIcon,
-    ListItemText,
-    Menu,
-    MenuItem,
-    MenuList,
-} from "@mui/material";
-import './dropDown.css'
 import { MoreOutlined } from "@ant-design/icons";
-import Icons from "../../assets/Icons";
-import Buttons from '../Buttons';
 import { PDFDownloadLink } from '@react-pdf/renderer';
-import { PDF } from '../PDF';
-import { Excel } from '../Excel';
+import React, { useRef, useState } from 'react';
+import Icons from "../../assets/Icons";
 import { TTSMODULE } from '../../helpers/ConditionVariable';
+import Buttons from '../Buttons';
+import { Excel } from '../Excel';
+import { PDF } from '../PDF';
+import './dropDown.css';
+import ReactToPrint from 'react-to-print';
 
 interface Props {
     data: any;
@@ -25,12 +17,25 @@ interface Props {
 const Type2 = ({ data, headerType, module }: Props) => {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [pdf, setPdf] = useState<boolean>(false)
+    const [pdfLink, setPdfLink] = useState<any>('')
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
         setAnchorEl(null);
+    };
+
+    const handlePrint = () => {
+        // console.log("hello", pdfLink);
+
+        const printWindow = window.open(pdfLink, "_blank");
+        if (printWindow) {
+            printWindow.onload = () => {
+                printWindow.focus();
+                printWindow.print();
+            };
+        }
     };
 
     const createData = [
@@ -136,8 +141,6 @@ const Type2 = ({ data, headerType, module }: Props) => {
 
             />
 
-
-
             {
                 open ? <div>
                     <div
@@ -147,8 +150,8 @@ const Type2 = ({ data, headerType, module }: Props) => {
                     <div
                         style={{ boxShadow: "0px 4px 24px rgba(31, 56, 76, 0.12)" }}
                         className='w-[196px] absolute z-[99999] -left-[165px] bg-white rounded-[8px] mt-[1px]'>
-                        <div className='px-4 py-3 flex flex-col gap-3'>
-                            <div className='flex gap-3 hover:bg-blue-gray-05 '>
+                        <div className='my-2'>
+                            <div className='flex gap-3 px-4 py-2 hover:bg-ct-blue-05 active:bg-ct-blue-10 '>
                                 <img
                                     src={Icons.BorderAll}
                                     alt=""
@@ -158,22 +161,11 @@ const Type2 = ({ data, headerType, module }: Props) => {
                                     data={module === TTSMODULE ? ttsDataCollection : headerType === "Create" ? createData : collectData}
                                     type={headerType}
                                     module={module}
+                                    lastUpdate={data.lastUpdate}
+                                    totalValid={data.totalValid}
                                 />
-
-
                             </div>
-
-                            <div className='flex gap-3 hover:bg-blue-gray-05 '>
-                                <img
-                                    src={Icons.BrokenImg}
-                                    alt=""
-                                    className='h-[24px] w-[24px]'
-                                />
-                                <p className='text-small font-medium text-blue-gray-80 hover:text-ct-blue-60'>Download as Jpeg</p>
-                            </div>
-
-                            <div className='flex gap-3 hover:bg-blue-gray-05 '
-
+                            <div className='flex gap-3 px-4 py-2 hover:bg-ct-blue-05 active:bg-ct-blue-10 cursor-pointer'
                                 onClick={() => setPdf(true)}
                             >
                                 <img
@@ -181,35 +173,40 @@ const Type2 = ({ data, headerType, module }: Props) => {
                                     alt=""
                                     className='h-[24px] w-[24px]'
                                 />
-                                {/* <p className='text-small font-medium text-blue-gray-80 hover:text-ct-blue-60'>Download as PDF</p> */}
-
                                 <PDFDownloadLink document={<PDF.Type1 module={module} data={data} type={headerType} />} fileName="DashboardData.pdf">
                                     {/* @ts-ignore */}
-                                    {({ blob, url, loading, error }) => (loading ? 'Loading document...'
-                                        : <p className='text-small font-medium text-blue-gray-80 hover:text-ct-blue-60'>Download as PDF</p>)}
+                                    {({ blob, url, loading, error }) => {
+                                        if (!loading) {
+                                            setPdfLink(url)
+                                        }
+                                        return (
+                                            <p className='text-small font-medium text-blue-gray-80 hover:text-ct-blue-60'>Download as PDF</p>
+                                        )
+                                    }}
                                 </PDFDownloadLink>
                             </div>
 
                         </div>
                         <hr />
-                        <div
-                            className='flex gap-3 px-4 py-3 hover:bg-blue-gray-05 '
-                        >
-                            <img
-                                src={Icons.Print}
-                                alt=""
-                                className='h-[24px] w-[24px]'
-                            />
-
-                            <p className='text-small font-medium text-blue-gray-80 hover:text-ct-blue-60'>Print</p>
+                        <div className="my-2">
+                            <div
+                                onClick={() => handlePrint()}
+                                className='flex gap-3 px-4 py-2 hover:bg-ct-blue-05 active:bg-ct-blue-10 cursor-pointer'
+                            >
+                                <img
+                                    src={Icons.Print}
+                                    alt=""
+                                    className='h-[24px] w-[24px]'
+                                />
+                                <p className='text-small font-medium text-blue-gray-80 hover:text-ct-blue-60'>
+                                    Print
+                                </p>
+                            </div>
                         </div>
+
                     </div>
                 </div> : ""
             }
-
-
-
-
         </div>
     );
 };

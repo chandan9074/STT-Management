@@ -3,6 +3,7 @@ import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
 import TableIndex from './PdfTable/TableIndex';
 import { CommonContext } from '../../context/CommonProvider';
 import { STTMODULE, TTSMODULE } from '../../helpers/ConditionVariable';
+import { forwardRef } from 'react';
 
 const styles = StyleSheet.create({
     body: {
@@ -44,8 +45,8 @@ interface Props {
     type: string,
     module: string
 }
-const Type1 = (props: Props) => {
-    const { data, type,module } = props
+const Type1 = forwardRef((props: Props, ref: any) => {
+    const { data, type, module } = props
     const commonContext = useContext(CommonContext)
 
     const createData = [
@@ -129,7 +130,7 @@ const Type1 = (props: Props) => {
 
 
     return (
-        <Document>
+        <Document >
             <Page style={styles.body}>
                 {
                     (type === "Create" && module === STTMODULE) && createData.map((data, index) =>
@@ -145,7 +146,7 @@ const Type1 = (props: Props) => {
                                         <Text style={styles.title}>{data.name} data distribution</Text>
                                         <Text style={styles.author}>(valid: 1000h, last update: 22 Aug 2022)</Text>
 
-                                        <TableIndex data={data.data} headerName={data.name}/>
+                                        <TableIndex data={data.data} headerName={data.name} />
                                     </View>
                                     : <View key={index}>
                                         <Text style={styles.header} fixed>
@@ -176,7 +177,7 @@ const Type1 = (props: Props) => {
                                         <Text style={styles.title}>{data.name} data distribution</Text>
                                         <Text style={styles.author}>(valid: 1000h, last update: 22 Aug 2022)</Text>
 
-                                        <TableIndex data={data.data} headerName={data.name}/>
+                                        <TableIndex data={data.data} headerName={data.name} />
                                     </View>
                                     : <View key={index}>
                                         <Text style={styles.header} fixed>
@@ -185,7 +186,7 @@ const Type1 = (props: Props) => {
                                         <Text style={styles.title}>{data.name} data distribution</Text>
                                         <Text style={styles.author}>(valid: 1000h, last update: 22 Aug 2022)</Text>
 
-                                        <TableIndex data={data.data} headerName={data.name}/>
+                                        <TableIndex data={data.data} headerName={data.name} />
                                     </View>
                             }
                         </>
@@ -209,7 +210,7 @@ const Type1 = (props: Props) => {
                                         <Text style={styles.title}>{data.name} data distribution</Text>
                                         <Text style={styles.author}>(valid: 1000h, last update: 22 Aug 2022)</Text>
 
-                                        <TableIndex data={data.data} headerName={data.name}/>
+                                        <TableIndex data={data.data} headerName={data.name} />
                                     </View>
                                     : <View key={index}>
                                         <Text style={styles.header} fixed>
@@ -264,6 +265,6 @@ const Type1 = (props: Props) => {
             </Page>
         </Document>
     );
-};
+});
 
 export default Type1;

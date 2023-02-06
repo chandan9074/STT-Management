@@ -45,11 +45,13 @@ const worksheetlist: any = ["Distribution Source", "Domain", "Gender", "Age", "L
 interface Props {
     data: any;
     type: string;
-    module: string
+    module: string,
+    lastUpdate: string;
+    totalValid: number
 }
 
 const Type2 = (props: Props) => {
-    const { data, type, module } = props
+    const { data, type, module, lastUpdate, totalValid } = props
 
     // const handleExport = () => {
     //     const workbook = new Workbook();
@@ -126,7 +128,7 @@ const Type2 = (props: Props) => {
         Worksheet.mergeCells('A2', 'D2');
         Worksheet.getCell('A2').value = `${name}-wise data distribution`
         Worksheet.mergeCells('A3', 'C3');
-        Worksheet.getCell('A3').value = '(valid: 1000h, last update: 22 Aug 2022)'
+        Worksheet.getCell('A3').value = `(valid: ${totalValid}h, last update: ${lastUpdate})`
 
 
         /*Column headers*/
@@ -239,21 +241,16 @@ const Type2 = (props: Props) => {
             pattern: "solid",
             fgColor: { argb: "D3D3D3" },
         };
+        Worksheet.getColumn('lastUpdate').alignment = { vertical: 'middle', horizontal: 'right' };
 
     }
 
 
     const handleExport = () => {
         const workbook = new Workbook();
-        // const Worksheet = workbook.addWorksheet('Sheet1');
-        // const Worksheet2 = workbook.addWorksheet('Sheet2');
-
         const res = data.map((_data: any) => {
-
             handleWorksheet(_data.name, workbook, _data.data)
         })
-
-
 
         // for downlaod excel file 
         workbook.xlsx.writeBuffer().then((buffer) => {

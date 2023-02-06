@@ -50,8 +50,6 @@ function App() {
         <Route path="*" element={<NotFound />} />
 
         <Route path={PATH.CREATE_USER_PATH} element={<UserForm />} />
-        <Route path={PATH.ORGANIZER_PATH} element={<PdfContainer />} />
-
         {/* <Route path={PATH.SCRIPT} element={<Script />} /> */}
 
         {/* test */}
