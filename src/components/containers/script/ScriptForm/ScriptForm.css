@@ -115,3 +115,23 @@ padding-top: 0px !important;
     font-size: 14px !important;
     font-weight: 600 !important;
 }
+
+
+/* input background color set */
+.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1qqsdnr-MuiAutocomplete-root .MuiOutlinedInput-root {
+    background-color: white !important;
+}
+
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+    background-color: white !important;
+}
+
+.css-q8hpuo-MuiFormControl-root {
+    background-color: white !important;
+}
+
+.css-wb57ya-MuiFormControl-root-MuiTextField-root {
+    background-color: white !important;
+
+}
+

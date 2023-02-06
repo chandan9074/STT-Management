@@ -1,11 +1,13 @@
 import { Autocomplete, Box, Checkbox, FormControlLabel, FormGroup, TextField } from '@mui/material';
 import { ageRange, educationSituation, gender, homeDistrict, profession } from '../../../../../data/userManagement/UserManagementData';
-import HomeDistrictSelect from '../../../../Form/HomeDistrictSelect';
 import { healthFactors, recordingArea, recordingDistanceAssign } from '../../../../../data/assign/AssignData';
 import MultipleSelect from '../../../../Form/MultipleSelect';
 
 
 const SpeakerInformation = ({formik}: {formik: any}) => {
+
+    console.log('----', formik.values.healthFactors);
+    
     return (
         <div className=''>
                 <div className='w-[308px]'>
@@ -177,10 +179,11 @@ const SpeakerInformation = ({formik}: {formik: any}) => {
                                                 checked={formik.values.healthFactors.includes(value)}
                                                 onChange={(e) => {
                                                     if (e.target.checked) {
-                                                        formik.setFieldValue("healthFactors", [value]);
+                                                      formik.setFieldValue("healthFactors", [...formik.values.healthFactors, value]);
+                                                    } else {
+                                                      formik.setFieldValue("healthFactors", formik.values.healthFactors.filter((item: string) => item !== value));
                                                     }
-                                                }}
-
+                                                  }}
                                             />
                                         }
                                         label={<h1 className={`text-[14px] font-medium ${formik.values.healthFactors.includes(value) ? 'text-secondary-blue-50' : ((formik.values.healthFactors.length > 0 && !formik.values.healthFactors.includes("Speaker") && value === "Speaker") || (formik.values.healthFactors.includes("Speaker") && value !== "Speaker")) ? 'text-blue-gray-45' : 'text-blue-gray-75 '} `}>{value}</h1>}

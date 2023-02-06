@@ -73,6 +73,7 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
                     id={name}
                     autoComplete='off'
                     type='text'
+                    
                     onMouseDown={onHomeDistrictFocus}
                     name={name}
                     label={<div>{fieldLabel} <span className='text-[red]'>*</span></div>}

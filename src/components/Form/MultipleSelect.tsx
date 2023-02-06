@@ -75,7 +75,7 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
             <div className={`${!isHomeDistrict && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[90]`} onClick={() => clickOutsideField()}></div>
 
             <FormControl sx={{ width: '100%' }} variant="outlined">
-                {/* <InputLabel htmlFor={name}>{<div>{fieldLabel} <span className='text-[red]'>*</span></div>}</InputLabel> */}
+                <InputLabel htmlFor={name}>{<div>{fieldLabel} <span className='text-[red]'>*</span></div>}</InputLabel>
                 <div className={`${formikValues.length === 0 && 'h-[44px]'} flex justify-between px-2 border-[1px] border-blue-gray-A20 rounded-[7px] multiple-select`}>
 
                     {

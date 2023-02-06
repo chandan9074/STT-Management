@@ -41,22 +41,25 @@ const TargetSetting = ({ formik }: { formik: any }) => {
                 <TextField
                     id="target"
                     name="target"
-                    label={<div>Speakers Name <span className='text-[red]'>*</span></div>}
+                    label={<div>Target <span className='text-[red]'>*</span></div>}
                     value={formik.values.target}
                     onChange={formik.handleChange}
                     error={formik.touched.target && Boolean(formik.errors.target)}
                     helperText={formik.touched.target && formik.errors.target}
-                    style={{ width: '122px' }}
+                    style={{
+                        width: '122px'
+                    }}
                     InputProps={{
                         style: {
                             color: '#464E5F',
                             fontWeight: '600',
-                            fontSize: '15px'
+                            fontSize: '15px',
                         }
                     }}
+
                     variant="outlined" />
 
-                <h4 className='text-blue-gray-75 text-[12px] mt2'>No. of audio to be uploaded</h4>
+                <h4 className='text-blue-gray-75 text-[12px] mt-[4px] pl-[14px]'>No. of audio to be uploaded</h4>
             </div>
 
 
