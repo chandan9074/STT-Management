@@ -92,6 +92,12 @@ import info from './info.svg';
 import check_green from './check_green.svg';
 import warning from './warning.svg';
 import calender_white from './calender_white.svg';
+import DoubleDarkICon from './double_dark_arrow_up.svg';
+import Vector from './Vector.svg';
+import Vector2 from './Vector2.svg';
+import DoubleArroDownDark from './double_dark_arrow_down.svg';
+import AddBlue from './add_blue.png';
+
 
 const Icons = {
   currency,
@@ -186,7 +192,12 @@ const Icons = {
   calender_white,
   Script,
   BlueMusicIcon,
-  BlueRightArrow
+  BlueRightArrow,
+  DoubleDarkICon,
+  Vector,
+  Vector2,
+  DoubleArroDownDark,
+  AddBlue
 };
 
 export default Icons;

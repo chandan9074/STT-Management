@@ -9,60 +9,12 @@ let SideDrawerLink = [
         icon: '',
         links: [
             {
-                name: 'Collecting Audio',
-                route: PATH.COLLECTING_AUDIO,
-                links: [
-                    {
-                        name: 'Checking',
-                        route: PATH.CHECKING,
-                        links: [
-                            {
-                                name: 'Checking Status',
-                                route: PATH.CHECKING_STATUS,
-                                links:[]
-                            },
-                            {
-                                name: 'All Checked Audios',
-                                route: PATH.ALL_CHECKED_AUDIOS,
-                                links:[]
-                            }
-                        ]
-                    },
-                    {
-                        name: 'Annotation',
-                        route: '/annotation',
-                        links: [
-                            {
-                                name: 'Sentence Level',
-                                route: '/sentence-level',
-                                links:[]
-                            },
-                            {
-                                name: 'worde-level',
-                                route: '/word-level',
-                                links:[]
-                            },
-                            {
-                                name: 'Phoneme Level',
-                                route: '/phoneme-level',
-                                links:[]
-                            },
-                            {
-                                name: 'Annotated Files',
-                                route: '/Anntated-files',
-                                links:[]
-                            },
-                        ]
-                    },
-                    {
-                        name: 'Validation',
-                        route: '/validation',
-                        links:[]
-                    }
-                ]
+                name: 'All Target',
+                route: PATH.ALL_TARGET_PTAH,
+                links: []
             },
             {
-                name: 'Upload Audio/Video',
+                name: 'Draft',
                 route: PATH.UPLOAD_AUDION_VIDEO_PATH,
                 links: []
             }

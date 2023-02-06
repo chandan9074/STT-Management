@@ -2,3 +2,7 @@
     flex-direction: row-reverse;
     padding-right: 10px;
 } */
+
+.multiple-select .MuiOutlinedInput-notchedOutline {
+    border: none !important;
+}

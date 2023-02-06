@@ -16,6 +16,9 @@ import Activity from "./pages/UserManagement/Activity";
 import UserForm from "./components/containers/userManagement/UserForm";
 import Assign from "./pages/Assign";
 import AudioManagement from "./pages/AudioManagement";
+import AssignContainer from "./components/containers/AssignContainer";
+import AllTarget from "./components/containers/AssignContainer/AllTarget";
+import CreateTarget from "./components/containers/AssignContainer/CreateTarget";
 // import UserManagement from "./components/containers/userManagement";
 
 function App() {
@@ -51,10 +54,16 @@ function App() {
 
         <Route path={PATH.CREATE_USER_PATH} element={<UserForm />} />
 
-        <Route path={PATH.ASSIGN_PATH} element={<Assign />} />
+        {/* Assign */}
+        <Route path={PATH.ASSIGN_PATH} element={<Assign />} >
+          <Route path={PATH.ALL_TARGET_PTAH} element={<AssignContainer />} >
+            <Route path='' element={<AllTarget />} />
+            <Route path={PATH.CREATE_TARGET_PATH} element={<CreateTarget />} />
+          </Route>
+        </Route>
 
         <Route path={`${PATH.AUDIO_PATH}/${PATH.COLLECTING_AUDIO}`} element={<AudioManagement />} />
-        
+
 
         {/* <Route path={PATH.SCRIPT} element={<Script />} /> */}
 

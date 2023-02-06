@@ -36,9 +36,6 @@ module.exports = {
         "light-orinoco": "0px 2px 18px #CCF8FE",
         "light-yellow": "0px 2px 18px #CCDDFE",
         "toast-shadow":"0px 4px 12px rgba(31, 56, 76, 0.25)",
-
-
-
         "bottom-light-blue": "0px 2px 32px #2C79BE, 0px 0px 1px #2C79BE",
         "light-gray":
           "0px 1px 2px rgba(31, 56, 76, 0.06), 0px 1px 3px rgba(31, 56, 76, 0.1)",
@@ -66,6 +63,8 @@ module.exports = {
         "light-purple-4": "0px 2px 18px rgba(184, 200, 230, 1)",
 
         "light-gray-3": "0px 4px 24px 1px rgba(31, 56, 76, 0.08)",
+
+        "box": '0px 1px 2px rgba(31, 56, 76, 0.06), 0px 1px 3px rgba(31, 56, 76, 0.1)',
 
       },
       colors: {

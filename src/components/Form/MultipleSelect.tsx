@@ -1,5 +1,5 @@
 import { CaretDownOutlined } from '@ant-design/icons';
-import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
+import { FormControl, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
 import { useState } from 'react';
 import Icons from '../../assets/Icons';
 import { homeDistrict } from '../../data/userManagement/UserManagementData';
@@ -19,7 +19,9 @@ type Prop =
         fieldLabel: string
     }
 
-const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTouched, name, fieldLabel }: Prop) => {
+
+
+const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched, name, fieldLabel }: Prop) => {
 
     const [collapsed, setCollapsed] = useState<any>({});
 
@@ -37,11 +39,9 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
     }
 
     const handleDistrictClick = (district: string) => {
-        formik.setFieldValue(name, district);
+        formik.setFieldValue(name, [...formikValues, district]);
         onHomeDistrictValue(district);
-        setIsHomeDistrict(false)
     }
-
 
     const onHomeDistrictFocus = () => {
         setIsHomeDistrict(true)
@@ -62,6 +62,13 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
         setFilteredDistrict(data);
     }
 
+    const onItemRemove = (value: string) => {
+        const _data = formikValues?.filter((m: string, index: number) => m !== value)
+
+        formik.setFieldValue(name, _data);
+    }
+
+    // formik.setFieldValue("reminder", [...formik.values.reminder, dateString]);
     return (
         <div className='relative z-[100] homeDistrictSelect'>
 
@@ -69,30 +76,59 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
 
             <FormControl sx={{ width: '100%' }} variant="outlined">
                 <InputLabel htmlFor={name}>{<div>{fieldLabel} <span className='text-[red]'>*</span></div>}</InputLabel>
-                <OutlinedInput
-                    id={name}
-                    autoComplete='off'
-                    type='text'
-                    
-                    onMouseDown={onHomeDistrictFocus}
-                    name={name}
-                    label={<div>{fieldLabel} <span className='text-[red]'>*</span></div>}
-                    value={onTextField || ''}
-                    onChange={(e) => {
-                        handleSearch(e);
-                        setOnTextField(e.target.value);
-                    }}
-                    endAdornment={
-                        <InputAdornment position="end">
-                            {/* <IconButton
+                <div className={`${formikValues.length === 0 && 'h-[44px]'} flex justify-between px-2 border-[1px] border-blue-gray-A20 rounded-[7px] multiple-select`}>
+
+                    {
+                        formikValues.length !== 0 &&
+                        <div className='flex items-center overflow-x-auto gap-x-[4px] w-[320px]'>
+                            {
+
+                                formikValues?.map((value: string, i: number) => (
+                                    <div className='bg-ct-blue-20 rounded-[4px] flex justify-center items-center px-[8px] gap-x-[4px] h-6'>
+                                        <h1 className='text-[13px] text-blue-gray-80 font-medium whitespace-nowrap'>
+                                            {value}
+                                            {/* 21 dec */}
+                                        </h1>
+                                        <div className='cursor-pointer w-[14px] p-[3px] bg-white rounded-[3px]'>
+                                            <img
+                                                className='h-[8px] w-[8px]'
+                                                src={Icons.CloseIconButton}
+                                                alt=""
+                                                onClick={() => onItemRemove(value)}
+                                            />
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    }
+
+                    <OutlinedInput
+
+                        className='h-[44px] w-full'
+                        id={name}
+                        autoComplete='off'
+                        type='text'
+                        onMouseDown={onHomeDistrictFocus}
+                        name={name}
+                        // label={<div>{fieldLabel} <span className='text-[red]'>*</span></div>}
+                        // value={onTextField || ''}
+                        onChange={(e) => {
+                            handleSearch(e);
+                            setOnTextField(e.target.value);
+                        }}
+                        endAdornment={
+                            <InputAdornment position="end">
+                                {/* <IconButton
                                 aria-label="toggle password visibility"
                                 edge="end"
                             > */}
-                            <CaretDownOutlined />
-                            {/* </IconButton> */}
-                        </InputAdornment>
-                    }
-                />
+                                <CaretDownOutlined />
+                                {/* </IconButton> */}
+                            </InputAdornment>
+                        }
+                    />
+                </div>
             </FormControl>
             {
                 isHomeDistrict &&
@@ -115,14 +151,14 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
                                     {district.map((name, i) => (
                                         <div
                                             key={i}
-                                            onClick={() => handleDistrictClick(name)}
-                                            className={`pl-[16px] ${formikValues === name ? 'bg-blue-10 hover:bg-blue-20 active:bg-blue-30' : 'hover:bg-ct-blue-05 active:bg-ct-blue-10'} `}>
+                                            onClick={() =>formikValues.includes(name) ? onItemRemove(name) : handleDistrictClick(name)}
+                                            className={`pl-[16px] ${formikValues.includes(name) ? 'mt-[2px] bg-blue-10 hover:bg-blue-20 active:bg-blue-30' : 'hover:bg-ct-blue-05 active:bg-ct-blue-10'} `}>
                                             <div className='flex justify-between items-center cursor-pointer pr-[9px] py-[12px]'>
                                                 <h3
                                                     className='text-blue-gray-90 text-[14px]' key={name}>{name}</h3>
 
                                                 {
-                                                    formikValues === name &&
+                                                    formikValues.includes(name) &&
                                                     <img className='h-[12px] w-[16px]' src={Icons.CorrectIcon} alt="" />
                                                 }
                                             </div>
@@ -144,4 +180,5 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
     );
 };
 
-export default HomeDistrictSelect;
+
+export default MultipleSelect;
