@@ -116,13 +116,13 @@ const TargetSetting = ({ formik }: { formik: any }) => {
                         {
                             formik.values.reminder.length !== 0 &&
                             <div className='p-[4px] absolute -top-[10px]'>
-                            <h1 className=' bg-white text-blue-gray-80 font-medium text-[14px]'>Reminder</h1>
-                        </div>
+                                <h1 className=' bg-white text-blue-gray-80 font-medium text-[14px]'>Reminder</h1>
+                            </div>
                         }
                         <div className='flex gap-x-2 w-[240px] overflow-x-auto '>
                             {
                                 formik.values.reminder.length === 0 ?
-                                <h1 className=' bg-white text-blue-gray-80 font-medium text-[12px]'>Reminder</h1>
+                                    <h1 className=' bg-white text-blue-gray-80 font-medium text-[12px]'>Reminder</h1>
                                     :
                                     formik.values.reminder.map((value: string, i: number) => (
                                         <div className='bg-ct-blue-20 rounded-[4px] flex justify-center items-center py-[3px] px-[8px] gap-x-[4px]'>
@@ -160,6 +160,28 @@ const TargetSetting = ({ formik }: { formik: any }) => {
                             onChange={onReminderDateChange}
                         />
                     </div>
+                </div>
+
+                <div>
+                    <TextField
+                        id="remark"
+                        name="remark"
+                        multiline
+                        rows={4}
+                        label={<div>Speakers Name </div>}
+                        value={formik.values.remark}
+                        onChange={formik.handleChange}
+                        error={formik.touched.remark && Boolean(formik.errors.remark)}
+                        helperText={formik.touched.remark && formik.errors.remark}
+                        style={{ width: '100%' }}
+                        InputProps={{
+                            style: {
+                                color: '#464E5F',
+                                fontWeight: '600',
+                                fontSize: '15px'
+                            }
+                        }}
+                        variant="outlined" />
                 </div>
             </div>
         </div>

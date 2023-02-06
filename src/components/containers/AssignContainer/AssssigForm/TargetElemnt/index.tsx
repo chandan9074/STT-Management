@@ -7,8 +7,7 @@ import './TargetElement.css'
 const validationSchema = yup.object({
     // gender: yup.string().required('Gender is Required'),
     ageRange: yup.string().required('Age range is Required'),
-    district: yup.string().required('District is Required'),
-    // economicSituation: yup.string().required('Economic situation is Required'),
+    // district: yup.string().required('District is Required'),
 });
 
 const TargetElement = () => {
@@ -16,7 +15,7 @@ const TargetElement = () => {
         initialValues: {
             gender: '',
             ageRange: '',
-            district: '',
+            district: [],
             profession: '',
             economicSituation: '',
             healthFactors: '',
@@ -24,7 +23,8 @@ const TargetElement = () => {
             recordingDistance: '',
             target: '',
             deadline: '',
-            reminder: []
+            reminder: [],
+            remark: ''
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {

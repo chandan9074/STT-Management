@@ -2,6 +2,7 @@ import { Autocomplete, Box, Checkbox, FormControlLabel, FormGroup, TextField } f
 import { ageRange, educationSituation, gender, homeDistrict, profession } from '../../../../../data/userManagement/UserManagementData';
 import HomeDistrictSelect from '../../../../Form/HomeDistrictSelect';
 import { healthFactors, recordingArea, recordingDistanceAssign } from '../../../../../data/assign/AssignData';
+import MultipleSelect from '../../../../Form/MultipleSelect';
 
 
 const SpeakerInformation = ({formik}: {formik: any}) => {
@@ -45,7 +46,7 @@ const SpeakerInformation = ({formik}: {formik: any}) => {
                                 <Box key={option} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
                                     <div className='flex justify-between items-center w-full'>
                                         <h1 className='text-blue-gray-80 text-[14px] font-medium'>{option}</h1>
-                                        <h1 className='text-blue-gray-A20 text-[13px] font-medium'>year</h1>
+                                        <h1 className='text-blue-gray-A20 text-[13px] font-medium pr-[4pxx]'>year</h1>
                                     </div>
                                 </Box>
                             )}
@@ -66,7 +67,7 @@ const SpeakerInformation = ({formik}: {formik: any}) => {
                     </div>
 
                     <div className='mt-4'>
-                        <HomeDistrictSelect
+                        <MultipleSelect
                             formikValues={formik.values.district}
                             data={homeDistrict}
                             formikError={formik.errors.district}
@@ -99,7 +100,6 @@ const SpeakerInformation = ({formik}: {formik: any}) => {
                                     <Box key={option} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
                                         <div className='flex justify-between items-center w-full'>
                                             <h1 className='text-blue-gray-80 text-[14px] font-medium'>{option}</h1>
-                                            <h1 className='text-blue-gray-A20 text-[13px] font-medium'>year</h1>
                                         </div>
                                     </Box>
                                 )}
@@ -143,7 +143,6 @@ const SpeakerInformation = ({formik}: {formik: any}) => {
                                     <Box key={option} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
                                         <div className='flex justify-between items-center w-full'>
                                             <h1 className='text-blue-gray-80 text-[14px] font-medium'>{option}</h1>
-                                            <h1 className='text-blue-gray-A20 text-[13px] font-medium'>year</h1>
                                         </div>
                                     </Box>
                                 )}
@@ -156,7 +155,7 @@ const SpeakerInformation = ({formik}: {formik: any}) => {
                                         // error={formik.touched.economicSituation && Boolean(formik.errors.economicSituation)}
                                         // helperText={formik.touched.economicSituation && formik.errors.economicSituation}
 
-                                        label={<span className='comboBoxLabel'>economicSituation
+                                        label={<span className='comboBoxLabel'>Economic Situation
                                             {/* <span className='text-[red]'>*</span> */}
                                         </span>}
 
