@@ -18,7 +18,7 @@ const Type1 = ({ open, setOpen, drawerData }: Props) => {
     };
     const [metaDataOpen, setMetaDataOpen] = useState<boolean>(false)
 
-
+    
     return (
         <div>
             <Drawer
