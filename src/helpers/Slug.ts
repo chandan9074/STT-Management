@@ -12,7 +12,8 @@ export const BILLING_PAYMENT_HISTORY_PATH = "/billing/payment-history";
 // AssignContainer
 export const ASSIGN_PATH = "/assign";
 export const ALL_TARGET_PTAH = 'all-target';
-export const CREATE_TARGET_PATH = 'create-target';
+// export const CREATE_TARGET_PATH = 'create-target';
+export const CREATE_TARGET_PATH = `${ASSIGN_PATH}/${ALL_TARGET_PTAH}/create-target`;
 
 
 // Script

@@ -134,7 +134,7 @@ const FileReport = ({ getFile, formik }: { getFile: (file: any) => void, formik:
                                 name="adminData"
                                 error={formik.touched.adminData && Boolean(formik.errors.adminData)}
                                 helperText={formik.touched.adminData && formik.errors.adminData}
-                                label={<span className='comboBoxLabel'>Select Admin <span className='text-[red]'>*</span></span>}
+                                label={<h1 className='comboBoxLabel'>Select Admin <span className='text-[red]'>*</span></h1>}
                             />
                         )}
                     />

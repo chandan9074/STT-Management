@@ -96,7 +96,7 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
                                                     error={formik.touched.sourceType && Boolean(formik.errors.sourceType)}
                                                     helperText={formik.touched.sourceType && formik.errors.sourceType}
 
-                                                    label={<span className='comboBoxLabel'>Source Type <span className='text-[red]'>*</span></span>}
+                                                    label={<h1 className='comboBoxLabel'>Source Type <span className='text-[red]'>*</span></h1>}
 
                                                 />
                                             )}
@@ -110,7 +110,7 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
                                         <TextField
                                             id="sourceurl"
                                             name="sourceurl"
-                                            label="Source URL"
+                                            label={<h1 className='comboBoxLabel'>Source URL</h1>}
 
                                             value={formik.values.sourceurl}
                                             onChange={formik.handleChange}

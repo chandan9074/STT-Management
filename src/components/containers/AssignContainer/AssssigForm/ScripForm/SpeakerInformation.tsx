@@ -61,7 +61,7 @@ const SpeakerInformation = ({formik}: {formik: any}) => {
                                     error={formik.touched.ageRange && Boolean(formik.errors.ageRange)}
                                     helperText={formik.touched.ageRange && formik.errors.ageRange}
 
-                                    label={<span className='comboBoxLabel'>Age Range <span className='text-[red]'>*</span></span>}
+                                    label={<h1 className='comboBoxLabel'>Age Range <span className='text-[red]'>*</span></h1>}
 
                                 />
                             )}
@@ -114,9 +114,9 @@ const SpeakerInformation = ({formik}: {formik: any}) => {
                                         error={formik.touched.profession && Boolean(formik.errors.profession)}
                                         helperText={formik.touched.profession && formik.errors.profession}
 
-                                        label={<span className='comboBoxLabel'>Profession
+                                        label={<h1 className='comboBoxLabel'>Profession
                                             {/* <span className='text-[red]'>*</span> */}
-                                        </span>}
+                                        </h1>}
 
                                     />
                                 )}
@@ -157,9 +157,9 @@ const SpeakerInformation = ({formik}: {formik: any}) => {
                                         // error={formik.touched.economicSituation && Boolean(formik.errors.economicSituation)}
                                         // helperText={formik.touched.economicSituation && formik.errors.economicSituation}
 
-                                        label={<span className='comboBoxLabel'>Economic Situation
+                                        label={<h1 className='comboBoxLabel'>Economic Situation
                                             {/* <span className='text-[red]'>*</span> */}
-                                        </span>}
+                                        </h1>}
 
                                     />
                                 )}
@@ -220,9 +220,9 @@ const SpeakerInformation = ({formik}: {formik: any}) => {
                                         // error={formik.touched.recordingArea && Boolean(formik.errors.recordingArea)}
                                         // helperText={formik.touched.recordingArea && formik.errors.recordingArea}
 
-                                        label={<span className='comboBoxLabel'>Recording Area
+                                        label={<h1 className='comboBoxLabel'>Recording Area
                                             {/* <span className='text-[red]'>*</span> */}
-                                        </span>}
+                                        </h1>}
 
                                     />
                                 )}
@@ -253,9 +253,9 @@ const SpeakerInformation = ({formik}: {formik: any}) => {
                                         // error={formik.touched.recordingDistance && Boolean(formik.errors.recordingDistance)}
                                         // helperText={formik.touched.recordingDistance && formik.errors.recordingDistance}
 
-                                        label={<span className='comboBoxLabel'>Recording Area
+                                        label={<h1 className='comboBoxLabel'>Recording Area
                                             {/* <span className='text-[red]'>*</span> */}
-                                        </span>}
+                                        </h1>}
 
                                     />
                                 )}

@@ -1,6 +1,6 @@
-import { LoadingSkeleton } from '../../../assets/loadingSkeleton';
+import { LoadingSkeleton } from '../../../../assets/loadingSkeleton';
 
-const AssignTable = () => {
+const TargetTable = () => {
     return (
         <div className='pl-[325px] pt-[42px] pb-[24px]'>
                 <h1 className='text-[18px] text-ct-blue-95 font-medium mb-[25px]'>0 Target</h1>
@@ -9,4 +9,4 @@ const AssignTable = () => {
     );
 };
 
-export default AssignTable;
+export default TargetTable;
