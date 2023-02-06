@@ -1,5 +1,5 @@
 import { CaretDownOutlined } from '@ant-design/icons';
-import { FormControl, InputAdornment, OutlinedInput } from '@mui/material';
+import { FormControl, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
 import { useState } from 'react';
 import Icons from '../../assets/Icons';
 import { homeDistrict } from '../../data/userManagement/UserManagementData';
@@ -62,8 +62,8 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
         setFilteredDistrict(data);
     }
 
-    const onItemRemove = (i: number) => {
-        const _data = formikValues?.filter((m: string, index: number) => index !== i)
+    const onItemRemove = (value: string) => {
+        const _data = formikValues?.filter((m: string, index: number) => m !== value)
 
         formik.setFieldValue(name, _data);
     }
@@ -94,7 +94,7 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
                                                 className='h-[8px] w-[8px]'
                                                 src={Icons.CloseIconButton}
                                                 alt=""
-                                                onClick={() => onItemRemove(i)}
+                                                onClick={() => onItemRemove(value)}
                                             />
                                         </div>
                                     </div>
@@ -151,8 +151,8 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
                                     {district.map((name, i) => (
                                         <div
                                             key={i}
-                                            onClick={() => handleDistrictClick(name)}
-                                            className={`pl-[16px] ${formikValues.includes(name) ? 'bg-blue-10 hover:bg-blue-20 active:bg-blue-30' : 'hover:bg-ct-blue-05 active:bg-ct-blue-10'} `}>
+                                            onClick={() =>formikValues.includes(name) ? onItemRemove(name) : handleDistrictClick(name)}
+                                            className={`pl-[16px] ${formikValues.includes(name) ? 'mt-[2px] bg-blue-10 hover:bg-blue-20 active:bg-blue-30' : 'hover:bg-ct-blue-05 active:bg-ct-blue-10'} `}>
                                             <div className='flex justify-between items-center cursor-pointer pr-[9px] py-[12px]'>
                                                 <h3
                                                     className='text-blue-gray-90 text-[14px]' key={name}>{name}</h3>
