@@ -55,7 +55,7 @@ const Circle = (props: Props) => {
 
     const IconBorderStyle: any = {
         "none": {
-            border: "border border-transparent rounded-full"
+            border: "border-transparent rounded-full"
         },
         "border": {
             border: "border border-ct-blue-10 rounded-full"

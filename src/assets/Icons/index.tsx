@@ -82,6 +82,10 @@ import Up from './up.svg'
 import createSkeleton from './createSkeleton.svg'
 import collectSkeleton from './collectSkeleton.svg'
 import double_up_arrow from './dubble_up_arrow.svg'
+import Script from "./script.svg";
+import BlueMusicIcon from "./blueMusicArrow.svg";
+import BlueRightArrow from "./blueRightArrow.svg";
+
 import Unfold_More from './unfold_more.svg'
 import calenderIcon from './calender_icon.svg';
 import info from './info.svg';
@@ -180,6 +184,9 @@ const Icons = {
   check_green,
   warning,
   calender_white,
+  Script,
+  BlueMusicIcon,
+  BlueRightArrow
 };
 
 export default Icons;

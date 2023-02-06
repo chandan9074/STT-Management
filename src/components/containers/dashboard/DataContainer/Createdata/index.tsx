@@ -9,7 +9,14 @@ import EconomicSituationWise from "../Graphs/EconomicSituationWise";
 import { CommonContext } from "../../../../../context/CommonProvider";
 import { STTMODULE } from "../../../../../helpers/ConditionVariable";
 import Dropdown from "../../../../Dropdown";
-import { ActiveColorDomainWise, ActiveColorRecordingArea, domainWiseColors, reacordingAreaColors, sttCreateDropDownData, ttsCreateDropDownData } from "../../../../../data/dashboard/createCollectIndexData";
+import {
+  ActiveColorDomainWise,
+  ActiveColorRecordingArea,
+  domainWiseColors,
+  reacordingAreaColors,
+  sttCreateDropDownData,
+  ttsCreateDropDownData
+} from "../../../../../data/dashboard/createCollectIndexData";
 
 
 

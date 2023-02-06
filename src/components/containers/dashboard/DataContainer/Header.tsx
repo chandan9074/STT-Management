@@ -11,7 +11,8 @@ interface Props {
   bgColor: string;
   targetColor: string;
   borderColor: string;
-  data: createDataDT | collectDataDT
+  data: createDataDT | collectDataDT,
+ 
 }
 export type RingProgressDT = {
   Create: {
@@ -29,7 +30,7 @@ export type RingProgressDT = {
 
   }
 }
-const Header = ({ bgColor, headerType, targetColor, borderColor, data }: Props) => {
+const Header = ({ bgColor, headerType, targetColor, borderColor, data, }: Props) => {
   const commonContext = useContext(CommonContext)
   const { type } = commonContext
 
@@ -94,14 +95,21 @@ const Header = ({ bgColor, headerType, targetColor, borderColor, data }: Props) 
           </div>
           <div>
             <p className="text-small font-normal text-ct-blue-90-88%">
-             Total Received : {data.totalReceived}h
+              Total Received : {data.totalReceived}h
             </p>
           </div>
         </div>
 
         <div className="flex h-full">
-          <RingProgressBar.Type1 type={headerType} value={data.achieved} style={type === STTMODULE ? sttStyle : ttsStyle} />
-          <Dropdown.Type2 />
+          <RingProgressBar.Type1
+            type={headerType}
+            value={data.achieved}
+            style={type === STTMODULE ? sttStyle : ttsStyle} />
+          <Dropdown.Type2
+            data={data}
+            headerType={headerType}
+            module={type}
+          />
         </div>
       </div>
       <div
