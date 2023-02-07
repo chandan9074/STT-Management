@@ -138,7 +138,7 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
                             <div className={`${(file?.length === 0) ? '' : 'py-[24px] px-[16px]'}`}>
                                 <Dragger
                                 multiple={false}
-                                accept='.txt, .docx, .pdf, .jpg, .jpeg, .png, .tsx'
+                                accept='.txt, .docx, .pdf, .jpg, .jpeg, .png'
                                 // customRequest={selectFiles}
                                     style={{
                                         backgroundColor: 'white',

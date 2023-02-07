@@ -1,7 +1,7 @@
 import { Autocomplete, Box, Checkbox, FormControlLabel, FormGroup, TextField } from '@mui/material';
-import { ageRange, educationSituation, gender, homeDistrict, profession } from '../../../../../data/userManagement/UserManagementData';
-import { healthFactors, recordingArea, recordingDistanceAssign } from '../../../../../data/assign/AssignData';
-import MultipleSelect from '../../../../Form/MultipleSelect';
+import { ageRange, educationSituation, gender, homeDistrict, profession } from '../../../../../../data/userManagement/UserManagementData';
+import { healthFactors, recordingArea, recordingDistanceAssign } from '../../../../../../data/assign/AssignData';
+import MultipleSelect from '../../../../../Form/MultipleSelect';
 
 
 const SpeakerInformation = ({formik}: {formik: any}) => {

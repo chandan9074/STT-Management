@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import Icons from "../../../../assets/Icons";
-import Buttons from "../../../Buttons";
-import AddScript from "./AddScript";
-import CreateCriteria from "./CreateCriteria";
-import AddAssignee from "./AddAssignee";
-import Layouts from "../../../Layouts";
+import Icons from "../../assets/Icons";
+import Buttons from "../../components/Buttons";
+import AddScript from "../../components/containers/AssignContainer/CreateTarget/AddScript";
+import CreateCriteria from "../../components/containers/AssignContainer/CreateTarget/CreateCriteria";
+import AddAssignee from "../../components/containers/AssignContainer/CreateTarget/AddAssignee";
+import Layouts from "../../components/Layouts";
 
 const CreateTarget = () => {
     const [dataShow, setDataShow] = useState<boolean>(false);
@@ -50,13 +50,13 @@ const CreateTarget = () => {
 
                 {/*    <div>*/}
                 {/*        /!* Use this for create target *!/*/}
-                {/*        <DrawerTarget*/}
+                {/*        <Type1*/}
                 {/*            isDrawerOpen={drawerOpen}*/}
                 {/*            drawerClose={drawerClose}*/}
                 {/*            title='Select Title'*/}
                 {/*        >*/}
                 {/*            side drawer*/}
-                {/*        </DrawerTarget>*/}
+                {/*        </Type1>*/}
                 {/*    </div>*/}
                 {/*</div>*/}
 

@@ -1,11 +1,8 @@
 import React, {useState} from 'react';
-import {Button} from "@mui/material";
-import DrawerTargetElement from "../../../../Drawer/DrawerTargetElement";
-import TargetElement from "../../AssssigForm/ScripForm";
-import TargetBox from "../../TargetBox";
-import DrawerTarget from "../../../../Drawer/DrawerTarget";
-import Layouts from "../../../../Layouts";
-import UserForm from "../../../userManagement/UserForm";
+import CriteriaForm from "./CriteriaForm";
+import TargetBox from "../TargetBox";
+import {Drawer} from "../../../../Drawer";
+import Type1 from "../../../../Drawer/Script/Type1";
 
 const CreateCriteria = () => {
 
@@ -32,37 +29,16 @@ const CreateCriteria = () => {
 
                 <div>
                     {/* Use this for create target */}
-                    <DrawerTargetElement
+                    <Drawer.Criteria.Type1
                         isDrawerOpen={drawerOpen}
                         drawerClose={drawerClose}
                         title='Create Critaria'
                     >
-                        <TargetElement />
-                    </DrawerTargetElement>
+                        <CriteriaForm />
+                    </Drawer.Criteria.Type1>
                 </div>
             </div>
-        // <div>
-        //     {
-        //         <div className='bg-white w-[376px] h-[332px] flex justify-center items-center rounded-t-[6px]'>
-        //             <TargetBox
-        //                 targetTitle={'Create Criteria'}
-        //                 onClick={openDrawer}
-        //             />
-        //         </div>
-        //
-        //     }
-        //
-        //     <div>
-        //         {/* Use this for create target */}
-        //         <DrawerTargetElement
-        //             isDrawerOpen={drawerOpen}
-        //             drawerClose={drawerClose}
-        //             title='Create Critaria'
-        //         >
-        //             <TargetElement />
-        //         </DrawerTargetElement>
-        //     </div>
-        // </div>
+
     );
 };
 

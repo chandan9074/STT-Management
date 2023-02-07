@@ -18,7 +18,7 @@ import Assign from "./pages/Assign";
 import AudioManagement from "./pages/AudioManagement";
 import AssignContainer from "./components/containers/AssignContainer";
 import AllTarget from "./components/containers/AssignContainer/AllTarget";
-import CreateTarget from "./components/containers/AssignContainer/CreateTarget";
+import CreateTarget from "./pages/Assign/CreateTarget";
 
 function App() {
   useEffect(() => {

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import TargetBox from "../../TargetBox";
-import DrawerTargetElement from "../../../../Drawer/DrawerTargetElement";
-import TargetElement from "../../AssssigForm/ScripForm";
+import TargetBox from "../TargetBox";
+import Type1 from "../../../../Drawer/Criteria/Type1";
+import CriteriaForm from "../CreateCriteria/CriteriaForm";
 
 const AddAssignee = () => {
 
@@ -28,13 +28,13 @@ const AddAssignee = () => {
 
             <div>
                 {/* Use this for create target */}
-                <DrawerTargetElement
+                <Type1
                     isDrawerOpen={drawerOpen}
                     drawerClose={drawerClose}
                     title='Create Critaria'
                 >
-                    <TargetElement />
-                </DrawerTargetElement>
+                    <CriteriaForm />
+                </Type1>
             </div>
         </div>
     );

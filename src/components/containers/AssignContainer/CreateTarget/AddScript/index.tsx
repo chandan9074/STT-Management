@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import TargetBox from "../../TargetBox";
-import DrawerTarget from "../../../../Drawer/DrawerTarget";
+import TargetBox from "../TargetBox";
+import {Drawer} from "../../../../Drawer";
+
 
 const AddSript = () => {
 
@@ -28,13 +29,13 @@ const AddSript = () => {
 
             <div>
                 {/* Use this for create target */}
-                <DrawerTarget
+                <Drawer.Script.Type1
                     isDrawerOpen={drawerOpen}
                     drawerClose={drawerClose}
-                    title='Select Title'
+                    title='Select Script'
                 >
-                    side drawer
-                </DrawerTarget>
+                    import here your script file
+                </Drawer.Script.Type1>
             </div>
         </div>
     );

@@ -1,6 +1,6 @@
 import React from 'react';
-import Icons from '../../../assets/Icons';
-import Buttons from '../../Buttons';
+import Icons from '../../../../assets/Icons';
+import Buttons from '../../../Buttons';
 
 const TargetBox = ({ targetTitle, onClick }: { targetTitle: string, onClick: () => void }) => {
     return (

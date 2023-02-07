@@ -1,33 +1,32 @@
-import { Drawer } from 'antd';
+import {Drawer} from 'antd';
 import React from 'react';
-import Icons from '../../assets/Icons';
-import Buttons from '../Buttons';
-
+import Icons from '../../../assets/Icons';
+import Buttons from '../../Buttons';
 
 type Props = {
     children: any,
     isDrawerOpen: boolean,
     drawerClose: () => void,
-    title: string
+    title: string,
 }
 
-const DrawerTargetElement = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
+const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
+
     const onClose = () => {
         drawerClose();
     };
 
     return (
         <div>
-
             <Drawer
                 closeIcon={false}
                 placement="right"
                 onClose={onClose}
                 open={isDrawerOpen}
-                width='715px'
+                width='555px'
             >
-                <div className='flex items-center justify-between py-[24px] px-[23px] bg-white'>
-                    <div className='gap-x-[28px] flex items-center'>
+                <div>
+                    <div className=' flex items-center gap-x-[28px] py-[24px] px-[23px] bg-white'>
                         <Buttons.IconButton.Circle
                             size='medium'
                             variant="CT-Blue"
@@ -38,10 +37,6 @@ const DrawerTargetElement = ({ children, isDrawerOpen, drawerClose, title }: Pro
                         />
                         <h1 className='text-ct-blue-95 text-[18px] font-medium'>{title}</h1>
                     </div>
-                    <div>
-                        <span className='text-[14px] text-primary-ct-magenta-60'>All Target: <span className='text-[#B8BFCC]'>--</span></span>
-                         
-                    </div>
                 </div>
                 {
                     children
@@ -51,4 +46,4 @@ const DrawerTargetElement = ({ children, isDrawerOpen, drawerClose, title }: Pro
     );
 };
 
-export default DrawerTargetElement;
+export default Type1;
