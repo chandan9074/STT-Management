@@ -30,7 +30,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                     <TextField
                         id="speakersName"
                         name="speakersName"
-                        label={<div>Speakers Name <span className='text-[red]'>*</span></div>}
+                        label={<h1 className='comboBoxLabel'>Speakers Name <span className='text-[red]'>*</span></h1>}
                         value={formik.values.speakersName}
                         onChange={formik.handleChange}
                         error={formik.touched.speakersName && Boolean(formik.errors.speakersName)}
@@ -64,13 +64,13 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                 <Grid item xs={6}>
                     <div>
                         <FormControl sx={{ width: '100%' }} variant="outlined">
-                            <InputLabel htmlFor='dateOfBirth'>{<div>Date of Birth <span className='text-[red]'>*</span></div>}</InputLabel>
+                            <InputLabel htmlFor='dateOfBirth'>{<h1 className='comboBoxLabel'>Date of Birth <span className='text-[red]'>*</span></h1>}</InputLabel>
                             <OutlinedInput
                                 id='dateOfBirth'
                                 autoComplete='off'
                                 type='text'
                                 name={formik.values.dateOfBirth}
-                                label={<div>Date of Birth <span className='text-[red]'>*</span></div>}
+                                label={<h1 className='comboBoxLabel'>Date of Birth <span className='text-[red]'>*</span></h1>}
                                 value={formik.values.dateOfBirth}
                                 onChange={formik.handleChange}
                                 onClick={() => setOpenCalender(true)}
@@ -124,7 +124,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                                 error={formik.touched.ageRange && Boolean(formik.errors.ageRange)}
                                 helperText={formik.touched.ageRange && formik.errors.ageRange}
 
-                                label={<span className='comboBoxLabel'>Age Range <span className='text-[red]'>*</span></span>}
+                                label={<h1 className='comboBoxLabel'>Age Range <span className='text-[red]'>*</span></h1>}
 
                             />
                         )}
@@ -156,7 +156,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                                 error={formik.touched.education && Boolean(formik.errors.education)}
                                 helperText={formik.touched.education && formik.errors.education}
 
-                                label={<span className='comboBoxLabel'>Education <span className='text-[red]'>*</span></span>}
+                                label={<h1 className='comboBoxLabel'>Education <span className='text-[red]'>*</span></h1>}
 
                             />
                         )}
@@ -187,7 +187,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                                 error={formik.touched.educationSituation && Boolean(formik.errors.educationSituation)}
                                 helperText={formik.touched.educationSituation && formik.errors.educationSituation}
 
-                                label={<span className='comboBoxLabel'>Education Situation <span className='text-[red]'>*</span></span>}
+                                label={<h1 className='comboBoxLabel'>Education Situation <span className='text-[red]'>*</span></h1>}
 
                             />
                         )}

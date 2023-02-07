@@ -49,7 +49,7 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
                                 error={formik.touched.primaryRole && Boolean(formik.errors.primaryRole)}
                                 helperText={formik.touched.primaryRole && formik.errors.primaryRole}
 
-                                label={<span className='comboBoxLabel'>Primary Role <span className='text-[red]'>*</span></span>}
+                                label={<h1 className='comboBoxLabel'>Primary Role <span className='text-[red]'>*</span></h1>}
 
                             />
                         )}
@@ -64,7 +64,7 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
                     <TextField
                         id="name"
                         name="name"
-                        label={<div>Name <span className='text-[red]'>*</span></div>}
+                        label={<h1 className='comboBoxLabel'>Name <span className='text-[red]'>*</span></h1>}
                         value={formik.values.name}
                         onChange={formik.handleChange}
                         error={formik.touched.name && Boolean(formik.errors.name)}
@@ -86,7 +86,7 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
                     <TextField
                         id="email"
                         name="email"
-                        label={<div>Email <span className='text-[red]'>*</span></div>}
+                        label={<h1 className='comboBoxLabel'>Email <span className='text-[red]'>*</span></h1>}
                         value={formik.values.email}
                         onChange={formik.handleChange}
                         error={formik.touched.email && Boolean(formik.errors.email)}
@@ -107,7 +107,7 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
                     <TextField
                         id="mobileNumber"
                         name="mobileNumber"
-                        label={<div>Mobile Number <span className='text-[red]'>*</span></div>}
+                        label={<h1 className='comboBoxLabel'>Mobile Number <span className='text-[red]'>*</span></h1>}
                         value={formik.values.mobileNumber}
                         onChange={formik.handleChange}
                         error={formik.touched.mobileNumber && Boolean(formik.errors.mobileNumber)}
@@ -135,7 +135,7 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
                             <TextField
                                 id="nid"
                                 name="nid"
-                                label={<div>Nid <span className='text-[red]'></span></div>}
+                                label={<h1 className='comboBoxLabel'>Nid <span className='text-[red]'></span></h1>}
                                 value={formik.values.nid}
                                 onChange={formik.handleChange}
                                 style={{ width: '100%', paddingRight: '9px' }}
@@ -155,7 +155,7 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
                         <TextField
                             id="birthRegNumber"
                             name="birthRegNumber"
-                            label={<div>Birth Registration Number <span className='text-[red]'></span></div>}
+                            label={<h1 className='comboBoxLabel'>Birth Registration Number <span className='text-[red]'></span></h1>}
                             value={formik.values.birthRegNumber}
                             onChange={formik.handleChange}
                             style={{ width: '100%', paddingLeft: '7px' }}
@@ -229,7 +229,7 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
                                 error={formik.touched.lastDegreeAchived && Boolean(formik.errors.lastDegreeAchived)}
                                 helperText={formik.touched.lastDegreeAchived && formik.errors.lastDegreeAchived}
 
-                                label={<span className='comboBoxLabel'>Last Degree Achieved <span className='text-[red]'>*</span></span>}
+                                label={<h1 className='comboBoxLabel'>Last Degree Achieved <span className='text-[red]'>*</span></h1>}
 
                             />
                         )}
@@ -240,7 +240,7 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
                     <TextField
                         id="subjectInStudy"
                         name="subjectInStudy"
-                        label={<div>Subject in study <span className='text-[red]'></span></div>}
+                        label={<h1 className='comboBoxLabel'>Subject in study <span className='text-[red]'></span></h1>}
                         value={formik.values.subjectInStudy}
                         onChange={formik.handleChange}
                         style={{ width: '100%' }}

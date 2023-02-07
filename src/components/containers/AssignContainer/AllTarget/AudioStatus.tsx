@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Icons from '../../../assets/Icons';
+import Icons from '../../../../assets/Icons';
 
-const BoxSection = () => {
+const AudioStatus = () => {
     const [dataShow, setDataShow] = useState<boolean>(false);
 
     return ( 
@@ -69,4 +69,4 @@ const BoxSection = () => {
     );
 };
 
-export default BoxSection;
+export default AudioStatus;

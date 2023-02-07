@@ -5,17 +5,16 @@ import { slugFormatter } from '../../helpers/Utils';
 
 const Secondary = () => {
 
-  const location = useLocation();  
+  const location = useLocation();
 
   return (
-    <div className="flex justify-between items-center py-4 pr-4 pl-[85px] shadow-md fixed w-full z-[90] bg-white">
+    <div className="flex justify-between items-center pt-4 pb-2 pr-4 pl-[73px] fixed w-full z-[90] bg-white">
       <div className="flex items-center ml-[240px]">
         {
           location.pathname.split('/').slice(1)?.map((value, i) => (
             <div key={i} className='flex items-center gap-x-[4px]'>
-
-              <h1 className=  {`${location.pathname.split('/').length-2 === i ? 'text-ct-blue-60 font-medium' : 'text-blue-gray-A50 '} text-[12px]`}>{slugFormatter(value)}</h1>
-              <div className={`${location.pathname.split('/').length-2 === i ? 'hidden' : ''} w-[18px] h-[18px] flex justify-center items-center`}>
+              <h1 className={`${location.pathname.split('/').length - 2 === i ? 'text-ct-blue-60 font-medium' : 'text-blue-gray-A50 '} text-[12px]`}>{slugFormatter(value)}</h1>
+              <div className={`${location.pathname.split('/').length - 2 === i ? 'hidden' : ''} w-[18px] h-[18px] flex justify-center items-center`}>
                 <img className='w-[5px] h-[8px]' src={Icons.ChevronRight} alt="" />
               </div>
             </div>

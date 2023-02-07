@@ -1,6 +1,0 @@
-.targetElementDatePicker {
-    position: absolute !important;
-    top: calc(50% - -296px) !important;
-    left: calc(50% - -251px) !important;
-    z-index: 99999 !important;
-}

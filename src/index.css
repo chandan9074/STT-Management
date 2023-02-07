@@ -29,7 +29,7 @@
   }
 
   .comboBoxLabel {
-    @apply font-medium text-blue-gray-80;
+    @apply font-medium text-blue-gray-75 text-[14px];
   }
 
   .xSmallButton {
