@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import TargetBox from "../TargetBox";
-import {Drawer} from "../../../../Drawer";
+import React, { useState } from 'react';
+import { Drawer } from "../../../../Drawer";
+import ScriptTargetBox from './ScriptTargetBox';
 
 
 const AddSript = () => {
@@ -18,24 +18,20 @@ const AddSript = () => {
     return (
         <div>
             {
-                    <div className='bg-white w-[376px] h-[332px] flex justify-center items-center rounded-t-[6px]'>
-                        <TargetBox
-                            targetTitle={'Add Script'}
-                            onClick={openDrawer}
-                        />
-                    </div>
-
+                <div className='bg-white w-[376px] h-[332px] flex justify-center items-center rounded-t-[6px]'>
+                    <ScriptTargetBox
+                        targetTitle={'Add Script'}
+                        onClick={openDrawer}
+                    />
+                </div>
             }
-
             <div>
                 {/* Use this for create target */}
                 <Drawer.Script.Type1
                     isDrawerOpen={drawerOpen}
                     drawerClose={drawerClose}
                     title='Select Script'
-                >
-                    import here your script file
-                </Drawer.Script.Type1>
+                />
             </div>
         </div>
     );
