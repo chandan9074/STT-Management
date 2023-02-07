@@ -1,5 +1,5 @@
 import { CaretDownOutlined } from '@ant-design/icons';
-import { FormControl, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
+import { FormControl, OutlinedInput } from '@mui/material';
 import { useState } from 'react';
 import Icons from '../../assets/Icons';
 import { homeDistrict } from '../../data/userManagement/UserManagementData';
@@ -22,6 +22,8 @@ type Prop =
 
 
 const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched, name, fieldLabel }: Prop) => {
+
+    const [isDistrictOpen, setIsDistrictOpen] = useState<boolean>(false);
 
     const [collapsed, setCollapsed] = useState<any>({});
 
@@ -60,6 +62,7 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
         setIsHomeDistrict(false);
         setOnTextField(formikValues);
         setFilteredDistrict(data);
+        setIsDistrictOpen(false);
     }
 
     const onItemRemove = (value: string) => {
@@ -78,61 +81,75 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
                 {/* <InputLabel htmlFor={name}>{<div className='comboBoxLabel'>{fieldLabel} <span className='text-[red]'>*</span></div>}</InputLabel> */}
                 <div
                     // className={`${formikValues.length === 0 && 'h-[44px]'} flex justify-between px-2 border-[1px] border-blue-gray-A20 rounded-[7px] multiple-select`}>
-                    className={`flex justify-between px-2 border-[1px] border-blue-gray-A20 rounded-[7px] multiple-select`}>
+                    className={`relative flex px-2 border-[1px] border-blue-gray-A20 rounded-[7px] multiple-select w-full flex-wrap`}
+                    onClick={() => setIsDistrictOpen(true)}
+                >
+                    <button 
+                    onClick={() => setIsHomeDistrict(true)}
+                    className='absolute right-[11px] bottom-[14px]'>
+                        <CaretDownOutlined style={{color: '#5F6B7D'}}/>
+                    </button>
 
                     {
                         formikValues.length !== 0 &&
                         // <div className='flex items-center overflow-x-auto gap-x-[4px] w-[320px]'>
-                        <div className='flex items-center overflow-x-auto gap-x-[4px] flex-wrap'>
-
+                        // <div className='flex items-center gap-x-[4px] '>
+                        <div className='flex gap-x-1 py-[12px] flex-wrap'>
                             {
 
                                 formikValues?.map((value: string, i: number) => (
-                                    <div className='bg-ct-blue-20 rounded-[4px] flex justify-center items-center px-[8px] gap-x-[4px] h-6'>
+                                    <div className='bg-ct-blue-20 rounded-[4px] flex justify-center items-center px-[8px] gap-x-[4px] h-6 flex-wrap mx-[] ]'>
                                         <h1 className='text-[13px] text-blue-gray-80 font-medium whitespace-nowrap'>
                                             {value}
-                                            {/* 21 dec */}
                                         </h1>
-                                        <div className='cursor-pointer w-[14px] p-[3px] bg-white rounded-[3px]'>
+                                        <div onClick={() => onItemRemove(value)} className='cursor-pointer w-[14px] p-[3px] bg-white rounded-[3px]'>
                                             <img
                                                 className='h-[8px] w-[8px]'
                                                 src={Icons.CloseIconButton}
                                                 alt=""
-                                                onClick={() => onItemRemove(value)}
+
                                             />
                                         </div>
                                     </div>
                                 ))
                             }
+                            <div />
                         </div>
                     }
 
-                    <OutlinedInput
+                    {
+                        <div className={` ${(isDistrictOpen || formik.values.district.length !== 0) ? ' p-[4px] absolute -top-[13px] bg-white' : 'my-[14px]'}  `}>
+                            <h1 className={`${isDistrictOpen ? 'text-[12px] font-medium text-blue-gray-80' : 'comboBoxLabel'} `}>District<span className='text-[red]'>*</span></h1>
+                        </div>
+                    }
 
-                        // className='h-[44px] w-full'
-                        className='w-full'
-                        id={name}
-                        autoComplete='off'
-                        type='text'
-                        onMouseDown={onHomeDistrictFocus}
-                        name={name}
-                        // label={<div className='comboBoxLabel'>{fieldLabel} <span className='text-[red]'>*</span></div>}
-                        // value={onTextField || ''}
-                        onChange={(e) => {
-                            handleSearch(e);
-                            setOnTextField(e.target.value);
-                        }}
-                        endAdornment={
-                            <InputAdornment position="end">
-                                {/* <IconButton
-                                aria-label="toggle password visibility"
-                                edge="end"
-                            > */}
-                                <CaretDownOutlined />
-                                {/* </IconButton> */}
-                            </InputAdornment>
+
+                    <div onClick={() => setIsDistrictOpen(true)} className='-ml-[10px]'>
+                        {
+                            (formik.values.district.length !== 0 || isDistrictOpen) &&
+                            <OutlinedInput
+
+                                className=' h-[44px] w-full inline'
+                                id={name}
+                                autoComplete='off'
+                                autoFocus
+                                type='text'
+                                onMouseDown={onHomeDistrictFocus}
+                                name={name}
+                                onChange={(e) => {
+                                    handleSearch(e);
+                                    setOnTextField(e.target.value);
+                                }}
+                                placeholder='Choose District'
+                            // endAdornment={
+                            //     <InputAdornment position="end">
+
+                            //         <CaretDownOutlined />
+                            //     </InputAdornment>
+                            // }
+                            />
                         }
-                    />
+                    </div>
                 </div>
             </FormControl>
             {

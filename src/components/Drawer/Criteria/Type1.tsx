@@ -1,6 +1,7 @@
 import { Drawer } from 'antd';
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Icons from '../../../assets/Icons';
+import { AssignContext } from '../../../context/AssignProvider';
 import Buttons from '../../Buttons';
 
 
@@ -12,6 +13,20 @@ type Props = {
 }
 
 const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
+
+    const AssignContexts = useContext(AssignContext);
+    const {
+        criterias
+    } = AssignContexts;
+
+    const [sumTarget, setSumTarget] = useState<number>();
+
+    useEffect(() => {
+        const targetSum = criterias.reduce((acc: any, item: any) => acc + item.target, 0);
+        setSumTarget(targetSum);
+
+    }, [criterias])
+
     const onClose = () => {
         drawerClose();
     };
@@ -39,7 +54,7 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
                         <h1 className='text-ct-blue-95 text-[18px] font-medium'>{title}</h1>
                     </div>
                     <div>
-                        <span className='text-[14px] text-primary-ct-magenta-60'>All Target: <span className='text-[#B8BFCC]'>--</span></span>
+                        <span className='text-[14px] text-primary-ct-magenta-60'>All Target: {sumTarget} <span className='text-[#B8BFCC]'>--</span></span>
                          
                     </div>
                 </div>
