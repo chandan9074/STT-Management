@@ -20,3 +20,6 @@ export const GET_ROLE_LIST_URL = `${REACT_APP_BASE_URL}/roles-list`;
 export const GET_TOTAL_DATA_URL = `${REACT_APP_BASE_URL}/total-data-dashboard`;
 export const GET_OVER_THE_TIME_DATA_URL = `${REACT_APP_BASE_URL}/over-the-time-dashboard`;
 export const GET_CREATE_COLLECT_DATA_URL = `${REACT_APP_BASE_URL}/create-collect-data`;
+
+// Script
+export const UPLOAD_SCRIPT_CSV_FILE_URL = `${REACT_APP_BASE_URL}/upload-csv`;

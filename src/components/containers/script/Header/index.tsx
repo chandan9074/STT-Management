@@ -16,7 +16,7 @@ const Header = () => {
     // console.log("file", file);
     if (file) {
       let formData = new FormData();
-      formData.append("file", file);
+      formData.append("csvFile", file);
       scriptContext?.uploadCsv(formData);
 
       // const reader = new FileReader();

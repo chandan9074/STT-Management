@@ -145,8 +145,6 @@ export const compareWithCurrentMonthYear = (mn: string, yr: number) => {
   const currentMonth = Number(moment().format("MM"));
   const currentYear = Number(moment().format("YYYY"));
 
-  console.log("hello", currentMonth, currentYear, month, year)
-
   if (year <= currentYear) {
     if (month <= currentMonth) {
       return false;
@@ -155,4 +153,15 @@ export const compareWithCurrentMonthYear = (mn: string, yr: number) => {
   } else {
     return true;
   }
+}
+
+let previous = 0;
+
+export const getRandomInt = (min: number, max: number) => {
+  let random = Math.floor(Math.random() * (max - min + 1)) + min;
+  while (random === previous) {
+    random = Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  previous = random;
+  return random;
 }

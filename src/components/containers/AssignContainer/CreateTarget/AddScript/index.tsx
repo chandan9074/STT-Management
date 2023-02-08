@@ -30,7 +30,6 @@ const AddSript = () => {
                 <Drawer.Script.Type1
                     isDrawerOpen={drawerOpen}
                     drawerClose={drawerClose}
-                    title='Select Script'
                 />
             </div>
         </div>

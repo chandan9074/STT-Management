@@ -15,10 +15,10 @@ const ScriptProvider = ({ children }: { children: any }) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [modalData, setModalData] = useState<string>("");
 
-  const uploadCsv = (formData: any) => {
+  const uploadCsv = async (formData: any) => {
     // console.log("formData", formData);
 
-    const res = ScriptService.uploadCsv(formData);
+    ScriptService.uploadCsv(formData);
   };
 
   return (
