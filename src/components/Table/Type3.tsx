@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table } from "antd";
-import './type2BillingTable.css'
+import "../../assets/css/table/table.css";
 import { collectDataDT, createDataDT } from '../../types/dashboardTypes';
 import { getTableColorByName } from '../../helpers/Utils';
 interface Props {

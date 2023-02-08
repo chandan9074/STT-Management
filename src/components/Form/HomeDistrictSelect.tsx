@@ -68,7 +68,7 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
             <div className={`${!isHomeDistrict && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[90]`} onClick={() => clickOutsideField()}></div>
 
             <FormControl sx={{ width: '100%' }} variant="outlined">
-                <InputLabel htmlFor={name}>{<div>{fieldLabel} <span className='text-[red]'>*</span></div>}</InputLabel>
+                <InputLabel htmlFor={name}>{<h1 className='comboBoxLabel'>{fieldLabel} <span className='text-[red]'>*</span></h1>}</InputLabel>
                 <OutlinedInput
                     id={name}
                     autoComplete='off'
@@ -76,7 +76,7 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
                     
                     onMouseDown={onHomeDistrictFocus}
                     name={name}
-                    label={<div>{fieldLabel} <span className='text-[red]'>*</span></div>}
+                    label={<h1 className='comboBoxLabel'>{fieldLabel} <span className='text-[red]'>*</span></h1>}
                     value={onTextField || ''}
                     onChange={(e) => {
                         handleSearch(e);

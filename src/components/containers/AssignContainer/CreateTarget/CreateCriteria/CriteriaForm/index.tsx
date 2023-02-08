@@ -10,7 +10,7 @@ const validationSchema = yup.object({
     // district: yup.string().required('District is Required'),
 });
 
-const TargetElement = () => {
+const CriteriaForm = () => {
     const formik = useFormik({
         initialValues: {
             gender: '',
@@ -43,4 +43,4 @@ const TargetElement = () => {
 };
 
 
-export default TargetElement;
+export default CriteriaForm;

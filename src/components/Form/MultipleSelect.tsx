@@ -75,12 +75,16 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
             <div className={`${!isHomeDistrict && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[90]`} onClick={() => clickOutsideField()}></div>
 
             <FormControl sx={{ width: '100%' }} variant="outlined">
-                <InputLabel htmlFor={name}>{<div>{fieldLabel} <span className='text-[red]'>*</span></div>}</InputLabel>
-                <div className={`${formikValues.length === 0 && 'h-[44px]'} flex justify-between px-2 border-[1px] border-blue-gray-A20 rounded-[7px] multiple-select`}>
+                {/* <InputLabel htmlFor={name}>{<div className='comboBoxLabel'>{fieldLabel} <span className='text-[red]'>*</span></div>}</InputLabel> */}
+                <div
+                    // className={`${formikValues.length === 0 && 'h-[44px]'} flex justify-between px-2 border-[1px] border-blue-gray-A20 rounded-[7px] multiple-select`}>
+                    className={`flex justify-between px-2 border-[1px] border-blue-gray-A20 rounded-[7px] multiple-select`}>
 
                     {
                         formikValues.length !== 0 &&
-                        <div className='flex items-center overflow-x-auto gap-x-[4px] w-[320px]'>
+                        // <div className='flex items-center overflow-x-auto gap-x-[4px] w-[320px]'>
+                        <div className='flex items-center overflow-x-auto gap-x-[4px] flex-wrap'>
+
                             {
 
                                 formikValues?.map((value: string, i: number) => (
@@ -105,13 +109,14 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
 
                     <OutlinedInput
 
-                        className='h-[44px] w-full'
+                        // className='h-[44px] w-full'
+                        className='w-full'
                         id={name}
                         autoComplete='off'
                         type='text'
                         onMouseDown={onHomeDistrictFocus}
                         name={name}
-                        // label={<div>{fieldLabel} <span className='text-[red]'>*</span></div>}
+                        // label={<div className='comboBoxLabel'>{fieldLabel} <span className='text-[red]'>*</span></div>}
                         // value={onTextField || ''}
                         onChange={(e) => {
                             handleSearch(e);
@@ -151,7 +156,7 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
                                     {district.map((name, i) => (
                                         <div
                                             key={i}
-                                            onClick={() =>formikValues.includes(name) ? onItemRemove(name) : handleDistrictClick(name)}
+                                            onClick={() => formikValues.includes(name) ? onItemRemove(name) : handleDistrictClick(name)}
                                             className={`pl-[16px] ${formikValues.includes(name) ? 'mt-[2px] bg-blue-10 hover:bg-blue-20 active:bg-blue-30' : 'hover:bg-ct-blue-05 active:bg-ct-blue-10'} `}>
                                             <div className='flex justify-between items-center cursor-pointer pr-[9px] py-[12px]'>
                                                 <h3

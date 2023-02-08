@@ -4,96 +4,67 @@ import React, { useState } from 'react';
 import Icons from '../../assets/Icons';
 import { CustomModal } from '../common/CustomModal';
 import { SideDrawer } from '../common/SideDrawer';
-import './type4Table.css';
-
-interface DataType {
-    key: React.Key;
-    name: string;
-    age: number;
-    address: string;
-}
+import "../../assets/css/table/type4Table.css";
+import { allScriptResDT } from '../../types/script';
 
 
-const data: DataType[] = [
-    {
-        key: '1',
-        name: 'John Brown',
-        age: 32,
-        address: 'New York No. 1 Lake Park',
-    },
-    {
-        key: '2',
-        name: 'Jim Green',
-        age: 42,
-        address: 'London No. 1 Lake Park',
-    },
-    {
-        key: '3',
-        name: 'Joe Black',
-        age: 32,
-        address: 'Sidney No. 1 Lake Park',
-    },
-    {
-        key: '4',
-        name: 'Disabled User',
-        age: 99,
-        address: 'Sidney No. 1 Lake Park',
-    },
-];
 
 // rowSelection object indicates the need for row selection
 const rowSelection = {
-    onChange: (selectedRowKeys: React.Key[], selectedRows: DataType[]) => {
+    onChange: (selectedRowKeys: React.Key[], selectedRows: any[]) => {
         console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
     },
-    getCheckboxProps: (record: DataType) => ({
+    getCheckboxProps: (record: any) => ({
         // disabled: record.name === 'Disabled User', // Column configuration not to be checked
         name: record.name,
     }),
 };
 
-const Type4 = () => {
+interface Props {
+    Data: any
+}
+
+const Type4 = ({ Data }: Props) => {
     const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
     const [drawerData, setDrawerData] = useState<any>();
 
-    const showDrawer = (key: any) => {
+    const showDrawer = (data: any) => {
         setOpen(true);
-        setDrawerData(key)
+        setDrawerData(data)
     };
 
 
-    const columns: ColumnsType<DataType> = [
+    const columns: ColumnsType<any> = [
         {
             title: `${"Data type".toLocaleUpperCase()}`,
-            dataIndex: 'name',
-            // render: (text: string) => <>{text}</>,
+            dataIndex: 'module',
         },
         {
             title: `${"ID".toLocaleUpperCase()}`,
-            dataIndex: 'age',
+            dataIndex: 'id',
         },
         {
             title: `${"distribution Source".toLocaleUpperCase()}`,
-            dataIndex: 'address',
+            dataIndex: 'distributionSource',
         },
         {
             title: `${"Script title".toLocaleUpperCase()}`,
-            dataIndex: 'address',
+            dataIndex: 'title',
         },
         {
             title: `${"Description".toLocaleUpperCase()}`,
-            dataIndex: 'address',
+            dataIndex: 'description',
         },
         {
             title: `${"Script Domain".toLocaleUpperCase()}`,
-            dataIndex: 'address',
+            dataIndex: 'domain',
         },
         {
             title: `${"Details".toLocaleUpperCase()}`,
             dataIndex: 'Details',
             align: 'center',
-            render: (_, record: { key: React.Key }) => (
+            render: (_, record, data) => (
                 <>
 
                     <div className='flex w-full justify-center items-center'>
@@ -108,22 +79,27 @@ const Type4 = () => {
         },
     ];
 
-
+   
     return (
-        <div className='type4-table'>
+        <div className='type4-table billing-table'>
 
             <Table
-               
+
                 rowSelection={{
                     type: selectionType,
                     ...rowSelection,
                 }}
+
                 columns={columns}
-                dataSource={data}
+                dataSource={Data}
                 pagination={false}
             />
 
-            <SideDrawer.Type1 open={open} setOpen={setOpen} drawerData={drawerData} />
+            <SideDrawer.Type1
+                open={open}
+                setOpen={setOpen}
+                drawerData={drawerData}
+            />
         </div >
     );
 };

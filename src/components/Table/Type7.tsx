@@ -6,7 +6,7 @@ import Icons from '../../assets/Icons';
 import Buttons from '../Buttons';
 import ProgressBar from '../common/ProgressBar';
 import { SideDrawer } from '../common/SideDrawer';
-import './type4Table.css';
+import "../../assets/css/table/type4Table.css";
 
 // interface DataType {
 //     key: React.Key;

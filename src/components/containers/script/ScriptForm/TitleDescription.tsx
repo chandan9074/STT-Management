@@ -18,7 +18,7 @@ const TitleDescription = ({ formik }: { formik: any }) => {
                     onChange={formik.handleChange}
                     error={formik.touched.title && Boolean(formik.errors.title)}
                     helperText={formik.touched.title && formik.errors.title}
-                    label="Title"
+                    label={<h1 className='comboBoxLabel'>Title</h1>}
                     variant="standard"
                     InputProps={{
                         disableUnderline: true,
@@ -29,12 +29,12 @@ const TitleDescription = ({ formik }: { formik: any }) => {
                 <h1 className='w-[107px] text-[13px] text-blue-gray-60'>{formik.values.script.length} characters</h1>
             </div>
 
-            <Divider 
-            sx={{ bgcolor: "#E5E7EBd" }}
-            style={{
-                marginTop: '10px',
-                marginBottom: '10px'
-            }} />
+            <Divider
+                sx={{ bgcolor: "#E5E7EBd" }}
+                style={{
+                    marginTop: '10px',
+                    marginBottom: '10px'
+                }} />
 
             <TextareaAutosize
                 id="script"

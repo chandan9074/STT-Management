@@ -5,7 +5,7 @@ import { CustomModal } from '../common/CustomModal';
 import { SideDrawer } from '../common/SideDrawer';
 import { Table } from 'antd';
 import Buttons from '../Buttons';
-import './type4Table.css';
+import "../../assets/css/table/type4Table.css";
 import { Status } from '../Status';
 import { useNavigate } from 'react-router-dom';
 import { FilterValue, SorterResult } from 'antd/es/table/interface';

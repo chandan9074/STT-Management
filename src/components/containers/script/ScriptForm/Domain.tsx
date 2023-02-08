@@ -20,7 +20,9 @@ const Domain = ({ formik }: { formik: any }) => {
 
 
                         <FormControl sx={{ width: '100%' }}>
-                            <InputLabel id="demo-simple-select-helper-label"><h1>Domain <span className='text-[red]'>*</span></h1></InputLabel>
+                            <InputLabel id="demo-simple-select-helper-label">
+                                <h1 className='comboBoxLabel'>Domain <span className='text-[red]'>*</span></h1>
+                            </InputLabel>
                             <Select
                                 labelId="demo-simple-select-helper-label"
                                 id="demo-simple-select-helper"
@@ -29,16 +31,16 @@ const Domain = ({ formik }: { formik: any }) => {
                                 defaultValue={formik.values.domain}
                                 onChange={(event) => {
                                     if (typeof event.target.value === 'string') {
-    
+
                                         formik.setFieldValue('domain', event.target.value)
                                         sebDomain(event.target.value);
                                         console.log('*********', event.target.value);
-                                        
-    
+
+
                                     } else {
                                         formik.setFieldValue('domain', '')
                                         sebDomain('');
-    
+
                                     }
                                 }}
                             >
@@ -125,7 +127,7 @@ const Domain = ({ formik }: { formik: any }) => {
                                     error={formik.touched.subDomain && Boolean(formik.errors.subDomain)}
                                     helperText={formik.touched.subDomain && formik.errors.subDomain}
                                     {...params}
-                                    label={<span className='comboBoxLabel'>Sub Domain <span className='text-[red]'>*</span></span>}
+                                    label={<h1 className='comboBoxLabel'>Sub Domain <span className='text-[red]'>*</span></h1>}
 
                                 />
                             )}

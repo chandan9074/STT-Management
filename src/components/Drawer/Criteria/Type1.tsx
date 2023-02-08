@@ -1,7 +1,7 @@
 import { Drawer } from 'antd';
 import React from 'react';
-import Icons from '../../assets/Icons';
-import Buttons from '../Buttons';
+import Icons from '../../../assets/Icons';
+import Buttons from '../../Buttons';
 
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
     title: string
 }
 
-const DrawerTargetElement = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
+const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
     const onClose = () => {
         drawerClose();
     };
@@ -51,4 +51,4 @@ const DrawerTargetElement = ({ children, isDrawerOpen, drawerClose, title }: Pro
     );
 };
 
-export default DrawerTargetElement;
+export default Type1;

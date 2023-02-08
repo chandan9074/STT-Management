@@ -1,14 +1,11 @@
-import { Link, Outlet } from 'react-router-dom';
-import Icons from '../../../assets/Icons';
-import { CREATE_TARGET_PATH } from '../../../helpers/Slug';
-import Buttons from '../../Buttons';
-import AssignTable from './AssignTable';
-import BoxSection from './BoxSection';
+import {Outlet} from 'react-router-dom';
+
 
 const AssignContainer = () => {
 
 
     return (
+
         <div>
             {/* <div className='bg-white shadow-box pl-[325px] pt-[110px] pb-[24px]'>
                 <div className='flex justify-between items-center mb-[23px]'>
@@ -27,10 +24,10 @@ const AssignContainer = () => {
                     </div>
                 </div>
 
-                <BoxSection />
+                <AudioStatus />
             </div>
 
-            <AssignTable /> */}
+            <TargetTable /> */}
 
             <Outlet></Outlet>
 

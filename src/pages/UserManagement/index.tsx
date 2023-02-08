@@ -16,10 +16,10 @@ const UserManagement = () => {
                 <Header open={open} setOpen={setOpen} />
                 <Table.Type5  />
                 <CustomModal.Type2 open={open} setOpen={setOpen} />
-                <Toast.Type1
+                {/* <Toast.Type1
                     massages='A user has been created'
                     iconSrc={Icons.home}
-                />
+                /> */}
               
 
             </div>
