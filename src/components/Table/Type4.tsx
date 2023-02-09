@@ -10,15 +10,7 @@ import { allScriptResDT } from '../../types/script';
 
 
 // rowSelection object indicates the need for row selection
-const rowSelection = {
-    onChange: (selectedRowKeys: React.Key[], selectedRows: any[]) => {
-        console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-    },
-    getCheckboxProps: (record: any) => ({
-        // disabled: record.name === 'Disabled User', // Column configuration not to be checked
-        name: record.name,
-    }),
-};
+;
 
 interface Props {
     Data: any
@@ -79,7 +71,16 @@ const Type4 = ({ Data }: Props) => {
         },
     ];
 
-   
+    const rowSelection = {
+        onChange: (selectedRowKeys: any[], selectedRows: any[]) => {
+            console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+        },
+        // getCheckboxProps: (record: any) => ({
+        //     // disabled: record.name === 'Disabled User', // Column configuration not to be checked
+            
+        // }),
+    }
+
     return (
         <div className='type4-table billing-table'>
 
@@ -89,7 +90,7 @@ const Type4 = ({ Data }: Props) => {
                     type: selectionType,
                     ...rowSelection,
                 }}
-
+                rowKey={(render) => render.id}
                 columns={columns}
                 dataSource={Data}
                 pagination={false}

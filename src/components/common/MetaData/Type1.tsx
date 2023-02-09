@@ -1,32 +1,99 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
-type MetaDataDT = {
-    keyName: any;
-    value: any
-}
 
 interface Props {
-    metaData: MetaDataDT[]
+    metaData: any
 }
-const Type1 = (props: Props) => {
-    const { metaData } = props
+const Type1 = ({ metaData }: Props) => {
+
 
     return (
         <div className='py-1'>
-            {
-                metaData.map((data: any, index: number) =>
-                    <div className='flex' key={index}>
-                        <div className={`bg-[#F4F7FA] ${index === 0 ? "rounded-t-[5px]" : index === metaData.length - 1 ? "rounded-b-[5px]" : ""} w-[125px]`}>
-                            <p className='text-xxs font-medium text-blue-gray-75 px-3 py-2'>{data.keyName}</p>
-                        </div>
-                        <div className='w-[296px]'>
-                            <p className='text-small font-medium text-blue-gray-80 px-3 py-2'>
-                                {data.value.length === 0 ? "--" : data.value}
-                            </p>
-                        </div>
-                    </div>
-                )
-            }
+            <div className='flex'>
+                <div className={`bg-[#F4F7FA] w-[125px] rounded-t-[5px]`}>
+                    <p className='text-xxs font-medium text-blue-gray-75 px-3 py-2'>
+                        Script ID
+                    </p>
+                </div>
+                <div className='w-[296px]'>
+                    <p className='text-small font-medium text-blue-gray-80 px-3 py-2'>
+                        {metaData.id}
+                    </p>
+                </div>
+            </div>
+            <div className='flex'>
+                <div className={`bg-[#F4F7FA] w-[125px]`}>
+                    <p className='text-xxs font-medium text-blue-gray-75 px-3 py-2'>
+                        Age
+                    </p>
+                </div>
+                <div className='w-[296px]'>
+                    <p className='text-small font-medium text-blue-gray-80 px-3 py-2'>
+                        --
+                    </p>
+                </div>
+            </div>
+            <div className='flex'>
+                <div className={`bg-[#F4F7FA] w-[125px]`}>
+                    <p className='text-xxs font-medium text-blue-gray-75 px-3 py-2'>
+                        Data Sorce
+                    </p>
+                </div>
+                <div className='w-[296px]'>
+                    <p className='text-small font-medium text-blue-gray-80 px-3 py-2'>
+                        {
+                            metaData.distributionSource
+                        }
+                    </p>
+                </div>
+            </div>
+            <div className='flex'>
+                <div className={`bg-[#F4F7FA] w-[125px]`}>
+                    <p className='text-xxs font-medium text-blue-gray-75 px-3 py-2'>
+                        Domain
+                    </p>
+                </div>
+                <div className='w-[296px]'>
+                    <p className='text-small font-medium text-blue-gray-80 px-3 py-2'>
+                        {
+                            metaData.domain
+                        }
+                    </p>
+                </div>
+            </div>
+            <div className='flex'>
+                <div className={`bg-[#F4F7FA] w-[125px]`}>
+                    <p className='text-xxs font-medium text-blue-gray-75 px-3 py-2'>
+                        Sub Domain
+                    </p>
+                </div>
+                <div className='w-[296px]'>
+                    <p className='text-small font-medium text-blue-gray-80 px-3 py-2'>
+                        {
+                            metaData.subDomain
+                        }
+                    </p>
+                </div>
+            </div>
+            <div className='flex'>
+                <div className={`bg-[#F4F7FA] w-[125px] rounded-b-[5px]`}>
+                    <p className='text-xxs font-medium text-blue-gray-75 px-3 py-2'>
+                        Source Reference
+                    </p>
+                </div>
+                <div className='w-[296px] '>
+                    <p className='text-small font-medium text-blue-gray-80 px-3 py-2'>
+                        {metaData.sourceType}
+                    </p>
+                    <Link to={metaData.sourceurl}>
+                        <p className='text-small font-medium text-secondary-blue-50 px-3 py-2'>
+                            {metaData.sourceurl}
+                        </p>
+                    </Link>
+
+                </div>
+            </div>
 
         </div>
     );

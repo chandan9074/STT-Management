@@ -34,6 +34,7 @@ const Type3 = ({ open, setOpen, drawerData }: Props) => {
                     metaDataOpen ?
                         <ScriptMetaData
                             setMetaDataOpen={setMetaDataOpen}
+                            drawerData={[]}
                         />
                         :
                         <div className='animate-fadeIn'>

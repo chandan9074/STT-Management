@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
 import Icons from '../../../../assets/Icons';
+import { PDF } from '../../../PDF';
 import PdfContainer from '../../../PDF/PdfContainer';
 import { Toast } from '../../../Toast';
 
@@ -79,7 +80,7 @@ const ScriptsDetails = ({ drawerData, setMetaDataOpen }: Props) => {
                                 alt="" />
                             <p className='text-small font-medium text-[#136EE5]'>Download Script</p>
                         </div> */}
-                        <PdfContainer data={drawerData}/>
+                        <PDF.Type2 data={drawerData} />
                         <img
                             className='w-[18px] h-[18px] cursor-pointer'
                             src={Icons.contentCopy}

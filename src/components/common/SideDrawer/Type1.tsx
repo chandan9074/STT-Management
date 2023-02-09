@@ -35,6 +35,7 @@ const Type1 = ({ open, setOpen, drawerData }: Props) => {
                     metaDataOpen ?
                         <ScriptMetaData
                             setMetaDataOpen={setMetaDataOpen}
+                            drawerData={drawerData}
                         />
                         : <SideDrawerDetails.ScriptsDetails
                             drawerData={drawerData}

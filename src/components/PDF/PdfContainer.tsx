@@ -13,14 +13,15 @@ const PdfContainer = ({ data }: Props) => {
 
     return (
         <div>
+            {/* <PDF.Type2 data={data} /> */}
             {/* <button onClick={() => handlePdf()}>download pdf</button> */}
 
-            <div className="App">
-                <PDFDownloadLink document={<PDF.Type2 data={data} />} fileName="somename.pdf">
-                    {/* @ts-ignore */}
+            {/* <div className="App">
+                <PDFDownloadLink document={} fileName="somename.pdf">
+                    @ts-ignore
                     {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
                 </PDFDownloadLink>
-            </div>
+            </div> */}
 
             {/* <Fragment>
                 <PDFViewer width="1366" height="600">
