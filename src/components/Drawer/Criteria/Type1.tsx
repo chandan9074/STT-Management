@@ -18,7 +18,8 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
     const AssignContexts = useContext(AssignContext);
     const {
         criterias,
-        sumTarget
+        sumTarget,
+        setEmptySingleCriteria
     } = AssignContexts;
 
     const [lengthClick, setLengthClick] = useState<boolean>(false);
@@ -29,6 +30,16 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
 
     const onLengthClick = () => {
         setLengthClick(true);
+    }
+
+    const onLengthClickClose = () => {
+        setLengthClick(false);
+    }
+
+    const handleBackButton = () => {
+        setLengthClick(false);
+        setEmptySingleCriteria();
+
     }
 
     return (
@@ -97,7 +108,7 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
                                         icon={<img src={Icons.arrow_back} alt="" />}
                                         border='border'
                                         background="white"
-                                        onClick={() => setLengthClick(false)}
+                                        onClick={() => handleBackButton()}
                                     />
                                     <h1 className='text-ct-blue-95 text-[18px] font-medium'>Details</h1>
                                 </div>
@@ -107,12 +118,10 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
 
                                         <h1 className='text-[14px] text-primary-ct-magenta-60 font-medium '> {sumTarget}</h1>
                                     </div>
-
-
                                 </div>
                             </div>
 
-                            <TargetDetails />
+                            <TargetDetails onLengthClickClose={onLengthClickClose} />
                         </div>
 
                     </Drawer>

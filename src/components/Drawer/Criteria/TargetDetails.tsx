@@ -1,14 +1,15 @@
+import { Grid } from '@mui/material';
 import React, { useContext, useEffect, useState } from 'react';
 import { AssignContext } from '../../../context/AssignProvider';
 import Image from '../../Image';
 
-const TargetDetails = () => {
+const TargetDetails = ({onLengthClickClose}: {onLengthClickClose: () => void}) => {
 
     const AssignContexts = useContext(AssignContext);
     const {
         criterias,
         singleCriteria,
-        getSingleCriteria
+        getSingleCriteria,
     } = AssignContexts;
 
     const [targetId, setTargetId] = useState<number>(criterias[0].target);
@@ -24,10 +25,8 @@ const TargetDetails = () => {
 
     const onEditClick = () => {
         getSingleCriteria(targetId);
+        onLengthClickClose();
     }
-
-    console.log('-------&&&&', singleCriteria);
-
 
     return (
         <div>
@@ -53,10 +52,49 @@ const TargetDetails = () => {
                 }
             </div>
 
+            {/* <div className='flex'>
+                <Grid
+                    container
+                    direction="row"
+                    alignItems="center"
+                >
+                    <Grid item xs={4}>
+                        <div className='bg-ct-blue-05 pt-3 pr-2  pl-3 rounded-t-[5px]'>
+                            <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px] whitespace-nowrap'>Gender</h1>
+                        </div>
+                    </Grid>
+
+                    <Grid item xs={8}>
+                        <div className=' pt-3 pr-2 pl-3'>
+                            <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{singleCriteria?.gender}</h1>
+                        </div>
+                    </Grid>
+
+                    <Grid item xs={4}>
+                        <div className='bg-ct-blue-05 pr-2  pl-3'>
+                            <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px] whitespace-nowrap'>Gender</h1>
+                        </div>
+                    </Grid>
+
+                    <Grid item xs={8}>
+                        <div className=' pt-3 pr-2 pl-3'>
+                            <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{singleCriteria?.gender}</h1>
+                        </div>
+                    </Grid>
+
+                </Grid>
+
+                <div className='ml-auto'>
+                    <button>Edit</button>
+                </div>
+            </div> */}
+
+          
+
             <div className='flex mt-[25px]'>
                 <div className='w-[125px] bg-ct-blue-05 pt-3 pr-2 pb-[10px] pl-3 rounded-[5px]'>
                     <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px]'>Gender</h1>
-                    
+
                     <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px]'>Age Range</h1>
                     <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px] whitespace-nowrap'>Division/ District</h1>
                     <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px]'>Profession</h1>
@@ -82,14 +120,16 @@ const TargetDetails = () => {
                     <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{singleCriteria?.profession || '-'} </h1>
                     <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{singleCriteria?.economicSituation || '-'}</h1>
                     <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>Education</h1>
-                    <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>Smoking Habit</h1>
-                    <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>Hearing Disability</h1>
-                    <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>Stutter</h1>
+                    <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{singleCriteria?.healthFactors?.includes('Smoker') ? 'Smoking Habit' : '-' }</h1>
+                    <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{singleCriteria?.healthFactors?.includes('Hearing') ? 'Hearing Disability' : '-' }</h1>
+                    <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{singleCriteria?.healthFactors?.includes('Shutter') ? 'Shutter' : '-' }</h1>
                     <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{singleCriteria?.recordingArea || '-'}</h1>
                     <h1 className='text-blue-gray-80 font-medium text-[14px] leading-[15px]'>{singleCriteria?.recordingDistance || '-'}</h1>
                 </div>
-                <div className='ml-auto'>
-                    <button>Edit</button>
+                <div
+                
+                 className='ml-auto'>
+                    <button onClick={() => onEditClick()} className='text-ct-blue-60'>Edit</button>
                 </div>
             </div>
 
@@ -110,10 +150,10 @@ const TargetDetails = () => {
                     <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>
                         {
                             singleCriteria?.reminder?.length !== 0 ?
-                            singleCriteria?.reminder?.map((value: string) => {
-                                return value + ', ';
-                            }) : 
-                            '-'
+                                singleCriteria?.reminder?.map((value: string) => {
+                                    return value + ', ';
+                                }) :
+                                '-'
                         }
                     </h1>
                     <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{singleCriteria?.remark || '-'}</h1>

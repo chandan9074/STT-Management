@@ -5,7 +5,8 @@ interface ContextProps {
     singleCriteria: any
     saveCriteria: (value: any) => void,
     getSingleCriteria: (value: any) => void,
-    sumTarget: number | undefined
+    sumTarget: number | undefined,
+    setEmptySingleCriteria: () => void
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -18,20 +19,31 @@ const AssignProvider = ({ children }: { children: any }) => {
 
     const [sumTarget, setSumTarget] = useState<number>();
 
+
+ 
+
     const saveCriteria = (data: any) => {
-        setCriterias([...criterias, data]);
+        const filteredCriterias = criterias.filter((criteria: any) => criteria.target !== data.target);
+        setCriterias([...filteredCriterias, data]);
+
+        // setCriterias([...criterias, data]);
     }
 
     const getSingleCriteria = (id: number) => {
-       const _data = criterias?.filter((value: any) => value.target === id);
-       setSingleCriteria(_data[0])
+        const _data = criterias?.filter((value: any) => value.target === id);
+        setSingleCriteria(_data[0])
+    }
+
+    const setEmptySingleCriteria = () => {
+        setSingleCriteria({});
     }
 
     useEffect(() => {
         const targetSum = criterias.reduce((acc: any, item: any) => acc + item.target, 0);
         setSumTarget(targetSum);
 
-    }, [criterias])
+    }, [criterias]);
+
 
     return (
         <AssignContext.Provider
@@ -40,7 +52,8 @@ const AssignProvider = ({ children }: { children: any }) => {
                 saveCriteria,
                 sumTarget,
                 singleCriteria,
-                getSingleCriteria
+                getSingleCriteria,
+                setEmptySingleCriteria
             }}
         >
             {children}
