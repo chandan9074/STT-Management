@@ -77,14 +77,17 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
                                     }
                                 </div>
 
-                                <button
-                                    onClick={() => onLengthClick()}
-                                    className='bg-secondary-orange-50 flex items-center py-[4px] px-[12px] rounded-[36px] gap-x-[5px]'
-                                >
-                                    <h1 className='text-white'>{criterias?.length
-                                    }</h1>
-                                    <img className='w-[10px] h-[7px]' src={Icons.ArrowRightAltWhite} alt="" />
-                                </button>
+                                {
+                                    criterias?.length > 0 &&
+                                    <button
+                                        onClick={() => onLengthClick()}
+                                        className='bg-secondary-orange-50 flex items-center py-[4px] px-[12px] rounded-[36px] gap-x-[5px]'
+                                    >
+                                        <h1 className='text-white'>{criterias?.length
+                                        }</h1>
+                                        <img className='w-[10px] h-[7px]' src={Icons.ArrowRightAltWhite} alt="" />
+                                    </button>
+                                }
                             </div>
                         </div>
                         {
