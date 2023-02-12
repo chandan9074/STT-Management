@@ -17,13 +17,14 @@ const TargetSetting = ({ formik }: { formik: any }) => {
 
     const onReminderDateChange: DatePickerProps['onChange'] = (date, dateString) => {
         console.log(dateString);
-        formik.setFieldValue("reminder", [...formik.values.reminder, dateString]);
+        formik.setFieldValue("reminder", [...formik.values.reminder, getDateWithMonthName2(dateString)]);
         setOpenReminderCaleder(false);
     };
 
     const onReminderRemove = (value: string) => {
 
-        const _data = formik.values.reminder?.filter((m: string, index: number) => m !== value)
+        const _data = formik.values.reminder?.filter((m: string, index: number) => m !== value);
+
 
         formik.setFieldValue("reminder", _data);
 
@@ -38,13 +39,14 @@ const TargetSetting = ({ formik }: { formik: any }) => {
             </div>
             <div className='mt-4'>
                 <TextField
+                    type='number'
                     id="target"
                     name="target"
-                    label={<h1 className='comboBoxLabel'>Target <span className='text-[red]'>*</span></h1>}
+                    label={<h1 className='comboBoxLabel'>Target <span className='text-[red]'></span></h1>}
                     value={formik.values.target}
                     onChange={formik.handleChange}
-                    error={formik.touched.target && Boolean(formik.errors.target)}
-                    helperText={formik.touched.target && formik.errors.target}
+                    // error={formik.touched.target && Boolean(formik.errors.target)}
+                    // helperText={formik.touched.target && formik.errors.target}
                     style={{
                         width: '122px'
                     }}
@@ -64,7 +66,7 @@ const TargetSetting = ({ formik }: { formik: any }) => {
 
             <div className='mt-4'>
                 <FormControl sx={{ width: '100%' }} variant="outlined">
-                    <InputLabel htmlFor='deadline'>{<h1 className='comboBoxLabel'>Date of Birth <span className='text-[red]'>*</span></h1>}</InputLabel>
+                    <InputLabel htmlFor='deadline'>{<h1 className='comboBoxLabel'>Date of Birth <span className='text-[red]'></span></h1>}</InputLabel>
                     <OutlinedInput
                         id='deadline'
                         autoComplete='off'
@@ -129,8 +131,8 @@ const TargetSetting = ({ formik }: { formik: any }) => {
                                     formik.values.reminder.map((value: string, i: number) => (
                                         <div className='bg-ct-blue-20 rounded-[4px] flex justify-center items-center py-[3px] px-[8px] gap-x-[4px]'>
                                             <h1 className='text-[13px] text-blue-gray-80 font-medium whitespace-nowrap'>
-                                                {getDateWithMonthName2(value)}
-                                                {/* 21 dec */}
+                                                {/* {getDateWithMonthName2(value)} */}
+                                                {value}
                                             </h1>
                                             <div className='cursor-pointer w-[14px] p-[3px] bg-white rounded-[3px]'>
                                                 <img
@@ -144,15 +146,24 @@ const TargetSetting = ({ formik }: { formik: any }) => {
                                     ))
                             }
                         </div>
-                        <div>
+                        <button
+                            disabled={formik.values.reminder.length === 3}
+                            onClick={(event) => {
+                                event.preventDefault();
+                                setOpenReminderCaleder(true);
+                            }}
+                        >
                             <img
-                                onClick={() => setOpenReminderCaleder(true)}
                                 className='w-[24px] h-[24px]'
                                 src={Icons.calenderIcon}
                                 alt=""
                             />
-                        </div>
+                        </button>
                     </div>
+
+                    <h4 className='text-blue-gray-75 text-[12px] pl-[14px] mt-[4px]'>
+                        Select {3 - formik.values.reminder.length} ({(3 - formik.values.reminder.length) === 0 ? 'Zero' : (3 - formik.values.reminder.length) === 1 ? 'One' : (3 - formik.values.reminder.length) === 2 ? "Two" : 'Three'}) dates
+                    </h4>
 
                     <div className='userFormDate relative'>
                         <DatePicker
@@ -162,6 +173,7 @@ const TargetSetting = ({ formik }: { formik: any }) => {
                             onChange={onReminderDateChange}
                         />
                     </div>
+
                 </div>
 
                 <div>
@@ -174,8 +186,8 @@ const TargetSetting = ({ formik }: { formik: any }) => {
                         label={<h1 className='comboBoxLabel'>Remark</h1>}
                         value={formik.values.remark}
                         onChange={formik.handleChange}
-                        error={formik.touched.remark && Boolean(formik.errors.remark)}
-                        helperText={formik.touched.remark && formik.errors.remark}
+                        // error={formik.touched.remark && Boolean(formik.errors.remark)}
+                        // helperText={formik.touched.remark && formik.errors.remark}
                         style={{ width: '100%' }}
                         InputProps={{
                             style: {

@@ -8,6 +8,7 @@ const providers = [
   Context.DashboardProvider,
   Context.ScriptProvider,
   Context.UserManagementProvider,
+  Context.AssignProvider
 ];
 
 const ProviderInjection = ({ app }: { app: any }) => {

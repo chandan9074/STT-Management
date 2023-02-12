@@ -98,6 +98,8 @@ import DoubleArroDownDark from './double_dark_arrow_down.svg';
 import AddBlue from './add_blue.png';
 import cancel from './cancel.svg';
 
+import ArrowRightAltWhite from './arrow_right_alt_white.svg';
+import SpeakerFemale from './speaker_female.svg';
 
 const Icons = {
   currency,
@@ -199,6 +201,8 @@ const Icons = {
   DoubleArroDownDark,
   AddBlue,
   cancel,
+  ArrowRightAltWhite,
+  SpeakerFemale
 };
 
 export default Icons;

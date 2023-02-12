@@ -4,6 +4,7 @@ import CommonProvider from "./CommonProvider";
 import DashboardProvider from "./DashboardProvider";
 import ScriptProvider from "./ScriptProvider";
 import UserManagementProvider from "./UserManagement";
+import AssignProvider from "./AssignProvider";
 
 const Context = {
   BillingProvider,
@@ -12,6 +13,7 @@ const Context = {
   DashboardProvider,
   ScriptProvider,
   UserManagementProvider,
+  AssignProvider
 };
 
 export default Context;
