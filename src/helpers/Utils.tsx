@@ -156,12 +156,23 @@ export const compareWithCurrentMonthYear = (mn: string, yr: number) => {
 }
 
 let previous = 0;
+let currentState = 0;
 
-export const getRandomInt = (min: number, max: number) => {
+export const getRandomInt = (min: number, max: number, current: number) => {
+  if (current === currentState) {
+    return previous;
+  }
   let random = Math.floor(Math.random() * (max - min + 1)) + min;
   while (random === previous) {
     random = Math.floor(Math.random() * (max - min + 1)) + min;
   }
   previous = random;
+  currentState = current;
+
   return random;
 }
+
+
+
+
+

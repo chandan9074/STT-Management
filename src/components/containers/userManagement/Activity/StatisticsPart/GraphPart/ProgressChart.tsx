@@ -2,63 +2,10 @@ import React from 'react'
 import { activityDT } from '../../../../../../types/userManagementTypes'
 import { UserManagementContext } from '../../../../../../context/UserManagement'
 import ProgressTooltip from './ProgressTooltip';
+import { labelData, tooltipData } from '../../../../../../data/userManagement/activityData';
 
 const ProgressChart = ({ data }: { data: activityDT }) => {
     const userManagementContext = React.useContext(UserManagementContext);
-
-    const tooltipData = [
-        {
-            name: "Valid",
-            title: "Valid by Validator",
-            titleColor: "text-[#00B86E]",
-            barBgHover: "hover:bg-[#00944D]",
-            bulletBg: "bg-[#00B86E]",
-        },
-        {
-            name: "Validator",
-            title: "Rejected by Validator",
-            titleColor: "text-[#FF8470]",
-            barBgHover: "hover:bg-[#CB3827]",
-            bulletBg: "bg-[#A10008]",
-        },
-        {
-            name: "Annotator",
-            title: "Rejected by Annotator",
-            titleColor: "text-[#FF8987]",
-            barBgHover: "hover:bg-[#D11C29]",
-            bulletBg: "bg-secondary-red-50",
-        },
-        {
-            name: "Checker",
-            title: "Rejected by Checker",
-            titleColor: "text-[#F5AC42]",
-            barBgHover: "hover:bg-[#C78415]",
-            bulletBg: "bg-[#F5AC42]",
-        }
-    ]
-
-    const labelData = [
-        {
-            name: "Valid",
-            label: "Valid",
-            bulletBg: "bg-[#00B86E]",
-        },
-        {
-            name: "Validator",
-            label: "Rejected by Validator",
-            bulletBg: "bg-[#A10008]",
-        },
-        {
-            name: "Annotator",
-            label: "Rejected by Annotator",
-            bulletBg: "bg-secondary-red-50",
-        },
-        {
-            name: "Checker",
-            label: "Rejected by Checker",
-            bulletBg: "bg-[#F5AC42]",
-        }
-    ]
 
     return (
         <div className='border-b-[1px] border-ct-blue-20 pt-7 pb-10 pl-6 pr-8'>
