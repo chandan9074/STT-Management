@@ -42,7 +42,7 @@ const BarTooltip = ({
                 className={`w-10 h-6 absolute -bottom-3.5 ${align === "left"
                     ? "left-5"
                     : align === "right"
-                        ? "right-5"
+                        ? "right-2.5"
                         : " left-1/2 transform -translate-x-1/2"
                     }`}
             />

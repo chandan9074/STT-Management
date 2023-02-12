@@ -1,14 +1,51 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { assignStatisticsDT } from '../../../../../types/assignTypes'
 import { overTheTimeDataDT } from '../../../../../types/userManagementTypes'
+import { UserManagementContext } from '../../../../../context/UserManagement'
+import BarTooltip from '../../../userManagement/Activity/StatisticsPart/GraphPart/BarTooltip'
+
 
 const OverTheTime = ({ data }: { data: overTheTimeDataDT }) => {
+    const userManagementContext = useContext(UserManagementContext);
+
+    const barColor = [
+        {
+            name: 'uploaded',
+            bgColor: "bg-ct-blue-medium group-hover:bg-white",
+            borderColor: "bg-white-gray-55 group-hover:bg-ct-blue-medium"
+        },
+        {
+            name: 'pending',
+            bgColor: "bg-white",
+            borderColor: "bg-blue-gray-A10 group-hover:bg-ct-blue-medium"
+        },
+        {
+            name: 'close',
+            bgColor: "bg-white",
+            borderColor: "bg-secondary-yellow-50"
+        },
+        {
+            name: 'crossed',
+            bgColor: "bg-white",
+            borderColor: "bg-secondary-red-50"
+        },
+    ]
+
+    const getBarCircleColor = (name: string, border: boolean) => {
+        const color = barColor.filter(item => item.name === name)[0];
+        if (border) {
+            return `${color.borderColor}`;
+        }
+        return `${color.bgColor}`;
+    }
+
+
     return (
         <div>
             <div className='mb-1.5'>
                 <h1 className='text-ct-blue-60 text-base font-medium mb-1'>Over the time</h1>
             </div>
-            <div className='flex gap-x-3 w-full'>
+            <div className='flex gap-x-3 w-full mb-8'>
                 <div className='flex items-center'>
                     <div className='w-2 h-2 bg-secondary-blue-50 mr-1 rounded-full' />
                     <h4 className='mb-0 text-ct-blue-90-70% text-xxs'>Uploaded</h4>
@@ -28,12 +65,12 @@ const OverTheTime = ({ data }: { data: overTheTimeDataDT }) => {
             </div>
 
 
-            {/* <div className='h-[175px] w-full flex justify-start items-start'>
-                <div className='flex flex-col justify-between h-[150px] -mt-2.5'>
+            <div className='h-[175px] w-full flex justify-start items-start'>
+                {/* <div className='flex flex-col justify-between h-[150px] -mt-2.5'>
                     <span className='text-xxs text-ct-blue-45'>{data.weekData.filter(item => item.week === userManagementContext.currentWeek)[0].maxTarget}</span>
                     <span className='text-xxs text-ct-blue-45'>{Math.round((data.weekData.filter(item => item.week === userManagementContext.currentWeek)[0].maxTarget) / 2)}</span>
                     <span className='text-xxs text-ct-blue-45'>{Math.round(Math.round((data.weekData.filter(item => item.week === userManagementContext.currentWeek)[0].maxTarget) / 2) / 2)}</span>
-                </div>
+                </div> */}
                 <div className='h-full w-full ml-1.5 relative'>
                     <div className='h-[130px] w-full flex flex-col justify-between'>
                         <div className='w-full border-b-[1px] border-blue-gray-30 border-dashed' />
@@ -42,10 +79,13 @@ const OverTheTime = ({ data }: { data: overTheTimeDataDT }) => {
                     </div>
                     <div className='absolute bottom-0 flex justify-between w-full px-2'>
                         {data.weekData.filter(item => item.week === userManagementContext.currentWeek)[0].dayData.map((item, index) => (
-                            <div className='w-10 flex flex-col items-center justify-end group cursor-pointer'>
-                                {item.target !== 0 ? (<><div className=" absolute z-[110] hidden group-hover:block animate-fadeIn" style={{ bottom: `${Math.round((130 * item.target) / data.weekData.filter(item => item.week === userManagementContext.currentWeek)[0].maxTarget) + 55}px` }}>
-                                    <BarTooltip data={item} align="center" />
-                                </div>
+                            <div className='w-8 relative flex flex-col items-center justify-end group cursor-pointer'>
+                                {item.target !== 0 ? (<>
+                                    <div className={`flex ${data.weekData.filter(item => item.week === userManagementContext.currentWeek)[0].dayData.length - 3 < index ? "justify-end" : "justify-center"}`}>
+                                        <div className=" absolute z-[110] hidden group-hover:block animate-fadeIn" style={{ bottom: `${Math.round((130 * item.target) / data.weekData.filter(item => item.week === userManagementContext.currentWeek)[0].maxTarget) + 55}px`, right: data.weekData.filter(item => item.week === userManagementContext.currentWeek)[0].dayData.length - 3 < index ? "-14px" : "" }}>
+                                            <BarTooltip data={item} align={data.weekData.filter(item => item.week === userManagementContext.currentWeek)[0].dayData.length - 3 < index ? "right" : "center"} />
+                                        </div>
+                                    </div>
                                     <div className={`w-5 h-5 flex items-center justify-center rounded-full z-50 group-hover:z-[120] duration-200 ${getBarCircleColor(item.status, true)} absolute`} style={{ bottom: `${Math.round((130 * item.target) / data.weekData.filter(item => item.week === userManagementContext.currentWeek)[0].maxTarget) + 35}px` }} >
                                         <div className={`w-2 h-2 rounded-full ${getBarCircleColor(item.status, false)}`} />
                                     </div>
@@ -58,7 +98,7 @@ const OverTheTime = ({ data }: { data: overTheTimeDataDT }) => {
                         ))}
                     </div>
                 </div>
-            </div> */}
+            </div>
         </div>
     )
 }

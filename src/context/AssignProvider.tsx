@@ -5,6 +5,8 @@ interface ContextProps {
     singleCriteria: any
     saveCriteria: (value: any) => void,
     getSingleCriteria: (value: any) => void,
+    currentWeek: number;
+    setCurrentWeek: React.Dispatch<React.SetStateAction<number>>,
     sumTarget: number | undefined,
     setEmptySingleCriteria: () => void
 }
@@ -14,13 +16,9 @@ export const AssignContext = createContext({} as ContextProps);
 const AssignProvider = ({ children }: { children: any }) => {
 
     const [criterias, setCriterias] = useState<any>([]);
-
     const [singleCriteria, setSingleCriteria] = useState<any>({})
-
     const [sumTarget, setSumTarget] = useState<number>();
-
-
- 
+    const [currentWeek, setCurrentWeek] = useState<number>(1);
 
     const saveCriteria = (data: any) => {
         const filteredCriterias = criterias.filter((criteria: any) => criteria.target !== data.target);
@@ -53,7 +51,9 @@ const AssignProvider = ({ children }: { children: any }) => {
                 sumTarget,
                 singleCriteria,
                 getSingleCriteria,
-                setEmptySingleCriteria
+                setEmptySingleCriteria,
+                currentWeek,
+                setCurrentWeek
             }}
         >
             {children}

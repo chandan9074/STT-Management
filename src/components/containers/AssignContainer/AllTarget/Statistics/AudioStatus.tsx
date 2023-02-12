@@ -5,12 +5,12 @@ import ProgressTooltip from '../../../userManagement/Activity/StatisticsPart/Gra
 
 const AudioStatus = ({ data }: { data: assignStatisticsDT }) => {
     return (
-        <div>
+        <div className='flex flex-col justify-between h-full'>
             <div className='mb-7'>
                 <h1 className='text-ct-blue-60 text-base font-medium mb-1'>Audio Status</h1>
                 <h2 className='text-ct-blue-90 text-xs mb-0'>Total Received: {data.received} hr, {data.audios} audios</h2>
             </div>
-            <div className='h-[60px] w-full mb-0.5 flex items-end mt-3 relative'>
+            <div className='h-[60px] w-full mb-0.5 flex items-end relative'>
                 <div className='h-3 rounded-[10px] w-full bg-blue-gray-20 border-[1px] border-white flex items-center relative z-50'>
                     {data.audioStatus.map((item, index) => (
                         <div className={`${item.name === "Valid" ? "bg-[#00B86E]" : item.name === "Validator" ? "bg-[#A10008]" : item.name === "Annotator" ? "bg-secondary-red-50" : item.name === "Checker" ? "bg-secondary-yellow-50" : ""} h-full ${data.audioStatus.length - 1 === index ? "" : "border-r-[1px] border-white"} ${data.audioStatus.length - 1 === index ? "rounded-r-[15px]" : ""} ${index === 0 ? "rounded-l-[15px]" : ""} flex justify-center group cursor-pointer ${tooltipData.filter(tData => tData.name === item.name)[0].barBgHover} duration-200`} style={{

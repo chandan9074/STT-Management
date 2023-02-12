@@ -32,7 +32,7 @@ const Statistics = ({ data }: { data: assignStatisticsDT }) => {
                     :
                     <>
                         {data ?
-                            <div className='grid grid-cols-12 gap-x-16 mt-5'>
+                            <div className='grid grid-cols-12 gap-x-16 mt-5 pb-7'>
                                 <div className='col-span-5'><AudioStatus data={data} /></div>
                                 <div className='col-span-7'><OverTheTime data={data.overTheTimeData} /></div>
                             </div>
