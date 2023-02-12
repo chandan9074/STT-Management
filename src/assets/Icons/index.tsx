@@ -97,7 +97,8 @@ import Vector from './Vector.svg';
 import Vector2 from './Vector2.svg';
 import DoubleArroDownDark from './double_dark_arrow_down.svg';
 import AddBlue from './add_blue.png';
-
+import ArrowRightAltWhite from './arrow_right_alt_white.svg';
+import SpeakerFemale from './speaker_female.svg';
 
 const Icons = {
   currency,
@@ -197,7 +198,9 @@ const Icons = {
   Vector,
   Vector2,
   DoubleArroDownDark,
-  AddBlue
+  AddBlue,
+  ArrowRightAltWhite,
+  SpeakerFemale
 };
 
 export default Icons;
