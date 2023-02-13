@@ -55,7 +55,7 @@ const CriteriaForm = () => {
     return (
         <div>
             <form onSubmit={formik.handleSubmit}>
-                <div className='bg-ct-blue-05 p-[28px] gap-x-[36px] flex'>
+                <div className='bg-ct-blue-05 px-[28px] py-[22px] gap-x-[36px] flex'>
                     <SpeakerInformation formik={formik} />
                     <TargetSetting formik={formik} />
                 </div>

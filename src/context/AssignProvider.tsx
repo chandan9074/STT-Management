@@ -19,19 +19,23 @@ const AssignProvider = ({ children }: { children: any }) => {
 
     const [sumTarget, setSumTarget] = useState<number>();
 
+    const [editId, setEditId] = useState<number>();
 
  
 
     const saveCriteria = (data: any) => {
-        const filteredCriterias = criterias.filter((criteria: any) => criteria.target !== data.target);
+        // const filteredCriterias = criterias.filter((criteria: any, i: number) => criteria.target !== data.target);
+        const filteredCriterias = criterias.filter((criteria: any, i: number) => i !== editId);
+
         setCriterias([...filteredCriterias, data]);
 
         // setCriterias([...criterias, data]);
     }
 
     const getSingleCriteria = (id: number) => {
-        const _data = criterias?.filter((value: any) => value.target === id);
+        const _data = criterias?.filter((value: any, i: number) => i === id);
         setSingleCriteria(_data[0])
+        setEditId(id);
     }
 
     const setEmptySingleCriteria = () => {

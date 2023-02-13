@@ -11,7 +11,7 @@ const SpeakerInformation = ({formik}: {formik: any}) => {
     return (
         <div className=''>
                 <div className='w-[308px]'>
-                    <div className='mb-[24px]'>
+                    <div className='mb-[18px]'>
                         <h1 className='text-ct-blue-60 text-[14px] font-semibold'>Speaker Information</h1>
                     </div>
                     <div className='flex gap-x-[16px] items-center h-[48px]'>
@@ -27,7 +27,7 @@ const SpeakerInformation = ({formik}: {formik: any}) => {
                         </div>
                     </div>
 
-                    <div className='mt-4'>
+                    <div className='mt-2'>
                         <Autocomplete
                             id="ageRange"
                             style={{ width: '100%' }}

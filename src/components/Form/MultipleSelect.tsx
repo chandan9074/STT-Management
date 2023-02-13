@@ -118,7 +118,7 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
                     }
 
                     {
-                        <div className={` ${(isDistrictOpen || formik.values.district.length !== 0) ? ' px-[4px] absolute -top-[13px] bg-white' : 'my-[14px]'}  `}>
+                        <div className={` ${(isDistrictOpen || formik.values.district.length !== 0) ? ' px-[4px] absolute -top-[13px] bg-white' : 'my-[10px]'}  `}>
                             <h1 className={`${isDistrictOpen ? 'text-[12px] font-medium text-blue-gray-80' : 'comboBoxLabel'} `}>District<span className='text-[red]'>*</span></h1>
                         </div>
                     }

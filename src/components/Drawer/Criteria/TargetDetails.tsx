@@ -83,7 +83,7 @@ const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void 
     console.log('-----****8888', singleValue2);
 
 
-    const [targetId, setTargetId] = useState<number>(criterias[0].target);
+    const [targetId, setTargetId] = useState<number>(0);
 
     useEffect(() => {
         getSingleCriteria(targetId);
@@ -107,8 +107,8 @@ const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void 
                     criterias.map((value: any, i: number) => (
                         <div key={i} className='mb-[10px]'>
                             <div
-                                onClick={() => onTargetClick(value.target)}
-                                className={` ${targetId === value.target ? 'bg-ct-blue-10' : 'bg-white'} h-[54px] w-[176px] rounded-[65px] flex justify-center items-center gap-x-2 cursor-pointer`}
+                                onClick={() => onTargetClick(i)}
+                                className={` ${targetId === i ? 'bg-ct-blue-10' : 'bg-white'} h-[54px] w-[176px] rounded-[65px] flex justify-center items-center gap-x-2 cursor-pointer`}
                             >
                                 <Image.RoleImage role={value?.gender === 'Male' ? 'Speaker' : 'speakerFemale'} />
                                 <div>
