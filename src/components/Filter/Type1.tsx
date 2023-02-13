@@ -11,7 +11,7 @@ type filterListDT = {
   subdomain: string[];
 };
 
-const Type1 = ({ filterData }: { filterData: FilterDT }) => {
+const Type1 = ({ filterData, align }: { filterData: FilterDT, align?: "center" | "left" | "right" }) => {
   const [open, setOpen] = useState(false);
   const [currentState, setCurrentState] = useState<string>("dataType");
   const [count, setCount] = useState<number>(0)
@@ -70,7 +70,7 @@ const Type1 = ({ filterData }: { filterData: FilterDT }) => {
   };
 
   return (
-    <div className="relative flex justify-end">
+    <div className={`relative flex ${align === "left" ? `justify-start` : align === "center" ? "justify-center" : "justify-end"}`}>
       <div className="relative z-[90]">
         <Buttons.Filter label="Filter" count={count} onClick={() => setOpen(!open)} />
       </div>

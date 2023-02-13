@@ -23,10 +23,10 @@ const ScriptProvider = ({ children }: { children: any }) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [errorMsg, setErrorMsg] = useState<string>("");
 
-  const uploadCsv = (formData: any) => {
+  const uploadCsv = async (formData: any) => {
     // console.log("formData", formData);
 
-    const res = ScriptService.uploadCsv(formData);
+    ScriptService.uploadCsv(formData);
   };
 
   const getAllScript = async (params: getAllScriptsParamsDT) => {

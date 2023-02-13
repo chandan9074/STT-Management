@@ -221,14 +221,14 @@ const Graph = ({ dateValue, onDateClose, onDateSearch, disbursementData, open, s
 
                                     <div className={`transition group animate-fadeIn duration-500 rounded-full 
                                      hover:bg-white  hover:from-white hover:via-white hover:to-white bg-gradient-to-r p-[1px] h-full w-full ${i % 3 === 0 ? "from-[#FFD3D3] via-[#E8C8C8] to-[#E5BEBE]"
-                                                    : i % 4 === 0
-                                                        ? "from-[#FFF5CC] via-[#E8DFBA] to-[#E8DFBA]"
-                                                        : i % 5 === 0
-                                                            ? "from-[#E2FBD7] via-[#D1E8C7] to-[#D1E8C7]"
-                                                            : i % 2 === 0
-                                                                ? "from-[#CCF8FE] via-[#BAE3E8] to-[#BAE3E8]"
-                                                                : "from-[#CCDDFE] via-[#BACAE8] to-[#BACAE8]"
-                                                    }`}>
+                                            : i % 4 === 0
+                                                ? "from-[#FFF5CC] via-[#E8DFBA] to-[#E8DFBA]"
+                                                : i % 5 === 0
+                                                    ? "from-[#E2FBD7] via-[#D1E8C7] to-[#D1E8C7]"
+                                                    : i % 2 === 0
+                                                        ? "from-[#CCF8FE] via-[#BAE3E8] to-[#BAE3E8]"
+                                                        : "from-[#CCDDFE] via-[#BACAE8] to-[#BACAE8]"
+                                        }`}>
                                         <div
                                             style={{
                                                 height: `${dimensionValue[i]}rem`,

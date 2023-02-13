@@ -85,7 +85,6 @@ import double_up_arrow from './dubble_up_arrow.svg'
 import Script from "./script.svg";
 import BlueMusicIcon from "./blueMusicArrow.svg";
 import BlueRightArrow from "./blueRightArrow.svg";
-
 import Unfold_More from './unfold_more.svg'
 import calenderIcon from './calender_icon.svg';
 import info from './info.svg';
@@ -97,7 +96,10 @@ import Vector from './Vector.svg';
 import Vector2 from './Vector2.svg';
 import DoubleArroDownDark from './double_dark_arrow_down.svg';
 import AddBlue from './add_blue.png';
+import cancel from './cancel.svg';
 
+import ArrowRightAltWhite from './arrow_right_alt_white.svg';
+import SpeakerFemale from './speaker_female.svg';
 
 const Icons = {
   currency,
@@ -197,7 +199,10 @@ const Icons = {
   Vector,
   Vector2,
   DoubleArroDownDark,
-  AddBlue
+  AddBlue,
+  cancel,
+  ArrowRightAltWhite,
+  SpeakerFemale
 };
 
 export default Icons;

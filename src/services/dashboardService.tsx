@@ -1,5 +1,3 @@
-import { overTheTimeGData } from "../data/dashboard/overTheTimeGData";
-import { createCollectData } from "../data/dashboard/createCollectData";
 import * as PATH from "../helpers/APIURL";
 import axios from "axios";
 import {

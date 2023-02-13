@@ -126,3 +126,11 @@ pre {
   overflow: hidden;
   color: #2c79be;
 }
+
+.script-modal-description {
+  display: -webkit-box;
+    width: 752px;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

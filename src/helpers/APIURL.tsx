@@ -24,3 +24,4 @@ export const GET_CREATE_COLLECT_DATA_URL = `${REACT_APP_BASE_URL}/create-collect
 // Script
 export const GET_ALL_SCRIPTS_URL = `${REACT_APP_BASE_URL}/get-all-scripts`;
 
+export const UPLOAD_SCRIPT_CSV_FILE_URL = `${REACT_APP_BASE_URL}/upload-csv`;

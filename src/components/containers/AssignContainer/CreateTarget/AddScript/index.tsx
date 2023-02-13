@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Drawer } from "../../../../Drawer";
+import ScriptModal from './ScriptModal';
 import ScriptTargetBox from './ScriptTargetBox';
 
 
 const AddSript = () => {
 
     const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
+    const [modalOpen, setModalOpen] = useState<boolean>(false);
 
     const drawerClose = () => {
         setDrawerOpen(false)
@@ -30,9 +32,11 @@ const AddSript = () => {
                 <Drawer.Script.Type1
                     isDrawerOpen={drawerOpen}
                     drawerClose={drawerClose}
-                    title='Select Script'
+                    modalOpen={modalOpen}
+                    setModalOpen={setModalOpen}
                 />
             </div>
+            {modalOpen && <ScriptModal modalOpen={modalOpen} setModalOpen={setModalOpen} />}
         </div>
     );
 };

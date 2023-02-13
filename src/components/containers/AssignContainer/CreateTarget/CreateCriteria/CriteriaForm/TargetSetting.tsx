@@ -17,13 +17,14 @@ const TargetSetting = ({ formik }: { formik: any }) => {
 
     const onReminderDateChange: DatePickerProps['onChange'] = (date, dateString) => {
         console.log(dateString);
-        formik.setFieldValue("reminder", [...formik.values.reminder, dateString]);
+        formik.setFieldValue("reminder", [...formik.values.reminder, getDateWithMonthName2(dateString)]);
         setOpenReminderCaleder(false);
     };
 
     const onReminderRemove = (value: string) => {
 
-        const _data = formik.values.reminder?.filter((m: string, index: number) => m !== value)
+        const _data = formik.values.reminder?.filter((m: string, index: number) => m !== value);
+
 
         formik.setFieldValue("reminder", _data);
 
@@ -130,8 +131,8 @@ const TargetSetting = ({ formik }: { formik: any }) => {
                                     formik.values.reminder.map((value: string, i: number) => (
                                         <div className='bg-ct-blue-20 rounded-[4px] flex justify-center items-center py-[3px] px-[8px] gap-x-[4px]'>
                                             <h1 className='text-[13px] text-blue-gray-80 font-medium whitespace-nowrap'>
-                                                {getDateWithMonthName2(value)}
-                                                {/* 21 dec */}
+                                                {/* {getDateWithMonthName2(value)} */}
+                                                {value}
                                             </h1>
                                             <div className='cursor-pointer w-[14px] p-[3px] bg-white rounded-[3px]'>
                                                 <img
@@ -145,7 +146,13 @@ const TargetSetting = ({ formik }: { formik: any }) => {
                                     ))
                             }
                         </div>
-                        <button disabled={formik.values.reminder.length === 3} onClick={() => setOpenReminderCaleder(true)}>
+                        <button
+                            disabled={formik.values.reminder.length === 3}
+                            onClick={(event) => {
+                                event.preventDefault();
+                                setOpenReminderCaleder(true);
+                            }}
+                        >
                             <img
                                 className='w-[24px] h-[24px]'
                                 src={Icons.calenderIcon}
