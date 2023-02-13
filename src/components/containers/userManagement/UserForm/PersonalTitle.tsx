@@ -9,7 +9,7 @@ const PersonalTitle = () => {
             </div>
             <div>
                 <h1 className='text-ct-blue-95 tex-[18px] font-medium'>Muhammad Miraz Mahmuz</h1>
-                <p className='text-ct-blue-90-70% text-[14px]'>Collector, Team Leader</p>
+                <p className='text-ct-blue-90-70% text-small'>Collector, Team Leader</p>
             </div>
         </div>
     );

@@ -25,7 +25,7 @@ const FileReport = ({ getFile, formik }: { getFile: (file: any) => void, formik:
     return (
         <div>
             <div className='flex gap-x-[16px] items-center'>
-                <h1 className='text-blue-gray-75 text-[14px] font-medium'>Attach CV <span className='text-[red]'>*</span></h1>
+                <h1 className='text-blue-gray-75 text-small font-medium'>Attach CV <span className='text-[red]'>*</span></h1>
 
                 <div className={`${file?.length === 0 ? 'file-upload2' : 'file-upload-hidden2 bg-white px-[18px] py-[5px] border-[1px] border-dashed border-blue-gray-A20 rounded-[4px]'} `}>
                     <Upload
@@ -35,14 +35,14 @@ const FileReport = ({ getFile, formik }: { getFile: (file: any) => void, formik:
                     >
                         <button className={` flex gap-x-2 px-[24px] py-[8px] border-[1px] border-ct-blue-30 rounded-[6px]`}>
                             <img className='w-[20px] h-[20px]' src={Icons.upload} alt='' />
-                            <h1 className='text-ct-blue-80 text-[14px]'> Attach CV</h1>
+                            <h1 className='text-ct-blue-80 text-small'> Attach CV</h1>
                         </button>
                     </Upload>
                 </div>
 
                 {
                     file?.length === 0 &&
-                    <h2 className='text-blue-gray-75 text-[14px]'>Format: .doc, .pdf</h2>
+                    <h2 className='text-blue-gray-75 text-small'>Format: .doc, .pdf</h2>
                 }
 
                 <div>
@@ -52,13 +52,13 @@ const FileReport = ({ getFile, formik }: { getFile: (file: any) => void, formik:
             </div>
 
             {formik.touched.cvFile && formik.errors.cvFile ? (
-                <div className='text-red-600 text-[12px] mt-[5px] ml-[10px]'>{formik.errors.cvFile}</div>
+                <div className='text-red-600 text-xxs mt-[5px] ml-[10px]'>{formik.errors.cvFile}</div>
             ) : null}
 
 
             {/* Reporting To */}
             <div>
-                <h1 className='text-ct-blue-60 text-[14px] font-semibold mt-[57px] mb-[28px]'>Reporting</h1>
+                <h1 className='text-ct-blue-60 text-small font-semibold mt-[57px] mb-[28px]'>Reporting</h1>
                 <div>
                     <FormControl>
                         <FormLabel style={{
@@ -97,7 +97,7 @@ const FileReport = ({ getFile, formik }: { getFile: (file: any) => void, formik:
                             }
                         </RadioGroup>
                         {formik.touched.reportingTo && formik.errors.reportingTo ? (
-                            <div className='text-red-600 text-[12px]'>{formik.errors.reportingTo}</div>
+                            <div className='text-red-600 text-xxs'>{formik.errors.reportingTo}</div>
                         ) : null}
                     </FormControl>
                 </div>

@@ -53,20 +53,20 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
     return (
         <div className='mb-[28px] source-reference'>
 
-            <h1 className='mb-[12px] text-blue-gray-80 text-[14px] font-medium'>Source Reference</h1>
+            <h1 className='mb-[12px] text-blue-gray-80 text-small font-medium'>Source Reference</h1>
 
             <div className=' border-[1px] border-[#D6E5F5] rounded-[7px] mb-[28px]'>
                 <Grid container >
                     <Grid item xs={6} style={{ cursor: 'pointer' }}>
                         <div onClick={(value) => onSourceReferencehandle('source')} className={`cursor-pointer p-[8px] ${scriptSourceReference?.isSource ? 'bg-ct-blue-20' : 'bg-ct-blue-10'}  flex justify-center items-center gap-x-[15px]`}>
                             <img src={Icons.Link} className='h-[18px] w-[18px]' alt="" />
-                            <h1 className='text-ct-blue-45 text-[14px] font-medium'>Add Source</h1>
+                            <h1 className='text-ct-blue-45 text-small font-medium'>Add Source</h1>
                         </div>
                     </Grid>
                     <Grid item xs={6}>
                         <div onClick={(value) => onSourceReferencehandle('script')} className={`cursor-pointer p-[8px] ${scriptSourceReference?.isScript ? 'bg-ct-blue-20' : 'bg-ct-blue-10'}  flex justify-center items-center gap-x-[15px]`}>
                             <img src={Icons.Link} className='h-[18px] w-[18px]' alt="" />
-                            <h1 className='text-ct-blue-45 text-[14px] font-medium'>Script Attachment</h1>
+                            <h1 className='text-ct-blue-45 text-small font-medium'>Script Attachment</h1>
                         </div>
                     </Grid>
                 </Grid>
@@ -155,11 +155,11 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
                                     <div className={`h-[114px] ant-upload-drag-icon flex flex-col justify-center items-center gap-y-[8px]`}>
                                         <div className='border-[1px] border-ct-blue-30 w-[160px] h-[36px] px-[18px] py-[8px] rounded-[6px] flex justify-center items-center gap-x-[5px]'>
                                             <img src={Icons.Backup} alt="" />
-                                            <h1 className='text-ct-blue-80 text-[14px] font-medium'>Upload Script</h1>
+                                            <h1 className='text-ct-blue-80 text-small font-medium'>Upload Script</h1>
                                         </div>
                                         <div>
-                                            <span className='text-[14px] font-medium text-blue-gray-90'>Click to upload </span>
-                                            <span className='text-[14px] font-medium text-blue-gray-75'>or Drag and Drop</span>
+                                            <span className='text-small font-medium text-blue-gray-90'>Click to upload </span>
+                                            <span className='text-small font-medium text-blue-gray-75'>or Drag and Drop</span>
                                         </div>
                                     </div>
                                 </Dragger>

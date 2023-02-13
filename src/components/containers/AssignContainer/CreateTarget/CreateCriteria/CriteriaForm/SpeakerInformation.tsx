@@ -12,10 +12,10 @@ const SpeakerInformation = ({formik}: {formik: any}) => {
         <div className=''>
                 <div className='w-[308px]'>
                     <div className='mb-[18px]'>
-                        <h1 className='text-ct-blue-60 text-[14px] font-semibold'>Speaker Information</h1>
+                        <h1 className='text-ct-blue-60 text-small font-semibold'>Speaker Information</h1>
                     </div>
                     <div className='flex gap-x-[16px] items-center h-[48px]'>
-                        <h1 className='text-blue-gray-75 font-medium text-[14px]'>Gender</h1>
+                        <h1 className='text-blue-gray-75 font-medium text-small'>Gender</h1>
                         <div className='gap-x-2 flex'>
                             {
                                 gender.map(value => (
@@ -48,8 +48,8 @@ const SpeakerInformation = ({formik}: {formik: any}) => {
                             renderOption={(props, option) => (
                                 <Box key={option} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
                                     <div className='flex justify-between items-center w-full'>
-                                        <h1 className='text-blue-gray-80 text-[14px] font-medium'>{option}</h1>
-                                        <h1 className='text-blue-gray-A20 text-[13px] font-medium pr-[4pxx]'>year</h1>
+                                        <h1 className='text-blue-gray-80 text-small font-medium'>{option}</h1>
+                                        <h1 className='text-blue-gray-A20 text-xs font-medium pr-[4pxx]'>year</h1>
                                     </div>
                                 </Box>
                             )}
@@ -102,7 +102,7 @@ const SpeakerInformation = ({formik}: {formik: any}) => {
                                 renderOption={(props, option) => (
                                     <Box key={option} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
                                         <div className='flex justify-between items-center w-full'>
-                                            <h1 className='text-blue-gray-80 text-[14px] font-medium'>{option}</h1>
+                                            <h1 className='text-blue-gray-80 text-small font-medium'>{option}</h1>
                                         </div>
                                     </Box>
                                 )}
@@ -145,7 +145,7 @@ const SpeakerInformation = ({formik}: {formik: any}) => {
                                 renderOption={(props, option) => (
                                     <Box key={option} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
                                         <div className='flex justify-between items-center w-full'>
-                                            <h1 className='text-blue-gray-80 text-[14px] font-medium'>{option}</h1>
+                                            <h1 className='text-blue-gray-80 text-small font-medium'>{option}</h1>
                                         </div>
                                     </Box>
                                 )}
@@ -187,7 +187,7 @@ const SpeakerInformation = ({formik}: {formik: any}) => {
                                                   }}
                                             />
                                         }
-                                        label={<h1 className={`text-[13px] font-medium ${formik.values.healthFactors.includes(value) ? 'text-secondary-blue-50' : ((formik.values.healthFactors.length > 0 && !formik.values.healthFactors.includes("Speaker") && value === "Speaker") || (formik.values.healthFactors.includes("Speaker") && value !== "Speaker")) ? 'text-blue-gray-45' : 'text-blue-gray-75 '} `}>{value}</h1>}
+                                        label={<h1 className={`text-xs font-medium ${formik.values.healthFactors.includes(value) ? 'text-secondary-blue-50' : ((formik.values.healthFactors.length > 0 && !formik.values.healthFactors.includes("Speaker") && value === "Speaker") || (formik.values.healthFactors.includes("Speaker") && value !== "Speaker")) ? 'text-blue-gray-45' : 'text-blue-gray-75 '} `}>{value}</h1>}
                                     />
                                 </div>
                             ))}

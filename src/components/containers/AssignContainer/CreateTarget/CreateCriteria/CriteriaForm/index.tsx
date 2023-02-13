@@ -23,10 +23,12 @@ const CriteriaForm = () => {
         setEmptySingleCriteria
     } = AssignContexts;
 
-    console.log('----#############', singleCriteria);
+    console.log('%%%%%%%', singleCriteria);
     
 
+
     const formik = useFormik({
+        enableReinitialize: true,
         initialValues: {
             gender: singleCriteria?.gender || 'Male',
             ageRange: singleCriteria?.ageRange || '',
@@ -44,9 +46,10 @@ const CriteriaForm = () => {
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            saveCriteria(values);
             formik.resetForm();
-            // setEmptySingleCriteria();
+
+            saveCriteria(values);
+            
             console.log('submit------', values);
         },
     });

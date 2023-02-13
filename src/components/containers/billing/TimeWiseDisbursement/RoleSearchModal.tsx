@@ -174,7 +174,7 @@ const RoleSearchModal = ({
                                                             <div className='flex gap-x-4'>
                                                                 <img className='h-[18px] w-[18px]' src={managerImage}
                                                                     alt="" />
-                                                                <h1 className='text-blue-gray-90 text-[14px]'>{m.contact} - {m.name}</h1>
+                                                                <h1 className='text-blue-gray-90 text-small'>{m.contact} - {m.name}</h1>
                                                             </div>
                                                         </Option>
                                                     ))
@@ -190,7 +190,7 @@ const RoleSearchModal = ({
 
                                         <div
                                             className={isDropDownVisible ? 'bg-white px-[6px] block w-[fit-content] absolute bottom-[34px] left-[12px]' : 'hidden'}>
-                                            <p className='text-blue-gray-80 font-bold text-[12px]'>{role}</p>
+                                            <p className='text-blue-gray-80 font-bold text-xxs'>{role}</p>
                                         </div>
                                     </Form.Item>
                                 </Form>
@@ -233,7 +233,7 @@ const RoleSearchModal = ({
                                 <div className='w-full flex justify-center items-center mt-[25px]'>
                                     <Link to={`${BILLING_PAYMENT_HISTORY_PATH}/${singleManager?.id}`}>
                                         <button
-                                            className='w-[237px] h-[44px] text-white text-[16px] bg-primary-ct-blue-60 rounded-[6px]'>
+                                            className='w-[237px] h-[44px] text-white text-base bg-primary-ct-blue-60 rounded-[6px]'>
                                             Search Payment History
                                         </button>
                                     </Link>
@@ -244,7 +244,7 @@ const RoleSearchModal = ({
                                     className='h-[40px] w-[40px] rounded-[50%] bg-blue-gray-05 flex items-center justify-center'>
                                     <img className='w-[18px] h-[18px]' src={faceImage} alt="" />
                                 </div>
-                                <h1 className='text-ct-blue-45 text-[13px] mt-[8px]'>By adding, {role} will be
+                                <h1 className='text-ct-blue-45 text-xs mt-[8px]'>By adding, {role} will be
                                     shown here</h1>
                             </div>
                     }

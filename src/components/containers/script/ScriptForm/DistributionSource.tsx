@@ -18,7 +18,7 @@ const DistributionSource = ({ formik }: { formik: any }) => {
 
             <div className='flex'>
                 <div className='w-[580px]'>
-                    <h1 className='text-[14px] font-medium text-blue-gray-75'>Distribution Source <span className='text-[red]'>*</span></h1>
+                    <h1 className='text-small font-medium text-blue-gray-75'>Distribution Source <span className='text-[red]'>*</span></h1>
 
                     <div>
                         <FormControl>
@@ -54,14 +54,14 @@ const DistributionSource = ({ formik }: { formik: any }) => {
                                 }
                             </RadioGroup>
                             {formik.touched.distributionSource && formik.errors.distributionSource ? (
-                                <div className='text-red-600 text-[12px]'>{formik.errors.distributionSource}</div>
+                                <div className='text-red-600 text-xxs'>{formik.errors.distributionSource}</div>
                             ) : null}
                         </FormControl>
                     </div>
                 </div>
                 <div>
                     <FormGroup>
-                        <h1 className='text-[14px] font-medium text-blue-gray-75 '>Age</h1>
+                        <h1 className='text-small font-medium text-blue-gray-75 '>Age</h1>
 
 
                         <FormControlLabel
@@ -71,7 +71,7 @@ const DistributionSource = ({ formik }: { formik: any }) => {
                                 checked={formik.values.isAge}
                                 onChange={() => formik.setFieldValue("isAge", !formik.values.isAge)}
                             />}
-                            label={<h1 className='text-[14px] font-medium text-blue-gray-75'>Child</h1>} />
+                            label={<h1 className='text-small font-medium text-blue-gray-75'>Child</h1>} />
 
                     </FormGroup>
                 </div>

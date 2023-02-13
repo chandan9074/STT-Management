@@ -60,7 +60,7 @@ const Domain = ({ formik }: { formik: any }) => {
                             </Select>
 
                             {formik.touched.domain && formik.errors.domain ? (
-                                <div className='text-red-600 text-[12px]'>{formik.errors.domain}</div>
+                                <div className='text-red-600 text-xxs'>{formik.errors.domain}</div>
                             ) : null}
                         </FormControl>
 

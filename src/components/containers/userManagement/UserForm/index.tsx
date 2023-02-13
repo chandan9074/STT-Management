@@ -136,7 +136,7 @@ const UserForm = () => {
 
                         <PersonalTitle />
 
-                        <h1 className='text-ct-blue-60 text-[14px] font-semibold my-[28px]'>Personal Information</h1>
+                        <h1 className='text-ct-blue-60 text-small font-semibold my-[28px]'>Personal Information</h1>
 
                         <div className='mb-[17px]'>
                             <Role formik={formik} />

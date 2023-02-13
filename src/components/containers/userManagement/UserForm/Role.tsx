@@ -35,7 +35,7 @@ const Role = ({ formik }: { formik: any }) => {
 
                                 />
                             }
-                            label={<h1 className={`text-[14px] font-medium ${formik.values.role.includes(value) ? 'text-secondary-blue-50' : ((formik.values.role.length > 0 && !formik.values.role.includes("Speaker") && value === "Speaker") || (formik.values.role.includes("Speaker") && value !== "Speaker")) ? 'text-blue-gray-45' : 'text-blue-gray-75 '} `}>{value}</h1>}
+                            label={<h1 className={`text-small font-medium ${formik.values.role.includes(value) ? 'text-secondary-blue-50' : ((formik.values.role.length > 0 && !formik.values.role.includes("Speaker") && value === "Speaker") || (formik.values.role.includes("Speaker") && value !== "Speaker")) ? 'text-blue-gray-45' : 'text-blue-gray-75 '} `}>{value}</h1>}
                         />
                     </div>
                 ))}
@@ -46,7 +46,7 @@ const Role = ({ formik }: { formik: any }) => {
 
             <div>
                 {formik.touched.role && formik.errors.role ? (
-                    <div className='text-red-600 text-[12px]'>{formik.errors.role}</div>
+                    <div className='text-red-600 text-xxs'>{formik.errors.role}</div>
                 ) : null}
             </div>
         </div>

@@ -48,7 +48,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
 
                 <Grid item xs={6}>
                     <div className='flex gap-x-[16px] items-center h-[48px]'>
-                        <h1 className='text-blue-gray-75 font-medium text-[14px]'>Gender</h1>
+                        <h1 className='text-blue-gray-75 font-medium text-small'>Gender</h1>
                         <div className='gap-x-2 flex'>
                             {
                                 gender.map(value => (
@@ -266,7 +266,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
             </div>
 
             <div className='flex items-center gap-x-[35px] mt-[29px]'>
-                <h1 className='text-blue-gray-75 text-[14px] font-medium w-[94px]'>Smoking</h1>
+                <h1 className='text-blue-gray-75 text-small font-medium w-[94px]'>Smoking</h1>
                 <div>
                     <FormControl>
                         <RadioGroup
@@ -293,14 +293,14 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                             }
                         </RadioGroup>
                         {formik.touched.smoking && formik.errors.smoking ? (
-                            <div className='text-red-600 text-[12px]'>{formik.errors.smoking}</div>
+                            <div className='text-red-600 text-xxs'>{formik.errors.smoking}</div>
                         ) : null}
                     </FormControl>
                 </div>
             </div>
 
             <div className='flex items-center gap-x-[35px] mt-[39px]'>
-                <h1 className='text-blue-gray-75 text-[14px] font-medium w-[94px]'>Shutter</h1>
+                <h1 className='text-blue-gray-75 text-small font-medium w-[94px]'>Shutter</h1>
                 <div>
                     <FormControl>
                         <RadioGroup
@@ -327,14 +327,14 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                             }
                         </RadioGroup>
                         {formik.touched.stutter && formik.errors.stutter ? (
-                            <div className='text-red-600 text-[12px]'>{formik.errors.stutter}</div>
+                            <div className='text-red-600 text-xxs'>{formik.errors.stutter}</div>
                         ) : null}
                     </FormControl>
                 </div>
             </div>
 
             <div className='flex items-center gap-x-[35px] mt-[39px]'>
-                <h1 className='text-blue-gray-75 text-[14px] font-medium'>Hearing Status</h1>
+                <h1 className='text-blue-gray-75 text-small font-medium'>Hearing Status</h1>
                 <div>
                     <FormControl>
                         <RadioGroup
@@ -361,7 +361,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                             }
                         </RadioGroup>
                         {formik.touched.hearingStatus && formik.errors.hearingStatus ? (
-                            <div className='text-red-600 text-[12px]'>{formik.errors.hearingStatus}</div>
+                            <div className='text-red-600 text-xxs'>{formik.errors.hearingStatus}</div>
                         ) : null}
                     </FormControl>
                 </div>

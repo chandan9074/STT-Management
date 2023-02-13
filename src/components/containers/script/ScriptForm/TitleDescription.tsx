@@ -26,7 +26,7 @@ const TitleDescription = ({ formik }: { formik: any }) => {
 
                 // variant="standard"
                 />
-                <h1 className='w-[107px] text-[13px] text-blue-gray-60'>{formik.values.description.length} characters</h1>
+                <h1 className='w-[107px] text-xs text-blue-gray-60'>{formik.values.description.length} characters</h1>
             </div>
 
             <Divider

@@ -13,7 +13,7 @@ const Secondary = () => {
         {
           location.pathname.split('/').slice(1)?.map((value, i) => (
             <div key={i} className='flex items-center gap-x-[4px]'>
-              <h1 className={`${location.pathname.split('/').length - 2 === i ? 'text-ct-blue-60 font-medium' : 'text-blue-gray-A50 '} text-[12px]`}>{slugFormatter(value)}</h1>
+              <h1 className={`${location.pathname.split('/').length - 2 === i ? 'text-ct-blue-60 font-medium' : 'text-blue-gray-A50 '} text-xxs`}>{slugFormatter(value)}</h1>
               <div className={`${location.pathname.split('/').length - 2 === i ? 'hidden' : ''} w-[18px] h-[18px] flex justify-center items-center`}>
                 <img className='w-[5px] h-[8px]' src={Icons.ChevronRight} alt="" />
               </div>

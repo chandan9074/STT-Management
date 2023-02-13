@@ -5,11 +5,11 @@
 
 @layer components {
   .nameParagraph1 {
-    @apply text-[14px] font-medium text-ct-blue-95;
+    @apply text-small font-medium text-ct-blue-95;
   }
 
   .titleParagraph {
-    @apply text-[14px] font-medium text-ct-blue-90;
+    @apply text-small font-medium text-ct-blue-90;
   }
 
   .titleParagraphMedium {
@@ -29,7 +29,7 @@
   }
 
   .comboBoxLabel {
-    @apply font-medium text-blue-gray-75 text-[14px];
+    @apply font-medium text-blue-gray-75 text-small;
   }
 
   .xSmallButton {

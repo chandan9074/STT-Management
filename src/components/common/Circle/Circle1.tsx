@@ -43,7 +43,7 @@ const Circle1 = ({ bgColor, ringColor, textColor, value, shadowColor, height, wi
                         {
                             indexNumber <= 2 &&
 
-                            <h1 className={`${textColor} text-[13px] ${indexNumber > 2 && 'group-hover:hidden'} `}>
+                            <h1 className={`${textColor} text-xs ${indexNumber > 2 && 'group-hover:hidden'} `}>
 
                                 {value}%
                             </h1>
@@ -53,7 +53,7 @@ const Circle1 = ({ bgColor, ringColor, textColor, value, shadowColor, height, wi
 
                         {
                             (value > 7 && indexNumber > 2) &&
-                            <h1 className={`${textColor} text-[13px] hidden group-hover:block animate-fadeIn`}>
+                            <h1 className={`${textColor} text-xs hidden group-hover:block animate-fadeIn`}>
 
                                 {value}%
                             </h1>

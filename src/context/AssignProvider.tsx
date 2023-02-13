@@ -6,7 +6,8 @@ interface ContextProps {
     saveCriteria: (value: any) => void,
     getSingleCriteria: (value: any) => void,
     sumTarget: number | undefined,
-    setEmptySingleCriteria: () => void
+    setEmptySingleCriteria: () => void,
+    setEmptyEditId: () => void
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -21,16 +22,12 @@ const AssignProvider = ({ children }: { children: any }) => {
 
     const [editId, setEditId] = useState<number>();
 
- 
-
     const saveCriteria = (data: any) => {
-        // const filteredCriterias = criterias.filter((criteria: any, i: number) => criteria.target !== data.target);
         const filteredCriterias = criterias.filter((criteria: any, i: number) => i !== editId);
-
         setCriterias([...filteredCriterias, data]);
-
-        // setCriterias([...criterias, data]);
+        setEmptySingleCriteria();
     }
+
 
     const getSingleCriteria = (id: number) => {
         const _data = criterias?.filter((value: any, i: number) => i === id);
@@ -39,7 +36,14 @@ const AssignProvider = ({ children }: { children: any }) => {
     }
 
     const setEmptySingleCriteria = () => {
+        console.log('empty single crieter');
+
         setSingleCriteria({});
+        
+    }
+
+    const setEmptyEditId = () => {
+        setEditId(undefined);
     }
 
     useEffect(() => {
@@ -57,7 +61,8 @@ const AssignProvider = ({ children }: { children: any }) => {
                 sumTarget,
                 singleCriteria,
                 getSingleCriteria,
-                setEmptySingleCriteria
+                setEmptySingleCriteria,
+                setEmptyEditId
             }}
         >
             {children}

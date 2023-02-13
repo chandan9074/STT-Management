@@ -112,8 +112,8 @@ const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void 
                             >
                                 <Image.RoleImage role={value?.gender === 'Male' ? 'Speaker' : 'speakerFemale'} />
                                 <div>
-                                    <h1 className='text-ct-blue-80 text-[12px]'>Target ID- 23-23456-7</h1>
-                                    <h1 className='text-ct-blue-90 text-[12px] font-medium'>target: {value.target}</h1>
+                                    {/* <h1 className='text-ct-blue-80 text-xxs'>Target ID- 23-23456-7</h1> */}
+                                    <h1 className='text-ct-blue-90 text-xxs font-medium'>target: {value.target}</h1>
                                 </div>
                             </div>
 

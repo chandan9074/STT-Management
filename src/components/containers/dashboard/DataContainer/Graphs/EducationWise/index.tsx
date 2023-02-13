@@ -46,7 +46,7 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
                             <div>
                                 {
                                     value !== 100 &&
-                                    <h1 className='text-ct-blue-45 text-[14px]'>
+                                    <h1 className='text-ct-blue-45 text-small'>
                                         {value}%
                                         </h1>
 
@@ -71,7 +71,7 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
                                         bottom: `${value.contribution}%`
                                     }} 
                                     className='absolute z-50 rounded-[4px] text-white bg-opacity-[85%] bg-blue-gray-85  items-center py-1 px-[6px] mb-[3px]'>
-                                        <h1 className='text-[12px]'>
+                                        <h1 className='text-xxs'>
                                             {value.contribution}%
                                             </h1>
                                     </div>
@@ -125,7 +125,7 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
                                 </div>
 
                                 <div className={`flex justify-center absolute items-start ${value?.name === "Graduate & Postgraduate" ? "-bottom-11" : "-bottom-6"} w-32`}>
-                                    <h1 className='text-ct-blue-90 text-[13px] font-semibold text-center'>
+                                    <h1 className='text-ct-blue-90 text-xs font-semibold text-center'>
                                         {value?.name}
                                     </h1>
                                 </div>

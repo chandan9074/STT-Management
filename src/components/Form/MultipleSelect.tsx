@@ -99,7 +99,7 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
 
                                 formikValues?.map((value: string, i: number) => (
                                     <div className='bg-ct-blue-20 rounded-[4px] flex justify-center items-center px-[8px] gap-x-[4px] h-6 flex-wrap mx-[] ]'>
-                                        <h1 className='text-[13px] text-blue-gray-80 font-medium whitespace-nowrap'>
+                                        <h1 className='text-xs text-blue-gray-80 font-medium whitespace-nowrap'>
                                             {value}
                                         </h1>
                                         <div onClick={() => onItemRemove(value)} className='cursor-pointer w-[14px] p-[3px] bg-white rounded-[3px]'>
@@ -119,7 +119,7 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
 
                     {
                         <div className={` ${(isDistrictOpen || formik.values.district.length !== 0) ? ' px-[4px] absolute -top-[13px] bg-white' : 'my-[10px]'}  `}>
-                            <h1 className={`${isDistrictOpen ? 'text-[12px] font-medium text-blue-gray-80' : 'comboBoxLabel'} `}>District<span className='text-[red]'>*</span></h1>
+                            <h1 className={`${isDistrictOpen ? 'text-xxs font-medium text-blue-gray-80' : 'comboBoxLabel'} `}>District<span className='text-[red]'>*</span></h1>
                         </div>
                     }
 
@@ -157,7 +157,7 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
                 <div className='absolute w-full h-[482px] bg-white rounded-[8px] py-[6px] animate-fadeIn z-[100] overflow-auto'>
                     {filteredDistrict.map(({ division, district }) => (
                         <div key={division}>
-                            <div className='bg-blue-gray-05 text-[12px] text-blue-gray-60 pl-[16px] flex justify-between items-center pr-[9px]'>
+                            <div className='bg-blue-gray-05 text-xxs text-blue-gray-60 pl-[16px] flex justify-between items-center pr-[9px]'>
                                 <h2>{division}</h2>
                                 <div onClick={() => handleArrowClick(division)}>
                                     <Buttons.IconButton.Circle
@@ -177,7 +177,7 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
                                             className={`pl-[16px] ${formikValues.includes(name) ? 'mt-[2px] bg-blue-10 hover:bg-blue-20 active:bg-blue-30' : 'hover:bg-ct-blue-05 active:bg-ct-blue-10'} `}>
                                             <div className='flex justify-between items-center cursor-pointer pr-[9px] py-[12px]'>
                                                 <h3
-                                                    className='text-blue-gray-90 text-[14px]' key={name}>{name}</h3>
+                                                    className='text-blue-gray-90 text-small' key={name}>{name}</h3>
 
                                                 {
                                                     formikValues.includes(name) &&
@@ -196,7 +196,7 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
 
 
             {formikTouched && formikError ? (
-                <div className='text-red-600 text-[12px] pl-[12px]'>{formikError}</div>
+                <div className='text-red-600 text-xxs pl-[12px]'>{formikError}</div>
             ) : null}
         </div>
     );

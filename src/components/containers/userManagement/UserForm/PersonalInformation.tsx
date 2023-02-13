@@ -152,7 +152,7 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
                                     }
                                 }}
                                 variant="outlined" />
-                            <div className='w-[28px] text-[14px] text-blue-gray-75 font-medium flex justify-center items-center'>or</div>
+                            <div className='w-[28px] text-small text-blue-gray-75 font-medium flex justify-center items-center'>or</div>
                         </div>
                     </Grid>
 

@@ -19,7 +19,8 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
     const {
         criterias,
         sumTarget,
-        setEmptySingleCriteria
+        setEmptySingleCriteria,
+        setEmptyEditId
     } = AssignContexts;
 
     const [lengthClick, setLengthClick] = useState<boolean>(false);
@@ -39,6 +40,7 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
     const handleBackButton = () => {
         setLengthClick(false);
         setEmptySingleCriteria();
+        setEmptyEditId();
 
     }
 
@@ -67,13 +69,13 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
                                 <h1 className='text-ct-blue-95 text-[18px] font-medium'>{title}</h1>
                             </div>
                             <div className='flex items-center gap-2'>
-                                <div className='text-[14px] text-primary-ct-magenta-60 flex'>
+                                <div className='text-small text-primary-ct-magenta-60 flex'>
                                     <h1 className='pr-[4px]'>Total Target: </h1>
                                     {
                                         sumTarget === 0 ?
                                             <span className='text-[#B8BFCC]'>--</span>
                                             :
-                                            <h1 className='text-[14px] text-primary-ct-magenta-60 font-medium '> {sumTarget}</h1>
+                                            <h1 className='text-small text-primary-ct-magenta-60 font-medium '> {sumTarget}</h1>
                                     }
                                 </div>
 
@@ -116,10 +118,10 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
                                     <h1 className='text-ct-blue-95 text-[18px] font-medium'>Details</h1>
                                 </div>
                                 <div className='flex items-center gap-2'>
-                                    <div className='text-[14px] text-primary-ct-magenta-60 flex'>
+                                    <div className='text-small text-primary-ct-magenta-60 flex'>
                                         <h1 className='pr-[4px]'>Total target- </h1>
 
-                                        <h1 className='text-[14px] text-primary-ct-magenta-60 font-medium '> {sumTarget}</h1>
+                                        <h1 className='text-small text-primary-ct-magenta-60 font-medium '> {sumTarget}</h1>
                                     </div>
                                 </div>
                             </div>

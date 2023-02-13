@@ -35,7 +35,7 @@ const TargetSetting = ({ formik }: { formik: any }) => {
             <div className={`${(!openCalender) && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[90]`} onClick={() => setOpenCalender(false)}></div>
             <div className={`${(!openReminderCalender) && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[90]`} onClick={() => setOpenReminderCaleder(false)}></div>
             <div className='mb-[20px]'>
-                <h1 className='text-ct-blue-60 text-[14px] font-semibold'>Target Setting</h1>
+                <h1 className='text-ct-blue-60 text-small font-semibold'>Target Setting</h1>
             </div>
             <div >
                 <TextField
@@ -60,7 +60,7 @@ const TargetSetting = ({ formik }: { formik: any }) => {
 
                     variant="outlined" />
 
-                <p className='text-blue-gray-75 text-[12px] mt-[4px] pl-[14px]'>No. of audio to be uploaded</p>
+                <p className='text-blue-gray-75 text-xxs mt-[4px] pl-[14px]'>No. of audio to be uploaded</p>
             </div>
 
 
@@ -120,7 +120,7 @@ const TargetSetting = ({ formik }: { formik: any }) => {
                         {
                             formik.values.reminder.length !== 0 &&
                             <div className='p-[4px] absolute -top-[14px]'>
-                                <h1 className=' bg-white text-blue-gray-80 font-medium text-[14px]'>Reminder</h1>
+                                <h1 className=' bg-white text-blue-gray-80 font-medium text-small'>Reminder</h1>
                             </div>
                         }
                         <div className='flex gap-x-2 w-[240px] overflow-x-auto '>
@@ -130,7 +130,7 @@ const TargetSetting = ({ formik }: { formik: any }) => {
                                     :
                                     formik.values.reminder.map((value: string, i: number) => (
                                         <div className='bg-ct-blue-20 rounded-[4px] flex justify-center items-center py-[3px] px-[8px] gap-x-[4px]'>
-                                            <h1 className='text-[13px] text-blue-gray-80 font-medium whitespace-nowrap'>
+                                            <h1 className='text-xs text-blue-gray-80 font-medium whitespace-nowrap'>
                                                 {/* {getDateWithMonthName2(value)} */}
                                                 {value}
                                             </h1>
@@ -161,7 +161,7 @@ const TargetSetting = ({ formik }: { formik: any }) => {
                         </button>
                     </div>
 
-                    <h4 className='text-blue-gray-75 text-[12px] pl-[14px] mt-[4px]'>
+                    <h4 className='text-blue-gray-75 text-xxs pl-[14px] mt-[4px]'>
                         Select {3 - formik.values.reminder.length} ({(3 - formik.values.reminder.length) === 0 ? 'Zero' : (3 - formik.values.reminder.length) === 1 ? 'One' : (3 - formik.values.reminder.length) === 2 ? "Two" : 'Three'}) dates
                     </h4>
 
