@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AssignContext } from '../../../context/AssignProvider';
 import Image from '../../Image';
 
-const TargetDetails = ({onLengthClickClose}: {onLengthClickClose: () => void}) => {
+const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void }) => {
 
     const AssignContexts = useContext(AssignContext);
     const {
@@ -11,6 +11,85 @@ const TargetDetails = ({onLengthClickClose}: {onLengthClickClose: () => void}) =
         singleCriteria,
         getSingleCriteria,
     } = AssignContexts;
+
+
+    //         healthFactors: singleCriteria?.healthFactors || [],
+    //         educationSituation: singleCriteria?.educationSituation || '',
+    //         target: singleCriteria?.target || 0,
+    //         deadline: singleCriteria?.deadline || '',
+    //         reminder: singleCriteria?.reminder || [],
+    //         remark: singleCriteria?.remark || ''
+
+    const singleValue1 = [
+        {
+            title: 'Gender',
+            value: singleCriteria?.gender || '-'
+        },
+        {
+            title: 'Age Range',
+            value: singleCriteria?.ageRange || '-'
+        },
+        {
+            title: 'Division/ District',
+            value: singleCriteria?.district
+        },
+        {
+            title: 'profession',
+            value: singleCriteria?.profession || '-'
+        },
+        {
+            title: 'Econimic Situation',
+            value: singleCriteria?.economicSituation || '-'
+        },
+        {
+            title: 'Education',
+            value: 'higher Secondary'
+        },
+        {
+            title: 'Smoking Habit',
+            value: singleCriteria?.healthFactors?.includes('Smoker') ? 'Yes' : 'No'
+        },
+        {
+            title: 'Hearing Disability',
+            value: singleCriteria?.healthFactors?.includes('Hearing') ? 'Yes' : 'No'
+        },
+        {
+            title: 'Shutter',
+            value: singleCriteria?.healthFactors?.includes('Stutter') ? 'Yes' : 'No'
+        },
+        {
+            title: 'Recording Area',
+            value: singleCriteria?.recordingArea || '-'
+        },
+        {
+            title: 'Recording Distance',
+            value: singleCriteria?.recordingDistance || '-'
+        },
+
+    ]
+
+    const singleValue2 = [
+        {
+            title: 'Target',
+            value: singleCriteria?.target || '-'
+        },
+        {
+            title: 'Deadline',
+            value: singleCriteria?.deadline || '-'
+        },
+        {
+            title: 'Reminder',
+            value: singleCriteria?.reminder || []
+        },
+        {
+            title: 'Note',
+            value: singleCriteria?.remark || '-'
+        },
+
+    ]
+
+    console.log('-----****8888', singleValue2);
+    
 
     const [targetId, setTargetId] = useState<number>(criterias[0].target);
 
@@ -52,83 +131,35 @@ const TargetDetails = ({onLengthClickClose}: {onLengthClickClose: () => void}) =
                 }
             </div>
 
-            {/* <div className='flex'>
-                <Grid
-                    container
-                    direction="row"
-                    alignItems="center"
-                >
-                    <Grid item xs={4}>
-                        <div className='bg-ct-blue-05 pt-3 pr-2  pl-3 rounded-t-[5px]'>
-                            <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px] whitespace-nowrap'>Gender</h1>
-                        </div>
-                    </Grid>
-
-                    <Grid item xs={8}>
-                        <div className=' pt-3 pr-2 pl-3'>
-                            <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{singleCriteria?.gender}</h1>
-                        </div>
-                    </Grid>
-
-                    <Grid item xs={4}>
-                        <div className='bg-ct-blue-05 pr-2  pl-3'>
-                            <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px] whitespace-nowrap'>Gender</h1>
-                        </div>
-                    </Grid>
-
-                    <Grid item xs={8}>
-                        <div className=' pt-3 pr-2 pl-3'>
-                            <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{singleCriteria?.gender}</h1>
-                        </div>
-                    </Grid>
-
-                </Grid>
-
-                <div className='ml-auto'>
-                    <button>Edit</button>
-                </div>
-            </div> */}
-
-          
-
             <div className='flex mt-[25px]'>
                 <div className='w-[125px] bg-ct-blue-05 pt-3 pr-2 pb-[10px] pl-3 rounded-[5px]'>
-                    <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px]'>Gender</h1>
-
-                    <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px]'>Age Range</h1>
-                    <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px] whitespace-nowrap'>Division/ District</h1>
-                    <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px]'>Profession</h1>
-                    <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px] whitespace-nowrap'>Econimic Situation</h1>
-                    <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px]'>Education</h1>
-                    <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px]'>Smoking Habit</h1>
-                    <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px]'>Hearing Disability</h1>
-                    <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px]'>Stutter</h1>
-                    <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px]'>Recording Area</h1>
-                    <h1 className='text-blue-gray-75 font-medium text-[12px] leading-[15px]'>Recording Distance</h1>
+                    {
+                        singleValue1?.map((item: any) => (
+                            <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px]'>{item?.title}</h1>
+                        ))
+                    }
+                   
                 </div>
 
                 <div className=' pt-3 pr-2 pb-[10px] pl-3 rounded-[5px]'>
-                    <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{singleCriteria?.gender}</h1>
-                    <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{singleCriteria?.ageRange} year</h1>
-                    <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>
-                        {
-                            singleCriteria?.district?.map((value: string) => {
-                                return value + ', ';
-                            })
-                        }
-                    </h1>
-                    <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{singleCriteria?.profession || '-'} </h1>
-                    <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{singleCriteria?.economicSituation || '-'}</h1>
-                    <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>Education</h1>
-                    <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{singleCriteria?.healthFactors?.includes('Smoker') ? 'Smoking Habit' : '-' }</h1>
-                    <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{singleCriteria?.healthFactors?.includes('Hearing') ? 'Hearing Disability' : '-' }</h1>
-                    <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{singleCriteria?.healthFactors?.includes('Shutter') ? 'Shutter' : '-' }</h1>
-                    <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{singleCriteria?.recordingArea || '-'}</h1>
-                    <h1 className='text-blue-gray-80 font-medium text-[14px] leading-[15px]'>{singleCriteria?.recordingDistance || '-'}</h1>
+                    {
+                        singleValue1?.map((item: any) => (
+                            item?.title === 'Division/ District' ?
+                                <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>
+                                    {
+                                        item?.value?.map((value: string) => {
+                                            return value + ', ';
+                                        })
+                                    }
+                                </h1>
+                                :
+                                <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{item?.value}</h1>
+                        ))
+                    }
                 </div>
                 <div
-                
-                 className='ml-auto'>
+
+                    className='ml-auto'>
                     <button onClick={() => onEditClick()} className='text-ct-blue-60'>Edit</button>
                 </div>
             </div>
@@ -137,27 +168,37 @@ const TargetDetails = ({onLengthClickClose}: {onLengthClickClose: () => void}) =
 
             <div className='flex'>
                 <div className='w-[125px] bg-ct-blue-05 pt-3 pr-2 pb-[10px] pl-3 rounded-[5px]'>
-                    <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px]'>Target</h1>
-                    <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px]'>Deadline</h1>
-                    <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px]'>Reminder</h1>
-                    <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px]'>Note</h1>
+
+                {
+                        singleValue2?.map((item: any) => (
+                            <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px]'>{item?.title}</h1>
+                        ))
+                    }
+                
 
                 </div>
 
                 <div className=' pt-3 pr-2 pb-[10px] pl-3 rounded-[5px]'>
-                    <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{singleCriteria?.target || "-"}</h1>
-                    <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{singleCriteria?.deadline || '-'}</h1>
-                    <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>
-                        {
-                            singleCriteria?.reminder?.length !== 0 ?
-                                singleCriteria?.reminder?.map((value: string) => {
-                                    return value + ', ';
-                                }) :
-                                '-'
-                        }
-                    </h1>
-                    <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{singleCriteria?.remark || '-'}</h1>
 
+
+                    {
+                        singleValue2?.map((item: any) => (
+                            item?.title === 'Reminder' ?
+                                <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>
+                                    {
+                                        item.value?.length > 0 ?
+                                            item?.value?.map((value: string) => {
+                                                return value + ', ';
+                                            }) :
+                                            '-'
+                                    }
+                                </h1>
+                                :
+                                <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{item?.value}</h1>
+                        ))
+                    }
+
+                   
                 </div>
             </div>
 

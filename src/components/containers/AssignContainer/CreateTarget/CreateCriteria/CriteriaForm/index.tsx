@@ -18,7 +18,9 @@ const CriteriaForm = () => {
     const AssignContexts = useContext(AssignContext);
     const {
         saveCriteria,
-        singleCriteria
+        singleCriteria,
+        criterias,
+        setEmptySingleCriteria
     } = AssignContexts;
 
     const formik = useFormik({
@@ -44,6 +46,7 @@ const CriteriaForm = () => {
             console.log('submit------', values);
         },
     });
+    
 
     return (
         <div>
