@@ -23,6 +23,9 @@ const CriteriaForm = () => {
         setEmptySingleCriteria
     } = AssignContexts;
 
+    console.log('----#############', singleCriteria);
+    
+
     const formik = useFormik({
         initialValues: {
             gender: singleCriteria?.gender || 'Male',
@@ -43,6 +46,7 @@ const CriteriaForm = () => {
         onSubmit: (values) => {
             saveCriteria(values);
             formik.resetForm();
+            // setEmptySingleCriteria();
             console.log('submit------', values);
         },
     });

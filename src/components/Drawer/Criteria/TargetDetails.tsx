@@ -12,14 +12,6 @@ const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void 
         getSingleCriteria,
     } = AssignContexts;
 
-
-    //         healthFactors: singleCriteria?.healthFactors || [],
-    //         educationSituation: singleCriteria?.educationSituation || '',
-    //         target: singleCriteria?.target || 0,
-    //         deadline: singleCriteria?.deadline || '',
-    //         reminder: singleCriteria?.reminder || [],
-    //         remark: singleCriteria?.remark || ''
-
     const singleValue1 = [
         {
             title: 'Gender',
@@ -89,7 +81,7 @@ const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void 
     ]
 
     console.log('-----****8888', singleValue2);
-    
+
 
     const [targetId, setTargetId] = useState<number>(criterias[0].target);
 
@@ -130,33 +122,38 @@ const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void 
                     ))
                 }
             </div>
+            {/* ----------------------------------------------------------- */}
 
-            <div className='flex mt-[25px]'>
-                <div className='w-[125px] bg-ct-blue-05 pt-3 pr-2 pb-[10px] pl-3 rounded-[5px]'>
-                    {
-                        singleValue1?.map((item: any) => (
-                            <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px]'>{item?.title}</h1>
-                        ))
-                    }
-                   
-                </div>
+            <div className='mt-[25px] flex'>
+                <div>
+                    {singleValue1?.map((item: any, i: number) => (
+                        <div className={` grid grid-cols-12`} key={i}>
 
-                <div className=' pt-3 pr-2 pb-[10px] pl-3 rounded-[5px]'>
-                    {
-                        singleValue1?.map((item: any) => (
-                            item?.title === 'Division/ District' ?
-                                <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>
-                                    {
-                                        item?.value?.map((value: string) => {
-                                            return value + ', ';
-                                        })
-                                    }
+                            <div className={`${(i === 0) && 'rounded-t-[5px]'} ${(i === (singleValue1.length - 1)) && 'rounded-b-[5px] pb-[10px]'} col-span-4 bg-ct-blue-05 pt-3 pr-2 pl-3`}>
+                                <h1 className="text-blue-gray-75 font-medium text-12px  leading-15px">
+                                    {item?.title}
                                 </h1>
-                                :
-                                <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{item?.value}</h1>
-                        ))
-                    }
+                            </div>
+
+                            <div className="col-span-8 pt-3 pr-2 pl-3">
+                                {item?.title === "Division/ District" ? (
+                                    <h1 className="text-blue-gray-80 font-medium text-14px  leading-15px">
+                                        {item?.value?.map((value: string) => {
+                                            return value + ", ";
+                                        })}
+                                    </h1>
+                                ) : (
+                                    <h1 className="text-blue-gray-80 font-medium text-14px leading-15px">
+                                        {item?.value}
+                                    </h1>
+                                )}
+                            </div>
+
+                        </div>
+
+                    ))}
                 </div>
+
                 <div
 
                     className='ml-auto'>
@@ -164,45 +161,44 @@ const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void 
                 </div>
             </div>
 
+    
             <div className='border-t-[2px] border-blue-gray-20 my-4'></div>
 
-            <div className='flex'>
-                <div className='w-[125px] bg-ct-blue-05 pt-3 pr-2 pb-[10px] pl-3 rounded-[5px]'>
+            <div className=''>
+                {singleValue2?.map((item: any, i: number) => (
+                    <div className={` grid grid-cols-12`} key={i}>
 
-                {
-                        singleValue2?.map((item: any) => (
-                            <h1 className='text-blue-gray-75 font-medium text-[12px] mb-5 leading-[15px]'>{item?.title}</h1>
-                        ))
-                    }
-                
+                        <div className={`${(i === 0) && 'rounded-t-[5px]'} ${(i === (singleValue1.length - 1)) && 'rounded-b-[5px] pb-[10px]'} col-span-4 bg-ct-blue-05 pt-3 pr-2 pl-3`}>
+                            <h1 className="text-blue-gray-75 font-medium text-12px  leading-15px">
+                                {item?.title}
+                            </h1>
+                        </div>
 
-                </div>
+                        <div className="col-span-8 pt-3 pr-2 pl-3">
+                            {
+                                item?.title === "Reminder" ? (
+                                    <h1 className="text-blue-gray-80 font-medium text-14px  leading-15px">
+                                        {
+                                            item.value?.length > 0 ?
+                                                item?.value?.map((value: string) => {
+                                                    return value + ', ';
+                                                }) :
+                                                '-'
+                                        }
+                                    </h1>
+                                ) : (
+                                    <h1 className="text-blue-gray-80 font-medium text-14px leading-15px">
+                                        {item?.value}
+                                    </h1>
+                                )}
+                        </div>
 
-                <div className=' pt-3 pr-2 pb-[10px] pl-3 rounded-[5px]'>
+                    </div>
 
-
-                    {
-                        singleValue2?.map((item: any) => (
-                            item?.title === 'Reminder' ?
-                                <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>
-                                    {
-                                        item.value?.length > 0 ?
-                                            item?.value?.map((value: string) => {
-                                                return value + ', ';
-                                            }) :
-                                            '-'
-                                    }
-                                </h1>
-                                :
-                                <h1 className='text-blue-gray-80 font-medium text-[14px] mb-5 leading-[15px]'>{item?.value}</h1>
-                        ))
-                    }
-
-                   
-                </div>
+                ))}
             </div>
 
-        </div>
+        </div >
     );
 };
 
