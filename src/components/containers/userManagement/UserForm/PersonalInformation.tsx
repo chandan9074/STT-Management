@@ -48,11 +48,11 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
                                 name="primaryRole"
                                 error={formik.touched.primaryRole && Boolean(formik.errors.primaryRole)}
                                 helperText={formik.touched.primaryRole && formik.errors.primaryRole}
-                                InputProps={{
-                                    style: {
-                                        height: '44px'
-                                    }
-                                }}
+                                // InputProps={{
+                                //     style: {
+                                //         height: '44px'
+                                //     }
+                                // }}
 
                                 label={<h1 className='comboBoxLabel'>Primary Role <span className='text-[red]'>*</span></h1>}
 

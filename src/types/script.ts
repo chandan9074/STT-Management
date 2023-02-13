@@ -15,16 +15,29 @@ export type getAllScriptsParamsDT = {
 };
 export type allScriptResDT = {
   id: string;
+  sourceurl: string;
   module: string;
-  distributionSource: string;
-  isAge: boolean;
   domain: string;
   subDomain: string;
-  sourceType: string;
-  sourceurl: string;
-  sourceFile: string;
+  distributionSource: string;
   title: string;
+  isAge: boolean;
+  sourceType: string;
+  sourceFile: string;
   description: string;
   date: string
 
+}
+
+export type createScriptDt = {
+  file: any;
+  sourceurl: string;
+  module: string;
+  sourceType: string;
+  domain: string;
+  subDomain: string;
+  distributionSource: string;
+  isAge: boolean;
+  title: string;
+  description: string;
 }

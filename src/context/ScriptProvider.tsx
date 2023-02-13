@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 import ScriptService from "../services/scriptService";
-import { allScriptResDT, getAllScriptsParamsDT } from "../types/script";
+import { allScriptResDT, createScriptDt, getAllScriptsParamsDT } from "../types/script";
 
 
 interface ContextProps {
@@ -11,6 +11,7 @@ interface ContextProps {
   uploadCsv: (formData: any) => void;
   getAllScript: (prams: getAllScriptsParamsDT) => void;
   scriptsData: allScriptResDT | undefined
+  createScript: (params: createScriptDt) => void;
 
 }
 
@@ -38,6 +39,16 @@ const ScriptProvider = ({ children }: { children: any }) => {
 
   }
 
+  const createScript = async (params: createScriptDt) => {
+    // setLoading(true);
+    // setErrorMsg("");
+    const response = await ScriptService.createScript(params);
+    console.log('resposne--------', response);
+    
+    // setLoading(false);
+
+  }
+
   return (
     <ScriptContext.Provider
       value={{
@@ -47,7 +58,8 @@ const ScriptProvider = ({ children }: { children: any }) => {
         setModalOpen,
         uploadCsv,
         getAllScript,
-        scriptsData
+        scriptsData,
+        createScript
       }}
     >
       {children}

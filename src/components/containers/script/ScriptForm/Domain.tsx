@@ -64,40 +64,7 @@ const Domain = ({ formik }: { formik: any }) => {
                             ) : null}
                         </FormControl>
 
-                        {/* <Autocomplete
-                            id="Domain"
-                            style={{
-                                width: '100%',
-                            }}
-
-                            options={scriptDomain}
-                            value={formik.values.domain}
-                            defaultValue={formik.values.domain}
-
-                            onChange={(event, value) => {
-                                if (typeof value === 'string') {
-
-                                    formik.setFieldValue('domain', value)
-                                    sebDomain(value);
-
-                                } else {
-                                    formik.setFieldValue('domain', '')
-                                    sebDomain('');
-
-                                }
-                            }}
-                            renderInput={(params) => (
-                                <TextField
-                                    name="domain"
-                                    error={formik.touched.domain && Boolean(formik.errors.domain)}
-                                    helperText={formik.touched.domain && formik.errors.domain}
-                                    {...params}
-
-                                    label={<span className='comboBoxLabel'>Domain <span className='text-[red]'>*</span></span>}
-
-                                />
-                            )}
-                        /> */}
+                     
                     </div>
                 </Grid>
                 <Grid item xs={6}>
@@ -131,11 +98,11 @@ const Domain = ({ formik }: { formik: any }) => {
                                     {...params}
                                     label={<h1 className='comboBoxLabel'>Sub Domain <span className='text-[red]'>*</span></h1>}
 
-                                    InputProps={{
-                                        style: {
-                                            height: '44px'
-                                        }
-                                    }}
+                                    // InputProps={{
+                                    //     style: {
+                                    //         height: '44px'
+                                    //     }
+                                    // }}
                                 />
                             )}
                         />

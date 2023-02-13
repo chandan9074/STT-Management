@@ -29,18 +29,23 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
                 isScript: true
             })
         }
-    }    
+    }
 
-     const handleFileUpload = (event: any) => {
+    const handleFileUpload = (event: any) => {
+        // event.prevntDefault();
+        
 
         if (event.fileList?.length !== 0) {
             // let files = event.fileList || event.file || event.target.files;
             let files = event.fileList[0];
             setFile(files);
             getFile(event.fileList[0]?.originFileObj);
+            let formData = new FormData();
+            // formik.setFieldValue("file",  formData.append('file', event.fileList[0]?.originFileObj));
         } else {
             setFile([]);
             getFile([]);
+            // formik.setFieldValue("file",  []);
         }
     }
 
@@ -77,7 +82,7 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
                                             id="sourceType"
                                             style={{ width: '100%' }}
                                             options={scriptSourceType}
-                                            value={formik.values.sourceType }
+                                            value={formik.values.sourceType}
                                             onChange={(event, value) => {
                                                 if (typeof value === 'string') {
                                                     console.log('event', event);
@@ -114,14 +119,14 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
 
                                             value={formik.values.sourceurl}
                                             onChange={formik.handleChange}
-                                           
+
                                             style={{ width: '100%', }}
                                             InputProps={{
                                                 style: {
                                                     color: '#464E5F',
                                                     fontWeight: '600',
                                                     fontSize: '15px',
-                                                   
+
                                                 }
                                             }}
                                             variant="outlined" />
@@ -134,17 +139,18 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
 
                         // file upload
                         <div className={`bg-white w-[100%] ${(file?.length === 0) ? 'file-upload' : 'file-upload-hidden '}`} >
-                            
+
                             <div className={`${(file?.length === 0) ? '' : 'py-[24px] px-[16px]'}`}>
                                 <Dragger
-                                multiple={false}
-                                accept='.txt, .docx, .pdf, .jpg, .jpeg, .png'
-                                // customRequest={selectFiles}
+                                    multiple={false}
+                                    accept='.txt, .docx, .pdf, .jpg, .jpeg, .png'
+                                    // customRequest={selectFiles}
                                     style={{
                                         backgroundColor: 'white',
                                         borderRadius: 'none'
                                     }}
                                     onChange={(event) => handleFileUpload(event)}
+                                    
                                 >
                                     <div className={`h-[114px] ant-upload-drag-icon flex flex-col justify-center items-center gap-y-[8px]`}>
                                         <div className='border-[1px] border-ct-blue-30 w-[160px] h-[36px] px-[18px] py-[8px] rounded-[6px] flex justify-center items-center gap-x-[5px]'>

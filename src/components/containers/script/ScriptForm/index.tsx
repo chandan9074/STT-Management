@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import DistributionSource from './DistributionSource';
 import Domain from './Domain';
 import SourceReference from './SourceReference';
@@ -11,6 +11,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { distributionList } from '../../../../data/Script/Domain';
+import { ScriptContext } from '../../../../context/ScriptProvider';
 
 const theme = createTheme({
 
@@ -35,33 +36,48 @@ const validationSchema = yup.object({
 
 const ScriptForms = () => {
 
+    const scriptContext = useContext(ScriptContext);
+    const { createScript } = scriptContext;
+    // const {ScriptContext}
+
     const [file, setFile] = useState<any>([]);
+
+
+    const formik = useFormik({
+        initialValues: {
+            sourceurl: '',
+            module: 'STT',
+            sourceType: '',
+            domain: '',
+            subDomain: '',
+            distributionSource: distributionList[0],
+            isAge: false,
+            title: '',
+            description: '',
+            file: ''
+        },
+        validationSchema: validationSchema,
+        onSubmit: (values) => {
+            // const _data = { ...values}
+            console.log('submit------', values);
+            createScript(values);
+
+            console.log('file---------------************', formik.values.file);
+            const valuess = Array.from(formik.values.file);
+            for (const value of valuess) {
+                console.log('file---------------************', value);
+            }
+
+        },
+    });
 
     const getFile = (file: any) => {
         let formData = new FormData();
         formData.append('file', file)
         setFile(formData);
-    }    
+        formik.setFieldValue("file",  formData);
+    }
 
-    const formik = useFormik({
-        initialValues: {
-            sourceurl: '',
-            dataType: 'STT',
-            sourceType: '',
-            domain: '' ,
-            subDomain: '',
-            distributionSource: distributionList[0],
-            isChild: false,
-            title: '',
-            script: '',
-            file: file ? file : ''
-        },
-        validationSchema: validationSchema,
-        onSubmit: (values) => {
-            const _data = { ...values, file: file }
-            console.log('submit------', _data);
-        },
-    });
 
     return (
         <div className='w-full flex justify-center script-form'>

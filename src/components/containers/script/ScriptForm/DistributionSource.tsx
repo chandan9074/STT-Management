@@ -67,9 +67,9 @@ const DistributionSource = ({ formik }: { formik: any }) => {
                         <FormControlLabel
 
                             control={<Checkbox
-                                name="isChild"
-                                checked={formik.values.isChild}
-                                onChange={() => formik.setFieldValue("isChild", !formik.values.isChild)}
+                                name="isAge"
+                                checked={formik.values.isAge}
+                                onChange={() => formik.setFieldValue("isAge", !formik.values.isAge)}
                             />}
                             label={<h1 className='text-[14px] font-medium text-blue-gray-75'>Child</h1>} />
 

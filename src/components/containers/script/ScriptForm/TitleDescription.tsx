@@ -26,7 +26,7 @@ const TitleDescription = ({ formik }: { formik: any }) => {
 
                 // variant="standard"
                 />
-                <h1 className='w-[107px] text-[13px] text-blue-gray-60'>{formik.values.script.length} characters</h1>
+                <h1 className='w-[107px] text-[13px] text-blue-gray-60'>{formik.values.description.length} characters</h1>
             </div>
 
             <Divider
@@ -37,10 +37,10 @@ const TitleDescription = ({ formik }: { formik: any }) => {
                 }} />
 
             <TextareaAutosize
-                id="script"
-                name="script"
+                id="description"
+                name="description"
 
-                value={formik.values.script}
+                value={formik.values.description}
                 onChange={formik.handleChange}
                 // error={formik.touched.script && Boolean(formik.errors.script)}
                 // helperText={formik.touched.script && formik.errors.script}
