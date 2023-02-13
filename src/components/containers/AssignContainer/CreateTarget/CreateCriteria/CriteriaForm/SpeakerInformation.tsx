@@ -172,7 +172,7 @@ const SpeakerInformation = ({formik}: {formik: any}) => {
                     <div className='mt-4'>
                         <FormGroup row>
                             {healthFactors.map((value, i) => (
-                                <div key={i} className={`border-[1px] pl-[16px] border-ct-blue-05 rounded-tl-[7px] w-[102px] h-[46px] bg-[#FFFFFF]`}>
+                                <div key={i} className={`border-[1px] pr-[7px] pl-[13px] border-ct-blue-05 rounded-tl-[7px] w-[102px] h-[46px] bg-[#FFFFFF]`}>
                                     <FormControlLabel
                                         control={
                                             <Checkbox
@@ -187,7 +187,7 @@ const SpeakerInformation = ({formik}: {formik: any}) => {
                                                   }}
                                             />
                                         }
-                                        label={<h1 className={`text-[14px] font-medium ${formik.values.healthFactors.includes(value) ? 'text-secondary-blue-50' : ((formik.values.healthFactors.length > 0 && !formik.values.healthFactors.includes("Speaker") && value === "Speaker") || (formik.values.healthFactors.includes("Speaker") && value !== "Speaker")) ? 'text-blue-gray-45' : 'text-blue-gray-75 '} `}>{value}</h1>}
+                                        label={<h1 className={`text-[13px] font-medium ${formik.values.healthFactors.includes(value) ? 'text-secondary-blue-50' : ((formik.values.healthFactors.length > 0 && !formik.values.healthFactors.includes("Speaker") && value === "Speaker") || (formik.values.healthFactors.includes("Speaker") && value !== "Speaker")) ? 'text-blue-gray-45' : 'text-blue-gray-75 '} `}>{value}</h1>}
                                     />
                                 </div>
                             ))}
