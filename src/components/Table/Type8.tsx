@@ -1,10 +1,8 @@
 import { Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Icons from '../../assets/Icons';
-import Buttons from '../Buttons';
-import ProgressBar from '../common/ProgressBar';
 import { SideDrawer } from '../common/SideDrawer';
 import "../../assets/css/table/type4Table.css";
 
@@ -64,7 +62,7 @@ const data: any = [
 
 
 ];
-const Type7 = () => {
+const Type8 = () => {
     const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
     const [drawerData, setDrawerData] = useState<any>();
@@ -80,7 +78,7 @@ const Type7 = () => {
 
 
 
-    const columns: ColumnsType<any> = [
+    const Type8columns: ColumnsType<any> = [
 
         {
             title: `${"# Target ID".toLocaleUpperCase()}`,
@@ -96,50 +94,6 @@ const Type7 = () => {
         {
             title: `${"target".toLocaleUpperCase()}`,
             dataIndex: 'target',
-
-        },
-        {
-            title: `${"status".toLocaleUpperCase()}`,
-            width: 160,
-            render: (data) => (
-                <div >
-                    <p>{data.status}% Assigned</p>
-                    <ProgressBar.Type2
-                        bgColor='#F5AC42'
-                        value={100}
-                        height={6}
-
-                    />
-                </div>
-            )
-
-        },
-        {
-            title: `${"Speeches".toLocaleUpperCase()}`,
-            width: 227,
-            render: (data) => (
-                <div className='flex gap-3 items-center'>
-                    <div>
-                        <div className="flex gap-2 items-center">
-                            <img src={Icons.BlueMusicIcon} className="w-[16px] h-[16px]" alt="" />
-                            <p className='text-secondary-blue-50'>{data.speeches}0/1000 Uploaded</p>
-                        </div>
-                        <ProgressBar.Type2
-                            bgColor='#136EE5'
-                            value={50}
-                            height={6}
-
-                        />
-                    </div>
-                    <Buttons.IconButton.Circle
-                        size='medium'
-                        variant='Blue'
-                        icon={<img src={Icons.BlueRightArrow} />}
-
-                    />
-
-                </div>
-            )
 
         },
         {
@@ -166,8 +120,6 @@ const Type7 = () => {
                     <img src={Icons.Script} className="h-[15px] w-[12px]" alt="" />
                 </div>
             )
-
-
         },
         {
             title: `${"Details".toLocaleUpperCase()}`,
@@ -189,15 +141,24 @@ const Type7 = () => {
     ];
 
 
-
-
-
-
+    const rowSelection = {
+        onChange: (selectedRowKeys: React.Key[], selectedRows: any[]) => {
+            console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+        },
+        getCheckboxProps: (record: any) => ({
+            // disabled: record.name === 'Disabled User', // Column configuration not to be checked
+            name: record.name,
+        }),
+    };
     return (
-        <div className='type4-table'>
+        <div className='billing-table type4-table'>
 
             <Table
-                columns={columns}
+                rowSelection={{
+                    type: selectionType,
+                    ...rowSelection,
+                }}
+                columns={Type8columns}
                 dataSource={data}
                 pagination={false}
             />
@@ -208,4 +169,4 @@ const Type7 = () => {
     );
 };
 
-export default Type7;
+export default Type8;

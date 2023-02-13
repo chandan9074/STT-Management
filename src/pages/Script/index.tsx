@@ -4,6 +4,7 @@ import Header from "../../components/containers/script/Header";
 import Table from "../../components/Table";
 import { CustomModal } from "../../components/common/CustomModal";
 import { ScriptContext } from "../../context/ScriptProvider";
+import ScriptTable from "../../components/containers/script/ScriptTable";
 
 const Script = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
@@ -15,9 +16,7 @@ const Script = () => {
     <Layouts.Forth>
       <div className="min-h-[calc(100vh-9.5vh)]">
         <Header />
-        <Table.Type4 />
-        {/* <button onClick={() => setModalOpen(true)}>Open modal</button> */}
-
+        <ScriptTable />
         <CustomModal.Type1
           open={scriptContext.modalOpen}
           setOpen={scriptContext.setModalOpen}
