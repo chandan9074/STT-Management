@@ -41,8 +41,8 @@ const SideDrawer = () => {
     // className={`${nav.route === location.pathname && 'bg-blue-10 text-secondary-blue-50 rounded-[20px]'} px-4`}
 
     return (
-        <div className='px-[9px] py-[15px] z-[100] h-screen w-[218px] bg-white absolute left-[70px] border-r-[1px] border-[#EDF0F4]'>
-            <div className='mt-[6px] mb-[61px] text-[18px] font-medium'>
+        <div className='px-[9px] py-[15px] z-[100] h-screen w-[218px] bg-white fixed left-[70px] border-r-[1px] border-[#EDF0F4]'>
+            <div className='mt-[6px] mb-[54px] text-[18px] font-medium'>
                 <span className='text-black '>Collection </span>
                 <span className='text-blue-gray-A50'>Tool</span>
             </div>
@@ -61,13 +61,13 @@ const SideDrawer = () => {
                                 <div className={`${(m.route === location.pathname.split('/')[2] && location.pathname.split('/').length === 3) ? 'sideDrawerActiveNav' : 'sideDrawerDeactiveNav'}`}>
                                     <div className='flex items-center gap-x-[6px]'>
                                         <div className={` h-[6px] w-[6px] ${m.route === location.pathname.split('/')[2] ? 'bg-secondary-blue-50' : 'bg-blue-gray-A50 '} rounded-[50%]`} />
-                                       <div className='w-[100%]'>
-                                       <Link className='w-full' to={m.route} >
-                                            <h1 className=''>
-                                                {m.name}
-                                            </h1>
-                                        </Link>
-                                       </div>
+                                        <div className='w-[100%]'>
+                                            <Link className='w-full' to={m.route} >
+                                                <h1 className=''>
+                                                    {m.name}
+                                                </h1>
+                                            </Link>
+                                        </div>
                                     </div>
                                     {
                                         navClickItem.mainRoute === m.route ?
@@ -98,7 +98,7 @@ const SideDrawer = () => {
                                     m?.links &&
                                     m?.links?.map((n, j) => (
                                         <div key={j} className={`my-[12px] ${navClickItem.mainRoute === m.route ? "block" : 'hidden'} pl-[12px]`}>
-                                            
+
                                             <div className={`${(n.route === location.pathname.split('/')[3] && location.pathname.split('/')?.length) === 4 ? 'sideDrawerActiveNav' : 'sideDrawerDeactiveNav'}`}>
                                                 <div className='flex items-center gap-x-[6px] w-[100%]'>
 

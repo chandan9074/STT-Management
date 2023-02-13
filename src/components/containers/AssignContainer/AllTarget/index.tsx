@@ -9,8 +9,8 @@ import Header from "./Header";
 const AllTarget = () => {
     return (
         <div>
-            <div className='bg-white shadow-box pl-[325px] pt-[110px] pb-[24px] pr-[15px]'>
-               <Header />
+            <div className='bg-white shadow-box pl-6 pt-[85px] pb-[24px] pr-[15px]'>
+                <Header />
                 <AudioStatus />
             </div>
 

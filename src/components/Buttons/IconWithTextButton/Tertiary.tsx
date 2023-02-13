@@ -30,7 +30,7 @@ const Tertiary = (props: Props) => {
                     </button>
                     :
                     <button {...rest}
-                        className={`border flex gap-2 items-center duration-200
+                        className={`border flex gap-2 items-center duration-200 font-bold
                                 ${variant === "CT-Blue" ? "text-ct-blue-60" : variant === "Blue" ? "text-secondary-blue-50" : ""}
                                 ${variant === "CT-Blue" ? "hover:border-blue-gray-A10" : "border-white"}
                                 ${variant === "Blue" ? "hover:border-blue-gray-A10" : "border-white"}
