@@ -86,6 +86,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                                         </IconButton>
                                     </InputAdornment>
                                 }
+                                
                             />
                         </FormControl>
 
@@ -123,6 +124,11 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                                 name="ageRange"
                                 error={formik.touched.ageRange && Boolean(formik.errors.ageRange)}
                                 helperText={formik.touched.ageRange && formik.errors.ageRange}
+                                InputProps={{
+                                    style: {
+                                        height: '44px'
+                                    }
+                                }}
 
                                 label={<h1 className='comboBoxLabel'>Age Range <span className='text-[red]'>*</span></h1>}
 
@@ -155,6 +161,11 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                                 name="education"
                                 error={formik.touched.education && Boolean(formik.errors.education)}
                                 helperText={formik.touched.education && formik.errors.education}
+                                InputProps={{
+                                    style: {
+                                        height: '44px',
+                                    }
+                                }}
 
                                 label={<h1 className='comboBoxLabel'>Education <span className='text-[red]'>*</span></h1>}
 
@@ -186,6 +197,11 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                                 name="educationSituation"
                                 error={formik.touched.educationSituation && Boolean(formik.errors.educationSituation)}
                                 helperText={formik.touched.educationSituation && formik.errors.educationSituation}
+                                InputProps={{
+                                    style: {
+                                        height: '44px',
+                                    }
+                                }}
 
                                 label={<h1 className='comboBoxLabel'>Education Situation <span className='text-[red]'>*</span></h1>}
 

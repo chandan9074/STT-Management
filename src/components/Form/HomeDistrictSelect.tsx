@@ -73,7 +73,6 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
                     id={name}
                     autoComplete='off'
                     type='text'
-                    
                     onMouseDown={onHomeDistrictFocus}
                     name={name}
                     label={<h1 className='comboBoxLabel'>{fieldLabel} <span className='text-[red]'>*</span></h1>}
@@ -92,6 +91,9 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
                             {/* </IconButton> */}
                         </InputAdornment>
                     }
+                    style={{
+                        height: '44px'
+                    }}
                 />
             </FormControl>
             {

@@ -31,7 +31,7 @@
     content: "";
 }
 
-.ant-upload-wrapper .ant-upload-list .ant-upload-list-item .ant-upload-list-item-actions .ant-upload-list-item-action.ant-btn-sm >span {
+.ant-upload-wrapper .ant-upload-list .ant-upload-list-item .ant-upload-list-item-actions .ant-upload-list-item-action.ant-btn-sm>span {
     display: none;
 }
 
@@ -93,7 +93,7 @@ textarea {
 }
 
 .source-reference .css-honmcm-MuiGrid-root>.MuiGrid-item {
-padding-top: 0px !important;
+    padding-top: 0px !important;
 }
 
 /* Select */
@@ -134,4 +134,28 @@ padding-top: 0px !important;
     background-color: white !important;
 
 }
+
+/* Form hieght */
+
+.MuiTextField-root label {
+    top: -5px ;
+}
+
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root {
+    top: 0px !important;
+    background-color: white;
+    
+}
+
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+    height: 44px !important;
+}
+
+.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1qqsdnr-MuiAutocomplete-root .MuiOutlinedInput-root {
+    height: 44px !important;
+}
+
+/* label {
+    top: -5px !important;
+} */
 

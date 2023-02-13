@@ -24,6 +24,8 @@ const Domain = ({ formik }: { formik: any }) => {
                                 <h1 className='comboBoxLabel'>Domain <span className='text-[red]'>*</span></h1>
                             </InputLabel>
                             <Select
+                                style={{ height: '44px' }}
+                                className="custom-select"
                                 labelId="demo-simple-select-helper-label"
                                 id="demo-simple-select-helper"
                                 label="Domain"
@@ -129,6 +131,11 @@ const Domain = ({ formik }: { formik: any }) => {
                                     {...params}
                                     label={<h1 className='comboBoxLabel'>Sub Domain <span className='text-[red]'>*</span></h1>}
 
+                                    InputProps={{
+                                        style: {
+                                            height: '44px'
+                                        }
+                                    }}
                                 />
                             )}
                         />

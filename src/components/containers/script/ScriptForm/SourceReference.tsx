@@ -114,14 +114,14 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
 
                                             value={formik.values.sourceurl}
                                             onChange={formik.handleChange}
-                                            // error={formik.touched.sourceurl && Boolean(formik.errors.sourceurl)}
-                                            // helperText={formik.touched.sourceurl && formik.errors.sourceurl}
-                                            style={{ width: '100%' }}
+                                           
+                                            style={{ width: '100%', }}
                                             InputProps={{
                                                 style: {
                                                     color: '#464E5F',
                                                     fontWeight: '600',
-                                                    fontSize: '15px'
+                                                    fontSize: '15px',
+                                                   
                                                 }
                                             }}
                                             variant="outlined" />

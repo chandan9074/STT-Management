@@ -31,6 +31,7 @@ const SpeakerInformation = ({formik}: {formik: any}) => {
                         <Autocomplete
                             id="ageRange"
                             style={{ width: '100%' }}
+                            
                             options={ageRange}
                             value={formik.values.ageRange}
                             onChange={(event, value) => {
