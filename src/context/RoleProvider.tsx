@@ -31,6 +31,7 @@ const RoleProvider = ({ children }: { children: any }) => {
     const [totalDisbursed, setTotalDisbursed] = useState<timeWiseDisbursementDT | undefined>()
 
     const getManagerDisbursement = async (data: timeWiseDisbursementParamsDT) => {
+        
         try {
             setLoading(true);
             const res = await TimeWiseDisbursementService.getManagerDisbursement(data);

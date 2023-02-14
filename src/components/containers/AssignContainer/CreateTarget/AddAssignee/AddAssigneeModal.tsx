@@ -1,13 +1,11 @@
 import { StepBackwardOutlined } from '@ant-design/icons';
-import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
+import { FormControl, FormControlLabel, Radio, RadioGroup } from '@mui/material';
 import { Form, Select } from 'antd';
-import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
 import Icons from '../../../../../assets/Icons';
 import { RoleInContext } from '../../../../../context/RoleProvider';
-import { BILLING_PAYMENT_HISTORY_PATH } from '../../../../../helpers/Slug';
-import { isEmpty } from '../../../../../helpers/Utils';
 import { roleDT } from '../../../../../types/billingTypes';
+import Buttons from '../../../../Buttons';
 
 const { Option } = Select;
 
@@ -33,12 +31,11 @@ const AddAssigneeModal = ({
     const [form] = Form.useForm();
 
     const [role, setRole] = useState<string>('Manager');
+    const [customRoleData, setCustomRoleData] = useState<roleDT[]>([]);
     // const [type, setType] = useState<>
 
     const managerContext = useContext(RoleInContext);
     const { roleDatas } = managerContext;
-
-    const [singleManager, setSingleManger] = useState<roleDT | undefined>();
 
     const [isDropDownVisible, setIsDropDownVisible] = useState<boolean>(false);
     const [dropDownCount, setDropDownCount] = useState<number>(0);
@@ -48,20 +45,25 @@ const AddAssigneeModal = ({
     const managerParams = {
         id: '',
         role: role,
-        // type: type
+        type: ''
     }
-
 
     useEffect(() => {
         managerContext.getManager(managerParams);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [role]);
 
     useEffect(() => {
         if (!isDropDownVisible) {
             setIsDropItemClick(false);
         }
     }, [isDropDownVisible]);
+
+
+    const onRoleChange = (e: any) => {
+        setRole(e.target.value);
+        form.resetFields();
+    }
 
     useEffect(() => {
         if (dropDownCount === 2) {
@@ -72,16 +74,24 @@ const AddAssigneeModal = ({
 
 
     const handleRoleChange = (id: string, p: any) => {
-        const _data = roleDatas?.filter((m: roleDT) => m.id === p.key)
+        // let _newData: roleDT[] = [];
+        // if(customRoleData.length !==0) {
+        //     console.log(';-----if');
+            
+        //      _newData = customRoleData?.filter((item: roleDT) => item.id !== id)
+        // }
+        // console.log('new data -----------------', _newData);
+        
+        const _data = roleDatas?.filter((m: roleDT) => m.id === p.key);
         if (_data) {
-            setSingleManger(_data[0]);
+            setCustomRoleData([...customRoleData, _data[0]]);
         }
     }
 
 
     const deleteManager = (id: string | undefined) => {
-        // managerContext.setSingleManager({});
-        setSingleManger(undefined)
+        const _data = customRoleData?.filter((item: roleDT) => item.id !== id);
+        setCustomRoleData(_data);
         setIsDropDownSelect(false);
         form.resetFields();
     }
@@ -103,7 +113,7 @@ const AddAssigneeModal = ({
     }
 
     const onClose = () => {
-        setSingleManger(undefined)
+        setCustomRoleData([]);
         handleModal(false)
     }
 
@@ -113,10 +123,8 @@ const AddAssigneeModal = ({
 
     const outsideModalClick = () => {
         handleModal(false);
-        setSingleManger(undefined)
+        setCustomRoleData([]);
     }
-
-
 
     return (
         <div className='fixed top-0 left-0 flex justify-center items-center w-full h-screen z-40 animate-fadeIn2 '>
@@ -137,27 +145,41 @@ const AddAssigneeModal = ({
                             <h3 className="titleParagraphMedium">
                                 Search {role}
                             </h3>
-                            <button
-                                className='bg-white rounded-[50%]'
-                                onClick={() => onClose()}
-                            >
 
-                                <img className='m-[10px] w-[11px] h-[11px]' src={Icons.CloseIconButton} alt="" />
-                            </button>
+                            <div className='flex items-center gap-x-6'>
+                                <div className='w-full flex justify-center items-center'>
+                                    {/* <Link to={`${BILLING_PAYMENT_HISTORY_PATH}/${singleManager?.id}`}> */}
+                                        <button
+                                            className=' text-white text-base bg-primary-ct-blue-60 rounded-[6px] py-[9px] px-8'>
+                                            Add
+                                        </button>
+                                    {/* </Link> */}
+                                </div>
+
+                                <Buttons.IconButton.Circle
+                                    size='medium'
+                                    variant="CT-Blue"
+                                    icon={<img src={Icons.CloseIconButton} alt="" />}
+                                    border='border'
+                                    background="white"
+                                    onClick={() => onClose()}
+                                />
+
+                            </div>
                         </div>
 
-                        <div className='rounded-md bg-white px-6 py-7 mt-4'>
+                        <div className='rounded-md bg-white px-6 pt-7 pb-2 mt-4'>
 
 
                             <div className='flex items-center gap-x-6 mb-[21px]'>
                                 <h1 className='text-[#5F6B7D] font-semibold text-small'> Select Role</h1>
                                 <FormControl>
-                                   
+
                                     <RadioGroup
                                         row
                                         name="reportingTo"
                                         value={role}
-                                        onChange={(e) => setRole(e.target.value)}
+                                        onChange={(e) => onRoleChange(e)}
                                     >
                                         {
                                             roleData?.map((value, i) => (
@@ -165,7 +187,8 @@ const AddAssigneeModal = ({
                                                     style={{
                                                         color: `${role === value.title ? '#136EE5' : '#5F6B7D'} `,
                                                         fontSize: '14px',
-                                                        marginRight: '22px'
+                                                        marginRight: '22px',
+                                                        height: '30px'
                                                     }}
                                                     className={`${role === value.title && 'ml-[4px] pr-[12px] bg-blue-50 rounded-[30px] border-[1px] border-[#136EE5]'}`}
                                                     key={i}
@@ -192,8 +215,7 @@ const AddAssigneeModal = ({
                                     >
 
                                         <div
-                                            // className={`relative ${!isEmpty(singleManager) && 'bg-blue-gray-20'} border-[1px] ${isDropDownVisible ? 'border-secondary-blue-50' : 'border-blue-gray-20'} rounded-[7px] h-[44px] flex justify-center items-center ${(isDropDownSelect)  && 'searchByRoleSelect'}`}>
-                                            className={`relative ${!isEmpty(singleManager) && 'bg-blue-gray-20'} border-[1px] ${isDropDownVisible ? 'border-secondary-blue-50' : 'border-blue-gray-20'} rounded-[7px] h-[44px] flex justify-center items-center ${isDropItemClick ? '' : isDropDownSelect ? 'searchByRoleSelect' : ''} ${(!isDropDownVisible) ? 'select-icon' : ''}`}>
+                                            className={`relative ${customRoleData.length !== 0 && 'bg-blue-gray-20'} border-[1px] ${isDropDownVisible ? 'border-secondary-blue-50' : 'border-blue-gray-20'} rounded-[7px] h-[44px] flex justify-center items-center ${isDropItemClick ? '' : isDropDownSelect ? 'searchByRoleSelect' : ''} ${(!isDropDownVisible) ? 'select-icon' : ''}`}>
 
                                             <Select
 
@@ -210,17 +232,17 @@ const AddAssigneeModal = ({
                                                 onChange={(value, p) => handleRoleChange(value, p)}
                                                 filterOption={(inputValue: string, option: any) =>
                                                     option.value.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0 ||
-                                                    option.contact.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0
+                                                    option.id.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0
                                                 }
 
                                             >
                                                 {
                                                     roleDatas?.map((m: roleDT) => (
-                                                        <Option key={m.id} value={m.name} contact={m.contact}>
+                                                        <Option key={m.id} value={m.name} id={m.id}>
                                                             <div className='flex gap-x-4'>
                                                                 <img className='h-[18px] w-[18px]' src={Icons.manager}
                                                                     alt="" />
-                                                                <h1 className='text-blue-gray-90 text-small'>{m.contact} - {m.name}</h1>
+                                                                <h1 className='text-blue-gray-90 text-small'>{m.id} - {m.name}</h1>
                                                             </div>
                                                         </Option>
                                                     ))
@@ -246,49 +268,51 @@ const AddAssigneeModal = ({
                     </div>
 
                     {/*body*/}
-
                     {
 
-                        !isEmpty(singleManager) ?
-                            <div className="relative p-6 ">
-                                <div className='border-[1px] px-3 py-4 border-blue-gray-20 flex justify-between '>
-                                    <div className='flex items-center gap-x-4'>
-                                        <div className='flex gap-x-2'>
-                                            <img className='h-[20px] w-[20px]' src={Icons.manager} alt="" />
-                                            <h1 className='nameParagraph1'>
-                                                {singleManager?.name}
-                                            </h1>
+                        customRoleData.length !== 0 ?
+                            <div className='border-[1px] border-blue-gray-20 m-6 rounded-[4px] max-h-[200px] overflow-y-auto'>
+                                {
+                                    customRoleData?.map((item: roleDT, i: number) => (
+                                        <div key={i} className=''>
+                                            <div className="relative  ">
+                                                <div className=' px-3 py-4  flex justify-between '>
+                                                    <div className='flex items-center gap-x-4'>
+                                                        <div className='flex gap-x-2'>
+                                                            <img className='h-[20px] w-[20px]' src={Icons.manager} alt="" />
+                                                            <h1 className='nameParagraph1'>
+                                                                {item?.name}
+                                                            </h1>
+                                                        </div>
+                                                        <div className='flex items-center gap-x-2'>
+                                                            <img className='h-4 w-4' src={Icons.Military} alt="" />
+                                                            <h1 className='text-small text-ct-blue-90'>{item?.role}</h1>
+                                                        </div>
+                                                        <div className='flex items-center gap-x-2'>
+                                                            <img className='h-4 w-4' src={Icons.Power} alt="" />
+                                                            <h1 className='text-small text-ct-blue-90'>{item?.id}</h1>
+                                                        </div>
+                                                        <div className='flex items-center gap-x-2'>
+                                                            <img className='h-4 w-4' src={Icons.Home} alt="" />
+                                                            <h1 className='text-small text-ct-blue-90'>{item?.address}</h1>
+                                                        </div>
+                                                    </div>
+                                                    <button onClick={(id) => deleteManager(item?.id)}>
+                                                        <img className='deleteIcon' src={Icons.deleteIcon} alt="" />
+                                                    </button>
+                                                </div>
+
+                                            </div>
                                         </div>
-                                        <div className='flex items-center gap-x-2'>
-                                            {/* <img className='h-4 w-4' src={militaryImg} alt="" /> */}
-                                            <h1 className='titleParagraph'>{singleManager?.role}</h1>
-                                        </div>
-                                        <div className='flex items-center gap-x-2'>
-                                            {/* <img className='h-4 w-4' src={powerRoundedImg} alt="" /> */}
-                                            <h1 className='titleParagraph'>{singleManager?.contact}</h1>
-                                        </div>
-                                        <div className='flex items-center gap-x-2'>
-                                            {/* <img className='h-4 w-4' src={homeImg} alt="" /> */}
-                                            <h1 className='titleParagraph'>{singleManager?.address}</h1>
-                                        </div>
-                                    </div>
-                                    <button onClick={(id) => deleteManager(singleManager?.id)}>
-                                        {/* <img className='deleteIcon' src={deleteIcon} alt="" /> */}
-                                    </button>
-                                </div>
-                                <div className='w-full flex justify-center items-center mt-[25px]'>
-                                    <Link to={`${BILLING_PAYMENT_HISTORY_PATH}/${singleManager?.id}`}>
-                                        <button
-                                            className='w-[237px] h-[44px] text-white text-base bg-primary-ct-blue-60 rounded-[6px]'>
-                                            Search Payment History
-                                        </button>
-                                    </Link>
-                                </div>
-                            </div> :
+                                    ))
+                                }
+                            </div>
+
+                            :
                             <div className='p-6 h-[195px] flex flex-col justify-center items-center'>
                                 <div
                                     className='h-[40px] w-[40px] rounded-[50%] bg-blue-gray-05 flex items-center justify-center'>
-                                    {/* <img className='w-[18px] h-[18px]' src={faceImage} alt="" /> */}
+                                    <img className='w-[18px] h-[18px]' src={Icons.Face} alt="" />
                                 </div>
                                 <h1 className='text-ct-blue-45 text-xs mt-[8px]'>By adding, {role} will be
                                     shown here</h1>

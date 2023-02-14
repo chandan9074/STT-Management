@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { CloseOutlined, StepBackwardOutlined } from "@ant-design/icons";
+import { useContext, useEffect, useState } from 'react';
+import { StepBackwardOutlined } from "@ant-design/icons";
 import { Form, Select } from "antd";
 import militaryImg from '../../../../assets/Icons/military_tech.png';
 import homeImg from '../../../../assets/Icons/home.png';

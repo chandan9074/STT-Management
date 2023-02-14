@@ -1,12 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import TargetBox from "../TargetBox";
-import Type1 from "../../../../Drawer/Criteria/Type1";
-import CriteriaForm from "../CreateCriteria/CriteriaForm";
 import AddAssigneeModal from './AddAssigneeModal';
 
 const AddAssignee = () => {
 
-    const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
     const [showModal, setShowModal] = React.useState(false);
 
 

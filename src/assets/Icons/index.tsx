@@ -97,9 +97,14 @@ import Vector2 from './Vector2.svg';
 import DoubleArroDownDark from './double_dark_arrow_down.svg';
 import AddBlue from './add_blue.png';
 import cancel from './cancel.svg';
-
 import ArrowRightAltWhite from './arrow_right_alt_white.svg';
 import SpeakerFemale from './speaker_female.svg';
+import Military from './military_tech.png';
+import Home from './home.png';
+import Power from './power_rounded.png';
+import deleteIcon from './delete_icon.png';
+import Face from './face.png';
+import HomeLight from './home_light.svg';
 
 const Icons = {
   currency,
@@ -202,7 +207,13 @@ const Icons = {
   AddBlue,
   cancel,
   ArrowRightAltWhite,
-  SpeakerFemale
+  SpeakerFemale,
+  Home,
+  Power,
+  deleteIcon,
+  Face,
+  Military,
+  HomeLight
 };
 
 export default Icons;
