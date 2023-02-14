@@ -32,6 +32,7 @@ import Print from "./print.png";
 import CloseIconButton from "./close.svg";
 import sourceDistributionMenu from "./MenuVector.svg";
 import blueDropArrow from "./arrow_drop_down.svg";
+import lightDropDown from "./arrow_drop_down.png";
 import CorrectIcon from "./check.svg";
 import schedule from "./schedule.svg";
 import left_indicator from "./left_indicator.svg";
@@ -97,9 +98,10 @@ import Vector2 from './Vector2.svg';
 import DoubleArroDownDark from './double_dark_arrow_down.svg';
 import AddBlue from './add_blue.png';
 import cancel from './cancel.svg';
-
 import ArrowRightAltWhite from './arrow_right_alt_white.svg';
 import SpeakerFemale from './speaker_female.svg';
+import bold_light_right_arrow from './bold_light_right_arrow.svg';
+import bold_light_left_arrow from './bold_light_left_arrow.svg';
 
 const Icons = {
   currency,
@@ -202,7 +204,10 @@ const Icons = {
   AddBlue,
   cancel,
   ArrowRightAltWhite,
-  SpeakerFemale
+  SpeakerFemale,
+  bold_light_right_arrow,
+  bold_light_left_arrow,
+  lightDropDown
 };
 
 export default Icons;

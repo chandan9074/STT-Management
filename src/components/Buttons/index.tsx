@@ -8,6 +8,8 @@ import Filter from "./Filter";
 import { TabButton } from "./TabButton";
 import Dropdown from "./Dropdown";
 import Date from "./Date";
+import CalenderBtn from "./CalenderBtn";
+import DropdownWeekBtn from "./DropdownWeekBtn";
 
 const Buttons = {
   ToggleRounded,
@@ -19,7 +21,9 @@ const Buttons = {
   Filter,
   TabButton,
   Dropdown,
-  Date
+  Date,
+  CalenderBtn,
+  DropdownWeekBtn,
 };
 
 export default Buttons;
