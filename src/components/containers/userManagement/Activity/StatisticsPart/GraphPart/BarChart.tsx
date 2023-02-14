@@ -162,6 +162,7 @@ const Header = ({ activeMonth, year }: HeaderProps) => {
           >
             <MonthCalender
               year={currentYear}
+              activeYear={year}
               handleYear={handleYear}
               activeMonth={activeMonth}
               handleOverTheTimeData={handleOverTheTimeData}

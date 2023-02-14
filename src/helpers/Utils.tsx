@@ -183,6 +183,31 @@ export const getRandomInt = (min: number, max: number, current: number) => {
   return random;
 }
 
+export const handleIncDecMonth = (month: string, year: number, type: string) => {
+  let newMonth = new Date(Date.parse(month + ' 1, 2022')).getMonth() + 1;
+  let monthNumber = new Date(Date.parse(month + ' 1, 2022')).getMonth() + 1;
+  let newYear = year;
+
+  if (type === "inc") {
+    if (monthNumber === 12) {
+      newMonth = 1;
+      newYear = year + 1;
+    } else {
+      newMonth = monthNumber + 1;
+    }
+  } else {
+    if (monthNumber === 1) {
+      newMonth = 12;
+      newYear = year - 1;
+    } else {
+      newMonth = monthNumber - 1;
+    }
+  }
+  const date = new Date(newYear, newMonth - 1);
+  const newMonthName = date.toLocaleString('default', { month: 'long' });
+  return { newMonthName, newYear };
+}
+
 
 
 

@@ -4,7 +4,7 @@ import MonthCalender from "../../../calender/MonthCalender";
 import { CommonContext } from "../../../../context/CommonProvider";
 import { DashboardContext } from "../../../../context/DashboardProvider";
 import Buttons from "../../../Buttons";
-import { compareWithCurrentMonthYear } from "../../../../helpers/Utils";
+import { compareWithCurrentMonthYear, handleIncDecMonth } from "../../../../helpers/Utils";
 
 type Props = {
   year: number;
@@ -25,6 +25,19 @@ const Header = ({ year, activeMonth }: Props) => {
 
   const handleCalenderVisibility = () => {
     setCalenderBtn(!calenderBtn);
+  }
+
+  const handleCalenderArrow = (type: "inc" | "dec") => {
+    console.log("type", type)
+    if (type === "inc") {
+      const newDate = handleIncDecMonth(activeMonth, year, "inc");
+      console.log("newDate", newDate, activeMonth, year)
+      handleOverTheTimeData(newDate.newYear, newDate.newMonthName);
+    } else {
+      const newDate = handleIncDecMonth(activeMonth, year, "dec");
+      console.log("newDate", newDate, activeMonth, year)
+      handleOverTheTimeData(newDate.newYear, newDate.newMonthName);
+    }
   }
 
   const handleOverTheTimeData = (year: number, month: string) => {
@@ -70,11 +83,11 @@ const Header = ({ year, activeMonth }: Props) => {
           }`}
       ></div>
       <div className="flex items-center relative z-[80]">
-        <button>
+        <button onClick={() => handleCalenderArrow("dec")}>
           <img src={Icons.left_indicator} alt="" className="py-1.5 px-1.5" />
         </button>
         <Buttons.Date activeMonth={activeMonth} year={year} calenderBtn={calenderBtn} setCalenderBtn={setCalenderBtn} />
-        <button>
+        <button onClick={() => handleCalenderArrow("inc")}>
           <img src={Icons.right_indicator} alt="" className="py-1.5 px-1.5" />
         </button>
       </div>
@@ -85,6 +98,7 @@ const Header = ({ year, activeMonth }: Props) => {
       >
         <MonthCalender
           year={currentYear}
+          activeYear={year}
           handleYear={handleYear}
           activeMonth={activeMonth}
           handleOverTheTimeData={handleOverTheTimeData}

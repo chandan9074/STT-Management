@@ -3,6 +3,7 @@ import Icons from "../../assets/Icons";
 
 type Props = {
   year: number;
+  activeYear: number;
   activeMonth: string;
   handleOverTheTimeData: (year: number, month: string) => void;
   handleYear: (year: number) => void;
@@ -12,6 +13,7 @@ type Props = {
 const MonthCalender = ({
   year,
   activeMonth,
+  activeYear,
   handleOverTheTimeData,
   handleYear,
   handleCalenderVisibility,
@@ -48,7 +50,7 @@ const MonthCalender = ({
               handleOverTheTimeData(year, month);
               handleCalenderVisibility();
             }}
-            className={`text-base text-white font-medium w-[85px] h-[51px] ${activeMonth === month ? "bg-secondary-blue-50" : ""
+            className={`text-base text-white font-medium w-[85px] h-[51px] ${activeMonth === month && year === activeYear ? "bg-secondary-blue-50" : ""
               } rounded-[4px] duration-300 hover:bg-black-60`}
           >
             {month.slice(0, 3)}
@@ -62,7 +64,7 @@ const MonthCalender = ({
               handleOverTheTimeData(year, month);
               handleCalenderVisibility();
             }}
-            className={`text-base text-white font-medium w-[85px] h-[51px] ${activeMonth === month ? "bg-secondary-blue-50" : ""
+            className={`text-base text-white font-medium w-[85px] h-[51px] ${activeMonth === month && year === activeYear ? "bg-secondary-blue-50" : ""
               } rounded-[4px] duration-300 hover:bg-black-60`}
           >
             {month.slice(0, 3)}
@@ -76,7 +78,7 @@ const MonthCalender = ({
               handleOverTheTimeData(year, month);
               handleCalenderVisibility();
             }}
-            className={`text-base text-white font-medium w-[85px] h-[51px] ${activeMonth === month ? "bg-secondary-blue-50" : ""
+            className={`text-base text-white font-medium w-[85px] h-[51px] ${activeMonth === month && year === activeYear ? "bg-secondary-blue-50" : ""
               } rounded-[4px] duration-300 hover:bg-black-60`}
           >
             {month.slice(0, 3)}
