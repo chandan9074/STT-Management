@@ -127,7 +127,7 @@ export type timeWiseDisbursedDT = {
 
 export type roleParamsDT = {
   id: string;
-  type: string;
+  type?: string;
   role: string;
 };
 

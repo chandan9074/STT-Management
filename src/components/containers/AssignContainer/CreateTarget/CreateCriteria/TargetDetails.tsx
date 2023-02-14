@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material';
 import React, { useContext, useEffect, useState } from 'react';
-import { AssignContext } from '../../../context/AssignProvider';
-import Image from '../../Image';
+import { AssignContext } from '../../../../../context/AssignProvider';
+import Image from '../../../../Image';
 
 const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void }) => {
 

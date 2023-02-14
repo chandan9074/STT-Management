@@ -1,33 +1,39 @@
+import { StepBackwardOutlined } from '@ant-design/icons';
+import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
+import { Form, Select } from 'antd';
 import React, { useContext, useEffect, useState } from 'react';
-import { CloseOutlined, StepBackwardOutlined } from "@ant-design/icons";
-import { Form, Select } from "antd";
-import militaryImg from '../../../../assets/Icons/military_tech.png';
-import homeImg from '../../../../assets/Icons/home.png';
-import powerRoundedImg from '../../../../assets/Icons/power_rounded.png';
-import deleteIcon from '../../../../assets/Icons/delete_icon.png';
-import { isEmpty } from "../../../../helpers/Utils";
-import faceImage from '../../../../assets/Icons/face.png';
-import './RoleSearchModal.css';
-import managerImage from "../../../../assets/Icons/manager.png";
-import { RoleInContext } from "../../../../context/RoleProvider";
-import { roleDT } from "../../../../types/billingTypes";
 import { Link } from 'react-router-dom';
-import { BILLING_PAYMENT_HISTORY_PATH } from '../../../../helpers/Slug';
-import Icons from '../../../../assets/Icons';
+import Icons from '../../../../../assets/Icons';
+import { RoleInContext } from '../../../../../context/RoleProvider';
+import { BILLING_PAYMENT_HISTORY_PATH } from '../../../../../helpers/Slug';
+import { isEmpty } from '../../../../../helpers/Utils';
+import { roleDT } from '../../../../../types/billingTypes';
 
 const { Option } = Select;
 
-const RoleSearchModal = ({
+const roleData = [
+    {
+        title: "Manager",
+    },
+    {
+        title: "Team Leader",
+    },
+    {
+        title: "Collector",
+    }
+];
+
+const AddAssigneeModal = ({
     handleModal,
-    role,
-    type
+    // type
 }: {
     handleModal: (value: boolean) => void,
-    role: string,
-    type: string
 }) => {
 
     const [form] = Form.useForm();
+
+    const [role, setRole] = useState<string>('Manager');
+    // const [type, setType] = useState<>
 
     const managerContext = useContext(RoleInContext);
     const { roleDatas } = managerContext;
@@ -42,7 +48,7 @@ const RoleSearchModal = ({
     const managerParams = {
         id: '',
         role: role,
-        type: type
+        // type: type
     }
 
 
@@ -117,10 +123,16 @@ const RoleSearchModal = ({
             <div className="fixed top-0 left-0 opacity-50 bg-black w-full h-screen z-40"
                 onClick={() => outsideModalClick()} />
             <div className="relative z-50">
+
                 <div
                     className="border-0 overflow-hidden rounded-lg shadow-lg relative flex flex-col w-[700px] bg-white outline-none focus:outline-none">
                     {/*header*/}
-                    <div className='bg-ct-blue-05 h-[186px] p-5'>
+                    <div className='bg-ct-blue-05  p-5'>
+
+
+                        <div>
+                        </div>
+
                         <div className="flex justify-between items-center ">
                             <h3 className="titleParagraphMedium">
                                 Search {role}
@@ -129,12 +141,46 @@ const RoleSearchModal = ({
                                 className='bg-white rounded-[50%]'
                                 onClick={() => onClose()}
                             >
-                                
-                                <img  className='m-[10px] w-[11px] h-[11px]' src={Icons.CloseIconButton} alt="" />
+
+                                <img className='m-[10px] w-[11px] h-[11px]' src={Icons.CloseIconButton} alt="" />
                             </button>
                         </div>
 
-                        <div className='rounded-md bg-white px-6 py-7 mt-4 h-[100px]'>
+                        <div className='rounded-md bg-white px-6 py-7 mt-4'>
+
+
+                            <div className='flex items-center gap-x-6 mb-[21px]'>
+                                <h1 className='text-[#5F6B7D] font-semibold text-small'> Select Role</h1>
+                                <FormControl>
+                                   
+                                    <RadioGroup
+                                        row
+                                        name="reportingTo"
+                                        value={role}
+                                        onChange={(e) => setRole(e.target.value)}
+                                    >
+                                        {
+                                            roleData?.map((value, i) => (
+                                                <FormControlLabel
+                                                    style={{
+                                                        color: `${role === value.title ? '#136EE5' : '#5F6B7D'} `,
+                                                        fontSize: '14px',
+                                                        marginRight: '22px'
+                                                    }}
+                                                    className={`${role === value.title && 'ml-[4px] pr-[12px] bg-blue-50 rounded-[30px] border-[1px] border-[#136EE5]'}`}
+                                                    key={i}
+                                                    value={value.title}
+                                                    control={<Radio
+                                                    />}
+                                                    label={value.title}
+                                                />
+                                            ))
+                                        }
+                                    </RadioGroup>
+                                </FormControl>
+                            </div>
+
+
                             <div>
                                 <Form
                                     layout='vertical'
@@ -146,9 +192,13 @@ const RoleSearchModal = ({
                                     >
 
                                         <div
+                                            // className={`relative ${!isEmpty(singleManager) && 'bg-blue-gray-20'} border-[1px] ${isDropDownVisible ? 'border-secondary-blue-50' : 'border-blue-gray-20'} rounded-[7px] h-[44px] flex justify-center items-center ${(isDropDownSelect)  && 'searchByRoleSelect'}`}>
                                             className={`relative ${!isEmpty(singleManager) && 'bg-blue-gray-20'} border-[1px] ${isDropDownVisible ? 'border-secondary-blue-50' : 'border-blue-gray-20'} rounded-[7px] h-[44px] flex justify-center items-center ${isDropItemClick ? '' : isDropDownSelect ? 'searchByRoleSelect' : ''} ${(!isDropDownVisible) ? 'select-icon' : ''}`}>
 
                                             <Select
+
+                                                // open={isDropItemClick ? true : isDropDownOpen}
+                                                // mode='multiple'
                                                 suffixIcon={<StepBackwardOutlined style={{ display: 'none' }} />}
                                                 onClick={onDropDownClick}
                                                 onDropdownVisibleChange={onDropDownVisible}
@@ -168,7 +218,7 @@ const RoleSearchModal = ({
                                                     roleDatas?.map((m: roleDT) => (
                                                         <Option key={m.id} value={m.name} contact={m.contact}>
                                                             <div className='flex gap-x-4'>
-                                                                <img className='h-[18px] w-[18px]' src={managerImage}
+                                                                <img className='h-[18px] w-[18px]' src={Icons.manager}
                                                                     alt="" />
                                                                 <h1 className='text-blue-gray-90 text-small'>{m.contact} - {m.name}</h1>
                                                             </div>
@@ -204,26 +254,26 @@ const RoleSearchModal = ({
                                 <div className='border-[1px] px-3 py-4 border-blue-gray-20 flex justify-between '>
                                     <div className='flex items-center gap-x-4'>
                                         <div className='flex gap-x-2'>
-                                            <img className='h-[20px] w-[20px]' src={managerImage} alt="" />
+                                            <img className='h-[20px] w-[20px]' src={Icons.manager} alt="" />
                                             <h1 className='nameParagraph1'>
                                                 {singleManager?.name}
                                             </h1>
                                         </div>
                                         <div className='flex items-center gap-x-2'>
-                                            <img className='h-4 w-4' src={militaryImg} alt="" />
+                                            {/* <img className='h-4 w-4' src={militaryImg} alt="" /> */}
                                             <h1 className='titleParagraph'>{singleManager?.role}</h1>
                                         </div>
                                         <div className='flex items-center gap-x-2'>
-                                            <img className='h-4 w-4' src={powerRoundedImg} alt="" />
+                                            {/* <img className='h-4 w-4' src={powerRoundedImg} alt="" /> */}
                                             <h1 className='titleParagraph'>{singleManager?.contact}</h1>
                                         </div>
                                         <div className='flex items-center gap-x-2'>
-                                            <img className='h-4 w-4' src={homeImg} alt="" />
+                                            {/* <img className='h-4 w-4' src={homeImg} alt="" /> */}
                                             <h1 className='titleParagraph'>{singleManager?.address}</h1>
                                         </div>
                                     </div>
                                     <button onClick={(id) => deleteManager(singleManager?.id)}>
-                                        <img className='deleteIcon' src={deleteIcon} alt="" />
+                                        {/* <img className='deleteIcon' src={deleteIcon} alt="" /> */}
                                     </button>
                                 </div>
                                 <div className='w-full flex justify-center items-center mt-[25px]'>
@@ -238,7 +288,7 @@ const RoleSearchModal = ({
                             <div className='p-6 h-[195px] flex flex-col justify-center items-center'>
                                 <div
                                     className='h-[40px] w-[40px] rounded-[50%] bg-blue-gray-05 flex items-center justify-center'>
-                                    <img className='w-[18px] h-[18px]' src={faceImage} alt="" />
+                                    {/* <img className='w-[18px] h-[18px]' src={faceImage} alt="" /> */}
                                 </div>
                                 <h1 className='text-ct-blue-45 text-xs mt-[8px]'>By adding, {role} will be
                                     shown here</h1>
@@ -252,4 +302,4 @@ const RoleSearchModal = ({
     );
 };
 
-export default RoleSearchModal;
+export default AddAssigneeModal;

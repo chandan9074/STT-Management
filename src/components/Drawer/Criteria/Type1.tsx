@@ -3,7 +3,7 @@ import { useContext, useState } from 'react';
 import Icons from '../../../assets/Icons';
 import { AssignContext } from '../../../context/AssignProvider';
 import Buttons from '../../Buttons';
-import TargetDetails from './TargetDetails';
+import TargetDetails from '../../containers/AssignContainer/CreateTarget/CreateCriteria/TargetDetails';
 
 
 type Props = {
