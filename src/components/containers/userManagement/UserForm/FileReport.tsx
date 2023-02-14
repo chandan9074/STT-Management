@@ -107,6 +107,8 @@ const FileReport = ({ getFile, formik }: { getFile: (file: any) => void, formik:
                 <Grid item xs={6}>
                    <div className='mt-[35px]'>
                    <Autocomplete
+                        disableClearable
+                        placeholder='Choose one'
                         id="adminData"
                         style={{ width: '100%' }}
                         options={adminData}
@@ -127,9 +129,10 @@ const FileReport = ({ getFile, formik }: { getFile: (file: any) => void, formik:
                         )}
 
 
-                        renderInput={(params) => (
+                         renderInput={(params) => (
 
                             <TextField
+                                placeholder='Choose one'
                                 {...params}
                                 name="adminData"
                                 error={formik.touched.adminData && Boolean(formik.errors.adminData)}

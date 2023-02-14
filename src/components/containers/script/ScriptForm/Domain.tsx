@@ -64,14 +64,16 @@ const Domain = ({ formik }: { formik: any }) => {
                             ) : null}
                         </FormControl>
 
-                     
+
                     </div>
                 </Grid>
                 <Grid item xs={6}>
                     <div>
                         <Autocomplete
-                            disabled={domain === ''}
+                        disableClearable
+                        placeholder='Choose one'
                             id="sub-domain"
+                            disabled={domain === ''}
                             className={`${domain === '' && 'sub-domain'}`}
                             style={{ width: '100%', cursor: 'pointer' }}
                             options={scriptSubDomain}
@@ -98,11 +100,11 @@ const Domain = ({ formik }: { formik: any }) => {
                                     {...params}
                                     label={<h1 className='comboBoxLabel'>Sub Domain <span className='text-[red]'>*</span></h1>}
 
-                                    // InputProps={{
-                                    //     style: {
-                                    //         height: '44px'
-                                    //     }
-                                    // }}
+                                // InputProps={{
+                                //     style: {
+                                //         height: '44px'
+                                //     }
+                                // }}
                                 />
                             )}
                         />

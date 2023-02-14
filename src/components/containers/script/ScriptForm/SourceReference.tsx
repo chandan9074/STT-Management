@@ -79,6 +79,8 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
                                 <Grid item xs={6}>
                                     <div>
                                         <Autocomplete
+                        disableClearable
+                        placeholder='Choose one'
                                             id="sourceType"
                                             style={{ width: '100%' }}
                                             options={scriptSourceType}

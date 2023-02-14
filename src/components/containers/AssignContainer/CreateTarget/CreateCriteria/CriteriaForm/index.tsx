@@ -42,7 +42,8 @@ const CriteriaForm = () => {
             target: singleCriteria?.target || 0,
             deadline: singleCriteria?.deadline || '',
             reminder: singleCriteria?.reminder || [],
-            remark: singleCriteria?.remark || ''
+            remark: singleCriteria?.remark || '',
+            education: singleCriteria?.education || ''
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {

@@ -13,6 +13,8 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
                 {/* Primary Role */}
                 <Grid item xs={6}>
                     <Autocomplete
+                        disableClearable
+                        placeholder='Choose one'
                         id="primaryRole"
                         style={{ width: '100%' }}
                         options={formik.values.role}
@@ -41,9 +43,10 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
                             </Box>
                         )}
 
-                        renderInput={(params) => (
+                         renderInput={(params) => (
 
                             <TextField
+                                placeholder='Choose one'
                                 {...params}
                                 name="primaryRole"
                                 error={formik.touched.primaryRole && Boolean(formik.errors.primaryRole)}
@@ -212,6 +215,8 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
 
                 <Grid item xs={6}>
                     <Autocomplete
+                        disableClearable
+                        placeholder='Choose one'
                         id="lastDegreeAchived"
                         style={{ width: '100%' }}
                         options={lastDegreeAchived}
@@ -226,9 +231,10 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
                             }
                         }}
 
-                        renderInput={(params) => (
+                         renderInput={(params) => (
 
                             <TextField
+                                placeholder='Choose one'
                                 {...params}
                                 name="lastDegreeAchived"
                                 error={formik.touched.lastDegreeAchived && Boolean(formik.errors.lastDegreeAchived)}

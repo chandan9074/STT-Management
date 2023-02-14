@@ -115,7 +115,7 @@ const TargetSetting = ({ formik }: { formik: any }) => {
                     </FormControl>
                 </div> */}
 
-                <div>
+                <div className='-mt-[10px]'>
                     <div className='w-full border-[1px] border-blue-gray-20 rounded-[7px] py-[8px] pr-[15px] pl-3 bg-white flex items-center justify-between relative'>
                         {
                             formik.values.reminder.length !== 0 &&

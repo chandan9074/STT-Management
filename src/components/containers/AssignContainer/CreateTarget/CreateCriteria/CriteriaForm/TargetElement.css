@@ -7,7 +7,7 @@
 
 .reminderDatePicker {
     position: absolute !important;
-    top: calc(50% - -330px) !important;
+    top: calc(50% - -322px) !important;
     left: calc(50% - -256px) !important;
     z-index: 99999;
 }

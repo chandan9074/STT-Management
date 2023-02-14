@@ -86,7 +86,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                                         </IconButton>
                                     </InputAdornment>
                                 }
-                                
+
                             />
                         </FormControl>
 
@@ -103,6 +103,8 @@ const PersonalInformation2 = ({ formik }: Prop) => {
 
                 <Grid item xs={6}>
                     <Autocomplete
+                        disableClearable
+                        placeholder='Choose one'
                         id="ageRange"
                         style={{ width: '100%' }}
                         options={ageRange}
@@ -117,9 +119,10 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                             }
                         }}
 
-                        renderInput={(params) => (
+                         renderInput={(params) => (
 
                             <TextField
+                                placeholder='Choose one'
                                 {...params}
                                 name="ageRange"
                                 error={formik.touched.ageRange && Boolean(formik.errors.ageRange)}
@@ -140,6 +143,8 @@ const PersonalInformation2 = ({ formik }: Prop) => {
 
                 <Grid item xs={6}>
                     <Autocomplete
+                        disableClearable
+                        placeholder='Choose one'
                         id="education"
                         style={{ width: '100%' }}
                         options={education}
@@ -154,18 +159,19 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                             }
                         }}
 
-                        renderInput={(params) => (
+                         renderInput={(params) => (
 
                             <TextField
+                                placeholder='Choose one'
                                 {...params}
                                 name="education"
                                 error={formik.touched.education && Boolean(formik.errors.education)}
                                 helperText={formik.touched.education && formik.errors.education}
-                                InputProps={{
-                                    style: {
-                                        height: '44px',
-                                    }
-                                }}
+                                // InputProps={{
+                                //     style: {
+                                //         height: '44px',
+                                //     }
+                                // }}
 
                                 label={<h1 className='comboBoxLabel'>Education <span className='text-[red]'>*</span></h1>}
 
@@ -176,6 +182,8 @@ const PersonalInformation2 = ({ formik }: Prop) => {
 
                 <Grid item xs={6}>
                     <Autocomplete
+                        disableClearable
+                        placeholder='Choose one'
                         id="educationSituation"
                         style={{ width: '100%' }}
                         options={educationSituation}
@@ -190,19 +198,14 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                             }
                         }}
 
-                        renderInput={(params) => (
+                         renderInput={(params) => (
 
                             <TextField
+                                placeholder='Choose one'
                                 {...params}
                                 name="educationSituation"
                                 error={formik.touched.educationSituation && Boolean(formik.errors.educationSituation)}
                                 helperText={formik.touched.educationSituation && formik.errors.educationSituation}
-                                InputProps={{
-                                    style: {
-                                        height: '44px',
-                                    }
-                                }}
-
                                 label={<h1 className='comboBoxLabel'>Education Situation <span className='text-[red]'>*</span></h1>}
 
                             />

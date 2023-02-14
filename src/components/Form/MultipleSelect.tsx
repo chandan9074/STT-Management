@@ -81,13 +81,17 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
                 {/* <InputLabel htmlFor={name}>{<div className='comboBoxLabel'>{fieldLabel} <span className='text-[red]'>*</span></div>}</InputLabel> */}
                 <div
                     // className={`${formikValues.length === 0 && 'h-[44px]'} flex justify-between px-2 border-[1px] border-blue-gray-A20 rounded-[7px] multiple-select`}>
-                    className={`relative flex px-2 border-[1px] border-blue-gray-A20 rounded-[7px] multiple-select w-full flex-wrap`}
+                    className={`relative flex px-2 border-[1px] rounded-[7px] multiple-select w-full flex-wrap`}
                     onClick={() => setIsDistrictOpen(true)}
                 >
-                    <button 
-                    onClick={() => setIsHomeDistrict(true)}
-                    className='absolute right-[11px] bottom-[14px]'>
-                        <CaretDownOutlined style={{color: '#5F6B7D'}}/>
+                    <button
+                        // onClick={() => setIsHomeDistrict(true)}
+                        onClick={(event) => {
+                            event.preventDefault();
+                            setIsHomeDistrict(true);
+                        }}
+                        className='absolute right-[11px] bottom-[14px]'>
+                        <CaretDownOutlined style={{ color: '#5F6B7D' }} />
                     </button>
 
                     {
@@ -128,7 +132,7 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
                         {
                             (formik.values.district.length !== 0 || isDistrictOpen) &&
                             <OutlinedInput
-
+                                placeholder='Choose District'
                                 className={`h-[44px] w-full inline`}
                                 id={name}
                                 autoComplete='off'
@@ -140,7 +144,6 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
                                     handleSearch(e);
                                     setOnTextField(e.target.value);
                                 }}
-                                placeholder='Choose District'
                             // endAdornment={
                             //     <InputAdornment position="end">
 
