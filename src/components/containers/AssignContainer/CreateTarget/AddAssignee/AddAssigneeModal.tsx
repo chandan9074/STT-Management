@@ -77,11 +77,11 @@ const AddAssigneeModal = ({
         // let _newData: roleDT[] = [];
         // if(customRoleData.length !==0) {
         //     console.log(';-----if');
-            
+
         //      _newData = customRoleData?.filter((item: roleDT) => item.id !== id)
         // }
         // console.log('new data -----------------', _newData);
-        
+
         const _data = roleDatas?.filter((m: roleDT) => m.id === p.key);
         if (_data) {
             setCustomRoleData([...customRoleData, _data[0]]);
@@ -147,12 +147,12 @@ const AddAssigneeModal = ({
                             </h3>
 
                             <div className='flex items-center gap-x-6'>
-                                <div className='w-full flex justify-center items-center'>
+                                <div className='flex justify-center items-center'>
                                     {/* <Link to={`${BILLING_PAYMENT_HISTORY_PATH}/${singleManager?.id}`}> */}
-                                        <button
-                                            className=' text-white text-base bg-primary-ct-blue-60 rounded-[6px] py-[9px] px-8'>
-                                            Add
-                                        </button>
+                                    <button
+                                        className=' text-white text-base bg-primary-ct-blue-60 rounded-[6px] py-[9px] px-8'>
+                                        Add
+                                    </button>
                                     {/* </Link> */}
                                 </div>
 
@@ -237,7 +237,7 @@ const AddAssigneeModal = ({
 
                                             >
                                                 {
-                                                    roleDatas?.map((m: roleDT) => (
+                                                    roleDatas?.map((m: roleDT, i: number) => (
                                                         <Option key={m.id} value={m.name} id={m.id}>
                                                             <div className='flex gap-x-4'>
                                                                 <img className='h-[18px] w-[18px]' src={Icons.manager}
