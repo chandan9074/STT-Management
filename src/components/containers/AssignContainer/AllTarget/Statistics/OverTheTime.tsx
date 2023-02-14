@@ -42,8 +42,11 @@ const OverTheTime = ({ data }: { data: overTheTimeDataDT }) => {
 
     return (
         <div>
-            <div className='mb-1.5'>
+            <div className='mb-1.5 flex items-center justify-between'>
                 <h1 className='text-ct-blue-60 text-base font-medium mb-1'>Over the time</h1>
+                <div>
+                    <button></button>
+                </div>
             </div>
             <div className='flex gap-x-3 w-full mb-8'>
                 <div className='flex items-center'>
@@ -72,10 +75,11 @@ const OverTheTime = ({ data }: { data: overTheTimeDataDT }) => {
                     <span className='text-xxs text-ct-blue-45'>{Math.round(Math.round((data.weekData.filter(item => item.week === userManagementContext.currentWeek)[0].maxTarget) / 2) / 2)}</span>
                 </div> */}
                 <div className='h-full w-full ml-1.5 relative'>
-                    <div className='h-[130px] w-full flex flex-col justify-between'>
+                    <div className='h-[175px] w-full flex flex-col justify-between'>
                         <div className='w-full border-b-[1px] border-blue-gray-30 border-dashed' />
                         <div className='w-full border-b-[1px] border-blue-gray-30 border-dashed' />
                         <div className='w-full border-b-[1px] border-blue-gray-30 border-dashed' />
+                        <div className='w-full border-b-[1px] border-blue-gray-30 ' />
                     </div>
                     <div className='absolute bottom-0 flex justify-between w-full px-2'>
                         {data.weekData.filter(item => item.week === userManagementContext.currentWeek)[0].dayData.map((item, index) => (

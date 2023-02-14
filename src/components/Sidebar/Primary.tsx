@@ -24,20 +24,18 @@ const Primary = () => {
             <Link
               key={item.path}
               to={item.path}
-              className={`p-1.5 rounded-full hover:bg-ct-blue-20 block hover:bg-opacity-40 duration-300 border border-transparent hover:border-ct-blue-20 group ${
-                location.pathname.split("/")[1] === item.path.split("/")[1]
-                  ? "shadow-light-blue "
-                  : null
-              }`}
+              className={`p-1.5 rounded-full hover:bg-ct-blue-20 block hover:bg-opacity-40 duration-300 border border-transparent hover:border-ct-blue-20 group ${location.pathname.split("/")[1] === item.path.split("/")[1]
+                ? "shadow-light-blue "
+                : null
+                }`}
             >
               <img
                 src={item.menu_icon}
                 alt=""
-                className={`w-6 h-6 opacity-50 group-hover:opacity-100 duration-300 ${
-                  location.pathname.split("/")[1] === item.path.split("/")[1]
-                    ? "opacity-100"
-                    : null
-                }`}
+                className={`w-6 h-6 group-hover:opacity-100 duration-300 ${location.pathname.split("/")[1] === item.path.split("/")[1]
+                  ? "opacity-100"
+                  : "opacity-50"
+                  }`}
               />
             </Link>
           </div>

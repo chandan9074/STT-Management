@@ -145,7 +145,9 @@ export const compareWithCurrentMonthYear = (mn: string, yr: number) => {
   const currentMonth = Number(moment().format("MM"));
   const currentYear = Number(moment().format("YYYY"));
 
-  if (year <= currentYear) {
+  if (year < currentYear) {
+    return false;
+  } else if (year === currentYear) {
     if (month <= currentMonth) {
       return false;
     }
@@ -153,6 +155,15 @@ export const compareWithCurrentMonthYear = (mn: string, yr: number) => {
   } else {
     return true;
   }
+
+  // if (year <= currentYear) {
+  //   if (month <= currentMonth) {
+  //     return false;
+  //   }
+  //   return true;
+  // } else {
+  //   return true;
+  // }
 }
 
 let previous = 0;

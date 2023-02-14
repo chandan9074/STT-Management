@@ -61,6 +61,36 @@ export const scriptColorData = [
     },
 ]
 
+export const tooltipData = [
+    {
+        name: "Valid",
+        title: "Valid",
+        titleColor: "text-[#00B86E]",
+        barBgHover: "hover:bg-[#00944D]",
+        bulletBg: "bg-[#00B86E]",
+    },
+    {
+        name: "Rejected",
+        title: "Rejected",
+        titleColor: "text-[#FF8470]",
+        barBgHover: "hover:bg-[#CB3827]",
+        bulletBg: "bg-[#A10008]",
+    }
+]
+
+export const labelData = [
+    {
+        name: "Valid",
+        label: "Valid",
+        bulletBg: "bg-[#00B86E]",
+    },
+    {
+        name: "Rejected",
+        label: "Rejected",
+        bulletBg: "bg-[#A10008]",
+    }
+]
+
 export const assignStatisticsData = {
     target: 6000,
     received: 1200,
@@ -68,20 +98,12 @@ export const assignStatisticsData = {
     audioStatus: [
         {
             name: "Valid",
-            hour: 720
+            hour: 700
         },
         {
-            name: "Validator",
-            hour: 20
+            name: "Rejected",
+            hour: 500
         },
-        {
-            name: "Annotator",
-            hour: 40
-        },
-        {
-            name: "Checker",
-            hour: 420
-        }
 
     ],
     overTheTimeData: {
