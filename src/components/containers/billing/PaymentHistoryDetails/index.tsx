@@ -85,15 +85,6 @@ const PaymentHistoryDetails = ({ data }: { data: paymentHistoryDT }) => {
 
   return (
     <div>
-      {/* <div className="flex items-center">
-        <Link to="/billing">
-          <img src={Icons.arrow_back} alt="arrow_back" className="w-5 h-5" />
-        </Link>
-        <Buttons.IconButton.Circle onClick={() => navigate("/billing")} size="medium" variant="CT-Blue" border="none" icon={<img src={Icons.arrow_back} alt="arrow_back" className="w-5 h-5" />} />
-        <h1 className="text-heading-5 text-ct-blue-95 font-medium mb-0 ml-8">
-          Payment History
-        </h1>
-      </div> */}
       <Navigator.Back path={PATH.BILLING_PATH} title="Payment History" />
       <div className="py-7 px-6 bg-white rounded-[8px] shadow-light-gray mt-4 min-h-[calc(100vh-16vh)]">
         <div className="flex items-center">

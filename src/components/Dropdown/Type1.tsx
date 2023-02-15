@@ -1,46 +1,42 @@
-import React, { useContext } from "react";
-import Icons from "../../assets/Icons";
-import { BillingContext } from "../../context/BillingProvider";
+import React, { ReactElement, ReactNode } from "react";
 
-const Type1 = ({ data }: { data: number[] }) => {
+type Props = {
+  handleSelectedItem: (value: string) => void;
+  data: string[];
+  children: ReactNode;
+  top: string;
+  width: string;
+}
+
+const Type1 = ({ data, children, handleSelectedItem, top, width }: Props) => {
   const [current, setCurrent] = React.useState(data[0]);
   const [open, setOpen] = React.useState(false);
 
-  const billingContext = useContext(BillingContext);
-
   return (
-    <div className="relative">
-      <button
-        onClick={() => setOpen(!open)}
-        className="flex items-center px-3 py-1 rounded-[4px] bg-ct-blue-70 border border-transparent hover:border-ct-blue-20 duration-300"
-      >
-        <span className="text-xs font-medium text-ct-blue-10 mr-2.5">
-          {current}
-        </span>
-        <img src={Icons.whiteDropArrow} alt="" className="w-2 h-1.5" />
-      </button>
+    <div className="flex flex-col items-end">
+      {React.Children.map(children, child => (
+        React.cloneElement(child as ReactElement, { onClick: () => setOpen(!open) })
+      ))}
+      <div className={`bg-transparent fixed top-0 left-0 w-full h-screen z-[110] ${open ? "block" : "hidden"}`} onClick={() => setOpen(!open)} />
       <div
-        className={`bg-white z-50 rounded-[4px] overflow-hidden absolute w-full animate-fadeIn ${
-          open ? "block" : "hidden"
-        }`}
+        className={`bg-white shadow-bottom-light-blue-20 z-[120] rounded-[4px] overflow-hidden absolute ${top} animate-fadeIn flex flex-col ${open ? "block" : "hidden"
+          }`}
       >
         {data.map((item) => (
           <button
             onClick={() => {
               setCurrent(item);
               setOpen(false);
-              billingContext.handleAmountDropDown(item);
+              handleSelectedItem(item);
             }}
-            className={`py-2.5 w-full ${
-              current === item ? "bg-blue-10" : "bg-white"
-            }`}
+            className={`py-3 duration-300 ${width} ${current === item ? "bg-blue-10 hover:bg-blue-20 active:bg-blue-30" : "bg-white hover:bg-ct-blue-05 active:bg-ct-blue-10"
+              }`}
           >
             <h3
-              className={`text-xs font-medium border-l-2 ${
-                current === item
-                  ? "text-primary-ct-blue-60 border-primary-ct-blue-60"
-                  : "text-blue-gray-80 border-transparent"
-              } text-center`}
+              className={`text-xs font-medium ${current === item
+                ? "text-primary-ct-blue-60"
+                : "text-blue-gray-80"
+                } text-center whitespace-nowrap`}
             >
               {item}
             </h3>

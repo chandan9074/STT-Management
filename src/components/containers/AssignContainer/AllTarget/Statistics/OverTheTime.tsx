@@ -6,6 +6,8 @@ import Buttons from '../../../../Buttons'
 import MonthCalender from '../../../../calender/MonthCalender'
 import { compareWithCurrentMonthYear, handleIncDecMonth } from '../../../../../helpers/Utils'
 import { AssignContext } from '../../../../../context/AssignProvider'
+import Dropdown from '../../../../Dropdown'
+import { weekData } from '../../../../../data/assign/AssignData'
 
 
 const OverTheTime = ({ data }: { data: overTheTimeDataDT }) => {
@@ -81,16 +83,21 @@ const OverTheTime = ({ data }: { data: overTheTimeDataDT }) => {
         }
     };
 
+    const handleSelectedItem = (value: string) => {
+        console.log("value", value)
+    }
+
 
     return (
         <div>
             <div className='mb-1.5 flex items-center justify-between'>
                 <h1 className='text-ct-blue-60 text-base font-medium mb-1'>Over the time</h1>
-                <div className='flex items-center gap-x-2'>
+                <div className='flex items-center gap-x-2 relative'>
                     <div className='relative'>
                         <Buttons.CalenderBtn handleCalenderArrow={handleCalenderArrow} activeMonth={data.month} year={currentYear} calenderBtn={calenderBtn} setCalenderBtn={setCalenderBtn} />
+                        <div className={`bg-transparent fixed top-0 left-0 w-full h-screen z-[100] ${calenderBtn ? "block" : "hidden"}`} onClick={() => setCalenderBtn(!calenderBtn)} />
                         <div
-                            className={`absolute right-0 top-9 z-[100] ${calenderBtn ? "block" : "hidden"
+                            className={`absolute right-0 top-9 z-[110] ${calenderBtn ? "block" : "hidden"
                                 } animate-fadeIn`}
                         >
                             <MonthCalender
@@ -103,9 +110,9 @@ const OverTheTime = ({ data }: { data: overTheTimeDataDT }) => {
                             />
                         </div>
                     </div>
-                    <div>
-                        <Buttons.DropdownWeekBtn week={assignContext.currentWeek} month={data.month} />
-                    </div>
+                    <Dropdown.Type1 data={weekData} handleSelectedItem={handleSelectedItem} top="top-9" width='w-40' >
+                        <Buttons.DropdownWeekBtn week={assignContext.currentWeek} />
+                    </Dropdown.Type1>
                 </div>
             </div>
             <div className='flex gap-x-3 w-full mb-8'>

@@ -23,6 +23,22 @@ export const recordingDistanceAssign = [
     'Walking'
 ]
 
+export const weekBtnData = [
+    { week: 1, name: 'Week 01' },
+    { week: 2, name: 'Week 02' },
+    { week: 3, name: 'Week 03' },
+    { week: 4, name: 'Week 04' },
+    { week: 5, name: 'Week 05' },
+]
+
+export const weekData = [
+    'Week 01(01-07',
+    'Week 02(08-14',
+    'Week 03(15-21',
+    'Week 04(22-28',
+    'Week 05(29-31',
+]
+
 export const scriptColorData = [
     {
         id: "text-secondary-purple-50",

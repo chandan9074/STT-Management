@@ -1,6 +1,9 @@
 import { yearlyDataDT } from "../../../../types/billingTypes";
+import Buttons from "../../../Buttons";
 import Dropdown from "../../../Dropdown";
 import ToolTip from "./ToolTip";
+import { BillingContext } from "../../../../context/BillingProvider";
+import { useContext } from "react";
 
 const HistoryChartPart = ({
   currentData,
@@ -10,9 +13,15 @@ const HistoryChartPart = ({
   yearList: number[];
 }) => {
   const barHeight = 125;
+  const billingContext = useContext(BillingContext);
+
+  const handleSelectedItem = (value: string) => {
+    billingContext.handleAmountDropDown(parseInt(value));
+  }
+
   return (
     <>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between relative">
         <div className="flex items-center">
           <h3 className="text-heading-6 font-semibold text-ct-blue-05 mb-0 mr-7">
             Over the time
@@ -30,7 +39,9 @@ const HistoryChartPart = ({
             </h5>
           </div>
         </div>
-        <Dropdown.Type1 data={yearList} />
+        <Dropdown.Type1 data={yearList.map((num => num.toString()))} handleSelectedItem={handleSelectedItem} top="top-8" width="w-[68px]" >
+          <Buttons.DateDropdown.Primary current={currentData?.year} />
+        </Dropdown.Type1>
       </div>
       <div className="mt-6 h-32 w-full flex items-start">
         <div className="flex flex-col justify-between items-start h-full">
@@ -40,7 +51,7 @@ const HistoryChartPart = ({
           <h3 className="text-xxs text-ct-blue-20 mb-0 mr-2">
             {currentData?.maxAmount
               ? Math.round(currentData?.maxAmount / 2) +
-                Math.round((currentData?.maxAmount * 16) / barHeight)
+              Math.round((currentData?.maxAmount * 16) / barHeight)
               : 0}
             /-
           </h3>
@@ -59,23 +70,22 @@ const HistoryChartPart = ({
             {currentData?.yearData.map((item, i) => (
               <div className={`flex flex-col items-center`}>
                 <div
-                  className={`w-4 h-[125px] bg-ct-blue-70 bg-opacity-40 rounded-t-[3px] relative flex ${
-                    currentData.yearData.length - 2 <= i ||
+                  className={`w-4 h-[125px] bg-ct-blue-70 bg-opacity-40 rounded-t-[3px] relative flex ${currentData.yearData.length - 2 <= i ||
                     Math.round(barHeight / 2) <=
-                      Math.round(
-                        (barHeight * item.disbursed[0]?.amount) /
-                          currentData?.maxAmount
-                      ) ||
+                    Math.round(
+                      (barHeight * item.disbursed[0]?.amount) /
+                      currentData?.maxAmount
+                    ) ||
                     Math.round(barHeight / 2) <=
-                      Math.round(
-                        (barHeight * item.disbursed[1]?.amount) /
-                          currentData?.maxAmount
-                      )
-                      ? "justify-end"
-                      : // : i === 0
-                        // ? "justify-start"
-                        "justify-center"
-                  } group cursor-pointer`}
+                    Math.round(
+                      (barHeight * item.disbursed[1]?.amount) /
+                      currentData?.maxAmount
+                    )
+                    ? "justify-end"
+                    : // : i === 0
+                    // ? "justify-start"
+                    "justify-center"
+                    } group cursor-pointer`}
                 >
                   {item.disbursed[0] && !item.disbursed[1] ? (
                     <ToolTip
@@ -87,22 +97,19 @@ const HistoryChartPart = ({
                     />
                   ) : null}
                   <div
-                    className={`absolute ${
-                      item.disbursed[0]?.amount > item.disbursed[1]?.amount
-                        ? "z-30 rounded-t-[3px]"
-                        : "z-40"
-                    } w-full bg-[#59C1BD] bottom-0 ${
-                      !item.disbursed[1] ? "rounded-t-[3px]" : ""
-                    } duration-300`}
+                    className={`absolute ${item.disbursed[0]?.amount > item.disbursed[1]?.amount
+                      ? "z-30 rounded-t-[3px]"
+                      : "z-40"
+                      } w-full bg-[#59C1BD] bottom-0 ${!item.disbursed[1] ? "rounded-t-[3px]" : ""
+                      } duration-300`}
                     style={{
-                      height: `${
-                        item.disbursed[0]
-                          ? Math.round(
-                              (barHeight * item.disbursed[0]?.amount) /
-                                currentData?.maxAmount
-                            )
-                          : 0
-                      }px`,
+                      height: `${item.disbursed[0]
+                        ? Math.round(
+                          (barHeight * item.disbursed[0]?.amount) /
+                          currentData?.maxAmount
+                        )
+                        : 0
+                        }px`,
                     }}
                   />
                   {item.disbursed[1] && item.disbursed[0] ? (
@@ -119,20 +126,18 @@ const HistoryChartPart = ({
                     />
                   ) : null}
                   <div
-                    className={`absolute ${
-                      item.disbursed[1]?.amount > item.disbursed[0]?.amount
-                        ? "z-30 rounded-t-[3px]"
-                        : "z-40"
-                    } w-full bg-[#A0E4CB] bottom-0 duration-300`}
+                    className={`absolute ${item.disbursed[1]?.amount > item.disbursed[0]?.amount
+                      ? "z-30 rounded-t-[3px]"
+                      : "z-40"
+                      } w-full bg-[#A0E4CB] bottom-0 duration-300`}
                     style={{
-                      height: `${
-                        item.disbursed[1]
-                          ? Math.round(
-                              (barHeight * item.disbursed[1]?.amount) /
-                                currentData?.maxAmount
-                            )
-                          : 0
-                      }px`,
+                      height: `${item.disbursed[1]
+                        ? Math.round(
+                          (barHeight * item.disbursed[1]?.amount) /
+                          currentData?.maxAmount
+                        )
+                        : 0
+                        }px`,
                     }}
                   />
                   {/* </Popover> */}
