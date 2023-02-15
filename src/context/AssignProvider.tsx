@@ -8,6 +8,7 @@ interface ContextProps {
     sumTarget: number | undefined,
     setEmptySingleCriteria: () => void,
     setEmptyEditId: () => void
+    emptyCriteria: () => void
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -26,6 +27,10 @@ const AssignProvider = ({ children }: { children: any }) => {
         const filteredCriterias = criterias.filter((criteria: any, i: number) => i !== editId);
         setCriterias([...filteredCriterias, data]);
         setEmptySingleCriteria();
+    }
+
+    const emptyCriteria = () => {
+        setCriterias([]);
     }
 
 
@@ -62,7 +67,8 @@ const AssignProvider = ({ children }: { children: any }) => {
                 singleCriteria,
                 getSingleCriteria,
                 setEmptySingleCriteria,
-                setEmptyEditId
+                setEmptyEditId,
+                emptyCriteria
             }}
         >
             {children}

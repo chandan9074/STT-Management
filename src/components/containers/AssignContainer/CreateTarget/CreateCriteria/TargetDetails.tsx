@@ -80,9 +80,6 @@ const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void 
 
     ]
 
-    console.log('-----****8888', singleValue2);
-
-
     const [targetId, setTargetId] = useState<number>(0);
 
     useEffect(() => {

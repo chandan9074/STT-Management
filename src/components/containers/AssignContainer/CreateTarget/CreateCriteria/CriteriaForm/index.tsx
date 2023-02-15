@@ -4,7 +4,7 @@ import SpeakerInformation from './SpeakerInformation';
 import TargetSetting from './TargetSetting';
 import './TargetElement.css';
 import ActionButton from './ActionButton';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { AssignContext } from '../../../../../../context/AssignProvider';
 
 const validationSchema = yup.object({
@@ -13,7 +13,7 @@ const validationSchema = yup.object({
     district: yup.array().of(yup.string()).required('District is a required field')
 });
 
-const CriteriaForm = () => {
+const CriteriaForm = ({drawerClose}: {drawerClose: () => void}) => {
 
     const AssignContexts = useContext(AssignContext);
     const {
@@ -22,10 +22,6 @@ const CriteriaForm = () => {
         criterias,
         setEmptySingleCriteria
     } = AssignContexts;
-
-    console.log('%%%%%%%', singleCriteria);
-    
-
 
     const formik = useFormik({
         enableReinitialize: true,
@@ -50,11 +46,15 @@ const CriteriaForm = () => {
             formik.resetForm();
 
             saveCriteria(values);
-            
+
             console.log('submit------', values);
         },
     });
-    
+
+    const onCreate = () => {
+        drawerClose();
+    }
+
 
     return (
         <div>
@@ -63,7 +63,10 @@ const CriteriaForm = () => {
                     <SpeakerInformation formik={formik} />
                     <TargetSetting formik={formik} />
                 </div>
-                <ActionButton formik={formik} />
+                <ActionButton
+                    formik={formik}
+                    onCreate={onCreate}
+                />
             </form>
 
         </div>

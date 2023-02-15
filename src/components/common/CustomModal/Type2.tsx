@@ -11,7 +11,11 @@ type Props = {
 }
 
 const Type2 = ({ open, setOpen }: Props) => {
-    const [confirm, setConfirm] = useState<boolean>(false)
+    const [confirm, setConfirm] = useState<boolean>(false);
+
+    const onSave = () => {
+
+    }
 
     return (
         <div>
@@ -65,6 +69,13 @@ const Type2 = ({ open, setOpen }: Props) => {
             <CustomModal.Type3
                 open={confirm}
                 setOpen={setConfirm}
+                onSave={onSave}
+                title='Are you sure you want to take this action?'
+                cancelText='Cancel'
+                saveText='Save'
+                icon={Icons.Gavel}
+                iconHeight='h-9'
+                iconWidth='w-9'
             />
         </div>
     );

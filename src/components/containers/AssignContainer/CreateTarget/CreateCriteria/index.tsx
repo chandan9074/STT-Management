@@ -46,7 +46,7 @@ const CreateCriteria = () => {
                     drawerClose={drawerClose}
                     title='Create Critaria'
                 >
-                    <CriteriaForm />
+                    <CriteriaForm drawerClose={drawerClose}/>
                 </Drawer.Criteria.Type1>
             </div>
 

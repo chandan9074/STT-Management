@@ -5,9 +5,16 @@ import Buttons from '../../Buttons';
 interface Props {
     open: boolean;
     setOpen: Dispatch<SetStateAction<boolean>>;
+    onSave: () => void;
+    saveText: string;
+    cancelText: string;
+    title: string;
+    icon: string;
+    iconWidth: string;
+    iconHeight: string;
 
 }
-const Type3 = ({ open, setOpen }: Props) => {
+const Type3 = ({ open, setOpen , onSave, saveText, cancelText, title, icon, iconWidth, iconHeight}: Props) => {
     return (
         <CustomModal.Primary
             open={open}
@@ -21,18 +28,20 @@ const Type3 = ({ open, setOpen }: Props) => {
                     background: `url(${Icons.Shadow_bg})`
                 }}
                 className='px-10 pt-9 pb-[30px]'>
-                <img src={Icons.Gavel} className="h-9 w-9 p-1 mb-[18px]" alt="" />
-                <p className='text-base font-medium text-ct-blue-90 mb-[106px]'>Are you sure you want to take this action?</p>
+                <img src={icon} className={`${iconWidth} ${iconHeight} p-1 mb-[18px] cursor-pointer`} alt="" onClick={() => setOpen(false)} />
+                <p className='text-base font-medium text-ct-blue-90 mb-[106px]'>{title}</p>
                 <div className='flex gap-3 justify-start'>
                     <Buttons.LabelButton.Secondary
-                        label='Cancel'
+                        label={cancelText}
                         variant="Blue"
                         size='small'
+                        onClick={() => setOpen(false)}
                     />
                     <Buttons.LabelButton.Primary
-                        label='Save'
+                        label={saveText}
                         variant="CT-Blue"
                         size="small"
+                        onClick={() => onSave()}
                     />
                 </div>
             </div>

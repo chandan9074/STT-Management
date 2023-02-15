@@ -3,6 +3,7 @@ import { useContext, useState } from 'react';
 import Icons from '../../../assets/Icons';
 import { AssignContext } from '../../../context/AssignProvider';
 import Buttons from '../../Buttons';
+import { CustomModal } from '../../common/CustomModal';
 import TargetDetails from '../../containers/AssignContainer/CreateTarget/CreateCriteria/TargetDetails';
 
 
@@ -20,14 +21,22 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
         criterias,
         sumTarget,
         setEmptySingleCriteria,
-        setEmptyEditId
+        setEmptyEditId,
+        emptyCriteria
     } = AssignContexts;
 
     const [lengthClick, setLengthClick] = useState<boolean>(false);
+    const [isConfirmCancelModal, setIsConfirmCancelModal] = useState<boolean>(false);
 
-    const onClose = () => {
-        drawerClose();
+    const onCancelModalOpen = () => {
+        setIsConfirmCancelModal(true);
     };
+
+    const onDrawerClose = () => {
+        drawerClose();
+        setIsConfirmCancelModal(false);
+        emptyCriteria();
+    }
 
     const onLengthClick = () => {
         setLengthClick(true);
@@ -52,9 +61,11 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
                     <Drawer
                         closeIcon={false}
                         placement="right"
-                        onClose={onClose}
+                        onClose={onCancelModalOpen}
                         open={isDrawerOpen}
                         width='715px'
+                        maskClosable={false}
+                        zIndex={100}
                     >
                         <div className='flex items-center justify-between py-[24px] px-[23px] bg-white'>
                             <div className='gap-x-[28px] flex items-center'>
@@ -64,7 +75,7 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
                                     icon={<img src={Icons.CloseIconButton} alt="" />}
                                     border='border'
                                     background="white"
-                                    onClick={() => onClose()}
+                                    onClick={() => onCancelModalOpen()}
                                 />
                                 <h1 className='text-ct-blue-95 text-[18px] font-medium'>{title}</h1>
                             </div>
@@ -100,7 +111,7 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
                     <Drawer
                         closeIcon={false}
                         placement="right"
-                        onClose={onClose}
+                        onClose={onCancelModalOpen}
                         open={isDrawerOpen}
                         width='477px'
                     >
@@ -130,6 +141,21 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
                         </div>
 
                     </Drawer>
+            }
+
+            {
+                (isConfirmCancelModal) &&
+                <CustomModal.Type3
+                    open={isConfirmCancelModal}
+                    setOpen={setIsConfirmCancelModal}
+                    onSave={onDrawerClose}
+                    title='Do you want to cancel to create criteria?'
+                    cancelText='No'
+                    saveText='Yes'
+                    icon={Icons.CloseIconButton}
+                    iconHeight='h-5'
+                    iconWidth='w-5'
+                />
             }
         </div>
     );
