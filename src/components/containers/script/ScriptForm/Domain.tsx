@@ -77,26 +77,26 @@ const Domain = ({ formik }: { formik: any }) => {
                             className={`${domain === '' && 'sub-domain'}`}
                             style={{ width: '100%', cursor: 'pointer' }}
                             options={scriptSubDomain}
-                            // value={formik.values.subDomain || scriptSubDomain[0]}
-                            value={formik.values.subDomain}
-                            // defaultValue={formik.values.subDomain}
+                            // value={formik.values.subdomain || scriptsubdomain[0]}
+                            value={formik.values.subdomain}
+                            // defaultValue={formik.values.subdomain}
 
                             onChange={(event, value) => {
                                 if (typeof value === 'string') {
-                                    formik.setFieldValue('subDomain', value);
+                                    formik.setFieldValue('subdomain', value);
                                 } else {
-                                    formik.setFieldValue('subDomain', '');
+                                    formik.setFieldValue('subdomain', '');
 
                                 }
                             }}
 
                             renderInput={(params) => (
                                 <TextField
-                                    name="subDomain"
-                                    value={formik.values.subDomain}
+                                    name="subdomain"
+                                    value={formik.values.subdomain}
                                     onChange={formik.handleChange}
-                                    error={formik.touched.subDomain && Boolean(formik.errors.subDomain)}
-                                    helperText={formik.touched.subDomain && formik.errors.subDomain}
+                                    error={formik.touched.subdomain && Boolean(formik.errors.subdomain)}
+                                    helperText={formik.touched.subdomain && formik.errors.subdomain}
                                     {...params}
                                     label={<h1 className='comboBoxLabel'>Sub Domain <span className='text-[red]'>*</span></h1>}
 

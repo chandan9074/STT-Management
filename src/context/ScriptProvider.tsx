@@ -1,6 +1,9 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
+import Icons from "../assets/Icons";
+import { Toast } from "../components/Toast";
 import ScriptService from "../services/scriptService";
 import { allScriptResDT, createScriptDt, getAllScriptsParamsDT } from "../types/script";
+import { CommonContext } from "./CommonProvider";
 
 
 interface ContextProps {
@@ -11,7 +14,9 @@ interface ContextProps {
   uploadCsv: (formData: any) => void;
   getAllScript: (prams: getAllScriptsParamsDT) => void;
   scriptsData: allScriptResDT | undefined
-  createScript: (params: createScriptDt) => void;
+  // createScript: (params: any) => Promise<{ message: string; status: number }>;
+  createScript: (params: any) => any;
+
 
 }
 
@@ -39,12 +44,18 @@ const ScriptProvider = ({ children }: { children: any }) => {
 
   }
 
-  const createScript = async (params: createScriptDt) => {
+  const createScript = async (params: any) => {
+
+
     // setLoading(true);
     // setErrorMsg("");
     const response = await ScriptService.createScript(params);
-    console.log('resposne--------', response);
-    
+    return {
+      message: response?.data?.message,
+      status: response?.status
+    }
+    // console.log('respo----', response);
+
     // setLoading(false);
 
   }

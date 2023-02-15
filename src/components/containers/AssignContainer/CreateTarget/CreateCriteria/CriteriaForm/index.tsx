@@ -19,8 +19,6 @@ const CriteriaForm = ({drawerClose}: {drawerClose: () => void}) => {
     const {
         saveCriteria,
         singleCriteria,
-        criterias,
-        setEmptySingleCriteria
     } = AssignContexts;
 
     const formik = useFormik({

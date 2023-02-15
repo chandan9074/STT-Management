@@ -29,7 +29,7 @@ const theme = createTheme({
 const validationSchema = yup.object({
     sourceType: yup.string().required('Source Type is required'),
     domain: yup.string().required('Domain is required'),
-    subDomain: yup.string().required('Sub domain is required'),
+    subdomain: yup.string().required('Sub domain is required'),
     distributionSource: yup.string().required('Distribution Source is required'),
 
 });
@@ -45,38 +45,51 @@ const ScriptForms = () => {
 
     const formik = useFormik({
         initialValues: {
-            sourceurl: '',
+            sourceUrl: '',
             module: 'STT',
             sourceType: '',
             domain: '',
-            subDomain: '',
+            subdomain: '',
             distributionSource: distributionList[0],
             isAge: false,
             title: '',
             description: '',
-            file: ''
+            sourceFile: ''
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
             // const _data = { ...values}
+            let formData = new FormData();
+            formData.append('sourceUrl', values.sourceUrl);
+            formData.append('module', values.module);
+            formData.append('sourceType', values.sourceType);
+            formData.append('domain', values.domain);
+            formData.append('subdomain', values.subdomain);
+            formData.append('distributionSource', values.distributionSource);
+            formData.append('isAge', values.isAge.toString());
+            formData.append('title', values.title);
+            formData.append('description', values.description);
+            formData.append('sourceFile', values.sourceFile);
             console.log('submit------', values);
-            createScript(values);
-
-            console.log('file---------------************', formik.values.file);
-            const valuess = Array.from(formik.values.file);
-            for (const value of valuess) {
-                console.log('file---------------************', value);
-            }
-
+           const res = createScript(formData);
+           console.log('********res', res);
+           
         },
     });
 
     const getFile = (file: any) => {
-        let formData = new FormData();
-        formData.append('file', file)
-        setFile(formData);
-        formik.setFieldValue("file",  formData);
+        // let formData = new FormData();
+        // formData.append('file', file)
+        setFile(file);
+        formik.setFieldValue("sourceFile", file);
     }
+
+    // const getFile = (file: any) => {
+        // let formData = new FormData();
+        // formData.append('file', file)
+    //     setFile(formData);
+    //     formik.setFieldValue("sourceFile",  formData);
+    // }
 
 
     return (

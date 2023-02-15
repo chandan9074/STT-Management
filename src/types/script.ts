@@ -30,8 +30,8 @@ export type allScriptResDT = {
 }
 
 export type createScriptDt = {
-  file: any;
-  sourceurl: string;
+  sourceFile: any;
+  sourceUrl: string;
   module: string;
   sourceType: string;
   domain: string;

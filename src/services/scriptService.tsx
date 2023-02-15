@@ -12,7 +12,7 @@ export default class ScriptService {
     return axios.get(PATH.GET_ALL_SCRIPTS_URL, { params: data });
   }
 
-  static createScript(params: createScriptDt) {
-    axios.post(PATH.CREATE_SCRIPTS_URL, params);
+  static createScript(params: any) {
+   return axios.post(PATH.CREATE_SCRIPTS_URL, params);
   }
 }

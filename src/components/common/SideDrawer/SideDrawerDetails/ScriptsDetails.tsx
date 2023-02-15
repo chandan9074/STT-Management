@@ -22,9 +22,9 @@ const ScriptsDetails = ({ drawerData, setMetaDataOpen }: Props) => {
     return (
         <div className='animate-fadeIn'>
             <Toast.Type1
-                open={open}
-                setOpen={setOpen}
-                massages='Copy To Clipboard'
+                // open={open}
+                // setOpen={setOpen}
+                // massages='Copy To Clipboard'
                 iconSrc={Icons.contentCopy}
             />
             <div className='p-5 bg-ct-blue-05 border-b-ct-blue-20'>

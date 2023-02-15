@@ -115,11 +115,11 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
                                     <div>
 
                                         <TextField
-                                            id="sourceurl"
-                                            name="sourceurl"
+                                            id="sourceUrl"
+                                            name="sourceUrl"
                                             label={<h1 className='comboBoxLabel'>Source URL</h1>}
 
-                                            value={formik.values.sourceurl}
+                                            value={formik.values.sourceUrl}
                                             onChange={formik.handleChange}
 
                                             style={{ width: '100%', }}
