@@ -27,3 +27,7 @@
 .datePicker .ant-picker-panel-container {
     width: 378px !important;
 }
+
+.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+    height: 44px !important;
+}

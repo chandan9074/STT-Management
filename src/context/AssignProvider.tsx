@@ -8,7 +8,9 @@ interface ContextProps {
     currentWeek: number;
     setCurrentWeek: React.Dispatch<React.SetStateAction<number>>,
     sumTarget: number | undefined,
-    setEmptySingleCriteria: () => void
+    setEmptySingleCriteria: () => void,
+    setEmptyEditId: () => void
+    emptyCriteria: () => void
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -20,20 +22,34 @@ const AssignProvider = ({ children }: { children: any }) => {
     const [sumTarget, setSumTarget] = useState<number>();
     const [currentWeek, setCurrentWeek] = useState<number>(1);
 
-    const saveCriteria = (data: any) => {
-        const filteredCriterias = criterias.filter((criteria: any) => criteria.target !== data.target);
-        setCriterias([...filteredCriterias, data]);
+    const [editId, setEditId] = useState<number>();
 
-        // setCriterias([...criterias, data]);
+    const saveCriteria = (data: any) => {
+        const filteredCriterias = criterias.filter((criteria: any, i: number) => i !== editId);
+        setCriterias([...filteredCriterias, data]);
+        setEmptySingleCriteria();
     }
 
+    const emptyCriteria = () => {
+        setCriterias([]);
+    }
+
+
     const getSingleCriteria = (id: number) => {
-        const _data = criterias?.filter((value: any) => value.target === id);
+        const _data = criterias?.filter((value: any, i: number) => i === id);
         setSingleCriteria(_data[0])
+        setEditId(id);
     }
 
     const setEmptySingleCriteria = () => {
+        console.log('empty single crieter');
+
         setSingleCriteria({});
+
+    }
+
+    const setEmptyEditId = () => {
+        setEditId(undefined);
     }
 
     useEffect(() => {
@@ -53,7 +69,9 @@ const AssignProvider = ({ children }: { children: any }) => {
                 getSingleCriteria,
                 setEmptySingleCriteria,
                 currentWeek,
-                setCurrentWeek
+                setCurrentWeek,
+                setEmptyEditId,
+                emptyCriteria
             }}
         >
             {children}

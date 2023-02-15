@@ -1,40 +1,35 @@
-import React, {useState} from 'react';
+import React from 'react';
 import TargetBox from "../TargetBox";
-import Type1 from "../../../../Drawer/Criteria/Type1";
-import CriteriaForm from "../CreateCriteria/CriteriaForm";
+import AddAssigneeModal from './AddAssigneeModal';
 
 const AddAssignee = () => {
 
-    const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
+    const [showModal, setShowModal] = React.useState(false);
 
-    const drawerClose = () => {
-        setDrawerOpen(false)
-    }
-    const openDrawer = () => {
-        setDrawerOpen(true);
-    }
+
+    const handleModal = (value: boolean) => {
+        setShowModal(value);
+    };
+   
 
     return (
         <div>
             {
                 <div className='bg-white w-[376px] h-[332px] flex justify-center items-center rounded-t-[6px]'>
                     <TargetBox
-                        targetTitle={'Create Criteria'}
-                        onClick={openDrawer}
+                        targetTitle={'Add Assignee'}
+                        onClick={() => handleModal(true)}
                     />
                 </div>
 
             }
 
             <div>
-                {/* Use this for create target */}
-                <Type1
-                    isDrawerOpen={drawerOpen}
-                    drawerClose={drawerClose}
-                    title='Create Critaria'
-                >
-                    <CriteriaForm />
-                </Type1>
+            {showModal ? (
+                <AddAssigneeModal
+                    handleModal={handleModal}
+                />
+            ) : null}
             </div>
         </div>
     );

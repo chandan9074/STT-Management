@@ -23,7 +23,7 @@ const GraphHeader = ({ isStt, sttRoles, handleSttRole, isSttRoles, isTts, ttsRol
                         className={` ${isSttRoles === m.title
                             ? "bg-white text-[#2C79BE] font-bold"
                             : "text-[#5F7180] "
-                            } h-[41px] text-[16px] rounded-t-[15px] flex justify-center items-center gap-x-4 duration-500`}
+                            } h-[41px] text-base rounded-t-[15px] flex justify-center items-center gap-x-4 duration-500`}
                     >
                         {
                             isSttRoles === m.title ?
@@ -42,7 +42,7 @@ const GraphHeader = ({ isStt, sttRoles, handleSttRole, isSttRoles, isTts, ttsRol
                         className={` ${isTtsRoles === m.title
                             ? "bg-white text-[#2C79BE] font-bold"
                             : "text-[#5F7180] "
-                            } h-[41px] text-[16px] rounded-t-[15px] flex justify-center items-center gap-x-4 duration-500`}
+                            } h-[41px] text-base rounded-t-[15px] flex justify-center items-center gap-x-4 duration-500`}
                     >
                         {/* <img className="w-4 h-4" src={managerImage} alt="manager" /> */}
                         {

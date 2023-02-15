@@ -38,7 +38,7 @@ const Graph = ({ dateValue, onDateClose, onDateSearch, disbursementData, open, s
                         <button
                             className="duration-200 rounded-[6px] flex px-4 items-center gap-x-3 bg-ct-blue-20 h-8 hover:bg-ct-blue-30"
                         >
-                            <h1 className="text-ct-blue-60 text-[13px] font-semibold">
+                            <h1 className="text-ct-blue-60 text-xs font-semibold">
                                 {getDateWithMonthName(dateValue?.start)} - {getDateWithMonthName(dateValue?.end)}
                             </h1>
                             <div onClick={onDateClose}>
@@ -52,7 +52,7 @@ const Graph = ({ dateValue, onDateClose, onDateSearch, disbursementData, open, s
                             onClick={onDateSearch}
                             className="duration-200 rounded-[6px] focus:bg-ct-blue-20 hover:bg-ct-blue-10 flex px-4 items-center gap-x-3 bg-default h-8"
                         >
-                            <h1 className="text-ct-blue-90 text-[13px]">
+                            <h1 className="text-ct-blue-90 text-xs">
                                 {/* 2022 */}
                                 {disbursementData ? disbursementData[0]?.year : ""}
                             </h1>
@@ -280,7 +280,7 @@ const Graph = ({ dateValue, onDateClose, onDateSearch, disbursementData, open, s
                                     className="absolute top-20 flex flex-col justify-center items-center h-[30px] mt-10"
                                 >
                                     <div className="w-[1px] h-[4px] bg-blue-gray-A30"></div>
-                                    <h1 className='text-[13px] text-ct-blue-45'>{m.month.slice(0, 3)}</h1>
+                                    <h1 className='text-xs text-ct-blue-45'>{m.month.slice(0, 3)}</h1>
                                 </div>
                             </div>
                         </div>

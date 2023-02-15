@@ -4,7 +4,7 @@ import SpeakerInformation from './SpeakerInformation';
 import TargetSetting from './TargetSetting';
 import './TargetElement.css';
 import ActionButton from './ActionButton';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { AssignContext } from '../../../../../../context/AssignProvider';
 
 const validationSchema = yup.object({
@@ -13,17 +13,16 @@ const validationSchema = yup.object({
     district: yup.array().of(yup.string()).required('District is a required field')
 });
 
-const CriteriaForm = () => {
+const CriteriaForm = ({drawerClose}: {drawerClose: () => void}) => {
 
     const AssignContexts = useContext(AssignContext);
     const {
         saveCriteria,
         singleCriteria,
-        criterias,
-        setEmptySingleCriteria
     } = AssignContexts;
 
     const formik = useFormik({
+        enableReinitialize: true,
         initialValues: {
             gender: singleCriteria?.gender || 'Male',
             ageRange: singleCriteria?.ageRange || '',
@@ -37,25 +36,35 @@ const CriteriaForm = () => {
             target: singleCriteria?.target || 0,
             deadline: singleCriteria?.deadline || '',
             reminder: singleCriteria?.reminder || [],
-            remark: singleCriteria?.remark || ''
+            remark: singleCriteria?.remark || '',
+            education: singleCriteria?.education || ''
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            saveCriteria(values);
             formik.resetForm();
+
+            saveCriteria(values);
+
             console.log('submit------', values);
         },
     });
-    
+
+    const onCreate = () => {
+        drawerClose();
+    }
+
 
     return (
         <div>
             <form onSubmit={formik.handleSubmit}>
-                <div className='bg-ct-blue-05 p-[28px] gap-x-[36px] flex'>
+                <div className='bg-ct-blue-05 px-[28px] py-[22px] gap-x-[36px] flex'>
                     <SpeakerInformation formik={formik} />
                     <TargetSetting formik={formik} />
                 </div>
-                <ActionButton formik={formik} />
+                <ActionButton
+                    formik={formik}
+                    onCreate={onCreate}
+                />
             </form>
 
         </div>

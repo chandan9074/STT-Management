@@ -3,7 +3,8 @@ import { useContext, useState } from 'react';
 import Icons from '../../../assets/Icons';
 import { AssignContext } from '../../../context/AssignProvider';
 import Buttons from '../../Buttons';
-import TargetDetails from './TargetDetails';
+import { CustomModal } from '../../common/CustomModal';
+import TargetDetails from '../../containers/AssignContainer/CreateTarget/CreateCriteria/TargetDetails';
 
 
 type Props = {
@@ -19,14 +20,23 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
     const {
         criterias,
         sumTarget,
-        setEmptySingleCriteria
+        setEmptySingleCriteria,
+        setEmptyEditId,
+        emptyCriteria
     } = AssignContexts;
 
     const [lengthClick, setLengthClick] = useState<boolean>(false);
+    const [isConfirmCancelModal, setIsConfirmCancelModal] = useState<boolean>(false);
 
-    const onClose = () => {
-        drawerClose();
+    const onCancelModalOpen = () => {
+        setIsConfirmCancelModal(true);
     };
+
+    const onDrawerClose = () => {
+        drawerClose();
+        setIsConfirmCancelModal(false);
+        emptyCriteria();
+    }
 
     const onLengthClick = () => {
         setLengthClick(true);
@@ -39,6 +49,7 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
     const handleBackButton = () => {
         setLengthClick(false);
         setEmptySingleCriteria();
+        setEmptyEditId();
 
     }
 
@@ -50,9 +61,11 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
                     <Drawer
                         closeIcon={false}
                         placement="right"
-                        onClose={onClose}
+                        onClose={onCancelModalOpen}
                         open={isDrawerOpen}
                         width='715px'
+                        maskClosable={false}
+                        zIndex={100}
                     >
                         <div className='flex items-center justify-between py-[24px] px-[23px] bg-white'>
                             <div className='gap-x-[28px] flex items-center'>
@@ -62,18 +75,18 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
                                     icon={<img src={Icons.CloseIconButton} alt="" />}
                                     border='border'
                                     background="white"
-                                    onClick={() => onClose()}
+                                    onClick={() => onCancelModalOpen()}
                                 />
                                 <h1 className='text-ct-blue-95 text-[18px] font-medium'>{title}</h1>
                             </div>
                             <div className='flex items-center gap-2'>
-                                <div className='text-[14px] text-primary-ct-magenta-60 flex'>
+                                <div className='text-small text-primary-ct-magenta-60 flex'>
                                     <h1 className='pr-[4px]'>Total Target: </h1>
                                     {
                                         sumTarget === 0 ?
                                             <span className='text-[#B8BFCC]'>--</span>
                                             :
-                                            <h1 className='text-[14px] text-primary-ct-magenta-60 font-medium '> {sumTarget}</h1>
+                                            <h1 className='text-small text-primary-ct-magenta-60 font-medium '> {sumTarget}</h1>
                                     }
                                 </div>
 
@@ -98,7 +111,7 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
                     <Drawer
                         closeIcon={false}
                         placement="right"
-                        onClose={onClose}
+                        onClose={onCancelModalOpen}
                         open={isDrawerOpen}
                         width='477px'
                     >
@@ -116,10 +129,10 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
                                     <h1 className='text-ct-blue-95 text-[18px] font-medium'>Details</h1>
                                 </div>
                                 <div className='flex items-center gap-2'>
-                                    <div className='text-[14px] text-primary-ct-magenta-60 flex'>
+                                    <div className='text-small text-primary-ct-magenta-60 flex'>
                                         <h1 className='pr-[4px]'>Total target- </h1>
 
-                                        <h1 className='text-[14px] text-primary-ct-magenta-60 font-medium '> {sumTarget}</h1>
+                                        <h1 className='text-small text-primary-ct-magenta-60 font-medium '> {sumTarget}</h1>
                                     </div>
                                 </div>
                             </div>
@@ -128,6 +141,21 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
                         </div>
 
                     </Drawer>
+            }
+
+            {
+                (isConfirmCancelModal) &&
+                <CustomModal.Type3
+                    open={isConfirmCancelModal}
+                    setOpen={setIsConfirmCancelModal}
+                    onSave={onDrawerClose}
+                    title='Do you want to cancel to create criteria?'
+                    cancelText='No'
+                    saveText='Yes'
+                    icon={Icons.CloseIconButton}
+                    iconHeight='h-5'
+                    iconWidth='w-5'
+                />
             }
         </div>
     );

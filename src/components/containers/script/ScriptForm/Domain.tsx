@@ -24,6 +24,8 @@ const Domain = ({ formik }: { formik: any }) => {
                                 <h1 className='comboBoxLabel'>Domain <span className='text-[red]'>*</span></h1>
                             </InputLabel>
                             <Select
+                                style={{ height: '44px' }}
+                                className="custom-select"
                                 labelId="demo-simple-select-helper-label"
                                 id="demo-simple-select-helper"
                                 label="Domain"
@@ -58,77 +60,51 @@ const Domain = ({ formik }: { formik: any }) => {
                             </Select>
 
                             {formik.touched.domain && formik.errors.domain ? (
-                                <div className='text-red-600 text-[12px]'>{formik.errors.domain}</div>
+                                <div className='text-red-600 text-xxs'>{formik.errors.domain}</div>
                             ) : null}
                         </FormControl>
 
-                        {/* <Autocomplete
-                            id="Domain"
-                            style={{
-                                width: '100%',
-                            }}
 
-                            options={scriptDomain}
-                            value={formik.values.domain}
-                            defaultValue={formik.values.domain}
-
-                            onChange={(event, value) => {
-                                if (typeof value === 'string') {
-
-                                    formik.setFieldValue('domain', value)
-                                    sebDomain(value);
-
-                                } else {
-                                    formik.setFieldValue('domain', '')
-                                    sebDomain('');
-
-                                }
-                            }}
-                            renderInput={(params) => (
-                                <TextField
-                                    name="domain"
-                                    error={formik.touched.domain && Boolean(formik.errors.domain)}
-                                    helperText={formik.touched.domain && formik.errors.domain}
-                                    {...params}
-
-                                    label={<span className='comboBoxLabel'>Domain <span className='text-[red]'>*</span></span>}
-
-                                />
-                            )}
-                        /> */}
                     </div>
                 </Grid>
                 <Grid item xs={6}>
                     <div>
                         <Autocomplete
-                            disabled={domain === ''}
+                        disableClearable
+                        placeholder='Choose one'
                             id="sub-domain"
+                            disabled={domain === ''}
                             className={`${domain === '' && 'sub-domain'}`}
                             style={{ width: '100%', cursor: 'pointer' }}
                             options={scriptSubDomain}
-                            // value={formik.values.subDomain || scriptSubDomain[0]}
-                            value={formik.values.subDomain}
-                            // defaultValue={formik.values.subDomain}
+                            // value={formik.values.subdomain || scriptsubdomain[0]}
+                            value={formik.values.subdomain}
+                            // defaultValue={formik.values.subdomain}
 
                             onChange={(event, value) => {
                                 if (typeof value === 'string') {
-                                    formik.setFieldValue('subDomain', value);
+                                    formik.setFieldValue('subdomain', value);
                                 } else {
-                                    formik.setFieldValue('subDomain', '');
+                                    formik.setFieldValue('subdomain', '');
 
                                 }
                             }}
 
                             renderInput={(params) => (
                                 <TextField
-                                    name="subDomain"
-                                    value={formik.values.subDomain}
+                                    name="subdomain"
+                                    value={formik.values.subdomain}
                                     onChange={formik.handleChange}
-                                    error={formik.touched.subDomain && Boolean(formik.errors.subDomain)}
-                                    helperText={formik.touched.subDomain && formik.errors.subDomain}
+                                    error={formik.touched.subdomain && Boolean(formik.errors.subdomain)}
+                                    helperText={formik.touched.subdomain && formik.errors.subdomain}
                                     {...params}
                                     label={<h1 className='comboBoxLabel'>Sub Domain <span className='text-[red]'>*</span></h1>}
 
+                                // InputProps={{
+                                //     style: {
+                                //         height: '44px'
+                                //     }
+                                // }}
                                 />
                             )}
                         />

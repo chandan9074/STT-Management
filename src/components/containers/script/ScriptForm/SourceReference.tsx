@@ -29,39 +29,47 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
                 isScript: true
             })
         }
-    }    
+    }
 
-     const handleFileUpload = (event: any) => {
+    const handleFileUpload = (event: any) => {
+        // event.prevntDefault();
+
 
         if (event.fileList?.length !== 0) {
             // let files = event.fileList || event.file || event.target.files;
             let files = event.fileList[0];
             setFile(files);
             getFile(event.fileList[0]?.originFileObj);
+            let formData = new FormData();
+            // formik.setFieldValue("file",  formData.append('file', event.fileList[0]?.originFileObj));
         } else {
             setFile([]);
             getFile([]);
+            // formik.setFieldValue("file",  []);
         }
     }
+
+    console.log('&&&&*****$$$$$$', file?.length);
+
 
 
     return (
         <div className='mb-[28px] source-reference'>
 
-            <h1 className='mb-[12px] text-blue-gray-80 text-[14px] font-medium'>Source Reference</h1>
+            <h1 className='mb-[12px] text-blue-gray-80 text-small font-medium'>Source Reference</h1>
 
             <div className=' border-[1px] border-[#D6E5F5] rounded-[7px] mb-[28px]'>
                 <Grid container >
                     <Grid item xs={6} style={{ cursor: 'pointer' }}>
                         <div onClick={(value) => onSourceReferencehandle('source')} className={`cursor-pointer p-[8px] ${scriptSourceReference?.isSource ? 'bg-ct-blue-20' : 'bg-ct-blue-10'}  flex justify-center items-center gap-x-[15px]`}>
                             <img src={Icons.Link} className='h-[18px] w-[18px]' alt="" />
-                            <h1 className='text-ct-blue-45 text-[14px] font-medium'>Add Source</h1>
+                            <h1 className='text-ct-blue-45 text-small font-medium'>Add Source</h1>
                         </div>
                     </Grid>
                     <Grid item xs={6}>
                         <div onClick={(value) => onSourceReferencehandle('script')} className={`cursor-pointer p-[8px] ${scriptSourceReference?.isScript ? 'bg-ct-blue-20' : 'bg-ct-blue-10'}  flex justify-center items-center gap-x-[15px]`}>
                             <img src={Icons.Link} className='h-[18px] w-[18px]' alt="" />
-                            <h1 className='text-ct-blue-45 text-[14px] font-medium'>Script Attachment</h1>
+                            <h1 className='text-ct-blue-45 text-small font-medium'>Script Attachment</h1>
                         </div>
                     </Grid>
                 </Grid>
@@ -74,10 +82,12 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
                                 <Grid item xs={6}>
                                     <div>
                                         <Autocomplete
+                                            disableClearable
+                                            placeholder='Choose one'
                                             id="sourceType"
                                             style={{ width: '100%' }}
                                             options={scriptSourceType}
-                                            value={formik.values.sourceType }
+                                            value={formik.values.sourceType}
                                             onChange={(event, value) => {
                                                 if (typeof value === 'string') {
                                                     console.log('event', event);
@@ -108,20 +118,20 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
                                     <div>
 
                                         <TextField
-                                            id="sourceurl"
-                                            name="sourceurl"
+                                            id="sourceUrl"
+                                            name="sourceUrl"
                                             label={<h1 className='comboBoxLabel'>Source URL</h1>}
 
-                                            value={formik.values.sourceurl}
+                                            value={formik.values.sourceUrl}
                                             onChange={formik.handleChange}
-                                            // error={formik.touched.sourceurl && Boolean(formik.errors.sourceurl)}
-                                            // helperText={formik.touched.sourceurl && formik.errors.sourceurl}
-                                            style={{ width: '100%' }}
+
+                                            style={{ width: '100%', }}
                                             InputProps={{
                                                 style: {
                                                     color: '#464E5F',
                                                     fontWeight: '600',
-                                                    fontSize: '15px'
+                                                    fontSize: '15px',
+
                                                 }
                                             }}
                                             variant="outlined" />
@@ -134,29 +144,47 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
 
                         // file upload
                         <div className={`bg-white w-[100%] ${(file?.length === 0) ? 'file-upload' : 'file-upload-hidden '}`} >
-                            
+
                             <div className={`${(file?.length === 0) ? '' : 'py-[24px] px-[16px]'}`}>
                                 <Dragger
-                                multiple={false}
-                                accept='.txt, .docx, .pdf, .jpg, .jpeg, .png'
-                                // customRequest={selectFiles}
+                                    multiple={false}
+                                    accept='.txt, .docx, .pdf, .jpg, .jpeg, .png'
+                                    // customRequest={selectFiles}
                                     style={{
                                         backgroundColor: 'white',
                                         borderRadius: 'none'
                                     }}
                                     onChange={(event) => handleFileUpload(event)}
+
                                 >
                                     <div className={`h-[114px] ant-upload-drag-icon flex flex-col justify-center items-center gap-y-[8px]`}>
                                         <div className='border-[1px] border-ct-blue-30 w-[160px] h-[36px] px-[18px] py-[8px] rounded-[6px] flex justify-center items-center gap-x-[5px]'>
                                             <img src={Icons.Backup} alt="" />
-                                            <h1 className='text-ct-blue-80 text-[14px] font-medium'>Upload Script</h1>
+                                            <h1 className='text-ct-blue-80 text-small font-medium'>Upload Script</h1>
                                         </div>
                                         <div>
-                                            <span className='text-[14px] font-medium text-blue-gray-90'>Click to upload </span>
-                                            <span className='text-[14px] font-medium text-blue-gray-75'>or Drag and Drop</span>
+                                            <span className='text-small font-medium text-blue-gray-90'>Click to upload </span>
+                                            <span className='text-small font-medium text-blue-gray-75'>or Drag and Drop</span>
                                         </div>
                                     </div>
                                 </Dragger>
+
+
+                                {
+                                    formik.values.sourceFileName &&
+                                    <div className='rounded-[4px] pt-[8px] pb-4 px-4 bg-ct-blue-05'>
+                                        <div className='flex justify-between items-center'>
+                                            <button>
+                                                {
+                                                    formik.values.sourceFileName
+                                                }
+                                            </button>
+                                            <button>
+                                                <img className='w-[13px] h-[14px]' src={Icons.deleteIcon} alt="" />
+                                            </button>
+                                        </div>
+                                    </div>
+                                }
                             </div>
                         </div>
                 }

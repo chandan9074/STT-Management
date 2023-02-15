@@ -1,6 +1,9 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
+import Icons from "../assets/Icons";
+import { Toast } from "../components/Toast";
 import ScriptService from "../services/scriptService";
-import { allScriptResDT, getAllScriptsParamsDT } from "../types/script";
+import { allScriptResDT, createScriptDt, getAllScriptsParamsDT } from "../types/script";
+import { CommonContext } from "./CommonProvider";
 
 
 interface ContextProps {
@@ -11,7 +14,10 @@ interface ContextProps {
   uploadCsv: (formData: any) => void;
   getAllScript: (prams: getAllScriptsParamsDT) => void;
   scriptsData: allScriptResDT | undefined
-
+  // createScript: (params: any) => Promise<{ message: string; status: number }>;
+  createScript: (params: any) => any;
+  singleScript: allScriptResDT;
+  getScriptById: (id: any) => void;
 }
 
 export const ScriptContext = createContext({} as ContextProps);
@@ -22,6 +28,7 @@ const ScriptProvider = ({ children }: { children: any }) => {
   const [scriptsData, setScriptsData] = useState<allScriptResDT>()
   const [loading, setLoading] = useState<boolean>(true);
   const [errorMsg, setErrorMsg] = useState<string>("");
+  const [singleScript, setSingleScript] = useState<any>({});
 
   const uploadCsv = async (formData: any) => {
     // console.log("formData", formData);
@@ -38,6 +45,27 @@ const ScriptProvider = ({ children }: { children: any }) => {
 
   }
 
+  const getScriptById = async(data: any) => {
+    const response = await ScriptService.getScriptById(data);
+     setSingleScript(response?.data);
+  }
+
+  const createScript = async (params: any) => {
+
+
+    // setLoading(true);
+    // setErrorMsg("");
+    const response = await ScriptService.createScript(params);
+    return {
+      message: response?.data?.message,
+      status: response?.status
+    }
+    // console.log('respo----', response);
+
+    // setLoading(false);
+
+  }
+
   return (
     <ScriptContext.Provider
       value={{
@@ -47,7 +75,10 @@ const ScriptProvider = ({ children }: { children: any }) => {
         setModalOpen,
         uploadCsv,
         getAllScript,
-        scriptsData
+        scriptsData,
+        createScript,
+        singleScript,
+        getScriptById
       }}
     >
       {children}

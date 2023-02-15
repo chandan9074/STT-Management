@@ -102,6 +102,12 @@ import ArrowRightAltWhite from './arrow_right_alt_white.svg';
 import SpeakerFemale from './speaker_female.svg';
 import bold_light_right_arrow from './bold_light_right_arrow.svg';
 import bold_light_left_arrow from './bold_light_left_arrow.svg';
+import Military from './military_tech.png';
+import Home from './home.png';
+import Power from './power_rounded.png';
+import deleteIcon from './delete_icon.png';
+import Face from './face.png';
+import HomeLight from './home_light.svg';
 
 const Icons = {
   currency,
@@ -207,7 +213,13 @@ const Icons = {
   SpeakerFemale,
   bold_light_right_arrow,
   bold_light_left_arrow,
-  lightDropDown
+  lightDropDown,
+  Home,
+  Power,
+  deleteIcon,
+  Face,
+  Military,
+  HomeLight
 };
 
 export default Icons;

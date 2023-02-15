@@ -2,6 +2,7 @@
     background-color: #F4F7FA !important;
     padding: 8px 16px 14px 16px;
     border-radius: 4px;
+    display: none;
 }
 
 .ant-upload-icon {
@@ -31,7 +32,7 @@
     content: "";
 }
 
-.ant-upload-wrapper .ant-upload-list .ant-upload-list-item .ant-upload-list-item-actions .ant-upload-list-item-action.ant-btn-sm >span {
+.ant-upload-wrapper .ant-upload-list .ant-upload-list-item .ant-upload-list-item-actions .ant-upload-list-item-action.ant-btn-sm>span {
     display: none;
 }
 
@@ -93,7 +94,7 @@ textarea {
 }
 
 .source-reference .css-honmcm-MuiGrid-root>.MuiGrid-item {
-padding-top: 0px !important;
+    padding-top: 0px !important;
 }
 
 /* Select */
@@ -117,21 +118,63 @@ padding-top: 0px !important;
 }
 
 
+
+
+/* Form hieght */
+
+.MuiTextField-root label {
+    top: -5px;
+}
+
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root {
+    top: 0px !important;
+    background-color: white;
+
+}
+
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+    height: 44px !important;
+}
+
+.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1qqsdnr-MuiAutocomplete-root .MuiOutlinedInput-root {
+    height: 44px !important;
+}
+
+label {
+    top: -5px !important;
+}
+
+.MuiAutocomplete-hasPopupIcon.css-1qqsdnr-MuiAutocomplete-root .MuiOutlinedInput-root,
+.MuiAutocomplete-hasClearIcon.css-1qqsdnr-MuiAutocomplete-root .MuiOutlinedInput-root {
+    height: 44px;
+}
+
+
+/* border color set */
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+    border: 1px solid #E9EDF3 !important;
+    border-radius: 7px !important;
+}
+
+
 /* input background color set */
 .MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1qqsdnr-MuiAutocomplete-root .MuiOutlinedInput-root {
     background-color: white !important;
+    border-radius: 7px !important;
 }
 
 .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
     background-color: white !important;
+    border-radius: 7px !important;
 }
 
 .css-q8hpuo-MuiFormControl-root {
     background-color: white !important;
+    border-radius: 7px !important;
 }
 
 .css-wb57ya-MuiFormControl-root-MuiTextField-root {
     background-color: white !important;
+    border-radius: 7px !important;
 
 }
-

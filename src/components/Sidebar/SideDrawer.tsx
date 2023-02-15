@@ -51,7 +51,7 @@ const SideDrawer = () => {
                 <div>
                     <div className='mb-[32px] flex items-center gap-[6px]'>
                         <img src={Icons.lyrics} className='w-[20px] h-[20px]' alt="" />
-                        <h1 className='text-[16px] font-medium bg-gradient-to-r from-[#F405FE] via-[#136EE5] to-[#EAA678] text-transparent bg-clip-text'>{nav.name}</h1>
+                        <h1 className='text-base font-medium bg-gradient-to-r from-[#F405FE] via-[#136EE5] to-[#EAA678] text-transparent bg-clip-text'>{nav.name}</h1>
                     </div>
 
                     {

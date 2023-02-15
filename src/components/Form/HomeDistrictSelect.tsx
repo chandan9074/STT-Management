@@ -73,7 +73,6 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
                     id={name}
                     autoComplete='off'
                     type='text'
-                    
                     onMouseDown={onHomeDistrictFocus}
                     name={name}
                     label={<h1 className='comboBoxLabel'>{fieldLabel} <span className='text-[red]'>*</span></h1>}
@@ -92,6 +91,9 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
                             {/* </IconButton> */}
                         </InputAdornment>
                     }
+                    style={{
+                        height: '44px'
+                    }}
                 />
             </FormControl>
             {
@@ -99,7 +101,7 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
                 <div className='absolute w-full h-[482px] bg-white rounded-[8px] py-[6px] animate-fadeIn z-[100] overflow-auto'>
                     {filteredDistrict.map(({ division, district }) => (
                         <div key={division}>
-                            <div className='bg-blue-gray-05 text-[12px] text-blue-gray-60 pl-[16px] flex justify-between items-center pr-[9px]'>
+                            <div className='bg-blue-gray-05 text-xxs text-blue-gray-60 pl-[16px] flex justify-between items-center pr-[9px]'>
                                 <h2>{division}</h2>
                                 <div onClick={() => handleArrowClick(division)}>
                                     <Buttons.IconButton.Circle
@@ -119,7 +121,7 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
                                             className={`pl-[16px] ${formikValues === name ? 'bg-blue-10 hover:bg-blue-20 active:bg-blue-30' : 'hover:bg-ct-blue-05 active:bg-ct-blue-10'} `}>
                                             <div className='flex justify-between items-center cursor-pointer pr-[9px] py-[12px]'>
                                                 <h3
-                                                    className='text-blue-gray-90 text-[14px]' key={name}>{name}</h3>
+                                                    className='text-blue-gray-90 text-small' key={name}>{name}</h3>
 
                                                 {
                                                     formikValues === name &&
@@ -138,7 +140,7 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
 
 
             {formikTouched && formikError ? (
-                <div className='text-red-600 text-[12px] pl-[12px]'>{formikError}</div>
+                <div className='text-red-600 text-xxs pl-[12px]'>{formikError}</div>
             ) : null}
         </div>
     );

@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as PATH from "../helpers/APIURL";
-import { getAllScriptsParamsDT } from "../types/script";
+import { allScriptResDT, createScriptDt, getAllScriptsParamsDT } from "../types/script";
 
 
 export default class ScriptService {
@@ -11,4 +11,12 @@ export default class ScriptService {
   static getAllScript(data: getAllScriptsParamsDT) {
     return axios.get(PATH.GET_ALL_SCRIPTS_URL, { params: data });
   }
+
+  static createScript(params: any) {
+   return axios.post(PATH.CREATE_SCRIPTS_URL, params);
+  }
+
+  static getScriptById(prarams: any) {
+    return axios.get(PATH.GET_SCRIPT_BY_ID, { params: prarams });
+}
 }

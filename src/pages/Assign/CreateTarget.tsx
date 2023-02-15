@@ -18,7 +18,7 @@ const CreateTarget = () => {
                     <div className='flex justify-between items-center mb-[23px] gap-x-3'>
                         <div className='flex items-center'>
                             <h1 className='text-blue-95 text-[18px] font-medium pr-3'>Create Target</h1>
-                            <h2 className='text-ct-blue-90 text-[14px]'>Create one or more target and assign</h2>
+                            <h2 className='text-ct-blue-90 text-small'>Create one or more target and assign</h2>
                         </div>
                         <div className='flex gap-x-[15px]'>
                             <button
