@@ -2,6 +2,7 @@
     background-color: #F4F7FA !important;
     padding: 8px 16px 14px 16px;
     border-radius: 4px;
+    display: none;
 }
 
 .ant-upload-icon {

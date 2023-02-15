@@ -19,6 +19,7 @@ import AudioManagement from "./pages/AudioManagement";
 import AssignContainer from "./components/containers/AssignContainer";
 import AllTarget from "./components/containers/AssignContainer/AllTarget";
 import CreateTarget from "./pages/Assign/CreateTarget";
+import EditScript from "./components/containers/script/EditScript";
 
 function App() {
   useEffect(() => {
@@ -45,6 +46,7 @@ function App() {
         <Route path={PATH.SCRIPT_PATH} element={<Script />} />
         <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} />
         <Route path={PATH.CREATE_SCRIPT} element={<ScriptForm />} />
+        <Route path={`${PATH.EDIT_SCRIPT_PATH}/:id`} element={<EditScript />} />
         <Route path={PATH.USER_PATH} element={<UserManagement />} />
 
         {/* <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} /> */}

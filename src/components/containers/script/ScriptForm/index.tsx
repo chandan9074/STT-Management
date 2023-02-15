@@ -12,6 +12,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { distributionList } from '../../../../data/Script/Domain';
 import { ScriptContext } from '../../../../context/ScriptProvider';
+import { allScriptResDT } from '../../../../types/script';
 
 const theme = createTheme({
 
@@ -34,27 +35,32 @@ const validationSchema = yup.object({
 
 });
 
-const ScriptForms = () => {
+const ScriptForms = ({data}: {data?: allScriptResDT}) => {
 
     const scriptContext = useContext(ScriptContext);
     const { createScript } = scriptContext;
     // const {ScriptContext}
 
+    console.log('get data by id', data);
+    
+
     const [file, setFile] = useState<any>([]);
 
 
     const formik = useFormik({
+        enableReinitialize: true,
         initialValues: {
-            sourceUrl: '',
-            module: 'STT',
-            sourceType: '',
-            domain: '',
-            subdomain: '',
-            distributionSource: distributionList[0],
-            isAge: false,
-            title: '',
-            description: '',
-            sourceFile: ''
+            sourceUrl: data?.sourceUrl || '',
+            module: data?.module || 'STT',
+            sourceType: data?.sourceType || '',
+            domain: data?.domain || '',
+            subdomain: data?.subDomain || '',
+            distributionSource: data?.distributionSource || distributionList[0],
+            isAge: data?.isAge || false,
+            title: data?.title || '',
+            description: data?.description || '',
+            sourceFile: data?.sourceFile || '',
+            sourceFileName: data?.sourceFileName || ''
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {

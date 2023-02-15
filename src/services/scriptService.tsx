@@ -15,4 +15,8 @@ export default class ScriptService {
   static createScript(params: any) {
    return axios.post(PATH.CREATE_SCRIPTS_URL, params);
   }
+
+  static getScriptById(prarams: any) {
+    return axios.get(PATH.GET_SCRIPT_BY_ID, { params: prarams });
+}
 }

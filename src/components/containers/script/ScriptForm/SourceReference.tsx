@@ -33,7 +33,7 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
 
     const handleFileUpload = (event: any) => {
         // event.prevntDefault();
-        
+
 
         if (event.fileList?.length !== 0) {
             // let files = event.fileList || event.file || event.target.files;
@@ -48,6 +48,9 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
             // formik.setFieldValue("file",  []);
         }
     }
+
+    console.log('&&&&*****$$$$$$', file?.length);
+
 
 
     return (
@@ -79,8 +82,8 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
                                 <Grid item xs={6}>
                                     <div>
                                         <Autocomplete
-                        disableClearable
-                        placeholder='Choose one'
+                                            disableClearable
+                                            placeholder='Choose one'
                                             id="sourceType"
                                             style={{ width: '100%' }}
                                             options={scriptSourceType}
@@ -152,7 +155,7 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
                                         borderRadius: 'none'
                                     }}
                                     onChange={(event) => handleFileUpload(event)}
-                                    
+
                                 >
                                     <div className={`h-[114px] ant-upload-drag-icon flex flex-col justify-center items-center gap-y-[8px]`}>
                                         <div className='border-[1px] border-ct-blue-30 w-[160px] h-[36px] px-[18px] py-[8px] rounded-[6px] flex justify-center items-center gap-x-[5px]'>
@@ -165,6 +168,23 @@ const SourceReference = ({ formik, getFile }: { formik: any, getFile: (file: any
                                         </div>
                                     </div>
                                 </Dragger>
+
+
+                                {
+                                    formik.values.sourceFileName &&
+                                    <div className='rounded-[4px] pt-[8px] pb-4 px-4 bg-ct-blue-05'>
+                                        <div className='flex justify-between items-center'>
+                                            <button>
+                                                {
+                                                    formik.values.sourceFileName
+                                                }
+                                            </button>
+                                            <button>
+                                                <img className='w-[13px] h-[14px]' src={Icons.deleteIcon} alt="" />
+                                            </button>
+                                        </div>
+                                    </div>
+                                }
                             </div>
                         </div>
                 }

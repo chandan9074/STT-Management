@@ -16,8 +16,8 @@ interface ContextProps {
   scriptsData: allScriptResDT | undefined
   // createScript: (params: any) => Promise<{ message: string; status: number }>;
   createScript: (params: any) => any;
-
-
+  singleScript: allScriptResDT;
+  getScriptById: (id: any) => void;
 }
 
 export const ScriptContext = createContext({} as ContextProps);
@@ -28,6 +28,7 @@ const ScriptProvider = ({ children }: { children: any }) => {
   const [scriptsData, setScriptsData] = useState<allScriptResDT>()
   const [loading, setLoading] = useState<boolean>(true);
   const [errorMsg, setErrorMsg] = useState<string>("");
+  const [singleScript, setSingleScript] = useState<any>({});
 
   const uploadCsv = async (formData: any) => {
     // console.log("formData", formData);
@@ -42,6 +43,11 @@ const ScriptProvider = ({ children }: { children: any }) => {
     setScriptsData(response.data.scripts);
     // setLoading(false);
 
+  }
+
+  const getScriptById = async(data: any) => {
+    const response = await ScriptService.getScriptById(data);
+     setSingleScript(response?.data);
   }
 
   const createScript = async (params: any) => {
@@ -70,7 +76,9 @@ const ScriptProvider = ({ children }: { children: any }) => {
         uploadCsv,
         getAllScript,
         scriptsData,
-        createScript
+        createScript,
+        singleScript,
+        getScriptById
       }}
     >
       {children}

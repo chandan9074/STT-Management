@@ -2,7 +2,6 @@ export const ROOT_PATH = "/";
 export const LOGIN_PATH = "/login";
 export const REGISTER_PATH = "/register";
 export const BILLING_PATH = "/billing";
-export const SCRIPT_PATH = "/script";
 export const DASHBOARD_PATH = "/dashboard";
 export const AUDIO_PATH = "/audio-management";
 export const USER_PATH = "/user-management";
@@ -17,7 +16,9 @@ export const CREATE_TARGET_PATH = `${ASSIGN_PATH}/${ALL_TARGET_PTAH}/create-targ
 
 
 // Script
+export const SCRIPT_PATH = "/script";
 export const CREATE_SCRIPT = "/script/create-script";
+export const EDIT_SCRIPT_PATH = "/script/edit-script";
 
 // User Management
 export const CREATE_USER_PATH = "/user-management/create-user";

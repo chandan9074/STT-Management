@@ -15,7 +15,7 @@ export type getAllScriptsParamsDT = {
 };
 export type allScriptResDT = {
   id: string;
-  sourceurl: string;
+  sourceUrl: string;
   module: string;
   domain: string;
   subDomain: string;
@@ -25,7 +25,8 @@ export type allScriptResDT = {
   sourceType: string;
   sourceFile: string;
   description: string;
-  date: string
+  date: string,
+  sourceFileName: string
 
 }
 

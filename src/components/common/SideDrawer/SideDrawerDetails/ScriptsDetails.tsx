@@ -1,5 +1,8 @@
-import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
+import React, { Dispatch, SetStateAction, useContext, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Icons from '../../../../assets/Icons';
+import { ScriptContext } from '../../../../context/ScriptProvider';
+import { EDIT_SCRIPT_PATH } from '../../../../helpers/Slug';
 import { PDF } from '../../../PDF';
 import PdfContainer from '../../../PDF/PdfContainer';
 import { Toast } from '../../../Toast';
@@ -10,8 +13,10 @@ interface Props {
 }
 const ScriptsDetails = ({ drawerData, setMetaDataOpen }: Props) => {
 
+    const scriptContext = useContext(ScriptContext);
+
     const textRef = useRef<HTMLParagraphElement>(null);
-    const [open, setOpen] = useState<boolean>(false)
+    const [open, setOpen] = useState<boolean>(false);
 
     const copyToClipboard = () => {
         if (textRef.current) {
@@ -34,11 +39,14 @@ const ScriptsDetails = ({ drawerData, setMetaDataOpen }: Props) => {
                         <p className='text-heading-6 font-semibold text-ct-blue-95 mt-2'>{drawerData.title}</p>
                     </div>
                     <div>
-                        <button
-                            className='px-4 py-2 text-small font-medium text-ct-blue-60 rounded-md hover:bg-white'
-                        >
-                            Edit
-                        </button>
+                        <Link to={`${EDIT_SCRIPT_PATH}/${drawerData?.id}`}>
+                            <button
+                                className='px-4 py-2 text-small font-medium text-ct-blue-60 rounded-md hover:bg-white'
+                            >
+                                Edit
+                            </button>
+                        </Link>
+
                     </div>
 
                 </div>
