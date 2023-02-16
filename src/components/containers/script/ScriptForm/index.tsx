@@ -12,7 +12,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { distributionList } from '../../../../data/Script/Domain';
 import { ScriptContext } from '../../../../context/ScriptProvider';
-import { allScriptResDT } from '../../../../types/script';
+import { allScriptResDT, createScriptDt } from '../../../../types/script';
 
 const theme = createTheme({
 
@@ -35,17 +35,10 @@ const validationSchema = yup.object({
 
 });
 
-const ScriptForms = ({data}: {data?: allScriptResDT}) => {
+const ScriptForms = ({ data }: { data?: allScriptResDT }) => {
 
     const scriptContext = useContext(ScriptContext);
-    const { createScript } = scriptContext;
-    // const {ScriptContext}
-
-    console.log('get data by id', data);
-    
-
-    const [file, setFile] = useState<any>([]);
-
+    const { createScript, updateScript } = scriptContext;
 
     const formik = useFormik({
         enableReinitialize: true,
@@ -63,39 +56,99 @@ const ScriptForms = ({data}: {data?: allScriptResDT}) => {
             sourceFileName: data?.sourceFileName || ''
         },
         validationSchema: validationSchema,
+        // onSubmit: (values) => {
+        //     // const _data = { ...values}
+        // let formData = new FormData();
+        // formData.append('sourceUrl', values.sourceUrl);
+        // formData.append('module', values.module);
+        // formData.append('sourceType', values.sourceType);
+        // formData.append('domain', values.domain);
+        // formData.append('subdomain', values.subdomain);
+        // formData.append('distributionSource', values.distributionSource);
+        // formData.append('isAge', values.isAge.toString());
+        // formData.append('title', values.title);
+        // formData.append('description', values.description);
+        // formData.append('sourceFile', values.sourceFile);
+        // console.log('submit------', data);
+
+
+        //     if (data) {
+        //         formData.append('id', data.id);
+        //        const res = updateScript(formData)
+        //     } else {
+        //         console.log('********crete');
+        //         const res = createScript(formData);
+
+        //     }
+
+        // },
+        // onSubmit: (values) => {
+        //     let formData = new FormData();
+            
+        //     // Check if any field values have changed
+        //     if (formik.dirty) {
+        //       // Loop through the values object
+        //       for (const [key, value] of Object.entries(values)) {
+        //         // Check if the value has changed from the initial data
+        //         if (value !== data?.[key as keyof allScriptResDT]) {
+        //           // Convert boolean values to strings
+        //           const valueToAppend = typeof value === 'boolean' ? value.toString() : value;
+        //           formData.append(key, valueToAppend);
+        //         }
+        //       }
+        //     } else {
+        //       // If no values have changed, add all the values to the formData object
+        //       for (const [key, value] of Object.entries(values)) {
+        //         // Convert boolean values to strings
+        //         const valueToAppend = typeof value === 'boolean' ? value.toString() : value;
+        //         formData.append(key, valueToAppend);
+        //       }
+        //     }
+          
+        //     // Add the id to the formData object if data exists
+        //     if (data) {
+        //       formData.append('id', data.id);
+        //       console.log('-----formdata', formData);1
+              
+        //       const res = updateScript(formData);
+        //     } else {
+        //       const res = createScript(formData);
+        //     }
+        //   }, 
+
         onSubmit: (values) => {
-            // const _data = { ...values}
             let formData = new FormData();
-            formData.append('sourceUrl', values.sourceUrl);
-            formData.append('module', values.module);
-            formData.append('sourceType', values.sourceType);
-            formData.append('domain', values.domain);
-            formData.append('subdomain', values.subdomain);
-            formData.append('distributionSource', values.distributionSource);
-            formData.append('isAge', values.isAge.toString());
-            formData.append('title', values.title);
-            formData.append('description', values.description);
-            formData.append('sourceFile', values.sourceFile);
-            console.log('submit------', values);
-           const res = createScript(formData);
-           console.log('********res', res);
-           
-        },
+          
+            // Keep track of whether any values have changed
+            let hasChanges = false;
+          
+            // Loop through the values object
+            for (const [key, value] of Object.entries(values)) {
+              // Check if the value has changed from the initial data
+              if (value !== data?.[key as keyof allScriptResDT]) {
+                // Convert boolean values to strings
+                const valueToAppend = typeof value === 'boolean' ? value.toString() : value;
+                formData.append(key, valueToAppend);
+                hasChanges = true;
+              }
+            }
+          
+            // If no changes have been made, exit the function
+            if (!hasChanges) {
+              return;
+            }
+          
+            // Add the id to the formData object if data exists
+            if (data) {
+              formData.append('id', data.id);
+              const res = updateScript(formData);
+            } else {
+              const res = createScript(formData);
+            }
+          },
+          
+          
     });
-
-    const getFile = (file: any) => {
-        // let formData = new FormData();
-        // formData.append('file', file)
-        setFile(file);
-        formik.setFieldValue("sourceFile", file);
-    }
-
-    // const getFile = (file: any) => {
-        // let formData = new FormData();
-        // formData.append('file', file)
-    //     setFile(formData);
-    //     formik.setFieldValue("sourceFile",  formData);
-    // }
 
 
     return (
@@ -107,7 +160,7 @@ const ScriptForms = ({data}: {data?: allScriptResDT}) => {
 
                             <DistributionSource formik={formik} />
                             <Domain formik={formik} />
-                            <SourceReference getFile={getFile} formik={formik} />
+                            <SourceReference formik={formik} />
                             <TitleDescription formik={formik} />
 
                         </div>

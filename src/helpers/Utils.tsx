@@ -5,7 +5,7 @@ import { roleDT } from "../types/billingTypes";
 import { colorForTitle } from "../data/dashboard/colorForTitle";
 import { AnyARecord } from "dns";
 
-export const isEmpty = (obj: roleDT | undefined) => {
+export const isEmpty = (obj: any | undefined) => {
   if (obj) {
     return Object.keys(obj).length === 0;
   } else {

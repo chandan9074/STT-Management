@@ -108,6 +108,7 @@ import Power from './power_rounded.png';
 import deleteIcon from './delete_icon.png';
 import Face from './face.png';
 import HomeLight from './home_light.svg';
+import Pdf from './picture_as_pdf.svg';
 
 const Icons = {
   currency,
@@ -219,7 +220,8 @@ const Icons = {
   deleteIcon,
   Face,
   Military,
-  HomeLight
+  HomeLight,
+  Pdf
 };
 
 export default Icons;

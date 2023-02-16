@@ -27,6 +27,7 @@ export type allScriptResDT = {
   description: string;
   date: string,
   sourceFileName: string
+  [key: string]: any;
 
 }
 
@@ -41,4 +42,5 @@ export type createScriptDt = {
   isAge: boolean;
   title: string;
   description: string;
+  // [key: string]: any;
 }

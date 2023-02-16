@@ -14,7 +14,7 @@ const CreateTarget = () => {
         <Layouts.Forth>
 
             <div>
-                <div className='bg-red-03 shadow-box pl-[24px] pt-[41px] pb-[24px] pr-[13px]'>
+                <div className='bg-red-03 shadow-box pl-[24px] pt-[41px]  pr-[13px]'>
                     <div className='flex justify-between items-center mb-[23px] gap-x-3'>
                         <div className='flex items-center'>
                             <h1 className='text-blue-95 text-[18px] font-medium pr-3'>Create Target</h1>
