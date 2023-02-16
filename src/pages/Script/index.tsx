@@ -20,7 +20,7 @@ const Script = () => {
         <CustomModal.Type1
           open={scriptContext.modalOpen}
           setOpen={scriptContext.setModalOpen}
-          setData={scriptContext.setModalData}
+          // setData={scriptContext.setModalData}
         />
       </div>
     </Layouts.Forth>

@@ -109,6 +109,7 @@ import deleteIcon from './delete_icon.png';
 import Face from './face.png';
 import HomeLight from './home_light.svg';
 import Pdf from './picture_as_pdf.svg';
+import Write from './write.svg';
 
 const Icons = {
   currency,
@@ -221,7 +222,8 @@ const Icons = {
   Face,
   Military,
   HomeLight,
-  Pdf
+  Pdf,
+  Write
 };
 
 export default Icons;

@@ -1,20 +1,24 @@
 import { Button } from '@mui/material';
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import React, { Dispatch, SetStateAction, useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { CustomModal } from '.';
 import Icons from '../../../assets/Icons';
+import { ScriptContext } from '../../../context/ScriptProvider';
+import { CREATE_SCRIPT } from '../../../helpers/Slug';
 import Buttons from '../../Buttons';
 
 interface Props {
     open: boolean;
     setOpen: Dispatch<SetStateAction<boolean>>;
-    setData: Dispatch<SetStateAction<string>>;
+    // setData: Dispatch<SetStateAction<string>>;
 }
 
-const Type1 = ({ open, setOpen, setData }: Props) => {
-    const [value, setValue] = useState<string>("STT")
+const Type1 = ({ open, setOpen }: Props) => {
+    const scriptContext = useContext(ScriptContext)
+    const [value, setValue] = useState<string>(scriptContext.scriptModule)
 
     const handleSave = () => {
-        setData(value)
+        scriptContext.setScriptModule(value)
         setOpen(false)
     }
     return (
@@ -123,14 +127,16 @@ const Type1 = ({ open, setOpen, setData }: Props) => {
                     </div>
 
                     <div className='flex gap-3 px-5 pb-5 pt-10'>
-                        <Buttons.LabelButton.Primary
+                        <Link to={CREATE_SCRIPT}>
+                            <Buttons.LabelButton.Primary
 
-                            label='Start'
-                            variant="CT-Blue"
-                            size="small"
-                            onClick={() => handleSave()}
+                                label='Start'
+                                variant="CT-Blue"
+                                size="small"
+                                onClick={() => handleSave()}
 
-                        />
+                            />
+                            </Link>
 
                         <Buttons.LabelButton.Secondary
                             label='Cancel'

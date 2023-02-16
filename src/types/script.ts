@@ -18,7 +18,7 @@ export type allScriptResDT = {
   sourceUrl: string;
   module: string;
   domain: string;
-  subDomain: string;
+  subdomain: string;
   distributionSource: string;
   title: string;
   isAge: boolean;
@@ -27,7 +27,6 @@ export type allScriptResDT = {
   description: string;
   date: string,
   sourceFileName: string
-  [key: string]: any;
 
 }
 
@@ -37,10 +36,9 @@ export type createScriptDt = {
   module: string;
   sourceType: string;
   domain: string;
-  subDomain: string;
+  subdomain: string;
   distributionSource: string;
   isAge: boolean;
   title: string;
   description: string;
-  // [key: string]: any;
 }

@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import DistributionSource from './DistributionSource';
 import Domain from './Domain';
 import SourceReference from './SourceReference';
@@ -12,7 +12,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { distributionList } from '../../../../data/Script/Domain';
 import { ScriptContext } from '../../../../context/ScriptProvider';
-import { allScriptResDT, createScriptDt } from '../../../../types/script';
+import { allScriptResDT } from '../../../../types/script';
 
 const theme = createTheme({
 
@@ -38,16 +38,17 @@ const validationSchema = yup.object({
 const ScriptForms = ({ data }: { data?: allScriptResDT }) => {
 
     const scriptContext = useContext(ScriptContext);
-    const { createScript, updateScript } = scriptContext;
+    const { createScript, updateScript, scriptModule, setScriptModule } = scriptContext;
 
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
             sourceUrl: data?.sourceUrl || '',
-            module: data?.module || 'STT',
+            // module: data?.module || 'STT',
+            module: scriptModule || 'STT',
             sourceType: data?.sourceType || '',
             domain: data?.domain || '',
-            subdomain: data?.subDomain || '',
+            subdomain: data?.subdomain || '',
             distributionSource: data?.distributionSource || distributionList[0],
             isAge: data?.isAge || false,
             title: data?.title || '',
@@ -56,99 +57,78 @@ const ScriptForms = ({ data }: { data?: allScriptResDT }) => {
             sourceFileName: data?.sourceFileName || ''
         },
         validationSchema: validationSchema,
+       
         // onSubmit: (values) => {
-        //     // const _data = { ...values}
-        // let formData = new FormData();
-        // formData.append('sourceUrl', values.sourceUrl);
-        // formData.append('module', values.module);
-        // formData.append('sourceType', values.sourceType);
-        // formData.append('domain', values.domain);
-        // formData.append('subdomain', values.subdomain);
-        // formData.append('distributionSource', values.distributionSource);
-        // formData.append('isAge', values.isAge.toString());
-        // formData.append('title', values.title);
-        // formData.append('description', values.description);
-        // formData.append('sourceFile', values.sourceFile);
-        // console.log('submit------', data);
-
-
-        //     if (data) {
-        //         formData.append('id', data.id);
-        //        const res = updateScript(formData)
-        //     } else {
-        //         console.log('********crete');
-        //         const res = createScript(formData);
-
-        //     }
-
-        // },
-        // onSubmit: (values) => {
-        //     let formData = new FormData();
+        //     console.log('on submit');
             
-        //     // Check if any field values have changed
-        //     if (formik.dirty) {
-        //       // Loop through the values object
-        //       for (const [key, value] of Object.entries(values)) {
-        //         // Check if the value has changed from the initial data
-        //         if (value !== data?.[key as keyof allScriptResDT]) {
-        //           // Convert boolean values to strings
-        //           const valueToAppend = typeof value === 'boolean' ? value.toString() : value;
-        //           formData.append(key, valueToAppend);
-        //         }
-        //       }
-        //     } else {
-        //       // If no values have changed, add all the values to the formData object
-        //       for (const [key, value] of Object.entries(values)) {
+        //     let formData = new FormData();
+          
+        //     // Keep track of whether any values have changed
+        //     let hasChanges = false;
+          
+        //     // Loop through the values object
+        //     for (const [key, value] of Object.entries(values)) {
+        //       // Check if the value has changed from the initial data
+        //       if (value !== data?.[key as keyof allScriptResDT]) {
         //         // Convert boolean values to strings
         //         const valueToAppend = typeof value === 'boolean' ? value.toString() : value;
         //         formData.append(key, valueToAppend);
+        //         hasChanges = true;
         //       }
+        //     }
+          
+        //     // If no changes have been made, exit the function
+        //     if (!hasChanges) {
+        //       return;
         //     }
           
         //     // Add the id to the formData object if data exists
         //     if (data) {
         //       formData.append('id', data.id);
-        //       console.log('-----formdata', formData);1
-              
         //       const res = updateScript(formData);
         //     } else {
         //       const res = createScript(formData);
         //     }
-        //   }, 
+        //   },
 
         onSubmit: (values) => {
             let formData = new FormData();
-          
-            // Keep track of whether any values have changed
+            
+            // Append the module field to the formData object
+            formData.append('module', values.module);
+            
+            // Check if any field values have changed
             let hasChanges = false;
-          
-            // Loop through the values object
             for (const [key, value] of Object.entries(values)) {
               // Check if the value has changed from the initial data
               if (value !== data?.[key as keyof allScriptResDT]) {
+                hasChanges = true;
                 // Convert boolean values to strings
                 const valueToAppend = typeof value === 'boolean' ? value.toString() : value;
                 formData.append(key, valueToAppend);
-                hasChanges = true;
               }
             }
-          
-            // If no changes have been made, exit the function
+            
+            // If no values have changed, add only the module field to the formData object
             if (!hasChanges) {
-              return;
+              const module = values.module;
+              formData = new FormData();
+              formData.append('module', module);
             }
-          
+            
             // Add the id to the formData object if data exists
             if (data) {
-              formData.append('id', data.id);
+              formData.append('id', data.id);              
               const res = updateScript(formData);
             } else {
               const res = createScript(formData);
             }
-          },
-          
-          
+          }
     });
+
+    useEffect(() => {
+        setScriptModule(formik.values.module)
+    }, [formik.values.module])
 
 
     return (

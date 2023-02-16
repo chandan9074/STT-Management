@@ -106,7 +106,7 @@ const Type3 = ({
               ? filterList.domain.map((domainItem, index) => (
                   <div className="flex flex-col">
                     <h5 className="mb-0 text-xxs text-blue-gray-60 py-3 px-4">
-                      {domainItem}
+                      {domainItem}z
                     </h5>
                     {subdomainData
                       .filter((item) => item.name === domainItem)[0]

@@ -19,6 +19,8 @@ interface ContextProps {
   singleScript: allScriptResDT;
   getScriptById: (id: any) => void;
   updateScript: (params: any) => any;
+  setScriptModule: React.Dispatch<React.SetStateAction<string>>;
+  scriptModule: string;
 }
 
 export const ScriptContext = createContext({} as ContextProps);
@@ -27,9 +29,8 @@ const ScriptProvider = ({ children }: { children: any }) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [modalData, setModalData] = useState<string>("");
   const [scriptsData, setScriptsData] = useState<allScriptResDT>()
-  // const [loading, setLoading] = useState<boolean>(true);
-  // const [errorMsg, setErrorMsg] = useState<string>("");
   const [singleScript, setSingleScript] = useState<any>({});
+  const [scriptModule, setScriptModule] = useState<string>('STT');
 
   const uploadCsv = async (formData: any) => {
 
@@ -75,7 +76,9 @@ const ScriptProvider = ({ children }: { children: any }) => {
         createScript,
         singleScript,
         getScriptById,
-        updateScript
+        updateScript, 
+        scriptModule,
+        setScriptModule
       }}
     >
       {children}

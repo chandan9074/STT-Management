@@ -1,4 +1,3 @@
-import axios from "axios";
 import { activityData } from "../data/userManagement/activityData";
 
 export default class UserManagementService {

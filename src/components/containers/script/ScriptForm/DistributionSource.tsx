@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -6,14 +6,29 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { Checkbox, FormGroup } from '@mui/material';
 import { distributionList } from '../../../../data/Script/Domain';
+import Icons from '../../../../assets/Icons';
+import { CustomModal } from '../../../common/CustomModal';
 
 
 const DistributionSource = ({ formik }: { formik: any }) => {
 
+    const [open, setOpen] = useState<boolean>(false);
+
+    const onModule = () => {
+        setOpen(true);
+    }
+
     return (
         <div className='mb-[33px]'>
-            <div className='mb-[33px]'>
+            <div className='mb-[33px] flex gap-x-3 items-center'>
                 <h1 className='text-ct-blue-95 text-[18px] font-medium'>Create Script</h1>
+                <button onClick={(e) => {
+                    e.preventDefault();
+                    onModule();
+                }} className='flex items-center gap-x-3 py-[7px] px-3 bg-blue-gray-A10 rounded-[8px]'>
+                    <h1 className='text-xs text-ct-blue-90 font-medium'>{formik.values.module}</h1>
+                    <img src={Icons.Write} className='h-[13px] w-[13px]' alt="" />
+                </button>
             </div>
 
             <div className='flex'>
@@ -76,6 +91,12 @@ const DistributionSource = ({ formik }: { formik: any }) => {
                     </FormGroup>
                 </div>
             </div>
+            {
+                <CustomModal.Type1
+                    open={open}
+                    setOpen={setOpen}
+                />
+            }
         </div>
     );
 };
