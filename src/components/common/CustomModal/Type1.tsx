@@ -22,7 +22,7 @@ const Type1 = ({ open, setOpen }: Props) => {
         scriptContext.setScriptModule(value)
         setOpen(false)
     }
-        
+
     return (
         <div>
             <CustomModal.Primary
@@ -131,12 +131,10 @@ const Type1 = ({ open, setOpen }: Props) => {
                     <div className='flex gap-3 px-5 pb-5 pt-10'>
                         <Link to={location.pathname === SCRIPT_PATH ? CREATE_SCRIPT : ''}>
                             <Buttons.LabelButton.Primary
-
                                 label='Start'
                                 variant="CT-Blue"
                                 size="small"
                                 onClick={() => handleSave()}
-
                             />
                             </Link>
 
@@ -145,8 +143,6 @@ const Type1 = ({ open, setOpen }: Props) => {
                             variant="Blue"
                             size='small'
                             onClick={() => setOpen(false)}
-
-
                         />
 
                     </div>

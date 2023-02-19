@@ -6,6 +6,7 @@ import Icons from '../../../../../assets/Icons';
 import { RoleInContext } from '../../../../../context/RoleProvider';
 import { roleDT } from '../../../../../types/billingTypes';
 import Buttons from '../../../../Buttons';
+import RoleImage from '../../../../Image/RoleImage';
 
 const { Option } = Select;
 
@@ -240,8 +241,9 @@ const AddAssigneeModal = ({
                                                     roleDatas?.map((m: roleDT, i: number) => (
                                                         <Option key={m.id} value={m.name} id={m.id}>
                                                             <div className='flex gap-x-4'>
-                                                                <img className='h-[18px] w-[18px]' src={Icons.manager}
-                                                                    alt="" />
+                                                                {/* <img className='h-[18px] w-[18px]' src={Icons.manager}
+                                                                    alt="" /> */}
+                                                                    <RoleImage role={role} />
                                                                 <h1 className='text-blue-gray-90 text-small'>{m.id} - {m.name}</h1>
                                                             </div>
                                                         </Option>
@@ -279,7 +281,8 @@ const AddAssigneeModal = ({
                                                 <div className=' px-3 py-4  flex justify-between '>
                                                     <div className='flex items-center gap-x-4'>
                                                         <div className='flex gap-x-2'>
-                                                            <img className='h-[20px] w-[20px]' src={Icons.manager} alt="" />
+                                                            {/* <img className='h-[20px] w-[20px]' src={Icons.manager} alt="" /> */}
+                                                            <RoleImage role={item.role} />
                                                             <h1 className='nameParagraph1'>
                                                                 {item?.name}
                                                             </h1>
