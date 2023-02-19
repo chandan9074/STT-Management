@@ -17,7 +17,7 @@ const CreateCriteria = () => {
     setDrawerOpen(true);
   };
   return (
-    <div className="h-full flex flex-col justify-end">
+    <div className="h-full w-full flex flex-col justify-end">
       {selectedCriteriaList?.length > 0 && (
         <Buttons.IconWithTextButton.Tertiary
           style={{ border: "none" }}

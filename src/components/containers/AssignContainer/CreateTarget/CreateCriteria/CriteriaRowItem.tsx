@@ -32,7 +32,7 @@ const CriteriaRowItem = ({
           <h4 className="font-[500] text-[#2D516E]">
             Target {criteria?.target}
           </h4>
-          <p className="m-0 text-ct-blue-95 text-xs font-[300] truncate text-ellipsis w-[95%]">
+          <p className="m-0 text-ct-blue-95 text-xs font-[300] truncate text-ellipsis w-[200px]">
             {criteria?.criteria}
           </p>
         </div>

@@ -6,10 +6,8 @@ import CreateCriteria from "../../components/containers/AssignContainer/CreateTa
 import AddAssignee from "../../components/containers/AssignContainer/CreateTarget/AddAssignee";
 import Layouts from "../../components/Layouts";
 import TargetTable from "../../components/containers/AssignContainer/CreateTarget/TargetTable";
-
 const CreateTarget = () => {
   const [dataShow, setDataShow] = useState<boolean>(false);
-
   return (
     <Layouts.Forth>
       <div>
@@ -70,10 +68,10 @@ const CreateTarget = () => {
           {/*    </div>*/}
           {/*</div>*/}
 
-          <div className="flex gap-x-[15px]">
+          <div className="flex gap-x-[15px] flex-wrap">
             <div className="flex-[1]">
               <AddScript />
-            </div>{" "}
+            </div>
             <div className="flex-[1]">
               <CreateCriteria />
             </div>{" "}

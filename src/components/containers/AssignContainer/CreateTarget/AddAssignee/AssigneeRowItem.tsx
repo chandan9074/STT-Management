@@ -19,11 +19,11 @@ const AssigneeRowItem = ({ assignee }: Props) => {
             checked={assignee?.isSelected}
           />
           <img src={Icons.manager} alt="Manger" />
-          <div className="flex w-[80%] flex-col">
+          <div className="flex flex-col">
             <h4 className="font-[500] text-[#2D516E]">
               Target {assignee?.target}
             </h4>
-            <p className="m-0 text-ct-blue-95 text-xs font-[300] truncate text-ellipsis w-[100%]">
+            <p className="m-0 text-ct-blue-95 text-xs font-[300] truncate text-ellipsis w-[200px]">
               {assignee?.description}
             </p>
           </div>

@@ -90,7 +90,7 @@ const ScriptTargetBox = ({
                     >
                       {item?.id}
                     </div>
-                    <p className="m-0 text-ct-blue-95 text-xs font-[300] truncate text-ellipsis w-[80%]">
+                    <p className="m-0 text-ct-blue-95 text-xs font-[300] truncate text-ellipsis w-[200px]">
                       {item?.script}
                     </p>
                   </button>

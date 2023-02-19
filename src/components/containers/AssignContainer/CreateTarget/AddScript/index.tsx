@@ -19,7 +19,7 @@ const AddSript = () => {
   };
 
   return (
-    <div className="h-full flex flex-col justify-end">
+    <div className="h-full w-full flex flex-col justify-end">
       {selectedScriptList?.length > 0 && (
         <Buttons.IconWithTextButton.Tertiary
           style={{ border: "none" }}

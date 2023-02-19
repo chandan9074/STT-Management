@@ -18,7 +18,7 @@ const AddAssignee = () => {
   };
 
   return (
-    <div className="h-full flex flex-col justify-end">
+    <div className="h-full w-full flex flex-col justify-end">
       {selectedAssigneList?.length > 0 && (
         <Buttons.IconWithTextButton.Tertiary
           style={{ border: "none" }}
