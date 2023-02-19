@@ -19,6 +19,8 @@ interface ContextProps {
   setScriptModule: React.Dispatch<React.SetStateAction<string>>;
   scriptModule: string;
   loading: boolean;
+  scriptDeleteParams: string;
+  setScriptDeleteParams: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const ScriptContext = createContext({} as ContextProps);
@@ -30,6 +32,7 @@ const ScriptProvider = ({ children }: { children: any }) => {
   const [singleScript, setSingleScript] = useState<any>({});
   const [scriptModule, setScriptModule] = useState<string>('STT');
   const [loading, setLoading] = useState<boolean>(false);
+  const [scriptDeleteParams, setScriptDeleteParams] = useState<string>("");
 
   const uploadCsv = async (formData: any) => {
 
@@ -101,7 +104,9 @@ const ScriptProvider = ({ children }: { children: any }) => {
         updateScript,
         scriptModule,
         setScriptModule,
-        loading
+        loading,
+        scriptDeleteParams,
+        setScriptDeleteParams
       }}
     >
       {children}

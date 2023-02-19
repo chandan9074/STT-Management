@@ -13,7 +13,8 @@ const ScriptTable = () => {
     }, [])
 
     const handleSelectRow = (selectedRows: any[]) => {
-        console.log(selectedRows)
+        // console.log(selectedRows)
+        
     }
     return (
         <div>
