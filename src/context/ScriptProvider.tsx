@@ -18,6 +18,8 @@ interface ContextProps {
   createScript: (params: any) => any;
   singleScript: allScriptResDT;
   getScriptById: (id: any) => void;
+  scriptDeleteParams: string;
+  setScriptDeleteParams: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const ScriptContext = createContext({} as ContextProps);
@@ -29,6 +31,7 @@ const ScriptProvider = ({ children }: { children: any }) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [singleScript, setSingleScript] = useState<any>({});
+  const [scriptDeleteParams, setScriptDeleteParams] = useState<string>("");
 
   const uploadCsv = async (formData: any) => {
     // console.log("formData", formData);
@@ -45,9 +48,9 @@ const ScriptProvider = ({ children }: { children: any }) => {
 
   }
 
-  const getScriptById = async(data: any) => {
+  const getScriptById = async (data: any) => {
     const response = await ScriptService.getScriptById(data);
-     setSingleScript(response?.data);
+    setSingleScript(response?.data);
   }
 
   const createScript = async (params: any) => {
@@ -78,7 +81,9 @@ const ScriptProvider = ({ children }: { children: any }) => {
         scriptsData,
         createScript,
         singleScript,
-        getScriptById
+        getScriptById,
+        scriptDeleteParams,
+        setScriptDeleteParams
       }}
     >
       {children}
