@@ -13,10 +13,11 @@ import { allScriptResDT } from '../../types/script';
 ;
 
 interface Props {
-    Data: any
+    Data: any,
+    handleSelectRow: (selectedRows: any[]) => void
 }
 
-const Type4 = ({ Data }: Props) => {
+const Type4 = ({ Data, handleSelectRow }: Props) => {
     const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
     const [drawerData, setDrawerData] = useState<any>();
@@ -73,11 +74,12 @@ const Type4 = ({ Data }: Props) => {
 
     const rowSelection = {
         onChange: (selectedRowKeys: any[], selectedRows: any[]) => {
-            console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+            // console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+            handleSelectRow(selectedRows)
         },
         // getCheckboxProps: (record: any) => ({
         //     // disabled: record.name === 'Disabled User', // Column configuration not to be checked
-            
+
         // }),
     }
 

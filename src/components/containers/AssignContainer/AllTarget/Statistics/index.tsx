@@ -9,7 +9,7 @@ const Statistics = ({ data }: { data: assignStatisticsDT }) => {
     const [dataShow, setDataShow] = useState<boolean>(false);
 
     return (
-        <div>
+        <div className={` duration-300 ${dataShow ? "h-9" : "h-[310px]"}`}>
             <div className='flex items-center'>
                 <div className='border-t-[1px] w-full border-dashed border-border-light-blue relative z-[90]' >
                     <button
@@ -19,28 +19,21 @@ const Statistics = ({ data }: { data: assignStatisticsDT }) => {
                         <img src={dataShow ? Icons.DoubleArroDownDark : Icons.DoubleDarkICon} alt="" className="w-[7px] h-[8px] " />
                     </button>
                 </div>
-
-
             </div>
-
-            {
-                dataShow ?
-                    <div className='mt-3 flex items-center gap-x-[9px] duration-700'>
-                        <img className='w-5 h-[17px]' src={Icons.Vector2} alt="" />
-                        <h1 className='text-ct-blue-60 text-base font-medium'>Statistics</h1>
+            <div className={`${dataShow ? "block" : "hidden"} mt-3 flex items-center gap-x-[9px] animate-fadeIn`}>
+                <img className='w-5 h-[17px]' src={Icons.Vector2} alt="" />
+                <h1 className='text-ct-blue-60 text-base font-medium'>Statistics</h1>
+            </div>
+            <div className={`${dataShow ? "hidden" : "block"} animate-fadeIn`}>
+                {data ?
+                    <div className='grid grid-cols-12 gap-x-16 mt-5 pb-7'>
+                        <div className='col-span-5'><AudioStatus data={data} /></div>
+                        <div className='col-span-7'><OverTheTime data={data.overTheTimeData} /></div>
                     </div>
                     :
-                    <>
-                        {data ?
-                            <div className='grid grid-cols-12 gap-x-16 mt-5 pb-7'>
-                                <div className='col-span-5'><AudioStatus data={data} /></div>
-                                <div className='col-span-7'><OverTheTime data={data.overTheTimeData} /></div>
-                            </div>
-                            :
-                            <EmptyState />
-                        }
-                    </>
-            }
+                    <EmptyState />
+                }
+            </div>
         </div>
     );
 };

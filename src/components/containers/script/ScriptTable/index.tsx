@@ -7,12 +7,17 @@ import Table from '../../../Table';
 const ScriptTable = () => {
     const scriptContext = useContext(ScriptContext)
     const commonContext = useContext(CommonContext)
+
     useEffect(() => {
         scriptContext.getAllScript({ role: commonContext.role.toLowerCase() })
     }, [])
+
+    const handleSelectRow = (selectedRows: any[]) => {
+        console.log(selectedRows)
+    }
     return (
         <div>
-            <Table.Type4 Data={scriptContext.scriptsData} />
+            <Table.Type4 Data={scriptContext.scriptsData} handleSelectRow={handleSelectRow} />
         </div>
     );
 };
