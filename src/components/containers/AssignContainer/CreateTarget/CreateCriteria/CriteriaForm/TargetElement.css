@@ -1,13 +1,19 @@
 .targetElementDatePicker {
-    position: absolute !important;
-    top: calc(50% - -296px) !important;
-    left: calc(50% - -251px) !important;
-    z-index: 9 9999 !important;
+  position: absolute !important;
+  top: calc(50% - -296px) !important;
+  left: calc(50% - -251px) !important;
+  z-index: 9 9999 !important;
 }
 
 .reminderDatePicker {
-    position: absolute !important;
-    top: calc(50% - -381px) !important;
-    left: calc(50% - -248px) !important;
-    z-index: 99999;
+  position: absolute !important;
+  top: calc(50% - -381px) !important;
+  left: calc(50% - -248px) !important;
+  z-index: 99999;
+}
+.target_deadline_date_picker {
+  position: absolute !important;
+  top: calc(50% - -800px) !important;
+  left: calc(50% - -248px) !important;
+  z-index: 99999;
 }

@@ -63,10 +63,10 @@ import Link from "./link.svg";
 import AddLink from "./add_link.svg";
 import Backup from "./backup.svg";
 import Add from "./add.svg";
-import ArrowRightBack from './arrow_right_alt.svg';
-import MusicIcon from './music 1.svg'
-import Title from './title.svg'
-import DisableCursor from './disableCursor.svg'
+import ArrowRightBack from "./arrow_right_alt.svg";
+import MusicIcon from "./music 1.svg";
+import Title from "./title.svg";
+import DisableCursor from "./disableCursor.svg";
 import arrow_drop_down_white from "./arrow_drop_down_white.svg";
 import dashboardNav from "./dashboardNav.svg";
 import scriptNav from "./scriptNav.svg";
@@ -74,32 +74,38 @@ import assignNav from "./assignNav.svg";
 import audioNav from "./audioNav.svg";
 import userNav from "./userNav.svg";
 import organizeNav from "./organizeNav.svg";
-import DottedDownArrow from './dotted-down-arrow.svg';
-import Gavel from './gavel.svg';
-import Shadow_bg from './shadow_bg.png'
-import Avatar from './Avatar.svg'
-import Up from './up.svg'
-import createSkeleton from './createSkeleton.svg'
-import collectSkeleton from './collectSkeleton.svg'
-import double_up_arrow from './dubble_up_arrow.svg'
+import DottedDownArrow from "./dotted-down-arrow.svg";
+import Gavel from "./gavel.svg";
+import Shadow_bg from "./shadow_bg.png";
+import Avatar from "./Avatar.svg";
+import Up from "./up.svg";
+import createSkeleton from "./createSkeleton.svg";
+import collectSkeleton from "./collectSkeleton.svg";
+import double_up_arrow from "./dubble_up_arrow.svg";
 import Script from "./script.svg";
 import BlueMusicIcon from "./blueMusicArrow.svg";
 import BlueRightArrow from "./blueRightArrow.svg";
-import Unfold_More from './unfold_more.svg'
-import calenderIcon from './calender_icon.svg';
-import info from './info.svg';
-import check_green from './check_green.svg';
-import warning from './warning.svg';
-import calender_white from './calender_white.svg';
-import DoubleDarkICon from './double_dark_arrow_up.svg';
-import Vector from './Vector.svg';
-import Vector2 from './Vector2.svg';
-import DoubleArroDownDark from './double_dark_arrow_down.svg';
-import AddBlue from './add_blue.png';
-import cancel from './cancel.svg';
+import Unfold_More from "./unfold_more.svg";
+import calenderIcon from "./calender_icon.svg";
+import info from "./info.svg";
+import check_green from "./check_green.svg";
+import warning from "./warning.svg";
+import calender_white from "./calender_white.svg";
+import DoubleDarkICon from "./double_dark_arrow_up.svg";
+import Vector from "./Vector.svg";
+import Vector2 from "./Vector2.svg";
+import DoubleArroDownDark from "./double_dark_arrow_down.svg";
+import AddBlue from "./add_blue.png";
+import cancel from "./cancel.svg";
 
-import ArrowRightAltWhite from './arrow_right_alt_white.svg';
-import SpeakerFemale from './speaker_female.svg';
+import ArrowRightAltWhite from "./arrow_right_alt_white.svg";
+import SpeakerFemale from "./speaker_female.svg";
+import North from "./north.svg";
+import NorthNeviBlue from "./north_nevi_blue.svg";
+import South from "./south.svg";
+import SouthNeviBlue from "./south_nevi_blue.svg";
+import edit_blue from "./edit.svg";
+import delete_red from "./delete.svg";
 
 const Icons = {
   currency,
@@ -202,7 +208,13 @@ const Icons = {
   AddBlue,
   cancel,
   ArrowRightAltWhite,
-  SpeakerFemale
+  SpeakerFemale,
+  North,
+  NorthNeviBlue,
+  South,
+  SouthNeviBlue,
+  edit_blue,
+  delete_red,
 };
 
 export default Icons;

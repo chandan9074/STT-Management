@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Icons from '../../assets/Icons';
 import { CustomModal } from '../common/CustomModal';
 import { SideDrawer } from '../common/SideDrawer';
-import '../../assets/css/table/type4Table.css';
+import "../../assets/css/table/type4Table.css";
 
 interface DataType {
     key: React.Key;
@@ -56,12 +56,89 @@ const rowSelection = {
 const Type9 = () => {
     const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
+    const [active, setActive] = useState("Active");
     const [drawerData, setDrawerData] = useState<any>();
 
     const showDrawer = (key: any) => {
         setOpen(true);
         setDrawerData(key)
     };
+
+    const handleActiveFrequencyChange=(value:string,confirm:any)=>{
+    setActive(value)
+    }
+
+     const getColumnSearchProps = (dataIndex: any): any => ({
+
+
+        filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }: any) => (
+
+            <div onKeyDown={(e) => e.stopPropagation()} className="w-[260px]">
+
+                <div
+                    className={`flex gap-1 items-center justify-between px-4 py-3 rounded-t-lg cursor-pointer ${active === "asc" ? "text-[#2C79BE] font-bold bg-[rgba(44,121,190,0.12)]" : ""}`}
+                    onClick={() => handleActiveFrequencyChange("asc", confirm)}
+                >
+                    <div className="flex items-center gap-2">
+                      <div>
+                        <img src={active === "asc"?Icons.North:Icons.NorthNeviBlue}/>
+                      </div>
+                      <div>
+                        <p>Sort Ascending</p>
+                       </div>
+                    </div>
+                    <div>
+                        <img src={Icons.CorrectIcon}/>
+                    </div>
+
+                </div>
+                <div
+                    className={`flex gap-1 items-center justify-between px-4 py-3 rounded-t-lg cursor-pointer ${active === "desc" ? "text-[#2C79BE] font-bold bg-[rgba(44,121,190,0.12)]" : ""}`}
+                    onClick={() => handleActiveFrequencyChange("desc", confirm)}>
+                    <div className="flex items-center gap-2">
+                      <div>
+                        <img src={active === "asc"?Icons.South:Icons.SouthNeviBlue}/>
+                      </div>
+                      <div>
+                        <p>Sort Decending</p>
+                       </div>
+                    </div>
+                    <div>
+                        <img src={Icons.CorrectIcon}/>
+                    </div>
+
+                </div>
+            </div>
+        ),
+        filterIcon: (filtered: boolean) => (
+            <div>
+                <img src={Icons.Unfold_More} className="w-[18px] h-[18px] object-cover" alt='' />
+            </div>
+        ),
+        onFilter: (value: any, record: any) =>
+            record["status"]
+                .toString()
+                .toLowerCase()
+                .includes(active.toLowerCase()),
+
+        render: (text: any) =>
+            active === "Acitive" ? (
+                // <Highlighter
+                //   highlightStyle={{
+                //     backgroundColor: '#ffc069',
+                //     padding: 0,
+                //   }}
+                //   searchWords={[searchText]}
+                //   autoEscape
+                //   textToHighlight={text ? text.toString() : ''}
+                // />
+                <p>text</p>
+            ) : (
+                <p>hellow</p>
+            )
+    });
+
+
 
 
     const columns: ColumnsType<DataType> = [
@@ -76,20 +153,21 @@ const Type9 = () => {
             title: "Script",
             width: 372,
             dataIndex: 'script',
-            render: (script: number) => <span className='text-blue-gray-80 text-xs'>{script}</span>,
+            render: (script: number) => <span className='text-blue-gray-80 text-xs line-clamp-2'>{script}</span>,
         },
         {
             title: "Frequency",
-            align: "center",
+            ...getColumnSearchProps('Frequency'),
+            dataIndex: "frequency",
             width: 112,
-            dataIndex: 'frequency',
             render: (frequency: number) => <span className='text-blue-gray-80 text-xs'>{frequency}</span>,
+            onFilter: (value, record) => (console.log("reeeeeeeeeeee", record))
         },
     ];
 
 
     return (
-        <div className='type4-table'>
+        <div className='type4-table billing-table'>
 
             <Table
 

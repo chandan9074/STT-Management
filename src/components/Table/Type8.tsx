@@ -1,172 +1,273 @@
-import { Table } from 'antd';
-import { ColumnsType } from 'antd/es/table';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Icons from '../../assets/Icons';
-import { SideDrawer } from '../common/SideDrawer';
+import { DatePicker, Table } from "antd";
+import { ColumnsType } from "antd/es/table";
+import { useRef, useState } from "react";
+import Icons from "../../assets/Icons";
+import { SideDrawer } from "../common/SideDrawer";
 import "../../assets/css/table/type4Table.css";
+import { useAssigneContext } from "../../context/AssignProvider";
+import { TargetItemDT } from "../../types/assignTypes";
+import Buttons from "../Buttons";
+import { CalendarOutlined, CaretDownOutlined } from "@ant-design/icons";
+import ScriptTargetModal from "../containers/AssignContainer/CreateTarget/TargetTable/ScriptTargetModal";
+import AssigneeTargetModal from "../containers/AssignContainer/CreateTarget/TargetTable/AssigneeTargetModal";
+import CriteriaTargetModal from "../containers/AssignContainer/CreateTarget/TargetTable/CriteriaTargetModal";
+import RemarkTargetModal from "../containers/AssignContainer/CreateTarget/TargetTable/RemarkTargetModal";
 
-// interface DataType {
-//     key: React.Key;
-//     name: string;
-//     age: number;
-//     address: string;
-//     status: string
-// }
+interface Props {
+  changeScriptModal: (open: boolean, target: TargetItemDT) => void;
+  changeTargetModal: (open: boolean, target: TargetItemDT) => void;
+  changeAssigneeModal: (open: boolean, target: TargetItemDT) => void;
+  changeDeadlineModal: (open: boolean, target: TargetItemDT) => void;
+  changeRemarkModal: (open: boolean, target: TargetItemDT) => void;
+}
 
-
-const data: any = [
-    {
-        key: '10-227a',
-        script: 'Script id_227',
-        target: 1000,
-        status: "75",
-        speeches: '35',
-        assignee: "MD. Eman Hasan",
-        assigned_date: "30/01/2022",
-        deadline: "30/01/2022",
-        remark: ""
-    },
-    {
-        key: '10-228a',
-        script: 'Script id_227',
-        target: 1000,
-        status: "75",
-        speeches: '35',
-        assignee: "MD. Eman Hasan",
-        assigned_date: "30/01/2022",
-        deadline: "30/01/2022",
-        remark: ""
-    },
-    {
-        key: '10-229a',
-        script: 'Script id_227',
-        target: 1000,
-        status: "75",
-        speeches: '35',
-        assignee: "MD. Eman Hasan",
-        assigned_date: "30/01/2022",
-        deadline: "30/01/2022",
-        remark: ""
-    }, {
-        key: '10-230a',
-        script: 'Script id_227',
-        target: 1000,
-        status: "75",
-        speeches: '35',
-        assignee: "MD. Eman Hasan",
-        assigned_date: "30/01/2022",
-        deadline: "30/01/2022",
-        remark: ""
-    },
-
-
-];
 const Type8 = () => {
-    const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
-    const [open, setOpen] = useState(false);
-    const [drawerData, setDrawerData] = useState<any>();
-    const [active, setActive] = useState<string>("")
-    const navigate = useNavigate();
-    // const [searchedColumn, setSearchedColumn] = useState("");
+  const { selectedTargetList: dataList } = useAssigneContext();
+  const [open, setOpen] = useState(false);
+  const [openScriptModal, setOpenScriptModal] = useState<boolean>(false);
+  const [selectedTarget, setSelectedTarget] = useState<TargetItemDT | null>(
+    null
+  );
+  const [openTargetModal, setOpenTargetModal] = useState<boolean>(false);
+  const [openAssigneeModal, setOpenAssigneeModal] = useState<boolean>(false);
+  const [openDeadlineModal, setOpenDeadlineModal] = useState<boolean>(false);
+  const [remarkModal, setRemrkModal] = useState<boolean>(false);
+  const [drawerData, setDrawerData] = useState<any>();
 
-    const showDrawer = (key: any) => {
-        setOpen(true);
-        setDrawerData(key)
-    };
+  const changeScriptModal = (open: boolean, target: TargetItemDT) => {
+    setOpenScriptModal(open);
+    setSelectedTarget(target);
+  };
+  const changeTargetModal = (open: boolean, target: TargetItemDT) => {
+    setOpenTargetModal(open);
+    setSelectedTarget(target);
+  };
+  const changeAssigneeModal = (open: boolean, target: TargetItemDT) => {
+    setOpenAssigneeModal(open);
+    setSelectedTarget(target);
+  };
+  const changeDeadlineModal = (open: boolean, target: TargetItemDT) => {
+    setOpenDeadlineModal(open);
+    setSelectedTarget(target);
+  };
+  const changeRemarkModal = (open: boolean, target: TargetItemDT) => {
+    setRemrkModal(open);
+    setSelectedTarget(target);
+  };
 
-
-
-
-    const Type8columns: ColumnsType<any> = [
-
-        {
-            title: `${"# Target ID".toLocaleUpperCase()}`,
-            render: (data) => <p># {data.key}</p>,
-
-        },
-        {
-            title: `${"Script".toLocaleUpperCase()}`,
-            dataIndex: 'script',
-
-
-        },
-        {
-            title: `${"target".toLocaleUpperCase()}`,
-            dataIndex: 'target',
-
-        },
-        {
-            title: `${"Assignee".toLocaleUpperCase()}`,
-            dataIndex: 'assignee',
-
-        },
-        {
-            title: `${"Assigned date".toLocaleUpperCase()}`,
-            dataIndex: 'assigned_date',
-
-        },
-        {
-            title: `${"Deadline".toLocaleUpperCase()}`,
-            dataIndex: 'deadline',
-
-        },
-        {
-            title: `${"REMARK".toLocaleUpperCase()}`,
-            width: 136,
-            align: "center",
-            render: (data) => (
-                <div className='flex justify-center'>
-                    <img src={Icons.Script} className="h-[15px] w-[12px]" alt="" />
-                </div>
-            )
-        },
-        {
-            title: `${"Details".toLocaleUpperCase()}`,
-            align: 'center',
-            width: 80,
-            render: (_, record) => (
-                <>
-
-                    <div className='flex w-full justify-center items-center'>
-                        <img
-                            onClick={() => showDrawer(record)}
-                            className='w-[14px] h-[14px] cursor-pointer'
-                            src={Icons.open_in_new}
-                            alt="" />
-                    </div>
-
-                </>)
-        },
-    ];
-
-
-    const rowSelection = {
-        onChange: (selectedRowKeys: React.Key[], selectedRows: any[]) => {
-            console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-        },
-        getCheckboxProps: (record: any) => ({
-            // disabled: record.name === 'Disabled User', // Column configuration not to be checked
-            name: record.name,
-        }),
-    };
-    return (
-        <div className='billing-table type4-table'>
-
-            <Table
-                rowSelection={{
-                    type: selectionType,
-                    ...rowSelection,
-                }}
-                columns={Type8columns}
-                dataSource={data}
-                pagination={false}
+  const showDrawer = (key: any) => {
+    setOpen(true);
+    setDrawerData(key);
+  };
+  const Type8columns: ColumnsType<any> = [
+    {
+      title: `${"# Target ID".toLocaleUpperCase()}`,
+      render: (data: TargetItemDT) => <p># {data?.id}</p>,
+    },
+    {
+      title: `${"Script".toLocaleUpperCase()}`,
+      render: (data: TargetItemDT) => (
+        <div className="flex items-center gap-1 relative">
+          <p># {data?.script?.current?.id}</p>
+          <Buttons.IconButton.Circle
+            onClick={() => changeScriptModal(true, data)}
+            size="medium"
+            variant="CT-Blue"
+            icon={<CaretDownOutlined style={{ color: "#6B7B8C" }} />}
+            background="transparent"
+          />
+          <div
+            className={`${
+              !openScriptModal && "hidden"
+            } bg-opacity-10 inset-0 bg-black animate-fadeIn fixed top-0 left-0 h-full w-full z-[90]`}
+            onClick={() => setOpenScriptModal(false)}
+          ></div>
+          {openScriptModal && selectedTarget?.id === data?.id && (
+            <div className="absolute top-6 right-0 w-[420px] bg-white rounded-md z-[100]">
+              <ScriptTargetModal scriptList={selectedTarget?.script?.list} />
+            </div>
+          )}
+        </div>
+      ),
+    },
+    {
+      title: `${"target".toLocaleUpperCase()}`,
+      render: (data: TargetItemDT) => (
+        <div className="flex items-center gap-1 relative">
+          <p># {data?.target?.current?.target}</p>
+          <Buttons.IconButton.Circle
+            onClick={() => changeTargetModal(true, data)}
+            size="medium"
+            variant="CT-Blue"
+            icon={<CaretDownOutlined style={{ color: "#6B7B8C" }} />}
+            background="transparent"
+          />
+          <div
+            className={`${
+              !openTargetModal && "hidden"
+            } bg-opacity-10 inset-0 bg-black animate-fadeIn fixed top-0 left-0 h-full w-full z-[90]`}
+            onClick={() => setOpenTargetModal(false)}
+          ></div>
+          {openTargetModal && selectedTarget?.id === data?.id && (
+            <div className="absolute top-6 right-0 w-[420px] bg-white rounded-md z-[100]">
+              <CriteriaTargetModal
+                criteriaList={selectedTarget?.target?.list}
+              />
+            </div>
+          )}
+        </div>
+      ),
+    },
+    {
+      title: `${"Assignee".toLocaleUpperCase()}`,
+      render: (data: TargetItemDT) => (
+        <div className="flex items-center justify-between gap-1 relative">
+          <div className="flex items-start gap-2">
+            <img
+              src={Icons.admin}
+              alt=""
+              className="w-[18px] h-[18px] object-cover"
             />
+            <div className="flex flex-col ">
+              <h2 className="font-[500] text-[#2D516E]">
+                {data?.assignee?.current?.id}
+              </h2>
+              <p className="text-ct-blue-95 text-xs font-[300] mt-0">Manager</p>
+            </div>
+          </div>
 
-            <SideDrawer.Type3 open={open} setOpen={setOpen} drawerData={drawerData} />
+          <Buttons.IconButton.Circle
+            onClick={() => changeAssigneeModal(true, data)}
+            size="medium"
+            variant="CT-Blue"
+            icon={<CaretDownOutlined style={{ color: "#6B7B8C" }} />}
+            background="transparent"
+          />
+          <div
+            className={`${
+              !openAssigneeModal && "hidden"
+            } bg-opacity-10 inset-0 bg-black animate-fadeIn fixed top-0 left-0 h-full w-full z-[90]`}
+            onClick={() => setOpenAssigneeModal(false)}
+          ></div>
+          {openAssigneeModal && selectedTarget?.id === data?.id && (
+            <div className="absolute top-6 right-0 w-[420px] bg-white rounded-md z-[100]">
+              <AssigneeTargetModal
+                assigneeList={selectedTarget?.assignee?.list}
+              />
+            </div>
+          )}
+        </div>
+      ),
+    },
+    {
+      title: `${"Deadline".toLocaleUpperCase()}`,
+      dataIndex: "deadLine",
+      render: (value: string, record: TargetItemDT) => (
+        <div className="flex items-center gap-1 relative">
+          <p>{value}</p>
+          <Buttons.IconButton.Circle
+            onClick={() => changeDeadlineModal(true, record)}
+            size="medium"
+            variant="CT-Blue"
+            icon={<CalendarOutlined style={{ color: "#6B7B8C" }} />}
+            background="transparent"
+          />
+        </div>
+      ),
+    },
+    {
+      title: `${"REMARK".toLocaleUpperCase()}`,
+      width: 136,
+      render: (data) => (
+        <div className="relative">
+          <Buttons.IconButton.Circle
+            onClick={() => changeRemarkModal(true, data)}
+            size="medium"
+            variant="CT-Blue"
+            icon={
+              <img src={Icons.Script} className="h-[15px] w-[12px]" alt="" />
+            }
+            background="transparent"
+          />
+          <div
+            className={`${
+              !remarkModal && "hidden"
+            } bg-opacity-10 inset-0 bg-black animate-fadeIn fixed top-0 left-0 h-full w-full z-[90]`}
+            onClick={() => setRemrkModal(false)}
+          ></div>
+          {remarkModal && selectedTarget?.id === data?.id && (
+            <div className="absolute top-6 right-0 w-[560px] bg-white rounded-md z-[100]">
+              <RemarkTargetModal
+                setModalOpen={setRemrkModal}
+                target={selectedTarget as TargetItemDT}
+              />
+            </div>
+          )}
+        </div>
+      ),
+    },
+    {
+      title: `${"Details".toLocaleUpperCase()}`,
+      align: "center",
+      width: 80,
+      render: (value, record) => (
+        <Buttons.IconButton.Circle
+          onClick={() => showDrawer(record)}
+          size="medium"
+          variant="CT-Blue"
+          icon={
+            <img
+              className="w-[14px] h-[14px] cursor-pointer"
+              src={Icons.open_in_new}
+              alt=""
+            />
+          }
+          background="transparent"
+        />
+      ),
+    },
+  ];
 
-        </div >
-    );
+  const rowSelection = {
+    onChange: (selectedRowKeys: React.Key[], selectedRows: any[]) => {
+      console.log("Selected Rows, ", selectedRowKeys);
+    },
+    getCheckboxProps: (record: any) => ({
+      //   name: record.id,
+    }),
+  };
+
+  return (
+    <div className="billing-table type4-table">
+      <div
+        className={`${
+          !openDeadlineModal && "hidden"
+        } bg-opacity-10 inset-0 bg-black animate-fadeIn fixed top-0 left-0 h-full w-full z-[90]`}
+        onClick={() => setOpenDeadlineModal(false)}
+      ></div>
+      <Table
+        rowSelection={{
+          type: "checkbox",
+          ...rowSelection,
+        }}
+        rowKey={(record: TargetItemDT) => record.id}
+        columns={Type8columns}
+        dataSource={dataList}
+        pagination={false}
+      />
+      {openDeadlineModal && selectedTarget !== null && (
+        <div className="absolute top-0 right-0">
+          <DatePicker
+            bordered={false}
+            open={openDeadlineModal}
+            popupClassName="target_deadline_date_picker"
+          />
+        </div>
+      )}
+
+      <SideDrawer.Type3 open={open} setOpen={setOpen} drawerData={drawerData} />
+    </div>
+  );
 };
 
 export default Type8;

@@ -1,5 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;275;300;400;500;600;700&display=swap");
 @tailwind base;
+
+/* Firefox */
+.custom_scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #e0e7ef;
+}
+
+/* Chrome, Edge, and Safari */
+.custom_scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.custom_scrollbar::-webkit-scrollbar-track {
+  background: inherit;
+  border-radius: 5px;
+}
+
+.custom_scrollbar::-webkit-scrollbar-thumb {
+  background-color: inherit;
+  border-radius: 14px;
+  border: 3px solid #e0e7ef;
+}
+
 @tailwind components;
 @tailwind utilities;
 
@@ -25,7 +48,7 @@
   }
 
   .sideDrawerDeactiveNav {
-    @apply text-blue-gray-A50 rounded-[20px] px-[10px] py-[5px] flex justify-between items-center
+    @apply text-blue-gray-A50 rounded-[20px] px-[10px] py-[5px] flex justify-between items-center;
   }
 
   .comboBoxLabel {
@@ -33,28 +56,27 @@
   }
 
   .xSmallButton {
-    @apply text-xxs font-medium py-2 px-7 rounded-md
+    @apply text-xxs font-medium py-2 px-7 rounded-md;
   }
 
   .smallButton {
-    @apply text-small font-medium py-2 px-8 rounded-md
+    @apply text-small font-medium py-2 px-8 rounded-md;
   }
 
   .mediumButton {
-    @apply text-base font-medium py-[10px] px-8 rounded-md
+    @apply text-base font-medium py-[10px] px-8 rounded-md;
   }
   .xSmallIconButton {
-    @apply text-xxs font-medium py-2 rounded-md
+    @apply text-xxs font-medium py-2 rounded-md;
   }
 
   .smallIconButton {
-    @apply text-small font-medium py-2 rounded-md
+    @apply text-small font-medium py-2 rounded-md;
   }
 
   .mediumIconButton {
-    @apply text-base font-medium py-[10px] rounded-md
+    @apply text-base font-medium py-[10px] rounded-md;
   }
-
 }
 
 body {
@@ -129,8 +151,8 @@ pre {
 
 .script-modal-description {
   display: -webkit-box;
-    width: 752px;
-    -webkit-line-clamp: 6;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  width: 752px;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

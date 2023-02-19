@@ -8,6 +8,16 @@ import Type7 from "./Type7";
 import Type8 from "./Type8";
 import Type9 from "./Type9";
 
-const Table = { Type1, Type2, Type3, Type4, Type5, Type6, Type7, Type8, Type9 };
+const Table = {
+  Type1,
+  Type2,
+  Type3,
+  Type4,
+  Type5,
+  Type6,
+  Type7,
+  Type8,
+  Type9,
+};
 
 export default Table;

@@ -1,0 +1,8 @@
+.criteria_details_table tr:first-child td:first-child {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+.criteria_details_table tr:last-child td:first-child {
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
