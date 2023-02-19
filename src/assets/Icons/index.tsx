@@ -110,6 +110,7 @@ import Face from './face.png';
 import HomeLight from './home_light.svg';
 import Pdf from './picture_as_pdf.svg';
 import Write from './write.svg';
+import Loading from './loading.svg';
 
 const Icons = {
   currency,
@@ -223,7 +224,8 @@ const Icons = {
   Military,
   HomeLight,
   Pdf,
-  Write
+  Write,
+  Loading
 };
 
 export default Icons;

@@ -1,10 +1,10 @@
 import { Button } from '@mui/material';
 import React, { Dispatch, SetStateAction, useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { CustomModal } from '.';
 import Icons from '../../../assets/Icons';
 import { ScriptContext } from '../../../context/ScriptProvider';
-import { CREATE_SCRIPT } from '../../../helpers/Slug';
+import { CREATE_SCRIPT, SCRIPT_PATH } from '../../../helpers/Slug';
 import Buttons from '../../Buttons';
 
 interface Props {
@@ -15,12 +15,14 @@ interface Props {
 
 const Type1 = ({ open, setOpen }: Props) => {
     const scriptContext = useContext(ScriptContext)
-    const [value, setValue] = useState<string>(scriptContext.scriptModule)
+    const [value, setValue] = useState<string>(scriptContext.scriptModule);
+    const location = useLocation();
 
     const handleSave = () => {
         scriptContext.setScriptModule(value)
         setOpen(false)
     }
+        
     return (
         <div>
             <CustomModal.Primary
@@ -127,7 +129,7 @@ const Type1 = ({ open, setOpen }: Props) => {
                     </div>
 
                     <div className='flex gap-3 px-5 pb-5 pt-10'>
-                        <Link to={CREATE_SCRIPT}>
+                        <Link to={location.pathname === SCRIPT_PATH ? CREATE_SCRIPT : ''}>
                             <Buttons.LabelButton.Primary
 
                                 label='Start'

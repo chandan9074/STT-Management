@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import Icons from "../../assets/Icons";
+import { CREATE_TARGET_PATH } from '../../helpers/Slug';
 import { slugFormatter } from '../../helpers/Utils';
 
 const Secondary = () => {
@@ -9,7 +10,7 @@ const Secondary = () => {
 
   return (
     <div className="flex justify-between items-center pt-4 pb-2 pr-4 pl-[73px] fixed w-full z-[90] bg-white">
-      <div className="flex items-center ml-[240px]">
+      <div className={`${location.pathname === CREATE_TARGET_PATH ? 'ml-[23px]' : 'ml-[240px]'} flex items-center`}>
         {
           location.pathname.split('/').slice(1)?.map((value, i) => (
             <div key={i} className='flex items-center gap-x-[4px]'>

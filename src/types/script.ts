@@ -14,31 +14,31 @@ export type getAllScriptsParamsDT = {
   role: string;
 };
 export type allScriptResDT = {
-  id: string;
+  id?: string;
   sourceUrl: string;
   module: string;
   domain: string;
   subdomain: string;
-  distributionSource: string;
+  distributionSource?: string;
   title: string;
-  isAge: boolean;
+  isAge?: boolean;
   sourceType: string;
   sourceFile: string;
   description: string;
-  date: string,
+  date?: string,
   sourceFileName: string
 
 }
 
-export type createScriptDt = {
-  sourceFile: any;
-  sourceUrl: string;
-  module: string;
-  sourceType: string;
-  domain: string;
-  subdomain: string;
-  distributionSource: string;
-  isAge: boolean;
-  title: string;
-  description: string;
-}
+// export type createScriptDt = {
+//   sourceFile: any;
+//   sourceUrl: string;
+//   module: string;
+//   sourceType: string;
+//   domain: string;
+//   subdomain: string;
+//   distributionSource: string;
+//   isAge: boolean;
+//   title: string;
+//   description: string;
+// }

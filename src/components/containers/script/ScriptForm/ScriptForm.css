@@ -69,6 +69,8 @@ textarea {
 
 .MuiAutocomplete-option[aria-selected="true"] {
     background-color: #E1EFFE !important;
+    color: #2C79BE !important;
+    font-weight: 500;
 }
 
 .MuiAutocomplete-option[aria-selected="true"]::after {
@@ -100,6 +102,8 @@ textarea {
 /* Select */
 .MuiMenuItem-root.Mui-selected {
     background: #E1EFFE !important;
+    color: #2C79BE !important;
+    font-weight: 500;
 }
 
 .MuiMenuItem-root.Mui-selected::after {
@@ -111,12 +115,23 @@ textarea {
     content: "";
 }
 
+.MuiMenuItem-root {
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    color: #464E5F !important;
+}
+
 .MuiOutlinedInput-input {
     color: #464E5F !important;
     font-size: 14px !important;
     font-weight: 600 !important;
 }
 
+.css-gdh49b-MuiAutocomplete-listbox .MuiAutocomplete-option  {
+    color: #464E5F !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+}
 
 
 

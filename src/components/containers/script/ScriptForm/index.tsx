@@ -14,6 +14,7 @@ import { distributionList } from '../../../../data/Script/Domain';
 import { ScriptContext } from '../../../../context/ScriptProvider';
 import { allScriptResDT } from '../../../../types/script';
 
+
 const theme = createTheme({
 
     components: {
@@ -57,15 +58,15 @@ const ScriptForms = ({ data }: { data?: allScriptResDT }) => {
             sourceFileName: data?.sourceFileName || ''
         },
         validationSchema: validationSchema,
-       
+
         // onSubmit: (values) => {
         //     console.log('on submit');
-            
+
         //     let formData = new FormData();
-          
+
         //     // Keep track of whether any values have changed
         //     let hasChanges = false;
-          
+
         //     // Loop through the values object
         //     for (const [key, value] of Object.entries(values)) {
         //       // Check if the value has changed from the initial data
@@ -76,12 +77,12 @@ const ScriptForms = ({ data }: { data?: allScriptResDT }) => {
         //         hasChanges = true;
         //       }
         //     }
-          
+
         //     // If no changes have been made, exit the function
         //     if (!hasChanges) {
         //       return;
         //     }
-          
+
         //     // Add the id to the formData object if data exists
         //     if (data) {
         //       formData.append('id', data.id);
@@ -91,45 +92,55 @@ const ScriptForms = ({ data }: { data?: allScriptResDT }) => {
         //     }
         //   },
 
-        onSubmit: (values) => {
-            let formData = new FormData();
+        onSubmit: (values: allScriptResDT) => {
+
             
+            if (scriptModule === 'TTS') {
+                delete values.distributionSource;
+                delete values.isAge;
+            }
+
+
+
+            let formData = new FormData();
+
             // Append the module field to the formData object
             formData.append('module', values.module);
-            
+
             // Check if any field values have changed
             let hasChanges = false;
             for (const [key, value] of Object.entries(values)) {
-              // Check if the value has changed from the initial data
-              if (value !== data?.[key as keyof allScriptResDT]) {
-                hasChanges = true;
-                // Convert boolean values to strings
-                const valueToAppend = typeof value === 'boolean' ? value.toString() : value;
-                formData.append(key, valueToAppend);
-              }
+                // Check if the value has changed from the initial data
+                if (value !== data?.[key as keyof allScriptResDT]) {
+                    hasChanges = true;
+                    // Convert boolean values to strings
+                    const valueToAppend = typeof value === 'boolean' ? value.toString() : value;
+                    formData.append(key, valueToAppend);
+                }
             }
-            
+
             // If no values have changed, add only the module field to the formData object
             if (!hasChanges) {
-              const module = values.module;
-              formData = new FormData();
-              formData.append('module', module);
+                const module = values.module;
+                formData = new FormData();
+                formData.append('module', module);
             }
-            
+
             // Add the id to the formData object if data exists
-            if (data) {
-              formData.append('id', data.id);              
-              const res = updateScript(formData);
+            if (data && data.id) {
+                formData.append('id', data.id);
+                const res = updateScript(formData);
             } else {
-              const res = createScript(formData);
+                const res = createScript(formData);
             }
-          }
+
+            
+        }
     });
 
     useEffect(() => {
         setScriptModule(formik.values.module)
-    }, [formik.values.module])
-
+    }, [formik.values.module]);
 
     return (
         <div className='w-full flex justify-center script-form'>

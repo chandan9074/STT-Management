@@ -10,7 +10,7 @@ import Select from '@mui/material/Select';
 
 
 const Domain = ({ formik }: { formik: any }) => {
-    const [domain, sebDomain] = useState<string>('');
+    // const [domain, sebDomain] = useState<string>('');
 
     return (
         <div className='mb-[28px] domain'>
@@ -35,13 +35,12 @@ const Domain = ({ formik }: { formik: any }) => {
                                     if (typeof event.target.value === 'string') {
 
                                         formik.setFieldValue('domain', event.target.value)
-                                        sebDomain(event.target.value);
-                                        console.log('*********', event.target.value);
+                                        // sebDomain(event.target.value);
 
 
                                     } else {
                                         formik.setFieldValue('domain', '')
-                                        sebDomain('');
+                                        // sebDomain('');
 
                                     }
                                 }}
@@ -73,8 +72,8 @@ const Domain = ({ formik }: { formik: any }) => {
                         disableClearable
                         placeholder='Choose one'
                             id="sub-domain"
-                            disabled={domain === ''}
-                            className={`${domain === '' && 'sub-domain'}`}
+                            disabled={formik.values.domain === ''}
+                            className={`${formik.values.domain === '' && 'sub-domain'}`}
                             style={{ width: '100%', cursor: 'pointer' }}
                             options={scriptSubDomain}
                             // value={formik.values.subdomain || scriptsubdomain[0]}

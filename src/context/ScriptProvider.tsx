@@ -1,9 +1,6 @@
-import React, { createContext, useContext, useState } from "react";
-import Icons from "../assets/Icons";
-import { Toast } from "../components/Toast";
+import React, { createContext, useState } from "react";
 import ScriptService from "../services/scriptService";
-import { allScriptResDT, createScriptDt, getAllScriptsParamsDT } from "../types/script";
-import { CommonContext } from "./CommonProvider";
+import { allScriptResDT, getAllScriptsParamsDT } from "../types/script";
 
 
 interface ContextProps {
@@ -21,6 +18,7 @@ interface ContextProps {
   updateScript: (params: any) => any;
   setScriptModule: React.Dispatch<React.SetStateAction<string>>;
   scriptModule: string;
+  loading: boolean;
 }
 
 export const ScriptContext = createContext({} as ContextProps);
@@ -31,6 +29,7 @@ const ScriptProvider = ({ children }: { children: any }) => {
   const [scriptsData, setScriptsData] = useState<allScriptResDT>()
   const [singleScript, setSingleScript] = useState<any>({});
   const [scriptModule, setScriptModule] = useState<string>('STT');
+  const [loading, setLoading] = useState<boolean>(false);
 
   const uploadCsv = async (formData: any) => {
 
@@ -38,25 +37,48 @@ const ScriptProvider = ({ children }: { children: any }) => {
   };
 
   const getAllScript = async (params: getAllScriptsParamsDT) => {
-    const response = await ScriptService.getAllScript(params);
-    setScriptsData(response.data.scripts);
+    try {
+      const response = await ScriptService.getAllScript(params);
+      setScriptsData(response.data.scripts);
+    } catch (error) {
+      console.log('error', error);
+    }
+
   }
 
-  const getScriptById = async(data: any) => {
-    const response = await ScriptService.getScriptById(data);
-     setSingleScript(response?.data);
+  const getScriptById = async (data: any) => {
+    try {
+      const response = await ScriptService.getScriptById(data);
+      setSingleScript(response?.data);
+      setScriptModule(response?.data?.module)
+    } catch (error) {
+      console.log('error', error);
+    }
   }
 
   const createScript = async (params: any) => {
-    const response = await ScriptService.createScript(params);
-    return {
-      message: response?.data?.message,
-      status: response?.status
+    try {
+      const response = await ScriptService.createScript(params);
+      return {
+        message: response?.data?.message,
+        status: response?.status
+      }
+    } catch (error) {
+      console.log('error', error);
+
     }
   }
 
   const updateScript = async (params: any) => {
-    const response = await ScriptService.UpdateScript(params);
+    try {
+      setLoading(true);
+      const response = await ScriptService.UpdateScript(params);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.log('error', error);
+
+    }
     // return {
     //   message: response?.data?.message,
     //   status: response?.status
@@ -76,9 +98,10 @@ const ScriptProvider = ({ children }: { children: any }) => {
         createScript,
         singleScript,
         getScriptById,
-        updateScript, 
+        updateScript,
         scriptModule,
-        setScriptModule
+        setScriptModule,
+        loading
       }}
     >
       {children}

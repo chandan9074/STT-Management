@@ -9,7 +9,7 @@ import * as PATH from "./helpers/Slug";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import Script from "./pages/Script";
-import ScriptForm from "./pages/Script/ScriptForm";
+import AddScript from "./components/containers/script/AddScript";
 import UserManagement from "./pages/UserManagement";
 import Paragraph from "antd/es/skeleton/Paragraph";
 import Activity from "./pages/UserManagement/Activity";
@@ -45,7 +45,7 @@ function App() {
         <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} />
         <Route path={PATH.SCRIPT_PATH} element={<Script />} />
         <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} />
-        <Route path={PATH.CREATE_SCRIPT} element={<ScriptForm />} />
+        <Route path={PATH.CREATE_SCRIPT} element={<AddScript />} />
         <Route path={`${PATH.EDIT_SCRIPT_PATH}/:id`} element={<EditScript />} />
         <Route path={PATH.USER_PATH} element={<UserManagement />} />
 

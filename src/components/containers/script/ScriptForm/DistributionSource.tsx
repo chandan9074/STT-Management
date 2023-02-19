@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -8,9 +8,14 @@ import { Checkbox, FormGroup } from '@mui/material';
 import { distributionList } from '../../../../data/Script/Domain';
 import Icons from '../../../../assets/Icons';
 import { CustomModal } from '../../../common/CustomModal';
+import { ScriptContext } from '../../../../context/ScriptProvider';
 
 
 const DistributionSource = ({ formik }: { formik: any }) => {
+
+    const scriptContext = useContext(ScriptContext);
+    const { scriptModule } = scriptContext;
+
 
     const [open, setOpen] = useState<boolean>(false);
 
@@ -31,66 +36,69 @@ const DistributionSource = ({ formik }: { formik: any }) => {
                 </button>
             </div>
 
-            <div className='flex'>
-                <div className='w-[580px]'>
-                    <h1 className='text-small font-medium text-blue-gray-75'>Distribution Source <span className='text-[red]'>*</span></h1>
+            {
+                scriptModule === "STT" &&
+                <div className='flex'>
+                    <div className='w-[580px]'>
+                        <h1 className='text-small font-medium text-blue-gray-75'>Distribution Source <span className='text-[red]'>*</span></h1>
 
+                        <div>
+                            <FormControl>
+                                <FormLabel style={{
+                                    color: '#5F6B7D',
+                                    fontWeight: '600',
+                                    fontSize: '14px'
+                                }}
+
+                                >
+                                </FormLabel>
+                                <RadioGroup
+                                    row
+                                    name="distributionSource"
+                                    value={formik.values.distributionSource}
+                                    onChange={formik.handleChange}
+                                    onBlur={() => formik.setFieldTouched("distributionSource", true)}
+                                // defaultValue='Read'
+                                >
+                                    {
+                                        distributionList?.map((value, i) => (
+                                            <FormControlLabel
+                                                style={{
+                                                    color: `${formik.values.distributionSource === value ? '#136EE5' : '#5F6B7D'} `,
+                                                    fontSize: '14px',
+                                                }}
+                                                key={i}
+                                                value={value}
+                                                control={<Radio
+                                                />}
+                                                label={value} />
+                                        ))
+                                    }
+                                </RadioGroup>
+                                {formik.touched.distributionSource && formik.errors.distributionSource ? (
+                                    <div className='text-red-600 text-xxs'>{formik.errors.distributionSource}</div>
+                                ) : null}
+                            </FormControl>
+                        </div>
+                    </div>
                     <div>
-                        <FormControl>
-                            <FormLabel style={{
-                                color: '#5F6B7D',
-                                fontWeight: '600',
-                                fontSize: '14px'
-                            }}
+                        <FormGroup>
+                            <h1 className='text-small font-medium text-blue-gray-75 '>Age</h1>
 
-                            >
-                            </FormLabel>
-                            <RadioGroup
-                                row
-                                name="distributionSource"
-                                value={formik.values.distributionSource}
-                                onChange={formik.handleChange}
-                                onBlur={() => formik.setFieldTouched("distributionSource", true)}
-                            // defaultValue='Read'
-                            >
-                                {
-                                    distributionList?.map((value, i) => (
-                                        <FormControlLabel
-                                            style={{
-                                                color: `${formik.values.distributionSource === value ? '#136EE5' : '#5F6B7D'} `,
-                                                fontSize: '14px',
-                                            }}
-                                            key={i}
-                                            value={value}
-                                            control={<Radio
-                                            />}
-                                            label={value} />
-                                    ))
-                                }
-                            </RadioGroup>
-                            {formik.touched.distributionSource && formik.errors.distributionSource ? (
-                                <div className='text-red-600 text-xxs'>{formik.errors.distributionSource}</div>
-                            ) : null}
-                        </FormControl>
+
+                            <FormControlLabel
+
+                                control={<Checkbox
+                                    name="isAge"
+                                    checked={formik.values.isAge}
+                                    onChange={() => formik.setFieldValue("isAge", !formik.values.isAge)}
+                                />}
+                                label={<h1 className='text-small font-medium text-blue-gray-75'>Child</h1>} />
+
+                        </FormGroup>
                     </div>
                 </div>
-                <div>
-                    <FormGroup>
-                        <h1 className='text-small font-medium text-blue-gray-75 '>Age</h1>
-
-
-                        <FormControlLabel
-
-                            control={<Checkbox
-                                name="isAge"
-                                checked={formik.values.isAge}
-                                onChange={() => formik.setFieldValue("isAge", !formik.values.isAge)}
-                            />}
-                            label={<h1 className='text-small font-medium text-blue-gray-75'>Child</h1>} />
-
-                    </FormGroup>
-                </div>
-            </div>
+            }
             {
                 <CustomModal.Type1
                     open={open}

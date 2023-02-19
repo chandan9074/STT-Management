@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { CommonContext } from '../../../../context/CommonProvider';
 import { ScriptContext } from '../../../../context/ScriptProvider';
-import ScriptForm from '../../../../pages/Script/ScriptForm';
 import { allScriptResDT } from '../../../../types/script';
 import Layouts from '../../../Layouts';
 import ScriptForms from '../ScriptForm';

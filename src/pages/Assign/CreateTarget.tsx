@@ -11,7 +11,7 @@ const CreateTarget = () => {
     const [dataShow, setDataShow] = useState<boolean>(false);
 
     return (
-        <Layouts.Forth>
+        <Layouts.Sixth>
 
             <div>
                 <div className='bg-red-03 shadow-box pl-[24px] pt-[41px]  pr-[13px]'>
@@ -37,30 +37,6 @@ const CreateTarget = () => {
                         </div>
                     </div>
 
-                    {/*<div className='flex gap-x-[15px]'>*/}
-                    {/*    {*/}
-                    {/*        targetTitle?.map((value: string) => (*/}
-                    {/*            <div key={value} className='bg-white w-[376px] h-[332px] flex justify-center items-center rounded-t-[6px]'>*/}
-                    {/*                <TargetBox*/}
-                    {/*                    targetTitle={value}*/}
-                    {/*                    onClick={openDrawer}*/}
-                    {/*                />*/}
-                    {/*            </div>*/}
-                    {/*        ))*/}
-                    {/*    }*/}
-
-                    {/*    <div>*/}
-                    {/*        /!* Use this for create target *!/*/}
-                    {/*        <Type1*/}
-                    {/*            isDrawerOpen={drawerOpen}*/}
-                    {/*            drawerClose={drawerClose}*/}
-                    {/*            title='Select Title'*/}
-                    {/*        >*/}
-                    {/*            side drawer*/}
-                    {/*        </Type1>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
-
                     <div className='flex gap-x-[15px]'>
                         <AddScript />
                         <CreateCriteria />
@@ -70,7 +46,7 @@ const CreateTarget = () => {
 
                 <TargetTable />
             </div>
-        </Layouts.Forth>
+        </Layouts.Sixth>
     );
 };
 
