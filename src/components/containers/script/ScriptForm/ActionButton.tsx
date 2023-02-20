@@ -29,6 +29,7 @@ const ActionButton = () => {
                         label='Create'
                         size='medium'
                         variant='CT-Blue'
+                        type='submit'
                        
                     />
             }

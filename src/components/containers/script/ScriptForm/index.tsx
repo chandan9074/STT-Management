@@ -13,6 +13,8 @@ import * as yup from 'yup';
 import { distributionList } from '../../../../data/Script/Domain';
 import { ScriptContext } from '../../../../context/ScriptProvider';
 import { allScriptResDT } from '../../../../types/script';
+import { useNavigate } from 'react-router-dom';
+import { SCRIPT_PATH } from '../../../../helpers/Slug';
 
 
 const theme = createTheme({
@@ -37,6 +39,8 @@ const validationSchema = yup.object({
 });
 
 const ScriptForms = ({ data }: { data?: allScriptResDT }) => {
+
+    const navigate = useNavigate();
 
     const scriptContext = useContext(ScriptContext);
     const { createScript, updateScript, scriptModule, setScriptModule } = scriptContext;
@@ -130,8 +134,10 @@ const ScriptForms = ({ data }: { data?: allScriptResDT }) => {
             if (data && data.id) {
                 formData.append('id', data.id);
                 const res = updateScript(formData);
+                navigate(SCRIPT_PATH);
             } else {
                 const res = createScript(formData);
+                navigate(SCRIPT_PATH);
             }
 
             
