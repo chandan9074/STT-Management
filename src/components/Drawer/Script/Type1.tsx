@@ -1,13 +1,13 @@
-import { Drawer } from 'antd';
-import React from 'react';
-import Icons from '../../../assets/Icons';
-import { scriptColorData } from '../../../data/assign/AssignData';
-import { filterData } from '../../../data/script/filter';
-import { getRandomInt } from '../../../helpers/Utils';
-import Buttons from '../../Buttons';
-import { Filter } from '../../Filter';
-import { SearchBox } from '../../SearchBox';
-import Table from '../../Table';
+import { Drawer } from "antd";
+import React from "react";
+import Icons from "../../../assets/Icons";
+import { scriptColorData } from "../../../data/assign/AssignData";
+import { filterData } from "../../../data/script/filter";
+import { getRandomInt } from "../../../helpers/Utils";
+import Buttons from "../../Buttons";
+import { Filter } from "../../Filter";
+import { SearchBox } from "../../SearchBox";
+import Table from "../../Table";
 
 type Props = {
     isDrawerOpen: boolean,
@@ -78,5 +78,6 @@ const Type1 = ({ isDrawerOpen, drawerClose, modalOpen, setModalOpen }: Props) =>
         </Drawer>
     );
 };
+
 
 export default Type1;

@@ -64,10 +64,10 @@ import Link from "./link.svg";
 import AddLink from "./add_link.svg";
 import Backup from "./backup.svg";
 import Add from "./add.svg";
-import ArrowRightBack from './arrow_right_alt.svg';
-import MusicIcon from './music 1.svg'
-import Title from './title.svg'
-import DisableCursor from './disableCursor.svg'
+import ArrowRightBack from "./arrow_right_alt.svg";
+import MusicIcon from "./music 1.svg";
+import Title from "./title.svg";
+import DisableCursor from "./disableCursor.svg";
 import arrow_drop_down_white from "./arrow_drop_down_white.svg";
 import dashboardNav from "./dashboardNav.svg";
 import scriptNav from "./scriptNav.svg";
@@ -75,14 +75,14 @@ import assignNav from "./assignNav.svg";
 import audioNav from "./audioNav.svg";
 import userNav from "./userNav.svg";
 import organizeNav from "./organizeNav.svg";
-import DottedDownArrow from './dotted-down-arrow.svg';
-import Gavel from './gavel.svg';
-import Shadow_bg from './shadow_bg.png'
-import Avatar from './Avatar.svg'
-import Up from './up.svg'
-import createSkeleton from './createSkeleton.svg'
-import collectSkeleton from './collectSkeleton.svg'
-import double_up_arrow from './dubble_up_arrow.svg'
+import DottedDownArrow from "./dotted-down-arrow.svg";
+import Gavel from "./gavel.svg";
+import Shadow_bg from "./shadow_bg.png";
+import Avatar from "./Avatar.svg";
+import Up from "./up.svg";
+import createSkeleton from "./createSkeleton.svg";
+import collectSkeleton from "./collectSkeleton.svg";
+import double_up_arrow from "./dubble_up_arrow.svg";
 import Script from "./script.svg";
 import BlueMusicIcon from "./blueMusicArrow.svg";
 import BlueRightArrow from "./blueRightArrow.svg";
@@ -111,6 +111,12 @@ import HomeLight from './home_light.svg';
 import Pdf from './picture_as_pdf.svg';
 import Write from './write.svg';
 import Loading from './loading.svg';
+import North from "./north.svg";
+import NorthNeviBlue from "./north_nevi_blue.svg";
+import South from "./south.svg";
+import SouthNeviBlue from "./south_nevi_blue.svg";
+import edit_blue from "./edit.svg";
+import delete_red from "./delete.svg";
 
 const Icons = {
   currency,
@@ -225,7 +231,13 @@ const Icons = {
   HomeLight,
   Pdf,
   Write,
-  Loading
+  Loading,
+  North,
+  NorthNeviBlue,
+  South,
+  SouthNeviBlue,
+  edit_blue,
+  delete_red,
 };
 
 export default Icons;
