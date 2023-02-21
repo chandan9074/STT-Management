@@ -47,22 +47,20 @@ const CriteriaTargetBox = ({
           />
         </div>
       ) : (
-        <div className="flex flex-col gap-3 items-start justify-start h-full w-full py-1">
+        <div className="flex flex-col items-start justify-start h-full w-full pb-1">
           {/* headers  */}
-          <div className="flex items-center gap-1 w-full px-4">
-            <div className="flex-[1]">
-              <Checkbox
-                onChange={(e) => selectCriteria(null, e.target.checked, true)}
-                checked={isAllSelected}
-                indeterminate={indeterminate}
-              />
-            </div>
-            <div className="flex-[6]">
-              <p className="text-[#6B7B8C] font-[500]">
+          <div className="flex items-center gap-1 w-full pt-3 pb-1 px-[11px]">
+            <Checkbox
+              onChange={(e) => selectCriteria(null, e.target.checked, true)}
+              checked={isAllSelected}
+              indeterminate={indeterminate}
+            />
+            <div className="flex-1 ml-5">
+              <p className="text-ct-blue-40 font-semibold text-xxs">
                 CRITERIA: {selectedCriteriaList?.length}
               </p>
             </div>
-            <div className="flex-[1] self-end">
+            <div className="self-end">
               <Buttons.IconButton.Circle
                 size="medium"
                 variant="CT-Blue"
@@ -71,7 +69,7 @@ const CriteriaTargetBox = ({
               />
             </div>
           </div>
-          <div className="flex flex-col gap-3 items-start justify-start h-full w-full py-1 overflow-y-auto custom_scrollbar">
+          <div className="flex flex-col gap-x-3 items-start justify-start h-full w-full py-1 overflow-y-auto custom_scrollbar">
             {/* //body  */}
             {selectedCriteriaList?.map((item, index) => (
               <CriteriaRowItem

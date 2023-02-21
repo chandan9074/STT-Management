@@ -117,6 +117,7 @@ import South from "./south.svg";
 import SouthNeviBlue from "./south_nevi_blue.svg";
 import edit_blue from "./edit.svg";
 import delete_red from "./delete.svg";
+import up_arrow_black from "./up_arrow_black.svg";
 
 const Icons = {
   currency,
@@ -238,6 +239,7 @@ const Icons = {
   SouthNeviBlue,
   edit_blue,
   delete_red,
+  up_arrow_black,
 };
 
 export default Icons;

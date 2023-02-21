@@ -41,18 +41,18 @@ const AssigneeTargetBox = ({
           />
         </div>
       ) : (
-        <div className="flex flex-col gap-3 items-start justify-start h-full w-full py-1">
+        <div className="flex flex-col items-start justify-start h-full w-full py-1">
           {/* headers  */}
-          <div className="flex items-center gap-1 w-full px-4">
-            <div className="flex-[6] flex items-center gap-3">
-              <Checkbox
-                onChange={(e) => selectAssigne(null, e.target.checked, true)}
-                checked={isAllSelected}
-                indeterminate={indeterminate}
-              />
-              <p className="text-[#6B7B8C] font-[500]">ASSIGNEE: 07</p>
+          <div className="flex items-center gap-1 w-full pt-3 pb-1 px-[11px]">
+            <Checkbox
+              onChange={(e) => selectAssigne(null, e.target.checked, true)}
+              checked={isAllSelected}
+              indeterminate={indeterminate}
+            />
+            <div className="flex-1 ml-5">
+              <p className="text-ct-blue-40 font-semibold text-xxs">ASSIGNEE: 07</p>
             </div>
-            <div className="flex-[1] self-end">
+            <div className="self-end">
               <Buttons.IconButton.Circle
                 size="medium"
                 variant="CT-Blue"
@@ -62,7 +62,7 @@ const AssigneeTargetBox = ({
             </div>
           </div>
           {/* //body  */}
-          <div className="flex flex-col gap-3 items-start justify-start h-full w-full py-1 overflow-y-auto custom_scrollbar">
+          <div className="flex flex-col gap-1 items-start justify-start h-full w-full py-1 overflow-y-auto custom_scrollbar">
             {selectedAssigneList.map((item, index) => (
               <AssigneeRowItem assignee={item} key={index} />
             ))}

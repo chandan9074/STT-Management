@@ -24,8 +24,9 @@ export interface CriteriaItemDT {
 export interface AssigneeItemDT {
   id: number;
   isSelected?: boolean;
-  target: number;
-  description: string;
+  role: string;
+  roleId: string;
+  name: string;
   image?: string;
 }
 
