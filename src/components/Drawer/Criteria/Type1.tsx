@@ -50,8 +50,10 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
         setLengthClick(false);
         setEmptySingleCriteria();
         setEmptyEditId();
-
     }
+
+    console.log('*************', isConfirmCancelModal);
+    
 
     return (
         <div>
@@ -61,7 +63,7 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
                     <Drawer
                         closeIcon={false}
                         placement="right"
-                        onClose={onCancelModalOpen}
+                        // onClose={() => onCancelModalOpen()}
                         open={isDrawerOpen}
                         width='715px'
                         maskClosable={false}
@@ -111,7 +113,7 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
                     <Drawer
                         closeIcon={false}
                         placement="right"
-                        onClose={onCancelModalOpen}
+                        // onClose={onCancelModalOpen}
                         open={isDrawerOpen}
                         width='477px'
                     >

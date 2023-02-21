@@ -2,6 +2,7 @@ import { Drawer } from 'antd';
 import React, { Children, Dispatch, SetStateAction, useState } from 'react';
 import Icons from '../../../assets/Icons';
 import Buttons from '../../Buttons';
+import MetaData from './MetaData';
 import Others from './Others';
 import Script  from './Script';
 import SpeakerCriteria from './SpeakerCriteria';
@@ -13,12 +14,16 @@ type Props = {
 }
 
 const Type1 = ({ isDrawerOpen, setIsDrawerOpen: setOpen }: Props) => {
-    const [activePanel, setActivePanel] = useState<string>("Script")
+    const [activePanel, setActivePanel] = useState<string>("Script");
+    const [isMetaData, setIsMetaData] = useState<boolean>(false);
 
     const onClose = () => {
         // drawerClose();
         setOpen(false);
     };
+
+    console.log('----', isMetaData);
+    
 
     return (
         <Drawer
@@ -30,7 +35,7 @@ const Type1 = ({ isDrawerOpen, setIsDrawerOpen: setOpen }: Props) => {
             style={{ zIndex: 999, transition: "0.3s" }}
         >
             {
-                isDrawerOpen &&
+                (isDrawerOpen && !isMetaData) ? 
                 <div className='animate-fadeIn'>
 
                     {/* Header */}
@@ -68,14 +73,15 @@ const Type1 = ({ isDrawerOpen, setIsDrawerOpen: setOpen }: Props) => {
                     <div className='px-5 pt-[46px]'>
                         {
                             activePanel.includes("Script") ?
-                            <Script />
+                            <Script setIsMetaData={setIsMetaData} isMetaData={isMetaData} />
                             :
                             activePanel.includes("Speaker Criteria")?
                             <SpeakerCriteria /> :
                             <Others />
                         }
                     </div>
-                </div>
+                </div> :
+                <MetaData setIsMetaData={setIsMetaData} />
             }
         </Drawer>
     );
