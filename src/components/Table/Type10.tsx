@@ -3,9 +3,9 @@ import { ColumnsType } from 'antd/es/table';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Icons from '../../assets/Icons';
-import { SideDrawer } from '../common/SideDrawer';
 import "../../assets/css/table/type4Table.css";
 import RoleImage from '../Image/RoleImage';
+import { Drawer } from '../Drawer';
 
 
 const data: any = [
@@ -14,67 +14,198 @@ const data: any = [
         script: 'Script id_227',
         target: 1000,
         status: "75",
-        speeches: '35',
+        speeches: '355',
+        maxSpeeches: '1000',
         assignee: "MD. Eman Hasan",
-        assigned_date: "30/01/2022",
+        assignedDate: "30/01/2022",
         deadline: "30/01/2022",
-        remark: ""
-        
+        remark: "",
+        role: 'Manager'
+
     },
     {
         key: '10-228a',
         script: 'Script id_227',
         target: 1000,
         status: "90",
-        speeches: '80',
+        speeches: '800',
+        maxSpeeches: '2000',
         assignee: "Sakib",
-        assigned_date: "30/01/2022",
+        assignedDate: "30/01/2022",
         deadline: "30/01/2022",
-        remark: ""
-        
+        remark: "",
+        role: 'Team Leader'
+
     },
     {
-        key: '10-229a',
-        script: 'Script id_227',
-        target: 1000,
-        status: "0",
-        speeches: '55',
-        assignee: "Tamim",
-        assigned_date: "30/01/2022",
-        deadline: "30/01/2022",
-        remark: ""
-        
-    }, {
         key: '10-230a',
         script: 'Script id_227',
         target: 1000,
         status: "20",
-        speeches: '10',
+        speeches: '100',
+        maxSpeeches: '1000',
         assignee: "Mushfiqur",
-        assigned_date: "30/01/2022",
+        assignedDate: "30/01/2022",
         deadline: "30/01/2022",
-        remark: ""
-        
+        remark: "",
+        role: 'Manager'
+
     },
 
+    {
+        key: '10-230a',
+        script: 'Script id_227',
+        target: 1000,
+        status: "20",
+        speeches: '800',
+        maxSpeeches: '3000',
+        assignee: "Mushfiqur",
+        assignedDate: "30/01/2022",
+        deadline: "30/01/2022",
+        remark: "",
+        role: 'Manager'
 
+    },
+    {
+        key: '10-230a',
+        script: 'Script id_227',
+        target: 1000,
+        status: "20",
+        speeches: '800',
+        maxSpeeches: '3000',
+        assignee: "Mushfiqur",
+        assignedDate: "30/01/2022",
+        deadline: "30/01/2022",
+        remark: "",
+        role: 'Manager'
+
+    },
+
+    {
+        key: '10-230a',
+        script: 'Script id_227',
+        target: 1000,
+        status: "20",
+        speeches: '800',
+        maxSpeeches: '3000',
+        assignee: "Mushfiqur",
+        assignedDate: "30/01/2022",
+        deadline: "30/01/2022",
+        remark: "",
+        role: 'Manager'
+
+    },
+    {
+        key: '10-230a',
+        script: 'Script id_227',
+        target: 1000,
+        status: "20",
+        speeches: '800',
+        maxSpeeches: '3000',
+        assignee: "Mushfiqur",
+        assignedDate: "30/01/2022",
+        deadline: "30/01/2022",
+        remark: "",
+        role: 'Manager'
+
+    },
+    {
+        key: '10-230a',
+        script: 'Script id_227',
+        target: 1000,
+        status: "20",
+        speeches: '800',
+        maxSpeeches: '3000',
+        assignee: "Mushfiqur",
+        assignedDate: "30/01/2022",
+        deadline: "30/01/2022",
+        remark: "",
+        role: 'Manager'
+
+    },
+    {
+        key: '10-230a',
+        script: 'Script id_227',
+        target: 1000,
+        status: "20",
+        speeches: '800',
+        maxSpeeches: '3000',
+        assignee: "Mushfiqur",
+        assignedDate: "30/01/2022",
+        deadline: "30/01/2022",
+        remark: "",
+        role: 'Manager'
+
+    },
+    {
+        key: '10-230a',
+        script: 'Script id_227',
+        target: 1000,
+        status: "20",
+        speeches: '800',
+        maxSpeeches: '3000',
+        assignee: "Mushfiqur",
+        assignedDate: "30/01/2022",
+        deadline: "30/01/2022",
+        remark: "",
+        role: 'Manager'
+
+    },
+    {
+        key: '10-230a',
+        script: 'Script id_227',
+        target: 1000,
+        status: "20",
+        speeches: '800',
+        maxSpeeches: '3000',
+        assignee: "Mushfiqur",
+        assignedDate: "30/01/2022",
+        deadline: "30/01/2022",
+        remark: "",
+        role: 'Manager'
+
+    },
+    {
+        key: '10-230a',
+        script: 'Script id_227',
+        target: 1000,
+        status: "20",
+        speeches: '800',
+        maxSpeeches: '3000',
+        assignee: "Mushfiqur",
+        assignedDate: "30/01/2022",
+        deadline: "30/01/2022",
+        remark: "",
+        role: 'Manager'
+
+    },
+    {
+        key: '10-230a',
+        script: 'Script id_227',
+        target: 1000,
+        status: "20",
+        speeches: '800',
+        maxSpeeches: '3000',
+        assignee: "Mushfiqur",
+        assignedDate: "30/01/2022",
+        deadline: "30/01/2022",
+        remark: "",
+        role: 'Manager'
+
+    },
 ];
 
 const Type10 = () => {
     const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
-    const [drawerData, setDrawerData] = useState<any>();
-    const [active, setActive] = useState<string>("")
-    const navigate = useNavigate();
     // const [searchedColumn, setSearchedColumn] = useState("");
 
     const showDrawer = (key: any) => {
         setOpen(true);
-        setDrawerData(key)
     };
 
     const getPercentage = (max: number, value: number) => {
-        const result = (max * value) / 100;
+        const result = (100 * value) / max;
         return result;
     }
 
@@ -83,30 +214,34 @@ const Type10 = () => {
         {
             title: `${"# Target ID".toLocaleUpperCase()}`,
             key: 'key',
-            render: (data) => <p># {data.key}</p>,
+            // align: 'center',
+            width: 120,
+            render: (data) => <h1 className='w-[120px] whitespace-nowrap'># {data.key}</h1>,
 
         },
         {
             title: `${"Script".toLocaleUpperCase()}`,
-            dataIndex: 'script',
             key: 'script',
+            width: 104,
+            render: (data) => <h1 className='w-[104px] whitespace-nowrap'>{data.script}</h1>,
 
 
 
         },
         {
             title: `${"target".toLocaleUpperCase()}`,
-            key: 'target',
-            dataIndex: 'target',
+            key: 'key',
+            width: 88,
+            render: (data) => <h1 className='w-[88px] whitespace-nowrap'> {data.target}</h1>,
 
         },
         {
             title: `${"status".toLocaleUpperCase()}`,
             key: 'status',
-            width: 136,
+            width: 160,
             render: (data) => (
-                <div>
-                    <h1>{data.status > 0 ? data?.status : 'Not'} Assigned</h1>
+                <div className='w-[160px]'>
+                    <h1>{data.status > 0 ? data?.status + '%' : 'Not'} Assigned</h1>
                     <div className='bg-blue-gray-20 h-[6px] rounded-[21px]'>
                         {
                             data?.status > 0 &&
@@ -124,18 +259,21 @@ const Type10 = () => {
 
         {
             title: `${"speeches".toLocaleUpperCase()}`,
-            width: 227,
             key: 'speeches',
+            width: 227,
             render: (data) => (
-                <div className='flex items-center gap-x-[13px]'>
+                <div className='flex items-center gap-x-[13px] w-[227px]'>
                     <div>
-                        <h1>{data.status > 0 ? data?.speeches : 'Not'} Assigned</h1>
+                        <div className='flex items-center gap-x-2'>
+                            <img className='w-4 h-4' src={Icons.MusicBlue} alt="" />
+                            <h1 className='text-xs text-secondary-blue-50 font-medium'>{data.speeches + '/' + data?.maxSpeeches} Uploaded</h1>
+                        </div>
                         <div className='bg-blue-gray-20 h-[6px] rounded-[21px] w-[175px]'>
                             {
                                 data?.status > 0 &&
                                 <div
                                     style={{
-                                        width: `${data.speeches}%`
+                                        width: `${getPercentage(data?.maxSpeeches, data?.speeches)}%`
                                     }}
                                     className='bg-secondary-blue-50 h-full rounded-l-[21px]' />
 
@@ -151,14 +289,39 @@ const Type10 = () => {
         {
             title: `${"Assignee".toLocaleUpperCase()}`,
             key: 'assignee',
-            width: 212,
+            width: 170,
             render: (data) => (
-                <div className='flex gap-x-2'>
+                <div className='flex gap-x-2 w-[212px]'>
                     <RoleImage width='w-[18px]' height='h-[18px]' role='speaker' />
                     <div>
                         <h1 className='text-xs text-blue-gray-80 font-medium m-0 leading-[15px]'>{data.assignee}</h1>
-                        <h1 className='text-xxs text-blue-gray-75 leading-[14px]'>Manager</h1>
+                        <h1 className='text-xxs text-blue-gray-75 leading-[14px]'>{data.role}</h1>
                     </div>
+                </div>
+            )
+        },
+
+        {
+            title: `${"Assigned date".toLocaleUpperCase()}`,
+            key: 'assignedDate',
+            width: 120,
+            render: (data) => <h1 className='w-[120px] whitespace-nowrap'># {data.assignedDate}</h1>,
+
+        },
+        {
+            title: `${"Deadline".toLocaleUpperCase()}`,
+            key: 'deadline',
+            width: 120,
+            render: (data) => <h1 className='w-[120px] whitespace-nowrap'># {data.deadline}</h1>,
+
+        },
+        {
+            title: `${"REMARK".toLocaleUpperCase()}`,
+            width: 80,
+            align: "center",
+            render: (data) => (
+                <div className='flex justify-center'>
+                    <img src={Icons.Script} className="h-[15px] w-[12px]" alt="" />
                 </div>
             )
         },
@@ -167,6 +330,7 @@ const Type10 = () => {
             title: `${"Details".toLocaleUpperCase()}`,
             align: 'center',
             key: 'details',
+            fixed: 'right',
             width: 80,
             render: (_, record) => (
                 <>
@@ -194,7 +358,7 @@ const Type10 = () => {
         }),
     };
     return (
-        <div className='billing-table type4-table'>
+        <div className='billing-table type4-table' >
 
             <Table
                 rowSelection={{
@@ -203,11 +367,15 @@ const Type10 = () => {
                 }}
                 columns={Type8columns}
                 dataSource={data}
-                pagination={false}
-                // scroll={{x: 768, y: 1000}}
+                // pagination={false}
+                // scroll={{ x: 768, y: 1000 }}
+                scroll={{ x: 1600 }}
             />
 
-            <SideDrawer.Type3 open={open} setOpen={setOpen} drawerData={drawerData} />
+            <Drawer.Target.Type1
+                isDrawerOpen={open}
+                setIsDrawerOpen={setOpen}
+            />
 
         </div >
     );

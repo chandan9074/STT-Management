@@ -111,6 +111,7 @@ import HomeLight from './home_light.svg';
 import Pdf from './picture_as_pdf.svg';
 import Write from './write.svg';
 import Loading from './loading.svg';
+import MusicBlue from './music_blue.svg';
 
 const Icons = {
   currency,
@@ -225,7 +226,8 @@ const Icons = {
   HomeLight,
   Pdf,
   Write,
-  Loading
+  Loading,
+  MusicBlue
 };
 
 export default Icons;
