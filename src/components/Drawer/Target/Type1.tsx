@@ -22,7 +22,6 @@ const Type1 = ({ isDrawerOpen, setIsDrawerOpen: setOpen }: Props) => {
         setOpen(false);
     };
 
-    console.log('----', isMetaData);
     
 
     return (

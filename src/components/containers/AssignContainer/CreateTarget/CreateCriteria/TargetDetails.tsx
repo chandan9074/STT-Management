@@ -35,7 +35,7 @@ const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void 
         },
         {
             title: 'Education',
-            value: 'higher Secondary'
+            value: singleCriteria?.education || '-'
         },
         {
             title: 'Smoking Habit',

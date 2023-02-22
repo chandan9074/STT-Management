@@ -11,6 +11,7 @@ import AddAssigneeModal from './AddAssigneeModal';
 const AddAssignee = () => {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
   const { selectedAssigneList } = useAssigneContext();
+  
   const drawerClose = () => {
     setDrawerOpen(false);
   };
@@ -48,13 +49,19 @@ const AddAssignee = () => {
 
       <div>
         {/* Use this for create target */}
-        <Type1
+        {/* <Type1
           isDrawerOpen={drawerOpen}
           drawerClose={drawerClose}
           title="Create Critaria"
         >
           <CriteriaForm drawerClose={drawerClose} />
-        </Type1>
+        </Type1> */}
+        {
+          drawerOpen &&
+          <AddAssigneeModal
+            handleModal={drawerClose}
+          />
+        }
       </div>
     </div>
   );

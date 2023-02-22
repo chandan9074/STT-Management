@@ -50,10 +50,7 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
         setLengthClick(false);
         setEmptySingleCriteria();
         setEmptyEditId();
-    }
-
-    console.log('*************', isConfirmCancelModal);
-    
+    }    
 
     return (
         <div>
