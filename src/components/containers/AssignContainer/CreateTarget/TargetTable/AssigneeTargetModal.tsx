@@ -73,9 +73,8 @@ const AssigneeTargetModal = ({ assigneeList }: Props) => {
           {assigneeList?.map((item, index) => (
             <div
               key={item?.id}
-              className={`flex items-center gap-1 w-full px-4 py-1 justify-between ${
-                selectedAssignee?.id === item?.id && "bg-[#E1EFFE]"
-              }`}
+              className={`flex items-center gap-1 w-full px-4 py-1 justify-between ${selectedAssignee?.id === item?.id && "bg-[#E1EFFE]"
+                }`}
             >
               <div className="flex-[13] flex gap-3">
                 <div className="flex items-center gap-2">
@@ -93,10 +92,10 @@ const AssigneeTargetModal = ({ assigneeList }: Props) => {
                     />
                     <div className="flex flex-col">
                       <h4 className="font-[500] text-ct-blue-60 text-[14px]">
-                        Target {item?.target}
+                        Target {item?.name}
                       </h4>
                       <p className="mt-0 text-ct-blue-60 text-xs font-[300] truncate text-ellipsis w-[280px]">
-                        {item?.description}
+                        {item?.role}, {item?.roleId}
                       </p>
                     </div>
                   </div>

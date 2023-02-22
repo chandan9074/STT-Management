@@ -30,10 +30,10 @@ const Tertiary = (props: Props) => {
                     </button>
                     :
                     <button {...rest}
-                        className={`border flex gap-2 items-center duration-200 font-bold
+                        className={`border flex gap-2 items-center duration-200
                                 ${variant === "CT-Blue" ? "text-ct-blue-60" : variant === "Blue" ? "text-secondary-blue-50" : ""}
-                                ${variant === "CT-Blue" ? "hover:border-blue-gray-A10" : "border-white"}
-                                ${variant === "Blue" ? "hover:border-blue-gray-A10" : "border-white"}
+                                ${variant === "CT-Blue" ? "hover:border-blue-gray-A10" : "border-transparent"}
+                                ${variant === "Blue" ? "hover:border-blue-gray-A10" : "border-transparent"}
                                 ${variant === "CT-Blue" ? "active:bg-blue-20" : variant === "Blue" ? "active:bg-blue-20" : ""}
                                 ${size === "xSmall" ? "xSmallIconButton" : size === "small" ? "smallIconButton" : "mediumIconButton"}
                                 ${iconAlign === "start" ? "pl-4 pr-6" : "pl-6 pr-4"}

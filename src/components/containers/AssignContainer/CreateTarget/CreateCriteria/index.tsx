@@ -21,21 +21,23 @@ const CreateCriteria = () => {
   return (
     <div className="h-full w-full flex flex-col justify-end">
       {selectedCriteriaList?.length > 0 && (
-        <Buttons.IconWithTextButton.Tertiary
-          style={{ border: "none" }}
-          label={"Create Critaria"}
-          size="medium"
-          variant="Blue"
-          disabled={false}
-          icon={
-            <img src={Icons.AddBlue} className="w-[12px] h-[12px]" alt="" />
-          }
-          iconAlign="start"
-          onClick={openDrawer}
-        />
+        <div className="mb-2">
+          <Buttons.IconWithTextButton.Tertiary
+            style={{ border: "none" }}
+            label={"Create Critaria"}
+            size="small"
+            variant="Blue"
+            disabled={false}
+            icon={
+              <img src={Icons.AddBlue} className="w-[12px] h-[12px]" alt="" />
+            }
+            iconAlign="start"
+            onClick={openDrawer}
+          />
+        </div>
       )}
 
-      <div className="bg-white w-full h-[332px] flex rounded-t-[6px] py-4">
+      <div className="bg-white w-full h-[332px] flex rounded-t-[6px]">
         <CriteriaTargetBox
           targetTitle={"Create Criteria"}
           onClick={openDrawer}

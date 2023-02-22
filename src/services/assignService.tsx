@@ -9,9 +9,11 @@ export default class AssignService {
   }
   static async fetchCriteriaList() {
     return criteriaDataList;
+    // return [];
   }
   static async fetchAssignList() {
     return assignDataList;
+    // return [];
   }
   static async fetchTargetList() {
     return targetDataList;
