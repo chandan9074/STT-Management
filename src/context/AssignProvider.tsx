@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import AssignService from "../services/assignService";
 import {
+  allScriptDT,
+  allScriptParamsDT,
   AssigneeItemDT,
   CriteriaItemDT,
   ScriptItemDT,
@@ -37,6 +39,8 @@ interface ContextProps {
     checked: boolean,
     selectAll?: boolean
   ) => void;
+  getAllScript: (data: allScriptParamsDT) => void;
+  allScript: allScriptDT | undefined;
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -56,6 +60,7 @@ const AssignProvider = ({ children }: { children: any }) => {
   const [selectedAssigneList, setSelectedAssigneList] = useState<AssigneeItemDT[]>([]);
   const [selectedCriteriaList, setSelectedCriteriaList] = useState<CriteriaItemDT[]>([]);
   const [selectedTargetList, setSelectedTargetList] = useState<TargetItemDT[]>([]);
+  const [allScript, setAllScript] = useState<allScriptDT | undefined>();
 
   const saveCriteria = (data: any) => {
     const filteredCriterias = criterias.filter((criteria: any, i: number) => i !== editId);
@@ -83,6 +88,13 @@ const AssignProvider = ({ children }: { children: any }) => {
 
   const setEmptyEditId = () => {
     setEditId(undefined);
+  }
+
+  const getAllScript = async (data: allScriptParamsDT) => {
+    const res = await AssignService.getAllScript(data);
+    // console.log(res)
+    setAllScript(res.data);
+    // return res;
   }
 
   useEffect(() => {
@@ -196,6 +208,8 @@ const AssignProvider = ({ children }: { children: any }) => {
         selectCriteria,
         selectScript,
         selectedTargetList,
+        getAllScript,
+        allScript
       }}
     >
       {children}

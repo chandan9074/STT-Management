@@ -54,3 +54,23 @@ export interface TargetItemDT {
     details: string;
   };
 }
+
+export type allScriptParamsDT = {
+  ascending?: boolean;
+  page: number;
+  pageSize: number;
+}
+
+export type allScriptDT = {
+  totalScript: number;
+  scripts: singleScriptDT[];
+}
+
+export type singleScriptDT = {
+  id: string;
+  title: string;
+  description: string;
+  domain: string;
+  subDomain: string;
+  frequency: number;
+}

@@ -5,55 +5,56 @@ import Icons from '../../assets/Icons';
 import { CustomModal } from '../common/CustomModal';
 import { SideDrawer } from '../common/SideDrawer';
 import "../../assets/css/table/type4Table.css";
+import { singleScriptDT } from '../../types/assignTypes';
 
-interface DataType {
-    key: React.Key;
-    id: number;
-    script: string;
-    frequency: number;
-}
+// interface DataType {
+//     key: React.Key;
+//     id: number;
+//     script: string;
+//     frequency: number;
+// }
 
 
-const data: DataType[] = [
-    {
-        key: '1',
-        id: 227,
-        script: "শহরের মাথা ছাড়িয়ে উঁচু বেদির ওপরে সুখী রাজকুমারের প্রতিমূর্তি দাঁড় করানো ছিল। মূর্তিটার সারা গায়ে পাতলা। শহরের মাথা ছাড়িয়ে উঁচু বেদির ওপরে সুখী রাজকুমারের প্রতিমূর্তি দাঁড় করানো ছিল। মূর্তিটার সারা গায়ে পাতলা",
-        frequency: 1200,
-    },
-    {
-        key: '2',
-        id: 228,
-        script: "শহরের মাথা ছাড়িয়ে উঁচু বেদির ওপরে সুখী রাজকুমারের প্রতিমূর্তি দাঁড় করানো ছিল। মূর্তিটার সারা গায়ে পাতলা। শহরের মাথা ছাড়িয়ে উঁচু বেদির ওপরে সুখী রাজকুমারের প্রতিমূর্তি দাঁড় করানো ছিল। মূর্তিটার সারা গায়ে পাতলা",
-        frequency: 200,
-    },
-    {
-        key: '3',
-        id: 229,
-        script: "শহরের মাথা ছাড়িয়ে উঁচু বেদির ওপরে সুখী রাজকুমারের প্রতিমূর্তি দাঁড় করানো ছিল। মূর্তিটার সারা গায়ে পাতলা। শহরের মাথা ছাড়িয়ে উঁচু বেদির ওপরে সুখী রাজকুমারের প্রতিমূর্তি দাঁড় করানো ছিল। মূর্তিটার সারা গায়ে পাতলা",
-        frequency: 1200,
-    },
-    {
-        key: '4',
-        id: 230,
-        script: "শহরের মাথা ছাড়িয়ে উঁচু বেদির ওপরে সুখী রাজকুমারের প্রতিমূর্তি দাঁড় করানো ছিল। মূর্তিটার সারা গায়ে পাতলা। শহরের মাথা ছাড়িয়ে উঁচু বেদির ওপরে সুখী রাজকুমারের প্রতিমূর্তি দাঁড় করানো ছিল। মূর্তিটার সারা গায়ে পাতলা",
-        frequency: 200,
-    },
-];
+// const data: DataType[] = [
+//     {
+//         key: '1',
+//         id: 227,
+//         script: "শহরের মাথা ছাড়িয়ে উঁচু বেদির ওপরে সুখী রাজকুমারের প্রতিমূর্তি দাঁড় করানো ছিল। মূর্তিটার সারা গায়ে পাতলা। শহরের মাথা ছাড়িয়ে উঁচু বেদির ওপরে সুখী রাজকুমারের প্রতিমূর্তি দাঁড় করানো ছিল। মূর্তিটার সারা গায়ে পাতলা",
+//         frequency: 1200,
+//     },
+//     {
+//         key: '2',
+//         id: 228,
+//         script: "শহরের মাথা ছাড়িয়ে উঁচু বেদির ওপরে সুখী রাজকুমারের প্রতিমূর্তি দাঁড় করানো ছিল। মূর্তিটার সারা গায়ে পাতলা। শহরের মাথা ছাড়িয়ে উঁচু বেদির ওপরে সুখী রাজকুমারের প্রতিমূর্তি দাঁড় করানো ছিল। মূর্তিটার সারা গায়ে পাতলা",
+//         frequency: 200,
+//     },
+//     {
+//         key: '3',
+//         id: 229,
+//         script: "শহরের মাথা ছাড়িয়ে উঁচু বেদির ওপরে সুখী রাজকুমারের প্রতিমূর্তি দাঁড় করানো ছিল। মূর্তিটার সারা গায়ে পাতলা। শহরের মাথা ছাড়িয়ে উঁচু বেদির ওপরে সুখী রাজকুমারের প্রতিমূর্তি দাঁড় করানো ছিল। মূর্তিটার সারা গায়ে পাতলা",
+//         frequency: 1200,
+//     },
+//     {
+//         key: '4',
+//         id: 230,
+//         script: "শহরের মাথা ছাড়িয়ে উঁচু বেদির ওপরে সুখী রাজকুমারের প্রতিমূর্তি দাঁড় করানো ছিল। মূর্তিটার সারা গায়ে পাতলা। শহরের মাথা ছাড়িয়ে উঁচু বেদির ওপরে সুখী রাজকুমারের প্রতিমূর্তি দাঁড় করানো ছিল। মূর্তিটার সারা গায়ে পাতলা",
+//         frequency: 200,
+//     },
+// ];
 
 // rowSelection object indicates the need for row selection
 const rowSelection = {
-    onChange: (selectedRowKeys: React.Key[], selectedRows: DataType[]) => {
+    onChange: (selectedRowKeys: React.Key[], selectedRows: singleScriptDT[]) => {
         console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
     },
-    getCheckboxProps: (record: DataType) => ({
+    getCheckboxProps: (record: singleScriptDT) => ({
         // disabled: record.name === 'Disabled User', // Column configuration not to be checked
         // record.id,
         // console.log(record.id)
     }),
 };
 
-const Type9 = () => {
+const Type9 = ({ data }: { data: singleScriptDT[] }) => {
     const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
     const [active, setActive] = useState("Active");
@@ -64,11 +65,11 @@ const Type9 = () => {
         setDrawerData(key)
     };
 
-    const handleActiveFrequencyChange=(value:string,confirm:any)=>{
-    setActive(value)
+    const handleActiveFrequencyChange = (value: string, confirm: any) => {
+        setActive(value)
     }
 
-     const getColumnSearchProps = (dataIndex: any): any => ({
+    const getColumnSearchProps = (dataIndex: any): any => ({
 
 
         filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }: any) => (
@@ -80,15 +81,15 @@ const Type9 = () => {
                     onClick={() => handleActiveFrequencyChange("asc", confirm)}
                 >
                     <div className="flex items-center gap-2">
-                      <div>
-                        <img src={active === "asc"?Icons.North:Icons.NorthNeviBlue}/>
-                      </div>
-                      <div>
-                        <p>Sort Ascending</p>
-                       </div>
+                        <div>
+                            <img src={active === "asc" ? Icons.North : Icons.NorthNeviBlue} />
+                        </div>
+                        <div>
+                            <p>Sort Ascending</p>
+                        </div>
                     </div>
                     <div>
-                        <img src={Icons.CorrectIcon}/>
+                        <img src={Icons.CorrectIcon} />
                     </div>
 
                 </div>
@@ -96,15 +97,15 @@ const Type9 = () => {
                     className={`flex gap-1 items-center justify-between px-4 py-3 rounded-t-lg cursor-pointer ${active === "desc" ? "text-[#2C79BE] font-bold bg-[rgba(44,121,190,0.12)]" : ""}`}
                     onClick={() => handleActiveFrequencyChange("desc", confirm)}>
                     <div className="flex items-center gap-2">
-                      <div>
-                        <img src={active === "asc"?Icons.South:Icons.SouthNeviBlue}/>
-                      </div>
-                      <div>
-                        <p>Sort Decending</p>
-                       </div>
+                        <div>
+                            <img src={active === "asc" ? Icons.South : Icons.SouthNeviBlue} />
+                        </div>
+                        <div>
+                            <p>Sort Decending</p>
+                        </div>
                     </div>
                     <div>
-                        <img src={Icons.CorrectIcon}/>
+                        <img src={Icons.CorrectIcon} />
                     </div>
 
                 </div>
@@ -141,18 +142,18 @@ const Type9 = () => {
 
 
 
-    const columns: ColumnsType<DataType> = [
+    const columns: ColumnsType<singleScriptDT> = [
         {
             title: "ID",
             width: 100,
             // align: "center",
             dataIndex: 'id',
-            render: (id: number) => <span className='text-ct-blue-60 text-xs font-medium'>{id}</span>,
+            render: (id: number) => <h1 className='text-ct-blue-60 text-xs font-medium w-11 truncate'>{id}</h1>,
         },
         {
             title: "Script",
             width: 372,
-            dataIndex: 'script',
+            dataIndex: 'description',
             render: (script: number) => <span className='text-blue-gray-80 text-xs line-clamp-2'>{script}</span>,
         },
         {
@@ -160,6 +161,7 @@ const Type9 = () => {
             ...getColumnSearchProps('Frequency'),
             dataIndex: "frequency",
             width: 112,
+            align: "right",
             render: (frequency: number) => <span className='text-blue-gray-80 text-xs'>{frequency}</span>,
             onFilter: (value, record) => (console.log("reeeeeeeeeeee", record))
         },

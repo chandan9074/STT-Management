@@ -26,6 +26,8 @@ export const GET_ALL_SCRIPTS_URL = `${REACT_APP_BASE_URL}/get-all-scripts`;
 export const CREATE_SCRIPTS_URL = `${REACT_APP_BASE_URL}/create-script`;
 export const GET_SCRIPT_BY_ID = `${REACT_APP_BASE_URL}/get-script-by-id`;
 export const UPDATE_SCRIPT_URL = `${REACT_APP_BASE_URL}/update-script`;
-
-
 export const UPLOAD_SCRIPT_CSV_FILE_URL = `${REACT_APP_BASE_URL}/upload-csv`;
+
+// Assign 
+
+export const GET_ALL_SCRIPT_URL = `${REACT_APP_BASE_URL}/all_scripts_with_frequency`;

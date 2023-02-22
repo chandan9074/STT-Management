@@ -1,5 +1,5 @@
 import { Drawer } from "antd";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Icons from "../../../assets/Icons";
 import { scriptColorData } from "../../../data/assign/AssignData";
 import { filterData } from "../../../data/script/filter";
@@ -8,6 +8,8 @@ import Buttons from "../../Buttons";
 import { Filter } from "../../Filter";
 import { SearchBox } from "../../SearchBox";
 import Table from "../../Table";
+import { useAssigneContext } from "../../../context/AssignProvider";
+import Pagination from "../../Pagination";
 
 type Props = {
     isDrawerOpen: boolean,
@@ -18,6 +20,17 @@ type Props = {
 
 const Type1 = ({ isDrawerOpen, drawerClose, modalOpen, setModalOpen }: Props) => {
     const [drawer, setRightDrawer] = React.useState(false);
+    const [scriptParams, setScriptParams] = useState({ page: 1, pageSize: 15 })
+
+    const { getAllScript, allScript } = useAssigneContext()
+
+    useEffect(() => {
+        getAllScript(scriptParams)
+    }, [scriptParams])
+
+    const handlePageChange = (page: number) => {
+        setScriptParams({ ...scriptParams, page })
+    }
 
     const onClose = () => {
         drawerClose();
@@ -33,7 +46,7 @@ const Type1 = ({ isDrawerOpen, drawerClose, modalOpen, setModalOpen }: Props) =>
             style={{ position: 'absolute', top: '0', right: drawer ? "0" : "-325px", zIndex: 999, width: "auto", transition: "0.3s" }}
         >
             <div className={`relative flex items-start `}>
-                <div className={`bg-ct-blue-05 w-[560px]`}>
+                <div className={`bg-ct-blue-05 w-[560px] flex flex-col`}>
                     <div className='p-6'>
                         <div className='flex items-center gap-x-7 mb-6'>
                             <Buttons.IconButton.Circle
@@ -52,8 +65,11 @@ const Type1 = ({ isDrawerOpen, drawerClose, modalOpen, setModalOpen }: Props) =>
                             <Buttons.LabelButton.Primary label='click' size='xSmall' variant='Blue' onClick={() => setRightDrawer(!drawer)} />
                         </div>
                     </div>
-                    <div className='h-[calc(100vh-23.5vh)] overflow-y-scroll custom-scrollBar pr-1'>
-                        <Table.Type9 />
+                    <div className='h-[calc(100vh-30vh)] overflow-y-scroll custom-scrollBar pr-1'>
+                        {allScript?.scripts && <Table.Type9 data={allScript.scripts} />}
+                    </div>
+                    <div className="self-end py-2.5 pr-3.5">
+                        {allScript?.totalScript && <Pagination.Type1 pageSize={scriptParams.pageSize} total={allScript?.totalScript} handlePageChange={handlePageChange} />}
                     </div>
                 </div>
                 <div className='relative w-[328px]'>
