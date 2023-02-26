@@ -1,7 +1,6 @@
 import { StepBackwardOutlined } from '@ant-design/icons';
-import { FormControl, FormControlLabel, Radio, RadioGroup } from '@mui/material';
 import { Form, Select } from 'antd';
-import { useContext, useEffect, useState } from 'react';
+import React, { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
 import Icons from '../../../../../assets/Icons';
 import { RoleInContext } from '../../../../../context/RoleProvider';
 import { roleDT } from '../../../../../types/billingTypes';
@@ -10,30 +9,23 @@ import RoleImage from '../../../../Image/RoleImage';
 
 const { Option } = Select;
 
-const roleData = [
-    {
-        title: "Manager",
-    },
-    {
-        title: "Team Leader",
-    },
-    {
-        title: "Collector",
-    }
-];
+type Props = {
+    setModal: Dispatch<SetStateAction<boolean>>;
+    setData: Dispatch<SetStateAction<any>>;
+    speechId: number,
+    data: any
+}
 
-const AddAssigneeModal = ({
-    handleModal,
-    // type
-}: {
-    handleModal: (value: boolean) => void,
-}) => {
-
+const SpeakerModal = ({
+    setModal,
+    setData,
+    speechId,
+    data
+}: Props) => {
     const [form] = Form.useForm();
 
-    const [role, setRole] = useState<string>('Manager');
-    const [customRoleData, setCustomRoleData] = useState<roleDT[]>([]);
-    // const [type, setType] = useState<>
+    console.log(speechId);
+
 
     const managerContext = useContext(RoleInContext);
     const { roleDatas } = managerContext;
@@ -42,17 +34,25 @@ const AddAssigneeModal = ({
     const [dropDownCount, setDropDownCount] = useState<number>(0);
     const [isDropDownSelect, setIsDropDownSelect] = useState<boolean>(false);
     const [isDropItemClick, setIsDropItemClick] = useState<boolean>(false);
+    // const [speakerData, setSpeakerData] = useState<roleDT[]>([]);
+    const [speakerData, setSpeakerData] = useState<roleDT[]>([]);
 
     const managerParams = {
         id: '',
-        role: role,
+        role: 'Speaker',
         type: ''
     }
 
     useEffect(() => {
+        const _data = data?.filter((item: any) => item?.id === speechId);
+        setSpeakerData(_data[0].speaker);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    useEffect(() => {
         managerContext.getManager(managerParams);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [role]);
+    }, [speakerData]);
 
     useEffect(() => {
         if (!isDropDownVisible) {
@@ -60,11 +60,6 @@ const AddAssigneeModal = ({
         }
     }, [isDropDownVisible]);
 
-
-    const onRoleChange = (e: any) => {
-        setRole(e.target.value);
-        form.resetFields();
-    }
 
     useEffect(() => {
         if (dropDownCount === 2) {
@@ -75,17 +70,16 @@ const AddAssigneeModal = ({
 
 
     const handleRoleChange = (id: string, p: any) => {
-      
         const _data = roleDatas?.filter((m: roleDT) => m.id === p.key);
         if (_data) {
-            setCustomRoleData([...customRoleData, _data[0]]);
+            setSpeakerData([...speakerData, _data[0]]);
         }
     }
 
 
     const deleteManager = (id: string | undefined) => {
-        const _data = customRoleData?.filter((item: roleDT) => item.id !== id);
-        setCustomRoleData(_data);
+        const _data = speakerData?.filter((item: roleDT) => item.id !== id);
+        setSpeakerData(_data);
         setIsDropDownSelect(false);
         form.resetFields();
     }
@@ -107,8 +101,9 @@ const AddAssigneeModal = ({
     }
 
     const onClose = () => {
-        setCustomRoleData([]);
-        handleModal(false)
+        setSpeakerData([]);
+        setModal(false);
+        // handleModal(false)
     }
 
     const onDropDownClick = () => {
@@ -116,9 +111,20 @@ const AddAssigneeModal = ({
     }
 
     const outsideModalClick = () => {
-        handleModal(false);
-        setCustomRoleData([]);
+        // handleModal(false);
+        setSpeakerData([]);
+        setModal(false);
     }
+
+    const onAdd = () => {
+        const index = data?.findIndex((item: any) => item.id === speechId);
+        if (index !== -1) {
+            const newData = [...data];
+            newData[index] = { ...newData[index], speaker: speakerData };
+            setData(newData);
+        }
+        setModal(false);
+    };
 
     return (
         <div className='fixed top-0 left-0 flex justify-center items-center w-full h-screen z-40 animate-fadeIn2 '>
@@ -137,65 +143,33 @@ const AddAssigneeModal = ({
 
                         <div className="flex justify-between items-center ">
                             <h3 className="titleParagraphMedium">
-                                Search {role}
+                                Add Speaker
                             </h3>
 
                             <div className='flex items-center gap-x-6'>
-                                <div className='flex justify-center items-center'>
-                                    {/* <Link to={`${BILLING_PAYMENT_HISTORY_PATH}/${singleManager?.id}`}> */}
-                                    <button
-                                        className=' text-white text-base bg-primary-ct-blue-60 rounded-[6px] py-[9px] px-8'>
-                                        Add
-                                    </button>
-                                    {/* </Link> */}
-                                </div>
 
-                                <Buttons.IconButton.Circle
-                                    size='medium'
-                                    variant="CT-Blue"
-                                    icon={<img src={Icons.CloseIconButton} alt="" />}
-                                    border='border'
-                                    background="white"
+                                <Buttons.LabelButton.Tertiary
+                                    label='Cancel'
+                                    size='small'
+                                    variant='CT-Blue'
                                     onClick={() => onClose()}
                                 />
+
+                                <div className='flex justify-center items-center'>
+                                    <Buttons.LabelButton.Primary
+                                        label='Add'
+                                        size='small'
+                                        variant='CT-Blue'
+                                        onClick={() => onAdd()}
+                                    />
+
+                                </div>
 
                             </div>
                         </div>
 
                         <div className='rounded-md bg-white px-6 pt-7 pb-2 mt-4'>
 
-
-                            <div className='flex items-center gap-x-6 mb-[21px]'>
-                                <h1 className='text-[#5F6B7D] font-semibold text-small'> Select Role</h1>
-                                <FormControl>
-
-                                    <RadioGroup
-                                        row
-                                        name="reportingTo"
-                                        value={role}
-                                        onChange={(e) => onRoleChange(e)}
-                                    >
-                                        {
-                                            roleData?.map((value, i) => (
-                                                <FormControlLabel
-                                                    style={{
-                                                        color: `${role === value.title ? '#136EE5' : '#5F6B7D'} `,
-                                                        fontSize: '14px',
-                                                        marginRight: '22px',
-                                                        height: '30px'
-                                                    }}
-                                                    className={`${role === value.title && 'ml-[4px] pr-[12px] bg-blue-50 rounded-[30px] border-[1px] border-[#136EE5]'}`}
-                                                    key={i}
-                                                    value={value.title}
-                                                    control={<Radio
-                                                    />}
-                                                    label={value.title}
-                                                />
-                                            ))
-                                        }
-                                    </RadioGroup>
-                                </FormControl>
-                            </div>
 
 
                             <div>
@@ -209,7 +183,7 @@ const AddAssigneeModal = ({
                                     >
 
                                         <div
-                                            className={`relative ${customRoleData.length !== 0 && 'bg-blue-gray-20'} border-[1px] ${isDropDownVisible ? 'border-secondary-blue-50' : 'border-blue-gray-20'} rounded-[7px] h-[44px] flex justify-center items-center ${isDropItemClick ? '' : isDropDownSelect ? 'searchByRoleSelect' : ''} ${(!isDropDownVisible) ? 'select-icon' : ''}`}>
+                                            className={`relative ${speakerData.length !== 0 && 'bg-blue-gray-20'} border-[1px] ${isDropDownVisible ? 'border-secondary-blue-50' : 'border-blue-gray-20'} rounded-[7px] h-[44px] flex justify-center items-center ${isDropItemClick ? '' : isDropDownSelect ? 'searchByRoleSelect' : ''} ${(!isDropDownVisible) ? 'select-icon' : ''}`}>
 
                                             <Select
 
@@ -221,7 +195,7 @@ const AddAssigneeModal = ({
                                                 onInputKeyDown={onInputKeyDown}
                                                 onSelect={onSelect}
                                                 showSearch
-                                                placeholder={`Select ${role} by Login ID/ Name`}
+                                                placeholder={`Select speaker by Login ID/ Name`}
                                                 style={{ border: 'none' }}
                                                 onChange={(value, p) => handleRoleChange(value, p)}
                                                 filterOption={(inputValue: string, option: any) =>
@@ -236,7 +210,7 @@ const AddAssigneeModal = ({
                                                             <div className='flex gap-x-4'>
                                                                 {/* <img className='h-[18px] w-[18px]' src={Icons.manager}
                                                                     alt="" /> */}
-                                                                    <RoleImage role={role} />
+                                                                <RoleImage role={'Speaker'} />
                                                                 <h1 className='text-blue-gray-90 text-small'>{m.id} - {m.name}</h1>
                                                             </div>
                                                         </Option>
@@ -253,7 +227,7 @@ const AddAssigneeModal = ({
 
                                         <div
                                             className={isDropDownVisible ? 'bg-white px-[6px] block w-[fit-content] absolute bottom-[34px] left-[12px]' : 'hidden'}>
-                                            <p className='text-blue-gray-80 font-bold text-xxs'>{role}</p>
+                                            <p className='text-blue-gray-80 font-bold text-xxs'>{'Speaker'}</p>
                                         </div>
                                     </Form.Item>
                                 </Form>
@@ -265,10 +239,10 @@ const AddAssigneeModal = ({
                     {/*body*/}
                     {
 
-                        customRoleData.length !== 0 ?
+                        speakerData.length !== 0 ?
                             <div className='border-[1px] border-blue-gray-20 m-6 rounded-[4px] max-h-[200px] overflow-y-auto'>
                                 {
-                                    customRoleData?.map((item: roleDT, i: number) => (
+                                    speakerData?.map((item: roleDT, i: number) => (
                                         <div key={i} className=''>
                                             <div className="relative  ">
                                                 <div className=' px-3 py-4  flex justify-between '>
@@ -282,7 +256,7 @@ const AddAssigneeModal = ({
                                                         </div>
                                                         <div className='flex items-center gap-x-2'>
                                                             <img className='h-4 w-4' src={Icons.Military} alt="" />
-                                                            <h1 className='text-small text-ct-blue-90'>{item?.role}</h1>
+                                                            <h1 className='text-small text-ct-blue-90-70%'>{item?.role}{item?.gender && '-'}{item?.gender}</h1>
                                                         </div>
                                                         <div className='flex items-center gap-x-2'>
                                                             <img className='h-4 w-4' src={Icons.Power} alt="" />
@@ -310,7 +284,7 @@ const AddAssigneeModal = ({
                                     className='h-[40px] w-[40px] rounded-[50%] bg-blue-gray-05 flex items-center justify-center'>
                                     <img className='w-[18px] h-[18px]' src={Icons.Face} alt="" />
                                 </div>
-                                <h1 className='text-ct-blue-45 text-xs mt-[8px]'>By adding, {role} will be
+                                <h1 className='text-ct-blue-45 text-xs mt-[8px]'>By adding, speaker will be
                                     shown here</h1>
                             </div>
                     }
@@ -322,4 +296,4 @@ const AddAssigneeModal = ({
     );
 };
 
-export default AddAssigneeModal;
+export default SpeakerModal;

@@ -1,6 +1,7 @@
 import React from 'react';
 import BackButtonTitle from '../../../../common/BackButtonTitle';
 import Layouts from '../../../../Layouts';
+import Table from '../../../../Table';
 
 const EditSpeeches = () => {
     return (
@@ -15,6 +16,7 @@ const EditSpeeches = () => {
                         <h1 className='text-small text-ct-blue-90 font-medium'>Assigned to</h1>
                     </div>
                 </div>
+               <Table.Type11 />
             </Layouts.Default>
         </div>
     );

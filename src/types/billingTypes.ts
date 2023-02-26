@@ -137,6 +137,7 @@ export type roleDT = {
   role: string;
   contact: string;
   address: string;
+  gender?: string;
 };
 
 export type paymentHistoryParamsDT = {

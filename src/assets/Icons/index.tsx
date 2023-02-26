@@ -121,6 +121,8 @@ import MusicBlue from './music_blue.svg';
 import up_arrow_black from "./up_arrow_black.svg";
 import PhotoGallery from "./photo-gallery 1.svg";
 import Blank from "./blank_image.svg";
+import UploadMagenta from "./upload_magenta.svg";
+import AccountCircle from "./account_circle.svg";
 
 const Icons = {
   currency,
@@ -245,7 +247,9 @@ const Icons = {
   MusicBlue,
   up_arrow_black,
   PhotoGallery,
-  Blank
+  Blank,
+  UploadMagenta,
+  AccountCircle
 };
 
 export default Icons;
