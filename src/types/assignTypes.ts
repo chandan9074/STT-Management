@@ -74,3 +74,7 @@ export type singleScriptDT = {
   subDomain: string;
   frequency: number;
 }
+
+export type postSelectedScriptBodyDT = {
+  scriptList: string[];
+}

@@ -5,6 +5,7 @@ import {
   allScriptParamsDT,
   AssigneeItemDT,
   CriteriaItemDT,
+  postSelectedScriptBodyDT,
   ScriptItemDT,
   TargetItemDT,
 } from "../types/assignTypes";
@@ -41,6 +42,8 @@ interface ContextProps {
   ) => void;
   getAllScript: (data: allScriptParamsDT) => void;
   allScript: allScriptDT | undefined;
+  postSelectedScript: (data: postSelectedScriptBodyDT) => void;
+  getSelectedScript: () => void;
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -97,14 +100,24 @@ const AssignProvider = ({ children }: { children: any }) => {
     // return res;
   }
 
+  const postSelectedScript = async (data: postSelectedScriptBodyDT) => {
+    const res = await AssignService.postSelectedScript(data);
+  }
+
+  const getSelectedScript = async () => {
+    const res = await AssignService.fetchScriptList();
+    setSelectedScriptList(res.data);
+  }
+
+
   useEffect(() => {
     const fetchInitialData = async () => {
-      const scriptList = await AssignService.fetchScriptList();
+      // const scriptList = await AssignService.fetchScriptList();
       const assigneeList = await AssignService.fetchAssignList();
       const criteriaList = await AssignService.fetchCriteriaList();
       const targetList = await AssignService.fetchTargetList();
       setSelectedAssigneList(assigneeList);
-      setSelectedScriptList(scriptList);
+      // setSelectedScriptList(scriptList);
       setSelectedCriteriaList(criteriaList);
       setSelectedTargetList(targetList);
     };
@@ -209,7 +222,9 @@ const AssignProvider = ({ children }: { children: any }) => {
         selectScript,
         selectedTargetList,
         getAllScript,
-        allScript
+        allScript,
+        postSelectedScript,
+        getSelectedScript
       }}
     >
       {children}

@@ -1,11 +1,13 @@
 import { Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import React, { useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { Key } from 'antd/lib/table/interface';
 import Icons from '../../assets/Icons';
 import { CustomModal } from '../common/CustomModal';
 import { SideDrawer } from '../common/SideDrawer';
 import "../../assets/css/table/type4Table.css";
 import { singleScriptDT } from '../../types/assignTypes';
+
 
 // interface DataType {
 //     key: React.Key;
@@ -42,23 +44,32 @@ import { singleScriptDT } from '../../types/assignTypes';
 //     },
 // ];
 
-// rowSelection object indicates the need for row selection
-const rowSelection = {
-    onChange: (selectedRowKeys: React.Key[], selectedRows: singleScriptDT[]) => {
-        console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-    },
-    getCheckboxProps: (record: singleScriptDT) => ({
-        // disabled: record.name === 'Disabled User', // Column configuration not to be checked
-        // record.id,
-        // console.log(record.id)
-    }),
-};
 
-const Type9 = ({ data }: { data: singleScriptDT[] }) => {
+
+type Props = {
+    data: singleScriptDT[];
+    handleSelectedScript: (data: singleScriptDT[]) => void;
+    uncheckedScript: string;
+    isDrawerOpen: boolean;
+}
+
+const Type9 = ({ data, handleSelectedScript, uncheckedScript, isDrawerOpen }: Props) => {
     const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
     const [active, setActive] = useState("Active");
     const [drawerData, setDrawerData] = useState<any>();
+    const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
+    const tableRef = useRef<any>();
+
+    useLayoutEffect(() => {
+        if (isDrawerOpen) {
+            const newSelectedRowKeys = selectedRowKeys.filter((k) => k !== uncheckedScript);
+            setSelectedRowKeys(newSelectedRowKeys);
+        }
+        else {
+            setSelectedRowKeys([]);
+        }
+    }, [uncheckedScript, isDrawerOpen])
 
     const showDrawer = (key: any) => {
         setOpen(true);
@@ -68,6 +79,14 @@ const Type9 = ({ data }: { data: singleScriptDT[] }) => {
     const handleActiveFrequencyChange = (value: string, confirm: any) => {
         setActive(value)
     }
+
+    // rowSelection object indicates the need for row selection
+    const rowSelection = {
+        onChange: (selectedRowKeys: React.Key[], selectedRows: singleScriptDT[]) => {
+            handleSelectedScript(selectedRows)
+            setSelectedRowKeys(selectedRowKeys);
+        },
+    };
 
     const getColumnSearchProps = (dataIndex: any): any => ({
 
@@ -175,11 +194,14 @@ const Type9 = ({ data }: { data: singleScriptDT[] }) => {
 
                 rowSelection={{
                     type: selectionType,
+                    selectedRowKeys,
                     ...rowSelection,
                 }}
                 columns={columns}
                 dataSource={data}
                 pagination={false}
+                rowKey="id"
+                ref={tableRef}
             />
         </div >
     );
