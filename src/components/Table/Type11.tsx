@@ -1,14 +1,15 @@
 import { Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
 import Icons from '../../assets/Icons';
 import "../../assets/css/table/type4Table.css";
-import RoleImage from '../Image/RoleImage';
 import { Drawer } from '../Drawer';
-import { EDIT_SPEECHES_PATH } from '../../helpers/Slug';
 import Buttons from '../Buttons';
 import SpeakerModal from '../containers/AssignContainer/AllTarget/EditSpeeches/SpeakerModal';
+import { isEmpty } from '../../helpers/Utils';
+import RoleImage from '../Image/RoleImage';
+import { Autocomplete, Box, TextField, Typography } from '@mui/material';
+import { RoleInContext } from '../../context/RoleProvider';
 import { roleDT } from '../../types/billingTypes';
 
 
@@ -22,16 +23,26 @@ const data: any = [
                 gender: 'male',
                 role: 'speaker',
                 contact: '019',
-                address: 'Dhaka'
+                address: 'Dhaka',
+                id: "maksudalam1@gmail.com"
             },
             {
                 name: 'Bilkis banu',
                 gender: 'female',
                 role: 'speaker',
                 contact: '019',
-                address: 'Dhaka'
+                address: 'Dhaka',
+                id: "maksudalam2@gmail.com"
             }
         ],
+        collector: {
+            name: 'Muhammad Miraz',
+            gender: 'male',
+            role: 'collector',
+            contact: '019',
+            address: 'Rajbongshi',
+            id: "maksudalam1@gmail.com"
+        },
         script: 'Script id_227',
         target: 1000,
         status: "75",
@@ -53,16 +64,26 @@ const data: any = [
                 gender: 'male',
                 role: 'speaker',
                 contact: '019',
-                address: 'Dhaka'
+                address: 'Dhaka',
+                id: "maksudalam3@gmail.com"
             },
             {
                 name: 'Bilkis banu',
                 gender: 'female',
                 role: 'speaker',
                 contact: '019',
-                address: 'Dhaka'
+                address: 'Dhaka',
+                id: "maksudalam4@gmail.com"
             }
         ],
+        collector: {
+            name: 'Muhammad Miraz',
+            gender: 'male',
+            role: 'collector',
+            contact: '019',
+            address: 'Rajbongshi',
+            id: "maksudalam1@gmail.com"
+        },
         script: 'Script id_227',
         target: 1000,
         status: "90",
@@ -79,6 +100,7 @@ const data: any = [
         id: '3',
         key: '10-230a',
         speaker: [],
+        collector: {},
         script: 'Script id_227',
         target: 1000,
         status: "20",
@@ -101,9 +123,18 @@ const data: any = [
                 gender: 'male',
                 role: 'speaker',
                 contact: '019',
-                address: 'Dhaka'
+                address: 'Dhaka',
+                id: "maksudalam5@gmail.com"
             }
         ],
+        collector: {
+            name: 'Muhammad Miraz',
+            gender: 'male',
+            role: 'collector',
+            contact: '019',
+            address: 'Rajbongshi',
+            id: "maksudalam1@gmail.com"
+        },
         script: 'Script id_227',
         target: 1000,
         status: "20",
@@ -125,16 +156,19 @@ const data: any = [
                 gender: 'male',
                 role: 'speaker',
                 contact: '019',
-                address: 'Dhaka'
+                address: 'Dhaka',
+                id: "maksudalam6@gmail.com"
             },
             {
                 name: 'Bilkis banu',
                 gender: 'female',
                 role: 'speaker',
                 contact: '019',
-                address: 'Dhaka'
+                address: 'Dhaka',
+                id: "maksudalam7@gmail.com"
             }
         ],
+        collector: {},
         script: 'Script id_227',
         target: 1000,
         status: "20",
@@ -152,6 +186,14 @@ const data: any = [
         id: '6',
         key: '10-260a',
         speaker: [],
+        collector: {
+            name: 'Muhammad Miraz',
+            gender: 'male',
+            role: 'collector',
+            contact: '019',
+            address: 'Rajbongshi',
+            id: "maksudalam1@gmail.com"
+        },
         script: 'Script id_227',
         target: 1000,
         status: "20",
@@ -173,16 +215,26 @@ const data: any = [
                 gender: 'male',
                 role: 'speaker',
                 contact: '019',
-                address: 'Dhaka'
+                address: 'Dhaka',
+                id: "maksudalam8@gmail.com"
             },
             {
                 name: 'Bilkis banu',
                 gender: 'female',
                 role: 'speaker',
                 contact: '019',
-                address: 'Dhaka'
+                address: 'Dhaka',
+                id: "maksudalam9@gmail.com"
             }
         ],
+        collector: {
+            name: 'Muhammad Miraz',
+            gender: 'male',
+            role: 'collector',
+            contact: '019',
+            address: 'Rajbongshi',
+            id: "maksudalam1@gmail.com"
+        },
         script: 'Script id_227',
         target: 1000,
         status: "20",
@@ -204,18 +256,63 @@ const Type11 = () => {
     const [speechData, setSpeechData] = useState<any>(data);
     const [speechId, setSpeechId] = useState<number>(NaN);
 
+    const [collectorId, setCollectorId] = useState<number>(NaN);
+
+    const [collector, setCollector] = useState<roleDT>();
+
+    const managerContext = useContext(RoleInContext);
+    const { roleDatas } = managerContext;
+
+    const managerParams = {
+        id: '',
+        role: 'Collector',
+        type: ''
+    }
+
+    useEffect(() => {
+        managerContext.getManager(managerParams);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    console.log('---------------------', collector)
+
+
     const showDrawer = (key: any) => {
         setOpen(true);
     };
 
-    const getPercentage = (max: number, value: number) => {
-        const result = (100 * value) / max;
-        return result;
-    }
-
     const onAddSpeaker = (id: any) => {
         setIsSpeakerModal(true)
         setSpeechId(id);
+    }
+
+    // const collectorOnChange = (value: any) => {
+    //     setCollector(value ?? undefined)
+
+    //     const _filterData = speechData?.map((item: any) => item?.id === collectorId);
+    //     const _newData = {..._filterData[0], collector: _filterData};
+
+    //     const _data = speechData?.map((item: any) => item?.id !== collectorId);
+    //     setSpeechData([..._data, _newData]);
+
+    // }
+
+    const collectorOnChange = (value: any) => {
+        setCollector(value ?? undefined);
+
+        // Find the index of the object to update
+        const index = speechData.findIndex((item: any) => item?.id === collectorId);
+
+        // Create a new object with the updated data
+        const updatedData = { ...speechData[index], collector: value };
+
+        // Create a new array with the updated object at the same index as the original object
+        const newData = speechData.map((item: any, i: number) => i === index ? updatedData : item);
+
+        // Update the state with the new array
+        setSpeechData(newData);
+
+        setCollectorId(NaN)
     }
 
     const Type8columns: ColumnsType<any> = [
@@ -251,30 +348,109 @@ const Type11 = () => {
             width: 182,
             // render: (data) => <h1 className='w-[88px] whitespace-nowrap'> {data.target}</h1>,
             render: (data) =>
-                <div onClick={() => onAddSpeaker(data?.id)} className='flex justify-between items-center'>
-                    {
-                        data?.speaker.length > 0 ?
-                            <div>
+                <div>
+
+                    <div onClick={() => onAddSpeaker(data?.id)} className='flex justify-between items-center cursor-pointer'>
+                        {
+                            data?.speaker.length > 0 ?
                                 <div>
-                                    {
-                                        data?.speaker.map((item: any, i: number) => (
-                                            <div key={i} className='gap-y-[6px]'>
-                                                <div className='flex items-center gap-x-2'>
-                                                    <img className='h-4 w-4' src={item.gender === 'male' ? Icons.speakerMale : Icons.SpeakerFemale} alt="" />
-                                                    <h1 className='text-blue-gray-80 text-xs font-medium'>{item?.name}</h1>
+                                    <div>
+                                        {
+                                            data?.speaker.map((item: any, i: number) => (
+                                                <div key={i} className='gap-y-[6px]'>
+                                                    <div className='flex items-center gap-x-2'>
+                                                        <img className='h-4 w-4' src={item.gender === 'male' ? Icons.speakerMale : Icons.SpeakerFemale} alt="" />
+                                                        <h1 className='text-blue-gray-80 text-xs font-medium'>{item?.name}</h1>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        ))
-                                    }
+                                            ))
+                                        }
+                                    </div>
+                                </div>
+                                :
+                                <button className='flex items-center gap-x-[10px]'>
+                                    <img className='w-4 h-4' src={Icons.AccountCircle} alt="" />
+                                    <h1 className='text-blue-gray-60 text-xs font-medium'>Add Speaker</h1>
+                                </button>
+                        }
+                        <img className='w-[7px] h-1' src={Icons.arrow_drop_down_blue_gray} alt="" />
+
+
+                    </div>
+                </div>
+        },
+
+        {
+            title: `${"collector".toLocaleUpperCase()}`,
+            key: 'collector',
+            width: 182,
+            // render: (data) => <h1 className='w-[88px] whitespace-nowrap'> {data.target}</h1>,
+            render: (data) =>
+                <div>
+                    {
+                        collectorId === data?.id ?
+                            <div>
+                                <div className="fixed top-0 left-0 opacity-50 bg-transparent w-full h-screen "
+                                    onClick={() => setCollectorId(NaN)} />
+                                <div className='relative'>
+                                    <Autocomplete
+                                        placeholder='Choose one'
+                                        id="sourceType"
+                                        style={{ width: '100%' }}
+                                        options={roleDatas ?? []}
+
+                                        value={collector}
+                                        // getOptionLabel={(option) => {
+                                        //     if (!option) return '';
+                                        //     return `${option?.id} - ${option?.name}`;
+                                        // }} 
+                                        getOptionLabel={(option) => {
+                                            if (!option) return '';
+                                            return `${option?.name}`;
+                                        }}
+
+                                        onChange={(event, value) => collectorOnChange(value)}
+
+                                        renderOption={(props, option) => (
+                                            <Box key={option.id} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
+                                                <h1 className='text-small text-blue-gray-80'>{`${option?.id} - ${option?.name}`}</h1>
+                                            </Box>
+                                        )}
+
+
+                                        renderInput={(params) => (
+
+                                            <TextField
+                                                {...params}
+                                                name="sourceType"
+                                                placeholder='Add Collector'
+                                            />
+                                        )}
+                                    />
                                 </div>
                             </div>
                             :
-                            <button  className='flex items-center gap-x-[10px]'>
-                                <img className='w-4 h-4' src={Icons.AccountCircle} alt="" />
-                                <h1 className='text-blue-gray-60 text-xs font-medium'>Add Speaker</h1>
-                            </button>
+                            <div onClick={() => setCollectorId(data?.id)} className='flex justify-between items-center cursor-pointer'>
+                                {
+                                    !isEmpty(data?.collector) ?
+                                        <div>
+                                            <div className='flex items-center gap-x-2'>
+                                                <RoleImage height='h-4' width='w-4' role='Collector' />
+                                                <div>
+                                                    <h1 className='text-blue-gray-80 text-xs font-medium'>{data?.collector?.name}</h1>
+                                                    <h1 className='text-blue-gray-75 text-xxs'>{data?.collector?.address}</h1>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        :
+                                        <button className='flex items-center gap-x-[10px]'>
+                                            <img className='w-4 h-4' src={Icons.AccountCircle} alt="" />
+                                            <h1 className='text-blue-gray-60 text-xs font-medium'>Add Collector</h1>
+                                        </button>
+                                }
+                                <img className='w-[7px] h-1' src={Icons.arrow_drop_down_blue_gray} alt="" />
+                            </div>
                     }
-                    <img className='w-[7px] h-1' src={Icons.arrow_drop_down_blue_gray} alt="" />
                 </div>
         },
 
@@ -299,7 +475,7 @@ const Type11 = () => {
             render: (_, record) => (
                 <>
 
-                    <div className='flex w-full justify-center items-center'>
+                    <div className='flex w-full justify-center items-center relative z-50'>
                         <img
                             onClick={() => showDrawer(record)}
                             className='w-[14px] h-[14px] cursor-pointer'

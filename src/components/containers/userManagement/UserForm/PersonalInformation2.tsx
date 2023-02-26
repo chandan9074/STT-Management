@@ -119,19 +119,34 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                             }
                         }}
 
-                         renderInput={(params) => (
+                        renderInput={(params) => (
 
+                            // <TextField
+                            //     placeholder='Choose one'
+                            //     {...params}
+                            //     name="ageRange"
+                            //     error={formik.touched.ageRange && Boolean(formik.errors.ageRange)}
+                            //     helperText={formik.touched.ageRange && formik.errors.ageRange}
+                            //     InputProps={{
+                            //         style: {
+                            //             height: '44px'
+                            //         }
+                            //     }}
+
+                            //     label={<h1 className='comboBoxLabel'>Age Range <span className='text-[red]'>*</span></h1>}
+
+                            // />
                             <TextField
                                 placeholder='Choose one'
                                 {...params}
                                 name="ageRange"
                                 error={formik.touched.ageRange && Boolean(formik.errors.ageRange)}
                                 helperText={formik.touched.ageRange && formik.errors.ageRange}
-                                InputProps={{
-                                    style: {
-                                        height: '44px'
-                                    }
-                                }}
+                                // InputProps={{
+                                //     style: {
+                                //         height: '44px',
+                                //     }
+                                // }}
 
                                 label={<h1 className='comboBoxLabel'>Age Range <span className='text-[red]'>*</span></h1>}
 
@@ -159,7 +174,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                             }
                         }}
 
-                         renderInput={(params) => (
+                        renderInput={(params) => (
 
                             <TextField
                                 placeholder='Choose one'
@@ -198,7 +213,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                             }
                         }}
 
-                         renderInput={(params) => (
+                        renderInput={(params) => (
 
                             <TextField
                                 placeholder='Choose one'

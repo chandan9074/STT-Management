@@ -193,3 +193,9 @@ label {
     border-radius: 7px !important;
 
 }
+
+
+/* new */
+.css-1qqsdnr-MuiAutocomplete-root .MuiOutlinedInput-root .MuiAutocomplete-input  {
+    height: 12px !important;
+}
