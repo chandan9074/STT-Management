@@ -1,4 +1,4 @@
-import { Table } from 'antd';
+import { Select, Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import { useContext, useEffect, useState } from 'react';
 import Icons from '../../assets/Icons';
@@ -11,7 +11,11 @@ import RoleImage from '../Image/RoleImage';
 import { Autocomplete, Box, TextField, Typography } from '@mui/material';
 import { RoleInContext } from '../../context/RoleProvider';
 import { roleDT } from '../../types/billingTypes';
+import { StepBackwardOutlined } from '@ant-design/icons';
+import { recordingArea, recordingDistanceAssign } from '../../data/assign/AssignData';
+import { filterData } from '../../data/script/filter';
 
+const { Option } = Select;
 
 const data: any = [
     {
@@ -43,6 +47,8 @@ const data: any = [
             address: 'Rajbongshi',
             id: "maksudalam1@gmail.com"
         },
+        recordingArea: 'Inside Room',
+        recordingDistance: '',
         script: 'Script id_227',
         target: 1000,
         status: "75",
@@ -84,6 +90,8 @@ const data: any = [
             address: 'Rajbongshi',
             id: "maksudalam1@gmail.com"
         },
+        recordingArea: '',
+        recordingDistance: '',
         script: 'Script id_227',
         target: 1000,
         status: "90",
@@ -101,6 +109,8 @@ const data: any = [
         key: '10-230a',
         speaker: [],
         collector: {},
+        recordingArea: '',
+        recordingDistance: 'Close',
         script: 'Script id_227',
         target: 1000,
         status: "20",
@@ -135,6 +145,8 @@ const data: any = [
             address: 'Rajbongshi',
             id: "maksudalam1@gmail.com"
         },
+        recordingArea: 'Inside Room',
+        recordingDistance: 'Close',
         script: 'Script id_227',
         target: 1000,
         status: "20",
@@ -169,6 +181,8 @@ const data: any = [
             }
         ],
         collector: {},
+        recordingArea: 'Inside Room',
+        recordingDistance: 'Close',
         script: 'Script id_227',
         target: 1000,
         status: "20",
@@ -194,6 +208,8 @@ const data: any = [
             address: 'Rajbongshi',
             id: "maksudalam1@gmail.com"
         },
+        recordingArea: 'Inside Room',
+        recordingDistance: 'Close',
         script: 'Script id_227',
         target: 1000,
         status: "20",
@@ -235,6 +251,8 @@ const data: any = [
             address: 'Rajbongshi',
             id: "maksudalam1@gmail.com"
         },
+        recordingArea: 'Inside Room',
+        recordingDistance: 'Close',
         script: 'Script id_227',
         target: 1000,
         status: "20",
@@ -257,8 +275,11 @@ const Type11 = () => {
     const [speechId, setSpeechId] = useState<number>(NaN);
 
     const [collectorId, setCollectorId] = useState<number>(NaN);
-
     const [collector, setCollector] = useState<roleDT>();
+
+    const [recordingAreaId, setRecordingAreaId] = useState<number>(NaN);
+
+    const [recordingDistanceId, setRecordingDistanceId] = useState<number>(NaN);
 
     const managerContext = useContext(RoleInContext);
     const { roleDatas } = managerContext;
@@ -274,9 +295,6 @@ const Type11 = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    console.log('---------------------', collector)
-
-
     const showDrawer = (key: any) => {
         setOpen(true);
     };
@@ -285,17 +303,6 @@ const Type11 = () => {
         setIsSpeakerModal(true)
         setSpeechId(id);
     }
-
-    // const collectorOnChange = (value: any) => {
-    //     setCollector(value ?? undefined)
-
-    //     const _filterData = speechData?.map((item: any) => item?.id === collectorId);
-    //     const _newData = {..._filterData[0], collector: _filterData};
-
-    //     const _data = speechData?.map((item: any) => item?.id !== collectorId);
-    //     setSpeechData([..._data, _newData]);
-
-    // }
 
     const collectorOnChange = (value: any) => {
         setCollector(value ?? undefined);
@@ -314,6 +321,37 @@ const Type11 = () => {
 
         setCollectorId(NaN)
     }
+
+    const handleRecordingAreaChange = (value: string) => {
+        const index = speechData.findIndex((item: any) => item?.id === recordingAreaId);
+        if (index === -1) {
+            return;
+        }
+        const newData = [...speechData];
+        newData[index] = {
+            ...newData[index],
+            recordingArea: value
+        };
+        setSpeechData(newData);
+        setRecordingAreaId(NaN);
+    };
+
+    const handleRecordingDistanceChange = (value: string) => {
+        const index = speechData.findIndex((item: any) => item?.id === recordingDistanceId);
+        if (index === -1) {
+            return;
+        }
+        const newData = [...speechData];
+        newData[index] = {
+            ...newData[index],
+            recordingDistance: value
+        };
+        setSpeechData(newData);
+        setRecordingDistanceId(NaN);
+    };
+
+    console.log('re---', recordingDistanceId);
+
 
     const Type8columns: ColumnsType<any> = [
 
@@ -338,10 +376,8 @@ const Type11 = () => {
                     iconAlign="start"
                 />
             </div>
-
-
-
         },
+
         {
             title: `${"Speaker".toLocaleUpperCase()}`,
             key: 'speaker',
@@ -383,13 +419,13 @@ const Type11 = () => {
         {
             title: `${"collector".toLocaleUpperCase()}`,
             key: 'collector',
-            width: 182,
+            width: 174,
             // render: (data) => <h1 className='w-[88px] whitespace-nowrap'> {data.target}</h1>,
             render: (data) =>
                 <div>
                     {
                         collectorId === data?.id ?
-                            <div>
+                            <div className='animate-fadeIn'>
                                 <div className="fixed top-0 left-0 opacity-50 bg-transparent w-full h-screen "
                                     onClick={() => setCollectorId(NaN)} />
                                 <div className='relative'>
@@ -400,10 +436,6 @@ const Type11 = () => {
                                         options={roleDatas ?? []}
 
                                         value={collector}
-                                        // getOptionLabel={(option) => {
-                                        //     if (!option) return '';
-                                        //     return `${option?.id} - ${option?.name}`;
-                                        // }} 
                                         getOptionLabel={(option) => {
                                             if (!option) return '';
                                             return `${option?.name}`;
@@ -413,7 +445,7 @@ const Type11 = () => {
 
                                         renderOption={(props, option) => (
                                             <Box key={option.id} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
-                                                <h1 className='text-small text-blue-gray-80'>{`${option?.id} - ${option?.name}`}</h1>
+                                                <h1 className='text-small text-blue-gray-80 font-medium'>{`${option?.id} - ${option?.name}`}</h1>
                                             </Box>
                                         )}
 
@@ -430,7 +462,7 @@ const Type11 = () => {
                                 </div>
                             </div>
                             :
-                            <div onClick={() => setCollectorId(data?.id)} className='flex justify-between items-center cursor-pointer'>
+                            <div onClick={() => setCollectorId(data?.id)} className=' flex justify-between items-center cursor-pointer'>
                                 {
                                     !isEmpty(data?.collector) ?
                                         <div>
@@ -452,6 +484,112 @@ const Type11 = () => {
                             </div>
                     }
                 </div>
+        },
+
+        // {
+        //     title: `${"Recording Area".toLocaleUpperCase()}`,
+        //     key: 'recordingArea',
+        //     width: 206,
+        //     render: (data) => <div>
+        //         {
+        //             recordingAreaId === data?.id ?
+        //                 <div>
+        //                     <div className="fixed top-0 left-0 opacity-50 bg-transparent w-full h-screen "
+        //                         onClick={() => setRecordingAreaId(NaN)} />
+        //                     <Select
+        //                         suffixIcon={<img src={Icons.arrow_drop_down_blue_gray} alt='' />}
+        //                         placeholder={`Select one`}
+        //                         style={{ border: 'none', width: '100%' }}
+        //                         onChange={(value) => handleRecordingAreaChange(value)}
+
+        //                     >
+        //                         {
+        //                             recordingArea?.map((m: any, i: number) => (
+        //                                 <Option key={m} value={m} id={m}>
+        //                                     <h1 className='text-blue-gray-90 text-small'>{m}</h1>
+        //                                 </Option>
+        //                             ))
+        //                         }
+        //                     </Select>
+        //                 </div>
+        //                 :
+        //                 <div onClick={() => setRecordingAreaId(data?.id)} className=' flex justify-between items-center cursor-pointer'>
+        //                     {
+        //                         data?.recordingArea !== '' ?
+        //                             <div>
+        //                                 <h1 className='text-blue-gray-80 text-xs font-medium'>{data?.recordingArea}</h1>
+        //                             </div>
+        //                             :
+        //                             <button className='flex items-center gap-x-[10px]'>
+        //                                 <img className='w-4 h-4' src={Icons.AccountCircle} alt="" />
+        //                                 <h1 className='text-blue-gray-60 text-xs font-medium'>Add Collector</h1>
+        //                             </button>
+        //                     }
+        //                     <img className='w-[7px] h-1' src={Icons.arrow_drop_down_blue_gray} alt="" />
+        //                 </div>
+        //         }
+
+        //     </div>
+        // },
+
+        {
+            title: `${"Recording Area".toLocaleUpperCase()}`,
+            key: 'recordingArea',
+            width: 206,
+            render: (data) => <div>
+                {
+
+                    <div className=' flex justify-between items-center cursor-pointer assign'>
+
+                        <Select
+                            suffixIcon={<img src={Icons.arrow_drop_down_blue_gray} alt='' />}
+                            placeholder={`Select one`}
+                            style={{ border: 'none', width: '100%' }}
+                            onChange={(value) => handleRecordingAreaChange(value)}
+                            defaultValue={data?.recordingArea ? data?.recordingArea : 'Select One'}
+                        >
+                            {
+                                recordingArea?.map((m: any, i: number) => (
+                                    <Option key={m} value={m} id={m}>
+                                        <h1 className='text-blue-gray-80 text-xs font-normal'>{m}</h1>
+                                    </Option>
+                                ))
+                            }
+                        </Select>
+                    </div>
+                }
+
+            </div>
+        },
+
+        {
+            title: `${"Recording Distance".toLocaleUpperCase()}`,
+            key: 'recordingDistance',
+            width: 206,
+            render: (data) => <div>
+                {
+
+                    <div className=' flex justify-between items-center cursor-pointer assign'>
+
+                        <Select
+                            suffixIcon={<img src={Icons.arrow_drop_down_blue_gray} alt='' />}
+                            placeholder={`Select one`}
+                            style={{ border: 'none', width: '100%' }}
+                            onChange={(value) => handleRecordingDistanceChange(value)}
+                            defaultValue={data?.recordingDistance ? data?.recordingDistance : 'Select One'}
+                        >
+                            {
+                                recordingDistanceAssign?.map((m: any, i: number) => (
+                                    <Option key={m} value={m} id={m}>
+                                        <h1 className='text-blue-gray-80 text-xs font-normal'>{m}</h1>
+                                    </Option>
+                                ))
+                            }
+                        </Select>
+                    </div>
+                }
+
+            </div>
         },
 
         {

@@ -127,7 +127,7 @@ textarea {
     font-weight: 600 !important;
 }
 
-.css-gdh49b-MuiAutocomplete-listbox .MuiAutocomplete-option  {
+.css-gdh49b-MuiAutocomplete-listbox .MuiAutocomplete-option {
     color: #464E5F !important;
     font-size: 14px !important;
     font-weight: 600 !important;
@@ -196,6 +196,17 @@ label {
 
 
 /* new */
-.css-1qqsdnr-MuiAutocomplete-root .MuiOutlinedInput-root .MuiAutocomplete-input  {
+.css-1qqsdnr-MuiAutocomplete-root .MuiOutlinedInput-root .MuiAutocomplete-input {
     height: 12px !important;
+}
+
+/* assign */
+.assign .ant-select-single.ant-select-show-arrow .ant-select-selection-item {
+    font-size: 13px !important;
+    color: #9099A1 !important;
+}
+
+.assign .ant-select-selector {
+    background-color: transparent !important;
+    padding: 0 !important;
 }
