@@ -23,6 +23,23 @@ export const recordingDistanceAssign = [
     'Walking'
 ]
 
+export const deviceData = [
+    'Redmi Note 8 Pro',
+    'Redmi Note 8',
+    'Redmi Note 7 Pro',
+    'Redmi Note 7 ',
+    'Redmi Note 6'
+]
+
+export const predefined = [
+    'As far as I am aware, this token is used for BOM lists',
+    'What good is having tokens/containers for data and then NOT having them available for recall when and where you need them?',
+    'As far as I am aware, this token is used for BOM lists',
+    'explain what you are trying to do with this token, is this in a part or assembly drawing.',
+    ' Then again, you get what you pay for I reckon.',
+    'Also the status can be applied in the model to control identify the object model status also.'
+]
+
 export const weekBtnData = [
     { week: 1, name: 'Week 01' },
     { week: 2, name: 'Week 02' },
