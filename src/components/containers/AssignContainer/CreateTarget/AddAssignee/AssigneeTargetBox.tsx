@@ -50,7 +50,7 @@ const AssigneeTargetBox = ({
               indeterminate={indeterminate}
             />
             <div className="flex-1 ml-5">
-              <p className="text-ct-blue-40 font-semibold text-xxs">ASSIGNEE: 07</p>
+              <p className="text-ct-blue-40 font-semibold text-xxs">ASSIGNEE: {selectedAssigneList.length}</p>
             </div>
             <div className="self-end">
               <Buttons.IconButton.Circle

@@ -14,7 +14,7 @@ const ScriptTargetBox = ({
   targetTitle: string;
   onClick: () => void;
 }) => {
-  const { selectedScriptList, selectScript } = useAssigneContext();
+  const { selectedScriptList, selectScript, deleteSingleScript, getSelectedScript } = useAssigneContext();
 
   const checkedScriptList = selectedScriptList?.filter(
     (item) => item?.isSelected
@@ -81,17 +81,20 @@ const ScriptTargetBox = ({
                     <div
                       className={`${scriptColorData[getRandomInt(0, 6, index)].id
                         } text-xxs font-semibold px-1.5 py-0.5 rounded-[4px] ${scriptColorData[getRandomInt(0, 6, index)].idBg
-                        }`}
+                        }  w-11 truncate`}
                     >
                       {item?.id}
                     </div>
                     <p className="m-0 text-ct-blue-95 text-xs font-[300] truncate text-ellipsis w-[245px]">
-                      {item?.script}
+                      {item?.description}
                     </p>
                   </button>
                 </div>
                 <div className=" flex-[0.5] self-end group flex items-end flex-col relative">
                   <Buttons.IconButton.Circle
+                    onClick={ () => {
+                      deleteSingleScript(item.id)
+                    }}
                     background="transparent"
                     size="medium"
                     variant="CT-Blue"

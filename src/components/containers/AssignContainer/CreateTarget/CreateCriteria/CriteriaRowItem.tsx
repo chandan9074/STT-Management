@@ -13,9 +13,40 @@ const CriteriaRowItem = ({
   criteria: CriteriaItemDT;
   setDetailsModalOpen: (open: boolean) => void;
 }) => {
-  const { selectCriteria } = useAssigneContext();
+  const { selectCriteria, deleteSingleCriteria } = useAssigneContext();
   const optionMenuRef = useRef<null | HTMLDivElement>(null);
   const { open, handleOpen } = useOutsideClick(optionMenuRef);
+
+  const handleTextConcatenation = (data: CriteriaItemDT) => {
+
+    let text = ""
+
+    for (let item in data) {
+      if (item === "target" || item === "id") {
+        continue;
+      }
+      else if (data[item as keyof CriteriaItemDT] !== null) {
+        if (Array.isArray(data[item as keyof CriteriaItemDT])) {
+          const itemArray = data[item as keyof CriteriaItemDT] as string[];
+          if (itemArray.length > 0) {
+            for (let i = 0; i < itemArray.length; i++) {
+              text += itemArray[i] + "- ";
+            }
+          }
+        } else if (typeof data[item as keyof CriteriaItemDT] === "string") {
+          const itemString = data[item as keyof CriteriaItemDT] as string;
+          if (itemString !== undefined) {
+            text += itemString + "- ";
+          }
+        }
+
+
+      }
+    }
+
+    return text;
+  }
+
   return (
     <div
       key={criteria?.id}
@@ -48,37 +79,38 @@ const CriteriaRowItem = ({
                 onKeyDown={(e) => e.stopPropagation()}
                 className="w-[160px] absolute top-0 right-0 bg-white rounded-md shadow-md animate-fadeIn z-50"
               >
-                <div
+                <button
                   onClick={() => setDetailsModalOpen(true)}
-                  className={`flex gap-1 items-center justify-between px-4 py-3 rounded-t-lg cursor-pointer hover:bg-[rgba(44,121,190,0.12)]`}
+                  className={`flex w-full items-center justify-between px-4 py-3 rounded-t-lg cursor-pointer hover:bg-[rgba(44,121,190,0.12)]`}
                 >
                   <div className="flex items-center gap-4">
                     <img src={Icons.open_in_new} />
                     <p>Details</p>
                   </div>
-                </div>
-                <div
-                  className={`flex gap-1 items-center justify-between px-4 py-3 rounded-t-lg cursor-pointer  hover:bg-[rgba(44,121,190,0.12)]`}
+                </button>
+                <button
+                  className={`flex w-full items-center justify-between px-4 py-3 rounded-t-lg cursor-pointer  hover:bg-[rgba(44,121,190,0.12)]`}
                 >
                   <div className="flex items-center gap-4">
                     <img src={Icons.edit_blue} />
                     <p>Edit</p>
                   </div>
-                </div>
-                <div
-                  className={`flex gap-1 items-center justify-between px-4 py-3 rounded-t-lg cursor-pointer  hover:bg-[rgba(44,121,190,0.12)]`}
+                </button>
+                <button
+                  onClick={() => deleteSingleCriteria(criteria.id)}
+                  className={`flex w-full items-center justify-between px-4 py-3 rounded-t-lg cursor-pointer  hover:bg-[rgba(44,121,190,0.12)]`}
                 >
                   <div className="flex items-center gap-4">
                     <img src={Icons.delete_red} />
                     <p>Delete</p>
                   </div>
-                </div>
+                </button>
               </div>
             )}
           </div>
         </div>
         <p className="m-0 text-ct-blue-90-68% text-xs font-[300] truncate text-ellipsis w-[380px] leading-4 group-hover:text-overflow-clip group-hover:whitespace-normal">
-          {criteria?.criteria}
+          {handleTextConcatenation(criteria)}
         </p>
       </div>
 

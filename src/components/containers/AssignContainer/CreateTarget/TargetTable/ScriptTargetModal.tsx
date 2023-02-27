@@ -76,9 +76,8 @@ const ScriptTargetModal = ({ scriptList }: Props) => {
           {scriptList?.map((item, index) => (
             <div
               key={item?.id}
-              className={`flex items-center gap-1 w-full px-4 py-1 justify-between ${
-                selectedScript?.id === item?.id && "bg-[#E1EFFE]"
-              }`}
+              className={`flex items-center gap-1 w-full px-4 py-1 justify-between ${selectedScript?.id === item?.id && "bg-[#E1EFFE]"
+                }`}
             >
               <div className="flex  items-center gap-3">
                 <Radio
@@ -88,16 +87,14 @@ const ScriptTargetModal = ({ scriptList }: Props) => {
                 />
                 <button className="inline-flex gap-x-2 items-center">
                   <div
-                    className={`${
-                      scriptColorData[getRandomInt(0, 6, index)].id
-                    } text-xxs font-semibold px-1.5 py-0.5 rounded-[4px] ${
-                      scriptColorData[getRandomInt(0, 6, index)].idBg
-                    }`}
+                    className={`${scriptColorData[getRandomInt(0, 6, index)].id
+                      } text-xxs font-semibold px-1.5 py-0.5 rounded-[4px] ${scriptColorData[getRandomInt(0, 6, index)].idBg
+                      }`}
                   >
                     {item?.id}
                   </div>
                   <p className="w-[280px] m-0 text-ct-blue-95 text-xs font-[300] truncate text-ellipsis">
-                    {item?.script}
+                    {item?.description}
                   </p>
                 </button>
               </div>

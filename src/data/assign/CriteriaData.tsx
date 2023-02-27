@@ -2,57 +2,131 @@ import { CriteriaItemDT } from "../../types/assignTypes";
 
 export const criteriaDataList: CriteriaItemDT[] = [
   {
-    id: 234,
-    criteria:
-      "Male- 15-24 yrs- Nator, Chandpur- Job Holder- Upper Class-  Uneducated- Hearing (Yes)- Inside Room- So Close",
-    target: 599,
+    "id": "a00e912c-3d72-45f6-90c4-fd2632443240",
+    "gender": "male",
+    "ageRange": "25-30",
+    "district": [
+      "dhaka",
+      "mymensingh"
+    ],
+    "profession": "teacher1",
+    "economicSituation": "poor1",
+    "healthFactors": [
+      "smoker",
+      "jsghfkjwed"
+    ],
+    "recordingArea": "baire",
+    "recordingDistance": "baire",
+    "education": "secondary",
+    "target": 2345,
+    "deadline": "2023-02-11",
+    "reminder": [
+      "kisr",
+      "ki1"
+    ],
+    "remark": "nai kono remark1"
   },
   {
-    id: 235,
-    criteria:
-      "Male- 15-24 yrs- Nator, Chandpur- Job Holder- Upper Class-  Uneducated- Hearing (Yes)- Inside Room- So Close",
-    target: 600,
+    "id": "b62cab7f-48fd-4fd2-8ea8-e0dbd13278da",
+    "gender": "male",
+    "ageRange": "25-30",
+    "district": [
+      "dhaka",
+      "mymensingh"
+    ],
+    "profession": "teacher",
+    "economicSituation": "poor",
+    "healthFactors": [
+      "smoker",
+      "jsghfkjwed"
+    ],
+    "recordingArea": "baire",
+    "recordingDistance": "baire",
+    "education": "secondary",
+    "target": 2345,
+    "deadline": "2023-02-11",
+    "reminder": [
+      "kisr",
+      "ki"
+    ],
+    "remark": "remark diye ki hobe?"
   },
   {
-    id: 236,
-    criteria:
-      "Male- 15-24 yrs- Nator, Chandpur- Job Holder- Upper Class-  Uneducated- Hearing (Yes)- Inside Room- So Close",
-    target: 601,
+    "id": "b08374ac-e2b0-4810-8c8c-3dcb2f649955",
+    "gender": "Female",
+    "ageRange": "15-24",
+    "district": [
+      "Barisal",
+      "jhalokati",
+      "Bandarban"
+    ],
+    "profession": "Job Holder",
+    "economicSituation": "Middle Class",
+    "healthFactors": [
+      "Hearing",
+      "Stutter",
+      "Smoker"
+    ],
+    "recordingArea": "Other Public Area",
+    "recordingDistance": "Moving",
+    "education": "Secondary",
+    "target": 950,
+    "deadline": "2023-02-14",
+    "reminder": [
+      "15 Feb",
+      "16 Feb",
+      "10 Feb"
+    ],
+    "remark": "this is note"
   },
   {
-    id: 237,
-    criteria:
-      "Male- 15-24 yrs- Nator, Chandpur- Job Holder- Upper Class-  Uneducated- Hearing (Yes)- Inside Room- So Close",
-    target: 602,
+    "id": "21d58200-223b-4335-9b33-75930c16dd09",
+    "gender": "male",
+    "ageRange": "25-30",
+    "district": [
+      "dhaka",
+      "mymensingh"
+    ],
+    "profession": "teacher",
+    "economicSituation": "poor",
+    "healthFactors": [
+      "smoker",
+      "jsghfkjwed"
+    ],
+    "recordingArea": "baire",
+    "recordingDistance": "baire",
+    "education": "secondary",
+    "target": 2345,
+    "deadline": "2023-02-11",
+    "reminder": [
+      "kisr",
+      "ki"
+    ],
+    "remark": "nai kono remark"
   },
   {
-    id: 238,
-    criteria:
-      "Male- 15-24 yrs- Nator, Chandpur- Job Holder- Upper Class-  Uneducated- Hearing (Yes)- Inside Room- So Close",
-    target: 603,
-  },
-  {
-    id: 239,
-    criteria:
-      "Male- 15-24 yrs- Nator, Chandpur- Job Holder- Upper Class-  Uneducated- Hearing (Yes)- Inside Room- So Close",
-    target: 604,
-  },
-  {
-    id: 240,
-    criteria:
-      "Male- 15-24 yrs- Nator, Chandpur- Job Holder- Upper Class-  Uneducated- Hearing (Yes)- Inside Room- So Close",
-    target: 605,
-  },
-  {
-    id: 241,
-    criteria:
-      "Male- 15-24 yrs- Nator, Chandpur- Job Holder- Upper Class-  Uneducated- Hearing (Yes)- Inside Room- So Close",
-    target: 606,
-  },
-  {
-    id: 241,
-    criteria:
-      "Male- 15-24 yrs- Nator, Chandpur- Job Holder- Upper Class-  Uneducated- Hearing (Yes)- Inside Room- So Close",
-    target: 607,
+    "id": "Yg4QbYYBL-FR7S10Qozg",
+    "gender": "male",
+    "ageRange": "25-30",
+    "district": [
+      "dhaka",
+      "mymensingh"
+    ],
+    "profession": "teacher",
+    "economicSituation": "poor",
+    "healthFactors": [
+      "smoker",
+      "jsghfkjwed"
+    ],
+    "recordingArea": "baire",
+    "recordingDistance": "baire",
+    "education": "secondary",
+    "target": 2345,
+    "deadline": "2023-02-11",
+    "reminder": [
+      "kisr",
+      "ki"
+    ],
+    "remark": "nai kono remark"
   },
 ];

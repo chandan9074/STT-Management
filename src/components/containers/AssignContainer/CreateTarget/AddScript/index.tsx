@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Icons from "../../../../../assets/Icons";
 import { useAssigneContext } from "../../../../../context/AssignProvider";
 import { singleScriptDT } from "../../../../../types/assignTypes";
@@ -11,7 +11,12 @@ const AddSript = () => {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [modalScript, setModalScript] = useState<singleScriptDT>({} as singleScriptDT);
-  const { selectedScriptList } = useAssigneContext();
+  const { selectedScriptList, getSelectedScript } = useAssigneContext();
+
+  useEffect(() => {
+    getSelectedScript();
+  }, []);
+
   const drawerClose = () => {
     setDrawerOpen(false);
   };

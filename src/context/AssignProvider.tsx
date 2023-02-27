@@ -44,6 +44,11 @@ interface ContextProps {
   allScript: allScriptDT | undefined;
   postSelectedScript: (data: postSelectedScriptBodyDT) => void;
   getSelectedScript: () => void;
+  getCriteria: () => void;
+  getAssignee: () => void;
+  deleteSingleScript: (id: string) => void;
+  deleteSingleCriteria: (id: string) => void;
+  deleteSingleAssignee: (id: string) => void;
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -64,6 +69,7 @@ const AssignProvider = ({ children }: { children: any }) => {
   const [selectedCriteriaList, setSelectedCriteriaList] = useState<CriteriaItemDT[]>([]);
   const [selectedTargetList, setSelectedTargetList] = useState<TargetItemDT[]>([]);
   const [allScript, setAllScript] = useState<allScriptDT | undefined>();
+  const [reCall, setReCall] = useState<boolean>(false);
 
   const saveCriteria = (data: any) => {
     const filteredCriterias = criterias.filter((criteria: any, i: number) => i !== editId);
@@ -106,19 +112,54 @@ const AssignProvider = ({ children }: { children: any }) => {
 
   const getSelectedScript = async () => {
     const res = await AssignService.fetchScriptList();
+    console.log('get selected script', res.data)
     setSelectedScriptList(res.data);
   }
 
+  const getCriteria = async () => {
+    const res = await AssignService.fetchCriteriaList();
+    setSelectedCriteriaList(res.data);
+  }
+
+  const getAssignee = async () => {
+    const res = await AssignService.fetchAssignList();
+    setSelectedAssigneList(res.data);
+  }
+
+  const deleteSingleScript = async (id: string) => {
+    const res = await AssignService.deleteSingleScript(id);
+    console.log('AssignService.deleteSingleScript response:', res);
+    if (res.status === 200) {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      await getSelectedScript();
+    }
+  }
+
+  const deleteSingleCriteria = async (id: string) => {
+    const res = await AssignService.deleteSingleCriteria(id);
+    if (res) {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      await getCriteria();
+    }
+  }
+
+  const deleteSingleAssignee = async (id: string) => {
+    const res = await AssignService.deleteSingleAssignee(id);
+    if (res) {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      await getAssignee();
+    }
+  }
 
   useEffect(() => {
     const fetchInitialData = async () => {
       // const scriptList = await AssignService.fetchScriptList();
-      const assigneeList = await AssignService.fetchAssignList();
-      const criteriaList = await AssignService.fetchCriteriaList();
+      // const assigneeList = await AssignService.fetchAssignList();
+      // const criteriaList = await AssignService.fetchCriteriaList();
       const targetList = await AssignService.fetchTargetList();
-      setSelectedAssigneList(assigneeList);
+      // setSelectedAssigneList(assigneeList);
       // setSelectedScriptList(scriptList);
-      setSelectedCriteriaList(criteriaList);
+      // setSelectedCriteriaList(criteriaList);
       setSelectedTargetList(targetList);
     };
     fetchInitialData();
@@ -145,6 +186,7 @@ const AssignProvider = ({ children }: { children: any }) => {
           return item;
         });
       });
+      console.log('selectedScriptList', selectedScriptList)
     }
   };
   const selectAssigne = (
@@ -224,7 +266,12 @@ const AssignProvider = ({ children }: { children: any }) => {
         getAllScript,
         allScript,
         postSelectedScript,
-        getSelectedScript
+        getSelectedScript,
+        getCriteria,
+        getAssignee,
+        deleteSingleScript,
+        deleteSingleCriteria,
+        deleteSingleAssignee
       }}
     >
       {children}

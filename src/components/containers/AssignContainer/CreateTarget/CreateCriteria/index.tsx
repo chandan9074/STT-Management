@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CriteriaForm from "./CriteriaForm";
 import { Drawer } from "../../../../Drawer";
 import Type1 from "../../../../Drawer/Script/Type1";
@@ -10,7 +10,11 @@ import TargetBox from "../TargetBox";
 
 const CreateCriteria = () => {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
-  const { selectedCriteriaList } = useAssigneContext();
+  const { selectedCriteriaList, getCriteria } = useAssigneContext();
+
+  useEffect(() => {
+    getCriteria();
+  }, []);
 
   const drawerClose = () => {
     setDrawerOpen(false);

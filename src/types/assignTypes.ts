@@ -9,25 +9,40 @@ export type assignStatisticsDT = {
 
 export interface ScriptItemDT {
   isSelected?: boolean;
-  id: number;
-  script: string;
-  frequency?: number;
+  id: string;
+  description: string;
+  domain:string;
+  subDomain:string;
+  title: string;
+  frequncy: number;
 }
 
 export interface CriteriaItemDT {
   isSelected?: boolean;
-  id: number;
+  id: string;
+  gender: string;
+  ageRange: string;
+  district: string[];
+  profession: string;
+  economicSituation: string;
+  healthFactors: string[];
+  recordingArea: string;
+  recordingDistance: string;
+  education: string;
   target: number;
-  criteria: string;
+  deadline: string;
+  reminder: string[];
+  remark: string;
 }
 
 export interface AssigneeItemDT {
-  id: number;
   isSelected?: boolean;
-  role: string;
-  roleId: string;
+  id: string;
   name: string;
-  image?: string;
+  role: string;
+  contact: string;
+  email: string;
+  address: string;
 }
 
 export interface TargetItemDT {
