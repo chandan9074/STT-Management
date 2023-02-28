@@ -20,7 +20,6 @@ const { Option } = Select;
 const data: any = [
     {
         id: '1',
-        key: '10-227a',
         speaker: [
             {
                 name: 'Maksuda Alam',
@@ -50,6 +49,7 @@ const data: any = [
         recordingArea: 'Inside Room',
         recordingDistance: '',
         device: 'Redmi Note 8',
+        speech: null,
         speeches: '355',
         maxSpeeches: '1000',
         remark: "",
@@ -58,7 +58,6 @@ const data: any = [
     },
     {
         id: '2',
-        key: '10-228a',
         speaker: [
             {
                 name: 'Maksuda Alam',
@@ -88,6 +87,7 @@ const data: any = [
         recordingArea: '',
         recordingDistance: '',
         device: '',
+        speech: null,
         speeches: '800',
         maxSpeeches: '2000',
         remark: "This Is Remark data",
@@ -96,11 +96,11 @@ const data: any = [
     },
     {
         id: '3',
-        key: '10-230a',
         speaker: [],
         collector: {},
         recordingArea: '',
         device: '',
+        speech: null,
         recordingDistance: 'Close',
         speeches: '100',
         maxSpeeches: '1000',
@@ -111,7 +111,6 @@ const data: any = [
 
     {
         id: '4',
-        key: '10-240a',
         speaker: [
             {
                 name: 'Maksuda Alam',
@@ -134,6 +133,7 @@ const data: any = [
         recordingDistance: 'Close',
         device: 'Redmi Note 8',
         speeches: '800',
+        speech: null,
         maxSpeeches: '3000',
         remark: "This Is Remark data",
         role: 'Manager'
@@ -141,7 +141,6 @@ const data: any = [
     },
     {
         id: '5',
-        key: '10-250a',
         speaker: [
             {
                 name: 'Maksuda Alam',
@@ -165,6 +164,7 @@ const data: any = [
         recordingDistance: 'Close',
         device: 'Redmi Note 8',
         speeches: '800',
+        speech: null,
         maxSpeeches: '3000',
         remark: "",
         role: 'Manager'
@@ -173,7 +173,6 @@ const data: any = [
 
     {
         id: '6',
-        key: '10-260a',
         speaker: [],
         collector: {
             name: 'Muhammad Miraz',
@@ -189,12 +188,12 @@ const data: any = [
         speeches: '800',
         maxSpeeches: '3000',
         remark: "",
+        speech: null,
         role: 'Manager'
 
     },
     {
         id: '7',
-        key: '10-270a',
         speaker: [
             {
                 name: 'Maksuda Alam',
@@ -225,6 +224,7 @@ const data: any = [
         recordingDistance: 'Close',
         device: 'Redmi Note 8',
         speeches: '800',
+        speech: null,
         maxSpeeches: '3000',
         remark: "",
         role: 'Manager'
@@ -275,9 +275,6 @@ const Type11 = () => {
         setIsSpeakerModal(true)
         setSpeechId(id);
     }
-
-    console.log('speech data', speechData);
-    
 
     const collectorOnChange = (value: any) => {
         setCollector(value ?? undefined);
@@ -348,15 +345,22 @@ const Type11 = () => {
             title: `${"SN".toLocaleUpperCase()}`,
             key: 'key',
             // align: 'center',
-            width: 120,
-            render: (data) => <h1 className='w-[120px] whitespace-nowrap'># {data.key}</h1>,
+            width: 56,
+            render: (text, record, index) => (
+                <span>{(index + 1).toString().padStart(2, '0')}</span>
+            ),
 
         },
         {
             title: `${"Speech".toLocaleUpperCase()}`,
-            key: 'script',
+            key: 'speech',
             width: 206,
-            render: (data) => <AudioUpload />
+            render: (data) => <AudioUpload
+                data={data?.speech}
+                setSpeechData={setSpeechData}
+                speechData={speechData}
+                audioId={data?.id}
+            />
         },
 
         {
