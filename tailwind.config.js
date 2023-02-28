@@ -66,6 +66,8 @@ module.exports = {
 
         "box": '0px 1px 2px rgba(31, 56, 76, 0.06), 0px 1px 3px rgba(31, 56, 76, 0.1)',
 
+        'light-gray-4': '0px 1px 2px rgba(31, 56, 76, 0.06), 0px 1px 3px rgba(31, 56, 76, 0.1)'
+
       },
       colors: {
         "primary-ct-blue-60": "#2C79BE",

@@ -38,3 +38,8 @@ export const WORD_LEVEL = "/word-level";
 export const PHONEME_LEVEL = "/phoneme-level";
 export const ANNOTATED_FILES = "/annotated-files";
 export const UPLOAD_AUDION_VIDEO_PATH = `upload-audio-video`;
+
+
+
+export const AUDIO_FILE_UPLOADED = 'Uploaded';
+export const AUDIO_FILE_FAILED = 'Failed';

@@ -14,225 +14,15 @@ import { roleDT } from '../../types/billingTypes';
 import { deviceData, recordingArea, recordingDistanceAssign } from '../../data/assign/AssignData';
 import AudioUpload from '../containers/AssignContainer/AllTarget/EditSpeeches/AudioUpload';
 import RemarkModal from '../containers/AssignContainer/AllTarget/EditSpeeches/RemarkModal';
+import { AUDIO_FILE_FAILED, AUDIO_FILE_UPLOADED } from '../../helpers/Slug';
 
 const { Option } = Select;
 
-const data: any = [
-    {
-        id: '1',
-        speaker: [
-            {
-                name: 'Maksuda Alam',
-                gender: 'male',
-                role: 'speaker',
-                contact: '019',
-                address: 'Dhaka',
-                id: "maksudalam1@gmail.com"
-            },
-            {
-                name: 'Bilkis banu',
-                gender: 'female',
-                role: 'speaker',
-                contact: '019',
-                address: 'Dhaka',
-                id: "maksudalam2@gmail.com"
-            }
-        ],
-        collector: {
-            name: 'Muhammad Miraz',
-            gender: 'male',
-            role: 'collector',
-            contact: '019',
-            address: 'Rajbongshi',
-            id: "maksudalam1@gmail.com"
-        },
-        recordingArea: 'Inside Room',
-        recordingDistance: '',
-        device: 'Redmi Note 8',
-        speech: null,
-        speeches: '355',
-        maxSpeeches: '1000',
-        remark: "",
-        role: 'Manager'
+type Props = {
+    data: any
+}
 
-    },
-    {
-        id: '2',
-        speaker: [
-            {
-                name: 'Maksuda Alam',
-                gender: 'male',
-                role: 'speaker',
-                contact: '019',
-                address: 'Dhaka',
-                id: "maksudalam3@gmail.com"
-            },
-            {
-                name: 'Bilkis banu',
-                gender: 'female',
-                role: 'speaker',
-                contact: '019',
-                address: 'Dhaka',
-                id: "maksudalam4@gmail.com"
-            }
-        ],
-        collector: {
-            name: 'Muhammad Miraz',
-            gender: 'male',
-            role: 'collector',
-            contact: '019',
-            address: 'Rajbongshi',
-            id: "maksudalam1@gmail.com"
-        },
-        recordingArea: '',
-        recordingDistance: '',
-        device: '',
-        speech: null,
-        speeches: '800',
-        maxSpeeches: '2000',
-        remark: "This Is Remark data",
-        role: 'Team Leader'
-
-    },
-    {
-        id: '3',
-        speaker: [],
-        collector: {},
-        recordingArea: '',
-        device: '',
-        speech: null,
-        recordingDistance: 'Close',
-        speeches: '100',
-        maxSpeeches: '1000',
-        remark: "This Is Remark data",
-        role: 'Manager'
-
-    },
-
-    {
-        id: '4',
-        speaker: [
-            {
-                name: 'Maksuda Alam',
-                gender: 'male',
-                role: 'speaker',
-                contact: '019',
-                address: 'Dhaka',
-                id: "maksudalam5@gmail.com"
-            }
-        ],
-        collector: {
-            name: 'Muhammad Miraz',
-            gender: 'male',
-            role: 'collector',
-            contact: '019',
-            address: 'Rajbongshi',
-            id: "maksudalam1@gmail.com"
-        },
-        recordingArea: 'Inside Room',
-        recordingDistance: 'Close',
-        device: 'Redmi Note 8',
-        speeches: '800',
-        speech: null,
-        maxSpeeches: '3000',
-        remark: "This Is Remark data",
-        role: 'Manager'
-
-    },
-    {
-        id: '5',
-        speaker: [
-            {
-                name: 'Maksuda Alam',
-                gender: 'male',
-                role: 'speaker',
-                contact: '019',
-                address: 'Dhaka',
-                id: "maksudalam6@gmail.com"
-            },
-            {
-                name: 'Bilkis banu',
-                gender: 'female',
-                role: 'speaker',
-                contact: '019',
-                address: 'Dhaka',
-                id: "maksudalam7@gmail.com"
-            }
-        ],
-        collector: {},
-        recordingArea: 'Inside Room',
-        recordingDistance: 'Close',
-        device: 'Redmi Note 8',
-        speeches: '800',
-        speech: null,
-        maxSpeeches: '3000',
-        remark: "",
-        role: 'Manager'
-
-    },
-
-    {
-        id: '6',
-        speaker: [],
-        collector: {
-            name: 'Muhammad Miraz',
-            gender: 'male',
-            role: 'collector',
-            contact: '019',
-            address: 'Rajbongshi',
-            id: "maksudalam1@gmail.com"
-        },
-        recordingArea: 'Inside Room',
-        recordingDistance: 'Close',
-        device: 'Redmi Note 8',
-        speeches: '800',
-        maxSpeeches: '3000',
-        remark: "",
-        speech: null,
-        role: 'Manager'
-
-    },
-    {
-        id: '7',
-        speaker: [
-            {
-                name: 'Maksuda Alam',
-                gender: 'male',
-                role: 'speaker',
-                contact: '019',
-                address: 'Dhaka',
-                id: "maksudalam8@gmail.com"
-            },
-            {
-                name: 'Bilkis banu',
-                gender: 'female',
-                role: 'speaker',
-                contact: '019',
-                address: 'Dhaka',
-                id: "maksudalam9@gmail.com"
-            }
-        ],
-        collector: {
-            name: 'Muhammad Miraz',
-            gender: 'male',
-            role: 'collector',
-            contact: '019',
-            address: 'Rajbongshi',
-            id: "maksudalam1@gmail.com"
-        },
-        recordingArea: 'Inside Room',
-        recordingDistance: 'Close',
-        device: 'Redmi Note 8',
-        speeches: '800',
-        speech: null,
-        maxSpeeches: '3000',
-        remark: "",
-        role: 'Manager'
-
-    }
-];
-
-const Type11 = () => {
+const Type11 = ({data}: Props) => {
     const [isSpeakerModal, setIsSpeakerModal] = useState<boolean>(false);
     const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
@@ -255,6 +45,8 @@ const Type11 = () => {
 
     const managerContext = useContext(RoleInContext);
     const { roleDatas } = managerContext;
+
+    const [audioUploadStatus, setAudioUploadStatus] = useState<string>('');
 
     const managerParams = {
         id: '',
@@ -360,6 +152,7 @@ const Type11 = () => {
                 setSpeechData={setSpeechData}
                 speechData={speechData}
                 audioId={data?.id}
+                setAudioUploadStatus={setAudioUploadStatus}
             />
         },
 
@@ -430,7 +223,7 @@ const Type11 = () => {
 
                                         renderOption={(props, option) => (
                                             <Box key={option.id} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
-                                                <h1 className='text-small text-blue-gray-80 font-medium'>{`${option?.id} - ${option?.name}`}</h1>
+                                                <h1 className='text-small text-blue-gray-80 font-normal'>{`${option?.id} - ${option?.name}`}</h1>
                                             </Box>
                                         )}
 
@@ -534,7 +327,7 @@ const Type11 = () => {
         {
             title: `${"device".toLocaleUpperCase()}`,
             key: 'device',
-            width: 174,
+            width: 126,
             // render: (data) => <h1 className='w-[88px] whitespace-nowrap'> {data.target}</h1>,
             render: (data) =>
                 <div className='assign'>
@@ -594,6 +387,26 @@ const Type11 = () => {
         },
 
         {
+            title: `${"Status".toLocaleUpperCase()}`,
+            width: 120,
+            align: "center",
+            render: (data) => (
+                <div>
+                    {
+                        data?.audioUploadStatus ?
+                            <div className={`${data?.audioUploadStatus === AUDIO_FILE_UPLOADED ? 'bg-green-10 text-green-60' : 'bg-venetian-red text-red-60'}  flex gap-x-[6px] items-center px-[10px] py-[6px] rounded-[20px]`}>
+                                <div className={`${data?.audioUploadStatus === AUDIO_FILE_UPLOADED ? 'bg-secondary-green-50' : 'bg-secondary-red-50'} w-[6px] h-[6px] rounded-[50%]`}></div>
+                                <h4>Uploaded</h4>
+                            </div>
+                            :
+                           <h4 className='text-xs text-blue-gray-80 font-500'>--</h4>
+                    }
+
+                </div>
+            )
+        },
+
+        {
             title: `${"REMARK".toLocaleUpperCase()}`,
             width: 80,
             align: "center",
@@ -609,21 +422,21 @@ const Type11 = () => {
         },
 
         {
-            title: `${"Details".toLocaleUpperCase()}`,
+            title: `${"Acction".toLocaleUpperCase()}`,
             align: 'center',
             dataIndex: 'details',
-            key: 'details',
+            key: 'action',
             fixed: 'right',
-            width: 80,
+            width: 92,
             render: (_, record) => (
                 <>
 
-                    <div className='flex w-full justify-center items-center relative z-50'>
-                        <img
-                            onClick={() => showDrawer(record)}
-                            className='w-[14px] h-[14px] cursor-pointer'
-                            src={Icons.open_in_new}
-                            alt="" />
+                    <div className='flex w-full justify-center items-center'>
+                        <Buttons.LabelButton.Tertiary
+                            label='Submit'
+                            size='small'
+                            variant='CT-Blue'
+                        />
                     </div>
 
                 </>)

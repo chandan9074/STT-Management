@@ -2,17 +2,19 @@ import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
 import Icons from '../../../../../assets/Icons';
 import Buttons from '../../../../Buttons';
 import { Button, LinearProgress } from '@mui/material';
+import { AUDIO_FILE_UPLOADED } from '../../../../../helpers/Slug';
 
 type Props = {
     data: any,
     audioId: number,
     speechData: any,
     setSpeechData: Dispatch<SetStateAction<any>>,
+    setAudioUploadStatus: Dispatch<SetStateAction<any>>,
 }
 
-const AudioUpload = ({ data, audioId, speechData, setSpeechData }: Props) => {
+const AudioUpload = ({ data, audioId, speechData, setSpeechData, setAudioUploadStatus }: Props) => {
     const [selectedFile, setSelectedFile] = useState<any>(null);
-    const [uploadProgress, setUploadProgress] = useState<any>(0);
+    // const [uploadProgress, setUploadProgress] = useState<any>(0);
     const [audioMin, setAudioMin] = useState<string>('');
 
     const fileInputRef = useRef<HTMLInputElement>(null);
@@ -25,7 +27,6 @@ const AudioUpload = ({ data, audioId, speechData, setSpeechData }: Props) => {
             const minutes = Math.floor(duration / 60);
             const seconds = Math.floor(duration % 60);
             setAudioMin(minutes + '.' + seconds);
-            // do something with the duration, such as store it in state
         });
     }
 
@@ -34,7 +35,6 @@ const AudioUpload = ({ data, audioId, speechData, setSpeechData }: Props) => {
         setSelectedFile(file);
         convertAudioToMin(file);
 
-
         const index = speechData.findIndex((item: any) => item?.id === audioId);
         if (index === -1) {
             return;
@@ -42,14 +42,19 @@ const AudioUpload = ({ data, audioId, speechData, setSpeechData }: Props) => {
         const newData = [...speechData];
         newData[index] = {
             ...newData[index],
-            speech: file
+            speech: file,
+            audioUploadStatus: AUDIO_FILE_UPLOADED
+
         };
         setSpeechData(newData);
+
+        // setAudioUploadStatus(AUDIO_FILE_UPLOADED);
+        
     };
 
-    const handleFileUpload = async () => {
-        const formData = new FormData();
-        formData.append('file', selectedFile);
+    // const handleFileUpload = async () => {
+    //     const formData = new FormData();
+    //     formData.append('file', selectedFile);
         // try {
         //   const response = await fetch('/upload', {
         //     method: 'POST',
@@ -63,7 +68,7 @@ const AudioUpload = ({ data, audioId, speechData, setSpeechData }: Props) => {
         // } catch (error) {
         //   console.error(error);
         // }
-    };
+    // };
 
     const handleButtonClick = () => {
         fileInputRef.current?.click();

@@ -108,7 +108,6 @@ const Type7 = () => {
                         bgColor='#F5AC42'
                         value={100}
                         height={6}
-
                     />
                 </div>
             )
