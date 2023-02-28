@@ -1,5 +1,11 @@
+import { useEffect } from "react";
+import { useAssigneContext } from "../../../../../context/AssignProvider";
 import Table from "../../../../Table";
 const TargetTable = () => {
+  const { getDraftTarget } = useAssigneContext()
+  useEffect(() => {
+    getDraftTarget()
+  }, []);
   return (
     <div className="mt-10 mx-5">
       <p className="text-heading-6 font-normal text-ct-blue-95 mb-4">

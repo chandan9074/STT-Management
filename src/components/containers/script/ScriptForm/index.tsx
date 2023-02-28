@@ -98,7 +98,7 @@ const ScriptForms = ({ data }: { data?: allScriptResDT }) => {
 
         onSubmit: (values: allScriptResDT) => {
 
-            
+
             if (scriptModule === 'TTS') {
                 delete values.distributionSource;
                 delete values.isAge;
@@ -140,7 +140,7 @@ const ScriptForms = ({ data }: { data?: allScriptResDT }) => {
                 navigate(SCRIPT_PATH);
             }
 
-            
+
         }
     });
 

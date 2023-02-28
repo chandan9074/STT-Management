@@ -39,6 +39,10 @@ export const GET_ASSIGNEE_SCRIPT_URL = `${REACT_APP_BASE_URL2}/get_res_selected_
 export const DELETE_SINGLE_SCRIPT_URL = `${REACT_APP_BASE_URL2}/delete_by_id_selected_script_assign_module`;
 export const DELETE_SINGLE_CRITERIA_URL = `${REACT_APP_BASE_URL2}/delete_by_id_criteria_assign_module`;
 export const DELETE_SINGLE_ASSIGNEE_URL = `${REACT_APP_BASE_URL2}/delete_by_id_selected_assignee_assign_module`;
+export const POST_DRAFT_TARGET_URL = `${REACT_APP_BASE_URL2}/post_res_draft_target_assign_module`;
+export const GET_DRAFT_TARGET_URL = `${REACT_APP_BASE_URL2}/get_res_draft_target_assign_module`;
+
+
 
 
 

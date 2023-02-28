@@ -119,6 +119,7 @@ import edit_blue from "./edit.svg";
 import delete_red from "./delete.svg";
 import MusicBlue from './music_blue.svg';
 import up_arrow_black from "./up_arrow_black.svg";
+import arrow_drop_down_blue_gray_45 from "./arrow_drop_down_blue_gray_45.svg";
 
 const Icons = {
   currency,
@@ -242,6 +243,7 @@ const Icons = {
   delete_red,
   MusicBlue,
   up_arrow_black,
+  arrow_drop_down_blue_gray_45
 };
 
 export default Icons;

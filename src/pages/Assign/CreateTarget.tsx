@@ -11,7 +11,7 @@ import { useAssigneContext } from "../../context/AssignProvider";
 const CreateTarget = () => {
   const [dataShow, setDataShow] = useState<boolean>(true);
   const [showSave, setShowSave] = useState<boolean>(false);
-  const { selectedScriptList, selectedAssigneList, selectedCriteriaList } = useAssigneContext();
+  const { selectedScriptList, selectedAssigneList, selectedCriteriaList, postDraftTarget } = useAssigneContext();
 
   function checkSelected(arr: ScriptItemDT[] | AssigneeItemDT[] | CriteriaItemDT[]) {
     const result = [];
@@ -88,7 +88,8 @@ const CreateTarget = () => {
               <AddAssignee />
             </div>
           </div>
-          {showSave && <div className="absolute right-7 -bottom-4 animate-fadeIn"><Buttons.LabelButton.Primary label="Save" size="xSmall" variant="Megenta" /></div>}
+          {showSave && <div className="absolute right-7 -bottom-4 animate-fadeIn">
+            <Buttons.LabelButton.Primary label="Save" size="xSmall" variant="Megenta" onClick={postDraftTarget} /></div>}
         </div>
 
         <TargetTable />

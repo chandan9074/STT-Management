@@ -4,7 +4,7 @@ import { assignDataList } from "../data/assign/AssignListData";
 import { criteriaDataList } from "../data/assign/CriteriaData";
 import { scriptDataList } from "../data/assign/ScriptData";
 import { targetDataList } from "../data/assign/TargetData";
-import { allScriptParamsDT, postSelectedScriptBodyDT } from "../types/assignTypes";
+import { allScriptParamsDT, postDraftTargetBodyDT, postSelectedScriptBodyDT } from "../types/assignTypes";
 
 export default class AssignService {
   static getAllScript(data: allScriptParamsDT) {
@@ -42,6 +42,12 @@ export default class AssignService {
     return res;
   }
   static async fetchTargetList() {
-    return targetDataList;
+    const res = axios.get(PATH.GET_DRAFT_TARGET_URL);
+    return res;
+  }
+  static async postDraftTarget(data: postDraftTargetBodyDT) {
+    const res = axios.post(PATH.POST_DRAFT_TARGET_URL, data);
+    // console.log('postDraftTarget called', data);
+    return res;
   }
 }

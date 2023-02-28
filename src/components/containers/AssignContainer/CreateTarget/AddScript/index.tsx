@@ -17,6 +17,8 @@ const AddSript = () => {
     getSelectedScript();
   }, []);
 
+  console.log("selectedScriptList", selectedScriptList)
+
   const drawerClose = () => {
     setDrawerOpen(false);
   };

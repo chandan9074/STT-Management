@@ -28,7 +28,7 @@ const AssigneeRowItem = ({ assignee }: Props) => {
             {assignee.name}
           </h4>
           <p className="mt-1 text-ct-blue-90-70% text-small font-[400] leading-4">
-            {assignee.role}, {assignee.id}
+            {assignee.role}, {assignee.roleID}
           </p>
         </div>
       </div>

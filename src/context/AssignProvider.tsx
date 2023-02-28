@@ -49,6 +49,8 @@ interface ContextProps {
   deleteSingleScript: (id: string) => void;
   deleteSingleCriteria: (id: string) => void;
   deleteSingleAssignee: (id: string) => void;
+  postDraftTarget: () => void;
+  getDraftTarget: () => void;
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -108,6 +110,10 @@ const AssignProvider = ({ children }: { children: any }) => {
 
   const postSelectedScript = async (data: postSelectedScriptBodyDT) => {
     const res = await AssignService.postSelectedScript(data);
+    if (res.status === 200) {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      await getSelectedScript();
+    }
   }
 
   const getSelectedScript = async () => {
@@ -130,40 +136,76 @@ const AssignProvider = ({ children }: { children: any }) => {
     const res = await AssignService.deleteSingleScript(id);
     console.log('AssignService.deleteSingleScript response:', res);
     if (res.status === 200) {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      await getSelectedScript();
+      // await new Promise(resolve => setTimeout(resolve, 1000));
+      // await getSelectedScript();
+      setSelectedScriptList(selectedScriptList.filter((item) => item.id !== id));
     }
   }
 
   const deleteSingleCriteria = async (id: string) => {
     const res = await AssignService.deleteSingleCriteria(id);
-    if (res) {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      await getCriteria();
+    if (res.status === 200) {
+      // await new Promise(resolve => setTimeout(resolve, 1000));
+      // await getCriteria();
+      setSelectedCriteriaList(selectedCriteriaList.filter((item) => item.id !== id));
     }
   }
 
   const deleteSingleAssignee = async (id: string) => {
     const res = await AssignService.deleteSingleAssignee(id);
-    if (res) {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      await getAssignee();
+    if (res.status === 200) {
+      // await new Promise(resolve => setTimeout(resolve, 1000));
+      // await getAssignee();
+      setSelectedAssigneList(selectedAssigneList.filter((item) => item.id !== id));
     }
   }
 
-  useEffect(() => {
-    const fetchInitialData = async () => {
-      // const scriptList = await AssignService.fetchScriptList();
-      // const assigneeList = await AssignService.fetchAssignList();
-      // const criteriaList = await AssignService.fetchCriteriaList();
-      const targetList = await AssignService.fetchTargetList();
-      // setSelectedAssigneList(assigneeList);
-      // setSelectedScriptList(scriptList);
-      // setSelectedCriteriaList(criteriaList);
-      setSelectedTargetList(targetList);
-    };
-    fetchInitialData();
-  }, []);
+  function checkSelected(arr: ScriptItemDT[] | AssigneeItemDT[] | CriteriaItemDT[]) {
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+      const obj = arr[i];
+      if (obj.hasOwnProperty('isSelected')) {
+        // result.push(Boolean(obj.isSelected));
+        if (obj.isSelected) {
+          result.push(obj.id);
+        }
+      }
+    }
+    return result;
+  }
+
+  const postDraftTarget = async () => {
+
+    const body = {
+      selectedScript: checkSelected(selectedScriptList),
+      selectedCriteria: checkSelected(selectedCriteriaList),
+      selectedAssignee: checkSelected(selectedAssigneList),
+    }
+
+    const res = await AssignService.postDraftTarget(body);
+    selectScript(null, false, true)
+    selectAssigne(null, false, true)
+    selectCriteria(null, false, true)
+  }
+
+  const getDraftTarget = async () => {
+    const res = await AssignService.fetchTargetList();
+    setSelectedTargetList(res.data);
+  }
+
+  // useEffect(() => {
+  //   const fetchInitialData = async () => {
+  //     // const scriptList = await AssignService.fetchScriptList();
+  //     // const assigneeList = await AssignService.fetchAssignList();
+  //     // const criteriaList = await AssignService.fetchCriteriaList();
+  //     // const targetList = await AssignService.fetchTargetList();
+  //     // setSelectedAssigneList(assigneeList);
+  //     // setSelectedScriptList(scriptList);
+  //     // setSelectedCriteriaList(criteriaList);
+  //     // setSelectedTargetList(targetList);
+  //   };
+  //   fetchInitialData();
+  // }, []);
 
   const selectScript = (
     selectedItem: ScriptItemDT | null,
@@ -271,7 +313,9 @@ const AssignProvider = ({ children }: { children: any }) => {
         getAssignee,
         deleteSingleScript,
         deleteSingleCriteria,
-        deleteSingleAssignee
+        deleteSingleAssignee,
+        postDraftTarget,
+        getDraftTarget
       }}
     >
       {children}

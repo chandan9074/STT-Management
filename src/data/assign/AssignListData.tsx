@@ -1,6 +1,6 @@
 import { AssigneeItemDT } from "../../types/assignTypes";
 
-export const assignDataList: AssigneeItemDT[] = [
+export const assignDataList = [
   {
       "id": "50442277-5a78-4447-acdc-88380c870675",
       "name": "Mohammad Shahruk khan",

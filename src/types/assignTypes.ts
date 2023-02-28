@@ -1,3 +1,4 @@
+import { allScriptResDT } from "./script";
 import { audioStatusDT, overTheTimeDataDT } from "./userManagementTypes";
 export type assignStatisticsDT = {
   target: number;
@@ -14,7 +15,7 @@ export interface ScriptItemDT {
   domain:string;
   subDomain:string;
   title: string;
-  frequncy: number;
+  frequency: number;
 }
 
 export interface CriteriaItemDT {
@@ -40,6 +41,7 @@ export interface AssigneeItemDT {
   id: string;
   name: string;
   role: string;
+  roleID: string;
   contact: string;
   email: string;
   address: string;
@@ -48,26 +50,17 @@ export interface AssigneeItemDT {
 export interface TargetItemDT {
   id: number | string;
   isSelected?: boolean;
-  script: {
-    current: ScriptItemDT;
-    list: ScriptItemDT[];
-  };
-  target: {
-    current: CriteriaItemDT;
-    list: CriteriaItemDT[];
-  };
-  assignee: {
-    current: AssigneeItemDT;
-    list: AssigneeItemDT[];
-  };
-  deadLine: string;
-  remark: {
-    date: string;
-    time: string;
-    name: string;
-    role: string;
-    details: string;
-  };
+  script: allScriptResDT
+  target: CriteriaItemDT;
+  assignee: AssigneeItemDT;
+  // deadLine: string;
+  // remark: {
+  //   date: string;
+  //   time: string;
+  //   name: string;
+  //   role: string;
+  //   details: string;
+  // };
 }
 
 export type allScriptParamsDT = {
@@ -92,4 +85,10 @@ export type singleScriptDT = {
 
 export type postSelectedScriptBodyDT = {
   scriptList: string[];
+}
+
+export type postDraftTargetBodyDT = {
+  selectedScript: string[];
+  selectedCriteria: string[];
+  selectedAssignee: string[];
 }
