@@ -224,7 +224,6 @@ const data: any = [
         maxSpeeches: '3000',
         remark: "",
 
-
     }
 ];
 

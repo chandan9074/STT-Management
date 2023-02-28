@@ -16,6 +16,7 @@ import AudioUpload from '../containers/AssignContainer/AllTarget/EditSpeeches/Au
 import RemarkModal from '../containers/AssignContainer/AllTarget/EditSpeeches/RemarkModal';
 import { AUDIO_FILE_FAILED, AUDIO_FILE_UPLOADED } from '../../helpers/Slug';
 import Status from '../containers/AssignContainer/AllTarget/EditSpeeches/Status';
+import { relative } from 'path';
 
 const { Option } = Select;
 
@@ -454,6 +455,7 @@ const Type11 = ({ data }: Props) => {
             title: `${"REMARK".toLocaleUpperCase()}`,
             width: 80,
             align: "center",
+
             render: (data) => (
                 <button onClick={() => {
                     setRemarkOpen(true);
@@ -508,6 +510,7 @@ const Type11 = ({ data }: Props) => {
                 columns={Type8columns}
                 dataSource={speechData}
                 scroll={{ x: 1600 }}
+                rowKey='id'
             />
 
             <Drawer.Target.Type1
