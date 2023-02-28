@@ -251,6 +251,7 @@ const Type11 = () => {
 
     const [remarkOpen, setRemarkOpen] = useState<boolean>(false);
     const [remarkId, setRemarkId] = useState<number>(NaN);
+    const [tempRemark, setTempRemark] = useState<string>('');
 
     const managerContext = useContext(RoleInContext);
     const { roleDatas } = managerContext;
@@ -596,8 +597,9 @@ const Type11 = () => {
                 <button onClick={() => {
                     setRemarkOpen(true);
                     setRemarkId(data?.id);
+                    setTempRemark(data?.remark);
                 }} className='flex justify-center'>
-                    <img src={Icons.Script} className="h-[15px] w-[12px]" alt="" />
+                    <img src={data?.remark === "" ? Icons.EditGray : Icons.Script} className="h-[15px] w-[12px]" alt="" />
                 </button>
             )
         },
@@ -670,6 +672,7 @@ const Type11 = () => {
                     setSpeechData={setSpeechData}
                     speechData={speechData}
                     setRemarkId={setRemarkId}
+                    tempRemark={tempRemark}
                 />
             }
 

@@ -123,6 +123,7 @@ import PhotoGallery from "./photo-gallery 1.svg";
 import Blank from "./blank_image.svg";
 import UploadMagenta from "./upload_magenta.svg";
 import AccountCircle from "./account_circle.svg";
+import EditGray from "./edit_gray.svg";
 
 const Icons = {
   currency,
@@ -249,7 +250,8 @@ const Icons = {
   PhotoGallery,
   Blank,
   UploadMagenta,
-  AccountCircle
+  AccountCircle,
+  EditGray
 };
 
 export default Icons;

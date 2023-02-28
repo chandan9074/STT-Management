@@ -1,5 +1,5 @@
 import { TextField } from '@mui/material';
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import Icons from '../../../../../assets/Icons';
 import { predefined } from '../../../../../data/assign/AssignData';
 import Buttons from '../../../../Buttons';
@@ -12,12 +12,18 @@ type Props = {
     speechData: any,
     setSpeechData: Dispatch<SetStateAction<any>>,
     setRemarkId: Dispatch<SetStateAction<number>>,
-    // onRemarkSubmit: (value: string) => void
+    tempRemark: string
 }
 
-const RemarkModal = ({ open, setOpen, remarkId, speechData, setSpeechData, setRemarkId }: Props) => {
+const RemarkModal = ({ open, setOpen, remarkId, speechData, setSpeechData, setRemarkId, tempRemark }: Props) => {
 
-    const [remark, setRamark] = useState<string>('');
+    const [remark, setRemark] = useState<string>(tempRemark);
+
+    useEffect(() => {
+        setRemark(tempRemark)
+    }, [tempRemark]);
+
+    const [isRemark, setIsRemark] = useState<boolean>(false);
 
     const onRemarkSubmit = () => {
         const index = speechData.findIndex((item: any) => item?.id === remarkId);
@@ -33,6 +39,13 @@ const RemarkModal = ({ open, setOpen, remarkId, speechData, setSpeechData, setRe
         setRemarkId(NaN);
         setOpen(false);
     }
+
+
+    const onPredefinedValueClick = (value: string) => {
+        setRemark(value);
+        setIsRemark(false);
+    }
+
     return (
         <div>
             <CustomModal.Primary open={open} setOpen={setOpen} width='658px' >
@@ -46,14 +59,26 @@ const RemarkModal = ({ open, setOpen, remarkId, speechData, setSpeechData, setRe
                                 variant='CT-Blue'
                                 icon={<img className='w-2 h-2' src={Icons.AddBlue} alt='' />}
                                 iconAlign="start"
+                                onClick={() => setIsRemark(true)}
+                                disabled={remark !== ''}
                             />
-                            <div className='w-[408px] pt-5 pl-5 pr-3 pb-3 absolute bg-white z-50 rounded-[6px] '>
-                                {
-                                    predefined?.map((item: string, i: number) => (
-                                        <h1 key={i} className='text-blue-gray-80 text text-small font-medium mb-[22px]'>{item}</h1>
-                                    ))
-                                }
-                            </div>
+
+                            {
+                                isRemark &&
+
+                                <div>
+                                    <div className="fixed top-0 left-0 opacity-50 bg-transparent w-full h-screen z-40" onClick={() => setIsRemark(false)} />
+
+                                    <div className='w-[408px] pt-5 pl-5 pr-3 bg-white z-50 rounded-[6px] absolute -bottom-[358px] left-4'>
+
+                                        {
+                                            predefined?.map((item: string, i: number) => (
+                                                <h1 onClick={() => onPredefinedValueClick(item)} key={i} className='text-blue-gray-80 text text-small font-medium mb-[22px] cursor-pointer'>{item}</h1>
+                                            ))
+                                        }
+                                    </div>
+                                </div>
+                            }
                         </div>
                     </div>
 
@@ -63,11 +88,11 @@ const RemarkModal = ({ open, setOpen, remarkId, speechData, setSpeechData, setRe
                             id="target"
                             name="target"
                             // label={<h1 className='comboBoxLabel'>Target <span className='text-[red]'></span></h1>}
-                            // value={formik.values.target}
+                            value={remark}
                             // onChange={formik.handleChange}
                             // error={formik.touched.target && Boolean(formik.errors.target)}
                             // helperText={formik.touched.target && formik.errors.target}
-                            onChange={(event) => setRamark(event.target.value)}
+                            onChange={(event) => setRemark(event.target.value)}
                             style={{
                                 width: '100%'
                             }}
