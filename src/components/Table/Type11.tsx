@@ -11,10 +11,11 @@ import RoleImage from '../Image/RoleImage';
 import { Autocomplete, Box, TextField } from '@mui/material';
 import { RoleInContext } from '../../context/RoleProvider';
 import { roleDT } from '../../types/billingTypes';
-import { deviceData, recordingArea, recordingDistanceAssign } from '../../data/assign/AssignData';
+import { deviceData, recordingArea, recordingDistanceAssign, uploadStatus } from '../../data/assign/AssignData';
 import AudioUpload from '../containers/AssignContainer/AllTarget/EditSpeeches/AudioUpload';
 import RemarkModal from '../containers/AssignContainer/AllTarget/EditSpeeches/RemarkModal';
 import { AUDIO_FILE_FAILED, AUDIO_FILE_UPLOADED } from '../../helpers/Slug';
+import Status from '../containers/AssignContainer/AllTarget/EditSpeeches/Status';
 
 const { Option } = Select;
 
@@ -22,7 +23,7 @@ type Props = {
     data: any
 }
 
-const Type11 = ({data}: Props) => {
+const Type11 = ({ data }: Props) => {
     const [isSpeakerModal, setIsSpeakerModal] = useState<boolean>(false);
     const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
@@ -47,6 +48,11 @@ const Type11 = ({data}: Props) => {
     const { roleDatas } = managerContext;
 
     const [audioUploadStatus, setAudioUploadStatus] = useState<string>('');
+
+    const [active, setActive] = useState("Active");
+
+    const [isUploaded, setIsUploaded] = useState<boolean>(false);
+    const [isFailed, setIsFailed] = useState<boolean>(false);
 
     const managerParams = {
         id: '',
@@ -130,6 +136,55 @@ const Type11 = ({data}: Props) => {
         setSpeechData(newData);
         setRecordingDistanceId(NaN);
     };
+
+    const handleActiveFrequencyChange = (value: string) => {
+        setActive(value)
+    }
+
+    console.log('upload', isUploaded);
+    console.log('failed', isFailed);
+
+    const onUploadStatus = (value: string) => {
+        if (value === AUDIO_FILE_UPLOADED) {
+            setIsUploaded(!isUploaded);
+            setIsFailed(false);
+        } else {
+            setIsFailed(!isFailed);
+            setIsUploaded(false);
+        }
+    }
+
+
+    const getColumnSearchProps = (dataIndex: any): any => ({
+
+
+        filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }: any) => (
+
+            <div onKeyDown={(e) => e.stopPropagation()} className="w-[260px] border-[1px] border-blue-gray-30 rounded-[8px] ">
+                {
+                    uploadStatus?.map((item: string, i: number) => (
+                        <div onClick={() => item === AUDIO_FILE_UPLOADED ? onUploadStatus(AUDIO_FILE_UPLOADED) : onUploadStatus(AUDIO_FILE_FAILED)} className={`${(isUploaded && item === AUDIO_FILE_UPLOADED) ? 'bg-green-10' : (isFailed && item === AUDIO_FILE_FAILED) ? 'bg-venetian-red' : ''} py-4 pl-4 pr-3 flex items-center justify-between`} key={i}>
+                            <div className='flex items-center gap-x-3'>
+                                <div className={`${(item === AUDIO_FILE_UPLOADED) ? 'bg-secondary-green-50' : (item === AUDIO_FILE_FAILED) ? 'bg-secondary-red-50' : ''} w-[9px] h-[9px] rounded-[50%] `} />
+                                <h1 className='text-green-60 text-sm font-medium'>{item}</h1>
+                            </div>
+                            {
+                                ((isUploaded && item === AUDIO_FILE_UPLOADED) || (isFailed && item === AUDIO_FILE_FAILED)) &&
+                                <img className='w-[40px] h-[20px]' src={Icons.check_green} alt="" />
+                            }
+                        </div>
+                    ))
+                }
+
+            </div>
+        ),
+        filterIcon: (filtered: boolean) => (
+            <div>
+                <img src={Icons.Unfold_More} className="w-[18px] h-[18px] object-cover" alt='' />
+            </div>
+        ),
+    });
+
 
     const Type8columns: ColumnsType<any> = [
 
@@ -390,19 +445,9 @@ const Type11 = ({data}: Props) => {
             title: `${"Status".toLocaleUpperCase()}`,
             width: 120,
             align: "center",
+            ...getColumnSearchProps('Frequency'),
             render: (data) => (
-                <div>
-                    {
-                        data?.audioUploadStatus ?
-                            <div className={`${data?.audioUploadStatus === AUDIO_FILE_UPLOADED ? 'bg-green-10 text-green-60' : 'bg-venetian-red text-red-60'}  flex gap-x-[6px] items-center px-[10px] py-[6px] rounded-[20px]`}>
-                                <div className={`${data?.audioUploadStatus === AUDIO_FILE_UPLOADED ? 'bg-secondary-green-50' : 'bg-secondary-red-50'} w-[6px] h-[6px] rounded-[50%]`}></div>
-                                <h4>Uploaded</h4>
-                            </div>
-                            :
-                           <h4 className='text-xs text-blue-gray-80 font-500'>--</h4>
-                    }
-
-                </div>
+                <Status data={data?.audioUploadStatus} />
             )
         },
 
@@ -422,7 +467,7 @@ const Type11 = ({data}: Props) => {
         },
 
         {
-            title: `${"Acction".toLocaleUpperCase()}`,
+            title: `${"Action".toLocaleUpperCase()}`,
             align: 'center',
             dataIndex: 'details',
             key: 'action',

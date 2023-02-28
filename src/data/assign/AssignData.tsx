@@ -1,3 +1,5 @@
+import { AUDIO_FILE_FAILED, AUDIO_FILE_UPLOADED } from "../../helpers/Slug"
+
 export const healthFactors = [
     'Hearing',
     'Smoker',
@@ -29,6 +31,11 @@ export const deviceData = [
     'Redmi Note 7 Pro',
     'Redmi Note 7 ',
     'Redmi Note 6'
+]
+
+export const uploadStatus = [
+    AUDIO_FILE_UPLOADED,
+    AUDIO_FILE_FAILED
 ]
 
 export const predefined = [

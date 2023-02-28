@@ -42,4 +42,4 @@ export const UPLOAD_AUDION_VIDEO_PATH = `upload-audio-video`;
 
 
 export const AUDIO_FILE_UPLOADED = 'Uploaded';
-export const AUDIO_FILE_FAILED = 'Failed';
+export const AUDIO_FILE_FAILED = 'Upload Failed';

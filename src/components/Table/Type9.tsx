@@ -138,9 +138,6 @@ const Type9 = () => {
             )
     });
 
-
-
-
     const columns: ColumnsType<DataType> = [
         {
             title: "ID",
