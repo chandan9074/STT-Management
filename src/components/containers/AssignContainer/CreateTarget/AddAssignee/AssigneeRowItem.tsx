@@ -11,7 +11,7 @@ interface Props {
 }
 
 const AssigneeRowItem = ({ assignee }: Props) => {
-  const { selectAssigne } = useAssigneContext();
+  const { selectAssigne, deleteSingleAssignee } = useAssigneContext();
   return (
     <div className="flex items-center gap-1 w-full px-[11px] py-3.5 animate-fadeIn">
       {/* <div className="flex-[6]"> */}
@@ -28,7 +28,7 @@ const AssigneeRowItem = ({ assignee }: Props) => {
             {assignee.name}
           </h4>
           <p className="mt-1 text-ct-blue-90-70% text-small font-[400] leading-4">
-            {assignee.role}, {assignee.roleId}
+            {assignee.role}, {assignee.roleID}
           </p>
         </div>
       </div>
@@ -36,6 +36,7 @@ const AssigneeRowItem = ({ assignee }: Props) => {
       {/* </div> */}
       <div className=" justify-self-end relative group flex items-end flex-col">
         <Buttons.IconButton.Circle
+          onClick={() => deleteSingleAssignee(assignee.id)}
           size="medium"
           variant="CT-Blue"
           icon={<img src={Icons.cancel} alt="" />}

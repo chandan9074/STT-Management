@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Icons from "../../../../../assets/Icons";
 import { useAssigneContext } from "../../../../../context/AssignProvider";
+import { singleScriptDT } from "../../../../../types/assignTypes";
 import Buttons from "../../../../Buttons";
 import { Drawer } from "../../../../Drawer";
 import ScriptModal from "./ScriptModal";
@@ -9,7 +10,15 @@ import ScriptTargetBox from "./ScriptTargetBox";
 const AddSript = () => {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const { selectedScriptList } = useAssigneContext();
+  const [modalScript, setModalScript] = useState<singleScriptDT>({} as singleScriptDT);
+  const { selectedScriptList, getSelectedScript } = useAssigneContext();
+
+  useEffect(() => {
+    getSelectedScript();
+  }, []);
+
+  console.log("selectedScriptList", selectedScriptList)
+
   const drawerClose = () => {
     setDrawerOpen(false);
   };
@@ -47,10 +56,11 @@ const AddSript = () => {
           drawerClose={drawerClose}
           modalOpen={modalOpen}
           setModalOpen={setModalOpen}
+          setModalScript={setModalScript}
         />
       </div>
       {modalOpen && (
-        <ScriptModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+        <ScriptModal modalOpen={modalOpen} setModalOpen={setModalOpen} data={modalScript} />
       )}
     </div>
   );

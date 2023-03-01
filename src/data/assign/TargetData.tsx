@@ -3,7 +3,7 @@ import { assignDataList } from "./AssignListData";
 import { criteriaDataList } from "./CriteriaData";
 import { scriptDataList } from "./ScriptData";
 
-export const targetDataList: TargetItemDT[] = [
+export const targetDataList = [
   {
     id: "#10-2271",
     script: {

@@ -27,6 +27,7 @@ export type allScriptResDT = {
   description: string;
   date?: string,
   sourceFileName: string
+  // frequency?: number;
 
 }
 

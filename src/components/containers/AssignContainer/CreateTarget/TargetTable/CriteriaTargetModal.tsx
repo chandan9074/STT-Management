@@ -73,9 +73,8 @@ const CriteriaTargetModal = ({ criteriaList }: Props) => {
           {criteriaList?.map((item, index) => (
             <div
               key={item?.id}
-              className={`flex items-center gap-1 w-full px-4 py-1 justify-between ${
-                selectedCriteria?.id === item?.id && "bg-[#E1EFFE]"
-              }`}
+              className={`flex items-center gap-1 w-full px-4 py-1 justify-between ${selectedCriteria?.id === item?.id && "bg-[#E1EFFE]"
+                }`}
             >
               <div className="flex-[13] flex gap-3">
                 <div className="flex items-center gap-2">
@@ -90,7 +89,7 @@ const CriteriaTargetModal = ({ criteriaList }: Props) => {
                       Target {item?.target}
                     </h4>
                     <p className="m-0 text-ct-blue-95 text-xs font-[300] truncate text-ellipsis w-[280px]">
-                      {item?.criteria}
+                      {item?.recordingArea}
                     </p>
                   </div>
                 </div>

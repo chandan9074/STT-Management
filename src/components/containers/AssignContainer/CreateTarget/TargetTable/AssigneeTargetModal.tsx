@@ -95,7 +95,7 @@ const AssigneeTargetModal = ({ assigneeList }: Props) => {
                         Target {item?.name}
                       </h4>
                       <p className="mt-0 text-ct-blue-60 text-xs font-[300] truncate text-ellipsis w-[280px]">
-                        {item?.role}, {item?.roleId}
+                        {item?.role}, {item?.id}
                       </p>
                     </div>
                   </div>

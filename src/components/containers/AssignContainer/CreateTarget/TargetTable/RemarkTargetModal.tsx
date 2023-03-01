@@ -6,11 +6,11 @@ import "../../../../../assets/css/table/criteria_details.css";
 import { TargetItemDT } from "../../../../../types/assignTypes";
 type Props = {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  target: TargetItemDT;
+  remark: string;
 };
 
-const RemarkTargetModal = ({ setModalOpen, target }: Props) => {
-  const { remark } = target || {};
+const RemarkTargetModal = ({ setModalOpen, remark }: Props) => {
+  // const { target } = target || {};
 
   return (
     <div className="flex flex-col w-full custom_scrollbar">
@@ -28,17 +28,17 @@ const RemarkTargetModal = ({ setModalOpen, target }: Props) => {
       </div>
       <div className="mt-3 px-4 flex items-center gap-2 ">
         <p className="text-[#5F6B7D] font-[600] text-sm">
-          {remark?.date} , {remark?.time}
+          {/* {remark?.date} , {remark?.time} */}
         </p>
         <img
           src={Icons.admin}
           className="w-[20px] h-[20px] object-cover ml-2"
         />
-        <h2 className="font-bold text-[#464E5F]">{remark?.name},</h2>
-        <p className="text-[#5F6B7D] font-[500] text-sm">{remark?.role}</p>
+        {/* <h2 className="font-bold text-[#464E5F]">{remark?.name},</h2>
+        <p className="text-[#5F6B7D] font-[500] text-sm">{remark?.role}</p> */}
       </div>
       <div className="mt-3 px-4 mb-4">
-        <p className="text-[#5F6B7D] font-[400] text-sm">{remark?.details}</p>
+        {/* <p className="text-[#5F6B7D] font-[400] text-sm">{remark?.details}</p> */}
       </div>
     </div>
   );

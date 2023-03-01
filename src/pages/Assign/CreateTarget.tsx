@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Icons from "../../assets/Icons";
 import Buttons from "../../components/Buttons";
 import AddScript from "../../components/containers/AssignContainer/CreateTarget/AddScript";
@@ -6,14 +6,40 @@ import CreateCriteria from "../../components/containers/AssignContainer/CreateTa
 import AddAssignee from "../../components/containers/AssignContainer/CreateTarget/AddAssignee";
 import Layouts from "../../components/Layouts";
 import TargetTable from "../../components/containers/AssignContainer/CreateTarget/TargetTable";
+import { AssigneeItemDT, CriteriaItemDT, ScriptItemDT } from "../../types/assignTypes";
+import { useAssigneContext } from "../../context/AssignProvider";
 const CreateTarget = () => {
   const [dataShow, setDataShow] = useState<boolean>(true);
+  const [showSave, setShowSave] = useState<boolean>(false);
+  const { selectedScriptList, selectedAssigneList, selectedCriteriaList, postDraftTarget } = useAssigneContext();
+
+  function checkSelected(arr: ScriptItemDT[] | AssigneeItemDT[] | CriteriaItemDT[]) {
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+      const obj = arr[i];
+      if (obj.hasOwnProperty('isSelected')) {
+        result.push(Boolean(obj.isSelected));
+      } else {
+        result.push(false);
+      }
+    }
+    return result;
+  }
+
+  useEffect(() => {
+    if (checkSelected(selectedScriptList).includes(true) && checkSelected(selectedAssigneList).includes(true) && checkSelected(selectedCriteriaList).includes(true)) {
+      setShowSave(true);
+    } else {
+      setShowSave(false);
+    }
+  }, [selectedScriptList, selectedAssigneList, selectedCriteriaList]);
+
 
   return (
     <Layouts.Sixth>
 
       <div>
-        <div className={`bg-red-03 shadow-box pl-[24px] pt-[30px] pr-4  ${dataShow ? "h-[29rem]" : "h-24 overflow-hidden"} duration-300`}>
+        <div className={`bg-red-03 shadow-box pl-[24px] pt-[30px] pr-4  ${dataShow ? "h-[29rem]" : "h-24 overflow-hidden"} duration-300 relative`}>
           <div className='flex justify-between items-center mb-[23px] gap-x-3'>
             <div className='flex items-center'>
               <h1 className='text-blue-95 text-[18px] font-medium pr-3'>Create Target</h1>
@@ -62,6 +88,8 @@ const CreateTarget = () => {
               <AddAssignee />
             </div>
           </div>
+          {showSave && <div className="absolute right-7 -bottom-4 animate-fadeIn">
+            <Buttons.LabelButton.Primary label="Save" size="xSmall" variant="Megenta" onClick={postDraftTarget} /></div>}
         </div>
 
         <TargetTable />
