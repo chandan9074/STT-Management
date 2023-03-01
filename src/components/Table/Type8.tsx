@@ -83,8 +83,8 @@ const Type8 = () => {
             onClick={() => setOpenScriptModal(false)}
           ></div>
           {openScriptModal && selectedTarget?.id === data?.id && (
-            <div className="absolute top-6 right-0 w-[420px] bg-white rounded-md z-[100]">
-              {/* <ScriptTargetModal scriptList={selectedTarget?.script?.list} /> */}
+            <div className="absolute bottom-11 right-0 w-[376px] bg-white rounded-md z-[100]">
+              <ScriptTargetModal />
             </div>
           )}
         </div>
