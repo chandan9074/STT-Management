@@ -171,7 +171,7 @@ const Type11 = ({ data }: Props) => {
                             </div>
                             {
                                 ((isUploaded && item === AUDIO_FILE_UPLOADED) || (isFailed && item === AUDIO_FILE_FAILED)) &&
-                                <img className='h-6 w-6'  src={Icons.check_green} alt="" />
+                                <img className='h-6 w-6' src={Icons.check_green} alt="" />
                             }
                         </div>
                     ))
@@ -192,10 +192,14 @@ const Type11 = ({ data }: Props) => {
             title: `${"SN".toLocaleUpperCase()}`,
             key: 'key',
             // align: 'center',
-            width: 56,
+            width: 56,        
+            // render: (text, record, index) => (
+            //     <span>{(current * pageSize) + index + 1}</span>
+            // ),  
             render: (text, record, index) => (
-                <span>{(index + 1).toString().padStart(2, '0')}</span>
+                <span>{(index + 1)}</span>
             ),
+            
 
         },
         {
