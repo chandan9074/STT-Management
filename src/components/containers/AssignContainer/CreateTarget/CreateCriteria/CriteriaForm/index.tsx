@@ -19,6 +19,9 @@ const CriteriaForm = ({drawerClose}: {drawerClose: () => void}) => {
     const {
         saveCriteria,
         singleCriteria,
+        creteAssignCriteria,
+        criterias,
+        emptyCriteria
     } = AssignContexts;
 
     const formik = useFormik({
@@ -32,7 +35,7 @@ const CriteriaForm = ({drawerClose}: {drawerClose: () => void}) => {
             healthFactors: singleCriteria?.healthFactors || [],
             recordingArea: singleCriteria?.recordingArea || '',
             recordingDistance: singleCriteria?.recordingDistance || '',
-            educationSituation: singleCriteria?.educationSituation || '',
+            // educationSituation: singleCriteria?.educationSituation || '',
             target: singleCriteria?.target || 0,
             deadline: singleCriteria?.deadline || '',
             reminder: singleCriteria?.reminder || [],
@@ -49,6 +52,8 @@ const CriteriaForm = ({drawerClose}: {drawerClose: () => void}) => {
     });
 
     const onCreate = () => {
+        creteAssignCriteria(criterias);
+        emptyCriteria();
         drawerClose();
     }
 

@@ -1,9 +1,5 @@
 import axios from "axios";
-import * as PATH from "../helpers/APIURL"
-import { assignDataList } from "../data/assign/AssignListData";
-import { criteriaDataList } from "../data/assign/CriteriaData";
-import { scriptDataList } from "../data/assign/ScriptData";
-import { targetDataList } from "../data/assign/TargetData";
+import * as PATH from "../helpers/APIURL";
 import { allScriptParamsDT, postDraftTargetBodyDT, postSelectedScriptBodyDT } from "../types/assignTypes";
 
 export default class AssignService {
@@ -16,6 +12,12 @@ export default class AssignService {
     const res = axios.post(PATH.POST_SELECTED_SCRIPT_URL, data);
     return res;
   }
+
+  static createAssignCriteria(params: any) {
+    const res = axios.post(PATH.POST_RES_CRITERIA_URL, params);
+    return res;
+  }
+
   static async fetchScriptList() {
     const res = axios.get(PATH.GET_SELECTED_SCRIPT_URL);
     return res;

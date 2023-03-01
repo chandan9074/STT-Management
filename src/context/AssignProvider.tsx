@@ -51,6 +51,7 @@ interface ContextProps {
   deleteSingleAssignee: (id: string) => void;
   postDraftTarget: () => void;
   getDraftTarget: () => void;
+  creteAssignCriteria: (data: postSelectedScriptBodyDT) => void;
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -276,6 +277,15 @@ const AssignProvider = ({ children }: { children: any }) => {
     }
   };
 
+
+  const creteAssignCriteria = async (data: any) => {
+    const res = await AssignService.createAssignCriteria(data);
+    if (res.status === 200) {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      getCriteria();
+    }
+  }
+
   useEffect(() => {
     const targetSum = criterias.reduce((acc: any, item: any) => acc + item.target, 0);
     setSumTarget(targetSum);
@@ -313,7 +323,8 @@ const AssignProvider = ({ children }: { children: any }) => {
         deleteSingleCriteria,
         deleteSingleAssignee,
         postDraftTarget,
-        getDraftTarget
+        getDraftTarget,
+        creteAssignCriteria
       }}
     >
       {children}
