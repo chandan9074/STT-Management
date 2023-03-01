@@ -9,17 +9,17 @@ const ActionButton = ({ formik, onCreate }: { formik: any, onCreate: () => void 
     return (
         <div>
             {
-                (((formik.values.ageRange !== '' && formik.values.district.length !== 0) || criterias?.length !== 0)) &&
+                ((((formik.values.ageRange !== '') && (formik.values.district.length !== 0)) || criterias?.length !== 0)) &&
                 <div className='flex justify-end px-5 py-4 bg-white'>
 
                     <div className='flex gap-x-[16px] '>
                         <button
-                        onClick={(event) => {
-                            event?.preventDefault();
-                            onCreate();
-                        }}
-                         className='duration-700 border-[1px] border-blue-30 text-ct-blue-60 hover:border-ct-blue-30 rounded-[6px] py-[9px] px-[32px]'
-                         >
+                            onClick={(event) => {
+                                event?.preventDefault();
+                                onCreate();
+                            }}
+                            className='duration-700 border-[1px] border-blue-30 text-ct-blue-60 hover:border-ct-blue-30 rounded-[6px] py-[9px] px-[32px]'
+                        >
                             Create
                         </button>
 
