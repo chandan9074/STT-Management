@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import PaymentHistoryDetails from "../../components/containers/billing/PaymentHistoryDetails";
 import Layouts from "../../components/Layouts";
 import { BillingContext } from "../../context/BillingProvider";
@@ -15,6 +15,7 @@ const PaymentHistory = () => {
         billingContext.GetBillingPaymentHistoryData(billingContext.query);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     id,
     billingContext.query.id,

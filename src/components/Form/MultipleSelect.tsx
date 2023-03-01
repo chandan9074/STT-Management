@@ -27,7 +27,7 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
 
     const [collapsed, setCollapsed] = useState<any>({});
 
-    const [onTextField, setOnTextField] = useState<string>(formikValues)
+    // const [onTextField, setOnTextField] = useState<string>(formikValues)
 
     const [isHomeDistrict, setIsHomeDistrict] = useState<boolean>(false);
 
@@ -50,7 +50,7 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
     }
 
     const onHomeDistrictValue = (value: string) => {
-        setOnTextField(value);
+        // setOnTextField(value);
     }
 
     const handleSearch = (event: any) => {
@@ -60,7 +60,7 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
 
     const clickOutsideField = () => {
         setIsHomeDistrict(false);
-        setOnTextField(formikValues);
+        // setOnTextField(formikValues);
         setFilteredDistrict(data);
         setIsDistrictOpen(false);
     }
@@ -102,7 +102,7 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
                             {
 
                                 formikValues?.map((value: string, i: number) => (
-                                    <div className='bg-ct-blue-20 rounded-[4px] flex justify-center items-center px-[8px] gap-x-[4px] h-6 flex-wrap mx-[] ]'>
+                                    <div key={i} className='bg-ct-blue-20 rounded-[4px] flex justify-center items-center px-[8px] gap-x-[4px] h-6 flex-wrap mx-[] ]'>
                                         <h1 className='text-xs text-blue-gray-80 font-medium whitespace-nowrap'>
                                             {value}
                                         </h1>
@@ -142,7 +142,7 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
                                 name={name}
                                 onChange={(e) => {
                                     handleSearch(e);
-                                    setOnTextField(e.target.value);
+                                    // setOnTextField(e.target.value);
                                 }}
                             // endAdornment={
                             //     <InputAdornment position="end">

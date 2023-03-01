@@ -100,6 +100,7 @@ const TimeWiseDisbursements = () => {
 
             setSearch({ ...search, start: _start, end: _end });
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dateValue]);
 
     const [showModal, setShowModal] = React.useState(false);
@@ -158,17 +159,17 @@ const TimeWiseDisbursements = () => {
         setShowModal(value);
     };
 
-    const onHandleStt = () => {
-        setIsStt(true);
-        setIsTts(false);
-        setSearch({ ...search, role: isSttRoles, module: "stt" });
-    };
+    // const onHandleStt = () => {
+    //     setIsStt(true);
+    //     setIsTts(false);
+    //     setSearch({ ...search, role: isSttRoles, module: "stt" });
+    // };
 
-    const onHandleTts = () => {
-        setIsStt(false);
-        setIsTts(true);
-        setSearch({ ...search, role: isTtsRoles, module: "tts" });
-    };
+    // const onHandleTts = () => {
+    //     setIsStt(false);
+    //     setIsTts(true);
+    //     setSearch({ ...search, role: isTtsRoles, module: "tts" });
+    // };
 
     const getNewDimension = () => {
         let _data = disbursementData?.map((m: timeWiseYearDT) => {

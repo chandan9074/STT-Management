@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import Icons from '../../../../../../assets/Icons';
 import { compareWithCurrentMonthYear } from '../../../../../../helpers/Utils';
-import { overTheTimeDataDT } from '../../../../../../types/userManagementTypes'
+import { overTheTimeDataDT } from '../../../../../../types/userManagementTypes';
 import Buttons from '../../../../../Buttons';
 import MonthCalender from '../../../../../calender/MonthCalender';
 import { UserManagementContext } from '../../../../../../context/UserManagement';
@@ -9,7 +9,6 @@ import BarTooltip from './BarTooltip';
 
 const BarChart = ({ data }: { data: overTheTimeDataDT }) => {
   const userManagementContext = React.useContext(UserManagementContext);
-  const [hover, setHover] = useState(false);
 
   const barColor = [
     {
@@ -60,7 +59,7 @@ const BarChart = ({ data }: { data: overTheTimeDataDT }) => {
           </div>
           <div className='absolute bottom-0 flex justify-between w-full px-2'>
             {data.weekData.filter(item => item.week === userManagementContext.currentWeek)[0].dayData.map((item, index) => (
-              <div className='w-10 flex flex-col items-center justify-end group cursor-pointer'>
+              <div key={index} className='w-10 flex flex-col items-center justify-end group cursor-pointer'>
                 {item.target !== 0 ? (<><div className=" absolute z-[110] hidden group-hover:block animate-fadeIn" style={{ bottom: `${Math.round((130 * item.target) / data.weekData.filter(item => item.week === userManagementContext.currentWeek)[0].maxTarget) + 55}px` }}>
                   <BarTooltip data={item} align="center" />
                 </div>

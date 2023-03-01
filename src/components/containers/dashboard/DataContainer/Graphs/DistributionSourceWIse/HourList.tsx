@@ -6,6 +6,7 @@ const HourList = ({ data }: { data: distributionSourceWiseDT[] }) => {
     <div className="flex flex-col">
       {data.map((item, index) => (
         <h3
+          key={index}
           className={`text-small text-blue-gray-A30 ${data.length - 1 === index ? "" : "mb-8"
             } text-left leading-4`}
         >

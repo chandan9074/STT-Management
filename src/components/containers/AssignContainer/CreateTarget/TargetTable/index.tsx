@@ -1,10 +1,11 @@
 import { useEffect } from "react";
-import { useAssigneContext } from "../../../../../context/AssignProvider";
+import { useAssigneeContext } from "../../../../../context/AssignProvider";
 import Table from "../../../../Table";
 const TargetTable = () => {
-  const { getDraftTarget } = useAssigneContext()
+  const { getDraftTarget } = useAssigneeContext()
   useEffect(() => {
     getDraftTarget()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="mt-10 mx-5">

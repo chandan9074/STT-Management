@@ -96,6 +96,7 @@ const Type1 = ({ filterData, align }: { filterData: FilterDT, align?: "center" |
           </div>
           {[1, 2].map((item, dataIndex) => (
             <div
+              key={dataIndex}
               className={`px-5 duration-200 ${currentState ===
                 `${dataIndex === 0 ? "dataType" : "distributionSource"}`
                 ? "bg-blue-gray-05"
@@ -144,6 +145,7 @@ const Type1 = ({ filterData, align }: { filterData: FilterDT, align?: "center" |
                             dataIndex === 0 ? "dataType" : "distributionSource"
                           ].map((item, index) => (
                             <span
+                              key={index}
                               className={`animate-fadeIn text-xs font-medium text-ct-blue-60 whitespace-nowrap ${index === 0 ? "ml-3" : "ml-1"
                                 }`}
                             >
@@ -189,6 +191,7 @@ const Type1 = ({ filterData, align }: { filterData: FilterDT, align?: "center" |
                   dataIndex === 0 ? "dataType" : "distributionSource"
                 ].map((item, index) => (
                   <button
+                    key={index}
                     onClick={() =>
                       dataIndex === 0
                         ? filterList.dataType.includes(item)
@@ -244,6 +247,7 @@ const Type1 = ({ filterData, align }: { filterData: FilterDT, align?: "center" |
 
           {[1, 2].map((item, dataIndex) => (
             <div
+              key={dataIndex}
               className={`px-5 duration-200 ${currentState === `${dataIndex === 0 ? "domain" : "subdomain"}`
                 ? "bg-blue-gray-05"
                 : "bg-white"
@@ -293,6 +297,7 @@ const Type1 = ({ filterData, align }: { filterData: FilterDT, align?: "center" |
                             dataIndex === 0 ? "domain" : "subdomain"
                           ].map((item, index) => (
                             <span
+                              key={index}
                               className={`animate-fadeIn text-xs font-medium text-ct-blue-60 whitespace-nowrap ${index === 0 ? "ml-3" : "ml-1"
                                 }`}
                             >

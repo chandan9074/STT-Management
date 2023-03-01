@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Icons from "../../../../../assets/Icons";
 import Buttons from "../../../../Buttons";
-import { CustomModal } from "../../../../common/CustomModal";
 import "../../../../../assets/css/table/criteria_details.css";
 import { ScriptItemDT } from "../../../../../types/assignTypes";
 import { Input, Radio } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { scriptColorData } from "../../../../../data/assign/AssignData";
 import { getRandomInt } from "../../../../../helpers/Utils";
-import { useAssigneContext } from "../../../../../context/AssignProvider";
-type Props = {
-  scriptList: ScriptItemDT[];
-};
+import { useAssigneeContext } from "../../../../../context/AssignProvider";
 
 const ScriptTargetModal = () => {
   const [selectedScript, setSelectedScript] = useState<ScriptItemDT | null>(
@@ -19,10 +15,11 @@ const ScriptTargetModal = () => {
   );
   const [searchEnable, setSearchEnable] = useState(false);
 
-  const { getSelectedScript, selectedScriptList } = useAssigneContext();
+  const { getSelectedScript, selectedScriptList } = useAssigneeContext();
 
   useEffect(() => {
     getSelectedScript();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 

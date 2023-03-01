@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { yearlyDataDT } from "../../../../types/billingTypes";
 import AmountPart from "./AmountPart";
 import HistoryChartPart from "./HistoryChartPart";
@@ -13,6 +13,7 @@ const TotalAmountDisbursed = () => {
 
   useEffect(() => {
     billingContext.GetAmountDisbursed();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

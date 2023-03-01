@@ -18,7 +18,6 @@ const CircleGraph = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
     const [activeIndex, setActiveIndex] = useState<any>();
     const [activeData, setActiveData] = useState<any>({})
     const [activeName, setActiveName] = useState<string>('')
-    const [enter, setEnter] = useState(false);
 
     const onMouseOver = (data: any, index: any, event: any): any => {
         setActiveIndex(index);

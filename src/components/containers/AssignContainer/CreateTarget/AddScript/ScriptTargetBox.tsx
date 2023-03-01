@@ -1,8 +1,7 @@
 import { SearchOutlined } from "@ant-design/icons";
 import { Checkbox } from "antd";
-import React, { useState } from "react";
 import Icons from "../../../../../assets/Icons";
-import { useAssigneContext } from "../../../../../context/AssignProvider";
+import { useAssigneeContext } from "../../../../../context/AssignProvider";
 import { scriptColorData } from "../../../../../data/assign/AssignData";
 import { getRandomInt } from "../../../../../helpers/Utils";
 import Buttons from "../../../../Buttons";
@@ -14,7 +13,7 @@ const ScriptTargetBox = ({
   targetTitle: string;
   onClick: () => void;
 }) => {
-  const { selectedScriptList, selectScript, deleteSingleScript, getSelectedScript } = useAssigneContext();
+  const { selectedScriptList, selectScript, deleteSingleScript } = useAssigneeContext();
 
   const checkedScriptList = selectedScriptList?.filter(
     (item) => item?.isSelected
@@ -92,7 +91,7 @@ const ScriptTargetBox = ({
                 </div>
                 <div className=" flex-[0.5] self-end group flex items-end flex-col relative">
                   <Buttons.IconButton.Circle
-                    onClick={ () => {
+                    onClick={() => {
                       deleteSingleScript(item.id)
                     }}
                     background="transparent"

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getValueFromHeight, getValueFromPercentage } from "../../../../../../helpers/Utils";
 import { createCollectData } from "../../../../../../data/dashboard/createCollectData";
 import { createCollectSimilarPropertyDT } from '../../../../../../types/dashboardTypes';
@@ -9,9 +9,12 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
     const percentData = [100, 50, 25, 10];
     // const percentData = [10, 25, 50,100];
     const [dimensionValue, setDimensionValue] = useState<number[]>([]);
-    const [educationWiseData, setEducationWiseData] = useState<createCollectSimilarPropertyDT[] | undefined>(createCollectData?.data.createData?.educationWise);
+    // const [educationWiseData, setEducationWiseData] = useState<createCollectSimilarPropertyDT[] | undefined>(createCollectData?.data.createData?.educationWise);
+    const educationWiseData: createCollectSimilarPropertyDT[] | undefined = createCollectData?.data.createData?.educationWise;
+
     const [educationWiseDataHeights, setEducationWiseDataHeights] = useState<number[]>([]);
 
+    console.log('education', educationWiseDataHeights);
 
 
     useEffect(() => {
@@ -26,6 +29,7 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
             setEducationWiseDataHeights(_timeWiseDataHeights);
         }
         setDimensionValue(_dimensionValue);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
 
@@ -48,7 +52,7 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
                                     value !== 100 &&
                                     <h1 className='text-ct-blue-45 text-small'>
                                         {value}%
-                                        </h1>
+                                    </h1>
 
                                 }
                             </div>
@@ -67,13 +71,13 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
                             <div key={index} className='flex flex-col justify-center items-center '>
                                 <div className='relative group h-[324px] w-[84px] flex items-end justify-center'>
                                     <div
-                                    style={{
-                                        bottom: `${value.contribution}%`
-                                    }} 
-                                    className='absolute z-50 rounded-[4px] text-white bg-opacity-[85%] bg-blue-gray-85  items-center py-1 px-[6px] mb-[3px]'>
+                                        style={{
+                                            bottom: `${value.contribution}%`
+                                        }}
+                                        className='absolute z-50 rounded-[4px] text-white bg-opacity-[85%] bg-blue-gray-85  items-center py-1 px-[6px] mb-[3px]'>
                                         <h1 className='text-xxs'>
                                             {value.contribution}%
-                                            </h1>
+                                        </h1>
                                     </div>
                                     <div
                                         style={{
@@ -88,17 +92,17 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
                                                     : index % 2 === 0
                                                         ? "bg-green-A10 hover:bg-[#94D676]"
                                                         : "bg-red-15 hover:bg-coral-90"
-                                        } duration-300`} id="triangle"
+                                            } duration-300`} id="triangle"
                                     >
                                     </div>
                                     <div
-                                     style={{
-                                        bottom: `${value.contribution + 6}%`,
-                                        left: '0px'
-                                    }}
-                                     className={`z-50 animate-fadeIn absolute hidden group-hover:block`} >
+                                        style={{
+                                            bottom: `${value.contribution + 6}%`,
+                                            left: '0px'
+                                        }}
+                                        className={`z-50 animate-fadeIn absolute hidden group-hover:block`} >
                                         <GraphTooltip
-                                            data={value}
+                                            data={value} 
                                             validBgColor={`${index % 3 === 0
                                                 ? "bg-[#8cf0fe]"
                                                 : index % 4 === 0
@@ -108,7 +112,7 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
                                                         : index % 2 === 0
                                                             ? "bg-[#94D676]"
                                                             : "bg-[#FF8C8C]"
-                                            }`}
+                                                }`}
                                             titleColor={`${index % 3 === 0
                                                 ? "text-purple-A10"
                                                 : index % 4 === 0
@@ -118,7 +122,7 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
                                                         : index % 2 === 0
                                                             ? "text-green-A10"
                                                             : "text-red-15"
-                                            }`}
+                                                }`}
                                             align="left"
                                         />
                                     </div>

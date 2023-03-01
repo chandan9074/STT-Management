@@ -2,7 +2,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import { Checkbox } from "antd";
 import React, { useState } from "react";
 import Icons from "../../../../../assets/Icons";
-import { useAssigneContext } from "../../../../../context/AssignProvider";
+import { useAssigneeContext } from "../../../../../context/AssignProvider";
 import Buttons from "../../../../Buttons";
 import CriteriaDetailsModal from "./CriteriaDetailsModal";
 import CriteriaRowItem from "./CriteriaRowItem";
@@ -17,7 +17,7 @@ const CriteriaTargetBox = ({
   const [openCriteriaDetailsModal, setOpenCriteriaDetailsModal] =
     useState(false);
 
-  const { selectedCriteriaList, selectCriteria } = useAssigneContext();
+  const { selectedCriteriaList, selectCriteria } = useAssigneeContext();
 
   const checkedCriteriaList = selectedCriteriaList?.filter(
     (item) => item?.isSelected

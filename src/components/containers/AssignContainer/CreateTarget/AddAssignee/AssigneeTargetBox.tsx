@@ -1,8 +1,7 @@
 import { SearchOutlined } from "@ant-design/icons";
 import { Checkbox } from "antd";
-import React, { useState } from "react";
 import Icons from "../../../../../assets/Icons";
-import { useAssigneContext } from "../../../../../context/AssignProvider";
+import { useAssigneeContext } from "../../../../../context/AssignProvider";
 import Buttons from "../../../../Buttons";
 import AssigneeRowItem from "./AssigneeRowItem";
 
@@ -13,7 +12,7 @@ const AssigneeTargetBox = ({
   targetTitle: string;
   onClick: () => void;
 }) => {
-  const { selectedAssigneList, selectAssigne } = useAssigneContext();
+  const { selectedAssigneList, selectAssigne } = useAssigneeContext();
 
   const checkedAssigneeList = selectedAssigneList?.filter(
     (item) => item?.isSelected

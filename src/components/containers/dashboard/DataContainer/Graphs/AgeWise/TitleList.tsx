@@ -1,7 +1,5 @@
-import React from "react";
 import {
-  createCollectSimilarPropertyDT,
-  distributionSourceWiseDT,
+  createCollectSimilarPropertyDT
 } from "../../../../../../types/dashboardTypes";
 
 const TitleList = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
@@ -9,6 +7,7 @@ const TitleList = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
     <div className="flex flex-col">
       {data.map((item, index) => (
         <h3
+        key={index}
           className={`text-small text-blue-gray-80 leading-4 ${
             data.length - 1 === index ? "" : "mb-8"
           } text-right leading-4`}

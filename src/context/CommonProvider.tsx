@@ -1,8 +1,8 @@
 import React, { createContext, useState } from "react";
 
 interface ContextProps {
-  loading: boolean;
-  errorMsg: string;
+  // loading: boolean;
+  // errorMsg: string;
   type: string;
   role: string;
   handleRole: (value: string) => void;
@@ -18,8 +18,8 @@ interface ContextProps {
 export const CommonContext = createContext({} as ContextProps);
 
 const CommonProvider = ({ children }: { children: any }) => {
-  const [loading, setLoading] = useState<boolean>(true);
-  const [errorMsg, setErrorMsg] = useState<string>("");
+  // const [loading, setLoading] = useState<boolean>(true);
+  // const [errorMsg, setErrorMsg] = useState<string>("");
   const [type, setType] = useState<string>("STT");
   const [role, setRole] = useState<string>("admin");
   const [toastOpen, setToastOpen] = useState<boolean>(false);
@@ -41,8 +41,8 @@ const CommonProvider = ({ children }: { children: any }) => {
     <CommonContext.Provider
       value={{
         setType,
-        loading,
-        errorMsg,
+        // loading,
+        // errorMsg,
         type,
         role,
         handleRole,

@@ -64,14 +64,13 @@ const Graph = ({ dateValue, onDateClose, onDateSearch, disbursementData, open, s
                         </button>
                 }
 
-
             </div>
             <CustomRangeCalender trigger={open} setOpen={setOpen} setDateValue={setDateValue} />
             <div className="relative">
                 <div className="flex justify-between w-full relative px-10">
                     {disbursementData?.map((m: timeWiseYearDT, i: number) => (
                         <div
-                            key={m?.id}
+                            key={i}
                             className={`relative flex ${disbursementData?.length === 12
                                 ? i < 2
                                     ? "justify-start"

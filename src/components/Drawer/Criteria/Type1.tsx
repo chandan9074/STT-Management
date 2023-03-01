@@ -50,9 +50,7 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
         setLengthClick(false);
         setEmptySingleCriteria();
         setEmptyEditId();
-    }
-
-    
+    }    
 
     return (
         <div>

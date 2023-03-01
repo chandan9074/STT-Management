@@ -1,5 +1,4 @@
-import { Grid } from '@mui/material';
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AssignContext } from '../../../../../context/AssignProvider';
 import Image from '../../../../Image';
 
@@ -35,7 +34,7 @@ const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void 
         },
         {
             title: 'Education',
-            value: 'higher Secondary'
+            value: singleCriteria?.education || '-'
         },
         {
             title: 'Smoking Habit',
@@ -84,6 +83,7 @@ const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void 
 
     useEffect(() => {
         getSingleCriteria(targetId);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const onTargetClick = (id: number) => {

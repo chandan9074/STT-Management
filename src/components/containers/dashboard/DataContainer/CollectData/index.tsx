@@ -1,7 +1,6 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import Header from "../Header";
 import Graphs from "../Graphs";
-import DataContainerDropdown from "../DataContainerDropdown";
 import DataContainerModal from "../DataContainerModal";
 import { collectDataDT } from "../../../../../types/dashboardTypes";
 import AgeWise from "../Graphs/AgeWise";

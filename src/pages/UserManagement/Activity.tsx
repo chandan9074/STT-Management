@@ -1,6 +1,4 @@
-import React from 'react'
 import ActivityContainer from '../../components/containers/userManagement/Activity'
-import StatisticsPart from '../../components/containers/userManagement/Activity/StatisticsPart'
 import Layouts from '../../components/Layouts'
 
 const Activity = () => {

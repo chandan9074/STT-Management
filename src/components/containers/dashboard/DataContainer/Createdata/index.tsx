@@ -1,6 +1,5 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import Header from "../Header";
-import DataContainerDropdown from "../DataContainerDropdown";
 import DataContainerModal from "../DataContainerModal";
 import Graphs from "../Graphs";
 import { createDataDT } from "../../../../../types/dashboardTypes";

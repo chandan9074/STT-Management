@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import Icons from "../../../../../assets/Icons";
 import Buttons from "../../../../Buttons";
-import { CustomModal } from "../../../../common/CustomModal";
 import "../../../../../assets/css/table/criteria_details.css";
 import { TargetItemDT } from "../../../../../types/assignTypes";
 type Props = {
@@ -22,7 +21,7 @@ const RemarkTargetModal = ({ setModalOpen, remark }: Props) => {
           onClick={() => setModalOpen(false)}
           size="medium"
           variant="CT-Blue"
-          icon={<img src={Icons.CloseIconButton} />}
+          icon={<img src={Icons.CloseIconButton} alt="" />}
           background="white"
         />
       </div>
@@ -31,6 +30,7 @@ const RemarkTargetModal = ({ setModalOpen, remark }: Props) => {
           {/* {remark?.date} , {remark?.time} */}
         </p>
         <img
+        alt=""
           src={Icons.admin}
           className="w-[20px] h-[20px] object-cover ml-2"
         />

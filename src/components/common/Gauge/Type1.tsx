@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import './gaugeType1.css'
-import polygon from '../../../assets/Icons/Polygon1.png'
-import { totalDataResDT, totalDataSpeakerResDT } from '../../../types/dashboardTypes';
+import { useState } from 'react';
+import './gaugeType1.css';
+import polygon from '../../../assets/Icons/Polygon1.png';
+import { totalDataResDT } from '../../../types/dashboardTypes';
 
 interface Props {
     data: totalDataResDT | undefined

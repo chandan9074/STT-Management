@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import { useEffect, useContext, useState } from "react";
 import BarChart from "./BarChart";
 import Header from "./Header";
 import { DashboardContext } from "../../../../context/DashboardProvider";
@@ -15,10 +15,12 @@ const OverTheTime = () => {
 
   useEffect(() => {
     dashboardContext.getOverTheTimeData(commonContext.type, commonContext.role);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [commonContext.type, commonContext.role]);
 
   useEffect(() => {
     setOverTheTimeData(dashboardContext.overTheTimeData);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dashboardContext.overTheTimeData]);
   return (
     <div className="p-4 bg-white border-t border-blue-gray-30">
@@ -31,7 +33,7 @@ const OverTheTime = () => {
           <BarChart overTheTimeGData={overTheTimeData} />
         </>
         :
-        <img src={LoadingSkeleton.overTheTimeSkeleton} className="w-full" />
+        <img src={LoadingSkeleton.overTheTimeSkeleton} alt="" className="w-full" />
       }
     </div>
   );

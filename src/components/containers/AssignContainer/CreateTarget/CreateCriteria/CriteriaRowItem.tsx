@@ -1,7 +1,7 @@
 import { Checkbox } from "antd";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Icons from "../../../../../assets/Icons";
-import { useAssigneContext } from "../../../../../context/AssignProvider";
+import { useAssigneeContext } from "../../../../../context/AssignProvider";
 import { CriteriaItemDT } from "../../../../../types/assignTypes";
 import Buttons from "../../../../Buttons";
 import useOutsideClick from "../../../../Hooks/useOutsideClick";
@@ -13,7 +13,7 @@ const CriteriaRowItem = ({
   criteria: CriteriaItemDT;
   setDetailsModalOpen: (open: boolean) => void;
 }) => {
-  const { selectCriteria, deleteSingleCriteria } = useAssigneContext();
+  const { selectCriteria, deleteSingleCriteria } = useAssigneeContext();
   const optionMenuRef = useRef<null | HTMLDivElement>(null);
   const { open, handleOpen } = useOutsideClick(optionMenuRef);
 
@@ -84,7 +84,7 @@ const CriteriaRowItem = ({
                   className={`flex w-full items-center justify-between px-4 py-3 rounded-t-lg cursor-pointer hover:bg-[rgba(44,121,190,0.12)]`}
                 >
                   <div className="flex items-center gap-4">
-                    <img src={Icons.open_in_new} />
+                    <img src={Icons.open_in_new} alt="" />
                     <p>Details</p>
                   </div>
                 </button>
@@ -92,7 +92,7 @@ const CriteriaRowItem = ({
                   className={`flex w-full items-center justify-between px-4 py-3 rounded-t-lg cursor-pointer  hover:bg-[rgba(44,121,190,0.12)]`}
                 >
                   <div className="flex items-center gap-4">
-                    <img src={Icons.edit_blue} />
+                    <img src={Icons.edit_blue} alt="" />
                     <p>Edit</p>
                   </div>
                 </button>
@@ -101,7 +101,7 @@ const CriteriaRowItem = ({
                   className={`flex w-full items-center justify-between px-4 py-3 rounded-t-lg cursor-pointer  hover:bg-[rgba(44,121,190,0.12)]`}
                 >
                   <div className="flex items-center gap-4">
-                    <img src={Icons.delete_red} />
+                    <img src={Icons.delete_red} alt="" />
                     <p>Delete</p>
                   </div>
                 </button>

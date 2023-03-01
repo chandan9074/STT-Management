@@ -7,11 +7,11 @@ import AddAssignee from "../../components/containers/AssignContainer/CreateTarge
 import Layouts from "../../components/Layouts";
 import TargetTable from "../../components/containers/AssignContainer/CreateTarget/TargetTable";
 import { AssigneeItemDT, CriteriaItemDT, ScriptItemDT } from "../../types/assignTypes";
-import { useAssigneContext } from "../../context/AssignProvider";
+import { useAssigneeContext } from "../../context/AssignProvider";
 const CreateTarget = () => {
   const [dataShow, setDataShow] = useState<boolean>(true);
   const [showSave, setShowSave] = useState<boolean>(false);
-  const { selectedScriptList, selectedAssigneList, selectedCriteriaList, postDraftTarget } = useAssigneContext();
+  const { selectedScriptList, selectedAssigneList, selectedCriteriaList, postDraftTarget } = useAssigneeContext();
 
   function checkSelected(arr: ScriptItemDT[] | AssigneeItemDT[] | CriteriaItemDT[]) {
     const result = [];

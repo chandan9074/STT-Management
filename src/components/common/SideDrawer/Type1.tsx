@@ -1,9 +1,8 @@
 import { Drawer } from 'antd';
-import React, { Dispatch, SetStateAction, useState } from 'react';
-import Icons from '../../../assets/Icons';
+import { Dispatch, SetStateAction, useState } from 'react';
 import ScriptMetaData from './ScriptMetaData';
 import { SideDrawerDetails } from './SideDrawerDetails';
-import './type1DrawerStyle.css'
+import './type1DrawerStyle.css';
 
 interface Props {
     open: boolean;

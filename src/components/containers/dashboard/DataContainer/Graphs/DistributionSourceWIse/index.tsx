@@ -17,6 +17,7 @@ const DistributionSourceWise = ({
       return targetArray.push(item.target);
     });
     setMaxTarget(Math.max(...targetArray));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
   return (
     <div className="flex justify-center items-stretch">

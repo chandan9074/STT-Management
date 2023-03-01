@@ -1,6 +1,6 @@
 import { Checkbox } from "antd";
 import Icons from "../../../../../assets/Icons";
-import { useAssigneContext } from "../../../../../context/AssignProvider";
+import { useAssigneeContext } from "../../../../../context/AssignProvider";
 import { AssigneeItemDT } from "../../../../../types/assignTypes";
 import Buttons from "../../../../Buttons";
 import RoleImage from "../../../../Image/RoleImage";
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const AssigneeRowItem = ({ assignee }: Props) => {
-  const { selectAssigne, deleteSingleAssignee } = useAssigneContext();
+  const { selectAssigne, deleteSingleAssignee } = useAssigneeContext();
   return (
     <div className="flex items-center gap-1 w-full px-[11px] py-3.5 animate-fadeIn">
       {/* <div className="flex-[6]"> */}

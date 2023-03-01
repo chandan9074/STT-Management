@@ -1,13 +1,12 @@
 import { MoreOutlined } from "@ant-design/icons";
 import { PDFDownloadLink } from '@react-pdf/renderer';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import Icons from "../../assets/Icons";
 import { TTSMODULE } from '../../helpers/ConditionVariable';
 import Buttons from '../Buttons';
 import { Excel } from '../Excel';
 import { PDF } from '../PDF';
 import './dropDown.css';
-import ReactToPrint from 'react-to-print';
 
 interface Props {
     data: any;
@@ -19,6 +18,8 @@ const Type2 = ({ data, headerType, module }: Props) => {
     const [pdf, setPdf] = useState<boolean>(false)
     const [pdfLink, setPdfLink] = useState<any>('')
     const open = Boolean(anchorEl);
+    console.log('pdf', pdf);
+    
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };

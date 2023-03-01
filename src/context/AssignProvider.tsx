@@ -54,7 +54,7 @@ interface ContextProps {
 }
 
 export const AssignContext = createContext({} as ContextProps);
-export const useAssigneContext = () => {
+export const useAssigneeContext = () => {
   return useContext(AssignContext);
 };
 
@@ -71,7 +71,6 @@ const AssignProvider = ({ children }: { children: any }) => {
   const [selectedCriteriaList, setSelectedCriteriaList] = useState<CriteriaItemDT[]>([]);
   const [selectedTargetList, setSelectedTargetList] = useState<TargetItemDT[]>([]);
   const [allScript, setAllScript] = useState<allScriptDT | undefined>();
-  const [reCall, setReCall] = useState<boolean>(false);
 
   const saveCriteria = (data: any) => {
     const filteredCriterias = criterias.filter((criteria: any, i: number) => i !== editId);
@@ -181,7 +180,7 @@ const AssignProvider = ({ children }: { children: any }) => {
       selectedAssignee: checkSelected(selectedAssigneList),
     }
 
-    const res = await AssignService.postDraftTarget(body);
+    await AssignService.postDraftTarget(body);
     selectScript(null, false, true)
     selectAssigne(null, false, true)
     selectCriteria(null, false, true)

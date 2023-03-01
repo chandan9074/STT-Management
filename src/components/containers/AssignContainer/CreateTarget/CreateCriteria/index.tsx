@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CriteriaForm from "./CriteriaForm";
 import { Drawer } from "../../../../Drawer";
-import Type1 from "../../../../Drawer/Script/Type1";
 import Buttons from "../../../../Buttons";
 import Icons from "../../../../../assets/Icons";
 import CriteriaTargetBox from "./CriteriaTargetBox";
-import { useAssigneContext } from "../../../../../context/AssignProvider";
-import TargetBox from "../TargetBox";
+import { useAssigneeContext } from "../../../../../context/AssignProvider";
 
 const CreateCriteria = () => {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
-  const { selectedCriteriaList, getCriteria } = useAssigneContext();
+  const { selectedCriteriaList, getCriteria } = useAssigneeContext();
 
   useEffect(() => {
     getCriteria();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const drawerClose = () => {

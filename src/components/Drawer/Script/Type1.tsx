@@ -8,7 +8,7 @@ import Buttons from "../../Buttons";
 import { Filter } from "../../Filter";
 import { SearchBox } from "../../SearchBox";
 import Table from "../../Table";
-import { useAssigneContext } from "../../../context/AssignProvider";
+import { useAssigneeContext } from "../../../context/AssignProvider";
 import Pagination from "../../Pagination";
 import { postSelectedScriptBodyDT, singleScriptDT } from "../../../types/assignTypes";
 
@@ -21,17 +21,17 @@ type Props = {
 }
 
 const Type1 = ({ isDrawerOpen, drawerClose, modalOpen, setModalOpen, setModalScript }: Props) => {
-    const [drawer, setRightDrawer] = React.useState(false);
     const [scriptParams, setScriptParams] = useState({ page: 1, pageSize: 15 })
     const [selectedScript, setSelectedScript] = useState<singleScriptDT[]>([])
     const [uncheckedScript, setUncheckedScript] = useState<string>("")
 
-    const { postSelectedScript } = useAssigneContext()
+    const { postSelectedScript } = useAssigneeContext()
 
-    const { getAllScript, allScript } = useAssigneContext()
+    const { getAllScript, allScript } = useAssigneeContext()
 
     useEffect(() => {
         getAllScript(scriptParams)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [scriptParams])
 
     const handleScriptRemove = (id: string) => {

@@ -1,3 +1,5 @@
+import { AUDIO_FILE_FAILED, AUDIO_FILE_UPLOADED } from "../../helpers/Slug"
+
 export const healthFactors = [
     'Hearing',
     'Smoker',
@@ -21,6 +23,28 @@ export const recordingDistanceAssign = [
     'Moving',
     'Round',
     'Walking'
+]
+
+export const deviceData = [
+    'Redmi Note 8 Pro',
+    'Redmi Note 8',
+    'Redmi Note 7 Pro',
+    'Redmi Note 7 ',
+    'Redmi Note 6'
+]
+
+export const uploadStatus = [
+    AUDIO_FILE_UPLOADED,
+    AUDIO_FILE_FAILED
+]
+
+export const predefined = [
+    'As far as I am aware, this token is used for BOM lists',
+    'What good is having tokens/containers for data and then NOT having them available for recall when and where you need them?',
+    'As far as I am aware, this token is used for BOM lists',
+    'explain what you are trying to do with this token, is this in a part or assembly drawing.',
+    ' Then again, you get what you pay for I reckon.',
+    'Also the status can be applied in the model to control identify the object model status also.'
 ]
 
 export const weekBtnData = [

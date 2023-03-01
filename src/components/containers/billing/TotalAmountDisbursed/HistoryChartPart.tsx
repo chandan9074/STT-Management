@@ -68,7 +68,7 @@ const HistoryChartPart = ({
           <div className="h-0.5 border-t border-dotted border-ct-blue-70 w-full mb-2" />
           <div className="absolute -bottom-9 left-0 flex justify-between w-full px-2">
             {currentData?.yearData.map((item, i) => (
-              <div className={`flex flex-col items-center`}>
+              <div key={i} className={`flex flex-col items-center`}>
                 <div
                   className={`w-4 h-[125px] bg-ct-blue-70 bg-opacity-40 rounded-t-[3px] relative flex ${currentData.yearData.length - 2 <= i ||
                     Math.round(barHeight / 2) <=

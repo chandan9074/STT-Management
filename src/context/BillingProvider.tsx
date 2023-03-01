@@ -3,13 +3,11 @@ import BillingService from "../services/billingService";
 import { CommonContext } from "./CommonProvider";
 import {
   allBillingParamsDT,
-  allBillingsDT,
-  lastBillingInfoDT,
-  lastBillingParamsDT,
+  allBillingsDT, lastBillingParamsDT,
   lastBillingsDT,
   paymentHistoryDT,
   paymentHistoryParamsDT,
-  totalAmountDisbursedDT,
+  totalAmountDisbursedDT
 } from "../types/billingTypes";
 
 interface ContextProps {

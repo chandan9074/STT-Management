@@ -7,7 +7,7 @@
 }
 
 .billing-table .ant-table-wrapper .ant-table-thead>tr>th {
-  background: inherit;
+  /* background: inherit; */
   font-family: Fira Sans, serif;
   font-size: 13px;
   letter-spacing: 0.5px;

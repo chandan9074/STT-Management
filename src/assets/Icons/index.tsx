@@ -120,6 +120,12 @@ import delete_red from "./delete.svg";
 import MusicBlue from './music_blue.svg';
 import up_arrow_black from "./up_arrow_black.svg";
 import arrow_drop_down_blue_gray_45 from "./arrow_drop_down_blue_gray_45.svg";
+import PhotoGallery from "./photo-gallery 1.svg";
+import Blank from "./blank_image.svg";
+import UploadMagenta from "./upload_magenta.svg";
+import AccountCircle from "./account_circle.svg";
+import EditGray from "./edit_gray.svg";
+// import MusicBlue from "./music_blue.svg";
 
 const Icons = {
   currency,
@@ -243,7 +249,12 @@ const Icons = {
   delete_red,
   MusicBlue,
   up_arrow_black,
-  arrow_drop_down_blue_gray_45
+  arrow_drop_down_blue_gray_45,
+  PhotoGallery,
+  Blank,
+  UploadMagenta,
+  AccountCircle,
+  EditGray
 };
 
 export default Icons;

@@ -1,12 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import ProgressBar from "../../../common/ProgressBar";
 import GaugeComponent from "../../../common/Gauge";
 import { ClockCircleOutlined } from "@ant-design/icons";
 import { DashboardContext } from "../../../../context/DashboardProvider";
-import { totalDataParamsDT } from "../../../../types/dashboardTypes";
 import { CommonContext } from "../../../../context/CommonProvider";
 import { STTMODULE } from "../../../../helpers/ConditionVariable";
-import Icons from "../../../../assets/Icons";
 import { LoadingSkeleton } from "../../../../assets/loadingSkeleton";
 
 const TotalData = () => {
@@ -17,6 +15,7 @@ const TotalData = () => {
 
   useEffect(() => {
     getTotalDataCollection({ module: type, role: role });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type]);
 
 

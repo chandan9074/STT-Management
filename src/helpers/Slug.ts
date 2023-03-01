@@ -13,6 +13,9 @@ export const ASSIGN_PATH = "/assign";
 export const ALL_TARGET_PTAH = 'all-target';
 // export const CREATE_TARGET_PATH = 'create-target';
 export const CREATE_TARGET_PATH = `${ASSIGN_PATH}/${ALL_TARGET_PTAH}/create-target`;
+export const EDIT_SPEECHES_PATH = `${ASSIGN_PATH}/${ALL_TARGET_PTAH}/edit-speeches`;
+
+
 
 
 // Script
@@ -35,3 +38,8 @@ export const WORD_LEVEL = "/word-level";
 export const PHONEME_LEVEL = "/phoneme-level";
 export const ANNOTATED_FILES = "/annotated-files";
 export const UPLOAD_AUDION_VIDEO_PATH = `upload-audio-video`;
+
+
+
+export const AUDIO_FILE_UPLOADED = 'Uploaded';
+export const AUDIO_FILE_FAILED = 'Upload Failed';

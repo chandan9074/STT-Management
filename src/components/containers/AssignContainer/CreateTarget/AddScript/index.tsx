@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Icons from "../../../../../assets/Icons";
-import { useAssigneContext } from "../../../../../context/AssignProvider";
+import { useAssigneeContext } from "../../../../../context/AssignProvider";
 import { singleScriptDT } from "../../../../../types/assignTypes";
 import Buttons from "../../../../Buttons";
 import { Drawer } from "../../../../Drawer";
@@ -11,10 +11,11 @@ const AddSript = () => {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [modalScript, setModalScript] = useState<singleScriptDT>({} as singleScriptDT);
-  const { selectedScriptList, getSelectedScript } = useAssigneContext();
+  const { selectedScriptList, getSelectedScript } = useAssigneeContext();
 
   useEffect(() => {
     getSelectedScript();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   console.log("selectedScriptList", selectedScriptList)

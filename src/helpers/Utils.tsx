@@ -1,9 +1,6 @@
-import exp from "constants";
 import moment from "moment";
 import { tableColorProperty } from "../data/dashboard/tableColorProperty";
-import { roleDT } from "../types/billingTypes";
 import { colorForTitle } from "../data/dashboard/colorForTitle";
-import { AnyARecord } from "dns";
 
 export const isEmpty = (obj: any | undefined) => {
   if (obj) {
@@ -58,7 +55,7 @@ export const getDateWithMonthName = (date: string) => {
 export const getDateWithMonthName2 = (date: string) => {
   const splitData = date.split("-");
   const month = moment.months()[parseInt(splitData[1]) - 1];
-  const year = splitData[0];
+  // const year = splitData[0];
   const day = splitData[2];
 
   return `${day} ${month.slice(0, 3)}`;

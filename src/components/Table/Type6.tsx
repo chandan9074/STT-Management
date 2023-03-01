@@ -1,5 +1,5 @@
 import { Table } from 'antd';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Icons from '../../assets/Icons';
 
 const Type6 = () => {
@@ -33,13 +33,10 @@ const Type6 = () => {
         },
     ])
 
-    const [block, setBlock] = useState<any>({
-        id: "",
-        block: false
-    })
-
-    
-
+    // const [block, setBlock] = useState<any>({
+    //     id: "",
+    //     block: false
+    // })
 
     const handleBlock = (id: any, index: number, value: boolean) => {
 

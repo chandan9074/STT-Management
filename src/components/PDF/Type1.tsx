@@ -1,7 +1,5 @@
-import React, { Fragment, useContext } from 'react';
 import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
 import TableIndex from './PdfTable/TableIndex';
-import { CommonContext } from '../../context/CommonProvider';
 import { STTMODULE, TTSMODULE } from '../../helpers/ConditionVariable';
 import { forwardRef } from 'react';
 
@@ -47,7 +45,7 @@ interface Props {
 }
 const Type1 = forwardRef((props: Props, ref: any) => {
     const { data, type, module } = props
-    const commonContext = useContext(CommonContext)
+    // const commonContext = useContext(CommonContext)
 
     const createData = [
         {

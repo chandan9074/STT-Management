@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from "react";
-import TargetBox from "../TargetBox";
-import Type1 from "../../../../Drawer/Criteria/Type1";
-import CriteriaForm from "../CreateCriteria/CriteriaForm";
+import { useEffect, useState } from "react";
 import Buttons from "../../../../Buttons";
 import Icons from "../../../../../assets/Icons";
 import AssigneeTargetBox from "./AssigneeTargetBox";
-import { useAssigneContext } from "../../../../../context/AssignProvider";
+import { useAssigneeContext } from "../../../../../context/AssignProvider";
 import AddAssigneeModal from './AddAssigneeModal';
 
 const AddAssignee = () => {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
-  const { selectedAssigneList, getAssignee } = useAssigneContext();
+  const { selectedAssigneList, getAssignee } = useAssigneeContext();
 
   useEffect(() => {
     getAssignee();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const drawerClose = () => {
@@ -53,13 +51,19 @@ const AddAssignee = () => {
 
       <div>
         {/* Use this for create target */}
-        <Type1
+        {/* <Type1
           isDrawerOpen={drawerOpen}
           drawerClose={drawerClose}
           title="Create Critaria"
         >
           <CriteriaForm drawerClose={drawerClose} />
-        </Type1>
+        </Type1> */}
+        {
+          drawerOpen &&
+          <AddAssigneeModal
+            handleModal={drawerClose}
+          />
+        }
       </div>
     </div>
   );

@@ -1,10 +1,8 @@
 import { Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { Key } from 'antd/lib/table/interface';
 import Icons from '../../assets/Icons';
-import { CustomModal } from '../common/CustomModal';
-import { SideDrawer } from '../common/SideDrawer';
 import "../../assets/css/table/type4Table.css";
 import { singleScriptDT } from '../../types/assignTypes';
 
@@ -54,10 +52,9 @@ type Props = {
 }
 
 const Type9 = ({ data, handleSelectedScript, uncheckedScript, isDrawerOpen }: Props) => {
-    const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
-    const [open, setOpen] = useState(false);
+    // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
+    const selectionType = "checkbox";
     const [active, setActive] = useState("Active");
-    const [drawerData, setDrawerData] = useState<any>();
     const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
     const tableRef = useRef<any>();
 
@@ -69,12 +66,13 @@ const Type9 = ({ data, handleSelectedScript, uncheckedScript, isDrawerOpen }: Pr
         else {
             setSelectedRowKeys([]);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [uncheckedScript, isDrawerOpen])
 
-    const showDrawer = (key: any) => {
-        setOpen(true);
-        setDrawerData(key)
-    };
+    // const showDrawer = (key: any) => {
+    //     setOpen(true);
+    //     setDrawerData(key)
+    // };
 
     const handleActiveFrequencyChange = (value: string, confirm: any) => {
         setActive(value)
@@ -100,15 +98,15 @@ const Type9 = ({ data, handleSelectedScript, uncheckedScript, isDrawerOpen }: Pr
                     onClick={() => handleActiveFrequencyChange("asc", confirm)}
                 >
                     <div className="flex items-center gap-2">
-                        <div>
-                            <img src={active === "asc" ? Icons.North : Icons.NorthNeviBlue} />
-                        </div>
-                        <div>
-                            <p>Sort Ascending</p>
-                        </div>
+                      <div>
+                        <img alt="" src={active === "asc"?Icons.North:Icons.NorthNeviBlue}/>
+                      </div>
+                      <div>
+                        <p>Sort Ascending</p>
+                       </div>
                     </div>
                     <div>
-                        <img src={Icons.CorrectIcon} />
+                        <img alt="" src={Icons.CorrectIcon}/>
                     </div>
 
                 </div>
@@ -116,15 +114,15 @@ const Type9 = ({ data, handleSelectedScript, uncheckedScript, isDrawerOpen }: Pr
                     className={`flex gap-1 items-center justify-between px-4 py-3 rounded-t-lg cursor-pointer ${active === "desc" ? "text-[#2C79BE] font-bold bg-[rgba(44,121,190,0.12)]" : ""}`}
                     onClick={() => handleActiveFrequencyChange("desc", confirm)}>
                     <div className="flex items-center gap-2">
-                        <div>
-                            <img src={active === "asc" ? Icons.South : Icons.SouthNeviBlue} />
-                        </div>
-                        <div>
-                            <p>Sort Decending</p>
-                        </div>
+                      <div>
+                        <img alt="" src={active === "asc"?Icons.South:Icons.SouthNeviBlue}/>
+                      </div>
+                      <div>
+                        <p>Sort Decending</p>
+                       </div>
                     </div>
                     <div>
-                        <img src={Icons.CorrectIcon} />
+                        <img alt="" src={Icons.CorrectIcon}/>
                     </div>
 
                 </div>

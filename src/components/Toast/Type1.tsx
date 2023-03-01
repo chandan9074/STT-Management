@@ -1,6 +1,6 @@
-import React, { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { CommonContext } from '../../context/CommonProvider';
-import './type1.css'
+import './type1.css';
 interface Props {
     iconSrc?: string;
     // open: boolean;
@@ -21,6 +21,7 @@ const Type1 = (props: Props) => {
             commonContext.handleToast(false);
         }, 3000);
         return () => clearTimeout(timer);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [commonContext.toastOpen]);
 
     
