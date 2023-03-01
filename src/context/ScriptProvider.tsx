@@ -44,7 +44,6 @@ const ScriptProvider = ({ children }: { children: any }) => {
       const response = await ScriptService.getAllScript(params);
       setScriptsData(response.data.scripts);
     } catch (error) {
-      console.log('error', error);
     }
 
   }
@@ -55,7 +54,6 @@ const ScriptProvider = ({ children }: { children: any }) => {
       setSingleScript(response?.data);
       setScriptModule(response?.data?.module)
     } catch (error) {
-      console.log('error', error);
     }
   }
 
@@ -67,7 +65,6 @@ const ScriptProvider = ({ children }: { children: any }) => {
         status: response?.status
       }
     } catch (error) {
-      console.log('error', error);
 
     }
   }
@@ -79,7 +76,6 @@ const ScriptProvider = ({ children }: { children: any }) => {
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      console.log('error', error);
 
     }
     // return {

@@ -13,11 +13,9 @@ const Type2 = ({
   const [activePage, setActivePage] = useState(1);
 
   const handleNext = () => {
-    console.log("next");
     if (activePage > 1) {
       if (currentPage < Math.floor(total / pageSize) - 2) {
         setCurrentPage(currentPage + 1);
-        console.log("current", currentPage);
       }
       if (activePage < Math.floor(total / pageSize)) {
         setActivePage(activePage + 1);
@@ -29,7 +27,6 @@ const Type2 = ({
     }
   };
   const handlePrev = () => {
-    console.log("prev");
     if (activePage > 2) {
       if (currentPage > 2 && activePage < Math.floor(total / pageSize)) {
         setCurrentPage(currentPage - 1);

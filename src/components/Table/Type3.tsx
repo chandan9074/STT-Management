@@ -186,16 +186,16 @@ const Type3 = ({ data, activePanel }: Props) => {
                                     <p className="text-small text-blue-gray-80 font-bold ml-[2px]">Total</p>
                                 </Table.Summary.Cell>
                                 {activePanel === "Distribution Source-wise" ? <Table.Summary.Cell index={1}>
-                                    <p className="text-small text-blue-gray-80 font-bold text-right pr-4">{totalTarget}</p>
+                                    <p className="text-small text-blue-gray-80 font-bold text-right">{totalTarget}</p>
                                 </Table.Summary.Cell> : ""}
                                 <Table.Summary.Cell index={2}>
-                                    <p className="text-small text-blue-gray-80 font-bold text-right pr-4">{totalReceive}</p>
+                                    <p className="text-small text-blue-gray-80 font-bold text-right">{totalReceive}</p>
                                 </Table.Summary.Cell>
                                 <Table.Summary.Cell index={3}>
-                                    <p className="text-small text-blue-gray-80 font-bold text-right pr-4">{totalValid_hr}</p>
+                                    <p className="text-small text-blue-gray-80 font-bold text-right">{totalValid_hr}</p>
                                 </Table.Summary.Cell>
                                 <Table.Summary.Cell index={4}>
-                                    <p className="text-small text-blue-gray-80 font-bold text-right pr-4">{totalInvalid_hr}</p>
+                                    <p className="text-small text-blue-gray-80 font-bold text-right">{totalInvalid_hr}</p>
                                 </Table.Summary.Cell>
                             </Table.Summary.Row>
 

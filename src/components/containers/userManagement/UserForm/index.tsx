@@ -83,12 +83,10 @@ const UserForm = () => {
         };
 
     const handleSpeakerSubmit = (values: any) => {
-        console.log('Speaker form values:', values);
         setIsSpeaker(isSpeaker);
     }
 
     const handlePersonalInformationSubmit = (values: any) => {
-        console.log('Personal Information form values:', values);
         setIsSpeaker(isSpeaker);
     }
 
@@ -96,7 +94,6 @@ const UserForm = () => {
         initialValues: initialValues,
         validationSchema: isSpeaker ? validationSchemaSpeaker : validationSchema,
         // onSubmit: (values) => {
-        //     console.log('submit------', values);
 
         //     setIsSpeaker(isSpeaker);
         // },

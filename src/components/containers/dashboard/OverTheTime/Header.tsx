@@ -28,14 +28,11 @@ const Header = ({ year, activeMonth }: Props) => {
   }
 
   const handleCalenderArrow = (type: "inc" | "dec") => {
-    console.log("type", type)
     if (type === "inc") {
       const newDate = handleIncDecMonth(activeMonth, year, "inc");
-      console.log("newDate", newDate, activeMonth, year)
       handleOverTheTimeData(newDate.newYear, newDate.newMonthName);
     } else {
       const newDate = handleIncDecMonth(activeMonth, year, "dec");
-      console.log("newDate", newDate, activeMonth, year)
       handleOverTheTimeData(newDate.newYear, newDate.newMonthName);
     }
   }
@@ -46,7 +43,6 @@ const Header = ({ year, activeMonth }: Props) => {
       return;
     }
     else {
-      console.log("dateStatus", dateStatus)
       dashboardContext.getOverTheTimeData(
         commonContext.type,
         commonContext.role,

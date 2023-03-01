@@ -15,10 +15,10 @@ const NotFound = () => {
             This page may not exist or is under maintenance
           </h3>
           <Link
-            to={PATH.BILLING_PATH}
+            to={PATH.DASHBOARD_PATH}
             className="text-small text-white py-1.5 px-2.5 bg-primary-ct-blue-60 mt-5 rounded-full"
           >
-            Go to Billing
+            Go to Dashboard
           </Link>
         </div>
       </div>

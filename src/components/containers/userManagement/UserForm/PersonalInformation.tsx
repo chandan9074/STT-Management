@@ -27,7 +27,6 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
 
                         onChange={(event, value) => {
                             if (typeof value === 'string') {
-                                console.log('event', value);
 
                                 formik.setFieldValue('primaryRole', value)
                             } else {
@@ -223,7 +222,6 @@ const PersonalInformation = ({ formik }: { formik: any }) => {
                         value={formik.values.lastDegreeAchived}
                         onChange={(event, value) => {
                             if (typeof value === 'string') {
-                                console.log('event', event);
 
                                 formik.setFieldValue('lastDegreeAchived', value)
                             } else {

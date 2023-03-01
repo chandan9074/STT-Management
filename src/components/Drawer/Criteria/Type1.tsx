@@ -52,7 +52,6 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
         setEmptyEditId();
     }
 
-    console.log('*************', isConfirmCancelModal);
     
 
     return (

@@ -57,7 +57,6 @@ const CircleGraph = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
         const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
         let _percent: string = (percent * 100).toFixed(0)
-        console.log("domain wise collect", index)
 
         return (
             <text

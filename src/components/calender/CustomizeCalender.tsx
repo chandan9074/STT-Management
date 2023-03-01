@@ -61,7 +61,7 @@ const CustomizeCalender = () => {
                     format={dateFormat}
                     value={[startDate ? dayjs(startDate, dateFormat) : null, endDate ? dayjs(endDate, dateFormat) : null]}
                     onCalendarChange={getDateCalender}
-                    onChange={(e, e1) => console.log("onChange", e, e1)}
+                    
                     renderExtraFooter={() => <div className="m-5" onMouseDown={(e) => e.stopPropagation()}>
                         <p className='text-center'>Or</p>
 

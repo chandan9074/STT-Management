@@ -55,14 +55,11 @@ const OverTheTime = ({ data }: { data: overTheTimeDataDT }) => {
     }
 
     const handleCalenderArrow = (type: "inc" | "dec") => {
-        console.log("type", type)
         if (type === "inc") {
             const newDate = handleIncDecMonth(data.month, data.year, "inc");
-            console.log("newDate", newDate, data.month, data.year)
             handleOverTheTimeData(newDate.newYear, newDate.newMonthName);
         } else {
             const newDate = handleIncDecMonth(data.month, data.year, "dec");
-            console.log("newDate", newDate, data.month, data.year)
             handleOverTheTimeData(newDate.newYear, newDate.newMonthName);
         }
     }
@@ -84,7 +81,6 @@ const OverTheTime = ({ data }: { data: overTheTimeDataDT }) => {
     };
 
     const handleSelectedItem = (value: string) => {
-        console.log("value", value)
     }
 
 

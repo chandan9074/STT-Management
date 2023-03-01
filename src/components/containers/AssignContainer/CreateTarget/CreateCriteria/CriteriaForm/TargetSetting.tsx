@@ -16,7 +16,6 @@ const TargetSetting = ({ formik }: { formik: any }) => {
     };
 
     const onReminderDateChange: DatePickerProps['onChange'] = (date, dateString) => {
-        console.log(dateString);
         formik.setFieldValue("reminder", [...formik.values.reminder, getDateWithMonthName2(dateString)]);
         setOpenReminderCaleder(false);
     };

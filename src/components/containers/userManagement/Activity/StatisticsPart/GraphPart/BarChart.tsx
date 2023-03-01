@@ -126,7 +126,6 @@ const Header = ({ activeMonth, year }: HeaderProps) => {
       return;
     }
     else {
-      console.log("dateStatus", dateStatus)
       // dashboardContext.getOverTheTimeData(
       //   commonContext.type,
       //   commonContext.role,

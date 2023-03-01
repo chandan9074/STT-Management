@@ -68,7 +68,6 @@ const Type5 = () => {
     };
 
     const handleActiveBlockChange = (value: string, confirm: any) => {
-        console.log("hhhhhhhhhhhhhhh", value);
         // confirm()
 
         setActive(value)
@@ -207,7 +206,6 @@ const Type5 = () => {
 
     const rowSelection = {
         onChange: (selectedRowKeys: React.Key[], selectedRows: DataType[]) => {
-            console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
         },
         getCheckboxProps: (record: DataType) => ({
             // disabled: record.name === 'Disabled User', // Column configuration not to be checked
@@ -220,7 +218,6 @@ const Type5 = () => {
     const handleTableChange = (
         pagination: any, filters: any, sorter: any, extra: any
     ): any => {
-        console.log("filter", filters)
     };
 
     return (

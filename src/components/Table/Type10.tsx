@@ -350,7 +350,6 @@ const Type10 = () => {
 
     const rowSelection = {
         onChange: (selectedRowKeys: React.Key[], selectedRows: any[]) => {
-            console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
         },
         getCheckboxProps: (record: any) => ({
             // disabled: record.name === 'Disabled User', // Column configuration not to be checked

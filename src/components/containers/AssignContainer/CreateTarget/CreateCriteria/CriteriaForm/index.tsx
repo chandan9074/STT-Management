@@ -45,7 +45,6 @@ const CriteriaForm = ({drawerClose}: {drawerClose: () => void}) => {
 
             saveCriteria(values);
 
-            console.log('submit------', values);
         },
     });
 

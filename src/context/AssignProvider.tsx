@@ -75,7 +75,6 @@ const AssignProvider = ({ children }: { children: any }) => {
   }
 
   const setEmptySingleCriteria = () => {
-    console.log('empty single crieter');
 
     setSingleCriteria({});
 

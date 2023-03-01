@@ -17,7 +17,6 @@ const DistributionSourceWise = ({
       return targetArray.push(item.target);
     });
     setMaxTarget(Math.max(...targetArray));
-    console.log(targetArray);
   }, [data]);
   return (
     <div className="flex justify-center items-stretch">

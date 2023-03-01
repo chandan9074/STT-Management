@@ -80,7 +80,6 @@ export const getTitleColor = (value: string, children: boolean) => {
 
 export const getValidBgColor = (value: string) => {
   const data = colorForTitle.filter((item) => item.name === value)[0];
-  console.log(data);
   return data?.ttValidBg;
 };
 export const getValueFromPercentages = (height: number, data: number) => {
@@ -110,7 +109,6 @@ export const getMontNumberFormat = (date: string | undefined) => {
     } else {
       newMonth = month;
     }
-    console.log("month", newMonth);
     return `${splitData[2]}-${newMonth}-${splitData[0]}`;
   }
 };

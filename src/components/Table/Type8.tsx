@@ -230,7 +230,6 @@ const Type8 = () => {
 
   const rowSelection = {
     onChange: (selectedRowKeys: React.Key[], selectedRows: any[]) => {
-      console.log("Selected Rows, ", selectedRowKeys);
     },
     getCheckboxProps: (record: any) => ({
       //   name: record.id,

@@ -7,7 +7,6 @@ import { LoadingSkeleton } from "../../assets/loadingSkeleton";
 const PaymentHistory = () => {
   const billingContext = useContext(BillingContext);
   const { id } = useParams<{ id: string }>();
-  console.log("id", id);
 
   useEffect(() => {
     if (id !== undefined) {

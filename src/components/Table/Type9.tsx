@@ -44,12 +44,10 @@ const data: DataType[] = [
 // rowSelection object indicates the need for row selection
 const rowSelection = {
     onChange: (selectedRowKeys: React.Key[], selectedRows: DataType[]) => {
-        console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
     },
     getCheckboxProps: (record: DataType) => ({
         // disabled: record.name === 'Disabled User', // Column configuration not to be checked
         // record.id,
-        // console.log(record.id)
     }),
 };
 
@@ -161,7 +159,7 @@ const Type9 = () => {
             dataIndex: "frequency",
             width: 112,
             render: (frequency: number) => <span className='text-blue-gray-80 text-xs'>{frequency}</span>,
-            onFilter: (value, record) => (console.log("reeeeeeeeeeee", record))
+            // onFilter: (value, record) => (console.log("reeeeeeeeeeee", record))
         },
     ];
 

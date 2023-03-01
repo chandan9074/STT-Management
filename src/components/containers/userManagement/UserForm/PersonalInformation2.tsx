@@ -16,7 +16,6 @@ const PersonalInformation2 = ({ formik }: Prop) => {
     const [openCalender, setOpenCalender] = useState<boolean>(false);
 
     const onDateChange: DatePickerProps['onChange'] = (date, dateString) => {
-        console.log(dateString);
         formik.setFieldValue("dateOfBirth", dateString)
 
     };
@@ -111,7 +110,6 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                         value={formik.values.ageRange}
                         onChange={(event, value) => {
                             if (typeof value === 'string') {
-                                console.log('event', event);
 
                                 formik.setFieldValue('ageRange', value)
                             } else {
@@ -151,7 +149,6 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                         value={formik.values.education}
                         onChange={(event, value) => {
                             if (typeof value === 'string') {
-                                console.log('event', event);
 
                                 formik.setFieldValue('education', value)
                             } else {
@@ -190,7 +187,6 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                         value={formik.values.educationSituation}
                         onChange={(event, value) => {
                             if (typeof value === 'string') {
-                                console.log('event', event);
 
                                 formik.setFieldValue('educationSituation', value)
                             } else {

@@ -25,7 +25,6 @@ const Type3 = ({
   subdomainData,
 }: Props) => {
   const [open, setOpen] = React.useState(false);
-  console.log(filterList)
   return (
     <div className="relative w-80">
       <div className="p-3 border border-blue-gray-10 rounded-[7px] bg-white inline-flex">

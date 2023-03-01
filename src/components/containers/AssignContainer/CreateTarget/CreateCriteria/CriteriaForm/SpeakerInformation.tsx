@@ -7,7 +7,6 @@ import Icons from '../../../../../../assets/Icons';
 
 const SpeakerInformation = ({ formik }: { formik: any }) => {
 
-    console.log('----', formik.values.healthFactors);
 
     return (
         <div className=''>
@@ -42,7 +41,6 @@ const SpeakerInformation = ({ formik }: { formik: any }) => {
                         value={formik.values.ageRange}
                         onChange={(event, value) => {
                             if (typeof value === 'string') {
-                                console.log('event', event);
 
                                 formik.setFieldValue('ageRange', value)
                             } else {
@@ -99,7 +97,6 @@ const SpeakerInformation = ({ formik }: { formik: any }) => {
                             value={formik.values.profession}
                             onChange={(event, value) => {
                                 if (typeof value === 'string') {
-                                    console.log('event', event);
 
                                     formik.setFieldValue('profession', value)
                                 } else {
@@ -144,7 +141,6 @@ const SpeakerInformation = ({ formik }: { formik: any }) => {
                             value={formik.values.economicSituation}
                             onChange={(event, value) => {
                                 if (typeof value === 'string') {
-                                    console.log('event', event);
 
                                     formik.setFieldValue('economicSituation', value)
                                 } else {
@@ -189,7 +185,6 @@ const SpeakerInformation = ({ formik }: { formik: any }) => {
                         value={formik.values.education}
                         onChange={(event, value) => {
                             if (typeof value === 'string') {
-                                console.log('event', event);
 
                                 formik.setFieldValue('education', value)
                             } else {
@@ -251,7 +246,6 @@ const SpeakerInformation = ({ formik }: { formik: any }) => {
                         value={formik.values.recordingArea}
                         onChange={(event, value) => {
                             if (typeof value === 'string') {
-                                console.log('event', event);
 
                                 formik.setFieldValue('recordingArea', value)
                             } else {
@@ -287,7 +281,6 @@ const SpeakerInformation = ({ formik }: { formik: any }) => {
                         value={formik.values.recordingDistance}
                         onChange={(event, value) => {
                             if (typeof value === 'string') {
-                                console.log('event', event);
 
                                 formik.setFieldValue('recordingDistance', value)
                             } else {

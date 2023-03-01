@@ -23,7 +23,6 @@ const Type1 = (props: Props) => {
         return () => clearTimeout(timer);
     }, [commonContext.toastOpen]);
 
-    console.log('toast open----', commonContext.toastOpen);
     
 
     return (

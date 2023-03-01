@@ -15,14 +15,12 @@ const SourceReference = ({ formik }: { formik: any }) => {
 
     const onSourceReferencehandle = (value: string) => {
         if (value === 'source') {
-            console.log('source');
 
             setScriptSourceReference({
                 isSource: true,
                 isScript: false
             })
         } else {
-            console.log('script');
 
             setScriptSourceReference({
                 isSource: false,
@@ -100,7 +98,6 @@ const SourceReference = ({ formik }: { formik: any }) => {
                                             value={formik.values.sourceType}
                                             onChange={(event, value) => {
                                                 if (typeof value === 'string') {
-                                                    console.log('event', event);
 
                                                     formik.setFieldValue('sourceType', value)
                                                 } else {
