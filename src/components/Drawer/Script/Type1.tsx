@@ -66,7 +66,7 @@ const Type1 = ({ isDrawerOpen, drawerClose, modalOpen, setModalOpen }: Props) =>
                     </div>
                     <div className='pb-3 mt-3 pl-4 pr-2 flex flex-col gap-y-2 h-[calc(100vh-20vh)] overflow-y-scroll custom-scrollBar'>
                         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, index) => (
-                            <div className={`${scriptColorData[getRandomInt(0, 6, index)].rowBg} rounded-[4px] py-3 px-2 inline-flex items-center gap-x-2 w-full`}>
+                            <div key={index} className={`${scriptColorData[getRandomInt(0, 6, index)].rowBg} rounded-[4px] py-3 px-2 inline-flex items-center gap-x-2 w-full`}>
                                 <button className='inline-flex gap-x-2 items-center' onClick={() => setModalOpen(!modalOpen)}><div className={`${scriptColorData[getRandomInt(0, 6, index)].id} text-xxs font-semibold px-1.5 py-0.5 rounded-[4px] ${scriptColorData[getRandomInt(0, 6, index)].idBg}`}>227</div>
                                     <p className='m-0 text-ct-blue-95 text-xs font-[300] truncate text-ellipsis w-[218px]'>শহরের মাথা ছাড়িয়ে উঁচু বেদির ওপরে সু শহরের মাথা ছাড়িয়ে উঁচু বেদির ওপরে সু</p></button>
                                 <button><img src={Icons.cancel} alt="" /></button>

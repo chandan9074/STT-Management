@@ -48,7 +48,8 @@ const ProfessionWise = ({ data }: Props) => {
 
                 <div className='relative flex flex-col items-center ml-12 '>
                     {
-                        data.map((value) => <div
+                        data.map((value, index: number) => <div
+                        key={index}
                             style={{ height: `${value.contribution}%` }}
                             className='flex w-[65px] items-center gap-1 duration-500'>
 
@@ -76,7 +77,8 @@ const ProfessionWise = ({ data }: Props) => {
 
                 <div>
                     {
-                        data.map((value) => <div
+                        data.map((value, index: number) => <div
+                            key={index}
                             style={{ height: `${value.contribution}%` }}
                             className='flex items-center gap-1 '
                         >

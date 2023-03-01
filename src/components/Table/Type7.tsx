@@ -1,7 +1,6 @@
 import { Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import Icons from '../../assets/Icons';
 import Buttons from '../Buttons';
 import ProgressBar from '../common/ProgressBar';
@@ -65,11 +64,11 @@ const data: any = [
 
 ];
 const Type7 = () => {
-    const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
+    // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
     const [drawerData, setDrawerData] = useState<any>();
-    const [active, setActive] = useState<string>("")
-    const navigate = useNavigate();
+    // const [active, setActive] = useState<string>("")
+    // const navigate = useNavigate();
     // const [searchedColumn, setSearchedColumn] = useState("");
 
     const showDrawer = (key: any) => {
@@ -133,7 +132,7 @@ const Type7 = () => {
                     <Buttons.IconButton.Circle
                         size='medium'
                         variant='Blue'
-                        icon={<img src={Icons.BlueRightArrow} />}
+                        icon={<img alt='' src={Icons.BlueRightArrow} />}
 
                     />
 

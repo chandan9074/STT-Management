@@ -1,9 +1,8 @@
 import { Drawer } from 'antd';
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import Icons from '../../../assets/Icons';
 import Buttons from '../../Buttons';
-import ScriptMetaData from './ScriptMetaData';
-import './type1DrawerStyle.css'
+import './type1DrawerStyle.css';
 
 interface Props {
     open: boolean;
@@ -13,9 +12,9 @@ interface Props {
 const Type2 = ({ open, setOpen, drawerData }: Props) => {
     const onClose = () => {
         setOpen(false);
-        setMetaDataOpen(false)
+        // setMetaDataOpen(false)
     };
-    const [metaDataOpen, setMetaDataOpen] = useState<boolean>(false)
+    // const [metaDataOpen, setMetaDataOpen] = useState<boolean>(false)
     const [activePanle, setActivePanel] = useState<string>("Personal Info")
 
     const reportingData: any = [

@@ -1,10 +1,8 @@
-import React from "react";
 import { distributionSourceWiseDT } from "../../../../../../types/dashboardTypes";
 import {
   getTitleColor,
   getValidBgColor,
 } from "../../../../../../helpers/Utils";
-import GraphTooltip from "../../GraphTooltip";
 import SecondaryGraphTooltip from "../../SecondaryGraphTooltip";
 
 type Props = {
@@ -14,17 +12,17 @@ type Props = {
 };
 
 const Graph = ({ data, maxTarget, graphWidth }: Props) => {
-  const handleColor = (value: string) => {
-    return "bg-green-500";
-  };
+  // const handleColor = (value: string) => {
+  //   return "bg-green-500";
+  // };
   return (
     <div className="flex border-l border-blue-gray-20 py-2.5">
       <div className="w-full flex flex-col my-auto">
         {data.map((item, index) => (
           <div
-            className={`w-full flex items-center ${
-              data.length - 1 === index ? "" : "mb-8"
-            }`}
+            key={index}
+            className={`w-full flex items-center ${data.length - 1 === index ? "" : "mb-8"
+              }`}
           >
             <div
               className="flex items-center"
@@ -39,14 +37,13 @@ const Graph = ({ data, maxTarget, graphWidth }: Props) => {
                 )}`}
               >
                 <div
-                  className={`h-3 relative rounded-r-full duration-300 flex justify-center ${
-                    getTitleColor(item.name, true).split(" ")[2]
-                  }`}
+                  className={`h-3 relative rounded-r-full duration-300 flex justify-center ${getTitleColor(item.name, true).split(" ")[2]
+                    }`}
                   style={{ width: `${item.achieved}%` }}
                 >
                   <div
                     className={`absolute bottom-7 hidden z-[110] group-hover:block animate-fadeIn`}
-                    // style={{ left: `calc(100% - 40px)` }}
+                  // style={{ left: `calc(100% - 40px)` }}
                   >
                     <SecondaryGraphTooltip
                       data={
@@ -55,16 +52,14 @@ const Graph = ({ data, maxTarget, graphWidth }: Props) => {
                         )[0]
                       }
                       validBgColor={`${getValidBgColor(item.name)}`}
-                      titleColor={`${
-                        getTitleColor(item.name, true).split(" ")[2]
-                      } bg-clip-text text-transparent`}
+                      titleColor={`${getTitleColor(item.name, true).split(" ")[2]
+                        } bg-clip-text text-transparent`}
                       align="center"
                     />
                   </div>
                   <div
-                    className={`group-hover:bg-gradient-to-r ${
-                      getTitleColor(item.name, true).split("bg")[0]
-                    } w-full h-full opacity-0 group-hover:opacity-100 duration-300 rounded-r-full`}
+                    className={`group-hover:bg-gradient-to-r ${getTitleColor(item.name, true).split("bg")[0]
+                      } w-full h-full opacity-0 group-hover:opacity-100 duration-300 rounded-r-full`}
                   ></div>
                 </div>
               </div>
@@ -73,13 +68,12 @@ const Graph = ({ data, maxTarget, graphWidth }: Props) => {
               </h1>
             </div>
             <div
-              className={`border-t-2 ml-2 border-blue-gray-A20 border-dashed ${
-                graphWidth -
+              className={`border-t-2 ml-2 border-blue-gray-A20 border-dashed ${graphWidth -
                   Math.round(graphWidth * item.target) / maxTarget ===
-                0
+                  0
                   ? "hidden"
                   : "block"
-              }`}
+                }`}
               style={{
                 width:
                   graphWidth - Math.round(graphWidth * item.target) / maxTarget,

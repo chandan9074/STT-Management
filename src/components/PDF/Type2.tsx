@@ -1,10 +1,8 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import ReactToPrint from "react-to-print";
-import jsPDF from "jspdf";
 // @ts-ignore
-import font from './SolaimanLipi.ttf';
-import Buttons from "../Buttons";
 import Icons from "../../assets/Icons";
+import Buttons from "../Buttons";
 
 
 
@@ -14,15 +12,9 @@ interface Props {
 const Type2 = ({ data }: Props) => {
     const componentRef = useRef<any>(null);
 
-    const handleDownload = () => {
-        const doc = new jsPDF();
-        // doc.html(componentRef.current, {
-        //     callback: () => {
-        //         doc.save("document.pdf");
-        //     }
-        // });
-
-    };
+    // const handleDownload = () => {
+    //     const doc = new jsPDF();
+    // };
     return (
         <div>
             <ReactToPrint
@@ -31,7 +23,7 @@ const Type2 = ({ data }: Props) => {
                         label="Downlaod Script"
                         size="xSmall"
                         variant="Blue"
-                        icon={<img src={Icons.fileDownload} />}
+                        icon={<img alt="" src={Icons.fileDownload} />}
                         iconAlign="start"
 
                     />

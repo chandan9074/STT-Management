@@ -1,7 +1,7 @@
 import { Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Icons from '../../assets/Icons';
 import "../../assets/css/table/type4Table.css";
 import RoleImage from '../Image/RoleImage';
@@ -197,7 +197,7 @@ const data: any = [
 ];
 
 const Type10 = () => {
-    const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
+    // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
     // const [searchedColumn, setSearchedColumn] = useState("");
 
@@ -366,7 +366,7 @@ const Type10 = () => {
 
             <Table
                 rowSelection={{
-                    type: selectionType,
+                    // type: selectionType,
                     ...rowSelection,
                 }}
                 columns={Type8columns}

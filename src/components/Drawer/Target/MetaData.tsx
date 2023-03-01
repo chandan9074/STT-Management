@@ -1,7 +1,6 @@
-import React, { Dispatch, SetStateAction, useContext } from 'react';
+import { Dispatch, SetStateAction, useContext } from 'react';
 import Icons from '../../../assets/Icons';
 import { AssignContext } from '../../../context/AssignProvider';
-import Buttons from '../../Buttons';
 import BackButtonTitle from '../../common/BackButtonTitle';
 
 type Props = {
@@ -12,9 +11,9 @@ const MetaData = ({ setIsMetaData }: Props) => {
 
     const AssignContexts = useContext(AssignContext);
     const {
-        criterias,
+        // criterias,
         singleCriteria,
-        getSingleCriteria,
+        // getSingleCriteria,
     } = AssignContexts;
 
     const singleValue1 = [

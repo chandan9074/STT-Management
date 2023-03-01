@@ -66,10 +66,12 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
 
   useEffect(() => {
     GetLastBillingsInfo(lastBillingsParams);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lastBillingsParams]);
 
   useEffect(() => {
     GetAllBillingInfo(allbillingsParam);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allbillingsParam]);
 
   useEffect(() => {
@@ -113,7 +115,7 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
 
   const listedLastBillings: BillingDataType[] = [];
   lastBillings?.billingInfo.map((data) => {
-    listedLastBillings.push({
+    return listedLastBillings.push({
       key: data.id,
       userInfo: {
         name: data.userInfo.name,
@@ -126,7 +128,7 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
 
   const listedAllBillings: AllBillingDataType[] = [];
   allBillings?.billingInfo.map((data) => {
-    listedAllBillings.push({
+    return listedAllBillings.push({
       key: data.id,
       date: data.date,
       hour: `${data.hour} hr`,

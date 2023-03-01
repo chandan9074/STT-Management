@@ -1,7 +1,5 @@
-import React from 'react';
 import { Table } from "antd";
 import "../../assets/css/table/table.css";
-import { collectDataDT, createDataDT } from '../../types/dashboardTypes';
 import { getTableColorByName } from '../../helpers/Utils';
 interface Props {
     // data: createDataDT | collectDataDT ;

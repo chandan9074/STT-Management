@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import CriteriaForm from "./CriteriaForm";
 import { Drawer } from "../../../../Drawer";
-import Type1 from "../../../../Drawer/Script/Type1";
 import Buttons from "../../../../Buttons";
 import Icons from "../../../../../assets/Icons";
 import CriteriaTargetBox from "./CriteriaTargetBox";
 import { useAssigneContext } from "../../../../../context/AssignProvider";
-import TargetBox from "../TargetBox";
 
 const CreateCriteria = () => {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);

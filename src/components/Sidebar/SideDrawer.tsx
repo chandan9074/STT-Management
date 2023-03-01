@@ -1,5 +1,4 @@
-import { CaretUpOutlined } from '@ant-design/icons';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Icons from '../../assets/Icons';
 import SideDrawerLink from '../../data/SideDrawerLink';
@@ -36,6 +35,7 @@ const SideDrawer = () => {
         if (_data) {
             setNav(_data[0]);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     // className={`${nav.route === location.pathname && 'bg-blue-10 text-secondary-blue-50 rounded-[20px]'} px-4`}

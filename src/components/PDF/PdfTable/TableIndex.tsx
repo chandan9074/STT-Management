@@ -1,4 +1,3 @@
-import React from 'react';
 import { DISTRIBUSION_SOURCE } from '../../../helpers/ConditionVariable';
 import TableFooter from './TableFooter';
 import TableHeader from './TableHeader';
@@ -16,14 +15,12 @@ const TableIndex = (props: Props) => {
     let totalInvalid: number = 0;
 
 
-    const res = data.map((data: any) => {
-
+    data.map((data: any) => {
         totalTerget = totalTerget + data.target
         totalRecive = totalRecive + data.totalReceived
         totalValid = totalValid + data.totalValid
         totalInvalid = totalInvalid + data.totalInvalid
-
-
+        return null;
     })
 
     const tableheaderdata: string[] = ["Distribution Source", "Target (hour)", "Received (hour)", "Valid (hour)", "Invalid (hour)", "Last update"]

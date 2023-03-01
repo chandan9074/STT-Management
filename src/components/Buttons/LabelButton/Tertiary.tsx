@@ -1,5 +1,4 @@
 import React from 'react';
-import Icons from '../../../assets/Icons';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     label: string;

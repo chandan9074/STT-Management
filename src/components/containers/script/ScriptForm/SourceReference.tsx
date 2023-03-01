@@ -5,7 +5,6 @@ import Icons from '../../../../assets/Icons';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { scriptSourceType } from '../../../../data/Script/Domain';
-import { Link } from 'react-router-dom';
 
 const SourceReference = ({ formik }: { formik: any }) => {
     const [scriptSourceReference, setScriptSourceReference] = useState<{ isSource: boolean, isScript: boolean }>({
@@ -190,7 +189,7 @@ const SourceReference = ({ formik }: { formik: any }) => {
                                         <div className='flex justify-between items-center'>
                                             <div className='flex gap-x-[11px] items-center'>
                                                 <img src={Icons.Pdf} alt="" />
-                                                <a href={urlPatternValidation(formik.values.sourceFile) && formik.values.sourceFile} target="_blank" className='cursor-pointer'>
+                                                <a href={urlPatternValidation(formik.values.sourceFile) && formik.values.sourceFile} rel="noreferrer" target="_blank" className='cursor-pointer'>
                                                     <div >
                                                         {
                                                             formik.values.sourceFileName

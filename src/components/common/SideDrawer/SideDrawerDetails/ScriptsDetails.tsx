@@ -1,10 +1,8 @@
-import React, { Dispatch, SetStateAction, useContext, useRef, useState } from 'react';
+import { Dispatch, SetStateAction, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Icons from '../../../../assets/Icons';
-import { ScriptContext } from '../../../../context/ScriptProvider';
 import { EDIT_SCRIPT_PATH } from '../../../../helpers/Slug';
 import { PDF } from '../../../PDF';
-import PdfContainer from '../../../PDF/PdfContainer';
 import { Toast } from '../../../Toast';
 
 interface Props {
@@ -13,15 +11,15 @@ interface Props {
 }
 const ScriptsDetails = ({ drawerData, setMetaDataOpen }: Props) => {
 
-    const scriptContext = useContext(ScriptContext);
+    // const scriptContext = useContext(ScriptContext);
 
     const textRef = useRef<HTMLParagraphElement>(null);
-    const [open, setOpen] = useState<boolean>(false);
+    // const [open, setOpen] = useState<boolean>(false);
 
     const copyToClipboard = () => {
         if (textRef.current) {
             navigator.clipboard.writeText(textRef.current.innerText);
-            setOpen(true)
+            // setOpen(true)
         }
     };
     return (

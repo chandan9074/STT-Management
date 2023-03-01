@@ -46,6 +46,7 @@ const MonthCalender = ({
       <div className="flex items-center gap-x-1 mb-1">
         {months.slice(0, 4).map((month, index) => (
           <button
+            key={index}
             onClick={() => {
               handleOverTheTimeData(year, month);
               handleCalenderVisibility();
@@ -60,6 +61,7 @@ const MonthCalender = ({
       <div className="flex items-center gap-x-1 mb-1">
         {months.slice(4, 8).map((month, index) => (
           <button
+            key={index}
             onClick={() => {
               handleOverTheTimeData(year, month);
               handleCalenderVisibility();
@@ -74,6 +76,7 @@ const MonthCalender = ({
       <div className="flex items-center gap-x-1">
         {months.slice(8, 12).map((month, index) => (
           <button
+            key={index}
             onClick={() => {
               handleOverTheTimeData(year, month);
               handleCalenderVisibility();

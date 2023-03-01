@@ -118,6 +118,7 @@ const UserForm = () => {
             }
             return isSpeaker
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [formik.values.role]);
 
     const getFile = (file: any) => {

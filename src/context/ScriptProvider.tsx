@@ -75,7 +75,7 @@ const ScriptProvider = ({ children }: { children: any }) => {
   const updateScript = async (params: any) => {
     try {
       setLoading(true);
-      const response = await ScriptService.UpdateScript(params);
+      await ScriptService.UpdateScript(params);
       setLoading(false);
     } catch (error) {
       setLoading(false);

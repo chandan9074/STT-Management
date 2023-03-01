@@ -1,5 +1,5 @@
 
-import React, { useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { CommonContext } from '../../../../context/CommonProvider';
 import { ScriptContext } from '../../../../context/ScriptProvider';
 import Table from '../../../Table';
@@ -9,7 +9,8 @@ const ScriptTable = () => {
     const commonContext = useContext(CommonContext)
 
     useEffect(() => {
-        scriptContext.getAllScript({ role: commonContext.role.toLowerCase() })
+        scriptContext.getAllScript({ role: commonContext.role.toLowerCase() });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const handleSelectRow = (selectedRows: any[]) => {

@@ -129,7 +129,7 @@ const TargetSetting = ({ formik }: { formik: any }) => {
                                     <h2 className=' comboBoxLabel'>Reminder</h2>
                                     :
                                     formik.values.reminder.map((value: string, i: number) => (
-                                        <div className='bg-ct-blue-20 rounded-[4px] flex justify-center items-center py-[3px] px-[8px] gap-x-[4px]'>
+                                        <div key={i} className='bg-ct-blue-20 rounded-[4px] flex justify-center items-center py-[3px] px-[8px] gap-x-[4px]'>
                                             <h1 className='text-xs text-blue-gray-80 font-medium whitespace-nowrap'>
                                                 {/* {getDateWithMonthName2(value)} */}
                                                 {value}

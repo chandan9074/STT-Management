@@ -11,7 +11,6 @@ import NotFound from "./pages/NotFound";
 import Script from "./pages/Script";
 import AddScript from "./components/containers/script/AddScript";
 import UserManagement from "./pages/UserManagement";
-import Paragraph from "antd/es/skeleton/Paragraph";
 import Activity from "./pages/UserManagement/Activity";
 import UserForm from "./components/containers/userManagement/UserForm";
 import Assign from "./pages/Assign";

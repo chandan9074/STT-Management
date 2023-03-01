@@ -1,11 +1,9 @@
 import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
-import { useState } from 'react';
-import { boolean } from 'yup';
 import { RoleData } from '../../../../data/userManagement/UserManagementData';
 
 const Role = ({ formik }: { formik: any }) => {
 
-    const [isSpeaker, setIsSpeaker] = useState<string>('');
+    // const [isSpeaker, setIsSpeaker] = useState<string>('');
 
     return (
         <div>
@@ -23,10 +21,10 @@ const Role = ({ formik }: { formik: any }) => {
                                         if (e.target.checked) {
                                             if (value === "Speaker") {
                                                 formik.setFieldValue("role", [value]);
-                                                setIsSpeaker('Speaker');
+                                                // setIsSpeaker('Speaker');
                                             } else {
                                                 formik.setFieldValue("role", [...formik.values.role.filter((item: string) => item !== "Speaker"), value]);
-                                                setIsSpeaker('not speaker')
+                                                // setIsSpeaker('not speaker')
                                             }
                                         } else {
                                             formik.setFieldValue("role", formik.values.role.filter((item: string) => item !== value));

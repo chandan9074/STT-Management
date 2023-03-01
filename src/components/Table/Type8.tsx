@@ -1,6 +1,6 @@
 import { DatePicker, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Icons from "../../assets/Icons";
 import { SideDrawer } from "../common/SideDrawer";
 import "../../assets/css/table/type4Table.css";
@@ -13,13 +13,13 @@ import AssigneeTargetModal from "../containers/AssignContainer/CreateTarget/Targ
 import CriteriaTargetModal from "../containers/AssignContainer/CreateTarget/TargetTable/CriteriaTargetModal";
 import RemarkTargetModal from "../containers/AssignContainer/CreateTarget/TargetTable/RemarkTargetModal";
 
-interface Props {
-  changeScriptModal: (open: boolean, target: TargetItemDT) => void;
-  changeTargetModal: (open: boolean, target: TargetItemDT) => void;
-  changeAssigneeModal: (open: boolean, target: TargetItemDT) => void;
-  changeDeadlineModal: (open: boolean, target: TargetItemDT) => void;
-  changeRemarkModal: (open: boolean, target: TargetItemDT) => void;
-}
+// interface Props {
+//   changeScriptModal: (open: boolean, target: TargetItemDT) => void;
+//   changeTargetModal: (open: boolean, target: TargetItemDT) => void;
+//   changeAssigneeModal: (open: boolean, target: TargetItemDT) => void;
+//   changeDeadlineModal: (open: boolean, target: TargetItemDT) => void;
+//   changeRemarkModal: (open: boolean, target: TargetItemDT) => void;
+// }
 
 const Type8 = () => {
   const { selectedTargetList: dataList } = useAssigneContext();

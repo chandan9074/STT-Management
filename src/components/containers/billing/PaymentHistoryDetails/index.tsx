@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import type { ColumnsType } from "antd/es/table";
 import Icons from "../../../../assets/Icons";
 import {
@@ -8,7 +8,6 @@ import {
 import Image from "../../../Image";
 import Table from "../../../Table";
 import Pagination from "../../../Pagination";
-import { useNavigate } from "react-router-dom";
 import CustomRangeCalender, {
   DateDT,
 } from "../../../calender/CustomRangeCalender";
@@ -17,7 +16,6 @@ import {
   getDateWithMonthName,
   getYearMonthDate,
 } from "../../../../helpers/Utils";
-import Buttons from "../../../Buttons";
 import { Navigator } from "../../../Navigator";
 import * as PATH from "../../../../helpers/Slug";
 
@@ -26,7 +24,7 @@ const PaymentHistoryDetails = ({ data }: { data: paymentHistoryDT }) => {
   const [btnDate, setBtnDate] = useState<DateDT>({ start: "", end: "" });
   const [open, setOpen] = useState<boolean>(false);
   const billingContext = useContext(BillingContext);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const columns: ColumnsType<paymentHistoryDataDT> = [
     {
       title: "DATE",
@@ -81,6 +79,7 @@ const PaymentHistoryDetails = ({ data }: { data: paymentHistoryDT }) => {
         end: _end,
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateValue]);
 
   return (

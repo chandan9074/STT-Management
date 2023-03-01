@@ -1,5 +1,4 @@
-import React, { useContext, useState } from 'react'
-import { assignStatisticsDT } from '../../../../../types/assignTypes'
+import { useContext, useState } from 'react'
 import { overTheTimeDataDT } from '../../../../../types/userManagementTypes'
 import BarTooltip from '../../../userManagement/Activity/StatisticsPart/GraphPart/BarTooltip'
 import Buttons from '../../../../Buttons'
@@ -150,7 +149,7 @@ const OverTheTime = ({ data }: { data: overTheTimeDataDT }) => {
                     </div>
                     <div className='absolute bottom-0 flex justify-between w-full px-2'>
                         {data.weekData.filter(item => item.week === assignContext.currentWeek)[0].dayData.map((item, index) => (
-                            <div className='w-8 relative flex flex-col items-center justify-end group cursor-pointer'>
+                            <div key={index} className='w-8 relative flex flex-col items-center justify-end group cursor-pointer'>
                                 {item.target !== 0 ? (<>
                                     <div className={`flex ${data.weekData.filter(item => item.week === assignContext.currentWeek)[0].dayData.length - 3 < index ? "justify-end" : "justify-center"}`}>
                                         <div className=" absolute z-[110] hidden group-hover:block animate-fadeIn" style={{ bottom: `${Math.round((130 * item.target) / data.weekData.filter(item => item.week === assignContext.currentWeek)[0].maxTarget) + 55}px`, right: data.weekData.filter(item => item.week === assignContext.currentWeek)[0].dayData.length - 3 < index ? "-14px" : "" }}>

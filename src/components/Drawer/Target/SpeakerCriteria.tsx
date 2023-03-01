@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { AssignContext } from '../../../context/AssignProvider';
 
 const SpeakerCriteria = () => {
 
     const AssignContexts = useContext(AssignContext);
     const {
-        criterias,
+        // criterias,
         singleCriteria,
-        getSingleCriteria,
+        // getSingleCriteria,
     } = AssignContexts;
 
     const singleValue1 = [

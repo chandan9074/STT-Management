@@ -80,7 +80,7 @@ const Type2 = ({
               {index === 0 &&
                 currentPage > 2 &&
                 currentPage < Math.floor(total / pageSize) - 1 && (
-                  <span className="text-sm font-bold mr-2.5">. . .</span>
+                  <span key={index} className="text-sm font-bold mr-2.5">. . .</span>
                 )}
               <button
                 onClick={() => {
@@ -134,6 +134,7 @@ const Type2 = ({
                 .fill(0)
                 .map((_, index) => (
                   <button
+                  
                     onClick={() => {
                       setActivePage(index + currentPage);
                       handleDataChange(index + currentPage);

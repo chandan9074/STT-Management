@@ -9,11 +9,6 @@ interface Props {
 
 }
 
-const RADIAN = Math.PI / 180;
-
-
-
-
 const DomainWise = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
 
     return (

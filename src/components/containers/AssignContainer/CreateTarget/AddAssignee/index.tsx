@@ -1,7 +1,4 @@
-import React, { useState } from "react";
-import TargetBox from "../TargetBox";
-import Type1 from "../../../../Drawer/Criteria/Type1";
-import CriteriaForm from "../CreateCriteria/CriteriaForm";
+import { useState } from "react";
 import Buttons from "../../../../Buttons";
 import Icons from "../../../../../assets/Icons";
 import AssigneeTargetBox from "./AssigneeTargetBox";

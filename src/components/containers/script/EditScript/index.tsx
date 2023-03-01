@@ -10,12 +10,13 @@ const EditScript = ({ data }: { data?: allScriptResDT }) => {
     const scriptContext = useContext(ScriptContext);
     const commonContext = useContext(CommonContext);
     const { id } = useParams();
-    const search = {id: id, role: commonContext.role}
+    const search = { id: id, role: commonContext.role }
 
     useEffect(() => {
         if (id) {
             scriptContext.getScriptById(search)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
         <Layouts.Forth>

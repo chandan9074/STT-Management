@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Icons from "../../../../../assets/Icons";
 import Buttons from "../../../../Buttons";
-import { CustomModal } from "../../../../common/CustomModal";
 import "../../../../../assets/css/table/criteria_details.css";
 import { CriteriaItemDT } from "../../../../../types/assignTypes";
 import { Input, Radio } from "antd";
@@ -72,7 +71,7 @@ const CriteriaTargetModal = ({ criteriaList }: Props) => {
         <div className="flex flex-col gap-1 items-start justify-start h-full w-full py-1 overflow-y-auto custom_scrollbar">
           {criteriaList?.map((item, index) => (
             <div
-              key={item?.id}
+              key={index}
               className={`flex items-center gap-1 w-full px-4 py-1 justify-between ${
                 selectedCriteria?.id === item?.id && "bg-[#E1EFFE]"
               }`}

@@ -1,8 +1,5 @@
-import React from "react";
 import Icons from "../../../../../../assets/Icons";
-import { createCollectSimilarPropertyDT } from "../../../../../../types/dashboardTypes";
 import { localityDataDT } from "../../../../../../types/userManagementTypes";
-import GraphTooltip from "../../../../dashboard/DataContainer/GraphTooltip";
 import MapTooltip from "./MapTooltip";
 
 const MapChart = ({ data }: { data: localityDataDT[] }) => {
@@ -135,7 +132,7 @@ const MapList = ({ data }: { data: localityDataDT[] }) => {
     <div className="grid grid-cols-2 w-full mt-1">
       <div>
         {data.slice(0, 4).map((item, index) => (
-          <div className="flex items-center mb-3">
+          <div key={index} className="flex items-center mb-3">
             <div
               className={`w-3 h-3 rounded-full mr-2 ${item.name === "Middle East Bangla"
                 ? "bg-yellow-A10"
@@ -154,7 +151,7 @@ const MapList = ({ data }: { data: localityDataDT[] }) => {
       </div>
       <div>
         {data.slice(4, 7).map((item, index) => (
-          <div className="flex items-center mb-3">
+          <div key={index} className="flex items-center mb-3">
             <div
               className={`w-3 h-3 rounded-full mr-2 ${item.name === "Kamrupi"
                 ? "bg-orange-A10"

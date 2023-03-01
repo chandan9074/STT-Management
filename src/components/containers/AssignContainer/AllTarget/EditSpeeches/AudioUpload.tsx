@@ -1,7 +1,6 @@
-import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
+import { Dispatch, SetStateAction, useRef, useState } from 'react';
 import Icons from '../../../../../assets/Icons';
 import Buttons from '../../../../Buttons';
-import { Button, LinearProgress } from '@mui/material';
 import { AUDIO_FILE_UPLOADED } from '../../../../../helpers/Slug';
 
 type Props = {
@@ -9,11 +8,11 @@ type Props = {
     audioId: number,
     speechData: any,
     setSpeechData: Dispatch<SetStateAction<any>>,
-    setAudioUploadStatus: Dispatch<SetStateAction<any>>,
+    setAudioUploadStatus?: Dispatch<SetStateAction<any>>,
 }
 
 const AudioUpload = ({ data, audioId, speechData, setSpeechData, setAudioUploadStatus }: Props) => {
-    const [selectedFile, setSelectedFile] = useState<any>(null);
+    // const [selectedFile, setSelectedFile] = useState<any>(null);
     // const [uploadProgress, setUploadProgress] = useState<any>(0);
     const [audioMin, setAudioMin] = useState<string>('');
 
@@ -32,7 +31,7 @@ const AudioUpload = ({ data, audioId, speechData, setSpeechData, setAudioUploadS
 
     const handleFileSelect = (event: any) => {
         const file = event.target.files[0];
-        setSelectedFile(file);
+        // setSelectedFile(file);
         convertAudioToMin(file);
 
         const index = speechData.findIndex((item: any) => item?.id === audioId);

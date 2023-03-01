@@ -1,10 +1,9 @@
 import { Drawer } from 'antd';
-import React, { Children, Dispatch, SetStateAction, useState } from 'react';
-import Icons from '../../../assets/Icons';
+import { Dispatch, SetStateAction, useState } from 'react';
 import Buttons from '../../Buttons';
 import MetaData from './MetaData';
 import Others from './Others';
-import Script  from './Script';
+import Script from './Script';
 import SpeakerCriteria from './SpeakerCriteria';
 
 type Props = {

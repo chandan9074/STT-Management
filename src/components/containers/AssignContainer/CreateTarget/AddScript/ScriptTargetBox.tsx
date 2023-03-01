@@ -1,6 +1,5 @@
 import { SearchOutlined } from "@ant-design/icons";
 import { Checkbox } from "antd";
-import React, { useState } from "react";
 import Icons from "../../../../../assets/Icons";
 import { useAssigneContext } from "../../../../../context/AssignProvider";
 import { scriptColorData } from "../../../../../data/assign/AssignData";

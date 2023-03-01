@@ -12,7 +12,7 @@ const Primary = () => {
       </Link>
       <div className="mt-14">
         {sidebarMenu.category1.map((item, index) => (
-          <div className="mb-5 relative group">
+          <div key={index} className="mb-5 relative group">
             <div className="bg-black-90 absolute left-14 py-1.5 px-3 rounded-[4px] text-ct-blue-05 whitespace-nowrap animate-fadeIn hidden group-hover:block">
               {item.menu_title}
               <img

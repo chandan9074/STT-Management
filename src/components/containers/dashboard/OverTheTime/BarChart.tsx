@@ -1,4 +1,3 @@
-import { overTheTimeGData } from "../../../../data/dashboard/overTheTimeGData";
 import { overTheTimeGDT } from "../../../../types/dashboardTypes";
 import Tooltip from "./Tooltip";
 
@@ -7,14 +6,14 @@ const BarChart = ({ overTheTimeGData }: { overTheTimeGData: overTheTimeGDT }) =>
   return (
     <div className="flex justify-between mt-4">
       {overTheTimeGData.dayData.map((item, index) => (
-        <div className="flex flex-col items-center justify-end">
+        <div key={index} className="flex flex-col items-center justify-end">
           {item.receivedHour > 0 ? (
             <div
               className={`w-9 relative flex ${index < 5
-                  ? "justify-start"
-                  : overTheTimeGData.dayData.length - 6 < index
-                    ? "justify-end"
-                    : "justify-center"
+                ? "justify-start"
+                : overTheTimeGData.dayData.length - 6 < index
+                  ? "justify-end"
+                  : "justify-center"
                 } group`}
               style={{
                 height: `${barHeight}px`,

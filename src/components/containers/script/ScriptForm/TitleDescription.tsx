@@ -1,6 +1,4 @@
 import { Divider, TextareaAutosize, TextField } from '@mui/material';
-import { Input } from 'antd';
-import React from 'react';
 import './TitleDescription.css';
 
 const TitleDescription = ({ formik }: { formik: any }) => {

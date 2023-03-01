@@ -133,10 +133,10 @@ const ScriptForms = ({ data }: { data?: allScriptResDT }) => {
             // Add the id to the formData object if data exists
             if (data && data.id) {
                 formData.append('id', data.id);
-                const res = updateScript(formData);
+                updateScript(formData);
                 navigate(SCRIPT_PATH);
             } else {
-                const res = createScript(formData);
+                createScript(formData);
                 navigate(SCRIPT_PATH);
             }
 
@@ -145,7 +145,8 @@ const ScriptForms = ({ data }: { data?: allScriptResDT }) => {
     });
 
     useEffect(() => {
-        setScriptModule(formik.values.module)
+        setScriptModule(formik.values.module);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [formik.values.module]);
 
     return (

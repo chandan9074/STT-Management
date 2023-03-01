@@ -2,8 +2,6 @@ import { Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import React, { useState } from 'react';
 import Icons from '../../assets/Icons';
-import { CustomModal } from '../common/CustomModal';
-import { SideDrawer } from '../common/SideDrawer';
 import "../../assets/css/table/type4Table.css";
 
 interface DataType {
@@ -54,15 +52,15 @@ const rowSelection = {
 };
 
 const Type9 = () => {
-    const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
-    const [open, setOpen] = useState(false);
+    // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
+    // const [open, setOpen] = useState(false);
     const [active, setActive] = useState("Active");
-    const [drawerData, setDrawerData] = useState<any>();
+    // const [drawerData, setDrawerData] = useState<any>();
 
-    const showDrawer = (key: any) => {
-        setOpen(true);
-        setDrawerData(key)
-    };
+    // const showDrawer = (key: any) => {
+    //     setOpen(true);
+    //     setDrawerData(key)
+    // };
 
     const handleActiveFrequencyChange=(value:string,confirm:any)=>{
     setActive(value)
@@ -81,14 +79,14 @@ const Type9 = () => {
                 >
                     <div className="flex items-center gap-2">
                       <div>
-                        <img src={active === "asc"?Icons.North:Icons.NorthNeviBlue}/>
+                        <img alt="" src={active === "asc"?Icons.North:Icons.NorthNeviBlue}/>
                       </div>
                       <div>
                         <p>Sort Ascending</p>
                        </div>
                     </div>
                     <div>
-                        <img src={Icons.CorrectIcon}/>
+                        <img alt="" src={Icons.CorrectIcon}/>
                     </div>
 
                 </div>
@@ -97,14 +95,14 @@ const Type9 = () => {
                     onClick={() => handleActiveFrequencyChange("desc", confirm)}>
                     <div className="flex items-center gap-2">
                       <div>
-                        <img src={active === "asc"?Icons.South:Icons.SouthNeviBlue}/>
+                        <img alt="" src={active === "asc"?Icons.South:Icons.SouthNeviBlue}/>
                       </div>
                       <div>
                         <p>Sort Decending</p>
                        </div>
                     </div>
                     <div>
-                        <img src={Icons.CorrectIcon}/>
+                        <img alt="" src={Icons.CorrectIcon}/>
                     </div>
 
                 </div>
@@ -169,7 +167,7 @@ const Type9 = () => {
             <Table
 
                 rowSelection={{
-                    type: selectionType,
+                    // type: selectionType,
                     ...rowSelection,
                 }}
                 columns={columns}

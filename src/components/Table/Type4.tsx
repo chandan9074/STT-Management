@@ -1,11 +1,9 @@
 import { Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Icons from '../../assets/Icons';
-import { CustomModal } from '../common/CustomModal';
 import { SideDrawer } from '../common/SideDrawer';
 import "../../assets/css/table/type4Table.css";
-import { allScriptResDT } from '../../types/script';
 
 
 
@@ -18,7 +16,7 @@ interface Props {
 }
 
 const Type4 = ({ Data, handleSelectRow }: Props) => {
-    const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
+    // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
     const [drawerData, setDrawerData] = useState<any>();
 
@@ -89,7 +87,7 @@ const Type4 = ({ Data, handleSelectRow }: Props) => {
             <Table
 
                 rowSelection={{
-                    type: selectionType,
+                    // type: selectionType,
                     ...rowSelection,
                 }}
                 rowKey={(render) => render.id}

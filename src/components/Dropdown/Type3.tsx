@@ -42,7 +42,7 @@ const Type3 = ({
               ) : (
                 <>
                   {filterList.subdomain.map((item: any, index: number) => (
-                    <div className="flex items-center py-1 px-2 rounded-[4px] bg-ct-blue-20 mr-2 animate-fadeIn">
+                    <div key={index} className="flex items-center py-1 px-2 rounded-[4px] bg-ct-blue-20 mr-2 animate-fadeIn">
                       <h5 className="text-xs text-blue-gray-80 font-medium mb-0 mr-1 whitespace-nowrap">
                         {item}
                       </h5>
@@ -69,7 +69,7 @@ const Type3 = ({
               ) : (
                 <>
                   {filterList.domain.map((item: any, index: number) => (
-                    <div className="flex items-center py-1 px-2 rounded-[4px] bg-ct-blue-20 mr-2 animate-fadeIn">
+                    <div key={index} className="flex items-center py-1 px-2 rounded-[4px] bg-ct-blue-20 mr-2 animate-fadeIn">
                       <h5 className="text-xs text-blue-gray-80 font-medium mb-0 mr-1 whitespace-nowrap">
                         {item}
                       </h5>
@@ -96,51 +96,49 @@ const Type3 = ({
         </button>
       </div>
       <div
-        className={`absolute animate-fadeIn py-1.5 bg-white w-full rounded-[8px] shadow-bottom-light-blue-20 top-14 max-h-72 overflow-y-auto ${
-          open ? "block" : "hidden"
-        }`}
+        className={`absolute animate-fadeIn py-1.5 bg-white w-full rounded-[8px] shadow-bottom-light-blue-20 top-14 max-h-72 overflow-y-auto ${open ? "block" : "hidden"
+          }`}
       >
         {subdomain ? (
           <>
             {filterList.domain.length > 0
               ? filterList.domain.map((domainItem, index) => (
-                  <div className="flex flex-col">
-                    <h5 className="mb-0 text-xxs text-blue-gray-60 py-3 px-4">
-                      {domainItem}z
-                    </h5>
-                    {subdomainData
-                      .filter((item) => item.name === domainItem)[0]
-                      .subDomain.map((subdomainItem, index) => (
-                        <button
-                          onClick={() => handleFilter(subdomainItem, true)}
-                          className={`flex items-center justify-between py-3 pl-8 pr-4 w-full ${
-                            filterList.subdomain.includes(subdomainItem)
-                              ? "bg-blue-10 hover:bg-blue-20 active:bg-blue-30"
-                              : "hover:bg-ct-blue-05 active:bg-ct-blue-10"
+                <div key={index} className="flex flex-col">
+                  <h5 className="mb-0 text-xxs text-blue-gray-60 py-3 px-4">
+                    {domainItem}z
+                  </h5>
+                  {subdomainData
+                    .filter((item) => item.name === domainItem)[0]
+                    .subDomain.map((subdomainItem, index) => (
+                      <button
+                        onClick={() => handleFilter(subdomainItem, true)}
+                        className={`flex items-center justify-between py-3 pl-8 pr-4 w-full ${filterList.subdomain.includes(subdomainItem)
+                            ? "bg-blue-10 hover:bg-blue-20 active:bg-blue-30"
+                            : "hover:bg-ct-blue-05 active:bg-ct-blue-10"
                           }`}
-                        >
-                          <span className="text-xs font-medium text-blue-gray-80">
-                            {subdomainItem}
-                          </span>
-                          {filterList.subdomain.includes(subdomainItem) && (
-                            <img src={Icons.CorrectIcon} alt="" />
-                          )}
-                        </button>
-                      ))}
-                  </div>
-                ))
+                      >
+                        <span className="text-xs font-medium text-blue-gray-80">
+                          {subdomainItem}
+                        </span>
+                        {filterList.subdomain.includes(subdomainItem) && (
+                          <img src={Icons.CorrectIcon} alt="" />
+                        )}
+                      </button>
+                    ))}
+                </div>
+              ))
               : null}
           </>
         ) : (
           <>
             {domainData.map((item: any, index: number) => (
               <button
+                key={index}
                 onClick={() => handleFilter(item, false)}
-                className={`flex items-center justify-between py-3 px-4 w-full ${
-                  filterList.domain.includes(item)
+                className={`flex items-center justify-between py-3 px-4 w-full ${filterList.domain.includes(item)
                     ? "bg-blue-10 hover:bg-blue-20 active:bg-blue-30"
                     : "hover:bg-ct-blue-05 active:bg-ct-blue-10"
-                }`}
+                  }`}
               >
                 <span className="text-xs font-medium text-blue-gray-80">
                   {item}

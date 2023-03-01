@@ -1,7 +1,6 @@
 import React, { useContext, useRef } from "react";
 import Buttons from "../../../Buttons";
 import Icons from "../../../../assets/Icons";
-import upload from "../../../../assets/Icons/upload.svg";
 import { Filter } from "../../../Filter";
 import { filterData } from "../../../../data/script/filter";
 import { ScriptContext } from "../../../../context/ScriptProvider";

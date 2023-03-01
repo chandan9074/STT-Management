@@ -10,7 +10,8 @@ const StatisticsPart = () => {
   const userManagementContext = useContext(UserManagementContext);
 
   useEffect(() => {
-    userManagementContext.getActivityStatistics('1')
+    userManagementContext.getActivityStatistics('1');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <>

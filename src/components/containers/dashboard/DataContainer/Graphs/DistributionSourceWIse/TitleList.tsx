@@ -6,6 +6,7 @@ const TitleList = ({ data }: { data: distributionSourceWiseDT[] }) => {
     <div className="flex flex-col">
       {data.map((item, index) => (
         <h3
+        key={index}
           className={`text-small text-blue-gray-80 ${
             data.length - 1 === index ? "" : "mb-8"
           } text-right leading-4`}

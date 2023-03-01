@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Icons from "../../../../../assets/Icons";
 import Buttons from "../../../../Buttons";
-import { CustomModal } from "../../../../common/CustomModal";
 import "../../../../../assets/css/table/criteria_details.css";
 import { AssigneeItemDT } from "../../../../../types/assignTypes";
 import { Input, Radio } from "antd";

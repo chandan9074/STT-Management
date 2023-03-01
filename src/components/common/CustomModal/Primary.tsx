@@ -1,5 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from 'react';
-import Buttons from '../../Buttons';
+import React, { Dispatch, SetStateAction } from 'react';
 interface Props {
     width: string
     open: boolean;

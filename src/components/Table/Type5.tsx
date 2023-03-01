@@ -1,14 +1,11 @@
-import { ColumnsType, TablePaginationConfig } from 'antd/es/table';
+import { ColumnsType } from 'antd/es/table';
 import React, { useState } from 'react';
 import Icons from '../../assets/Icons';
-import { CustomModal } from '../common/CustomModal';
 import { SideDrawer } from '../common/SideDrawer';
 import { Table } from 'antd';
 import Buttons from '../Buttons';
 import "../../assets/css/table/type4Table.css";
-import { Status } from '../Status';
 import { useNavigate } from 'react-router-dom';
-import { FilterValue, SorterResult } from 'antd/es/table/interface';
 
 interface DataType {
     key: React.Key;
@@ -17,12 +14,12 @@ interface DataType {
     address: string;
     status: string
 }
-interface TableParams {
-    pagination?: TablePaginationConfig;
-    sortField?: string;
-    sortOrder?: string;
-    filters?: Record<string, FilterValue>;
-}
+// interface TableParams {
+//     pagination?: TablePaginationConfig;
+//     sortField?: string;
+//     sortOrder?: string;
+//     filters?: Record<string, FilterValue>;
+// }
 
 const data: DataType[] = [
     {
@@ -55,7 +52,7 @@ const data: DataType[] = [
     },
 ];
 const Type5 = () => {
-    const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
+    // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
     const [drawerData, setDrawerData] = useState<any>();
     const [active, setActive] = useState<string>("")
@@ -229,7 +226,7 @@ const Type5 = () => {
             <Table
 
                 rowSelection={{
-                    type: selectionType,
+                    // type: selectionType,
                     ...rowSelection,
                 }}
                 columns={columns}

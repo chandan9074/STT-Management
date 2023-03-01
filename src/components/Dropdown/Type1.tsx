@@ -22,8 +22,9 @@ const Type1 = ({ data, children, handleSelectedItem, top, width }: Props) => {
         className={`bg-white shadow-bottom-light-blue-20 z-[120] rounded-[4px] overflow-hidden absolute ${top} animate-fadeIn flex flex-col ${open ? "block" : "hidden"
           }`}
       >
-        {data.map((item) => (
+        {data.map((item, index: number) => (
           <button
+          key={index}
             onClick={() => {
               setCurrent(item);
               setOpen(false);

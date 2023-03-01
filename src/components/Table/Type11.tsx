@@ -16,7 +16,6 @@ import AudioUpload from '../containers/AssignContainer/AllTarget/EditSpeeches/Au
 import RemarkModal from '../containers/AssignContainer/AllTarget/EditSpeeches/RemarkModal';
 import { AUDIO_FILE_FAILED, AUDIO_FILE_UPLOADED } from '../../helpers/Slug';
 import Status from '../containers/AssignContainer/AllTarget/EditSpeeches/Status';
-import { relative } from 'path';
 
 const { Option } = Select;
 
@@ -26,7 +25,7 @@ type Props = {
 
 const Type11 = ({ data }: Props) => {
     const [isSpeakerModal, setIsSpeakerModal] = useState<boolean>(false);
-    const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
+    // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
     const [speechData, setSpeechData] = useState<any>(data);
     const [speechId, setSpeechId] = useState<number>(NaN);
@@ -48,9 +47,9 @@ const Type11 = ({ data }: Props) => {
     const managerContext = useContext(RoleInContext);
     const { roleDatas } = managerContext;
 
-    const [audioUploadStatus, setAudioUploadStatus] = useState<string>('');
+    // const [audioUploadStatus, setAudioUploadStatus] = useState<string>('');
 
-    const [active, setActive] = useState("Active");
+    // const [active, setActive] = useState("Active");
 
     const [isUploaded, setIsUploaded] = useState<boolean>(false);
     const [isFailed, setIsFailed] = useState<boolean>(false);
@@ -66,9 +65,9 @@ const Type11 = ({ data }: Props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const showDrawer = (key: any) => {
-        setOpen(true);
-    };
+    // const showDrawer = (key: any) => {
+    //     setOpen(true);
+    // };
 
     const onAddSpeaker = (id: any) => {
         setIsSpeakerModal(true)
@@ -138,9 +137,9 @@ const Type11 = ({ data }: Props) => {
         setRecordingDistanceId(NaN);
     };
 
-    const handleActiveFrequencyChange = (value: string) => {
-        setActive(value)
-    }
+    // const handleActiveFrequencyChange = (value: string) => {
+    //     setActive(value)
+    // }
 
     console.log('upload', isUploaded);
     console.log('failed', isFailed);
@@ -164,7 +163,7 @@ const Type11 = ({ data }: Props) => {
             <div onKeyDown={(e) => e.stopPropagation()} className="w-[260px] -mr-[150px] -mt-[50px]  rounded-[8px]" >
                 {
                     uploadStatus?.map((item: string, i: number) => (
-                        <div onClick={() => item === AUDIO_FILE_UPLOADED ? onUploadStatus(AUDIO_FILE_UPLOADED) : onUploadStatus(AUDIO_FILE_FAILED)} className={`${(isUploaded && item === AUDIO_FILE_UPLOADED) ? 'bg-green-10' : (isFailed && item === AUDIO_FILE_FAILED) ? 'bg-venetian-red' : 'bg-white'} h-[48px] py-4 pl-4 pr-3 flex items-center justify-between ${item === AUDIO_FILE_FAILED ? 'rounded-[8px] border-[1px] rounded-t-none border-t-transparent border-blue-gray-30' : 'rounded-[8px] border-[1px] rounded-b-none border-b-transparent border-blue-gray-30 '}`} key={i}>
+                        <div  onClick={() => item === AUDIO_FILE_UPLOADED ? onUploadStatus(AUDIO_FILE_UPLOADED) : onUploadStatus(AUDIO_FILE_FAILED)} className={`${(isUploaded && item === AUDIO_FILE_UPLOADED) ? 'bg-green-10' : (isFailed && item === AUDIO_FILE_FAILED) ? 'bg-venetian-red' : 'bg-white'} h-[48px] py-4 pl-4 pr-3 flex items-center justify-between ${item === AUDIO_FILE_FAILED ? 'rounded-[8px] border-[1px] rounded-t-none border-t-transparent border-blue-gray-30' : 'rounded-[8px] border-[1px] rounded-b-none border-b-transparent border-blue-gray-30 '}`} key={i}>
                             <div className='flex items-center gap-x-3'>
                                 <div className={`${(item === AUDIO_FILE_UPLOADED) ? 'bg-secondary-green-50' : (item === AUDIO_FILE_FAILED) ? 'bg-secondary-red-50' : ''} w-[9px] h-[9px] rounded-[50%] `} />
                                 <h1 className='text-green-60 text-sm font-medium'>{item}</h1>
@@ -211,7 +210,7 @@ const Type11 = ({ data }: Props) => {
                 setSpeechData={setSpeechData}
                 speechData={speechData}
                 audioId={data?.id}
-                setAudioUploadStatus={setAudioUploadStatus}
+                // setAudioUploadStatus={setAudioUploadStatus}
             />
         },
 
@@ -508,7 +507,7 @@ const Type11 = ({ data }: Props) => {
 
             <Table
                 rowSelection={{
-                    type: selectionType,
+                    // type: selectionType,
                     ...rowSelection,
                 }}
                 columns={Type8columns}

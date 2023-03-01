@@ -1,4 +1,3 @@
-import { LoadingSkeleton } from '../../../../assets/loadingSkeleton';
 import Buttons from '../../../Buttons';
 import Table from '../../../Table';
 

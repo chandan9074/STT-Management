@@ -1,46 +1,44 @@
-import React, { useState } from 'react';
-import { Workbook, Worksheet } from 'exceljs';
-import { DISTRIBUSION_SOURCE } from '../../helpers/ConditionVariable';
+import { Workbook } from 'exceljs';
 
 
 
-const arrData: any = [
-    {
-        name: "read",
-        target: 10,
-        receive: 20,
-        valid: 30,
-        invalid: 40,
-        lastUpdate: "22 aug 2022"
-    },
-    {
-        name: "mono",
-        target: 10,
-        receive: 20,
-        valid: 30,
-        invalid: 40,
-        lastUpdate: "22 aug 2022"
-    },
-    {
-        name: "Di",
-        target: 10,
-        receive: 20,
-        valid: 30,
-        invalid: 40,
-        lastUpdate: "22 aug 2022"
-    },
-    {
-        name: "Lecture",
-        target: 10,
-        receive: 20,
-        valid: 30,
-        invalid: 40,
-        lastUpdate: "22 aug 2022"
-    },
+// const arrData: any = [
+//     {
+//         name: "read",
+//         target: 10,
+//         receive: 20,
+//         valid: 30,
+//         invalid: 40,
+//         lastUpdate: "22 aug 2022"
+//     },
+//     {
+//         name: "mono",
+//         target: 10,
+//         receive: 20,
+//         valid: 30,
+//         invalid: 40,
+//         lastUpdate: "22 aug 2022"
+//     },
+//     {
+//         name: "Di",
+//         target: 10,
+//         receive: 20,
+//         valid: 30,
+//         invalid: 40,
+//         lastUpdate: "22 aug 2022"
+//     },
+//     {
+//         name: "Lecture",
+//         target: 10,
+//         receive: 20,
+//         valid: 30,
+//         invalid: 40,
+//         lastUpdate: "22 aug 2022"
+//     },
 
-]
+// ]
 
-const worksheetlist: any = ["Distribution Source", "Domain", "Gender", "Age", "Locality", "Economic Situation", "Education Situation", "Profession", "Recording Area", "Recording Distance"]
+// const worksheetlist: any = ["Distribution Source", "Domain", "Gender", "Age", "Locality", "Economic Situation", "Education Situation", "Profession", "Recording Area", "Recording Distance"]
 
 interface Props {
     data: any;
@@ -248,8 +246,9 @@ const Type2 = (props: Props) => {
 
     const handleExport = () => {
         const workbook = new Workbook();
-        const res = data.map((_data: any) => {
+        data.map((_data: any) => {
             handleWorksheet(_data.name, workbook, _data.data)
+            return data;
         })
 
         // for downlaod excel file 
