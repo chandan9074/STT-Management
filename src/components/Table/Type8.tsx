@@ -80,7 +80,7 @@ const Type8 = () => {
           ></div>
           {openScriptModal && selectedTarget?.id === data?.id && (
             <div className="absolute bottom-11 right-0 w-[376px] bg-white rounded-md z-[100]">
-              <ScriptTargetModal />
+              {data.script.id && <ScriptTargetModal selectedScriptId={data.script.id} selectedTargetId={selectedTarget.id} setOpenScriptModal={setOpenScriptModal} />}
             </div>
           )}
         </div>

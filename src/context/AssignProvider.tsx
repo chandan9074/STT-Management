@@ -8,6 +8,7 @@ import {
   postSelectedScriptBodyDT,
   ScriptItemDT,
   TargetItemDT,
+  updateDraftTargetQueryParams,
 } from "../types/assignTypes";
 
 interface ContextProps {
@@ -51,6 +52,7 @@ interface ContextProps {
   deleteSingleAssignee: (id: string) => void;
   postDraftTarget: () => void;
   getDraftTarget: () => void;
+  updateDraftTarget: (data: updateDraftTargetQueryParams) => void;
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -158,26 +160,34 @@ const AssignProvider = ({ children }: { children: any }) => {
     }
   }
 
-  function checkSelected(arr: ScriptItemDT[] | AssigneeItemDT[] | CriteriaItemDT[]) {
+  function checkSelected(arr: ScriptItemDT[] | AssigneeItemDT[] | CriteriaItemDT[], type: string) {
     const result = [];
     for (let i = 0; i < arr.length; i++) {
       const obj = arr[i];
       if (obj.hasOwnProperty('isSelected')) {
         // result.push(Boolean(obj.isSelected));
         if (obj.isSelected) {
-          result.push(obj.id);
+          if (type === "assignee" && isAssignee(obj)) {
+            result.push(obj.roleID);
+          } else {
+            result.push(obj.id);
+          }
         }
       }
     }
     return result;
   }
 
+  function isAssignee(obj: any): obj is AssigneeItemDT {
+    return obj && obj.roleID !== undefined;
+  }
+
   const postDraftTarget = async () => {
 
     const body = {
-      selectedScript: checkSelected(selectedScriptList),
-      selectedCriteria: checkSelected(selectedCriteriaList),
-      selectedAssignee: checkSelected(selectedAssigneList),
+      selectedScript: checkSelected(selectedScriptList, 'script'),
+      selectedCriteria: checkSelected(selectedCriteriaList, 'criteria'),
+      selectedAssignee: checkSelected(selectedAssigneList, 'assignee'),
     }
 
     await AssignService.postDraftTarget(body);
@@ -189,6 +199,14 @@ const AssignProvider = ({ children }: { children: any }) => {
   const getDraftTarget = async () => {
     const res = await AssignService.fetchTargetList();
     setSelectedTargetList(res.data);
+  }
+
+  const updateDraftTarget = async (data: updateDraftTargetQueryParams) => {
+    const res = await AssignService.updateDraftTarget({ ...data });
+    if (res.status === 200) {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      await getDraftTarget();
+    }
   }
 
   // useEffect(() => {
@@ -313,7 +331,8 @@ const AssignProvider = ({ children }: { children: any }) => {
         deleteSingleCriteria,
         deleteSingleAssignee,
         postDraftTarget,
-        getDraftTarget
+        getDraftTarget,
+        updateDraftTarget
       }}
     >
       {children}

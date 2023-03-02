@@ -1,21 +1,31 @@
-import { useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import Icons from "../../../../../assets/Icons";
 import Buttons from "../../../../Buttons";
 import "../../../../../assets/css/table/criteria_details.css";
 import { ScriptItemDT } from "../../../../../types/assignTypes";
-import { Input, Radio } from "antd";
+import { Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { scriptColorData } from "../../../../../data/assign/AssignData";
 import { getRandomInt } from "../../../../../helpers/Utils";
 import { useAssigneeContext } from "../../../../../context/AssignProvider";
+import { FormControlLabel, Radio } from "@mui/material";
 
-const ScriptTargetModal = () => {
-  const [selectedScript, setSelectedScript] = useState<ScriptItemDT | null>(
-    null
-  );
+type Props = {
+  selectedScriptId: string;
+  selectedTargetId: string;
+  setOpenScriptModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+interface CustomStyleProps extends CSSProperties {
+  "&:hover .MuiSvgIcon-root"?: CSSProperties;
+}
+
+
+const ScriptTargetModal = ({ selectedScriptId, selectedTargetId, setOpenScriptModal }: Props) => {
+  const [selectedScript, setSelectedScript] = useState(selectedScriptId);
   const [searchEnable, setSearchEnable] = useState(false);
 
-  const { getSelectedScript, selectedScriptList } = useAssigneeContext();
+  const { getSelectedScript, selectedScriptList, updateDraftTarget } = useAssigneeContext();
 
   useEffect(() => {
     getSelectedScript();
@@ -23,12 +33,22 @@ const ScriptTargetModal = () => {
   }, []);
 
 
-  const handleSelectScript = (checked: boolean, item: ScriptItemDT) => {
-    if (checked) {
-      setSelectedScript(item);
-    } else {
-      setSelectedScript(null);
+  const handleSelectScript = (item: ScriptItemDT) => {
+    // if (checked) {
+    //   setSelectedScript(item.id);
+    // } else {
+    //   setSelectedScript("");
+    // }
+    // if (checked) {
+    const params = {
+      id: selectedTargetId,
+      script: item.id,
     }
+    updateDraftTarget(params);
+
+    setOpenScriptModal(false);
+    console.log("hello")
+    // }
   };
 
   return (
@@ -77,19 +97,22 @@ const ScriptTargetModal = () => {
         )}
 
         {/* //body  */}
-        <div className="flex flex-col gap-1 items-start justify-start py-1 overflow-y-auto custom_scrollbar">
+        <div className="flex w-full flex-col gap-1 items-start justify-start py-1 overflow-y-auto custom_scrollbar">
           {selectedScriptList?.map((item, index) => (
             <div
               key={item?.id}
-              className={`flex items-center gap-1 px-4 py-1 justify-between ${selectedScript?.id === item?.id && "bg-[#E1EFFE]"
+              className={`flex w-full items-center gap-1 px-4 py-1 justify-between ${selectedScriptId === item?.id && "bg-[#E1EFFE]"
                 }`}
             >
-              <div className="flex  items-center gap-2">
-                <Radio
+              <div className="flex items-center  gap-x-1 py-0.5">
+                {/* <Radio
                   // onChange={(e) => selectScript(item, e.target.checked)}
-                  checked={selectedScript?.id === item?.id}
+                  checked={selectedScript === item?.id}
                   onChange={(e) => handleSelectScript(e.target.checked, item)}
-                />
+                  className="pb-0"
+                /> */}
+                {/* <FormControlLabel value="female" control={<Radio />} label="" /> */}
+                <Radio style={{ "&:hover .MuiSvgIcon-root": { backgroundColor: "transparent" } } as CustomStyleProps} size="small" checked={selectedScript === item?.id} onChange={() => handleSelectScript(item)} />
                 <button className="inline-flex gap-x-2 items-center">
                   <div
                     className={`${scriptColorData[getRandomInt(0, 6, index)].id
@@ -98,13 +121,13 @@ const ScriptTargetModal = () => {
                   >
                     {item?.id}
                   </div>
-                  <p className="w-[235px] m-0 text-ct-blue-95 text-xs font-[300] truncate text-ellipsis text-left">
+                  <p className="w-[210px] m-0 text-ct-blue-95 text-xs font-[300] truncate text-ellipsis text-left">
                     {item?.description}
                   </p>
                 </button>
               </div>
-              {selectedScript?.id === item?.id && (
-                <div className="self-end ml-10">
+              {selectedScriptId === item?.id && (
+                <div className="">
                   <img src={Icons.CorrectIcon} alt="" />
                 </div>
               )}

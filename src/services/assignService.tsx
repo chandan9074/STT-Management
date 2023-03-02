@@ -4,7 +4,7 @@ import { assignDataList } from "../data/assign/AssignListData";
 import { criteriaDataList } from "../data/assign/CriteriaData";
 import { scriptDataList } from "../data/assign/ScriptData";
 import { targetDataList } from "../data/assign/TargetData";
-import { allScriptParamsDT, postDraftTargetBodyDT, postSelectedScriptBodyDT } from "../types/assignTypes";
+import { allScriptParamsDT, postDraftTargetBodyDT, postSelectedScriptBodyDT, updateDraftTargetQueryParams } from "../types/assignTypes";
 
 export default class AssignService {
   static getAllScript(data: allScriptParamsDT) {
@@ -21,7 +21,7 @@ export default class AssignService {
     return res;
   }
   static async deleteSingleScript(id: string) {
-    const res = axios.delete(PATH.DELETE_SINGLE_SCRIPT_URL, { params: { id: id } });
+    const res = axios.delete(PATH.DELETE_SINGLE_SCRIPT_URL, { params: { id: id, testID: "1" } });
     console.log('delete script called');
     return res;
   }
@@ -47,6 +47,12 @@ export default class AssignService {
   }
   static async postDraftTarget(data: postDraftTargetBodyDT) {
     const res = axios.post(PATH.POST_DRAFT_TARGET_URL, data);
+    // console.log('postDraftTarget called', data);
+    return res;
+  }
+  static async updateDraftTarget(data: updateDraftTargetQueryParams) {
+    console.log('updateDraftTarget called', data)
+    const res = axios.put(PATH.UPDATE_DRAFT_TARGET_URL, null, { params: data });
     // console.log('postDraftTarget called', data);
     return res;
   }

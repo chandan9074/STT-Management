@@ -48,7 +48,7 @@ export interface AssigneeItemDT {
 }
 
 export interface TargetItemDT {
-  id: number | string;
+  id: string;
   isSelected?: boolean;
   script: allScriptResDT
   target: CriteriaItemDT;
@@ -91,4 +91,11 @@ export type postDraftTargetBodyDT = {
   selectedScript: string[];
   selectedCriteria: string[];
   selectedAssignee: string[];
+}
+
+export type updateDraftTargetQueryParams = {
+  id: string;
+  script?: string;
+  target?: string;
+  assignee?: string;
 }
