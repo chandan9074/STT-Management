@@ -1,10 +1,12 @@
 import { Checkbox } from "antd";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Icons from "../../../../../assets/Icons";
 import { useAssigneeContext } from "../../../../../context/AssignProvider";
 import { CriteriaItemDT } from "../../../../../types/assignTypes";
 import Buttons from "../../../../Buttons";
+import { Drawer } from "../../../../Drawer";
 import useOutsideClick from "../../../../Hooks/useOutsideClick";
+import CriteriaForm from "./CriteriaForm";
 
 const CriteriaRowItem = ({
   criteria,
@@ -13,9 +15,11 @@ const CriteriaRowItem = ({
   criteria: CriteriaItemDT;
   setDetailsModalOpen: (open: boolean) => void;
 }) => {
-  const { selectCriteria, deleteSingleCriteria } = useAssigneeContext();
+  const { selectCriteria, deleteSingleCriteria, singleCriteriaData, getCriteriaByID, setEmptySingleCriteria } = useAssigneeContext();
   const optionMenuRef = useRef<null | HTMLDivElement>(null);
   const { open, handleOpen } = useOutsideClick(optionMenuRef);
+
+  const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
 
   const handleTextConcatenation = (data: CriteriaItemDT) => {
 
@@ -45,6 +49,16 @@ const CriteriaRowItem = ({
     }
 
     return text;
+  }
+
+  const drawerClose = () => {
+    setDrawerOpen(false);
+  };
+
+  const onEditCriteriaClick = (id: string) => {
+    setEmptySingleCriteria();
+    setDrawerOpen(true);
+    getCriteriaByID(id);
   }
 
   return (
@@ -89,9 +103,10 @@ const CriteriaRowItem = ({
                   </div>
                 </button>
                 <button
+                  onClick={() => onEditCriteriaClick(criteria?.id)}
                   className={`flex w-full items-center justify-between px-4 py-3 rounded-t-lg cursor-pointer  hover:bg-[rgba(44,121,190,0.12)]`}
                 >
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-4 cursor-pointer">
                     <img src={Icons.edit_blue} alt="" />
                     <p>Edit</p>
                   </div>
@@ -113,6 +128,15 @@ const CriteriaRowItem = ({
           {handleTextConcatenation(criteria)}
         </p>
       </div>
+
+
+      <Drawer.Criteria.Type1
+        isDrawerOpen={drawerOpen}
+        drawerClose={drawerClose}
+        title="Create Critaria"
+      >
+        <CriteriaForm drawerClose={drawerClose} data={singleCriteriaData}/>
+      </Drawer.Criteria.Type1>
 
     </div>
   );

@@ -6,6 +6,7 @@ import './TargetElement.css';
 import ActionButton from './ActionButton';
 import { useContext } from 'react';
 import { AssignContext } from '../../../../../../context/AssignProvider';
+import { isEmpty } from '../../../../../../helpers/Utils';
 
 const validationSchema = yup.object({
     // gender: yup.string().required('Gender is Required'),
@@ -13,7 +14,12 @@ const validationSchema = yup.object({
     district: yup.array().of(yup.string()).required('District is a required field')
 });
 
-const CriteriaForm = ({drawerClose}: {drawerClose: () => void}) => {
+type Props = {
+    drawerClose: () => void,
+    data?: any,
+}
+
+const CriteriaForm = ({ drawerClose, data }: Props) => {
 
     const AssignContexts = useContext(AssignContext);
     const {
@@ -21,35 +27,45 @@ const CriteriaForm = ({drawerClose}: {drawerClose: () => void}) => {
         singleCriteria,
         creteAssignCriteria,
         criterias,
-        emptyCriteria
+        emptyCriteria,
+        UpdateAssignCriteria
     } = AssignContexts;
 
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            gender: singleCriteria?.gender || 'Male',
-            ageRange: singleCriteria?.ageRange || '',
-            district: singleCriteria?.district || [],
-            profession: singleCriteria?.profession || '',
-            economicSituation: singleCriteria?.economicSituation || '',
-            healthFactors: singleCriteria?.healthFactors || [],
-            recordingArea: singleCriteria?.recordingArea || '',
-            recordingDistance: singleCriteria?.recordingDistance || '',
+            gender: data?.gender || singleCriteria?.gender || 'Male',
+            ageRange: data?.ageRange || singleCriteria?.ageRange || '',
+            district: data?.district || singleCriteria?.district || [],
+            profession: data?.profession || singleCriteria?.profession || '',
+            economicSituation: data?.economicSituation || singleCriteria?.economicSituation || '',
+            healthFactors: data?.healthFactors || singleCriteria?.healthFactors || [],
+            recordingArea: data?.recordingArea || singleCriteria?.recordingArea || '',
+            recordingDistance: data?.recordingDistance || singleCriteria?.recordingDistance || '',
             // educationSituation: singleCriteria?.educationSituation || '',
-            target: singleCriteria?.target || 0,
-            deadline: singleCriteria?.deadline || '',
-            reminder: singleCriteria?.reminder || [],
-            remark: singleCriteria?.remark || '',
-            education: singleCriteria?.education || ''
+            target: data?.target || singleCriteria?.target || 0,
+            deadline: data?.deadline || singleCriteria?.deadline || '',
+            reminder: data?.reminder || singleCriteria?.reminder || [],
+            remark: data?.remark || singleCriteria?.remark || '',
+            education: data?.education || singleCriteria?.education || ''
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
             formik.resetForm();
-
-            saveCriteria(values);
+            if (isEmpty(data)) {
+                saveCriteria(values);
+            } else {
+                onCriteriaUpdata()
+            }
 
         },
     });
+
+    const onCriteriaUpdata = () => {
+        const _data = {...formik.values, id: data?.id}
+        UpdateAssignCriteria(_data);        
+        drawerClose();
+    }
 
     const onCreate = () => {
         creteAssignCriteria(criterias);
@@ -68,6 +84,7 @@ const CriteriaForm = ({drawerClose}: {drawerClose: () => void}) => {
                 <ActionButton
                     formik={formik}
                     onCreate={onCreate}
+                    data={data}
                 />
             </form>
 

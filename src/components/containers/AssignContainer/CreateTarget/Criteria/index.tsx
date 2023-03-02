@@ -9,7 +9,7 @@ import { useAssigneeContext } from "../../../../../context/AssignProvider";
 
 const CreateCriteria = () => {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
-  const { selectedCriteriaList, getCriteria } = useAssigneeContext();
+  const { selectedCriteriaList, getCriteria, setSingleCriteriaData } = useAssigneeContext();
 
   useEffect(() => {
     getCriteria();
@@ -21,6 +21,7 @@ const CreateCriteria = () => {
   };
   const openDrawer = () => {
     setDrawerOpen(true);
+    setSingleCriteriaData({});
   };
   return (
     <div className="h-full w-full flex flex-col justify-end">

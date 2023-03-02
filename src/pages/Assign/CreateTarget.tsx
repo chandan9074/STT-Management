@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Icons from "../../assets/Icons";
 import Buttons from "../../components/Buttons";
 import AddScript from "../../components/containers/AssignContainer/CreateTarget/AddScript";
-import CreateCriteria from "../../components/containers/AssignContainer/CreateTarget/CreateCriteria";
+import CreateCriteria from "../../components/containers/AssignContainer/CreateTarget/Criteria";
 import AddAssignee from "../../components/containers/AssignContainer/CreateTarget/AddAssignee";
 import Layouts from "../../components/Layouts";
 import TargetTable from "../../components/containers/AssignContainer/CreateTarget/TargetTable";

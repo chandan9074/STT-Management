@@ -13,11 +13,6 @@ export default class AssignService {
     return res;
   }
 
-  static createAssignCriteria(params: any) {
-    const res = axios.post(PATH.POST_RES_CRITERIA_URL, params);
-    return res;
-  }
-
   static async fetchScriptList() {
     const res = axios.get(PATH.GET_SELECTED_SCRIPT_URL);
     return res;
@@ -52,4 +47,21 @@ export default class AssignService {
     // console.log('postDraftTarget called', data);
     return res;
   }
+
+  static createAssignCriteria(params: any) {
+    const res = axios.post(PATH.POST_RES_CRITERIA_URL, params);
+    return res;
+  }
+
+  static UpdateAssignCriteria(params: any) {
+    return axios.put(PATH.UPDATE_ASSIGN_CRITERIA_URL, params);
+  }
+
+  static getAssignCriteriaById(id: any) {
+    return axios.get(PATH.GET_ASSIGN_CRITERIA_BY_ID_URL, { params: { id: id }});   
+  
+  }
+
+
+
 }
