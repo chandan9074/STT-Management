@@ -62,6 +62,8 @@ export default class AssignService {
   
   }
 
-
+  static createAssignee(params: any) {
+    return axios.post(PATH.CREATE_ASSIGNEE_URL, params);
+  }
 
 }

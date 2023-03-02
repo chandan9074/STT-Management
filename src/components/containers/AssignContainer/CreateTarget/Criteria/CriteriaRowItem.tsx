@@ -94,7 +94,10 @@ const CriteriaRowItem = ({
                 className="w-[160px] absolute top-0 right-0 bg-white rounded-md shadow-md animate-fadeIn z-50"
               >
                 <button
-                  onClick={() => setDetailsModalOpen(true)}
+                  onClick={() => {
+                    getCriteriaByID(criteria?.id)
+                    setDetailsModalOpen(true)
+                  }}
                   className={`flex w-full items-center justify-between px-4 py-3 rounded-t-lg cursor-pointer hover:bg-[rgba(44,121,190,0.12)]`}
                 >
                   <div className="flex items-center gap-4">

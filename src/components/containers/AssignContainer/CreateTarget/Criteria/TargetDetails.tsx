@@ -165,7 +165,7 @@ const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void 
                 {singleValue2?.map((item: any, i: number) => (
                     <div className={` grid grid-cols-12`} key={i}>
 
-                        <div className={`${(i === 0) && 'rounded-t-[5px]'} ${(i === (singleValue1.length - 1)) && 'rounded-b-[5px] pb-[10px]'} col-span-4 bg-ct-blue-05 pt-3  pl-3`}>
+                        <div className={`${(i === 0) && 'rounded-t-[5px]'} ${(i === (singleValue2.length - 1)) && 'rounded-b-[5px] pb-[10px]'} col-span-4 bg-ct-blue-05 pt-3  pl-3`}>
                             <h1 className="text-blue-gray-75 font-medium text-xxs  leading-15px">
                                 {item?.title}
                             </h1>

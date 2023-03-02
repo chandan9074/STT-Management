@@ -3,6 +3,7 @@ import { FormControl, FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import { Form, Select } from 'antd';
 import { useContext, useEffect, useState } from 'react';
 import Icons from '../../../../../assets/Icons';
+import { AssignContext } from '../../../../../context/AssignProvider';
 import { RoleInContext } from '../../../../../context/RoleProvider';
 import { roleDT } from '../../../../../types/billingTypes';
 import Buttons from '../../../../Buttons';
@@ -28,6 +29,8 @@ const AddAssigneeModal = ({
 }: {
     handleModal: (value: boolean) => void,
 }) => {
+
+    const {createAssignee} = useContext(AssignContext)
 
     const [form] = Form.useForm();
 
@@ -64,7 +67,7 @@ const AddAssigneeModal = ({
     const onRoleChange = (e: any) => {
         setRole(e.target.value);
         form.resetFields();
-    }
+    }    
 
     useEffect(() => {
         if (dropDownCount === 2) {
@@ -120,6 +123,17 @@ const AddAssigneeModal = ({
         setCustomRoleData([]);
     }
 
+    const onAddHandle = () => {
+
+        const _id = customRoleData?.map((item: any) => {
+            return item?.id;
+        });
+
+        const _data = {selectedAssignee: _id};
+        createAssignee(_data);
+        onClose();
+    }
+
     return (
         <div className='fixed top-0 left-0 flex justify-center items-center w-full h-screen z-40 animate-fadeIn2 '>
             <div className="fixed top-0 left-0 opacity-50 bg-black w-full h-screen z-40"
@@ -144,6 +158,7 @@ const AddAssigneeModal = ({
                                 <div className='flex justify-center items-center'>
                                     {/* <Link to={`${BILLING_PAYMENT_HISTORY_PATH}/${singleManager?.id}`}> */}
                                     <button
+                                    onClick={() => onAddHandle()}
                                         className=' text-white text-base bg-primary-ct-blue-60 rounded-[6px] py-[9px] px-8'>
                                         Add
                                     </button>

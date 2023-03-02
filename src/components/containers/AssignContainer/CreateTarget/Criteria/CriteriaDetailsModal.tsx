@@ -3,30 +3,84 @@ import Icons from "../../../../../assets/Icons";
 import Buttons from "../../../../Buttons";
 import { CustomModal } from "../../../../common/CustomModal";
 import "../../../../../assets/css/table/criteria_details.css";
+import { useAssigneeContext } from "../../../../../context/AssignProvider";
+import Image from "../../../../Image";
 type Props = {
   modalOpen: boolean;
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const CriteriaDetailsModal = ({ modalOpen, setModalOpen }: Props) => {
-  const info: any = {
-    Gender: "Male",
-    "Age Range": "15-24",
-    "Division/District": "Nator, Chandpur",
-    Profession: "Student",
-    "Economic Situation": "Upper Class",
-    "Smoking Habit": "Yes",
-    "Hearing Disability": "-",
-    Stutter: "-",
-    "Recording Area": "Inside Room",
-    "Recording Distance": "Close",
-    Target: 1000,
-    Dedline: "30 Jan 2020",
-    Reminder: "21 Dec 2021,1 Jan 2022,19 Jan 2022",
-    Note: "Dark Ux is when designer create an experience that pushes users in a direction.",
-  };
+  const { singleCriteriaData } = useAssigneeContext();
 
-  const objectKeyList = Object.keys(info);
+  const singleValue1 = [
+    {
+      title: 'Gender',
+      value: singleCriteriaData?.gender || '-'
+    },
+    {
+      title: 'Age Range',
+      value: singleCriteriaData?.ageRange || '-'
+    },
+    {
+      title: 'Division/ District',
+      value: singleCriteriaData?.district
+    },
+    {
+      title: 'profession',
+      value: singleCriteriaData?.profession || '-'
+    },
+    {
+      title: 'Econimic Situation',
+      value: singleCriteriaData?.economicSituation || '-'
+    },
+    {
+      title: 'Education',
+      value: singleCriteriaData?.education || '-'
+    },
+    {
+      title: 'Smoking Habit',
+      value: singleCriteriaData?.healthFactors?.includes('Smoker') ? 'Yes' : 'No'
+    },
+    {
+      title: 'Hearing Disability',
+      value: singleCriteriaData?.healthFactors?.includes('Hearing') ? 'Yes' : 'No'
+    },
+    {
+      title: 'Shutter',
+      value: singleCriteriaData?.healthFactors?.includes('Stutter') ? 'Yes' : 'No'
+    },
+    {
+      title: 'Recording Area',
+      value: singleCriteriaData?.recordingArea || '-'
+    },
+    {
+      title: 'Recording Distance',
+      value: singleCriteriaData?.recordingDistance || '-'
+    },
+
+  ]
+
+  const singleValue2 = [
+    {
+      title: 'Target',
+      value: singleCriteriaData?.target || '-'
+    },
+    {
+      title: 'Deadline',
+      value: singleCriteriaData?.deadline || '-'
+    },
+    {
+      title: 'Reminder',
+      value: singleCriteriaData?.reminder || []
+    },
+    {
+      title: 'Note',
+      value: singleCriteriaData?.remark || '-'
+    },
+
+  ]
+
 
   return (
     <CustomModal.Primary
@@ -34,7 +88,7 @@ const CriteriaDetailsModal = ({ modalOpen, setModalOpen }: Props) => {
       setOpen={setModalOpen}
       width={"892px"}
     >
-      <div className="flex flex-col p-6  w-full">
+      <div className="flex flex-col p-6 pr-9 w-full">
         {/* heading  */}
         <div className="flex items-center w-full justify-between">
           <h2 className="text-[#143252] font-[500] text-[18px]">
@@ -50,69 +104,99 @@ const CriteriaDetailsModal = ({ modalOpen, setModalOpen }: Props) => {
           />
         </div>
         {/* user info  */}
-        <div className="flex items-center gap-3 mt-7">
-          <div className="flex items-center gap-3 px-4 py-2 bg-ct-blue-60 rounded-[65px]">
-            <img
-              src={Icons.admin}
-              alt="admin"
-              className="w-[24px] h-[24px] object-cover"
-            />
-            <div className="flex flex-col">
-              <h5 className="text-white font-[400] text-xs">
-                Target ID - 23-23456-7
-              </h5>
-              <h5 className="text-white font-[500] text-xs">1000</h5>
+        <div >
+          {
+            singleCriteriaData &&
+
+            <div className='mt-[30px]'>
+              <div
+
+                className={`bg-ct-blue-10 h-[54px] w-[176px] rounded-[65px] flex justify-center items-center gap-x-2 cursor-pointer`}
+              >
+                <Image.RoleImage role={singleCriteriaData?.gender === 'Male' ? 'Speaker' : 'speakerFemale'} />
+                <div>
+                  {/* <h1 className='text-ct-blue-80 text-xxs'>Target ID- 23-23456-7</h1> */}
+                  <h1 className='text-ct-blue-90 text-xxs font-medium'>target: {singleCriteriaData.target}</h1>
+                </div>
+              </div>
+
+
             </div>
-          </div>
-          <div className="flex items-center gap-3 px-4 py-2 bg-white rounded-[65px]">
-            <img
-              className="w-[24px] h-[24px] object-cover"
-              src={Icons.admin}
-              alt="admin"
-            />
-            <div className="flex flex-col">
-              <h5 className="text-black font-[400] text-xs">
-                Target ID - 23-23456-7
-              </h5>
-              <h5 className="text-black font-[500] text-xs">1000</h5>
+
+          }
+        </div>
+
+        <div>
+
+          <div className='mt-6 flex justify-between'>
+            <div >
+              {singleValue1?.map((item: any, i: number) => (
+                <div className={` grid grid-cols-12`} key={i}>
+
+                  <div className={`${(i === 0) && 'rounded-t-[5px]'} ${(i === (singleValue1.length - 1)) && 'rounded-b-[5px] pb-[10px]'} col-span-4 bg-ct-blue-05 pt-3 pr-2 pl-3`}>
+                    <h1 className="text-blue-gray-75 font-medium text-xxs leading-15px whitespace-nowrap">
+                      {item?.title}
+                    </h1>
+                  </div>
+
+                  <div className="col-span-8 pt-3 pr-2 pl-3">
+                    {item?.title === "Division/ District" ? (
+                      <h1 className="text-blue-gray-80 font-medium text-small  leading-15px">
+                        {item?.value?.map((value: string, j: number) => {
+                          return value + `${(item.value.length - 1) !== j ? ', ' : ''}`;
+                        })}
+                      </h1>
+                    ) : (
+                      <h1 className="text-blue-gray-80 font-medium text-small leading-15px">
+                        {item?.value}
+                      </h1>
+                    )}
+                  </div>
+
+                </div>
+
+              ))}
             </div>
+
+            <div className='w-[391px] '>
+              {singleValue2?.map((item: any, i: number) => (
+                <div className={` grid grid-cols-12`} key={i}>
+
+                  <div className={`${(i === 0) && 'rounded-t-[5px]'} ${(i === (singleValue2.length - 1)) && 'rounded-b-[5px] pb-[10px]'} col-span-4 bg-ct-blue-05 pt-3  pl-3`}>
+                    <h1 className="text-blue-gray-75 font-medium text-xxs  leading-15px">
+                      {item?.title}
+                    </h1>
+                  </div>
+
+                  <div className="col-span-8 pt-3 pr-2 pl-3">
+                    {
+                      item?.title === "Reminder" ? (
+                        <h1 className="text-blue-gray-80 font-medium text-small  leading-15px">
+                          {
+                            item.value?.length > 0 ?
+                              item?.value?.map((value: string, j: number) => {
+                                return value + `${(item.value.length - 1) !== j ? ', ' : ''}`;
+                              }) :
+                              '-'
+                          }
+                        </h1>
+                      ) : (
+                        <h1 className="text-blue-gray-80 font-medium text-small leading-15px">
+                          {item?.value}
+                        </h1>
+                      )}
+                  </div>
+
+                </div>
+
+              ))}
+            </div>
+
           </div>
+
         </div>
-        {/* details info */}
-        <div className="flex mt-7 justify-between">
-          <table className="flex-[1] criteria_details_table">
-            {objectKeyList
-              .slice(0, objectKeyList.length - 4)
-              .map((key, index) => {
-                return (
-                  <tr key={index} className="">
-                    <td className="bg-[rgba(44,121,190,0.12)] px-4 py-2 text-[#5F6B7D] font-[500] text-sm w-[125px]">
-                      {key}
-                    </td>
-                    <td className="px-4 py-2 text-[#464E5F] font-[500] text-small">
-                      {info[key]}
-                    </td>
-                  </tr>
-                );
-              })}
-          </table>
-          <table className="flex-[1] h-fit criteria_details_table">
-            {objectKeyList
-              .slice(objectKeyList.length - 4, objectKeyList.length)
-              .map((key, index) => {
-                return (
-                  <tr key={index} className="">
-                    <td className="bg-[rgba(44,121,190,0.12)] px-4 py-2 text-[#5F6B7D] font-[500] text-sm w-[125px]">
-                      {key}
-                    </td>
-                    <td className="px-4 py-2 text-[#464E5F] font-[500] text-small">
-                      {info[key]}
-                    </td>
-                  </tr>
-                );
-              })}
-          </table>
-        </div>
+
+
       </div>
     </CustomModal.Primary>
   );

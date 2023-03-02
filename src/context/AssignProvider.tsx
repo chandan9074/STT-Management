@@ -56,6 +56,7 @@ interface ContextProps {
   UpdateAssignCriteria: (data: any) => void;
   getCriteriaByID: (data: any) => void;
   setSingleCriteriaData: React.Dispatch<React.SetStateAction<any>>,
+  createAssignee: (data: any) => void;
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -319,6 +320,14 @@ const AssignProvider = ({ children }: { children: any }) => {
 
   }, [criterias]);
 
+  const createAssignee = async (data: any) => {
+    const res = await AssignService.createAssignee(data);
+    if (res.status === 200) {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      getAssignee();
+    }
+  }
+
 
   return (
     <AssignContext.Provider
@@ -355,7 +364,8 @@ const AssignProvider = ({ children }: { children: any }) => {
         singleCriteriaData,
         UpdateAssignCriteria,
         getCriteriaByID,
-        setSingleCriteriaData
+        setSingleCriteriaData,
+        createAssignee
       }}
     >
       {children}
