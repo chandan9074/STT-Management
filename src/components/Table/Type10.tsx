@@ -211,6 +211,14 @@ const Type10 = () => {
     }
 
     const Type8columns: ColumnsType<any> = [
+        // {
+        //     title: '',
+        //     dataIndex: 'selection',
+        //     fixed: 'left', // add this property to fix the column
+        //     render: (_, record) => (
+        //         <Checkbox checked={record.selected} />
+        //     ),
+        // },
 
         {
             title: `${"# Target ID".toLocaleUpperCase()}`,
@@ -366,6 +374,7 @@ const Type10 = () => {
             <Table
                 rowSelection={{
                     // type: selectionType,
+                    fixed: 'left',
                     ...rowSelection,
                 }}
                 columns={Type8columns}

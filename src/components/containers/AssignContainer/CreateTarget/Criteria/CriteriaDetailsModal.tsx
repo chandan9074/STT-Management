@@ -31,7 +31,7 @@ const CriteriaDetailsModal = ({ modalOpen, setModalOpen }: Props) => {
       value: singleCriteriaData?.profession || '-'
     },
     {
-      title: 'Econimic Situation',
+      title: 'Economic Situation',
       value: singleCriteriaData?.economicSituation || '-'
     },
     {
