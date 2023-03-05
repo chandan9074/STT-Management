@@ -1,4 +1,4 @@
-import { CSSProperties, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Icons from "../../../../../assets/Icons";
 import Buttons from "../../../../Buttons";
 import "../../../../../assets/css/table/criteria_details.css";
@@ -8,7 +8,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import { scriptColorData } from "../../../../../data/assign/AssignData";
 import { getRandomInt } from "../../../../../helpers/Utils";
 import { useAssigneeContext } from "../../../../../context/AssignProvider";
-import { FormControlLabel, Radio } from "@mui/material";
+import { Radio } from "@mui/material";
 
 type Props = {
   selectedScriptId: string;
@@ -16,13 +16,8 @@ type Props = {
   setOpenScriptModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-interface CustomStyleProps extends CSSProperties {
-  "&:hover .MuiSvgIcon-root"?: CSSProperties;
-}
-
 
 const ScriptTargetModal = ({ selectedScriptId, selectedTargetId, setOpenScriptModal }: Props) => {
-  const [selectedScript, setSelectedScript] = useState(selectedScriptId);
   const [searchEnable, setSearchEnable] = useState(false);
 
   const { getSelectedScript, selectedScriptList, updateDraftTarget } = useAssigneeContext();
@@ -34,12 +29,6 @@ const ScriptTargetModal = ({ selectedScriptId, selectedTargetId, setOpenScriptMo
 
 
   const handleSelectScript = (item: ScriptItemDT) => {
-    // if (checked) {
-    //   setSelectedScript(item.id);
-    // } else {
-    //   setSelectedScript("");
-    // }
-    // if (checked) {
     const params = {
       id: selectedTargetId,
       script: item.id,
@@ -101,18 +90,11 @@ const ScriptTargetModal = ({ selectedScriptId, selectedTargetId, setOpenScriptMo
           {selectedScriptList?.map((item, index) => (
             <div
               key={item?.id}
-              className={`flex w-full items-center gap-1 px-4 py-1 justify-between ${selectedScriptId === item?.id && "bg-[#E1EFFE]"
+              className={`flex w-full items-center gap-1 pr-4 pl-1.5 py-1 justify-between ${selectedScriptId === item?.id && "bg-[#E1EFFE]"
                 }`}
             >
-              <div className="flex items-center  gap-x-1 py-0.5">
-                {/* <Radio
-                  // onChange={(e) => selectScript(item, e.target.checked)}
-                  checked={selectedScript === item?.id}
-                  onChange={(e) => handleSelectScript(e.target.checked, item)}
-                  className="pb-0"
-                /> */}
-                {/* <FormControlLabel value="female" control={<Radio />} label="" /> */}
-                <Radio style={{ "&:hover .MuiSvgIcon-root": { backgroundColor: "transparent" } } as CustomStyleProps} size="small" checked={selectedScript === item?.id} onChange={() => handleSelectScript(item)} />
+              <div className="flex items-center py-0.5">
+                <Radio style={{ backgroundColor: "transparent" }} size="small" checked={selectedScriptId === item?.id} onChange={() => handleSelectScript(item)} />
                 <button className="inline-flex gap-x-2 items-center">
                   <div
                     className={`${scriptColorData[getRandomInt(0, 6, index)].id

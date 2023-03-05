@@ -9,6 +9,8 @@ import { TargetItemDT } from "../../types/assignTypes";
 import Buttons from "../Buttons";
 import ScriptTargetModal from "../containers/AssignContainer/CreateTarget/TargetTable/ScriptTargetModal";
 import RoleImage from "../Image/RoleImage";
+import AssigneeTargetModal from "../containers/AssignContainer/CreateTarget/TargetTable/AssigneeTargetModal";
+import CriteriaTargetModal from "../containers/AssignContainer/CreateTarget/TargetTable/CriteriaTargetModal";
 
 // interface Props {
 //   changeScriptModal: (open: boolean, target: TargetItemDT) => void;
@@ -104,10 +106,8 @@ const Type8 = () => {
             onClick={() => setOpenTargetModal(false)}
           ></div>
           {openTargetModal && selectedTarget?.id === data?.id && (
-            <div className="absolute top-6 right-0 w-[420px] bg-white rounded-md z-[100]">
-              {/* <CriteriaTargetModal
-                criteriaList={selectedTarget?.target?.list}
-              /> */}
+            <div className="absolute bottom-11 right-0 w-[424px] bg-white rounded-md z-[100]">
+              {data.target.id && <CriteriaTargetModal selectedCriteriaId={data.target.id} selectedTargetId={selectedTarget.id} setOpenTargetModal={setOpenTargetModal} />}
             </div>
           )}
         </div>
@@ -140,10 +140,8 @@ const Type8 = () => {
             onClick={() => setOpenAssigneeModal(false)}
           ></div>
           {openAssigneeModal && selectedTarget?.id === data?.id && (
-            <div className="absolute top-6 right-0 w-[420px] bg-white rounded-md z-[100]">
-              {/* <AssigneeTargetModal
-                assigneeList={selectedTarget?.assignee?.list}
-              /> */}
+            <div className="absolute bottom-11 right-0 w-[376px] bg-white rounded-md z-[100]">
+              {data.assignee.id && <AssigneeTargetModal selectedAssigneeId={data.assignee.id} selectedTargetId={selectedTarget.id} setOpenAssigneeModal={setOpenAssigneeModal} />}
             </div>
           )}
         </div>

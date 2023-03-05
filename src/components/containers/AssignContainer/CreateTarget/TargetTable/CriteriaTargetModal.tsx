@@ -1,26 +1,69 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Icons from "../../../../../assets/Icons";
 import Buttons from "../../../../Buttons";
 import "../../../../../assets/css/table/criteria_details.css";
 import { CriteriaItemDT } from "../../../../../types/assignTypes";
-import { Input, Radio } from "antd";
+import { Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
+import { useAssigneeContext } from "../../../../../context/AssignProvider";
+import { Radio } from "@mui/material";
 type Props = {
-  criteriaList: CriteriaItemDT[];
+  // criteriaList: CriteriaItemDT[];
+  selectedCriteriaId: string;
+  selectedTargetId: string;
+  setOpenTargetModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const CriteriaTargetModal = ({ criteriaList }: Props) => {
-  const [selectedCriteria, setSelectedCriteria] =
-    useState<CriteriaItemDT | null>(null);
-  const [searchEnable, setSearchEnable] = useState(false);
+const CriteriaTargetModal = ({ selectedCriteriaId, selectedTargetId, setOpenTargetModal }: Props) => {
 
-  const handleSelectCriteria = (checked: boolean, item: CriteriaItemDT) => {
-    if (checked) {
-      setSelectedCriteria(item);
-    } else {
-      setSelectedCriteria(null);
+  const [searchEnable, setSearchEnable] = useState(false);
+  const { getCriteria, selectedCriteriaList, updateDraftTarget } = useAssigneeContext();
+
+  useEffect(() => {
+    getCriteria();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleSelectCriteria = (item: CriteriaItemDT) => {
+    const params = {
+      id: selectedTargetId,
+      target: item.id,
     }
+    updateDraftTarget(params);
+
+    setOpenTargetModal(false);
+    console.log("hello")
   };
+
+  const handleTextConcatenation = (data: CriteriaItemDT) => {
+
+    let text = ""
+
+    for (let item in data) {
+      if (item === "target" || item === "id") {
+        continue;
+      }
+      else if (data[item as keyof CriteriaItemDT] !== null) {
+        if (Array.isArray(data[item as keyof CriteriaItemDT])) {
+          const itemArray = data[item as keyof CriteriaItemDT] as string[];
+          if (itemArray.length > 0) {
+            for (let i = 0; i < itemArray.length; i++) {
+              text += itemArray[i] + "- ";
+            }
+          }
+        } else if (typeof data[item as keyof CriteriaItemDT] === "string") {
+          const itemString = data[item as keyof CriteriaItemDT] as string;
+          if (itemString !== undefined) {
+            text += itemString + "- ";
+          }
+        }
+
+
+      }
+    }
+
+    return text;
+  }
 
   return (
     <div className="flex flex-col w-full h-[300px] pb-2 overflow-y-auto custom_scrollbar">
@@ -52,7 +95,7 @@ const CriteriaTargetModal = ({ criteriaList }: Props) => {
           <div className="flex items-center gap-1 w-full px-4 pt-1 justify-between">
             <div>
               <p className="text-[#6B7B8C] font-[500]">
-                CRITERIA: {criteriaList?.length}
+                CRITERIA: {selectedCriteriaList?.length}
               </p>
             </div>
             <div>
@@ -69,32 +112,31 @@ const CriteriaTargetModal = ({ criteriaList }: Props) => {
 
         {/* //body  */}
         <div className="flex flex-col gap-1 items-start justify-start h-full w-full py-1 overflow-y-auto custom_scrollbar">
-          {criteriaList?.map((item, index) => (
+          {selectedCriteriaList.map((item, index) => (
             <div
               key={index}
-              className={`flex items-center gap-1 w-full px-4 py-1 justify-between ${
-                selectedCriteria?.id === item?.id && "bg-[#E1EFFE]"
-              }`}
+              className={`flex items-center gap-1 w-full pr-4 pl-1.5 py-1 justify-between group ${selectedCriteriaId === item?.id && "bg-[#E1EFFE]"
+                }`}
             >
               <div className="flex-[13] flex gap-3">
-                <div className="flex items-center gap-2">
-                  <Radio
-                    checked={selectedCriteria?.id === item?.id}
-                    onChange={(e) =>
-                      handleSelectCriteria(e.target.checked, item)
-                    }
-                  />
-                  <div className="w-[full] flex flex-col">
-                    <h4 className="font-[500] text-[#2D516E]">
-                      Target {item?.target}
-                    </h4>
-                    <p className="m-0 text-ct-blue-95 text-xs font-[300] truncate text-ellipsis w-[280px]">
-                      {item?.recordingArea}
+                <div className="flex items-start">
+                  <Radio style={{ backgroundColor: "transparent", marginTop: "-6px" }} size="small" checked={selectedCriteriaId === item?.id} onChange={() => handleSelectCriteria(item)} />
+                  <div className="w-full flex flex-col">
+                    <div className="w-full flex justify-between items-center">
+                      <h4 className={`font-semibold ${selectedCriteriaId === item?.id ? "text-ct-blue-60" : "text-ct-blue-80"}`}>
+                        Target {item?.target}
+                      </h4>
+                      {selectedCriteriaId === item?.id && (
+                        <img src={Icons.CorrectIcon} alt="" />
+                      )}
+                    </div>
+                    <p className={`m-0 ${selectedCriteriaId === item?.id ? "text-ct-blue-60" : "text-ct-blue-90-68%"}  text-xs font-[300] truncate text-ellipsis w-[360px] group-hover:text-overflow-clip group-hover:whitespace-normal`}>
+                      {handleTextConcatenation(item)}
                     </p>
                   </div>
                 </div>
               </div>
-              {selectedCriteria?.id === item?.id && (
+              {selectedCriteriaId === item?.id && (
                 <div className="flex-[1] ml-10">
                   <img src={Icons.CorrectIcon} alt="" />
                 </div>
