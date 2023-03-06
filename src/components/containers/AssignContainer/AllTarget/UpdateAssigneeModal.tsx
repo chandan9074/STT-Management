@@ -1,7 +1,6 @@
 import { Form, Select } from 'antd';
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Icons from '../../../../assets/Icons';
-import { AssignContext } from '../../../../context/AssignProvider';
 import { RoleInContext } from '../../../../context/RoleProvider';
 import { roleDT } from '../../../../types/billingTypes';
 import Buttons from '../../../Buttons';
@@ -61,7 +60,7 @@ const newRoleList = [
         "address": "Dhaka",
         "gender": "Male"
     },
-    
+
 ]
 
 
@@ -71,7 +70,6 @@ const UpdateAssigneeModal = ({
 }: {
     handleModal: (value: boolean) => void,
 }) => {
-    const { createAssignee } = useContext(AssignContext)
 
     const [form] = Form.useForm();
 
@@ -123,7 +121,9 @@ const UpdateAssigneeModal = ({
     const handleRoleChange = (id: string, p: any) => {
 
         const _data = roleDatas?.filter((m: roleDT) => m.id === p.key);
-        if (_data) {
+
+        const index = customRoleData.findIndex((data) => data.id === p.key);
+        if (_data && index === -1) {
             setCustomRoleData([...customRoleData, _data[0]]);
         }
     }
@@ -173,7 +173,9 @@ const UpdateAssigneeModal = ({
         });
 
         const _data = { selectedAssignee: _id };
-        createAssignee(_data);
+        // createAssignee(_data);
+        console.log('data', _data);
+        
         onClose();
     }
 

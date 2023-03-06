@@ -13,6 +13,7 @@ export const ASSIGN_PATH = "/assign";
 export const ALL_TARGET_PTAH = 'all-target';
 // export const CREATE_TARGET_PATH = 'create-target';
 export const CREATE_TARGET_PATH = `${ASSIGN_PATH}/${ALL_TARGET_PTAH}/create-target`;
+export const RECREATE_TARGET_PATH = `${ASSIGN_PATH}/${ALL_TARGET_PTAH}/recreate`;
 export const EDIT_SPEECHES_PATH = `${ASSIGN_PATH}/${ALL_TARGET_PTAH}/edit-speeches`;
 
 

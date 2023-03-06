@@ -1,6 +1,6 @@
 import { Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Icons from '../../assets/Icons';
 import "../../assets/css/table/type4Table.css";
@@ -11,6 +11,7 @@ import { EDIT_SPEECHES_PATH } from '../../helpers/Slug';
 
 const data: any = [
     {
+        id: 1,
         key: '10-227a',
         script: 'Script id_227',
         target: 1000,
@@ -25,6 +26,7 @@ const data: any = [
 
     },
     {
+        id: 2,
         key: '10-228a',
         script: 'Script id_227',
         target: 1000,
@@ -39,6 +41,7 @@ const data: any = [
 
     },
     {
+        id: 3,
         key: '10-230a',
         script: 'Script id_227',
         target: 1000,
@@ -52,151 +55,14 @@ const data: any = [
         role: 'Manager'
 
     },
-
-    {
-        key: '10-230a',
-        script: 'Script id_227',
-        target: 1000,
-        status: "20",
-        speeches: '800',
-        maxSpeeches: '3000',
-        assignee: "Mushfiqur",
-        assignedDate: "30/01/2022",
-        deadline: "30/01/2022",
-        remark: "",
-        role: 'Manager'
-
-    },
-    {
-        key: '10-230a',
-        script: 'Script id_227',
-        target: 1000,
-        status: "20",
-        speeches: '800',
-        maxSpeeches: '3000',
-        assignee: "Mushfiqur",
-        assignedDate: "30/01/2022",
-        deadline: "30/01/2022",
-        remark: "",
-        role: 'Manager'
-
-    },
-
-    {
-        key: '10-230a',
-        script: 'Script id_227',
-        target: 1000,
-        status: "20",
-        speeches: '800',
-        maxSpeeches: '3000',
-        assignee: "Mushfiqur",
-        assignedDate: "30/01/2022",
-        deadline: "30/01/2022",
-        remark: "",
-        role: 'Manager'
-
-    },
-    {
-        key: '10-230a',
-        script: 'Script id_227',
-        target: 1000,
-        status: "20",
-        speeches: '800',
-        maxSpeeches: '3000',
-        assignee: "Mushfiqur",
-        assignedDate: "30/01/2022",
-        deadline: "30/01/2022",
-        remark: "",
-        role: 'Manager'
-
-    },
-    {
-        key: '10-230a',
-        script: 'Script id_227',
-        target: 1000,
-        status: "20",
-        speeches: '800',
-        maxSpeeches: '3000',
-        assignee: "Mushfiqur",
-        assignedDate: "30/01/2022",
-        deadline: "30/01/2022",
-        remark: "",
-        role: 'Manager'
-
-    },
-    {
-        key: '10-230a',
-        script: 'Script id_227',
-        target: 1000,
-        status: "20",
-        speeches: '800',
-        maxSpeeches: '3000',
-        assignee: "Mushfiqur",
-        assignedDate: "30/01/2022",
-        deadline: "30/01/2022",
-        remark: "",
-        role: 'Manager'
-
-    },
-    {
-        key: '10-230a',
-        script: 'Script id_227',
-        target: 1000,
-        status: "20",
-        speeches: '800',
-        maxSpeeches: '3000',
-        assignee: "Mushfiqur",
-        assignedDate: "30/01/2022",
-        deadline: "30/01/2022",
-        remark: "",
-        role: 'Manager'
-
-    },
-    {
-        key: '10-230a',
-        script: 'Script id_227',
-        target: 1000,
-        status: "20",
-        speeches: '800',
-        maxSpeeches: '3000',
-        assignee: "Mushfiqur",
-        assignedDate: "30/01/2022",
-        deadline: "30/01/2022",
-        remark: "",
-        role: 'Manager'
-
-    },
-    {
-        key: '10-230a',
-        script: 'Script id_227',
-        target: 1000,
-        status: "20",
-        speeches: '800',
-        maxSpeeches: '3000',
-        assignee: "Mushfiqur",
-        assignedDate: "30/01/2022",
-        deadline: "30/01/2022",
-        remark: "",
-        role: 'Manager'
-
-    },
-    {
-        key: '10-230a',
-        script: 'Script id_227',
-        target: 1000,
-        status: "20",
-        speeches: '800',
-        maxSpeeches: '3000',
-        assignee: "Mushfiqur",
-        assignedDate: "30/01/2022",
-        deadline: "30/01/2022",
-        remark: "",
-        role: 'Manager'
-
-    },
 ];
 
-const Type10 = () => {
+type Props = {
+    setTargetId: Dispatch<SetStateAction<any>>;
+    targetId: any
+}
+
+const Type10 = ({ setTargetId, targetId }: Props) => {
     // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
     // const [searchedColumn, setSearchedColumn] = useState("");
@@ -362,6 +228,8 @@ const Type10 = () => {
 
     const rowSelection = {
         onChange: (selectedRowKeys: React.Key[], selectedRows: any[]) => {
+            const selectedIds = selectedRows.map((row) => ({ id: row.id })); 
+            setTargetId(selectedIds); 
         },
         getCheckboxProps: (record: any) => ({
             // disabled: record.name === 'Disabled User', // Column configuration not to be checked

@@ -60,7 +60,6 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
                     <Drawer
                         closeIcon={false}
                         placement="right"
-                        // onClose={() => onCancelModalOpen()}
                         open={isDrawerOpen}
                         width='715px'
                         maskClosable={false}
@@ -110,7 +109,6 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
                     <Drawer
                         closeIcon={false}
                         placement="right"
-                        // onClose={onCancelModalOpen}
                         open={isDrawerOpen}
                         width='477px'
                     >

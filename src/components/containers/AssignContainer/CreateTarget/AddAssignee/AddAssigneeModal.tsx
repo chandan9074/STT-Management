@@ -80,7 +80,9 @@ const AddAssigneeModal = ({
     const handleRoleChange = (id: string, p: any) => {
       
         const _data = roleDatas?.filter((m: roleDT) => m.id === p.key);
-        if (_data) {
+
+        const index = customRoleData.findIndex((data) => data.id === p.key);
+        if (_data && index === -1) {
             setCustomRoleData([...customRoleData, _data[0]]);
         }
     }
