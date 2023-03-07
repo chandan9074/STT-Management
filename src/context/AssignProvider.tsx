@@ -53,6 +53,12 @@ interface ContextProps {
   postDraftTarget: () => void;
   getDraftTarget: () => void;
   updateDraftTarget: (data: updateDraftTargetQueryParams) => void;
+  creteAssignCriteria: (data: postSelectedScriptBodyDT) => void;
+  singleCriteriaData: any;
+  UpdateAssignCriteria: (data: any) => void;
+  getCriteriaByID: (data: any) => void;
+  setSingleCriteriaData: React.Dispatch<React.SetStateAction<any>>,
+  createAssignee: (data: any) => void;
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -73,6 +79,9 @@ const AssignProvider = ({ children }: { children: any }) => {
   const [selectedCriteriaList, setSelectedCriteriaList] = useState<CriteriaItemDT[]>([]);
   const [selectedTargetList, setSelectedTargetList] = useState<TargetItemDT[]>([]);
   const [allScript, setAllScript] = useState<allScriptDT | undefined>();
+  const [singleCriteriaData, setSingleCriteriaData] = useState<any>({})
+
+
 
   const saveCriteria = (data: any) => {
     const filteredCriterias = criterias.filter((criteria: any, i: number) => i !== editId);
@@ -294,11 +303,48 @@ const AssignProvider = ({ children }: { children: any }) => {
     }
   };
 
+
+  const creteAssignCriteria = async (data: any) => {
+    const res = await AssignService.createAssignCriteria(data);
+    if (res.status === 200) {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      getCriteria();
+    }
+  }
+
+  const UpdateAssignCriteria = async (data: any) => {
+    const res = await AssignService.UpdateAssignCriteria(data);
+    if (res.status === 200) {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      getCriteria();
+      setSingleCriteriaData({});
+    }
+  }
+
+  const getCriteriaByID = async (id: any) => {
+
+    try {
+      const res = await AssignService.getAssignCriteriaById(id);
+      setSingleCriteriaData(res?.data);
+    } catch (error) {
+      console.log('error', error);
+
+    }
+  }
+
   useEffect(() => {
     const targetSum = criterias.reduce((acc: any, item: any) => acc + item.target, 0);
     setSumTarget(targetSum);
 
   }, [criterias]);
+
+  const createAssignee = async (data: any) => {
+    const res = await AssignService.createAssignee(data);
+    if (res.status === 200) {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      getAssignee();
+    }
+  }
 
 
   return (
@@ -332,7 +378,13 @@ const AssignProvider = ({ children }: { children: any }) => {
         deleteSingleAssignee,
         postDraftTarget,
         getDraftTarget,
-        updateDraftTarget
+        updateDraftTarget,
+        creteAssignCriteria,
+        singleCriteriaData,
+        UpdateAssignCriteria,
+        getCriteriaByID,
+        setSingleCriteriaData,
+        createAssignee
       }}
     >
       {children}

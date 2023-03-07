@@ -69,12 +69,21 @@ const SpeakerModal = ({
     }, [dropDownCount]);
 
 
+    // const handleRoleChange = (id: string, p: any) => {
+    //     const _data = roleDatas?.filter((m: roleDT) => m.id === p.key);
+    //     if (_data) {
+    //         setSpeakerData([...speakerData, _data[0]]);
+    //     }    
+    // }
+
     const handleRoleChange = (id: string, p: any) => {
         const _data = roleDatas?.filter((m: roleDT) => m.id === p.key);
-        if (_data) {
+
+        const index = speakerData.findIndex((data) => data.id === p.key);
+        if (_data && index === -1) {
             setSpeakerData([...speakerData, _data[0]]);
         }
-    }
+    };
 
 
     const deleteManager = (id: string | undefined) => {

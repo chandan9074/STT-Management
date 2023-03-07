@@ -2,7 +2,6 @@ import { DatePicker, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
 import { useState } from "react";
 import Icons from "../../assets/Icons";
-import { SideDrawer } from "../common/SideDrawer";
 import "../../assets/css/table/type4Table.css";
 import { useAssigneeContext } from "../../context/AssignProvider";
 import { TargetItemDT } from "../../types/assignTypes";
@@ -11,6 +10,7 @@ import ScriptTargetModal from "../containers/AssignContainer/CreateTarget/Target
 import RoleImage from "../Image/RoleImage";
 import AssigneeTargetModal from "../containers/AssignContainer/CreateTarget/TargetTable/AssigneeTargetModal";
 import CriteriaTargetModal from "../containers/AssignContainer/CreateTarget/TargetTable/CriteriaTargetModal";
+import { Drawer } from "../Drawer";
 
 // interface Props {
 //   changeScriptModal: (open: boolean, target: TargetItemDT) => void;
@@ -31,7 +31,7 @@ const Type8 = () => {
   const [openAssigneeModal, setOpenAssigneeModal] = useState<boolean>(false);
   const [openDeadlineModal, setOpenDeadlineModal] = useState<boolean>(false);
   const [remarkModal, setRemrkModal] = useState<boolean>(false);
-  const [drawerData, setDrawerData] = useState<any>();
+  // const [drawerData, setDrawerData] = useState<any>();
 
   const changeScriptModal = (open: boolean, target: TargetItemDT) => {
     setOpenScriptModal(open);
@@ -56,7 +56,7 @@ const Type8 = () => {
 
   const showDrawer = (key: any) => {
     setOpen(true);
-    setDrawerData(key);
+    // setDrawerData(key);
   };
   const Type8columns: ColumnsType<any> = [
     {
@@ -249,7 +249,11 @@ const Type8 = () => {
         </div>
       )}
 
-      <SideDrawer.Type3 open={open} setOpen={setOpen} drawerData={drawerData} />
+      {/* <SideDrawer.Type3 open={open} setOpen={setOpen} drawerData={drawerData} /> */}
+      <Drawer.Target.Type1
+        isDrawerOpen={open}
+        setIsDrawerOpen={setOpen}
+      />
     </div>
   );
 };

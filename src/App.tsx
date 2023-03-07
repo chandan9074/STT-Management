@@ -20,6 +20,7 @@ import AllTarget from "./components/containers/AssignContainer/AllTarget";
 import CreateTarget from "./pages/Assign/CreateTarget";
 import EditScript from "./components/containers/script/EditScript";
 import EditSpeeches from "./components/containers/AssignContainer/AllTarget/EditSpeeches";
+import RecreateTarget from "./components/containers/AssignContainer/AllTarget/Statistics/RecreateTarget";
 
 function App() {
   useEffect(() => {
@@ -63,6 +64,7 @@ function App() {
           </Route>
         </Route>
         <Route path={PATH.CREATE_TARGET_PATH} element={<CreateTarget />} />
+        <Route path={`${PATH.RECREATE_TARGET_PATH}/:id`} element={<RecreateTarget />} />
         <Route  path={`${PATH.EDIT_SPEECHES_PATH}/:id`} element={<EditSpeeches />} />
 
 

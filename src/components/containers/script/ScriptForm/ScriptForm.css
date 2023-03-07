@@ -210,3 +210,12 @@ label {
     background-color: transparent !important;
     padding: 0 !important;
 }
+
+/* Update assign model */
+.update-assign-model .css-j204z7-MuiFormControlLabel-root .MuiFormControlLabel-label {
+    width: 100%;
+}
+
+.update-assign-model .css-1nrlq1o-MuiFormControl-root {
+    width: 100%;
+}

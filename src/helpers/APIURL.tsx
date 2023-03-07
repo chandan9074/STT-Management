@@ -33,6 +33,9 @@ export const UPLOAD_SCRIPT_CSV_FILE_URL = `${REACT_APP_BASE_URL}/upload-csv`;
 
 export const GET_ALL_SCRIPT_URL = `${REACT_APP_BASE_URL2}/all_scripts_with_frequency`;
 export const POST_SELECTED_SCRIPT_URL = `${REACT_APP_BASE_URL2}/post_res_selected_script_assign_module`;
+export const POST_RES_CRITERIA_URL = `${REACT_APP_BASE_URL2}/post_res_criteria_assign_module`;
+export const GET_ASSIGN_CRITERIA_BY_ID_URL = `${REACT_APP_BASE_URL2}/get_res_by_id_criteria_assign_module`;
+export const UPDATE_ASSIGN_CRITERIA_URL = `${REACT_APP_BASE_URL2}/update_criteria_assign_module`;
 export const GET_SELECTED_SCRIPT_URL = `${REACT_APP_BASE_URL2}/get_res_selected_script_assign_module`;
 export const GET_CRITERIA_SCRIPT_URL = `${REACT_APP_BASE_URL2}/get_res_criteria_assign_module`;
 export const GET_ASSIGNEE_SCRIPT_URL = `${REACT_APP_BASE_URL2}/get_res_selected_assignee_assign_module`;
@@ -42,8 +45,7 @@ export const DELETE_SINGLE_ASSIGNEE_URL = `${REACT_APP_BASE_URL2}/delete_by_id_s
 export const POST_DRAFT_TARGET_URL = `${REACT_APP_BASE_URL2}/post_res_draft_target_assign_module`;
 export const GET_DRAFT_TARGET_URL = `${REACT_APP_BASE_URL2}/get_res_draft_target_assign_module`;
 export const UPDATE_DRAFT_TARGET_URL = `${REACT_APP_BASE_URL2}/update_draft_target_assign_module`;
-
-
+export const CREATE_ASSIGNEE_URL = `${REACT_APP_BASE_URL2}/post_res_selected_assignee_assign_module`;
 
 
 

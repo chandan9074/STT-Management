@@ -1,10 +1,18 @@
 import { useContext } from "react";
 import { AssignContext } from "../../../../../../context/AssignProvider";
+import { isEmpty } from "../../../../../../helpers/Utils";
 
-const ActionButton = ({ formik, onCreate }: { formik: any, onCreate: () => void }) => {
+type Props = {
+    formik: any,
+    onCreate: () => void,
+    data?: any
+}
+
+
+const ActionButton = ({ formik, onCreate, data }: Props) => {
 
     const AssignContexts = useContext(AssignContext);
-    const { criterias } = AssignContexts;
+    const { criterias } = AssignContexts;    
 
     return (
         <div>
@@ -13,15 +21,18 @@ const ActionButton = ({ formik, onCreate }: { formik: any, onCreate: () => void 
                 <div className='flex justify-end px-5 py-4 bg-white'>
 
                     <div className='flex gap-x-[16px] '>
-                        <button
-                            onClick={(event) => {
-                                event?.preventDefault();
-                                onCreate();
-                            }}
-                            className='duration-700 border-[1px] border-blue-30 text-ct-blue-60 hover:border-ct-blue-30 rounded-[6px] py-[9px] px-[32px]'
-                        >
-                            Create
-                        </button>
+                        {
+                            isEmpty(data) &&
+                            <button
+                                onClick={(event) => {
+                                    event?.preventDefault();
+                                    onCreate();
+                                }}
+                                className='duration-700 border-[1px] border-blue-30 text-ct-blue-60 hover:border-ct-blue-30 rounded-[6px] py-[9px] px-[32px]'
+                            >
+                                Create
+                            </button>
+                        }
 
                         {
                             (formik.values.ageRange !== '' && formik.values.district.length !== 0) &&

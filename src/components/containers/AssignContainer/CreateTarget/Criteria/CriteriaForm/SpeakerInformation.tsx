@@ -193,16 +193,13 @@ const SpeakerInformation = ({ formik }: { formik: any }) => {
                         }}
 
                         renderInput={(params) => (
-
                             <TextField
                                 placeholder='Choose one'
                                 {...params}
                                 name="education"
                                 error={formik.touched.education && Boolean(formik.errors.education)}
                                 helperText={formik.touched.education && formik.errors.education}
-
-                                label={<h1 className='comboBoxLabel'>Education <span className='text-[red]'>*</span></h1>}
-
+                                label={<h1 className='comboBoxLabel'>Education </h1>}
                             />
                         )}
                     />

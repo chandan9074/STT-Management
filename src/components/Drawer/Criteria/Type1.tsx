@@ -4,7 +4,7 @@ import Icons from '../../../assets/Icons';
 import { AssignContext } from '../../../context/AssignProvider';
 import Buttons from '../../Buttons';
 import { CustomModal } from '../../common/CustomModal';
-import TargetDetails from '../../containers/AssignContainer/CreateTarget/CreateCriteria/TargetDetails';
+import TargetDetails from '../../containers/AssignContainer/CreateTarget/Criteria/TargetDetails';
 
 
 type Props = {
@@ -60,7 +60,6 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
                     <Drawer
                         closeIcon={false}
                         placement="right"
-                        // onClose={() => onCancelModalOpen()}
                         open={isDrawerOpen}
                         width='715px'
                         maskClosable={false}
@@ -110,7 +109,6 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
                     <Drawer
                         closeIcon={false}
                         placement="right"
-                        // onClose={onCancelModalOpen}
                         open={isDrawerOpen}
                         width='477px'
                     >

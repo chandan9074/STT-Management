@@ -16,14 +16,14 @@ const TargetSetting = ({ formik }: { formik: any }) => {
     };
 
     const onReminderDateChange: DatePickerProps['onChange'] = (date, dateString) => {
-        formik.setFieldValue("reminder", [...formik.values.reminder, getDateWithMonthName2(dateString)]);
+        // formik.setFieldValue("reminder", [...formik.values.reminder, getDateWithMonthName2(dateString)]);
+        formik.setFieldValue("reminder", [...formik.values.reminder, dateString]);
         setOpenReminderCaleder(false);
     };
 
     const onReminderRemove = (value: string) => {
 
         const _data = formik.values.reminder?.filter((m: string, index: number) => m !== value);
-
 
         formik.setFieldValue("reminder", _data);
 
@@ -130,8 +130,7 @@ const TargetSetting = ({ formik }: { formik: any }) => {
                                     formik.values.reminder.map((value: string, i: number) => (
                                         <div key={i} className='bg-ct-blue-20 rounded-[4px] flex justify-center items-center py-[3px] px-[8px] gap-x-[4px]'>
                                             <h1 className='text-xs text-blue-gray-80 font-medium whitespace-nowrap'>
-                                                {/* {getDateWithMonthName2(value)} */}
-                                                {value}
+                                                {getDateWithMonthName2(value)}
                                             </h1>
                                             <div className='cursor-pointer w-[14px] p-[3px] bg-white rounded-[3px]'>
                                                 <img
