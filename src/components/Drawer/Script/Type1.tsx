@@ -18,14 +18,15 @@ type Props = {
     modalOpen: boolean,
     setModalOpen: React.Dispatch<React.SetStateAction<boolean>>
     setModalScript: React.Dispatch<React.SetStateAction<singleScriptDT>>
+    isRecreate?: boolean
 }
 
-const Type1 = ({ isDrawerOpen, drawerClose, modalOpen, setModalOpen, setModalScript }: Props) => {
+const Type1 = ({ isDrawerOpen, drawerClose, modalOpen, setModalOpen, setModalScript, isRecreate }: Props) => {
     const [scriptParams, setScriptParams] = useState({ page: 1, pageSize: 15 })
     const [selectedScript, setSelectedScript] = useState<singleScriptDT[]>([])
     const [uncheckedScript, setUncheckedScript] = useState<string>("")
 
-    const { postSelectedScript } = useAssigneeContext()
+    const { postSelectedScript, setScriptForRecreate } = useAssigneeContext()
 
     const { getAllScript, allScript } = useAssigneeContext()
 
@@ -53,19 +54,28 @@ const Type1 = ({ isDrawerOpen, drawerClose, modalOpen, setModalOpen, setModalScr
     };
 
     const handleSubmit = () => {
-        let newScript = [];
-        for (let script of selectedScript) {
-            newScript.push(script.id)
-        }
-        // console.log("newscript", newScript)
+        if (isRecreate) {
+            let newScript = [];
+            for (let script of selectedScript) {
+                newScript.push(script.id)
+            }
+            // console.log("newscript", newScript)
 
-        const body: postSelectedScriptBodyDT = {
-            scriptList: newScript
-        }
+            const body: postSelectedScriptBodyDT = {
+                scriptList: newScript
+            }
 
-        postSelectedScript(body)
-        setSelectedScript([])
-        drawerClose();
+            postSelectedScript(body)
+            setSelectedScript([])
+            drawerClose();
+        }
+        else {
+            if (selectedScript.length > 0) {
+                setScriptForRecreate(prev => [...prev, ...selectedScript])
+                setSelectedScript([])
+                drawerClose();
+            }
+        }
     }
 
     return (

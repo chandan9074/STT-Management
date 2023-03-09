@@ -99,3 +99,10 @@ export type updateDraftTargetQueryParams = {
   target?: string;
   assignee?: string;
 }
+
+export type targetForRecreate = {
+  id: string;
+  script: ScriptItemDT;
+  target: CriteriaItemDT;
+  assignee: AssigneeItemDT;
+}

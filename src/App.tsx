@@ -20,7 +20,7 @@ import AllTarget from "./components/containers/AssignContainer/AllTarget";
 import CreateTarget from "./pages/Assign/CreateTarget";
 import EditScript from "./components/containers/script/EditScript";
 import EditSpeeches from "./components/containers/AssignContainer/AllTarget/EditSpeeches";
-import RecreateTarget from "./components/containers/AssignContainer/AllTarget/Statistics/RecreateTarget";
+import RecreateTarget from "./pages/Assign/RecreateTarget";
 
 function App() {
   useEffect(() => {
@@ -65,7 +65,7 @@ function App() {
         </Route>
         <Route path={PATH.CREATE_TARGET_PATH} element={<CreateTarget />} />
         <Route path={`${PATH.RECREATE_TARGET_PATH}/:id`} element={<RecreateTarget />} />
-        <Route  path={`${PATH.EDIT_SPEECHES_PATH}/:id`} element={<EditSpeeches />} />
+        <Route path={`${PATH.EDIT_SPEECHES_PATH}/:id`} element={<EditSpeeches />} />
 
 
         <Route path={`${PATH.AUDIO_PATH}/${PATH.COLLECTING_AUDIO}`} element={<AudioManagement />} />

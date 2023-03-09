@@ -37,8 +37,6 @@ const CreateTarget = () => {
 
   return (
     <Layouts.Sixth>
-
-      <div>
         <div className={`bg-red-03 shadow-box pl-[24px] pt-[30px] pr-4  ${dataShow ? "h-[29rem]" : "h-24 overflow-hidden"} duration-300 relative`}>
           <div className='flex justify-between items-center mb-[23px] gap-x-3'>
             <div className='flex items-center'>
@@ -93,7 +91,6 @@ const CreateTarget = () => {
         </div>
 
         <TargetTable />
-      </div>
     </Layouts.Sixth>
   );
 };

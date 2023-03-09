@@ -217,3 +217,40 @@ export const assignStatisticsData = {
         ]
     }
 }
+
+export const targetDataForRecreate = {
+    id: "1",
+    script: {
+        "title": "বর্তমান ‘টিকা-বিভাজন’ প্রবণতা শুধু মহামারীটিকেই দীর্ঘস্থায়ী করবে। কোভিড-মুক্ত বিশ্বের জন্য, আমাদের অবশ্যই বিশ্বব্যাপী সকল মানুষের জন্য সার্বজনীন ও সাশ্রয়ী মূল্যে টিকার প্রাপ্যতা নিশ্চিত করতে হবে।",
+        "description": "বর্তমান ‘টিকা-বিভাজন’ প্রবণতা শুধু মহামারীটিকেই দীর্ঘস্থায়ী করবে। কোভিড-মুক্ত বিশ্বের জন্য, আমাদের অবশ্যই বিশ্বব্যাপী সকল মানুষের জন্য সার্বজনীন ও সাশ্রয়ী মূল্যে টিকার প্রাপ্যতা নিশ্চিত করতে হবে।",
+        "domain": "World & current affairs",
+        "subDomain": "International Matter",
+        "id": "c98ec4cb-bd39-4dcd-8e0d-2220337db349_8",
+        "frequency": 0
+    },
+    target: {
+        "id": "234875rfewrfew",
+        "gender": "male",
+        "ageRange": "25-30",
+        "district": ["dhaka", "mymensingh"],
+        "profession": "teacher",
+        "economicSituation": "poor",
+        "healthFactors": ["smoker", "jsghfkjwed"],
+        "recordingArea": "baire",
+        "recordingDistance": "baire",
+        "education": "secondary",
+        "target": 2345,
+        "deadline": "2023-02-11",
+        "reminder": ["kisr", "ki"],
+        "remark": "nai kono remark"
+    },
+    assignee: {
+        "id": "maksudalam@gmail.com",
+        "name": "Maksud Alam",
+        "role": "Admin",
+        "roleID": "01738463449",
+        "contact": "01738463449",
+        "email": "maksudalam@gmail.com",
+        "address": "Dhaka"
+    }
+}

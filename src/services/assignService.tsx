@@ -1,4 +1,5 @@
 import axios from "axios";
+import { targetDataForRecreate } from "../data/assign/AssignData";
 import * as PATH from "../helpers/APIURL";
 import { allScriptParamsDT, postDraftTargetBodyDT, postSelectedScriptBodyDT, updateDraftTargetQueryParams } from "../types/assignTypes";
 
@@ -70,6 +71,10 @@ export default class AssignService {
 
   static createAssignee(params: any) {
     return axios.post(PATH.CREATE_ASSIGNEE_URL, params);
+  }
+
+  static fetchTargetForRecreate(id: string) {
+    return targetDataForRecreate;
   }
 
 }

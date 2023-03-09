@@ -59,6 +59,13 @@ interface ContextProps {
   getCriteriaByID: (data: any) => void;
   setSingleCriteriaData: React.Dispatch<React.SetStateAction<any>>,
   createAssignee: (data: any) => void;
+  getTargetForRecreate: (id: string) => void;
+  scriptForRecreate: ScriptItemDT[];
+  targetForRecreate: CriteriaItemDT[];
+  assigneeForRecreate: AssigneeItemDT[];
+  setScriptForRecreate: React.Dispatch<React.SetStateAction<ScriptItemDT[]>>;
+  setTargetForRecreate: React.Dispatch<React.SetStateAction<CriteriaItemDT[]>>;
+  setAssigneeForRecreate: React.Dispatch<React.SetStateAction<AssigneeItemDT[]>>;
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -80,6 +87,10 @@ const AssignProvider = ({ children }: { children: any }) => {
   const [selectedTargetList, setSelectedTargetList] = useState<TargetItemDT[]>([]);
   const [allScript, setAllScript] = useState<allScriptDT | undefined>();
   const [singleCriteriaData, setSingleCriteriaData] = useState<any>({})
+  const [scriptForRecreate, setScriptForRecreate] = useState<ScriptItemDT[]>([] as ScriptItemDT[])
+  const [targetForRecreate, setTargetForRecreate] = useState<CriteriaItemDT[]>([] as CriteriaItemDT[])
+  const [assigneeForRecreate, setAssigneeForRecreate] = useState<AssigneeItemDT[]>([] as AssigneeItemDT[])
+
 
 
 
@@ -218,19 +229,17 @@ const AssignProvider = ({ children }: { children: any }) => {
     }
   }
 
-  // useEffect(() => {
-  //   const fetchInitialData = async () => {
-  //     // const scriptList = await AssignService.fetchScriptList();
-  //     // const assigneeList = await AssignService.fetchAssignList();
-  //     // const criteriaList = await AssignService.fetchCriteriaList();
-  //     // const targetList = await AssignService.fetchTargetList();
-  //     // setSelectedAssigneList(assigneeList);
-  //     // setSelectedScriptList(scriptList);
-  //     // setSelectedCriteriaList(criteriaList);
-  //     // setSelectedTargetList(targetList);
-  //   };
-  //   fetchInitialData();
-  // }, []);
+  const getTargetForRecreate = async (id: string) => {
+    const res = AssignService.fetchTargetForRecreate(id);
+    console.log('getTargetForRecreate', res)
+    // const newScript = {
+    //   isSelected: true,
+    //   ...res.script
+    // }
+    setScriptForRecreate([{ ...res.script }])
+    setTargetForRecreate([{ isSelected: true, ...res.target }])
+    setAssigneeForRecreate([{ isSelected: true, ...res.assignee }])
+  }
 
   const selectScript = (
     selectedItem: ScriptItemDT | null,
@@ -384,7 +393,14 @@ const AssignProvider = ({ children }: { children: any }) => {
         UpdateAssignCriteria,
         getCriteriaByID,
         setSingleCriteriaData,
-        createAssignee
+        createAssignee,
+        getTargetForRecreate,
+        assigneeForRecreate,
+        scriptForRecreate,
+        setAssigneeForRecreate,
+        setScriptForRecreate,
+        targetForRecreate,
+        setTargetForRecreate,
       }}
     >
       {children}

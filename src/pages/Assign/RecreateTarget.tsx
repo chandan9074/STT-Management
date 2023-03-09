@@ -1,22 +1,32 @@
-import { useState } from 'react';
-import Icons from '../../../../../assets/Icons';
-import Buttons from '../../../../Buttons';
-import Layouts from '../../../../Layouts';
+import { useEffect, useState } from 'react';
+import Icons from '../../assets/Icons';
+import Buttons from '../../components/Buttons';
+import AddScript from '../../components/containers/AssignContainer/Recreate/AddScript';
+import Layouts from '../../components/Layouts';
+import { Navigator } from '../../components/Navigator';
+import * as Path from '../../helpers/Slug';
+import { useParams } from 'react-router-dom';
+import { useAssigneeContext } from '../../context/AssignProvider';
+import CreateCriteria from '../../components/containers/AssignContainer/Recreate/CreateCriteria';
+import AddAssignee from '../../components/containers/AssignContainer/Recreate/AddAssignee';
 
 const RecreateTarget = () => {
-
     const [dataShow, setDataShow] = useState<boolean>(true);
+    const { id } = useParams<{ id: string }>();
+    const { getTargetForRecreate } = useAssigneeContext();
 
+    useEffect(() => {
+        if (id) {
+            getTargetForRecreate(id);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [id])
     return (
         <Layouts.Sixth>
-
-            <div className={`bg-red-03 shadow-box pl-[24px] pt-[30px] pr-4  ${dataShow ? "h-[29rem]" : "h-24 overflow-hidden"} duration-300 relative`}>
-                <div className='flex justify-between items-center mb-[23px] gap-x-3'>
-                    <div className='flex items-center'>
-                        <h1 className='text-blue-95 text-[18px] font-medium pr-3'>Recreate Target</h1>
-                        {/* <h2 className='text-ct-blue-90 text-small'>Create one or more target and assign</h2> */}
-                    </div>
-                    <div className="flex items-center gap-x-4">
+            <div className={`bg-red-03 shadow-box pl-6 pt-4 pr-4  ${dataShow ? "h-[29rem]" : "h-24 overflow-hidden"} duration-300 relative`}>
+                <div className='flex justify-between items-start mb-[23px] gap-x-3'>
+                    <Navigator.Back path={Path.BILLING_PATH} title="Recreate Target" />
+                    <div className="flex items-center gap-x-4 mt-4">
                         <div className={`${dataShow ? "hidden" : "block"} animate-fadeIn`}>
                             <Buttons.IconWithTextButton.Tertiary
                                 label="Add Script, Create Criteria, Add Assignee"
@@ -47,9 +57,20 @@ const RecreateTarget = () => {
                         </div>
                     </div>
                 </div>
+                <div className={`flex gap-x-4`}>
+                    <div className="flex-[1]">
+                        <AddScript />
+                    </div>
+                    <div className="flex-[1.2]">
+                        <CreateCriteria />
+                    </div>
+                    <div className="flex-[1]">
+                        <AddAssignee />
+                    </div>
+                </div>
             </div>
         </Layouts.Sixth>
-    );
-};
+    )
+}
 
-export default RecreateTarget;
+export default RecreateTarget
