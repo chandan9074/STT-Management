@@ -10,10 +10,7 @@ const AllTarget = () => {
                 <Header />
                 <Statistics data={assignStatisticsData} />
             </div>
-
             <TargetTable />
-
-
         </div>
     );
 };

@@ -237,8 +237,8 @@ const AssignProvider = ({ children }: { children: any }) => {
     //   ...res.script
     // }
     setScriptForRecreate([{ ...res.script }])
-    setTargetForRecreate([{ isSelected: true, ...res.target }])
-    setAssigneeForRecreate([{ isSelected: true, ...res.assignee }])
+    setTargetForRecreate([{ ...res.target }])
+    setAssigneeForRecreate([{ ...res.assignee }])
   }
 
   const selectScript = (

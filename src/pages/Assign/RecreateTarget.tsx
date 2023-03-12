@@ -25,7 +25,7 @@ const RecreateTarget = () => {
         <Layouts.Sixth>
             <div className={`bg-red-03 shadow-box pl-6 pt-4 pr-4  ${dataShow ? "h-[29rem]" : "h-24 overflow-hidden"} duration-300 relative`}>
                 <div className='flex justify-between items-start mb-[23px] gap-x-3'>
-                    <Navigator.Back path={Path.BILLING_PATH} title="Recreate Target" />
+                    <Navigator.Back path={`${Path.ASSIGN_PATH}/${Path.ALL_TARGET_PTAH}`} title="Recreate Target" />
                     <div className="flex items-center gap-x-4 mt-4">
                         <div className={`${dataShow ? "hidden" : "block"} animate-fadeIn`}>
                             <Buttons.IconWithTextButton.Tertiary
