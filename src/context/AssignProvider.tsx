@@ -66,6 +66,9 @@ interface ContextProps {
   setScriptForRecreate: React.Dispatch<React.SetStateAction<ScriptItemDT[]>>;
   setTargetForRecreate: React.Dispatch<React.SetStateAction<CriteriaItemDT[]>>;
   setAssigneeForRecreate: React.Dispatch<React.SetStateAction<AssigneeItemDT[]>>;
+  getSingleCriteriaRecreate: (id: any) => void;
+  setSingleCriteriaRecreate: React.Dispatch<React.SetStateAction<CriteriaItemDT | undefined>>;
+  singleCriteriaRecreate: CriteriaItemDT | undefined;
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -88,11 +91,9 @@ const AssignProvider = ({ children }: { children: any }) => {
   const [allScript, setAllScript] = useState<allScriptDT | undefined>();
   const [singleCriteriaData, setSingleCriteriaData] = useState<any>({})
   const [scriptForRecreate, setScriptForRecreate] = useState<ScriptItemDT[]>([] as ScriptItemDT[])
-  const [targetForRecreate, setTargetForRecreate] = useState<CriteriaItemDT[]>([] as CriteriaItemDT[])
-  const [assigneeForRecreate, setAssigneeForRecreate] = useState<AssigneeItemDT[]>([] as AssigneeItemDT[])
-
-
-
+  const [targetForRecreate, setTargetForRecreate] = useState<CriteriaItemDT[]>([] as CriteriaItemDT[]);
+  const [singleCriteriaRecreate, setSingleCriteriaRecreate] = useState<CriteriaItemDT>();
+  const [assigneeForRecreate, setAssigneeForRecreate] = useState<AssigneeItemDT[]>([] as AssigneeItemDT[]);
 
   const saveCriteria = (data: any) => {
     const filteredCriterias = criterias.filter((criteria: any, i: number) => i !== editId);
@@ -237,8 +238,14 @@ const AssignProvider = ({ children }: { children: any }) => {
     //   ...res.script
     // }
     setScriptForRecreate([{ ...res.script }])
-    setTargetForRecreate([{ isSelected: true, ...res.target }])
-    setAssigneeForRecreate([{ isSelected: true, ...res.assignee }])
+    setTargetForRecreate([{...res.target }])
+    setAssigneeForRecreate([{...res.assignee }])
+  }
+
+  const getSingleCriteriaRecreate = (id: any) => {
+    const _data = targetForRecreate?.filter((item: CriteriaItemDT) => item?.id === id);
+    setSingleCriteriaRecreate(_data[0]);
+    
   }
 
   const selectScript = (
@@ -401,6 +408,9 @@ const AssignProvider = ({ children }: { children: any }) => {
         setScriptForRecreate,
         targetForRecreate,
         setTargetForRecreate,
+        getSingleCriteriaRecreate,
+        setSingleCriteriaRecreate,
+        singleCriteriaRecreate
       }}
     >
       {children}

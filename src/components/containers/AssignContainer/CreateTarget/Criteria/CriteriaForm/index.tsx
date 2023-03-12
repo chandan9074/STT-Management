@@ -5,7 +5,7 @@ import TargetSetting from './TargetSetting';
 import './TargetElement.css';
 import ActionButton from './ActionButton';
 import { useContext } from 'react';
-import { AssignContext } from '../../../../../../context/AssignProvider';
+import { AssignContext, useAssigneeContext } from '../../../../../../context/AssignProvider';
 import { isEmpty } from '../../../../../../helpers/Utils';
 
 const validationSchema = yup.object({
@@ -17,9 +17,12 @@ const validationSchema = yup.object({
 type Props = {
     drawerClose: () => void,
     data?: any,
+    isRecreate?: boolean
 }
 
-const CriteriaForm = ({ drawerClose, data }: Props) => {
+const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
+
+    const { targetForRecreate, setTargetForRecreate } = useAssigneeContext();
 
     const AssignContexts = useContext(AssignContext);
     const {
@@ -62,8 +65,8 @@ const CriteriaForm = ({ drawerClose, data }: Props) => {
     });
 
     const onCriteriaUpdata = () => {
-        const _data = {...formik.values, id: data?.id}
-        UpdateAssignCriteria(_data);        
+        const _data = { ...formik.values, id: data?.id }
+        UpdateAssignCriteria(_data);
         drawerClose();
     }
 
@@ -73,6 +76,28 @@ const CriteriaForm = ({ drawerClose, data }: Props) => {
         drawerClose();
     }
 
+    const onRecreateCreate = () => {
+        let newId: any;
+        const newCriterias = criterias.map((criteria: any) => {
+            do {
+                // Generate a new random id
+                newId = Math.floor(Math.random() * 100000);
+            } while (targetForRecreate.some(target => target.id === newId));
+
+            // Return a new criteria object with the new id
+            return {
+                ...criteria,
+                id: newId
+            };
+        });
+
+        setTargetForRecreate(prevTargetForRecreate => [
+            ...prevTargetForRecreate,
+            ...newCriterias
+        ]);
+        emptyCriteria();
+        drawerClose();
+    };
 
     return (
         <div>
@@ -83,7 +108,7 @@ const CriteriaForm = ({ drawerClose, data }: Props) => {
                 </div>
                 <ActionButton
                     formik={formik}
-                    onCreate={onCreate}
+                    onCreate={isRecreate ? onRecreateCreate : onCreate}
                     data={data}
                 />
             </form>

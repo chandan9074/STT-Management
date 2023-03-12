@@ -3,60 +3,59 @@ import Icons from "../../../../../assets/Icons";
 import Buttons from "../../../../Buttons";
 import { CustomModal } from "../../../../common/CustomModal";
 import "../../../../../assets/css/table/criteria_details.css";
-import { useAssigneeContext } from "../../../../../context/AssignProvider";
 import Image from "../../../../Image";
 type Props = {
   modalOpen: boolean;
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  data: any;
 };
 
-const CriteriaDetailsModal = ({ modalOpen, setModalOpen }: Props) => {
-  const { singleCriteriaData } = useAssigneeContext();
+const CriteriaDetailsModal = ({ modalOpen, setModalOpen, data }: Props) => {
 
   const singleValue1 = [
     {
       title: 'Gender',
-      value: singleCriteriaData?.gender || '-'
+      value: data?.gender || '-'
     },
     {
       title: 'Age Range',
-      value: singleCriteriaData?.ageRange || '-'
+      value: data?.ageRange || '-'
     },
     {
       title: 'Division/ District',
-      value: singleCriteriaData?.district
+      value: data?.district
     },
     {
       title: 'profession',
-      value: singleCriteriaData?.profession || '-'
+      value: data?.profession || '-'
     },
     {
       title: 'Economic Situation',
-      value: singleCriteriaData?.economicSituation || '-'
+      value: data?.economicSituation || '-'
     },
     {
       title: 'Education',
-      value: singleCriteriaData?.education || '-'
+      value: data?.education || '-'
     },
     {
       title: 'Smoking Habit',
-      value: singleCriteriaData?.healthFactors?.includes('Smoker') ? 'Yes' : 'No'
+      value: data?.healthFactors?.includes('Smoker') ? 'Yes' : 'No'
     },
     {
       title: 'Hearing Disability',
-      value: singleCriteriaData?.healthFactors?.includes('Hearing') ? 'Yes' : 'No'
+      value: data?.healthFactors?.includes('Hearing') ? 'Yes' : 'No'
     },
     {
       title: 'Shutter',
-      value: singleCriteriaData?.healthFactors?.includes('Stutter') ? 'Yes' : 'No'
+      value: data?.healthFactors?.includes('Stutter') ? 'Yes' : 'No'
     },
     {
       title: 'Recording Area',
-      value: singleCriteriaData?.recordingArea || '-'
+      value: data?.recordingArea || '-'
     },
     {
       title: 'Recording Distance',
-      value: singleCriteriaData?.recordingDistance || '-'
+      value: data?.recordingDistance || '-'
     },
 
   ]
@@ -64,19 +63,19 @@ const CriteriaDetailsModal = ({ modalOpen, setModalOpen }: Props) => {
   const singleValue2 = [
     {
       title: 'Target',
-      value: singleCriteriaData?.target || '-'
+      value: data?.target || '-'
     },
     {
       title: 'Deadline',
-      value: singleCriteriaData?.deadline || '-'
+      value: data?.deadline || '-'
     },
     {
       title: 'Reminder',
-      value: singleCriteriaData?.reminder || []
+      value: data?.reminder || []
     },
     {
       title: 'Note',
-      value: singleCriteriaData?.remark || '-'
+      value: data?.remark || '-'
     },
 
   ]
@@ -106,17 +105,17 @@ const CriteriaDetailsModal = ({ modalOpen, setModalOpen }: Props) => {
         {/* user info  */}
         <div >
           {
-            singleCriteriaData &&
+            data &&
 
             <div className='mt-[30px]'>
               <div
 
                 className={`bg-ct-blue-10 h-[54px] w-[176px] rounded-[65px] flex justify-center items-center gap-x-2 cursor-pointer`}
               >
-                <Image.RoleImage role={singleCriteriaData?.gender === 'Male' ? 'Speaker' : 'speakerFemale'} />
+                <Image.RoleImage role={data?.gender === 'Male' ? 'Speaker' : 'speakerFemale'} />
                 <div>
                   {/* <h1 className='text-ct-blue-80 text-xxs'>Target ID- 23-23456-7</h1> */}
-                  <h1 className='text-ct-blue-90 text-xxs font-medium'>target: {singleCriteriaData.target}</h1>
+                  <h1 className='text-ct-blue-90 text-xxs font-medium'>target: {data.target}</h1>
                 </div>
               </div>
 
