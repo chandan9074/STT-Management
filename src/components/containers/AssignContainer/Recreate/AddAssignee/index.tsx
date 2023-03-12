@@ -1,13 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Buttons from "../../../../Buttons";
 import Icons from "../../../../../assets/Icons";
 import AssigneeTargetBox from "./AssigneeTargetBox";
-import { useAssigneeContext } from "../../../../../context/AssignProvider";
+import { AssignContext } from "../../../../../context/AssignProvider";
 import AddAssigneeModal from "../../CreateTarget/AddAssignee/AddAssigneeModal";
 
 const AddAssignee = () => {
     const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
-    const { assigneeForRecreate } = useAssigneeContext();
 
     const drawerClose = () => {
         setDrawerOpen(false);
@@ -16,6 +15,8 @@ const AddAssignee = () => {
         setDrawerOpen(true);
     };
 
+    const {assigneeForRecreate } = useContext(AssignContext)
+   
     return (
         <div className="h-full w-full flex flex-col justify-end">
             {assigneeForRecreate?.length > 0 && (
@@ -57,6 +58,7 @@ const AddAssignee = () => {
                     drawerOpen &&
                     <AddAssigneeModal
                         handleModal={drawerClose}
+                        isRecreate={true}
                     />
                 }
             </div>

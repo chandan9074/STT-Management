@@ -139,7 +139,7 @@ const CriteriaRowItem = ({
         drawerClose={drawerClose}
         title="Create Critaria"
       >
-        <CriteriaForm drawerClose={drawerClose} data={singleCriteriaData} />
+        <CriteriaForm drawerClose={drawerClose} data={singleCriteriaData}/>
       </Drawer.Criteria.Type1>
 
     </div>

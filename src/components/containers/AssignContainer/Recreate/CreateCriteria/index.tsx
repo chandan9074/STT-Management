@@ -52,7 +52,7 @@ const CreateCriteria = () => {
                     drawerClose={drawerClose}
                     title="Create Critaria"
                 >
-                    <CriteriaForm drawerClose={drawerClose} />
+                    <CriteriaForm drawerClose={drawerClose} isRecreate={true}/>
                 </Drawer.Criteria.Type1>
             </div>
         </div>

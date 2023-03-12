@@ -23,6 +23,8 @@ const CriteriaTargetBox = ({
     (item) => item?.isSelected
   );
 
+  const { singleCriteriaData } = useAssigneeContext();
+
   const isAllSelected =
     selectedCriteriaList?.length === checkedCriteriaList?.length;
   const indeterminate =
@@ -85,6 +87,7 @@ const CriteriaTargetBox = ({
         <CriteriaDetailsModal
           modalOpen={openCriteriaDetailsModal}
           setModalOpen={setOpenCriteriaDetailsModal}
+          data={singleCriteriaData}
         />
       )}
     </>

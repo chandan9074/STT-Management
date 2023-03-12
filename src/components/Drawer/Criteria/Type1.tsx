@@ -11,10 +11,10 @@ type Props = {
     children: any,
     isDrawerOpen: boolean,
     drawerClose: () => void,
-    title: string
+    title: string,
 }
 
-const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
+const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {    
 
     const AssignContexts = useContext(AssignContext);
     const {

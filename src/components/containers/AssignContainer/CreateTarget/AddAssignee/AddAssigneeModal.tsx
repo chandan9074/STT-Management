@@ -25,12 +25,14 @@ const roleData = [
 
 const AddAssigneeModal = ({
     handleModal,
+    isRecreate
     // type
 }: {
     handleModal: (value: boolean) => void,
+    isRecreate?: boolean
 }) => {
 
-    const {createAssignee} = useContext(AssignContext)
+    const { createAssignee, assigneeForRecreate, setAssigneeForRecreate} = useContext(AssignContext)
 
     const [form] = Form.useForm();
 
@@ -67,7 +69,7 @@ const AddAssigneeModal = ({
     const onRoleChange = (e: any) => {
         setRole(e.target.value);
         form.resetFields();
-    }    
+    }
 
     useEffect(() => {
         if (dropDownCount === 2) {
@@ -78,7 +80,7 @@ const AddAssigneeModal = ({
 
 
     const handleRoleChange = (id: string, p: any) => {
-      
+
         const _data = roleDatas?.filter((m: roleDT) => m.id === p.key);
 
         const index = customRoleData.findIndex((data) => data.id === p.key);
@@ -131,8 +133,31 @@ const AddAssigneeModal = ({
             return item?.id;
         });
 
-        const _data = {selectedAssignee: _id};
+        const _data = { selectedAssignee: _id };
         createAssignee(_data);
+        onClose();
+    }
+
+    const onAddRecreateHandle = () => {
+        let newId: any;
+        const newAssignee = customRoleData.map((assignee: any) => {
+            do {
+                // Generate a new random id
+                newId = Math.floor(Math.random() * 100000);
+            } while (assigneeForRecreate.some(target => target.id === newId));
+
+            // Return a new criteria object with the new id
+            return {
+                ...assignee,
+                id: newId
+            };
+        });
+
+        setAssigneeForRecreate(prevTargetForRecreate => [
+            ...prevTargetForRecreate,
+            ...newAssignee
+        ]);
+
         onClose();
     }
 
@@ -160,7 +185,7 @@ const AddAssigneeModal = ({
                                 <div className='flex justify-center items-center'>
                                     {/* <Link to={`${BILLING_PAYMENT_HISTORY_PATH}/${singleManager?.id}`}> */}
                                     <button
-                                    onClick={() => onAddHandle()}
+                                        onClick={() => isRecreate ? onAddRecreateHandle() : onAddHandle()}
                                         className=' text-white text-base bg-primary-ct-blue-60 rounded-[6px] py-[9px] px-8'>
                                         Add
                                     </button>
@@ -253,7 +278,7 @@ const AddAssigneeModal = ({
                                                             <div className='flex gap-x-4'>
                                                                 {/* <img className='h-[18px] w-[18px]' src={Icons.manager}
                                                                     alt="" /> */}
-                                                                    <RoleImage role={role} />
+                                                                <RoleImage role={role} />
                                                                 <h1 className='text-blue-gray-90 text-small'>{m.id} - {m.name}</h1>
                                                             </div>
                                                         </Option>
