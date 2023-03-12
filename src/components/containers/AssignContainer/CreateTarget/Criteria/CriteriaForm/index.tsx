@@ -77,12 +77,13 @@ const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
     }
 
     const onRecreateCreate = () => {
-        let newId: any;
+        const targetForRecreateIds = targetForRecreate.map(target => target.id);
         const newCriterias = criterias.map((criteria: any) => {
+            let newId: any;
             do {
                 // Generate a new random id
                 newId = Math.floor(Math.random() * 100000);
-            } while (targetForRecreate.some(target => target.id === newId));
+            } while (targetForRecreateIds.includes(newId));
 
             // Return a new criteria object with the new id
             return {
@@ -97,7 +98,7 @@ const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
         ]);
         emptyCriteria();
         drawerClose();
-    };
+    }
 
     return (
         <div>
