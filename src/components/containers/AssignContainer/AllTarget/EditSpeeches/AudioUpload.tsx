@@ -48,25 +48,25 @@ const AudioUpload = ({ data, audioId, speechData, setSpeechData, setAudioUploadS
         setSpeechData(newData);
 
         // setAudioUploadStatus(AUDIO_FILE_UPLOADED);
-        
+
     };
 
     // const handleFileUpload = async () => {
     //     const formData = new FormData();
     //     formData.append('file', selectedFile);
-        // try {
-        //   const response = await fetch('/upload', {
-        //     method: 'POST',
-        //     body: formData,
-        //     onUploadProgress: (progressEvent: any) => {
-        //       const progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
-        //       setUploadProgress(progress);
-        //     },
-        //   });
-        //   console.log(response);
-        // } catch (error) {
-        //   console.error(error);
-        // }
+    // try {
+    //   const response = await fetch('/upload', {
+    //     method: 'POST',
+    //     body: formData,
+    //     onUploadProgress: (progressEvent: any) => {
+    //       const progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
+    //       setUploadProgress(progress);
+    //     },
+    //   });
+    //   console.log(response);
+    // } catch (error) {
+    //   console.error(error);
+    // }
     // };
 
     const handleButtonClick = () => {
