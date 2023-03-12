@@ -20,7 +20,7 @@ const CriteriaTargetBox = ({
     useState(false);
 
 
-  const { targetForRecreate, setTargetForRecreate, singleCriteriaData, getCriteriaByID, getSingleCriteriaRecreate, singleCriteriaRecreate } = useAssigneeContext();
+  const { targetForRecreate, setTargetForRecreate, singleCriteriaData, getCriteriaByID, getSingleCriteriaRecreate, singleCriteriaRecreate, setRecreateTable, recreateTable } = useAssigneeContext();
   const optionMenuRef = useRef<null | HTMLDivElement>(null);
   const [criteriaId, setCriteriaId] = useState<any>();
 
@@ -28,7 +28,7 @@ const CriteriaTargetBox = ({
   const [selectedValue, setSelectedValue] = useState<string>("");
 
   console.log('single-----------------', singleCriteriaRecreate);
-  
+
 
   const handleTextConcatenation = (data: CriteriaItemDT) => {
     let text = ""
@@ -71,6 +71,7 @@ const CriteriaTargetBox = ({
         });
       });
       setSelectedValue(selectedItem?.id);
+      setRecreateTable({ ...recreateTable, target: selectedItem })
     }
   };
 

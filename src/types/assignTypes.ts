@@ -106,3 +106,9 @@ export type targetForRecreate = {
   target: CriteriaItemDT;
   assignee: AssigneeItemDT;
 }
+
+export type recreateTableDT = {
+  script: ScriptItemDT;
+  target: CriteriaItemDT;
+  assignee: AssigneeItemDT;
+}

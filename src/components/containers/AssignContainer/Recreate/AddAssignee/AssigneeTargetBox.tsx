@@ -16,7 +16,7 @@ const AssigneeTargetBox = ({
   onClick: () => void;
 }) => {
 
-  const { setAssigneeForRecreate, assigneeForRecreate } = useAssigneeContext();
+  const { setAssigneeForRecreate, assigneeForRecreate, setRecreateTable, recreateTable } = useAssigneeContext();
   const [selectedValue, setSelectedValue] = useState<string>("");
 
   const selectAssignee = (
@@ -34,6 +34,7 @@ const AssigneeTargetBox = ({
         });
       });
       setSelectedValue(selectedItem?.id);
+      setRecreateTable({ ...recreateTable, assignee: selectedItem })
     }
   };
 

@@ -9,11 +9,12 @@ import { useParams } from 'react-router-dom';
 import { useAssigneeContext } from '../../context/AssignProvider';
 import CreateCriteria from '../../components/containers/AssignContainer/Recreate/CreateCriteria';
 import AddAssignee from '../../components/containers/AssignContainer/Recreate/AddAssignee';
+import Table from '../../components/Table';
 
 const RecreateTarget = () => {
     const [dataShow, setDataShow] = useState<boolean>(true);
     const { id } = useParams<{ id: string }>();
-    const { getTargetForRecreate } = useAssigneeContext();
+    const { getTargetForRecreate, recreateTable } = useAssigneeContext();
 
     useEffect(() => {
         if (id) {
@@ -69,6 +70,8 @@ const RecreateTarget = () => {
                     </div>
                 </div>
             </div>
+            {/* {recreateTable && <Table.Type12 />} */}
+            <Table.Type12 />
         </Layouts.Sixth>
     )
 }

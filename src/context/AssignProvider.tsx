@@ -6,6 +6,7 @@ import {
   AssigneeItemDT,
   CriteriaItemDT,
   postSelectedScriptBodyDT,
+  recreateTableDT,
   ScriptItemDT,
   TargetItemDT,
   updateDraftTargetQueryParams,
@@ -69,6 +70,8 @@ interface ContextProps {
   getSingleCriteriaRecreate: (id: any) => void;
   setSingleCriteriaRecreate: React.Dispatch<React.SetStateAction<CriteriaItemDT | undefined>>;
   singleCriteriaRecreate: CriteriaItemDT | undefined;
+  setRecreateTable: React.Dispatch<React.SetStateAction<recreateTableDT>>;
+  recreateTable: recreateTableDT;
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -94,6 +97,7 @@ const AssignProvider = ({ children }: { children: any }) => {
   const [targetForRecreate, setTargetForRecreate] = useState<CriteriaItemDT[]>([] as CriteriaItemDT[]);
   const [singleCriteriaRecreate, setSingleCriteriaRecreate] = useState<CriteriaItemDT>();
   const [assigneeForRecreate, setAssigneeForRecreate] = useState<AssigneeItemDT[]>([] as AssigneeItemDT[]);
+  const [recreateTable, setRecreateTable] = useState<recreateTableDT>({} as recreateTableDT);
 
   const saveCriteria = (data: any) => {
     const filteredCriterias = criterias.filter((criteria: any, i: number) => i !== editId);
@@ -238,14 +242,15 @@ const AssignProvider = ({ children }: { children: any }) => {
     //   ...res.script
     // }
     setScriptForRecreate([{ ...res.script }])
-    setTargetForRecreate([{...res.target }])
-    setAssigneeForRecreate([{...res.assignee }])
+    setTargetForRecreate([{ ...res.target }])
+    setAssigneeForRecreate([{ ...res.assignee }])
+    setRecreateTable({ script: res.script, target: res.target, assignee: res.assignee })
   }
 
   const getSingleCriteriaRecreate = (id: any) => {
     const _data = targetForRecreate?.filter((item: CriteriaItemDT) => item?.id === id);
     setSingleCriteriaRecreate(_data[0]);
-    
+
   }
 
   const selectScript = (
@@ -410,7 +415,9 @@ const AssignProvider = ({ children }: { children: any }) => {
         setTargetForRecreate,
         getSingleCriteriaRecreate,
         setSingleCriteriaRecreate,
-        singleCriteriaRecreate
+        singleCriteriaRecreate,
+        recreateTable,
+        setRecreateTable
       }}
     >
       {children}

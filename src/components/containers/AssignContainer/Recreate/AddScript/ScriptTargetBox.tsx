@@ -15,7 +15,7 @@ const ScriptTargetBox = ({
   targetTitle: string;
   onClick: () => void;
 }) => {
-  const { scriptForRecreate, setScriptForRecreate } = useAssigneeContext();
+  const { scriptForRecreate, setScriptForRecreate, setRecreateTable, recreateTable } = useAssigneeContext();
   const [selectedValue, setSelectedValue] = useState<string>("");
 
   const selectScript = (
@@ -34,6 +34,7 @@ const ScriptTargetBox = ({
       });
       console.log('checked value', scriptForRecreate)
       setSelectedValue(selectedItem?.id);
+      setRecreateTable({ ...recreateTable, script: selectedItem })
     }
   };
 
