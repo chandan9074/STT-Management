@@ -81,7 +81,7 @@ const ScriptTargetBox = ({
                   checked={item?.isSelected}
                 /> */}
                 <Radio
-                  checked={selectedValue ? selectedValue === item?.id : scriptForRecreate[0].id === item?.id}
+                  checked={recreateTable.script ? recreateTable.script.id === item?.id : scriptForRecreate[0].id === item?.id}
                   onChange={(e) => selectScript(item)}
                   name="radio-buttons"
                   size="small"
