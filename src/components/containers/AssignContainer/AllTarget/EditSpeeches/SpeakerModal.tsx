@@ -12,7 +12,7 @@ const { Option } = Select;
 type Props = {
     setModal: Dispatch<SetStateAction<boolean>>;
     setData: Dispatch<SetStateAction<any>>;
-    speechId: number,
+    speechId: string,
     data: any
 }
 
