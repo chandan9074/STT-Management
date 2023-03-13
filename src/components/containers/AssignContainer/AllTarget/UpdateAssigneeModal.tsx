@@ -66,9 +66,11 @@ const newRoleList = [
 
 const UpdateAssigneeModal = ({
     handleModal,
+    targetId
     // type
 }: {
     handleModal: (value: boolean) => void,
+    targetId: any
 }) => {
 
     const [form] = Form.useForm();
@@ -168,13 +170,28 @@ const UpdateAssigneeModal = ({
 
     const onAddHandle = () => {
 
-        const _id = customRoleData?.map((item: any) => {
-            return item?.id;
-        });
+        // const _id = customRoleData?.map((item: any) => {
+        //     return item?.id;
+        // });
 
-        const _data = { selectedAssignee: _id };
-        // createAssignee(_data);
-        console.log('data', _data);
+        // const _data = { selectedAssignee: _id };
+        // // createAssignee(_data);
+        // console.log('data', _data);
+
+        const _targetId = targetId?.map((item: any) => {
+            return item?.id
+        })
+
+        // console.log('%%%%%%%%%%%%%', _targetId);
+        
+
+        const _dataId = {
+            targetId: _targetId,
+            selectedAssigneeId: roleId
+        }
+
+        console.log('--------------', _dataId);
+        
         
         onClose();
     }
@@ -182,7 +199,8 @@ const UpdateAssigneeModal = ({
     const onValueChange = (e: any) => {
         setRoleId(e.target.value);
         form.resetFields();
-    }
+    }    
+
 
     return (
         <div className='fixed top-0 left-0 flex justify-center items-center w-full h-screen z-[150] animate-fadeIn2'>

@@ -236,6 +236,7 @@ const Type10 = ({ setTargetId, targetId }: Props) => {
             name: record.name,
         }),
     };
+    
     return (
         <div className='billing-table type4-table' >
 

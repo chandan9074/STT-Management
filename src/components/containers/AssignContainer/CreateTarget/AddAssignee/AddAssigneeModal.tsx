@@ -32,7 +32,7 @@ const AddAssigneeModal = ({
     isRecreate?: boolean
 }) => {
 
-    const { createAssignee, assigneeForRecreate, setAssigneeForRecreate} = useContext(AssignContext)
+    const { createAssignee, assigneeForRecreate, setAssigneeForRecreate } = useContext(AssignContext)
 
     const [form] = Form.useForm();
 
@@ -139,12 +139,13 @@ const AddAssigneeModal = ({
     }
 
     const onAddRecreateHandle = () => {
-        let newId: any;
+        const assigneeForRecreateIds = assigneeForRecreate.map(assignee => assignee.id);
         const newAssignee = customRoleData.map((assignee: any) => {
+            let newId: any;
             do {
                 // Generate a new random id
                 newId = Math.floor(Math.random() * 100000);
-            } while (assigneeForRecreate.some(target => target.id === newId));
+            } while (assigneeForRecreateIds.includes(newId));
 
             // Return a new criteria object with the new id
             return {
