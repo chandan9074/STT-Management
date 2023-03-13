@@ -4,7 +4,7 @@ import { useState } from "react";
 import Icons from "../../assets/Icons";
 import "../../assets/css/table/type4Table.css";
 import { useAssigneeContext } from "../../context/AssignProvider";
-import { ScriptItemDT, TargetItemDT, updateDraftTargetQueryParams } from "../../types/assignTypes";
+import { AssigneeItemDT, CriteriaItemDT, ScriptItemDT, TargetItemDT, updateDraftTargetQueryParams } from "../../types/assignTypes";
 import Buttons from "../Buttons";
 import ScriptTargetModal from "../containers/AssignContainer/CreateTarget/TargetTable/ScriptTargetModal";
 import RoleImage from "../Image/RoleImage";
@@ -21,7 +21,7 @@ import { Drawer } from "../Drawer";
 // }
 
 const Type8 = () => {
-  const { selectedTargetList: dataList, updateDraftTarget, selectedScriptList } = useAssigneeContext();
+  const { selectedTargetList: dataList, updateDraftTarget, selectedScriptList, selectedCriteriaList, selectedAssigneList } = useAssigneeContext();
   const [open, setOpen] = useState(false);
   const [openScriptModal, setOpenScriptModal] = useState<boolean>(false);
   const [selectedTarget, setSelectedTarget] = useState<TargetItemDT | null>(
@@ -59,7 +59,7 @@ const Type8 = () => {
     // setDrawerData(key);
   };
 
-  const handleSelectItem = (item: ScriptItemDT, params?: updateDraftTargetQueryParams) => {
+  const handleSelectItem = (item: ScriptItemDT | CriteriaItemDT | AssigneeItemDT, params?: updateDraftTargetQueryParams) => {
     // const params = {
     //   id: selectedTargetId,
     //   script: item.id,
@@ -121,7 +121,7 @@ const Type8 = () => {
           ></div>
           {openTargetModal && selectedTarget?.id === data?.id && (
             <div className="absolute bottom-11 right-0 w-[424px] bg-white rounded-md z-[100]">
-              {data.target.id && <CriteriaTargetModal selectedCriteriaId={data.target.id} selectedTargetId={selectedTarget.id} setOpenTargetModal={setOpenTargetModal} />}
+              {data.target.id && <CriteriaTargetModal handleSelectItem={handleSelectItem} selectedItemList={selectedCriteriaList} selectedCriteriaId={data.target.id} selectedTargetId={selectedTarget.id} />}
             </div>
           )}
         </div>
@@ -155,7 +155,7 @@ const Type8 = () => {
           ></div>
           {openAssigneeModal && selectedTarget?.id === data?.id && (
             <div className="absolute bottom-11 right-0 w-[376px] bg-white rounded-md z-[100]">
-              {data.assignee.id && <AssigneeTargetModal selectedAssigneeId={data.assignee.id} selectedTargetId={selectedTarget.id} setOpenAssigneeModal={setOpenAssigneeModal} />}
+              {data.assignee.id && <AssigneeTargetModal handleSelectItem={handleSelectItem} selectedItemList={selectedAssigneList} selectedAssigneeId={data.assignee.id} selectedTargetId={selectedTarget.id} />}
             </div>
           )}
         </div>

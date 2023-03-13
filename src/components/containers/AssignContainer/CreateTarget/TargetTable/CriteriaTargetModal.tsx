@@ -2,22 +2,22 @@ import { useEffect, useState } from "react";
 import Icons from "../../../../../assets/Icons";
 import Buttons from "../../../../Buttons";
 import "../../../../../assets/css/table/criteria_details.css";
-import { CriteriaItemDT } from "../../../../../types/assignTypes";
+import { CriteriaItemDT, updateDraftTargetQueryParams } from "../../../../../types/assignTypes";
 import { Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { useAssigneeContext } from "../../../../../context/AssignProvider";
 import { Radio } from "@mui/material";
 type Props = {
-  // criteriaList: CriteriaItemDT[];
+  selectedItemList:  CriteriaItemDT[];
   selectedCriteriaId: string;
   selectedTargetId: string;
-  setOpenTargetModal: React.Dispatch<React.SetStateAction<boolean>>;
+  handleSelectItem: (item: CriteriaItemDT, params?: updateDraftTargetQueryParams) => void;
 };
 
-const CriteriaTargetModal = ({ selectedCriteriaId, selectedTargetId, setOpenTargetModal }: Props) => {
+const CriteriaTargetModal = ({ selectedCriteriaId, selectedTargetId,  handleSelectItem, selectedItemList }: Props) => {
 
   const [searchEnable, setSearchEnable] = useState(false);
-  const { getCriteria, selectedCriteriaList, updateDraftTarget } = useAssigneeContext();
+  const { getCriteria } = useAssigneeContext();
 
   useEffect(() => {
     getCriteria();
@@ -29,10 +29,11 @@ const CriteriaTargetModal = ({ selectedCriteriaId, selectedTargetId, setOpenTarg
       id: selectedTargetId,
       target: item.id,
     }
-    updateDraftTarget(params);
+    // updateDraftTarget(params);
 
-    setOpenTargetModal(false);
-    console.log("hello")
+    // setOpenTargetModal(false);
+    // console.log("hello")
+    handleSelectItem(item, params);
   };
 
   const handleTextConcatenation = (data: CriteriaItemDT) => {
@@ -95,7 +96,7 @@ const CriteriaTargetModal = ({ selectedCriteriaId, selectedTargetId, setOpenTarg
           <div className="flex items-center gap-1 w-full px-4 pt-1 justify-between">
             <div>
               <p className="text-[#6B7B8C] font-[500]">
-                CRITERIA: {selectedCriteriaList?.length}
+                CRITERIA: {selectedItemList?.length}
               </p>
             </div>
             <div>
@@ -112,7 +113,7 @@ const CriteriaTargetModal = ({ selectedCriteriaId, selectedTargetId, setOpenTarg
 
         {/* //body  */}
         <div className="flex flex-col gap-1 items-start justify-start h-full w-full py-1 overflow-y-auto custom_scrollbar">
-          {selectedCriteriaList.map((item, index) => (
+          {selectedItemList.map((item, index) => (
             <div
               key={index}
               className={`flex items-center gap-1 w-full pr-4 pl-1.5 py-1 justify-between group ${selectedCriteriaId === item?.id && "bg-[#E1EFFE]"

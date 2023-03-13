@@ -71,7 +71,15 @@ const RecreateTarget = () => {
                 </div>
             </div>
             {/* {recreateTable && <Table.Type12 />} */}
-            <Table.Type12 />
+            <div className='mx-5 mt-5'>
+                <div className='flex justify-between items-center mb-4'>
+                    <h1 className="text-heading-6 font-normal text-ct-blue-95">
+                        {recreateTable?.target?.target} Targets
+                    </h1>
+                    <Buttons.LabelButton.Primary label='Create and Send' variant='CT-Blue' size='small' />
+                </div>
+                <Table.Type12 />
+            </div>
         </Layouts.Sixth>
     )
 }

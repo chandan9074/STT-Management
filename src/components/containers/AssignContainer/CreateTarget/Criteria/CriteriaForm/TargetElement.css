@@ -17,3 +17,14 @@
   left: calc(50% - -248px) !important;
   z-index: 99999;
 }
+
+.recreate_deadline_date_picker {
+  position: absolute !important;
+  top: calc(50% - -275px) !important;
+  left: calc(50% - -248px) !important;
+  z-index: 99999;
+}
+
+.recreate_deadline_date_picker input {
+  display: none;
+}

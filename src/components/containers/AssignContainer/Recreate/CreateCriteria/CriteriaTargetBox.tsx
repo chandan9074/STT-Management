@@ -25,7 +25,7 @@ const CriteriaTargetBox = ({
   const [criteriaId, setCriteriaId] = useState<any>();
 
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
-  const [selectedValue, setSelectedValue] = useState<string>("");
+  // const [selectedValue, setSelectedValue] = useState<string>("");
 
   console.log('single-----------------', singleCriteriaRecreate);
 
@@ -70,7 +70,7 @@ const CriteriaTargetBox = ({
           }
         });
       });
-      setSelectedValue(selectedItem?.id);
+      // setSelectedValue(selectedItem?.id);
       setRecreateTable({ ...recreateTable, target: selectedItem })
     }
   };
@@ -122,7 +122,7 @@ const CriteriaTargetBox = ({
                 className="flex items-start gap-1 w-full px-[11px] hover:bg-[#F9FAFC] duration-300 py-3 animate-fadeIn cursor-pointer"
               >
                 <Radio
-                  checked={selectedValue ? selectedValue === criteria?.id : targetForRecreate[0].id === criteria?.id}
+                  checked={recreateTable.target ? recreateTable.target.id === criteria?.id : targetForRecreate[0].id === criteria?.id}
                   onChange={(e) => selectCriteria(criteria)}
                   name="radio-buttons"
                   size="small"

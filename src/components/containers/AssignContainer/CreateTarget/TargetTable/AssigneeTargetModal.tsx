@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Icons from "../../../../../assets/Icons";
 import Buttons from "../../../../Buttons";
 import "../../../../../assets/css/table/criteria_details.css";
-import { AssigneeItemDT } from "../../../../../types/assignTypes";
+import { AssigneeItemDT, updateDraftTargetQueryParams } from "../../../../../types/assignTypes";
 import { Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { useAssigneeContext } from "../../../../../context/AssignProvider";
@@ -11,14 +11,15 @@ import RoleImage from "../../../../Image/RoleImage";
 type Props = {
   selectedTargetId: string;
   selectedAssigneeId: string;
-  setOpenAssigneeModal: React.Dispatch<React.SetStateAction<boolean>>;
+  handleSelectItem: (item: AssigneeItemDT, params?: updateDraftTargetQueryParams) => void;
+  selectedItemList: AssigneeItemDT[];
 
 };
 
-const AssigneeTargetModal = ({ selectedAssigneeId, selectedTargetId, setOpenAssigneeModal }: Props) => {
+const AssigneeTargetModal = ({ selectedAssigneeId, selectedTargetId, handleSelectItem, selectedItemList }: Props) => {
   const [searchEnable, setSearchEnable] = useState(false);
 
-  const { getAssignee, selectedAssigneList, updateDraftTarget } = useAssigneeContext();
+  const { getAssignee } = useAssigneeContext();
 
   console.log(selectedAssigneeId)
 
@@ -32,10 +33,11 @@ const AssigneeTargetModal = ({ selectedAssigneeId, selectedTargetId, setOpenAssi
       id: selectedTargetId,
       assignee: item.roleID,
     }
-    updateDraftTarget(params);
+    // updateDraftTarget(params);
 
-    setOpenAssigneeModal(false);
-    console.log("hello")
+    // setOpenAssigneeModal(false);
+    // console.log("hello")
+    handleSelectItem(item, params);
   };
 
   return (
@@ -68,7 +70,7 @@ const AssigneeTargetModal = ({ selectedAssigneeId, selectedTargetId, setOpenAssi
           <div className="flex items-center gap-1 w-full px-4 pt-1 justify-between">
             <div>
               <p className="text-[#6B7B8C] font-[500]">
-                ASSIGNEE: {selectedAssigneList?.length}
+                ASSIGNEE: {selectedItemList?.length}
               </p>
             </div>
             <div>
@@ -85,7 +87,7 @@ const AssigneeTargetModal = ({ selectedAssigneeId, selectedTargetId, setOpenAssi
 
         {/* //body  */}
         <div className="flex flex-col gap-1 items-start justify-start h-full w-full py-1 overflow-y-auto custom_scrollbar">
-          {selectedAssigneList?.map((item, index) => (
+          {selectedItemList?.map((item, index) => (
             <div
               key={item?.id}
               className={`flex items-center gap-1 w-full pr-4 pl-1.5 py-1 justify-between ${selectedAssigneeId === item?.id && "bg-[#E1EFFE]"

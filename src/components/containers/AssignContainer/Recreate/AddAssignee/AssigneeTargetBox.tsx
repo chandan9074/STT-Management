@@ -1,6 +1,5 @@
 import { SearchOutlined } from "@ant-design/icons";
 import { Radio } from "@mui/material";
-import { useState } from "react";
 import Icons from "../../../../../assets/Icons";
 import { useAssigneeContext } from "../../../../../context/AssignProvider";
 import { AssigneeItemDT } from "../../../../../types/assignTypes";
@@ -17,7 +16,7 @@ const AssigneeTargetBox = ({
 }) => {
 
   const { setAssigneeForRecreate, assigneeForRecreate, setRecreateTable, recreateTable } = useAssigneeContext();
-  const [selectedValue, setSelectedValue] = useState<string>("");
+  // const [selectedValue, setSelectedValue] = useState<string>("");
 
   const selectAssignee = (
     selectedItem: AssigneeItemDT | null,
@@ -33,7 +32,7 @@ const AssigneeTargetBox = ({
           }
         });
       });
-      setSelectedValue(selectedItem?.id);
+      // setSelectedValue(selectedItem?.id);
       setRecreateTable({ ...recreateTable, assignee: selectedItem })
     }
   };
@@ -85,7 +84,7 @@ const AssigneeTargetBox = ({
                 {/* <div className="flex-[6]"> */}
                 {/* <div className="flex items-center gap-3"> */}
                 <Radio
-                  checked={selectedValue ? selectedValue === assignee?.id : assigneeForRecreate[0].id === assignee?.id}
+                  checked={recreateTable.assignee ? recreateTable.assignee.id === assignee?.id : assigneeForRecreate[0].id === assignee?.id}
                   onChange={(e) => selectAssignee(assignee)}
                   name="radio-buttons"
                   size="small"
