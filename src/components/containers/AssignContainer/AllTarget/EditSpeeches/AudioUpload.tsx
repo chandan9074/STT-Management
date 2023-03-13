@@ -80,7 +80,7 @@ const AudioUpload = ({ data, audioId, speechData, setSpeechData, setAudioUploadS
             {
                 data === null ?
                     <Buttons.IconWithTextButton.Secondary
-                        label='Upload AUdio'
+                        label='Upload Audio'
                         size='small'
                         variant='Megenta'
                         icon={<img src={Icons.UploadMagenta} alt='' />}
