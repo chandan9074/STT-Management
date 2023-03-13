@@ -2,6 +2,8 @@ import { Dispatch, SetStateAction, useRef, useState } from 'react';
 import Icons from '../../../../../assets/Icons';
 import Buttons from '../../../../Buttons';
 import { AUDIO_FILE_UPLOADED } from '../../../../../helpers/Slug';
+import { CustomModal } from '../../../../common/CustomModal';
+import Type4 from '../../../../common/CustomModal/Type4';
 
 type Props = {
     data: any,
@@ -11,10 +13,26 @@ type Props = {
     setAudioUploadStatus?: Dispatch<SetStateAction<any>>,
 }
 
+
+const tracks = {
+    id: 0,
+    title: "Brahms: St Anthony Chorale - Theme, Two Pianos Op.56b",
+    duration: "5:00",
+    url:
+        "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+}
+
 const AudioUpload = ({ data, audioId, speechData, setSpeechData, setAudioUploadStatus }: Props) => {
     // const [selectedFile, setSelectedFile] = useState<any>(null);
     // const [uploadProgress, setUploadProgress] = useState<any>(0);
+
+    // const [selectedTrack, setSelectedTrack] = useState(tracks);
+
+    const selectedTrack = tracks;
+
     const [audioMin, setAudioMin] = useState<string>('');
+
+    const [openModal, setOpenModal] = useState<boolean>(false);
 
     const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -73,6 +91,10 @@ const AudioUpload = ({ data, audioId, speechData, setSpeechData, setAudioUploadS
         fileInputRef.current?.click();
     }
 
+
+    console.log('data--------------', data);
+
+
     return (
         <div>
             <input type="file" accept="audio/mpeg" onChange={handleFileSelect} hidden ref={fileInputRef} />
@@ -88,12 +110,22 @@ const AudioUpload = ({ data, audioId, speechData, setSpeechData, setAudioUploadS
                         onClick={handleButtonClick}
                     />
                     :
-                    <div className='flex gap-x-[10px] items-start'>
+                    <div className='flex gap-x-[10px] items-start '>
                         <img src={Icons.MusicBlue} alt="" className='mt-[4px]' />
-                        <div>
+                        <div className='cursor-pointer' onClick={() => setOpenModal(true)}>
                             <h4 className='text-xs font-semibold text-secondary-blue-50'>{data?.name}</h4>
                             <h4 className='text-blue-gray-75 text-xs'>{audioMin} min</h4>
                         </div>
+                        {
+                            openModal &&
+                            <Type4
+                                open={openModal}
+                                setOpen={setOpenModal}
+                                selectedTrack={selectedTrack}
+                                data={data}
+                                audioMin={audioMin}
+                            />
+                        }
                     </div>
             }
         </div>

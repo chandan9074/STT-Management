@@ -177,3 +177,8 @@ pre {
 .custom-scrollBar::-webkit-scrollbar-thumb:hover {
   background: darkgray; 
 }
+
+/* Music WaveForm */
+#waveform wave {
+  cursor: pointer !important;
+}

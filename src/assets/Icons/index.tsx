@@ -126,6 +126,8 @@ import UploadMagenta from "./upload_magenta.svg";
 import AccountCircle from "./account_circle.svg";
 import EditGray from "./edit_gray.svg";
 import FluentMagic from "./fluent_magic.svg";
+import Play from "./play.svg";
+import Pause from "./pause.svg"
 
 const Icons = {
   currency,
@@ -255,7 +257,9 @@ const Icons = {
   UploadMagenta,
   AccountCircle,
   EditGray,
-  FluentMagic
+  FluentMagic,
+  Play,
+  Pause
 };
 
 export default Icons;

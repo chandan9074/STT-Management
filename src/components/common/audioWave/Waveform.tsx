@@ -1,15 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import WaveSurfer from 'wavesurfer.js';
+import Icons from "../../../assets/Icons";
+import Buttons from "../../Buttons";
 
 type Props = {
-  url: string
+  url: string,
+  selectedTrack: any,
+  data: any,
+  audioMin: string
 }
 
-const Waveform = ({ url }: Props) => {
+const Waveform = ({ url, selectedTrack, data, audioMin }: Props) => {
 
   console.log('wave---------');
-  
+
 
   const waveformRef = useRef(null);
   // const wavesurfer= useRef(null);
@@ -37,6 +42,13 @@ const Waveform = ({ url }: Props) => {
 
     gradient.forEach((stop) => gradientObj && gradientObj.addColorStop(stop.stop, stop.color));
 
+    canvas.classList.add("waveform-canvas");
+
+    // waveformRef.current.style.cursor = 'pointer';
+
+    // if (waveformRef.current) {
+    //   waveformRef.current.style.cursor = 'pointer';
+    // }
 
     return {
       container: ref,
@@ -47,41 +59,65 @@ const Waveform = ({ url }: Props) => {
       barRadius: 0,
       barGap: 4,
       responsive: true,
-      height: 150,
+      height: 80,
       normalize: true,
       partialRender: true,
 
+      className: "waveform-canvas"
     };
   };
 
 
   // create new WaveSurfer instance
   // On component mount and when url changes
+  // useEffect(() => {
+  //   setPlay(false);
+
+  //   const options: any = formWaveSurferOptions(waveformRef.current);
+  //   wavesurfer.current = WaveSurfer.create(options);
+
+  //   wavesurfer.current.load(url);
+
+  //   wavesurfer.current.on("ready", function () {
+
+  //     if (wavesurfer.current) {
+  //       wavesurfer.current.setVolume(volume);
+  //       setVolume(volume);
+  //     }
+  //   });
+
+
+  //   return () => wavesurfer.current?.destroy();
+  // }, [url]);
+
   useEffect(() => {
     setPlay(false);
 
     const options: any = formWaveSurferOptions(waveformRef.current);
     wavesurfer.current = WaveSurfer.create(options);
 
-    wavesurfer.current.load(url);
+
+    if (data) {
+      // convert data to blob
+      const blob = new Blob([data], { type: 'audio/mpeg' });
+
+      wavesurfer.current.loadBlob(blob);
+    } else {
+      wavesurfer.current.load(url);
+
+    }
+
+
 
     wavesurfer.current.on("ready", function () {
-      // https://wavesurfer-js.org/docs/methods.html
-      // wavesurfer.current.play();
-      // setPlay(true);
-
-      // make sure object stillavailable when file loaded
       if (wavesurfer.current) {
         wavesurfer.current.setVolume(volume);
         setVolume(volume);
       }
     });
 
-    // Removes events, elements and disconnects Web Audio nodes.
-    // when component unmount
-    // return () => wavesurfer.current.destroy();
     return () => wavesurfer.current?.destroy();
-  }, [url]);
+  }, [data, url]);
 
   const handlePlayPause = () => {
     setPlay(!playing);
@@ -101,39 +137,53 @@ const Waveform = ({ url }: Props) => {
 
 
   return (
-    <div style={{
-      position: "relative",
-      width: "100%",
-    }}>
-      <div id="waveform" className="drop-shadow" ref={waveformRef} />
-
-
-      <hr style={{
-        position: "absolute",
-        top: "74px",
-        // borderTop:"1px",
-        border: "none",
-        width: "100%",
-        height: ".5px",
-        zIndex: "9",
-        backgroundColor: "white"
-      }} />
-      <div className="controls">
-        <button onClick={handlePlayPause}>{!playing ? "Play" : "Pause"}</button>
-        <input
-          type="range"
-          id="volume"
-          name="volume"
-          // waveSurfer recognize value of `0` same as `1`
-          //  so we need to set some zero-ish value for silence
-          min="0.01"
-          max="1"
-          step=".025"
-          onChange={onVolumeChange}
-          defaultValue={volume}
+    <div className="flex items-center justify-between ">
+      <div className="controls ">
+        {/* <button onClick={handlePlayPause}>{!playing ? "Play" : "Pause"}</button> */}
+        <Buttons.IconButton.Circle
+          size='medium'
+          variant="CT-Blue"
+          icon={<img src={!playing ? Icons.Play : Icons.Pause} alt="" />}
+          border='border'
+          background="white"
+          onClick={() => handlePlayPause()}
         />
-        <label htmlFor="volume">Volume</label>
+        {/* <input
+            type="range"
+            id="volume"
+            name="volume"
+            // waveSurfer recognize value of `0` same as `1`
+            //  so we need to set some zero-ish value for silence
+            min="0.01"
+            max="1"
+            step=".025"
+            onChange={onVolumeChange}
+            defaultValue={volume}
+          />
+          <label htmlFor="volume">Volume</label> */}
       </div>
+      <div style={{
+        position: "relative",
+        width: "836px",
+      }}>
+
+
+        <div id="waveform" ref={waveformRef} />
+
+
+        <hr style={{
+          position: "absolute",
+          top: "40px",
+          // borderTop:"1px",
+          border: "none",
+          width: "100%",
+          height: ".5px",
+          zIndex: "9",
+          backgroundColor: "white"
+        }} />
+
+      </div>
+      <div>{data ? audioMin : selectedTrack?.duration}</div>
     </div>
   );
 }

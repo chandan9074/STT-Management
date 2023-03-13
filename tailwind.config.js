@@ -20,10 +20,15 @@ module.exports = {
           "0%": { opacity: 0 },
           "100%": { opacity: 1 },
         },
+        slideUp: {
+          "0%": { bottom: -160 },
+          "100%": { bottom: 0 }
+        }
       },
       animation: {
         fadeIn: "fadeIn 0.3s ease-in-out",
         fadeIn2: "fadeIn 0.3s ease-in-out",
+        slideUp: "slideUp 0.5s ease-in-out",
         transition1: "transition duration-900 ease-out hover:ease-in",
       },
       dropShadow: {
