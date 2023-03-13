@@ -50,33 +50,88 @@ const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
             deadline: data?.deadline || singleCriteria?.deadline || '',
             reminder: data?.reminder || singleCriteria?.reminder || [],
             remark: data?.remark || singleCriteria?.remark || '',
-            education: data?.education || singleCriteria?.education || ''
+            education: data?.education || singleCriteria?.education || '',
+            buttonName: '',
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            formik.resetForm();
-            if (isEmpty(data)) {
-                saveCriteria(values);
-            } else {
-                onCriteriaUpdata()
-            }
 
-        },
+            // formik.resetForm();
+            // if (isEmpty(data)) {
+            //     saveCriteria(values);
+            // } else {
+            //     onCriteriaUpdate()
+            // }
+
+            if (values.buttonName && values.buttonName.includes('create-button')) {
+                formik.resetForm();
+
+                if (isEmpty(data)) {
+                    if (isRecreate) {
+                        onSingleRecreate(values);
+                    } else {
+
+                        const { buttonName, ...newValues } = values;
+                        creteAssignCriteria(newValues);
+                        emptyCriteria();
+                        drawerClose();
+                    }
+                } else {
+                    UpdateAssignCriteria(values)
+                }
+
+            } else {
+                formik.resetForm();
+                if (isEmpty(data)) {
+                    saveCriteria(values);
+                } else {
+                    onCriteriaUpdate()
+                }
+            }
+        }
     });
 
-    const onCriteriaUpdata = () => {
+
+    const onSingleRecreate = (values: any) => {
+
+        const targetForRecreateIds = targetForRecreate.map((target) => target.id);
+        let newId: any;
+        do {
+          // Generate a new random id
+          newId = Math.floor(Math.random() * 100000);
+        } while (targetForRecreateIds.includes(newId));
+      
+        // Add the new id to the values object
+        const newValues = {
+          ...values,
+          id: newId,
+        //   target: 0 // Set the target property to a default value
+        };
+      
+        setTargetForRecreate((prevTargetForRecreate) => [
+          ...prevTargetForRecreate,
+          newValues
+        ]);
+
+        emptyCriteria();
+        drawerClose();
+    }
+
+    const onCriteriaUpdate = () => {
         const _data = { ...formik.values, id: data?.id }
         UpdateAssignCriteria(_data);
         drawerClose();
     }
 
     const onCreate = () => {
+
         creteAssignCriteria(criterias);
         emptyCriteria();
         drawerClose();
     }
 
     const onRecreateCreate = () => {
+
         const targetForRecreateIds = targetForRecreate.map(target => target.id);
         const newCriterias = criterias.map((criteria: any) => {
             let newId: any;
@@ -98,7 +153,9 @@ const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
         ]);
         emptyCriteria();
         drawerClose();
+
     }
+
 
     return (
         <div>

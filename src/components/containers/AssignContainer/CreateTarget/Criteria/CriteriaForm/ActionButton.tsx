@@ -12,7 +12,7 @@ type Props = {
 const ActionButton = ({ formik, onCreate, data }: Props) => {
 
     const AssignContexts = useContext(AssignContext);
-    const { criterias } = AssignContexts;    
+    const { criterias } = AssignContexts;
 
     return (
         <div>
@@ -24,9 +24,22 @@ const ActionButton = ({ formik, onCreate, data }: Props) => {
                         {
                             isEmpty(data) &&
                             <button
+                                // onClick={(event) => {
+                                //     event?.preventDefault();
+                                //     onCreate();
+                                // }}
+
                                 onClick={(event) => {
-                                    event?.preventDefault();
-                                    onCreate();
+                                    if (criterias?.length > 0) {
+                                        event.preventDefault();
+                                        onCreate(); 
+                                    } else {
+                                        formik.setValues({
+                                            ...formik.values,
+                                            buttonName: 'create-button'
+                                        });
+                                        formik.handleSubmit(event); // call formik handleSubmit function
+                                    }
                                 }}
                                 className='duration-700 border-[1px] border-blue-30 text-ct-blue-60 hover:border-ct-blue-30 rounded-[6px] py-[9px] px-[32px]'
                             >

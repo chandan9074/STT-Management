@@ -53,7 +53,7 @@ interface ContextProps {
   postDraftTarget: () => void;
   getDraftTarget: () => void;
   updateDraftTarget: (data: updateDraftTargetQueryParams) => void;
-  creteAssignCriteria: (data: postSelectedScriptBodyDT) => void;
+  creteAssignCriteria: (data: any) => void;
   singleCriteriaData: any;
   UpdateAssignCriteria: (data: any) => void;
   getCriteriaByID: (data: any) => void;
@@ -95,11 +95,14 @@ const AssignProvider = ({ children }: { children: any }) => {
   const [singleCriteriaRecreate, setSingleCriteriaRecreate] = useState<CriteriaItemDT>();
   const [assigneeForRecreate, setAssigneeForRecreate] = useState<AssigneeItemDT[]>([] as AssigneeItemDT[]);
 
-  const saveCriteria = (data: any) => {
-    const filteredCriterias = criterias.filter((criteria: any, i: number) => i !== editId);
-    setCriterias([...filteredCriterias, data]);
+  const saveCriteria = (data: any) => {    
+    
+    const filteredCriterias = criterias.filter((criteria: any, i: number) => i !== editId);    
+    
+    setCriterias([...filteredCriterias, data]);    
     setEmptySingleCriteria();
-  }
+  }   
+    
 
   const emptyCriteria = () => {
     setCriterias([]);
