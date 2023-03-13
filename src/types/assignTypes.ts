@@ -12,8 +12,8 @@ export interface ScriptItemDT {
   isSelected?: boolean;
   id: string;
   description: string;
-  domain:string;
-  subDomain:string;
+  domain: string;
+  subDomain: string;
   title: string;
   frequency: number;
 }
@@ -99,3 +99,36 @@ export type updateDraftTargetQueryParams = {
   target?: string;
   assignee?: string;
 }
+
+export type assignSpeechDT = {
+  id: string;
+  speaker: speakerDt[];
+  collector: collectorDT;
+  recordingArea: string;
+  recordingDistance: string;
+  device: string;
+  speeches: string;
+  maxSpeeches: string;
+  remark: string;
+  role: string;
+  speech?: any
+}
+
+export type speakerDt = {
+  name: string;
+  gender: string;
+  role: string;
+  contact: string;
+  address: string;
+  id: string;
+}
+
+export type collectorDT = {
+  name: string;
+  gender: string;
+  role: string;
+  contact: string;
+  address: string;
+  id: string;
+}
+

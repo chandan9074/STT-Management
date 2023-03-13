@@ -1,10 +1,11 @@
+import { assignSpeechDT } from '../../../../../types/assignTypes';
 import BackButtonTitle from '../../../../common/BackButtonTitle';
 import Layouts from '../../../../Layouts';
 import Table from '../../../../Table';
 import SpeechHeader from './SpeechHeader';
 
 
-const data: any = [
+const data: assignSpeechDT[] = [
     {
         id: '1',
         speaker: [
@@ -37,7 +38,8 @@ const data: any = [
         recordingDistance: '',
         device: 'Redmi Note 8',
         speech: null,
-        // role: {
+        role: "",
+        // {
         //     id: '33',
         //     name: 'MD. Eman Hasan',
         //     role: 'Manager',
@@ -83,21 +85,27 @@ const data: any = [
         recordingArea: '',
         recordingDistance: '',
         device: '',
-        speech: null,
+        role: 'Team Leader',
         speeches: '800',
         maxSpeeches: '2000',
         remark: "This Is Remark data",
-        role: 'Team Leader'
 
     },
     {
         id: '3',
         speaker: [],
-        collector: {},
+        collector: {
+            name: '',
+            gender: '',
+            role: '',
+            contact: '',
+            address: '',
+            id: ""
+        },
         recordingArea: '',
         device: '',
-        speech: null,
         recordingDistance: 'Close',
+        role: "",
         speeches: '100',
         maxSpeeches: '1000',
         remark: "This Is Remark data",
@@ -128,8 +136,8 @@ const data: any = [
         recordingArea: 'Inside Room',
         recordingDistance: 'Close',
         device: 'Redmi Note 8',
+        role: "",
         speeches: '800',
-        speech: null,
         maxSpeeches: '3000',
         remark: "This Is Remark data",
 
@@ -155,12 +163,19 @@ const data: any = [
                 id: "maksudalam7@gmail.com"
             }
         ],
-        collector: {},
+        collector: {
+            name: '',
+            gender: '',
+            role: '',
+            contact: '',
+            address: '',
+            id: ""
+        },
         recordingArea: 'Inside Room',
         recordingDistance: 'Close',
         device: 'Redmi Note 8',
+        role: "",
         speeches: '800',
-        speech: null,
         maxSpeeches: '3000',
         remark: "",
 
@@ -181,10 +196,10 @@ const data: any = [
         recordingArea: 'Inside Room',
         recordingDistance: 'Close',
         device: 'Redmi Note 8',
+        role: "",
         speeches: '800',
         maxSpeeches: '3000',
         remark: "",
-        speech: null,
 
 
     },
@@ -219,8 +234,8 @@ const data: any = [
         recordingArea: 'Inside Room',
         recordingDistance: 'Close',
         device: 'Redmi Note 8',
+        role: "",
         speeches: '800',
-        speech: null,
         maxSpeeches: '3000',
         remark: "",
 

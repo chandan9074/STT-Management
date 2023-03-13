@@ -90,10 +90,6 @@ const AudioUpload = ({ data, audioId, speechData, setSpeechData, setAudioUploadS
         fileInputRef.current?.click();
     }
 
-
-    console.log('data--------------', data);
-
-
     return (
         <div>
             <input type="file" accept="audio/mpeg" onChange={handleFileSelect} hidden ref={fileInputRef} />

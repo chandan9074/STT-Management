@@ -16,25 +16,27 @@ import AudioUpload from '../containers/AssignContainer/AllTarget/EditSpeeches/Au
 import RemarkModal from '../containers/AssignContainer/AllTarget/EditSpeeches/RemarkModal';
 import { AUDIO_FILE_FAILED, AUDIO_FILE_UPLOADED } from '../../helpers/Slug';
 import Status from '../containers/AssignContainer/AllTarget/EditSpeeches/Status';
+import { assignSpeechDT } from '../../types/assignTypes';
+import { roleDataDT } from '../../types/userManagementTypes';
 
 const { Option } = Select;
 
 type Props = {
-    data: any
+    data: assignSpeechDT[]
 }
 
 const Type11 = ({ data }: Props) => {
     const [isSpeakerModal, setIsSpeakerModal] = useState<boolean>(false);
     // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
-    const [speechData, setSpeechData] = useState<any>(data);
-    const [speechId, setSpeechId] = useState<number>(NaN);
+    const [speechData, setSpeechData] = useState<assignSpeechDT[]>(data);
+    const [speechId, setSpeechId] = useState<string>('');
 
     const [collectorId, setCollectorId] = useState<number>(NaN);
     const [collector, setCollector] = useState<roleDT>();
 
     const [deviceId, setDeviceId] = useState<number>(NaN);
-    const [device, setDevice] = useState<any>();
+    const [device, setDevice] = useState<string | null | undefined>();
 
     const [recordingAreaId, setRecordingAreaId] = useState<number>(NaN);
 
@@ -69,7 +71,7 @@ const Type11 = ({ data }: Props) => {
     //     setOpen(true);
     // };
 
-    const onAddSpeaker = (id: any) => {
+    const onAddSpeaker = (id: string) => {
         setIsSpeakerModal(true)
         setSpeechId(id);
     }
@@ -88,6 +90,7 @@ const Type11 = ({ data }: Props) => {
 
         // Update the state with the new array
         setSpeechData(newData);
+
 
         setCollectorId(NaN)
     }
@@ -108,6 +111,7 @@ const Type11 = ({ data }: Props) => {
 
         setDeviceId(NaN)
     }
+
 
     const handleRecordingAreaChange = (value: string) => {
         const index = speechData.findIndex((item: any) => item?.id === recordingAreaId);
@@ -141,8 +145,8 @@ const Type11 = ({ data }: Props) => {
     //     setActive(value)
     // }
 
-    console.log('upload', isUploaded);
-    console.log('failed', isFailed);
+    // console.log('upload', isUploaded);
+    // console.log('failed', isFailed);
 
     const onUploadStatus = (value: string) => {
         if (value === AUDIO_FILE_UPLOADED) {
@@ -410,7 +414,7 @@ const Type11 = ({ data }: Props) => {
                                         onChange={(event, value) => deviceOnChange(value)}
 
                                         renderOption={(props, option) => (
-                                            <Box key={option.id} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
+                                            <Box key={option} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
                                                 <h1 className='text-small text-blue-gray-80 font-medium'>{`${option}`}</h1>
                                             </Box>
                                         )}
@@ -495,7 +499,7 @@ const Type11 = ({ data }: Props) => {
 
     const rowSelection = {
         onChange: (selectedRowKeys: React.Key[], selectedRows: any[]) => {
-            console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+            // console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
         },
         getCheckboxProps: (record: any) => ({
             // disabled: record.name === 'Disabled User', // Column configuration not to be checked
