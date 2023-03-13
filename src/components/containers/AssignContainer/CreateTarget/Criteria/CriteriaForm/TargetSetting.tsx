@@ -65,13 +65,13 @@ const TargetSetting = ({ formik }: { formik: any }) => {
 
             <div className='mt-[13px]'>
                 <FormControl sx={{ width: '100%' }} variant="outlined">
-                    <InputLabel htmlFor='deadline'>{<h1 className='comboBoxLabel'>Date of Birth <span className='text-[red]'></span></h1>}</InputLabel>
+                    <InputLabel htmlFor='deadline'>{<h1 className='comboBoxLabel'>Deadline <span className='text-[red]'></span></h1>}</InputLabel>
                     <OutlinedInput
                         id='deadline'
                         autoComplete='off'
                         type='text'
                         name={formik.values.deadline}
-                        label={<h1 className='comboBoxLabel'>Date of Birth <span className='text-[red]'>*</span></h1>}
+                        label={<h1 className='comboBoxLabel'>Deadline <span className='text-[red]'>*</span></h1>}
                         value={formik.values.deadline}
                         onChange={formik.handleChange}
                         onClick={() => setOpenCalender(true)}
