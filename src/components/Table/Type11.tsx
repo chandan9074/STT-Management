@@ -16,7 +16,6 @@ import AudioUpload from '../containers/AssignContainer/AllTarget/EditSpeeches/Au
 import RemarkModal from '../containers/AssignContainer/AllTarget/EditSpeeches/RemarkModal';
 import { AUDIO_FILE_FAILED, AUDIO_FILE_UPLOADED } from '../../helpers/Slug';
 import Status from '../containers/AssignContainer/AllTarget/EditSpeeches/Status';
-import AudioWave from '../common/audioWave';
 
 const { Option } = Select;
 

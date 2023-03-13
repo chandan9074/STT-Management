@@ -13,11 +13,7 @@ type Props = {
 
 const Waveform = ({ url, selectedTrack, data, audioMin }: Props) => {
 
-  console.log('wave---------');
-
-
   const waveformRef = useRef(null);
-  // const wavesurfer= useRef(null);
   const wavesurfer = useRef<WaveSurfer | null>(null);
   const [playing, setPlay] = useState(false);
   const [volume, setVolume] = useState(0.5);
@@ -44,12 +40,6 @@ const Waveform = ({ url, selectedTrack, data, audioMin }: Props) => {
 
     canvas.classList.add("waveform-canvas");
 
-    // waveformRef.current.style.cursor = 'pointer';
-
-    // if (waveformRef.current) {
-    //   waveformRef.current.style.cursor = 'pointer';
-    // }
-
     return {
       container: ref,
       waveColor: "#B8BFCC",
@@ -62,33 +52,16 @@ const Waveform = ({ url, selectedTrack, data, audioMin }: Props) => {
       height: 80,
       normalize: true,
       partialRender: true,
+      cursor: {
+        showTime: true,
+        opacity: 1,
+        color: "#000000",
+      },
 
       className: "waveform-canvas"
     };
   };
 
-
-  // create new WaveSurfer instance
-  // On component mount and when url changes
-  // useEffect(() => {
-  //   setPlay(false);
-
-  //   const options: any = formWaveSurferOptions(waveformRef.current);
-  //   wavesurfer.current = WaveSurfer.create(options);
-
-  //   wavesurfer.current.load(url);
-
-  //   wavesurfer.current.on("ready", function () {
-
-  //     if (wavesurfer.current) {
-  //       wavesurfer.current.setVolume(volume);
-  //       setVolume(volume);
-  //     }
-  //   });
-
-
-  //   return () => wavesurfer.current?.destroy();
-  // }, [url]);
 
   useEffect(() => {
     setPlay(false);
@@ -107,8 +80,6 @@ const Waveform = ({ url, selectedTrack, data, audioMin }: Props) => {
 
     }
 
-
-
     wavesurfer.current.on("ready", function () {
       if (wavesurfer.current) {
         wavesurfer.current.setVolume(volume);
@@ -117,29 +88,16 @@ const Waveform = ({ url, selectedTrack, data, audioMin }: Props) => {
     });
 
     return () => wavesurfer.current?.destroy();
-  }, [data, url]);
+  }, [data, url, volume]);
 
   const handlePlayPause = () => {
     setPlay(!playing);
     wavesurfer?.current?.playPause();
   };
 
-  const onVolumeChange = (e: any) => {
-    const { target } = e;
-    const newVolume = +target.value;
-
-    if (newVolume) {
-      setVolume(newVolume);
-      wavesurfer?.current?.setVolume(newVolume || 1);
-    }
-  };
-
-
-
   return (
     <div className="flex items-center justify-between ">
       <div className="controls ">
-        {/* <button onClick={handlePlayPause}>{!playing ? "Play" : "Pause"}</button> */}
         <Buttons.IconButton.Circle
           size='medium'
           variant="CT-Blue"
@@ -148,33 +106,18 @@ const Waveform = ({ url, selectedTrack, data, audioMin }: Props) => {
           background="white"
           onClick={() => handlePlayPause()}
         />
-        {/* <input
-            type="range"
-            id="volume"
-            name="volume"
-            // waveSurfer recognize value of `0` same as `1`
-            //  so we need to set some zero-ish value for silence
-            min="0.01"
-            max="1"
-            step=".025"
-            onChange={onVolumeChange}
-            defaultValue={volume}
-          />
-          <label htmlFor="volume">Volume</label> */}
+
       </div>
       <div style={{
         position: "relative",
         width: "836px",
       }}>
 
-
         <div id="waveform" ref={waveformRef} />
-
 
         <hr style={{
           position: "absolute",
           top: "40px",
-          // borderTop:"1px",
           border: "none",
           width: "100%",
           height: ".5px",

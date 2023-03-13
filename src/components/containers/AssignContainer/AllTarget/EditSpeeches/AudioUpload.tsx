@@ -2,7 +2,6 @@ import { Dispatch, SetStateAction, useRef, useState } from 'react';
 import Icons from '../../../../../assets/Icons';
 import Buttons from '../../../../Buttons';
 import { AUDIO_FILE_UPLOADED } from '../../../../../helpers/Slug';
-import { CustomModal } from '../../../../common/CustomModal';
 import Type4 from '../../../../common/CustomModal/Type4';
 
 type Props = {

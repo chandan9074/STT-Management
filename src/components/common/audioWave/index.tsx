@@ -1,7 +1,3 @@
-import React, { useState } from 'react'
-import Icons from '../../../assets/Icons';
-import Buttons from '../../Buttons';
-import PlayList from './PlayList';
 import Waveform from './Waveform';
 
 type Props = {

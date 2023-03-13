@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { CustomModal } from '.';
+import React from 'react';
 import Icons from '../../../assets/Icons';
 import Buttons from '../../Buttons';
 import AudioWave from '../audioWave';
