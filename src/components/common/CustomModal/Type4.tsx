@@ -1,5 +1,6 @@
 import React from 'react';
 import Icons from '../../../assets/Icons';
+import { assignAudioTrackDT } from '../../../types/assignTypes';
 import Buttons from '../../Buttons';
 import AudioWave from '../audioWave';
 
@@ -7,8 +8,8 @@ import AudioWave from '../audioWave';
 type Props = {
     open: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-    selectedTrack?: any;
-    data: any,
+    selectedTrack?: assignAudioTrackDT;
+    data: assignAudioTrackDT,
     audioMin: string
 }
 
@@ -28,9 +29,10 @@ const Type4 = ({ open, setOpen, selectedTrack, data, audioMin }: Props) => {
                     <div className='flex justify-between items-center '>
                         <div className='flex justify-between items-center text-[#677499]'>
                             <img src={Icons.MusicIcon} alt="" className='mr-[10px]' />
-                            <h6>{data ? data.name : selectedTrack.title}</h6>
+                            <div>{data?.title ? data?.title : data?.name}</div>
                             <div className='w-1 h-1 rounded-full bg-[#B8BFCC] mx-[6px]' />
-                            <p>{data ? audioMin : selectedTrack.duration}</p>
+                            {/* <p>{data ? audioMin : selectedTrack.duration}</p> */}
+                            {!data?.duration ? audioMin : selectedTrack?.duration}
                         </div>
                         <Buttons.IconButton.Circle
                             size='medium'
@@ -42,8 +44,10 @@ const Type4 = ({ open, setOpen, selectedTrack, data, audioMin }: Props) => {
                         />
 
                     </div>
-                    <AudioWave data={data} selectedTrack={selectedTrack} audioMin={audioMin} />
-
+                    {
+                        selectedTrack &&
+                        <AudioWave data={data} selectedTrack={selectedTrack} audioMin={audioMin} />
+                    }
                     {/* <PlayList
         tracks={tracks}
         selectedTrack={selectedTrack}

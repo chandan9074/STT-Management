@@ -1,5 +1,4 @@
 import { Select, Table } from 'antd';
-import { ColumnsType } from 'antd/es/table';
 import { useContext, useEffect, useState } from 'react';
 import Icons from '../../assets/Icons';
 import "../../assets/css/table/type4Table.css";
@@ -17,13 +16,15 @@ import RemarkModal from '../containers/AssignContainer/AllTarget/EditSpeeches/Re
 import { AUDIO_FILE_FAILED, AUDIO_FILE_UPLOADED } from '../../helpers/Slug';
 import Status from '../containers/AssignContainer/AllTarget/EditSpeeches/Status';
 import { assignSpeechDT } from '../../types/assignTypes';
-import { roleDataDT } from '../../types/userManagementTypes';
+import { ColumnsType, ColumnType } from 'antd/es/table';
 
 const { Option } = Select;
 
 type Props = {
     data: assignSpeechDT[]
 }
+
+type RecordType = assignSpeechDT;
 
 const Type11 = ({ data }: Props) => {
     const [isSpeakerModal, setIsSpeakerModal] = useState<boolean>(false);
@@ -32,18 +33,18 @@ const Type11 = ({ data }: Props) => {
     const [speechData, setSpeechData] = useState<assignSpeechDT[]>(data);
     const [speechId, setSpeechId] = useState<string>('');
 
-    const [collectorId, setCollectorId] = useState<number>(NaN);
+    const [collectorId, setCollectorId] = useState<string>("");
     const [collector, setCollector] = useState<roleDT>();
 
-    const [deviceId, setDeviceId] = useState<number>(NaN);
+    const [deviceId, setDeviceId] = useState<string>('');
     const [device, setDevice] = useState<string | null | undefined>();
 
-    const [recordingAreaId, setRecordingAreaId] = useState<number>(NaN);
+    const [recordingAreaId, setRecordingAreaId] = useState<string>('');
 
-    const [recordingDistanceId, setRecordingDistanceId] = useState<number>(NaN);
+    const [recordingDistanceId, setRecordingDistanceId] = useState<string>('');
 
     const [remarkOpen, setRemarkOpen] = useState<boolean>(false);
-    const [remarkId, setRemarkId] = useState<number>(NaN);
+    const [remarkId, setRemarkId] = useState<string>('');
     const [tempRemark, setTempRemark] = useState<string>('');
 
     const managerContext = useContext(RoleInContext);
@@ -63,6 +64,10 @@ const Type11 = ({ data }: Props) => {
     }
 
     useEffect(() => {
+        isSpeakerModal || remarkOpen ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'auto'
+    }, [isSpeakerModal, remarkOpen])
+
+    useEffect(() => {
         managerContext.getManager(managerParams);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -76,29 +81,32 @@ const Type11 = ({ data }: Props) => {
         setSpeechId(id);
     }
 
-    const collectorOnChange = (value: any) => {
+    const collectorOnChange = (value: roleDT) => {
+
         setCollector(value ?? undefined);
 
         // Find the index of the object to update
-        const index = speechData.findIndex((item: any) => item?.id === collectorId);
+        const index = speechData.findIndex((item) => item?.id === collectorId);
 
         // Create a new object with the updated data
         const updatedData = { ...speechData[index], collector: value };
 
         // Create a new array with the updated object at the same index as the original object
-        const newData = speechData.map((item: any, i: number) => i === index ? updatedData : item);
+        const newData = speechData.map((item: assignSpeechDT, i: number) => i === index ? updatedData : item);
+
 
         // Update the state with the new array
-        setSpeechData(newData);
+        // setSpeechData(newData);
+        setSpeechData(newData as assignSpeechDT[]);
 
 
-        setCollectorId(NaN)
+        setCollectorId('')
     }
 
-    const deviceOnChange = (value: any) => {
+    const deviceOnChange = (value: string) => {
         setDevice(value ?? undefined);
 
-        const index = speechData.findIndex((item: any) => item?.id === deviceId);
+        const index = speechData.findIndex((item: assignSpeechDT) => item?.id === deviceId);
         if (index === -1) {
             return;
         }
@@ -109,12 +117,12 @@ const Type11 = ({ data }: Props) => {
         };
         setSpeechData(newData);
 
-        setDeviceId(NaN)
+        setDeviceId('')
     }
 
 
     const handleRecordingAreaChange = (value: string) => {
-        const index = speechData.findIndex((item: any) => item?.id === recordingAreaId);
+        const index = speechData.findIndex((item: assignSpeechDT) => item?.id === recordingAreaId);
         if (index === -1) {
             return;
         }
@@ -124,11 +132,11 @@ const Type11 = ({ data }: Props) => {
             recordingArea: value
         };
         setSpeechData(newData);
-        setRecordingAreaId(NaN);
+        setRecordingAreaId('');
     };
 
     const handleRecordingDistanceChange = (value: string) => {
-        const index = speechData.findIndex((item: any) => item?.id === recordingDistanceId);
+        const index = speechData.findIndex((item: assignSpeechDT) => item?.id === recordingDistanceId);
         if (index === -1) {
             return;
         }
@@ -138,7 +146,7 @@ const Type11 = ({ data }: Props) => {
             recordingDistance: value
         };
         setSpeechData(newData);
-        setRecordingDistanceId(NaN);
+        setRecordingDistanceId('');
     };
 
     // const handleActiveFrequencyChange = (value: string) => {
@@ -158,11 +166,9 @@ const Type11 = ({ data }: Props) => {
         }
     }
 
+    const getColumnSearchProps = (dataIndex: string): ColumnType<assignSpeechDT> => ({
 
-    const getColumnSearchProps = (dataIndex: any): any => ({
-
-
-        filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }: any) => (
+        filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
 
             <div onKeyDown={(e) => e.stopPropagation()} className="w-[260px] -mr-[150px] -mt-[50px]  rounded-[8px]" >
                 {
@@ -189,7 +195,7 @@ const Type11 = ({ data }: Props) => {
     });
 
 
-    const Type8columns: ColumnsType<any> = [
+    const Type8columns: ColumnsType<assignSpeechDT> = [
 
         {
             title: `${"SN".toLocaleUpperCase()}`,
@@ -232,7 +238,7 @@ const Type11 = ({ data }: Props) => {
                                 <div>
                                     <div>
                                         {
-                                            data?.speaker.map((item: any, i: number) => (
+                                            data?.speaker.map((item: roleDT, i: number) => (
                                                 <div key={i} className='gap-y-[6px]'>
                                                     <div className='flex items-center gap-x-2'>
                                                         <img className='h-4 w-4' src={item.gender === 'male' ? Icons.speakerMale : Icons.SpeakerFemale} alt="" />
@@ -267,7 +273,7 @@ const Type11 = ({ data }: Props) => {
                         collectorId === data?.id ?
                             <div className='animate-fadeIn'>
                                 <div className="fixed top-0 left-0 opacity-50 bg-transparent w-full h-screen "
-                                    onClick={() => setCollectorId(NaN)} />
+                                    onClick={() => setCollectorId('')} />
                                 <div className='relative'>
                                     <Autocomplete
                                         placeholder='Choose one'
@@ -281,7 +287,12 @@ const Type11 = ({ data }: Props) => {
                                             return `${option?.name}`;
                                         }}
 
-                                        onChange={(event, value) => collectorOnChange(value)}
+                                        // onChange={(event, value) => collectorOnChange(value)}
+                                        onChange={(event, value) => {
+                                            if (value !== null) {
+                                                collectorOnChange(value);
+                                            }
+                                        }}
 
                                         renderOption={(props, option) => (
                                             <Box key={option.id} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
@@ -343,7 +354,7 @@ const Type11 = ({ data }: Props) => {
                             defaultValue={data?.recordingArea ? data?.recordingArea : 'Select One'}
                         >
                             {
-                                recordingArea?.map((m: any, i: number) => (
+                                recordingArea?.map((m: string, i: number) => (
                                     <Option key={m} value={m} id={m}>
                                         <h1 className='text-blue-gray-80 text-xs font-normal'>{m}</h1>
                                     </Option>
@@ -373,7 +384,7 @@ const Type11 = ({ data }: Props) => {
                             defaultValue={data?.recordingDistance ? data?.recordingDistance : 'Select One'}
                         >
                             {
-                                recordingDistanceAssign?.map((m: any, i: number) => (
+                                recordingDistanceAssign?.map((m: string, i: number) => (
                                     <Option key={m} value={m} id={m}>
                                         <h1 className='text-blue-gray-80 text-xs font-normal'>{m}</h1>
                                     </Option>
@@ -397,7 +408,7 @@ const Type11 = ({ data }: Props) => {
                         deviceId === data?.id ?
                             <div className='animate-fadeIn'>
                                 <div className="fixed top-0 left-0 opacity-50 bg-transparent w-full h-screen "
-                                    onClick={() => setDeviceId(NaN)} />
+                                    onClick={() => setDeviceId('')} />
                                 <div className='relative'>
                                     <Autocomplete
                                         placeholder='Choose one'
@@ -411,7 +422,13 @@ const Type11 = ({ data }: Props) => {
                                         //     return `${option}`;
                                         // }}
 
-                                        onChange={(event, value) => deviceOnChange(value)}
+                                        // onChange={(event, value) => deviceOnChange(value)}
+
+                                        onChange={(event, value) => {
+                                            if (value !== null) {
+                                                deviceOnChange(value);
+                                            }
+                                        }}
 
                                         renderOption={(props, option) => (
                                             <Box key={option} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
@@ -498,12 +515,14 @@ const Type11 = ({ data }: Props) => {
 
 
     const rowSelection = {
-        onChange: (selectedRowKeys: React.Key[], selectedRows: any[]) => {
+        onChange: (selectedRowKeys: React.Key[], selectedRows: assignSpeechDT[]) => {
             // console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+
         },
-        getCheckboxProps: (record: any) => ({
+        getCheckboxProps: (record: RecordType) => ({
             // disabled: record.name === 'Disabled User', // Column configuration not to be checked
-            name: record.name,
+            // name: record.name,
+
         }),
     };
     return (

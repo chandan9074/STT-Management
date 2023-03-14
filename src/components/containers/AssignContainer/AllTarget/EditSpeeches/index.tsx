@@ -15,6 +15,7 @@ const data: assignSpeechDT[] = [
                 role: 'speaker',
                 contact: '019',
                 address: 'Dhaka',
+                email: "maksudalam1@gmail.com",
                 id: "maksudalam1@gmail.com"
             },
             {
@@ -23,6 +24,7 @@ const data: assignSpeechDT[] = [
                 role: 'speaker',
                 contact: '019',
                 address: 'Dhaka',
+                email: "maksudalam1@gmail.com",
                 id: "maksudalam2@gmail.com"
             }
         ],
@@ -37,7 +39,13 @@ const data: assignSpeechDT[] = [
         recordingArea: 'Inside Room',
         recordingDistance: '',
         device: 'Redmi Note 8',
-        speech: null,
+        speech: {
+            id: '0',
+            title: "Brahms: St Anthony Chorale - Theme, Two Pianos Op.56b",
+            duration: "5:00",
+            url:
+                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+        },
         role: "",
         // {
         //     id: '33',
@@ -63,6 +71,7 @@ const data: assignSpeechDT[] = [
                 role: 'speaker',
                 contact: '019',
                 address: 'Dhaka',
+                email: "maksudalam1@gmail.com",
                 id: "maksudalam3@gmail.com"
             },
             {
@@ -71,6 +80,7 @@ const data: assignSpeechDT[] = [
                 role: 'speaker',
                 contact: '019',
                 address: 'Dhaka',
+                email: "maksudalam1@gmail.com",
                 id: "maksudalam4@gmail.com"
             }
         ],
@@ -85,6 +95,12 @@ const data: assignSpeechDT[] = [
         recordingArea: '',
         recordingDistance: '',
         device: '',
+        speech: {
+            id: '',
+            title: "",
+            duration: "",
+            url: ""
+        },
         role: 'Team Leader',
         speeches: '800',
         maxSpeeches: '2000',
@@ -105,6 +121,13 @@ const data: assignSpeechDT[] = [
         recordingArea: '',
         device: '',
         recordingDistance: 'Close',
+        speech: {
+            id: '0',
+            title: "Brahms: St Anthony Chorale - Theme, Two Pianos Op.56b",
+            duration: "5:00",
+            url:
+                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+        },
         role: "",
         speeches: '100',
         maxSpeeches: '1000',
@@ -122,7 +145,8 @@ const data: assignSpeechDT[] = [
                 role: 'speaker',
                 contact: '019',
                 address: 'Dhaka',
-                id: "maksudalam5@gmail.com"
+                id: "maksudalam5@gmail.com",
+                email: "maksudalam1@gmail.com",
             }
         ],
         collector: {
@@ -137,6 +161,12 @@ const data: assignSpeechDT[] = [
         recordingDistance: 'Close',
         device: 'Redmi Note 8',
         role: "",
+        speech: {
+            id: '',
+            title: "",
+            duration: "",
+            url: ""
+        },
         speeches: '800',
         maxSpeeches: '3000',
         remark: "This Is Remark data",
@@ -152,6 +182,7 @@ const data: assignSpeechDT[] = [
                 role: 'speaker',
                 contact: '019',
                 address: 'Dhaka',
+                email: "maksudalam1@gmail.com",
                 id: "maksudalam6@gmail.com"
             },
             {
@@ -160,6 +191,7 @@ const data: assignSpeechDT[] = [
                 role: 'speaker',
                 contact: '019',
                 address: 'Dhaka',
+                email: "maksudalam1@gmail.com",
                 id: "maksudalam7@gmail.com"
             }
         ],
@@ -175,6 +207,12 @@ const data: assignSpeechDT[] = [
         recordingDistance: 'Close',
         device: 'Redmi Note 8',
         role: "",
+        speech: {
+            id: '',
+            title: "",
+            duration: "",
+            url: ""
+        },
         speeches: '800',
         maxSpeeches: '3000',
         remark: "",
@@ -197,6 +235,12 @@ const data: assignSpeechDT[] = [
         recordingDistance: 'Close',
         device: 'Redmi Note 8',
         role: "",
+        speech: {
+            id: '',
+            title: "",
+            duration: "",
+            url: ""
+        },
         speeches: '800',
         maxSpeeches: '3000',
         remark: "",
@@ -212,6 +256,7 @@ const data: assignSpeechDT[] = [
                 role: 'speaker',
                 contact: '019',
                 address: 'Dhaka',
+                email: "maksudalam1@gmail.com",
                 id: "maksudalam8@gmail.com"
             },
             {
@@ -220,6 +265,7 @@ const data: assignSpeechDT[] = [
                 role: 'speaker',
                 contact: '019',
                 address: 'Dhaka',
+                email: "maksudalam1@gmail.com",
                 id: "maksudalam9@gmail.com"
             }
         ],
@@ -235,6 +281,12 @@ const data: assignSpeechDT[] = [
         recordingDistance: 'Close',
         device: 'Redmi Note 8',
         role: "",
+        speech: {
+            id: '',
+            title: "",
+            duration: "",
+            url: ""
+        },
         speeches: '800',
         maxSpeeches: '3000',
         remark: "",

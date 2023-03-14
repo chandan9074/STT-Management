@@ -2,16 +2,17 @@ import { TextField } from '@mui/material';
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import Icons from '../../../../../assets/Icons';
 import { predefined } from '../../../../../data/assign/AssignData';
+import { assignSpeechDT } from '../../../../../types/assignTypes';
 import Buttons from '../../../../Buttons';
 import { CustomModal } from '../../../../common/CustomModal';
 
 type Props = {
     open: boolean,
     setOpen: Dispatch<SetStateAction<boolean>>,
-    remarkId: number,
-    speechData: any,
-    setSpeechData: Dispatch<SetStateAction<any>>,
-    setRemarkId: Dispatch<SetStateAction<number>>,
+    remarkId: string,
+    speechData: assignSpeechDT[],
+    setSpeechData: Dispatch<SetStateAction<assignSpeechDT[]>>,
+    setRemarkId: Dispatch<SetStateAction<string>>,
     tempRemark: string
 }
 
@@ -26,7 +27,7 @@ const RemarkModal = ({ open, setOpen, remarkId, speechData, setSpeechData, setRe
     const [isRemark, setIsRemark] = useState<boolean>(false);
 
     const onRemarkSubmit = () => {
-        const index = speechData.findIndex((item: any) => item?.id === remarkId);
+        const index = speechData.findIndex((item: assignSpeechDT) => item?.id === remarkId);
         if (index === -1) {
             return;
         }
@@ -36,7 +37,7 @@ const RemarkModal = ({ open, setOpen, remarkId, speechData, setSpeechData, setRe
             remark: remark
         };
         setSpeechData(newData);
-        setRemarkId(NaN);
+        setRemarkId('');
         setOpen(false);
     }
 

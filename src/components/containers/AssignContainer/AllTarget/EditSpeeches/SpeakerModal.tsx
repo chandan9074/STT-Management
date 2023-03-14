@@ -1,19 +1,26 @@
 import { StepBackwardOutlined } from '@ant-design/icons';
 import { Form, Select } from 'antd';
-import React, { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
 import Icons from '../../../../../assets/Icons';
 import { RoleInContext } from '../../../../../context/RoleProvider';
+import { assignSpeechDT, assignStatisticsDT } from '../../../../../types/assignTypes';
 import { roleDT } from '../../../../../types/billingTypes';
 import Buttons from '../../../../Buttons';
 import RoleImage from '../../../../Image/RoleImage';
 
 const { Option } = Select;
 
+type OptionType = {
+    key: string
+    value: string;
+    id: string
+}
+
 type Props = {
     setModal: Dispatch<SetStateAction<boolean>>;
-    setData: Dispatch<SetStateAction<any>>;
+    setData: Dispatch<SetStateAction<assignSpeechDT[]>>;
     speechId: string,
-    data: any
+    data: assignSpeechDT[]
 }
 
 const SpeakerModal = ({
@@ -34,7 +41,6 @@ const SpeakerModal = ({
     const [dropDownCount, setDropDownCount] = useState<number>(0);
     const [isDropDownSelect, setIsDropDownSelect] = useState<boolean>(false);
     const [isDropItemClick, setIsDropItemClick] = useState<boolean>(false);
-    // const [speakerData, setSpeakerData] = useState<roleDT[]>([]);
     const [speakerData, setSpeakerData] = useState<roleDT[]>([]);
 
     const managerParams = {
@@ -44,7 +50,7 @@ const SpeakerModal = ({
     }
 
     useEffect(() => {
-        const _data = data?.filter((item: any) => item?.id === speechId);
+        const _data = data?.filter((item: assignSpeechDT) => item?.id === speechId);
         setSpeakerData(_data[0].speaker);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -77,13 +83,18 @@ const SpeakerModal = ({
     // }
 
     const handleRoleChange = (id: string, p: any) => {
-        const _data = roleDatas?.filter((m: roleDT) => m.id === p.key);
+        console.log('ppppppppppppppppp', p, id);
 
-        const index = speakerData.findIndex((data) => data.id === p.key);
+        const _data = roleDatas?.filter((m: roleDT) => m.id === p.id);
+
+        const index = speakerData.findIndex((data) => data.id === p.id);
         if (_data && index === -1) {
             setSpeakerData([...speakerData, _data[0]]);
         }
     };
+
+    console.log('speaker data', speakerData);
+
 
 
     const deleteManager = (id: string | undefined) => {
@@ -94,7 +105,7 @@ const SpeakerModal = ({
     }
 
 
-    const onDropDownVisible = (e: any) => {
+    const onDropDownVisible = (e: boolean) => {
         setIsDropDownVisible(true);
         setDropDownCount(dropDownCount + 1);
         setIsDropItemClick(true);
@@ -126,7 +137,7 @@ const SpeakerModal = ({
     }
 
     const onAdd = () => {
-        const index = data?.findIndex((item: any) => item.id === speechId);
+        const index = data?.findIndex((item: assignSpeechDT) => item.id === speechId);
         if (index !== -1) {
             const newData = [...data];
             newData[index] = { ...newData[index], speaker: speakerData };
@@ -207,18 +218,19 @@ const SpeakerModal = ({
                                                 placeholder={`Select speaker by Login ID/ Name`}
                                                 style={{ border: 'none' }}
                                                 onChange={(value, p) => handleRoleChange(value, p)}
-                                                filterOption={(inputValue: string, option: any) =>
-                                                    option.value.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0 ||
-                                                    option.id.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0
+                                                filterOption={(inputValue, option) =>
+                                                    (option?.value ?? '').toString().toLowerCase().includes(inputValue.toLowerCase())
+
                                                 }
+                                            // options
 
                                             >
                                                 {
                                                     roleDatas?.map((m: roleDT, i: number) => (
-                                                        <Option key={m.id} value={m.name} id={m.id}>
+                                                        <Option key={i} value={`${m.id} - ${m.name}`} id={m.id}>
+                                                            {/* <Option key={i} value={m.name} id={m.id}> */}
                                                             <div className='flex gap-x-4'>
-                                                                {/* <img className='h-[18px] w-[18px]' src={Icons.manager}
-                                                                    alt="" /> */}
+
                                                                 <RoleImage role={'Speaker'} />
                                                                 <h1 className='text-blue-gray-90 text-small'>{m.id} - {m.name}</h1>
                                                             </div>
@@ -258,7 +270,7 @@ const SpeakerModal = ({
                                                     <div className='flex items-center gap-x-4'>
                                                         <div className='flex gap-x-2'>
                                                             {/* <img className='h-[20px] w-[20px]' src={Icons.manager} alt="" /> */}
-                                                            <RoleImage role={item.role} />
+                                                            <RoleImage role={item?.role} />
                                                             <h1 className='nameParagraph1'>
                                                                 {item?.name}
                                                             </h1>
@@ -301,8 +313,10 @@ const SpeakerModal = ({
                 </div>
 
             </div>
-        </div>
+        </div >
     );
 };
 
 export default SpeakerModal;
+
+

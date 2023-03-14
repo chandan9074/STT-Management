@@ -1,17 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import WaveSurfer from 'wavesurfer.js';
 import Icons from "../../../assets/Icons";
 import Buttons from "../../Buttons";
 
 type Props = {
-  url: string,
-  selectedTrack: any,
+  // url: string,
+  // selectedTrack: any,
   data: any,
   audioMin: string
 }
 
-const Waveform = ({ url, selectedTrack, data, audioMin }: Props) => {
+const Waveform = ({ data, audioMin }: Props) => {
 
   const waveformRef = useRef(null);
   const wavesurfer = useRef<WaveSurfer | null>(null);
@@ -70,15 +70,15 @@ const Waveform = ({ url, selectedTrack, data, audioMin }: Props) => {
     wavesurfer.current = WaveSurfer.create(options);
 
 
-    if (data) {
-      // convert data to blob
+    if (!data?.url) {
       const blob = new Blob([data], { type: 'audio/mpeg' });
-
       wavesurfer.current.loadBlob(blob);
     } else {
-      wavesurfer.current.load(url);
+      wavesurfer.current.load(data.url);
 
     }
+
+
 
     wavesurfer.current.on("ready", function () {
       if (wavesurfer.current) {
@@ -88,7 +88,7 @@ const Waveform = ({ url, selectedTrack, data, audioMin }: Props) => {
     });
 
     return () => wavesurfer.current?.destroy();
-  }, [data, url, volume]);
+  }, [data, data.url, volume]);
 
   const handlePlayPause = () => {
     setPlay(!playing);
@@ -126,7 +126,7 @@ const Waveform = ({ url, selectedTrack, data, audioMin }: Props) => {
         }} />
 
       </div>
-      <div>{data ? audioMin : selectedTrack?.duration}</div>
+      <div>{!data?.duration ? audioMin : data?.duration}</div>
     </div>
   );
 }
