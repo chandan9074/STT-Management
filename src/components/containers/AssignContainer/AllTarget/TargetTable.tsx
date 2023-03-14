@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Icons from '../../../../assets/Icons';
 import { RECREATE_TARGET_PATH } from '../../../../helpers/Slug';
+import { targetDT } from '../../../../types/assignTypes';
 import Buttons from '../../../Buttons';
 import { CustomModal } from '../../../common/CustomModal';
 import Table from '../../../Table';
@@ -10,7 +11,7 @@ import UpdateAssigneeModal from './UpdateAssigneeModal';
 const TargetTable = () => {
   const navigate = useNavigate();
   const [isOpenModal, setIsModalOpen] = useState<boolean>(false);
-  const [targetId, setTargetId] = useState<any>([]);
+  const [selectedTarget, setSelectedTarget] = useState<targetDT[]>([] as targetDT[]);
 
   const [isConfirmModal, setIsConfirmModal] = useState<boolean>(false);
 
@@ -20,7 +21,7 @@ const TargetTable = () => {
 
   const onSave = () => {
     setIsConfirmModal(false);
-    navigate(`${RECREATE_TARGET_PATH}/${targetId[0]?.id}`)
+    navigate(`${RECREATE_TARGET_PATH}/${selectedTarget[0]?.id}`)
   }
 
   const onModalClose = () => {
@@ -36,7 +37,7 @@ const TargetTable = () => {
         <h1 className='text-[18px] text-ct-blue-95 font-medium'>0 Target</h1>
         <div className='flex'>
           {
-            targetId?.length > 0 &&
+            selectedTarget?.length > 0 &&
             <Buttons.IconWithTextButton.Tertiary
               label='Update Assignee'
               size='medium'
@@ -47,7 +48,7 @@ const TargetTable = () => {
           }
 
           {
-            (targetId?.length > 0 && targetId?.length < 2) &&
+            (selectedTarget?.length > 0 && selectedTarget?.length < 2) &&
             <Buttons.IconWithTextButton.Tertiary
               label='Re-create'
               size='medium'
@@ -57,14 +58,14 @@ const TargetTable = () => {
           }
         </div>
       </div>
-      <Table.Type10 setTargetId={setTargetId} targetId={targetId} />
+      <Table.Type10 setSelectedTarget={setSelectedTarget} />
 
 
       {
         isOpenModal &&
         <UpdateAssigneeModal
           handleModal={onModalClose}
-          targetId={targetId}
+          targetId={selectedTarget.map((item) => item.id)}
         />
       }
 

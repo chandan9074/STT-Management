@@ -112,3 +112,33 @@ export type recreateTableDT = {
   target: CriteriaItemDT;
   assignee: AssigneeItemDT;
 }
+
+export type targetScriptDT = {
+  id: string;
+  module: string;
+  distributionSource: string;
+  isAge: boolean;
+  domain: string;
+  subdomain: string;
+  sourceType: string;
+  sourceUrl: string;
+  sourceFile: string;
+  sourceFileName: string;
+  sourceFileImage: string;
+  title: string;
+  description: string;
+  date: string;
+  frequency: number;
+}
+export type targetDT = {
+  id: string;
+  script: targetScriptDT;
+  target: CriteriaItemDT;
+  assignee: AssigneeItemDT;
+  status: number;
+  speeches: {
+    total: number;
+    uploaded: number;
+  };
+  assignedDate: string;
+}

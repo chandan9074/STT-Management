@@ -70,8 +70,10 @@ const UpdateAssigneeModal = ({
     // type
 }: {
     handleModal: (value: boolean) => void,
-    targetId: any
+    targetId: string[]
 }) => {
+
+    console.log(targetId)
 
     const [form] = Form.useForm();
 
@@ -179,11 +181,11 @@ const UpdateAssigneeModal = ({
         // console.log('data', _data);
 
         const _targetId = targetId?.map((item: any) => {
-            return item?.id
+            return item;
         })
 
         // console.log('%%%%%%%%%%%%%', _targetId);
-        
+
 
         const _dataId = {
             targetId: _targetId,
@@ -191,15 +193,15 @@ const UpdateAssigneeModal = ({
         }
 
         console.log('--------------', _dataId);
-        
-        
+
+
         onClose();
     }
 
     const onValueChange = (e: any) => {
         setRoleId(e.target.value);
         form.resetFields();
-    }    
+    }
 
 
     return (

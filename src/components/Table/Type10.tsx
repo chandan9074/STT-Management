@@ -7,67 +7,20 @@ import "../../assets/css/table/type4Table.css";
 import RoleImage from '../Image/RoleImage';
 import { Drawer } from '../Drawer';
 import { EDIT_SPEECHES_PATH } from '../../helpers/Slug';
+import { targetData } from '../../data/assign/AssignData';
+import { targetDT } from '../../types/assignTypes';
 
-
-const data: any = [
-    {
-        id: 1,
-        key: '10-227a',
-        script: 'Script id_227',
-        target: 1000,
-        status: "75",
-        speeches: '355',
-        maxSpeeches: '1000',
-        assignee: "MD. Eman Hasan",
-        assignedDate: "30/01/2022",
-        deadline: "30/01/2022",
-        remark: "",
-        role: 'Manager'
-
-    },
-    {
-        id: 2,
-        key: '10-228a',
-        script: 'Script id_227',
-        target: 1000,
-        status: "90",
-        speeches: '800',
-        maxSpeeches: '2000',
-        assignee: "Sakib",
-        assignedDate: "30/01/2022",
-        deadline: "30/01/2022",
-        remark: "",
-        role: 'Team Leader'
-
-    },
-    {
-        id: 3,
-        key: '10-230a',
-        script: 'Script id_227',
-        target: 1000,
-        status: "20",
-        speeches: '100',
-        maxSpeeches: '1000',
-        assignee: "Mushfiqur",
-        assignedDate: "30/01/2022",
-        deadline: "30/01/2022",
-        remark: "",
-        role: 'Manager'
-
-    },
-];
 
 type Props = {
-    setTargetId: Dispatch<SetStateAction<any>>;
-    targetId: any
+    setSelectedTarget: Dispatch<SetStateAction<targetDT[]>>;
 }
 
-const Type10 = ({ setTargetId, targetId }: Props) => {
+const Type10 = ({ setSelectedTarget }: Props) => {
     // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
     // const [searchedColumn, setSearchedColumn] = useState("");
 
-    const showDrawer = (key: any) => {
+    const showDrawer = (item: targetDT) => {
         setOpen(true);
     };
 
@@ -76,7 +29,7 @@ const Type10 = ({ setTargetId, targetId }: Props) => {
         return result;
     }
 
-    const Type8columns: ColumnsType<any> = [
+    const Type8columns: ColumnsType<targetDT> = [
         // {
         //     title: '',
         //     dataIndex: 'selection',
@@ -91,14 +44,14 @@ const Type10 = ({ setTargetId, targetId }: Props) => {
             key: 'key',
             // align: 'center',
             width: 120,
-            render: (data) => <h1 className='w-[120px] whitespace-nowrap'># {data.key}</h1>,
+            render: (data: targetDT) => <h1 className='w-20 truncate whitespace-nowrap'># {data.id}</h1>,
 
         },
         {
             title: `${"Script".toLocaleUpperCase()}`,
             key: 'script',
             width: 104,
-            render: (data) => <h1 className='w-[104px] whitespace-nowrap'>{data.script}</h1>,
+            render: (data: targetDT) => <h1 className='w-20 truncate whitespace-nowrap'>{data.script.id}</h1>,
 
 
 
@@ -107,14 +60,14 @@ const Type10 = ({ setTargetId, targetId }: Props) => {
             title: `${"target".toLocaleUpperCase()}`,
             key: 'key',
             width: 88,
-            render: (data) => <h1 className='w-[88px] whitespace-nowrap'> {data.target}</h1>,
+            render: (data: targetDT) => <h1 className='w-[88px] whitespace-nowrap'> {data.target.target}</h1>,
 
         },
         {
             title: `${"status".toLocaleUpperCase()}`,
             key: 'status',
             width: 160,
-            render: (data) => (
+            render: (data: targetDT) => (
                 <div className='w-[160px]'>
                     <h1>{data.status > 0 ? data?.status + '%' : 'Not'} Assigned</h1>
                     <div className='bg-blue-gray-20 h-[6px] rounded-[21px]'>
@@ -136,26 +89,26 @@ const Type10 = ({ setTargetId, targetId }: Props) => {
             title: `${"speeches".toLocaleUpperCase()}`,
             key: 'speeches',
             width: 227,
-            render: (data) => (
+            render: (data: targetDT) => (
                 <div className='flex items-center gap-x-[13px] w-[227px]'>
                     <div>
                         <div className='flex items-center gap-x-2'>
                             <img className='w-4 h-4' src={Icons.MusicBlue} alt="" />
-                            <h1 className='text-xs text-secondary-blue-50 font-medium'>{data.speeches + '/' + data?.maxSpeeches} Uploaded</h1>
+                            <h1 className='text-xs text-secondary-blue-50 font-medium'>{data.speeches.uploaded + '/' + data?.speeches.total} Uploaded</h1>
                         </div>
                         <div className='bg-blue-gray-20 h-[6px] rounded-[21px] w-[175px]'>
                             {
                                 data?.status > 0 &&
                                 <div
                                     style={{
-                                        width: `${getPercentage(data?.maxSpeeches, data?.speeches)}%`
+                                        width: `${getPercentage(data?.speeches.total, data?.speeches.uploaded)}%`
                                     }}
                                     className='bg-secondary-blue-50 h-full rounded-l-[21px]' />
 
                             }
                         </div>
                     </div>
-                    <Link to={`${EDIT_SPEECHES_PATH}/${data?.key}`}>
+                    <Link to={`${EDIT_SPEECHES_PATH}/${data?.id}`}>
                         <img className='w-[13px] h-[9px]' src={Icons.BlueRightArrow} alt="" />
                     </Link>
 
@@ -167,12 +120,12 @@ const Type10 = ({ setTargetId, targetId }: Props) => {
             title: `${"Assignee".toLocaleUpperCase()}`,
             key: 'assignee',
             width: 170,
-            render: (data) => (
+            render: (data: targetDT) => (
                 <div className='flex gap-x-2 w-[212px]'>
                     <RoleImage width='w-[18px]' height='h-[18px]' role='speaker' />
                     <div>
-                        <h1 className='text-xs text-blue-gray-80 font-medium m-0 leading-[15px]'>{data.assignee}</h1>
-                        <h1 className='text-xxs text-blue-gray-75 leading-[14px]'>{data.role}</h1>
+                        <h1 className='text-xs text-blue-gray-80 font-medium m-0 leading-[15px]'>{data.assignee.name}</h1>
+                        <h1 className='text-xxs text-blue-gray-75 leading-[14px]'>{data.assignee.role}</h1>
                     </div>
                 </div>
             )
@@ -182,21 +135,21 @@ const Type10 = ({ setTargetId, targetId }: Props) => {
             title: `${"Assigned date".toLocaleUpperCase()}`,
             key: 'assignedDate',
             width: 120,
-            render: (data) => <h1 className='w-[120px] whitespace-nowrap'># {data.assignedDate}</h1>,
+            render: (data: targetDT) => <h1 className='w-[120px] whitespace-nowrap'>{data.assignedDate}</h1>,
 
         },
         {
             title: `${"Deadline".toLocaleUpperCase()}`,
             key: 'deadline',
             width: 120,
-            render: (data) => <h1 className='w-[120px] whitespace-nowrap'># {data.deadline}</h1>,
+            render: (data: targetDT) => <h1 className='w-[120px] whitespace-nowrap'>{data.target.deadline}</h1>,
 
         },
         {
             title: `${"REMARK".toLocaleUpperCase()}`,
             width: 80,
             align: "center",
-            render: (data) => (
+            render: (data: targetDT) => (
                 <div className='flex justify-center'>
                     <img src={Icons.Script} className="h-[15px] w-[12px]" alt="" />
                 </div>
@@ -210,7 +163,7 @@ const Type10 = ({ setTargetId, targetId }: Props) => {
             key: 'details',
             fixed: 'right',
             width: 80,
-            render: (_, record) => (
+            render: (_, record: targetDT) => (
                 <>
 
                     <div className='flex w-full justify-center items-center'>
@@ -227,16 +180,16 @@ const Type10 = ({ setTargetId, targetId }: Props) => {
 
 
     const rowSelection = {
-        onChange: (selectedRowKeys: React.Key[], selectedRows: any[]) => {
-            const selectedIds = selectedRows.map((row) => ({ id: row.id })); 
-            setTargetId(selectedIds); 
+        onChange: (selectedRowKeys: React.Key[], selectedRows: targetDT[]) => {
+            setSelectedTarget(selectedRows);
+
         },
-        getCheckboxProps: (record: any) => ({
+        getCheckboxProps: (record: targetDT) => ({
             // disabled: record.name === 'Disabled User', // Column configuration not to be checked
-            name: record.name,
+            name: record.assignee.name,
         }),
     };
-    
+
     return (
         <div className='billing-table type4-table' >
 
@@ -247,10 +200,11 @@ const Type10 = ({ setTargetId, targetId }: Props) => {
                     ...rowSelection,
                 }}
                 columns={Type8columns}
-                dataSource={data}
+                dataSource={targetData}
                 // pagination={false}
                 // scroll={{ x: 768, y: 1000 }}
                 scroll={{ x: 1600 }}
+                rowKey='id'
             />
 
             <Drawer.Target.Type1

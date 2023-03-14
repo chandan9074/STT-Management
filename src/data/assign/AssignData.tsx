@@ -254,3 +254,247 @@ export const targetDataForRecreate = {
         "address": "Dhaka"
     }
 }
+
+export const targetData = [
+    {
+        "id": "01b9423b-b00e-4291-b195-02005949a280",
+        "script": {
+            "module": "STT",
+            "distributionSource": "Lecture",
+            "isAge": false,
+            "domain": "Applied science",
+            "subdomain": "Technology",
+            "sourceType": "",
+            "sourceUrl": "",
+            "sourceFile": "",
+            "sourceFileName": "",
+            "sourceFileImage": "",
+            "title": "",
+            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+            "date": "2023-02-16T12:45:58.536350",
+            "frequency": 0,
+            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+        },
+        "target": {
+            "id": "0c302aff-68df-4a18-bd1d-ddbe81ca5026",
+            "gender": "male",
+            "ageRange": "34-50",
+            "district": [
+                "dhaka",
+                "mymensingh"
+            ],
+            "profession": "teacher",
+            "economicSituation": "poor",
+            "healthFactors": [
+                "smoker",
+                "jsghfkjwed"
+            ],
+            "recordingArea": "baire",
+            "recordingDistance": "baire",
+            "education": "secondary",
+            "target": 2345,
+            "deadline": "2023-02-11",
+            "reminder": [
+                "kisr",
+                "ki"
+            ],
+            "remark": "nai kono remark"
+        },
+        "assignee": {
+            "id": "2ce4e033-59f4-4381-94c0-2f435dd3bfb4",
+            "name": "Mohammad amir khan",
+            "role": "Manager",
+            "roleID": "01915645322",
+            "contact": "01915645322",
+            "email": "amirkhan23@gmail.com",
+            "address": "Dhaka"
+        },
+        "status": 75,
+        "speeches": {
+            "total": 1000,
+            "uploaded": 350
+        },
+        "assignedDate": "30/01/2022"
+    },
+    {
+        "id": "11b9423b-b00e-4291-b195-02005949a280",
+        "script": {
+            "module": "STT",
+            "distributionSource": "Lecture",
+            "isAge": false,
+            "domain": "Applied science",
+            "subdomain": "Technology",
+            "sourceType": "",
+            "sourceUrl": "",
+            "sourceFile": "",
+            "sourceFileName": "",
+            "sourceFileImage": "",
+            "title": "",
+            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+            "date": "2023-02-16T12:45:58.536350",
+            "frequency": 0,
+            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+        },
+        "target": {
+            "id": "0c302aff-68df-4a18-bd1d-ddbe81ca5026",
+            "gender": "male",
+            "ageRange": "34-50",
+            "district": [
+                "dhaka",
+                "mymensingh"
+            ],
+            "profession": "teacher",
+            "economicSituation": "poor",
+            "healthFactors": [
+                "smoker",
+                "jsghfkjwed"
+            ],
+            "recordingArea": "baire",
+            "recordingDistance": "baire",
+            "education": "secondary",
+            "target": 2345,
+            "deadline": "2023-02-11",
+            "reminder": [
+                "kisr",
+                "ki"
+            ],
+            "remark": "nai kono remark"
+        },
+        "assignee": {
+            "id": "2ce4e033-59f4-4381-94c0-2f435dd3bfb4",
+            "name": "Mohammad amir khan",
+            "role": "Manager",
+            "roleID": "01915645322",
+            "contact": "01915645322",
+            "email": "amirkhan23@gmail.com",
+            "address": "Dhaka"
+        },
+        "status": 75,
+        "speeches": {
+            "total": 1000,
+            "uploaded": 350
+        },
+        "assignedDate": "30/01/2022"
+    },
+    {
+        "id": "02b9423b-b00e-4291-b195-02005949a280",
+        "script": {
+            "module": "STT",
+            "distributionSource": "Lecture",
+            "isAge": false,
+            "domain": "Applied science",
+            "subdomain": "Technology",
+            "sourceType": "",
+            "sourceUrl": "",
+            "sourceFile": "",
+            "sourceFileName": "",
+            "sourceFileImage": "",
+            "title": "",
+            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+            "date": "2023-02-16T12:45:58.536350",
+            "frequency": 0,
+            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+        },
+        "target": {
+            "id": "0c302aff-68df-4a18-bd1d-ddbe81ca5026",
+            "gender": "male",
+            "ageRange": "34-50",
+            "district": [
+                "dhaka",
+                "mymensingh"
+            ],
+            "profession": "teacher",
+            "economicSituation": "poor",
+            "healthFactors": [
+                "smoker",
+                "jsghfkjwed"
+            ],
+            "recordingArea": "baire",
+            "recordingDistance": "baire",
+            "education": "secondary",
+            "target": 2345,
+            "deadline": "2023-02-11",
+            "reminder": [
+                "kisr",
+                "ki"
+            ],
+            "remark": "nai kono remark"
+        },
+        "assignee": {
+            "id": "2ce4e033-59f4-4381-94c0-2f435dd3bfb4",
+            "name": "Mohammad amir khan",
+            "role": "Manager",
+            "roleID": "01915645322",
+            "contact": "01915645322",
+            "email": "amirkhan23@gmail.com",
+            "address": "Dhaka"
+        },
+        "status": 75,
+        "speeches": {
+            "total": 1000,
+            "uploaded": 350
+        },
+        "assignedDate": "30/01/2022"
+    },
+    {
+        "id": "0139423b-b00e-4291-b195-02005949a280",
+        "script": {
+            "module": "STT",
+            "distributionSource": "Lecture",
+            "isAge": false,
+            "domain": "Applied science",
+            "subdomain": "Technology",
+            "sourceType": "",
+            "sourceUrl": "",
+            "sourceFile": "",
+            "sourceFileName": "",
+            "sourceFileImage": "",
+            "title": "",
+            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+            "date": "2023-02-16T12:45:58.536350",
+            "frequency": 0,
+            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+        },
+        "target": {
+            "id": "0c302aff-68df-4a18-bd1d-ddbe81ca5026",
+            "gender": "male",
+            "ageRange": "34-50",
+            "district": [
+                "dhaka",
+                "mymensingh"
+            ],
+            "profession": "teacher",
+            "economicSituation": "poor",
+            "healthFactors": [
+                "smoker",
+                "jsghfkjwed"
+            ],
+            "recordingArea": "baire",
+            "recordingDistance": "baire",
+            "education": "secondary",
+            "target": 2345,
+            "deadline": "2023-02-11",
+            "reminder": [
+                "kisr",
+                "ki"
+            ],
+            "remark": "nai kono remark"
+        },
+        "assignee": {
+            "id": "2ce4e033-59f4-4381-94c0-2f435dd3bfb4",
+            "name": "Mohammad amir khan",
+            "role": "Manager",
+            "roleID": "01915645322",
+            "contact": "01915645322",
+            "email": "amirkhan23@gmail.com",
+            "address": "Dhaka"
+        },
+        "status": 75,
+        "speeches": {
+            "total": 1000,
+            "uploaded": 350
+        },
+        "assignedDate": "30/01/2022"
+    },
+
+]
