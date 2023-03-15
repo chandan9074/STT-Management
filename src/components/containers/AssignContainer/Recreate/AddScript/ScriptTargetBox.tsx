@@ -1,6 +1,5 @@
 import { SearchOutlined } from "@ant-design/icons";
 import { Radio } from "@mui/material";
-import { useState } from "react";
 import Icons from "../../../../../assets/Icons";
 import { useAssigneeContext } from "../../../../../context/AssignProvider";
 import { scriptColorData } from "../../../../../data/assign/AssignData";
@@ -16,7 +15,6 @@ const ScriptTargetBox = ({
   onClick: () => void;
 }) => {
   const { scriptForRecreate, setScriptForRecreate, setRecreateTable, recreateTable } = useAssigneeContext();
-  const [selectedValue, setSelectedValue] = useState<string>("");
 
   const selectScript = (
     selectedItem: ScriptItemDT | null,
@@ -33,7 +31,6 @@ const ScriptTargetBox = ({
         });
       });
       console.log('checked value', scriptForRecreate)
-      setSelectedValue(selectedItem?.id);
       setRecreateTable({ ...recreateTable, script: selectedItem })
     }
   };
