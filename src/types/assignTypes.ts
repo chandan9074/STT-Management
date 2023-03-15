@@ -142,3 +142,8 @@ export type targetDT = {
   };
   assignedDate: string;
 }
+
+export type targetFilterDT = {
+  targetStatus: string[];
+  speechStatus: string[];
+}

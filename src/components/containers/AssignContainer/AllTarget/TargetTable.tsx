@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Icons from '../../../../assets/Icons';
+import { filterData } from '../../../../data/script/filter';
 import { RECREATE_TARGET_PATH } from '../../../../helpers/Slug';
 import { targetDT } from '../../../../types/assignTypes';
 import Buttons from '../../../Buttons';
 import { CustomModal } from '../../../common/CustomModal';
+import { Filter } from '../../../Filter';
+import { SearchBox } from '../../../SearchBox';
 import Table from '../../../Table';
 import UpdateAssigneeModal from './UpdateAssigneeModal';
 
@@ -34,28 +37,34 @@ const TargetTable = () => {
   return (
     <div className='pt-[42px] pb-[24px] pr-4 pl-6 '>
       <div className='flex items-center justify-between mb-[25px]'>
-        <h1 className='text-[18px] text-ct-blue-95 font-medium'>0 Target</h1>
-        <div className='flex'>
-          {
-            selectedTarget?.length > 0 &&
-            <Buttons.IconWithTextButton.Tertiary
-              label='Update Assignee'
-              size='medium'
-              variant='CT-Blue'
-              onClick={() => onModalOpen()}
+        <h1 className='text-[18px] text-ct-blue-95 font-medium'>{selectedTarget.reduce((acc, obj) => acc + Number(obj.target.target), 0)} Target</h1>
+        <div className='flex items-center gap-x-6'>
+          <div className='flex items-center gap-x-3'>
+            {
+              selectedTarget?.length > 0 &&
+              <Buttons.IconWithTextButton.Tertiary
+                label='Update Assignee'
+                size='small'
+                variant='CT-Blue'
+                onClick={() => onModalOpen()}
 
-            />
-          }
+              />
+            }
 
-          {
-            (selectedTarget?.length > 0 && selectedTarget?.length < 2) &&
-            <Buttons.IconWithTextButton.Tertiary
-              label='Re-create'
-              size='medium'
-              variant='CT-Blue'
-              onClick={() => onCancelModalOpen()}
-            />
-          }
+            {
+              (selectedTarget?.length > 0 && selectedTarget?.length < 2) &&
+              <Buttons.IconWithTextButton.Tertiary
+                label='Re-create'
+                size='small'
+                variant='CT-Blue'
+                onClick={() => onCancelModalOpen()}
+              />
+            }
+          </div>
+          <div className='flex items-center gap-x-3'>
+            <SearchBox.Type1 inputWidth="w-52" placeholder="Search with script ID, Title..." paddingX="px-3" paddingY="py-2" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
+            <Filter.Type1 filterData={filterData} />
+          </div>
         </div>
       </div>
       <Table.Type10 setSelectedTarget={setSelectedTarget} />

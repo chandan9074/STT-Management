@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Icons from "../../assets/Icons";
 import { FilterDT } from "../../types/script";
 import Buttons from "../Buttons";

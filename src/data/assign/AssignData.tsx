@@ -498,3 +498,16 @@ export const targetData = [
     },
 
 ]
+
+export const targetFilter = {
+    targetStatus: [
+        "Not Assigned",
+        "Partial Assigned",
+        "All Assigned",
+    ],
+    speechStatus: [
+       "Not Speech Uploaded",
+       "Partial Uploaded",
+       "100% Uploaded", 
+    ]
+}
