@@ -24,10 +24,14 @@ const Type10 = ({ setSelectedTarget }: Props) => {
         setOpen(true);
     };
 
+    const [activePanel, setActivePanel] = useState<string>("Script");
+
     const getPercentage = (max: number, value: number) => {
         const result = (100 * value) / max;
         return result;
     }
+
+    const [singleTargetData, setSingleTargetData] = useState<targetDT>();
 
     const Type8columns: ColumnsType<targetDT> = [
         // {
@@ -168,7 +172,11 @@ const Type10 = ({ setSelectedTarget }: Props) => {
 
                     <div className='flex w-full justify-center items-center'>
                         <img
-                            onClick={() => showDrawer(record)}
+                            onClick={() => {
+                                showDrawer(record);
+                                setSingleTargetData(record);
+                                setActivePanel('Script');
+                            }}
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
@@ -207,10 +215,16 @@ const Type10 = ({ setSelectedTarget }: Props) => {
                 rowKey='id'
             />
 
-            <Drawer.Target.Type1
-                isDrawerOpen={open}
-                setIsDrawerOpen={setOpen}
-            />
+            {
+                open &&
+                <Drawer.Target.Type1
+                    isDrawerOpen={open}
+                    setIsDrawerOpen={setOpen}
+                    data={singleTargetData}
+                    setActivePanel={setActivePanel}
+                    activePanel={activePanel}
+                />
+            }
 
         </div >
     );

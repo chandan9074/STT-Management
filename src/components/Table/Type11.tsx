@@ -50,6 +50,8 @@ const Type11 = ({ data }: Props) => {
     const managerContext = useContext(RoleInContext);
     const { roleDatas } = managerContext;
 
+    const [activePanel, setActivePanel] = useState<string>("Script");
+
     // const [audioUploadStatus, setAudioUploadStatus] = useState<string>('');
 
     // const [active, setActive] = useState("Active");
@@ -545,6 +547,9 @@ const Type11 = ({ data }: Props) => {
             <Drawer.Target.Type1
                 isDrawerOpen={open}
                 setIsDrawerOpen={setOpen}
+                setActivePanel={setActivePanel}
+                activePanel={activePanel}
+                
             />
 
             {

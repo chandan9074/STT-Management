@@ -1,36 +1,32 @@
-import { useContext } from 'react';
-import { AssignContext } from '../../../context/AssignProvider';
+import { targetDT } from '../../../types/assignTypes';
 
-const SpeakerCriteria = () => {
+type Props = {
+    data?: targetDT
+}
 
-    const AssignContexts = useContext(AssignContext);
-    const {
-        // criterias,
-        singleCriteria,
-        // getSingleCriteria,
-    } = AssignContexts;
+const SpeakerCriteria = ({data}: Props) => {
 
     const singleValue1 = [
         {
             title: 'Gender',
-            value: singleCriteria?.gender || '-'
+            value: data?.target?.gender || '-'
         },
         {
             title: 'Division/ District',
-            value: singleCriteria?.district
+            value: data?.target?.district
         },
         {
             title: 'Age',
-            value: singleCriteria?.ageRange || '-'
+            value: data?.target?.ageRange || '-'
         },
 
         {
             title: 'profession',
-            value: singleCriteria?.profession || '-'
+            value: data?.target?.profession || '-'
         },
         {
             title: 'Econimic Situation',
-            value: singleCriteria?.economicSituation || '-'
+            value: data?.target?.economicSituation || '-'
         },
         {
             title: 'Education',
@@ -38,15 +34,15 @@ const SpeakerCriteria = () => {
         },
         {
             title: 'Smoking Habit',
-            value: singleCriteria?.healthFactors?.includes('Smoker') ? 'Yes' : 'No'
+            value: data?.target?.healthFactors?.includes('Smoker') ? 'Yes' : 'No'
         },
         {
             title: 'Hearing Disability',
-            value: singleCriteria?.healthFactors?.includes('Hearing') ? 'Yes' : 'No'
+            value: data?.target?.healthFactors?.includes('Hearing') ? 'Yes' : 'No'
         },
         {
             title: 'Shutter',
-            value: singleCriteria?.healthFactors?.includes('Stutter') ? 'Yes' : 'No'
+            value: data?.target?.healthFactors?.includes('Stutter') ? 'Yes' : 'No'
         },
 
 
@@ -55,11 +51,11 @@ const SpeakerCriteria = () => {
     const singleValue2 = [
         {
             title: 'Recording Area',
-            value: singleCriteria?.recordingArea || '-'
+            value: data?.target?.recordingArea || '-'
         },
         {
             title: 'Recording Distance',
-            value: singleCriteria?.recordingDistance || '-'
+            value: data?.target?.recordingDistance || '-'
         },
     ]
 

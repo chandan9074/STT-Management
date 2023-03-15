@@ -31,6 +31,9 @@ const Type8 = () => {
   const [openAssigneeModal, setOpenAssigneeModal] = useState<boolean>(false);
   const [openDeadlineModal, setOpenDeadlineModal] = useState<boolean>(false);
   const [remarkModal, setRemrkModal] = useState<boolean>(false);
+
+  const [activePanel, setActivePanel] = useState<string>("Script");
+
   // const [drawerData, setDrawerData] = useState<any>();
 
   const changeScriptModal = (open: boolean, target: TargetItemDT) => {
@@ -267,6 +270,8 @@ const Type8 = () => {
       <Drawer.Target.Type1
         isDrawerOpen={open}
         setIsDrawerOpen={setOpen}
+        setActivePanel={setActivePanel}
+        activePanel={activePanel}
       />
     </div>
   );
