@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Icons from '../../../../assets/Icons';
+import { targetFilter } from '../../../../data/assign/AssignData';
 import { filterData } from '../../../../data/script/filter';
 import { RECREATE_TARGET_PATH } from '../../../../helpers/Slug';
-import { targetDT } from '../../../../types/assignTypes';
+import { targetDT, targetFilterListDT } from '../../../../types/assignTypes';
 import Buttons from '../../../Buttons';
 import { CustomModal } from '../../../common/CustomModal';
 import { Filter } from '../../../Filter';
@@ -15,8 +16,17 @@ const TargetTable = () => {
   const navigate = useNavigate();
   const [isOpenModal, setIsModalOpen] = useState<boolean>(false);
   const [selectedTarget, setSelectedTarget] = useState<targetDT[]>([] as targetDT[]);
-
   const [isConfirmModal, setIsConfirmModal] = useState<boolean>(false);
+  const [count, setCount] = useState<number>(0);
+  const [filterList, setFilterList] = useState<targetFilterListDT>({
+    targetStatus: [],
+    speechStatus: [],
+    subdomain: []
+  })
+
+  const handleFilterList = (key: string, value: string) => { }
+  const handleReset = (key: string, type: "single" | "all") => { }
+
 
   const onCancelModalOpen = () => {
     setIsConfirmModal(true);
@@ -63,7 +73,7 @@ const TargetTable = () => {
           </div>
           <div className='flex items-center gap-x-3'>
             <SearchBox.Type1 inputWidth="w-52" placeholder="Search with script ID, Title..." paddingX="px-3" paddingY="py-2" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
-            <Filter.Type1 filterData={filterData} />
+            <Filter.Type2 filterData={targetFilter} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
           </div>
         </div>
       </div>

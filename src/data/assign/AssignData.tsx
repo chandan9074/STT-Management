@@ -1,4 +1,5 @@
 import { AUDIO_FILE_FAILED, AUDIO_FILE_UPLOADED } from "../../helpers/Slug"
+import { targetFilterDT } from "../../types/assignTypes"
 
 export const healthFactors = [
     'Hearing',
@@ -499,15 +500,64 @@ export const targetData = [
 
 ]
 
-export const targetFilter = {
-    targetStatus: [
-        "Not Assigned",
-        "Partial Assigned",
-        "All Assigned",
-    ],
-    speechStatus: [
-       "Not Speech Uploaded",
-       "Partial Uploaded",
-       "100% Uploaded", 
-    ]
-}
+export const targetFilter: targetFilterDT[] = [
+    {
+        type: "check",
+        key: "targetStatus",
+        title: "Target Status",
+        isParent: true,
+        child: [
+            "Not Assigned",
+            "Partial Assigned",
+            "All Assigned",
+        ],
+    },
+    {
+        type: "check",
+        key: "speechStatus",
+        title: "Speech Status",
+        isParent: true,
+        child: [
+            "Not Speech Uploaded",
+            "Partial Uploaded",
+            "100% Uploaded",
+        ]
+    },
+    {
+        type: "select",
+        key: "subdomain",
+        title: "Subdomain",
+        isParent: false,
+        child: [
+            "Not Speech Uploaded",
+            "Partial Uploaded",
+            "100% Uploaded",
+        ],
+        // children: [
+        //     {
+        //         title: "Natural & Pure Science",
+        //         child: [
+        //             "Physics",
+        //             "Chemistry",
+        //             "Math",
+        //             "Biology",
+        //             "Astronomy",
+        //             "Nature",
+        //             "Environment",
+        //         ],
+        //     },
+        //     {
+        //         title: "Applied Science",
+        //         child: [
+        //             "Physics",
+        //             "Chemistry",
+        //             "Math",
+        //             "Biology",
+        //             "Astronomy",
+        //             "Nature",
+        //             "Environment",
+        //         ],
+        //     },
+        // ]
+    }
+]

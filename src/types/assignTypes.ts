@@ -145,8 +145,21 @@ export type targetDT = {
 }
 
 export type targetFilterDT = {
-  targetStatus: string[];
-  speechStatus: string[];
+  type: "check" | "select";
+  isParent: boolean;
+  key: string;
+  title: string;
+  child?: string[];
+  children?: subChildDT[];
+}
+
+export type subChildDT = {
+    title: string;
+    child: string[];
+}
+
+export type targetFilterListDT = {
+  [key: string]: string[];
 }
 
 export type assignSpeechDT = {
