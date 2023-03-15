@@ -1,5 +1,6 @@
 import { Autocomplete, FormControl, FormControlLabel, Grid, IconButton, InputAdornment, InputLabel, OutlinedInput, Radio, RadioGroup, TextField } from '@mui/material';
 import { DatePicker, DatePickerProps } from 'antd';
+import { FormikValues } from 'formik';
 import { useState } from 'react';
 import Icons from '../../../../assets/Icons';
 import { ageRange, education, educationSituation, gender, homeDistrict, yesNoPreferData } from '../../../../data/userManagement/UserManagementData';
@@ -8,7 +9,7 @@ import HomeDistrictSelect from '../../../Form/HomeDistrictSelect';
 
 type Prop =
     {
-        formik?: any,
+        formik: FormikValues,
     }
 
 const PersonalInformation2 = ({ formik }: Prop) => {
