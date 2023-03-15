@@ -66,7 +66,7 @@ const RoleSearchModal = ({
 
 
     const handleRoleChange = (id: string, p: any) => {
-        const _data = roleDatas?.filter((m: roleDT) => m.id === p.key)
+        const _data = roleDatas?.filter((m: roleDT) => m.id === p.id)
         if (_data) {
             setSingleManger(_data[0]);
         }
@@ -158,15 +158,19 @@ const RoleSearchModal = ({
                                                 placeholder={`Select ${role} by Login ID/ Name`}
                                                 style={{ border: 'none' }}
                                                 onChange={(value, p) => handleRoleChange(value, p)}
-                                                filterOption={(inputValue: string, option: any) =>
-                                                    option.value.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0 ||
-                                                    option.contact.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0
+                                                // filterOption={(inputValue: string, option: any) =>
+                                                //     option.value.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0 ||
+                                                //     option.contact.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0
+                                                // }
+                                                filterOption={(inputValue, option) =>
+                                                    (option?.value ?? '').toString().toLowerCase().includes(inputValue.toLowerCase()) 
                                                 }
 
                                             >
                                                 {
-                                                    roleDatas?.map((m: roleDT) => (
-                                                        <Option key={m.id} value={m.name} contact={m.contact}>
+                                                    roleDatas?.map((m: roleDT, i:number) => (
+                                                        // <Option key={m.id} value={m.name} contact={m.contact}>
+                                                        <Option key={i} value={`${m.contact} - ${m.name}`} id={m.id}>
                                                             <div className='flex gap-x-4'>
                                                                 <img className='h-[18px] w-[18px]' src={managerImage}
                                                                     alt="" />
