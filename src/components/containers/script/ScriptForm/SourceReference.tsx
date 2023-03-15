@@ -55,7 +55,7 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
         formik.setFieldValue("sourceFileName", '');
     }
 
-    const urlPatternValidation = (url: any) => {
+    const urlPatternValidation = (url: string) => {
         const regex = new RegExp('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?');
         return regex.test(url);
     };
