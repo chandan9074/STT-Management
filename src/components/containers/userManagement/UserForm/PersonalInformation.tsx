@@ -1,10 +1,11 @@
 import { Autocomplete, Box, Grid, TextField } from '@mui/material';
+import { FormikValues } from 'formik';
 import { homeDistrict, lastDegreeAchived } from '../../../../data/userManagement/UserManagementData';
 import HomeDistrictSelect from '../../../Form/HomeDistrictSelect';
 import Image from '../../../Image';
 
 
-const PersonalInformation = ({ formik }: { formik: any }) => {
+const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
 
     return (
         <div>

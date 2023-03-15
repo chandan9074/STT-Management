@@ -7,6 +7,7 @@ import ActionButton from './ActionButton';
 import { useContext } from 'react';
 import { AssignContext, useAssigneeContext } from '../../../../../../context/AssignProvider';
 import { isEmpty } from '../../../../../../helpers/Utils';
+import { CriteriaItemDT } from '../../../../../../types/assignTypes';
 
 const validationSchema = yup.object({
     // gender: yup.string().required('Gender is Required'),
@@ -16,7 +17,7 @@ const validationSchema = yup.object({
 
 type Props = {
     drawerClose: () => void,
-    data?: any,
+    data?: CriteriaItemDT,
     isRecreate?: boolean
 }
 
@@ -37,6 +38,7 @@ const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
+            id: data?.id || singleCriteria?.id || '',
             gender: data?.gender || singleCriteria?.gender || 'Male',
             ageRange: data?.ageRange || singleCriteria?.ageRange || '',
             district: data?.district || singleCriteria?.district || [],
@@ -54,7 +56,7 @@ const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
             buttonName: '',
         },
         validationSchema: validationSchema,
-        onSubmit: (values) => {
+        onSubmit: (values: CriteriaItemDT) => {
 
             // formik.resetForm();
             // if (isEmpty(data)) {
@@ -63,7 +65,7 @@ const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
             //     onCriteriaUpdate()
             // }
 
-            if (values.buttonName && values.buttonName.includes('create-button')) {
+            if (values.buttonName && values?.buttonName === 'create-button') {
                 formik.resetForm();
 
                 if (isEmpty(data)) {
@@ -92,25 +94,25 @@ const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
     });
 
 
-    const onSingleRecreate = (values: any) => {
+    const onSingleRecreate = (values: CriteriaItemDT) => {
 
         const targetForRecreateIds = targetForRecreate.map((target) => target.id);
-        let newId: any;
+        let newId: number;
         do {
-          // Generate a new random id
-          newId = Math.floor(Math.random() * 100000);
-        } while (targetForRecreateIds.includes(newId));
-      
+            // Generate a new random id
+            newId = Math.floor(Math.random() * 100000);
+        } while (targetForRecreateIds.includes(newId.toString()));
+
         // Add the new id to the values object
         const newValues = {
-          ...values,
-          id: newId,
-        //   target: 0 // Set the target property to a default value
+            ...values,
+            id: newId.toString(),
+            //   target: 0 // Set the target property to a default value
         };
-      
+
         setTargetForRecreate((prevTargetForRecreate) => [
-          ...prevTargetForRecreate,
-          newValues
+            ...prevTargetForRecreate,
+            newValues
         ]);
 
         emptyCriteria();
@@ -133,17 +135,17 @@ const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
     const onRecreateCreate = () => {
 
         const targetForRecreateIds = targetForRecreate.map(target => target.id);
-        const newCriterias = criterias.map((criteria: any) => {
-            let newId: any;
+        const newCriterias = criterias.map((criteria: CriteriaItemDT) => {
+            let newId: number;
             do {
                 // Generate a new random id
                 newId = Math.floor(Math.random() * 100000);
-            } while (targetForRecreateIds.includes(newId));
+            } while (targetForRecreateIds.includes(newId.toString()));
 
             // Return a new criteria object with the new id
             return {
                 ...criteria,
-                id: newId
+                id: newId.toString()
             };
         });
 

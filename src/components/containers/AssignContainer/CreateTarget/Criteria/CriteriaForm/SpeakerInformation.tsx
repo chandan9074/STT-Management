@@ -3,9 +3,10 @@ import { ageRange, education, educationSituation, gender, homeDistrict, professi
 import { healthFactors, recordingArea, recordingDistanceAssign } from '../../../../../../data/assign/AssignData';
 import MultipleSelect from '../../../../../Form/MultipleSelect';
 import Icons from '../../../../../../assets/Icons';
+import { FormikValues } from 'formik';
 
 
-const SpeakerInformation = ({ formik }: { formik: any }) => {
+const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
 
 
     return (

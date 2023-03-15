@@ -5,8 +5,10 @@ import Icons from '../../../../assets/Icons';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { scriptSourceType } from '../../../../data/Script/Domain';
+import { FormikValues } from 'formik';
+import { UploadChangeParam, UploadFile } from 'antd/es/upload';
 
-const SourceReference = ({ formik }: { formik: any }) => {
+const SourceReference = ({ formik }: { formik: FormikValues }) => {
     const [scriptSourceReference, setScriptSourceReference] = useState<{ isSource: boolean, isScript: boolean }>({
         isSource: true,
         isScript: false
@@ -28,7 +30,7 @@ const SourceReference = ({ formik }: { formik: any }) => {
         }
     }
 
-    const handleFileUpload = (event: any) => {
+    const handleFileUpload = (event: UploadChangeParam<UploadFile<File>>) => {
         // event.prevntDefault();
 
 

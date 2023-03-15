@@ -1,7 +1,8 @@
 import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
+import { FormikValues } from 'formik';
 import { RoleData } from '../../../../data/userManagement/UserManagementData';
 
-const Role = ({ formik }: { formik: any }) => {
+const Role = ({ formik }: { formik: FormikValues }) => {
 
     // const [isSpeaker, setIsSpeaker] = useState<string>('');
 

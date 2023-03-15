@@ -6,8 +6,9 @@ import { adminData, reportingRoleData } from '../../../../data/userManagement/Us
 import { Grid } from '@mui/material';
 import { Box } from '@mui/system';
 import Image from '../../../Image';
+import { FormikValues } from 'formik';
 
-const FileReport = ({ getFile, formik }: { getFile: (file: any) => void, formik: any }) => {
+const FileReport = ({ getFile, formik }: { getFile: (file: any) => void, formik: FormikValues }) => {
     const [file, setFile] = useState<any>([]);
 
     const handleFileUpload = (event: any) => {

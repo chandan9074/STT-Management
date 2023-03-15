@@ -1,11 +1,13 @@
+import { FormikValues } from "formik";
 import { useContext } from "react";
 import { AssignContext } from "../../../../../../context/AssignProvider";
 import { isEmpty } from "../../../../../../helpers/Utils";
+import { CriteriaItemDT } from "../../../../../../types/assignTypes";
 
 type Props = {
-    formik: any,
+    formik: FormikValues,
     onCreate: () => void,
-    data?: any
+    data?: CriteriaItemDT
 }
 
 

@@ -1,7 +1,8 @@
 import { Divider, TextareaAutosize, TextField } from '@mui/material';
+import { FormikValues } from 'formik';
 import './TitleDescription.css';
 
-const TitleDescription = ({ formik }: { formik: any }) => {
+const TitleDescription = ({ formik }: { formik: FormikValues }) => {
     return (
         <div className='p-[16px] title-descrioption  rounded-[7px] bg-white border-[1px] border-blue-gray-30'>
             <div className='flex items-center'>

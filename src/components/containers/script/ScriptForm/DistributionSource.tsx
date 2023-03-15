@@ -9,9 +9,10 @@ import { distributionList } from '../../../../data/Script/Domain';
 import Icons from '../../../../assets/Icons';
 import { CustomModal } from '../../../common/CustomModal';
 import { ScriptContext } from '../../../../context/ScriptProvider';
+import { FormikValues } from 'formik';
 
 
-const DistributionSource = ({ formik }: { formik: any }) => {
+const DistributionSource = ({ formik }: { formik: FormikValues }) => {
 
     const scriptContext = useContext(ScriptContext);
     const { scriptModule } = scriptContext;
