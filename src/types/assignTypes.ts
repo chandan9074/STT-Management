@@ -1,3 +1,4 @@
+import { roleDT } from "./billingTypes";
 import { allScriptResDT } from "./script";
 import { audioStatusDT, overTheTimeDataDT } from "./userManagementTypes";
 export type assignStatisticsDT = {
@@ -12,8 +13,8 @@ export interface ScriptItemDT {
   isSelected?: boolean;
   id: string;
   description: string;
-  domain:string;
-  subDomain:string;
+  domain: string;
+  subDomain: string;
   title: string;
   frequency: number;
 }
@@ -146,4 +147,37 @@ export type targetDT = {
 export type targetFilterDT = {
   targetStatus: string[];
   speechStatus: string[];
+}
+
+export type assignSpeechDT = {
+  id: string;
+  speaker: roleDT[];
+  collector: collectorDT;
+  recordingArea: string;
+  recordingDistance: string;
+  device: string;
+  speeches: string;
+  maxSpeeches: string;
+  remark: string;
+  role: string;
+  speech: assignAudioTrackDT
+  audioUploadStatus?: string
+}
+
+export type collectorDT = {
+  name: string;
+  gender: string;
+  role: string;
+  contact: string;
+  address: string;
+  id: string;
+}
+
+export type assignAudioTrackDT = {
+  id?: string;
+  title?: string;
+  duration?: string;
+  url?: string;
+  name?: string;
+  file?: Blob | File;
 }

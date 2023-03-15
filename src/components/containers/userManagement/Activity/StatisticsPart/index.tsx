@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import Header from './Header'
 import * as PATH from "../../../../../helpers/Slug"
 import { Navigator } from '../../../../Navigator'
