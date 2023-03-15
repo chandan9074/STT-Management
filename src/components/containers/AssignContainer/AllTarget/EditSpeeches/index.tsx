@@ -47,15 +47,6 @@ const data: assignSpeechDT[] = [
                 "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
         },
         role: "",
-        // {
-        //     id: '33',
-        //     name: 'MD. Eman Hasan',
-        //     role: 'Manager',
-        //     email: 'miraz2710@gmail.com',
-        //     contact: '01684610691',
-        //     address: 'Dhaka',
-        //     gender: 'Male'
-        // },
         speeches: '355',
         maxSpeeches: '1000',
         remark: "",
