@@ -8,6 +8,7 @@ import FileReport from './FileReport';
 import './UserForm.css';
 import PersonalInformation2 from './PersonalInformation2';
 import { useEffect, useState } from 'react';
+import { userPersonalInformationDt, userSpeakerDt } from '../../../../types/userManagementTypes';
 
 const validationSchema = yup.object({
     role: yup.array().min(1, "Please select at least one role"),
@@ -37,6 +38,7 @@ const validationSchemaSpeaker = yup.object({
 const UserForm = () => {
 
     const [isSpeaker, setIsSpeaker] = useState<boolean>(false);
+
     const initialValues = isSpeaker
         ? {
             // Speaker
@@ -56,7 +58,7 @@ const UserForm = () => {
             hearingStatus: '',
             reportingTo: '',
             adminData: {
-                id: 4,
+                id: '4',
                 name: 'Jahir Uddin',
                 number: '018684660691'
             },
@@ -76,17 +78,19 @@ const UserForm = () => {
             cvFile: '',
             reportingTo: '',
             adminData: {
-                id: 4,
+                id: '10',
                 name: 'Jahir Uddin',
                 number: '018684660691'
             },
         };
 
-    const handleSpeakerSubmit = (values: any) => {
+    const handleSpeakerSubmit = (values: userSpeakerDt) => {
+
+
         setIsSpeaker(isSpeaker);
     }
 
-    const handlePersonalInformationSubmit = (values: any) => {
+    const handlePersonalInformationSubmit = (values: userPersonalInformationDt) => {
         setIsSpeaker(isSpeaker);
     }
 
@@ -97,12 +101,20 @@ const UserForm = () => {
 
         //     setIsSpeaker(isSpeaker);
         // },
-        onSubmit: isSpeaker ? handleSpeakerSubmit : handlePersonalInformationSubmit,
+        // onSubmit: isSpeaker ? handleSpeakerSubmit : handlePersonalInformationSubmit,
+
+        onSubmit: (values) => {
+            if (isSpeaker) {
+                handleSpeakerSubmit(values as userSpeakerDt);
+            } else {
+                handlePersonalInformationSubmit(values as userPersonalInformationDt);
+            }
+        },
     });
 
     useEffect(() => {
 
-        if (formik.values.role?.length === 0) {
+        if (formik.values?.role?.length === 0) {
             setIsSpeaker(false);
         }
 
@@ -118,10 +130,12 @@ const UserForm = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [formik.values.role]);
 
-    const getFile = (file: any) => {
+    const getFile = (file: File | null) => {
         let formData = new FormData();
-        formData.append('file', file)
-        formik.setFieldValue('cvFile', formData);
+        if (file) {
+            formData.append('file', file)
+            formik.setFieldValue('cvFile', formData);
+        }
     }
 
     return (

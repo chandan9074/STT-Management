@@ -6,9 +6,10 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { FormikValues } from 'formik';
 
 
-const Domain = ({ formik }: { formik: any }) => {
+const Domain = ({ formik }: { formik: FormikValues }) => {
     // const [domain, sebDomain] = useState<string>('');
 
     return (

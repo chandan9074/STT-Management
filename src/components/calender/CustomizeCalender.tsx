@@ -1,51 +1,55 @@
-import React, {useState} from 'react';
-import {Button, DatePicker, DatePickerProps, Form, Input, Modal, Space} from 'antd';
-import './customizeCalender.css'
-import {Moment} from "moment";
-import dayjs from 'dayjs';
+import { useState } from 'react';
+import { Button, DatePicker, Form, Input } from 'antd';
+import './customizeCalender.css';
+import dayjs, { Dayjs } from 'dayjs';
+import { RangeValue } from 'rc-picker/lib/interface';
+import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
 
-const {RangePicker} = DatePicker;
+interface FormValues {
+    start: string;
+    end: string;
+  }
+
+const { RangePicker } = DatePicker;
 
 const CustomizeCalender = () => {
 
     const [form] = Form.useForm();
 
     const [open, setOpen] = useState<boolean>(false);
-    const [startDate, setStartDate] = useState<any>("")
-    const [endDate, setEndDate] = useState<any>("")
+    const [startDate, setStartDate] = useState<string>("")
+    const [endDate, setEndDate] = useState<string>("")
     const dateFormat = 'YYYY-MM-DD';
-    const getDateCalender: any = (date: any, dateString: any, info: any) => {
+    const getDateCalender = (date: RangeValue<Dayjs>, dateString: [string, string]) => {
 
-      
-
-        if(dateString[0]) {
-        // if(dateString[0]) {
-            form.setFieldsValue({start: dateString[0]});
+        if (dateString[0]) {
+            // if(dateString[0]) {
+            form.setFieldsValue({ start: dateString[0] });
         }
 
-        if(dateString[1]){
-            form.setFieldsValue({end: dateString[1]});
+        if (dateString[1]) {
+            form.setFieldsValue({ end: dateString[1] });
         }
 
         return []
 
     };
 
-    const onFinish = (values: any) => {
-        if(values.start){
+    const onFinish = (values: FormValues) => {
+        if (values.start) {
             setStartDate(values.start)
         }
-        if(values.end){
+        if (values.end) {
             setEndDate(values.end)
         }
     };
 
-    const onFinishFailed = (errorInfo: any) => {
-      
+    const onFinishFailed = (errorInfo: ValidateErrorEntity<FormValues>) => {
+
     };
 
 
-   
+
     return (
         <div className='cm-range-picker flex'>
             <button className="" onClick={() => setOpen(!open)}>Open calender</button>
@@ -61,7 +65,7 @@ const CustomizeCalender = () => {
                     format={dateFormat}
                     value={[startDate ? dayjs(startDate, dateFormat) : null, endDate ? dayjs(endDate, dateFormat) : null]}
                     onCalendarChange={getDateCalender}
-                    
+
                     renderExtraFooter={() => <div className="m-5" onMouseDown={(e) => e.stopPropagation()}>
                         <p className='text-center'>Or</p>
 
@@ -70,7 +74,7 @@ const CustomizeCalender = () => {
                             initialValues={{
                                 start: startDate ? startDate : "",
                                 end: endDate ? endDate : ""
-                        }}
+                            }}
                             onFinish={onFinish}
                             onFinishFailed={onFinishFailed}
                             autoComplete="off"
@@ -80,14 +84,14 @@ const CustomizeCalender = () => {
                             <Form.Item
                                 name="start"
                             >
-                                <Input placeholder="Start Date" allowClear/>
+                                <Input placeholder="Start Date" allowClear />
 
                             </Form.Item>
 
                             <Form.Item
                                 name="end"
                             >
-                                <Input placeholder="End Date" allowClear/>
+                                <Input placeholder="End Date" allowClear />
                             </Form.Item>
 
                             <Form.Item wrapperCol={{ offset: 8, span: 16 }} className="hidden">

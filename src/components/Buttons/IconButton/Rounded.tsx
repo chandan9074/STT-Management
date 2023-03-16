@@ -1,4 +1,5 @@
 import React from 'react';
+import { IconBorderStyleType, IconButtonSizeStyleType, IconButtonVariantStyleType } from '../../../types/common';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     size: "xSmall" | "small" | "medium" | "large";
@@ -9,7 +10,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Rounded = (props: Props) => {
     const { size, variant, Bg = "none", icon, ...rest } = props
 
-    const IconButtonVariantStyle: any = {
+    const IconButtonVariantStyle: IconButtonVariantStyleType = {
         "Gray": {
             hover: "hover:bg-blue-gray-20",
             active: "active:bg-blue-gray-A20"
@@ -22,7 +23,7 @@ const Rounded = (props: Props) => {
 
     }
 
-    const IconButtonSizeStyle: any = {
+    const IconButtonSizeStyle: IconButtonSizeStyleType = {
         "xSmall": {
             size: "h-5 w-5"
 
@@ -41,19 +42,19 @@ const Rounded = (props: Props) => {
 
     }
 
-    const IconBorderStyle: any = {
+    const IconBorderStyle: IconBorderStyleType = {
         "none": {
-            bg: "border border-inherit rounded"
+            border: "border border-inherit rounded"
         },
         "Bg": {
-            bg: "bg-[#F4F7FA] border border-inherit rounded"
+            border: "bg-[#F4F7FA] border border-inherit rounded"
         }
     }
     return (
         <>
             <button {...rest}
                 className={`duration-300  
-                ${IconButtonSizeStyle[size].size} ${IconButtonVariantStyle[variant].hover} ${IconButtonVariantStyle[variant].active} ${IconBorderStyle[Bg].bg}`}
+                ${IconButtonSizeStyle[size].size} ${IconButtonVariantStyle[variant].hover} ${IconButtonVariantStyle[variant].active} ${IconBorderStyle[Bg].border}`}
             >
                 {icon}
             </button>

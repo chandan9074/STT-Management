@@ -5,8 +5,6 @@ import Table from '../../../../Table';
 import SpeechHeader from './SpeechHeader';
 
 
-
-
 const EditSpeeches = () => {
     return (
         <div>

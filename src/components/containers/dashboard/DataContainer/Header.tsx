@@ -15,14 +15,7 @@ interface Props {
  
 }
 export type RingProgressDT = {
-  Create: {
-    trailColor: string;
-    stock1: string;
-    stock2: string;
-    textColor: string
-
-  }
-  Collect: {
+  [key:string]: {
     trailColor: string;
     stock1: string;
     stock2: string;

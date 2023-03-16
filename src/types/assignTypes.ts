@@ -35,6 +35,7 @@ export interface CriteriaItemDT {
   deadline: string;
   reminder: string[];
   remark: string;
+  buttonName?: "";
 }
 
 export interface AssigneeItemDT {

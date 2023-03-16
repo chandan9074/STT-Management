@@ -14,10 +14,6 @@ type Props = {
 }
 
 const AudioUpload = ({ data, audioId, speechData, setSpeechData, setAudioUploadStatus }: Props) => {
-    // const [selectedFile, setSelectedFile] = useState<any>(null);
-    // const [uploadProgress, setUploadProgress] = useState<any>(0);
-
-    // const [selectedTrack, setSelectedTrack] = useState(tracks);
 
     const selectedTrack = data;
 
@@ -42,7 +38,6 @@ const AudioUpload = ({ data, audioId, speechData, setSpeechData, setAudioUploadS
 
     const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
-        // setSelectedFile(file);
         if (file) {
             convertAudioToMin(file);
 
@@ -58,18 +53,12 @@ const AudioUpload = ({ data, audioId, speechData, setSpeechData, setAudioUploadS
 
             };
             setSpeechData(newData);
-
         }
-        // setAudioUploadStatus(AUDIO_FILE_UPLOADED);
-
     };
 
     const handleButtonClick = () => {
         fileInputRef.current?.click();
     }
-
-    console.log('dat____', data);
-
 
     return (
         <div>
