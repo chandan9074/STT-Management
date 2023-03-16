@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Icons from '../../../../assets/Icons';
+import { targetData } from '../../../../data/assign/AssignData';
 import { filterData } from '../../../../data/script/filter';
 import { RECREATE_TARGET_PATH } from '../../../../helpers/Slug';
 import { targetDT } from '../../../../types/assignTypes';
@@ -67,7 +68,7 @@ const TargetTable = () => {
           </div>
         </div>
       </div>
-      <Table.Type10 setSelectedTarget={setSelectedTarget} />
+      <Table.Type10 data={targetData} setSelectedTarget={setSelectedTarget} />
 
 
       {

@@ -7,15 +7,15 @@ import "../../assets/css/table/type4Table.css";
 import RoleImage from '../Image/RoleImage';
 import { Drawer } from '../Drawer';
 import { EDIT_SPEECHES_PATH } from '../../helpers/Slug';
-import { targetData } from '../../data/assign/AssignData';
 import { targetDT } from '../../types/assignTypes';
 
 
 type Props = {
     setSelectedTarget: Dispatch<SetStateAction<targetDT[]>>;
+    data: targetDT[]
 }
 
-const Type10 = ({ setSelectedTarget }: Props) => {
+const Type10 = ({ setSelectedTarget, data }: Props) => {
     // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
     // const [searchedColumn, setSearchedColumn] = useState("");
@@ -23,8 +23,6 @@ const Type10 = ({ setSelectedTarget }: Props) => {
     const showDrawer = (item: targetDT) => {
         setOpen(true);
     };
-
-    const [activePanel, setActivePanel] = useState<string>("Script");
 
     const getPercentage = (max: number, value: number) => {
         const result = (100 * value) / max;
@@ -175,7 +173,6 @@ const Type10 = ({ setSelectedTarget }: Props) => {
                             onClick={() => {
                                 showDrawer(record);
                                 setSingleTargetData(record);
-                                setActivePanel('Script');
                             }}
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
@@ -208,7 +205,7 @@ const Type10 = ({ setSelectedTarget }: Props) => {
                     ...rowSelection,
                 }}
                 columns={Type8columns}
-                dataSource={targetData}
+                dataSource={data}
                 // pagination={false}
                 // scroll={{ x: 768, y: 1000 }}
                 scroll={{ x: 1600 }}
@@ -221,8 +218,7 @@ const Type10 = ({ setSelectedTarget }: Props) => {
                     isDrawerOpen={open}
                     setIsDrawerOpen={setOpen}
                     data={singleTargetData}
-                    setActivePanel={setActivePanel}
-                    activePanel={activePanel}
+    
                 />
             }
 

@@ -11,13 +11,11 @@ type Props = {
     isDrawerOpen: boolean,
     setIsDrawerOpen: Dispatch<SetStateAction<boolean>>;
     data?: targetDT;
-    setActivePanel: Dispatch<SetStateAction<string>>;
-    activePanel: string
 
 }
 
-const Type1 = ({ isDrawerOpen, setIsDrawerOpen: setOpen, data, activePanel, setActivePanel }: Props) => {
-    // const [activePanel, setActivePanel] = useState<string>("Script");
+const Type1 = ({ isDrawerOpen, setIsDrawerOpen: setOpen, data }: Props) => {
+    const [activePanel, setActivePanel] = useState<string>("Script");
     const [isMetaData, setIsMetaData] = useState<boolean>(false);
 
     const onClose = () => {
@@ -26,7 +24,7 @@ const Type1 = ({ isDrawerOpen, setIsDrawerOpen: setOpen, data, activePanel, setA
     };
 
     useEffect(() => {
-        console.log('*********************888888');
+        setActivePanel('Script');
     }, [])
 
 
