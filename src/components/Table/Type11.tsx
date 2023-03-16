@@ -15,22 +15,22 @@ import AudioUpload from '../containers/AssignContainer/AllTarget/EditSpeeches/Au
 import RemarkModal from '../containers/AssignContainer/AllTarget/EditSpeeches/RemarkModal';
 import { AUDIO_FILE_FAILED, AUDIO_FILE_UPLOADED } from '../../helpers/Slug';
 import Status from '../containers/AssignContainer/AllTarget/EditSpeeches/Status';
-import { assignSpeechDT } from '../../types/assignTypes';
+import { assignSpeechDT, speechDt } from '../../types/assignTypes';
 import { ColumnsType, ColumnType } from 'antd/es/table';
 
 const { Option } = Select;
 
 type Props = {
-    data: assignSpeechDT[]
+    data: assignSpeechDT
 }
 
-type RecordType = assignSpeechDT;
+type RecordType = speechDt;
 
 const Type11 = ({ data }: Props) => {
     const [isSpeakerModal, setIsSpeakerModal] = useState<boolean>(false);
     // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
-    const [speechData, setSpeechData] = useState<assignSpeechDT[]>(data);
+    const [speechData, setSpeechData] = useState<speechDt[]>(data?.speechData);
     const [speechId, setSpeechId] = useState<string>('');
 
     const [collectorId, setCollectorId] = useState<string>("");
@@ -92,12 +92,12 @@ const Type11 = ({ data }: Props) => {
         const updatedData = { ...speechData[index], collector: value };
 
         // Create a new array with the updated object at the same index as the original object
-        const newData = speechData.map((item: assignSpeechDT, i: number) => i === index ? updatedData : item);
+        const newData = speechData.map((item: speechDt, i: number) => i === index ? updatedData : item);
 
 
         // Update the state with the new array
         // setSpeechData(newData);
-        setSpeechData(newData as assignSpeechDT[]);
+        setSpeechData(newData as speechDt[]);
 
 
         setCollectorId('')
@@ -106,7 +106,7 @@ const Type11 = ({ data }: Props) => {
     const deviceOnChange = (value: string) => {
         setDevice(value ?? undefined);
 
-        const index = speechData.findIndex((item: assignSpeechDT) => item?.id === deviceId);
+        const index = speechData.findIndex((item: speechDt) => item?.id === deviceId);
         if (index === -1) {
             return;
         }
@@ -122,7 +122,7 @@ const Type11 = ({ data }: Props) => {
 
 
     const handleRecordingAreaChange = (value: string) => {
-        const index = speechData.findIndex((item: assignSpeechDT) => item?.id === recordingAreaId);
+        const index = speechData.findIndex((item: speechDt) => item?.id === recordingAreaId);
         if (index === -1) {
             return;
         }
@@ -136,7 +136,7 @@ const Type11 = ({ data }: Props) => {
     };
 
     const handleRecordingDistanceChange = (value: string) => {
-        const index = speechData.findIndex((item: assignSpeechDT) => item?.id === recordingDistanceId);
+        const index = speechData.findIndex((item: speechDt) => item?.id === recordingDistanceId);
         if (index === -1) {
             return;
         }
@@ -166,7 +166,7 @@ const Type11 = ({ data }: Props) => {
         }
     }
 
-    const getColumnSearchProps = (dataIndex: string): ColumnType<assignSpeechDT> => ({
+    const getColumnSearchProps = (dataIndex: string): ColumnType<speechDt> => ({
 
         filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
 
@@ -195,7 +195,7 @@ const Type11 = ({ data }: Props) => {
     });
 
 
-    const Type8columns: ColumnsType<assignSpeechDT> = [
+    const Type8columns: ColumnsType<speechDt> = [
 
         {
             title: `${"SN".toLocaleUpperCase()}`,
@@ -515,7 +515,7 @@ const Type11 = ({ data }: Props) => {
 
 
     const rowSelection = {
-        onChange: (selectedRowKeys: React.Key[], selectedRows: assignSpeechDT[]) => {
+        onChange: (selectedRowKeys: React.Key[], selectedRows: speechDt[]) => {
             // console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
 
         },

@@ -3,7 +3,7 @@ import { Form, Select } from 'antd';
 import { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
 import Icons from '../../../../../assets/Icons';
 import { RoleInContext } from '../../../../../context/RoleProvider';
-import { assignSpeechDT } from '../../../../../types/assignTypes';
+import { assignSpeechDT, speechDt } from '../../../../../types/assignTypes';
 import { roleDT } from '../../../../../types/billingTypes';
 import Buttons from '../../../../Buttons';
 import RoleImage from '../../../../Image/RoleImage';
@@ -12,9 +12,9 @@ const { Option } = Select;
 
 type Props = {
     setModal: Dispatch<SetStateAction<boolean>>;
-    setData: Dispatch<SetStateAction<assignSpeechDT[]>>;
+    setData: Dispatch<SetStateAction<speechDt[]>>;
     speechId: string,
-    data: assignSpeechDT[]
+    data: speechDt[]
 }
 
 const SpeakerModal = ({
@@ -44,7 +44,7 @@ const SpeakerModal = ({
     }
 
     useEffect(() => {
-        const _data = data?.filter((item: assignSpeechDT) => item?.id === speechId);
+        const _data = data?.filter((item: speechDt) => item?.id === speechId);
         setSpeakerData(_data[0].speaker);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -131,7 +131,7 @@ const SpeakerModal = ({
     }
 
     const onAdd = () => {
-        const index = data?.findIndex((item: assignSpeechDT) => item.id === speechId);
+        const index = data?.findIndex((item: speechDt) => item.id === speechId);
         if (index !== -1) {
             const newData = [...data];
             newData[index] = { ...newData[index], speaker: speakerData };

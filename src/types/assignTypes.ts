@@ -151,6 +151,12 @@ export type targetFilterDT = {
 
 export type assignSpeechDT = {
   id: string;
+  otherInfo: otherInfo
+  speechData: speechDt[]
+}
+
+export type speechDt = {
+  id: string;
   speaker: roleDT[];
   collector: collectorDT;
   recordingArea: string;
@@ -162,6 +168,15 @@ export type assignSpeechDT = {
   role: string;
   speech: assignAudioTrackDT
   audioUploadStatus?: string
+}
+
+export type otherInfo = {
+  roleInfo: roleDT;
+  deadLine: string;
+  speeches: {
+    total: number;
+    uploaded: number
+  }
 }
 
 export type collectorDT = {

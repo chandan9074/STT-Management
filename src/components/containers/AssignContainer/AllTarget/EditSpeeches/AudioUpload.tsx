@@ -3,13 +3,13 @@ import Icons from '../../../../../assets/Icons';
 import Buttons from '../../../../Buttons';
 import { AUDIO_FILE_UPLOADED } from '../../../../../helpers/Slug';
 import Type4 from '../../../../common/CustomModal/Type4';
-import { assignAudioTrackDT, assignSpeechDT } from '../../../../../types/assignTypes';
+import { assignAudioTrackDT, assignSpeechDT, speechDt } from '../../../../../types/assignTypes';
 
 type Props = {
     data: assignAudioTrackDT,
     audioId: string,
-    speechData: assignSpeechDT[],
-    setSpeechData: Dispatch<SetStateAction<assignSpeechDT[]>>,
+    speechData: speechDt[],
+    setSpeechData: Dispatch<SetStateAction<speechDt[]>>,
     setAudioUploadStatus?: Dispatch<SetStateAction<string>>,
 }
 
@@ -46,7 +46,7 @@ const AudioUpload = ({ data, audioId, speechData, setSpeechData, setAudioUploadS
         if (file) {
             convertAudioToMin(file);
 
-            const index = speechData.findIndex((item: assignSpeechDT) => item?.id === audioId);
+            const index = speechData.findIndex((item: speechDt) => item?.id === audioId);
             if (index === -1) {
                 return;
             }
