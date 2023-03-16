@@ -181,8 +181,6 @@ const Type7 = ({ data }: Props) => {
         },
     ];
 
-    console.log('data%%%%%%%%%%%%%%', singleTargetData);
-
 
     return (
         <div className='billing-table type4-table' >

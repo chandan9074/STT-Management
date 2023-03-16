@@ -202,6 +202,7 @@ const Type11 = ({ data }: Props) => {
                 setSpeechData={setSpeechData}
                 speechData={speechData}
                 audioId={data?.id}
+                isUpload={true}
             />
         },
 
