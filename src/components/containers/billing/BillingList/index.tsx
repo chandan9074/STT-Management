@@ -49,6 +49,7 @@ const BillingListIndex = ({ twDisbursement }: Props) => {
     allBillings,
     lastBillingsExcelData,
   } = billingContext;
+  
   const [pageNumberAllBilling, setPageNumberAllBilligs] = useState<number>(10);
   const [pageNumberLastBilling, setPageNumberLastBilligs] = useState<number>(5);
   const [allbillingsParam, setAllbillingsParam] = useState<allBillingParamsDT>({

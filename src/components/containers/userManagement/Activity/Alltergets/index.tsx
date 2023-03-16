@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { targetData } from '../../../../../data/assign/AssignData';
 import Buttons from '../../../../Buttons';
 import Table from '../../../../Table';
 
@@ -6,7 +7,7 @@ const AllTergets = () => {
     const [activeTab, setActiveTab] = useState<string>("Pending")
     const allTergetMenu = (key: string) => {
         const Category: any = {
-            "Pending": <><Table.Type7 /></>,
+            "Pending": <><Table.Type7 data={targetData} /></>,
             "Completed": <></>,
             "All Speeches": <></>
         };

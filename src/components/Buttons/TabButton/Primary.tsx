@@ -1,4 +1,5 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
+import { IconButtonSizeStyleType, IconButtonVariantStyleType } from '../../../types/common';
 
 interface Props {
     tabLabel: string[];
@@ -16,7 +17,7 @@ const Primary = (props: Props) => {
         setActiveData(data)
     }
 
-    const buttonVariantStyle: any = {
+    const buttonVariantStyle: IconButtonVariantStyleType = {
         "Red": {
             text: "text-primary-ct-magenta-60",
             hover: "hover:bg-red-03",
@@ -39,7 +40,7 @@ const Primary = (props: Props) => {
         }
     }
 
-    const buttonSizeStyle: any = {
+    const buttonSizeStyle: IconButtonSizeStyleType = {
         "small": {
             btnPadding: "p-[2px] shadow-md",
             tabPadding: "py-[11px] leading-[14.4px] px-9",

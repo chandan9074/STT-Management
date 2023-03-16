@@ -1,3 +1,5 @@
+import { roleDT } from "./billingTypes";
+
 export type FilterDT = {
   dataType: string[];
   distributionSource: string[];
@@ -49,3 +51,9 @@ export type allScriptResDT = {
 //   title: string;
 //   description: string;
 // }
+
+export type remarkDt = {
+  dateTime: string;
+  role: roleDT;
+  remark: string
+}

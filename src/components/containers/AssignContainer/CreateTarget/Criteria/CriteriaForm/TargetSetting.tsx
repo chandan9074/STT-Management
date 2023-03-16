@@ -1,10 +1,11 @@
 import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
 import { DatePicker, DatePickerProps } from 'antd';
+import { FormikValues } from 'formik';
 import { useState } from 'react';
 import Icons from '../../../../../../assets/Icons';
 import { getDateWithMonthName2 } from '../../../../../../helpers/Utils';
 
-const TargetSetting = ({ formik }: { formik: any }) => {
+const TargetSetting = ({ formik }: { formik: FormikValues }) => {
 
     const [openCalender, setOpenCalender] = useState<boolean>(false);
 

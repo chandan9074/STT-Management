@@ -12,6 +12,8 @@ interface Props {
 
 const Type1 = ({ open, setOpen, drawerData }: Props) => {
 
+    
+
     const onClose = () => {
         setOpen(false);
         setMetaDataOpen(false)

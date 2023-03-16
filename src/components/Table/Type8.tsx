@@ -31,6 +31,7 @@ const Type8 = () => {
   const [openAssigneeModal, setOpenAssigneeModal] = useState<boolean>(false);
   const [openDeadlineModal, setOpenDeadlineModal] = useState<boolean>(false);
   const [remarkModal, setRemrkModal] = useState<boolean>(false);
+
   // const [drawerData, setDrawerData] = useState<any>();
 
   const changeScriptModal = (open: boolean, target: TargetItemDT) => {

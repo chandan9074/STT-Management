@@ -1,6 +1,3 @@
-import { Select } from 'antd';
-import React from 'react';
-import Icons from '../../../../../assets/Icons';
 
 type Props = {
     data: any

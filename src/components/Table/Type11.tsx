@@ -15,22 +15,21 @@ import AudioUpload from '../containers/AssignContainer/AllTarget/EditSpeeches/Au
 import RemarkModal from '../containers/AssignContainer/AllTarget/EditSpeeches/RemarkModal';
 import { AUDIO_FILE_FAILED, AUDIO_FILE_UPLOADED } from '../../helpers/Slug';
 import Status from '../containers/AssignContainer/AllTarget/EditSpeeches/Status';
-import { assignSpeechDT } from '../../types/assignTypes';
+import { assignSpeechDT, speechDt } from '../../types/assignTypes';
 import { ColumnsType, ColumnType } from 'antd/es/table';
 
 const { Option } = Select;
 
 type Props = {
-    data: assignSpeechDT[]
+    data: assignSpeechDT
 }
 
-type RecordType = assignSpeechDT;
+type RecordType = speechDt;
 
 const Type11 = ({ data }: Props) => {
     const [isSpeakerModal, setIsSpeakerModal] = useState<boolean>(false);
-    // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
-    const [speechData, setSpeechData] = useState<assignSpeechDT[]>(data);
+    const [speechData, setSpeechData] = useState<speechDt[]>(data?.speechData);
     const [speechId, setSpeechId] = useState<string>('');
 
     const [collectorId, setCollectorId] = useState<string>("");
@@ -50,10 +49,6 @@ const Type11 = ({ data }: Props) => {
     const managerContext = useContext(RoleInContext);
     const { roleDatas } = managerContext;
 
-    // const [audioUploadStatus, setAudioUploadStatus] = useState<string>('');
-
-    // const [active, setActive] = useState("Active");
-
     const [isUploaded, setIsUploaded] = useState<boolean>(false);
     const [isFailed, setIsFailed] = useState<boolean>(false);
 
@@ -72,9 +67,7 @@ const Type11 = ({ data }: Props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    // const showDrawer = (key: any) => {
-    //     setOpen(true);
-    // };
+
 
     const onAddSpeaker = (id: string) => {
         setIsSpeakerModal(true)
@@ -92,12 +85,12 @@ const Type11 = ({ data }: Props) => {
         const updatedData = { ...speechData[index], collector: value };
 
         // Create a new array with the updated object at the same index as the original object
-        const newData = speechData.map((item: assignSpeechDT, i: number) => i === index ? updatedData : item);
+        const newData = speechData.map((item: speechDt, i: number) => i === index ? updatedData : item);
 
 
         // Update the state with the new array
         // setSpeechData(newData);
-        setSpeechData(newData as assignSpeechDT[]);
+        setSpeechData(newData as speechDt[]);
 
 
         setCollectorId('')
@@ -106,7 +99,7 @@ const Type11 = ({ data }: Props) => {
     const deviceOnChange = (value: string) => {
         setDevice(value ?? undefined);
 
-        const index = speechData.findIndex((item: assignSpeechDT) => item?.id === deviceId);
+        const index = speechData.findIndex((item: speechDt) => item?.id === deviceId);
         if (index === -1) {
             return;
         }
@@ -122,7 +115,7 @@ const Type11 = ({ data }: Props) => {
 
 
     const handleRecordingAreaChange = (value: string) => {
-        const index = speechData.findIndex((item: assignSpeechDT) => item?.id === recordingAreaId);
+        const index = speechData.findIndex((item: speechDt) => item?.id === recordingAreaId);
         if (index === -1) {
             return;
         }
@@ -136,7 +129,7 @@ const Type11 = ({ data }: Props) => {
     };
 
     const handleRecordingDistanceChange = (value: string) => {
-        const index = speechData.findIndex((item: assignSpeechDT) => item?.id === recordingDistanceId);
+        const index = speechData.findIndex((item: speechDt) => item?.id === recordingDistanceId);
         if (index === -1) {
             return;
         }
@@ -149,13 +142,6 @@ const Type11 = ({ data }: Props) => {
         setRecordingDistanceId('');
     };
 
-    // const handleActiveFrequencyChange = (value: string) => {
-    //     setActive(value)
-    // }
-
-    // console.log('upload', isUploaded);
-    // console.log('failed', isFailed);
-
     const onUploadStatus = (value: string) => {
         if (value === AUDIO_FILE_UPLOADED) {
             setIsUploaded(!isUploaded);
@@ -166,7 +152,7 @@ const Type11 = ({ data }: Props) => {
         }
     }
 
-    const getColumnSearchProps = (dataIndex: string): ColumnType<assignSpeechDT> => ({
+    const getColumnSearchProps = (dataIndex: string): ColumnType<speechDt> => ({
 
         filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
 
@@ -195,16 +181,12 @@ const Type11 = ({ data }: Props) => {
     });
 
 
-    const Type8columns: ColumnsType<assignSpeechDT> = [
+    const Type8columns: ColumnsType<speechDt> = [
 
         {
             title: `${"SN".toLocaleUpperCase()}`,
             key: 'key',
-            // align: 'center',
             width: 56,
-            // render: (text, record, index) => (
-            //     <span>{(current * pageSize) + index + 1}</span>
-            // ),  
             render: (text, record, index) => (
                 <span>{(index + 1)}</span>
             ),
@@ -220,7 +202,6 @@ const Type11 = ({ data }: Props) => {
                 setSpeechData={setSpeechData}
                 speechData={speechData}
                 audioId={data?.id}
-            // setAudioUploadStatus={setAudioUploadStatus}
             />
         },
 
@@ -228,7 +209,6 @@ const Type11 = ({ data }: Props) => {
             title: `${"Speaker".toLocaleUpperCase()}`,
             key: 'speaker',
             width: 182,
-            // render: (data) => <h1 className='w-[88px] whitespace-nowrap'> {data.target}</h1>,
             render: (data) =>
                 <div>
 
@@ -266,7 +246,6 @@ const Type11 = ({ data }: Props) => {
             title: `${"collector".toLocaleUpperCase()}`,
             key: 'collector',
             width: 174,
-            // render: (data) => <h1 className='w-[88px] whitespace-nowrap'> {data.target}</h1>,
             render: (data) =>
                 <div>
                     {
@@ -287,7 +266,6 @@ const Type11 = ({ data }: Props) => {
                                             return `${option?.name}`;
                                         }}
 
-                                        // onChange={(event, value) => collectorOnChange(value)}
                                         onChange={(event, value) => {
                                             if (value !== null) {
                                                 collectorOnChange(value);
@@ -401,7 +379,6 @@ const Type11 = ({ data }: Props) => {
             title: `${"device".toLocaleUpperCase()}`,
             key: 'device',
             width: 126,
-            // render: (data) => <h1 className='w-[88px] whitespace-nowrap'> {data.target}</h1>,
             render: (data) =>
                 <div className='assign'>
                     {
@@ -417,12 +394,7 @@ const Type11 = ({ data }: Props) => {
                                         options={deviceData ?? []}
 
                                         value={device}
-                                        // getOptionLabel={(option) => {
-                                        //     if (!option) return '';
-                                        //     return `${option}`;
-                                        // }}
 
-                                        // onChange={(event, value) => deviceOnChange(value)}
 
                                         onChange={(event, value) => {
                                             if (value !== null) {
@@ -515,13 +487,11 @@ const Type11 = ({ data }: Props) => {
 
 
     const rowSelection = {
-        onChange: (selectedRowKeys: React.Key[], selectedRows: assignSpeechDT[]) => {
+        onChange: (selectedRowKeys: React.Key[], selectedRows: speechDt[]) => {
             // console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
 
         },
         getCheckboxProps: (record: RecordType) => ({
-            // disabled: record.name === 'Disabled User', // Column configuration not to be checked
-            // name: record.name,
 
         }),
     };
@@ -530,7 +500,6 @@ const Type11 = ({ data }: Props) => {
 
             <Table
                 rowSelection={{
-                    // type: selectionType,
                     ...rowSelection,
                 }}
                 columns={Type8columns}
@@ -539,12 +508,10 @@ const Type11 = ({ data }: Props) => {
                 rowKey='id'
             />
 
-            {/* <AudioWave /> */}
-
-
             <Drawer.Target.Type1
                 isDrawerOpen={open}
                 setIsDrawerOpen={setOpen}
+                
             />
 
             {

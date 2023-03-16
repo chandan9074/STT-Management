@@ -59,3 +59,47 @@ export type dayDataDT = {
     deadline: string,
     status: string
 }
+
+export type userSpeakerDt = {
+    role: string[],
+    speakersName: string,
+    gender: string,
+    dateOfBirth: string,
+    ageRange: string,
+    education: string,
+    educationSituation: string,
+    childhoodPlace: string,
+    district: string,
+    upazilaCity: string,
+    villageArea: string,
+    smoking: string,
+    stutter: string,
+    hearingStatus: string,
+    reportingTo: string,
+    adminData: adminDataDT,
+
+}
+
+export type userPersonalInformationDt = {
+    role: string[],
+    primaryRole: string,
+    name: string,
+    email: string,
+    mobileNumber: string,
+    nid: string,
+    birthRegNumber: string,
+    homeDistrict: string,
+    presentDistrict: string,
+    lastDegreeAchived: string,
+    subjectInStudy: string,
+    cvFile: string,
+    reportingTo: string,
+    adminData: adminDataDT,
+
+}
+
+export type adminDataDT = {
+    id: string,
+    name: string,
+    number: string
+}

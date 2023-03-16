@@ -1,20 +1,18 @@
-import React, { useContext } from 'react';
-import { AssignContext } from '../../../context/AssignProvider';
+import { targetDT } from '../../../types/assignTypes';
 
-const Others = () => {
-    const AssignContexts = useContext(AssignContext);
-    const {
-        singleCriteria
-    } = AssignContexts;  
+type Props = {
+    data?: targetDT
+}
 
+const Others = ({ data }: Props) => {
     const singleValue2 = [
         {
             title: 'Reminder',
-            value: singleCriteria?.reminder || []
+            value: data?.target?.reminder || []
         },
         {
             title: 'Note',
-            value: singleCriteria?.remark || '-'
+            value: data?.target?.remark || '-'
         },
     ]
 

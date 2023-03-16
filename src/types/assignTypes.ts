@@ -35,6 +35,7 @@ export interface CriteriaItemDT {
   deadline: string;
   reminder: string[];
   remark: string;
+  buttonName?: "";
 }
 
 export interface AssigneeItemDT {
@@ -164,6 +165,12 @@ export type targetFilterListDT = {
 
 export type assignSpeechDT = {
   id: string;
+  otherInfo: otherInfoDT
+  speechData: speechDt[]
+}
+
+export type speechDt = {
+  id: string;
   speaker: roleDT[];
   collector: collectorDT;
   recordingArea: string;
@@ -175,6 +182,15 @@ export type assignSpeechDT = {
   role: string;
   speech: assignAudioTrackDT
   audioUploadStatus?: string
+}
+
+export type otherInfoDT = {
+  roleInfo: roleDT;
+  deadLine: string;
+  speeches: {
+    total: number;
+    uploaded: number
+  }
 }
 
 export type collectorDT = {

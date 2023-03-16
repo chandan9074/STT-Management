@@ -1,4 +1,5 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
+import { IconButtonVariantStyleType } from '../../../types/common';
 
 interface Props {
     tabLabel: string[];
@@ -16,7 +17,7 @@ const Secondary = (props: Props) => {
         setActiveData(data)
     }
 
-    const buttonVariantStyle: any = {
+    const buttonVariantStyle: IconButtonVariantStyleType = {
         "Red": {
 
         },

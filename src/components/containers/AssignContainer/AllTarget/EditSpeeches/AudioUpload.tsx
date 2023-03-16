@@ -3,21 +3,17 @@ import Icons from '../../../../../assets/Icons';
 import Buttons from '../../../../Buttons';
 import { AUDIO_FILE_UPLOADED } from '../../../../../helpers/Slug';
 import Type4 from '../../../../common/CustomModal/Type4';
-import { assignAudioTrackDT, assignSpeechDT } from '../../../../../types/assignTypes';
+import { assignAudioTrackDT, assignSpeechDT, speechDt } from '../../../../../types/assignTypes';
 
 type Props = {
     data: assignAudioTrackDT,
     audioId: string,
-    speechData: assignSpeechDT[],
-    setSpeechData: Dispatch<SetStateAction<assignSpeechDT[]>>,
+    speechData: speechDt[],
+    setSpeechData: Dispatch<SetStateAction<speechDt[]>>,
     setAudioUploadStatus?: Dispatch<SetStateAction<string>>,
 }
 
 const AudioUpload = ({ data, audioId, speechData, setSpeechData, setAudioUploadStatus }: Props) => {
-    // const [selectedFile, setSelectedFile] = useState<any>(null);
-    // const [uploadProgress, setUploadProgress] = useState<any>(0);
-
-    // const [selectedTrack, setSelectedTrack] = useState(tracks);
 
     const selectedTrack = data;
 
@@ -42,11 +38,10 @@ const AudioUpload = ({ data, audioId, speechData, setSpeechData, setAudioUploadS
 
     const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
-        // setSelectedFile(file);
         if (file) {
             convertAudioToMin(file);
 
-            const index = speechData.findIndex((item: assignSpeechDT) => item?.id === audioId);
+            const index = speechData.findIndex((item: speechDt) => item?.id === audioId);
             if (index === -1) {
                 return;
             }
@@ -58,18 +53,12 @@ const AudioUpload = ({ data, audioId, speechData, setSpeechData, setAudioUploadS
 
             };
             setSpeechData(newData);
-
         }
-        // setAudioUploadStatus(AUDIO_FILE_UPLOADED);
-
     };
 
     const handleButtonClick = () => {
         fileInputRef.current?.click();
     }
-
-    console.log('dat____', data);
-
 
     return (
         <div>

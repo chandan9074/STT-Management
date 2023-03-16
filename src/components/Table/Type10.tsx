@@ -7,15 +7,15 @@ import "../../assets/css/table/type4Table.css";
 import RoleImage from '../Image/RoleImage';
 import { Drawer } from '../Drawer';
 import { EDIT_SPEECHES_PATH } from '../../helpers/Slug';
-import { targetData } from '../../data/assign/AssignData';
 import { targetDT } from '../../types/assignTypes';
 
 
 type Props = {
     setSelectedTarget: Dispatch<SetStateAction<targetDT[]>>;
+    data: targetDT[]
 }
 
-const Type10 = ({ setSelectedTarget }: Props) => {
+const Type10 = ({ setSelectedTarget, data }: Props) => {
     // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
     // const [searchedColumn, setSearchedColumn] = useState("");
@@ -28,6 +28,8 @@ const Type10 = ({ setSelectedTarget }: Props) => {
         const result = (100 * value) / max;
         return result;
     }
+
+    const [singleTargetData, setSingleTargetData] = useState<targetDT>();
 
     const Type8columns: ColumnsType<targetDT> = [
         // {
@@ -168,7 +170,10 @@ const Type10 = ({ setSelectedTarget }: Props) => {
 
                     <div className='flex w-full justify-center items-center'>
                         <img
-                            onClick={() => showDrawer(record)}
+                            onClick={() => {
+                                showDrawer(record);
+                                setSingleTargetData(record);
+                            }}
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
@@ -200,17 +205,22 @@ const Type10 = ({ setSelectedTarget }: Props) => {
                     ...rowSelection,
                 }}
                 columns={Type8columns}
-                dataSource={targetData}
+                dataSource={data}
                 // pagination={false}
                 // scroll={{ x: 768, y: 1000 }}
                 scroll={{ x: 1600 }}
                 rowKey='id'
             />
 
-            <Drawer.Target.Type1
-                isDrawerOpen={open}
-                setIsDrawerOpen={setOpen}
-            />
+            {
+                open &&
+                <Drawer.Target.Type1
+                    isDrawerOpen={open}
+                    setIsDrawerOpen={setOpen}
+                    data={singleTargetData}
+    
+                />
+            }
 
         </div >
     );
