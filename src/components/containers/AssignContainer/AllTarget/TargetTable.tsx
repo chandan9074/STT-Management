@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import Icons from '../../../../assets/Icons';
 import { targetFilter } from '../../../../data/assign/AssignData';
 import { targetData } from '../../../../data/assign/AssignData';
-import { filterData } from '../../../../data/script/filter';
 import { RECREATE_TARGET_PATH } from '../../../../helpers/Slug';
 import { targetDT, targetFilterListDT } from '../../../../types/assignTypes';
 import Buttons from '../../../Buttons';
