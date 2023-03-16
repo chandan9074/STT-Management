@@ -522,43 +522,6 @@ export const targetFilter: targetFilterDT[] = [
             "Partial Uploaded",
             "100% Uploaded",
         ]
-    },
-    {
-        type: "select",
-        key: "subdomain",
-        title: "Subdomain",
-        // isParent: false,
-        child: [
-            "Not Speech Uploaded",
-            "Partial Uploaded",
-            "100% Uploaded",
-        ],
-        // children: [
-        //     {
-        //         title: "Natural & Pure Science",
-        //         child: [
-        //             "Physics",
-        //             "Chemistry",
-        //             "Math",
-        //             "Biology",
-        //             "Astronomy",
-        //             "Nature",
-        //             "Environment",
-        //         ],
-        //     },
-        //     {
-        //         title: "Applied Science",
-        //         child: [
-        //             "Physics",
-        //             "Chemistry",
-        //             "Math",
-        //             "Biology",
-        //             "Astronomy",
-        //             "Nature",
-        //             "Environment",
-        //         ],
-        //     },
-        // ]
     }
 ]
 

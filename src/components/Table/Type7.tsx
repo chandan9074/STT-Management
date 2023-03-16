@@ -7,7 +7,6 @@ import { Drawer } from '../Drawer';
 import { targetDT } from '../../types/assignTypes';
 import RoleImage from '../Image/RoleImage';
 import { Link } from 'react-router-dom';
-import { EDIT_SPEECHES_PATH } from '../../helpers/Slug';
 import Remark from '../common/Remark';
 
 type Props = {
@@ -101,7 +100,7 @@ const Type7 = ({ data }: Props) => {
                             }
                         </div>
                     </div>
-                    <Link to={`${EDIT_SPEECHES_PATH}/${data?.id}`}>
+                    <Link to={``}>
                         <img className='w-[13px] h-[9px]' src={Icons.BlueRightArrow} alt="" />
                     </Link>
 

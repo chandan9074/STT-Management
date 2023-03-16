@@ -69,6 +69,10 @@ export type allScriptParamsDT = {
   ascending?: boolean;
   page: number;
   pageSize: number;
+  module?: string;
+  domain?: string;
+  subDomain?: string;
+  distribution?: string;
 }
 
 export type allScriptDT = {
