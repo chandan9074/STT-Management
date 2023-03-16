@@ -1,12 +1,30 @@
 export type sideDrawerDT = {
-    name:string;
+    name: string;
     route: string;
-    icon:string;
-    links:links[]
+    icon: string;
+    links: links[]
 }
 
 export type links = {
-    name:string;
-    route:string;
-    links:links[]   
+    name: string;
+    route: string;
+    links: links[]
+}
+
+export type IconButtonVariantStyleType = {
+    [key: string]: {
+        [key: string]: string;
+    };
+}
+
+export type IconButtonSizeStyleType = {
+    [key: string]: {
+        [key: string]: string;
+    };
+}
+
+export type IconBorderStyleType = {
+    [key: string]: {
+        border: string;
+    };
 }

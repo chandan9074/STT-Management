@@ -21,7 +21,7 @@ type Props = {
   hoverFontWeight?: string;
   duration?: string;
   title: string;
-  image: any;
+  image: string;
   imageHeight?: string;
   imageWidth?: string;
   imageMarginX?: string;

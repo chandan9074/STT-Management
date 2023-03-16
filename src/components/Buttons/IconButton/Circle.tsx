@@ -1,4 +1,5 @@
 import React from 'react';
+import { IconBorderStyleType, IconButtonSizeStyleType, IconButtonVariantStyleType } from '../../../types/common';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     size: "xSmall" | "small" | "medium" | "large";
@@ -7,10 +8,13 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     border?: "none" | "border";
     background?: "white" | "transparent"
 }
+
+
+
 const Circle = (props: Props) => {
     const { size, variant, background = "transparent", border = "none", icon, ...rest } = props
 
-    const IconButtonVariantStyle: any = {
+    const IconButtonVariantStyle: IconButtonVariantStyleType = {
         "Red": {
             hover: "hover:bg-[#FCF7F7]",
             active: "active:bg-red-10"
@@ -33,7 +37,7 @@ const Circle = (props: Props) => {
 
     }
 
-    const IconButtonSizeStyle: any = {
+    const IconButtonSizeStyle: IconButtonSizeStyleType = {
         "xSmall": {
             size: "h-5 w-5"
 
@@ -52,7 +56,7 @@ const Circle = (props: Props) => {
 
     }
 
-    const IconBorderStyle: any = {
+    const IconBorderStyle: IconBorderStyleType = {
         "none": {
             border: "border-transparent rounded-full"
         },

@@ -1,11 +1,12 @@
 import React from 'react';
 import { Progress } from "antd";
 import './ringProcess.css'
+import { RingProgressDT } from '../../containers/dashboard/DataContainer/Header';
 
 interface Props {
     type: string;
     value: number;
-    style: any
+    style: RingProgressDT
 }
 
 const Type1 = ({ type, value, style }: Props) => {

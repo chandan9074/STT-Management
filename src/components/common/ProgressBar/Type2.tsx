@@ -17,14 +17,14 @@ const Type2 = ({ value, bgColor, height }: Props) => {
 
     const ProgressBar = ({ bgColor, progress, height }: InerProps) => {
 
-        const Parentdiv: any = {
+        const Parentdiv: React.CSSProperties = {
             height: height,
             width: '100%',
             background: '#E9EDF3',
             borderRadius: 40,
         }
 
-        const Childdiv: any = {
+        const Childdiv: React.CSSProperties = {
             height: '100%',
             width: `${progress}%`,
             background: bgColor,

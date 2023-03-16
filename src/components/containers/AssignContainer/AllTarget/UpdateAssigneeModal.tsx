@@ -1,5 +1,5 @@
 import { Form, Select } from 'antd';
-import { useContext, useEffect, useState } from 'react';
+import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import Icons from '../../../../assets/Icons';
 import { RoleInContext } from '../../../../context/RoleProvider';
 import { roleDT } from '../../../../types/billingTypes';
@@ -109,7 +109,7 @@ const UpdateAssigneeModal = ({
     }, [isDropDownVisible]);
 
 
-    const onRoleChange = (e: any) => {
+    const onRoleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setRole(e.target.value);
         form.resetFields();
     }
@@ -141,7 +141,7 @@ const UpdateAssigneeModal = ({
     }
 
 
-    const onDropDownVisible = (e: any) => {
+    const onDropDownVisible = () => {
         setIsDropDownVisible(true);
         setDropDownCount(dropDownCount + 1);
         setIsDropItemClick(true);
@@ -180,7 +180,7 @@ const UpdateAssigneeModal = ({
         // // createAssignee(_data);
         // console.log('data', _data);
 
-        const _targetId = targetId?.map((item: any) => {
+        const _targetId = targetId?.map((item: string) => {
             return item;
         })
 
@@ -198,7 +198,7 @@ const UpdateAssigneeModal = ({
         onClose();
     }
 
-    const onValueChange = (e: any) => {
+    const onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
         setRoleId(e.target.value);
         form.resetFields();
     }
@@ -360,7 +360,7 @@ const UpdateAssigneeModal = ({
                                         onChange={(e) => onValueChange(e)}
                                     >
                                         {
-                                            customRoleData?.map((item: roleDT, i: any) => (
+                                            customRoleData?.map((item: roleDT, i: number) => (
                                                 <FormControlLabel
                                                     style={{
                                                         marginLeft: '0px',
