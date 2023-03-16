@@ -512,8 +512,6 @@ export const targetFilter = {
     ]
 }
 
-// : assignSpeechDT[]
-
 export const assignSpeechData = {
     id: '2',
     otherInfo: {

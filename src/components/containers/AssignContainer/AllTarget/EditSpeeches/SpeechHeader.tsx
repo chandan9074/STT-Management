@@ -1,8 +1,12 @@
-import React from 'react';
 import Icons from '../../../../../assets/Icons';
+import { otherInfoDT } from '../../../../../types/assignTypes';
 import RoleImage from '../../../../Image/RoleImage';
 
-const SpeechHeader = () => {
+type Props = {
+    data: otherInfoDT
+}
+
+const SpeechHeader = ({data}: Props) => {
     return (
         <div className='bg-blue-gray-05 pr-9 pt-7 pl-6 pb-4 rounded-t-[8px]'>
             <div className='flex items-center justify-between'>
@@ -12,27 +16,27 @@ const SpeechHeader = () => {
                     <div className='flex items-center mt-4 gap-x-5'>
                         <div className='flex items-center gap-x-3'>
                             <RoleImage role='Manager' height='h-[16px]' width='w-[16px]' />
-                            <h2 className='ct-blue-95 text-[16px] font-medium'>MD. Eman Hasan</h2>
+                            <h2 className='ct-blue-95 text-[16px] font-medium'>{data?.roleInfo?.name}</h2>
                         </div>
 
                         <div className='flex items-center gap-x-2'>
                             <img className='h-4 w-4' src={Icons.Military} alt="" />
-                            <h1 className='text-small text-ct-blue-90-70%'>Manager</h1>
+                            <h1 className='text-small text-ct-blue-90-70%'>{data?.roleInfo?.role}</h1>
                         </div>
 
                         <div className='flex items-center gap-x-2'>
                             <img className='h-4 w-4' src={Icons.call} alt="" />
-                            <h1 className='text-small text-ct-blue-90-70%'>01684610691</h1>
+                            <h1 className='text-small text-ct-blue-90-70%'>{data?.roleInfo?.contact}</h1>
                         </div>
 
                         <div className='flex items-center gap-x-2'>
                             <img className='h-4 w-4' src={Icons.mail} alt="" />
-                            <h1 className='text-small text-ct-blue-90-70%'>miraz2710@gmail.com</h1>
+                            <h1 className='text-small text-ct-blue-90-70%'>{data?.roleInfo?.email}</h1>
                         </div>
 
                         <div className='flex items-center gap-x-2'>
                             <img className='h-4 w-4' src={Icons.Home} alt="" />
-                            <h1 className='text-small text-ct-blue-90'>Dhaka</h1>
+                            <h1 className='text-small text-ct-blue-90'>{data?.roleInfo?.address}</h1>
                         </div>
 
                     </div>
@@ -44,7 +48,7 @@ const SpeechHeader = () => {
                     </div>
                     <div className='py-[7px] px-[7px]'>
                         <h1 className='text-ct-blue-90-70% text-xxs font-medium'>Deadline</h1>
-                        <h1 className='text-ct-blue-90-70% text-xxs font-medium'>01/01/2022</h1>
+                        <h1 className='text-ct-blue-90-70% text-xxs font-medium'>{data?.deadLine}</h1>
                     </div>
                 </div>
             </div>

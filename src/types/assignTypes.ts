@@ -151,7 +151,7 @@ export type targetFilterDT = {
 
 export type assignSpeechDT = {
   id: string;
-  otherInfo: otherInfo
+  otherInfo: otherInfoDT
   speechData: speechDt[]
 }
 
@@ -170,7 +170,7 @@ export type speechDt = {
   audioUploadStatus?: string
 }
 
-export type otherInfo = {
+export type otherInfoDT = {
   roleInfo: roleDT;
   deadLine: string;
   speeches: {
