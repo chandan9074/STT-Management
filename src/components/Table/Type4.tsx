@@ -1,9 +1,10 @@
 import { Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import { useState } from 'react';
+import { Key, useState } from 'react';
 import Icons from '../../assets/Icons';
 import { SideDrawer } from '../common/SideDrawer';
 import "../../assets/css/table/type4Table.css";
+import { allScriptResDT } from '../../types/script';
 
 
 
@@ -11,8 +12,8 @@ import "../../assets/css/table/type4Table.css";
 ;
 
 interface Props {
-    Data: any,
-    handleSelectRow: (selectedRows: any[]) => void
+    Data: allScriptResDT[],
+    handleSelectRow: (selectedRows: allScriptResDT[]) => void
 }
 
 const Type4 = ({ Data, handleSelectRow }: Props) => {
@@ -26,7 +27,7 @@ const Type4 = ({ Data, handleSelectRow }: Props) => {
     };
 
 
-    const columns: ColumnsType<any> = [
+    const columns: ColumnsType<allScriptResDT> = [
         {
             title: `${"Data type".toLocaleUpperCase()}`,
             dataIndex: 'module',
@@ -71,7 +72,7 @@ const Type4 = ({ Data, handleSelectRow }: Props) => {
     ];
 
     const rowSelection = {
-        onChange: (selectedRowKeys: any[], selectedRows: any[]) => {
+        onChange: (selectedRowKeys: Key[], selectedRows: allScriptResDT[]) => {
             // console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
             handleSelectRow(selectedRows)
         },
@@ -90,7 +91,7 @@ const Type4 = ({ Data, handleSelectRow }: Props) => {
                     // type: selectionType,
                     ...rowSelection,
                 }}
-                rowKey={(render) => render.id}
+                rowKey="id"
                 columns={columns}
                 dataSource={Data}
                 pagination={false}

@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Icons from "../../assets/Icons";
-import { subChildDT, targetFilterDT, targetFilterListDT } from "../../types/assignTypes";
-import { FilterDT } from "../../types/script";
+import { targetFilterDT, targetFilterListDT } from "../../types/assignTypes";
 import Buttons from "../Buttons";
 import Dropdown from "../Dropdown";
 
@@ -16,11 +15,13 @@ type Props = {
     filterList: targetFilterListDT;
     handleReset: (key: string, type: "single" | "all") => void;
     handleFilterList: (key: string, value: string) => void;
+    handleSubmitFilter: () => void;
 }
 
-const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilterList }: Props) => {
+const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilterList, handleSubmitFilter }: Props) => {
     const [open, setOpen] = useState(false);
     const [currentState, setCurrentState] = useState<string>(filterData[0]?.key);
+    console.log("filterList", filterList)
 
     return (
         <div className={`relative flex ${align === "left" ? `justify-start` : align === "center" ? "justify-center" : "justify-end"}`}>
@@ -40,7 +41,7 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                             Filter
                         </h3>
                         <div className="flex gap-x-2 animate-fadeIn">
-                            {count > 0 && (<><Buttons.LabelButton.Primary label="Apply" size="xSmall" variant="CT-Blue" />
+                            {count > 0 && (<><Buttons.LabelButton.Primary onClick={() => { handleSubmitFilter(); setOpen(!open) }} label="Apply" size="xSmall" variant="CT-Blue" />
                                 <Buttons.LabelButton.Tertiary label="Clear" size="xSmall" variant="CT-Blue" onClick={() => handleReset("", "all")} /></>)}
                             <button onClick={() => setOpen(!open)}>
                                 <img src={Icons.CloseIconButton} alt="" />

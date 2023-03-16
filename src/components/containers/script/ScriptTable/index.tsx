@@ -14,7 +14,7 @@ const ScriptTable = () => {
     }, [])
 
     const handleSelectRow = (selectedRows: any[]) => {
-        // console.log(selectedRows)
+        console.log("selected rows------",selectedRows)
         
     }
     return (

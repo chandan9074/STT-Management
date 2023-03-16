@@ -1,8 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Icons from '../../../../assets/Icons';
 import { targetFilter } from '../../../../data/assign/AssignData';
-import { filterData } from '../../../../data/script/filter';
 import { RECREATE_TARGET_PATH } from '../../../../helpers/Slug';
 import { targetDT, targetFilterListDT } from '../../../../types/assignTypes';
 import Buttons from '../../../Buttons';
@@ -24,8 +23,48 @@ const TargetTable = () => {
     subdomain: []
   })
 
-  const handleFilterList = (key: string, value: string) => { }
-  const handleReset = (key: string, type: "single" | "all") => { }
+  useEffect(() => {
+    let count = 0;
+    for (const key in filterList) {
+      if (filterList[key].length > 0) {
+        count += 1
+      }
+    }
+    setCount(count)
+  }, [filterList]);
+
+  const handleFilterList = (key: string, value: string) => {
+    if (filterList[key].includes(value)) {
+      setFilterList({
+        ...filterList,
+        [key]: filterList[key].filter((item) => item !== value),
+      });
+    } else {
+      setFilterList({
+        ...filterList,
+        [key]: [...filterList[key], value],
+      });
+    }
+  }
+  const handleReset = (key: string, type: "single" | "all") => {
+    if (type === "all") {
+      setFilterList({
+        targetStatus: [],
+        speechStatus: [],
+        subdomain: []
+      })
+    }
+    else {
+      setFilterList({
+        ...filterList,
+        [key]: [],
+      });
+    }
+  }
+
+  const handleSubmitFilter = () => {
+
+  }
 
 
   const onCancelModalOpen = () => {
@@ -73,7 +112,7 @@ const TargetTable = () => {
           </div>
           <div className='flex items-center gap-x-3'>
             <SearchBox.Type1 inputWidth="w-52" placeholder="Search with script ID, Title..." paddingX="px-3" paddingY="py-2" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
-            <Filter.Type2 filterData={targetFilter} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
+            <Filter.Type2 handleSubmitFilter={handleSubmitFilter} filterData={targetFilter} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
           </div>
         </div>
       </div>

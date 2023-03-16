@@ -10,7 +10,7 @@ interface ContextProps {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   uploadCsv: (formData: any) => void;
   getAllScript: (prams: getAllScriptsParamsDT) => void;
-  scriptsData: allScriptResDT | undefined
+  scriptsData: allScriptResDT[]
   // createScript: (params: any) => Promise<{ message: string; status: number }>;
   createScript: (params: any) => any;
   singleScript: allScriptResDT;
@@ -28,7 +28,7 @@ export const ScriptContext = createContext({} as ContextProps);
 const ScriptProvider = ({ children }: { children: any }) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [modalData, setModalData] = useState<string>("");
-  const [scriptsData, setScriptsData] = useState<allScriptResDT>()
+  const [scriptsData, setScriptsData] = useState<allScriptResDT[]>([] as allScriptResDT[])
   const [singleScript, setSingleScript] = useState<any>({});
   const [scriptModule, setScriptModule] = useState<string>('STT');
   const [loading, setLoading] = useState<boolean>(false);

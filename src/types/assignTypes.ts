@@ -146,7 +146,7 @@ export type targetDT = {
 
 export type targetFilterDT = {
   type: "check" | "select";
-  isParent: boolean;
+  isParent?: string;
   key: string;
   title: string;
   child?: string[];

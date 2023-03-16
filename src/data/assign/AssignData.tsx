@@ -505,7 +505,7 @@ export const targetFilter: targetFilterDT[] = [
         type: "check",
         key: "targetStatus",
         title: "Target Status",
-        isParent: true,
+        // isParent: true,
         child: [
             "Not Assigned",
             "Partial Assigned",
@@ -516,7 +516,7 @@ export const targetFilter: targetFilterDT[] = [
         type: "check",
         key: "speechStatus",
         title: "Speech Status",
-        isParent: true,
+        // isParent: true,
         child: [
             "Not Speech Uploaded",
             "Partial Uploaded",
@@ -527,7 +527,7 @@ export const targetFilter: targetFilterDT[] = [
         type: "select",
         key: "subdomain",
         title: "Subdomain",
-        isParent: false,
+        // isParent: false,
         child: [
             "Not Speech Uploaded",
             "Partial Uploaded",

@@ -1,21 +1,43 @@
-export const filterData = {
-  dataType: ["STT", "TTS"],
-  distributionSource: ["Read", "Lecture", "Command", "Miscellaneous"],
-  domain: [
-    "Natural & Pure Science",
-    "Applied Science",
-    "Social and Community",
-    "World & Current Affairs",
-    "Commerce & finance",
-    "Arts",
-    "Belief & Thought",
-    "Leisure",
-    "Literature",
-  ],
-  subDomain: [
-    {
-      name: "Natural & Pure Science",
-      subDomain: [
+import { targetFilterDT } from "../../types/assignTypes";
+
+export const filterData : targetFilterDT[] = [
+  {
+    type: "check",
+    key: "dataType",
+    title: "Data Type",
+    child: ["STT", "TTS"],
+  },
+  {
+    type: "check",
+    key: "distributionSource",
+    title: "Distribution Source",
+    child: ["Read", "Lecture", "Command", "Miscellaneous"],
+  },
+  {
+    type: "select",
+    key: "domain",
+    title: "Domain",
+    child:[
+      "Natural & Pure Science",
+      "Applied Science",
+      "Social and Community",
+      "World & Current Affairs",
+      "Commerce & finance",
+      "Arts",
+      "Belief & Thought",
+      "Leisure",
+      "Literature",
+    ]
+  },
+  {
+    type: "select",
+    key: "subDomain",
+    isParent: "domain",
+    title: "SubDomain",
+    children: [
+      {
+      title: "Natural & Pure Science",
+      child: [
         "Physics",
         "Chemistry",
         "Math",
@@ -26,8 +48,8 @@ export const filterData = {
       ],
     },
     {
-      name: "Applied Science",
-      subDomain: [
+      title: "Applied Science",
+      child: [
         "Physics",
         "Chemistry",
         "Math",
@@ -38,8 +60,8 @@ export const filterData = {
       ],
     },
     {
-      name: "Social and Community",
-      subDomain: [
+      title: "Social and Community",
+      child: [
         "Physics",
         "Chemistry",
         "Math",
@@ -50,8 +72,8 @@ export const filterData = {
       ],
     },
     {
-      name: "World & Current Affairs",
-      subDomain: [
+      title: "World & Current Affairs",
+      child: [
         "Physics",
         "Chemistry",
         "Math",
@@ -62,8 +84,8 @@ export const filterData = {
       ],
     },
     {
-      name: "Commerce & finance",
-      subDomain: [
+      title: "Commerce & finance",
+      child: [
         "Physics",
         "Chemistry",
         "Math",
@@ -74,8 +96,8 @@ export const filterData = {
       ],
     },
     {
-      name: "Arts",
-      subDomain: [
+      title: "Arts",
+      child: [
         "Physics",
         "Chemistry",
         "Math",
@@ -86,8 +108,8 @@ export const filterData = {
       ],
     },
     {
-      name: "Belief & Thought",
-      subDomain: [
+      title: "Belief & Thought",
+      child: [
         "Physics",
         "Chemistry",
         "Math",
@@ -98,8 +120,8 @@ export const filterData = {
       ],
     },
     {
-      name: "Leisure",
-      subDomain: [
+      title: "Leisure",
+      child: [
         "Physics",
         "Chemistry",
         "Math",
@@ -110,8 +132,8 @@ export const filterData = {
       ],
     },
     {
-      name: "Literature",
-      subDomain: [
+      title: "Literature",
+      child: [
         "Physics",
         "Chemistry",
         "Math",
@@ -121,5 +143,130 @@ export const filterData = {
         "Environment",
       ],
     },
-  ],
-};
+    ]
+  }
+
+  // dataType: ["STT", "TTS"],
+  // distributionSource: ["Read", "Lecture", "Command", "Miscellaneous"],
+  // domain: [
+  //   "Natural & Pure Science",
+  //   "Applied Science",
+  //   "Social and Community",
+  //   "World & Current Affairs",
+  //   "Commerce & finance",
+  //   "Arts",
+  //   "Belief & Thought",
+  //   "Leisure",
+  //   "Literature",
+  // ],
+  // subDomain: [
+  //   {
+  //     name: "Natural & Pure Science",
+  //     subDomain: [
+  //       "Physics",
+  //       "Chemistry",
+  //       "Math",
+  //       "Biology",
+  //       "Astronomy",
+  //       "Nature",
+  //       "Environment",
+  //     ],
+  //   },
+  //   {
+  //     name: "Applied Science",
+  //     subDomain: [
+  //       "Physics",
+  //       "Chemistry",
+  //       "Math",
+  //       "Biology",
+  //       "Astronomy",
+  //       "Nature",
+  //       "Environment",
+  //     ],
+  //   },
+  //   {
+  //     name: "Social and Community",
+  //     subDomain: [
+  //       "Physics",
+  //       "Chemistry",
+  //       "Math",
+  //       "Biology",
+  //       "Astronomy",
+  //       "Nature",
+  //       "Environment",
+  //     ],
+  //   },
+  //   {
+  //     name: "World & Current Affairs",
+  //     subDomain: [
+  //       "Physics",
+  //       "Chemistry",
+  //       "Math",
+  //       "Biology",
+  //       "Astronomy",
+  //       "Nature",
+  //       "Environment",
+  //     ],
+  //   },
+  //   {
+  //     name: "Commerce & finance",
+  //     subDomain: [
+  //       "Physics",
+  //       "Chemistry",
+  //       "Math",
+  //       "Biology",
+  //       "Astronomy",
+  //       "Nature",
+  //       "Environment",
+  //     ],
+  //   },
+  //   {
+  //     name: "Arts",
+  //     subDomain: [
+  //       "Physics",
+  //       "Chemistry",
+  //       "Math",
+  //       "Biology",
+  //       "Astronomy",
+  //       "Nature",
+  //       "Environment",
+  //     ],
+  //   },
+  //   {
+  //     name: "Belief & Thought",
+  //     subDomain: [
+  //       "Physics",
+  //       "Chemistry",
+  //       "Math",
+  //       "Biology",
+  //       "Astronomy",
+  //       "Nature",
+  //       "Environment",
+  //     ],
+  //   },
+  //   {
+  //     name: "Leisure",
+  //     subDomain: [
+  //       "Physics",
+  //       "Chemistry",
+  //       "Math",
+  //       "Biology",
+  //       "Astronomy",
+  //       "Nature",
+  //       "Environment",
+  //     ],
+  //   },
+  //   {
+  //     name: "Literature",
+  //     subDomain: [
+  //       "Physics",
+  //       "Chemistry",
+  //       "Math",
+  //       "Biology",
+  //       "Astronomy",
+  //       "Nature",
+  //       "Environment",
+  //     ],
+  //   },
+  // ],
+];

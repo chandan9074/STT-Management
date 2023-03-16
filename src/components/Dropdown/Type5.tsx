@@ -1,7 +1,6 @@
 import React from "react";
 import Icons from "../../assets/Icons";
-import { subChildDT, targetFilterListDT } from "../../types/assignTypes";
-import { subDomainDT } from "../../types/script";
+import { targetFilterListDT } from "../../types/assignTypes";
 import { targetFilterDT } from "../../types/assignTypes";
 
 // type filterListDT = {
@@ -13,7 +12,7 @@ import { targetFilterDT } from "../../types/assignTypes";
 
 type Props = {
     data: targetFilterDT;
-    isParent: boolean;
+    isParent: string | undefined;
     filterList: targetFilterListDT;
     handleFilterList: (key: string, value: string) => void;
 };
@@ -97,8 +96,8 @@ const Type5 = ({
             >
                 {isParent ? (
                     <>
-                        {filterList[data.key].length > 0
-                            ? filterList[data.key].map((parentName, index) => (
+                        {filterList[isParent].length > 0
+                            ? filterList[isParent].map((parentName, index) => (
                                 <div key={index} className="flex flex-col">
                                     <h5 className="mb-0 text-xxs text-blue-gray-60 py-3 px-4">
                                         {parentName}
@@ -107,8 +106,9 @@ const Type5 = ({
                                         data.children.filter((item) => item.title === parentName)[0]
                                             .child.map((childrenItem, index) => (
                                                 <button
+                                                    key={index}
                                                     onClick={() => handleFilterList(data.key, childrenItem)}
-                                                    className={`flex items-center justify-between py-3 pl-8 pr-4 w-full ${filterList.subdomain.includes(childrenItem)
+                                                    className={`flex items-center justify-between py-3 pl-8 pr-4 w-full ${filterList[data.key].includes(childrenItem)
                                                         ? "bg-blue-10 hover:bg-blue-20 active:bg-blue-30"
                                                         : "hover:bg-ct-blue-05 active:bg-ct-blue-10"
                                                         }`}
@@ -116,7 +116,7 @@ const Type5 = ({
                                                     <span className="text-xs font-medium text-blue-gray-80">
                                                         {childrenItem}
                                                     </span>
-                                                    {filterList.subdomain.includes(childrenItem) && (
+                                                    {filterList[data.key].includes(childrenItem) && (
                                                         <img src={Icons.CorrectIcon} alt="" />
                                                     )}
                                                 </button>

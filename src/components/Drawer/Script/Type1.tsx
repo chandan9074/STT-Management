@@ -2,10 +2,8 @@ import { Drawer } from "antd";
 import React, { useEffect, useState } from "react";
 import Icons from "../../../assets/Icons";
 import { scriptColorData } from "../../../data/assign/AssignData";
-import { filterData } from "../../../data/script/filter";
 import { getRandomInt } from "../../../helpers/Utils";
 import Buttons from "../../Buttons";
-import { Filter } from "../../Filter";
 import { SearchBox } from "../../SearchBox";
 import Table from "../../Table";
 import { useAssigneeContext } from "../../../context/AssignProvider";
@@ -104,7 +102,7 @@ const Type1 = ({ isDrawerOpen, drawerClose, modalOpen, setModalOpen, setModalScr
                         <div className='inline-flex items-center justify-between w-full'>
                             <div className='inline-flex items-center'>
                                 <SearchBox.Type1 inputWidth='w-[172px]' placeholder='Search' bgColor='bg-blue-gray-A10' paddingX='px-3' paddingY='py-2' textColor='text-blue-gray-80' />
-                                <Filter.Type1 filterData={filterData} align="center" />
+                                {/* <Filter.Type1 filterData={filterData} align="center" /> */}
                             </div>
                             {selectedScript.length > 0 && <Buttons.LabelButton.Primary label='Save' size='small' variant='Blue' onClick={handleSubmit} />}
                         </div>

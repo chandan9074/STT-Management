@@ -12,6 +12,12 @@ export type subDomainDT = {
 // Script API
 export type getAllScriptsParamsDT = {
   role: string;
+  module?: string;
+  distribution?: string;
+  domain?: string;
+  subdomain?: string;
+  page?: number;
+  pageSize?: number;
 };
 export type allScriptResDT = {
   id?: string;

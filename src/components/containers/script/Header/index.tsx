@@ -1,14 +1,75 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Buttons from "../../../Buttons";
 import Icons from "../../../../assets/Icons";
 import { Filter } from "../../../Filter";
 import { filterData } from "../../../../data/script/filter";
 import { ScriptContext } from "../../../../context/ScriptProvider";
 import { SearchBox } from "../../../SearchBox";
+import { targetFilterListDT } from "../../../../types/assignTypes";
+import { CommonContext } from "../../../../context/CommonProvider";
 
 const Header = () => {
   const scriptContext = useContext(ScriptContext);
+  const commonContext = useContext(CommonContext)
   const csvRef = useRef<HTMLInputElement>(null);
+  const [count, setCount] = useState<number>(0);
+  const [filterList, setFilterList] = useState<targetFilterListDT>({
+    dataType: [],
+    distributionSource: [],
+    domain: [],
+    subDomain: []
+  })
+
+  useEffect(() => {
+    let count = 0;
+    for (const key in filterList) {
+      if (filterList[key].length > 0) {
+        count += 1
+      }
+    }
+    setCount(count)
+  }, [filterList]);
+
+  const handleFilterList = (key: string, value: string) => {
+    if (filterList[key].includes(value)) {
+      setFilterList({
+        ...filterList,
+        [key]: filterList[key].filter((item) => item !== value),
+      });
+    } else {
+      setFilterList({
+        ...filterList,
+        [key]: [...filterList[key], value],
+      });
+    }
+  }
+  const handleReset = (key: string, type: "single" | "all") => {
+    if (type === "all") {
+      setFilterList({
+        dataType: [],
+        distributionSource: [],
+        domain: [],
+        subDomain: []
+      })
+    }
+    else {
+      setFilterList({
+        ...filterList,
+        [key]: [],
+      });
+    }
+  }
+
+  const handleSubmitFilter = () => {
+    const params = {
+      module: filterList.dataType.join(","),
+      domain: filterList.domain.join(","),
+      subDomain: filterList.subDomain.join(","),
+      distribution: filterList.distributionSource.join(","),
+      role: commonContext.role.toLowerCase()
+    }
+    scriptContext.getAllScript(params);
+  }
 
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -17,22 +78,6 @@ const Header = () => {
       let formData = new FormData();
       formData.append("csvFile", file);
       scriptContext?.uploadCsv(formData);
-
-      // const reader = new FileReader();
-      // reader.onload = (e) => {
-      //   const text = e.target?.result;
-      //   if (text) {
-      //     const data = text.toString().split("");
-      //     const script = data.map((item) => {
-      //       return {
-      //         script: item,
-      //       };
-      //     });
-      //     // scriptContext?.setScript(script);
-      //     // console.log("script data,,,,,,", script);
-      //   }
-      // };
-      // reader.readAsText(file);
     }
   };
 
@@ -73,7 +118,8 @@ const Header = () => {
           marginX="mx-2"
         />
         <SearchBox.Type1 inputWidth="w-52" placeholder="Search with script ID, Title..." paddingX="px-3" paddingY="py-2" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
-        <Filter.Type1 filterData={filterData} />
+        {/* <Filter.Type1 filterData={filterData} /> */}
+        <Filter.Type2 handleSubmitFilter={handleSubmitFilter} filterData={filterData} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
         <input
           type="file"
           ref={csvRef}
