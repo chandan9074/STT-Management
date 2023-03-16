@@ -13,9 +13,9 @@ import {
 } from "../types/assignTypes";
 
 interface ContextProps {
-  criterias: any,
-  singleCriteria: any
-  saveCriteria: (value: any) => void,
+  criterias: CriteriaItemDT[],
+  singleCriteria: CriteriaItemDT
+  saveCriteria: (value: CriteriaItemDT) => void,
   getSingleCriteria: (value: any) => void,
   currentWeek: number;
   setCurrentWeek: React.Dispatch<React.SetStateAction<number>>,
@@ -55,7 +55,7 @@ interface ContextProps {
   getDraftTarget: () => void;
   updateDraftTarget: (data: updateDraftTargetQueryParams) => void;
   creteAssignCriteria: (data: any) => void;
-  singleCriteriaData: any;
+  singleCriteriaData: CriteriaItemDT;
   UpdateAssignCriteria: (data: any) => void;
   getCriteriaByID: (data: any) => void;
   setSingleCriteriaData: React.Dispatch<React.SetStateAction<any>>,
@@ -67,7 +67,7 @@ interface ContextProps {
   setScriptForRecreate: React.Dispatch<React.SetStateAction<ScriptItemDT[]>>;
   setTargetForRecreate: React.Dispatch<React.SetStateAction<CriteriaItemDT[]>>;
   setAssigneeForRecreate: React.Dispatch<React.SetStateAction<AssigneeItemDT[]>>;
-  getSingleCriteriaRecreate: (id: any) => void;
+  getSingleCriteriaRecreate: (id: string) => void;
   setSingleCriteriaRecreate: React.Dispatch<React.SetStateAction<CriteriaItemDT | undefined>>;
   singleCriteriaRecreate: CriteriaItemDT | undefined;
   setRecreateTable: React.Dispatch<React.SetStateAction<recreateTableDT>>;
@@ -81,7 +81,7 @@ export const useAssigneeContext = () => {
 
 const AssignProvider = ({ children }: { children: any }) => {
 
-  const [criterias, setCriterias] = useState<any>([]);
+  const [criterias, setCriterias] = useState<CriteriaItemDT[]>([]);
   const [singleCriteria, setSingleCriteria] = useState<any>({})
   const [sumTarget, setSumTarget] = useState<number>();
   const [currentWeek, setCurrentWeek] = useState<number>(1);
@@ -99,14 +99,14 @@ const AssignProvider = ({ children }: { children: any }) => {
   const [assigneeForRecreate, setAssigneeForRecreate] = useState<AssigneeItemDT[]>([] as AssigneeItemDT[]);
   const [recreateTable, setRecreateTable] = useState<recreateTableDT>({} as recreateTableDT);
 
-  const saveCriteria = (data: any) => {    
-    
-    const filteredCriterias = criterias.filter((criteria: any, i: number) => i !== editId);    
-    
-    setCriterias([...filteredCriterias, data]);    
+  const saveCriteria = (data: any) => {
+
+    const filteredCriterias = criterias.filter((criteria: any, i: number) => i !== editId);
+
+    setCriterias([...filteredCriterias, data]);
     setEmptySingleCriteria();
-  }   
-    
+  }
+
 
   const emptyCriteria = () => {
     setCriterias([]);

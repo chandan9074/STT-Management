@@ -207,7 +207,7 @@ const CriteriaTargetBox = ({
           </div>
         </div>
       )}
-      {openCriteriaDetailsModal && (
+      {(openCriteriaDetailsModal) && (
         <CriteriaDetailsModal
           modalOpen={openCriteriaDetailsModal}
           setModalOpen={setOpenCriteriaDetailsModal}

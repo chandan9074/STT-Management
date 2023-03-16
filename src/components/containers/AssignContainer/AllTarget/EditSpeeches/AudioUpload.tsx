@@ -3,7 +3,7 @@ import Icons from '../../../../../assets/Icons';
 import Buttons from '../../../../Buttons';
 import { AUDIO_FILE_UPLOADED } from '../../../../../helpers/Slug';
 import Type4 from '../../../../common/CustomModal/Type4';
-import { assignAudioTrackDT, assignSpeechDT, speechDt } from '../../../../../types/assignTypes';
+import { assignAudioTrackDT, speechDt } from '../../../../../types/assignTypes';
 
 type Props = {
     data: assignAudioTrackDT,
