@@ -13,8 +13,6 @@ type Props = {
     audioMin: string
 }
 
-
-
 const Type4 = ({ open, setOpen, selectedTrack, data, audioMin }: Props) => {
 
     return (
@@ -25,6 +23,7 @@ const Type4 = ({ open, setOpen, selectedTrack, data, audioMin }: Props) => {
             <div className={`${open ? "block" : "hidden"} bottom-0 z-[200] absolute bg-white w-[952px] rounded-t-xl pt-2 animate-slideUp`}>
                 <div className="px-4 pb-8">
                     <div className='flex justify-between items-center '>
+
                         <div className='flex justify-between items-center text-[#677499]'>
                             <img src={Icons.MusicIcon} alt="" className='mr-[10px]' />
                             <div>{data?.title ? data?.title : data?.name}</div>

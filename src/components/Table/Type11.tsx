@@ -180,6 +180,28 @@ const Type11 = ({ data }: Props) => {
         ),
     });
 
+    const onsubmit = (value: speechDt) => {
+
+        const _speakerId = value?.speaker?.map((item: roleDT) => {
+            return item?.id;
+        })
+
+        const _data = {
+            speech: value?.speech,
+            speaker: _speakerId,
+            collector: collector?.id,
+            recordingArea: value?.recordingArea,
+            recordingDistance: value?.recordingDistance,
+            device: value?.device,
+            remark: value?.remark,
+            speechID: value?.id,
+            targetID: data?.id
+        }
+
+        console.log('this is data', _data);
+
+    }
+
 
     const Type8columns: ColumnsType<speechDt> = [
 
@@ -255,6 +277,7 @@ const Type11 = ({ data }: Props) => {
                                 <div className="fixed top-0 left-0 opacity-50 bg-transparent w-full h-screen "
                                     onClick={() => setCollectorId('')} />
                                 <div className='relative'>
+                                    
                                     <Autocomplete
                                         placeholder='Choose one'
                                         id="sourceType"
@@ -274,8 +297,20 @@ const Type11 = ({ data }: Props) => {
                                         }}
 
                                         renderOption={(props, option) => (
-                                            <Box key={option.id} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
-                                                <h1 className='text-small text-blue-gray-80 font-normal'>{`${option?.id} - ${option?.name}`}</h1>
+                                            <Box
+                                                key={option.id}
+                                                component="li"
+                                                sx={{
+                                                    '& > img': { mr: 2, flexShrink: 0 }
+                                                }}
+                                                {...props}
+                                               
+                                            >
+                                                <h1
+                                                    className='text-small text-blue-gray-80 font-normal'
+                                                >
+                                                    {`${option?.id} - ${option?.name}`}
+                                                </h1>
                                             </Box>
                                         )}
 
@@ -297,7 +332,7 @@ const Type11 = ({ data }: Props) => {
                                     !isEmpty(data?.collector) ?
                                         <div>
                                             <div className='flex items-center gap-x-2'>
-                                                <RoleImage height='h-4' width='w-4' role='Collector' />
+                                                <RoleImage height='h-4' width='w-4' role={data?.collector?.role} />
                                                 <div>
                                                     <h1 className='text-blue-gray-80 text-xs font-medium'>{data?.collector?.name}</h1>
                                                     <h1 className='text-blue-gray-75 text-xxs'>{data?.collector?.address}</h1>
@@ -310,7 +345,9 @@ const Type11 = ({ data }: Props) => {
                                             <h1 className='text-blue-gray-60 text-xs font-medium'>Add Collector</h1>
                                         </button>
                                 }
-                                <img className='w-[7px] h-1' src={Icons.arrow_drop_down_blue_gray} alt="" />
+                                {
+                                    <img className='w-[7px] h-1' src={Icons.arrow_drop_down_blue_gray} alt="" />
+                                }
                             </div>
                     }
                 </div>
@@ -479,6 +516,7 @@ const Type11 = ({ data }: Props) => {
                             label='Submit'
                             size='small'
                             variant='CT-Blue'
+                            onClick={() => onsubmit(record)}
                         />
                     </div>
 
@@ -512,7 +550,7 @@ const Type11 = ({ data }: Props) => {
             <Drawer.Target.Type1
                 isDrawerOpen={open}
                 setIsDrawerOpen={setOpen}
-                
+
             />
 
             {

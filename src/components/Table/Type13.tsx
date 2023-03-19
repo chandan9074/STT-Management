@@ -11,6 +11,7 @@ import { sortStatus } from '../../data/assign/AssignData';
 import AudioUpload from '../containers/AssignContainer/AllTarget/EditSpeeches/AudioUpload';
 import { assignSpeechDT, speechDt } from '../../types/assignTypes';
 import { ColumnsType, ColumnType } from 'antd/es/table';
+import Remark from '../common/Remark';
 
 type Props = {
     data: assignSpeechDT
@@ -23,6 +24,7 @@ const Type13 = ({ data }: Props) => {
     const [speechId, setSpeechId] = useState<string>('');
 
     const [remarkOpen, setRemarkOpen] = useState<boolean>(false);
+    const [singleTargetData, setSingleTargetData] = useState<speechDt>();
 
     const managerContext = useContext(RoleInContext);
 
@@ -58,6 +60,7 @@ const Type13 = ({ data }: Props) => {
             setIsLatest(false);
         }
     }
+    
 
     const getColumnSearchProps = (dataIndex: string): ColumnType<speechDt> => ({
 
@@ -66,8 +69,8 @@ const Type13 = ({ data }: Props) => {
             <div onKeyDown={(e) => e.stopPropagation()} className="w-[260px] -mr-[94px] -mt-[2px]  rounded-[8px] overflow-hidden" >
                 {
                     sortStatus?.map((item: string, i: number) => (
-                        <div onClick={() => item === sortStatus[0] ? onUploadStatus(sortStatus[0]) : onUploadStatus(sortStatus[1])} 
-                        className={`${(isLatest && item === sortStatus[0]) ? 'bg-blue-10' : (isOlder && item === sortStatus[1]) ? 'bg-blue-10' : 'bg-white'} h-[48px] py-4 pl-4 pr-3 flex items-center justify-between ${item === sortStatus[1] ? 'rounded-[8px] border-[1px] rounded-t-none border-t-transparent border-blue-gray-30' : 'rounded-[8px] border-[1px] rounded-b-none border-b-transparent border-blue-gray-30 '}`} key={i}>
+                        <div onClick={() => item === sortStatus[0] ? onUploadStatus(sortStatus[0]) : onUploadStatus(sortStatus[1])}
+                            className={`${(isLatest && item === sortStatus[0]) ? 'bg-blue-10' : (isOlder && item === sortStatus[1]) ? 'bg-blue-10' : 'bg-white'} h-[48px] py-4 pl-4 pr-3 flex items-center justify-between ${item === sortStatus[1] ? 'rounded-[8px] border-[1px] rounded-t-none border-t-transparent border-blue-gray-30' : 'rounded-[8px] border-[1px] rounded-b-none border-b-transparent border-blue-gray-30 '}`} key={i}>
                             <div className='flex items-center gap-x-3'>
                                 <img className='h-4 w-4' src={Icons.IconsWrapper} alt="" />
                                 <h1 className='text-green-60 text-sm font-medium'>{item}</h1>
@@ -107,7 +110,7 @@ const Type13 = ({ data }: Props) => {
                 data={data?.speech}
                 setSpeechData={setSpeechData}
                 speechData={speechData}
-                audioId={data?.id} 
+                audioId={data?.id}
                 isUpload={false}
             />
         },
@@ -162,6 +165,7 @@ const Type13 = ({ data }: Props) => {
             ...getColumnSearchProps('submissionDate'),
             render: (data) => (
                 <h4 className='text-gray-80 text-xxs'>{data?.submissionDate}</h4>
+
             )
         },
 
@@ -173,7 +177,7 @@ const Type13 = ({ data }: Props) => {
             render: (data) => (
                 <button onClick={() => {
                     setRemarkOpen(true);
-                    setSpeechData(data);
+                    setSingleTargetData(data);
                 }} className='flex justify-center'>
                     {
                         data?.remark === "" ?
@@ -232,17 +236,19 @@ const Type13 = ({ data }: Props) => {
                 />
             }
 
-            {/* {
+            {
                 remarkOpen &&
                 <Remark
                     open={remarkOpen}
                     setOpen={setRemarkOpen}
-                    roleName={singleSpeechData?.otherInfo ? singleTargetData?.assignee?.name : ''}
-                    roleType={singleTargetData?.assignee?.role ? singleTargetData?.assignee?.role : ''}
+                    // roleName={singleTargetData?.assignee?.name ? singleTargetData?.assignee?.name : ''}
+                    roleName={''}
+                    // roleType={singleTargetData?.assignee?.role ? singleTargetData?.assignee?.role : ''}
+                    roleType={''}
                     dateTime={'07/02/2022, 5:34 PM'}
-                    desc={singleTargetData?.target?.remark ? singleTargetData?.target?.remark : ''}
+                    desc={singleTargetData?.remark ? singleTargetData?.remark : ''}
                 />
-            } */}
+            }
 
         </div >
     );

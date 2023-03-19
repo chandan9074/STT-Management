@@ -881,3 +881,9 @@ export const sortStatus = [
     'Sort by Oldest Deadline'
 ]
 
+export type remark = {
+    roleName: 'Mohammad amir khan',
+    role: 'Admin'
+    date: '07/02/2022, 5:34 PM',
+    desc: 'This is remark'
+}
