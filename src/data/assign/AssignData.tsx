@@ -575,6 +575,7 @@ export const assignSpeechData = {
                     address: 'Rajbongshi',
                     id: "maksudalam1@gmail.com"
                 },
+                submissionDate: '30/01/2022; 3:14 PM',
                 recordingArea: 'Inside Room',
                 recordingDistance: '',
                 device: 'Redmi Note 8',
@@ -631,6 +632,7 @@ export const assignSpeechData = {
                     address: 'Rajbongshi',
                     id: "maksudalam1@gmail.com"
                 },
+                status: 'rejected',
                 recordingArea: '',
                 recordingDistance: '',
                 device: '',
@@ -696,6 +698,7 @@ export const assignSpeechData = {
                     address: 'Rajbongshi',
                     id: "maksudalam1@gmail.com"
                 },
+                status: 'annotated',
                 recordingArea: 'Inside Room',
                 recordingDistance: 'Close',
                 device: 'Redmi Note 8',
@@ -742,6 +745,7 @@ export const assignSpeechData = {
                     address: '',
                     id: ""
                 },
+                submissionDate: '30/01/2022; 3:14 PM',
                 recordingArea: 'Inside Room',
                 recordingDistance: 'Close',
                 device: 'Redmi Note 8',
@@ -832,4 +836,17 @@ export const assignSpeechData = {
 
             }
         ]
+}
+
+
+export const sortStatus = [
+    'Sort by Latest Deadline',
+    'Sort by Oldest Deadline'
+]
+
+export type remark = {
+    roleName: 'Mohammad amir khan',
+    role: 'Admin'
+    date: '07/02/2022, 5:34 PM',
+    desc: 'This is remark'
 }

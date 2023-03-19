@@ -127,7 +127,8 @@ import AccountCircle from "./account_circle.svg";
 import EditGray from "./edit_gray.svg";
 import FluentMagic from "./fluent_magic.svg";
 import Play from "./play.svg";
-import Pause from "./pause.svg"
+import Pause from "./pause.svg";
+import IconsWrapper from "./Icon_Wrapper.png";
 
 const Icons = {
   currency,
@@ -259,7 +260,8 @@ const Icons = {
   EditGray,
   FluentMagic,
   Play,
-  Pause
+  Pause,
+  IconsWrapper
 };
 
 export default Icons;

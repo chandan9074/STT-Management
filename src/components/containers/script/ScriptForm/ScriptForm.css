@@ -219,3 +219,8 @@ label {
 .update-assign-model .css-1nrlq1o-MuiFormControl-root {
     width: 100%;
 }
+
+.custom-autocomplete-popper .MuiAutocomplete-popper {
+    overflow-x: hidden !important;
+    width: 254px !important;
+}

@@ -184,8 +184,10 @@ export type speechDt = {
   maxSpeeches: string;
   remark: string;
   role: string;
-  speech: assignAudioTrackDT
-  audioUploadStatus?: string
+  speech: assignAudioTrackDT;
+  audioUploadStatus?: string;
+  status?: string;
+  submissionDate?: string
 }
 
 export type otherInfoDT = {
