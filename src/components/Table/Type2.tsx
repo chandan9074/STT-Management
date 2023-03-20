@@ -1,8 +1,6 @@
-import React from "react";
 import { Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import "../../assets/css/table/table.css";
-import { AllBillingDataType, BillingDataType } from "../containers/billing/BillingList";
 
 
 interface Props<T> {
