@@ -11,9 +11,10 @@ type Props = {
     speechData: speechDt[],
     setSpeechData: Dispatch<SetStateAction<speechDt[]>>,
     setAudioUploadStatus?: Dispatch<SetStateAction<string>>,
+    isUpload: boolean;
 }
 
-const AudioUpload = ({ data, audioId, speechData, setSpeechData, setAudioUploadStatus }: Props) => {
+const AudioUpload = ({ data, audioId, speechData, setSpeechData, setAudioUploadStatus, isUpload }: Props) => {
 
     const selectedTrack = data;
 
@@ -65,7 +66,7 @@ const AudioUpload = ({ data, audioId, speechData, setSpeechData, setAudioUploadS
             <input type="file" accept="audio/mpeg" onChange={handleFileSelect} hidden ref={fileInputRef} />
 
             {
-                data?.url === '' ?
+                data?.url === '' && isUpload ?
 
                     <Buttons.IconWithTextButton.Secondary
                         label='Upload Audio'
@@ -76,15 +77,21 @@ const AudioUpload = ({ data, audioId, speechData, setSpeechData, setAudioUploadS
                         onClick={handleButtonClick}
                     />
                     :
-                    <div className='flex gap-x-[10px] items-start '>
+                    <div>
 
-                        <img src={Icons.MusicBlue} alt="" className='mt-[4px]' />
-                        <div className='cursor-pointer' onClick={() => setOpenModal(true)}>
-                            <h4 className='text-xs font-semibold text-secondary-blue-50'>{data?.title ? data.title : data?.name}</h4>
-                            <h4 className='text-blue-gray-75 text-xs'>{audioMin !== '' ? audioMin : data?.duration} min</h4>
-                        </div>
                         {
-                            openModal &&
+                            (data?.title || data?.name) &&
+                            <div className='flex gap-x-[10px] items-start'>
+                                <img src={Icons.MusicBlue} alt="" className='mt-[4px]' />
+                                <div className='cursor-pointer' onClick={() => setOpenModal(true)}>
+                                    <h4 className='text-xs font-semibold text-secondary-blue-50'>{data?.title ? data.title : data?.name}</h4>
+                                    <h4 className='text-blue-gray-75 text-xs'>{audioMin !== '' ? audioMin : data?.duration} min</h4>
+                                </div>
+                            </div>
+                        }
+
+                        {
+                            (openModal) &&
                             <Type4
                                 open={openModal}
                                 setOpen={setOpenModal}

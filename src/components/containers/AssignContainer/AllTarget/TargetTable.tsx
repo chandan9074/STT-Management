@@ -21,7 +21,6 @@ const TargetTable = () => {
   const [filterList, setFilterList] = useState<targetFilterListDT>({
     targetStatus: [],
     speechStatus: [],
-    subdomain: []
   })
 
   useEffect(() => {
@@ -52,7 +51,6 @@ const TargetTable = () => {
       setFilterList({
         targetStatus: [],
         speechStatus: [],
-        subdomain: []
       })
     }
     else {

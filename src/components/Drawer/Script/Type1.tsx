@@ -8,7 +8,9 @@ import { SearchBox } from "../../SearchBox";
 import Table from "../../Table";
 import { useAssigneeContext } from "../../../context/AssignProvider";
 import Pagination from "../../Pagination";
-import { postSelectedScriptBodyDT, singleScriptDT } from "../../../types/assignTypes";
+import { allScriptParamsDT, postSelectedScriptBodyDT, singleScriptDT, targetFilterListDT } from "../../../types/assignTypes";
+import { Filter } from "../../Filter";
+import { filterData } from "../../../data/script/filter";
 
 type Props = {
     isDrawerOpen: boolean,
@@ -20,9 +22,16 @@ type Props = {
 }
 
 const Type1 = ({ isDrawerOpen, drawerClose, modalOpen, setModalOpen, setModalScript, isRecreate }: Props) => {
-    const [scriptParams, setScriptParams] = useState({ page: 1, pageSize: 15 })
+    const [scriptParams, setScriptParams] = useState<allScriptParamsDT>({ page: 1, pageSize: 15 })
     const [selectedScript, setSelectedScript] = useState<singleScriptDT[]>([])
     const [uncheckedScript, setUncheckedScript] = useState<string>("")
+    const [count, setCount] = useState<number>(0);
+    const [filterList, setFilterList] = useState<targetFilterListDT>({
+        dataType: [],
+        distributionSource: [],
+        domain: [],
+        subDomain: []
+    })
 
     const { postSelectedScript, setScriptForRecreate } = useAssigneeContext()
 
@@ -32,6 +41,56 @@ const Type1 = ({ isDrawerOpen, drawerClose, modalOpen, setModalOpen, setModalScr
         getAllScript(scriptParams)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [scriptParams])
+
+    useEffect(() => {
+        let count = 0;
+        for (const key in filterList) {
+            if (filterList[key].length > 0) {
+                count += 1
+            }
+        }
+        setCount(count)
+    }, [filterList]);
+
+    const handleFilterList = (key: string, value: string) => {
+        if (filterList[key].includes(value)) {
+            setFilterList({
+                ...filterList,
+                [key]: filterList[key].filter((item) => item !== value),
+            });
+        } else {
+            setFilterList({
+                ...filterList,
+                [key]: [...filterList[key], value],
+            });
+        }
+    }
+    const handleReset = (key: string, type: "single" | "all") => {
+        if (type === "all") {
+            setFilterList({
+                dataType: [],
+                distributionSource: [],
+                domain: [],
+                subDomain: []
+            })
+        }
+        else {
+            setFilterList({
+                ...filterList,
+                [key]: [],
+            });
+        }
+    }
+
+    const handleSubmitFilter = () => {
+        setScriptParams({
+            ...scriptParams,
+            module: filterList.dataType.join(","),
+            domain: filterList.domain.join(","),
+            subDomain: filterList.subDomain.join(","),
+            distribution: filterList.distributionSource.join(","),
+        })
+    }
 
     const handleScriptRemove = (id: string) => {
         setUncheckedScript(id)
@@ -57,8 +116,6 @@ const Type1 = ({ isDrawerOpen, drawerClose, modalOpen, setModalOpen, setModalScr
             for (let script of selectedScript) {
                 newScript.push(script.id)
             }
-            // console.log("newscript", newScript)
-
             const body: postSelectedScriptBodyDT = {
                 scriptList: newScript
             }
@@ -103,6 +160,7 @@ const Type1 = ({ isDrawerOpen, drawerClose, modalOpen, setModalOpen, setModalScr
                             <div className='inline-flex items-center'>
                                 <SearchBox.Type1 inputWidth='w-[172px]' placeholder='Search' bgColor='bg-blue-gray-A10' paddingX='px-3' paddingY='py-2' textColor='text-blue-gray-80' />
                                 {/* <Filter.Type1 filterData={filterData} align="center" /> */}
+                                <Filter.Type2 align="center" handleSubmitFilter={handleSubmitFilter} filterData={filterData} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
                             </div>
                             {selectedScript.length > 0 && <Buttons.LabelButton.Primary label='Save' size='small' variant='Blue' onClick={handleSubmit} />}
                         </div>

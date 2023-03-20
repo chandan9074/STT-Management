@@ -21,6 +21,7 @@ import CreateTarget from "./pages/Assign/CreateTarget";
 import EditScript from "./components/containers/script/EditScript";
 import EditSpeeches from "./components/containers/AssignContainer/AllTarget/EditSpeeches";
 import RecreateTarget from "./pages/Assign/RecreateTarget";
+import Speech from "./pages/UserManagement/Speech";
 
 function App() {
   useEffect(() => {
@@ -53,6 +54,7 @@ function App() {
 
         {/* <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} /> */}
         <Route path={`${PATH.ACTIVE_USER_PATH}/:id`} element={<Activity />} />
+        <Route path={`${PATH.ACTIVE_USER_PATH}/:id${PATH.USER_MANAGEMENT_SPEECHES_PATH}/:sId`} element={<Speech />} />
         <Route path="*" element={<NotFound />} />
 
         <Route path={PATH.CREATE_USER_PATH} element={<UserForm />} />

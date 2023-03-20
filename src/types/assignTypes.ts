@@ -69,6 +69,10 @@ export type allScriptParamsDT = {
   ascending?: boolean;
   page: number;
   pageSize: number;
+  module?: string;
+  domain?: string;
+  subDomain?: string;
+  distribution?: string;
 }
 
 export type allScriptDT = {
@@ -145,6 +149,18 @@ export type targetDT = {
   assignedDate: string;
 }
 
+export type targetCompletedDT = {
+  id: string;
+  target: CriteriaItemDT;
+  assignee: AssigneeItemDT;
+  status: number;
+  speeches: {
+    total: number;
+    uploaded: number;
+  };
+  assignedDate: string;
+}
+
 export type targetFilterDT = {
   type: "check" | "select";
   isParent?: string;
@@ -180,8 +196,10 @@ export type speechDt = {
   maxSpeeches: string;
   remark: string;
   role: string;
-  speech: assignAudioTrackDT
-  audioUploadStatus?: string
+  speech: assignAudioTrackDT;
+  audioUploadStatus?: string;
+  status?: string;
+  submissionDate?: string
 }
 
 export type otherInfoDT = {

@@ -218,7 +218,7 @@ const Type5 = () => {
     };
 
     return (
-        <div className='type4-table'>
+        <div className='type4-table billing-table'>
 
             <Table
 

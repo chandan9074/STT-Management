@@ -522,43 +522,6 @@ export const targetFilter: targetFilterDT[] = [
             "Partial Uploaded",
             "100% Uploaded",
         ]
-    },
-    {
-        type: "select",
-        key: "subdomain",
-        title: "Subdomain",
-        // isParent: false,
-        child: [
-            "Not Speech Uploaded",
-            "Partial Uploaded",
-            "100% Uploaded",
-        ],
-        // children: [
-        //     {
-        //         title: "Natural & Pure Science",
-        //         child: [
-        //             "Physics",
-        //             "Chemistry",
-        //             "Math",
-        //             "Biology",
-        //             "Astronomy",
-        //             "Nature",
-        //             "Environment",
-        //         ],
-        //     },
-        //     {
-        //         title: "Applied Science",
-        //         child: [
-        //             "Physics",
-        //             "Chemistry",
-        //             "Math",
-        //             "Biology",
-        //             "Astronomy",
-        //             "Nature",
-        //             "Environment",
-        //         ],
-        //     },
-        // ]
     }
 ]
 
@@ -612,6 +575,7 @@ export const assignSpeechData = {
                     address: 'Rajbongshi',
                     id: "maksudalam1@gmail.com"
                 },
+                submissionDate: '30/01/2022; 3:14 PM',
                 recordingArea: 'Inside Room',
                 recordingDistance: '',
                 device: 'Redmi Note 8',
@@ -668,6 +632,7 @@ export const assignSpeechData = {
                     address: 'Rajbongshi',
                     id: "maksudalam1@gmail.com"
                 },
+                status: 'rejected',
                 recordingArea: '',
                 recordingDistance: '',
                 device: '',
@@ -733,6 +698,7 @@ export const assignSpeechData = {
                     address: 'Rajbongshi',
                     id: "maksudalam1@gmail.com"
                 },
+                status: 'annotated',
                 recordingArea: 'Inside Room',
                 recordingDistance: 'Close',
                 device: 'Redmi Note 8',
@@ -779,6 +745,7 @@ export const assignSpeechData = {
                     address: '',
                     id: ""
                 },
+                submissionDate: '30/01/2022; 3:14 PM',
                 recordingArea: 'Inside Room',
                 recordingDistance: 'Close',
                 device: 'Redmi Note 8',
@@ -870,3 +837,106 @@ export const assignSpeechData = {
             }
         ]
 }
+
+
+export const sortStatus = [
+    'Sort by Latest Deadline',
+    'Sort by Oldest Deadline'
+]
+
+export type remark = {
+    roleName: 'Mohammad amir khan',
+    role: 'Admin'
+    date: '07/02/2022, 5:34 PM',
+    desc: 'This is remark'
+}
+
+export const targetCompletedData = 
+[
+    {
+        "id": "01b9423b-b00e-4291-b195-02005949apiu80",
+        "target": {
+            "id": "0c302aff-68df-4a18-bd1d-ddbe81ca5026",
+            "gender": "male",
+            "ageRange": "34-50",
+            "district": [
+                "dhaka",
+                "mymensingh"
+            ],
+            "profession": "teacher",
+            "economicSituation": "poor",
+            "healthFactors": [
+                "smoker",
+                "jsghfkjwed"
+            ],
+            "recordingArea": "baire",
+            "recordingDistance": "baire",
+            "education": "secondary",
+            "target": 2345,
+            "deadline": "2023-02-11",
+            "reminder": [
+                "kisr",
+                "ki"
+            ],
+            "remark": "nai kono remark"
+        },
+        "assignee": {
+            "id": "2ce4e033-59f4-4381-94c0-2f435dd3bfb4",
+            "name": "Mohammad amir khan",
+            "role": "Admin",
+            "roleID": "01915645322",
+            "contact": "01915645322",
+            "email": "amirkhan23@gmail.com",
+            "address": "Dhaka"
+        },
+        "status": 75,
+        "speeches": {
+            "total": 1000,
+            "uploaded": 350
+        },
+        "assignedDate": "30/01/2022"
+    },
+    {
+        "id": "01b9423b-b00e-4291-b195-02005949a280",
+        "target": {
+            "id": "0c302aff-68df-4a18-bd1d-ddbe81ca5026",
+            "gender": "male",
+            "ageRange": "34-50",
+            "district": [
+                "dhaka",
+                "mymensingh"
+            ],
+            "profession": "teacher",
+            "economicSituation": "poor",
+            "healthFactors": [
+                "smoker",
+                "jsghfkjwed"
+            ],
+            "recordingArea": "baire",
+            "recordingDistance": "baire",
+            "education": "secondary",
+            "target": 2345,
+            "deadline": "2023-02-11",
+            "reminder": [
+                "kisr",
+                "ki"
+            ],
+            "remark": "nai kono remark"
+        },
+        "assignee": {
+            "id": "2ce4e033-59f4-4381-94c0-2f435dd3bfb4",
+            "name": "Mohammad amir khan",
+            "role": "Admin",
+            "roleID": "01915645322",
+            "contact": "01915645322",
+            "email": "amirkhan23@gmail.com",
+            "address": "Dhaka"
+        },
+        "status": 75,
+        "speeches": {
+            "total": 1000,
+            "uploaded": 350
+        },
+        "assignedDate": "30/01/2022"
+    }
+]
