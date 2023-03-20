@@ -6,18 +6,18 @@ import "../../assets/css/table/type4Table.css";
 import { Drawer } from '../Drawer';
 import { targetDT } from '../../types/assignTypes';
 import RoleImage from '../Image/RoleImage';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Remark from '../common/Remark';
+import * as PATH from '../../helpers/Slug';
 
 type Props = {
     data: targetDT[]
 }
 
 const Type7 = ({ data }: Props) => {
-    // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
     const [remarkOpen, setRemarkOpen] = useState(false);
-    // const [searchedColumn, setSearchedColumn] = useState("");
+    const location = useLocation();
 
     const showDrawer = (item: targetDT) => {
         setOpen(true);
@@ -70,7 +70,6 @@ const Type7 = ({ data }: Props) => {
                                     width: `${data.status}%`
                                 }}
                                 className='bg-secondary-yellow-50 h-full rounded-l-[21px]' />
-
                         }
                     </div>
                 </div>
@@ -82,29 +81,28 @@ const Type7 = ({ data }: Props) => {
             key: 'speeches',
             width: 227,
             render: (data: targetDT) => (
-                <div className='flex items-center gap-x-[13px] w-[227px]'>
-                    <div>
-                        <div className='flex items-center gap-x-2'>
-                            <img className='w-4 h-4' src={Icons.MusicBlue} alt="" />
-                            <h1 className='text-xs text-secondary-blue-50 font-medium'>{data.speeches.uploaded + '/' + data?.speeches.total} Uploaded</h1>
-                        </div>
-                        <div className='bg-blue-gray-20 h-[6px] rounded-[21px] w-[175px]'>
-                            {
-                                data?.status > 0 &&
-                                <div
-                                    style={{
-                                        width: `${getPercentage(data?.speeches.total, data?.speeches.uploaded)}%`
-                                    }}
-                                    className='bg-secondary-blue-50 h-full rounded-l-[21px]' />
+                <Link to={`${location.pathname}${PATH.USER_MANAGEMENT_SPEECHES_PATH}/${data.id}`}>
+                    <div className='flex items-center gap-x-[13px] w-[227px]'>
+                        <div>
+                            <div className='flex items-center gap-x-2'>
+                                <img className='w-4 h-4' src={Icons.MusicBlue} alt="" />
+                                <h1 className='text-xs text-secondary-blue-50 font-medium'>{data.speeches.uploaded + '/' + data?.speeches.total} Uploaded</h1>
+                            </div>
+                            <div className='bg-blue-gray-20 h-[6px] rounded-[21px] w-[175px]'>
+                                {
+                                    data?.status > 0 &&
+                                    <div
+                                        style={{
+                                            width: `${getPercentage(data?.speeches.total, data?.speeches.uploaded)}%`
+                                        }}
+                                        className='bg-secondary-blue-50 h-full rounded-l-[21px]' />
 
-                            }
+                                }
+                            </div>
                         </div>
-                    </div>
-                    <Link to={``}>
                         <img className='w-[13px] h-[9px]' src={Icons.BlueRightArrow} alt="" />
-                    </Link>
-
-                </div>
+                    </div>
+                </Link>
             )
         },
 
