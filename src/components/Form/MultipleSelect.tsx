@@ -33,7 +33,7 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
 
     const [filteredDistrict, setFilteredDistrict] = useState<homeDistrictTypes[]>(data);
 
-    const handleArrowClick = (division: any) => {
+    const handleArrowClick = (division: string) => {
         setCollapsed({
             ...collapsed,
             [division]: !collapsed[division],
@@ -53,7 +53,7 @@ const MultipleSelect = ({ formikValues, formik, data, formikError, formikTouched
         // setOnTextField(value);
     }
 
-    const handleSearch = (event: any) => {
+    const handleSearch = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const _data = homeDistrictSearch(event.target.value, homeDistrict);
         setFilteredDistrict(_data);
     }

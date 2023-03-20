@@ -4,8 +4,6 @@ import ReactToPrint from "react-to-print";
 import Icons from "../../assets/Icons";
 import Buttons from "../Buttons";
 
-
-
 interface Props {
     data: any
 }

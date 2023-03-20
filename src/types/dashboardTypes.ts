@@ -137,3 +137,15 @@ export type createCollectParamsDT = {
   module: string;
   role: string;
 };
+
+export type hoverCircleTooltipColorDT = {
+  [key: string]: {
+    [key:string]: string;
+  }
+}
+
+export type professionWiseColorPropertyDT = {
+  [key: string]: {
+    [key:string]: string;
+  }
+}

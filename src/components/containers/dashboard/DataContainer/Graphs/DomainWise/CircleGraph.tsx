@@ -1,12 +1,12 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { PieChart, Pie, Cell, Tooltip, Sector } from "recharts";
-import { createCollectSimilarPropertyDT } from "../../../../../../types/dashboardTypes";
+import { createCollectSimilarPropertyDT, hoverCircleTooltipColorDT } from "../../../../../../types/dashboardTypes";
 import PropertyListType2 from "../../../../../common/PropertyListType2";
 import GraphTooltip from "../../GraphTooltip";
 
 interface Props {
     data: createCollectSimilarPropertyDT[];
-    hoverTooltipsColors: any;
+    hoverTooltipsColors: hoverCircleTooltipColorDT;
     colorsArray: string[]
 
 }
@@ -63,7 +63,7 @@ const CircleGraph = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
                 x={x}
                 y={y}
                 // payload.fill === "#42E0F5" "#667487"
-                fill={(payload.fill === "#E4F542" || payload.fill === "#42F5E4" || payload.fill === "#E3F542") ? (activeName === payload.name ? "black":"#667487") : (payload.fill === "#42E0F5" ) ? "black" : "white"}
+                fill={(payload.fill === "#E4F542" || payload.fill === "#42F5E4" || payload.fill === "#E3F542") ? (activeName === payload.name ? "black" : "#667487") : (payload.fill === "#42E0F5") ? "black" : "white"}
                 textAnchor="middle"
                 dominantBaseline="central"
                 font-size={13}
@@ -129,52 +129,52 @@ const CircleGraph = ({ data, hoverTooltipsColors, colorsArray }: Props) => {
 
     return (
         <div className="flex items-center justify-between">
+            {
+                <PieChart width={330} height={370}>
+                    <Pie
+                        isAnimationActive={false}
+                        animationDuration={300}
+                        animationBegin={300}
+                        data={domainData}
+                        cx="50%"
+                        cy="50%"
+                        labelLine={false}
+                        label={renderCustomizedLabel}
+                        innerRadius={90}
+                        outerRadius={140}
+                        paddingAngle={1}
+                        dataKey="value"
+                        startAngle={90}
+                        endAngle={-360}
 
-            <PieChart width={330} height={370}>
-                <Pie
-                    isAnimationActive={false}
-                    animationDuration={300}
-                    animationBegin={300}
-                    data={domainData}
-                    cx="50%"
-                    cy="50%"
-                    labelLine={false}
-                    label={renderCustomizedLabel}
-                    innerRadius={90}
-                    outerRadius={140}
-                    paddingAngle={1}
-                    dataKey="value"
-                    startAngle={90}
-                    endAngle={-360}
+                        activeIndex={activeIndex}
+                        onMouseOver={onMouseOver}
+                        onMouseLeave={onMouseLeave}
+                        activeShape={renderActiveShape}
 
-                    activeIndex={activeIndex}
-                    onMouseOver={onMouseOver}
-                    onMouseLeave={onMouseLeave}
-                    activeShape={renderActiveShape}
+                    >
+                        {colorsArray.map((entry: any, index: any) => (
 
-                >
-                    {colorsArray.map((entry: any, index: any) => (
+                            <Cell
+                                key={`cell-${index}`}
+                                fill={colorsArray[index % colorsArray.length]}
+                                style={{ position: "relative", }}
+                            >
+                            </Cell>
 
-                        <Cell
-                            key={`cell-${index}`}
-                            fill={colorsArray[index % colorsArray.length]}
-                            style={{ position: "relative", }}
-                        >
-                        </Cell>
-
-                    ))}
-                </Pie>
-                <Tooltip
-                    isAnimationActive={false}
-                    animationEasing="linear"
-                    animationDuration={300}
-                    wrapperStyle={{ outline: "none" }}
-                    position={{
-                        x: activeData?.tooltipPosition?.x - 45,
-                        y: activeData?.tooltipPosition?.y - 230
-                    }}
-                    content={<CustomTooltip />} />
-            </PieChart>
+                        ))}
+                    </Pie>
+                    <Tooltip
+                        isAnimationActive={false}
+                        animationEasing="linear"
+                        animationDuration={300}
+                        wrapperStyle={{ outline: "none" }}
+                        position={{
+                            x: activeData?.tooltipPosition?.x - 45,
+                            y: activeData?.tooltipPosition?.y - 230
+                        }}
+                        content={<CustomTooltip />} />
+                </PieChart>}
 
             <PropertyListType2 data={data} colorsArray={colorsArray} />
 

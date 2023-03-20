@@ -40,7 +40,7 @@ const Type3 = ({
                 </button>
               ) : (
                 <>
-                  {filterList.subdomain.map((item: any, index: number) => (
+                  {filterList.subdomain.map((item: string, index: number) => (
                     <div key={index} className="flex items-center py-1 px-2 rounded-[4px] bg-ct-blue-20 mr-2 animate-fadeIn">
                       <h5 className="text-xs text-blue-gray-80 font-medium mb-0 mr-1 whitespace-nowrap">
                         {item}
@@ -67,7 +67,7 @@ const Type3 = ({
                 </button>
               ) : (
                 <>
-                  {filterList.domain.map((item: any, index: number) => (
+                  {filterList.domain.map((item: string, index: number) => (
                     <div key={index} className="flex items-center py-1 px-2 rounded-[4px] bg-ct-blue-20 mr-2 animate-fadeIn">
                       <h5 className="text-xs text-blue-gray-80 font-medium mb-0 mr-1 whitespace-nowrap">
                         {item}
@@ -108,7 +108,7 @@ const Type3 = ({
                   </h5>
                   {subdomainData
                     .filter((item) => item.name === domainItem)[0]
-                    .subDomain.map((subdomainItem, index) => (
+                    .subDomain.map((subdomainItem: string) => (
                       <button
                         onClick={() => handleFilter(subdomainItem, true)}
                         className={`flex items-center justify-between py-3 pl-8 pr-4 w-full ${filterList.subdomain.includes(subdomainItem)
@@ -130,7 +130,7 @@ const Type3 = ({
           </>
         ) : (
           <>
-            {domainData.map((item: any, index: number) => (
+            {domainData.map((item: string, index: number) => (
               <button
                 key={index}
                 onClick={() => handleFilter(item, false)}

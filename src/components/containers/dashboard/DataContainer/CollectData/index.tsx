@@ -9,7 +9,9 @@ import { STTMODULE } from "../../../../../helpers/ConditionVariable";
 import { ActiveColor, COLORS, sttCollectDropDownData, ttsCollectDropDownData } from "../../../../../data/dashboard/createCollectIndexData";
 import Dropdown from "../../../../Dropdown";
 
-
+export type CategoryMap = {
+  [key: string]: React.ReactNode;
+}
 
 const CollectData = ({ data }: { data: collectDataDT }) => {
 
@@ -21,7 +23,7 @@ const CollectData = ({ data }: { data: collectDataDT }) => {
     setActivePanel(value);
   };
   const DistributionDropdownMenu = (key: string) => {
-    const Category1: any = {
+    const Category1: CategoryMap = {
       "Distribution Source-wise": (
         <Graphs.DistributionSourceWise data={data.distributionSourceWise} />
       ),

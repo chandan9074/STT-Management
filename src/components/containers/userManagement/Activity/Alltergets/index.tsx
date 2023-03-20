@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { targetData } from '../../../../../data/assign/AssignData';
 import Buttons from '../../../../Buttons';
 import Table from '../../../../Table';
+import { CategoryMap } from '../../../dashboard/DataContainer/CollectData';
 
 const AllTergets = () => {
     const [activeTab, setActiveTab] = useState<string>("Pending")
     const allTergetMenu = (key: string) => {
-        const Category: any = {
+        const Category: CategoryMap = {
             "Pending": <><Table.Type7 data={targetData} /></>,
             "Completed": <></>,
             "All Speeches": <></>

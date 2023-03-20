@@ -90,6 +90,7 @@ const Type1 = ({ isDrawerOpen, setIsDrawerOpen: setOpen, data }: Props) => {
                     </div> :
                     <MetaData setIsMetaData={setIsMetaData} />
             }
+
         </Drawer>
     );
 };

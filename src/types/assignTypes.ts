@@ -155,8 +155,8 @@ export type targetFilterDT = {
 }
 
 export type subChildDT = {
-    title: string;
-    child: string[];
+  title: string;
+  child: string[];
 }
 
 export type targetFilterListDT = {
@@ -209,4 +209,12 @@ export type assignAudioTrackDT = {
   url?: string;
   name?: string;
   file?: Blob | File;
+}
+
+// export type customSingleCriteria1DT = {
+//   [key:string]: string | string[];
+// }
+
+export type customSingleCriteriaDT = {
+  [key: string]: string;
 }

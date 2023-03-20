@@ -28,3 +28,9 @@ export type IconBorderStyleType = {
         border: string;
     };
 }
+
+export type StatusStylesDT = {
+    [key: string]: {
+        [key: string]: string;
+    }
+}

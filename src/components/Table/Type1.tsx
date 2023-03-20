@@ -4,7 +4,7 @@ import "../../assets/css/table/table.css";
 import { paymentHistoryDataDT } from "../../types/billingTypes";
 
 interface Props {
-  columnsData: ColumnsType<any>;
+  columnsData: ColumnsType<paymentHistoryDataDT>;
   dataSources: paymentHistoryDataDT[];
 }
 const Type1 = ({ columnsData, dataSources }: Props) => {
