@@ -105,9 +105,9 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                     <button
                                         key={index}
                                         onClick={() => handleFilterList(item.key, singleItem)}
-                                        className={`py-1.5 px-3 flex items-center border rounded-full duration-200 bg-white mb-0 text-small font-medium text-blue-gray-75 ${filterList[item.key].includes(singleItem)
+                                        className={`py-1.5 px-3 flex items-center border rounded-full duration-200 mb-0 text-small font-medium text-blue-gray-75 ${filterList[item.key].includes(singleItem)
                                             ? "bg-secondary-blue-50 bg-opacity-[0.12] border-secondary-blue-50"
-                                            : "border-white"
+                                            : "border-white bg-white"
                                             }`}
                                     >
                                         {filterList[item.key].includes(singleItem) && (
