@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { assignSpeechData, targetData } from '../../../../../data/assign/AssignData';
+import { assignSpeechData, targetCompletedData, targetData } from '../../../../../data/assign/AssignData';
 import Buttons from '../../../../Buttons';
 import Table from '../../../../Table';
 
@@ -8,7 +8,7 @@ const AllTergets = () => {
     const allTergetMenu = (key: string) => {
         const Category: any = {
             "Pending": <><Table.Type7 data={targetData} /></>,
-            "Completed": <> </>,
+            "Completed": <> <Table.Type14 data={targetCompletedData} /></>,
             "All Speeches": <><Table.Type13 data={assignSpeechData} /></>
         };
         return Category[key];

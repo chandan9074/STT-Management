@@ -149,6 +149,18 @@ export type targetDT = {
   assignedDate: string;
 }
 
+export type targetCompletedDT = {
+  id: string;
+  target: CriteriaItemDT;
+  assignee: AssigneeItemDT;
+  status: number;
+  speeches: {
+    total: number;
+    uploaded: number;
+  };
+  assignedDate: string;
+}
+
 export type targetFilterDT = {
   type: "check" | "select";
   isParent?: string;
@@ -159,8 +171,8 @@ export type targetFilterDT = {
 }
 
 export type subChildDT = {
-    title: string;
-    child: string[];
+  title: string;
+  child: string[];
 }
 
 export type targetFilterListDT = {

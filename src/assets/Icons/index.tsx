@@ -129,6 +129,7 @@ import FluentMagic from "./fluent_magic.svg";
 import Play from "./play.svg";
 import Pause from "./pause.svg";
 import IconsWrapper from "./Icon_Wrapper.png";
+import East from "./east.svg";
 
 const Icons = {
   currency,
@@ -261,7 +262,8 @@ const Icons = {
   FluentMagic,
   Play,
   Pause,
-  IconsWrapper
+  IconsWrapper,
+  East
 };
 
 export default Icons;
