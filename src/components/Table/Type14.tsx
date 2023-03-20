@@ -1,7 +1,6 @@
 import { Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import Icons from '../../assets/Icons';
 import { targetCompletedDT } from '../../types/assignTypes';
 import Buttons from '../Buttons';
@@ -16,11 +15,6 @@ type Props = {
 const Type14 = ({ data }: Props) => {
     const [remarkOpen, setRemarkOpen] = useState(false);
 
-    const getPercentage = (max: number, value: number) => {
-        const result = (100 * value) / max;
-        return result;
-    }
-
     const [singleTargetData, setSingleTargetData] = useState<targetCompletedDT>();
 
     const Type8columns: ColumnsType<targetCompletedDT> = [
@@ -30,6 +24,28 @@ const Type14 = ({ data }: Props) => {
             width: 120,
             render: (data: targetCompletedDT) => <h1 className='w-20 truncate whitespace-nowrap'># {data.id}</h1>,
 
+        },
+        {
+            title: `${"Assigned date".toLocaleUpperCase()}`,
+            key: 'assignedDate',
+            width: 120,
+            render: (data: targetCompletedDT) => <h1 className='w-[120px] whitespace-nowrap'>{data.assignedDate}</h1>,
+
+        },
+
+        {
+            title: `${"Assignee".toLocaleUpperCase()}`,
+            key: 'assignee',
+            width: 170,
+            render: (data: targetCompletedDT) => (
+                <div className='flex gap-x-2 w-[212px]'>
+                    <RoleImage width='w-[18px]' height='h-[18px]' role='speaker' />
+                    <div>
+                        <h1 className='text-xs text-blue-gray-80 font-medium m-0 leading-[15px]'>{data.assignee.name}</h1>
+                        <h1 className='text-xxs text-blue-gray-75 leading-[14px]'>{data.assignee.role}</h1>
+                    </div>
+                </div>
+            )
         },
 
         {
@@ -61,59 +77,7 @@ const Type14 = ({ data }: Props) => {
             )
         },
 
-        {
-            title: `${"speeches".toLocaleUpperCase()}`,
-            key: 'speeches',
-            width: 227,
-            render: (data: targetCompletedDT) => (
-                <div className='flex items-center gap-x-[13px] w-[227px]'>
-                    <div>
-                        <div className='flex items-center gap-x-2'>
-                            <img className='w-4 h-4' src={Icons.MusicBlue} alt="" />
-                            <h1 className='text-xs text-secondary-blue-50 font-medium'>{data.speeches.uploaded + '/' + data?.speeches.total} Uploaded</h1>
-                        </div>
-                        <div className='bg-blue-gray-20 h-[6px] rounded-[21px] w-[175px]'>
-                            {
-                                data?.status > 0 &&
-                                <div
-                                    style={{
-                                        width: `${getPercentage(data?.speeches.total, data?.speeches.uploaded)}%`
-                                    }}
-                                    className='bg-secondary-blue-50 h-full rounded-l-[21px]' />
-
-                            }
-                        </div>
-                    </div>
-                    <Link to={``}>
-                        <img className='w-[13px] h-[9px]' src={Icons.BlueRightArrow} alt="" />
-                    </Link>
-
-                </div>
-            )
-        },
-
-        {
-            title: `${"Assignee".toLocaleUpperCase()}`,
-            key: 'assignee',
-            width: 170,
-            render: (data: targetCompletedDT) => (
-                <div className='flex gap-x-2 w-[212px]'>
-                    <RoleImage width='w-[18px]' height='h-[18px]' role='speaker' />
-                    <div>
-                        <h1 className='text-xs text-blue-gray-80 font-medium m-0 leading-[15px]'>{data.assignee.name}</h1>
-                        <h1 className='text-xxs text-blue-gray-75 leading-[14px]'>{data.assignee.role}</h1>
-                    </div>
-                </div>
-            )
-        },
-
-        {
-            title: `${"Assigned date".toLocaleUpperCase()}`,
-            key: 'assignedDate',
-            width: 120,
-            render: (data: targetCompletedDT) => <h1 className='w-[120px] whitespace-nowrap'>{data.assignedDate}</h1>,
-
-        },
+        
         {
             title: `${"Deadline".toLocaleUpperCase()}`,
             key: 'deadline',
@@ -121,6 +85,15 @@ const Type14 = ({ data }: Props) => {
             render: (data: targetCompletedDT) => <h1 className='w-[120px] whitespace-nowrap'>{data.target.deadline}</h1>,
 
         },
+
+        {
+            title: `${"Submission Date".toLocaleUpperCase()}`,
+            key: 'deadline',
+            width: 120,
+            render: (data: targetCompletedDT) => <h1 className='w-[120px] whitespace-nowrap'>{data?.submissionDate}</h1>,
+
+        },
+
         {
             title: `${"REMARK".toLocaleUpperCase()}`,
             width: 80,
@@ -138,6 +111,7 @@ const Type14 = ({ data }: Props) => {
                 </div>
             )
         },
+        
 
         {
             title: `${"Details".toLocaleUpperCase()}`,

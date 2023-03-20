@@ -632,7 +632,7 @@ export const assignSpeechData = {
                     address: 'Rajbongshi',
                     id: "maksudalam1@gmail.com"
                 },
-                status: 'rejected',
+                status: 'Rejected',
                 recordingArea: '',
                 recordingDistance: '',
                 device: '',
@@ -698,7 +698,7 @@ export const assignSpeechData = {
                     address: 'Rajbongshi',
                     id: "maksudalam1@gmail.com"
                 },
-                status: 'annotated',
+                status: 'Annotated',
                 recordingArea: 'Inside Room',
                 recordingDistance: 'Close',
                 device: 'Redmi Note 8',
@@ -894,7 +894,8 @@ export const targetCompletedData =
             "total": 1000,
             "uploaded": 350
         },
-        "assignedDate": "30/01/2022"
+        "assignedDate": "30/01/2022",
+        "submissionDate": "25/01/2023",
     },
     {
         "id": "01b9423b-b00e-4291-b195-02005949a280",
@@ -937,6 +938,310 @@ export const targetCompletedData =
             "total": 1000,
             "uploaded": 350
         },
-        "assignedDate": "30/01/2022"
+        "assignedDate": "30/01/2022",
+        "submissionDate": "25/01/2020",
     }
 ]
+
+export const targetSpeechData = {
+    id: '2',
+    otherInfo: {
+        roleInfo: {
+            id: "maksudalam@gmail.com",
+            name: "Maksud Alam",
+            role: "Manager",
+            contact: "01738463449",
+            email: "maksudalam@gmail.com",
+            address: "Dhaka",
+            gender: "Male"
+        },
+        deadLine: '21-12-2017',
+        speeches: {
+            total: 1000,
+            uploaded: 450
+        },
+    },
+    speechData:
+        [
+            {
+                id: '1',
+                speaker: [
+                    {
+                        name: 'Maksuda Alam',
+                        gender: 'male',
+                        role: 'speaker',
+                        contact: '019',
+                        address: 'Dhaka',
+                        email: "maksudalam1@gmail.com",
+                        id: "maksudalam1@gmail.com"
+                    },
+                    {
+                        name: 'Bilkis banu',
+                        gender: 'female',
+                        role: 'speaker',
+                        contact: '019',
+                        address: 'Dhaka',
+                        email: "maksudalam1@gmail.com",
+                        id: "maksudalam2@gmail.com"
+                    }
+                ],
+                collector: {
+                    name: 'Muhammad Miraz',
+                    gender: 'male',
+                    role: 'collector',
+                    contact: '019',
+                    address: 'Rajbongshi',
+                    id: "maksudalam1@gmail.com"
+                },
+                status: 'Approved',
+                submissionDate: '30/01/2022; 3:14 PM',
+                device: 'Redmi Note 8',
+                speech: {
+                    id: '0',
+                    title: "Brahms: St Anthony Chorale - Theme, Two Pianos Op.56b",
+                    duration: "5:00",
+                    url:
+                        "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+                },
+                role: "",
+                // {
+                //     id: '33',
+                //     name: 'MD. Eman Hasan',
+                //     role: 'Manager',
+                //     email: 'miraz2710@gmail.com',
+                //     contact: '01684610691',
+                //     address: 'Dhaka',
+                //     gender: 'Male'
+                // },
+                speeches: '355',
+                maxSpeeches: '1000',
+                remark: "",
+
+
+            },
+            {
+                id: '2',
+                speaker: [
+                    {
+                        name: 'Maksuda Alam',
+                        gender: 'male',
+                        role: 'speaker',
+                        contact: '019',
+                        address: 'Dhaka',
+                        email: "maksudalam1@gmail.com",
+                        id: "maksudalam3@gmail.com"
+                    },
+                    {
+                        name: 'Bilkis banu',
+                        gender: 'female',
+                        role: 'speaker',
+                        contact: '019',
+                        address: 'Dhaka',
+                        email: "maksudalam1@gmail.com",
+                        id: "maksudalam4@gmail.com"
+                    }
+                ],
+                collector: {
+                    name: 'Muhammad Miraz',
+                    gender: 'male',
+                    role: 'collector',
+                    contact: '019',
+                    address: 'Rajbongshi',
+                    id: "maksudalam1@gmail.com"
+                },
+                status: 'Rejected',
+                device: '',
+                speech: {
+                    id: '',
+                    title: "",
+                    duration: "",
+                    url: ""
+                },
+                role: 'Team Leader',
+                speeches: '800',
+                maxSpeeches: '2000',
+                remark: "This Is Remark data",
+
+            },
+            {
+                id: '3',
+                speaker: [],
+                collector: {
+                    name: '',
+                    gender: '',
+                    role: '',
+                    contact: '',
+                    address: '',
+                    id: ""
+                },
+                recordingArea: '',
+                device: '',
+                recordingDistance: 'Close',
+                speech: {
+                    id: '0',
+                    title: "Brahms: St Anthony Chorale - Theme, Two Pianos Op.56b",
+                    duration: "5:00",
+                    url:
+                        "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+                },
+                role: "",
+                speeches: '100',
+                maxSpeeches: '1000',
+                remark: "This Is Remark data",
+
+
+            },
+
+            {
+                id: '4',
+                speaker: [
+                    {
+                        name: 'Maksuda Alam',
+                        gender: 'male',
+                        role: 'speaker',
+                        contact: '019',
+                        address: 'Dhaka',
+                        id: "maksudalam5@gmail.com",
+                        email: "maksudalam1@gmail.com",
+                    }
+                ],
+                collector: {
+                    name: 'Muhammad Miraz',
+                    gender: 'male',
+                    role: 'collector',
+                    contact: '019',
+                    address: 'Rajbongshi',
+                    id: "maksudalam1@gmail.com"
+                },
+                status: 'Annotated',
+                device: 'Redmi Note 8',
+                role: "",
+                speech: {
+                    id: '',
+                    title: "",
+                    duration: "",
+                    url: ""
+                },
+                speeches: '800',
+                maxSpeeches: '3000',
+                remark: "This Is Remark data",
+
+
+            },
+            {
+                id: '5',
+                speaker: [
+                    {
+                        name: 'Maksuda Alam',
+                        gender: 'male',
+                        role: 'speaker',
+                        contact: '019',
+                        address: 'Dhaka',
+                        email: "maksudalam1@gmail.com",
+                        id: "maksudalam6@gmail.com"
+                    },
+                    {
+                        name: 'Bilkis banu',
+                        gender: 'female',
+                        role: 'speaker',
+                        contact: '019',
+                        address: 'Dhaka',
+                        email: "maksudalam1@gmail.com",
+                        id: "maksudalam7@gmail.com"
+                    }
+                ],
+                collector: {
+                    name: '',
+                    gender: '',
+                    role: '',
+                    contact: '',
+                    address: '',
+                    id: ""
+                },
+                submissionDate: '30/01/2022; 3:14 PM',
+                device: 'Redmi Note 8',
+                role: "",
+                speech: {
+                    id: '',
+                    title: "",
+                    duration: "",
+                    url: ""
+                },
+                speeches: '800',
+                maxSpeeches: '3000',
+                remark: "",
+
+
+            },
+
+            {
+                id: '6',
+                speaker: [],
+                collector: {
+                    name: 'Muhammad Miraz',
+                    gender: 'male',
+                    role: 'collector',
+                    contact: '019',
+                    address: 'Rajbongshi',
+                    id: "maksudalam1@gmail.com"
+                },
+                status: 'Validated',
+                device: 'Redmi Note 8',
+                role: "",
+                speech: {
+                    id: '',
+                    title: "",
+                    duration: "",
+                    url: ""
+                },
+                speeches: '800',
+                maxSpeeches: '3000',
+                remark: "",
+
+
+            },
+            {
+                id: '7',
+                speaker: [
+                    {
+                        name: 'Maksuda Alam',
+                        gender: 'male',
+                        role: 'speaker',
+                        contact: '019',
+                        address: 'Dhaka',
+                        email: "maksudalam1@gmail.com",
+                        id: "maksudalam8@gmail.com"
+                    },
+                    {
+                        name: 'Bilkis banu',
+                        gender: 'female',
+                        role: 'speaker',
+                        contact: '019',
+                        address: 'Dhaka',
+                        email: "maksudalam1@gmail.com",
+                        id: "maksudalam9@gmail.com"
+                    }
+                ],
+                collector: {
+                    name: 'Muhammad Miraz',
+                    gender: 'male',
+                    role: 'collector',
+                    contact: '019',
+                    address: 'Rajbongshi',
+                    id: "maksudalam1@gmail.com"
+                },
+                device: 'Redmi Note 8',
+                role: "",
+                speech: {
+                    id: '',
+                    title: "",
+                    duration: "",
+                    url: ""
+                },
+                speeches: '800',
+                maxSpeeches: '3000',
+                remark: "",
+
+            }
+        ]
+}

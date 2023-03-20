@@ -11,12 +11,13 @@ import { speechDt2, targetSpeechDT } from '../../types/assignTypes';
 import { ColumnsType, ColumnType } from 'antd/es/table';
 import Remark from '../common/Remark';
 import AudioUpload from '../common/AudioUpload';
+import SpeechStatus from '../common/SpeechStatus';
 
 type Props = {
     data: targetSpeechDT
 }
 
-const Type13 = ({ data }: Props) => {
+const Type15 = ({ data }: Props) => {
     const [isSpeakerModal, setIsSpeakerModal] = useState<boolean>(false);
     const [open, setOpen] = useState(false);
     const [speechData, setSpeechData] = useState<speechDt2[]>(data?.speechData);
@@ -105,13 +106,13 @@ const Type13 = ({ data }: Props) => {
             key: 'speech',
             width: 188,
             render: (data) =>
-             <AudioUpload
-                data={data?.speech}
-                setSpeechData={setSpeechData}
-                speechData={speechData}
-                audioId={data?.id}
-                isUpload={false}
-            />
+                <AudioUpload
+                    data={data?.speech}
+                    setSpeechData={setSpeechData}
+                    speechData={speechData}
+                    audioId={data?.id}
+                    isUpload={false}
+                />
         },
 
         {
@@ -190,6 +191,20 @@ const Type13 = ({ data }: Props) => {
         },
 
         {
+            title: `${"Status".toLocaleUpperCase()}`,
+            width: 150,
+            render: (data) => (
+                <>
+                    {
+                        data?.status !== '' &&
+                        <SpeechStatus data={data?.status} />
+
+                    }
+                </>
+            )
+        },
+
+        {
             title: `${"Action".toLocaleUpperCase()}`,
             align: 'center',
             dataIndex: 'details',
@@ -249,9 +264,9 @@ const Type13 = ({ data }: Props) => {
                 />
             }
 
-          
+
         </div >
     );
 };
 
-export default Type13;
+export default Type15;

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { assignSpeechData, targetData, targetFilter, targetCompletedData } from '../../../../../data/assign/AssignData';
+import { useEffect, useState } from 'react';
+import { targetData, targetFilter, targetCompletedData, targetSpeechData } from '../../../../../data/assign/AssignData';
 import { targetFilterListDT } from '../../../../../types/assignTypes';
 import Buttons from '../../../../Buttons';
 import { Filter } from '../../../../Filter';
@@ -60,10 +60,11 @@ const AllTergets = () => {
         const Category: any = {
             "Pending": <><Table.Type7 data={targetData} /></>,
             "Completed": <> <Table.Type14 data={targetCompletedData} /></>,
-            "All Speeches": <><Table.Type13 data={assignSpeechData} /></>
+            "All Speeches": <><Table.Type13 data={targetSpeechData} /></>
         };
         return Category[key];
     };
+    
     return (
         <div>
             <div className='flex justify-between mt-9 mb-6'>

@@ -159,6 +159,7 @@ export type targetCompletedDT = {
     uploaded: number;
   };
   assignedDate: string;
+  submissionDate: string
 }
 
 export type targetFilterDT = {
@@ -199,7 +200,6 @@ export type speechDt = {
   speech: assignAudioTrackDT;
   audioUploadStatus?: string;
   status?: string;
-  submissionDate?: string
 }
 
 export type otherInfoDT = {
@@ -227,4 +227,26 @@ export type assignAudioTrackDT = {
   url?: string;
   name?: string;
   file?: Blob | File;
+}
+
+
+export type targetSpeechDT = {
+  id: string;
+  otherInfo: otherInfoDT
+  speechData: speechDt2[]
+}
+
+export type speechDt2 = {
+  id: string;
+  speaker: roleDT[];
+  collector: collectorDT;
+  device: string;
+  speeches: string;
+  maxSpeeches: string;
+  remark: string;
+  role: string;
+  speech: assignAudioTrackDT;
+  audioUploadStatus?: string;
+  status?: string;
+  submissionDate?: string; // Ensure submissionDate is a required string
 }

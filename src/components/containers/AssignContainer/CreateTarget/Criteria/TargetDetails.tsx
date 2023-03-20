@@ -9,7 +9,7 @@ const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void 
         criterias,
         singleCriteria,
         getSingleCriteria,
-    } = AssignContexts;
+    } = AssignContexts;    
 
     const singleValue1 = [
         {
