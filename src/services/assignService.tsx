@@ -1,7 +1,7 @@
 import axios from "axios";
 import { targetDataForRecreate } from "../data/assign/AssignData";
 import * as PATH from "../helpers/APIURL";
-import { allScriptParamsDT, postDraftTargetBodyDT, postSelectedScriptBodyDT, updateDraftTargetQueryParams } from "../types/assignTypes";
+import { allScriptParamsDT, createAssigneeParamsDT, CriteriaItemDT, postDraftTargetBodyDT, postSelectedScriptBodyDT, updateDraftTargetQueryParams } from "../types/assignTypes";
 
 export default class AssignService {
   static getAllScript(data: allScriptParamsDT) {
@@ -55,21 +55,21 @@ export default class AssignService {
     return res;
   }
 
-  static createAssignCriteria(params: any) {
+  static createAssignCriteria(params: CriteriaItemDT | CriteriaItemDT[]) {
     const res = axios.post(PATH.POST_RES_CRITERIA_URL, params);
     return res;
   }
 
-  static UpdateAssignCriteria(params: any) {
+  static UpdateAssignCriteria(params: CriteriaItemDT) {
     return axios.put(PATH.UPDATE_ASSIGN_CRITERIA_URL, params);
   }
 
-  static getAssignCriteriaById(id: any) {
+  static getAssignCriteriaById(id: string) {
     return axios.get(PATH.GET_ASSIGN_CRITERIA_BY_ID_URL, { params: { id: id }});   
   
   }
 
-  static createAssignee(params: any) {
+  static createAssignee(params: createAssigneeParamsDT) {
     return axios.post(PATH.CREATE_ASSIGNEE_URL, params);
   }
 

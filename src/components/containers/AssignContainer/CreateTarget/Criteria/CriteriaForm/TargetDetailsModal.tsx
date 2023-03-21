@@ -25,7 +25,7 @@ const TargetDetailsModal = ({ setModalOpen, targetId }: { setModalOpen: React.Di
         },
         {
             title: 'Division/ District',
-            value: singleCriteria?.district.join() || "-"
+            value: singleCriteria?.district.join() ?? "-"
         },
         {
             title: 'profession',
@@ -73,7 +73,7 @@ const TargetDetailsModal = ({ setModalOpen, targetId }: { setModalOpen: React.Di
         },
         {
             title: 'Reminder',
-            value: singleCriteria?.reminder.join() || "-"
+            value: singleCriteria?.reminder.join() ?? "-"
         },
         {
             title: 'Note',

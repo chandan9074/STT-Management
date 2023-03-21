@@ -236,3 +236,7 @@ export type assignAudioTrackDT = {
 export type customSingleCriteriaDT = {
   [key: string]: string;
 }
+
+export type createAssigneeParamsDT = {
+  selectedAssignee: string[]
+}

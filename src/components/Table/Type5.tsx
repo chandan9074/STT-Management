@@ -54,12 +54,13 @@ const data: DataType[] = [
 const Type5 = () => {
     // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
-    const [drawerData, setDrawerData] = useState<any>();
+    const [drawerData, setDrawerData] = useState<DataType>();
     const [active, setActive] = useState<string>("")
     const navigate = useNavigate();
     // const [searchedColumn, setSearchedColumn] = useState("");
 
-    const showDrawer = (key: any) => {
+    const showDrawer = (key: DataType) => {
+        
         setOpen(true);
         setDrawerData(key)
     };
@@ -69,6 +70,7 @@ const Type5 = () => {
 
         setActive(value)
     }
+    
 
     const getColumnSearchProps = (dataIndex: any): any => ({
 
@@ -186,7 +188,7 @@ const Type5 = () => {
             dataIndex: 'Details',
             align: 'center',
             width: 80,
-            render: (_, record: { key: React.Key }) => (
+            render: (_, record: DataType ) => (
                 <>
 
                     <div className='flex w-full justify-center items-center'>

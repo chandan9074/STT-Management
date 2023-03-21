@@ -83,7 +83,7 @@ const Type12 = () => {
   // };
 
 
-  const Type12columns: ColumnsType<any> = [
+  const Type12columns: ColumnsType<recreateTableDT> = [
     {
       title: `${"# Target ID".toLocaleUpperCase()}`,
       render: (data: recreateTableDT) => <p className="text-small text-blue-gray-80 w-20 truncate"># hello</p>,

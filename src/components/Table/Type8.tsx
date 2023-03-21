@@ -55,7 +55,7 @@ const Type8 = () => {
     setSelectedTarget(target);
   };
 
-  const showDrawer = (key: any) => {
+  const showDrawer = (key: TargetItemDT) => {
     setOpen(true);
     // setDrawerData(key);
   };
@@ -73,7 +73,7 @@ const Type8 = () => {
     // }
   };
 
-  const Type8columns: ColumnsType<any> = [
+  const Type8columns: ColumnsType<TargetItemDT> = [
     {
       title: `${"# Target ID".toLocaleUpperCase()}`,
       render: (data: TargetItemDT) => <p className="text-small text-blue-gray-80 w-20 truncate"># {data?.id}</p>,
@@ -230,9 +230,9 @@ const Type8 = () => {
   ];
 
   const rowSelection = {
-    onChange: (selectedRowKeys: React.Key[], selectedRows: any[]) => {
+    onChange: (selectedRowKeys: React.Key[], selectedRows: TargetItemDT[]) => {
     },
-    getCheckboxProps: (record: any) => ({
+    getCheckboxProps: (record: TargetItemDT) => ({
       //   name: record.id,
     }),
   };

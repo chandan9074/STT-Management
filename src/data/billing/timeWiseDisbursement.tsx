@@ -2,7 +2,7 @@
 export const timeWiseDisbursement = {
     role: "Manager",
     type: "stt",
-    totalDisbursedAmount:5000,
+    totalDisbursedAmount: 5000,
     totalValidHours: 340,
     data: [
         {
@@ -194,7 +194,7 @@ export const timeWiseDisbursement = {
                 },
 
             ]
-        },{
+        }, {
             year: 2022,
             month: "Feb",
             totalAmount: 900000,
@@ -978,38 +978,6 @@ export const timeWiseDisbursement = {
         },
     ]
 }
-//
-// queryParam:{
-//     role, type, from, to
-// }
 
-export const managerData: any =  [
-        {
-            id: '1',
-            name: 'Maksuda Alam',
-            role: 'Manager',
-            contact: '01738463449',
-            city: 'Dhaka',
-        },
-        {
-            id: '2',
-            name: 'Rahim',
-            role: 'Manager',
-            contact: '01938463449',
-            city: 'Cumilla',
-        },
-        {
-            id: '3',
-            name: 'Karim',
-            role: 'Manager',
-            contact: '016738463449',
-            city: 'Khulna',
-        },
-        {
-            id: '4',
-            name: 'Zobbar',
-            role: 'Manager',
-            contact: '01898463449',
-            city: 'Barishal',
-        }
-    ]
+
+

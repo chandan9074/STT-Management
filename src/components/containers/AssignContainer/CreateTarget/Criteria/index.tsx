@@ -6,6 +6,7 @@ import Buttons from "../../../../Buttons";
 import Icons from "../../../../../assets/Icons";
 import CriteriaTargetBox from "./CriteriaTargetBox";
 import { useAssigneeContext } from "../../../../../context/AssignProvider";
+import { CriteriaItemDT } from "../../../../../types/assignTypes";
 
 const CreateCriteria = () => {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
@@ -21,7 +22,7 @@ const CreateCriteria = () => {
   };
   const openDrawer = () => {
     setDrawerOpen(true);
-    setSingleCriteriaData({});
+    setSingleCriteriaData({} as CriteriaItemDT);
   };
   return (
     <div className="h-full w-full flex flex-col justify-end">

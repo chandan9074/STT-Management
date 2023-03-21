@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 import ScriptService from "../services/scriptService";
-import { allScriptResDT, getAllScriptsParamsDT } from "../types/script";
+import { allScriptResDT, getAllScriptsParamsDT, scriptParamDT } from "../types/script";
 
 
 interface ContextProps {
@@ -8,14 +8,14 @@ interface ContextProps {
   modalData: string;
   setModalData: React.Dispatch<React.SetStateAction<string>>;
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  uploadCsv: (formData: any) => void;
+  uploadCsv: (formData: FormData) => void;
   getAllScript: (prams: getAllScriptsParamsDT) => void;
   scriptsData: allScriptResDT[]
   // createScript: (params: any) => Promise<{ message: string; status: number }>;
-  createScript: (params: any) => any;
+  createScript: (params: FormData) => void;
   singleScript: allScriptResDT;
-  getScriptById: (id: any) => void;
-  updateScript: (params: any) => any;
+  getScriptById: (id: scriptParamDT) => void;
+  updateScript: (params: FormData) => void;
   setScriptModule: React.Dispatch<React.SetStateAction<string>>;
   scriptModule: string;
   loading: boolean;
@@ -29,12 +29,12 @@ const ScriptProvider = ({ children }: { children: any }) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [modalData, setModalData] = useState<string>("");
   const [scriptsData, setScriptsData] = useState<allScriptResDT[]>([] as allScriptResDT[])
-  const [singleScript, setSingleScript] = useState<any>({});
+  const [singleScript, setSingleScript] = useState<allScriptResDT>({} as allScriptResDT);
   const [scriptModule, setScriptModule] = useState<string>('STT');
   const [loading, setLoading] = useState<boolean>(false);
   const [scriptDeleteParams, setScriptDeleteParams] = useState<string>("");
 
-  const uploadCsv = async (formData: any) => {
+  const uploadCsv = async (formData: FormData) => {
 
     ScriptService.uploadCsv(formData);
   };
@@ -48,7 +48,7 @@ const ScriptProvider = ({ children }: { children: any }) => {
 
   }
 
-  const getScriptById = async (data: any) => {
+  const getScriptById = async (data: scriptParamDT) => {
     try {
       const response = await ScriptService.getScriptById(data);
       setSingleScript(response?.data);
@@ -57,7 +57,7 @@ const ScriptProvider = ({ children }: { children: any }) => {
     }
   }
 
-  const createScript = async (params: any) => {
+  const createScript = async (params: FormData) => {
     try {
       const response = await ScriptService.createScript(params);
       return {
@@ -69,7 +69,7 @@ const ScriptProvider = ({ children }: { children: any }) => {
     }
   }
 
-  const updateScript = async (params: any) => {
+  const updateScript = async (params: FormData) => {
     try {
       setLoading(true);
       await ScriptService.UpdateScript(params);

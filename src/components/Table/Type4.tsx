@@ -19,9 +19,9 @@ interface Props {
 const Type4 = ({ Data, handleSelectRow }: Props) => {
     // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
-    const [drawerData, setDrawerData] = useState<any>();
+    const [drawerData, setDrawerData] = useState<allScriptResDT>();
 
-    const showDrawer = (data: any) => {
+    const showDrawer = (data: allScriptResDT) => {
         setOpen(true);
         setDrawerData(data)
     };

@@ -13,7 +13,7 @@ const SpeakerCriteria = ({ data }: Props) => {
         },
         {
             title: 'Division/ District',
-            value: data?.target.district.join() || "-"
+            value: data?.target.district.join() ?? "-"
         },
         {
             title: 'Age',

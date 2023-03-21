@@ -1,34 +1,44 @@
 import { Table } from 'antd';
+import { ColumnsType } from 'antd/es/table';
 import { useState } from 'react';
 import Icons from '../../assets/Icons';
 
+type tableDataDT =
+    {
+        key: string;
+        role: string;
+        img: string;
+        block: boolean;
+    }
+
+
 const Type6 = () => {
 
-    const [tableData, setTableData] = useState<any>([
+    const [tableData, setTableData] = useState<tableDataDT[]>([
         {
-                key: "1",
-                role: "Admin",
-                img: Icons.admin,
-                block: false,
+            key: "1",
+            role: "Admin",
+            img: Icons.admin,
+            block: false,
 
         },
         {
-                key: "2",
-                role: "Manager",
-                img: Icons.manager,
-                block: false
+            key: "2",
+            role: "Manager",
+            img: Icons.manager,
+            block: false
         },
         {
-                key: "3",
-                role: "Team Leader",
-                img: Icons.teamLeader,
-                block: true
+            key: "3",
+            role: "Team Leader",
+            img: Icons.teamLeader,
+            block: true
         },
         {
-                key: "4",
-                role: "Collector",
-                img: Icons.collector,
-                block: false
+            key: "4",
+            role: "Collector",
+            img: Icons.collector,
+            block: false
 
         },
     ])
@@ -38,30 +48,32 @@ const Type6 = () => {
     //     block: false
     // })
 
-    const handleBlock = (id: any, index: number, value: boolean) => {
+    const handleBlock = (id: string, index: number, value: boolean) => {
 
-        const find = tableData.find((d: any) => d.key === id);
+        // const find = tableData.find((d: tableDataDT) => d.key === id);
 
-        tableData[index] = {...find, block: value};
+        // tableData[index] = { ...find, block: value };
+        tableData[index].block = value;
+
 
         setTableData([...tableData]);
 
-        
-    }
-    
 
-    const columns: any = [
+    }
+
+
+    const columns: ColumnsType<tableDataDT> = [
         {
             title: "ROLE",
             key: "role",
-            render: (data: any) => {
+            render: (data) => {
                 return (
                     <>
-                    <div className="flex items-center gap-2 ml-4">
-                        <img src={data.img} className="h-6 w-6" alt="" />
-                        <p className="text-small font-medium text-blue-gray-75">{data.role}</p>
-                    </div>
-                </>
+                        <div className="flex items-center gap-2 ml-4">
+                            <img src={data.img} className="h-6 w-6" alt="" />
+                            <p className="text-small font-medium text-blue-gray-75">{data.role}</p>
+                        </div>
+                    </>
                 )
             }
         },
@@ -69,7 +81,7 @@ const Type6 = () => {
             title: 'ACTION',
             key: "action",
             width: 184,
-            render: (data: any, _: any, index: number) => (
+            render: (data, _, index: number) => (
                 <>
                     <div className='flex rounded-md border border-blue-gray-30 mr-5 ml-4'>
                         <button
@@ -90,7 +102,7 @@ const Type6 = () => {
 
     ];
 
-    
+
     return (
         <div>
             <Table

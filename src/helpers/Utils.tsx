@@ -1,15 +1,16 @@
 import moment from "moment";
 import { tableColorProperty } from "../data/dashboard/tableColorProperty";
 import { colorForTitle } from "../data/dashboard/colorForTitle";
+import { homeDistrictTypes } from "../types/userManagementTypes";
 
-export const isEmpty = (obj: any | undefined) => {
+export const isEmpty = (obj: any) => {
   if (obj) {
     return Object.keys(obj).length === 0;
   } else {
     return true;
   }
 };
-export const excelNameFormatter = (name: any, isDate: any) => {
+export const excelNameFormatter = (name: string, isDate: boolean) => {
   const date = moment
     .utc(moment(), "YYYY-MM-DD HH:mm:ss")
     .local()
@@ -118,15 +119,15 @@ export function camelizeWithUnderScore(text: string) {
   return a.substring(0, 1).toUpperCase() + a.substring(1);
 }
 
-export const homeDistrictSearch = (value: any, data: any) => {
+export const homeDistrictSearch = (value: string, data: homeDistrictTypes[]) => {
   const searchTerm = value;
-  const matchingDistricts = data.filter((districtObj: any) =>
-    districtObj.district.some((district: any) => district.toLowerCase().includes(searchTerm.toLowerCase()))
+  const matchingDistricts = data.filter((districtObj: homeDistrictTypes) =>
+    districtObj.district.some((district: string) => district.toLowerCase().includes(searchTerm.toLowerCase()))
   );
-  const matchedDistrict = matchingDistricts.map((districtObj: any) => {
+  const matchedDistrict = matchingDistricts.map((districtObj: homeDistrictTypes) => {
     return {
       division: districtObj.division,
-      district: districtObj.district.filter((district: any) => district.toLowerCase().includes(searchTerm.toLowerCase()))
+      district: districtObj.district.filter((district: string) => district.toLowerCase().includes(searchTerm.toLowerCase()))
     }
   });
 
