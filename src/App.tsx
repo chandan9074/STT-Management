@@ -54,7 +54,7 @@ function App() {
 
         {/* <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />} /> */}
         <Route path={`${PATH.ACTIVE_USER_PATH}/:id`} element={<Activity />} />
-        <Route path={`${PATH.ACTIVE_USER_PATH}/:id${PATH.USER_MANAGEMENT_SPEECHES_PATH}/:sId`} element={<Speech />} />
+        <Route path={`${PATH.ACTIVE_USER_PATH}/:id/${PATH.USER_MANAGEMENT_SPEECHES_PATH}/:sId`} element={<Speech />} />
         <Route path="*" element={<NotFound />} />
 
         <Route path={PATH.CREATE_USER_PATH} element={<UserForm />} />
