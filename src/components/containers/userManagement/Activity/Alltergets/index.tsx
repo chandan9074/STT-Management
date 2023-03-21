@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { targetData, targetFilter, targetCompletedData, targetSpeechData } from '../../../../../data/assign/AssignData';
+import { targetData, targetFilter, targetCompletedData, targetAllSpeechData } from '../../../../../data/assign/AssignData';
 import { targetFilterListDT } from '../../../../../types/assignTypes';
 import Buttons from '../../../../Buttons';
 import { Filter } from '../../../../Filter';
@@ -60,7 +60,7 @@ const AllTergets = () => {
         const Category: any = {
             "Pending": <><Table.Type7 data={targetData} /></>,
             "Completed": <> <Table.Type14 data={targetCompletedData} /></>,
-            "All Speeches": <><Table.Type13 data={targetSpeechData} /></>
+            "All Speeches": <><Table.Type13 data={targetAllSpeechData} /></>
         };
         return Category[key];
     };

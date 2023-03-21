@@ -7,22 +7,22 @@ import RoleImage from '../Image/RoleImage';
 import { RoleInContext } from '../../context/RoleProvider';
 import { roleDT } from '../../types/billingTypes';
 import { sortStatus } from '../../data/assign/AssignData';
-import { speechDt2, targetSpeechDT } from '../../types/assignTypes';
+import { speechDT3, targetAllSpeechDT } from '../../types/assignTypes';
 import { ColumnsType, ColumnType } from 'antd/es/table';
 import Remark from '../common/Remark';
-import AudioUpload from '../common/AudioUpload';
+import AudioTrack from '../common/AudioTrack';
 
 type Props = {
-    data: targetSpeechDT
+    data: targetAllSpeechDT
 }
 
 const Type13 = ({ data }: Props) => {
     const [isSpeakerModal, setIsSpeakerModal] = useState<boolean>(false);
     const [open, setOpen] = useState(false);
-    const [speechData, setSpeechData] = useState<speechDt2[]>(data?.speechData);
+    // const [speechData, setSpeechData] = useState<speechDT3[]>(data?.speechData);
 
     const [remarkOpen, setRemarkOpen] = useState<boolean>(false);
-    const [singleTargetData, setSingleTargetData] = useState<speechDt2>();
+    const [singleTargetData, setSingleTargetData] = useState<speechDT3>();
 
     const managerContext = useContext(RoleInContext);
 
@@ -60,7 +60,7 @@ const Type13 = ({ data }: Props) => {
     }
 
 
-    const getColumnSearchProps = (dataIndex: string): ColumnType<speechDt2> => ({
+    const getColumnSearchProps = (dataIndex: string): ColumnType<speechDT3> => ({
 
         filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
 
@@ -90,7 +90,7 @@ const Type13 = ({ data }: Props) => {
     });
 
 
-    const Type8columns: ColumnsType<speechDt2> = [
+    const Type8columns: ColumnsType<speechDT3> = [
 
         {
             title: `${"SN".toLocaleUpperCase()}`,
@@ -105,13 +105,7 @@ const Type13 = ({ data }: Props) => {
             key: 'speech',
             width: 188,
             render: (data) =>
-             <AudioUpload
-                data={data?.speech}
-                setSpeechData={setSpeechData}
-                speechData={speechData}
-                audioId={data?.id}
-                isUpload={false}
-            />
+                <AudioTrack data={data?.speech} />
         },
 
         {
@@ -214,7 +208,7 @@ const Type13 = ({ data }: Props) => {
 
             <Table
                 columns={Type8columns}
-                dataSource={speechData}
+                dataSource={data?.speechData}
                 // scroll={{ x: 1600 }}
                 rowKey='id'
             />
@@ -249,7 +243,7 @@ const Type13 = ({ data }: Props) => {
                 />
             }
 
-          
+
         </div >
     );
 };

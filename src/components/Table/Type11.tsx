@@ -7,7 +7,7 @@ import Buttons from '../Buttons';
 import SpeakerModal from '../containers/AssignContainer/AllTarget/EditSpeeches/SpeakerModal';
 import { isEmpty } from '../../helpers/Utils';
 import RoleImage from '../Image/RoleImage';
-import { Autocomplete, Box, TextField } from '@mui/material';
+import { Autocomplete, Box, Popper, TextField } from '@mui/material';
 import { RoleInContext } from '../../context/RoleProvider';
 import { roleDT } from '../../types/billingTypes';
 import { deviceData, recordingArea, recordingDistanceAssign, uploadStatus } from '../../data/assign/AssignData';
@@ -277,8 +277,8 @@ const Type11 = ({ data }: Props) => {
                                 <div className="fixed top-0 left-0 opacity-50 bg-transparent w-full h-screen "
                                     onClick={() => setCollectorId('')} />
                                 <div className='relative'>
-                                    
-                                    <Autocomplete
+
+                                    {/* <Autocomplete
                                         placeholder='Choose one'
                                         id="sourceType"
                                         style={{ width: '100%' }}
@@ -317,6 +317,72 @@ const Type11 = ({ data }: Props) => {
 
                                         renderInput={(params) => (
 
+                                            <TextField
+                                                {...params}
+                                                name="sourceType"
+                                                placeholder='Add Collector'
+                                            />
+                                        )}
+                                    /> */}
+
+                                    <Autocomplete
+                                        placeholder='Choose one'
+                                        id="sourceType"
+                                        style={{ width: '100%' }}
+                                        options={roleDatas ?? []}
+                                        value={collector}
+                                        getOptionLabel={(option) => {
+                                            if (!option) return '';
+                                            return `${option?.name}`;
+                                        }}
+                                        onChange={(event, value) => {
+                                            if (value !== null) {
+                                                collectorOnChange(value);
+                                            }
+                                        }}
+                                        PopperComponent={({ children, ...popperProps }: any) => (
+                                            <Popper {...popperProps}>
+                                                <Box
+                                                    sx={{
+                                                        width: '254px',
+                                                        // overflowX: 'hidden',
+                                                        overflow: 'auto',
+                                                        maxHeight: '200px',
+                                                        '::-webkit-scrollbar': {
+                                                            width: '4px',
+                                                            height: '2px',
+                                                        },
+                                                        '::-webkit-scrollbar-thumb': {
+                                                            // background: 'rgba(0, 0, 0, 0.2)',
+                                                            borderRadius: '6px',
+                                                            background: 'red'
+                                                        },
+                                                        '::-webkit-scrollbar-thumb:hover': {
+                                                            background: 'red'
+                                                        },
+                                                    }}
+                                                >
+                                                    {children}
+                                                </Box>
+                                            </Popper>
+                                        )}
+                                        renderOption={(props, option) => (
+                                            <Box
+                                                key={option.id}
+                                                component="li"
+                                                sx={{
+                                                    '& > img': { mr: 2, flexShrink: 0 }
+                                                }}
+                                                {...props}
+                                            >
+                                                <h1
+                                                    className='text-small text-blue-gray-80 font-normal'
+                                                >
+                                                    {`${option?.id} - ${option?.name}`}
+                                                </h1>
+                                            </Box>
+                                        )}
+                                        renderInput={(params) => (
                                             <TextField
                                                 {...params}
                                                 name="sourceType"

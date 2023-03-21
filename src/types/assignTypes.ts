@@ -250,3 +250,19 @@ export type speechDt2 = {
   status?: string;
   submissionDate?: string; // Ensure submissionDate is a required string
 }
+
+
+export type targetAllSpeechDT = {
+  id: string;
+  speechData: speechDT3[]
+}
+
+export type speechDT3 = {
+  id: string;
+  speaker: roleDT[];
+  collector: collectorDT;
+  remark: string;
+  speech: assignAudioTrackDT;
+  status?: string;
+  submissionDate?: string; // Ensure submissionDate is a required string
+}

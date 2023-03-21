@@ -69,7 +69,7 @@ const Type14 = ({ data }: Props) => {
                                 style={{
                                     width: `${data.status}%`
                                 }}
-                                className='bg-secondary-yellow-50 h-full rounded-l-[21px]' />
+                                className='bg-secondary-blue-50 h-full rounded-l-[21px]' />
 
                         }
                     </div>

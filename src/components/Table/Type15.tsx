@@ -10,8 +10,8 @@ import { sortStatus } from '../../data/assign/AssignData';
 import { speechDt2, targetSpeechDT } from '../../types/assignTypes';
 import { ColumnsType, ColumnType } from 'antd/es/table';
 import Remark from '../common/Remark';
-import AudioUpload from '../common/AudioUpload';
 import SpeechStatus from '../common/SpeechStatus';
+import AudioTrack from '../common/AudioTrack';
 
 type Props = {
     data: targetSpeechDT
@@ -20,7 +20,7 @@ type Props = {
 const Type15 = ({ data }: Props) => {
     const [isSpeakerModal, setIsSpeakerModal] = useState<boolean>(false);
     const [open, setOpen] = useState(false);
-    const [speechData, setSpeechData] = useState<speechDt2[]>(data?.speechData);
+    // const [speechData, setSpeechData] = useState<speechDt2[]>(data?.speechData);
 
     const [remarkOpen, setRemarkOpen] = useState<boolean>(false);
     const [singleTargetData, setSingleTargetData] = useState<speechDt2>();
@@ -106,13 +106,7 @@ const Type15 = ({ data }: Props) => {
             key: 'speech',
             width: 188,
             render: (data) =>
-                <AudioUpload
-                    data={data?.speech}
-                    setSpeechData={setSpeechData}
-                    speechData={speechData}
-                    audioId={data?.id}
-                    isUpload={false}
-                />
+                <AudioTrack data={data?.speech} />
         },
 
         {
@@ -229,7 +223,7 @@ const Type15 = ({ data }: Props) => {
 
             <Table
                 columns={Type8columns}
-                dataSource={speechData}
+                dataSource={data?.speechData}
                 // scroll={{ x: 1600 }}
                 rowKey='id'
             />

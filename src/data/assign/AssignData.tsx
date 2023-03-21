@@ -851,97 +851,97 @@ export type remark = {
     desc: 'This is remark'
 }
 
-export const targetCompletedData = 
-[
-    {
-        "id": "01b9423b-b00e-4291-b195-02005949apiu80",
-        "target": {
-            "id": "0c302aff-68df-4a18-bd1d-ddbe81ca5026",
-            "gender": "male",
-            "ageRange": "34-50",
-            "district": [
-                "dhaka",
-                "mymensingh"
-            ],
-            "profession": "teacher",
-            "economicSituation": "poor",
-            "healthFactors": [
-                "smoker",
-                "jsghfkjwed"
-            ],
-            "recordingArea": "baire",
-            "recordingDistance": "baire",
-            "education": "secondary",
-            "target": 2345,
-            "deadline": "2023-02-11",
-            "reminder": [
-                "kisr",
-                "ki"
-            ],
-            "remark": "nai kono remark"
+export const targetCompletedData =
+    [
+        {
+            "id": "01b9423b-b00e-4291-b195-02005949apiu80",
+            "target": {
+                "id": "0c302aff-68df-4a18-bd1d-ddbe81ca5026",
+                "gender": "male",
+                "ageRange": "34-50",
+                "district": [
+                    "dhaka",
+                    "mymensingh"
+                ],
+                "profession": "teacher",
+                "economicSituation": "poor",
+                "healthFactors": [
+                    "smoker",
+                    "jsghfkjwed"
+                ],
+                "recordingArea": "baire",
+                "recordingDistance": "baire",
+                "education": "secondary",
+                "target": 2345,
+                "deadline": "2023-02-11",
+                "reminder": [
+                    "kisr",
+                    "ki"
+                ],
+                "remark": "nai kono remark"
+            },
+            "assignee": {
+                "id": "2ce4e033-59f4-4381-94c0-2f435dd3bfb4",
+                "name": "Mohammad amir khan",
+                "role": "Admin",
+                "roleID": "01915645322",
+                "contact": "01915645322",
+                "email": "amirkhan23@gmail.com",
+                "address": "Dhaka"
+            },
+            "status": 75,
+            "speeches": {
+                "total": 1000,
+                "uploaded": 350
+            },
+            "assignedDate": "30/01/2022",
+            "submissionDate": "25/01/2023",
         },
-        "assignee": {
-            "id": "2ce4e033-59f4-4381-94c0-2f435dd3bfb4",
-            "name": "Mohammad amir khan",
-            "role": "Admin",
-            "roleID": "01915645322",
-            "contact": "01915645322",
-            "email": "amirkhan23@gmail.com",
-            "address": "Dhaka"
-        },
-        "status": 75,
-        "speeches": {
-            "total": 1000,
-            "uploaded": 350
-        },
-        "assignedDate": "30/01/2022",
-        "submissionDate": "25/01/2023",
-    },
-    {
-        "id": "01b9423b-b00e-4291-b195-02005949a280",
-        "target": {
-            "id": "0c302aff-68df-4a18-bd1d-ddbe81ca5026",
-            "gender": "male",
-            "ageRange": "34-50",
-            "district": [
-                "dhaka",
-                "mymensingh"
-            ],
-            "profession": "teacher",
-            "economicSituation": "poor",
-            "healthFactors": [
-                "smoker",
-                "jsghfkjwed"
-            ],
-            "recordingArea": "baire",
-            "recordingDistance": "baire",
-            "education": "secondary",
-            "target": 2345,
-            "deadline": "2023-02-11",
-            "reminder": [
-                "kisr",
-                "ki"
-            ],
-            "remark": "nai kono remark"
-        },
-        "assignee": {
-            "id": "2ce4e033-59f4-4381-94c0-2f435dd3bfb4",
-            "name": "Mohammad amir khan",
-            "role": "Admin",
-            "roleID": "01915645322",
-            "contact": "01915645322",
-            "email": "amirkhan23@gmail.com",
-            "address": "Dhaka"
-        },
-        "status": 75,
-        "speeches": {
-            "total": 1000,
-            "uploaded": 350
-        },
-        "assignedDate": "30/01/2022",
-        "submissionDate": "25/01/2020",
-    }
-]
+        {
+            "id": "01b9423b-b00e-4291-b195-02005949a280",
+            "target": {
+                "id": "0c302aff-68df-4a18-bd1d-ddbe81ca5026",
+                "gender": "male",
+                "ageRange": "34-50",
+                "district": [
+                    "dhaka",
+                    "mymensingh"
+                ],
+                "profession": "teacher",
+                "economicSituation": "poor",
+                "healthFactors": [
+                    "smoker",
+                    "jsghfkjwed"
+                ],
+                "recordingArea": "baire",
+                "recordingDistance": "baire",
+                "education": "secondary",
+                "target": 2345,
+                "deadline": "2023-02-11",
+                "reminder": [
+                    "kisr",
+                    "ki"
+                ],
+                "remark": "nai kono remark"
+            },
+            "assignee": {
+                "id": "2ce4e033-59f4-4381-94c0-2f435dd3bfb4",
+                "name": "Mohammad amir khan",
+                "role": "Admin",
+                "roleID": "01915645322",
+                "contact": "01915645322",
+                "email": "amirkhan23@gmail.com",
+                "address": "Dhaka"
+            },
+            "status": 75,
+            "speeches": {
+                "total": 1000,
+                "uploaded": 350
+            },
+            "assignedDate": "30/01/2022",
+            "submissionDate": "25/01/2020",
+        }
+    ]
 
 export const targetSpeechData = {
     id: '2',
@@ -1084,12 +1084,11 @@ export const targetSpeechData = {
                     url:
                         "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
                 },
+                status: 'Approved',
                 role: "",
                 speeches: '100',
                 maxSpeeches: '1000',
-                remark: "This Is Remark data",
-
-
+                remark: "Remark data ....",
             },
 
             {
@@ -1122,6 +1121,7 @@ export const targetSpeechData = {
                     duration: "",
                     url: ""
                 },
+                
                 speeches: '800',
                 maxSpeeches: '3000',
                 remark: "This Is Remark data",
@@ -1161,6 +1161,7 @@ export const targetSpeechData = {
                 submissionDate: '30/01/2022; 3:14 PM',
                 device: 'Redmi Note 8',
                 role: "",
+                status: 'Approved',
                 speech: {
                     id: '',
                     title: "",
@@ -1238,10 +1239,98 @@ export const targetSpeechData = {
                     duration: "",
                     url: ""
                 },
+                status: 'Approved',
                 speeches: '800',
                 maxSpeeches: '3000',
                 remark: "",
 
             }
+        ]
+}
+
+export const targetAllSpeechData = {
+    id: '2',
+    speechData:
+        [
+            {
+                id: '1',
+                speaker: [
+                    {
+                        name: 'Maksuda Alam',
+                        gender: 'male',
+                        role: 'speaker',
+                        contact: '019',
+                        address: 'Dhaka',
+                        email: "maksudalam1@gmail.com",
+                        id: "maksudalam1@gmail.com"
+                    },
+                    {
+                        name: 'Bilkis banu',
+                        gender: 'female',
+                        role: 'speaker',
+                        contact: '019',
+                        address: 'Dhaka',
+                        email: "maksudalam1@gmail.com",
+                        id: "maksudalam2@gmail.com"
+                    }
+                ],
+                collector: {
+                    name: 'Muhammad Miraz',
+                    gender: 'male',
+                    role: 'collector',
+                    contact: '019',
+                    address: 'Rajbongshi',
+                    id: "maksudalam1@gmail.com"
+                },
+                speech: {
+                    id: '0',
+                    title: "Brahms: St Anthony Chorale - Theme, Two Pianos Op.56b",
+                    duration: "5:00",
+                    url:
+                        "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+                },
+                remark: "this is remark",
+                submissionDate: '30/01/2022; 3:14 PM',
+            },
+            {
+                id: '2',
+                speaker: [
+                    {
+                        name: 'Maksuda Alam',
+                        gender: 'male',
+                        role: 'speaker',
+                        contact: '019',
+                        address: 'Dhaka',
+                        email: "maksudalam1@gmail.com",
+                        id: "maksudalam1@gmail.com"
+                    },
+                    {
+                        name: 'Bilkis banu',
+                        gender: 'female',
+                        role: 'speaker',
+                        contact: '019',
+                        address: 'Dhaka',
+                        email: "maksudalam1@gmail.com",
+                        id: "maksudalam2@gmail.com"
+                    }
+                ],
+                collector: {
+                    name: 'Muhammad Miraz',
+                    gender: 'male',
+                    role: 'collector',
+                    contact: '019',
+                    address: 'Rajbongshi',
+                    id: "maksudalam1@gmail.com"
+                },
+                speech: {
+                    id: '0',
+                    title: "Brahms: St Anthony Chorale - Theme, Two Pianos Op.56b",
+                    duration: "5:00",
+                    url:
+                        "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+                },
+                remark: "this is remark",
+                submissionDate: '30/01/2022; 3:14 PM',
+            },
         ]
 }

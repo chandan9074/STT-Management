@@ -220,7 +220,34 @@ label {
     width: 100%;
 }
 
-.custom-autocomplete-popper .MuiAutocomplete-popper {
-    overflow-x: hidden !important;
-    width: 254px !important;
+.MuiAutocomplete-popper {
+    /* overflow-x: hidden !important; */
+    /* max-height: 50px !important; */
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
 }
+/* 
+.MuiAutocomplete-popper::-webkit-scrollbar {
+    width: 2px !important;
+    background: red !important;
+
+}
+
+.MuiAutocomplete-popper::-webkit-scrollbar-track {
+    background: red !important;
+    width: 8px !important;
+}
+
+.MuiAutocomplete-popper::-webkit-scrollbar-thumb {
+    background: #888 !important;
+    border-radius: 10px !important;
+    width: 8px !important;
+    background: red !important;
+
+}
+
+.MuiAutocomplete-popper::-webkit-scrollbar-thumb:hover {
+    background: #555 !important;
+    width: 8px !important;
+    background: red !important;
+} */
