@@ -9,6 +9,7 @@ import RoleImage from '../Image/RoleImage';
 import { Link, useLocation } from 'react-router-dom';
 import Remark from '../common/Remark';
 import * as PATH from '../../helpers/Slug';
+import { useParams } from 'react-router-dom';
 
 type Props = {
     data: targetDT[]
@@ -81,7 +82,7 @@ const Type7 = ({ data }: Props) => {
             key: 'speeches',
             width: 227,
             render: (data: targetDT) => (
-                <Link to={`${location.pathname}${PATH.USER_MANAGEMENT_SPEECHES_PATH}/${data.id}`}>
+                <Link to={`${location.pathname}/${PATH.USER_MANAGEMENT_SPEECHES_PATH}/${data.id}`}>
                     <div className='flex items-center gap-x-[13px] w-[227px]'>
                         <div>
                             <div className='flex items-center gap-x-2'>
