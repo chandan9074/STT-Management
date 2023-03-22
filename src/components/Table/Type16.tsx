@@ -3,6 +3,7 @@ import { ColumnsType } from "antd/es/table"
 import Icons from "../../assets/Icons"
 import { audioManagementDT } from "../../types/audioManagementTypes"
 import { roleDT } from "../../types/billingTypes"
+import AudioTrack from "../common/AudioTrack"
 
 type Props = {
     data: audioManagementDT[]
@@ -12,11 +13,30 @@ const Type16 = ({ data }: Props) => {
 
     const Type16columns: ColumnsType<audioManagementDT> = [
         {
+            title: `${"SN".toLocaleUpperCase()}`,
+            key: 'key',
+            width: 48,
+            // align: "center",
+            render: (text, record, index) => (
+                <span>{(index + 1)}</span>
+            ),
+
+
+        },
+        {
             title: `${"# Target ID".toLocaleUpperCase()}`,
             key: 'key',
-            align: 'center',
+            // align: 'center',
             width: 136,
             render: (data: audioManagementDT) => <h1 className='w-20 truncate whitespace-nowrap'># {data.id}</h1>,
+        },
+        {
+            title: `${"Raw Audio".toLocaleUpperCase()}`,
+            key: 'speech',
+            width: 200,
+            render: (data: audioManagementDT) => <>
+                <AudioTrack data={data.speech} />
+            </>,
         },
         {
             title: `${"Script".toLocaleUpperCase()}`,
@@ -89,7 +109,7 @@ const Type16 = ({ data }: Props) => {
     ]
 
     return (
-        <div className="billing-table type4-table">
+        <div className="billing-table type4-table remove-padding">
             <Table dataSource={data} columns={Type16columns} />
         </div>
     )
