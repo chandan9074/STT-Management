@@ -127,7 +127,7 @@ const Type5 = ({
                     </>
                 ) : (
                     <>
-                        {data.child && data.child.map((item: any, index: number) => (
+                        {data.child && data.child.map((item: string, index: number) => (
                             <button
                                 key={index}
                                 onClick={() => handleFilterList(data.key, item)}

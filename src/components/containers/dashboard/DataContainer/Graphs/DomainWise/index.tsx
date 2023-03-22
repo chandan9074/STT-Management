@@ -1,10 +1,10 @@
-import { createCollectSimilarPropertyDT } from "../../../../../../types/dashboardTypes";
+import { createCollectSimilarPropertyDT, hoverCircleTooltipColorDT } from "../../../../../../types/dashboardTypes";
 import PercentageCard from "../../../../../common/PercentageCard";
 import CircleGraph from "./CircleGraph";
 
 interface Props {
     data: createCollectSimilarPropertyDT[];
-    hoverTooltipsColors: any;
+    hoverTooltipsColors: hoverCircleTooltipColorDT;
     colorsArray: string[]
 
 }

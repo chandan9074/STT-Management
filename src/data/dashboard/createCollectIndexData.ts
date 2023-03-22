@@ -1,3 +1,5 @@
+import { hoverCircleTooltipColorDT } from "../../types/dashboardTypes";
+
 export const domainWiseColors = [
     "#F5427F",
     "#00B86E",
@@ -19,7 +21,7 @@ export const reacordingAreaColors = [
     "#B336C8",
     "#F5AC42",
 ];
-export const ActiveColorDomainWise: any = {
+export const ActiveColorDomainWise: hoverCircleTooltipColorDT = {
     "Natural & Pure Science": {
         fillColor: "#D11263",
         borderColor: "#F5427F",
@@ -84,7 +86,7 @@ export const ActiveColorDomainWise: any = {
         validBgColor: "bg-[#FFD1451F]",
     },
 };
-export const ActiveColorRecordingArea: any = {
+export const ActiveColorRecordingArea: hoverCircleTooltipColorDT = {
     "Inside Room": {
         fillColor: "#D11263",
         borderColor: "#F5427F",
@@ -181,7 +183,7 @@ export const ttsCollectDropDownData = [
 ]
 export const COLORS = ["#42F5E4", "#3BA2F5", "#B336C8", "#F5E342"];
 
-export const ActiveColor: any = {
+export const ActiveColor: hoverCircleTooltipColorDT = {
     "Education/Informative": {
         fillColor: "#00B2C6",
         borderColor: "#42F5E4",

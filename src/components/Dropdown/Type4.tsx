@@ -12,7 +12,7 @@ const Type4 = ({ data, handleActivePanel, active }: Props) => {
 
     const [toggleOpen, setToggleOpen] = useState<boolean>(false)
 
-    const handleActiveButton = (value: any): any => {
+    const handleActiveButton = (value: string): void => {
         handleActivePanel(value)
         setToggleOpen(false)
     }
@@ -29,8 +29,8 @@ const Type4 = ({ data, handleActivePanel, active }: Props) => {
                                 className="w-[245px] bg-white mt-1 rounded-[8px] py-[6px] shadow-bottom-light-blue-20">
 
                                 {
-                                    data.map((item: any) =>
-                                        <div key={item.id}>
+                                    data.map((item: string, index: number) =>
+                                        <div key={index}>
                                             <div
                                                 onClick={() => handleActiveButton(item)}
                                                 className={`flex justify-between items-center text-small font-medium ${active === item ?

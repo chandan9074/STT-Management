@@ -57,3 +57,8 @@ export type remarkDt = {
   role: roleDT;
   remark: string
 }
+
+export type scriptParamDT = {
+  id: string;
+  role: string;
+}

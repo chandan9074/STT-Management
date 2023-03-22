@@ -29,7 +29,7 @@ let SideDrawerLink = [
         icon: '',
         links: [
             {
-                name: 'Collecting Audio',
+                name: 'Collected Audio',
                 route: PATH.COLLECTING_AUDIO,
                 links: [
                     {
@@ -39,13 +39,139 @@ let SideDrawerLink = [
                             {
                                 name: 'Checking Status',
                                 route: PATH.CHECKING_STATUS,
-                                links:[]
+                                links: []
                             },
                             {
                                 name: 'All Checked Audios',
                                 route: PATH.ALL_CHECKED_AUDIOS,
-                                links:[]
+                                links: []
                             }
+                        ]
+                    },
+                    // {
+                    //     name: 'Annotation',
+                    //     route: PATH.CHECKING,
+                    //     links: [
+                    //         {
+                    //             name: 'Sentence Level',
+                    //             route: PATH.CHECKING_STATUS,
+                    //             links: []
+                    //         },
+                    //         {
+                    //             name: 'Word Level',
+                    //             route: PATH.ALL_CHECKED_AUDIOS,
+                    //             links: []
+                    //         },
+                    //         {
+                    //             name: 'Phoneme Level',
+                    //             route: PATH.CHECKING_STATUS,
+                    //             links: []
+                    //         },
+                    //         {
+                    //             name: 'Annotated Files',
+                    //             route: PATH.CHECKING_STATUS,
+                    //             links: []
+                    //         },
+                    //     ]
+                    // },
+                    // {
+                    //     name: 'Validation',
+                    //     route: PATH.CHECKING,
+                    //     links: [
+                    //         {
+                    //             name: 'Sentence Level',
+                    //             route: PATH.CHECKING_STATUS,
+                    //             links: []
+                    //         },
+                    //         {
+                    //             name: 'Word Level',
+                    //             route: PATH.ALL_CHECKED_AUDIOS,
+                    //             links: []
+                    //         },
+                    //         {
+                    //             name: 'Phoneme Level',
+                    //             route: PATH.CHECKING_STATUS,
+                    //             links: []
+                    //         },
+                    //         {
+                    //             name: 'Validated Files',
+                    //             route: PATH.CHECKING_STATUS,
+                    //             links: []
+                    //         },
+                    //     ]
+                    // },
+                ]
+            },
+            {
+                name: 'Upload Audio/Video',
+                route: PATH.UPLOAD_AUDION_VIDEO_PATH,
+                links: [
+                    {
+                        name: 'Checking',
+                        route: PATH.CHECKING,
+                        links: [
+                            {
+                                name: 'Checking Status',
+                                route: PATH.CHECKING_STATUS,
+                                links: []
+                            },
+                            {
+                                name: 'All Checked Audios',
+                                route: PATH.ALL_CHECKED_AUDIOS,
+                                links: []
+                            }
+                        ]
+                    },
+                    {
+                        name: 'Annotaion',
+                        route: PATH.CHECKING,
+                        links: [
+                            {
+                                name: 'Sentence Level',
+                                route: PATH.CHECKING_STATUS,
+                                links: []
+                            },
+                            {
+                                name: 'Word Level',
+                                route: PATH.ALL_CHECKED_AUDIOS,
+                                links: []
+                            },
+                            {
+                                name: 'Phoneme Level',
+                                route: PATH.CHECKING_STATUS,
+                                links: []
+                            },
+                            {
+                                name: 'Annotated Files',
+                                route: PATH.CHECKING_STATUS,
+                                links: []
+                            },
+                        ]
+                    },
+                    {
+                        name: 'Validation',
+                        route: PATH.CHECKING,
+                        links: [
+                            {
+                                name: 'Sentence Level',
+                                route: PATH.CHECKING_STATUS,
+                                links: []
+                            },
+                            {
+                                name: 'Word Level',
+                                route: PATH.ALL_CHECKED_AUDIOS,
+                                links: []
+                            },
+                            {
+                                name: 'Phoneme Level',
+                                route: PATH.CHECKING_STATUS,
+                                links: []
+                            },
+                            {
+                                name: 'Validated Files',
+                                route: PATH.CHECKING_STATUS,
+                                links: []
+                            },
                         ]
                     },
                 ]
@@ -53,7 +179,7 @@ let SideDrawerLink = [
         ]
     }
 
-    
+
     // {
     //     name: 'Script',
     //     route: PATH.SCRIPT,

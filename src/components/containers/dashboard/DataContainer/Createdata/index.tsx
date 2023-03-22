@@ -16,6 +16,7 @@ import {
   sttCreateDropDownData,
   ttsCreateDropDownData
 } from "../../../../../data/dashboard/createCollectIndexData";
+import { CategoryMap } from "../CollectData";
 
 
 
@@ -29,7 +30,7 @@ const CreateData = ({ data }: { data: createDataDT }) => {
     setActivePanel(value);
   };
   const DistributionDropdownMenu = (key: string) => {
-    const Category1: any = {
+    const Category1: CategoryMap = {
       "Distribution Source-wise": (
         <Graphs.DistributionSourceWise data={data.distributionSourceWise} />
       ),

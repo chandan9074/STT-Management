@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import GraphTooltip from "../../GraphTooltip";
-import { createCollectSimilarPropertyDT } from "../../../../../../types/dashboardTypes";
+import { createCollectSimilarPropertyDT, professionWiseColorPropertyDT } from "../../../../../../types/dashboardTypes";
 
 interface Props {
     data: createCollectSimilarPropertyDT[]
 }
 
 const ProfessionWise = ({ data }: Props) => {
-    const colorProperty: any = {
+    const colorProperty: professionWiseColorPropertyDT = {
         "1": {
             color: "bg-yellow-A10",
             activeColor: "hover:bg-quack-90",

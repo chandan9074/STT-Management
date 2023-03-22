@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Icons from "../../../../assets/Icons";
 
 interface Props {
@@ -16,6 +16,7 @@ const DataContainerDropdown = ({ data, handleActivePanel }: Props) => {
         handleActivePanel(value.value)
         setToggleOpen(false)
     }
+    
     return (
         <div className={`relative`} >
 

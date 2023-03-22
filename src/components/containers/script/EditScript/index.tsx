@@ -10,7 +10,7 @@ const EditScript = ({ data }: { data?: allScriptResDT }) => {
     const scriptContext = useContext(ScriptContext);
     const commonContext = useContext(CommonContext);
     const { id } = useParams();
-    const search = { id: id, role: commonContext.role }
+    const search = { id: id ?? '', role: commonContext.role }
 
     useEffect(() => {
         if (id) {

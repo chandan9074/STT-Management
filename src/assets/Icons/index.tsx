@@ -130,6 +130,7 @@ import Play from "./play.svg";
 import Pause from "./pause.svg";
 import IconsWrapper from "./Icon_Wrapper.png";
 import East from "./east.svg";
+import Conversion from "./conversion_path.svg";
 
 const Icons = {
   currency,
@@ -263,7 +264,8 @@ const Icons = {
   Play,
   Pause,
   IconsWrapper,
-  East
+  East,
+  Conversion
 };
 
 export default Icons;

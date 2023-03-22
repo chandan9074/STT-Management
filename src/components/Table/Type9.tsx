@@ -56,7 +56,7 @@ const Type9 = ({ data, handleSelectedScript, uncheckedScript, isDrawerOpen }: Pr
     const selectionType = "checkbox";
     const [active, setActive] = useState("Active");
     const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
-    const tableRef = useRef<any>();
+    const tableRef = useRef<HTMLDivElement>(null);
 
     useLayoutEffect(() => {
         if (isDrawerOpen) {
@@ -74,7 +74,7 @@ const Type9 = ({ data, handleSelectedScript, uncheckedScript, isDrawerOpen }: Pr
     //     setDrawerData(key)
     // };
 
-    const handleActiveFrequencyChange = (value: string, confirm: any) => {
+    const handleActiveFrequencyChange = (value: string) => {
         setActive(value)
     }
 
@@ -86,7 +86,7 @@ const Type9 = ({ data, handleSelectedScript, uncheckedScript, isDrawerOpen }: Pr
         },
     };
 
-    const getColumnSearchProps = (dataIndex: any): any => ({
+    const getColumnSearchProps = (dataIndex: string): any => ({
 
 
         filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }: any) => (
@@ -95,34 +95,34 @@ const Type9 = ({ data, handleSelectedScript, uncheckedScript, isDrawerOpen }: Pr
 
                 <div
                     className={`flex gap-1 items-center justify-between px-4 py-3 rounded-t-lg cursor-pointer ${active === "asc" ? "text-[#2C79BE] font-bold bg-[rgba(44,121,190,0.12)]" : ""}`}
-                    onClick={() => handleActiveFrequencyChange("asc", confirm)}
+                    onClick={() => handleActiveFrequencyChange("asc")}
                 >
                     <div className="flex items-center gap-2">
-                      <div>
-                        <img alt="" src={active === "asc"?Icons.North:Icons.NorthNeviBlue}/>
-                      </div>
-                      <div>
-                        <p>Sort Ascending</p>
-                       </div>
+                        <div>
+                            <img alt="" src={active === "asc" ? Icons.North : Icons.NorthNeviBlue} />
+                        </div>
+                        <div>
+                            <p>Sort Ascending</p>
+                        </div>
                     </div>
                     <div>
-                        <img alt="" src={Icons.CorrectIcon}/>
+                        <img alt="" src={Icons.CorrectIcon} />
                     </div>
 
                 </div>
                 <div
                     className={`flex gap-1 items-center justify-between px-4 py-3 rounded-t-lg cursor-pointer ${active === "desc" ? "text-[#2C79BE] font-bold bg-[rgba(44,121,190,0.12)]" : ""}`}
-                    onClick={() => handleActiveFrequencyChange("desc", confirm)}>
+                    onClick={() => handleActiveFrequencyChange("desc")}>
                     <div className="flex items-center gap-2">
-                      <div>
-                        <img alt="" src={active === "asc"?Icons.South:Icons.SouthNeviBlue}/>
-                      </div>
-                      <div>
-                        <p>Sort Decending</p>
-                       </div>
+                        <div>
+                            <img alt="" src={active === "asc" ? Icons.South : Icons.SouthNeviBlue} />
+                        </div>
+                        <div>
+                            <p>Sort Decending</p>
+                        </div>
                     </div>
                     <div>
-                        <img alt="" src={Icons.CorrectIcon}/>
+                        <img alt="" src={Icons.CorrectIcon} />
                     </div>
 
                 </div>

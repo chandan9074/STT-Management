@@ -29,7 +29,7 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
 
     const [filteredDistrict, setFilteredDistrict] = useState<homeDistrictTypes[]>(data);
 
-    const handleArrowClick = (division: any) => {
+    const handleArrowClick = (division: string) => {
         setCollapsed({
             ...collapsed,
             [division]: !collapsed[division],
@@ -51,7 +51,7 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
         setOnTextField(value);
     }
 
-    const handleSearch = (event: any) => {
+    const handleSearch = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const _data = homeDistrictSearch(event.target.value, homeDistrict);
         setFilteredDistrict(_data);
     }

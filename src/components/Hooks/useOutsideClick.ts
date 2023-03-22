@@ -4,12 +4,12 @@ interface IReturn{
     handleOpen:()=>void;
 }
 
-const useOutsideClick=(ref:any):IReturn=>{
+const useOutsideClick=(ref:React.RefObject<HTMLElement>):IReturn=>{
     const [open,setOpen]=useState(false);
 
     useEffect(() => {
-        const handleClickOutside=(event:any) =>{
-          if (ref.current && !ref.current?.contains(event.target)) {
+        const handleClickOutside=(event: MouseEvent | null) =>{
+          if (ref.current && !ref.current?.contains(event?.target as Node)) {
              setOpen(false)
           }
         }

@@ -41,10 +41,10 @@ const SideDrawer = () => {
     // className={`${nav.route === location.pathname && 'bg-blue-10 text-secondary-blue-50 rounded-[20px]'} px-4`}
 
     return (
-        <div className='px-[9px] py-[15px] z-[100] h-screen w-[218px] bg-white fixed left-[70px] border-r-[1px] border-[#EDF0F4]'>
+        <div className='px-2 py-[15px] z-[100] h-screen w-[218px] bg-white fixed left-[70px] border-r-[1px] border-[#EDF0F4]'>
             <div className='mt-[6px] mb-[54px] text-[18px] font-medium'>
-                <span className='text-black '>Collection </span>
-                <span className='text-blue-gray-A50'>Tool</span>
+                <span className='text-ct-blue-90 '>Collection </span>
+                <span className='text-ct-blue-90-55%'>Tool</span>
             </div>
             {
                 nav &&
@@ -63,7 +63,7 @@ const SideDrawer = () => {
                                         <div className={` h-[6px] w-[6px] ${m.route === location.pathname.split('/')[2] ? 'bg-secondary-blue-50' : 'bg-blue-gray-A50 '} rounded-[50%]`} />
                                         <div className='w-[100%]'>
                                             <Link className='w-full' to={m.route} >
-                                                <h1 className=''>
+                                                <h1 className='text-small'>
                                                     {m.name}
                                                 </h1>
                                             </Link>
@@ -137,7 +137,7 @@ const SideDrawer = () => {
                                                 n?.links &&
                                                 n?.links?.map((value, k) => (
                                                     <div key={k} className={`${navClickItem.subRoute === n.route ? "block" : 'hidden'} pl-[16px] my-[12px]`}>
-                                                        <div className={`${value.route === location.pathname.split('/')[4] ? 'sideDrawerActiveNav' : 'sideDrawerDeactiveNav'}`}>
+                                                        <div className={`text-ct-blue-60 ${value.route === location.pathname.split('/')[4] ? 'sideDrawerActiveNav' : 'sideDrawerDeactiveNav'}`}>
                                                             <Link className='w-full' to={`${nav.route}/${m.route}/${n.route}/${value.route}`}>
                                                                 <h1 >{value?.name}</h1>
                                                             </Link>

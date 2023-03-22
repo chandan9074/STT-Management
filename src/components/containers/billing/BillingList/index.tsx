@@ -32,7 +32,7 @@ export interface BillingDataType {
 
 export interface AllBillingDataType {
   key: React.Key;
-  date: any;
+  date: string;
   hour: string;
   amountPaid: string;
 }

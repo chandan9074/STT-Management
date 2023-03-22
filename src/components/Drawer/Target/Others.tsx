@@ -1,14 +1,14 @@
-import { targetDT } from '../../../types/assignTypes';
+import { customSingleCriteriaDT, targetDT } from '../../../types/assignTypes';
 
 type Props = {
     data?: targetDT
 }
 
 const Others = ({ data }: Props) => {
-    const singleValue2 = [
+    const singleValue2: customSingleCriteriaDT[] = [
         {
             title: 'Reminder',
-            value: data?.target?.reminder || []
+            value: data?.target?.reminder.join() || "-"
         },
         {
             title: 'Note',
@@ -18,7 +18,7 @@ const Others = ({ data }: Props) => {
 
     return (
         <div>
-            {singleValue2?.map((item: any, i: number) => (
+            {singleValue2?.map((item: customSingleCriteriaDT, i: number) => (
                 <div className={` grid grid-cols-12`} key={i}>
 
                     <div className={`${(i === 0) && 'rounded-t-[5px]'} ${(i === (singleValue2.length - 1)) && 'rounded-b-[5px] pb-[10px]'} col-span-4 bg-ct-blue-05 pt-3  pl-3`}>
@@ -28,26 +28,11 @@ const Others = ({ data }: Props) => {
                     </div>
 
                     <div className="col-span-8 pt-3 pr-2 pl-3">
-                        {
-                            item?.title === "Reminder" ? (
-                                <h1 className="text-blue-gray-80 font-medium text-small  leading-15px">
-                                    {
-                                        item.value?.length > 0 ?
-                                            item?.value?.map((value: string, j: number) => {
-                                                return value + `${(item.value.length - 1) !== j ? ', ' : ''}`;
-                                            }) :
-                                            '-'
-                                    }
-                                </h1>
-                            ) : (
-                                <h1 className="text-blue-gray-80 font-medium text-small leading-15px">
-                                    {item?.value}
-                                </h1>
-                            )}
+                        <h1 className="text-blue-gray-80 font-medium text-small leading-15px">
+                            {item?.value}
+                        </h1>
                     </div>
-
                 </div>
-
             ))}
         </div>
     );

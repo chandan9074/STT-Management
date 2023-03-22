@@ -5,6 +5,7 @@ import Buttons from '../../../../Buttons';
 import { Filter } from '../../../../Filter';
 import { SearchBox } from '../../../../SearchBox';
 import Table from '../../../../Table';
+import { CategoryMap } from '../../../dashboard/DataContainer/CollectData';
 
 const AllTergets = () => {
     const [activeTab, setActiveTab] = useState<string>("Pending");
@@ -57,7 +58,7 @@ const AllTergets = () => {
     }
 
     const allTergetMenu = (key: string) => {
-        const Category: any = {
+        const Category: CategoryMap = {
             "Pending": <><Table.Type7 data={targetData} /></>,
             "Completed": <> <Table.Type14 data={targetCompletedData} /></>,
             "All Speeches": <><Table.Type13 data={targetAllSpeechData} /></>

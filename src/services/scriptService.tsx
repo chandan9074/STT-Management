@@ -1,10 +1,10 @@
 import axios from "axios";
 import * as PATH from "../helpers/APIURL";
-import { getAllScriptsParamsDT } from "../types/script";
+import { getAllScriptsParamsDT, scriptParamDT } from "../types/script";
 
 
 export default class ScriptService {
-  static uploadCsv(formData: any) {
+  static uploadCsv(formData: FormData) {
     axios.post(PATH.UPLOAD_SCRIPT_CSV_FILE_URL, formData);
   }
 
@@ -12,15 +12,15 @@ export default class ScriptService {
     return axios.get(PATH.GET_ALL_SCRIPTS_URL, { params: data });
   }
 
-  static createScript(params: any) {
+  static createScript(params: FormData) {
     return axios.post(PATH.CREATE_SCRIPTS_URL, params);
   }
 
-  static getScriptById(params: any) {
+  static getScriptById(params: scriptParamDT) {
     return axios.get(PATH.GET_SCRIPT_BY_ID, { params: params });
   }
 
-  static UpdateScript(params: any) {
+  static UpdateScript(params: FormData) {
     return axios.put(PATH.UPDATE_SCRIPT_URL, params);
   }
 }

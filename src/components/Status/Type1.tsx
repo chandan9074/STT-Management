@@ -1,4 +1,5 @@
 import React from 'react';
+import { StatusStylesDT } from '../../types/common';
 
 interface Props {
     status: "Approved" | "Rejected" | "Annotated" | "Validated";
@@ -6,7 +7,7 @@ interface Props {
 }
 const Type1 = (props: Props) => {
     const { status, label } = props
-    const statusStyle: any = {
+    const statusStyle: StatusStylesDT = {
         "Approved": {
             bg: "bg-[#DEF7F0]",
             circleBg: "bg-[#05956F]",

@@ -229,7 +229,6 @@ export type assignAudioTrackDT = {
   file?: Blob | File;
 }
 
-
 export type targetSpeechDT = {
   id: string;
   otherInfo: otherInfoDT
@@ -265,4 +264,15 @@ export type speechDT3 = {
   speech: assignAudioTrackDT;
   status?: string;
   submissionDate?: string; // Ensure submissionDate is a required string
+// export type customSingleCriteria1DT = {
+//   [key:string]: string | string[];
+// }
+}
+
+export type customSingleCriteriaDT = {
+  [key: string]: string;
+}
+
+export type createAssigneeParamsDT = {
+  selectedAssignee: string[]
 }

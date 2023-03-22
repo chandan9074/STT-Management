@@ -4,10 +4,11 @@ import Buttons from "../../../../Buttons";
 import { CustomModal } from "../../../../common/CustomModal";
 import "../../../../../assets/css/table/criteria_details.css";
 import Image from "../../../../Image";
+import { CriteriaItemDT } from "../../../../../types/assignTypes";
 type Props = {
   modalOpen: boolean;
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  data: any;
+  data?: CriteriaItemDT;
 };
 
 const CriteriaDetailsModal = ({ modalOpen, setModalOpen, data }: Props) => {

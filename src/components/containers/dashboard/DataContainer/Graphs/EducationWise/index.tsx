@@ -67,7 +67,7 @@ const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => 
             <div className='absolute w-full bottom-[45px] '>
                 <div className='flex justify-between items-end pl-16 pr-[25px] '>
                     {
-                        educationWiseData?.map((value: any, index) => (
+                        educationWiseData?.map((value: createCollectSimilarPropertyDT, index) => (
                             <div key={index} className='flex flex-col justify-center items-center '>
                                 <div className='relative group h-[324px] w-[84px] flex items-end justify-center'>
                                     <div

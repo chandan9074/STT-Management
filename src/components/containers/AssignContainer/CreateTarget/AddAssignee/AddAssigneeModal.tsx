@@ -1,5 +1,5 @@
 import { StepBackwardOutlined } from '@ant-design/icons';
-import { FormControl, FormControlLabel, Radio, RadioGroup } from '@mui/material';
+import { FormControl, FormControlLabel, Radio, RadioGroup, SelectChangeEvent } from '@mui/material';
 import { Form, Select } from 'antd';
 import { useContext, useEffect, useState } from 'react';
 import Icons from '../../../../../assets/Icons';
@@ -66,7 +66,7 @@ const AddAssigneeModal = ({
     }, [isDropDownVisible]);
 
 
-    const onRoleChange = (e: any) => {
+    const onRoleChange = (e: SelectChangeEvent) => {
         setRole(e.target.value);
         form.resetFields();
     }
@@ -98,8 +98,8 @@ const AddAssigneeModal = ({
     }
 
 
-    const onDropDownVisible = (e: any) => {
-        setIsDropDownVisible(true);
+    const onDropDownVisible = (open: boolean) => {
+        setIsDropDownVisible(open);
         setDropDownCount(dropDownCount + 1);
         setIsDropItemClick(true);
     }
@@ -129,7 +129,7 @@ const AddAssigneeModal = ({
 
     const onAddHandle = () => {
 
-        const _id = customRoleData?.map((item: any) => {
+        const _id = customRoleData?.map((item: roleDT) => {
             return item?.id;
         });
 

@@ -14,7 +14,7 @@ const Secondary = () => {
   }));
 
   return (
-    <div className="flex justify-between items-center pt-4 pb-2 pr-4 pl-[97px] fixed w-full z-[90] bg-white">
+    <div className="flex justify-between items-center pt-4 pb-2 pr-4 pl-[300px] fixed w-full z-[90] bg-white">
       <div className="flex items-center">
         {breadcrumbs.map((breadcrumb, index) => (
           <React.Fragment key={breadcrumb.path}>

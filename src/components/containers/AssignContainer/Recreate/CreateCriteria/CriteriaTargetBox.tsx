@@ -22,7 +22,7 @@ const CriteriaTargetBox = ({
 
   const { targetForRecreate, setTargetForRecreate, singleCriteriaData, getCriteriaByID, getSingleCriteriaRecreate, singleCriteriaRecreate, setRecreateTable, recreateTable } = useAssigneeContext();
   const optionMenuRef = useRef<null | HTMLDivElement>(null);
-  const [criteriaId, setCriteriaId] = useState<any>();
+  const [criteriaId, setCriteriaId] = useState<string>();
 
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
   // const [selectedValue, setSelectedValue] = useState<string>("");
@@ -207,7 +207,7 @@ const CriteriaTargetBox = ({
           </div>
         </div>
       )}
-      {openCriteriaDetailsModal && (
+      {(openCriteriaDetailsModal) && (
         <CriteriaDetailsModal
           modalOpen={openCriteriaDetailsModal}
           setModalOpen={setOpenCriteriaDetailsModal}

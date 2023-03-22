@@ -1,6 +1,5 @@
-import React from "react";
 
-export const DistributionDropdownMenu = (key: any) => {
+export const DistributionDropdownMenu = () => {
 
 
 }
