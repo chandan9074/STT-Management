@@ -22,6 +22,11 @@ import EditScript from "./components/containers/script/EditScript";
 import EditSpeeches from "./components/containers/AssignContainer/AllTarget/EditSpeeches";
 import RecreateTarget from "./pages/Assign/RecreateTarget";
 import Speech from "./pages/UserManagement/Speech";
+import CollectingAudio from "./pages/Test/CollectingAudio";
+import Checking from "./pages/Test/CollectiongAudio/Checking";
+import CheckingStatus from "./pages/Test/CollectiongAudio/Checking/CheckingStatus";
+import UploadAudioVideo from "./pages/Test/UploadAudioVideo";
+import Test from "./pages/Test";
 
 function App() {
   useEffect(() => {
@@ -77,7 +82,7 @@ function App() {
         {/* <Route path={PATH.SCRIPT} element={<Script />} /> */}
 
         {/* test */}
-        {/* <Route path="/test" element={<Test />} >
+        <Route path={PATH.AUDIO_PATH} element={<Test />} >
           <Route path={PATH.COLLECTING_AUDIO} element={<CollectingAudio />} >
             <Route path='' element={<div>Hello collection audio</div>} />
             <Route path={PATH.CHECKING} element={<Checking />} >
@@ -86,7 +91,7 @@ function App() {
             </Route>
           </Route>
           <Route path={PATH.UPLOAD_AUDION_VIDEO_PATH} element={<UploadAudioVideo />} />
-        </Route> */}
+        </Route>
       </Routes>
     </BrowserRouter>
   );

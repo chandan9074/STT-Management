@@ -1,13 +1,14 @@
-import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Layouts from '../../components/Layouts';
+import Table from '../../components/Table';
+import { collectedAudio } from '../../data/audioManagement/AudioManagementData';
 
 const CollectingAudio = () => {
     return (
         // <Layouts.Third>
-            <div className=''>
-                <Outlet />
-            </div>
+        <div >
+            <Table.Type16 data={collectedAudio} />
+            <Outlet />
+        </div>
         // </Layouts.Third>
     );
 };
