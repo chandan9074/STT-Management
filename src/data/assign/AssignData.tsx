@@ -851,97 +851,97 @@ export type remark = {
     desc: 'This is remark'
 }
 
-export const targetCompletedData = 
-[
-    {
-        "id": "01b9423b-b00e-4291-b195-02005949apiu80",
-        "target": {
-            "id": "0c302aff-68df-4a18-bd1d-ddbe81ca5026",
-            "gender": "male",
-            "ageRange": "34-50",
-            "district": [
-                "dhaka",
-                "mymensingh"
-            ],
-            "profession": "teacher",
-            "economicSituation": "poor",
-            "healthFactors": [
-                "smoker",
-                "jsghfkjwed"
-            ],
-            "recordingArea": "baire",
-            "recordingDistance": "baire",
-            "education": "secondary",
-            "target": 2345,
-            "deadline": "2023-02-11",
-            "reminder": [
-                "kisr",
-                "ki"
-            ],
-            "remark": "nai kono remark"
+export const targetCompletedData =
+    [
+        {
+            "id": "01b9423b-b00e-4291-b195-02005949apiu80",
+            "target": {
+                "id": "0c302aff-68df-4a18-bd1d-ddbe81ca5026",
+                "gender": "male",
+                "ageRange": "34-50",
+                "district": [
+                    "dhaka",
+                    "mymensingh"
+                ],
+                "profession": "teacher",
+                "economicSituation": "poor",
+                "healthFactors": [
+                    "smoker",
+                    "jsghfkjwed"
+                ],
+                "recordingArea": "baire",
+                "recordingDistance": "baire",
+                "education": "secondary",
+                "target": 2345,
+                "deadline": "2023-02-11",
+                "reminder": [
+                    "kisr",
+                    "ki"
+                ],
+                "remark": "nai kono remark"
+            },
+            "assignee": {
+                "id": "2ce4e033-59f4-4381-94c0-2f435dd3bfb4",
+                "name": "Mohammad amir khan",
+                "role": "Admin",
+                "roleID": "01915645322",
+                "contact": "01915645322",
+                "email": "amirkhan23@gmail.com",
+                "address": "Dhaka"
+            },
+            "status": 75,
+            "speeches": {
+                "total": 1000,
+                "uploaded": 350
+            },
+            "assignedDate": "30/01/2022",
+            "submissionDate": "25/01/2023",
         },
-        "assignee": {
-            "id": "2ce4e033-59f4-4381-94c0-2f435dd3bfb4",
-            "name": "Mohammad amir khan",
-            "role": "Admin",
-            "roleID": "01915645322",
-            "contact": "01915645322",
-            "email": "amirkhan23@gmail.com",
-            "address": "Dhaka"
-        },
-        "status": 75,
-        "speeches": {
-            "total": 1000,
-            "uploaded": 350
-        },
-        "assignedDate": "30/01/2022",
-        "submissionDate": "25/01/2023",
-    },
-    {
-        "id": "01b9423b-b00e-4291-b195-02005949a280",
-        "target": {
-            "id": "0c302aff-68df-4a18-bd1d-ddbe81ca5026",
-            "gender": "male",
-            "ageRange": "34-50",
-            "district": [
-                "dhaka",
-                "mymensingh"
-            ],
-            "profession": "teacher",
-            "economicSituation": "poor",
-            "healthFactors": [
-                "smoker",
-                "jsghfkjwed"
-            ],
-            "recordingArea": "baire",
-            "recordingDistance": "baire",
-            "education": "secondary",
-            "target": 2345,
-            "deadline": "2023-02-11",
-            "reminder": [
-                "kisr",
-                "ki"
-            ],
-            "remark": "nai kono remark"
-        },
-        "assignee": {
-            "id": "2ce4e033-59f4-4381-94c0-2f435dd3bfb4",
-            "name": "Mohammad amir khan",
-            "role": "Admin",
-            "roleID": "01915645322",
-            "contact": "01915645322",
-            "email": "amirkhan23@gmail.com",
-            "address": "Dhaka"
-        },
-        "status": 75,
-        "speeches": {
-            "total": 1000,
-            "uploaded": 350
-        },
-        "assignedDate": "30/01/2022",
-        "submissionDate": "25/01/2020",
-    }
-]
+        {
+            "id": "01b9423b-b00e-4291-b195-02005949a280",
+            "target": {
+                "id": "0c302aff-68df-4a18-bd1d-ddbe81ca5026",
+                "gender": "male",
+                "ageRange": "34-50",
+                "district": [
+                    "dhaka",
+                    "mymensingh"
+                ],
+                "profession": "teacher",
+                "economicSituation": "poor",
+                "healthFactors": [
+                    "smoker",
+                    "jsghfkjwed"
+                ],
+                "recordingArea": "baire",
+                "recordingDistance": "baire",
+                "education": "secondary",
+                "target": 2345,
+                "deadline": "2023-02-11",
+                "reminder": [
+                    "kisr",
+                    "ki"
+                ],
+                "remark": "nai kono remark"
+            },
+            "assignee": {
+                "id": "2ce4e033-59f4-4381-94c0-2f435dd3bfb4",
+                "name": "Mohammad amir khan",
+                "role": "Admin",
+                "roleID": "01915645322",
+                "contact": "01915645322",
+                "email": "amirkhan23@gmail.com",
+                "address": "Dhaka"
+            },
+            "status": 75,
+            "speeches": {
+                "total": 1000,
+                "uploaded": 350
+            },
+            "assignedDate": "30/01/2022",
+            "submissionDate": "25/01/2020",
+        }
+    ]
 
 export const targetSpeechData = {
     id: '2',
@@ -955,11 +955,14 @@ export const targetSpeechData = {
             address: "Dhaka",
             gender: "Male"
         },
-        deadLine: '21-12-2017',
-        speeches: {
-            total: 1000,
-            uploaded: 450
-        },
+        targetSpeech: 1000,
+        receivedSpeech: 890,
+        receivedHour: 1200,
+        lastUpdate: "22 Aug 2022",
+        audioStatus: {
+            valid: 700,
+            invalid: 500,
+        }
     },
     speechData:
         [

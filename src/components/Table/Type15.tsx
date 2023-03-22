@@ -20,7 +20,7 @@ type Props = {
 const Type15 = ({ data }: Props) => {
     const [isSpeakerModal, setIsSpeakerModal] = useState<boolean>(false);
     const [open, setOpen] = useState(false);
-    const [speechData, setSpeechData] = useState<speechDt2[]>(data?.speechData);
+    const [speechData, setSpeechData] = useState<speechDt2[]>(data.speechData);
 
     const [remarkOpen, setRemarkOpen] = useState<boolean>(false);
     const [singleTargetData, setSingleTargetData] = useState<speechDt2>();

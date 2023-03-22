@@ -100,12 +100,12 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                         </button>
                                     )}
                             </div>
-                            {item.type === "check" ? <div className={`flex items-center gap-x-2 pb-5 pt-3 animate-fadeIn ${currentState === item.key ? "block" : "hidden"}`}>
+                            {item.type === "check" ? <div className={`flex flex-wrap items-center gap-2 pb-5 pt-3 animate-fadeIn ${currentState === item.key ? "block" : "hidden"}`}>
                                 {item.child && item.child.map((singleItem: string, index: number) => (
                                     <button
                                         key={index}
                                         onClick={() => handleFilterList(item.key, singleItem)}
-                                        className={`py-1.5 px-3 flex items-center border rounded-full duration-200 mb-0 text-small font-medium text-blue-gray-75 ${filterList[item.key].includes(singleItem)
+                                        className={`py-1.5 px-3 whitespace-nowrap flex items-center border rounded-full duration-200 mb-0 text-small font-medium text-blue-gray-75 ${filterList[item.key].includes(singleItem)
                                             ? "bg-secondary-blue-50 bg-opacity-[0.12] border-secondary-blue-50"
                                             : "border-white bg-white"
                                             }`}
@@ -131,6 +131,8 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                             handleFilterList={handleFilterList}
                                         // subdomainData={filterData["subDomain"]}
                                         />
+                                    </div> : item.type === "date" ? <div>
+                                        
                                     </div> : null}
                         </div>
                     ))}

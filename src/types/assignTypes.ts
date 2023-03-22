@@ -163,7 +163,7 @@ export type targetCompletedDT = {
 }
 
 export type targetFilterDT = {
-  type: "check" | "select";
+  type: "check" | "select" | "date";
   isParent?: string;
   key: string;
   title: string;
@@ -211,6 +211,7 @@ export type otherInfoDT = {
   }
 }
 
+
 export type collectorDT = {
   name: string;
   gender: string;
@@ -232,7 +233,7 @@ export type assignAudioTrackDT = {
 
 export type targetSpeechDT = {
   id: string;
-  otherInfo: otherInfoDT
+  otherInfo: speechOtherInfoDT
   speechData: speechDt2[]
 }
 
@@ -249,4 +250,16 @@ export type speechDt2 = {
   audioUploadStatus?: string;
   status?: string;
   submissionDate?: string; // Ensure submissionDate is a required string
+}
+
+export type speechOtherInfoDT = {
+  roleInfo: roleDT;
+  targetSpeech: number;
+  receivedSpeech: number;
+  receivedHour: number;
+  lastUpdate: string;
+  audioStatus: {
+    valid: number;
+    invalid: number;
+  }
 }

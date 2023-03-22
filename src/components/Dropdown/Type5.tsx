@@ -96,7 +96,7 @@ const Type5 = ({
             >
                 {isParent ? (
                     <>
-                        {filterList[isParent].length > 0
+                        {filterList[isParent]?.length > 0
                             ? filterList[isParent].map((parentName, index) => (
                                 <div key={index} className="flex flex-col">
                                     <h5 className="mb-0 text-xxs text-blue-gray-60 py-3 px-4">
@@ -123,7 +123,33 @@ const Type5 = ({
                                             ))}
                                 </div>
                             ))
-                            : null}
+                            : isParent === "none" ?
+                                <>
+                                    {data.children && data.children.map((item, index: number) => (
+                                        <div key={index} className="flex flex-col">
+                                            <h5 className="mb-0 text-xxs text-blue-gray-60 py-3 px-4">
+                                                {item.title}
+                                            </h5>
+                                            {item.child.map((childrenItem, index) => (
+                                                <button
+                                                    key={index}
+                                                    onClick={() => handleFilterList(data.key, childrenItem)}
+                                                    className={`flex items-center justify-between py-3 pl-8 pr-4 w-full ${filterList[data.key].includes(childrenItem)
+                                                        ? "bg-blue-10 hover:bg-blue-20 active:bg-blue-30"
+                                                        : "hover:bg-ct-blue-05 active:bg-ct-blue-10"
+                                                        }`}
+                                                >
+                                                    <span className="text-xs font-medium text-blue-gray-80">
+                                                        {childrenItem}
+                                                    </span>
+                                                    {filterList[data.key].includes(childrenItem) && (
+                                                        <img src={Icons.CorrectIcon} alt="" />
+                                                    )}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    ))}
+                                </> : null}
                     </>
                 ) : (
                     <>
