@@ -1,8 +1,8 @@
 import { TextField } from '@mui/material';
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import Icons from '../../../../../assets/Icons';
 import { predefined } from '../../../../../data/assign/AssignData';
-import { assignSpeechDT, speechDt } from '../../../../../types/assignTypes';
+import { speechDt } from '../../../../../types/assignTypes';
 import Buttons from '../../../../Buttons';
 import { CustomModal } from '../../../../common/CustomModal';
 

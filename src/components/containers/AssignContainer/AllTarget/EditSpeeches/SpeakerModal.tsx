@@ -3,7 +3,7 @@ import { Form, Select } from 'antd';
 import { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
 import Icons from '../../../../../assets/Icons';
 import { RoleInContext } from '../../../../../context/RoleProvider';
-import { assignSpeechDT, speechDt } from '../../../../../types/assignTypes';
+import { speechDt } from '../../../../../types/assignTypes';
 import { roleDT } from '../../../../../types/billingTypes';
 import Buttons from '../../../../Buttons';
 import RoleImage from '../../../../Image/RoleImage';

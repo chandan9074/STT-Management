@@ -27,6 +27,7 @@ type Props = {
 type RecordType = speechDt;
 
 const Type11 = ({ data }: Props) => {
+
     const [isSpeakerModal, setIsSpeakerModal] = useState<boolean>(false);
     const [open, setOpen] = useState(false);
     const [speechData, setSpeechData] = useState<speechDt[]>(data?.speechData);
@@ -270,7 +271,7 @@ const Type11 = ({ data }: Props) => {
             key: 'collector',
             width: 174,
             render: (data) =>
-                <div>
+                <div >
                     {
                         collectorId === data?.id ?
                             <div className='animate-fadeIn'>
@@ -346,20 +347,20 @@ const Type11 = ({ data }: Props) => {
                                                     sx={{
                                                         width: '254px',
                                                         // overflowX: 'hidden',
-                                                        overflow: 'auto',
-                                                        maxHeight: '200px',
-                                                        '::-webkit-scrollbar': {
-                                                            width: '4px',
-                                                            height: '2px',
-                                                        },
-                                                        '::-webkit-scrollbar-thumb': {
-                                                            // background: 'rgba(0, 0, 0, 0.2)',
-                                                            borderRadius: '6px',
-                                                            background: 'red'
-                                                        },
-                                                        '::-webkit-scrollbar-thumb:hover': {
-                                                            background: 'red'
-                                                        },
+                                                        // overflow: 'auto',
+                                                        // maxHeight: '200px',
+                                                        // '::-webkit-scrollbar': {
+                                                        //     width: '4px',
+                                                        //     height: '2px',
+                                                        // },
+                                                        // '::-webkit-scrollbar-thumb': {
+                                                        //     // background: 'rgba(0, 0, 0, 0.2)',
+                                                        //     borderRadius: '6px',
+                                                        //     background: 'red'
+                                                        // },
+                                                        // '::-webkit-scrollbar-thumb:hover': {
+                                                        //     background: 'red'
+                                                        // },
                                                     }}
                                                 >
                                                     {children}

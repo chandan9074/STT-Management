@@ -159,7 +159,6 @@ const Type15 = ({ data }: Props) => {
             ...getColumnSearchProps('submissionDate'),
             render: (data) => (
                 <h4 className='text-gray-80 text-xxs'>{data?.submissionDate}</h4>
-
             )
         },
 
