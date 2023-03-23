@@ -3,6 +3,7 @@ import { ColumnsType } from "antd/es/table"
 import Icons from "../../assets/Icons"
 import { audioManagementDT } from "../../types/audioManagementTypes"
 import { roleDT } from "../../types/billingTypes"
+import RoleImage from "../Image/RoleImage"
 
 type Props = {
     data: audioManagementDT[]
@@ -38,7 +39,8 @@ const Type16 = ({ data }: Props) => {
                                     data?.speaker.map((item: roleDT, i: number) => (
                                         <div key={i} className='gap-y-[6px]'>
                                             <div className='flex items-center gap-x-2'>
-                                                <img className='h-4 w-4' src={item.gender === 'male' ? Icons.speakerMale : Icons.SpeakerFemale} alt="" />
+                                                {/* <img className='h-4 w-4' src={item.gender === 'male' ? Icons.speakerMale : Icons.SpeakerFemale} alt="" /> */}
+                                                <RoleImage role={item.gender === "male" ? "speaker" : "speakerFemale"} height="w-4" width="h-4" />
                                                 <h1 className='text-blue-gray-80 text-xs font-medium'>{item?.name}</h1>
                                             </div>
                                         </div>
