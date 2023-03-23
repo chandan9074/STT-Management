@@ -1,4 +1,4 @@
-export const collectedAudio = [
+export const checkingStatusData = [
     {
         "id": "1",
         "speech": {
@@ -14,7 +14,7 @@ export const collectedAudio = [
             "isAge": false,
             "domain": "Applied science",
             "subdomain": "Technology",
-
+            
             "sourceType": "",
             "sourceUrl": "",
             "sourceFile": "",
@@ -50,8 +50,24 @@ export const collectedAudio = [
             ],
 
         },
-
-
+        "audioChecker": {
+            "status": "Checking",
+            "name": "Peter Bailish",
+            "locality": "Middle-East Bangla"
+        },
+        "deadLine": "01/02/2022",
+        "remark": {
+            "roleInfo": {
+                "id": "maksudalam@gmail.com",
+                "name": "Maksud Alam",
+                "role": "Manager",
+                "contact": "01738463449",
+                "email": "maksudalam@gmail.com",
+                "address": "Dhaka",
+                "gender": "Male"
+            },
+            "des": "i am remarkjs"
+        }
     },
     {
         "id": "2",
@@ -68,6 +84,7 @@ export const collectedAudio = [
             "isAge": false,
             "domain": "Applied science",
             "subdomain": "Technology",
+            
             "sourceType": "",
             "sourceUrl": "",
             "sourceFile": "",
@@ -93,11 +110,34 @@ export const collectedAudio = [
                     "name": 'Maksuda',
                     "role": 'speaker',
                     "gender": 'male',
-                }
+                },
+                {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'speaker',
+                    "gender": 'female',
+                },
             ],
 
         },
-
+        "audioChecker": {
+            "status": "Checking",
+            "name": "Peter Bailish",
+            "locality": "Middle-East Bangla"
+        },
+        "deadLine": "01/02/2022",
+        "remark": {
+            "roleInfo": {
+                "id": "maksudalam@gmail.com",
+                "name": "Maksud Alam",
+                "role": "Manager",
+                "contact": "01738463449",
+                "email": "maksudalam@gmail.com",
+                "address": "Dhaka",
+                "gender": "Male"
+            },
+            "des": "i am remarkjs"
+        }
     },
     {
         "id": "3",
@@ -114,6 +154,7 @@ export const collectedAudio = [
             "isAge": false,
             "domain": "Applied science",
             "subdomain": "Technology",
+            
             "sourceType": "",
             "sourceUrl": "",
             "sourceFile": "",
@@ -139,11 +180,34 @@ export const collectedAudio = [
                     "name": 'Maksuda',
                     "role": 'speaker',
                     "gender": 'male',
-                }
+                },
+                {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'speaker',
+                    "gender": 'female',
+                },
             ],
 
         },
-
+        "audioChecker": {
+            "status": "Checking",
+            "name": "Peter Bailish",
+            "locality": "Middle-East Bangla"
+        },
+        "deadLine": "01/02/2022",
+        "remark": {
+            "roleInfo": {
+                "id": "maksudalam@gmail.com",
+                "name": "Maksud Alam",
+                "role": "Manager",
+                "contact": "01738463449",
+                "email": "maksudalam@gmail.com",
+                "address": "Dhaka",
+                "gender": "Male"
+            },
+            "des": "i am remarkjs"
+        }
     },
     {
         "id": "4",
@@ -160,6 +224,7 @@ export const collectedAudio = [
             "isAge": false,
             "domain": "Applied science",
             "subdomain": "Technology",
+            
             "sourceType": "",
             "sourceUrl": "",
             "sourceFile": "",
@@ -185,10 +250,33 @@ export const collectedAudio = [
                     "name": 'Maksuda',
                     "role": 'speaker',
                     "gender": 'male',
-                }
+                },
+                {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'speaker',
+                    "gender": 'female',
+                },
             ],
 
         },
-
+        "audioChecker": {
+            "status": "Checking",
+            "name": "Peter Bailish",
+            "locality": "Middle-East Bangla"
+        },
+        "deadLine": "01/02/2022",
+        "remark": {
+            "roleInfo": {
+                "id": "maksudalam@gmail.com",
+                "name": "Maksud Alam",
+                "role": "Manager",
+                "contact": "01738463449",
+                "email": "maksudalam@gmail.com",
+                "address": "Dhaka",
+                "gender": "Male"
+            },
+            "des": "i am remarkjs"
+        }
     },
 ]

@@ -1,10 +1,10 @@
-import React from 'react';
+import Table from '../../../../components/Table';
+import { checkingStatusData } from '../../../../data/audioManagement/collectedAudio/CheckingStatusData';
 
 const CheckingStatus = () => {
     return (
-        <div>
-            checking status
-        </div>
+        <Table.Type17 data={checkingStatusData} />
+
     );
 };
 

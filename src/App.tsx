@@ -83,10 +83,10 @@ function App() {
 
         {/* test */}
         <Route path={PATH.AUDIO_PATH} element={<Test />} >
-          <Route path={PATH.COLLECTING_AUDIO} element={<CollectingAudio />} >
-            <Route path='' element={<div>Hello collection audio</div>} />
-            <Route path={PATH.CHECKING} element={<Checking />} >
-              <Route path='' element={<div>Hello Checking</div>} />
+          <Route path={PATH.COLLECTING_AUDIO}  >
+            <Route path='' element={<CollectingAudio />} />
+            <Route path={PATH.CHECKING}>
+              <Route path='' element={<Checking />} />
               <Route path={PATH.CHECKING_STATUS} element={<CheckingStatus />} />
             </Route>
           </Route>
