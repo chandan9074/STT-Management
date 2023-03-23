@@ -45,8 +45,11 @@ const SpeechTable = ({ data }: Props) => {
     const handleReset = (key: string, type: "single" | "all") => {
         if (type === "all") {
             setFilterList({
-                targetStatus: [],
-                speechStatus: [],
+                submissionDate: [],
+                recordingArea: [],
+                recordingDistance: [],
+                status: [],
+                speakerLocality: [],
             })
         }
         else {

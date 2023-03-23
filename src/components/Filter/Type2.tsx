@@ -3,6 +3,9 @@ import Icons from "../../assets/Icons";
 import { targetFilterDT, targetFilterListDT } from "../../types/assignTypes";
 import Buttons from "../Buttons";
 import Dropdown from "../Dropdown";
+import type { DatePickerProps } from 'antd';
+import { DatePicker, Space } from 'antd';
+import CustomCalenderInpField from "../calender/CustomCalenderInpField";
 
 type Props = {
     filterData: targetFilterDT[];
@@ -12,16 +15,21 @@ type Props = {
     count: number;
     // handleClear: () => void;
     // handleFilter: (value: string, sector: string) => void;
+    popupClassName?: string;
     filterList: targetFilterListDT;
     handleReset: (key: string, type: "single" | "all") => void;
     handleFilterList: (key: string, value: string) => void;
     handleSubmitFilter: () => void;
 }
 
-const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilterList, handleSubmitFilter }: Props) => {
+const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilterList, handleSubmitFilter, popupClassName }: Props) => {
     const [open, setOpen] = useState(false);
     const [currentState, setCurrentState] = useState<string>(filterData[0]?.key);
     console.log("filterList", filterList)
+
+    const onChange: DatePickerProps['onChange'] = (date, dateString) => {
+        console.log(date, dateString);
+    };
 
     return (
         <div className={`relative flex ${align === "left" ? `justify-start` : align === "center" ? "justify-center" : "justify-end"}`}>
@@ -73,7 +81,7 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                     )}
                                     <h6 className="text-small text-blue-gray-80 font-medium mb-0 ml-2 flex items-center">
                                         <span className="whitespace-nowrap">{item.title}</span>
-                                        {filterList[item.key].length > 0 &&
+                                        {filterList[item.key]?.length > 0 &&
                                             currentState !==
                                             item.key && (
                                                 <h6 className="flex text-left w-72 selected-items">
@@ -131,9 +139,15 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                             handleFilterList={handleFilterList}
                                         // subdomainData={filterData["subDomain"]}
                                         />
-                                    </div> : item.type === "date" ? <div>
-                                        
-                                    </div> : null}
+                                    </div> : item.type === "date" ?
+                                        <div className={`${currentState === item.key ? "block" : "hidden"}`}>
+                                            <CustomCalenderInpField
+                                                data={item}
+                                                isParent={item.isParent}
+                                                filterList={filterList}
+                                                handleFilterList={handleFilterList}
+                                            />
+                                        </div> : null}
                         </div>
                     ))}
                 </div>
