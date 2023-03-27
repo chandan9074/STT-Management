@@ -83,7 +83,7 @@ const Type4 = ({ Data, handleSelectRow }: Props) => {
     }
 
     return (
-        <div className='type4-table billing-table'>
+        <div className='type4-table billing-table billing-table-even-bg'>
 
             <Table
 

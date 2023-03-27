@@ -220,7 +220,7 @@ const Type5 = () => {
     };
 
     return (
-        <div className='type4-table billing-table'>
+        <div className='type4-table billing-table billing-table-even-bg'>
 
             <Table
 

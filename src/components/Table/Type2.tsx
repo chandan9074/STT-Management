@@ -9,7 +9,7 @@ interface Props<T> {
 }
 const Type2 = <T extends object>({ columnsData, dataSources }: Props<T>) => {
   return (
-    <div className="billing-table my-2">
+    <div className="billing-table billing-table-even-bg my-2">
       <Table<T>
         columns={columnsData}
         dataSource={dataSources}

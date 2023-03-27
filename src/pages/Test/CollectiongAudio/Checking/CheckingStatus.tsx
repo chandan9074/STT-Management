@@ -1,9 +1,11 @@
 import Table from '../../../../components/Table';
-import { checkingStatusData } from '../../../../data/audioManagement/collectedAudio/CheckingStatusData';
+import { checkingStatusData } from '../../../../data/audioManagement/AudioManagementData';
 
 const CheckingStatus = () => {
     return (
-        <Table.Type17 data={checkingStatusData} />
+        <div>
+            <Table.Type17 data={checkingStatusData} />
+        </div>
 
     );
 };

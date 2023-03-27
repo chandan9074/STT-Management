@@ -40,7 +40,18 @@ const Type16 = ({ data }: Props) => {
             title: `${"Script".toLocaleUpperCase()}`,
             key: 'script',
             width: 200,
-            render: (data: audioManagementDT) => <h1 className='w-20 truncate whitespace-nowrap'>{data.script.id}</h1>,
+
+            render: (data: audioManagementDT) => <div className='flex w-full justify-start items-center gap-x-[10px]'>
+                    <h1 className='w-28 truncate whitespace-nowrap'>{data.script.id}</h1>
+                    <img
+                            // onClick={() => {
+                            //     showDrawer(record);
+                            //     setSingleTargetData(record);
+                            // }}
+                            className='w-[10px] h-[10px] cursor-pointer'
+                            src={Icons.openInNewGray}
+                            alt="" />
+                </div>,
         },
         {
             title: `${"Speaker".toLocaleUpperCase()}`,
@@ -63,7 +74,7 @@ const Type16 = ({ data }: Props) => {
                                     ))
                                 }
                             </div>
-                                <h2 className="text-xxs font-normal text-blue-gray-75 pl-6">{data.speaker.locality}</h2>
+                            <h2 className="text-xxs font-normal text-blue-gray-75 pl-6">{data.speaker.locality}</h2>
                         </div>
 
 
@@ -108,7 +119,7 @@ const Type16 = ({ data }: Props) => {
     ]
 
     return (
-        <div className="billing-table type4-table remove-padding">
+        <div className="billing-table billing-table-even-bg type4-table">
             <Table dataSource={data} columns={Type16columns} />
         </div>
     )

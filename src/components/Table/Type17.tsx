@@ -21,7 +21,7 @@ const Type17 = ({ data }: Props) => {
         {
             title: `${"SN".toLocaleUpperCase()}`,
             key: 'sn',
-            width: 60,
+            width: 50,
             // align: "center",
             render: (text, record, index) => (
                 <span>{(index + 1)}</span>
@@ -46,7 +46,17 @@ const Type17 = ({ data }: Props) => {
             title: `${"Script".toLocaleUpperCase()}`,
             key: 'script',
             width: 156,
-            render: (data: checkingStatusDT) => <h1 className='w-20 truncate whitespace-nowrap'>{data.script.id}</h1>,
+            render: (data: checkingStatusDT) => <div className='flex w-full justify-start items-center gap-x-[10px]'>
+                <h1 className='w-28 truncate whitespace-nowrap'>{data.script.id}</h1>
+                <img
+                    // onClick={() => {
+                    //     showDrawer(record);
+                    //     setSingleTargetData(record);
+                    // }}
+                    className='w-[10px] h-[10px] cursor-pointer'
+                    src={Icons.openInNewGray}
+                    alt="" />
+            </div>,
         },
         {
             title: `${"Speaker".toLocaleUpperCase()}`,
@@ -81,7 +91,7 @@ const Type17 = ({ data }: Props) => {
             key: 'audioChecker',
             width: 233,
             render: (data: checkingStatusDT) => <div>
-                <div className='flex items-center gap-1'>
+                <div className='flex items-center gap-x-[6px]'>
                     <div className='w-1.5 h-1.5 bg-primary-ct-magenta-60 rounded-full'></div>
                     <h1 className='text-primary-ct-magenta-60 text-xs font-medium'>{data.audioChecker.status}...</h1>
                 </div>
@@ -95,13 +105,13 @@ const Type17 = ({ data }: Props) => {
         {
             title: `${"DeadLine (DD/MM)".toLocaleUpperCase()}`,
             key: 'deadLine',
-            width: 129,
+            width: 165,
             render: (data: checkingStatusDT) => <h1 className='text-small text-blue-gray-80'>{data.deadLine}</h1>
         },
         {
             title: `${"Remark".toLocaleUpperCase()}`,
             key: 'remark',
-            width: 80,
+            width: 90,
             align: "center",
             render: (data: checkingStatusDT) => (
                 <div className='flex justify-center'>
@@ -122,7 +132,7 @@ const Type17 = ({ data }: Props) => {
             dataIndex: 'details',
             key: 'details',
             fixed: 'right',
-            width: 80,
+            width: 90,
             render: (_, record: checkingStatusDT) => (
                 <>
 
@@ -156,7 +166,7 @@ const Type17 = ({ data }: Props) => {
 
 
     return (
-        <div className='billing-table type4-table remove-padding'>
+        <div className='billing-table billing-table-odd-bg type4-table'>
             <Table
                 rowSelection={{
                     // type: selectionType,
@@ -167,7 +177,7 @@ const Type17 = ({ data }: Props) => {
                 dataSource={data}
                 columns={Type17columns}
                 scroll={{ x: 1366 }}
-                rowKey='id'
+                rowKey="id"
             />
 
             {

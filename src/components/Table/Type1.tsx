@@ -9,7 +9,7 @@ interface Props {
 }
 const Type1 = ({ columnsData, dataSources }: Props) => {
   return (
-    <div className="billing-table my-2">
+    <div className="billing-table billing-table-even-bg my-2">
       <Table
         columns={columnsData}
         dataSource={dataSources}

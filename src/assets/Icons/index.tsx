@@ -131,6 +131,7 @@ import Pause from "./pause.svg";
 import IconsWrapper from "./Icon_Wrapper.png";
 import East from "./east.svg";
 import Conversion from "./conversion_path.svg";
+import openInNewGray from "./open_in_new_gray.svg"
 
 const Icons = {
   currency,
@@ -265,7 +266,8 @@ const Icons = {
   Pause,
   IconsWrapper,
   East,
-  Conversion
+  Conversion,
+  openInNewGray
 };
 
 export default Icons;
