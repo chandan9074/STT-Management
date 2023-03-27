@@ -153,7 +153,7 @@ const Type10 = ({ setSelectedTarget, data }: Props) => {
             align: "center",
             render: (data: targetDT) => (
                 <div className='flex justify-center'>
-                    <img src={Icons.Script} className="h-[15px] w-[12px]" alt="" />
+                    <img src={Icons.File} className="h-[15px] w-[12px]" alt="" />
                 </div>
             )
         },

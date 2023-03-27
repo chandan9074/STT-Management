@@ -105,7 +105,7 @@ const Type14 = ({ data }: Props) => {
                             setRemarkOpen(true);
                             setSingleTargetData(data);
                         }}
-                        src={Icons.Script} className="h-[15px] w-[12px] cursor-pointer"
+                        src={Icons.File} className="h-[15px] w-[12px] cursor-pointer"
                         alt=""
                     />
                 </div>

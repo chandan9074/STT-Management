@@ -4,6 +4,8 @@ import { userRoleDropdownData } from '../../../../data/userManagement/UserManage
 import Buttons from '../../../Buttons'
 import { SearchBox } from '../../../SearchBox'
 import Icons from '../../../../assets/Icons'
+import { Link } from 'react-router-dom'
+import { CREATE_USER_PATH } from '../../../../helpers/Slug'
 
 type Props = {
     open: boolean;
@@ -24,14 +26,16 @@ const Header = ({ open, setOpen }: Props) => {
             <div className='flex items-center'>
                 <Buttons.LabelButton.Tertiary label='Manage' size='xSmall' variant='CT-Blue' marginX='mr-2' onClick={() => setOpen(!open)} />
                 <SearchBox.Type1 inputWidth="w-52" placeholder="Search with script ID, Title..." paddingX="px-3" paddingY="py-2" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
-                <Buttons.IconWithTextButton.Primary
-                    label="Create User"
-                    size="small"
-                    variant="Megenta"
-                    marginX='ml-6'
-                    icon={<img src={Icons.Add} alt="add" />}
-                // onClick={() => scriptContext.setModalOpen(true)}
-                />
+                <Link to={CREATE_USER_PATH}>
+                    <Buttons.IconWithTextButton.Primary
+                        label="Create User"
+                        size="small"
+                        variant="Megenta"
+                        marginX='ml-6'
+                        icon={<img src={Icons.Add} alt="add" />}
+                    // onClick={() => scriptContext.setModalOpen(true)}
+                    />
+                </Link>
             </div>
         </div>
     )

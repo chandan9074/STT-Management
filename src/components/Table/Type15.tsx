@@ -177,7 +177,7 @@ const Type15 = ({ data }: Props) => {
                         data?.remark === "" ?
                             <h4>-</h4>
                             :
-                            <img src={Icons.Script} className="h-[15px] w-[12px]" alt="" />
+                            <img src={Icons.File} className="h-[15px] w-[12px]" alt="" />
                     }
 
                 </button>

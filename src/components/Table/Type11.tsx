@@ -234,7 +234,7 @@ const Type11 = ({ data }: Props) => {
                     setRemarkId(data?.id);
                     setTempRemark(data?.remark);
                 }} className='flex justify-center'>
-                    <img src={data?.remark === "" ? Icons.EditGray : Icons.Script} className="h-[15px] w-[12px]" alt="" />
+                    <img src={data?.remark === "" ? Icons.EditGray : Icons.File} className="h-[15px] w-[12px]" alt="" />
                 </button>
             )
         },
