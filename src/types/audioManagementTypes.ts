@@ -31,6 +31,18 @@ export type checkingStatusDT = {
     remark: remarkInfoDT;
 }
 
+export type allCheckedAudioDT = {
+    id: string;
+    speech: assignAudioTrackDT;
+    speaker: speakerLocalityDT;
+    audioChecker: audioCheckerDT;
+    status: string;
+    script: allScriptResDT;
+    deadLine: string;
+    submissionDate: string;
+    remark: remarkInfoDT;
+}
+
 export type audioCheckerDT = {
     status: string;
     name: string;
