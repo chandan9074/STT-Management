@@ -2,10 +2,6 @@
 /* .billing-table .ant-table-tbody > tr:nth-child(even) > td {
   background-color: #F9FAFC;
 } */
-.billing-table {
-  padding-right: 16px;
-  padding-left: 24px;
-}
 
 .billing-table .ant-table-tbody > tr:nth-child(odd) > td {
   background-color: #F9FAFC;
@@ -114,4 +110,9 @@
 
 .ant-table-body {
   padding-top: 200px !important;
+}
+
+.horizontal-table-padding {
+  padding-left: 24px;
+  padding-right: 16px;
 }

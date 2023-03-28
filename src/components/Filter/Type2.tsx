@@ -3,7 +3,6 @@ import Icons from "../../assets/Icons";
 import { targetFilterDT, targetFilterListDT } from "../../types/assignTypes";
 import Buttons from "../Buttons";
 import Dropdown from "../Dropdown";
-import type { DatePickerProps } from 'antd';
 import CustomCalenderInpField from "../calender/CustomCalenderInpField";
 
 type Props = {
@@ -26,9 +25,9 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
     const [currentState, setCurrentState] = useState<string>(filterData[0]?.key);
     console.log("filterList", filterList)
 
-    const onChange: DatePickerProps['onChange'] = (date, dateString) => {
-        console.log(date, dateString);
-    };
+    // const onChange: DatePickerProps['onChange'] = (date, dateString) => {
+    //     console.log(date, dateString);
+    // };
 
     return (
         <div className={`relative flex ${align === "left" ? `justify-start` : align === "center" ? "justify-center" : "justify-end"}`}>

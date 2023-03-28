@@ -1,8 +1,9 @@
 import { Outlet } from 'react-router-dom';
-import Table from '../../components/Table';
-import { collectedAudio } from '../../data/audioManagement/AudioManagementData';
+import Table from '../../../components/Table';
+import { collectedAudio } from '../../../data/audioManagement/AudioManagementData';
 
-const CollectingAudio = () => {
+
+const CollectedAudio = () => {
     return (
         // <Layouts.Third>
         <div>
@@ -13,4 +14,4 @@ const CollectingAudio = () => {
     );
 };
 
-export default CollectingAudio;
+export default CollectedAudio;

@@ -166,7 +166,7 @@ const Type17 = ({ data }: Props) => {
 
 
     return (
-        <div className='billing-table billing-table-odd-bg type4-table'>
+        <div className='billing-table billing-table-odd-bg type4-table horizontal-table-padding'>
             <Table
                 rowSelection={{
                     // type: selectionType,

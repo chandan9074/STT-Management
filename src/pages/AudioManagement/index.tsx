@@ -1,9 +1,10 @@
+import { Outlet } from 'react-router-dom';
 import Layouts from '../../components/Layouts';
 
 const AudioManagement = () => {
     return (
         <Layouts.Third>
-            audio
+            <Outlet/>
         </Layouts.Third>
     );
 };

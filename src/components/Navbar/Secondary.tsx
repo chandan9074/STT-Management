@@ -15,7 +15,7 @@ const Secondary = ({ isSideDrawer }: { isSideDrawer: boolean }) => {
   }));
 
   return (
-    <div className={`flex justify-between items-center pt-4 pb-2 pr-4 ${isSideDrawer ? "pl-80" : "pl-[70px]"} fixed w-full z-[90] bg-white`}>
+    <div className={`flex justify-between items-center pt-4 pb-2 pr-4 ${isSideDrawer ? "pl-[312px]" : "pl-[100px]"} fixed w-full z-[90] bg-white`}>
       <div className="flex items-center">
         {breadcrumbs.map((breadcrumb, index) => (
           <React.Fragment key={breadcrumb.path}>

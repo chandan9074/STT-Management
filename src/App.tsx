@@ -22,12 +22,12 @@ import EditScript from "./components/containers/script/EditScript";
 import EditSpeeches from "./components/containers/AssignContainer/AllTarget/EditSpeeches";
 import RecreateTarget from "./pages/Assign/RecreateTarget";
 import Speech from "./pages/UserManagement/Speech";
-import CollectingAudio from "./pages/Test/CollectingAudio";
-import Checking from "./pages/Test/CollectiongAudio/Checking";
-import CheckingStatus from "./pages/Test/CollectiongAudio/Checking/CheckingStatus";
-import UploadAudioVideo from "./pages/Test/UploadAudioVideo";
-import Test from "./pages/Test";
-import AllCheckedAudios from "./pages/Test/CollectiongAudio/Checking/AllCheckedAudios";
+import CollectedAudio from "./pages/AudioManagement/CollectedAudio";
+import CheckingStatus from "./pages/AudioManagement/CollectedAudio/Checking/CheckingStatus";
+import AllCheckedAudios from "./pages/AudioManagement/CollectedAudio/Checking/AllCheckedAudios";
+import Checking from "./pages/AudioManagement/CollectedAudio/Checking";
+import UploadAudio from "./pages/AudioManagement/UploadAudio";
+import Annotation from "./pages/AudioManagement/CollectedAudio/Annotation";
 
 function App() {
   useEffect(() => {
@@ -83,16 +83,21 @@ function App() {
         {/* <Route path={PATH.SCRIPT} element={<Script />} /> */}
 
         {/* test */}
-        <Route path={PATH.AUDIO_PATH} element={<Test />} >
+        <Route path={PATH.AUDIO_PATH} element={<AudioManagement />} >
           <Route path={PATH.COLLECTING_AUDIO}  >
-            <Route path='' element={<CollectingAudio />} />
+            <Route path='' element={<CollectedAudio />} />
             <Route path={PATH.CHECKING}>
               <Route path='' element={<Checking />} />
               <Route path={PATH.CHECKING_STATUS} element={<CheckingStatus />} />
               <Route path={PATH.ALL_CHECKED_AUDIOS} element={<AllCheckedAudios />} />
             </Route>
+            <Route path={PATH.ANNOTAION}>
+              <Route path='' element={<Annotation />} />
+              <Route path={PATH.CHECKING_STATUS} element={<CheckingStatus />} />
+              <Route path={PATH.ALL_CHECKED_AUDIOS} element={<AllCheckedAudios />} />
+            </Route>
           </Route>
-          <Route path={PATH.UPLOAD_AUDION_VIDEO_PATH} element={<UploadAudioVideo />} />
+          <Route path={PATH.UPLOAD_AUDION_VIDEO_PATH} element={<UploadAudio />} />
         </Route>
       </Routes>
     </BrowserRouter>

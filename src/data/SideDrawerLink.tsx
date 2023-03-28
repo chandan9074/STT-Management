@@ -48,58 +48,58 @@ let SideDrawerLink = [
                             }
                         ]
                     },
-                    // {
-                    //     name: 'Annotation',
-                    //     route: PATH.CHECKING,
-                    //     links: [
-                    //         {
-                    //             name: 'Sentence Level',
-                    //             route: PATH.CHECKING_STATUS,
-                    //             links: []
-                    //         },
-                    //         {
-                    //             name: 'Word Level',
-                    //             route: PATH.ALL_CHECKED_AUDIOS,
-                    //             links: []
-                    //         },
-                    //         {
-                    //             name: 'Phoneme Level',
-                    //             route: PATH.CHECKING_STATUS,
-                    //             links: []
-                    //         },
-                    //         {
-                    //             name: 'Annotated Files',
-                    //             route: PATH.CHECKING_STATUS,
-                    //             links: []
-                    //         },
-                    //     ]
-                    // },
-                    // {
-                    //     name: 'Validation',
-                    //     route: PATH.CHECKING,
-                    //     links: [
-                    //         {
-                    //             name: 'Sentence Level',
-                    //             route: PATH.CHECKING_STATUS,
-                    //             links: []
-                    //         },
-                    //         {
-                    //             name: 'Word Level',
-                    //             route: PATH.ALL_CHECKED_AUDIOS,
-                    //             links: []
-                    //         },
-                    //         {
-                    //             name: 'Phoneme Level',
-                    //             route: PATH.CHECKING_STATUS,
-                    //             links: []
-                    //         },
-                    //         {
-                    //             name: 'Validated Files',
-                    //             route: PATH.CHECKING_STATUS,
-                    //             links: []
-                    //         },
-                    //     ]
-                    // },
+                    {
+                        name: 'Annotation',
+                        route: PATH.ANNOTAION,
+                        links: [
+                            {
+                                name: 'Sentence Level',
+                                route: PATH.CHECKING_STATUS,
+                                links: []
+                            },
+                            {
+                                name: 'Word Level',
+                                route: PATH.ALL_CHECKED_AUDIOS,
+                                links: []
+                            },
+                            {
+                                name: 'Phoneme Level',
+                                route: PATH.CHECKING_STATUS,
+                                links: []
+                            },
+                            {
+                                name: 'Annotated Files',
+                                route: PATH.CHECKING_STATUS,
+                                links: []
+                            },
+                        ]
+                    },
+                    {
+                        name: 'Validation',
+                        route: PATH.VALIDATION,
+                        links: [
+                            {
+                                name: 'Sentence Level',
+                                route: PATH.CHECKING_STATUS,
+                                links: []
+                            },
+                            {
+                                name: 'Word Level',
+                                route: PATH.ALL_CHECKED_AUDIOS,
+                                links: []
+                            },
+                            {
+                                name: 'Phoneme Level',
+                                route: PATH.CHECKING_STATUS,
+                                links: []
+                            },
+                            {
+                                name: 'Validated Files',
+                                route: PATH.CHECKING_STATUS,
+                                links: []
+                            },
+                        ]
+                    },
                 ]
             },
             {

@@ -60,7 +60,7 @@ const CreateTarget = () => {
             <div className='flex gap-x-[15px]'>
               <button
                 onClick={() => setDataShow(!dataShow)}
-                className={`border-[1px] bg-white border-ct-blue-20 rounded-full p-[11px] z-[100] right-0 duration-1000`}
+                className={`border-[1px] bg-white border-ct-blue-20 rounded-full p-[11px] z-[80] right-0 duration-1000`}
               >
                 <img src={dataShow ? Icons.DoubleArroDownDark : Icons.DoubleDarkICon} alt="" className="w-[7px] h-[8px] " />
               </button>

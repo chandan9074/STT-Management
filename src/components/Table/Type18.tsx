@@ -5,6 +5,7 @@ import Icons from '../../assets/Icons'
 import { allCheckedAudioDT, singleSpeakerDT } from '../../types/audioManagementTypes'
 import AudioTrack from '../common/AudioTrack'
 import Remark from '../common/Remark'
+import SpeechStatus from '../common/SpeechStatus'
 import RoleImage from '../Image/RoleImage'
 
 type Props = {
@@ -88,11 +89,9 @@ const Type18 = ({ data }: Props) => {
     {
       title: `${"Status".toLocaleUpperCase()}`,
       key: 'status',
-      width: 141,
-      render: (data: allCheckedAudioDT) => <div className='flex w-full justify-start items-center gap-x-[10px]'>
-        <div className=''/>
-        <h1 className={`text-xxs font-normal ${data.status==="Reject" ? "text-red-60" : data.status==="Approved" ? "text-green-60" : data.status==="Claimed" ? "text-[#52138C]" : data.status}`}>{data.status}</h1>
-      </div>
+      align: "center",
+      width: 150,
+      render: (data: allCheckedAudioDT) => <SpeechStatus data={data.status} />
     },
     {
       title: `${"Script".toLocaleUpperCase()}`,
@@ -178,7 +177,7 @@ const Type18 = ({ data }: Props) => {
     }),
   };
   return (
-    <div className='billing-table billing-table-odd-bg type4-table'>
+    <div className='billing-table billing-table-odd-bg type4-table horizontal-table-padding'>
       <Table
         rowSelection={{
           // type: selectionType,
