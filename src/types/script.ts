@@ -22,6 +22,12 @@ export type getAllScriptsParamsDT = {
   pageSize?: number;
 };
 export type allScriptResDT = {
+  scripts: scriptResDT[];
+  totalNumberOfScripts: number;
+  // frequency?: number;
+}
+
+export type scriptResDT = {
   id?: string;
   sourceUrl: string;
   module: string;
@@ -35,8 +41,6 @@ export type allScriptResDT = {
   description: string;
   date?: string,
   sourceFileName: string
-  // frequency?: number;
-
 }
 
 // export type createScriptDt = {

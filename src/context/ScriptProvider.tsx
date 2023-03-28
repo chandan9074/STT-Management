@@ -1,6 +1,7 @@
 import React, { createContext, useState } from "react";
 import ScriptService from "../services/scriptService";
-import { allScriptResDT, getAllScriptsParamsDT, scriptParamDT } from "../types/script";
+import { singleScriptDT } from "../types/assignTypes";
+import { allScriptResDT, getAllScriptsParamsDT, scriptParamDT, scriptResDT } from "../types/script";
 
 
 interface ContextProps {
@@ -10,10 +11,10 @@ interface ContextProps {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   uploadCsv: (formData: FormData) => void;
   getAllScript: (prams: getAllScriptsParamsDT) => void;
-  scriptsData: allScriptResDT[]
+  scriptsData: allScriptResDT
   // createScript: (params: any) => Promise<{ message: string; status: number }>;
   createScript: (params: FormData) => void;
-  singleScript: allScriptResDT;
+  singleScript: scriptResDT;
   getScriptById: (id: scriptParamDT) => void;
   updateScript: (params: FormData) => void;
   setScriptModule: React.Dispatch<React.SetStateAction<string>>;
@@ -21,6 +22,8 @@ interface ContextProps {
   loading: boolean;
   scriptDeleteParams: string;
   setScriptDeleteParams: React.Dispatch<React.SetStateAction<string>>;
+  scriptFilter: getAllScriptsParamsDT;
+  setScriptFilter: React.Dispatch<React.SetStateAction<getAllScriptsParamsDT>>;
 }
 
 export const ScriptContext = createContext({} as ContextProps);
@@ -28,11 +31,12 @@ export const ScriptContext = createContext({} as ContextProps);
 const ScriptProvider = ({ children }: { children: any }) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [modalData, setModalData] = useState<string>("");
-  const [scriptsData, setScriptsData] = useState<allScriptResDT[]>([] as allScriptResDT[])
-  const [singleScript, setSingleScript] = useState<allScriptResDT>({} as allScriptResDT);
+  const [scriptsData, setScriptsData] = useState<allScriptResDT>({} as allScriptResDT)
+  const [singleScript, setSingleScript] = useState<scriptResDT>({} as scriptResDT);
   const [scriptModule, setScriptModule] = useState<string>('STT');
   const [loading, setLoading] = useState<boolean>(false);
   const [scriptDeleteParams, setScriptDeleteParams] = useState<string>("");
+  const [scriptFilter, setScriptFilter] = useState<getAllScriptsParamsDT>({} as getAllScriptsParamsDT);
 
   const uploadCsv = async (formData: FormData) => {
 
@@ -42,7 +46,7 @@ const ScriptProvider = ({ children }: { children: any }) => {
   const getAllScript = async (params: getAllScriptsParamsDT) => {
     try {
       const response = await ScriptService.getAllScript(params);
-      setScriptsData(response.data.scripts);
+      setScriptsData(response.data);
     } catch (error) {
     }
 
@@ -102,7 +106,9 @@ const ScriptProvider = ({ children }: { children: any }) => {
         setScriptModule,
         loading,
         scriptDeleteParams,
-        setScriptDeleteParams
+        setScriptDeleteParams,
+        scriptFilter,
+        setScriptFilter
       }}
     >
       {children}

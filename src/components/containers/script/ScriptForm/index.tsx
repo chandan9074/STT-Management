@@ -12,7 +12,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { distributionList } from '../../../../data/Script/Domain';
 import { ScriptContext } from '../../../../context/ScriptProvider';
-import { allScriptResDT } from '../../../../types/script';
+import { scriptResDT } from '../../../../types/script';
 import { useNavigate } from 'react-router-dom';
 import { SCRIPT_PATH } from '../../../../helpers/Slug';
 
@@ -38,7 +38,7 @@ const validationSchema = yup.object({
 
 });
 
-const ScriptForms = ({ data }: { data?: allScriptResDT }) => {
+const ScriptForms = ({ data }: { data?: scriptResDT }) => {
 
     const navigate = useNavigate();
 
@@ -74,7 +74,7 @@ const ScriptForms = ({ data }: { data?: allScriptResDT }) => {
         //     // Loop through the values object
         //     for (const [key, value] of Object.entries(values)) {
         //       // Check if the value has changed from the initial data
-        //       if (value !== data?.[key as keyof allScriptResDT]) {
+        //       if (value !== data?.[key as keyof scriptResDT]) {
         //         // Convert boolean values to strings
         //         const valueToAppend = typeof value === 'boolean' ? value.toString() : value;
         //         formData.append(key, valueToAppend);
@@ -96,7 +96,7 @@ const ScriptForms = ({ data }: { data?: allScriptResDT }) => {
         //     }
         //   },
 
-        onSubmit: (values: allScriptResDT) => {
+        onSubmit: (values: scriptResDT) => {
 
 
             if (scriptModule === 'TTS') {
@@ -115,7 +115,7 @@ const ScriptForms = ({ data }: { data?: allScriptResDT }) => {
             let hasChanges = false;
             for (const [key, value] of Object.entries(values)) {
                 // Check if the value has changed from the initial data
-                if (value !== data?.[key as keyof allScriptResDT]) {
+                if (value !== data?.[key as keyof scriptResDT]) {
                     hasChanges = true;
                     // Convert boolean values to strings
                     const valueToAppend = typeof value === 'boolean' ? value.toString() : value;
