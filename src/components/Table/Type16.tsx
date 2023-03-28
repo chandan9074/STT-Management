@@ -42,16 +42,16 @@ const Type16 = ({ data }: Props) => {
             width: 200,
 
             render: (data: audioManagementDT) => <div className='flex w-full justify-start items-center gap-x-[10px]'>
-                    <h1 className='w-28 truncate whitespace-nowrap'>{data.script.id}</h1>
-                    <img
-                            // onClick={() => {
-                            //     showDrawer(record);
-                            //     setSingleTargetData(record);
-                            // }}
-                            className='w-[10px] h-[10px] cursor-pointer'
-                            src={Icons.openInNewGray}
-                            alt="" />
-                </div>,
+                <h1 className='w-28 truncate whitespace-nowrap'>{data.script.id}</h1>
+                <img
+                    // onClick={() => {
+                    //     showDrawer(record);
+                    //     setSingleTargetData(record);
+                    // }}
+                    className='w-[10px] h-[10px] cursor-pointer'
+                    src={Icons.openInNewGray}
+                    alt="" />
+            </div>,
         },
         {
             title: `${"Speaker".toLocaleUpperCase()}`,

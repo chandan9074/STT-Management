@@ -9,6 +9,7 @@ import './UserForm.css';
 import PersonalInformation2 from './PersonalInformation2';
 import { useEffect, useState } from 'react';
 import { userPersonalInformationDt, userSpeakerDt } from '../../../../types/userManagementTypes';
+import Layouts from '../../../Layouts';
 
 const validationSchema = yup.object({
     role: yup.array().min(1, "Please select at least one role"),
@@ -139,48 +140,49 @@ const UserForm = () => {
     }
 
     return (
-        <div className='w-full flex justify-center script-form bg-default'>
-            <div className='bg-white-gray-45 w-[880px]'>
-                <form onSubmit={formik.handleSubmit}>
-                    <div className='px-[48px] py-[24px]'>
+        <Layouts.Default>
+            <div className='w-full flex justify-center script-form bg-default'>
+                <div className='bg-white-gray-45 w-[880px]'>
+                    <form onSubmit={formik.handleSubmit}>
+                        <div className='px-[48px] py-[24px]'>
 
-                        <h1 className='text-ct-blue-95 font-medium text-[22px] mb-[33px]'>Create User</h1>
+                            <h1 className='text-ct-blue-95 font-medium text-[22px] mb-[33px]'>Create User</h1>
 
-                        <PersonalTitle />
+                            <PersonalTitle />
 
-                        <h1 className='text-ct-blue-60 text-small font-semibold my-[28px]'>Personal Information</h1>
+                            <h1 className='text-ct-blue-60 text-small font-semibold my-[28px]'>Personal Information</h1>
 
-                        <div className='mb-[17px]'>
-                            <Role formik={formik} />
-                        </div>
+                            <div className='mb-[17px]'>
+                                <Role formik={formik} />
+                            </div>
 
 
-                        {
-                            isSpeaker ?
-                                <div>
-                                    <PersonalInformation2 formik={formik} />
-                                    <div className='mt-[24px] mb-[48px]'>
-                                        <FileReport formik={formik} getFile={getFile} />
-                                    </div>
-
+                            {
+                                isSpeaker ?
                                     <div>
-                                        <ActionButton />
-                                    </div>
-                                </div>
-                                :
-                                <div>
-                                    <PersonalInformation formik={formik} />
-                                    <div className='mt-[24px] mb-[48px]'>
-                                        <FileReport formik={formik} getFile={getFile} />
-                                    </div>
+                                        <PersonalInformation2 formik={formik} />
+                                        <div className='mt-[24px] mb-[48px]'>
+                                            <FileReport formik={formik} getFile={getFile} />
+                                        </div>
 
+                                        <div>
+                                            <ActionButton />
+                                        </div>
+                                    </div>
+                                    :
                                     <div>
-                                        <ActionButton />
-                                    </div>
-                                </div>
-                        }
+                                        <PersonalInformation formik={formik} />
+                                        <div className='mt-[24px] mb-[48px]'>
+                                            <FileReport formik={formik} getFile={getFile} />
+                                        </div>
 
-                        {/* <div className='mt-[24px] mb-[48px]'>
+                                        <div>
+                                            <ActionButton />
+                                        </div>
+                                    </div>
+                            }
+
+                            {/* <div className='mt-[24px] mb-[48px]'>
                             <FileReport formik={formik} getFile={getFile} />
                         </div>
                         
@@ -188,10 +190,11 @@ const UserForm = () => {
                             <ActionButton />
                         </div> */}
 
-                    </div>
-                </form>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
+        </Layouts.Default>
     );
 };
 

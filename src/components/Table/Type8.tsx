@@ -187,7 +187,7 @@ const Type8 = () => {
             size="medium"
             variant="CT-Blue"
             icon={
-              <img src={Icons.Script} className="h-[15px] w-[12px]" alt="" />
+              <img src={Icons.File} className="h-[15px] w-[12px]" alt="" />
             }
             background="transparent"
           />

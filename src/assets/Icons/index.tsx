@@ -132,6 +132,7 @@ import IconsWrapper from "./Icon_Wrapper.png";
 import East from "./east.svg";
 import Conversion from "./conversion_path.svg";
 import openInNewGray from "./open_in_new_gray.svg"
+import File from "./File.svg";
 
 const Icons = {
   currency,
@@ -267,7 +268,8 @@ const Icons = {
   IconsWrapper,
   East,
   Conversion,
-  openInNewGray
+  openInNewGray,
+  File
 };
 
 export default Icons;
