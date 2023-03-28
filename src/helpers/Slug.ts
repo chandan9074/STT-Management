@@ -37,10 +37,10 @@ export const ANNOTAION = "annotation";
 export const VALIDATION = "validation";
 export const CHECKING_STATUS = `checking-status`;
 export const ALL_CHECKED_AUDIOS = "all-checked-audios";
-export const SENETENCE_LEVEL = "/sentence-level";
-export const WORD_LEVEL = "/word-level";
-export const PHONEME_LEVEL = "/phoneme-level";
-export const ANNOTATED_FILES = "/annotated-files";
+export const SENETENCE_LEVEL = "sentence-level";
+export const WORD_LEVEL = "word-level";
+export const PHONEME_LEVEL = "phoneme-level";
+export const ANNOTATED_FILES = "annotated-files";
 export const UPLOAD_AUDION_VIDEO_PATH = `upload-audio-video`;
 
 export const AUDIO_FILE_UPLOADED = 'Uploaded';

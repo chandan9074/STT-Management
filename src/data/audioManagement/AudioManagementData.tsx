@@ -630,7 +630,7 @@ export const allCheckedAudiosData = [
             "url":
                 "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
         },
-        
+
         "speaker": {
             "locality": "North-East Bangla",
             "speakers": [
@@ -702,7 +702,7 @@ export const allCheckedAudiosData = [
             "url":
                 "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
         },
-        
+
         "speaker": {
             "locality": "North-East Bangla",
             "speakers": [
@@ -1027,5 +1027,188 @@ export const annotationData = [
             },
             "des": "i am remarkjs"
         }
+    },
+]
+
+export const collectAnnSenData = [
+    {
+        "id": "1",
+        "speech": {
+            "id": '0',
+            "title": "Brahms,Two Pianos",
+            "duration": "5:00",
+            "url":
+                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+        },
+        "annotate": {
+            "status": "Annotating",
+            "roleName": "Maksud Alam",
+            "locality": "Barendri"
+        },
+        "deadLine": "01/02/2022",
+        "audioChecker": {
+            "status": "Checking",
+            "name": "Peter Bailish",
+            "locality": "Middle-East Bangla"
+        },
+        "speaker": {
+            "locality": "North-East Bangla",
+            "speakers": [
+                {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'speaker',
+                    "gender": 'female',
+                },
+                {
+                    "id": "maksudam2@gmail.com",
+                    "name": 'Maksuda',
+                    "role": 'speaker',
+                    "gender": 'male',
+                },
+                {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'speaker',
+                    "gender": 'female',
+                },
+            ],
+
+        },
+    },
+    {
+        "id": "2",
+        "speech": {
+            "id": '0',
+            "title": "Brahms,Two Pianos",
+            "duration": "5:00",
+            "url":
+                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+        },
+        "annotate": {
+            "status": "Took a Break",
+            "roleName": "Maksud Alam",
+            "locality": "Barendri"
+        },
+        "deadLine": "01/02/2022",
+        "audioChecker": {
+            "status": "Checking",
+            "name": "Peter Bailish",
+            "locality": "Middle-East Bangla"
+        },
+        "speaker": {
+            "locality": "North-East Bangla",
+            "speakers": [
+                {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'speaker',
+                    "gender": 'female',
+                },
+                {
+                    "id": "maksudam2@gmail.com",
+                    "name": 'Maksuda',
+                    "role": 'speaker',
+                    "gender": 'male',
+                },
+                {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'speaker',
+                    "gender": 'female',
+                },
+            ],
+
+        },
+    },
+    {
+        "id": "3",
+        "speech": {
+            "id": '0',
+            "title": "Brahms,Two Pianos",
+            "duration": "5:00",
+            "url":
+                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+        },
+        "annotate": {
+            "status": "Annotating",
+            "roleName": "Maksud Alam",
+            "locality": "Barendri"
+        },
+        "deadLine": "01/02/2022",
+        "audioChecker": {
+            "status": "Checking",
+            "name": "Peter Bailish",
+            "locality": "Middle-East Bangla"
+        },
+        "speaker": {
+            "locality": "North-East Bangla",
+            "speakers": [
+                {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'speaker',
+                    "gender": 'female',
+                },
+                {
+                    "id": "maksudam2@gmail.com",
+                    "name": 'Maksuda',
+                    "role": 'speaker',
+                    "gender": 'male',
+                },
+                {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'speaker',
+                    "gender": 'female',
+                },
+            ],
+
+        },
+    },
+    {
+        "id": "4",
+        "speech": {
+            "id": '0',
+            "title": "Brahms,Two Pianos",
+            "duration": "5:00",
+            "url":
+                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+        },
+        "annotate": {
+            "status": "Annotating",
+            "roleName": "Maksud Alam",
+            "locality": "Barendri"
+        },
+        "deadLine": "01/02/2022",
+        "audioChecker": {
+            "status": "Checking",
+            "name": "Peter Bailish",
+            "locality": "Middle-East Bangla"
+        },
+        "speaker": {
+            "locality": "North-East Bangla",
+            "speakers": [
+                {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'speaker',
+                    "gender": 'female',
+                },
+                {
+                    "id": "maksudam2@gmail.com",
+                    "name": 'Maksuda',
+                    "role": 'speaker',
+                    "gender": 'male',
+                },
+                {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'speaker',
+                    "gender": 'female',
+                },
+            ],
+
+        },
     },
 ]

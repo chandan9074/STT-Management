@@ -55,9 +55,25 @@ export type remarkInfoDT = {
 }
 
 export type annotationDT = {
+    id: string;
     speech: assignAudioTrackDT
     script: allScriptResDT
     speaker: speakerLocalityDT
     deadLine: string
     remark: remarkInfoDT
+}
+
+export type collectAnnSenDataDT = {
+    id: string;
+    speech: assignAudioTrackDT
+    annotate: annotateInfoDT
+    deadLine: string
+    audioChecker: audioCheckerDT
+    speaker: speakerLocalityDT
+}
+
+export type annotateInfoDT = {
+    status: string;
+    roleName: string;
+    locality: string;
 }
