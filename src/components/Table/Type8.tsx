@@ -238,7 +238,7 @@ const Type8 = () => {
   };
 
   return (
-    <div className="billing-table type4-table">
+    <div className="billing-table billing-table-even-bg type4-table">
       <div
         className={`${!openDeadlineModal && "hidden"
           } bg-opacity-10 inset-0 bg-black animate-fadeIn fixed top-0 left-0 h-full w-full z-[90]`}

@@ -1,8 +1,9 @@
 import { Table } from "antd"
 import { ColumnsType } from "antd/es/table"
 import Icons from "../../assets/Icons"
-import { audioManagementDT } from "../../types/audioManagementTypes"
-import { roleDT } from "../../types/billingTypes"
+import { audioManagementDT, singleSpeakerDT } from "../../types/audioManagementTypes"
+import AudioTrack from "../common/AudioTrack"
+import RoleImage from "../Image/RoleImage"
 
 type Props = {
     data: audioManagementDT[]
@@ -12,17 +13,45 @@ const Type16 = ({ data }: Props) => {
 
     const Type16columns: ColumnsType<audioManagementDT> = [
         {
+            title: `${"SN".toLocaleUpperCase()}`,
+            key: 'sn',
+            width: 48,
+            // align: "center",
+            render: (text, record, index) => (
+                <span>{(index + 1)}</span>
+            ),
+        },
+        {
             title: `${"# Target ID".toLocaleUpperCase()}`,
-            key: 'key',
-            align: 'center',
+            key: 'id',
+            // align: 'center',
             width: 136,
             render: (data: audioManagementDT) => <h1 className='w-20 truncate whitespace-nowrap'># {data.id}</h1>,
+        },
+        {
+            title: `${"Raw Audio".toLocaleUpperCase()}`,
+            key: 'speech',
+            width: 200,
+            render: (data: audioManagementDT) => <>
+                <AudioTrack data={data.speech} />
+            </>,
         },
         {
             title: `${"Script".toLocaleUpperCase()}`,
             key: 'script',
             width: 200,
-            render: (data: audioManagementDT) => <h1 className='w-20 truncate whitespace-nowrap'>{data.script.id}</h1>,
+
+            render: (data: audioManagementDT) => <div className='flex w-full justify-start items-center gap-x-[10px]'>
+                    <h1 className='w-28 truncate whitespace-nowrap'>{data.script.id}</h1>
+                    <img
+                            // onClick={() => {
+                            //     showDrawer(record);
+                            //     setSingleTargetData(record);
+                            // }}
+                            className='w-[10px] h-[10px] cursor-pointer'
+                            src={Icons.openInNewGray}
+                            alt="" />
+                </div>,
         },
         {
             title: `${"Speaker".toLocaleUpperCase()}`,
@@ -33,18 +62,19 @@ const Type16 = ({ data }: Props) => {
 
                     <div className='flex justify-between items-center cursor-pointer'>
                         <div>
-                            <div>
+                            <div className="flex flex-wrap items-center gap-x-3">
                                 {
-                                    data?.speaker.map((item: roleDT, i: number) => (
+                                    data?.speaker?.speakers?.map((item: singleSpeakerDT, i: number) => (
                                         <div key={i} className='gap-y-[6px]'>
                                             <div className='flex items-center gap-x-2'>
-                                                <img className='h-4 w-4' src={item.gender === 'male' ? Icons.speakerMale : Icons.SpeakerFemale} alt="" />
-                                                <h1 className='text-blue-gray-80 text-xs font-medium'>{item?.name}</h1>
+                                                <RoleImage role={item.gender === "male" ? "speaker" : "speakerFemale"} height="w-4" width="h-4" />
+                                                <h1 className='text-blue-gray-80 text-xs font-medium'>{item.name}</h1>
                                             </div>
                                         </div>
                                     ))
                                 }
                             </div>
+                            <h2 className="text-xxs font-normal text-blue-gray-75 pl-6">{data.speaker.locality}</h2>
                         </div>
 
 
@@ -89,7 +119,7 @@ const Type16 = ({ data }: Props) => {
     ]
 
     return (
-        <div className="billing-table type4-table">
+        <div className="billing-table billing-table-even-bg type4-table">
             <Table dataSource={data} columns={Type16columns} />
         </div>
     )

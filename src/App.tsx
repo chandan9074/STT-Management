@@ -27,6 +27,7 @@ import Checking from "./pages/Test/CollectiongAudio/Checking";
 import CheckingStatus from "./pages/Test/CollectiongAudio/Checking/CheckingStatus";
 import UploadAudioVideo from "./pages/Test/UploadAudioVideo";
 import Test from "./pages/Test";
+import AllCheckedAudios from "./pages/Test/CollectiongAudio/Checking/AllCheckedAudios";
 
 function App() {
   useEffect(() => {
@@ -83,11 +84,12 @@ function App() {
 
         {/* test */}
         <Route path={PATH.AUDIO_PATH} element={<Test />} >
-          <Route path={PATH.COLLECTING_AUDIO} element={<CollectingAudio />} >
-            <Route path='' element={<div>Hello collection audio</div>} />
-            <Route path={PATH.CHECKING} element={<Checking />} >
-              <Route path='' element={<div>Hello Checking</div>} />
+          <Route path={PATH.COLLECTING_AUDIO}  >
+            <Route path='' element={<CollectingAudio />} />
+            <Route path={PATH.CHECKING}>
+              <Route path='' element={<Checking />} />
               <Route path={PATH.CHECKING_STATUS} element={<CheckingStatus />} />
+              <Route path={PATH.ALL_CHECKED_AUDIOS} element={<AllCheckedAudios />} />
             </Route>
           </Route>
           <Route path={PATH.UPLOAD_AUDION_VIDEO_PATH} element={<UploadAudioVideo />} />

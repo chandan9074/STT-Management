@@ -5,7 +5,7 @@ import { collectedAudio } from '../../data/audioManagement/AudioManagementData';
 const CollectingAudio = () => {
     return (
         // <Layouts.Third>
-        <div >
+        <div>
             <Table.Type16 data={collectedAudio} />
             <Outlet />
         </div>

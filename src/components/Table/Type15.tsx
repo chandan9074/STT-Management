@@ -218,7 +218,7 @@ const Type15 = ({ data }: Props) => {
     ];
 
     return (
-        <div className='billing-table type4-table' >
+        <div className='billing-table billing-table-even-bg type4-table' >
 
             <Table
                 columns={Type8columns}

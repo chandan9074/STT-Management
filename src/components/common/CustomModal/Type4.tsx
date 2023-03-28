@@ -16,7 +16,7 @@ type Props = {
 const Type4 = ({ open, setOpen, selectedTrack, data, audioMin }: Props) => {
 
     return (
-        <div className={`fixed w-full h-screen z-[100] top-0`}>
+        <div className={`fixed w-full h-screen z-[100] top-0 left-0 flex justify-center`}>
             <div className={`${open ? "block" : "hidden"} fixed top-0 left-0 bg-opacity-20 bg-black w-full h-screen z-40 animate-fadeIn2`}
                 onClick={() => setOpen(false)}
             />

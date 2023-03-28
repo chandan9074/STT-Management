@@ -157,7 +157,7 @@ const Type3 = ({ data, activePanel }: Props) => {
 
 
     return (
-        <div className="billing-table">
+        <div className="billing-table billing-table-even-bg">
             <Table
                 dataSource={activePanel === "Profession-wise" ? professionWiseData.reverse() : data[camelize(activePanel)]}
                 columns={activePanel === "Distribution Source-wise" ? columnsForDistribution : columns}

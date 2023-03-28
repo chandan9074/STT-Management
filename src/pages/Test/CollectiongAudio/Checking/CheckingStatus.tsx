@@ -1,10 +1,12 @@
-import React from 'react';
+import Table from '../../../../components/Table';
+import { checkingStatusData } from '../../../../data/audioManagement/AudioManagementData';
 
 const CheckingStatus = () => {
     return (
         <div>
-            checking status
+            <Table.Type17 data={checkingStatusData} />
         </div>
+
     );
 };
 
