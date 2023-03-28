@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { targetData, targetFilter, targetCompletedData, targetSpeechData } from '../../../../../data/assign/AssignData';
+import { completedFilter, speechFilter } from '../../../../../data/userManagement/activityData';
 import { targetFilterListDT } from '../../../../../types/assignTypes';
 import Buttons from '../../../../Buttons';
 import { Filter } from '../../../../Filter';
@@ -8,45 +9,138 @@ import Table from '../../../../Table';
 
 const AllTergets = () => {
     const [activeTab, setActiveTab] = useState<string>("Pending");
-    const [count, setCount] = useState<number>(0);
-    const [filterList, setFilterList] = useState<targetFilterListDT>({
+    const [pendingCount, setPendingCount] = useState<number>(0);
+    const [completedCount, setCompletedCount] = useState<number>(0);
+    const [allSpeechCount, setAllSpeechCount] = useState<number>(0);
+    const [pendingFilterList, setPendingFilterList] = useState<targetFilterListDT>({
         targetStatus: [],
         speechStatus: [],
     })
+    const [completedFilterList, setCompletedFilterList] = useState<targetFilterListDT>({
+        targetStatus: [],
+    })
+    const [allSpeechFilterList, setAllSpeechFilterList] = useState<targetFilterListDT>({
+        submissionDate: [],
+        recordingArea: [],
+        recordingDistance: [],
+        status: [],
+        speakerLocality: [],
+    })
 
     useEffect(() => {
-        let count = 0;
-        for (const key in filterList) {
-            if (filterList[key].length > 0) {
-                count += 1
+        if (pendingFilterList) {
+            let count = 0;
+            for (const key in pendingFilterList) {
+                if (pendingFilterList[key].length > 0) {
+                    count += 1
+                }
             }
+            setPendingCount(count)
         }
-        setCount(count)
-    }, [filterList]);
+        if (completedFilterList) {
+            let count = 0;
+            for (const key in completedFilterList) {
+                if (completedFilterList[key].length > 0) {
+                    count += 1
+                }
+            }
+            setCompletedCount(count)
+        }
+        if (allSpeechFilterList) {
+            let count = 0;
+            for (const key in allSpeechFilterList) {
+                if (allSpeechFilterList[key].length > 0) {
+                    count += 1
+                }
+            }
+            setAllSpeechCount(count)
+        }
+    }, [pendingFilterList, completedFilterList, allSpeechFilterList]);
 
-    const handleFilterList = (key: string, value: string) => {
-        if (filterList[key].includes(value)) {
-            setFilterList({
-                ...filterList,
-                [key]: filterList[key].filter((item) => item !== value),
+    const handlePendingFilterList = (key: string, value: string) => {
+        if (pendingFilterList[key].includes(value)) {
+            setPendingFilterList({
+                ...pendingFilterList,
+                [key]: pendingFilterList[key].filter((item) => item !== value),
             });
         } else {
-            setFilterList({
-                ...filterList,
-                [key]: [...filterList[key], value],
+            setPendingFilterList({
+                ...pendingFilterList,
+                [key]: [...pendingFilterList[key], value],
             });
         }
     }
-    const handleReset = (key: string, type: "single" | "all") => {
+
+    const handleCompletedFilterList = (key: string, value: string) => {
+        if (completedFilterList[key].includes(value)) {
+            setCompletedFilterList({
+                ...completedFilterList,
+                [key]: completedFilterList[key].filter((item) => item !== value),
+            });
+        } else {
+            setCompletedFilterList({
+                ...completedFilterList,
+                [key]: [...completedFilterList[key], value],
+            });
+        }
+    }
+
+    const handleAllSpeechFilterList = (key: string, value: string) => {
+        if (allSpeechFilterList[key].includes(value)) {
+            setAllSpeechFilterList({
+                ...allSpeechFilterList,
+                [key]: allSpeechFilterList[key].filter((item) => item !== value),
+            });
+        } else {
+            setAllSpeechFilterList({
+                ...allSpeechFilterList,
+                [key]: [...allSpeechFilterList[key], value],
+            });
+        }
+    }
+
+    const handlePendingReset = (key: string, type: "single" | "all") => {
         if (type === "all") {
-            setFilterList({
+            setPendingFilterList({
                 targetStatus: [],
                 speechStatus: [],
             })
         }
         else {
-            setFilterList({
-                ...filterList,
+            setPendingFilterList({
+                ...pendingFilterList,
+                [key]: [],
+            });
+        }
+    }
+
+    const handleCompletedReset = (key: string, type: "single" | "all") => {
+        if (type === "all") {
+            setCompletedFilterList({
+                targetStatus: [],
+            })
+        }
+        else {
+            setCompletedFilterList({
+                ...completedFilterList,
+                [key]: [],
+            });
+        }
+    }
+
+    const handleAllSpeechReset = (key: string, type: "single" | "all") => {
+        if (type === "all") {
+            setAllSpeechFilterList({
+                submissionDate: [],
+                recordingArea: [],
+                recordingDistance: [],
+                status: [],
+                speakerLocality: [],
+            })
+        }
+        else {
+            setAllSpeechFilterList({
+                ...allSpeechFilterList,
                 [key]: [],
             });
         }
@@ -64,7 +158,7 @@ const AllTergets = () => {
         };
         return Category[key];
     };
-    
+
     return (
         <div>
             <div className='flex justify-between mt-9 mb-6'>
@@ -74,7 +168,7 @@ const AllTergets = () => {
                 </div>
                 <div className='flex items-center gap-x-3'>
                     <SearchBox.Type1 inputWidth="w-52" placeholder="Search with script ID, Title..." paddingX="px-3" paddingY="py-2" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
-                    <Filter.Type2 handleSubmitFilter={handleSubmitFilter} filterData={targetFilter} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
+                    {activeTab === "Pending" ? <Filter.Type2 handleSubmitFilter={handleSubmitFilter} filterData={targetFilter} count={pendingCount} filterList={pendingFilterList} handleReset={handlePendingReset} handleFilterList={handlePendingFilterList} /> : activeTab === "Completed" ? <Filter.Type2 handleSubmitFilter={handleSubmitFilter} filterData={completedFilter} count={completedCount} filterList={completedFilterList} handleReset={handleCompletedReset} handleFilterList={handleCompletedFilterList} /> : <Filter.Type2 popupClassName='all_speech_deadline_date_picker' handleSubmitFilter={handleSubmitFilter} filterData={speechFilter} count={allSpeechCount} filterList={allSpeechFilterList} handleReset={handleAllSpeechReset} handleFilterList={handleAllSpeechFilterList} />}
                 </div>
             </div>
             <div>

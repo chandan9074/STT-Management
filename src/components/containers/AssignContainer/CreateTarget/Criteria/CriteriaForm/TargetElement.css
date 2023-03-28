@@ -25,6 +25,14 @@
   z-index: 99999;
 }
 
+.all_speech_deadline_date_picker{
+  position: absolute !important;
+  top: calc(50% - -1045px) !important;
+  left: calc(50% - -210px) !important;
+  z-index: 99999;
+}
+
+
 .recreate_deadline_date_picker {
   position: absolute !important;
   top: calc(50% - -275px) !important;

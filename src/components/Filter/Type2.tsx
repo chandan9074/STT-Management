@@ -146,6 +146,7 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                                 isParent={item.isParent}
                                                 filterList={filterList}
                                                 handleFilterList={handleFilterList}
+                                                popupClassName={popupClassName}
                                             />
                                         </div> : null}
                         </div>

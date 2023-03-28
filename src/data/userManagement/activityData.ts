@@ -310,3 +310,17 @@ export const speechFilter : targetFilterDT[] = [
     ]
   }
 ]
+
+export const completedFilter : targetFilterDT[] = [
+  {
+    type: "check",
+    key: "targetStatus",
+    title: "Target Status",
+    // isParent: true,
+    child: [
+        "Not Assigned",
+        "Partial Assigned",
+        "All Assigned",
+    ],
+},
+]

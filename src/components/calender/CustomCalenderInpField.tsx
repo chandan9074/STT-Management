@@ -8,9 +8,10 @@ type Props = {
     isParent: string | undefined;
     filterList: targetFilterListDT;
     handleFilterList: (key: string, value: string) => void;
+    popupClassName?: string;
 };
 
-const CustomCalenderInpField = ({ data, filterList, handleFilterList, isParent }: Props) => {
+const CustomCalenderInpField = ({ data, filterList, handleFilterList, isParent, popupClassName }: Props) => {
     const [open, setOpen] = React.useState(false);
 
     const onChange: DatePickerProps['onChange'] = (date, dateString) => {
@@ -59,7 +60,7 @@ const CustomCalenderInpField = ({ data, filterList, handleFilterList, isParent }
                     bordered={false}
                     onChange={onChange}
                     open={open}
-                    popupClassName="speech_deadline_date_picker"
+                    popupClassName={popupClassName}
                 />
             </div>
 
