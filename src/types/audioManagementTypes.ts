@@ -1,6 +1,6 @@
 import { assignAudioTrackDT } from "./assignTypes";
 import { roleDT } from "./billingTypes";
-import { allScriptResDT } from "./script"
+import { allScriptResDT, remarkDt } from "./script"
 
 export type audioManagementDT = {
     id: string;
@@ -52,4 +52,12 @@ export type audioCheckerDT = {
 export type remarkInfoDT = {
     roleInfo: roleDT
     des: string
+}
+
+export type annotationDT = {
+    speech: assignAudioTrackDT
+    script: allScriptResDT
+    speaker: speakerLocalityDT
+    deadLine: string
+    remark: remarkInfoDT
 }

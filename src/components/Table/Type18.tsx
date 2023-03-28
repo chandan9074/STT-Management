@@ -2,11 +2,12 @@ import { Table } from 'antd'
 import { ColumnsType } from 'antd/es/table'
 import React, { useState } from 'react'
 import Icons from '../../assets/Icons'
-import { allCheckedAudioDT, singleSpeakerDT } from '../../types/audioManagementTypes'
+import { allCheckedAudioDT } from '../../types/audioManagementTypes'
 import AudioTrack from '../common/AudioTrack'
 import Remark from '../common/Remark'
 import SpeechStatus from '../common/SpeechStatus'
-import RoleImage from '../Image/RoleImage'
+import AudioChecker from '../common/TableField/AudioManagement/AudioChecker'
+import Speaker from '../common/TableField/AudioManagement/Speaker'
 
 type Props = {
   data: allCheckedAudioDT[]
@@ -46,45 +47,13 @@ const Type18 = ({ data }: Props) => {
       title: `${"Speaker".toLocaleUpperCase()}`,
       key: 'speaker',
       width: 234,
-      render: (data: allCheckedAudioDT) =>
-        <div>
-
-          <div className='flex justify-between items-center cursor-pointer'>
-            <div>
-              <div className="flex flex-wrap items-center gap-x-3">
-                {
-                  data?.speaker?.speakers?.map((item: singleSpeakerDT, i: number) => (
-                    <div key={i} className='gap-y-[6px]'>
-                      <div className='flex items-center gap-x-2'>
-                        <RoleImage role={item.gender === "male" ? "speaker" : "speakerFemale"} height="w-4" width="h-4" />
-                        <h1 className='text-blue-gray-80 text-xs font-medium'>{item.name}</h1>
-                      </div>
-                    </div>
-                  ))
-                }
-              </div>
-              <h2 className="text-xxs font-normal text-blue-gray-75 pl-6">{data.speaker.locality}</h2>
-            </div>
-
-
-          </div>
-        </div>
+      render: (data: allCheckedAudioDT) => <Speaker data={data.speaker} />
     },
     {
       title: `${"Audio Checker".toLocaleUpperCase()}`,
       key: 'audioChecker',
       width: 233,
-      render: (data: allCheckedAudioDT) => <div>
-        <div className='flex items-center gap-x-[6px]'>
-          <div className='w-1.5 h-1.5 bg-primary-ct-magenta-60 rounded-full'></div>
-          <h1 className='text-primary-ct-magenta-60 text-xs font-medium'>{data.audioChecker.status}...</h1>
-        </div>
-        <div className='flex'>
-          <RoleImage role='audio checker' height='h-4' width='w-4' />
-          <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs'>{data.audioChecker.name},</h1>
-          <p className='text-blue-gray-75 text-xxs font-normal'>{data.audioChecker.locality}</p>
-        </div>
-      </div>
+      render: (data: allCheckedAudioDT) => <AudioChecker data={data.audioChecker}/>
     },
     {
       title: `${"Status".toLocaleUpperCase()}`,
@@ -133,7 +102,7 @@ const Type18 = ({ data }: Props) => {
               setRemarkOpen(true);
               setSingleTargetData(data);
             }}
-            src={Icons.Script} className="h-[15px] w-[12px] cursor-pointer"
+            src={Icons.File} className="h-[16px] w-[16px] cursor-pointer"
             alt=""
           />
         </div>
