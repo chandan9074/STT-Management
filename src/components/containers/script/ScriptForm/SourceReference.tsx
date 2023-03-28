@@ -91,6 +91,7 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
                                 <Grid item xs={6}>
                                     <div>
                                         <Autocomplete
+                                        
                                             disableClearable
                                             placeholder='Choose one'
                                             id="sourceType"
@@ -102,9 +103,11 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
 
                                                     formik.setFieldValue('sourceType', value)
                                                 } else {
-                                                    formik.setFieldValue('sourceType', '')
+                                                    // formik.setFieldValue('sourceType', '')
+                                                    formik.setFieldValue('sourceType', null)
                                                 }
                                             }}
+                                            getOptionLabel={(option) => option}
 
                                             renderInput={(params) => (
 

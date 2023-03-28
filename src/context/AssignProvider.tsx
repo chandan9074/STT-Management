@@ -148,7 +148,6 @@ const AssignProvider = ({ children }: { children: any }) => {
 
   const getSelectedScript = async () => {
     const res = await AssignService.fetchScriptList();
-    console.log('get selected script', res.data)
     setSelectedScriptList(res.data);
   }
 

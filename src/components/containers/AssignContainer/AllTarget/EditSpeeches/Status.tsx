@@ -1,5 +1,5 @@
 import React from 'react';
-import { AUDIO_FILE_UPLOADED } from '../../../../../helpers/Slug';
+import { AUDIO_FILE_UPLOADED } from '../../../../../helpers/ConditionVariable';
 
 type Props = {
     data: string

@@ -11,3 +11,6 @@ export const STATUS_ANNOTATED = 'Annotated';
 export const STATUS_VALIDATED = 'Validated';
 export const STATUS_CLAIMED = 'Claimed';
 
+export const AUDIO_FILE_UPLOADED = 'Uploaded';
+export const AUDIO_FILE_FAILED = 'Upload Failed';
+

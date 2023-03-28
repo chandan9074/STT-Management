@@ -50,12 +50,13 @@ const ScriptProvider = ({ children }: { children: any }) => {
 
   const getScriptById = async (data: scriptParamDT) => {
     try {
-      const response = await ScriptService.getScriptById(data);
+      const response = await ScriptService.getScriptById(data);      
       setSingleScript(response?.data);
       setScriptModule(response?.data?.module)
     } catch (error) {
     }
   }
+  
 
   const createScript = async (params: FormData) => {
     try {

@@ -43,7 +43,7 @@ const ScriptForms = ({ data }: { data?: allScriptResDT }) => {
     const navigate = useNavigate();
 
     const scriptContext = useContext(ScriptContext);
-    const { createScript, updateScript, scriptModule, setScriptModule } = scriptContext;
+    const { createScript, updateScript, scriptModule, setScriptModule } = scriptContext;    
 
     const formik = useFormik({
         enableReinitialize: true,
@@ -55,7 +55,7 @@ const ScriptForms = ({ data }: { data?: allScriptResDT }) => {
             domain: data?.domain || '',
             subdomain: data?.subdomain || '',
             distributionSource: data?.distributionSource || distributionList[0],
-            isAge: data?.isAge || false,
+            isAge: data?.isAge ? true : false,
             title: data?.title || '',
             description: data?.description || '',
             sourceFile: data?.sourceFile || '',

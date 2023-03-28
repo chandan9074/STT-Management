@@ -252,7 +252,7 @@ const Type11 = ({ data }: Props) => {
                     <div className='flex w-full justify-center items-center'>
                         <Buttons.LabelButton.Tertiary
                             label='Submit'
-                            size='small'
+                            size='xSmall'
                             variant='CT-Blue'
                             onClick={() => onsubmit(record)}
                         />

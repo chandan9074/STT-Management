@@ -5,8 +5,7 @@ interface Props {
     metaData: any
 }
 const Type1 = ({ metaData }: Props) => {
-
-
+    
     return (
         <div className='py-1'>
             <div className='flex'>

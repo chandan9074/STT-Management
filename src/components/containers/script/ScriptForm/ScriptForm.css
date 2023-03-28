@@ -270,22 +270,19 @@ label {
   } */
 
 /* style the scrollbar track */
-::-webkit-scrollbar-track {
+/* ::-webkit-scrollbar-track {
     background-color: red !important;
   }
   
-  /* style the scrollbar thumb */
   ::-webkit-scrollbar-thumb {
     background-color: red !important;
     border-radius: 5px;
   }
   
-  /* style the scrollbar thumb on hover */
   ::-webkit-scrollbar-thumb:hover {
     background-color: red !important;
   }
   
-  /* style the scrollbar in Firefox */
   .scrollbar::-webkit-scrollbar {
     background-color: red !important;
     width: 8px;
@@ -300,7 +297,7 @@ label {
     background-color: red !important;
   }
  
-  
+   */
   
   
   

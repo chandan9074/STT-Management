@@ -113,7 +113,7 @@ const FileReport = ({ getFile, formik }: { getFile: (file: File | null) => void,
             <Grid container spacing={5}>
                 <Grid item xs={6}>
                     <div className='mt-[35px]'>
-                        <Autocomplete
+                         <Autocomplete
                             disableClearable
                             placeholder='Choose one'
                             id="adminData"

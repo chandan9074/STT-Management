@@ -13,7 +13,7 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
             <Grid container spacing={5}>
                 {/* Primary Role */}
                 <Grid item xs={6}>
-                    <Autocomplete
+                     <Autocomplete
                         disableClearable
                         placeholder='Choose one'
                         id="primaryRole"
@@ -214,7 +214,7 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
 
 
                 <Grid item xs={6}>
-                    <Autocomplete
+                     <Autocomplete
                         disableClearable
                         placeholder='Choose one'
                         id="lastDegreeAchived"

@@ -33,7 +33,7 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                 </div>
 
                 <div className='mt-2'>
-                    <Autocomplete
+                     <Autocomplete
                         disableClearable
                         placeholder='Choose one'
                         id="ageRange"
@@ -89,7 +89,7 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
 
                 <div className='flex gap-3'>
                     <div className='mt-4'>
-                        <Autocomplete
+                         <Autocomplete
                             disableClearable
                             placeholder='Choose one'
                             id="profession"
@@ -133,7 +133,7 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
 
 
                     <div className='mt-4'>
-                        <Autocomplete
+                         <Autocomplete
                             disableClearable
                             placeholder='Choose one'
                             id="economicSituation"
@@ -177,7 +177,7 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                 </div>
 
                 <div className='mt-4'>
-                    <Autocomplete
+                     <Autocomplete
                         disableClearable
                         placeholder='Choose one'
                         id="education"
@@ -235,7 +235,7 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                 </div>
 
                 <div className='mt-4'>
-                    <Autocomplete
+                     <Autocomplete
                         disableClearable
                         placeholder='Choose one'
                         id="recordingArea"
@@ -270,7 +270,7 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                 </div>
 
                 <div className='mt-4'>
-                    <Autocomplete
+                     <Autocomplete
                         disableClearable
                         placeholder='Choose one'
                         id="recordingDistance"
