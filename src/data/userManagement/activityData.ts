@@ -1,3 +1,4 @@
+import { targetFilterDT } from './../../types/assignTypes';
 export const activityData = {
     name: "Jacob Jones",
     email: "tienlapspktnd@gmail.com",
@@ -222,4 +223,104 @@ export const labelData = [
       label: "Rejected by Checker",
       bulletBg: "bg-[#F5AC42]",
   }
+]
+
+export const speechFilter : targetFilterDT[] = [
+  {
+      type: "date",
+      key: "submissionDate",
+      title: "Submission Date, Time",
+      // isParent: true,
+      // child: [
+      //     "Not Assigned",
+      //     "Partial Assigned",
+      //     "All Assigned",
+      // ],
+  },
+  {
+      type: "check",
+      key: "recordingArea",
+      title: "Recording Area",
+      child: [
+          "Room",
+          "Outside Room",
+          "Inside Room",
+          "Outside Home",
+          "Field",
+          "Market",
+          "Road",
+          "Transport",
+          "Other noisy area",
+          "Other noisiness area",
+      ]
+  },
+  {
+      type: "check",
+      key: "recordingDistance",
+      title: "Recording Distance",
+      child: [
+          "Far",
+          "So far",
+          "Close",
+          "So close",
+          "Moving",
+          "Round",
+          "Walking"
+      ]
+  },
+  {
+      type: "check",
+      key: "status",
+      title: "Status",
+      child: [
+          "Approved",
+          "Rejected",
+      ]
+  },
+  {
+      type: "select",
+      key: "speakerLocality",
+      title: "Speaker's Locality",
+      isParent:"none",
+      children: [
+        {
+        title: "Natural & Pure Science",
+        child: [
+          "Physics",
+          "Chemistry",
+          "Math",
+          "Biology",
+          "Astronomy",
+          "Nature",
+          "Environment",
+        ],
+      },
+      {
+        title: "Applied Science",
+        child: [
+          "Physics",
+          "Chemistry",
+          "Math",
+          "Biology",
+          "Astronomy",
+          "Nature",
+          "Environment",
+        ],
+      },
+    ]
+  }
+]
+
+export const completedFilter : targetFilterDT[] = [
+  {
+    type: "check",
+    key: "targetStatus",
+    title: "Target Status",
+    // isParent: true,
+    child: [
+        "Not Assigned",
+        "Partial Assigned",
+        "All Assigned",
+    ],
+},
 ]

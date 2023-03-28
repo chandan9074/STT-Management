@@ -256,7 +256,6 @@ const AssignProvider = ({ children }: { children: any }) => {
   const getSingleCriteriaRecreate = (id: string) => {
     const _data = targetForRecreate?.filter((item: CriteriaItemDT) => item?.id === id);
     setSingleCriteriaRecreate(_data[0]);
-
   }
 
   const selectScript = (

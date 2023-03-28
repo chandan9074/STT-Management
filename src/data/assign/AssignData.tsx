@@ -955,11 +955,14 @@ export const targetSpeechData = {
             address: "Dhaka",
             gender: "Male"
         },
-        deadLine: '21-12-2017',
-        speeches: {
-            total: 1000,
-            uploaded: 450
-        },
+        targetSpeech: 1000,
+        receivedSpeech: 890,
+        receivedHour: 1200,
+        lastUpdate: "22 Aug 2022",
+        audioStatus: {
+            valid: 700,
+            invalid: 500,
+        }
     },
     speechData:
         [

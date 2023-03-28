@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react";
 import UserManagementService from "../services/userManagement";
+import { targetSpeechDT } from "../types/assignTypes";
 import { activityDT } from "../types/userManagementTypes";
 
 interface ContextProps {
@@ -9,7 +10,8 @@ interface ContextProps {
     setActiveRole: React.Dispatch<React.SetStateAction<string>>;
     currentWeek: number;
     setCurrentWeek: React.Dispatch<React.SetStateAction<number>>;
-    //   setModalData: React.Dispatch<React.SetStateAction<string>>;
+    getUserTargetPendingSpeeches: (id: string) => void;
+    targetPendingSpeeches: targetSpeechDT;
 }
 
 export const UserManagementContext = createContext({} as ContextProps);
@@ -18,6 +20,7 @@ const UserManagementProvider = ({ children }: { children: any }) => {
     const [activityStatistics, setActivityStatistics] = useState<activityDT | undefined>();
     const [activeRole, setActiveRole] = useState<string>("")
     const [currentWeek, setCurrentWeek] = useState<number>(1);
+    const [targetPendingSpeeches, setTargetPendingSpeeches] = useState<targetSpeechDT>({} as targetSpeechDT);
 
 
     const getActivityStatistics = (id: string) => {
@@ -26,10 +29,16 @@ const UserManagementProvider = ({ children }: { children: any }) => {
         setActiveRole(res.roleList[0])
     }
 
+    const getUserTargetPendingSpeeches = async (id: string) => {
+        const res = UserManagementService.getUserTargetPendingSpeeches(id);
+        // setPendingSpeeches(res.data);
+        setTargetPendingSpeeches(res);
+    }
+
 
     return (
         <UserManagementContext.Provider
-            value={{ activityStatistics, getActivityStatistics, activeRole, setActiveRole, currentWeek, setCurrentWeek }}
+            value={{ activityStatistics, getActivityStatistics, activeRole, setActiveRole, currentWeek, setCurrentWeek, getUserTargetPendingSpeeches, targetPendingSpeeches }}
         >
             {children}
         </UserManagementContext.Provider>
