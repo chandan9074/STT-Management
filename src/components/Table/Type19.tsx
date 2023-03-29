@@ -1,24 +1,22 @@
-import { Table } from 'antd'
-import { ColumnsType } from 'antd/es/table'
-import { useState } from 'react'
-import Icons from '../../assets/Icons'
-import { checkingStatusDT } from '../../types/audioManagementTypes'
-import AudioTrack from '../common/AudioTrack'
-import Remark from '../common/Remark'
-import AudioChecker from '../common/TableField/AudioManagement/AudioChecker'
-import Speaker from '../common/TableField/AudioManagement/Speaker'
+import { Table } from "antd"
+import { ColumnsType } from "antd/es/table"
+import { useState } from "react"
+import Icons from "../../assets/Icons"
+import { annotationDT } from "../../types/audioManagementTypes"
+import AudioTrack from "../common/AudioTrack"
+import Remark from "../common/Remark"
+import Speaker from "../common/TableField/AudioManagement/Speaker"
 
 type Props = {
-    data: checkingStatusDT[]
+    data: annotationDT[]
 }
 
-const Type17 = ({ data }: Props) => {
+const Type19 = ({ data }: Props) => {
+
     const [remarkOpen, setRemarkOpen] = useState(false);
-    const [singleTargetData, setSingleTargetData] = useState<checkingStatusDT>();
+    const [singleTargetData, setSingleTargetData] = useState<annotationDT>();
 
-
-
-    const Type17columns: ColumnsType<checkingStatusDT> = [
+    const Type19columns: ColumnsType<annotationDT> = [
         {
             title: `${"SN".toLocaleUpperCase()}`,
             key: 'sn',
@@ -29,25 +27,18 @@ const Type17 = ({ data }: Props) => {
             ),
         },
         {
-            title: `${"# Task ID".toLocaleUpperCase()}`,
-            key: 'id',
-            // align: 'center',
-            width: 120,
-            render: (data: checkingStatusDT) => <h1 className='w-20 truncate whitespace-nowrap'># {data.id}</h1>,
-        },
-        {
             title: `${"Raw Audio".toLocaleUpperCase()}`,
             key: 'speech',
-            width: 180,
-            render: (data: checkingStatusDT) => <>
+            width: 220,
+            render: (data: annotationDT) => <>
                 <AudioTrack data={data.speech} />
             </>,
         },
         {
             title: `${"Script".toLocaleUpperCase()}`,
             key: 'script',
-            width: 156,
-            render: (data: checkingStatusDT) => <div className='flex w-full justify-start items-center gap-x-[10px]'>
+            width: 172,
+            render: (data: annotationDT) => <div className='flex w-full justify-start items-center gap-x-[10px]'>
                 <h1 className='w-28 truncate whitespace-nowrap'>{data.script.id}</h1>
                 <img
                     // onClick={() => {
@@ -62,34 +53,34 @@ const Type17 = ({ data }: Props) => {
         {
             title: `${"Speaker".toLocaleUpperCase()}`,
             key: 'speaker',
-            width: 234,
-            render: (data: checkingStatusDT) => <Speaker data={data.speaker} />
+            width: 193,
+            render: (data: annotationDT) => <Speaker data={data.speaker} />
         },
         {
-            title: `${"Audio Checker".toLocaleUpperCase()}`,
-            key: 'audioChecker',
-            width: 233,
-            render: (data: checkingStatusDT) => <AudioChecker data={data.audioChecker}/>
+            title: `${"Word annotation".toLocaleUpperCase().slice(0, 10)}...`,
+            key: 'wordAnnotation',
+            align: "center",
+            width: 150,
+            render: () => <>unknown</>
         },
         {
-            title: `${"DeadLine (DD/MM)".toLocaleUpperCase()}`,
-            key: 'deadLine',
-            width: 165,
-            render: (data: checkingStatusDT) => <h1 className='text-small text-blue-gray-80'>{data.deadLine}</h1>
+            title: `${"Phoneme annotation".toLocaleUpperCase().slice(0, 13)}...`,
+            key: 'wordAnnotation',
+            align: "center",
+            width: 190,
+            render: () => <>unknown</>
         },
         {
             title: `${"Remark".toLocaleUpperCase()}`,
             key: 'remark',
             width: 90,
             align: "center",
-            render: (data: checkingStatusDT) => (
+            render: (data: annotationDT) => (
                 <div className='flex justify-center'>
                     <img
                         onClick={() => {
                             setRemarkOpen(true);
-                            setSingleTargetData(data);
-                            console.log(singleTargetData);
-                            
+                            setSingleTargetData(data);                            
                         }}
                         src={Icons.File} className="h-[16px] w-[16px] cursor-pointer"
                         alt=""
@@ -104,7 +95,7 @@ const Type17 = ({ data }: Props) => {
             key: 'details',
             fixed: 'right',
             width: 90,
-            render: (_, record: checkingStatusDT) => (
+            render: (_, record: annotationDT) => (
                 <>
 
                     <div className='flex w-full justify-center items-center'>
@@ -123,18 +114,17 @@ const Type17 = ({ data }: Props) => {
     ]
 
     const rowSelection = {
-        onChange: (selectedRowKeys: React.Key[], selectedRows: checkingStatusDT[]) => {
+        onChange: (selectedRowKeys: React.Key[], selectedRows: annotationDT[]) => {
             // setSelectedTarget(selectedRows);
             console.log('*******', selectedRows);
 
 
         },
-        getCheckboxProps: (record: checkingStatusDT) => ({
+        getCheckboxProps: (record: annotationDT) => ({
             // disabled: record.name === 'Disabled User', // Column configuration not to be checked
             // name: record.assignee.name,
         }),
     };
-
 
     return (
         <div className='billing-table billing-table-odd-bg type4-table horizontal-table-padding'>
@@ -146,11 +136,11 @@ const Type17 = ({ data }: Props) => {
                     ...rowSelection,
                 }}
                 dataSource={data}
-                columns={Type17columns}
+                columns={Type19columns}
                 scroll={{ x: 1366 }}
                 rowKey="id"
-            />
 
+            />
             {
                 remarkOpen &&
                 <Remark
@@ -166,4 +156,4 @@ const Type17 = ({ data }: Props) => {
     )
 }
 
-export default Type17
+export default Type19

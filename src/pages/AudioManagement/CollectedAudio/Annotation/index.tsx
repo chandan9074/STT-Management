@@ -1,8 +1,11 @@
-import React from 'react'
+import Table from "../../../../components/Table"
+import { annotationData } from "../../../../data/audioManagement/AudioManagementData"
 
 const Annotation = () => {
   return (
-    <div>Annotation</div>
+    <div>
+        <Table.Type19 data={annotationData} />
+    </div>
   )
 }
 

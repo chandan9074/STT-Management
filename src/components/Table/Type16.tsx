@@ -1,9 +1,9 @@
 import { Table } from "antd"
 import { ColumnsType } from "antd/es/table"
 import Icons from "../../assets/Icons"
-import { audioManagementDT, singleSpeakerDT } from "../../types/audioManagementTypes"
+import { audioManagementDT } from "../../types/audioManagementTypes"
 import AudioTrack from "../common/AudioTrack"
-import RoleImage from "../Image/RoleImage"
+import Speaker from "../common/TableField/AudioManagement/Speaker"
 
 type Props = {
     data: audioManagementDT[]
@@ -57,29 +57,7 @@ const Type16 = ({ data }: Props) => {
             title: `${"Speaker".toLocaleUpperCase()}`,
             key: 'speaker',
             width: 252,
-            render: (data: audioManagementDT) =>
-                <div>
-
-                    <div className='flex justify-between items-center cursor-pointer'>
-                        <div>
-                            <div className="flex flex-wrap items-center gap-x-3">
-                                {
-                                    data?.speaker?.speakers?.map((item: singleSpeakerDT, i: number) => (
-                                        <div key={i} className='gap-y-[6px]'>
-                                            <div className='flex items-center gap-x-2'>
-                                                <RoleImage role={item.gender === "male" ? "speaker" : "speakerFemale"} height="w-4" width="h-4" />
-                                                <h1 className='text-blue-gray-80 text-xs font-medium'>{item.name}</h1>
-                                            </div>
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                            <h2 className="text-xxs font-normal text-blue-gray-75 pl-6">{data.speaker.locality}</h2>
-                        </div>
-
-
-                    </div>
-                </div>
+            render: (data: audioManagementDT) => <Speaker data={data.speaker} />
         },
         {
             title: `${"Journey".toLocaleUpperCase()}`,

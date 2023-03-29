@@ -16,7 +16,9 @@ import Type15 from "./Type15";
 import Type16 from "./Type16";
 import Type17 from "./Type17";
 import Type18 from "./Type18";
+import Type19 from "./Type19";
+import Type20 from "./Type20";
 
-const Table = { Type1, Type2, Type3, Type4, Type5, Type6, Type7, Type8, Type9, Type10, Type11, Type12, Type13, Type14,Type15, Type16, Type17,Type18 };
+const Table = { Type1, Type2, Type3, Type4, Type5, Type6, Type7, Type8, Type9, Type10, Type11, Type12, Type13, Type14,Type15, Type16, Type17,Type18,Type19,Type20 };
 
 export default Table;
