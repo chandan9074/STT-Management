@@ -69,8 +69,9 @@ const Domain = ({ formik }: { formik: FormikValues }) => {
                 <Grid item xs={6}>
                     <div>
                         <Autocomplete
-                        disableClearable
-                        placeholder='Choose one'
+                            
+                            disableClearable
+                            placeholder='Choose one'
                             id="sub-domain"
                             disabled={formik.values.domain === ''}
                             className={`${formik.values.domain === '' && 'sub-domain'}`}
@@ -78,13 +79,15 @@ const Domain = ({ formik }: { formik: FormikValues }) => {
                             options={scriptSubDomain}
                             // value={formik.values.subdomain || scriptsubdomain[0]}
                             value={formik.values.subdomain}
-                            // defaultValue={formik.values.subdomain}
+                            getOptionLabel={(option) => option}
 
+                            // defaultValue={formik.values.subdomain}
                             onChange={(event, value) => {
                                 if (typeof value === 'string') {
                                     formik.setFieldValue('subdomain', value);
                                 } else {
-                                    formik.setFieldValue('subdomain', '');
+                                    // formik.setFieldValue('subdomain', '');
+                                    formik.setFieldValue('subdomain', null)
 
                                 }
                             }}

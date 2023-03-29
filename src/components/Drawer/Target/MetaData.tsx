@@ -1,46 +1,40 @@
-import { Dispatch, SetStateAction, useContext } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import Icons from '../../../assets/Icons';
-import { AssignContext } from '../../../context/AssignProvider';
 import { customSingleCriteriaDT } from '../../../types/assignTypes';
+import { allScriptResDT } from '../../../types/script';
 import BackButtonTitle from '../../common/BackButtonTitle';
 
 type Props = {
-    setIsMetaData: Dispatch<SetStateAction<boolean>>
+    setIsMetaData: Dispatch<SetStateAction<boolean>>;
+    data: allScriptResDT | undefined;
 }
 
-const MetaData = ({ setIsMetaData }: Props) => {
-
-    const AssignContexts = useContext(AssignContext);
-    const {
-        // criterias,
-        singleCriteria,
-        // getSingleCriteria,
-    } = AssignContexts;
+const MetaData = ({ setIsMetaData, data }: Props) => {    
 
     const singleValue1: customSingleCriteriaDT[] = [
         {
             title: 'Script Id',
-            value: singleCriteria?.id || '-'
+            value: data?.id || '-'
         },
         {
             title: 'Age',
-            value: singleCriteria?.ageRange || '-'
+            value: data?.isAge ? 'Child' : '--'
         },
         {
             title: 'Data Source',
-            value: singleCriteria?.profession || '-'
+            value: data?.distributionSource || '-'
         },
         {
             title: 'Domain',
-            value: singleCriteria?.economicSituation || '-'
+            value: data?.domain || '-'
         },
         {
             title: 'Sub Domain',
-            value: 'higher Secondary'
+            value: data?.subdomain || '-'
         },
         {
             title: 'Source Reference',
-            value: 'https://cutt.ly/t37xYq7'
+            value: data?.sourceFile || '-'
         },
 
 

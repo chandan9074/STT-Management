@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction, useRef, useState } from 'react';
 import Icons from '../../../../../assets/Icons';
 import Buttons from '../../../../Buttons';
-import { AUDIO_FILE_UPLOADED } from '../../../../../helpers/Slug';
 import Type4 from '../../../../common/CustomModal/Type4';
 import { assignAudioTrackDT, speechDt } from '../../../../../types/assignTypes';
+import { AUDIO_FILE_UPLOADED } from '../../../../../helpers/ConditionVariable';
 
 type Props = {
     data: assignAudioTrackDT,

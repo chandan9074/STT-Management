@@ -22,7 +22,7 @@ const DistributionSource = ({ formik }: { formik: FormikValues }) => {
 
     const onModule = () => {
         setOpen(true);
-    }
+    }    
 
     return (
         <div className='mb-[33px]'>
@@ -89,11 +89,13 @@ const DistributionSource = ({ formik }: { formik: FormikValues }) => {
 
                             <FormControlLabel
 
-                                control={<Checkbox
-                                    name="isAge"
-                                    checked={formik.values.isAge}
-                                    onChange={() => formik.setFieldValue("isAge", !formik.values.isAge)}
-                                />}
+                                control={
+                                    <Checkbox
+                                        name="isAge"
+                                        checked={formik.values.isAge }
+                                        onChange={(event) => formik.setFieldValue('isAge', event.target.checked)}
+                                    />
+                                }
                                 label={<h1 className='text-small font-medium text-blue-gray-75'>Child</h1>} />
 
                         </FormGroup>

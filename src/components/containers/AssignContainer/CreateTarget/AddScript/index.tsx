@@ -18,8 +18,6 @@ const AddSript = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log("selectedScriptList", selectedScriptList)
-
   const drawerClose = () => {
     setDrawerOpen(false);
   };

@@ -1,4 +1,4 @@
-import { AUDIO_FILE_FAILED, AUDIO_FILE_UPLOADED } from "../../helpers/Slug"
+import { AUDIO_FILE_FAILED, AUDIO_FILE_UPLOADED } from "../../helpers/ConditionVariable"
 import { targetFilterDT } from "../../types/assignTypes"
 
 export const healthFactors = [

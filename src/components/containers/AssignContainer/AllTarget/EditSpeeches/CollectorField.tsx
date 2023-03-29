@@ -51,7 +51,7 @@ const CollectorField = ({ data, roleDatas, speechData, setSpeechData, collector,
                             onClick={() => setCollectorId('')} />
                         <div className='relative'>
 
-                            {/* <Autocomplete
+                            {/*  <Autocomplete
                             placeholder='Choose one'
                             id="sourceType"
                             style={{ width: '100%' }}
@@ -98,7 +98,7 @@ const CollectorField = ({ data, roleDatas, speechData, setSpeechData, collector,
                             )}
                         /> */}
 
-                            <Autocomplete
+                             <Autocomplete
                                 placeholder='Choose one'
                                 id="sourceType"
                                 style={{ width: '100%' }}

@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import Icons from '../../../../../assets/Icons';
 import { uploadStatus } from '../../../../../data/assign/AssignData';
-import { AUDIO_FILE_FAILED, AUDIO_FILE_UPLOADED } from '../../../../../helpers/Slug';
-
+import { AUDIO_FILE_FAILED, AUDIO_FILE_UPLOADED } from '../../../../../helpers/ConditionVariable';
 
 const TargetStatus = () => {
 

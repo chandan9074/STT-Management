@@ -102,7 +102,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                 </Grid>
 
                 <Grid item xs={6}>
-                    <Autocomplete
+                     <Autocomplete
                         disableClearable
                         placeholder='Choose one'
                         id="ageRange"
@@ -156,7 +156,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
 
 
                 <Grid item xs={6}>
-                    <Autocomplete
+                     <Autocomplete
                         disableClearable
                         placeholder='Choose one'
                         id="education"
@@ -194,7 +194,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                 </Grid>
 
                 <Grid item xs={6}>
-                    <Autocomplete
+                     <Autocomplete
                         disableClearable
                         placeholder='Choose one'
                         id="educationSituation"

@@ -41,7 +41,7 @@ const DeviceField = ({data, device, deviceData, deviceId, setDeviceId, setDevice
                         <div className="fixed top-0 left-0 opacity-50 bg-transparent w-full h-screen "
                             onClick={() => setDeviceId('')} />
                         <div className='relative'>
-                            <Autocomplete
+                             <Autocomplete
                                 placeholder='Choose one'
                                 id="sourceType"
                                 style={{ width: '100%' }}

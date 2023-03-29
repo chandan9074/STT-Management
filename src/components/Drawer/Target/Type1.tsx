@@ -25,10 +25,7 @@ const Type1 = ({ isDrawerOpen, setIsDrawerOpen: setOpen, data }: Props) => {
 
     useEffect(() => {
         setActivePanel('Script');
-    }, [])
-
-
-
+    }, []);
 
     return (
         <Drawer
@@ -88,7 +85,7 @@ const Type1 = ({ isDrawerOpen, setIsDrawerOpen: setOpen, data }: Props) => {
                             }
                         </div>
                     </div> :
-                    <MetaData setIsMetaData={setIsMetaData} />
+                    <MetaData data={data?.script} setIsMetaData={setIsMetaData} />
             }
 
         </Drawer>
