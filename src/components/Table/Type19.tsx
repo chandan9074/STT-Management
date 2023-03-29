@@ -20,8 +20,8 @@ const Type19 = ({ data }: Props) => {
         {
             title: `${"SN".toLocaleUpperCase()}`,
             key: 'sn',
-            width: 50,
-            // align: "center",
+            width: 80,
+            align: "center",
             render: (text, record, index) => (
                 <span>{(index + 1)}</span>
             ),
@@ -29,7 +29,7 @@ const Type19 = ({ data }: Props) => {
         {
             title: `${"Raw Audio".toLocaleUpperCase()}`,
             key: 'speech',
-            width: 220,
+            width: 176,
             render: (data: annotationDT) => <>
                 <AudioTrack data={data.speech} />
             </>,
@@ -60,20 +60,20 @@ const Type19 = ({ data }: Props) => {
             title: `${"Word annotation".toLocaleUpperCase().slice(0, 10)}...`,
             key: 'wordAnnotation',
             align: "center",
-            width: 150,
+            width: 119,
             render: () => <>unknown</>
         },
         {
             title: `${"Phoneme annotation".toLocaleUpperCase().slice(0, 13)}...`,
             key: 'wordAnnotation',
             align: "center",
-            width: 190,
+            width: 120,
             render: () => <>unknown</>
         },
         {
             title: `${"Remark".toLocaleUpperCase()}`,
             key: 'remark',
-            width: 90,
+            width: 85,
             align: "center",
             render: (data: annotationDT) => (
                 <div className='flex justify-center'>
@@ -94,7 +94,7 @@ const Type19 = ({ data }: Props) => {
             dataIndex: 'details',
             key: 'details',
             fixed: 'right',
-            width: 90,
+            width: 85,
             render: (_, record: annotationDT) => (
                 <>
 

@@ -6,8 +6,8 @@ import { allCheckedAudioDT } from '../../types/audioManagementTypes'
 import AudioTrack from '../common/AudioTrack'
 import Remark from '../common/Remark'
 import SpeechStatus from '../common/SpeechStatus'
-import AudioChecker from '../common/TableField/AudioManagement/AudioChecker'
 import Speaker from '../common/TableField/AudioManagement/Speaker'
+import RoleImage from '../Image/RoleImage'
 
 type Props = {
   data: allCheckedAudioDT[]
@@ -16,14 +16,14 @@ type Props = {
 const Type18 = ({ data }: Props) => {
 
   const [remarkOpen, setRemarkOpen] = useState(false);
-    const [singleTargetData, setSingleTargetData] = useState<allCheckedAudioDT>();
+  const [singleTargetData, setSingleTargetData] = useState<allCheckedAudioDT>();
 
   const Type18columns: ColumnsType<allCheckedAudioDT> = [
     {
       title: `${"SN".toLocaleUpperCase()}`,
       key: 'sn',
       width: 50,
-      // align: "center",
+      align: "center",
       render: (text, record, index) => (
         <span>{(index + 1)}</span>
       ),
@@ -52,8 +52,16 @@ const Type18 = ({ data }: Props) => {
     {
       title: `${"Audio Checker".toLocaleUpperCase()}`,
       key: 'audioChecker',
-      width: 233,
-      render: (data: allCheckedAudioDT) => <AudioChecker data={data.audioChecker}/>
+      width: 240,
+      render: (data: allCheckedAudioDT) => 
+      <div className='flex flex-col gap-y-1'>
+        <div className='flex'>
+          <RoleImage role={data.audioChecker.role} height='h-4' width='w-4' />
+          <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs'>{data.audioChecker.name},</h1>
+          <p className='text-blue-gray-75 text-xxs font-normal pl-1'>{data.audioChecker.locality}</p>
+        </div>
+        <p className='text-xxs text-blue-gray-75 font-normal leading-[14.4px] pl-[22px]'>Picked: {data.audioChecker.time}</p>
+      </div>
     },
     {
       title: `${"Status".toLocaleUpperCase()}`,
@@ -81,7 +89,7 @@ const Type18 = ({ data }: Props) => {
     {
       title: `${"DeadLine (DD/MM)".toLocaleUpperCase()}`,
       key: 'deadLine',
-      width: 165,
+      width: 155,
       render: (data: allCheckedAudioDT) => <h1 className='text-small text-blue-gray-80'>{data.deadLine}</h1>
     },
     {
@@ -93,7 +101,7 @@ const Type18 = ({ data }: Props) => {
     {
       title: `${"Remark".toLocaleUpperCase()}`,
       key: 'remark',
-      width: 90,
+      width: 85,
       align: "center",
       render: (data: allCheckedAudioDT) => (
         <div className='flex justify-center'>
@@ -114,7 +122,7 @@ const Type18 = ({ data }: Props) => {
       dataIndex: 'details',
       key: 'details',
       fixed: 'right',
-      width: 90,
+      width: 85,
       render: (_, record: allCheckedAudioDT) => (
         <>
 
@@ -160,17 +168,17 @@ const Type18 = ({ data }: Props) => {
         rowKey="id"
       />
 
-{
-                remarkOpen &&
-                <Remark
-                    open={remarkOpen}
-                    setOpen={setRemarkOpen}
-                    roleName={'meem'}
-                    roleType={'speaker'}
-                    dateTime={singleTargetData?.deadLine ? singleTargetData?.deadLine : ''}
-                    desc={'this is remark'}
-                />
-            }
+      {
+        remarkOpen &&
+        <Remark
+          open={remarkOpen}
+          setOpen={setRemarkOpen}
+          roleName={'meem'}
+          roleType={'speaker'}
+          dateTime={singleTargetData?.deadLine ? singleTargetData?.deadLine : ''}
+          desc={'this is remark'}
+        />
+      }
     </div>
   )
 }

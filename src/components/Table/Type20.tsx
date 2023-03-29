@@ -4,8 +4,8 @@ import Icons from "../../assets/Icons"
 import { collectAnnSenDataDT } from "../../types/audioManagementTypes"
 import AudioTrack from "../common/AudioTrack"
 import Annotate from "../common/TableField/AudioManagement/Annotate"
-import AudioChecker from "../common/TableField/AudioManagement/AudioChecker"
 import Speaker from "../common/TableField/AudioManagement/Speaker"
+import RoleImage from "../Image/RoleImage"
 
 type Props = {
     data: collectAnnSenDataDT[]
@@ -21,7 +21,7 @@ const Type20 = ({ data }: Props) => {
             title: `${"SN".toLocaleUpperCase()}`,
             key: 'sn',
             width: 48,
-            // align: "center",
+            align: "center",
             render: (text, record, index) => (
                 <span>{(index + 1)}</span>
             ),
@@ -50,14 +50,21 @@ const Type20 = ({ data }: Props) => {
         {
             title: `${"DeadLine (DD/MM)".toLocaleUpperCase()}`,
             key: 'deadLine',
-            width: 165,
+            width: 155,
             render: (data: collectAnnSenDataDT) => <h1 className='text-small text-blue-gray-80'>{data.deadLine}</h1>
         },
         {
             title: `${"Audio Checker".toLocaleUpperCase()}`,
             key: 'audioChecker',
             width: 233,
-            render: (data: collectAnnSenDataDT) => <AudioChecker data={data.audioChecker} />
+            render: (data: collectAnnSenDataDT) =>
+                <div >
+                    <div className='flex'>
+                        <RoleImage role='audio checker' height='h-4' width='w-4' />
+                        <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs'>{data.audioChecker.name},</h1>
+                    </div>
+                    <p className='text-blue-gray-75 text-xxs font-normal pl-[22px]'>{data.audioChecker.locality}</p>
+                </div>
         },
         {
             title: `${"Speaker".toLocaleUpperCase()}`,
@@ -71,7 +78,7 @@ const Type20 = ({ data }: Props) => {
             dataIndex: 'details',
             key: 'details',
             fixed: 'right',
-            width: 90,
+            width: 85,
             render: (_, record: collectAnnSenDataDT) => (
                 <>
 
@@ -106,12 +113,12 @@ const Type20 = ({ data }: Props) => {
     return (
         <div className='billing-table billing-table-odd-bg type4-table horizontal-table-padding'>
             <Table
-            rowSelection={{
-                // type: selectionType,
-                columnWidth: 48,
-                fixed: 'left',
-                ...rowSelection,
-            }}
+                rowSelection={{
+                    // type: selectionType,
+                    columnWidth: 48,
+                    fixed: 'left',
+                    ...rowSelection,
+                }}
                 columns={Type20columns}
                 dataSource={data}
                 scroll={{ x: 1366 }}
