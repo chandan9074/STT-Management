@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as PATH from "../helpers/APIURL";
-import { getAllScriptsParamsDT, scriptParamDT } from "../types/script";
+import { getAllScriptsParamsDT, scriptDeleteParamDT, scriptParamDT } from "../types/script";
 
 
 export default class ScriptService {
@@ -22,5 +22,8 @@ export default class ScriptService {
 
   static UpdateScript(params: FormData) {
     return axios.put(PATH.UPDATE_SCRIPT_URL, params);
+  }
+  static deleteScript(params: scriptDeleteParamDT) {
+    return axios.delete(PATH.DELETE_SCRIPT_URL, { params: params });
   }
 }

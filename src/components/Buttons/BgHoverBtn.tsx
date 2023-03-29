@@ -1,6 +1,6 @@
 import React from "react";
 
-type Props = {
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   paddingX?: string;
   paddingY?: string;
   marginX?: string;
@@ -44,9 +44,11 @@ const BgHoverBtn = ({
   hoverFontWeight,
   duration,
   title,
+  ...rest
 }: Props) => {
   return (
     <button
+      {...rest}
       className={`${paddingX} ${paddingY} ${marginX} ${marginY} ${bgColor} ${hoverBgColor} ${textColor} ${hoverTextColor} ${border} ${hoverBorder} ${borderRadius} ${hoverBorderRadius} ${boxShadow} ${hoverBoxShadow} ${fontSize} ${fontWeight} ${hoverFontSize} ${hoverFontWeight} ${duration}`}
     >
       {title}

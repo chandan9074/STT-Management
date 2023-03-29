@@ -23,6 +23,7 @@ interface ContextProps {
   setScriptDeleteParams: React.Dispatch<React.SetStateAction<string>>;
   scriptFilter: getAllScriptsParamsDT;
   setScriptFilter: React.Dispatch<React.SetStateAction<getAllScriptsParamsDT>>;
+  deleteScript: (role: string, id: string) => void;
 }
 
 export const ScriptContext = createContext({} as ContextProps);
@@ -82,10 +83,15 @@ const ScriptProvider = ({ children }: { children: any }) => {
       setLoading(false);
 
     }
-    // return {
-    //   message: response?.data?.message,
-    //   status: response?.status
-    // }
+  }
+
+  const deleteScript = async (role: string, id: string) => {
+    try {
+      setLoading(true);
+      await ScriptService.deleteScript({ role: role, id: id });
+      setLoading(false);
+    } catch (error) {
+    }
   }
 
   return (
@@ -108,7 +114,8 @@ const ScriptProvider = ({ children }: { children: any }) => {
         scriptDeleteParams,
         setScriptDeleteParams,
         scriptFilter,
-        setScriptFilter
+        setScriptFilter,
+        deleteScript
       }}
     >
       {children}

@@ -102,6 +102,7 @@ const Header = ({ selectedScript }: Props) => {
       <div className="flex items-center">
         {selectedScript.length > 0 ? <>
           <Buttons.BgHoverBtn
+            onClick={() => scriptContext.deleteScript(commonContext.role, selectedScript.map((item) => item.id).join(","))}
             title="Delete"
             paddingY="py-2"
             paddingX="px-4"
