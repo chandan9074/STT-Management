@@ -1,3 +1,5 @@
+import { STATUS_ANNOTATING, STATUS_TOOK_A_BREAK } from "../../helpers/ConditionVariable"
+
 export const collectedAudio = [
     {
         "id": "1",
@@ -1235,4 +1237,9 @@ export const collectAnnSenData = [
 
         },
     },
+]
+
+export const colAnnSenStatusFilterData = [
+    STATUS_ANNOTATING,
+    STATUS_TOOK_A_BREAK
 ]

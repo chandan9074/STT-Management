@@ -54,7 +54,7 @@
 }
 
 .ant-dropdown .ant-table-filter-dropdown {
-  border: 1px solid #e5e7eb;
+  border: none;
   box-shadow: 0px 4px 24px rgba(31, 56, 76, 0.08);
   border-radius: 8px;
 }

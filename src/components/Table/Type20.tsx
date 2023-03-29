@@ -1,11 +1,14 @@
-import { Table } from "antd"
-import { ColumnsType } from "antd/es/table"
-import Icons from "../../assets/Icons"
-import { collectAnnSenDataDT } from "../../types/audioManagementTypes"
-import AudioTrack from "../common/AudioTrack"
-import Annotate from "../common/TableField/AudioManagement/Annotate"
-import Speaker from "../common/TableField/AudioManagement/Speaker"
-import RoleImage from "../Image/RoleImage"
+import { Table } from "antd";
+import { ColumnsType, ColumnType } from 'antd/es/table';
+import Icons from "../../assets/Icons";
+import { colAnnSenStatusFilterData } from "../../data/audioManagement/AudioManagementData";
+import { STATUS_ANNOTATING, STATUS_TOOK_A_BREAK } from "../../helpers/ConditionVariable";
+import { collectAnnSenDataDT } from "../../types/audioManagementTypes";
+import AudioTrack from "../common/AudioTrack";
+import Annotate from "../common/TableField/AudioManagement/Annotate";
+import Speaker from "../common/TableField/AudioManagement/Speaker";
+import StatusFilter from "../common/TableField/AudioManagement/StatusFilter";
+import RoleImage from "../Image/RoleImage";
 
 type Props = {
     data: collectAnnSenDataDT[]
@@ -15,6 +18,24 @@ const Type20 = ({ data }: Props) => {
 
     // const [remarkOpen, setRemarkOpen] = useState(false);
     // const [singleTargetData, setSingleTargetData] = useState<collectAnnSenDataDT>();
+
+    const getColumnSearchProps = (dataIndex: string): ColumnType<collectAnnSenDataDT> => ({
+
+        filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
+
+            <div onKeyDown={(e) => e.stopPropagation()}
+                // className="flex items-center justify-center w-[260px] h-[92px] -mr-[90px] -mt-[0px]  rounded-[8px]" 
+                className="w-[260px] py-1.5 flex justify-center"
+            >
+                <StatusFilter option1={STATUS_ANNOTATING} option2={STATUS_TOOK_A_BREAK} data={colAnnSenStatusFilterData} />
+            </div>
+        ),
+        filterIcon: (filtered: boolean) => (
+            <div>
+                <img src={Icons.Unfold_More} className="w-[14px] h-[14px] object-cover" alt='' />
+            </div>
+        ),
+    });
 
     const Type20columns: ColumnsType<collectAnnSenDataDT> = [
         {
@@ -44,6 +65,8 @@ const Type20 = ({ data }: Props) => {
         {
             title: `${"Annotate".toLocaleUpperCase()}`,
             key: 'annotate',
+            ...getColumnSearchProps('annotate'),
+            // className: "audio-management-status",
             width: 184,
             render: (data: collectAnnSenDataDT) => <Annotate data={data.annotate} />
         },
