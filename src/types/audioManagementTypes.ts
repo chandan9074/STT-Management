@@ -1,11 +1,11 @@
 import { assignAudioTrackDT } from "./assignTypes";
 import { roleDT } from "./billingTypes";
-import { allScriptResDT, remarkDt } from "./script"
+import { allScriptResDT, scriptResDT } from "./script"
 
 export type audioManagementDT = {
     id: string;
     speech: assignAudioTrackDT;
-    script: allScriptResDT;
+    script: scriptResDT;
     speaker: speakerLocalityDT;
 }
 
@@ -24,7 +24,7 @@ export type singleSpeakerDT = {
 export type checkingStatusDT = {
     id: string;
     speech: assignAudioTrackDT;
-    script: allScriptResDT;
+    script: scriptResDT;
     speaker: speakerLocalityDT;
     audioChecker: audioCheckerDT;
     deadLine: string;
@@ -37,7 +37,7 @@ export type allCheckedAudioDT = {
     speaker: speakerLocalityDT;
     audioChecker: audioCheckerDT;
     status: string;
-    script: allScriptResDT;
+    script: scriptResDT;
     deadLine: string;
     submissionDate: string;
     remark: remarkInfoDT;
@@ -57,7 +57,7 @@ export type remarkInfoDT = {
 export type annotationDT = {
     id: string;
     speech: assignAudioTrackDT
-    script: allScriptResDT
+    script: scriptResDT
     speaker: speakerLocalityDT
     deadLine: string
     remark: remarkInfoDT

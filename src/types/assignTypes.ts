@@ -1,5 +1,5 @@
 import { roleDT } from "./billingTypes";
-import { allScriptResDT } from "./script";
+import { allScriptResDT, scriptResDT } from "./script";
 import { audioStatusDT, overTheTimeDataDT } from "./userManagementTypes";
 export type assignStatisticsDT = {
   target: number;
@@ -52,7 +52,7 @@ export interface AssigneeItemDT {
 export interface TargetItemDT {
   id: string;
   isSelected?: boolean;
-  script: allScriptResDT
+  script: scriptResDT;
   target: CriteriaItemDT;
   assignee: AssigneeItemDT;
   // deadLine: string;

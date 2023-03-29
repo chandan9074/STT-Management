@@ -7,8 +7,13 @@ import { ScriptContext } from "../../../../context/ScriptProvider";
 import { SearchBox } from "../../../SearchBox";
 import { targetFilterListDT } from "../../../../types/assignTypes";
 import { CommonContext } from "../../../../context/CommonProvider";
+import { scriptResDT } from "../../../../types/script";
 
-const Header = () => {
+type Props = {
+  selectedScript: scriptResDT[];
+}
+
+const Header = ({ selectedScript }: Props) => {
   const scriptContext = useContext(ScriptContext);
   const commonContext = useContext(CommonContext)
   const csvRef = useRef<HTMLInputElement>(null);
@@ -68,6 +73,7 @@ const Header = () => {
       distribution: filterList.distributionSource.join(","),
       role: commonContext.role.toLowerCase()
     }
+    scriptContext.setScriptFilter({ ...scriptContext.scriptFilter, ...params })
     scriptContext.getAllScript(params);
   }
 
@@ -94,29 +100,32 @@ const Header = () => {
         </p>
       </div>
       <div className="flex items-center">
-        <Buttons.BgHoverBtn
-          title="Delete"
-          paddingY="py-2"
-          paddingX="px-4"
-          borderRadius="rounded-[6px]"
-          textColor="text-secondary-blue-50"
-          fontSize="text-small"
-          fontWeight="font-medium"
-          duration="duration-300"
-          hoverBgColor="hover:bg-white"
-        />
-        <Buttons.BgHoverBtn
-          title="Edit"
-          paddingY="py-2"
-          paddingX="px-4"
-          borderRadius="rounded-[6px]"
-          textColor="text-secondary-blue-50"
-          fontSize="text-small"
-          fontWeight="font-medium"
-          duration="duration-300"
-          hoverBgColor="hover:bg-white"
-          marginX="mx-2"
-        />
+        {selectedScript.length > 0 ? <>
+          <Buttons.BgHoverBtn
+            title="Delete"
+            paddingY="py-2"
+            paddingX="px-4"
+            borderRadius="rounded-[6px]"
+            textColor="text-secondary-blue-50"
+            fontSize="text-small"
+            fontWeight="font-medium"
+            duration="duration-300"
+            hoverBgColor="hover:bg-white"
+          />
+          {selectedScript.length === 1 &&
+            <Buttons.BgHoverBtn
+              title="Edit"
+              paddingY="py-2"
+              paddingX="px-4"
+              borderRadius="rounded-[6px]"
+              textColor="text-secondary-blue-50"
+              fontSize="text-small"
+              fontWeight="font-medium"
+              duration="duration-300"
+              hoverBgColor="hover:bg-white"
+              marginX="mx-2"
+            />}
+        </> : null}
         <SearchBox.Type1 inputWidth="w-52" placeholder="Search with script ID, Title..." paddingX="px-3" paddingY="py-2" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
         {/* <Filter.Type1 filterData={filterData} /> */}
         <Filter.Type2 handleSubmitFilter={handleSubmitFilter} filterData={filterData} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />

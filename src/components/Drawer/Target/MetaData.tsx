@@ -1,15 +1,15 @@
 import { Dispatch, SetStateAction } from 'react';
 import Icons from '../../../assets/Icons';
 import { customSingleCriteriaDT } from '../../../types/assignTypes';
-import { allScriptResDT } from '../../../types/script';
+import { scriptResDT } from '../../../types/script';
 import BackButtonTitle from '../../common/BackButtonTitle';
 
 type Props = {
     setIsMetaData: Dispatch<SetStateAction<boolean>>;
-    data: allScriptResDT | undefined;
+    data: scriptResDT | undefined;
 }
 
-const MetaData = ({ setIsMetaData, data }: Props) => {    
+const MetaData = ({ setIsMetaData, data }: Props) => {
 
     const singleValue1: customSingleCriteriaDT[] = [
         {

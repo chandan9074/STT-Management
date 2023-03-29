@@ -4,7 +4,7 @@ import { Key, useState } from 'react';
 import Icons from '../../assets/Icons';
 import { SideDrawer } from '../common/SideDrawer';
 import "../../assets/css/table/type4Table.css";
-import { allScriptResDT } from '../../types/script';
+import { scriptResDT } from '../../types/script';
 
 
 
@@ -12,50 +12,64 @@ import { allScriptResDT } from '../../types/script';
 ;
 
 interface Props {
-    Data: allScriptResDT[],
-    handleSelectRow: (selectedRows: allScriptResDT[]) => void
+    Data: scriptResDT[],
+    handleSelectRow: (selectedRows: scriptResDT[]) => void
 }
 
 const Type4 = ({ Data, handleSelectRow }: Props) => {
     // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
-    const [drawerData, setDrawerData] = useState<allScriptResDT>();
+    const [drawerData, setDrawerData] = useState<scriptResDT>();
 
-    const showDrawer = (data: allScriptResDT) => {
+    const showDrawer = (data: scriptResDT) => {
         setOpen(true);
         setDrawerData(data)
     };
 
 
-    const columns: ColumnsType<allScriptResDT> = [
+    const columns: ColumnsType<scriptResDT> = [
         {
             title: `${"Data type".toLocaleUpperCase()}`,
             dataIndex: 'module',
+            width: 128,
+            render: (module: string) => <h1 className='text-blue-gray-80 text-xs'>{module}</h1>
         },
         {
             title: `${"ID".toLocaleUpperCase()}`,
             dataIndex: 'id',
+            width: 116,
+            render: (id: number) => <h1 className='text-ct-blue-60 text-xs font-medium w-11 truncate'>{id}</h1>
         },
         {
             title: `${"distribution Source".toLocaleUpperCase()}`,
             dataIndex: 'distributionSource',
+            width: 212,
+            render: (distributionSource: string) => <h1 className='text-blue-gray-80 text-xs'>{distributionSource}</h1>
         },
         {
             title: `${"Script title".toLocaleUpperCase()}`,
             dataIndex: 'title',
+            width: 216,
+            render: (title: string) => <h1 className='text-blue-gray-80 text-xs line-clamp-2'>{title}</h1>
         },
         {
             title: `${"Description".toLocaleUpperCase()}`,
             dataIndex: 'description',
+            width: 490,
+            render: (description: string) => <h1 className='text-blue-gray-80 text-xs line-clamp-2'>{description}</h1>
         },
         {
             title: `${"Script Domain".toLocaleUpperCase()}`,
             dataIndex: 'domain',
+            width: 184,
+            render: (domain: string) => <h1 className='text-blue-gray-80 text-xs'>{domain}</h1>
         },
         {
             title: `${"Details".toLocaleUpperCase()}`,
             dataIndex: 'Details',
+            fixed: 'right',
             align: 'center',
+            width: 128,
             render: (_, record, data) => (
                 <>
 
@@ -72,7 +86,7 @@ const Type4 = ({ Data, handleSelectRow }: Props) => {
     ];
 
     const rowSelection = {
-        onChange: (selectedRowKeys: Key[], selectedRows: allScriptResDT[]) => {
+        onChange: (selectedRowKeys: Key[], selectedRows: scriptResDT[]) => {
             // console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
             handleSelectRow(selectedRows)
         },
@@ -83,18 +97,20 @@ const Type4 = ({ Data, handleSelectRow }: Props) => {
     }
 
     return (
-        <div className='type4-table billing-table billing-table-even-bg'>
+        <div className='billing-table type4-table billing-table-even-bg'>
 
             <Table
 
                 rowSelection={{
                     // type: selectionType,
+                    fixed: 'left',
                     ...rowSelection,
                 }}
                 rowKey="id"
                 columns={columns}
                 dataSource={Data}
                 pagination={false}
+                scroll={{ x: 1366 }}
             />
 
             <SideDrawer.Type1
