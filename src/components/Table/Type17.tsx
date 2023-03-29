@@ -5,8 +5,8 @@ import Icons from '../../assets/Icons'
 import { checkingStatusDT } from '../../types/audioManagementTypes'
 import AudioTrack from '../common/AudioTrack'
 import Remark from '../common/Remark'
-import AudioChecker from '../common/TableField/AudioManagement/AudioChecker'
 import Speaker from '../common/TableField/AudioManagement/Speaker'
+import RoleImage from '../Image/RoleImage'
 
 type Props = {
     data: checkingStatusDT[]
@@ -22,8 +22,8 @@ const Type17 = ({ data }: Props) => {
         {
             title: `${"SN".toLocaleUpperCase()}`,
             key: 'sn',
-            width: 50,
-            // align: "center",
+            width: 60,
+            align: "center",
             render: (text, record, index) => (
                 <span>{(index + 1)}</span>
             ),
@@ -68,19 +68,29 @@ const Type17 = ({ data }: Props) => {
         {
             title: `${"Audio Checker".toLocaleUpperCase()}`,
             key: 'audioChecker',
-            width: 233,
-            render: (data: checkingStatusDT) => <AudioChecker data={data.audioChecker}/>
+            width: 240,
+            render: (data: checkingStatusDT) => <div >
+                <div className='flex items-center gap-x-[7px] pl-[2px]'>
+                    <div className='w-1.5 h-1.5 bg-primary-ct-magenta-60 rounded-full'></div>
+                    <h1 className='text-primary-ct-magenta-60 text-xs font-medium'>{data.audioChecker.status}...</h1>
+                </div>
+                <div className='flex'>
+                    <RoleImage role='audio checker' height='h-4' width='w-4' />
+                    <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs'>{data.audioChecker.name},</h1>
+                    <p className='text-blue-gray-75 text-xxs font-normal pl-1'>{data.audioChecker.locality}</p>
+                </div>
+            </div>
         },
         {
             title: `${"DeadLine (DD/MM)".toLocaleUpperCase()}`,
             key: 'deadLine',
-            width: 165,
+            width: 155,
             render: (data: checkingStatusDT) => <h1 className='text-small text-blue-gray-80'>{data.deadLine}</h1>
         },
         {
             title: `${"Remark".toLocaleUpperCase()}`,
             key: 'remark',
-            width: 90,
+            width: 85,
             align: "center",
             render: (data: checkingStatusDT) => (
                 <div className='flex justify-center'>
@@ -89,7 +99,7 @@ const Type17 = ({ data }: Props) => {
                             setRemarkOpen(true);
                             setSingleTargetData(data);
                             console.log(singleTargetData);
-                            
+
                         }}
                         src={Icons.File} className="h-[16px] w-[16px] cursor-pointer"
                         alt=""
@@ -103,7 +113,7 @@ const Type17 = ({ data }: Props) => {
             dataIndex: 'details',
             key: 'details',
             fixed: 'right',
-            width: 90,
+            width: 85,
             render: (_, record: checkingStatusDT) => (
                 <>
 

@@ -1,3 +1,5 @@
+import { STATUS_ANNOTATING, STATUS_TOOK_A_BREAK } from "../../helpers/ConditionVariable"
+
 export const collectedAudio = [
     {
         "id": "1",
@@ -248,7 +250,9 @@ export const checkingStatusData = [
         "audioChecker": {
             "status": "Checking",
             "name": "Peter Bailish",
-            "locality": "Middle-East Bangla"
+            "role": "annotator",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM"
         },
         "deadLine": "01/02/2022",
         "remark": {
@@ -318,7 +322,9 @@ export const checkingStatusData = [
         "audioChecker": {
             "status": "Checking",
             "name": "Peter Bailish",
-            "locality": "Middle-East Bangla"
+            "role": "audio checker",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM"
         },
         "deadLine": "01/02/2022",
         "remark": {
@@ -388,7 +394,9 @@ export const checkingStatusData = [
         "audioChecker": {
             "status": "Checking",
             "name": "Peter Bailish",
-            "locality": "Middle-East Bangla"
+            "role": "annotator",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM"
         },
         "deadLine": "01/02/2022",
         "remark": {
@@ -458,7 +466,9 @@ export const checkingStatusData = [
         "audioChecker": {
             "status": "Checking",
             "name": "Peter Bailish",
-            "locality": "Middle-East Bangla"
+            "role": "audio checker",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM"
         },
         "deadLine": "01/02/2022",
         "remark": {
@@ -513,7 +523,9 @@ export const allCheckedAudiosData = [
         "audioChecker": {
             "status": "Checking",
             "name": "Peter Bailish",
-            "locality": "Middle-East Bangla"
+            "role": "annotator",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM"
         },
         "status": "Reject",
         "script": {
@@ -585,7 +597,9 @@ export const allCheckedAudiosData = [
         "audioChecker": {
             "status": "Checking",
             "name": "Peter Bailish",
-            "locality": "Middle-East Bangla"
+            "role": "annotator",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM"
         },
         "status": "Approved",
         "script": {
@@ -658,7 +672,9 @@ export const allCheckedAudiosData = [
         "audioChecker": {
             "status": "Checking",
             "name": "Peter Bailish",
-            "locality": "Middle-East Bangla"
+            "role": "audio checker",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM"
         },
         "status": "Claimed",
         "script": {
@@ -730,7 +746,9 @@ export const allCheckedAudiosData = [
         "audioChecker": {
             "status": "Checking",
             "name": "Peter Bailish",
-            "locality": "Middle-East Bangla"
+            "role": "annotator",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM"
         },
         "status": "Claim Approved",
         "script": {
@@ -1049,7 +1067,9 @@ export const collectAnnSenData = [
         "audioChecker": {
             "status": "Checking",
             "name": "Peter Bailish",
-            "locality": "Middle-East Bangla"
+            "role": "annotator",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM"
         },
         "speaker": {
             "locality": "North-East Bangla",
@@ -1094,7 +1114,9 @@ export const collectAnnSenData = [
         "audioChecker": {
             "status": "Checking",
             "name": "Peter Bailish",
-            "locality": "Middle-East Bangla"
+            "role": "audio checker",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM"
         },
         "speaker": {
             "locality": "North-East Bangla",
@@ -1139,7 +1161,9 @@ export const collectAnnSenData = [
         "audioChecker": {
             "status": "Checking",
             "name": "Peter Bailish",
-            "locality": "Middle-East Bangla"
+            "role": "annotator",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM"
         },
         "speaker": {
             "locality": "North-East Bangla",
@@ -1184,7 +1208,9 @@ export const collectAnnSenData = [
         "audioChecker": {
             "status": "Checking",
             "name": "Peter Bailish",
-            "locality": "Middle-East Bangla"
+            "role": "annotator",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM"
         },
         "speaker": {
             "locality": "North-East Bangla",
@@ -1260,7 +1286,7 @@ export const annotatedFiles = [
             "frequency": 0,
             "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
         },
-        
+
         "deadLine": "01/02/2022",
         "submissionDate": "01/02/2022",
         "remark": {
@@ -1323,7 +1349,7 @@ export const annotatedFiles = [
             "frequency": 0,
             "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
         },
-        
+
         "deadLine": "01/02/2022",
         "submissionDate": "01/02/2022",
         "remark": {
@@ -1386,7 +1412,7 @@ export const annotatedFiles = [
             "frequency": 0,
             "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
         },
-        
+
         "deadLine": "01/02/2022",
         "submissionDate": "01/02/2022",
         "remark": {
@@ -1402,5 +1428,9 @@ export const annotatedFiles = [
             "des": "i am remarkjs"
         }
     },
-   
+
+]
+export const colAnnSenStatusFilterData = [
+    STATUS_ANNOTATING,
+    STATUS_TOOK_A_BREAK
 ]

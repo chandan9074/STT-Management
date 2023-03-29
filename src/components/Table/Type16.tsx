@@ -16,7 +16,7 @@ const Type16 = ({ data }: Props) => {
             title: `${"SN".toLocaleUpperCase()}`,
             key: 'sn',
             width: 48,
-            // align: "center",
+            align: "center",
             render: (text, record, index) => (
                 <span>{(index + 1)}</span>
             ),
@@ -31,7 +31,7 @@ const Type16 = ({ data }: Props) => {
         {
             title: `${"Raw Audio".toLocaleUpperCase()}`,
             key: 'speech',
-            width: 200,
+            width: 205,
             render: (data: audioManagementDT) => <>
                 <AudioTrack data={data.speech} />
             </>,

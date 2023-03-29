@@ -46,7 +46,9 @@ export type allCheckedAudioDT = {
 export type audioCheckerDT = {
     status: string;
     name: string;
+    role: string;
     locality: string;
+    time: string;
 }
 
 export type remarkInfoDT = {

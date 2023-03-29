@@ -8,7 +8,10 @@ export const STATUS_REJECTED = 'Rejected';
 export const STATUS_REJECT = 'Reject';
 export const STATUS_DECLINED = 'Claim Decline';
 export const STATUS_ANNOTATED = 'Annotated';
+export const STATUS_ANNOTATING = 'Annotating';
 export const STATUS_VALIDATED = 'Validated';
+export const STATUS_VALIDATING = 'Validating';
+export const STATUS_TOOK_A_BREAK = 'Took a Break';
 export const STATUS_CLAIMED = 'Claimed';
 
 export const AUDIO_FILE_UPLOADED = 'Uploaded';
