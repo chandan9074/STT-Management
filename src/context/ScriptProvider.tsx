@@ -1,6 +1,7 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import ScriptService from "../services/scriptService";
 import { allScriptResDT, getAllScriptsParamsDT, scriptParamDT, scriptResDT } from "../types/script";
+import { CommonContext } from "./CommonProvider";
 
 
 interface ContextProps {
@@ -37,6 +38,8 @@ const ScriptProvider = ({ children }: { children: any }) => {
   const [scriptDeleteParams, setScriptDeleteParams] = useState<string>("");
   const [scriptFilter, setScriptFilter] = useState<getAllScriptsParamsDT>({} as getAllScriptsParamsDT);
 
+  const commonContext = useContext(CommonContext);
+
   const uploadCsv = async (formData: FormData) => {
 
     ScriptService.uploadCsv(formData);
@@ -64,6 +67,7 @@ const ScriptProvider = ({ children }: { children: any }) => {
   const createScript = async (params: FormData) => {
     try {
       const response = await ScriptService.createScript(params);
+      getAllScript({ role: commonContext?.role });
       return {
         message: response?.data?.message,
         status: response?.status
@@ -71,13 +75,14 @@ const ScriptProvider = ({ children }: { children: any }) => {
     } catch (error) {
 
     }
-  }
+  }  
 
   const updateScript = async (params: FormData) => {
     try {
       setLoading(true);
       await ScriptService.UpdateScript(params);
       setLoading(false);
+      getAllScript({ role: commonContext?.role });
     } catch (error) {
       setLoading(false);
 

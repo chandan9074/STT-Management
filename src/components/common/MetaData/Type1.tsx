@@ -28,7 +28,7 @@ const Type1 = ({ metaData }: Props) => {
                 </div>
                 <div className='w-[296px]'>
                     <p className='text-small font-medium text-blue-gray-80 px-3 py-2'>
-                        --
+                    {metaData?.isAge ? 'Child' : '--'}
                     </p>
                 </div>
             </div>
@@ -55,7 +55,7 @@ const Type1 = ({ metaData }: Props) => {
                 <div className='w-[296px]'>
                     <p className='text-small font-medium text-blue-gray-80 px-3 py-2'>
                         {
-                            metaData.domain
+                            metaData?.domain
                         }
                     </p>
                 </div>
@@ -69,7 +69,7 @@ const Type1 = ({ metaData }: Props) => {
                 <div className='w-[296px]'>
                     <p className='text-small font-medium text-blue-gray-80 px-3 py-2'>
                         {
-                            metaData.subDomain
+                            metaData?.subdomain
                         }
                     </p>
                 </div>
