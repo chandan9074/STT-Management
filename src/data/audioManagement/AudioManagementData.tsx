@@ -1256,10 +1256,11 @@ export const annotatedFiles = [
             "locality": "Middle-East Bangla"
         },
         "audioChecker": {
-            "role": "audio checker",
             "status": "Checking",
             "name": "Peter Bailish",
-            "locality": "Middle-East Bangla"
+            "role": "annotator",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM"
         },
         "annotator": {
             "role": "annotator",
@@ -1319,10 +1320,11 @@ export const annotatedFiles = [
             "locality": "Middle-East Bangla"
         },
         "audioChecker": {
-            "role": "audio checker",
             "status": "Checking",
             "name": "Peter Bailish",
-            "locality": "Middle-East Bangla"
+            "role": "annotator",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM"
         },
         "annotate": {
             "role": "annotator",
@@ -1382,10 +1384,11 @@ export const annotatedFiles = [
             "locality": "Middle-East Bangla"
         },
         "audioChecker": {
-            "role": "audio checker",
             "status": "Checking",
             "name": "Peter Bailish",
-            "locality": "Middle-East Bangla"
+            "role": "annotator",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM"
         },
         "annotate": {
             "role": "annotator",
