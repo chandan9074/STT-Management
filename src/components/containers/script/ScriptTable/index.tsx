@@ -17,7 +17,7 @@ const ScriptTable = ({ setSelectedScript }: Props) => {
     useEffect(() => {
         scriptContext.getAllScript({ ...scriptContext.scriptFilter, role: commonContext.role.toLowerCase() });
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [scriptContext.scriptFilter, scriptContext.deleteScript])
+    }, [scriptContext.scriptFilter, commonContext.role])
 
     const handleSelectRow = (selectedRows: scriptResDT[]) => {
         // console.log("selected rows------", selectedRows)

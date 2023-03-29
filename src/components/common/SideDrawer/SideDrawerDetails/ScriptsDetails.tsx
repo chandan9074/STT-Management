@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Icons from '../../../../assets/Icons';
 import { EDIT_SCRIPT_PATH } from '../../../../helpers/Slug';
 import { PDF } from '../../../PDF';
-import { Toast } from '../../../Toast';
 
 interface Props {
     setMetaDataOpen: Dispatch<SetStateAction<boolean>>;
@@ -24,12 +23,6 @@ const ScriptsDetails = ({ drawerData, setMetaDataOpen }: Props) => {
     };
     return (
         <div className='animate-fadeIn'>
-            <Toast.Type1
-                // open={open}
-                // setOpen={setOpen}
-                // massages='Copy To Clipboard'
-                iconSrc={Icons.contentCopy}
-            />
             <div className='p-5 bg-ct-blue-05 border-b-ct-blue-20'>
                 <div className="flex w-full justify-between items-center">
                     <div>
