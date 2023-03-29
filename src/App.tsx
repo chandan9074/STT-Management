@@ -29,6 +29,8 @@ import Checking from "./pages/AudioManagement/CollectedAudio/Checking";
 import UploadAudio from "./pages/AudioManagement/UploadAudio";
 import Annotation from "./pages/AudioManagement/CollectedAudio/Annotation";
 import SentenceLevel from "./pages/AudioManagement/CollectedAudio/Annotation/SentenceLevel";
+import WordLevel from "./pages/AudioManagement/CollectedAudio/Annotation/WordLevel";
+import PhonemeLevel from "./pages/AudioManagement/CollectedAudio/Annotation/PhonemeLevel";
 
 function App() {
   useEffect(() => {
@@ -95,6 +97,8 @@ function App() {
             <Route path={PATH.ANNOTAION}>
               <Route path='' element={<Annotation />} />
               <Route path={PATH.SENETENCE_LEVEL} element={<SentenceLevel />} />
+              <Route path={PATH.WORD_LEVEL} element={<WordLevel />} />
+              <Route path={PATH.PHONEME_LEVEL} element={<PhonemeLevel />} />
             </Route>
           </Route>
           <Route path={PATH.UPLOAD_AUDION_VIDEO_PATH} element={<UploadAudio />} />
