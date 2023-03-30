@@ -133,6 +133,8 @@ import East from "./east.svg";
 import Conversion from "./conversion_path.svg";
 import openInNewGray from "./open_in_new_gray.svg"
 import File from "./File.svg";
+import check_magenta from "./check_magenta.svg"
+import check_blue from "./check_blue.svg"
 
 const Icons = {
   currency,
@@ -223,6 +225,8 @@ const Icons = {
   double_up_arrow,
   info,
   check_green,
+  check_blue,
+  check_magenta,
   warning,
   calender_white,
   Script,

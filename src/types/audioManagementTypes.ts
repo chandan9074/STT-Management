@@ -46,7 +46,9 @@ export type allCheckedAudioDT = {
 export type audioCheckerDT = {
     status: string;
     name: string;
+    role: string;
     locality: string;
+    time: string;
 }
 
 export type remarkInfoDT = {
@@ -76,4 +78,17 @@ export type annotateInfoDT = {
     status: string;
     roleName: string;
     locality: string;
+}
+
+export type annotatedFilesDT = {
+    id: string;
+    speech: assignAudioTrackDT;
+    speaker: speakerLocalityDT;
+    audioChecker: audioCheckerDT;
+    status: string;
+    script: scriptResDT;
+    deadLine: string;
+    submissionDate: string;
+    remark: remarkInfoDT;
+    annotate: annotateInfoDT;
 }

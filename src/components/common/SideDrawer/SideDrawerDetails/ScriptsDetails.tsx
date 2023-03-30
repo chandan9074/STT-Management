@@ -26,7 +26,7 @@ const ScriptsDetails = ({ drawerData, setMetaDataOpen }: Props) => {
             <div className='p-5 bg-ct-blue-05 border-b-ct-blue-20'>
                 <div className="flex w-full justify-between items-center">
                     <div>
-                        <p className="text-xs font-normal text-ct-blue-90-70%">Script Title</p>
+                        {/* <p className="text-xs font-normal text-ct-blue-90-70%">Script Title</p> */}
                         <p className='text-heading-6 font-semibold text-ct-blue-95 mt-2'>{drawerData.title}</p>
                     </div>
                     <div>

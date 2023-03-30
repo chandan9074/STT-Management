@@ -27,7 +27,6 @@ const CriteriaTargetBox = ({
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
   // const [selectedValue, setSelectedValue] = useState<string>("");
 
-  console.log('single-----------------', singleCriteriaRecreate);
 
 
   const handleTextConcatenation = (data: CriteriaItemDT) => {
