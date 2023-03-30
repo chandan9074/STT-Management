@@ -1,4 +1,4 @@
-import { STATUS_ANNOTATING, STATUS_TOOK_A_BREAK } from "../../helpers/ConditionVariable"
+import { STATUS_ANNOTATING, STATUS_TOOK_A_BREAK, STATUS_VALIDATING } from "../../helpers/ConditionVariable"
 
 export const collectedAudio = [
     {
@@ -1438,6 +1438,12 @@ export const colAnnSenStatusFilterData = [
     STATUS_TOOK_A_BREAK
 ]
 
+export const colValSenStatusFilterData = [
+    STATUS_VALIDATING,
+    STATUS_TOOK_A_BREAK
+]
+
+
 export const collectValSenData = [
     {
         "id": "vn4yv7yt05tv597vy4",
@@ -1474,11 +1480,13 @@ export const collectValSenData = [
             "validators": {
                 "id": "",
                 "role": "",
-                "name": ""
+                "name": "",
+                "gender": ""
             }
         },
         "deadLine": "01/02/2022",
         "annotator": {
+            "status": "",
             "locality": "Barendri",
             "time": "01 Feb ; 3:30 PM",
             "annotator": {
@@ -1510,7 +1518,7 @@ export const collectValSenData = [
         },
     },
     {
-        "id": "vn4y597vy4",
+        "id": "vn4yvtv597vy4",
         "speech": {
             "id": '0',
             "title": "Brahms,Two Pianos",
@@ -1524,16 +1532,18 @@ export const collectValSenData = [
             "validators": {
                 "id": "raihanrohan@gmail.com",
                 "role": "validator",
-                "name": "Raihan Rohan"
+                "name": "Raihan Rohan",
+                "gender": "male"
             }
         },
         "validate2": {
             "status": "Validating",
-            "locality": "Kamrupi",
+            "locality": "Barendri",
             "validators": {
-                "id": "nikantomoni@gmail.com",
+                "id": "raihanrohan@gmail.com",
                 "role": "annotator",
-                "name": "Nikantomoni"
+                "name": "Raihan Rohan",
+                "gender": "male"
             }
         },
         "validateFinal": {
@@ -1542,11 +1552,13 @@ export const collectValSenData = [
             "validators": {
                 "id": "",
                 "role": "",
-                "name": ""
+                "name": "",
+                "gender": ""
             }
         },
         "deadLine": "01/02/2022",
         "annotator": {
+            "status": "",
             "locality": "Barendri",
             "time": "01 Feb ; 3:30 PM",
             "annotator": {
@@ -1578,7 +1590,7 @@ export const collectValSenData = [
         },
     },
     {
-        "id": "vn4yv7yt05t",
+        "id": "vn4yvtv597vy4",
         "speech": {
             "id": '0',
             "title": "Brahms,Two Pianos",
@@ -1587,34 +1599,38 @@ export const collectValSenData = [
                 "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
         },
         "validate1": {
-            "status": "Took a Break",
-            "locality": "Middle-East Bangla",
+            "status": "",
+            "locality": "Barendri",
             "validators": {
-                "id": "salamjaitun@gmail.com",
+                "id": "raihanrohan@gmail.com",
                 "role": "validator",
-                "name": "Salam Jaitun"
+                "name": "Raihan Rohan",
+                "gender": "male"
             }
         },
         "validate2": {
             "status": "",
-            "locality": "Middle-East Bangla",
+            "locality": "Barendri",
             "validators": {
-                "id": "salamjaitun@gmail.com",
+                "id": "raihanrohan@gmail.com",
                 "role": "validator",
-                "name": "Salam Jaitun"
+                "name": "Raihan Rohan",
+                "gender": "male"
             }
         },
         "validateFinal": {
-            "status": "Validating",
-            "locality": "Barendri",
+            "status": "Took a Break",
+            "locality": "Jahangirnagar",
             "validators": {
-                "id": "marattokbhuiyan@gmail.com",
-                "role": "annotator",
-                "name": "Marattok Bhuiyan"
+                "id": "Jahangir@gmail.com",
+                "role": "validator",
+                "name": "Jahangir",
+                "gender": "male"
             }
         },
         "deadLine": "01/02/2022",
         "annotator": {
+            "status": "",
             "locality": "Barendri",
             "time": "01 Feb ; 3:30 PM",
             "annotator": {
@@ -1644,5 +1660,5 @@ export const collectValSenData = [
                 "gender": 'female',
             },
         },
-    }
+    },
 ]

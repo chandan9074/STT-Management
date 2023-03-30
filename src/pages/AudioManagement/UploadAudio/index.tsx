@@ -1,9 +1,11 @@
-import React from 'react'
+import { Outlet } from "react-router-dom"
 
-const UploadAudio = () => {
+const Validation = () => {
   return (
-    <div>UploadAudio</div>
+    <div>
+      <Outlet />
+    </div>
   )
 }
 
-export default UploadAudio
+export default Validation

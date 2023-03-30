@@ -80,17 +80,17 @@ let SideDrawerLink = [
                         links: [
                             {
                                 name: 'Sentence Level',
-                                route: PATH.CHECKING_STATUS,
+                                route: PATH.SENETENCE_LEVEL,
                                 links: []
                             },
                             {
                                 name: 'Word Level',
-                                route: PATH.ALL_CHECKED_AUDIOS,
+                                route: PATH.WORD_LEVEL,
                                 links: []
                             },
                             {
                                 name: 'Phoneme Level',
-                                route: PATH.CHECKING_STATUS,
+                                route: PATH.PHONEME_LEVEL,
                                 links: []
                             },
                             {
