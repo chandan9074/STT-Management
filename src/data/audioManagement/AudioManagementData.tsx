@@ -320,7 +320,7 @@ export const checkingStatusData = [
 
         },
         "audioChecker": {
-            "status": "Took a Break",
+            "status": "Checking",
             "name": "Peter Bailish",
             "role": "audio checker",
             "locality": "Middle-East Bangla",
@@ -464,7 +464,7 @@ export const checkingStatusData = [
 
         },
         "audioChecker": {
-            "status": "Took a Break",
+            "status": "Checking",
             "name": "Peter Bailish",
             "role": "audio checker",
             "locality": "Middle-East Bangla",
@@ -1050,7 +1050,7 @@ export const annotationData = [
 
 export const collectAnnSenData = [
     {
-        "id": "yq98b457v8634er1",
+        "id": "1",
         "speech": {
             "id": '0',
             "title": "Brahms,Two Pianos",
@@ -1097,7 +1097,7 @@ export const collectAnnSenData = [
         },
     },
     {
-        "id": "2uhnp8yvrt7944yv9",
+        "id": "2",
         "speech": {
             "id": '0',
             "title": "Brahms,Two Pianos",
@@ -1144,7 +1144,7 @@ export const collectAnnSenData = [
         },
     },
     {
-        "id": "vn74y503v93yvnur3",
+        "id": "3",
         "speech": {
             "id": '0',
             "title": "Brahms,Two Pianos",
@@ -1191,7 +1191,7 @@ export const collectAnnSenData = [
         },
     },
     {
-        "id": "vn4yv7yt05tv597vy4",
+        "id": "4",
         "speech": {
             "id": '0',
             "title": "Brahms,Two Pianos",
@@ -1249,154 +1249,38 @@ export const annotatedFiles = [
             "url":
                 "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
         },
-        "speaker ": {
-            "role": "speaker",
-            "status": "Checking",
-            "name": "Peter Bailish",
-            "locality": "Middle-East Bangla"
+        "speaker": {
+            "locality": "North-East Bangla",
+            "speakers": {
+                "id": "maksudalam2@gmail.com",
+                "name": 'Bilkis banu',
+                "role": 'speaker',
+                "gender": 'female',
+            },
         },
         "audioChecker": {
             "status": "Checking",
-            "name": "Peter Bailish",
-            "role": "annotator",
             "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM"
+            "time": "01 Feb ; 3:30 PM",
+            "audioCheckers": {
+                "id": "maksudalam2@gmail.com",
+                "name": 'Bilkis banu',
+                "role": 'audio Checker',
+                "gender": 'female',
+            },
         },
         "annotator": {
-            "role": "annotator",
-            "status": "Annotating",
-            "roleName": "Maksud Alam",
-            "locality": "Barendri"
-        },
-        "status": "Reject",
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
-
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "",
-            "sourceFileName": "",
-            "sourceFileImage": "",
-            "title": "",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-
-        "deadLine": "01/02/2022",
-        "submissionDate": "01/02/2022",
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+            "status": "",
+            "locality": "Barendri",
+            "time": "01 Feb ; 3:30 PM",
+            "annotator": {
+                "id": "maksudalam2@gmail.com",
+                "name": 'Bilkis banu',
+                "role": 'annotator',
+                "gender": 'female',
             },
-            "des": "i am remarkjs"
-        }
-    },
-
-    {
-        "id": "2",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
         },
-        "speaker ": {
-            "role": "speaker",
-            "status": "Checking",
-            "name": "Peter Bailish",
-            "locality": "Middle-East Bangla"
-        },
-        "audioChecker": {
-            "status": "Checking",
-            "name": "Peter Bailish",
-            "role": "annotator",
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM"
-        },
-        "annotate": {
-            "role": "annotator",
-            "status": "Annotating",
-            "roleName": "Maksud Alam",
-            "locality": "Barendri"
-        },
-        "status": "Reject",
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
-
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "",
-            "sourceFileName": "",
-            "sourceFileImage": "",
-            "title": "",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-
-        "deadLine": "01/02/2022",
-        "submissionDate": "01/02/2022",
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
-            },
-            "des": "i am remarkjs"
-        }
-    },
-
-    {
-        "id": "3",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "speaker ": {
-            "role": "speaker",
-            "status": "Checking",
-            "name": "Peter Bailish",
-            "locality": "Middle-East Bangla"
-        },
-        "audioChecker": {
-            "status": "Checking",
-            "name": "Peter Bailish",
-            "role": "annotator",
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM"
-        },
-        "annotate": {
-            "role": "annotator",
-            "status": "Annotating",
-            "roleName": "Maksud Alam",
-            "locality": "Barendri"
-        },
-        "status": "Reject",
+        "status": "Cancelled",
         "script": {
             "module": "STT",
             "distributionSource": "Lecture",

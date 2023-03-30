@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { annotatedFiles } from '../../../../../data/audioManagement/AudioManagementData';
 import Buttons from '../../../../Buttons';
 import Table from '../../../../Table';
 import { CategoryMap } from '../../../dashboard/DataContainer/CollectData';
@@ -9,7 +10,7 @@ const AllAnnotatedFiles = () => {
 
     const allTergetMenu = (key: string) => {
         const Category: CategoryMap = {
-            "Sentence": <><Table.Type21 /></>,
+            "Sentence": <><Table.Type21 data={annotatedFiles} /></>,
             "Word": <></>,
             "Phoneme": <></>
         };
