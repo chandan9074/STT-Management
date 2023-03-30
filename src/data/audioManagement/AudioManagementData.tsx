@@ -822,18 +822,18 @@ export const annotationData = [
                     "role": 'speaker',
                     "gender": 'female',
                 },
-                {
-                    "id": "maksudam2@gmail.com",
-                    "name": 'Maksuda',
-                    "role": 'speaker',
-                    "gender": 'male',
-                },
-                {
-                    "id": "maksudalam2@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                },
+                // {
+                //     "id": "maksudam2@gmail.com",
+                //     "name": 'Maksuda',
+                //     "role": 'speaker',
+                //     "gender": 'male',
+                // },
+                // {
+                //     "id": "maksudalam2@gmail.com",
+                //     "name": 'Bilkis banu',
+                //     "role": 'speaker',
+                //     "gender": 'female',
+                // },
             ],
 
         },
@@ -887,18 +887,18 @@ export const annotationData = [
                     "role": 'speaker',
                     "gender": 'female',
                 },
-                {
-                    "id": "maksudam2@gmail.com",
-                    "name": 'Maksuda',
-                    "role": 'speaker',
-                    "gender": 'male',
-                },
-                {
-                    "id": "maksudalam2@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                },
+                // {
+                //     "id": "maksudam2@gmail.com",
+                //     "name": 'Maksuda',
+                //     "role": 'speaker',
+                //     "gender": 'male',
+                // },
+                // {
+                //     "id": "maksudalam2@gmail.com",
+                //     "name": 'Bilkis banu',
+                //     "role": 'speaker',
+                //     "gender": 'female',
+                // },
             ],
 
         },
@@ -952,18 +952,18 @@ export const annotationData = [
                     "role": 'speaker',
                     "gender": 'female',
                 },
-                {
-                    "id": "maksudam2@gmail.com",
-                    "name": 'Maksuda',
-                    "role": 'speaker',
-                    "gender": 'male',
-                },
-                {
-                    "id": "maksudalam2@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                },
+                // {
+                //     "id": "maksudam2@gmail.com",
+                //     "name": 'Maksuda',
+                //     "role": 'speaker',
+                //     "gender": 'male',
+                // },
+                // {
+                //     "id": "maksudalam2@gmail.com",
+                //     "name": 'Bilkis banu',
+                //     "role": 'speaker',
+                //     "gender": 'female',
+                // },
             ],
 
         },
@@ -1017,18 +1017,18 @@ export const annotationData = [
                     "role": 'speaker',
                     "gender": 'female',
                 },
-                {
-                    "id": "maksudam2@gmail.com",
-                    "name": 'Maksuda',
-                    "role": 'speaker',
-                    "gender": 'male',
-                },
-                {
-                    "id": "maksudalam2@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                },
+                // {
+                //     "id": "maksudam2@gmail.com",
+                //     "name": 'Maksuda',
+                //     "role": 'speaker',
+                //     "gender": 'male',
+                // },
+                // {
+                //     "id": "maksudalam2@gmail.com",
+                //     "name": 'Bilkis banu',
+                //     "role": 'speaker',
+                //     "gender": 'female',
+                // },
             ],
 
         },
