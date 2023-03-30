@@ -1437,3 +1437,212 @@ export const colAnnSenStatusFilterData = [
     STATUS_ANNOTATING,
     STATUS_TOOK_A_BREAK
 ]
+
+export const collectValSenData = [
+    {
+        "id": "vn4yv7yt05tv597vy4",
+        "speech": {
+            "id": '0',
+            "title": "Brahms,Two Pianos",
+            "duration": "5:00",
+            "url":
+                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+        },
+        "validate1": {
+            "status": "Validating",
+            "locality": "Barendri",
+            "validators": {
+                "id": "raihanrohan@gmail.com",
+                "role": "validator",
+                "name": "Raihan Rohan",
+                "gender": "male"
+            }
+        },
+        "validate2": {
+            "status": "",
+            "locality": "",
+            "validators": {
+                "id": "",
+                "role": "",
+                "name": "",
+                "gender": ""
+            }
+        },
+        "validateFinal": {
+            "status": "",
+            "locality": "",
+            "validators": {
+                "id": "",
+                "role": "",
+                "name": ""
+            }
+        },
+        "deadLine": "01/02/2022",
+        "annotator": {
+            "locality": "Barendri",
+            "time": "01 Feb ; 3:30 PM",
+            "annotator": {
+                "id": "maksudalam2@gmail.com",
+                "name": 'Bilkis banu',
+                "role": 'annotator',
+                "gender": 'female',
+            },
+        },
+        "audioChecker": {
+            "status": "Checking",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM",
+            "audioCheckers": {
+                "id": "maksudalam2@gmail.com",
+                "name": 'Bilkis banu',
+                "role": 'audio Checker',
+                "gender": 'female',
+            },
+        },
+        "speaker": {
+            "locality": "North-East Bangla",
+            "speakers": {
+                "id": "maksudalam2@gmail.com",
+                "name": 'Bilkis banu',
+                "role": 'speaker',
+                "gender": 'female',
+            },
+        },
+    },
+    {
+        "id": "vn4y597vy4",
+        "speech": {
+            "id": '0',
+            "title": "Brahms,Two Pianos",
+            "duration": "5:00",
+            "url":
+                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+        },
+        "validate1": {
+            "status": "",
+            "locality": "Barendri",
+            "validators": {
+                "id": "raihanrohan@gmail.com",
+                "role": "validator",
+                "name": "Raihan Rohan"
+            }
+        },
+        "validate2": {
+            "status": "Validating",
+            "locality": "Kamrupi",
+            "validators": {
+                "id": "nikantomoni@gmail.com",
+                "role": "annotator",
+                "name": "Nikantomoni"
+            }
+        },
+        "validateFinal": {
+            "status": "",
+            "locality": "",
+            "validators": {
+                "id": "",
+                "role": "",
+                "name": ""
+            }
+        },
+        "deadLine": "01/02/2022",
+        "annotator": {
+            "locality": "Barendri",
+            "time": "01 Feb ; 3:30 PM",
+            "annotator": {
+                "id": "maksudalam2@gmail.com",
+                "name": 'Bilkis banu',
+                "role": 'annotator',
+                "gender": 'female',
+            },
+        },
+        "audioChecker": {
+            "status": "Checking",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM",
+            "audioCheckers": {
+                "id": "maksudalam2@gmail.com",
+                "name": 'Bilkis banu',
+                "role": 'audio Checker',
+                "gender": 'female',
+            },
+        },
+        "speaker": {
+            "locality": "North-East Bangla",
+            "speakers": {
+                "id": "maksudalam2@gmail.com",
+                "name": 'Bilkis banu',
+                "role": 'speaker',
+                "gender": 'female',
+            },
+        },
+    },
+    {
+        "id": "vn4yv7yt05t",
+        "speech": {
+            "id": '0',
+            "title": "Brahms,Two Pianos",
+            "duration": "5:00",
+            "url":
+                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+        },
+        "validate1": {
+            "status": "Took a Break",
+            "locality": "Middle-East Bangla",
+            "validators": {
+                "id": "salamjaitun@gmail.com",
+                "role": "validator",
+                "name": "Salam Jaitun"
+            }
+        },
+        "validate2": {
+            "status": "",
+            "locality": "Middle-East Bangla",
+            "validators": {
+                "id": "salamjaitun@gmail.com",
+                "role": "validator",
+                "name": "Salam Jaitun"
+            }
+        },
+        "validateFinal": {
+            "status": "Validating",
+            "locality": "Barendri",
+            "validators": {
+                "id": "marattokbhuiyan@gmail.com",
+                "role": "annotator",
+                "name": "Marattok Bhuiyan"
+            }
+        },
+        "deadLine": "01/02/2022",
+        "annotator": {
+            "locality": "Barendri",
+            "time": "01 Feb ; 3:30 PM",
+            "annotator": {
+                "id": "maksudalam2@gmail.com",
+                "name": 'Bilkis banu',
+                "role": 'annotator',
+                "gender": 'female',
+            },
+        },
+        "audioChecker": {
+            "status": "Checking",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM",
+            "audioCheckers": {
+                "id": "maksudalam2@gmail.com",
+                "name": 'Bilkis banu',
+                "role": 'audio Checker',
+                "gender": 'female',
+            },
+        },
+        "speaker": {
+            "locality": "North-East Bangla",
+            "speakers": {
+                "id": "maksudalam2@gmail.com",
+                "name": 'Bilkis banu',
+                "role": 'speaker',
+                "gender": 'female',
+            },
+        },
+    }
+]
