@@ -57,7 +57,7 @@ const Type20 = ({ data }: Props) => {
         {
             title: `${"Raw Audio".toLocaleUpperCase()}`,
             key: 'speech',
-            width: 148,
+            width: 180,
             render: (data: collectAnnSenDataDT) => <>
                 <AudioTrack data={data.speech} />
             </>,
@@ -67,24 +67,24 @@ const Type20 = ({ data }: Props) => {
             key: 'annotate',
             ...getColumnSearchProps('annotate'),
             // className: "audio-management-status",
-            width: 184,
+            width: 206,
             render: (data: collectAnnSenDataDT) => <Annotate data={data.annotate} />
         },
         {
-            title: `${"DeadLine (DD/MM)".toLocaleUpperCase()}`,
+            title: `${"DeadLine".toLocaleUpperCase()}`,
             key: 'deadLine',
-            width: 155,
+            width: 90,
             render: (data: collectAnnSenDataDT) => <h1 className='text-small text-blue-gray-80'>{data.deadLine}</h1>
         },
         {
             title: `${"Audio Checker".toLocaleUpperCase()}`,
             key: 'audioChecker',
-            width: 233,
+            width: 180,
             render: (data: collectAnnSenDataDT) =>
                 <div >
                     <div className='flex'>
                         <RoleImage role='audio checker' height='h-4' width='w-4' />
-                        <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs'>{data.audioChecker.name},</h1>
+                        <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs'>{data.audioChecker.name}</h1>
                     </div>
                     <p className='text-blue-gray-75 text-xxs font-normal pl-[22px]'>{data.audioChecker.locality}</p>
                 </div>
@@ -92,7 +92,7 @@ const Type20 = ({ data }: Props) => {
         {
             title: `${"Speaker".toLocaleUpperCase()}`,
             key: 'speaker',
-            width: 234,
+            width: 206,
             render: (data: collectAnnSenDataDT) => <Speaker data={data.speaker} />
         },
         {
@@ -101,7 +101,7 @@ const Type20 = ({ data }: Props) => {
             dataIndex: 'details',
             key: 'details',
             fixed: 'right',
-            width: 85,
+            width: 71,
             render: (_, record: collectAnnSenDataDT) => (
                 <>
 

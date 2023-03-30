@@ -68,11 +68,11 @@ const Type17 = ({ data }: Props) => {
         {
             title: `${"Audio Checker".toLocaleUpperCase()}`,
             key: 'audioChecker',
-            width: 240,
+            width: 233,
             render: (data: checkingStatusDT) => <div >
                 <div className='flex items-center gap-x-[7px] pl-[2px]'>
-                    <div className='w-1.5 h-1.5 bg-primary-ct-magenta-60 rounded-full'></div>
-                    <h1 className='text-primary-ct-magenta-60 text-xs font-medium'>{data.audioChecker.status}...</h1>
+                    <div className={`w-1.5 h-1.5 ${data.audioChecker.status === "Checking" ? "bg-primary-ct-magenta-60" : "bg-secondary-blue-50"} rounded-full`}></div>
+                    <h1 className={`${data.audioChecker.status === "Checking" ? "text-primary-ct-magenta-60" : "text-secondary-blue-50"} text-xs font-medium`}>{data.audioChecker.status}...</h1>
                 </div>
                 <div className='flex'>
                     <RoleImage role='audio checker' height='h-4' width='w-4' />

@@ -22,7 +22,7 @@ const Type18 = ({ data }: Props) => {
     {
       title: `${"SN".toLocaleUpperCase()}`,
       key: 'sn',
-      width: 50,
+      width: 80,
       align: "center",
       render: (text, record, index) => (
         <span>{(index + 1)}</span>
@@ -52,7 +52,7 @@ const Type18 = ({ data }: Props) => {
     {
       title: `${"Audio Checker".toLocaleUpperCase()}`,
       key: 'audioChecker',
-      width: 240,
+      width: 266,
       render: (data: allCheckedAudioDT) => 
       <div className='flex flex-col gap-y-1'>
         <div className='flex'>
