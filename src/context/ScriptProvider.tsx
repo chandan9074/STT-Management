@@ -1,10 +1,8 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useState } from "react";
 import ScriptService from "../services/scriptService";
 import { allScriptResDT, getAllScriptsParamsDT, scriptParamDT, scriptResDT } from "../types/script";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Toast } from "../components/Toast";
-import { CommonContext } from "./CommonProvider";
 
 
 interface ContextProps {
@@ -42,7 +40,6 @@ const ScriptProvider = ({ children }: { children: any }) => {
   const [scriptDeleteParams, setScriptDeleteParams] = useState<string>("");
   const [scriptFilter, setScriptFilter] = useState<getAllScriptsParamsDT>({} as getAllScriptsParamsDT);
 
-  const commonContext = useContext(CommonContext)
 
   const uploadCsv = async (formData: FormData) => {
 
@@ -94,9 +91,9 @@ const ScriptProvider = ({ children }: { children: any }) => {
   const deleteScript = async (role: string, id: string) => {
     try {
       setLoading(true);
-      const res = await ScriptService.deleteScript({ role: role, id: id });
+      await ScriptService.deleteScript({ role: role, id: id });
       setLoading(false);
-      await getAllScript({ role: "admin" });
+      // await getAllScript({ role: "admin" });
       // if (res.status === 200) {
       // setScriptsData(id.split(',').map((singleId) => (scriptsData.scripts.filter((item: scriptResDT) => item.id !== singleId)));
       // setScriptsData(scriptsData.scripts.filter((item: scriptResDT) => !id.split(',').includes(item.id)));
