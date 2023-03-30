@@ -29,12 +29,13 @@ const theme = createTheme({
 
 })
 
-
 const validationSchema = yup.object({
     sourceType: yup.string().required('Source Type is required'),
     domain: yup.string().required('Domain is required'),
     subdomain: yup.string().required('Sub domain is required'),
     distributionSource: yup.string().required('Distribution Source is required'),
+    title: yup.string().required('Title Source is required'),
+    description: yup.string().required('Description Source is required'),
 
 });
 
@@ -43,7 +44,7 @@ const ScriptForms = ({ data }: { data?: scriptResDT }) => {
     const navigate = useNavigate();
 
     const scriptContext = useContext(ScriptContext);
-    const { createScript, updateScript, scriptModule, setScriptModule, loading } = scriptContext;    
+    const { createScript, updateScript, scriptModule, setScriptModule } = scriptContext;
 
     const formik = useFormik({
         enableReinitialize: true,
@@ -62,39 +63,6 @@ const ScriptForms = ({ data }: { data?: scriptResDT }) => {
             sourceFileName: data?.sourceFileName || ''
         },
         validationSchema: validationSchema,
-
-        // onSubmit: (values) => {
-        //     console.log('on submit');
-
-        //     let formData = new FormData();
-
-        //     // Keep track of whether any values have changed
-        //     let hasChanges = false;
-
-        //     // Loop through the values object
-        //     for (const [key, value] of Object.entries(values)) {
-        //       // Check if the value has changed from the initial data
-        //       if (value !== data?.[key as keyof scriptResDT]) {
-        //         // Convert boolean values to strings
-        //         const valueToAppend = typeof value === 'boolean' ? value.toString() : value;
-        //         formData.append(key, valueToAppend);
-        //         hasChanges = true;
-        //       }
-        //     }
-
-        //     // If no changes have been made, exit the function
-        //     if (!hasChanges) {
-        //       return;
-        //     }
-
-        //     // Add the id to the formData object if data exists
-        //     if (data) {
-        //       formData.append('id', data.id);
-        //       const res = updateScript(formData);
-        //     } else {
-        //       const res = createScript(formData);
-        //     }
-        //   },
 
         onSubmit: (values: scriptResDT) => {
 
@@ -144,22 +112,19 @@ const ScriptForms = ({ data }: { data?: scriptResDT }) => {
         }
     });
 
-    console.log('^^^^^^', loading);
-    
-
     useEffect(() => {
         setScriptModule(formik.values.module);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [formik.values.module]);
 
     return (
-        <div className='w-full flex justify-center script-form'>
+        <div className='w-full flex justify-center script-form mt-8'>
             <ThemeProvider theme={theme}>
                 <div className='bg-white-gray-45 w-[885px]'>
                     <form onSubmit={formik.handleSubmit}>
                         <div className='px-[53px] py-[24px]'>
 
-                            <DistributionSource formik={formik} />
+                            <DistributionSource data={data} formik={formik} />
                             <Domain formik={formik} />
                             <SourceReference formik={formik} />
                             <TitleDescription formik={formik} />

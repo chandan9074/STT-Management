@@ -176,7 +176,7 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
                                                 <h1 className='text-ct-blue-80 text-small font-medium'>Upload Script</h1>
                                             </div>
                                             <div>
-                                                <span className='text-small font-medium text-blue-gray-90'>Click to upload </span>
+                                                <span className='text-small font-medium text-blue-gray-90 underline'>Click to upload </span>
                                                 <span className='text-small font-medium text-blue-gray-75'>or Drag and Drop</span>
                                             </div>
                                         </div>

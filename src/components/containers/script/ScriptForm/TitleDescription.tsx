@@ -9,15 +9,16 @@ const TitleDescription = ({ formik }: { formik: FormikValues }) => {
                 <TextField
                     style={{
                         width: '100%',
-
                     }}
+                    className='scriptCustomPlaceholder'
                     id="title"
                     name="title"
                     value={formik.values.title}
                     onChange={formik.handleChange}
                     error={formik.touched.title && Boolean(formik.errors.title)}
                     helperText={formik.touched.title && formik.errors.title}
-                    label={<h1 className='comboBoxLabel'>Title</h1>}
+                    // label={<h1 className='text-blue-gray-A30 text-[18px] font-medium'>Title</h1>}
+                    placeholder='Title'
                     variant="standard"
                     InputProps={{
                         disableUnderline: true,
@@ -27,6 +28,8 @@ const TitleDescription = ({ formik }: { formik: FormikValues }) => {
                 />
                 <h1 className='w-[107px] text-xs text-blue-gray-60'>{formik.values.description.length} characters</h1>
             </div>
+
+
 
             <Divider
                 sx={{ bgcolor: "#E5E7EBd" }}
@@ -38,7 +41,6 @@ const TitleDescription = ({ formik }: { formik: FormikValues }) => {
             <TextareaAutosize
                 id="description"
                 name="description"
-
                 value={formik.values.description}
                 onChange={formik.handleChange}
                 // error={formik.touched.script && Boolean(formik.errors.script)}
@@ -52,6 +54,10 @@ const TitleDescription = ({ formik }: { formik: FormikValues }) => {
                     border: 'none'
                 }}
             />
+
+            {formik.touched.domain && formik.errors.description ? (
+                <div className='text-red-600 text-xxs'>{formik.errors.description}</div>
+            ) : null}
 
         </div>
     );

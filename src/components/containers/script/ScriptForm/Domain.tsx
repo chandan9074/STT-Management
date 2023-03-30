@@ -100,7 +100,7 @@ const Domain = ({ formik }: { formik: FormikValues }) => {
                                     error={formik.touched.subdomain && Boolean(formik.errors.subdomain)}
                                     helperText={formik.touched.subdomain && formik.errors.subdomain}
                                     {...params}
-                                    label={<h1 className='comboBoxLabel'>Sub Domain <span className='text-[red]'>*</span></h1>}
+                                    label={<h1 className={`${formik.values.domain === '' ? 'text-blue-gray-A30 text-small font-medium' : 'comboBoxLabel'}`}>Sub Domain <span className='text-[red]'>*</span></h1>}
 
                                 // InputProps={{
                                 //     style: {
