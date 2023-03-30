@@ -1,13 +1,12 @@
 import { useContext, useEffect } from 'react';
+import Icons from '../../assets/Icons';
 import { CommonContext } from '../../context/CommonProvider';
 interface Props {
-    iconSrc?: string;
-    // open: boolean;
-    // setOpen: Dispatch<SetStateAction<boolean>>;
+    massage: string;
 }
 
 
-const Type1 = () => {
+const Type1 = ({ massage }: Props) => {
 
 
     console.log("hello toast")
@@ -29,21 +28,9 @@ const Type1 = () => {
 
 
     return (
-        <div className='bg-red text-white p-5'>
-
-            successfully toast open
-
-            {/* {commonContext.toastOpen &&
-                <div className='fixed left-[40%] bottom-5 animate-fadeIn2 z-[99999]'>
-                    <div
-                        className='flex gap-2 bg-ct-blue-95 py-[10px] px-6 rounded-md shadow-toast-shadow items-center'>
-                        <img src={iconSrc} className="h-4 w-4 mb-[3px]" alt="" />
-                        <p className='text-white font-medium text-small '>
-                            successfully create data
-                            </p>
-                    </div>
-                </div>
-            } */}
+        <div className='flex items-center gap-x-2.5 justify-center py-2.5 px-6'>
+            <img src={Icons.like_emoji} alt='like' />
+            <span className='text-small font-medium text-white'>{massage}</span>
         </div>
     );
 };

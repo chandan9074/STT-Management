@@ -14,7 +14,7 @@ const Script = () => {
   return (
     <Layouts.Forth>
       <div className="min-h-[calc(100vh-9.5vh)]">
-        <Header selectedScript={selectedScript} />
+        <Header selectedScript={selectedScript} setSelectedScript={setSelectedScript} />
         <ScriptTable setSelectedScript={setSelectedScript} />
         <CustomModal.Type1
           open={scriptContext.modalOpen}

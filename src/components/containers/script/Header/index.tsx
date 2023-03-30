@@ -13,9 +13,10 @@ import { Link } from "react-router-dom";
 
 type Props = {
   selectedScript: scriptResDT[];
+  setSelectedScript: React.Dispatch<React.SetStateAction<scriptResDT[]>>;
 }
 
-const Header = ({ selectedScript }: Props) => {
+const Header = ({ selectedScript, setSelectedScript }: Props) => {
   const scriptContext = useContext(ScriptContext);
   const commonContext = useContext(CommonContext)
   const csvRef = useRef<HTMLInputElement>(null);
@@ -105,7 +106,9 @@ const Header = ({ selectedScript }: Props) => {
       <div className="flex items-center">
         {selectedScript.length > 0 ? <>
           <Buttons.BgHoverBtn
-            onClick={() => scriptContext.deleteScript(commonContext.role, selectedScript.map((item) => item.id).join(","))}
+            onClick={() => {
+              scriptContext.deleteScript(commonContext.role, selectedScript.map((item) => item.id).join(",")); setSelectedScript([]);
+            }}
             title="Delete"
             paddingY="py-2"
             paddingX="px-4"

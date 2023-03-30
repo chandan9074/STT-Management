@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useState } from "react";
 import ScriptService from "../services/scriptService";
 import { allScriptResDT, getAllScriptsParamsDT, scriptParamDT, scriptResDT } from "../types/script";
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { CommonContext } from "./CommonProvider";
+import { callingToast } from "../helpers/Utils";
 
 
 interface ContextProps {
@@ -101,17 +101,9 @@ const ScriptProvider = ({ children }: { children: any }) => {
       // if (res.status === 200) {
       // setScriptsData(id.split(',').map((singleId) => (scriptsData.scripts.filter((item: scriptResDT) => item.id !== singleId)));
       // setScriptsData(scriptsData.scripts.filter((item: scriptResDT) => !id.split(',').includes(item.id)));
-      setScriptsData({ totalNumberOfScripts: id.split(",").length, scripts: scriptsData.scripts.filter((item: scriptResDT) => item.id && !id.split(',').includes(item.id)) })
+      setScriptsData({ totalNumberOfScripts: scriptsData.totalNumberOfScripts - id.split(",").length, scripts: scriptsData.scripts.filter((item: scriptResDT) => item.id && !id.split(',').includes(item.id)) })
 
-      toast(<div>hello vai</div>, {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      callingToast("Script deleted successfully");
       // }
     } catch (error) {
     }

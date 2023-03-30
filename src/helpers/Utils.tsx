@@ -2,6 +2,9 @@ import moment from "moment";
 import { tableColorProperty } from "../data/dashboard/tableColorProperty";
 import { colorForTitle } from "../data/dashboard/colorForTitle";
 import { homeDistrictTypes } from "../types/userManagementTypes";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Toast } from "../components/Toast";
 
 export const isEmpty = (obj: any) => {
   if (obj) {
@@ -202,6 +205,25 @@ export const handleIncDecMonth = (month: string, year: number, type: string) => 
   const date = new Date(newYear, newMonth - 1);
   const newMonthName = date.toLocaleString('default', { month: 'long' });
   return { newMonthName, newYear };
+}
+
+export const callingToast = (message: string) => {
+  toast(<Toast.Type1 massage={message} />, {
+    position: "bottom-center",
+    autoClose: 2000,
+    hideProgressBar: true,
+    closeButton: false,
+    className: "bg-blue-500",
+    style: {
+      padding: '0px',
+    },
+    bodyStyle: {
+      backgroundColor: 'black',
+      padding: '0px',
+      display: 'flex',
+      justifyContent: 'center',
+    }
+  })
 }
 
 

@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import Icons from '../../../../assets/Icons';
 import { EDIT_SCRIPT_PATH } from '../../../../helpers/Slug';
 import { PDF } from '../../../PDF';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Toast } from '../../../Toast';
+import { callingToast } from '../../../../helpers/Utils';
 
 interface Props {
     setMetaDataOpen: Dispatch<SetStateAction<boolean>>;
@@ -18,7 +22,7 @@ const ScriptsDetails = ({ drawerData, setMetaDataOpen }: Props) => {
     const copyToClipboard = () => {
         if (textRef.current) {
             navigator.clipboard.writeText(textRef.current.innerText);
-            // setOpen(true)
+            callingToast("Copied")
         }
     };
     return (
@@ -26,8 +30,8 @@ const ScriptsDetails = ({ drawerData, setMetaDataOpen }: Props) => {
             <div className='p-5 bg-ct-blue-05 border-b-ct-blue-20'>
                 <div className="flex w-full justify-between items-center">
                     <div>
-                        {/* <p className="text-xs font-normal text-ct-blue-90-70%">Script Title</p> */}
-                        <p className='text-heading-6 font-semibold text-ct-blue-95 mt-2'>{drawerData.title}</p>
+                        <p className="text-xs font-normal text-ct-blue-90-70%">Script Title</p>
+                        <p className='text-heading-6 font-semibold text-ct-blue-95 mt-1'>{drawerData.title}</p>
                     </div>
                     <div>
                         <Link to={`${EDIT_SCRIPT_PATH}/${drawerData?.id}`}>
@@ -42,7 +46,7 @@ const ScriptsDetails = ({ drawerData, setMetaDataOpen }: Props) => {
 
                 </div>
 
-                <div className='flex justify-between gap-3 my-4 w-full items-center'>
+                <div className='flex justify-between gap-x-3 mt-4 mb-1 w-full items-start'>
                     <div>
                         <p className='text-xxs font-normal text-blue-gray-75'>Script ID</p>
                         <p className='text-small font-medium text-[#780595]'>{drawerData.id}</p>

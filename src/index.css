@@ -182,3 +182,12 @@ pre {
 #waveform wave {
   cursor: pointer !important;
 }
+
+.Toastify__toast{
+  min-height: auto !important;
+  min-width: auto !important;
+}
+
+.Toastify__toast-container{
+  width: auto !important;
+}
