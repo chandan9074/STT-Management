@@ -66,3 +66,8 @@ export type scriptParamDT = {
   id: string;
   role: string;
 }
+
+export type scriptDeleteParamDT = {
+  role: string;
+  id: string;
+}

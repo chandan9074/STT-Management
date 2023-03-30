@@ -8,6 +8,8 @@ import { SearchBox } from "../../../SearchBox";
 import { targetFilterListDT } from "../../../../types/assignTypes";
 import { CommonContext } from "../../../../context/CommonProvider";
 import { scriptResDT } from "../../../../types/script";
+import { EDIT_SCRIPT_PATH } from "../../../../helpers/Slug";
+import { Link } from "react-router-dom";
 
 type Props = {
   selectedScript: scriptResDT[];
@@ -91,6 +93,7 @@ const Header = ({ selectedScript }: Props) => {
     csvRef.current?.click();
   };
 
+
   return (
     <div className="mt-3 flex items-center justify-between mb-5">
       <div>
@@ -102,6 +105,7 @@ const Header = ({ selectedScript }: Props) => {
       <div className="flex items-center">
         {selectedScript.length > 0 ? <>
           <Buttons.BgHoverBtn
+            onClick={() => scriptContext.deleteScript(commonContext.role, selectedScript.map((item) => item.id).join(","))}
             title="Delete"
             paddingY="py-2"
             paddingX="px-4"
@@ -113,18 +117,21 @@ const Header = ({ selectedScript }: Props) => {
             hoverBgColor="hover:bg-white"
           />
           {selectedScript.length === 1 &&
-            <Buttons.BgHoverBtn
-              title="Edit"
-              paddingY="py-2"
-              paddingX="px-4"
-              borderRadius="rounded-[6px]"
-              textColor="text-secondary-blue-50"
-              fontSize="text-small"
-              fontWeight="font-medium"
-              duration="duration-300"
-              hoverBgColor="hover:bg-white"
-              marginX="mx-2"
-            />}
+            <Link to={`${EDIT_SCRIPT_PATH}/${selectedScript[0]?.id}`}>
+              <Buttons.BgHoverBtn
+                title="Edit"
+                paddingY="py-2"
+                paddingX="px-4"
+                borderRadius="rounded-[6px]"
+                textColor="text-secondary-blue-50"
+                fontSize="text-small"
+                fontWeight="font-medium"
+                duration="duration-300"
+                hoverBgColor="hover:bg-white"
+                marginX="mx-2"
+              />
+            </Link>
+          }
         </> : null}
         <SearchBox.Type1 inputWidth="w-52" placeholder="Search with script ID, Title..." paddingX="px-3" paddingY="py-2" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
         {/* <Filter.Type1 filterData={filterData} /> */}

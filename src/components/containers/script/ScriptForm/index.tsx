@@ -43,7 +43,7 @@ const ScriptForms = ({ data }: { data?: scriptResDT }) => {
     const navigate = useNavigate();
 
     const scriptContext = useContext(ScriptContext);
-    const { createScript, updateScript, scriptModule, setScriptModule } = scriptContext;    
+    const { createScript, updateScript, scriptModule, setScriptModule, loading } = scriptContext;    
 
     const formik = useFormik({
         enableReinitialize: true,
@@ -143,6 +143,9 @@ const ScriptForms = ({ data }: { data?: scriptResDT }) => {
 
         }
     });
+
+    console.log('^^^^^^', loading);
+    
 
     useEffect(() => {
         setScriptModule(formik.values.module);

@@ -28,6 +28,7 @@ export const CREATE_SCRIPTS_URL = `${REACT_APP_BASE_URL}/create-script`;
 export const GET_SCRIPT_BY_ID = `${REACT_APP_BASE_URL}/get-script-by-id`;
 export const UPDATE_SCRIPT_URL = `${REACT_APP_BASE_URL}/update-script`;
 export const UPLOAD_SCRIPT_CSV_FILE_URL = `${REACT_APP_BASE_URL}/upload-csv`;
+export const DELETE_SCRIPT_URL = `${REACT_APP_BASE_URL}/delete-script-by-id`
 
 // Assign 
 

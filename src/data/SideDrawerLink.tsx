@@ -143,7 +143,7 @@ let SideDrawerLink = [
                             },
                             {
                                 name: 'Annotated Files',
-                                route: PATH.CHECKING_STATUS,
+                                route: PATH.ANNOTATED_FILES,
                                 links: []
                             },
                         ]

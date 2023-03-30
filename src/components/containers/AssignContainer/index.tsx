@@ -1,6 +1,4 @@
-import {Outlet} from 'react-router-dom';
-import Icons from '../../../assets/Icons';
-import { Toast } from '../../Toast';
+import { Outlet } from 'react-router-dom';
 
 
 const AssignContainer = () => {
@@ -32,8 +30,6 @@ const AssignContainer = () => {
             <TargetTable /> */}
 
             <Outlet></Outlet>
-            <Toast.Type1  iconSrc={Icons.contentCopy} />
-
         </div>
     );
 };

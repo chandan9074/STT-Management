@@ -1,6 +1,9 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import ScriptService from "../services/scriptService";
 import { allScriptResDT, getAllScriptsParamsDT, scriptParamDT, scriptResDT } from "../types/script";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { CommonContext } from "./CommonProvider";
 
 
 interface ContextProps {
@@ -23,6 +26,7 @@ interface ContextProps {
   setScriptDeleteParams: React.Dispatch<React.SetStateAction<string>>;
   scriptFilter: getAllScriptsParamsDT;
   setScriptFilter: React.Dispatch<React.SetStateAction<getAllScriptsParamsDT>>;
+  deleteScript: (role: string, id: string) => void;
 }
 
 export const ScriptContext = createContext({} as ContextProps);
@@ -36,6 +40,8 @@ const ScriptProvider = ({ children }: { children: any }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [scriptDeleteParams, setScriptDeleteParams] = useState<string>("");
   const [scriptFilter, setScriptFilter] = useState<getAllScriptsParamsDT>({} as getAllScriptsParamsDT);
+
+  const commonContext = useContext(CommonContext);
 
   const uploadCsv = async (formData: FormData) => {
 
@@ -64,6 +70,7 @@ const ScriptProvider = ({ children }: { children: any }) => {
   const createScript = async (params: FormData) => {
     try {
       const response = await ScriptService.createScript(params);
+      getAllScript({ role: commonContext?.role });
       return {
         message: response?.data?.message,
         status: response?.status
@@ -78,14 +85,36 @@ const ScriptProvider = ({ children }: { children: any }) => {
       setLoading(true);
       await ScriptService.UpdateScript(params);
       setLoading(false);
+      getAllScript({ role: commonContext?.role });
     } catch (error) {
       setLoading(false);
 
     }
-    // return {
-    //   message: response?.data?.message,
-    //   status: response?.status
-    // }
+  }
+
+  const deleteScript = async (role: string, id: string) => {
+    try {
+      setLoading(true);
+      await ScriptService.deleteScript({ role: role, id: id });
+      setLoading(false);
+      // await getAllScript({ role: "admin" });
+      // if (res.status === 200) {
+      // setScriptsData(id.split(',').map((singleId) => (scriptsData.scripts.filter((item: scriptResDT) => item.id !== singleId)));
+      // setScriptsData(scriptsData.scripts.filter((item: scriptResDT) => !id.split(',').includes(item.id)));
+      setScriptsData({ totalNumberOfScripts: id.split(",").length, scripts: scriptsData.scripts.filter((item: scriptResDT) => item.id && !id.split(',').includes(item.id)) })
+
+      toast(<div>hello vai</div>, {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      // }
+    } catch (error) {
+    }
   }
 
   return (
@@ -108,7 +137,8 @@ const ScriptProvider = ({ children }: { children: any }) => {
         scriptDeleteParams,
         setScriptDeleteParams,
         scriptFilter,
-        setScriptFilter
+        setScriptFilter,
+        deleteScript
       }}
     >
       {children}
