@@ -1,6 +1,4 @@
-import { useContext, useEffect } from 'react';
 import Icons from '../../assets/Icons';
-import { CommonContext } from '../../context/CommonProvider';
 interface Props {
     massage: string;
 }

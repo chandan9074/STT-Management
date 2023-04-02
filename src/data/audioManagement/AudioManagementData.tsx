@@ -1,4 +1,4 @@
-import { STATUS_ANNOTATING, STATUS_TOOK_A_BREAK } from "../../helpers/ConditionVariable"
+import { STATUS_ANNOTATING, STATUS_TOOK_A_BREAK, STATUS_VALIDATING } from "../../helpers/ConditionVariable"
 
 export const collectedAudio = [
     {
@@ -822,18 +822,18 @@ export const annotationData = [
                     "role": 'speaker',
                     "gender": 'female',
                 },
-                {
-                    "id": "maksudam2@gmail.com",
-                    "name": 'Maksuda',
-                    "role": 'speaker',
-                    "gender": 'male',
-                },
-                {
-                    "id": "maksudalam2@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                },
+                // {
+                //     "id": "maksudam2@gmail.com",
+                //     "name": 'Maksuda',
+                //     "role": 'speaker',
+                //     "gender": 'male',
+                // },
+                // {
+                //     "id": "maksudalam2@gmail.com",
+                //     "name": 'Bilkis banu',
+                //     "role": 'speaker',
+                //     "gender": 'female',
+                // },
             ],
 
         },
@@ -887,18 +887,18 @@ export const annotationData = [
                     "role": 'speaker',
                     "gender": 'female',
                 },
-                {
-                    "id": "maksudam2@gmail.com",
-                    "name": 'Maksuda',
-                    "role": 'speaker',
-                    "gender": 'male',
-                },
-                {
-                    "id": "maksudalam2@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                },
+                // {
+                //     "id": "maksudam2@gmail.com",
+                //     "name": 'Maksuda',
+                //     "role": 'speaker',
+                //     "gender": 'male',
+                // },
+                // {
+                //     "id": "maksudalam2@gmail.com",
+                //     "name": 'Bilkis banu',
+                //     "role": 'speaker',
+                //     "gender": 'female',
+                // },
             ],
 
         },
@@ -952,18 +952,18 @@ export const annotationData = [
                     "role": 'speaker',
                     "gender": 'female',
                 },
-                {
-                    "id": "maksudam2@gmail.com",
-                    "name": 'Maksuda',
-                    "role": 'speaker',
-                    "gender": 'male',
-                },
-                {
-                    "id": "maksudalam2@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                },
+                // {
+                //     "id": "maksudam2@gmail.com",
+                //     "name": 'Maksuda',
+                //     "role": 'speaker',
+                //     "gender": 'male',
+                // },
+                // {
+                //     "id": "maksudalam2@gmail.com",
+                //     "name": 'Bilkis banu',
+                //     "role": 'speaker',
+                //     "gender": 'female',
+                // },
             ],
 
         },
@@ -1017,18 +1017,18 @@ export const annotationData = [
                     "role": 'speaker',
                     "gender": 'female',
                 },
-                {
-                    "id": "maksudam2@gmail.com",
-                    "name": 'Maksuda',
-                    "role": 'speaker',
-                    "gender": 'male',
-                },
-                {
-                    "id": "maksudalam2@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                },
+                // {
+                //     "id": "maksudam2@gmail.com",
+                //     "name": 'Maksuda',
+                //     "role": 'speaker',
+                //     "gender": 'male',
+                // },
+                // {
+                //     "id": "maksudalam2@gmail.com",
+                //     "name": 'Bilkis banu',
+                //     "role": 'speaker',
+                //     "gender": 'female',
+                // },
             ],
 
         },
@@ -1320,4 +1320,229 @@ export const annotatedFiles = [
 export const colAnnSenStatusFilterData = [
     STATUS_ANNOTATING,
     STATUS_TOOK_A_BREAK
+]
+
+export const colValSenStatusFilterData = [
+    STATUS_VALIDATING,
+    STATUS_TOOK_A_BREAK
+]
+
+
+export const collectValSenData = [
+    {
+        "id": "vn4yv7yt05tv597vy4",
+        "speech": {
+            "id": '0',
+            "title": "Brahms,Two Pianos",
+            "duration": "5:00",
+            "url":
+                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+        },
+        "validate1": {
+            "status": "Validating",
+            "locality": "Barendri",
+            "validators": {
+                "id": "raihanrohan@gmail.com",
+                "role": "validator",
+                "name": "Raihan Rohan",
+                "gender": "male"
+            }
+        },
+        "validate2": {
+            "status": "",
+            "locality": "",
+            "validators": {
+                "id": "",
+                "role": "",
+                "name": "",
+                "gender": ""
+            }
+        },
+        "validateFinal": {
+            "status": "",
+            "locality": "",
+            "validators": {
+                "id": "",
+                "role": "",
+                "name": "",
+                "gender": ""
+            }
+        },
+        "deadLine": "01/02/2022",
+        "annotator": {
+            "status": "",
+            "locality": "Barendri",
+            "time": "01 Feb ; 3:30 PM",
+            "annotator": {
+                "id": "maksudalam2@gmail.com",
+                "name": 'Bilkis banu',
+                "role": 'annotator',
+                "gender": 'female',
+            },
+        },
+        "audioChecker": {
+            "status": "Checking",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM",
+            "audioCheckers": {
+                "id": "maksudalam2@gmail.com",
+                "name": 'Bilkis banu',
+                "role": 'audio Checker',
+                "gender": 'female',
+            },
+        },
+        "speaker": {
+            "locality": "North-East Bangla",
+            "speakers": {
+                "id": "maksudalam2@gmail.com",
+                "name": 'Bilkis banu',
+                "role": 'speaker',
+                "gender": 'female',
+            },
+        },
+    },
+    {
+        "id": "vn4yvtv597vy4",
+        "speech": {
+            "id": '0',
+            "title": "Brahms,Two Pianos",
+            "duration": "5:00",
+            "url":
+                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+        },
+        "validate1": {
+            "status": "",
+            "locality": "Barendri",
+            "validators": {
+                "id": "raihanrohan@gmail.com",
+                "role": "validator",
+                "name": "Raihan Rohan",
+                "gender": "male"
+            }
+        },
+        "validate2": {
+            "status": "Validating",
+            "locality": "Barendri",
+            "validators": {
+                "id": "raihanrohan@gmail.com",
+                "role": "annotator",
+                "name": "Raihan Rohan",
+                "gender": "male"
+            }
+        },
+        "validateFinal": {
+            "status": "",
+            "locality": "",
+            "validators": {
+                "id": "",
+                "role": "",
+                "name": "",
+                "gender": ""
+            }
+        },
+        "deadLine": "01/02/2022",
+        "annotator": {
+            "status": "",
+            "locality": "Barendri",
+            "time": "01 Feb ; 3:30 PM",
+            "annotator": {
+                "id": "maksudalam2@gmail.com",
+                "name": 'Bilkis banu',
+                "role": 'annotator',
+                "gender": 'female',
+            },
+        },
+        "audioChecker": {
+            "status": "Checking",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM",
+            "audioCheckers": {
+                "id": "maksudalam2@gmail.com",
+                "name": 'Bilkis banu',
+                "role": 'audio Checker',
+                "gender": 'female',
+            },
+        },
+        "speaker": {
+            "locality": "North-East Bangla",
+            "speakers": {
+                "id": "maksudalam2@gmail.com",
+                "name": 'Bilkis banu',
+                "role": 'speaker',
+                "gender": 'female',
+            },
+        },
+    },
+    {
+        "id": "vn4yvtv597vy4",
+        "speech": {
+            "id": '0',
+            "title": "Brahms,Two Pianos",
+            "duration": "5:00",
+            "url":
+                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+        },
+        "validate1": {
+            "status": "",
+            "locality": "Barendri",
+            "validators": {
+                "id": "raihanrohan@gmail.com",
+                "role": "validator",
+                "name": "Raihan Rohan",
+                "gender": "male"
+            }
+        },
+        "validate2": {
+            "status": "",
+            "locality": "Barendri",
+            "validators": {
+                "id": "raihanrohan@gmail.com",
+                "role": "validator",
+                "name": "Raihan Rohan",
+                "gender": "male"
+            }
+        },
+        "validateFinal": {
+            "status": "Took a Break",
+            "locality": "Jahangirnagar",
+            "validators": {
+                "id": "Jahangir@gmail.com",
+                "role": "validator",
+                "name": "Jahangir",
+                "gender": "male"
+            }
+        },
+        "deadLine": "01/02/2022",
+        "annotator": {
+            "status": "",
+            "locality": "Barendri",
+            "time": "01 Feb ; 3:30 PM",
+            "annotator": {
+                "id": "maksudalam2@gmail.com",
+                "name": 'Bilkis banu',
+                "role": 'annotator',
+                "gender": 'female',
+            },
+        },
+        "audioChecker": {
+            "status": "Checking",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM",
+            "audioCheckers": {
+                "id": "maksudalam2@gmail.com",
+                "name": 'Bilkis banu',
+                "role": 'audio Checker',
+                "gender": 'female',
+            },
+        },
+        "speaker": {
+            "locality": "North-East Bangla",
+            "speakers": {
+                "id": "maksudalam2@gmail.com",
+                "name": 'Bilkis banu',
+                "role": 'speaker',
+                "gender": 'female',
+            },
+        },
+    },
 ]

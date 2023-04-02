@@ -67,7 +67,7 @@ const Type20 = ({ data }: Props) => {
             key: 'annotate',
             ...getColumnSearchProps('annotate'),
             // className: "audio-management-status",
-            width: 206,
+            width: 184,
             render: (data: collectAnnSenDataDT) => <Annotate data={data.annotate} />
         },
         {
@@ -101,7 +101,7 @@ const Type20 = ({ data }: Props) => {
             dataIndex: 'details',
             key: 'details',
             fixed: 'right',
-            width: 71,
+            width: 100,
             render: (_, record: collectAnnSenDataDT) => (
                 <>
 
@@ -144,7 +144,7 @@ const Type20 = ({ data }: Props) => {
                 }}
                 columns={Type20columns}
                 dataSource={data}
-                scroll={{ x: 1366 }}
+                scroll={{ x: 1300 }}
                 rowKey="id"
             />
         </div>

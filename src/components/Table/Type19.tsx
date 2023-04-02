@@ -20,7 +20,7 @@ const Type19 = ({ data }: Props) => {
         {
             title: `${"SN".toLocaleUpperCase()}`,
             key: 'sn',
-            width: 80,
+            width: 60,
             align: "center",
             render: (text, record, index) => (
                 <span>{(index + 1)}</span>
@@ -29,7 +29,7 @@ const Type19 = ({ data }: Props) => {
         {
             title: `${"Raw Audio".toLocaleUpperCase()}`,
             key: 'speech',
-            width: 176,
+            width: 155,
             render: (data: annotationDT) => <>
                 <AudioTrack data={data.speech} />
             </>,
@@ -53,7 +53,7 @@ const Type19 = ({ data }: Props) => {
         {
             title: `${"Speaker".toLocaleUpperCase()}`,
             key: 'speaker',
-            width: 193,
+            width: 160,
             render: (data: annotationDT) => <Speaker data={data.speaker} />
         },
         {

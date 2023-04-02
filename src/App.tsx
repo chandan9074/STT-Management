@@ -34,6 +34,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import AnnotatedFiles from "./pages/AudioManagement/CollectedAudio/Annotation/AnnotatedFiles";
 import WordLevel from "./pages/AudioManagement/CollectedAudio/Annotation/WordLevel";
 import PhonemeLevel from "./pages/AudioManagement/CollectedAudio/Annotation/PhonemeLevel";
+import Validation from "./pages/AudioManagement/UploadAudio";
+import SentenceLevelValidation from "./pages/AudioManagement/CollectedAudio/Validation/SentenceLevelValidation";
+import WordLevelValidation from "./pages/AudioManagement/CollectedAudio/Validation/WordLevelValidation";
+import PhonemeLevelValidation from "./pages/AudioManagement/CollectedAudio/Validation/PhonemeLevelValidation";
 
 function App() {
   useEffect(() => {
@@ -105,6 +109,13 @@ function App() {
                 <Route path={PATH.ANNOTATED_FILES} element={<AnnotatedFiles />} />
                 <Route path={PATH.WORD_LEVEL} element={<WordLevel />} />
                 <Route path={PATH.PHONEME_LEVEL} element={<PhonemeLevel />} />
+              </Route>
+              <Route path={PATH.VALIDATION}>
+                <Route path="" element={<Validation/>}/>
+                <Route path={PATH.SENETENCE_LEVEL} element={<SentenceLevelValidation />} />
+                <Route path={PATH.ANNOTATED_FILES} element={<AnnotatedFiles />} />
+                <Route path={PATH.WORD_LEVEL} element={<WordLevelValidation />} />
+                <Route path={PATH.PHONEME_LEVEL} element={<PhonemeLevelValidation />} />
               </Route>
             </Route>
             <Route path={PATH.UPLOAD_AUDION_VIDEO_PATH} element={<UploadAudio />} />

@@ -1,6 +1,6 @@
 import { assignAudioTrackDT } from "./assignTypes";
 import { roleDT } from "./billingTypes";
-import { allScriptResDT, scriptResDT } from "./script"
+import { scriptResDT } from "./script";
 
 export type audioManagementDT = {
     id: string;
@@ -125,4 +125,57 @@ export type annotatedFilesDT = {
     deadLine: string;
     submissionDate: string;
     remark: remarkInfoDT;
+    // annotate: annotateInfoDT;
 }
+
+export type collectValSenDataDT = {
+    id: string;
+    speech: assignAudioTrackDT;
+    validate1: validateDT;
+    validate2: validateDT;
+    validateFinal: validateDT;
+    deadLine: string;
+    annotator: annotatedAnnotatorDT;
+    audioChecker: annotatedAudioCheckerDT;
+    speaker: speakerLocalitySingleDT;
+}
+
+// export type speakerLocalitySingleDT = {
+//     locality: string;
+//     speakers: singleSpeakerDT
+// };
+
+
+// export type annotatedAudioCheckerDT = {
+//     status: string;
+//     locality: string;
+//     time: string;
+//     audioCheckers: audioRoleDT
+// }
+
+export type validateDT = {
+    status: string;
+    locality: string;
+    validators: audioRoleDT
+}
+
+// export type audioRoleDT = {
+//     id: string;
+//     name: string;
+//     role: string;
+//     gender: string;
+// }
+
+// export type annotatedAnnotatorDT = {
+//     status: string;
+//     locality: string;
+//     time: string;
+//     annotator: annotatorRoleDt
+// }
+
+// export type annotatorRoleDt = {
+//     id: string;
+//     name: string;
+//     role: string;
+//     gender: string;
+// }
