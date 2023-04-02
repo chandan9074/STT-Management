@@ -5,6 +5,8 @@ interface ContextProps {
   // errorMsg: string;
   type: string;
   role: string;
+  roleName: string;
+  setRoleName: React.Dispatch<React.SetStateAction<string>>;
   handleRole: (value: string) => void;
   handleModuleType: (value: string) => void;
   setType: React.Dispatch<React.SetStateAction<string>>;
@@ -22,6 +24,7 @@ const CommonProvider = ({ children }: { children: any }) => {
   // const [errorMsg, setErrorMsg] = useState<string>("");
   const [type, setType] = useState<string>("STT");
   const [role, setRole] = useState<string>("admin");
+  const [roleName,setRoleName] = useState<string>("Md. Jalal Uddin")
   const [toastOpen, setToastOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
 
@@ -45,6 +48,8 @@ const CommonProvider = ({ children }: { children: any }) => {
         // errorMsg,
         type,
         role,
+        roleName,
+        setRoleName,
         handleRole,
         handleModuleType,
         toastOpen,

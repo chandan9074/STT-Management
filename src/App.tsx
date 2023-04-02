@@ -38,6 +38,17 @@ import Validation from "./pages/AudioManagement/UploadAudio";
 import SentenceLevelValidation from "./pages/AudioManagement/CollectedAudio/Validation/SentenceLevelValidation";
 import WordLevelValidation from "./pages/AudioManagement/CollectedAudio/Validation/WordLevelValidation";
 import PhonemeLevelValidation from "./pages/AudioManagement/CollectedAudio/Validation/PhonemeLevelValidation";
+import CheckingUploadAudio from "./pages/AudioManagement/UploadAudio/Checking";
+import CheckingStatusUpload from "./pages/AudioManagement/UploadAudio/Checking/CheckingStatusUpload";
+import AllCheckedAudiosUpload from "./pages/AudioManagement/UploadAudio/Checking/AllCheckedAudiosUpload";
+import AnnotationUpload from "./pages/AudioManagement/UploadAudio/Annotation";
+import SentenceLevelUpload from "./pages/AudioManagement/UploadAudio/Annotation/SentenceLevelUpload";
+import WordLevelUpload from "./pages/AudioManagement/UploadAudio/Annotation/WordLevelUpload";
+import PhonemeLevelUpload from "./pages/AudioManagement/UploadAudio/Annotation/PhonemeLevelUpload";
+import ValidationUpload from "./pages/AudioManagement/UploadAudio/Validation";
+import SentenceLevelUploadVal from "./pages/AudioManagement/UploadAudio/Validation/SentenceLevelUploadVal";
+import WordLevelUploadVal from "./pages/AudioManagement/UploadAudio/Validation/WordLevelUploadVal";
+import PhonemeLevelUploadVal from "./pages/AudioManagement/UploadAudio/Validation/PhonemeLevelUploadVal";
 
 function App() {
   useEffect(() => {
@@ -111,14 +122,35 @@ function App() {
                 <Route path={PATH.PHONEME_LEVEL} element={<PhonemeLevel />} />
               </Route>
               <Route path={PATH.VALIDATION}>
-                <Route path="" element={<Validation/>}/>
+                <Route path="" element={<Validation />} />
                 <Route path={PATH.SENETENCE_LEVEL} element={<SentenceLevelValidation />} />
                 <Route path={PATH.ANNOTATED_FILES} element={<AnnotatedFiles />} />
                 <Route path={PATH.WORD_LEVEL} element={<WordLevelValidation />} />
                 <Route path={PATH.PHONEME_LEVEL} element={<PhonemeLevelValidation />} />
               </Route>
             </Route>
-            <Route path={PATH.UPLOAD_AUDION_VIDEO_PATH} element={<UploadAudio />} />
+            <Route path={PATH.UPLOAD_AUDION_VIDEO_PATH}>
+              <Route path='' element={<UploadAudio />} />
+              <Route path={PATH.CHECKING}>
+                <Route path='' element={<CheckingUploadAudio />} />
+                <Route path={PATH.CHECKING_STATUS} element={<CheckingStatusUpload />} />
+                <Route path={PATH.ALL_CHECKED_AUDIOS} element={<AllCheckedAudiosUpload />} />
+              </Route>
+              <Route path={PATH.ANNOTAION}>
+                <Route path='' element={<AnnotationUpload />} />
+                <Route path={PATH.SENETENCE_LEVEL} element={<SentenceLevelUpload />} />
+                <Route path={PATH.WORD_LEVEL} element={<WordLevelUpload />} />
+                <Route path={PATH.PHONEME_LEVEL} element={<PhonemeLevelUpload />} />
+                <Route path={PATH.ANNOTATED_FILES} element={<AnnotatedFiles />} />
+              </Route>
+              <Route path={PATH.VALIDATION}>
+                <Route path="" element={<ValidationUpload />} />
+                <Route path={PATH.SENETENCE_LEVEL} element={<SentenceLevelUploadVal />} />
+                <Route path={PATH.WORD_LEVEL} element={<WordLevelUploadVal />} />
+                <Route path={PATH.PHONEME_LEVEL} element={<PhonemeLevelUploadVal />} />
+                <Route path={PATH.ANNOTATED_FILES} element={<AnnotatedFiles />} />
+              </Route>
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>

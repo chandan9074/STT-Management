@@ -179,3 +179,24 @@ export type validateDT = {
 //     role: string;
 //     gender: string;
 // }
+
+export type uploadAudioDataDT = {
+    id: string;
+    dataType: string;
+    speech: assignAudioTrackDT;
+    uploadDate: string;
+    uploader: uploaderDT;
+    domain: string;
+}
+
+export type uploaderDT = {
+    role: string;
+    name: string;
+}
+
+export type checkingStatusUploadDataDT = {
+    id: string;
+    speech:assignAudioTrackDT;
+    audioChecker: audioCheckerDT;
+    deadLine: string;
+}

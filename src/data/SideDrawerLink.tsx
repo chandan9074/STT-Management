@@ -124,21 +124,21 @@ let SideDrawerLink = [
                     },
                     {
                         name: 'Annotaion',
-                        route: PATH.CHECKING,
+                        route: PATH.ANNOTAION,
                         links: [
                             {
                                 name: 'Sentence Level',
-                                route: PATH.CHECKING_STATUS,
+                                route: PATH.SENETENCE_LEVEL,
                                 links: []
                             },
                             {
                                 name: 'Word Level',
-                                route: PATH.ALL_CHECKED_AUDIOS,
+                                route: PATH.WORD_LEVEL,
                                 links: []
                             },
                             {
                                 name: 'Phoneme Level',
-                                route: PATH.CHECKING_STATUS,
+                                route: PATH.PHONEME_LEVEL,
                                 links: []
                             },
                             {
@@ -150,21 +150,21 @@ let SideDrawerLink = [
                     },
                     {
                         name: 'Validation',
-                        route: PATH.CHECKING,
+                        route: PATH.VALIDATION,
                         links: [
                             {
                                 name: 'Sentence Level',
-                                route: PATH.CHECKING_STATUS,
+                                route: PATH.SENETENCE_LEVEL,
                                 links: []
                             },
                             {
                                 name: 'Word Level',
-                                route: PATH.ALL_CHECKED_AUDIOS,
+                                route: PATH.WORD_LEVEL,
                                 links: []
                             },
                             {
                                 name: 'Phoneme Level',
-                                route: PATH.CHECKING_STATUS,
+                                route: PATH.PHONEME_LEVEL,
                                 links: []
                             },
                             {

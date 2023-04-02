@@ -136,6 +136,7 @@ import File from "./File.svg";
 import check_magenta from "./check_magenta.svg"
 import check_blue from "./check_blue.svg"
 import like_emoji from "./like_emoji.svg"
+import union from "./union.svg"
 
 const Icons = {
   currency,
@@ -275,7 +276,8 @@ const Icons = {
   Conversion,
   openInNewGray,
   File,
-  like_emoji
+  like_emoji,
+  union
 };
 
 export default Icons;

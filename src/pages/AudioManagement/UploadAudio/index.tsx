@@ -1,11 +1,14 @@
-import { Outlet } from "react-router-dom"
+import Table from "../../../components/Table"
+import { uploadAudioData } from "../../../data/audioManagement/UploadAudiosData"
 
-const Validation = () => {
+
+
+const UploadAudio = () => {
   return (
     <div>
-      <Outlet />
+      <Table.Type23 data={uploadAudioData} />
     </div>
   )
 }
 
-export default Validation
+export default UploadAudio
