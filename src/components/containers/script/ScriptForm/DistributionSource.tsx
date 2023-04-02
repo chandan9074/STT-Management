@@ -10,31 +10,47 @@ import Icons from '../../../../assets/Icons';
 import { CustomModal } from '../../../common/CustomModal';
 import { ScriptContext } from '../../../../context/ScriptProvider';
 import { FormikValues } from 'formik';
+import { scriptResDT } from '../../../../types/script';
+import { useNavigate } from 'react-router-dom';
+import Buttons from '../../../Buttons';
 
 
-const DistributionSource = ({ formik }: { formik: FormikValues }) => {
+const DistributionSource = ({ formik, data }: { formik: FormikValues, data: scriptResDT | undefined }) => {
 
     const scriptContext = useContext(ScriptContext);
     const { scriptModule } = scriptContext;
+
+    const navigate = useNavigate();
 
 
     const [open, setOpen] = useState<boolean>(false);
 
     const onModule = () => {
         setOpen(true);
-    }    
+    }
 
     return (
         <div className='mb-[33px]'>
-            <div className='mb-[33px] flex gap-x-3 items-center'>
-                <h1 className='text-ct-blue-95 text-[18px] font-medium'>Create Script</h1>
-                <button onClick={(e) => {
-                    e.preventDefault();
-                    onModule();
-                }} className='flex items-center gap-x-3 py-[7px] px-3 bg-blue-gray-A10 rounded-[8px]'>
-                    <h1 className='text-xs text-ct-blue-90 font-medium'>{formik.values.module}</h1>
-                    <img src={Icons.Write} className='h-[13px] w-[13px]' alt="" />
-                </button>
+            <div className='flex justify-between'>
+                <div className='mb-[33px] flex gap-x-3 items-center'>
+                    <h1 className='text-ct-blue-95 text-[18px] font-medium'>{data ? 'Edit Script' : 'Create Script'} </h1>
+                    <button onClick={(e) => {
+                        e.preventDefault();
+                        onModule();
+                    }} className='flex items-center gap-x-3 py-[7px] px-3 bg-blue-gray-A10 rounded-[8px]'>
+                        <h1 className='text-xs text-ct-blue-90-70% font-medium'>{formik.values.module}</h1>
+                        <img src={Icons.Write} className='h-[13px] w-[13px]' alt="" />
+                    </button>
+                </div>
+
+                <Buttons.IconButton.Circle
+                    size='medium'
+                    variant="CT-Blue"
+                    icon={<img src={Icons.CloseIconButton} alt="" />}
+                    border='border'
+                    background="white"
+                    onClick={() => navigate(-1)}
+                />
             </div>
 
             {
@@ -92,7 +108,7 @@ const DistributionSource = ({ formik }: { formik: FormikValues }) => {
                                 control={
                                     <Checkbox
                                         name="isAge"
-                                        checked={formik.values.isAge }
+                                        checked={formik.values.isAge}
                                         onChange={(event) => formik.setFieldValue('isAge', event.target.checked)}
                                     />
                                 }

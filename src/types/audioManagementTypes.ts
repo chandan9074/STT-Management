@@ -80,15 +80,49 @@ export type annotateInfoDT = {
     locality: string;
 }
 
+export type annotatedAnnotatorDT = {
+    status: string;
+    locality: string;
+    time: string;
+    annotator: annotatorRoleDt
+}
+
+export type annotatorRoleDt = {
+    id: string;
+    name: string;
+    role: string;
+    gender: string;
+}
+
+export type speakerLocalitySingleDT = {
+    locality: string;
+    speakers: singleSpeakerDT
+};
+
+export type annotatedAudioCheckerDT = {
+    status: string;
+    locality: string;
+    time: string;
+    audioCheckers: audioRoleDT
+}
+
+export type audioRoleDT = {
+    id: string;
+    name: string;
+    role: string;
+    gender: string;
+}
+
+
 export type annotatedFilesDT = {
     id: string;
     speech: assignAudioTrackDT;
-    speaker: speakerLocalityDT;
-    audioChecker: audioCheckerDT;
+    speaker: speakerLocalitySingleDT;
+    audioChecker: annotatedAudioCheckerDT;
+    annotator: annotatedAnnotatorDT;
     status: string;
     script: scriptResDT;
     deadLine: string;
     submissionDate: string;
     remark: remarkInfoDT;
-    annotate: annotateInfoDT;
 }

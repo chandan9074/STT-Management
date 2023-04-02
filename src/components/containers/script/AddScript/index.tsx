@@ -3,9 +3,9 @@ import Layouts from "../../../Layouts";
 
 const AddScript = () => {
   return (
-    <Layouts.Forth>
+    <Layouts.Sixth>
       <ScriptForms />
-    </Layouts.Forth>
+    </Layouts.Sixth>
   );
 };
 

@@ -19,9 +19,9 @@ const EditScript = ({ data }: { data?: allScriptResDT }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
-        <Layouts.Forth>
+        <Layouts.Sixth>
             <ScriptForms data={scriptContext?.singleScript} />
-        </Layouts.Forth>
+        </Layouts.Sixth>
     );
 };
 

@@ -5,6 +5,19 @@
     display: none;
 }
 
+/* '&::-webkit-input-placeholder': { color: 'blue' } */
+.scriptCustomPlaceholder ::placeholder {
+    color: #62656f !important;
+    font-weight: 600 !important;
+    font-size: 18px !important;
+}
+
+.writeScriptfield::placeholder {
+    color: #9FA3B2 !important;
+    font-weight: 500 !important;
+    font-size: 18px !important;
+}
+
 .ant-upload-icon {
     background-image: url('../../../../assets/Icons/picture_as_pdf.svg');
     margin-left: auto;
