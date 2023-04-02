@@ -133,9 +133,10 @@ import East from "./east.svg";
 import Conversion from "./conversion_path.svg";
 import openInNewGray from "./open_in_new_gray.svg"
 import File from "./File.svg";
-import check_magenta from "./check_magenta.svg"
-import check_blue from "./check_blue.svg"
-import like_emoji from "./like_emoji.svg"
+import check_magenta from "./check_magenta.svg";
+import check_blue from "./check_blue.svg";
+import like_emoji from "./like_emoji.svg";
+import AssignmentReturn from "./assignment_return.svg"
 
 const Icons = {
   currency,
@@ -275,7 +276,8 @@ const Icons = {
   Conversion,
   openInNewGray,
   File,
-  like_emoji
+  like_emoji,
+  AssignmentReturn
 };
 
 export default Icons;

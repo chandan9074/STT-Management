@@ -1,4 +1,3 @@
-import React from 'react';
 import AllAnnotatedFiles from './AllAnnotatedFiles';
 
 const AnnotatedFilesContainer = () => {

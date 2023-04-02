@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { annotatedFiles } from '../../../../../data/audioManagement/AudioManagementData';
-import Buttons from '../../../../Buttons';
 import Table from '../../../../Table';
 import { CategoryMap } from '../../../dashboard/DataContainer/CollectData';
+import Header from './Header';
+import { annotatedFilesDT } from '../../../../../types/audioManagementTypes';
 
 const AllAnnotatedFiles = () => {
 
     const [activeTab, setActiveTab] = useState<string>("Sentence");
+    const [selectedScript, setSelectedScript] = useState<annotatedFilesDT[]>([] as annotatedFilesDT[]);
 
     const allTergetMenu = (key: string) => {
         const Category: CategoryMap = {
@@ -20,12 +22,7 @@ const AllAnnotatedFiles = () => {
 
     return (
         <div>
-             <div className='flex justify-between'>
-                <div>
-                    <p className='text-heading-6 font-medium text-ct-blue-95 pb-[11px]'>Annotated Files</p>
-                    <Buttons.TabButton.Secondary setActiveData={setActiveTab} tabLabel={['Sentence', "Completed", "Phoneme"]} />
-                </div>
-            </div>
+             <Header setActiveTab={setActiveTab} selectedScript={selectedScript} setSelectedScript={setSelectedScript}/>
             <div>
                 {allTergetMenu(activeTab)}
             </div>

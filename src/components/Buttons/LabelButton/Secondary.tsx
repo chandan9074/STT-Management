@@ -25,7 +25,7 @@ const Secondary = (props: Props) => {
 
                     : <button {...rest}
                         className={`${variant === "Megenta" ? "border border-primary-ct-magenta-60" : variant === "CT-Blue" ? "border border-ct-blue-60" : "border border-ct-blue-30"}
-                                     ${variant === "Megenta" ? "text-primary-ct-magenta-60" : variant === "CT-Blue" ? "text-ct-blue-60" : "text-ct-blue-80"}
+                                     ${variant === "Megenta" ? "text-primary-ct-magenta-60" : variant === "CT-Blue" ? "text-ct-blue-60 bg-white" : "text-ct-blue-80"}
                                      ${variant === "Megenta" ? "hover:bg-red-10" : variant === "CT-Blue" ? "hover:bg-ct-blue-10" : "hover:bg-blue-gray-10"}
                                     ${variant === "Megenta" ? "active:bg-red-10 active:text-opacity-60" : variant === "CT-Blue" ? "active:bg-ct-blue-10 active:text-opacity-60" : "active:bg-blue-gray-10 active:text-opacity-60"}
                                      ${size === "xSmall" ? "xSmallButton" : size === "small" ? "smallButton" : "mediumButton"}
