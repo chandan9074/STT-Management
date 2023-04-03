@@ -42,20 +42,12 @@ const Type2 = ({
   };
   return (
     <div className="flex items-center">
-      <div className="sm:block hidden ">
+      <div>
         <button
           onClick={handlePrev}
-          className="text-small font-medium text-blue-gray-A30"
+          className={`text-small font-medium ${activePage === 1 ? "text-blue-gray-A30" : "text-ct-blue-90-68%"}`}
         >
           Prev</button>
-      </div>
-      <div className="sm:hidden block">
-        <button
-          onClick={handlePrev}
-          className="text-small font-medium text-blue-gray-A30"
-        >
-          Prev
-        </button>
       </div>
       {Math.floor(total / pageSize) > 4 ? (
         <>
@@ -67,8 +59,8 @@ const Type2 = ({
             }}
             className={`text-small ${activePage === 1
               ? "text-white bg-ct-blue-60 border border-ct-blue-60"
-              : "text-blue-gray-A30"
-              } font-bold py-1.5 px-2.5  mr-2.5 ml-3 rounded-[6px] duration-200 outline-none`}
+              : "text-blue-gray-A30 bg-white"
+              } font-bold py-1 px-3  mr-2.5 ml-3 rounded-[6px] duration-200 outline-none`}
           >
             1
           </button>
@@ -85,9 +77,9 @@ const Type2 = ({
                   handleDataChange(currentPage + index);
                 }}
                 key={index}
-                className={`text-sm  font-bold py-1.5 px-2.5 ${activePage === index + currentPage
+                className={`text-sm  font-bold py-1 px-3 ${activePage === index + currentPage
                   ? "text-white bg-ct-blue-60 border border-ct-blue-60"
-                  : "text-blue-gray-A30"
+                  : "text-blue-gray-A30 bg-white"
                   } duration-200 mr-2.5 rounded-[6px] outline-none`}
               >
                 {index + currentPage}
@@ -105,9 +97,9 @@ const Type2 = ({
               setCurrentPage(Math.floor(total / pageSize) - 2);
               handleDataChange(Math.floor(total / pageSize));
             }}
-            className={`text-small h-[28px] w-[28px] font-bold mr-2.5 ${activePage === Math.floor(total / pageSize)
+            className={`text-small py-1 px-3 font-bold mr-2.5 ${activePage === Math.floor(total / pageSize)
               ? "text-white bg-ct-blue-60 "
-              : "text-blue-gray-A30"
+              : "text-blue-gray-A30 bg-white"
               } duration-200 rounded-[4px] outline-none`}
           >
             {Math.ceil(total / pageSize)}
@@ -120,7 +112,7 @@ const Type2 = ({
               setActivePage(1);
               handleDataChange(1);
             }}
-            className={`text-small font-bold h-[28px] w-[28px]  mr-2.5 ml-3 ${activePage === 1 ? "text-white bg-ct-blue-60 " : "text-blue-gray-A30"
+            className={`text-small font-bold py-1 px-3  mr-2.5 ml-3 ${activePage === 1 ? "text-white bg-ct-blue-60 " : "text-blue-gray-A30 bg-white"
               } duration-200 rounded-[4px] outline-none`}
           >
             1
@@ -131,15 +123,15 @@ const Type2 = ({
                 .fill(0)
                 .map((_, index) => (
                   <button
-                  
+
                     onClick={() => {
                       setActivePage(index + currentPage);
                       handleDataChange(index + currentPage);
                     }}
                     key={index}
-                    className={`text-small font-bold h-[28px] w-[28px] ${activePage === index + currentPage
-                      ? "text-white bg-ct-blue-60 "
-                      : "text-blue-gray-A30"
+                    className={`text-small font-bold py-1 px-3 ${activePage === index + currentPage
+                      ? "text-white bg-ct-blue-60"
+                      : "text-blue-gray-A30 bg-white"
                       } duration-200 mr-2.5 rounded-[4px] outline-none`}
                   >
                     {index + currentPage}
@@ -149,17 +141,9 @@ const Type2 = ({
           )}
         </>
       )}
-      <div className="sm:block hidden">
+      <div>
         <button
-          className="text-small font-medium text-blue-gray-A30"
-          onClick={handleNext}
-        >
-          Next
-        </button>
-      </div>
-      <div className="sm:hidden block">
-        <button
-          className="text-small font-medium text-blue-gray-A30"
+          className={`text-small font-medium ${activePage === total ? "text-blue-gray-A30" : "text-ct-blue-90-68%"}`}
           onClick={handleNext}
         >
           Next

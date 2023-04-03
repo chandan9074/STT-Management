@@ -146,6 +146,19 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                                 handleFilterList={handleFilterList}
                                                 popupClassName={popupClassName}
                                             />
+                                        </div> : item.type === "select-with-checkbox" ? <div
+                                            className={`pt-3 pb-5  animate-fadeIn ${currentState === item.key
+                                                ? "block"
+                                                : "hidden"
+                                                }`}
+                                        >
+                                            <Dropdown.Type6
+                                                data={item}
+                                                isParent={item.isParent}
+                                                filterList={filterList}
+                                                handleFilterList={handleFilterList}
+                                            // subdomainData={filterData["subDomain"]}
+                                            />
                                         </div> : null}
                         </div>
                     ))}
