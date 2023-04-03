@@ -4,6 +4,7 @@ import Icons from "../../assets/Icons"
 import { checkingStatusUploadDataDT } from "../../types/audioManagementTypes"
 import AudioTrack from "../common/AudioTrack"
 import RoleImage from "../Image/RoleImage"
+import Pagination from "../Pagination"
 
 type Props = {
     data: checkingStatusUploadDataDT[]
@@ -96,6 +97,10 @@ const Type24 = ({ data }: Props) => {
         }),
     };
 
+    const handlePageChange = (page: number) => {
+        // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
+    }
+
     return (
         <div className="billing-table billing-table-even-bg type4-table horizontal-table-padding">
             <Table
@@ -107,7 +112,17 @@ const Type24 = ({ data }: Props) => {
                 }}
                 dataSource={data}
                 columns={Type24columns}
+                pagination={false}
             />
+            <div className='flex w-full justify-end mt-4 mb-2'>
+                <Pagination.Type2
+                    total={100}
+                    pageSize={10}
+                    // total={35}
+                    // pageSize={5}
+                    handleDataChange={handlePageChange}
+                />
+            </div>
         </div>
     )
 }

@@ -8,6 +8,7 @@ import { uploadAudioDataDT } from "../../types/audioManagementTypes"
 import AudioTrack from "../common/AudioTrack"
 import DataTypeFilter from "../common/TableField/AudioManagement/DataTypeFilter"
 import RoleImage from "../Image/RoleImage"
+import Pagination from "../Pagination"
 
 type Props = {
     data: uploadAudioDataDT[]
@@ -111,9 +112,22 @@ const Type23 = ({ data }: Props) => {
         },
     ]
 
+    const handlePageChange = (page: number) => {
+        // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
+    }
+
     return (
         <div className="billing-table billing-table-even-bg type4-table horizontal-table-padding">
-            <Table dataSource={data} columns={Type23columns} />
+            <Table dataSource={data} columns={Type23columns} pagination={false} />
+            <div className='flex w-full justify-end mt-4 mb-2'>
+                <Pagination.Type2
+                    total={100}
+                    pageSize={10}
+                    // total={35}
+                    // pageSize={5}
+                    handleDataChange={handlePageChange}
+                />
+            </div>
         </div>
     )
 }

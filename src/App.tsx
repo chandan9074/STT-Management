@@ -117,16 +117,16 @@ function App() {
               <Route path={PATH.ANNOTAION}>
                 <Route path='' element={<Annotation />} />
                 <Route path={PATH.SENETENCE_LEVEL} element={<SentenceLevel />} />
-                <Route path={PATH.ANNOTATED_FILES} element={<AnnotatedFiles />} />
                 <Route path={PATH.WORD_LEVEL} element={<WordLevel />} />
                 <Route path={PATH.PHONEME_LEVEL} element={<PhonemeLevel />} />
+                <Route path={PATH.ANNOTATED_FILES} element={<AnnotatedFiles />} />
               </Route>
               <Route path={PATH.VALIDATION}>
                 <Route path="" element={<Validation />} />
                 <Route path={PATH.SENETENCE_LEVEL} element={<SentenceLevelValidation />} />
-                <Route path={PATH.ANNOTATED_FILES} element={<AnnotatedFiles />} />
                 <Route path={PATH.WORD_LEVEL} element={<WordLevelValidation />} />
                 <Route path={PATH.PHONEME_LEVEL} element={<PhonemeLevelValidation />} />
+                <Route path={PATH.ANNOTATED_FILES} element={<AnnotatedFiles />} />
               </Route>
             </Route>
             <Route path={PATH.UPLOAD_AUDION_VIDEO_PATH}>

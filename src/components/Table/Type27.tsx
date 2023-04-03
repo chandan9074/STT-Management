@@ -10,6 +10,7 @@ import Remark from "../common/Remark"
 import Annotate from "../common/TableField/AudioManagement/Annotate"
 import StatusFilter from "../common/TableField/AudioManagement/StatusFilter"
 import RoleImage from "../Image/RoleImage"
+import Pagination from "../Pagination"
 
 type Props = {
     data: sentenceLevelUploadDT[]
@@ -128,6 +129,10 @@ const Type27 = ({ data }: Props) => {
         }),
     };
 
+    const handlePageChange = (page: number) => {
+        // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
+    }
+
   return (
     <div className='billing-table billing-table-odd-bg type4-table horizontal-table-padding'>
             <Table
@@ -141,8 +146,17 @@ const Type27 = ({ data }: Props) => {
                 columns={Type27columns}
                 // scroll={{ x: 1366 }}
                 rowKey="id"
-
+                pagination={false}
             />
+            <div className='flex w-full justify-end mt-4 mb-2'>
+                <Pagination.Type2
+                    total={100}
+                    pageSize={10}
+                    // total={35}
+                    // pageSize={5}
+                    handleDataChange={handlePageChange}
+                />
+            </div>
             {
                 remarkOpen &&
                 <Remark
