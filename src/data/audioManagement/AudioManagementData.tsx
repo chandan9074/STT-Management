@@ -1,4 +1,4 @@
-import { STATUS_ANNOTATING, STATUS_TOOK_A_BREAK, STATUS_VALIDATING } from "../../helpers/ConditionVariable"
+import { STATUS_ANNOTATING, STATUS_TOOK_A_BREAK, STATUS_VALIDATING, STTMODULE, TTSMODULE } from "../../helpers/ConditionVariable"
 import { targetFilterDT } from "../../types/assignTypes"
 
 export const collectedAudio = [
@@ -1328,6 +1328,11 @@ export const colValSenStatusFilterData = [
     STATUS_TOOK_A_BREAK
 ]
 
+export const uploadAudioDataTypeFilterData = [
+    STTMODULE,
+    TTSMODULE
+]
+
 
 export const collectValSenData = [
     {
@@ -1547,8 +1552,6 @@ export const collectValSenData = [
         },
     },
 ]
-
-
 
 export const collectedAudioFilterData: targetFilterDT[] = [
     {
