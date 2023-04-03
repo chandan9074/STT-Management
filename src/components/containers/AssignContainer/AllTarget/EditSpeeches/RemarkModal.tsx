@@ -90,9 +90,6 @@ const RemarkModal = ({ open, setOpen, remarkId, speechData, setSpeechData, setRe
                             name="target"
                             // label={<h1 className='comboBoxLabel'>Target <span className='text-[red]'></span></h1>}
                             value={remark}
-                            // onChange={formik.handleChange}
-                            // error={formik.touched.target && Boolean(formik.errors.target)}
-                            // helperText={formik.touched.target && formik.errors.target}
                             onChange={(event) => setRemark(event.target.value)}
                             style={{
                                 width: '100%'

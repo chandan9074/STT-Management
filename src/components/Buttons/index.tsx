@@ -11,6 +11,7 @@ import Date from "./Date";
 import CalenderBtn from "./CalenderBtn";
 import DropdownWeekBtn from "./DropdownWeekBtn";
 import { DateDropdown } from "./DateDropdown";
+import ChoiceButton from './ChoiceButton';
 
 const Buttons = {
   ToggleRounded,
@@ -26,6 +27,7 @@ const Buttons = {
   CalenderBtn,
   DropdownWeekBtn,
   DateDropdown,
+  ChoiceButton
 };
 
 export default Buttons;

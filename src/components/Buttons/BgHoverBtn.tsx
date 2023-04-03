@@ -49,7 +49,7 @@ const BgHoverBtn = ({
   return (
     <button
       {...rest}
-      className={`${paddingX} ${paddingY} ${marginX} ${marginY} ${bgColor} ${hoverBgColor} ${textColor} ${hoverTextColor} ${border} ${hoverBorder} ${borderRadius} ${hoverBorderRadius} ${boxShadow} ${hoverBoxShadow} ${fontSize} ${fontWeight} ${hoverFontSize} ${hoverFontWeight} ${duration}`}
+      className={`hover:border-blue-gray-A10 border-transparent border-[1px] ${paddingX} ${paddingY} ${marginX} ${marginY} ${bgColor} ${hoverBgColor} ${textColor} ${hoverTextColor} ${border} ${hoverBorder} ${borderRadius} ${hoverBorderRadius} ${boxShadow} ${hoverBoxShadow} ${fontSize} ${fontWeight} ${hoverFontSize} ${hoverFontWeight} ${duration}`}
     >
       {title}
     </button>
