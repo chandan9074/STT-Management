@@ -25,6 +25,13 @@
   z-index: 99999;
 }
 
+.audio_submission_date_picker{
+  position: absolute !important;
+  top: calc(50% - -425px) !important;
+  left: calc(50% - -210px) !important;
+  z-index: 99999;
+}
+
 .all_speech_deadline_date_picker{
   position: absolute !important;
   top: calc(50% - -1045px) !important;

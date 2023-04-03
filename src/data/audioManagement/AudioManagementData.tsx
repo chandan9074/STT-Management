@@ -1,4 +1,5 @@
 import { STATUS_ANNOTATING, STATUS_TOOK_A_BREAK, STATUS_VALIDATING } from "../../helpers/ConditionVariable"
+import { targetFilterDT } from "../../types/assignTypes"
 
 export const collectedAudio = [
     {
@@ -1545,4 +1546,91 @@ export const collectValSenData = [
             },
         },
     },
+]
+
+
+
+export const collectedAudioFilterData: targetFilterDT[] = [
+    {
+        type: "select-with-checkbox",
+        key: "script",
+        title: "Script",
+        //   child: ["STT", "TTS"],
+        isFromAPI: true
+    },
+    {
+        type: "multiple-select",
+        key: "collector",
+        title: "Collector",
+        //   role: "collector",
+        selects: [
+            {
+                type: "select",
+                isFromAPI: false,
+                child: [
+                    "Barisal",
+                    "Barisal",
+                    "Barisal",
+                    "Barisal",
+                    "Barisal",
+                ]
+            },
+            {
+                type: "select-with-roleImg",
+                isFromAPI: true,
+                role: "collector",
+            }
+        ]
+    },
+    {
+        type: "form",
+        key: "speaker",
+        title: "Speaker",
+        //   role: "collector",
+        formData: [
+            {
+                type: "checkbox",
+                title: "Gender"
+            },
+            {
+                type: "check",
+                title: "Age",
+                child: [
+                    "7-14",
+                    "15-24",
+                    "25-34",
+                    "35-44",
+                    "45-59",
+                    "60-65"
+                ]
+            },
+            {
+                type: "multiple-select",
+                selects: [
+                    {
+                        type: "select",
+                        isFromAPI: false,
+                        child: [
+                            "Barisal",
+                            "Barisal",
+                            "Barisal",
+                            "Barisal",
+                            "Barisal",
+                        ]
+                    },
+                    {
+                        type: "select-with-roleImg",
+                        isFromAPI: true,
+                        role: "speaker",
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        type: "date",
+        key: "audioSubmissionPeriod",
+        title: "Audio Submission Period",
+    }
+
 ]

@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import Icons from '../../../../assets/Icons';
 import { EDIT_SCRIPT_PATH } from '../../../../helpers/Slug';
 import { PDF } from '../../../PDF';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Toast } from '../../../Toast';
 import { callingToast } from '../../../../helpers/Utils';
 
 interface Props {

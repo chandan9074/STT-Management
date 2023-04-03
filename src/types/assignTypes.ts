@@ -163,12 +163,30 @@ export type targetCompletedDT = {
 }
 
 export type targetFilterDT = {
-  type: "check" | "select" | "date";
+  type: "check" | "select" | "date" | "select-with-checkbox" | "multiple-select" | "form" | "date";
   isParent?: string;
   key: string;
   title: string;
   child?: string[];
   children?: subChildDT[];
+  isFromAPI?: boolean;
+  selects?: filterSelectsDT[];
+  formData?: filterFromDT[];
+}
+
+export type filterSelectsDT = {
+  type: string;
+  isFromAPI: boolean;
+  child?: string[];
+  role?: string;
+}
+
+export type filterFromDT = {
+  type: "checkbox" | "check" | "multiple-select";
+  title?: string;
+  child?: string[];
+  selects?: filterSelectsDT[];
+
 }
 
 export type subChildDT = {
