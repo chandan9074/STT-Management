@@ -23,7 +23,6 @@ type Props = {
 const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilterList, handleSubmitFilter, popupClassName }: Props) => {
     const [open, setOpen] = useState(false);
     const [currentState, setCurrentState] = useState<string>(filterData[0]?.key);
-    console.log("filterList", filterList)
 
     // const onChange: DatePickerProps['onChange'] = (date, dateString) => {
     //     console.log(date, dateString);

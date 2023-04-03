@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Icons from '../../../../assets/Icons';
 import { ScriptContext } from '../../../../context/ScriptProvider';
 import Buttons from '../../../Buttons';
+import { scriptResDT } from '../../../../types/script';
 
-const ActionButton = () => {
+const ActionButton = ({ data }: { data: scriptResDT | undefined }) => {
     const scriptContext = useContext(ScriptContext);
     const { loading } = scriptContext;
     const navigate = useNavigate();
@@ -33,7 +34,7 @@ const ActionButton = () => {
                         }
                     /> :
                     <Buttons.IconWithTextButton.Primary
-                        label='Create'
+                        label={data ? "Update" : 'Create'}
                         size='medium'
                         variant='CT-Blue'
                         type='submit'

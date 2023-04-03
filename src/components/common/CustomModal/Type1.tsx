@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useContext, useState } from 'react';
+import { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { CustomModal } from '.';
 import Icons from '../../../assets/Icons';
@@ -14,7 +14,12 @@ interface Props {
 
 const Type1 = ({ open, setOpen }: Props) => {
     const scriptContext = useContext(ScriptContext)
-    const [value, setValue] = useState<string>(scriptContext.scriptModule);
+    const [value, setValue] = useState<string>('');    
+
+    useEffect(() => {
+        setValue(scriptContext.scriptModule);
+    }, [scriptContext.scriptModule]);
+
     const location = useLocation();
 
     const handleSave = () => {
@@ -22,10 +27,16 @@ const Type1 = ({ open, setOpen }: Props) => {
         setOpen(false)
     }
 
+    const handleCancel = () => {
+        setOpen(false);
+        setValue(scriptContext.scriptModule)
+    }
+
     return (
         <div>
-            <CustomModal.Primary
+            <CustomModal.Type5
                 setOpen={setOpen}
+                setValue={setValue}
                 open={open}
                 width="462px"
             >
@@ -135,18 +146,18 @@ const Type1 = ({ open, setOpen }: Props) => {
                                 size="small"
                                 onClick={() => handleSave()}
                             />
-                            </Link>
+                        </Link>
 
                         <Buttons.LabelButton.Secondary
                             label='Cancel'
                             variant="Blue"
                             size='small'
-                            onClick={() => setOpen(false)}
+                            onClick={() => handleCancel()}
                         />
 
                     </div>
                 </div>
-            </CustomModal.Primary>
+            </CustomModal.Type5>
         </div>
     )
 }
