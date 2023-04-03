@@ -200,3 +200,13 @@ export type checkingStatusUploadDataDT = {
     audioChecker: audioCheckerDT;
     deadLine: string;
 }
+
+export type allCheckedSpeechDT = {
+    id: string;
+    speech: assignAudioTrackDT;
+    audioChecker: audioCheckerDT;
+    status: string;
+    deadLine: string;
+    submissionDate: string;
+    remark: remarkInfoDT;
+}

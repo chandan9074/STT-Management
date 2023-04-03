@@ -22,7 +22,8 @@ import Type21 from "./Type21";
 import Type22 from "./Type22";
 import Type23 from "./Type23";
 import Type24 from "./Type24";
+import Type25 from "./Type25";
 
-const Table = { Type1, Type2, Type3, Type4, Type5, Type6, Type7, Type8, Type9, Type10, Type11, Type12, Type13, Type14, Type15, Type16, Type17, Type18, Type19, Type20, Type21,Type22,Type23,Type24 };
+const Table = { Type1, Type2, Type3, Type4, Type5, Type6, Type7, Type8, Type9, Type10, Type11, Type12, Type13, Type14, Type15, Type16, Type17, Type18, Type19, Type20, Type21,Type22,Type23,Type24,Type25 };
 
 export default Table;

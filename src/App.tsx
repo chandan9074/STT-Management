@@ -40,7 +40,7 @@ import WordLevelValidation from "./pages/AudioManagement/CollectedAudio/Validati
 import PhonemeLevelValidation from "./pages/AudioManagement/CollectedAudio/Validation/PhonemeLevelValidation";
 import CheckingUploadAudio from "./pages/AudioManagement/UploadAudio/Checking";
 import CheckingStatusUpload from "./pages/AudioManagement/UploadAudio/Checking/CheckingStatusUpload";
-import AllCheckedAudiosUpload from "./pages/AudioManagement/UploadAudio/Checking/AllCheckedAudiosUpload";
+import AllCheckedAudiosUpload from "./pages/AudioManagement/UploadAudio/Checking/AllCheckedSpeechUpload";
 import AnnotationUpload from "./pages/AudioManagement/UploadAudio/Annotation";
 import SentenceLevelUpload from "./pages/AudioManagement/UploadAudio/Annotation/SentenceLevelUpload";
 import WordLevelUpload from "./pages/AudioManagement/UploadAudio/Annotation/WordLevelUpload";
