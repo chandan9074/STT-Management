@@ -224,3 +224,170 @@ export const allCheckedSpeechData = [
         }
     },
 ]
+
+export const annotationUploadData = [
+    {
+        "id": "v451324wer2",
+        "speech": {
+            "id": '0',
+            "title": "Brahms,Two Pianos",
+            "duration": "5:00",
+            "url":
+                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+        },
+        "deadLine": "01/02/2022",
+        "remark": {
+            "roleInfo": {
+                "id": "maksudalam@gmail.com",
+                "name": "Maksud Alam",
+                "role": "Manager",
+                "contact": "01738463449",
+                "email": "maksudalam@gmail.com",
+                "address": "Dhaka",
+                "gender": "Male"
+            },
+            "des": "i am remarkjs"
+        }
+    },
+    {
+        "id": "v451324wer2",
+        "speech": {
+            "id": '0',
+            "title": "Brahms,Two Pianos",
+            "duration": "5:00",
+            "url":
+                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+        },
+        "deadLine": "01/02/2022",
+        "remark": {
+            "roleInfo": {
+                "id": "maksudalam@gmail.com",
+                "name": "Maksud Alam",
+                "role": "Manager",
+                "contact": "01738463449",
+                "email": "maksudalam@gmail.com",
+                "address": "Dhaka",
+                "gender": "Male"
+            },
+            "des": "i am remarkjs"
+        }
+    },
+    {
+        "id": "v451324wer2",
+        "speech": {
+            "id": '0',
+            "title": "Brahms,Two Pianos",
+            "duration": "5:00",
+            "url":
+                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+        },
+        "deadLine": "01/02/2022",
+        "remark": {
+            "roleInfo": {
+                "id": "maksudalam@gmail.com",
+                "name": "Maksud Alam",
+                "role": "Manager",
+                "contact": "01738463449",
+                "email": "maksudalam@gmail.com",
+                "address": "Dhaka",
+                "gender": "Male"
+            },
+            "des": "i am remarkjs"
+        }
+    },
+    {
+        "id": "v451324wer2",
+        "speech": {
+            "id": '0',
+            "title": "Brahms,Two Pianos",
+            "duration": "5:00",
+            "url":
+                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+        },
+        "deadLine": "01/02/2022",
+        "remark": {
+            "roleInfo": {
+                "id": "maksudalam@gmail.com",
+                "name": "Maksud Alam",
+                "role": "Manager",
+                "contact": "01738463449",
+                "email": "maksudalam@gmail.com",
+                "address": "Dhaka",
+                "gender": "Male"
+            },
+            "des": "i am remarkjs"
+        }
+    },
+]
+
+export const sentenceLevelUploadData = [
+    {
+        "id": "1avtqw4rwev",
+        "speech": {
+            "id": '0',
+            "title": "Brahms,Two Pianos",
+            "duration": "5:00",
+            "url":
+                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+        },
+        "annotate": {
+            "status": "Annotating",
+            "roleName": "Maksud Alam",
+            "locality": "Barendri"
+        },
+        "deadLine": "01/02/2022",
+        "audioChecker": {
+            "status": "Checking",
+            "name": "Peter Bailish",
+            "role": "annotator",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM"
+        },
+    },
+    {
+        "id": "2baertw34tb53ebtq",
+        "speech": {
+            "id": '0',
+            "title": "Brahms,Two Pianos",
+            "duration": "5:00",
+            "url":
+                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+        },
+        "annotate": {
+            "status": "Took a Break",
+            "roleName": "Maksud Alam",
+            "locality": "Barendri"
+        },
+        "deadLine": "01/02/2022",
+        "audioChecker": {
+            "status": "Checking",
+            "name": "Peter Bailish",
+            "role": "annotator",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM"
+        },
+    },
+    {
+        "id": "3bq3t54q354t",
+        "speech": {
+            "id": '0',
+            "title": "Brahms,Two Pianos",
+            "duration": "5:00",
+            "url":
+                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+        },
+        "annotate": {
+            "status": "Annotating",
+            "roleName": "Maksud Alam",
+            "locality": "Barendri"
+        },
+        "deadLine": "01/02/2022",
+        "audioChecker": {
+            "status": "Checking",
+            "name": "Peter Bailish",
+            "role": "annotator",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM"
+        },
+    },
+]

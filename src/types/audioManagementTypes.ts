@@ -210,3 +210,18 @@ export type allCheckedSpeechDT = {
     submissionDate: string;
     remark: remarkInfoDT;
 }
+
+export type annotationUploadDT = {
+    id: string;
+    speech: assignAudioTrackDT;
+    deadLine: string;
+    remark: remarkInfoDT
+}
+
+export type sentenceLevelUploadDT = {
+    id: string;
+    speech: assignAudioTrackDT
+    annotate: annotateInfoDT
+    deadLine: string
+    audioChecker: audioCheckerDT
+}

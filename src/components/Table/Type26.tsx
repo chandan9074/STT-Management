@@ -2,21 +2,20 @@ import { Table } from "antd"
 import { ColumnsType } from "antd/es/table"
 import { useState } from "react"
 import Icons from "../../assets/Icons"
-import { annotationDT } from "../../types/audioManagementTypes"
+import { annotationUploadDT } from "../../types/audioManagementTypes"
 import AudioTrack from "../common/AudioTrack"
 import Remark from "../common/Remark"
-import Speaker from "../common/TableField/AudioManagement/Speaker"
 
 type Props = {
-    data: annotationDT[]
+    data: annotationUploadDT[]
 }
 
-const Type19 = ({ data }: Props) => {
+const Type26 = ({ data }: Props) => {
 
     const [remarkOpen, setRemarkOpen] = useState(false);
-    const [singleTargetData, setSingleTargetData] = useState<annotationDT>();
+    const [singleTargetData, setSingleTargetData] = useState<annotationUploadDT>();
 
-    const Type19columns: ColumnsType<annotationDT> = [
+    const Type26columns: ColumnsType<annotationUploadDT> = [
         {
             title: `${"SN".toLocaleUpperCase()}`,
             key: 'sn',
@@ -29,58 +28,38 @@ const Type19 = ({ data }: Props) => {
         {
             title: `${"Raw Audio".toLocaleUpperCase()}`,
             key: 'speech',
-            width: 176,
-            render: (data: annotationDT) => <>
+            width: 244,
+            render: (data: annotationUploadDT) => <>
                 <AudioTrack data={data.speech} />
             </>,
         },
         {
-            title: `${"Script".toLocaleUpperCase()}`,
-            key: 'script',
-            width: 172,
-            render: (data: annotationDT) => <div className='flex w-full justify-start items-center gap-x-[10px]'>
-                <h1 className='w-28 truncate whitespace-nowrap'>{data.script.id}</h1>
-                <img
-                    // onClick={() => {
-                    //     showDrawer(record);
-                    //     setSingleTargetData(record);
-                    // }}
-                    className='w-[10px] h-[10px] cursor-pointer'
-                    src={Icons.openInNewGray}
-                    alt="" />
-            </div>,
-        },
-        {
-            title: `${"Speaker".toLocaleUpperCase()}`,
-            key: 'speaker',
-            width: 193,
-            render: (data: annotationDT) => <Speaker data={data.speaker} />
-        },
-        {
-            title: `${"Word annotation".toLocaleUpperCase().slice(0, 10)}...`,
+            // title: `${"Word annotation".toLocaleUpperCase().slice(0, 10)}...`,
+            title: `${"Word annotation".toLocaleUpperCase()}`,
             key: 'wordAnnotation',
             align: "center",
-            width: 119,
+            width: 244,
             render: () => <>unknown</>
         },
         {
-            title: `${"Phoneme annotation".toLocaleUpperCase().slice(0, 13)}...`,
+            // title: `${"Phoneme annotation".toLocaleUpperCase().slice(0, 13)}...`,
+            title: `${"Phoneme annotation".toLocaleUpperCase()}`,
             key: 'wordAnnotation',
             align: "center",
-            width: 119,
+            width: 244,
             render: () => <>unknown</>
         },
         {
             title: `${"Remark".toLocaleUpperCase()}`,
             key: 'remark',
-            width: 80,
+            width: 120,
             align: "center",
-            render: (data: annotationDT) => (
+            render: (data: annotationUploadDT) => (
                 <div className='flex justify-center'>
                     <img
                         onClick={() => {
                             setRemarkOpen(true);
-                            setSingleTargetData(data);                            
+                            setSingleTargetData(data);
                         }}
                         src={Icons.File} className="h-[16px] w-[16px] cursor-pointer"
                         alt=""
@@ -94,8 +73,8 @@ const Type19 = ({ data }: Props) => {
             dataIndex: 'details',
             key: 'details',
             fixed: 'right',
-            width: 80,
-            render: (_, record: annotationDT) => (
+            width: 71,
+            render: (_, record: annotationUploadDT) => (
                 <>
 
                     <div className='flex w-full justify-center items-center'>
@@ -114,13 +93,13 @@ const Type19 = ({ data }: Props) => {
     ]
 
     const rowSelection = {
-        onChange: (selectedRowKeys: React.Key[], selectedRows: annotationDT[]) => {
+        onChange: (selectedRowKeys: React.Key[], selectedRows: annotationUploadDT[]) => {
             // setSelectedTarget(selectedRows);
             console.log('*******', selectedRows);
 
 
         },
-        getCheckboxProps: (record: annotationDT) => ({
+        getCheckboxProps: (record: annotationUploadDT) => ({
             // disabled: record.name === 'Disabled User', // Column configuration not to be checked
             // name: record.assignee.name,
         }),
@@ -136,11 +115,11 @@ const Type19 = ({ data }: Props) => {
                     ...rowSelection,
                 }}
                 dataSource={data}
-                columns={Type19columns}
-                scroll={{ x: 1366 }}
+                columns={Type26columns}
+                // scroll={{ x: 1366 }}
                 rowKey="id"
-
             />
+
             {
                 remarkOpen &&
                 <Remark
@@ -156,4 +135,4 @@ const Type19 = ({ data }: Props) => {
     )
 }
 
-export default Type19
+export default Type26

@@ -27,23 +27,23 @@ const Type24 = ({ data }: Props) => {
             // align: 'center',
             width: 96,
             render: (data: checkingStatusUploadDataDT) => <h1 className='w-20 truncate whitespace-nowrap'># {data.id}</h1>,
-          },
-          {
+        },
+        {
             title: `${"Speech".toLocaleUpperCase()}`,
             key: 'speech',
             width: 148,
             render: (data: checkingStatusUploadDataDT) => <>
-              <AudioTrack data={data.speech} />
+                <AudioTrack data={data.speech} />
             </>,
-          },
-          {
+        },
+        {
             title: `${"Audio Checker".toLocaleUpperCase()}`,
             key: 'audioChecker',
             width: 233,
             render: (data: checkingStatusUploadDataDT) => <div >
                 <div className='flex items-center gap-x-[7px] pl-[2px]'>
                     <div className={`w-1.5 h-1.5 ${data.audioChecker.status === "Checking" ? "bg-primary-ct-magenta-60" : "bg-secondary-blue-50"} rounded-full`}></div>
-                    <h1 className={`${data.audioChecker.status === "Checking" ? "text-primary-ct-magenta-60" : "text-secondary-blue-50"} text-xs font-medium`}>{data.audioChecker.status}...</h1>
+                    <h1 className={`${data.audioChecker.status === "Checking" ? "text-primary-ct-magenta-60" : "text-secondary-blue-50"} text-xs font-medium leading-[27px]`}>{data.audioChecker.status}...</h1>
                 </div>
                 <div className='flex'>
                     <RoleImage role='audio checker' height='h-4' width='w-4' />
@@ -83,11 +83,33 @@ const Type24 = ({ data }: Props) => {
         },
     ]
 
-  return (
-    <div className="billing-table billing-table-even-bg type4-table horizontal-table-padding">
-            <Table dataSource={data} columns={Type24columns} />
+    const rowSelection = {
+        onChange: (selectedRowKeys: React.Key[], selectedRows: checkingStatusUploadDataDT[]) => {
+            // setSelectedTarget(selectedRows);
+            console.log('*******', selectedRows);
+
+
+        },
+        getCheckboxProps: (record: checkingStatusUploadDataDT) => ({
+            // disabled: record.name === 'Disabled User', // Column configuration not to be checked
+            // name: record.assignee.name,
+        }),
+    };
+
+    return (
+        <div className="billing-table billing-table-even-bg type4-table horizontal-table-padding">
+            <Table
+                rowSelection={{
+                    // type: selectionType,
+                    columnWidth: 48,
+                    fixed: 'left',
+                    ...rowSelection,
+                }}
+                dataSource={data}
+                columns={Type24columns}
+            />
         </div>
-  )
+    )
 }
 
 export default Type24

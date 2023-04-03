@@ -17,14 +17,14 @@ const ValidateCol = ({ data }: Props) => {
                   <h1 className={`${data.status === "Validating" ? "text-primary-ct-magenta-60" : "text-secondary-blue-50"} text-xs font-medium`}>{data.status}...</h1>
                 </div>
                 <div className='flex'>
-                  <RoleImage role='validator' height='h-4' width='w-4' />
+                  <RoleImage role={data.validators.role} height='h-4' width='w-4' />
                   <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs'>{data.validators.name},</h1>
                   <p className='text-blue-gray-75 text-xxs font-normal pl-1'>{data.locality}</p>
                 </div>
               </div> :
               <div >
                 <div className='flex'>
-                  <RoleImage role='validator' height='h-4' width='w-4' />
+                  <RoleImage role={data.validators.role} height='h-4' width='w-4' />
                   <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs'>{data.validators.name}</h1>
                 </div>
                 <p className='text-blue-gray-75 text-xxs font-normal pl-[22px]'>{data.locality}</p>

@@ -1,7 +1,9 @@
+import Table from "../../../../components/Table"
+import { collectValSenData } from "../../../../data/audioManagement/AudioManagementData"
 
 const SentenceLevelUploadVal = () => {
   return (
-    <div>SentenceLevelUploadVal</div>
+    <Table.Type22 data={collectValSenData} />
   )
 }
 

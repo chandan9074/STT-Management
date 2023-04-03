@@ -1,7 +1,8 @@
 import { Table } from 'antd'
 import { ColumnsType } from 'antd/es/table'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Icons from '../../assets/Icons'
+import { CommonContext } from '../../context/CommonProvider'
 import { allCheckedAudioDT } from '../../types/audioManagementTypes'
 import AudioTrack from '../common/AudioTrack'
 import Remark from '../common/Remark'
@@ -14,6 +15,9 @@ type Props = {
 }
 
 const Type18 = ({ data }: Props) => {
+
+  const { roleName } = useContext(CommonContext);
+
 
   const [remarkOpen, setRemarkOpen] = useState(false);
   const [singleTargetData, setSingleTargetData] = useState<allCheckedAudioDT>();
@@ -53,15 +57,17 @@ const Type18 = ({ data }: Props) => {
       title: `${"Audio Checker".toLocaleUpperCase()}`,
       key: 'audioChecker',
       width: 266,
-      render: (data: allCheckedAudioDT) => 
-      <div className='flex flex-col gap-y-1'>
-        <div className='flex'>
-          <RoleImage role={data.audioChecker.role} height='h-4' width='w-4' />
-          <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs'>{data.audioChecker.name},</h1>
-          <p className='text-blue-gray-75 text-xxs font-normal pl-1'>{data.audioChecker.locality}</p>
+      render: (data: allCheckedAudioDT) =>
+        <div className='flex flex-col gap-y-1'>
+          <div className='flex'>
+            <RoleImage role={data.audioChecker.role} height='h-4' width='w-4' />
+            <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs'>{data.audioChecker.name}{roleName === data.audioChecker.name && " (Self)"}</h1>
+            {
+              roleName === data.audioChecker.name ? "" : <p className='text-blue-gray-75 text-xxs font-normal'>, {data.audioChecker.locality}</p>
+            }
+          </div>
+          <p className='text-xxs text-blue-gray-75 font-normal leading-[14.4px] pl-[22px]'>Picked: {data.audioChecker.time}</p>
         </div>
-        <p className='text-xxs text-blue-gray-75 font-normal leading-[14.4px] pl-[22px]'>Picked: {data.audioChecker.time}</p>
-      </div>
     },
     {
       title: `${"Status".toLocaleUpperCase()}`,

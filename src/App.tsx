@@ -34,7 +34,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import AnnotatedFiles from "./pages/AudioManagement/CollectedAudio/Annotation/AnnotatedFiles";
 import WordLevel from "./pages/AudioManagement/CollectedAudio/Annotation/WordLevel";
 import PhonemeLevel from "./pages/AudioManagement/CollectedAudio/Annotation/PhonemeLevel";
-import Validation from "./pages/AudioManagement/UploadAudio";
+import Validation from "./pages/AudioManagement/CollectedAudio/Validation";
 import SentenceLevelValidation from "./pages/AudioManagement/CollectedAudio/Validation/SentenceLevelValidation";
 import WordLevelValidation from "./pages/AudioManagement/CollectedAudio/Validation/WordLevelValidation";
 import PhonemeLevelValidation from "./pages/AudioManagement/CollectedAudio/Validation/PhonemeLevelValidation";

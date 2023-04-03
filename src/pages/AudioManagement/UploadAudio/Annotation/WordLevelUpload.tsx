@@ -1,7 +1,11 @@
+import Table from "../../../../components/Table"
+import { sentenceLevelUploadData } from "../../../../data/audioManagement/UploadAudiosData"
 
 const WordLevelUpload = () => {
   return (
-    <div>WordLevelUpload</div>
+    <div>
+      <Table.Type27 data={sentenceLevelUploadData} />
+    </div>
   )
 }
 
