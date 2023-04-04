@@ -49,7 +49,10 @@ const DistributionSource = ({ formik, data }: { formik: FormikValues, data: scri
                     icon={<img src={Icons.CloseIconButton} alt="" />}
                     border='border'
                     background="white"
-                    onClick={() => navigate(-1)}
+                    onClick={(e) => {
+                        navigate(-1);
+                        e.preventDefault();
+                    }}
                 />
             </div>
 

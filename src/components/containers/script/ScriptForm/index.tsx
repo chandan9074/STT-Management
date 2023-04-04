@@ -50,7 +50,6 @@ const ScriptForms = ({ data }: { data?: scriptResDT }) => {
         enableReinitialize: true,
         initialValues: {
             sourceUrl: data?.sourceUrl || '',
-            // module: data?.module || 'STT',
             module: scriptModule || 'STT',
             sourceType: data?.sourceType || '',
             domain: data?.domain || '',
@@ -66,20 +65,17 @@ const ScriptForms = ({ data }: { data?: scriptResDT }) => {
 
         onSubmit: (values: scriptResDT) => {
 
-
             if (scriptModule === 'TTS') {
                 delete values.distributionSource;
                 delete values.isAge;
             }
 
-
+            values.sourceFileName = '';
 
             let formData = new FormData();
 
             // Append the module field to the formData object
             formData.append('module', values.module);
-
-            // Check if any field values have changed
             let hasChanges = false;
             for (const [key, value] of Object.entries(values)) {
                 // Check if the value has changed from the initial data
@@ -87,7 +83,19 @@ const ScriptForms = ({ data }: { data?: scriptResDT }) => {
                     hasChanges = true;
                     // Convert boolean values to strings
                     const valueToAppend = typeof value === 'boolean' ? value.toString() : value;
-                    formData.append(key, valueToAppend);
+                    // Check if the value is empty or null and add the default value "jalal"
+
+                    if (!valueToAppend) {
+
+                        formData.append(key, " ");
+                    } else {
+                        if (key === 'sourceFile' && formik.values.sourceFile.length === 0) {
+                            const emptyFileBlob = new Blob([], { type: "application/pdf" });
+                            formData.append(key, emptyFileBlob, '');
+                        } else {
+                            formData.append(key, valueToAppend);
+                        }
+                    }
                 }
             }
 
@@ -132,7 +140,7 @@ const ScriptForms = ({ data }: { data?: scriptResDT }) => {
                         </div>
 
                         <div className='flex justify-end px-5 py-[28px] bg-white'>
-                            <ActionButton />
+                            <ActionButton data={data} />
                         </div>
 
                     </form>

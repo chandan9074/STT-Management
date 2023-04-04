@@ -9,6 +9,9 @@ import SpeechStatus from '../common/SpeechStatus';
 import SpeakerField from '../common/TableField/AudioManagement/SpeakerField';
 import RoleImage from '../Image/RoleImage';
 import Pagination from '../Pagination';
+import { STATUS_CLAIMED } from '../../helpers/ConditionVariable';
+import { CustomModal } from '../common/CustomModal';
+import ClaimApplicationModal from '../containers/AudioManagement/Annotation/AnnotatedFiles/ClaimApplicationModal';
 
 
 type Props = {
@@ -19,8 +22,7 @@ const Type21 = ({ data }: Props) => {
 
     const [singleTargetData, setSingleTargetData] = useState<annotatedFilesDT>();
     const [remarkOpen, setRemarkOpen] = useState(false);
-
-
+    const [isClaimModal, setIsClaimModal] = useState<boolean>(false);
 
     const Type20columns: ColumnsType<annotatedFilesDT> = [
         {
@@ -90,8 +92,13 @@ const Type21 = ({ data }: Props) => {
                 <>
                     {
                         data?.status !== '' &&
-                        <SpeechStatus data={data?.status} />
-
+                        <div className='flex gap-x-2'>
+                            <SpeechStatus data={data?.status} />
+                            {
+                                data?.status === STATUS_CLAIMED &&
+                                <img src={Icons.openInNewGray} alt="" className='cursor-pointer' onClick={() => setIsClaimModal(true)} />
+                            }
+                        </div>
                     }
                 </>
             )
@@ -164,7 +171,7 @@ const Type21 = ({ data }: Props) => {
             // disabled: record.name === 'Disabled User', // Column configuration not to be checked
             // name: record.assignee.name,
         }),
-    };    
+    };
 
     const handlePageChange = (page: number) => {
         // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
@@ -206,6 +213,14 @@ const Type21 = ({ data }: Props) => {
                     desc={singleTargetData?.remark?.des ? singleTargetData?.remark?.des : ''}
                 />
             }
+
+            <CustomModal.Primary
+                setOpen={setIsClaimModal}
+                open={isClaimModal}
+                width="658px"
+            >
+                <ClaimApplicationModal />
+            </CustomModal.Primary>
         </div>
     );
 };

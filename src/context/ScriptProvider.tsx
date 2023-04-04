@@ -64,13 +64,13 @@ const ScriptProvider = ({ children }: { children: any }) => {
       setScriptModule(response?.data?.module)
     } catch (error) {
     }
-  }
-
+  }  
 
   const createScript = async (params: FormData) => {
     try {
       const response = await ScriptService.createScript(params);
       getAllScript({ role: commonContext?.role });
+      callingToast("Script created successfully");
       return {
         message: response?.data?.message,
         status: response?.status
@@ -85,6 +85,7 @@ const ScriptProvider = ({ children }: { children: any }) => {
       setLoading(true);
       await ScriptService.UpdateScript(params);
       setLoading(false);
+      callingToast("Script updated successfully");
       getAllScript({ role: commonContext?.role });
     } catch (error) {
       setLoading(false);

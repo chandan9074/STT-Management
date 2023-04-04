@@ -4,7 +4,6 @@ import { annotatedFilesDT } from '../../../../../types/audioManagementTypes';
 import TableHeading from '../../../../common/TableHeading';
 import { CustomModal } from '../../../../common/CustomModal';
 import Icons from '../../../../../assets/Icons';
-import ClaimApplicationModal from './ClaimApplicationModal';
 
 type Props = {
     setActiveTab: Dispatch<SetStateAction<string>>;
@@ -15,7 +14,7 @@ type Props = {
 const Header = ({ setActiveTab, selectedScript, setSelectedScript }: Props) => {
 
     const [isConfirmModal, setIsConfirmModal] = useState<boolean>(false);
-    const [isClaimModal, setIsClaimModal] = useState<boolean>(false);
+    // const [isClaimModal, setIsClaimModal] = useState<boolean>(false);
 
     const onSave = () => {
         setIsConfirmModal(false);
@@ -38,7 +37,7 @@ const Header = ({ setActiveTab, selectedScript, setSelectedScript }: Props) => {
                         fontWeight="font-medium"
                         duration="duration-300"
                         hoverBgColor="hover:bg-white"
-                        onClick={() => setIsClaimModal(true)}
+                        // onClick={() => setIsClaimModal(true)}
                     // marginX="mx-2"
                     />
                     <Buttons.BgHoverBtn
@@ -75,13 +74,13 @@ const Header = ({ setActiveTab, selectedScript, setSelectedScript }: Props) => {
                 iconWidth='w-9'
             />
 
-            <CustomModal.Primary
+            {/* <CustomModal.Primary
                 setOpen={setIsClaimModal}
                 open={isClaimModal}
                 width="658px"
             >
                 <ClaimApplicationModal />
-            </CustomModal.Primary>
+            </CustomModal.Primary> */}
         </div>
     );
 };
