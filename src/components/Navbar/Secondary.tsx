@@ -11,11 +11,11 @@ const Secondary = ({ isSideDrawer }: { isSideDrawer: boolean }) => {
   const breadcrumbs = paths.map((path, index) => ({
     name: slugFormatter(path),
     // path: `${ROOT_PATH}${paths.slice(0, path === "assign" ? index + 2 : index + 1).join('/')}`,
-    path: `${ROOT_PATH}${paths.slice(0, path==="assign"? index+2:index+1).join('/')}_${index}`,
+    path: `${ROOT_PATH}${paths.slice(0, path === "assign" ? index + 2 : index + 1).join('/')}_${index}`,
   }));
 
   return (
-    <div className={`flex justify-between items-center pt-4 pb-2 pr-4 ${isSideDrawer ? "pl-[312px]" : "pl-[100px]"} fixed w-full z-[90] bg-white`}>
+    <div className={`flex justify-between items-center pt-4 pb-2 pr-4 ${isSideDrawer ? "pl-[296px]" : "pl-[85px]"} fixed w-full z-[90] bg-white`}>
       <div className="flex items-center">
         {breadcrumbs.map((breadcrumb, index) => (
           <React.Fragment key={breadcrumb.path}>
