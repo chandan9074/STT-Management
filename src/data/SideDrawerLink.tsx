@@ -128,7 +128,7 @@ let SideDrawerLink = [
                         links: [
                             {
                                 name: 'Sentence Level',
-                                route: PATH.SENETENCE_LEVEL,
+                                route: `${PATH.SENETENCE_LEVEL}`,
                                 links: []
                             },
                             {

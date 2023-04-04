@@ -41,7 +41,7 @@ const SideDrawer = () => {
     // className={`${nav.route === location.pathname && 'bg-blue-10 text-secondary-blue-50 rounded-[20px]'} px-4`}
 
     return (
-        <div className='px-2 py-[15px] z-[100] h-screen w-[218px] bg-white fixed left-[70px] border-r-[1px] border-[#EDF0F4]'>
+        <div className='px-2 py-[15px] z-[100] h-screen w-[218px] bg-white fixed left-[60px] border-r-[1px] border-[#EDF0F4]'>
             <div className='mt-[6px] mb-[54px] text-[18px] font-medium'>
                 <span className='text-ct-blue-90 '>Collection </span>
                 <span className='text-ct-blue-90-55%'>Tool</span>
