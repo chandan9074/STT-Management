@@ -1,11 +1,11 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import Icons from '../../../assets/Icons';
-import { targetDT } from '../../../types/assignTypes';
+import { scriptResDT } from '../../../types/script';
 
 type Props = {
     isMetaData: boolean,
     setIsMetaData: Dispatch<SetStateAction<boolean>>
-    data?: targetDT
+    data?: scriptResDT
 }
 
 const Script = ({ isMetaData, setIsMetaData, data }: Props) => {
@@ -14,7 +14,7 @@ const Script = ({ isMetaData, setIsMetaData, data }: Props) => {
             <div className='flex items-center justify-between'>
                 <div>
                     <h1 className='text-xxs text-blue-gray-75'>Script ID</h1>
-                    <h1 className='text-magenta-70 text-base font-medium'>{data?.script?.id?.slice(0, 12)}</h1>
+                    <h1 className='text-magenta-70 text-base font-medium'>{data?.id?.slice(0, 12)}</h1>
                 </div>
 
                 <div>
@@ -24,7 +24,7 @@ const Script = ({ isMetaData, setIsMetaData, data }: Props) => {
 
                 <div>
                     <h1 className='text-xxs text-blue-gray-75'>Script Domain</h1>
-                    <h1 className='text-orange-70 text-base font-medium'>{data?.script?.domain}</h1>
+                    <h1 className='text-orange-70 text-base font-medium'>{data?.domain}</h1>
                 </div>
 
                 <button onClick={() => setIsMetaData(true)}>
@@ -52,7 +52,7 @@ const Script = ({ isMetaData, setIsMetaData, data }: Props) => {
                 {/* <div className='custom-script-body'> */}
                 <div style={{ height: 'calc(100vh - 320px)' }} className='overflow-y-auto'>
                     <p className='mr-3 text-base font-normal text-ct-blue-90'>
-                        {data?.script?.description}
+                        {data?.description}
                     </p>
                 </div>
             </div>

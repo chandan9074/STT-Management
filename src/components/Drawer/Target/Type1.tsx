@@ -77,7 +77,7 @@ const Type1 = ({ isDrawerOpen, setIsDrawerOpen: setOpen, data }: Props) => {
                         <div className='px-5 pt-[46px]'>
                             {
                                 activePanel.includes("Script") ?
-                                    <Script data={data} setIsMetaData={setIsMetaData} isMetaData={isMetaData} />
+                                    <Script data={data?.script} setIsMetaData={setIsMetaData} isMetaData={isMetaData} />
                                     :
                                     activePanel.includes("Speaker Criteria") ?
                                         <SpeakerCriteria data={data} /> :
