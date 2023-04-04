@@ -22,6 +22,15 @@ type navlinks = {
     }[];
 }
 
+type subLinks = {
+    name: string;
+    route: string;
+    links: {
+        name: string;
+        route: string;
+    }[];
+}
+
 const SideDrawer = () => {
     const location = useLocation();
     const [nav, setNav] = useState<navlinks | undefined>();
@@ -40,6 +49,20 @@ const SideDrawer = () => {
 
     // className={`${nav.route === location.pathname && 'bg-blue-10 text-secondary-blue-50 rounded-[20px]'} px-4`}
 
+    const handleExpandedSubLink = (n: subLinks) => {
+        if (navClickItem.subRoute) {
+            setNavClickItem({
+                ...navClickItem, subRoute: ''
+            })
+        }
+        else {
+            setNavClickItem({
+                ...navClickItem,
+                subRoute: n.route
+            })
+        }
+    }
+
     return (
         <div className='px-2 py-[15px] z-[100] h-screen w-[218px] bg-white fixed left-[60px] border-r-[1px] border-[#EDF0F4]'>
             <div className='mt-[6px] mb-[54px] text-[18px] font-medium'>
@@ -49,8 +72,8 @@ const SideDrawer = () => {
             {
                 nav &&
                 <div>
-                    <div className='mb-[32px] flex items-center gap-[6px]'>
-                        <img src={Icons.lyrics} className='w-[20px] h-[20px]' alt="" />
+                    <div className='mb-[32px] flex items-center gap-[6px] pl-0.5'>
+                        <img src={nav.icon} className='w-[20px] h-[20px]' alt="" />
                         <h1 className='text-base font-medium bg-gradient-to-r from-[#F405FE] via-[#136EE5] to-[#EAA678] text-transparent bg-clip-text'>{nav.name}</h1>
                     </div>
 
@@ -58,12 +81,12 @@ const SideDrawer = () => {
                         nav?.links &&
                         nav?.links?.map((m, i) => (
                             <div key={i} className='mb-[12px]'>
-                                <div className={`${(m.route === location.pathname.split('/')[2] && location.pathname.split('/').length === 3) ? 'sideDrawerActiveNav' : 'sideDrawerDeactiveNav'}`}>
+                                <div className={` ${(m.route === location.pathname.split('/')[2] && location.pathname.split('/').length === 3) ? 'sideDrawerActiveNav' : 'sideDrawerDeactiveNav'} pl-2.5 pr-2.5`}>
                                     <div className='flex items-center gap-x-[6px]'>
                                         <div className={` h-[6px] w-[6px] ${m.route === location.pathname.split('/')[2] ? 'bg-secondary-blue-50' : 'bg-blue-gray-A50 '} rounded-[50%]`} />
                                         <div className='w-[100%]'>
                                             <Link className='w-full' to={m.route} >
-                                                <h1 className='text-small'>
+                                                <h1 className='text-small leading-[27px]'>
                                                     {m.name}
                                                 </h1>
                                             </Link>
@@ -75,7 +98,7 @@ const SideDrawer = () => {
                                                 mainRoute: '',
                                                 subRoute: ''
                                             })}>
-                                                <div className='w-[30px] h-[30px] flex justify-center items-center'>
+                                                <div className=' flex justify-center items-center p-1'>
                                                     <img src={Icons.ArrowDropUp} className='w-[8px] h-[5px]' alt="" />
                                                 </div>
                                             </button> :
@@ -84,8 +107,8 @@ const SideDrawer = () => {
                                                     subRoute: '',
                                                     mainRoute: m.route
                                                 })}>
-                                                    <div className='w-[30px] h-[30px] flex justify-center items-center'>
-                                                        <img src={Icons.ArrowRight} className='w-[5px] h-[10px]' alt="" />
+                                                    <div className=' flex justify-center items-center p-1'>
+                                                        <img src={Icons.arrow_right_rounded_blue} className='w-[5px] h-[10px]' alt="" />
                                                     </div>
 
                                                 </button> :
@@ -97,34 +120,29 @@ const SideDrawer = () => {
                                 {
                                     m?.links &&
                                     m?.links?.map((n, j) => (
-                                        <div key={j} className={`my-[12px] ${navClickItem.mainRoute === m.route ? "block" : 'hidden'} pl-[12px]`}>
+                                        <div key={j} className={`my-[12px] ${navClickItem.mainRoute === m.route ? "block" : 'hidden'} `}>
 
-                                            <div className={`${(n.route === location.pathname.split('/')[3] && location.pathname.split('/')?.length) === 4 ? 'sideDrawerActiveNav' : 'sideDrawerDeactiveNav'}`}>
-                                                <div className='flex items-center gap-x-[6px] w-[100%]'>
+                                            <button onClick={() => handleExpandedSubLink(n)} className={`${(n.route === location.pathname.split('/')[3] && location.pathname.split('/')?.length) === 4 ? 'sideDrawerActiveNav' : 'sideDrawerDeactiveNav'} pl-[21px] pr-2.5 w-full`}>
+                                                <div className='flex items-center'>
 
                                                     <Link className='w-full' to={`${nav.route}/${m.route}/${n.route}`} >
-                                                        <h1 className=''>
+                                                        <h1 className='text-small leading-[27px]'>
                                                             {n.name}
                                                         </h1>
                                                     </Link>
                                                 </div>
                                                 {
                                                     navClickItem.subRoute === n.route ?
-                                                        <button onClick={() => setNavClickItem({
-                                                            ...navClickItem, subRoute: ''
-                                                        })}>
-                                                            <div className='w-[30px] h-[30px] flex justify-center items-center'>
+                                                        <button >
+                                                            <div className=' flex justify-center items-center p-1'>
                                                                 <img src={Icons.ArrowDropUp} className='w-[8px] h-[5px]' alt="" />
                                                             </div>
 
                                                         </button> :
                                                         n?.links?.length > 0 ?
-                                                            <button onClick={() => setNavClickItem({
-                                                                ...navClickItem,
-                                                                subRoute: n.route
-                                                            })}>
-                                                                <div className='w-[30px] h-[30px] flex justify-center items-center'>
-                                                                    <img src={Icons.ArrowRight} className='w-[5px] h-[10px]' alt="" />
+                                                            <button >
+                                                                <div className=' flex justify-center items-center p-1'>
+                                                                    <img src={Icons.arrow_right_rounded_blue} className='w-[5px] h-[10px]' alt="" />
                                                                 </div>
 
                                                             </button> :
@@ -132,14 +150,14 @@ const SideDrawer = () => {
                                                 }
 
 
-                                            </div>
+                                            </button>
                                             {
                                                 n?.links &&
                                                 n?.links?.map((value, k) => (
-                                                    <div key={k} className={`${navClickItem.subRoute === n.route ? "block" : 'hidden'} pl-[16px] my-[12px]`}>
-                                                        <div className={`text-ct-blue-60 ${value.route === location.pathname.split('/')[4] ? 'sideDrawerActiveNav' : 'sideDrawerDeactiveNav'}`}>
+                                                    <div key={k} className={`${navClickItem.subRoute === n.route ? "block" : 'hidden'} my-[12px]`}>
+                                                        <div className={`text-ct-blue-60 ${value.route === location.pathname.split('/')[4] ? 'sideDrawerActiveNav' : 'sideDrawerDeactiveNav'} pl-[21px]`}>
                                                             <Link className='w-full' to={`${nav.route}/${m.route}/${n.route}/${value.route}`}>
-                                                                <h1 >{value?.name}</h1>
+                                                                <h1 className='text-small leading-[27px]' >{value?.name}</h1>
                                                             </Link>
 
                                                         </div>

@@ -25,7 +25,6 @@ import Speech from "./pages/UserManagement/Speech";
 import CollectedAudio from "./pages/AudioManagement/CollectedAudio";
 import CheckingStatus from "./pages/AudioManagement/CollectedAudio/Checking/CheckingStatus";
 import AllCheckedAudios from "./pages/AudioManagement/CollectedAudio/Checking/AllCheckedAudios";
-import Checking from "./pages/AudioManagement/CollectedAudio/Checking";
 import UploadAudio from "./pages/AudioManagement/UploadAudio";
 import Annotation from "./pages/AudioManagement/CollectedAudio/Annotation";
 import SentenceLevel from "./pages/AudioManagement/CollectedAudio/Annotation/SentenceLevel";
@@ -49,6 +48,10 @@ import ValidationUpload from "./pages/AudioManagement/UploadAudio/Validation";
 import SentenceLevelUploadVal from "./pages/AudioManagement/UploadAudio/Validation/SentenceLevelUploadVal";
 import WordLevelUploadVal from "./pages/AudioManagement/UploadAudio/Validation/WordLevelUploadVal";
 import PhonemeLevelUploadVal from "./pages/AudioManagement/UploadAudio/Validation/PhonemeLevelUploadVal";
+import Organizer from "./pages/Organizer";
+import Role from "./pages/Organizer/Role";
+import Tag from "./pages/Organizer/Tag";
+import Device from "./pages/Organizer/Device";
 
 function App() {
   useEffect(() => {
@@ -109,8 +112,8 @@ function App() {
           <Route path={PATH.AUDIO_PATH} element={<AudioManagement />} >
             <Route path={PATH.COLLECTING_AUDIO}  >
               <Route path='' element={<CollectedAudio />} />
-              <Route path={PATH.CHECKING}>
-                <Route path='' element={<Checking />} />
+              <Route path={""}>
+                {/* <Route path='' element={<Checking />} /> */}
                 <Route path={PATH.CHECKING_STATUS} element={<CheckingStatus />} />
                 <Route path={PATH.ALL_CHECKED_AUDIOS} element={<AllCheckedAudios />} />
               </Route>
@@ -151,6 +154,11 @@ function App() {
                 <Route path={PATH.ANNOTATED_FILES} element={<AnnotatedFiles />} />
               </Route>
             </Route>
+          </Route>
+          <Route path={PATH.ORGANIZER_PATH} element={<Organizer/>}>
+            <Route path={PATH.ROLE} element={<Role/>}/>
+            <Route path={PATH.TAG} element={<Tag/>}/>
+            <Route path={PATH.DEVICE} element={<Device/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
