@@ -112,6 +112,9 @@ const ScriptForms = ({ data }: { data?: scriptResDT }) => {
                 updateScript(formData);
                 navigate(SCRIPT_PATH);
             } else {
+                const emptyFileBlob = new Blob([], { type: "application/pdf" });
+                formData.append('sourceFile', emptyFileBlob, '');
+                
                 createScript(formData);
                 navigate(SCRIPT_PATH);
             }

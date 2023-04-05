@@ -3,9 +3,10 @@ import { Drawer } from 'antd';
 import Buttons from '../../../Buttons';
 import Script from '../../Target/Script';
 import MetaData from '../../Target/MetaData';
-import { checkingStatusDT } from '../../../../types/audioManagementTypes';
+import { checkingStatusDT, singleSpeakerDT2 } from '../../../../types/audioManagementTypes';
 import Others from './Others';
 import RoleImage from '../../../Image/RoleImage';
+import SpeakerInformation from './SpeakerInformation';
 
 type Props = {
     isDrawerOpen: boolean,
@@ -17,7 +18,11 @@ type Props = {
 const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, data }: Props) => {
     const [activePanel, setActivePanel] = useState<string>("Script");
     const [isMetaData, setIsMetaData] = useState<boolean>(false);
-    const [isRole, setIsRole] = useState<boolean>(false);
+    const [isSpeaker, setIsSpeaker] = useState<boolean>(false);
+
+    // const [gender, setIsGender] = useState<any>({ isMale: false, isFemale: false })
+    const [isMale, setIsMale] = useState<boolean>(false);
+    const [isFemale, setIsFemale] = useState<boolean>(false);
 
     const onClose = () => {
         // drawerClose();
@@ -26,6 +31,17 @@ const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, data }: Props)
 
     useEffect(() => {
         setActivePanel('Script');
+
+        data.speaker.speakers.map((item: singleSpeakerDT2) => {
+            if (item.gender.toLowerCase() === 'male'.toLowerCase()) {
+                setIsMale(true);
+            }
+            if (item.gender.toLowerCase() === 'female'.toLowerCase()) {
+                setIsFemale(true);
+            }
+            return item;
+        });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
@@ -41,15 +57,15 @@ const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, data }: Props)
                 (isDrawerOpen && !isMetaData) ?
                     <div>
                         {
-                            isRole ?
+                            isSpeaker ?
                                 <div>
-                                    add speaker details here
+                                    <SpeakerInformation data={data.speaker} setIsSpeaker={setIsSpeaker} />
                                 </div>
                                 :
                                 <div className='animate-fadeIn'>
 
                                     {/* Header */}
-                                    <div className='border-b-[1px] border-ct-blue-20 bg-ct-blue-05 px-6 pt-6 pb-11 flex justify-between relative'>
+                                    <div className='border-b-[1px] border-ct-blue-20 bg-ct-blue-05 px-6 pt-6 pb-11 flex justify-between items-center relative'>
                                         <div>
                                             <h1 className='text-ct-blue-95 text-[18px] font-medium'>Details</h1>
                                             <div className='flex'>
@@ -59,18 +75,24 @@ const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, data }: Props)
                                         </div>
 
 
-                                        <div
-                                            onClick={() => setIsRole(true)}
-                                            className='flex items-center pl-[11px] pr-[18px] py-1 bg-white rounded-[32px] gap-x-[5px] cursor-pointer'
-                                        >
-                                            <p className='text-ct-blue-45 text-xxs font-medium'>Speaker</p>
-                                            <div className='relative flex items-center'>
-                                                <RoleImage height='h-6' width='w-6' role='speaker' />
-                                                <div className='absolute left-[14px] w-full ring-2 ring-white rounded-full'>
-                                                    <RoleImage height='h-6' width='w-6' role='speaker' />
+                                        {
+
+                                            <div
+                                                onClick={() => setIsSpeaker(true)}
+                                                className={`flex items-center py-[3px] pl-[11px] ${data.speaker.speakers.length > 1 ? 'pr-[18px]' : 'pr-1'} bg-white rounded-[32px] gap-x-[5px] cursor-pointer`}
+                                            >
+                                                <p className='text-ct-blue-45 text-xxs font-medium'>Speaker</p>
+                                                <div className='relative flex items-center'>
+                                                    <RoleImage height='h-6' width='w-6' role={isMale ? 'speaker' : 'speakerFemale'} />
+                                                    {
+                                                        data.speaker.speakers.length > 1 &&
+                                                        <div className='absolute left-[14px] w-full ring-2 ring-white rounded-full'>
+                                                            <RoleImage height='h-6' width='w-6' role={isFemale ? 'speakerFemale' : 'speaker'} />
+                                                        </div>
+                                                    }
                                                 </div>
                                             </div>
-                                        </div>
+                                        }
 
 
                                         <div className='absolute -bottom-[20px] left-[130px] '>

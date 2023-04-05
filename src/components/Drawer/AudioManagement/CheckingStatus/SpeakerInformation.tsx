@@ -1,117 +1,109 @@
-import { useContext, useEffect, useState } from 'react';
-import { AssignContext } from '../../../../../context/AssignProvider';
-import { CriteriaItemDT, customSingleCriteriaDT } from '../../../../../types/assignTypes';
-import Image from '../../../../Image';
+import React, { Dispatch, SetStateAction, useState } from 'react';
+import Buttons from '../../../Buttons';
+import Icons from '../../../../assets/Icons';
+import { singleSpeakerDT2, speakerLocalityDT2 } from '../../../../types/audioManagementTypes';
+import { customSingleCriteriaDT } from '../../../../types/assignTypes';
+import RoleImage from '../../../Image/RoleImage';
 
-const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void }) => {
+type Props = {
+    setIsSpeaker: Dispatch<SetStateAction<boolean>>;
+    data: speakerLocalityDT2;
+}
 
-    const AssignContexts = useContext(AssignContext);
-    const {
-        criterias,
-        singleCriteria,
-        getSingleCriteria,
-    } = AssignContexts;    
+const SpeakerInformation = ({ setIsSpeaker, data }: Props) => {
+
+    const [singleSpeaker, setSingleSpeaker] = useState<singleSpeakerDT2>(data.speakers[0]);
+    const [targetId, setTargetId] = useState<number>(0);
+
+    const onTargetClick = (value: singleSpeakerDT2, id: number) => {
+        setTargetId(id);
+        setSingleSpeaker(value);
+        // getSingleCriteria(id);
+    }
 
     const singleValue1: customSingleCriteriaDT[] = [
         {
             title: 'Gender',
-            value: singleCriteria?.gender || '-'
+            value: singleSpeaker?.gender ?? '-'
         },
         {
-            title: 'Age Range',
-            value: singleCriteria?.ageRange || '-'
+            title: 'Childhood Area',
+            value: singleSpeaker?.childhoodArea ?? '-'
         },
         {
-            title: 'Division/ District',
-            value: singleCriteria?.district?.join(', ') ?? "-"
+            title: 'Age',
+            value: singleSpeaker?.age ?? "-"
         },
         {
             title: 'profession',
-            value: singleCriteria?.profession || '-'
+            value: singleSpeaker?.profession ?? '-'
         },
         {
             title: 'Econimic Situation',
-            value: singleCriteria?.economicSituation || '-'
+            value: singleSpeaker?.economicSituation ?? '-'
         },
         {
             title: 'Education',
-            value: singleCriteria?.education || '-'
+            value: singleSpeaker?.education ?? '-'
         },
         {
             title: 'Smoking Habit',
-            value: singleCriteria?.healthFactors?.includes('Smoker') ? 'Yes' : 'No'
+            value:  singleSpeaker.smokingHabit ?? '-'
         },
         {
             title: 'Hearing Disability',
-            value: singleCriteria?.healthFactors?.includes('Hearing') ? 'Yes' : 'No'
+            value: singleSpeaker.hearingDisability ?? '-'
         },
         {
             title: 'Shutter',
-            value: singleCriteria?.healthFactors?.includes('Stutter') ? 'Yes' : 'No'
-        },
-        {
-            title: 'Recording Area',
-            value: singleCriteria?.recordingArea || '-'
-        },
-        {
-            title: 'Recording Distance',
-            value: singleCriteria?.recordingDistance || '-'
-        },
-
+            value:  singleSpeaker.shutter ?? '-'
+        }
     ]
 
     const singleValue2: customSingleCriteriaDT[] = [
         {
-            title: 'Target',
-            value: singleCriteria?.target?.toString() || '-'
+            title: 'Recording Are',
+            value: singleSpeaker?.recordingArea ?? '-'
         },
         {
-            title: 'Deadline',
-            value: singleCriteria?.deadline || '-'
-        },
-        {
-            title: 'Reminder',
-            value: singleCriteria?.district?.join(', ') ?? "-"
+            title: 'Recording Distance',
+            value: singleSpeaker?.recordingDistance ?? '-'
         },
         {
             title: 'Note',
-            value: singleCriteria?.remark || '-'
-        },
-
+            value: singleSpeaker?.note ?? "-"
+        }
     ]
 
-    const [targetId, setTargetId] = useState<number>(0);
-
-    useEffect(() => {
-        getSingleCriteria(targetId);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    const onTargetClick = (id: number) => {
-        setTargetId(id);
-        getSingleCriteria(id);
-    }
-
-    const onEditClick = () => {
-        getSingleCriteria(targetId);
-        onLengthClickClose();
-    }
-
     return (
-        <div>
-            <div className='flex overflow-x-auto gap-x-3'>
+        <div className='py-[24px] pl-[24px] pr-[26px] animate-fadeIn'>
+            <div className='flex items-center justify-between  bg-white mb-[39px]'>
+                <div className='gap-x-[28px] flex items-center'>
+                    <Buttons.IconButton.Circle
+                        size='medium'
+                        variant="CT-Blue"
+                        icon={<img src={Icons.arrow_back} alt="" />}
+                        border='border'
+                        background="white"
+                        onClick={() => setIsSpeaker(false)}
+                    />
+                    <h1 className='text-ct-blue-95 text-[18px] font-medium'>Speaker Information</h1>
+                </div>
+               
+            </div>
+
+            <div className='flex overflow-x-auto scrollbar-hide gap-x-3'>
                 {
-                    criterias &&
-                    criterias.map((value: CriteriaItemDT, i: number) => (
+                    data.speakers.map((value: singleSpeakerDT2, i: number) => (
                         <div key={i} className='mb-[10px]'>
                             <div
-                                onClick={() => onTargetClick(i)}
+                                onClick={() => onTargetClick(value, i)}
                                 className={` ${targetId === i ? 'bg-ct-blue-10' : 'bg-white'} h-[54px] w-[176px] rounded-[65px] flex justify-center items-center gap-x-2 cursor-pointer`}
                             >
-                                <Image.RoleImage role={value?.gender.toLowerCase() === 'Male'.toLowerCase() ? 'Speaker' : 'speakerFemale'} />
+                                <RoleImage height='h-6' width='w-6' role={value?.gender.toLowerCase() === 'male'.toLowerCase() ? 'Speaker' : 'speakerFemale'} />
                                 <div>
-                                    {/* <h1 className='text-ct-blue-80 text-xxs'>Target ID- 23-23456-7</h1> */}
-                                    <h1 className='text-ct-blue-90 text-xxs font-medium'>target: {value.target}</h1>
+                                    <h2 className='text-ct-blue-90 font-medium text-xxs'>{value.name}</h2>
+                                    <p className='text-ct-blue-80 text-xxs'>{data?.locality}</p>
                                 </div>
                             </div>
 
@@ -120,9 +112,10 @@ const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void 
                     ))
                 }
             </div>
-            {/* ----------------------------------------------------------- */}
 
-            <div className='mt-3 flex'>
+ {/* ----------------------------------------------------------- */}
+
+ <div className='mt-3 flex'>
                 <div>
                     {singleValue1?.map((item: customSingleCriteriaDT, i: number) => (
                         <div className={` grid grid-cols-12`} key={i}>
@@ -140,10 +133,6 @@ const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void 
                             </div>
                         </div>
                     ))}
-                </div>
-                <div
-                    className='ml-auto'>
-                    <button onClick={() => onEditClick()} className='text-ct-blue-60'>Edit</button>
                 </div>
             </div>
 
@@ -169,9 +158,8 @@ const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void 
                 ))}
             </div>
 
-        </div >
+        </div>
     );
 };
 
-export default TargetDetails;
-
+export default SpeakerInformation;
