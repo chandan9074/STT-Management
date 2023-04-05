@@ -5,6 +5,7 @@ import Icons from '../../assets/Icons';
 import { SideDrawer } from '../common/SideDrawer';
 import "../../assets/css/table/type4Table.css";
 import { scriptResDT } from '../../types/script';
+import { Tooltip } from '../Tooltip';
 
 
 
@@ -38,7 +39,14 @@ const Type4 = ({ Data, handleSelectRow }: Props) => {
             title: `${"ID".toLocaleUpperCase()}`,
             dataIndex: 'id',
             width: 116,
-            render: (id: number) => <h1 className='text-ct-blue-60 text-xs font-medium w-11 truncate'>{id}</h1>
+            render: (id: number) => <div className=' flex flex-col items-start'>
+                <div className='relative group flex flex-col items-center'>
+                    <h1 className='text-ct-blue-60 text-xs font-medium w-14 truncate'>{id}</h1>
+                    <div className="absolute group-hover:block hidden animate-fadeIn top-6 z-[99999]">
+                        <Tooltip.Type1 title={id.toString()} align="center" />
+                    </div>
+                </div>
+            </div>
         },
         {
             title: `${"distribution Source".toLocaleUpperCase()}`,

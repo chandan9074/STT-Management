@@ -110,7 +110,7 @@ const TargetTable = () => {
             }
           </div>
           <div className='flex items-center gap-x-3'>
-            <SearchBox.Type1 inputWidth="w-52" placeholder="Search with script ID, Title..." paddingX="px-3" paddingY="py-2" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
+            <SearchBox.Type1 inputWidth="w-52" placeholder="Search with script ID, Title..." bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
             <Filter.Type2 handleSubmitFilter={handleSubmitFilter} filterData={targetFilter} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
           </div>
         </div>

@@ -35,7 +35,7 @@ const Header = () => {
                     hoverBgColor="hover:bg-white"
                 />
                 <div>
-                    <SearchBox.Type1 inputWidth="w-44" placeholder="Search" paddingX="px-3" paddingY="py-2" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
+                    <SearchBox.Type1 inputWidth="w-44" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
                 </div>
             </div>
         </div>

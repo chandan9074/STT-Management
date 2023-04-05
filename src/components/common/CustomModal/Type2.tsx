@@ -26,7 +26,7 @@ const Type2 = ({ open, setOpen }: Props) => {
             >
                 <div>
                     <div className="p-5 bg-ct-blue-05 rounded-t-lg">
-                        <SearchBox.Type1 inputWidth="w-full" placeholder="Search with script ID, Title..." paddingX="px-3" paddingY="py-3.5" bgColor="bg-white" textColor="text-ct-blue-90-70%" />
+                        <SearchBox.Type1 inputWidth="w-full" placeholder="Search with script ID, Title..." bgColor="bg-white" textColor="text-ct-blue-90-70%" />
                     </div>
                     <div className="m-3 p-4 border border-blue-gray-30 bg-blue-gray-05 rounded-lg">
                         <p className='text-heading-6 font-normal text-ct-blue-60'>

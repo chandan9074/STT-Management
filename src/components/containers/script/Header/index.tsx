@@ -136,7 +136,7 @@ const Header = ({ selectedScript, setSelectedScript }: Props) => {
             </Link>
           }
         </> : null}
-        <SearchBox.Type1 inputWidth="w-52" placeholder="Search with script ID, Title..." paddingX="px-3" paddingY="py-2" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
+        <SearchBox.Type1 inputWidth="w-52" placeholder="Search with script ID, Title..." bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
         {/* <Filter.Type1 filterData={filterData} /> */}
         <Filter.Type2 handleSubmitFilter={handleSubmitFilter} filterData={filterData} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
         <input

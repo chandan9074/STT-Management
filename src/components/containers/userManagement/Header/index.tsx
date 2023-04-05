@@ -25,7 +25,7 @@ const Header = ({ open, setOpen }: Props) => {
             </div>
             <div className='flex items-center'>
                 <Buttons.LabelButton.Tertiary label='Manage' size='xSmall' variant='CT-Blue' marginX='mr-2' onClick={() => setOpen(!open)} />
-                <SearchBox.Type1 inputWidth="w-52" placeholder="Search with script ID, Title..." paddingX="px-3" paddingY="py-2" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
+                <SearchBox.Type1 inputWidth="w-52" placeholder="Search with script ID, Title..." bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
                 <Link to={CREATE_USER_PATH}>
                     <Buttons.IconWithTextButton.Primary
                         label="Create User"
