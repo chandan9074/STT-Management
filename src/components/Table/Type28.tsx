@@ -8,9 +8,11 @@ import Pagination from "../Pagination"
 type Props = {
     data: RoleDataDT[]
     handleSelectRow: (value: RoleDataDT[]) => void;
+    open: boolean;
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Type28 = ({ data,handleSelectRow }: Props) => {
+const Type28 = ({ data, handleSelectRow, open, setOpen }: Props) => {
 
     const Type28columns: ColumnsType<RoleDataDT> = [
         {
@@ -52,7 +54,7 @@ const Type28 = ({ data,handleSelectRow }: Props) => {
             render: (data: RoleDataDT) => (
                 <>
 
-                    <div className='flex w-full justify-center items-center'>
+                    <div className='flex w-full justify-center items-center' onClick={()=>setOpen(true)}>
                         <img
                             // onClick={() => {
                             //     showDrawer(record);

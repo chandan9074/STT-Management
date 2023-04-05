@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icons from '../../assets/Icons'
 import Buttons from '../../components/Buttons'
+import SideDrawerContent from '../../components/containers/Organizer/role/SideDrawerContent'
+import { Drawer } from '../../components/Drawer'
 import Table from '../../components/Table'
 import { roleData } from '../../data/organize/OrganizerData'
 import { RoleDataDT } from '../../types/organizerTypes'
@@ -15,10 +17,23 @@ const Role = () => {
     setSelectedRows(value)
   }
 
+  const drawerClose = () => {
+    setOpen(false);
+  };
+
   return (
     <div>
       <Header open={open} setOpen={setOpen} selectedRows={selectedRows} />
-      <Table.Type28 data={roleData} handleSelectRow={handleSelectRow} />
+      <Table.Type28 data={roleData} handleSelectRow={handleSelectRow} open={open} setOpen={setOpen} />
+      <Drawer.Organizer.Type1
+        isDrawerOpen={open}
+        drawerClose={drawerClose}
+        title="Role Details"
+      >
+        <div className=' flex items-center'>
+          <SideDrawerContent data={roleData} />
+        </div>
+      </Drawer.Organizer.Type1>
     </div>
   )
 }
