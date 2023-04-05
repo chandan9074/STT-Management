@@ -47,7 +47,7 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                         </h3>
                         <div className="flex gap-x-2 animate-fadeIn">
                             {count > 0 && (<><Buttons.LabelButton.Primary onClick={() => { handleSubmitFilter(); setOpen(!open) }} label="Apply" size="xSmall" variant="CT-Blue" />
-                                <Buttons.LabelButton.Tertiary label="Clear" size="xSmall" variant="CT-Blue" onClick={() => handleReset("", "all")} /></>)}
+                                <Buttons.LabelButton.Tertiary label="Clear filter" size="xSmall" variant="CT-Blue" onClick={() => handleReset("", "all")} /></>)}
                             <button onClick={() => setOpen(!open)}>
                                 <img src={Icons.CloseIconButton} alt="" />
                             </button>
@@ -58,10 +58,10 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                             key={dataIndex}
                             className={`px-5 duration-200 ${currentState === item.key ? "bg-blue-gray-05" : "bg-white"} ${dataIndex === filterData.length - 1 && "mb-3"}`}
                         >
-                            <div className="flex items-center justify-between py-2 w-full">
+                            <div className={`flex items-center justify-between py-2 w-full`}>
                                 <button
-                                    onClick={() => currentState === item.key ? setCurrentState("") : setCurrentState(item.key)}
-                                    className="flex items-center w-full mr-5"
+                                    onClick={() => item.isParent && filterList[item.isParent].length === 0 ? setCurrentState("") : currentState === item.key ? setCurrentState("") : setCurrentState(item.key)}
+                                    className={`flex items-center w-full mr-5 ${item.isParent && filterList[item.isParent].length === 0 ? "cursor-not-allowed opacity-60" : "cursor-pointer"}`}
                                 >
                                     {currentState === item.key ? (
                                         <img
@@ -99,7 +99,7 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                     </h6>
                                 </button>
                                 {currentState ===
-                                    item.key && (
+                                    item.key && filterList[item.key].length > 0 && (
                                         <button onClick={() => handleReset(item.key, "single")} className="text-xxs font-medium text-ct-blue-60 animate-fadeIn">
                                             Reset
                                         </button>
@@ -165,7 +165,7 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                                 }`}
                                         >
                                             {item.selects && item.selects.map((singleItem, index) => (
-                                                <>
+                                                <div key={index}>
                                                     {singleItem.type === "select" ? <Dropdown.Type5
                                                         data={singleItem}
                                                         isParent={item.isParent}
@@ -182,7 +182,7 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                                             placeHolder="Search Collector by Login ID or Name"
                                                         // subdomainData={filterData["subDomain"]}
                                                         /> : null}
-                                                </>
+                                                </div>
                                             ))}
                                         </div> : null}
                         </div>

@@ -17,9 +17,19 @@ const ScriptsDetails = ({ drawerData, setMetaDataOpen }: Props) => {
     const textRef = useRef<HTMLParagraphElement>(null);
     // const [open, setOpen] = useState<boolean>(false);
 
-    const copyToClipboard = () => {
+    function copyToClipboard(text: string) {
+        const el = document.createElement('textarea');
+        el.value = text;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+    }
+
+    const handleCopyClick = () => {
         if (textRef.current) {
-            navigator.clipboard.writeText(textRef.current.innerText);
+            // navigator.clipboard.writeText(textRef.current.innerText);
+            copyToClipboard(textRef.current.innerText);
             callingToast("Copied")
         }
     };
@@ -86,7 +96,7 @@ const ScriptsDetails = ({ drawerData, setMetaDataOpen }: Props) => {
                             className='w-[18px] h-[18px] cursor-pointer'
                             src={Icons.contentCopy}
                             alt=""
-                            onClick={copyToClipboard}
+                            onClick={handleCopyClick}
                         />
 
                     </div>
