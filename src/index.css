@@ -44,11 +44,11 @@
   }
 
   .sideDrawerActiveNav {
-    @apply bg-blue-10 text-secondary-blue-50 font-semibold rounded-[20px] px-[10px] py-[5px] flex justify-between items-center;
+    @apply bg-blue-10 text-secondary-blue-50 font-semibold rounded-[20px]  flex justify-between items-center;
   }
 
   .sideDrawerDeactiveNav {
-    @apply text-blue-gray-A50 rounded-[20px] px-[10px] py-[5px] flex justify-between items-center;
+    @apply text-blue-gray-A50 rounded-[20px] flex justify-between items-center;
   }
 
   .comboBoxLabel {

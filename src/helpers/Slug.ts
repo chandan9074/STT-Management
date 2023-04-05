@@ -29,19 +29,26 @@ export const CREATE_USER_PATH = "/user-management/create-user";
 export const ACTIVE_USER_PATH = "/user-management/activity";
 export const USER_MANAGEMENT_SPEECHES_PATH = "speeches";
 
+//Audio Management
 export const TEST = "/test";
 export const AUDIO_MANAGEMENT = '/audio-management'
 export const COLLECTING_AUDIO = `collection-audio`;
 export const CHECKING = "checking";
 export const ANNOTAION = "annotation";
 export const VALIDATION = "validation";
-export const CHECKING_STATUS = `checking-status`;
+export const CHECKING_STATUS = `checking/checking-status`;
 export const ALL_CHECKED_AUDIOS = "all-checked-audios";
 export const SENETENCE_LEVEL = "sentence-level";
 export const WORD_LEVEL = "word-level";
 export const PHONEME_LEVEL = "phoneme-level";
 export const ANNOTATED_FILES = "annotated-files";
 export const UPLOAD_AUDION_VIDEO_PATH = `upload-audio-video`;
+
+//Ortganizer
+export const ROLE = "role";
+export const TAG = "tag";
+export const DEVICE = "device";
+
 
 // export const AUDIO_FILE_UPLOADED = 'Uploaded';
 // export const AUDIO_FILE_FAILED = 'Upload Failed';

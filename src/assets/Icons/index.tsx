@@ -138,6 +138,8 @@ import check_blue from "./check_blue.svg";
 import like_emoji from "./like_emoji.svg";
 import AssignmentReturn from "./assignment_return.svg"
 import union from "./union.svg"
+import arrow_right_rounded_blue from "./arrow_right_rounded_blue.svg"
+import settings_purple from "./settings_purple.svg"
 
 const Icons = {
   currency,
@@ -151,6 +153,7 @@ const Icons = {
   target,
   user2,
   settings,
+  settings_purple,
   whiteDropArrow,
   blackDropArrow,
   arrow_back,
@@ -279,7 +282,8 @@ const Icons = {
   File,
   like_emoji,
   AssignmentReturn,
-  union
+  union,
+  arrow_right_rounded_blue
 };
 
 export default Icons;

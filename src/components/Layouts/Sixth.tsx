@@ -9,7 +9,7 @@ const Sixth = ({ children }: { children: any }) => {
         <div>
             <Navbar.Secondary isSideDrawer={false}/>
             <Sidebar.Primary />
-            <div className={`relative pl-[72px] pb-6 h-[100%] bg-default pt-9`}>
+            <div className={`relative pl-[60px] pb-6 h-[100%] bg-default pt-9`}>
                 {children}
             </div>
         </div>

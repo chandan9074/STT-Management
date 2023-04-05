@@ -1,3 +1,4 @@
+import Icons from "../assets/Icons";
 import * as PATH from "../helpers/Slug";
 
 let SideDrawerLink = [
@@ -6,7 +7,7 @@ let SideDrawerLink = [
         // route: '/audio-management',
         route: PATH.ASSIGN_PATH,
         // route: PATH.COLLECTING_AUDIO,
-        icon: '',
+        icon: Icons.assignNav,
         links: [
             {
                 name: 'All Target',
@@ -26,7 +27,7 @@ let SideDrawerLink = [
         // route: '/audio-management',
         route: PATH.AUDIO_PATH,
         // route: PATH.COLLECTING_AUDIO,
-        icon: '',
+        icon: Icons.lyrics,
         links: [
             {
                 name: 'Collected Audio',
@@ -34,11 +35,11 @@ let SideDrawerLink = [
                 links: [
                     {
                         name: 'Checking',
-                        route: PATH.CHECKING,
+                        route: PATH.CHECKING_STATUS,
                         links: [
                             {
                                 name: 'Checking Status',
-                                route: PATH.CHECKING_STATUS,
+                                route: "",
                                 links: []
                             },
                             {
@@ -177,7 +178,32 @@ let SideDrawerLink = [
                 ]
             }
         ]
-    }
+    },
+
+    {
+        name: 'Organize',
+        // route: '/audio-management',
+        route: PATH.ORGANIZER_PATH,
+        // route: PATH.COLLECTING_AUDIO,
+        icon: Icons.settings_purple,
+        links: [
+            {
+                name: 'Role',
+                route: PATH.ROLE,
+                links: []
+            },
+            {
+                name: 'Tag',
+                route: PATH.TAG,
+                links: []
+            },
+            {
+                name: 'Device',
+                route: PATH.DEVICE,
+                links: []
+            },
+        ]
+    },
 
 
     // {
