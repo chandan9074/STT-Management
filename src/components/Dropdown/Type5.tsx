@@ -14,6 +14,7 @@ type Props = {
     data: targetFilterDT;
     isParent: string | undefined;
     filterList: targetFilterListDT;
+    placeHolder?: string;
     handleFilterList: (key: string, value: string) => void;
 };
 
@@ -22,6 +23,7 @@ const Type5 = ({
     isParent,
     filterList,
     handleFilterList,
+    placeHolder
 }: Props) => {
     const [open, setOpen] = React.useState(false);
     return (
@@ -33,7 +35,7 @@ const Type5 = ({
                             onClick={() => setOpen(!open)}
                             className="text-xs text-blue-gray-60 mb-0 py-0.5 w-full text-left"
                         >
-                            Select One
+                            {placeHolder ? placeHolder : "Select One"}
                         </button>
                     ) : (
                         <>
@@ -91,7 +93,7 @@ const Type5 = ({
                 </button>
             </div>
             <div
-                className={`absolute animate-fadeIn py-1.5 bg-white w-full rounded-[8px] shadow-bottom-light-blue-20 top-14 max-h-72 overflow-y-auto ${open ? "block" : "hidden"
+                className={`absolute z-50 animate-fadeIn py-1.5 bg-white w-full rounded-[8px] shadow-bottom-light-blue-20 top-14 max-h-72 overflow-y-auto ${open ? "block" : "hidden"
                     }`}
             >
                 {isParent ? (

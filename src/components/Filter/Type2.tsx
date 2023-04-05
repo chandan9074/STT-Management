@@ -158,6 +158,32 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                                 handleFilterList={handleFilterList}
                                             // subdomainData={filterData["subDomain"]}
                                             />
+                                        </div> : item.type === "multiple-select" ? <div
+                                            className={`pt-3 pb-5  animate-fadeIn flex flex-col gap-y-3 ${currentState === item.key
+                                                ? "block"
+                                                : "hidden"
+                                                }`}
+                                        >
+                                            {item.selects && item.selects.map((singleItem, index) => (
+                                                <>
+                                                    {singleItem.type === "select" ? <Dropdown.Type5
+                                                        data={singleItem}
+                                                        isParent={item.isParent}
+                                                        filterList={filterList}
+                                                        handleFilterList={handleFilterList}
+                                                        placeHolder="Present District"
+                                                    // subdomainData={filterData["subDomain"]}
+                                                    /> :
+                                                        singleItem.type === "select-with-roleImg" ? <Dropdown.Type6
+                                                            data={singleItem}
+                                                            isParent={item.isParent}
+                                                            filterList={filterList}
+                                                            handleFilterList={handleFilterList}
+                                                            placeHolder="Search Collector by Login ID or Name"
+                                                        // subdomainData={filterData["subDomain"]}
+                                                        /> : null}
+                                                </>
+                                            ))}
                                         </div> : null}
                         </div>
                     ))}

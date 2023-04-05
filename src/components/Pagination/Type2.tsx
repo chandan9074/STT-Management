@@ -60,7 +60,7 @@ const Type2 = ({
             className={`text-small ${activePage === 1
               ? "text-white bg-ct-blue-60 border border-ct-blue-60"
               : "text-blue-gray-A30 bg-white"
-              } font-bold py-1 px-3  mr-2.5 ml-3 rounded-[6px] duration-200 outline-none`}
+              } font-bold py-[5px] px-3  mr-2.5 ml-3 rounded-[4px] duration-200 outline-none`}
           >
             1
           </button>
@@ -77,10 +77,10 @@ const Type2 = ({
                   handleDataChange(currentPage + index);
                 }}
                 key={index}
-                className={`text-sm  font-bold py-1 px-3 ${activePage === index + currentPage
+                className={`text-sm  font-bold py-[5px] px-3 ${activePage === index + currentPage
                   ? "text-white bg-ct-blue-60 border border-ct-blue-60"
                   : "text-blue-gray-A30 bg-white"
-                  } duration-200 mr-2.5 rounded-[6px] outline-none`}
+                  } duration-200 mr-2.5 rounded-[4px] outline-none`}
               >
                 {index + currentPage}
               </button>
@@ -97,7 +97,7 @@ const Type2 = ({
               setCurrentPage(Math.floor(total / pageSize) - 2);
               handleDataChange(Math.floor(total / pageSize));
             }}
-            className={`text-small py-1 px-3 font-bold mr-2.5 ${activePage === Math.floor(total / pageSize)
+            className={`text-small py-[5px] px-3 font-bold mr-2.5 ${activePage === Math.floor(total / pageSize)
               ? "text-white bg-ct-blue-60 "
               : "text-blue-gray-A30 bg-white"
               } duration-200 rounded-[4px] outline-none`}
@@ -112,7 +112,7 @@ const Type2 = ({
               setActivePage(1);
               handleDataChange(1);
             }}
-            className={`text-small font-bold py-1 px-3  mr-2.5 ml-3 ${activePage === 1 ? "text-white bg-ct-blue-60 " : "text-blue-gray-A30 bg-white"
+            className={`text-small font-bold py-[5px] px-3  mr-2.5 ml-3 ${activePage === 1 ? "text-white bg-ct-blue-60 " : "text-blue-gray-A30 bg-white"
               } duration-200 rounded-[4px] outline-none`}
           >
             1
@@ -129,7 +129,7 @@ const Type2 = ({
                       handleDataChange(index + currentPage);
                     }}
                     key={index}
-                    className={`text-small font-bold py-1 px-3 ${activePage === index + currentPage
+                    className={`text-small font-bold py-[5px] px-3 ${activePage === index + currentPage
                       ? "text-white bg-ct-blue-60"
                       : "text-blue-gray-A30 bg-white"
                       } duration-200 mr-2.5 rounded-[4px] outline-none`}

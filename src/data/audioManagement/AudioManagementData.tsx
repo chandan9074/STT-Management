@@ -1718,6 +1718,8 @@ export const collectedAudioFilterData: targetFilterDT[] = [
         selects: [
             {
                 type: "select",
+                key: "collector",
+                title: "Collector",
                 isFromAPI: false,
                 child: [
                     "Barisal",
@@ -1729,6 +1731,8 @@ export const collectedAudioFilterData: targetFilterDT[] = [
             },
             {
                 type: "select-with-roleImg",
+                key: "collector",
+                title: "Collector",
                 isFromAPI: true,
                 role: "collector",
             }
@@ -1762,6 +1766,8 @@ export const collectedAudioFilterData: targetFilterDT[] = [
                     {
                         type: "select",
                         isFromAPI: false,
+                        key: "speaker",
+                        title: "Speaker",
                         child: [
                             "Barisal",
                             "Barisal",
@@ -1772,6 +1778,8 @@ export const collectedAudioFilterData: targetFilterDT[] = [
                     },
                     {
                         type: "select-with-roleImg",
+                        key: "speaker",
+                        title: "Speaker",
                         isFromAPI: true,
                         role: "speaker",
                     }

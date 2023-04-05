@@ -163,7 +163,7 @@ export type targetCompletedDT = {
 }
 
 export type targetFilterDT = {
-  type: "check" | "select" | "date" | "select-with-checkbox" | "multiple-select" | "form" | "date";
+  type: "check" | "select" | "date" | "select-with-checkbox" | "multiple-select" | "form" | "date" | "select-with-roleImg";
   isParent?: string;
   key: string;
   title: string;
@@ -175,8 +175,10 @@ export type targetFilterDT = {
 }
 
 export type filterSelectsDT = {
-  type: string;
+  type: "check" | "select" | "date" | "select-with-checkbox" | "multiple-select" | "form" | "date"| "select-with-roleImg";
   isFromAPI: boolean;
+  key: string;
+  title: string;
   child?: string[];
   role?: string;
 }

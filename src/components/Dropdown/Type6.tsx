@@ -14,6 +14,7 @@ type Props = {
     data: targetFilterDT;
     isParent: string | undefined;
     filterList: targetFilterListDT;
+    placeHolder?: string;
     handleFilterList: (key: string, value: string) => void;
     handleDropdownAPICall?: (key: string) => void;
 };
@@ -23,7 +24,8 @@ const Type6 = ({
     isParent,
     filterList,
     handleFilterList,
-    handleDropdownAPICall
+    handleDropdownAPICall,
+    placeHolder
 }: Props) => {
     const [open, setOpen] = React.useState(false);
 
@@ -43,7 +45,7 @@ const Type6 = ({
                             onClick={() => setOpen(!open)}
                             className="text-xs text-blue-gray-60 mb-0 py-0.5 w-full text-left"
                         >
-                            Select One
+                            {placeHolder ? placeHolder : `Select one`}
                         </button>
                     ) : (
                         <>
