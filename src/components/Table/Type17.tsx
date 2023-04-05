@@ -8,6 +8,7 @@ import Remark from '../common/Remark'
 import Speaker from '../common/TableField/AudioManagement/Speaker'
 import RoleImage from '../Image/RoleImage'
 import Pagination from '../Pagination'
+import { Drawer } from '../Drawer'
 
 type Props = {
     data: checkingStatusDT[]
@@ -16,8 +17,11 @@ type Props = {
 const Type17 = ({ data }: Props) => {
     const [remarkOpen, setRemarkOpen] = useState(false);
     const [singleTargetData, setSingleTargetData] = useState<checkingStatusDT>();
+    const [open, setOpen] = useState(false);
 
-
+    const showDrawer = (item: checkingStatusDT) => {
+        setOpen(true);
+    };
 
     const Type17columns: ColumnsType<checkingStatusDT> = [
         {
@@ -120,10 +124,10 @@ const Type17 = ({ data }: Props) => {
 
                     <div className='flex w-full justify-center items-center'>
                         <img
-                            // onClick={() => {
-                            //     showDrawer(record);
-                            //     setSingleTargetData(record);
-                            // }}
+                            onClick={() => {
+                                showDrawer(record);
+                                setSingleTargetData(record);
+                            }}
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
@@ -148,7 +152,7 @@ const Type17 = ({ data }: Props) => {
 
     const handlePageChange = (page: number) => {
         // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
-    }
+    }    
 
     return (
         <div className='billing-table billing-table-odd-bg type4-table horizontal-table-padding'>
@@ -184,6 +188,16 @@ const Type17 = ({ data }: Props) => {
                     roleType={'speaker'}
                     dateTime={singleTargetData?.deadLine ? singleTargetData?.deadLine : ''}
                     desc={'this is remark'}
+                />
+            }
+
+            {
+                (open && singleTargetData) &&
+                <Drawer.AudioManagement.CheckingStatus
+                    isDrawerOpen={open}
+                    setIsDrawerOpen={setOpen}
+                    data={singleTargetData}
+
                 />
             }
         </div>

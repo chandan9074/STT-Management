@@ -25,10 +25,38 @@ export type checkingStatusDT = {
     id: string;
     speech: assignAudioTrackDT;
     script: scriptResDT;
-    speaker: speakerLocalityDT;
+    speaker: speakerLocalityDT2;
     audioChecker: audioCheckerDT;
     deadLine: string;
     remark: remarkInfoDT;
+    others: othersDT;
+}
+
+export type othersDT  = {
+    device: string;
+}
+
+export type speakerLocalityDT2 = {
+    locality: string;
+    speakers: singleSpeakerDT2[]
+};
+
+export type singleSpeakerDT2 = {
+    id: string;
+    name: string;
+    role: string;
+    gender: string;
+    childhoodArea: string;
+    age: string;
+    profession: string;
+    economicSituation: string;
+    education: string;
+    smokingHabit: string;
+    hearingDisability: string;
+    shutter: string;
+    recordingArea: string;
+    recordingDistance: string;
+    note: string;
 }
 
 export type allCheckedAudioDT = {
@@ -52,8 +80,9 @@ export type audioCheckerDT = {
 }
 
 export type remarkInfoDT = {
-    roleInfo: roleDT
-    des: string
+    roleInfo: roleDT;
+    deadline?: string;
+    des: string;
 }
 
 export type annotationDT = {
