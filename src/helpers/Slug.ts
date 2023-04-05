@@ -43,6 +43,7 @@ export const WORD_LEVEL = "word-level";
 export const PHONEME_LEVEL = "phoneme-level";
 export const ANNOTATED_FILES = "annotated-files";
 export const UPLOAD_AUDION_VIDEO_PATH = `upload-audio-video`;
+export const ADD_SPEECH_PATH = `add-speech`;
 
 //Ortganizer
 export const ROLE = "role";

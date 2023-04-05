@@ -52,6 +52,7 @@ import Organizer from "./pages/Organizer";
 import Role from "./pages/Organizer/Role";
 import Tag from "./pages/Organizer/Tag";
 import Device from "./pages/Organizer/Device";
+import AddSpeech from "./components/containers/AudioManagement/UploadAuidioVideo/AddSpeech";
 
 function App() {
   useEffect(() => {
@@ -134,6 +135,7 @@ function App() {
             </Route>
             <Route path={PATH.UPLOAD_AUDION_VIDEO_PATH}>
               <Route path='' element={<UploadAudio />} />
+              <Route path={PATH.ADD_SPEECH_PATH} element={<AddSpeech />} />
               <Route path={PATH.CHECKING}>
                 <Route path='' element={<CheckingUploadAudio />} />
                 <Route path={PATH.CHECKING_STATUS} element={<CheckingStatusUpload />} />
