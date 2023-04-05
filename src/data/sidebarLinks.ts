@@ -54,7 +54,7 @@ let sidebarMenu = {
       menu_title: "Organize",
       menu_icon: Icons.settings,
       type_multi: null,
-      path: PATH.ORGANIZER_PATH,
+      path: `${PATH.ORGANIZER_PATH}/${PATH.ROLE}`,
       permissions: [Permission.ALL],
     },
     // {

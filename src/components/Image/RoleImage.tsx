@@ -1,4 +1,3 @@
-import React from "react";
 import Icons from "../../assets/Icons";
 
 const RoleImage = ({ role, width, height }: { role: string, width?: string, height?: string }) => {
