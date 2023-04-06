@@ -12,7 +12,7 @@ const Header = () => {
             <div>
                 <Link to={ADD_SPEECH_PATH}>
                     <Buttons.IconWithTextButton.Primary
-                        label="Create Script"
+                        label="Add Speech"
                         size="small"
                         variant="Megenta"
                         icon={<img src={Icons.Add} alt="add" />}

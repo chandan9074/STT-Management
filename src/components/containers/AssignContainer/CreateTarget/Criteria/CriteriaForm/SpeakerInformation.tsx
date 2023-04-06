@@ -16,13 +16,13 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                     <h1 className='text-ct-blue-60 text-small font-semibold'>Speaker Information</h1>
                 </div>
                 <div className='flex gap-x-[16px] items-center h-[48px]'>
-                    <h1 className='text-blue-gray-75 font-medium text-small'>Gender</h1>
+                    <h1 className='text-blue-gray-75 font-medium text-small'>Gender</h1>                   
                     <div className='gap-x-2 flex'>
                         {
                             gender.map(value => (
-                                <div onClick={() => formik.setFieldValue('gender', value)} key={value} className={`${formik.values.gender === value ? ' text-[#136EE5] bg-blue-50 border-[1px] border-secondary-blue-50' : 'bg-white text-blue-gray-75'}  px-[12px] py-[8px] rounded-[20px] border-[1px] border-blue-gray-20 cursor-pointer font-medium duration-200 flex gap-x-[7px] items-center`}>
+                                <div onClick={() => formik.setFieldValue('gender', value)} key={value} className={`${formik.values.gender.toLowerCase() === value.toLowerCase() ? ' text-[#136EE5] bg-blue-50 border-[1px] border-secondary-blue-50' : 'bg-white text-blue-gray-75'}  px-[12px] py-[8px] rounded-[20px] border-[1px] border-blue-gray-20 cursor-pointer font-medium duration-200 flex gap-x-[7px] items-center`}>
                                     {
-                                        formik.values.gender === value &&
+                                        formik.values.gender.toLowerCase() === value.toLowerCase() &&
                                         <img className='w-[11px] h-[8px]' src={Icons.CorrectIcon} alt="" />
                                     }
                                     <h1>{value}</h1>
@@ -33,7 +33,7 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                 </div>
 
                 <div className='mt-2'>
-                     <Autocomplete
+                    <Autocomplete
                         disableClearable
                         placeholder='Choose one'
                         id="ageRange"
@@ -89,7 +89,7 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
 
                 <div className='flex gap-3'>
                     <div className='mt-4'>
-                         <Autocomplete
+                        <Autocomplete
                             disableClearable
                             placeholder='Choose one'
                             id="profession"
@@ -133,7 +133,7 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
 
 
                     <div className='mt-4'>
-                         <Autocomplete
+                        <Autocomplete
                             disableClearable
                             placeholder='Choose one'
                             id="economicSituation"
@@ -177,7 +177,7 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                 </div>
 
                 <div className='mt-4'>
-                     <Autocomplete
+                    <Autocomplete
                         disableClearable
                         placeholder='Choose one'
                         id="education"
@@ -235,7 +235,7 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                 </div>
 
                 <div className='mt-4'>
-                     <Autocomplete
+                    <Autocomplete
                         disableClearable
                         placeholder='Choose one'
                         id="recordingArea"
@@ -270,7 +270,7 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                 </div>
 
                 <div className='mt-4'>
-                     <Autocomplete
+                    <Autocomplete
                         disableClearable
                         placeholder='Choose one'
                         id="recordingDistance"
