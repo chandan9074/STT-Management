@@ -112,7 +112,7 @@ function App() {
           <Route path={PATH.AUDIO_PATH} element={<AudioManagement />} >
             <Route path={PATH.COLLECTING_AUDIO}  >
               <Route path='' element={<CollectedAudio />} />
-              <Route path={""}>
+              <Route path={PATH.CHECKING}>
                 {/* <Route path='' element={<Checking />} /> */}
                 <Route path={PATH.CHECKING_STATUS} element={<CheckingStatus />} />
                 <Route path={PATH.ALL_CHECKED_AUDIOS} element={<AllCheckedAudios />} />
