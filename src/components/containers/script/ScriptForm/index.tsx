@@ -86,27 +86,15 @@ const ScriptForms = ({ data }: { data?: scriptResDT }) => {
                     // Check if the value is empty or null and add the default value " "
 
                     if (!valueToAppend) {
-
-                        console.log('@@@@@@@@@@@@@@@@@@');
-                        
                         formData.append(key, " ");
                     } else {
-                        if (key === 'sourceFile' && formik.values.sourceFile?.length === 0) {                            
+                        if (key === 'sourceFile' && formik.values.sourceFile?.length === 0) {
                             const emptyFileBlob = new Blob([], { type: "application/pdf" });
                             formData.append(key, emptyFileBlob, '');
                         }
                         // this is create
                         else {
-                            if (formik.values.sourceFile === '') {
-                                // formData.delete('sourceFile');
-                            console.log('********8if');
-                                
-                            } else if((formik.values.sourceFile !== '')) {
-                                console.log('else%%%%%%%%%5');
-                                
-                                formData.append(key, valueToAppend);
-                            }
-                           
+                            formData.append(key, valueToAppend);
                         }
                     }
                 }
@@ -125,6 +113,9 @@ const ScriptForms = ({ data }: { data?: scriptResDT }) => {
                 updateScript(formData);
                 navigate(SCRIPT_PATH);
             } else {
+                if (formik.values.sourceFile === '') {
+                    formData.delete('sourceFile');
+                }
                 createScript(formData);
                 navigate(SCRIPT_PATH);
             }
