@@ -254,3 +254,8 @@ export type sentenceLevelUploadDT = {
     deadLine: string
     audioChecker: audioCheckerDT
 }
+
+export type scriptFilterDT = {
+    id: string;
+    title: string;
+}

@@ -1522,7 +1522,7 @@ export const collectedAudioFilterData: targetFilterDT[] = [
         selects: [
             {
                 type: "select",
-                key: "collector",
+                key: "collector_district",
                 title: "Collector",
                 isFromAPI: false,
                 child: [
@@ -1535,7 +1535,7 @@ export const collectedAudioFilterData: targetFilterDT[] = [
             },
             {
                 type: "select-with-roleImg",
-                key: "collector",
+                key: "collector_details",
                 title: "Collector",
                 isFromAPI: true,
                 role: "collector",
@@ -1595,6 +1595,30 @@ export const collectedAudioFilterData: targetFilterDT[] = [
         type: "date",
         key: "audioSubmissionPeriod",
         title: "Audio Submission Period",
+    }
+
+]
+
+export const scriptFilterData = [
+    {
+        id: "17956e2a-19f1-416e-97a3-4c0d55869c7b",
+        title: "সুখী রাজকুমার",
+    },
+    {
+        id: "47956e2a-19f1-416e-97a3-4c0d55869c7b",
+        title: "সুখী রাজকুমার",
+    },
+    {
+        id: "37956e2a-19f1-416e-97a3-4c0d55869c7b",
+        title: "সুখী রাজকুমার",
+    },
+    {
+        id: "27956e2a-19f1-416e-97a3-4c0d55869c7b",
+        title: "সুখী রাজকুমার",
+    },
+    {
+        id: "57956e2a-19f1-416e-97a3-4c0d55869c7b",
+        title: "সুখী রাজকুমার",
     }
 
 ]

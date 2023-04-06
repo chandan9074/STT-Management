@@ -25,6 +25,8 @@ const Header = () => {
     const [count, setCount] = useState<number>(0);
     const [filterList, setFilterList] = useState<targetFilterListDT>({
         script: [],
+        collector_district: [],
+        collector_details: [],
         collector: [],
         speaker: [],
         audioSubmissionPeriod: []
@@ -42,15 +44,34 @@ const Header = () => {
 
     const handleFilterList = (key: string, value: string) => {
         if (filterList[key].includes(value)) {
-            setFilterList({
-                ...filterList,
-                [key]: filterList[key].filter((item) => item !== value),
-            });
+            if (key === "collector_district" || key === "collector_details") {
+                setFilterList({
+                    ...filterList,
+                    [key]: filterList[key].filter((item) => item !== value),
+                    collector: filterList.collector.filter((item) => item !== value),
+                });
+            }
+            else {
+                setFilterList({
+                    ...filterList,
+                    [key]: filterList[key].filter((item) => item !== value),
+                });
+            }
         } else {
-            setFilterList({
-                ...filterList,
-                [key]: [...filterList[key], value],
-            });
+            if (key === "collector_district" || key === "collector_details") {
+                console.log("hellod aalsdkf", key, value)
+                setFilterList({
+                    ...filterList,
+                    [key]: [...filterList[key], value],
+                    collector: [...filterList.collector, value],
+                });
+            }
+            else {
+                setFilterList({
+                    ...filterList,
+                    [key]: [...filterList[key], value],
+                });
+            }
         }
     }
     const handleReset = (key: string, type: "single" | "all") => {
