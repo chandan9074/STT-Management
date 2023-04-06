@@ -83,16 +83,17 @@ const ScriptForms = ({ data }: { data?: scriptResDT }) => {
                     hasChanges = true;
                     // Convert boolean values to strings
                     const valueToAppend = typeof value === 'boolean' ? value.toString() : value;
-                    // Check if the value is empty or null and add the default value "jalal"
+                    // Check if the value is empty or null and add the default value " "
 
                     if (!valueToAppend) {
-
                         formData.append(key, " ");
                     } else {
-                        if (key === 'sourceFile' && formik.values.sourceFile.length === 0) {
+                        if (key === 'sourceFile' && formik.values.sourceFile?.length === 0) {
                             const emptyFileBlob = new Blob([], { type: "application/pdf" });
                             formData.append(key, emptyFileBlob, '');
-                        } else {
+                        }
+                        // this is create
+                        else {
                             formData.append(key, valueToAppend);
                         }
                     }
@@ -112,6 +113,9 @@ const ScriptForms = ({ data }: { data?: scriptResDT }) => {
                 updateScript(formData);
                 navigate(SCRIPT_PATH);
             } else {
+                if (formik.values.sourceFile === '') {
+                    formData.delete('sourceFile');
+                }
                 createScript(formData);
                 navigate(SCRIPT_PATH);
             }

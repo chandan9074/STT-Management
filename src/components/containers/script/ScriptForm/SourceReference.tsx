@@ -7,6 +7,7 @@ import TextField from '@mui/material/TextField';
 import { scriptSourceType } from '../../../../data/Script/Domain';
 import { FormikValues } from 'formik';
 import { UploadChangeParam, UploadFile } from 'antd/es/upload';
+import { urlPatternValidation } from '../../../../helpers/Utils';
 
 const SourceReference = ({ formik }: { formik: FormikValues }) => {
     const [scriptSourceReference, setScriptSourceReference] = useState<{ isSource: boolean, isScript: boolean }>({
@@ -39,6 +40,9 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
             let files = event.fileList[0];
             // getFile(event.fileList[0]?.originFileObj);
 
+            console.log('&&&&&&&&&&', event.fileList[0]?.originFileObj);
+            
+
             formik.setFieldValue("sourceFile", event.fileList[0]?.originFileObj);
             formik.setFieldValue("sourceFileName", files?.originFileObj?.name);
 
@@ -51,16 +55,12 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
     }
 
     const onDeleteFile = () => {
+        // formik.setFieldValue("sourceFile", []);
         formik.setFieldValue("sourceFile", []);
         formik.setFieldValue("sourceFileName", '');
     }
 
-    const urlPatternValidation = (url: string) => {
-        const regex = new RegExp('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?');
-        return regex.test(url);
-    };
-
-
+ 
 
     return (
         <div className='mb-[28px] source-reference'>
@@ -158,7 +158,7 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
 
                             <div className={`${(formik.values.sourceFile?.length === 0 || formik.values.sourceFil === '') ? '' : 'py-[24px] px-[16px]'}`}>
                                 {
-                                    (formik.values.sourceFile?.length === 0 || formik.values.sourceFil === '') &&
+                                    (formik.values.sourceFile?.length === 0 || formik.values.sourceFile === '') &&
                                     <Dragger
                                         multiple={false}
                                         accept='.txt, .docx, .pdf, .jpg, .jpeg, .png'
@@ -186,7 +186,8 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
 
 
                                 {
-                                    formik.values.sourceFileName &&
+                                    // (formik.values.sourceFileName || formik.values.sourceFile !== '' || formik.values.sourceFile?.length !== 0) &&
+                                    ( formik.values.sourceFile?.length !== 0 ) &&
                                     <div className='rounded-[4px] pt-[8px] pb-4 px-4 bg-ct-blue-05'>
                                         <div className='flex justify-between items-center'>
                                             <div className='flex gap-x-[11px] items-center'>

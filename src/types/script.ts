@@ -37,7 +37,7 @@ export type scriptResDT = {
   title: string;
   isAge?: boolean;
   sourceType: string;
-  sourceFile: string;
+  sourceFile?: string;
   description: string;
   date?: string,
   sourceFileName: string
