@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icons from '../../assets/Icons'
 import Buttons from '../../components/Buttons'
+import SideDrawerContent from '../../components/containers/Organizer/tag/SideDrawerContent'
+import { Drawer } from '../../components/Drawer'
 import Table from '../../components/Table'
 import { tagData } from '../../data/organize/OrganizerData'
 import { TagDataDT } from '../../types/organizerTypes'
@@ -15,10 +17,24 @@ const Tag = () => {
     setSelectedRows(value)
   }
 
+  const drawerClose = () => {
+    setOpen(false);
+  };
+
   return (
     <div>
-      <Header open={open} setOpen={setOpen} selectedRows={selectedRows}/>
-      <Table.Type29 data={tagData} handleSelectRow={handleSelectRow}/>
+      <Header open={open} setOpen={setOpen} selectedRows={selectedRows} />
+      <Table.Type29 data={tagData} handleSelectRow={handleSelectRow} setOpen={setOpen}/>
+      <Drawer.Organizer.Type1
+        isDrawerOpen={open}
+        headerBgColor="bg-ct-blue-05"
+        drawerClose={drawerClose}
+        title="Tag Details"
+      >
+        <div className=' flex items-center'>
+          <SideDrawerContent data={tagData} />
+        </div>
+      </Drawer.Organizer.Type1>
     </div>
   )
 }

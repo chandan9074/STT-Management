@@ -28,6 +28,7 @@ const Role = () => {
       <Drawer.Organizer.Type1
         isDrawerOpen={open}
         drawerClose={drawerClose}
+        headerBgColor="bg-ct-blue-05"
         title="Role Details"
       >
         <div className=' flex items-center'>

@@ -6,10 +6,11 @@ type Props = {
     children: any,
     isDrawerOpen: boolean,
     drawerClose: () => void,
+    headerBgColor: string,
     title: string,
 }
 
-const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
+const Type1 = ({ children, isDrawerOpen, drawerClose, title, headerBgColor }: Props) => {
 
     const onClose = () => {
         drawerClose();
@@ -24,7 +25,7 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
             width='477px'
             zIndex={100}
         >
-            <div className="flex justify-between items-center w-full h-[90px] bg-ct-blue-20 pl-6 pr-10">
+            <div className={`flex justify-between items-center w-full h-[90px] ${headerBgColor} pl-6 pr-10`}>
                 <div>
                     <h1 className="text-heading-6 font-medium text-ct-blue-95">{title}</h1>
                     <p className="text-small font-normal text-ct-blue-90-70%">XXXXXXXXXXXXXXXX</p>

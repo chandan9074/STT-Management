@@ -8,9 +8,10 @@ import Pagination from "../Pagination";
 type Props = {
     data: DevcieDataDT[]
     handleSelectRow: (value: DevcieDataDT[]) => void;
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Type30 = ({ data,handleSelectRow }: Props) => {
+const Type30 = ({ data,handleSelectRow,setOpen }: Props) => {
 
     const Type30columns: ColumnsType<DevcieDataDT> = [
         {
@@ -41,7 +42,7 @@ const Type30 = ({ data,handleSelectRow }: Props) => {
             key: 'lastDate',
             // align: 'center',
             width: 491,
-            render: (data: DevcieDataDT) => <h1 className="text-small font-normal text-ct-blue-80">{data.lastDate}</h1>,
+            render: (data: DevcieDataDT) => <h1 className="text-small font-normal text-ct-blue-80">{data.lastDateCreation}</h1>,
         },
         {
             title: `${"Details".toLocaleUpperCase()}`,
@@ -52,7 +53,7 @@ const Type30 = ({ data,handleSelectRow }: Props) => {
             render: (data: DevcieDataDT) => (
                 <>
 
-                    <div className='flex w-full justify-center items-center'>
+                    <div className='flex w-full justify-center items-center' onClick={()=>setOpen(true)}>
                         <img
                             // onClick={() => {
                             //     showDrawer(record);

@@ -7,9 +7,10 @@ import Pagination from "../Pagination";
 type Props = {
     data: TagDataDT[]
     handleSelectRow: (value: TagDataDT[]) => void;
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Type29 = ({ data,handleSelectRow }: Props) => {
+const Type29 = ({ data,handleSelectRow,setOpen }: Props) => {
 
     const Type29columns: ColumnsType<TagDataDT> = [
         {
@@ -51,7 +52,7 @@ const Type29 = ({ data,handleSelectRow }: Props) => {
             render: (data: TagDataDT) => (
                 <>
 
-                    <div className='flex w-full justify-center items-center'>
+                    <div className='flex w-full justify-center items-center' onClick={()=>setOpen(true)}>
                         <img
                             // onClick={() => {
                             //     showDrawer(record);

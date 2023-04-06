@@ -80,16 +80,25 @@ export const deviceData = [
     {
         "id": "1",
         "device": "Laptop",
-        "lastDate": "01/01/2022, 3:30 PM"
+        "brand": "Acer",
+        "model": "Nitro 5",
+        "lastDateCreation": "01/01/2022, 3:30 PM",
+        "lastDateModification": "01/01/2022, 3:30 PM"
     },
     {
         "id": "2",
         "device": "Mobile",
-        "lastDate": "01/01/2022, 3:30 PM"
+        "brand": "Xiaomi",
+        "model": "Mi 9t",
+        "lastDateCreation": "01/01/2022, 3:30 PM",
+        "lastDateModification": "01/01/2022, 3:30 PM"
     },
     {
         "id": "3",
         "device": "Audio Recorder",
-        "lastDate": "01/01/2022, 3:30 PM"
+        "brand": "Acer",
+        "model": "Nitro 5",
+        "lastDateCreation": "01/01/2022, 3:30 PM",
+        "lastDateModification": "01/01/2022, 3:30 PM"
     },
 ]

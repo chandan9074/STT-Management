@@ -15,5 +15,8 @@ export type TagDataDT = {
 export type DevcieDataDT = {
     id: string
     device: string
-    lastDate: string
+    brand: string
+    model: string
+    lastDateCreation: string
+    lastDateModification: string
 }

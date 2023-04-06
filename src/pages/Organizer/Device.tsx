@@ -2,6 +2,8 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import Icons from "../../assets/Icons"
 import Buttons from "../../components/Buttons"
+import SideDrawerContent from "../../components/containers/Organizer/device/SideDrawerContent"
+import { Drawer } from "../../components/Drawer"
 import Table from "../../components/Table"
 import { deviceData } from "../../data/organize/OrganizerData"
 import { DevcieDataDT } from "../../types/organizerTypes"
@@ -15,10 +17,25 @@ const Device = () => {
     setSelectedRows(value)
   }
 
+  const drawerClose = () => {
+    setOpen(false);
+  };
+
+
   return (
     <div>
       <Header open={open} setOpen={setOpen} selectedRows={selectedRows} />
-      <Table.Type30 data={deviceData} handleSelectRow={handleSelectRow} />
+      <Table.Type30 data={deviceData} handleSelectRow={handleSelectRow} setOpen={setOpen} />
+      <Drawer.Organizer.Type1
+        isDrawerOpen={open}
+        drawerClose={drawerClose}
+        headerBgColor="bg-ct-blue-05" 
+        title="Device Details"
+      >
+        <div className=' flex items-center'>
+          <SideDrawerContent data={deviceData} />
+        </div>
+      </Drawer.Organizer.Type1>
     </div>
   )
 }
