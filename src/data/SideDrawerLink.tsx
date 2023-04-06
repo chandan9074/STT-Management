@@ -35,11 +35,12 @@ let SideDrawerLink = [
                 links: [
                     {
                         name: 'Checking',
-                        route: PATH.CHECKING_STATUS,
+                        route: `${PATH.CHECKING}`,
+                        isHasRoute: false,
                         links: [
                             {
                                 name: 'Checking Status',
-                                route: "",
+                                route: PATH.CHECKING_STATUS,
                                 links: []
                             },
                             {

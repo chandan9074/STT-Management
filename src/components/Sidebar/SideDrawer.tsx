@@ -7,15 +7,19 @@ import SideDrawerLink from '../../data/SideDrawerLink';
 type navlinks = {
     name: string;
     route: string;
+    isHasRoute?: boolean;
     icon: string;
     links: {
         name: string;
         route: string;
+        isHasRoute?: boolean;
         links: {
             name: string;
             route: string;
+            isHasRoute?: boolean;
             links: {
                 name: string;
+                isHasRoute?: boolean;
                 route: string;
             }[];
         }[];
@@ -25,9 +29,11 @@ type navlinks = {
 type subLinks = {
     name: string;
     route: string;
+    isHasRoute?: boolean;
     links: {
         name: string;
         route: string;
+        isHasRoute?: boolean;
     }[];
 }
 
@@ -125,7 +131,7 @@ const SideDrawer = () => {
                                             <button onClick={() => handleExpandedSubLink(n)} className={`${(n.route === location.pathname.split('/')[3] && location.pathname.split('/')?.length) === 4 ? 'sideDrawerActiveNav' : 'sideDrawerDeactiveNav'} pl-[21px] pr-2.5 w-full`}>
                                                 <div className='flex items-center'>
 
-                                                    <Link className='w-full' to={`${nav.route}/${m.route}/${n.route}`} >
+                                                    <Link className='w-full' to={`${n.isHasRoute ? `${nav.route}/${m.route}/${n.route}` : `${nav.route}/${m.route}/${n.route}/${n.links[0].route}`}`} >
                                                         <h1 className='text-small leading-[27px]'>
                                                             {n.name}
                                                         </h1>

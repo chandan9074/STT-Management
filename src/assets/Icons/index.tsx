@@ -140,6 +140,9 @@ import AssignmentReturn from "./assignment_return.svg"
 import union from "./union.svg"
 import arrow_right_rounded_blue from "./arrow_right_rounded_blue.svg"
 import settings_purple from "./settings_purple.svg"
+import Laptop from './Laptop.svg'
+import Mobile from './Mobile.svg'
+import AudioRecorder from './AudioRecorder.svg'
 
 const Icons = {
   currency,
@@ -283,7 +286,10 @@ const Icons = {
   like_emoji,
   AssignmentReturn,
   union,
-  arrow_right_rounded_blue
+  arrow_right_rounded_blue,
+  Laptop,
+  Mobile,
+  AudioRecorder
 };
 
 export default Icons;
