@@ -53,6 +53,7 @@ import Role from "./pages/Organizer/Role";
 import Tag from "./pages/Organizer/Tag";
 import Device from "./pages/Organizer/Device";
 import AddSpeech from "./components/containers/AudioManagement/UploadAuidioVideo/AddSpeech";
+import AnnotatedFilesUpload from "./pages/AudioManagement/UploadAudio/Annotation/AnnotatedFilesUpload";
 
 function App() {
   useEffect(() => {
@@ -119,7 +120,7 @@ function App() {
                 <Route path={PATH.ALL_CHECKED_AUDIOS} element={<AllCheckedAudios />} />
               </Route>
               <Route path={PATH.ANNOTAION}>
-                <Route path='' element={<Annotation />} />
+                <Route path={PATH.ANNOTAION_TYPE} element={<Annotation />} />
                 <Route path={PATH.SENETENCE_LEVEL} element={<SentenceLevel />} />
                 <Route path={PATH.WORD_LEVEL} element={<WordLevel />} />
                 <Route path={PATH.PHONEME_LEVEL} element={<PhonemeLevel />} />
@@ -142,7 +143,7 @@ function App() {
                 <Route path={PATH.ALL_CHECKED_AUDIOS} element={<AllCheckedAudiosUpload />} />
               </Route>
               <Route path={PATH.ANNOTAION}>
-                <Route path='' element={<AnnotationUpload />} />
+                <Route path={PATH.ANNOTAION_TYPE} element={<AnnotationUpload />} />
                 <Route path={PATH.SENETENCE_LEVEL} element={<SentenceLevelUpload />} />
                 <Route path={PATH.WORD_LEVEL} element={<WordLevelUpload />} />
                 <Route path={PATH.PHONEME_LEVEL} element={<PhonemeLevelUpload />} />
@@ -153,7 +154,7 @@ function App() {
                 <Route path={PATH.SENETENCE_LEVEL} element={<SentenceLevelUploadVal />} />
                 <Route path={PATH.WORD_LEVEL} element={<WordLevelUploadVal />} />
                 <Route path={PATH.PHONEME_LEVEL} element={<PhonemeLevelUploadVal />} />
-                <Route path={PATH.ANNOTATED_FILES} element={<AnnotatedFiles />} />
+                <Route path={PATH.ANNOTATED_FILES} element={<AnnotatedFilesUpload />} />
               </Route>
             </Route>
           </Route>

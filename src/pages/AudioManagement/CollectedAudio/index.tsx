@@ -33,7 +33,7 @@ const Header = () => {
         audioSubmissionPeriod: []
     })
 
-    const { scriptFilter, getScriptFilter } = useContext(AudioManagementContext)
+    const { scriptFilter } = useContext(AudioManagementContext)
 
     useEffect(() => {
         let count = 0;

@@ -166,7 +166,7 @@ export type collectValSenDataDT = {
     deadLine: string;
     annotator: annotatedAnnotatorDT;
     audioChecker: annotatedAudioCheckerDT;
-    speaker: speakerLocalitySingleDT;
+    speaker: speakerLocalityDT;
 }
 
 // export type speakerLocalitySingleDT = {
@@ -258,4 +258,11 @@ export type sentenceLevelUploadDT = {
 export type scriptFilterDT = {
     id: string;
     title: string;
+}
+
+export type statusColorsDataDT = {
+    name: string
+    bgColor: string
+    bulletColor: string
+    textColor: string
 }

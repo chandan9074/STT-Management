@@ -28,7 +28,7 @@ const Type21 = ({ data }: Props) => {
         {
             title: `${"SN".toLocaleUpperCase()}`,
             key: 'sn',
-            width: 48,
+            width: 50,
             align: "center",
             render: (text, record, index) => (
                 <span>{(index + 1)}</span>
@@ -50,7 +50,7 @@ const Type21 = ({ data }: Props) => {
             </>,
         },
         {
-            title: `${"Annotate".toLocaleUpperCase()}`,
+            title: `${"Annotator".toLocaleUpperCase()}`,
             key: 'annotator',
             // className: "audio-management-status",
             width: 206,
@@ -129,7 +129,7 @@ const Type21 = ({ data }: Props) => {
                             setRemarkOpen(true);
                             setSingleTargetData(data);
                         }}
-                        src={Icons.File} className="h-[15px] w-[12px] cursor-pointer"
+                        src={Icons.File} className="h-4 w-4 cursor-pointer"
                         alt=""
                     />
                 </div>

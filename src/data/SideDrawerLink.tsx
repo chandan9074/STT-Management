@@ -55,6 +55,11 @@ let SideDrawerLink = [
                         route: PATH.ANNOTAION,
                         links: [
                             {
+                                name: 'Annotation Type',
+                                route: PATH.ANNOTAION_TYPE,
+                                links: []
+                            },
+                            {
                                 name: 'Sentence Level',
                                 route: PATH.SENETENCE_LEVEL,
                                 links: []
@@ -128,6 +133,11 @@ let SideDrawerLink = [
                         name: 'Annotaion',
                         route: PATH.ANNOTAION,
                         links: [
+                            {
+                                name: 'Annotation Type',
+                                route: `${PATH.ANNOTAION_TYPE}`,
+                                links: []
+                            },
                             {
                                 name: 'Sentence Level',
                                 route: `${PATH.SENETENCE_LEVEL}`,

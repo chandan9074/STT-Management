@@ -19,7 +19,7 @@ const ValidateCol = ({ data }: Props) => {
                 <div className='flex'>
                   <RoleImage role={data.validators.role} height='h-4' width='w-4' />
                   <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs'>{data.validators.name},</h1>
-                  <p className='text-blue-gray-75 text-xxs font-normal pl-1'>{data.locality}</p>
+                  <p className='text-blue-gray-75 text-xxs font-normal pl-1 truncate'>{data.locality}</p>
                 </div>
               </div> :
               <div >
@@ -27,7 +27,7 @@ const ValidateCol = ({ data }: Props) => {
                   <RoleImage role={data.validators.role} height='h-4' width='w-4' />
                   <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs'>{data.validators.name}</h1>
                 </div>
-                <p className='text-blue-gray-75 text-xxs font-normal pl-[22px]'>{data.locality}</p>
+                <p className='text-blue-gray-75 text-xxs font-normal pl-[22px] truncate'>{data.locality}</p>
               </div>
         }
 

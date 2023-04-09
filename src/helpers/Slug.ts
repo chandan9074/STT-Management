@@ -35,6 +35,7 @@ export const AUDIO_MANAGEMENT = '/audio-management'
 export const COLLECTING_AUDIO = `collection-audio`;
 export const CHECKING = "checking";
 export const ANNOTAION = "annotation";
+export const ANNOTAION_TYPE = "annotation-type";
 export const VALIDATION = "validation";
 export const CHECKING_STATUS = `checking-status`;
 export const ALL_CHECKED_AUDIOS = "all-checked-audios";

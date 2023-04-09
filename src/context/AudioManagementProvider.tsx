@@ -1,6 +1,5 @@
 import { ReactNode, createContext, useState } from "react";
 import audioManagementService from "../services/audioManagementService";
-import { scriptFilterDT } from "../types/audioManagementTypes";
 
 interface ContextProps {
     getScriptFilter: () => void;

@@ -26,7 +26,7 @@ const Secondary = ({ isSideDrawer }: { isSideDrawer: boolean }) => {
                 : 'text-blue-gray-A50 '
                 } text-xxs`}
               >
-                {breadcrumb.name}
+                {breadcrumb.name === "Upload Audio Video" ? "Upload Audio/Video" : breadcrumb.name}
               </h1>
             </Link>
             {index < breadcrumbs.length - 1 && (
