@@ -8,8 +8,8 @@ import { UploadChangeParam, UploadFile } from 'antd/es/upload';
 const VideoAudioUpload = ({ formik }: { formik: FormikValues }) => {
 
     const onDeleteFile = () => {
-        formik.setFieldValue("sourceFile", []);
-        formik.setFieldValue("sourceFileName", '');
+        formik.setFieldValue("speechFile", []);
+        formik.setFieldValue("speechFileName", '');
     }
 
     const handleFileUpload = (event: UploadChangeParam<UploadFile<File>>) => {
@@ -21,26 +21,28 @@ const VideoAudioUpload = ({ formik }: { formik: FormikValues }) => {
             let files = event.fileList[0];
             // getFile(event.fileList[0]?.originFileObj);
 
-            formik.setFieldValue("sourceFile", event.fileList[0]?.originFileObj);
-            formik.setFieldValue("sourceFileName", files?.originFileObj?.name);
+            formik.setFieldValue("speechFile", event.fileList[0]?.originFileObj);
+            formik.setFieldValue("speechFileName", files?.originFileObj?.name);
 
         } else {
             // getFile([]);
-            formik.setFieldValue("sourceFile", []);
-            formik.setFieldValue("sourceFileName", '');
+            formik.setFieldValue("speechFile", []);
+            formik.setFieldValue("speechFileName", '');
             // formik.setFieldValue("file",  []);
         }
     }
 
+    
+
     return (
         <div className={`bg-white w-[100%] `} >
 
-            <div className={`${(formik.values.sourceFile?.length === 0 || formik.values.sourceFil === '') ? '' : 'py-[24px] px-[16px]'}`}>
+            <div className={`${(formik.values.speechFile?.length === 0 || formik.values.speechFile === '') ? '' : 'py-[24px] px-[16px]'}`}>
                 {
-                    (formik.values.sourceFile?.length === 0 || formik.values.sourceFil === '') &&
+                    (formik.values.speechFile?.length === 0 || formik.values.speechFile === '') &&
                     <Dragger
                         multiple={false}
-                        accept='.txt, .docx, .pdf, .jpg, .jpeg, .png'
+                        accept='audio/*, video/*'
                         // customRequest={selectFiles}
                         style={{
                             backgroundColor: 'white',
@@ -50,9 +52,9 @@ const VideoAudioUpload = ({ formik }: { formik: FormikValues }) => {
 
                     >
                         <div className={`h-[114px] ant-upload-drag-icon flex flex-col justify-center items-center gap-y-[8px]`}>
-                            <div className='border-[1px] border-ct-blue-30 w-[160px] h-[36px] px-[18px] py-[8px] rounded-[6px] flex justify-center items-center gap-x-[5px]'>
+                            <div className='border-[1px] border-ct-blue-30 px-[18px] rounded-[6px] flex justify-center items-center gap-x-[5px] pl-[17px] pr-6 pt-[9px] pb-2'>
                                 <img src={Icons.Backup} alt="" />
-                                <h1 className='text-ct-blue-80 text-small font-medium'>Upload Script</h1>
+                                <h1 className='text-ct-blue-80 text-small font-medium'>Upload Audio/ Video</h1>
                             </div>
                             <div>
                                 <span className='text-small font-medium text-blue-gray-90 underline'>Click to upload </span>
@@ -65,16 +67,16 @@ const VideoAudioUpload = ({ formik }: { formik: FormikValues }) => {
 
 
                 {
-                    // (formik.values.sourceFileName || formik.values.sourceFile !== '' || formik.values.sourceFile?.length !== 0) &&
-                    (formik.values.sourceFile?.length !== 0) &&
+                    // (formik.values.speechFileName || formik.values.speechFile !== '' || formik.values.speechFile?.length !== 0) &&
+                    (formik.values.speechFile?.length !== 0) &&
                     <div className='rounded-[4px] pt-[8px] pb-4 px-4 bg-ct-blue-05'>
                         <div className='flex justify-between items-center'>
                             <div className='flex gap-x-[11px] items-center'>
                                 <img src={Icons.Pdf} alt="" />
-                                <a href={urlPatternValidation(formik.values.sourceFile) && formik.values.sourceFile} rel="noreferrer" target="_blank" className='cursor-pointer'>
+                                <a href={urlPatternValidation(formik.values.speechFile) && formik.values.speechFile} rel="noreferrer" target="_blank" className='cursor-pointer'>
                                     <div >
                                         {
-                                            formik.values.sourceFileName
+                                            formik.values.speechFileName
                                         }
                                     </div>
                                 </a>

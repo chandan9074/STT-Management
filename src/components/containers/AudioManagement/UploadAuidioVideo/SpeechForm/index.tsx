@@ -4,9 +4,15 @@ import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import VideoAudioUpload from './VideoAudioUpload';
+import ActionButton from './ActionButton';
+import SpeechInfo from './SpeechInfo';
+import SourceReference from './SourceReference';
+import DistributionSource from './DistributionSource';
+import DomainSubDomain from './DomainSubDomain';
+import SpeakerInfo from './SpeakerInfo';
 
 const validationSchema = yup.object({
-    title: yup.string().required('Source Type is required'),
+    // title: yup.string().required('Source Type is required'),
 });
 
 const SpeechForm = () => {
@@ -16,11 +22,24 @@ const SpeechForm = () => {
         enableReinitialize: true,
         initialValues: {
             sourceFile: '',
-            sourceFileName: ''
+            sourceFileName: '',
+            dataType: 'STT',
+            sourceName: '',
+            sourceUrl: '',
+            speechFile: '',
+            speechFileName: '',
+            distributionSource: 'Read',
+            domain: '',
+            subdomain: '',
+            speakerNumber: 0,
+            gender: 'male',
+            ageRange: [],
+            homeDistrict: ''
         },
         validationSchema: validationSchema,
 
         onSubmit: (values: any) => {
+            console.log('*********', values);
 
         }
     });
@@ -43,15 +62,34 @@ const SpeechForm = () => {
                                     e.preventDefault();
                                 }}
                             />
-
+                        </div>
+                        <div className='mt-[33px]'>
                             <VideoAudioUpload formik={formik} />
+                        </div>
+                        <div className='mt-12'>
+                            <SpeechInfo formik={formik} />
+                        </div>
 
+                        <div className='mt-6'>
+                            <SourceReference formik={formik} />
+                        </div>
+
+                        <div className='mt-6'>
+                            <DistributionSource formik={formik} />
+                        </div>
+
+                        <div className='mt-6'>
+                            <DomainSubDomain formik={formik} />
+                        </div>
+
+                        <div className='mt-12'>
+                            <SpeakerInfo formik={formik} />
                         </div>
                     </div>
 
-                    {/* <div className='flex justify-end px-5 py-[28px] bg-white'>
-                        <ActionButton data={data} />
-                    </div> */}
+                    <div className='flex justify-end px-5 py-[28px] bg-white'>
+                        <ActionButton />
+                    </div>
                 </form>
             </div>
         </div>

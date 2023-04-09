@@ -1913,3 +1913,24 @@ export const scriptFilterData = [
     }
 
 ]
+
+export const statusType = [
+    'STT',
+    'TTS'
+]
+
+export const audionManDistributionSource = [
+    'Read',
+    'Spontaneous',
+    'Lecture',
+    'Miscellaneous',
+    'Noisy'
+]
+
+export const audioManAgeRange = [
+    '7-14',
+    '15-24',
+    '25-34',
+    '45-49',
+    '60-65'
+]
