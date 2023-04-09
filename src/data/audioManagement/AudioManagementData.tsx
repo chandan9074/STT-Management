@@ -1964,7 +1964,8 @@ export const collectedAudioFilterData: targetFilterDT[] = [
         key: "script",
         title: "Script",
         //   child: ["STT", "TTS"],
-        isFromAPI: true
+        isFromAPI: true,
+        child: []
     },
     {
         type: "multiple-select",
@@ -1991,6 +1992,7 @@ export const collectedAudioFilterData: targetFilterDT[] = [
                 title: "Collector",
                 isFromAPI: true,
                 role: "collector",
+                child: []
             }
         ]
     },
@@ -2075,6 +2077,26 @@ export const scriptFilterData = [
 
 ]
 
+export const statusType = [
+    'STT',
+    'TTS'
+]
+
+export const audionManDistributionSource = [
+    'Read',
+    'Spontaneous',
+    'Lecture',
+    'Miscellaneous',
+    'Noisy'
+]
+
+export const audioManAgeRange = [
+    '7-14',
+    '15-24',
+    '25-34',
+    '45-49',
+    '60-65'
+]
 export const statusColorsData = [
     {
         "name": STATUS_CANCELLED,

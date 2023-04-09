@@ -5,6 +5,7 @@ import DashboardProvider from "./DashboardProvider";
 import ScriptProvider from "./ScriptProvider";
 import UserManagementProvider from "./UserManagement";
 import AssignProvider from "./AssignProvider";
+import AudioManagementProvider from "./AudioManagementProvider";
 
 const Context = {
   BillingProvider,
@@ -13,7 +14,8 @@ const Context = {
   DashboardProvider,
   ScriptProvider,
   UserManagementProvider,
-  AssignProvider
+  AssignProvider,
+  AudioManagementProvider,
 };
 
 export default Context;
