@@ -1801,7 +1801,8 @@ export const collectedAudioFilterData: targetFilterDT[] = [
         key: "script",
         title: "Script",
         //   child: ["STT", "TTS"],
-        isFromAPI: true
+        isFromAPI: true,
+        child: []
     },
     {
         type: "multiple-select",
@@ -1828,6 +1829,7 @@ export const collectedAudioFilterData: targetFilterDT[] = [
                 title: "Collector",
                 isFromAPI: true,
                 role: "collector",
+                child: []
             }
         ]
     },
