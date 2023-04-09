@@ -143,7 +143,7 @@ export const allCheckedSpeechData = [
             "locality": "North-East Bangla",
             "time": "01 Feb ; 3:30 PM"
         },
-        "status": "Reject",
+        "status": "Cancelled",
         "deadLine": "01/02/2022",
         "submissionDate": "01/02/2022",
         "remark": {

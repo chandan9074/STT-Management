@@ -1,4 +1,4 @@
-import { STATUS_ANNOTATING, STATUS_TOOK_A_BREAK, STATUS_VALIDATING, STTMODULE, TTSMODULE } from "../../helpers/ConditionVariable"
+import { STATUS_ANNOTATING, STATUS_APPROVED, STATUS_CANCELLED, STATUS_CLAIMED, STATUS_CLAIM_APPROVED, STATUS_DECLINED, STATUS_REASSIGNED, STATUS_TOOK_A_BREAK, STATUS_VALIDATING, STTMODULE, TTSMODULE } from "../../helpers/ConditionVariable"
 import { targetFilterDT } from "../../types/assignTypes"
 
 export const collectedAudio = [
@@ -435,7 +435,155 @@ export const allCheckedAudiosData = [
             "locality": "Middle-East Bangla",
             "time": "01 Feb ; 3:30 PM"
         },
-        "status": "Reject",
+        "status": "Cancelled",
+        "script": {
+            "module": "STT",
+            "distributionSource": "Lecture",
+            "isAge": false,
+            "domain": "Applied science",
+            "subdomain": "Technology",
+
+            "sourceType": "",
+            "sourceUrl": "",
+            "sourceFile": "",
+            "sourceFileName": "",
+            "sourceFileImage": "",
+            "title": "",
+            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+            "date": "2023-02-16T12:45:58.536350",
+            "frequency": 0,
+            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+        },
+        "deadLine": "01/02/2022",
+        "submissionDate": "01/02/2022",
+        "remark": {
+            "roleInfo": {
+                "id": "maksudalam@gmail.com",
+                "name": "Maksud Alam",
+                "role": "Manager",
+                "contact": "01738463449",
+                "email": "maksudalam@gmail.com",
+                "address": "Dhaka",
+                "gender": "Male"
+            },
+            "des": "i am remarkjs"
+        }
+    },
+    {
+        "id": "1vbuy5b4yw45b",
+        "speech": {
+            "id": '0',
+            "title": "Brahms,Two Pianos",
+            "duration": "5:00",
+            "url":
+                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+        },
+        "speaker": {
+            "locality": "North-East Bangla",
+            "speakers": [
+                {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'speaker',
+                    "gender": 'female',
+                },
+                {
+                    "id": "maksudam2@gmail.com",
+                    "name": 'Maksuda',
+                    "role": 'speaker',
+                    "gender": 'male',
+                },
+                {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'speaker',
+                    "gender": 'female',
+                },
+            ],
+
+        },
+        "audioChecker": {
+            "status": "Checking",
+            "name": "Peter Bailish",
+            "role": "annotator",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM"
+        },
+        "status": "Reassigned",
+        "script": {
+            "module": "STT",
+            "distributionSource": "Lecture",
+            "isAge": false,
+            "domain": "Applied science",
+            "subdomain": "Technology",
+
+            "sourceType": "",
+            "sourceUrl": "",
+            "sourceFile": "",
+            "sourceFileName": "",
+            "sourceFileImage": "",
+            "title": "",
+            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+            "date": "2023-02-16T12:45:58.536350",
+            "frequency": 0,
+            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+        },
+        "deadLine": "01/02/2022",
+        "submissionDate": "01/02/2022",
+        "remark": {
+            "roleInfo": {
+                "id": "maksudalam@gmail.com",
+                "name": "Maksud Alam",
+                "role": "Manager",
+                "contact": "01738463449",
+                "email": "maksudalam@gmail.com",
+                "address": "Dhaka",
+                "gender": "Male"
+            },
+            "des": "i am remarkjs"
+        }
+    },
+    {
+        "id": "1vbuy546yb4yw45b",
+        "speech": {
+            "id": '0',
+            "title": "Brahms,Two Pianos",
+            "duration": "5:00",
+            "url":
+                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+        },
+        "speaker": {
+            "locality": "North-East Bangla",
+            "speakers": [
+                {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'speaker',
+                    "gender": 'female',
+                },
+                {
+                    "id": "maksudam2@gmail.com",
+                    "name": 'Maksuda',
+                    "role": 'speaker',
+                    "gender": 'male',
+                },
+                {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'speaker',
+                    "gender": 'female',
+                },
+            ],
+
+        },
+        "audioChecker": {
+            "status": "Checking",
+            "name": "Peter Bailish",
+            "role": "annotator",
+            "locality": "Middle-East Bangla",
+            "time": "01 Feb ; 3:30 PM"
+        },
+        "status": "Claim Declined",
         "script": {
             "module": "STT",
             "distributionSource": "Lecture",
@@ -654,18 +802,18 @@ export const annotationData = [
                     "role": 'speaker',
                     "gender": 'female',
                 },
-                // {
-                //     "id": "maksudam2@gmail.com",
-                //     "name": 'Maksuda',
-                //     "role": 'speaker',
-                //     "gender": 'male',
-                // },
-                // {
-                //     "id": "maksudalam2@gmail.com",
-                //     "name": 'Bilkis banu',
-                //     "role": 'speaker',
-                //     "gender": 'female',
-                // },
+                {
+                    "id": "maksudam2@gmail.com",
+                    "name": 'Maksuda',
+                    "role": 'speaker',
+                    "gender": 'male',
+                },
+                {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'speaker',
+                    "gender": 'female',
+                },
             ],
 
         },
@@ -1314,12 +1462,27 @@ export const collectValSenData = [
         },
         "speaker": {
             "locality": "North-East Bangla",
-            "speakers": {
-                "id": "maksudalam2@gmail.com",
-                "name": 'Bilkis banu',
-                "role": 'speaker',
-                "gender": 'female',
-            },
+            "speakers": [
+                {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'speaker',
+                    "gender": 'female',
+                },
+                {
+                    "id": "maksudam2@gmail.com",
+                    "name": 'Maksuda',
+                    "role": 'speaker',
+                    "gender": 'male',
+                },
+                {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'speaker',
+                    "gender": 'female',
+                },
+            ],
+
         },
     },
     {
@@ -1386,12 +1549,12 @@ export const collectValSenData = [
         },
         "speaker": {
             "locality": "North-East Bangla",
-            "speakers": {
+            "speakers": [{
                 "id": "maksudalam2@gmail.com",
                 "name": 'Bilkis banu',
                 "role": 'speaker',
                 "gender": 'female',
-            },
+            },]
         },
     },
     {
@@ -1425,7 +1588,7 @@ export const collectValSenData = [
         },
         "validateFinal": {
             "status": "Took a Break",
-            "locality": "Jahangirnagar",
+            "locality": "Middle-East Bangla",
             "validators": {
                 "id": "Jahangir@gmail.com",
                 "role": "validator",
@@ -1458,12 +1621,12 @@ export const collectValSenData = [
         },
         "speaker": {
             "locality": "North-East Bangla",
-            "speakers": {
+            "speakers": [{
                 "id": "maksudalam2@gmail.com",
                 "name": 'Bilkis banu',
                 "role": 'speaker',
                 "gender": 'female',
-            },
+            },]
         },
     },
 ]
@@ -1474,7 +1637,8 @@ export const collectedAudioFilterData: targetFilterDT[] = [
         key: "script",
         title: "Script",
         //   child: ["STT", "TTS"],
-        isFromAPI: true
+        isFromAPI: true,
+        child: []
     },
     {
         type: "multiple-select",
@@ -1501,6 +1665,7 @@ export const collectedAudioFilterData: targetFilterDT[] = [
                 title: "Collector",
                 isFromAPI: true,
                 role: "collector",
+                child: []
             }
         ]
     },
@@ -1604,4 +1769,42 @@ export const audioManAgeRange = [
     '25-34',
     '45-49',
     '60-65'
+]
+export const statusColorsData = [
+    {
+        "name": STATUS_CANCELLED,
+        "bgColor": "bg-red-10",
+        "bulletColor": "bg-secondary-red-50",
+        "textColor": "text-red-60"
+    },
+    {
+        "name": STATUS_DECLINED,
+        "bgColor": "bg-red-10",
+        "bulletColor": "bg-secondary-red-50",
+        "textColor": "text-red-60"
+    },
+    {
+        "name": STATUS_APPROVED,
+        "bgColor": "bg-green-10",
+        "bulletColor": "bg-secondary-green-50",
+        "textColor": "green-red-60"
+    },
+    {
+        "name": STATUS_CLAIM_APPROVED,
+        "bgColor": "bg-green-10",
+        "bulletColor": "bg-secondary-green-50",
+        "textColor": "green-red-60"
+    },
+    {
+        "name": STATUS_REASSIGNED,
+        "bgColor": "bg-blue-10",
+        "bulletColor": "bg-secondary-blue-50",
+        "textColor": "green-blue-60"
+    },
+    {
+        "name": STATUS_CLAIMED,
+        "bgColor": "bg-purple-10",
+        "bulletColor": "bg-secondary-purple-50",
+        "textColor": "green-purple-60"
+    },
 ]

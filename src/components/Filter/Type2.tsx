@@ -18,9 +18,10 @@ type Props = {
     handleReset: (key: string, type: "single" | "all") => void;
     handleFilterList: (key: string, value: string) => void;
     handleSubmitFilter: () => void;
+    handleAPIData?: (key: string) => void;
 }
 
-const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilterList, handleSubmitFilter, popupClassName }: Props) => {
+const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilterList, handleSubmitFilter, popupClassName, handleAPIData }: Props) => {
     const [open, setOpen] = useState(false);
     const [currentState, setCurrentState] = useState<string>(filterData[0]?.key);
 

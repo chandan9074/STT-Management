@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Filter } from '../../../components/Filter';
 import { SearchBox } from '../../../components/SearchBox';
 import Table from '../../../components/Table';
 import { collectedAudio, collectedAudioFilterData } from '../../../data/audioManagement/AudioManagementData';
 import { targetFilterListDT } from '../../../types/assignTypes';
+import { AudioManagementContext } from '../../../context/AudioManagementProvider';
 
 
 const CollectedAudio = () => {
@@ -32,6 +33,8 @@ const Header = () => {
         audioSubmissionPeriod: []
     })
 
+    const { scriptFilter } = useContext(AudioManagementContext)
+
     useEffect(() => {
         let count = 0;
         for (const key in filterList) {
@@ -41,6 +44,29 @@ const Header = () => {
         }
         setCount(count)
     }, [filterList]);
+
+    // useEffect(() => {
+    //     getScriptFilter();
+    // }, [])
+
+    useEffect(() => {
+        if (scriptFilter) {
+            // const collectorDetailsObject = collectedAudioFilterData.find(obj => obj.key === "collector");
+            // if (collectorDetailsObject && collectorDetailsObject.selects) {
+            //     const nestedObject = collectorDetailsObject.selects.find(obj => obj.key === "collector_details");
+            //     if (nestedObject) {
+            //         nestedObject.child = scriptFilter;
+            //     }
+            // }
+            const collectorDetailsObject = collectedAudioFilterData.find(obj => obj.key === "script");
+            if (collectorDetailsObject) {
+                collectorDetailsObject.child = scriptFilter;
+            }
+        }
+        console.log("----", collectedAudioFilterData, scriptFilter)
+
+    }, [scriptFilter]);
+
 
     const handleFilterList = (key: string, value: string) => {
         if (filterList[key].includes(value)) {

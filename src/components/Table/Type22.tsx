@@ -119,9 +119,15 @@ const Type22 = ({ data }: Props) => {
       key: 'speaker',
       width: 168,
       render: (data: collectValSenDataDT) => <div >
-        <div className='flex'>
-          <RoleImage role={`${data.speaker.speakers.gender === "male" ? "speaker" : "speakerFemale"}`} height='h-4' width='w-4' />
-          <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs'>{data.annotator.annotator.name}</h1>
+        <div className="flex flex-col gap-y-1">
+          {
+            data.speaker.speakers.map((item, idx) => (
+              <div className='flex'>
+                <RoleImage role={`${item.gender === "male" ? "speaker" : "speakerFemale"}`} height='h-4' width='w-4' />
+                <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs'>{item.name}</h1>
+              </div>
+            ))
+          }
         </div>
         <p className='text-blue-gray-75 text-xxs font-normal pl-[22px]'>{data.annotator.locality}</p>
       </div>
@@ -167,7 +173,7 @@ const Type22 = ({ data }: Props) => {
 
   const handlePageChange = (page: number) => {
     // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
-}
+  }
 
   return (
     <div className="billing-table billing-table-even-bg type4-table horizontal-table-padding">
@@ -185,14 +191,14 @@ const Type22 = ({ data }: Props) => {
         pagination={false}
       />
       <div className='flex w-full justify-end mt-4 mb-2'>
-                <Pagination.Type2
-                    total={100}
-                    pageSize={10}
-                    // total={35}
-                    // pageSize={5}
-                    handleDataChange={handlePageChange}
-                />
-            </div>
+        <Pagination.Type2
+          total={100}
+          pageSize={10}
+          // total={35}
+          // pageSize={5}
+          handleDataChange={handlePageChange}
+        />
+      </div>
     </div>
   )
 }

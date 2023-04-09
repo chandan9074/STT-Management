@@ -14,7 +14,7 @@ const Annotate = ({data}: Props) => {
         <div className='flex'>
                 <RoleImage role='annotator' height='h-4' width='w-4' />
                 <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs '>{data.roleName},</h1>
-                <p className='text-blue-gray-75 text-xxs font-normal pl-1 '>{data.locality}</p>
+                <p className='text-blue-gray-75 text-xxs font-normal pl-1 truncate'>{data.locality}</p>
             </div>
     </div>
   )

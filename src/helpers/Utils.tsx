@@ -5,6 +5,7 @@ import { homeDistrictTypes } from "../types/userManagementTypes";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Toast } from "../components/Toast";
+import { statusColorsData } from "../data/audioManagement/AudioManagementData";
 
 export const isEmpty = (obj: any) => {
   if (obj) {
@@ -231,6 +232,24 @@ export const urlPatternValidation = (url: string) => {
   return regex.test(url);
 };
 
+export const getStatusColor = (status: string, type: "bg" | "bullet" | "text") => {
+  const data = statusColorsData.find((item) => item.name === status)
+  console.log("color-------------------", data);
+
+  if (data) {
+    if (type === "bg") {
+      console.log("kisssssssssssssssss");
+
+      return data.bgColor
+    } else if (type === "bullet") {
+      return data.bulletColor
+    } else if (type === "text") {
+      return data.textColor
+    } else {
+      return ""
+    }
+  }
+}
 
 
 
