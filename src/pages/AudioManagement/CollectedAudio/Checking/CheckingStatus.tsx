@@ -1,9 +1,18 @@
+import { useContext, useEffect } from 'react';
 import Buttons from '../../../../components/Buttons';
 import { SearchBox } from '../../../../components/SearchBox';
 import Table from '../../../../components/Table';
-import { checkingStatusData } from '../../../../data/audioManagement/AudioManagementData';
+import { AudioManagementContext } from '../../../../context/AudioManagementProvider';
 
 const CheckingStatus = () => {
+    
+    const {getCheckingStatusData,checkingStatusData} = useContext(AudioManagementContext);
+
+    useEffect(() => {
+        getCheckingStatusData()
+       // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]) 
+    
     return (
         <div>
             <Header />

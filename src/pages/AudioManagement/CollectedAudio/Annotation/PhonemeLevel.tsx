@@ -1,13 +1,22 @@
+import { useContext, useEffect } from 'react';
 import Buttons from '../../../../components/Buttons';
 import { SearchBox } from '../../../../components/SearchBox';
-import Table from '../../../../components/Table'
-import { collectAnnSenData } from '../../../../data/audioManagement/AudioManagementData'
+import Table from '../../../../components/Table';
+import { AudioManagementContext } from '../../../../context/AudioManagementProvider';
 
 const PhonemeLevel = () => {
+
+  const {getCollectAnnPhonemeData,collectAnnPhonemeData} = useContext(AudioManagementContext);
+
+  useEffect(()=>{
+    getCollectAnnPhonemeData()
+       // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+
   return (
     <div>
       <Header />
-      <Table.Type20 data={collectAnnSenData} />
+      <Table.Type20 data={collectAnnPhonemeData} />
     </div>
   )
 }
