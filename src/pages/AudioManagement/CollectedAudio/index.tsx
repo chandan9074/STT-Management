@@ -33,7 +33,7 @@ const Header = () => {
         audioSubmissionPeriod: []
     })
 
-    const { scriptFilter } = useContext(AudioManagementContext)
+    const { scriptFilter, getScriptFilter, func } = useContext(AudioManagementContext)
 
     useEffect(() => {
         let count = 0;
@@ -45,11 +45,12 @@ const Header = () => {
         setCount(count)
     }, [filterList]);
 
-    // useEffect(() => {
-    //     getScriptFilter();
-    // }, [])
+    useEffect(() => {
+        getScriptFilter();
+    }, [])
 
     useEffect(() => {
+
         if (scriptFilter) {
             // const collectorDetailsObject = collectedAudioFilterData.find(obj => obj.key === "collector");
             // if (collectorDetailsObject && collectorDetailsObject.selects) {
