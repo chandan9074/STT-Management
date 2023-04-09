@@ -9,18 +9,6 @@ export type audioManagementDT = {
     speaker: speakerLocalityDT;
 }
 
-export type speakerLocalityDT = {
-    locality: string;
-    speakers: singleSpeakerDT[]
-};
-
-export type singleSpeakerDT = {
-    id: string;
-    name: string;
-    role: string;
-    gender: string;
-}
-
 export type checkingStatusDT = {
     id: string;
     speech: assignAudioTrackDT;
@@ -32,8 +20,40 @@ export type checkingStatusDT = {
     others: othersDT;
 }
 
-export type othersDT  = {
+export type journeyDT = {
+    role: audioManagementRoleDT[];
+    speakers: {
+        locality: string;
+        roleTitle: string;
+        role: journeySpeakersRoleDT[]
+    };
+    audioChecker: journeyAudioCheckerDT
+}
+
+export type journeyAudioCheckerDT = {
+    id: string;
+    locality: string;
+    name: string;
+    role: string;
+    pickedDate: string;
+}
+
+export type journeySpeakersRoleDT = {
+    id: string;
+    name: string;
+    gender: string;
+}
+
+export type audioManagementRoleDT = {
+    id: string;
+    role: string;
+    name: string;
+    date: string;
+}
+
+export type othersDT = {
     device: string;
+    journey: journeyDT
 }
 
 export type speakerLocalityDT2 = {
@@ -59,16 +79,29 @@ export type singleSpeakerDT2 = {
     note: string;
 }
 
+export type speakerLocalityDT = {
+    locality: string;
+    speakers: singleSpeakerDT[]
+};
+
+export type singleSpeakerDT = {
+    id: string;
+    name: string;
+    role: string;
+    gender: string;
+}
+
 export type allCheckedAudioDT = {
     id: string;
     speech: assignAudioTrackDT;
-    speaker: speakerLocalityDT;
+    speaker: speakerLocalityDT2;
     audioChecker: audioCheckerDT;
     status: string;
     script: scriptResDT;
     deadLine: string;
     submissionDate: string;
     remark: remarkInfoDT;
+    others: othersDT;
 }
 
 export type audioCheckerDT = {
@@ -225,7 +258,7 @@ export type uploaderDT = {
 
 export type checkingStatusUploadDataDT = {
     id: string;
-    speech:assignAudioTrackDT;
+    speech: assignAudioTrackDT;
     audioChecker: audioCheckerDT;
     deadLine: string;
 }
