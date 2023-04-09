@@ -33,7 +33,7 @@ const Header = () => {
         audioSubmissionPeriod: []
     })
 
-    const { scriptFilter, getScriptFilter, func } = useContext(AudioManagementContext)
+    const { scriptFilter, getScriptFilter } = useContext(AudioManagementContext)
 
     useEffect(() => {
         let count = 0;
@@ -47,6 +47,7 @@ const Header = () => {
 
     useEffect(() => {
         getScriptFilter();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {

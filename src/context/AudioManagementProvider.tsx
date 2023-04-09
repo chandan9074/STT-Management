@@ -4,7 +4,6 @@ import audioManagementService from "../services/audioManagementService";
 interface ContextProps {
     getScriptFilter: () => void;
     scriptFilter: string[];
-    func: () => void;
 }
 
 export const AudioManagementContext = createContext({} as ContextProps);
@@ -20,13 +19,9 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
         setScriptFilter(concatenatedStrings);
     }
 
-    const func = () => {
-        console.log("hello");
-    }
-
     return (
         <AudioManagementContext.Provider
-            value={{ getScriptFilter, scriptFilter, func }}
+            value={{ getScriptFilter, scriptFilter }}
         >
             {children}
         </AudioManagementContext.Provider>
