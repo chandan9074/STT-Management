@@ -190,6 +190,57 @@ export type annotatedFilesDT = {
     // annotate: annotateInfoDT;
 }
 
+export type validatedFilesDT = {
+    id: string;
+    speech: assignAudioTrackDT;
+    validatorFinal: validatorDT;
+    status: string;
+    validator2: validatorDT;
+    validator1: validatorDT;
+    annotator: annotatedAnnotatorDT;
+    audioChecker: audioCheckerDT;
+    speaker: speakerLocalityDT2;
+    deadLine: string;
+    submissionDate: string;
+    remark: remarkInfoDT
+    script: scriptResDT
+    others: othersDT
+    history: historyDT[]
+}
+
+export type historyDT = {
+    id: string
+    lastEdited: string
+    status: string
+    name: string
+    role: string
+    remark: historyRemarkDT[]
+}
+
+export type historyRemarkDT = {
+    id: string
+    roleInfo: roleInfoDT
+    deadline: string
+    des: string
+    status: string
+}
+
+export type roleInfoDT = {
+    id: string
+    name: string
+    role: string
+    gender: string
+    date: string
+}
+
+export type validatorDT = {
+    locality: string;
+    time: string;
+    name: string;
+    role: string;
+    gender: string;
+}
+
 export type collectValSenDataDT = {
     id: string;
     speech: assignAudioTrackDT;

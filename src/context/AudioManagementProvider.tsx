@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useState } from "react";
 import audioManagementService from "../services/audioManagementService";
-import { allCheckedAudioDT, allCheckedSpeechDT, annotatedFilesDT, annotationDT, annotationUploadDT, audioManagementDT, checkingStatusDT, checkingStatusUploadDataDT, collectAnnSenDataDT, collectValSenDataDT, sentenceLevelUploadDT, uploadAudioDataDT } from "../types/audioManagementTypes";
+import { allCheckedAudioDT, allCheckedSpeechDT, annotatedFilesDT, annotationDT, annotationUploadDT, audioManagementDT, checkingStatusDT, checkingStatusUploadDataDT, collectAnnSenDataDT, collectValSenDataDT, sentenceLevelUploadDT, uploadAudioDataDT, validatedFilesDT } from "../types/audioManagementTypes";
 
 interface ContextProps {
     getScriptFilter: () => void;
@@ -29,6 +29,8 @@ interface ContextProps {
     collectValWordData: collectValSenDataDT[]
     getCollectValPhonemeData: () => void;
     collectValPhonemeData: collectValSenDataDT[]
+    getValidatedFilesData: () => void;
+    validatedFilesData: validatedFilesDT[]
     getUploadAudioData: () => void;
     uploadAudioData: uploadAudioDataDT[];
     getCheckingStatusUploadData: () => void;
@@ -70,6 +72,7 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
     const [collectValSenData, setCollectValSenData] = useState<collectValSenDataDT[]>([] as collectValSenDataDT[]);
     const [collectValWordData, setCollectValWordData] = useState<collectValSenDataDT[]>([] as collectValSenDataDT[]);
     const [collectValPhonemeData, setCollectValPhonemeData] = useState<collectValSenDataDT[]>([] as collectValSenDataDT[]);
+    const [validatedFilesData, setValidatedFilesData] = useState<validatedFilesDT[]>([] as validatedFilesDT[])
     const [uploadAudioData, setUploadAudioData] = useState<uploadAudioDataDT[]>([] as uploadAudioDataDT[])
     const [checkingStatusUploadData, setCheckingStatusUploadData] = useState<checkingStatusUploadDataDT[]>([] as checkingStatusUploadDataDT[])
     const [allCheckedAudiosUploadData, setAllCheckedAudiosUploadData] = useState<allCheckedSpeechDT[]>([] as allCheckedSpeechDT[])
@@ -149,6 +152,11 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
     const getCollectValPhonemeData = () => {
         const res = audioManagementService.getCollectValPhonemeData();
         setCollectValPhonemeData(res);
+    }
+
+    const getValidatedFilesData = () => {
+        const res = audioManagementService.getValidatedFilesData();
+        setValidatedFilesData(res);
     }
 
     const getUploadAudioData = () => {
@@ -235,6 +243,8 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
                 collectValWordData,
                 getCollectValPhonemeData,
                 collectValPhonemeData,
+                getValidatedFilesData,
+                validatedFilesData,
                 getUploadAudioData,
                 uploadAudioData,
                 getCheckingStatusUploadData,

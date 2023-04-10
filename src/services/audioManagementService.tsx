@@ -1,4 +1,4 @@
-import { collectedAudioCollectorList, allCheckedAudiosData, annotationData, checkingStatusData, collectAnnSenData, collectedAudio, scriptFilterData, annotatedFiles, collectValSenData } from '../data/audioManagement/AudioManagementData';
+import { collectedAudioCollectorList, allCheckedAudiosData, annotationData, checkingStatusData, collectAnnSenData, collectedAudio, scriptFilterData, annotatedFiles, collectValSenData, validatedFilesData } from '../data/audioManagement/AudioManagementData';
 import { allCheckedSpeechData, annotationUploadData, checkingStatusUploadData, sentenceLevelUploadData, uploadAudioData } from '../data/audioManagement/UploadAudiosData';
 
 export default class audioManagementService {
@@ -51,6 +51,10 @@ export default class audioManagementService {
 
     static getCollectValPhonemeData() {
         return collectValSenData;
+    }
+
+    static getValidatedFilesData() {
+        return validatedFilesData;
     }
 
     static getUploadAudiosData() {
