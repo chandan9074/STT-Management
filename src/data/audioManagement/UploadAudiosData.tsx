@@ -14,58 +14,52 @@ export const uploadAudioData = [
             "role": "Admin",
             "name": "Md. Jalal Uddin",
         },
-        "domain": "Educational/Informative",    
-    },
-    {
-        "id": "2",
-        "dataType": "TTS",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+        "domain": "Educational/Informative",  
+        "speaker": {
+            "speakerNo": "03",
+            "gender": ["male", "female"],
+            "area": "natore",
+            "age": "15-24 years"
         },
-        "uploadDate": "01/02/2022; 3:35 PM",
-        "uploader": {
-            "role": "Admin",
-            "name": "Md. Zalal Uddin",
+        "speechInfo": {
+            "dataType": "STT",
+            "fileType": "Audio",
+            "sourceType": "BBC",
+            "sourceReference": "https://www.bbc.com/bengali/news-62449191",
+            "dataSource": "Read",
+            "domain": "Educational or Informative",
+            "subDomain": "Educational Demnstrations"
         },
-        "domain": "Business",    
-    },
-    {
-        "id": "3",
-        "dataType": "STT",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "uploadDate": "01/02/2022; 3:35 PM",
-        "uploader": {
-            "role": "Admin",
-            "name": "Md. Saidur Rahman",
-        },
-        "domain": "Leisure",    
-    },
-    {
-        "id": "4",
-        "dataType": "TTS",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "uploadDate": "01/02/2022; 3:35 PM",
-        "uploader": {
-            "role": "Admin",
-            "name": "Md. Saidur Rahman",
-        },
-        "domain": "Public/institutional",    
+        "others": {
+            "journey": {
+                "role": [
+                    {
+                        "id": "1",
+                        "role": 'Admin',
+                        "name": 'Md. Jalal Uddin',
+                        "date": "01 Jan’ 22"
+                    },
+                    {
+                        "id": "2",
+                        "role": 'Manager',
+                        "name": 'Md. Eman Hassan',
+                        "date": "03 Jan’ 22"
+                    },
+                    {
+                        "id": "3",
+                        "role": 'Team Leader',
+                        "name": 'Jahida Ferdous Mim',
+                        "date": "05 Jan’ 22"
+                    },
+                    {
+                        "id": "4",
+                        "role": 'Collector',
+                        "name": 'Muhammad Miraz Mahmud',
+                        "date": "05 Jan’ 22"
+                    },
+                ],
+            }
+        }
     },
 ]
 

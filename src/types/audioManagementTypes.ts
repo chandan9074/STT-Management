@@ -102,6 +102,29 @@ export type allCheckedAudioDT = {
     submissionDate: string;
     remark: remarkInfoDT;
     others: othersDT;
+    history: historyDT[];
+}
+
+export type historyDT = {
+    id: string;
+    lastEdited: string;
+    status: string;
+    name: string;
+    role: string;
+    remark: historyRemark[]
+}
+
+export type historyRemark = {
+    id: string;
+    roleInfo: {
+        id: string;
+        name: string;
+        role: string;
+        gender: string;
+    };
+    deadline: string;
+    des: string;
+    status: string;
 }
 
 export type audioCheckerDT = {
@@ -300,6 +323,35 @@ export type uploadAudioDataDT = {
     uploadDate: string;
     uploader: uploaderDT;
     domain: string;
+    speechInfo: speechInfo
+    others: othersUploadAudioDT;
+    speaker: speakerUploadAudioDT;
+}
+
+export type speakerUploadAudioDT = {
+    speakerNo: string;
+    gender: string[];
+    area: string;
+    age: string;
+}
+
+export type othersUploadAudioDT = {
+    journey: journeyUploadAudioDT
+}
+
+export type journeyUploadAudioDT = {
+    role: audioManagementRoleDT[];
+}
+
+
+export type speechInfo = {
+    dataType: string;
+    fileType: string;
+    sourceType: string;
+    sourceReference: string;
+    dataSource: string;
+    domain: string;
+    subDomain: string;
 }
 
 export type uploaderDT = {

@@ -1,6 +1,6 @@
 import { Table } from "antd"
 import { ColumnsType } from "antd/es/table"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import Icons from "../../assets/Icons"
 import { CommonContext } from "../../context/CommonProvider"
 import { uploadAudioDataTypeFilterData } from "../../data/audioManagement/AudioManagementData"
@@ -9,6 +9,7 @@ import AudioTrack from "../common/AudioTrack"
 import DataTypeFilter from "../common/TableField/AudioManagement/DataTypeFilter"
 import RoleImage from "../Image/RoleImage"
 import Pagination from "../Pagination"
+import { Drawer } from "../Drawer"
 
 type Props = {
     data: uploadAudioDataDT[]
@@ -17,6 +18,13 @@ type Props = {
 const Type23 = ({ data }: Props) => {
 
     const { roleName } = useContext(CommonContext);
+    const [open, setOpen] = useState(false);
+
+    const [singleTargetData, setSingleTargetData] = useState<uploadAudioDataDT>();
+
+    const showDrawer = (item: uploadAudioDataDT) => {
+        setOpen(true);
+    };
 
     const getColumnSearchProps = (dataIndex: string): any => ({
 
@@ -96,18 +104,16 @@ const Type23 = ({ data }: Props) => {
             width: 85,
             render: (_, record: uploadAudioDataDT) => (
                 <>
-
                     <div className='flex w-full justify-center items-center'>
                         <img
-                            // onClick={() => {
-                            //     showDrawer(record);
-                            //     setSingleTargetData(record);
-                            // }}
+                            onClick={() => {
+                                showDrawer(record);
+                                setSingleTargetData(record);
+                            }}
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
                     </div>
-
                 </>)
         },
     ]
@@ -128,6 +134,23 @@ const Type23 = ({ data }: Props) => {
                     handleDataChange={handlePageChange}
                 />
             </div>
+
+            {
+                (open && singleTargetData) &&
+                <Drawer.AudioManagement.Type2
+                    isDrawerOpen={open}
+                    setIsDrawerOpen={setOpen}
+                    id={singleTargetData.id}
+                //   isEditHistory={true}
+                  speaker={singleTargetData.speaker}
+                //   remark={singleTargetData.remark}
+                //   script={singleTargetData.script}
+                  others={singleTargetData.others}
+                  speechInfo={singleTargetData.speechInfo}
+                  isEditHistory={false}
+                //   history={singleTargetData?.history}
+                />
+            }
         </div>
     )
 }
