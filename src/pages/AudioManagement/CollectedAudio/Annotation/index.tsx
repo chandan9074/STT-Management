@@ -1,8 +1,17 @@
+import { useContext, useEffect } from "react";
 import { SearchBox } from "../../../../components/SearchBox";
 import Table from "../../../../components/Table"
-import { annotationData } from "../../../../data/audioManagement/AudioManagementData"
+import { AudioManagementContext } from "../../../../context/AudioManagementProvider";
 
 const Annotation = () => {
+
+  const { getAnnotationData, annotationData } = useContext(AudioManagementContext)
+
+  useEffect(()=> {
+    getAnnotationData();
+       // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+
   return (
     <div>
       <Header />

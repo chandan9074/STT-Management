@@ -1,9 +1,19 @@
+import { useContext, useEffect } from 'react';
 import Buttons from '../../../../components/Buttons';
 import { SearchBox } from '../../../../components/SearchBox';
 import Table from '../../../../components/Table'
-import { collectAnnSenData } from '../../../../data/audioManagement/AudioManagementData'
+import { AudioManagementContext } from '../../../../context/AudioManagementProvider';
 
 const SentenceLevel = () => {
+
+  const {getCollectAnnSenData,collectAnnSenData} = useContext(AudioManagementContext);
+
+  useEffect(()=>{
+    getCollectAnnSenData()
+       // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+  
+
   return (
     <div>
       <Header />

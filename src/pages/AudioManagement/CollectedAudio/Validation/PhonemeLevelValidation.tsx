@@ -1,10 +1,19 @@
+import { useContext, useEffect } from "react";
 import Table from "../../../../components/Table"
-import { collectValSenData } from "../../../../data/audioManagement/AudioManagementData"
+import { AudioManagementContext } from "../../../../context/AudioManagementProvider";
 
 const PhonemeLevelValidation = () => {
+
+  const {getCollectValPhonemeData,collectValPhonemeData} = useContext(AudioManagementContext);
+
+  useEffect(()=>{
+    getCollectValPhonemeData()
+       // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+
   return (
     <div>
-        <Table.Type22 data={collectValSenData} />
+        <Table.Type22 data={collectValPhonemeData} />
         
     </div>
   )

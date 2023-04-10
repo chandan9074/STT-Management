@@ -1,9 +1,18 @@
+import { useContext, useEffect } from "react"
 import Buttons from "../../../../components/Buttons"
 import { SearchBox } from "../../../../components/SearchBox"
 import Table from "../../../../components/Table"
-import { allCheckedAudiosData } from "../../../../data/audioManagement/AudioManagementData"
+import { AudioManagementContext } from "../../../../context/AudioManagementProvider"
 
 const AllCheckedAudios = () => {
+
+  const {getAllCheckedAudiosData,allCheckedAudiosData} = useContext(AudioManagementContext)
+
+  useEffect(()=>{
+    getAllCheckedAudiosData()
+       // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+
   return (
     <div>
       <Header />

@@ -2,12 +2,21 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { Filter } from '../../../components/Filter';
 import { SearchBox } from '../../../components/SearchBox';
 import Table from '../../../components/Table';
-import { collectedAudio, collectedAudioFilterData } from '../../../data/audioManagement/AudioManagementData';
+import { collectedAudioFilterData } from '../../../data/audioManagement/AudioManagementData';
 import { targetFilterListDT } from '../../../types/assignTypes';
 import { AudioManagementContext } from '../../../context/AudioManagementProvider';
 
 
+
 const CollectedAudio = () => {
+
+    const {getCollectedAudioData,collectedAudio} = useContext(AudioManagementContext);
+
+    useEffect(() => {
+      getCollectedAudioData()
+       // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
+    
     return (
         // <Layouts.Third>
         <div>
