@@ -182,7 +182,6 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
     }
 
     const getSentenceLevelUploadVal = () => {
-        console.log("res------------");
         const res = audioManagementService.getSentenceLevelUploadVal();
 
         setSentenceLevelUploadVal(res);
