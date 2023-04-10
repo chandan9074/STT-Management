@@ -231,22 +231,22 @@ export type validatedFilesDT = {
     history: historyDT[]
 }
 
-export type historyDT = {
-    id: string
-    lastEdited: string
-    status: string
-    name: string
-    role: string
-    remark: historyRemarkDT[]
-}
+// export type historyDT = {
+//     id: string
+//     lastEdited: string
+//     status: string
+//     name: string
+//     role: string
+//     remark: historyRemarkDT[]
+// }
 
-export type historyRemarkDT = {
-    id: string
-    roleInfo: roleInfoDT
-    deadline: string
-    des: string
-    status: string
-}
+// export type historyRemarkDT = {
+//     id: string
+//     roleInfo: roleInfoDT
+//     deadline: string
+//     des: string
+//     status: string
+// }
 
 export type roleInfoDT = {
     id: string
