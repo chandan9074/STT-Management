@@ -446,10 +446,10 @@ export const allCheckedAudiosData = [
 
             "sourceType": "",
             "sourceUrl": "",
-            "sourceFile": "",
+            "sourceFile": "https://fastly.picsum.photos/id/923/200/300.jpg?hmac=eiYSYaG7v46VlrE38Amrg33bd2FzVjaCsQrLMdekyAU",
             "sourceFileName": "",
-            "sourceFileImage": "",
-            "title": "",
+            // "sourceFileImage": "https://fastly.picsum.photos/id/923/200/300.jpg?hmac=eiYSYaG7v46VlrE38Amrg33bd2FzVjaCsQrLMdekyAU",
+            "title": "ভুল বাক্য ",
             "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
             "date": "2023-02-16T12:45:58.536350",
             "frequency": 0,
@@ -529,7 +529,7 @@ export const allCheckedAudiosData = [
             {
                 "id": "123",
                 "lastEdited": '01/02/2022',
-                "status": "Reassign",
+                "status": "Approved",
                 "name": "Md. Jalal Uddin",
                 "role": "Admin",
                 "remark": [
@@ -540,11 +540,22 @@ export const allCheckedAudiosData = [
                             "name": "Maksud Alam",
                             "role": "Manager",
                             "gender": "Male",
-                            "date": "08/02/2022, 4:31 PM"
                         },
                         "deadline": "05/02/2022, 5:41 AM",
-                        "des": "Dark UX is when designers create an experience that        pushes users in a direction that benefits the interests of the company",
+                        "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
                         "status": "Claim Approved"
+                    },
+                    {
+                        "id": "385",
+                        "roleInfo": {
+                            "id": "maksudalam@gmail.com",
+                            "name": "Maksud Alam",
+                            "role": "Manager",
+                            "gender": "Male",
+                        },
+                        "deadline": "05/02/2022, 5:41 AM",
+                        "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                        "status": "Cancelled"
                     },
                 ]
             }

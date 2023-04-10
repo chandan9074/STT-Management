@@ -102,6 +102,29 @@ export type allCheckedAudioDT = {
     submissionDate: string;
     remark: remarkInfoDT;
     others: othersDT;
+    history: historyDT[];
+}
+
+export type historyDT = {
+    id: string;
+    lastEdited: string;
+    status: string;
+    name: string;
+    role: string;
+    remark: historyRemark[]
+}
+
+export type historyRemark =  {
+    id: string;
+    roleInfo: {
+        id: string;
+        name: string;
+        role: string;
+        gender: string;
+    };
+    deadline: string;
+    des: string;
+    status: string;
 }
 
 export type audioCheckerDT = {

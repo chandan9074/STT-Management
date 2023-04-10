@@ -3,11 +3,12 @@ import { Drawer } from 'antd';
 import Buttons from '../../../Buttons';
 import Script from '../../Target/Script';
 import MetaData from '../../Target/MetaData';
-import { othersDT, remarkInfoDT, singleSpeakerDT2, speakerLocalityDT2 } from '../../../../types/audioManagementTypes';
+import { historyDT, othersDT, remarkInfoDT, singleSpeakerDT2, speakerLocalityDT2 } from '../../../../types/audioManagementTypes';
 import Others from './Others';
 import RoleImage from '../../../Image/RoleImage';
 import SpeakerInformation from './SpeakerInformation';
 import { scriptResDT } from '../../../../types/script';
+import EditHistory from './EditHistory';
 
 type Props = {
     isDrawerOpen: boolean,
@@ -18,9 +19,10 @@ type Props = {
     script: scriptResDT;
     others: othersDT;
     id: string;
+    history?: historyDT[];
 }
 
-const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory, speaker, remark, script, others, id }: Props) => {
+const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory, speaker, remark, script, others, id, history }: Props) => {
     const [activePanel, setActivePanel] = useState<string>("Script");
     const [isMetaData, setIsMetaData] = useState<boolean>(false);
     const [isSpeaker, setIsSpeaker] = useState<boolean>(false);
@@ -134,7 +136,7 @@ const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory,
                                                     }
                                                 </>
                                                 :
-                                                <div>This is Edit history</div>
+                                                <EditHistory data={history}/>
                                         }
                                     </div>
                                 </div>
