@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Filter } from '../../../components/Filter';
 import { SearchBox } from '../../../components/SearchBox';
 import Table from '../../../components/Table';
@@ -42,7 +42,10 @@ const Header = () => {
         audioSubmissionPeriod: []
     })
 
-    const { scriptFilter, getScriptFilter } = useContext(AudioManagementContext)
+    const { scriptFilter, getScriptFilter, collectedAudioCollector, getCollectedAudioCollector } = useContext(AudioManagementContext);
+
+    const prevScriptFilterRef = useRef(scriptFilter);
+    const prevCollectedAudioCollectorRef = useRef(collectedAudioCollector);
 
     useEffect(() => {
         let count = 0;
@@ -56,27 +59,34 @@ const Header = () => {
 
     useEffect(() => {
         getScriptFilter();
+        getCollectedAudioCollector();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
 
-        if (scriptFilter) {
-            // const collectorDetailsObject = collectedAudioFilterData.find(obj => obj.key === "collector");
-            // if (collectorDetailsObject && collectorDetailsObject.selects) {
-            //     const nestedObject = collectorDetailsObject.selects.find(obj => obj.key === "collector_details");
-            //     if (nestedObject) {
-            //         nestedObject.child = scriptFilter;
-            //     }
-            // }
+        if (scriptFilter !== prevScriptFilterRef.current) {
             const collectorDetailsObject = collectedAudioFilterData.find(obj => obj.key === "script");
             if (collectorDetailsObject) {
                 collectorDetailsObject.child = scriptFilter;
             }
         }
-        console.log("----", collectedAudioFilterData, scriptFilter)
+        if (collectedAudioCollector !== prevCollectedAudioCollectorRef.current) {
+            const collectorObject = collectedAudioFilterData.find(obj => obj.key === "collector");
+            if (collectorObject && collectorObject.selects) {
+                // collectorDetailsObject.child = collectedAudioCollector;
+                const collectorDetailsObject = collectorObject.selects.find(obj => obj.key === "collector_details");
+                if (collectorDetailsObject) {
+                    collectorDetailsObject.child = collectedAudioCollector;
+                }
+            }
+        }
 
-    }, [scriptFilter]);
+        prevScriptFilterRef.current = scriptFilter;
+        prevCollectedAudioCollectorRef.current = collectedAudioCollector;
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [scriptFilter, collectedAudioCollector]);
 
 
     const handleFilterList = (key: string, value: string) => {

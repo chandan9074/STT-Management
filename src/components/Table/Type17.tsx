@@ -152,7 +152,7 @@ const Type17 = ({ data }: Props) => {
 
     const handlePageChange = (page: number) => {
         // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
-    }    
+    }
 
     return (
         <div className='billing-table billing-table-odd-bg type4-table horizontal-table-padding'>
@@ -196,8 +196,12 @@ const Type17 = ({ data }: Props) => {
                 <Drawer.AudioManagement.CheckingStatus
                     isDrawerOpen={open}
                     setIsDrawerOpen={setOpen}
-                    data={singleTargetData}
-
+                    isEditHistory={false}
+                    speaker={singleTargetData.speaker}
+                    remark={singleTargetData.remark}
+                    script={singleTargetData.script}
+                    others={singleTargetData.others}
+                    id={singleTargetData.id}
                 />
             }
         </div>

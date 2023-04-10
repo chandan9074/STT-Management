@@ -1,9 +1,12 @@
-import { allCheckedAudiosData, annotationData, checkingStatusData, collectAnnSenData, collectedAudio, scriptFilterData,annotatedFiles, collectValSenData } from '../data/audioManagement/AudioManagementData';
+import { collectedAudioCollectorList, allCheckedAudiosData, annotationData, checkingStatusData, collectAnnSenData, collectedAudio, scriptFilterData, annotatedFiles, collectValSenData } from '../data/audioManagement/AudioManagementData';
 import { allCheckedSpeechData, annotationUploadData, checkingStatusUploadData, sentenceLevelUploadData, uploadAudioData } from '../data/audioManagement/UploadAudiosData';
 
 export default class audioManagementService {
     static getScriptFilters() {
         return scriptFilterData;
+    }
+    static getCollectedAudioCollector() {
+        return collectedAudioCollectorList;
     }
 
     static getCollectedAudioData() {

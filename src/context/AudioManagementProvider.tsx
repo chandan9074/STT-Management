@@ -4,6 +4,8 @@ import { allCheckedAudioDT, allCheckedSpeechDT, annotatedFilesDT, annotationDT, 
 
 interface ContextProps {
     getScriptFilter: () => void;
+    getCollectedAudioCollector: () => void;
+    collectedAudioCollector: string[];
     scriptFilter: string[];
     getCollectedAudioData: () => void;
     collectedAudio: audioManagementDT[];
@@ -56,6 +58,7 @@ export const AudioManagementContext = createContext({} as ContextProps);
 const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
 
     const [scriptFilter, setScriptFilter] = useState<string[]>([] as string[]);
+    const [collectedAudioCollector, setCollectedAudioCollector] = useState<string[]>([] as string[]);
     const [collectedAudio, setCollectedAudio] = useState<audioManagementDT[]>([] as audioManagementDT[]);
     const [checkingStatusData, setCheckingStatusData] = useState<checkingStatusDT[]>([] as checkingStatusDT[]);
     const [allCheckedAudiosData, setAllCheckedAudiosData] = useState<allCheckedAudioDT[]>([] as allCheckedAudioDT[]);
@@ -81,10 +84,17 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
 
     const getScriptFilter = () => {
         const res = audioManagementService.getScriptFilters();
-        const concatenatedStrings = res.map(item => item.id.substring(0, 3) + "...-" + item.title);
+        const concatenatedStrings = res.map(item => item.id.substring(0, 3) + "... - " + item.title);
         console.log("hello", concatenatedStrings);
         setScriptFilter(concatenatedStrings);
     }
+
+    const getCollectedAudioCollector = () => {
+        const res = audioManagementService.getCollectedAudioCollector();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name);
+        setCollectedAudioCollector(concatenatedStrings);
+    }
+
 
     const getCollectedAudioData = () => {
         const res = audioManagementService.getCollectedAudioData();
@@ -246,7 +256,9 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
                 getWordLevelUploadVal,
                 wordLevelUploadVal,
                 getPhonemeLevelUploadVal,
-                phonemeLevelUploadVal
+                phonemeLevelUploadVal,
+                collectedAudioCollector,
+                getCollectedAudioCollector
             }}
         >
             {children}
