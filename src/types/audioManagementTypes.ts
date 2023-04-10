@@ -114,7 +114,7 @@ export type historyDT = {
     remark: historyRemark[]
 }
 
-export type historyRemark =  {
+export type historyRemark = {
     id: string;
     roleInfo: {
         id: string;
@@ -272,6 +272,35 @@ export type uploadAudioDataDT = {
     uploadDate: string;
     uploader: uploaderDT;
     domain: string;
+    speechInfo: speechInfo
+    others: othersUploadAudioDT;
+    speaker: speakerUploadAudioDT;
+}
+
+export type speakerUploadAudioDT = {
+    speakerNo: string;
+    gender: string[];
+    area: string;
+    age: string;
+}
+
+export type othersUploadAudioDT = {
+    journey: journeyUploadAudioDT
+}
+
+export type journeyUploadAudioDT = {
+    role: audioManagementRoleDT[];
+}
+
+
+export type speechInfo = {
+    dataType: string;
+    fileType: string;
+    sourceType: string;
+    sourceReference: string;
+    dataSource: string;
+    domain: string;
+    subDomain: string;
 }
 
 export type uploaderDT = {

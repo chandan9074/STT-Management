@@ -21,12 +21,12 @@ const Type18 = ({ data }: Props) => {
   const { roleName } = useContext(CommonContext);
   const [open, setOpen] = useState(false);
 
+  const [remarkOpen, setRemarkOpen] = useState(false);
+  const [singleTargetData, setSingleTargetData] = useState<allCheckedAudioDT>();
+
   const showDrawer = (item: allCheckedAudioDT) => {
     setOpen(true);
   };
-
-  const [remarkOpen, setRemarkOpen] = useState(false);
-  const [singleTargetData, setSingleTargetData] = useState<allCheckedAudioDT>();
 
   const Type18columns: ColumnsType<allCheckedAudioDT> = [
     {
