@@ -10,6 +10,7 @@ import SpeechStatus from '../common/SpeechStatus'
 import Speaker from '../common/TableField/AudioManagement/Speaker'
 import RoleImage from '../Image/RoleImage'
 import Pagination from '../Pagination'
+import { Drawer } from '../Drawer'
 
 type Props = {
   data: allCheckedAudioDT[]
@@ -18,7 +19,11 @@ type Props = {
 const Type18 = ({ data }: Props) => {
 
   const { roleName } = useContext(CommonContext);
+  const [open, setOpen] = useState(false);
 
+  const showDrawer = (item: allCheckedAudioDT) => {
+    setOpen(true);
+  };
 
   const [remarkOpen, setRemarkOpen] = useState(false);
   const [singleTargetData, setSingleTargetData] = useState<allCheckedAudioDT>();
@@ -135,10 +140,10 @@ const Type18 = ({ data }: Props) => {
 
           <div className='flex w-full justify-center items-center'>
             <img
-              // onClick={() => {
-              //     showDrawer(record);
-              //     setSingleTargetData(record);
-              // }}
+              onClick={() => {
+                showDrawer(record);
+                setSingleTargetData(record);
+              }}
               className='w-[14px] h-[14px] cursor-pointer'
               src={Icons.open_in_new}
               alt="" />
@@ -163,7 +168,7 @@ const Type18 = ({ data }: Props) => {
 
   const handlePageChange = (page: number) => {
     // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
-}
+  }
 
   return (
     <div className='billing-table billing-table-odd-bg type4-table horizontal-table-padding'>
@@ -181,14 +186,14 @@ const Type18 = ({ data }: Props) => {
         pagination={false}
       />
       <div className='flex w-full justify-end mt-4 mb-2'>
-                <Pagination.Type2
-                    total={100}
-                    pageSize={10}
-                    // total={35}
-                    // pageSize={5}
-                    handleDataChange={handlePageChange}
-                />
-            </div>
+        <Pagination.Type2
+          total={100}
+          pageSize={10}
+          // total={35}
+          // pageSize={5}
+          handleDataChange={handlePageChange}
+        />
+      </div>
 
       {
         remarkOpen &&
@@ -199,6 +204,20 @@ const Type18 = ({ data }: Props) => {
           roleType={'speaker'}
           dateTime={singleTargetData?.deadLine ? singleTargetData?.deadLine : ''}
           desc={'this is remark'}
+        />
+      }
+
+      {
+        (open && singleTargetData) &&
+        <Drawer.AudioManagement.CheckingStatus
+          isDrawerOpen={open}
+          setIsDrawerOpen={setOpen}
+          isEditHistory={true}
+          speaker={singleTargetData.speaker}
+          remark={singleTargetData.remark}
+          script={singleTargetData.script}
+          others={singleTargetData.others}
+          id={singleTargetData.id}
         />
       }
     </div>

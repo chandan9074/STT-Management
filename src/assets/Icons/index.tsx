@@ -143,6 +143,7 @@ import settings_purple from "./settings_purple.svg"
 import Laptop from './Laptop.svg'
 import Mobile from './Mobile.svg'
 import AudioRecorder from './AudioRecorder.svg'
+import Vector3 from './Vector_3.png'
 
 const Icons = {
   currency,
@@ -289,7 +290,8 @@ const Icons = {
   arrow_right_rounded_blue,
   Laptop,
   Mobile,
-  AudioRecorder
+  AudioRecorder,
+  Vector3
 };
 
 export default Icons;

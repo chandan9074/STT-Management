@@ -3,19 +3,24 @@ import { Drawer } from 'antd';
 import Buttons from '../../../Buttons';
 import Script from '../../Target/Script';
 import MetaData from '../../Target/MetaData';
-import { checkingStatusDT, singleSpeakerDT2 } from '../../../../types/audioManagementTypes';
+import { othersDT, remarkInfoDT, singleSpeakerDT2, speakerLocalityDT2 } from '../../../../types/audioManagementTypes';
 import Others from './Others';
 import RoleImage from '../../../Image/RoleImage';
 import SpeakerInformation from './SpeakerInformation';
+import { scriptResDT } from '../../../../types/script';
 
 type Props = {
     isDrawerOpen: boolean,
     setIsDrawerOpen: Dispatch<SetStateAction<boolean>>;
-    data: checkingStatusDT;
-
+    isEditHistory: boolean
+    speaker: speakerLocalityDT2;
+    remark: remarkInfoDT;
+    script: scriptResDT;
+    others: othersDT;
+    id: string;
 }
 
-const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, data }: Props) => {
+const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory, speaker, remark, script, others, id }: Props) => {
     const [activePanel, setActivePanel] = useState<string>("Script");
     const [isMetaData, setIsMetaData] = useState<boolean>(false);
     const [isSpeaker, setIsSpeaker] = useState<boolean>(false);
@@ -32,7 +37,7 @@ const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, data }: Props)
     useEffect(() => {
         setActivePanel('Script');
 
-        data.speaker.speakers.map((item: singleSpeakerDT2) => {
+        speaker.speakers.map((item: singleSpeakerDT2) => {
             if (item.gender.toLowerCase() === 'male'.toLowerCase()) {
                 setIsMale(true);
             }
@@ -59,7 +64,7 @@ const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, data }: Props)
                         {
                             isSpeaker ?
                                 <div>
-                                    <SpeakerInformation data={data.speaker} setIsSpeaker={setIsSpeaker} />
+                                    <SpeakerInformation data={speaker} setIsSpeaker={setIsSpeaker} />
                                 </div>
                                 :
                                 <div className='animate-fadeIn'>
@@ -70,7 +75,7 @@ const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, data }: Props)
                                             <h1 className='text-ct-blue-95 text-[18px] font-medium'>Details</h1>
                                             <div className='flex'>
                                                 <h1 className='text-ct-blue-90-70% text-small'>Target ID: </h1>
-                                                <h1 className='pl-1 text-ct-blue-90-70% font-bold text-small'>{data?.id?.slice(0, 25)}</h1>
+                                                <h1 className='pl-1 text-ct-blue-90-70% font-bold text-small'>{id?.slice(0, 25)}</h1>
                                             </div>
                                         </div>
 
@@ -79,13 +84,13 @@ const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, data }: Props)
 
                                             <div
                                                 onClick={() => setIsSpeaker(true)}
-                                                className={`flex items-center py-[3px] pl-[11px] ${data.speaker.speakers.length > 1 ? 'pr-[18px]' : 'pr-1'} bg-white rounded-[32px] gap-x-[5px] cursor-pointer`}
+                                                className={`flex items-center py-[3px] pl-[11px] ${speaker.speakers.length > 1 ? 'pr-[18px]' : 'pr-1'} bg-white rounded-[32px] gap-x-[5px] cursor-pointer`}
                                             >
                                                 <p className='text-ct-blue-45 text-xxs font-medium'>Speaker</p>
                                                 <div className='relative flex items-center'>
                                                     <RoleImage height='h-6' width='w-6' role={isMale ? 'speaker' : 'speakerFemale'} />
                                                     {
-                                                        data.speaker.speakers.length > 1 &&
+                                                        speaker.speakers.length > 1 &&
                                                         <div className='absolute left-[14px] w-full ring-2 ring-white rounded-full'>
                                                             <RoleImage height='h-6' width='w-6' role={isFemale ? 'speakerFemale' : 'speaker'} />
                                                         </div>
@@ -95,12 +100,22 @@ const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, data }: Props)
                                         }
 
 
-                                        <div className='absolute -bottom-[20px] left-[130px] '>
-                                            <Buttons.TabButton.Primary
-                                                size='small'
-                                                tabLabel={["Script", "Others"]}
-                                                setActiveData={setActivePanel}
-                                            />
+                                        <div className='absolute -bottom-[20px] flex justify-center w-full left-0'>
+                                            {
+                                                isEditHistory ?
+                                                    <Buttons.TabButton.Primary
+                                                        size='small'
+                                                        tabLabel={["Script", "Others", "Edit History"]}
+                                                        setActiveData={setActivePanel}
+                                                    />
+                                                    :
+                                                    <Buttons.TabButton.Primary
+                                                        size='small'
+                                                        tabLabel={["Script", "Others"]}
+                                                        setActiveData={setActivePanel}
+                                                    />
+                                            }
+
                                         </div>
                                     </div>
 
@@ -109,21 +124,24 @@ const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, data }: Props)
                                     <div className='px-5 pt-[46px]'>
                                         {
                                             activePanel.includes("Script") ?
-                                                <Script data={data?.script} setIsMetaData={setIsMetaData} isMetaData={isMetaData} />
+                                                <Script data={script} setIsMetaData={setIsMetaData} isMetaData={isMetaData} />
                                                 :
+                                                activePanel.includes("Others") ?
                                                 <>
                                                     {
-                                                        (data.remark) &&
-                                                        <Others data={data?.others} remark={data.remark} />
+                                                        (remark) &&
+                                                        <Others data={others} remark={remark} />
                                                     }
                                                 </>
+                                                :
+                                                <div>This is Edit history</div>
                                         }
                                     </div>
                                 </div>
                         }
                     </div>
                     :
-                    <MetaData data={data?.script} setIsMetaData={setIsMetaData} />
+                    <MetaData data={script} setIsMetaData={setIsMetaData} />
             }
 
         </Drawer>
