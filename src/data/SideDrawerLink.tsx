@@ -102,7 +102,7 @@ let SideDrawerLink = [
                             },
                             {
                                 name: 'Validated Files',
-                                route: PATH.CHECKING_STATUS,
+                                route: PATH.VALIDATED_FILES,
                                 links: []
                             },
                         ]
@@ -181,7 +181,7 @@ let SideDrawerLink = [
                             },
                             {
                                 name: 'Validated Files',
-                                route: PATH.CHECKING_STATUS,
+                                route: PATH.VALIDATED_FILES,
                                 links: []
                             },
                         ]

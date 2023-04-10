@@ -1,30 +1,23 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { Drawer } from 'antd';
-import Buttons from '../../../Buttons';
-import Script from '../../Target/Script';
-import MetaData from '../../Target/MetaData';
-import { historyDT, othersDT, remarkInfoDT, singleSpeakerDT2, speakerLocalityDT2 } from '../../../../types/audioManagementTypes';
-import Others from './Others';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { othersUploadAudioDT, speakerUploadAudioDT, speechInfo } from '../../../../types/audioManagementTypes';
 import RoleImage from '../../../Image/RoleImage';
-import SpeakerInformation from './SpeakerInformation';
-import { scriptResDT } from '../../../../types/script';
-import EditHistory from './EditHistory';
+import Buttons from '../../../Buttons';
+import SpeechInfo from './SpeechInfo';
 
 type Props = {
     isDrawerOpen: boolean,
     setIsDrawerOpen: Dispatch<SetStateAction<boolean>>;
-    isEditHistory: boolean
-    speaker: speakerLocalityDT2;
-    remark: remarkInfoDT;
-    script: scriptResDT;
-    others: othersDT;
     id: string;
-    history?: historyDT[];
+    speaker: speakerUploadAudioDT;
+    others: othersUploadAudioDT;
+    speechInfo: speechInfo;
+    isEditHistory: boolean;
 }
 
-const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory, speaker, remark, script, others, id, history }: Props) => {
-    const [activePanel, setActivePanel] = useState<string>("Script");
-    const [isMetaData, setIsMetaData] = useState<boolean>(false);
+const Type2 = ({ id, isDrawerOpen, setIsDrawerOpen: setOpen, speaker, others, speechInfo, isEditHistory }: Props) => {
+    const [activePanel, setActivePanel] = useState<string>("Speech Info");
+    // const [isMetaData, setIsMetaData] = useState<boolean>(false);
     const [isSpeaker, setIsSpeaker] = useState<boolean>(false);
 
     // const [gender, setIsGender] = useState<any>({ isMale: false, isFemale: false })
@@ -34,20 +27,22 @@ const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory,
     const onClose = () => {
         // drawerClose();
         setOpen(false);
-    };
 
-    useEffect(() => {
-        setActivePanel('Script');
-
-        speaker.speakers.map((item: singleSpeakerDT2) => {
-            if (item.gender.toLowerCase() === 'male'.toLowerCase()) {
+        speaker.gender.map((item: string) => {
+            if (item.toLowerCase() === 'male'.toLowerCase()) {
                 setIsMale(true);
             }
-            if (item.gender.toLowerCase() === 'female'.toLowerCase()) {
+            if (item.toLowerCase() === 'female'.toLowerCase()) {
                 setIsFemale(true);
             }
             return item;
         });
+       
+    };
+
+    useEffect(() => {
+        setActivePanel('Speech Info');
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -61,12 +56,13 @@ const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory,
             style={{ zIndex: 999, transition: "0.3s" }}
         >
             {
-                (isDrawerOpen && !isMetaData) ?
+                (isDrawerOpen) ?
                     <div>
                         {
                             isSpeaker ?
                                 <div>
-                                    <SpeakerInformation data={speaker} setIsSpeaker={setIsSpeaker} />
+                                    {/* <SpeakerInformation data={speaker} setIsSpeaker={setIsSpeaker} /> */}
+                                    <div>Speaker information</div>
                                 </div>
                                 :
                                 <div className='animate-fadeIn'>
@@ -86,13 +82,13 @@ const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory,
 
                                             <div
                                                 onClick={() => setIsSpeaker(true)}
-                                                className={`flex items-center py-[3px] pl-[11px] ${speaker.speakers.length > 1 ? 'pr-[18px]' : 'pr-1'} bg-white rounded-[32px] gap-x-[5px] cursor-pointer`}
+                                                className={`flex items-center py-[3px] pl-[11px] ${speaker.gender.length > 1 ? 'pr-[18px]' : 'pr-1'} bg-white rounded-[32px] gap-x-[5px] cursor-pointer`}
                                             >
                                                 <p className='text-ct-blue-45 text-xxs font-medium'>Speaker</p>
                                                 <div className='relative flex items-center'>
                                                     <RoleImage height='h-6' width='w-6' role={isMale ? 'speaker' : 'speakerFemale'} />
                                                     {
-                                                        speaker.speakers.length > 1 &&
+                                                        speaker.gender.length > 1 &&
                                                         <div className='absolute left-[14px] w-full ring-2 ring-white rounded-full'>
                                                             <RoleImage height='h-6' width='w-6' role={isFemale ? 'speakerFemale' : 'speaker'} />
                                                         </div>
@@ -107,47 +103,49 @@ const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory,
                                                 isEditHistory ?
                                                     <Buttons.TabButton.Primary
                                                         size='small'
-                                                        tabLabel={["Script", "Others", "Edit History"]}
+                                                        tabLabel={["Speech Info", "Others", "Edit History"]}
                                                         setActiveData={setActivePanel}
                                                     />
                                                     :
                                                     <Buttons.TabButton.Primary
                                                         size='small'
-                                                        tabLabel={["Script", "Others"]}
+                                                        tabLabel={["Speech Info", "Others"]}
                                                         setActiveData={setActivePanel}
                                                     />
                                             }
 
-                                        </div>
+                                        </div> 
                                     </div>
 
 
                                     {/* body */}
                                     <div className='px-5 pt-[46px]'>
                                         {
-                                            activePanel.includes("Script") ?
-                                                <Script data={script} setIsMetaData={setIsMetaData} isMetaData={isMetaData} />
+                                            activePanel.includes("Speech Info") ?
+                                                <SpeechInfo data={speechInfo} />
                                                 :
                                                 activePanel.includes("Others") ?
-                                                <>
-                                                    {
-                                                        (remark) &&
-                                                        <Others data={others} remark={remark} />
-                                                    }
-                                                </>
-                                                :
-                                                <EditHistory data={history}/>
+                                                    <>
+                                                        {
+                                                            // <Others data={others} remark={remark} />
+                                                            <div>this is others</div>
+                                                        }
+                                                    </>
+                                                    :
+                                                    // <EditHistory data={history} />
+                                                    <div>this is edit history</div>
                                         }
                                     </div>
                                 </div>
                         }
                     </div>
                     :
-                    <MetaData data={script} setIsMetaData={setIsMetaData} />
+                    // <MetaData data={script} setIsMetaData={setIsMetaData} />
+                    <div>Data not found</div>
             }
 
         </Drawer>
     );
 };
 
-export default CheckingStatus;
+export default Type2;
