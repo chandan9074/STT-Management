@@ -157,26 +157,31 @@ pre {
   overflow: hidden;
 }
 
-.custom-scrollBar::-webkit-scrollbar {
-  width: 0.75em;
+.custom-scrollBar-width-8::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollBar-width-5::-webkit-scrollbar {
+  width: 2px;
 }
 
 /* Track */
-.custom-scrollBar::-webkit-scrollbar-track {
+/* .custom-scrollBar::-webkit-scrollbar-track ,
+.custom-scrollBar2::-webkit-scrollbar-track{
   box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-}
+} */
  
 /* Handle */
 .custom-scrollBar::-webkit-scrollbar-thumb {
-  background-color: lightgray;
+  background-color: #E0E7EF;
   border-radius: 10px;
 }
 
 /* Handle on hover */
-.custom-scrollBar::-webkit-scrollbar-thumb:hover {
+/* .custom-scrollBar::-webkit-scrollbar-thumb:hover {
   background: darkgray; 
-}
+} */
 
 /* Music WaveForm */
 #waveform wave {

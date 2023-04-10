@@ -165,7 +165,7 @@ const Type1 = ({ isDrawerOpen, drawerClose, modalOpen, setModalOpen, setModalScr
                             {selectedScript.length > 0 && <Buttons.LabelButton.Primary label='Save' size='small' variant='Blue' onClick={handleSubmit} />}
                         </div>
                     </div>
-                    <div className='h-[calc(100vh-30vh)] overflow-y-scroll custom-scrollBar pr-1'>
+                    <div className='h-[calc(100vh-30vh)] overflow-y-scroll custom-scrollBar custom-scrollBar-width-8 pr-1'>
                         {allScript?.scripts && <Table.Type9 data={allScript.scripts} handleSelectedScript={handleSelectedScript} uncheckedScript={uncheckedScript} isDrawerOpen={isDrawerOpen} />}
                     </div>
                     <div className="self-end py-2.5 pr-3.5">

@@ -362,7 +362,7 @@ export const checkingStatusData = [
 ]
 
 export const allCheckedAudiosData = [
-   
+
     {
         "id": "1vbuy546yb4yw45b",
         "speech": {
@@ -1505,11 +1505,14 @@ export const collectedAudioFilterData: targetFilterDT[] = [
                 title: "Collector",
                 isFromAPI: false,
                 child: [
+                    "Dhaka",
+                    "Comilla",
+                    "Chittagong",
+                    "Rajshahi",
+                    "Sylhet",
                     "Barisal",
-                    "Barisal",
-                    "Barisal",
-                    "Barisal",
-                    "Barisal",
+                    "Khulna",
+                    "Mymensingh"
                 ]
             },
             {
