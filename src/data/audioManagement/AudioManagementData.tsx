@@ -2077,6 +2077,36 @@ export const scriptFilterData = [
 
 ]
 
+export const collectedAudioCollectorList = [
+    {
+        "id": "maksudalam@gmail.com",
+        "name": "Maksud Alam",
+        "role": "collector",
+        "contact": "01738463449",
+        "email": "maksudalam@gmail.com",
+        "address": "Dhaka",
+        "gender": "Male"
+    },
+    {
+        "id": "01738463442",
+        "name": "Steve Smith",
+        "role": "collector",
+        "contact": "01738463442",
+        "email": "stevesmith@cric.au",
+        "address": "Dhaka",
+        "gender": "Male"
+    },
+    {
+        "id": "mitchstarc@revesoft.au",
+        "name": "Mitchell Starc",
+        "role": "collector",
+        "contact": "01738463442",
+        "email": "mitchstarc@revesoft.au",
+        "address": "Dhaka",
+        "gender": "Male"
+    },
+]
+
 export const statusType = [
     'STT',
     'TTS'

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Icons from "../../assets/Icons";
 import { targetFilterListDT } from "../../types/assignTypes";
 import { targetFilterDT } from "../../types/assignTypes";
-import { Checkbox } from "@mui/material";
+import RoleImage from "../Image/RoleImage";
 
 // type filterListDT = {
 //     dataType: string[];
@@ -20,7 +20,7 @@ type Props = {
     handleDropdownAPICall?: (key: string) => void;
 };
 
-const Type6 = ({
+const Type7 = ({
     data,
     isParent,
     filterList,
@@ -140,16 +140,20 @@ const Type6 = ({
                         {data.child && data.child.map((item: string, index: number) => (
                             <button
                                 key={index}
-                                onClick={() => handleFilterList(data.key, item.split(" - ")[0])}
-                                className={`flex items-center justify-start py-3 px-4 w-full ${filterList[data.key].includes(item.split(" - ")[0])
+                                onClick={() => handleFilterList(data.key, item)}
+                                className={`flex items-center justify-start py-3 px-4 w-full ${filterList[data.key].includes(item)
                                     ? "bg-blue-10 hover:bg-blue-20 active:bg-blue-30"
                                     : "hover:bg-ct-blue-05 active:bg-ct-blue-10"
                                     }`}
                             >
-                                <Checkbox size="small" checked={filterList[data.key].includes(item.split(" - ")[0]) ? true : false} />
-                                <span className="text-small font-medium text-blue-gray-80 ml-1.5">
+                                <RoleImage role="collector" height="h-4" width="w-4" />
+                                <span className="text-small text-left font-medium text-blue-gray-80 ml-1.5">
+                                    {/* {item.split("-")[0]} */}
                                     {item}
                                 </span>
+                                {/* {filterList[data.key].includes(item) && (
+                                    <img src={Icons.CorrectIcon} alt="" />
+                                )} */}
                             </button>
                         ))}
                     </>
@@ -159,4 +163,4 @@ const Type6 = ({
     );
 };
 
-export default Type6;
+export default Type7;

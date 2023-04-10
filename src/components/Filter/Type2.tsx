@@ -157,6 +157,7 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                                 isParent={item.isParent}
                                                 filterList={filterList}
                                                 handleFilterList={handleFilterList}
+                                                placeHolder="Write Script ID"
                                             // subdomainData={filterData["subDomain"]}
                                             />
                                         </div> : item.type === "multiple-select" ? <div
@@ -175,7 +176,7 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                                         placeHolder="Present District"
                                                     // subdomainData={filterData["subDomain"]}
                                                     /> :
-                                                        singleItem.type === "select-with-roleImg" ? <Dropdown.Type6
+                                                        singleItem.type === "select-with-roleImg" ? <Dropdown.Type7
                                                             data={singleItem}
                                                             isParent={item.isParent}
                                                             filterList={filterList}
