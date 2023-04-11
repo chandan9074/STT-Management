@@ -53,6 +53,8 @@ interface ContextProps {
     wordLevelUploadVal: collectValSenDataDT[];
     getPhonemeLevelUploadVal: () => void;
     phonemeLevelUploadVal: collectValSenDataDT[];
+    getCollectedAudioSpeakers: () => void;
+    collectedAudioSpeakers: string[];
 }
 
 export const AudioManagementContext = createContext({} as ContextProps);
@@ -61,6 +63,7 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
 
     const [scriptFilter, setScriptFilter] = useState<string[]>([] as string[]);
     const [collectedAudioCollector, setCollectedAudioCollector] = useState<string[]>([] as string[]);
+    const [collectedAudioSpeakers, setCollectedAudioSpeakers] = useState<string[]>([] as string[]);
     const [collectedAudio, setCollectedAudio] = useState<audioManagementDT[]>([] as audioManagementDT[]);
     const [checkingStatusData, setCheckingStatusData] = useState<checkingStatusDT[]>([] as checkingStatusDT[]);
     const [allCheckedAudiosData, setAllCheckedAudiosData] = useState<allCheckedAudioDT[]>([] as allCheckedAudioDT[]);
@@ -96,6 +99,12 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
         const res = audioManagementService.getCollectedAudioCollector();
         const concatenatedStrings = res.map(item => item.id + " - " + item.name);
         setCollectedAudioCollector(concatenatedStrings);
+    }
+
+    const getCollectedAudioSpeakers = () => {
+        const res = audioManagementService.getCollectedAudioSpeakers();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name + " - " + item.gender);
+        setCollectedAudioSpeakers(concatenatedStrings);
     }
 
 
@@ -268,7 +277,9 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
                 getPhonemeLevelUploadVal,
                 phonemeLevelUploadVal,
                 collectedAudioCollector,
-                getCollectedAudioCollector
+                getCollectedAudioCollector,
+                collectedAudioSpeakers,
+                getCollectedAudioSpeakers
             }}
         >
             {children}

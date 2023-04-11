@@ -1722,6 +1722,7 @@ export const collectedAudioFilterData: targetFilterDT[] = [
         key: "script",
         title: "Script",
         //   child: ["STT", "TTS"],
+        viewKey: "script",
         isFromAPI: true,
         child: []
     },
@@ -1730,6 +1731,8 @@ export const collectedAudioFilterData: targetFilterDT[] = [
         key: "collector",
         title: "Collector",
         //   role: "collector",
+        viewKey: "collector_details",
+        viewRoleImg: "collector",
         selects: [
             {
                 type: "select",
@@ -1761,15 +1764,22 @@ export const collectedAudioFilterData: targetFilterDT[] = [
         type: "form",
         key: "speaker",
         title: "Speaker",
+        viewKey: "speaker_details",
         //   role: "collector",
         formData: [
             {
                 type: "checkbox",
-                title: "Gender"
+                title: "Gender",
+                key: "speaker_gender",
+                child: [
+                    "Male",
+                    "Female"
+                ]
             },
             {
                 type: "check",
                 title: "Age",
+                key: "speaker_age",
                 child: [
                     "7-14",
                     "15-24",
@@ -1785,22 +1795,26 @@ export const collectedAudioFilterData: targetFilterDT[] = [
                     {
                         type: "select",
                         isFromAPI: false,
-                        key: "speaker",
+                        key: "speaker_district",
                         title: "Speaker",
                         child: [
+                            "Dhaka",
+                            "Comilla",
+                            "Chittagong",
+                            "Rajshahi",
+                            "Sylhet",
                             "Barisal",
-                            "Barisal",
-                            "Barisal",
-                            "Barisal",
-                            "Barisal",
+                            "Khulna",
+                            "Mymensingh"
                         ]
                     },
                     {
                         type: "select-with-roleImg",
-                        key: "speaker",
+                        key: "speaker_details",
                         title: "Speaker",
                         isFromAPI: true,
                         role: "speaker",
+                        child: []
                     }
                 ]
             }
@@ -1809,6 +1823,7 @@ export const collectedAudioFilterData: targetFilterDT[] = [
     {
         type: "date",
         key: "audioSubmissionPeriod",
+        viewKey: "audioSubmissionPeriod",
         title: "Audio Submission Period",
     }
 
@@ -1846,7 +1861,7 @@ export const collectedAudioCollectorList = [
         "contact": "01738463449",
         "email": "maksudalam@gmail.com",
         "address": "Dhaka",
-        "gender": "Male"
+        "gender": "male"
     },
     {
         "id": "01738463442",
@@ -1855,7 +1870,7 @@ export const collectedAudioCollectorList = [
         "contact": "01738463442",
         "email": "stevesmith@cric.au",
         "address": "Dhaka",
-        "gender": "Male"
+        "gender": "male"
     },
     {
         "id": "mitchstarc@revesoft.au",
@@ -1864,7 +1879,37 @@ export const collectedAudioCollectorList = [
         "contact": "01738463442",
         "email": "mitchstarc@revesoft.au",
         "address": "Dhaka",
-        "gender": "Male"
+        "gender": "male"
+    },
+]
+
+export const collectedAudioSpeakersList = [
+    {
+        "id": "maksudalam@gmail.com",
+        "name": "Maksud Alam",
+        "role": "speaker",
+        "contact": "01738463449",
+        "email": "maksudalam@gmail.com",
+        "address": "Dhaka",
+        "gender": "male"
+    },
+    {
+        "id": "01738463442",
+        "name": "Kamola Banu",
+        "role": "speaker",
+        "contact": "01738463442",
+        "email": "stevesmith@cric.au",
+        "address": "Dhaka",
+        "gender": "female"
+    },
+    {
+        "id": "mitchstarc@revesoft.au",
+        "name": "Mitchell Starc",
+        "role": "speaker",
+        "contact": "01738463442",
+        "email": "mitchstarc@revesoft.au",
+        "address": "Dhaka",
+        "gender": "male"
     },
 ]
 

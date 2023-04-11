@@ -4,18 +4,21 @@ export const filterData : targetFilterDT[] = [
   {
     type: "check",
     key: "dataType",
+    viewKey: "dataType",
     title: "Data Type",
     child: ["STT", "TTS"],
   },
   {
     type: "check",
     key: "distributionSource",
+    viewKey: "distributionSource",
     title: "Distribution Source",
     child: ["Read", "Lecture", "Command", "Miscellaneous"],
   },
   {
     type: "select",
     key: "domain",
+    viewKey: "domain",
     title: "Domain",
     child:[
       "Natural & Pure Science",
@@ -32,6 +35,7 @@ export const filterData : targetFilterDT[] = [
   {
     type: "select",
     key: "subDomain",
+    viewKey: "subDomain",
     isParent: "domain",
     title: "SubDomain",
     children: [

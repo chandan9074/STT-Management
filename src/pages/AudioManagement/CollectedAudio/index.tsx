@@ -10,13 +10,13 @@ import { AudioManagementContext } from '../../../context/AudioManagementProvider
 
 const CollectedAudio = () => {
 
-    const {getCollectedAudioData,collectedAudio} = useContext(AudioManagementContext);
+    const { getCollectedAudioData, collectedAudio } = useContext(AudioManagementContext);
 
     useEffect(() => {
-      getCollectedAudioData()
-       // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
-    
+        getCollectedAudioData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     return (
         // <Layouts.Third>
         <div>
@@ -35,17 +35,23 @@ const Header = () => {
     const [count, setCount] = useState<number>(0);
     const [filterList, setFilterList] = useState<targetFilterListDT>({
         script: [],
+        collector: [],
         collector_district: [],
         collector_details: [],
-        collector: [],
         speaker: [],
-        audioSubmissionPeriod: []
+        speaker_gender: [],
+        speaker_age: [],
+        speaker_district: [],
+        speaker_details: [],
+        audioSubmissionPeriod: [],
     })
 
-    const { scriptFilter, getScriptFilter, collectedAudioCollector, getCollectedAudioCollector } = useContext(AudioManagementContext);
+    const { scriptFilter, getScriptFilter, collectedAudioCollector, getCollectedAudioCollector, getCollectedAudioSpeakers, collectedAudioSpeakers } = useContext(AudioManagementContext);
 
     const prevScriptFilterRef = useRef(scriptFilter);
     const prevCollectedAudioCollectorRef = useRef(collectedAudioCollector);
+    const prevCollectedAudioSpeakersRef = useRef(collectedAudioSpeakers);
+
 
     useEffect(() => {
         let count = 0;
@@ -60,6 +66,7 @@ const Header = () => {
     useEffect(() => {
         getScriptFilter();
         getCollectedAudioCollector();
+        getCollectedAudioSpeakers();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -81,12 +88,26 @@ const Header = () => {
                 }
             }
         }
+        if (collectedAudioSpeakers !== prevCollectedAudioSpeakersRef.current) {
+            const speakerObject = collectedAudioFilterData.find(obj => obj.key === "speaker");
+            if (speakerObject) {
+                // collectorDetailsObject.child = collectedAudioCollector;
+                const selectObject = speakerObject.formData && speakerObject.formData.find(obj => obj.type === "multiple-select");
+                if (selectObject && selectObject.selects) {
+                    const speakers = selectObject.selects.find(obj => obj.key === "speaker_details");
+                    if (speakers) {
+                        speakers.child = collectedAudioSpeakers;
+                    }
+                }
+            }
+        }
 
         prevScriptFilterRef.current = scriptFilter;
         prevCollectedAudioCollectorRef.current = collectedAudioCollector;
+        prevCollectedAudioSpeakersRef.current = collectedAudioSpeakers;
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [scriptFilter, collectedAudioCollector]);
+    }, [scriptFilter, collectedAudioCollector, collectedAudioSpeakers]);
 
 
     const handleFilterList = (key: string, value: string) => {
@@ -106,11 +127,17 @@ const Header = () => {
             }
         } else {
             if (key === "collector_district" || key === "collector_details") {
-                console.log("hellod aalsdkf", key, value)
                 setFilterList({
                     ...filterList,
                     [key]: [...filterList[key], value],
                     collector: [...filterList.collector, value],
+                });
+            }
+            else if (key === "speaker_gender" || key === "speaker_age" || key === "speaker_district" || key === "speaker_details"){
+                setFilterList({
+                    ...filterList,
+                    [key]: [...filterList[key], value],
+                    speaker: [...filterList.speaker, value],
                 });
             }
             else {

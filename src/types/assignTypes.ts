@@ -172,6 +172,8 @@ export type targetFilterDT = {
   isFromAPI?: boolean;
   selects?: filterSelectsDT[];
   formData?: filterFromDT[];
+  viewKey?: string;
+  viewRoleImg?: string;
 }
 
 export type filterSelectsDT = {
@@ -181,10 +183,12 @@ export type filterSelectsDT = {
   title: string;
   child?: string[];
   role?: string;
+  children?: subChildDT[];
 }
 
 export type filterFromDT = {
   type: "checkbox" | "check" | "multiple-select";
+  key?: string;
   title?: string;
   child?: string[];
   selects?: filterSelectsDT[];

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Icons from "../../assets/Icons";
-import { targetFilterListDT } from "../../types/assignTypes";
+import { filterSelectsDT, targetFilterListDT } from "../../types/assignTypes";
 import { targetFilterDT } from "../../types/assignTypes";
 import RoleImage from "../Image/RoleImage";
 
@@ -12,8 +12,8 @@ import RoleImage from "../Image/RoleImage";
 // };
 
 type Props = {
-    data: targetFilterDT;
-    isParent: string | undefined;
+    data: filterSelectsDT;
+    isParent?: string | undefined;
     filterList: targetFilterListDT;
     placeHolder?: string;
     handleFilterList: (key: string, value: string) => void;
@@ -39,8 +39,8 @@ const Type7 = ({
     console.log("from type 6", data)
     return (
         <div className="relative w-80">
-            <div className="p-3 border border-blue-gray-10 rounded-[7px] bg-white inline-flex">
-                <div className="w-72 overflow-x-auto custom-scrollBar custom-scrollBar-width-5 flex items-center">
+            <div className="px-3 pt-3 pb-2 border border-blue-gray-10 rounded-[7px] bg-white inline-flex">
+                <div className="w-72 pb-1 overflow-x-auto custom-scrollBar custom-scrollBar-height-5 flex items-center">
                     {filterList[data.key].length === 0 ? (
                         <button
                             onClick={() => setOpen(!open)}
@@ -53,7 +53,7 @@ const Type7 = ({
                             {filterList[data.key].map((item: string, index: number) => (
                                 <div key={index} className="flex items-center py-1 px-2 rounded-[4px] bg-ct-blue-20 mr-2 animate-fadeIn">
                                     <h5 className="text-xs text-blue-gray-80 font-medium mb-0 mr-1 whitespace-nowrap">
-                                        {data.child && data.child.filter((single) => single.split("-")[1] === item)[0]}
+                                        {data.role && data.role === "speaker" ? (data.child && data.child.filter((single) => single.split("-")[1] === item).map((single) => single.split("-")[0] + " - " + single.split("-")[1])) : (data.child && data.child.filter((single) => single.split("-")[1] === item)[0])}
                                     </h5>
                                     <button
                                         onClick={() => handleFilterList(data.key, item)}
@@ -146,10 +146,10 @@ const Type7 = ({
                                     : "hover:bg-ct-blue-05 active:bg-ct-blue-10"
                                     }`}
                             >
-                                <RoleImage role="collector" height="h-4" width="w-4" />
+                                {data.role && (data.role === "speaker" ? <RoleImage role={item.split(" - ")[2] === "male" ? "speaker" : "speakerFemale"} height="h-4" width="w-4" /> : <RoleImage role={data.role} height="h-4" width="w-4" />)}
                                 <span className="text-small text-left font-medium text-blue-gray-80 ml-1.5">
                                     {/* {item.split("-")[0]} */}
-                                    {item}
+                                    {data.role && (data.role === "speaker" ? item.split("-")[0] + "-" + item.split("-")[1] : item)}
                                 </span>
                                 {/* {filterList[data.key].includes(item) && (
                                     <img src={Icons.CorrectIcon} alt="" />
