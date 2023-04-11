@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { historyDT } from '../../types/audioManagementTypes';
 import { Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
@@ -49,7 +49,7 @@ const Type32 = ({ data }: { data: historyDT[] }) => {
             // align: "center",
             render: (data: historyDT) => (
                 <div className='relative'>
-                    <div className='flex justify-center'>
+                    <div className='flex justify-center relative'>
                         <img
                             onClick={() => {
                                 setRemarkOpen(true);
@@ -67,7 +67,6 @@ const Type32 = ({ data }: { data: historyDT[] }) => {
                                 data={data.remark}
                             />
                         </div>
-
                     }
                 </div >
             )

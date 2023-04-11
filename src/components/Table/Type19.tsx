@@ -4,8 +4,8 @@ import { useState } from "react"
 import Icons from "../../assets/Icons"
 import { annotationDT } from "../../types/audioManagementTypes"
 import AudioTrack from "../common/AudioTrack"
-import Remark from "../common/Remark"
 import Speaker from "../common/TableField/AudioManagement/Speaker"
+import Remark2 from "../common/TableField/Remark2"
 import { Drawer } from "../Drawer"
 import Pagination from "../Pagination"
 
@@ -83,7 +83,7 @@ const Type19 = ({ data }: Props) => {
             width: 80,
             align: "center",
             render: (data: annotationDT) => (
-                <div className='flex justify-center'>
+                <div className='flex justify-center relative'>
                     <img
                         onClick={() => {
                             setRemarkOpen(true);
@@ -92,6 +92,16 @@ const Type19 = ({ data }: Props) => {
                         src={Icons.File} className="h-[16px] w-[16px] cursor-pointer"
                         alt=""
                     />
+                    {
+                        remarkOpen &&
+                        <div className='fixed top-[209px] right-[86px] z-[999] animate-fadeIn2'>
+                            <Remark2
+                                open={remarkOpen}
+                                setOpen={setRemarkOpen}
+                                data={data.remark}
+                            />
+                        </div>
+                    }
                 </div>
             )
         },
@@ -161,17 +171,7 @@ const Type19 = ({ data }: Props) => {
                     handleDataChange={handlePageChange}
                 />
             </div>
-            {
-                remarkOpen &&
-                <Remark
-                    open={remarkOpen}
-                    setOpen={setRemarkOpen}
-                    roleName={'meem'}
-                    roleType={'speaker'}
-                    dateTime={singleTargetData?.deadLine ? singleTargetData?.deadLine : ''}
-                    desc={'this is remark'}
-                />
-            }
+    
             {
                 (open && singleTargetData) &&
                 <Drawer.AudioManagement.CheckingStatus

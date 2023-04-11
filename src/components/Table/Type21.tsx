@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Icons from '../../assets/Icons';
 import { annotatedFilesDT } from '../../types/audioManagementTypes';
 import AudioTrack from '../common/AudioTrack';
-import Remark from '../common/Remark';
 import SpeechStatus from '../common/SpeechStatus';
 import RoleImage from '../Image/RoleImage';
 import Pagination from '../Pagination';
@@ -13,6 +12,7 @@ import { CustomModal } from '../common/CustomModal';
 import ClaimApplicationModal from '../containers/AudioManagement/Annotation/AnnotatedFiles/ClaimApplicationModal';
 import { Drawer } from '../Drawer';
 import Speaker from '../common/TableField/AudioManagement/Speaker';
+import Remark2 from '../common/TableField/Remark2';
 
 
 type Props = {
@@ -130,7 +130,7 @@ const Type21 = ({ data }: Props) => {
             width: 110,
             align: "center",
             render: (data: annotatedFilesDT) => (
-                <div className='flex justify-center'>
+                <div className='flex justify-center relative'>
                     <img
                         onClick={() => {
                             setRemarkOpen(true);
@@ -139,6 +139,16 @@ const Type21 = ({ data }: Props) => {
                         src={Icons.File} className="h-4 w-4 cursor-pointer"
                         alt=""
                     />
+                    {
+                        remarkOpen &&
+                        <div className='fixed top-[209px] right-[86px] z-[999] animate-fadeIn2'>
+                            <Remark2
+                                open={remarkOpen}
+                                setOpen={setRemarkOpen}
+                                data={data.remark}
+                            />
+                        </div>
+                    }
                 </div>
             )
         },
@@ -209,17 +219,7 @@ const Type21 = ({ data }: Props) => {
                 />
             </div>
 
-            {
-                remarkOpen &&
-                <Remark
-                    open={remarkOpen}
-                    setOpen={setRemarkOpen}
-                    roleName={singleTargetData?.remark?.roleInfo?.name ? singleTargetData?.remark?.roleInfo?.name : ''}
-                    roleType={singleTargetData?.remark?.roleInfo?.role ? singleTargetData?.remark?.roleInfo?.role : ''}
-                    dateTime={'07/02/2022, 5:34 PM'}
-                    desc={singleTargetData?.remark?.des ? singleTargetData?.remark?.des : ''}
-                />
-            }
+            
             {
                 (open && singleTargetData) &&
                 <Drawer.AudioManagement.CheckingStatus

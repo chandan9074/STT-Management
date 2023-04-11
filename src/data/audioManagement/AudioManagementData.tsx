@@ -86,19 +86,31 @@ export const collectedAudio = [
             ],
 
         },
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "deadline": "05/02/2022, 5:41 AM",
-            "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company"
-        },
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ],
         "others": {
             "device": 'Redmi-Note 7 pro',
             "journey": {
@@ -239,19 +251,31 @@ export const collectedAudio = [
             ],
 
         },
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "deadline": "05/02/2022, 5:41 AM",
-            "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company"
-        },
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ],
         "others": {
             "device": 'Redmi-Note 7 pro',
             "journey": {
@@ -403,19 +427,31 @@ export const checkingStatusData = [
             "time": "01 Feb ; 3:30 PM"
         },
         "deadLine": "01/02/2022",
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "deadline": "05/02/2022, 5:41 AM",
-            "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company"
-        },
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ],
         "others": {
             "device": 'Redmi-Note 7 pro',
             "journey": {
@@ -573,19 +609,31 @@ export const allCheckedAudiosData = [
         },
         "deadLine": "01/02/2022",
         "submissionDate": "01/02/2022",
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "deadline": "05/02/2022, 5:41 AM",
-            "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company"
-        },
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ],
         "others": {
             "device": 'Redmi-Note 7 pro',
             "journey": {
@@ -643,14 +691,12 @@ export const allCheckedAudiosData = [
         },
         "history": [
             {
-                "id": "123",
                 "lastEdited": '01/02/2022',
                 "status": "Reassigned",
                 "name": "Md. Jalal Uddin",
                 "role": "Admin",
                 "remark": [
                     {
-                        "id": "333",
                         "roleInfo": {
                             "id": "maksudalam@gmail.com",
                             "name": "Maksud Alam",
@@ -821,18 +867,31 @@ export const annotationData = [
             }
         },
         "deadLine": "01/02/2022",
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "des": "i am remarkjs"
-        },
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ],
 
     },
     {
@@ -975,18 +1034,31 @@ export const annotationData = [
             }
         },
         "deadLine": "01/02/2022",
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "des": "i am remarkjs"
-        }
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ]
     },
     {
         "id": "3b45t5tb54tb45",
@@ -1128,18 +1200,31 @@ export const annotationData = [
             }
         },
         "deadLine": "01/02/2022",
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "des": "i am remarkjs"
-        }
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ]
     },
     {
         "id": "4b2542y546t254b",
@@ -1281,18 +1366,31 @@ export const annotationData = [
             }
         },
         "deadLine": "01/02/2022",
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "des": "i am remarkjs"
-        }
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ]
     },
 ]
 
@@ -1393,19 +1491,31 @@ export const collectAnnSenData = [
             ],
 
         },
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "deadline": "05/02/2022, 5:41 AM",
-            "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company"
-        },
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ],
         "others": {
             "device": 'Redmi-Note 7 pro',
             "journey": {
@@ -1558,19 +1668,31 @@ export const collectAnnSenData = [
             ],
 
         },
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "deadline": "05/02/2022, 5:41 AM",
-            "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company"
-        },
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ],
         "others": {
             "device": 'Redmi-Note 7 pro',
             "journey": {
@@ -1723,19 +1845,31 @@ export const collectAnnSenData = [
             ],
 
         },
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "deadline": "05/02/2022, 5:41 AM",
-            "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company"
-        },
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ],
         "others": {
             "device": 'Redmi-Note 7 pro',
             "journey": {
@@ -1888,19 +2022,31 @@ export const collectAnnSenData = [
             ],
 
         },
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "deadline": "05/02/2022, 5:41 AM",
-            "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company"
-        },
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ],
         "others": {
             "device": 'Redmi-Note 7 pro',
             "journey": {
@@ -2160,18 +2306,31 @@ export const annotatedFiles = [
 
         "deadLine": "01/02/2022",
         "submissionDate": "01/02/2022",
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "des": "i am remarkjs"
-        }
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ]
     },
     {
         "id": "2",
@@ -2406,18 +2565,31 @@ export const annotatedFiles = [
 
         "deadLine": "01/02/2022",
         "submissionDate": "01/02/2022",
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "des": "i am remarkjs"
-        }
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ]
     },
     {
         "id": "3",
@@ -2619,18 +2791,31 @@ export const annotatedFiles = [
 
         "deadLine": "01/02/2022",
         "submissionDate": "01/02/2022",
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "des": "i am remarkjs"
-        }
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ]
     },
 ]
 export const colAnnSenStatusFilterData = [
@@ -2786,19 +2971,31 @@ export const collectValSenData = [
             // "frequency": 0,
             "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
         },
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "deadline": "05/02/2022, 5:41 AM",
-            "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company"
-        },
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ],
         "others": {
             "device": 'Redmi-Note 7 pro',
             "journey": {
@@ -2991,19 +3188,31 @@ export const collectValSenData = [
             // "frequency": 0,
             "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
         },
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "deadline": "05/02/2022, 5:41 AM",
-            "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company"
-        },
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ],
         "others": {
             "device": 'Redmi-Note 7 pro',
             "journey": {
@@ -3196,19 +3405,31 @@ export const collectValSenData = [
             // "frequency": 0,
             "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
         },
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "deadline": "05/02/2022, 5:41 AM",
-            "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company"
-        },
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ],
         "others": {
             "device": 'Redmi-Note 7 pro',
             "journey": {
@@ -3376,18 +3597,31 @@ export const validatedFilesData = [
         },
         "deadLine": "01/02/2022",
         "submissionDate": "01/02/2022",
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "des": "i am remarkjs"
-        },
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ],
         "script": {
             "module": "STT",
             "distributionSource": "Lecture",

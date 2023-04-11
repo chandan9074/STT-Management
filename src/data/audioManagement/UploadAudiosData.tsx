@@ -141,19 +141,31 @@ export const allCheckedSpeechData = [
         "status": "Cancelled",
         "deadLine": "01/02/2022",
         "submissionDate": "01/02/2022",
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "deadLine": "05/02/2022, 5:41 AM",
-            "des": "i am remarkjs"
-        },
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ],
         "speaker": {
             "speakerNo": "03",
             "gender": ["male", "female"],
@@ -249,19 +261,31 @@ export const annotationUploadData = [
                 "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
         },
         "deadLine": "01/02/2022",
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "deadLine": "05/02/2022, 5:41 AM",
-            "des": "i am remarkjs"
-        }
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ]
     },
     {
         "id": "v451324wer2",
@@ -273,18 +297,31 @@ export const annotationUploadData = [
                 "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
         },
         "deadLine": "01/02/2022",
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "des": "i am remarkjs"
-        }
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ]
     },
     {
         "id": "v451324wer2",
@@ -296,18 +333,31 @@ export const annotationUploadData = [
                 "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
         },
         "deadLine": "01/02/2022",
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "des": "i am remarkjs"
-        }
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ]
     },
     {
         "id": "v451324wer2",
@@ -319,18 +369,31 @@ export const annotationUploadData = [
                 "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
         },
         "deadLine": "01/02/2022",
-        "remark": {
-            "roleInfo": {
-                "id": "maksudalam@gmail.com",
-                "name": "Maksud Alam",
-                "role": "Manager",
-                "contact": "01738463449",
-                "email": "maksudalam@gmail.com",
-                "address": "Dhaka",
-                "gender": "Male"
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
             },
-            "des": "i am remarkjs"
-        }
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ]
     },
 ]
 

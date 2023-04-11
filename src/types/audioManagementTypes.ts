@@ -7,7 +7,7 @@ export type audioManagementDT = {
     speech: assignAudioTrackDT;
     script: scriptResDT;
     speaker: speakerLocalityDT2;
-    remark: remarkInfoDT;
+    remark: historyRemark[];
     others: othersDT;
 }
 
@@ -19,7 +19,7 @@ export type checkingStatusDT = {
     speaker: speakerLocalityDT2;
     audioChecker: audioCheckerDT;
     deadLine: string;
-    remark: remarkInfoDT;
+    remark: historyRemark[];
     others: othersDT;
 }
 
@@ -104,13 +104,12 @@ export type allCheckedAudioDT = {
     script: scriptResDT;
     deadLine: string;
     submissionDate: string;
-    remark: remarkInfoDT;
+    remark: historyRemark[];
     others: othersDT;
     history: historyDT[];
 }
 
 export type historyDT = {
-    id: string;
     lastEdited: string;
     status: string;
     name: string;
@@ -119,7 +118,6 @@ export type historyDT = {
 }
 
 export type historyRemark = {
-    id: string;
     roleInfo: {
         id: string;
         name: string;
@@ -151,7 +149,7 @@ export type annotationDT = {
     script: scriptResDT
     speaker: speakerLocalityDT2
     deadLine: string
-    remark: remarkInfoDT
+    remark: historyRemark[]
     others: othersDT
 }
 
@@ -163,7 +161,7 @@ export type collectAnnSenDataDT = {
     audioChecker: audioCheckerDT
     speaker: speakerLocalityDT2
     script: scriptResDT
-    remark: remarkInfoDT
+    remark: historyRemark[]
     others: othersDT
 }
 
@@ -219,7 +217,7 @@ export type annotatedFilesDT = {
     script: scriptResDT;
     deadLine: string;
     submissionDate: string;
-    remark: remarkInfoDT;
+    remark: historyRemark[];
     // annotate: annotateInfoDT;
 }
 
@@ -235,7 +233,7 @@ export type validatedFilesDT = {
     speaker: speakerLocalityDT2;
     deadLine: string;
     submissionDate: string;
-    remark: remarkInfoDT
+    remark: historyRemark[]
     script: scriptResDT
     others: othersDT
     history: historyDT[]
@@ -285,7 +283,7 @@ export type collectValSenDataDT = {
     audioChecker: annotatedAudioCheckerDT;
     speaker: speakerLocalityDT2;
     script: scriptResDT;
-    remark: remarkInfoDT;
+    remark: historyRemark[];
     others: othersDT;
 }
 
@@ -387,7 +385,7 @@ export type allCheckedSpeechDT = {
     status: string;
     deadLine: string;
     submissionDate: string;
-    remark: remarkInfoDT;
+    remark: historyRemark[];
     speechInfo: speechInfo
     others: othersUploadAudioDT;
     speaker: speakerUploadAudioDT;
@@ -398,7 +396,7 @@ export type annotationUploadDT = {
     id: string;
     speech: assignAudioTrackDT;
     deadLine: string;
-    remark: remarkInfoDT
+    remark: historyRemark[]
 }
 
 export type sentenceLevelUploadDT = {

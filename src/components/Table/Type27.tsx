@@ -1,12 +1,10 @@
 import { Table } from "antd"
-import { ColumnType,ColumnsType } from "antd/es/table"
-import { useState } from "react"
+import { ColumnType, ColumnsType } from "antd/es/table"
 import Icons from "../../assets/Icons"
 import { colAnnSenStatusFilterData } from "../../data/audioManagement/AudioManagementData"
 import { STATUS_ANNOTATING, STATUS_TOOK_A_BREAK } from "../../helpers/ConditionVariable"
 import { sentenceLevelUploadDT } from "../../types/audioManagementTypes"
 import AudioTrack from "../common/AudioTrack"
-import Remark from "../common/Remark"
 import Annotate from "../common/TableField/AudioManagement/Annotate"
 import StatusFilter from "../common/TableField/AudioManagement/StatusFilter"
 import RoleImage from "../Image/RoleImage"
@@ -17,9 +15,6 @@ type Props = {
 }
 
 const Type27 = ({ data }: Props) => {
-
-    const [remarkOpen, setRemarkOpen] = useState(false);
-    const [singleTargetData] = useState<sentenceLevelUploadDT>();
 
     const getColumnSearchProps = (dataIndex: string): ColumnType<sentenceLevelUploadDT> => ({
 
@@ -40,7 +35,7 @@ const Type27 = ({ data }: Props) => {
     });
 
     const Type27columns: ColumnsType<sentenceLevelUploadDT> = [
-{
+        {
             title: `${"SN".toLocaleUpperCase()}`,
             key: 'sn',
             width: 48,
@@ -133,8 +128,8 @@ const Type27 = ({ data }: Props) => {
         // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
     }
 
-  return (
-    <div className='billing-table billing-table-odd-bg type4-table horizontal-table-padding'>
+    return (
+        <div className='billing-table billing-table-odd-bg type4-table horizontal-table-padding'>
             <Table
                 rowSelection={{
                     // type: selectionType,
@@ -157,19 +152,9 @@ const Type27 = ({ data }: Props) => {
                     handleDataChange={handlePageChange}
                 />
             </div>
-            {
-                remarkOpen &&
-                <Remark
-                    open={remarkOpen}
-                    setOpen={setRemarkOpen}
-                    roleName={'meem'}
-                    roleType={'speaker'}
-                    dateTime={singleTargetData?.deadLine ? singleTargetData?.deadLine : ''}
-                    desc={'this is remark'}
-                />
-            }
+            
         </div>
-  )
+    )
 }
 
 export default Type27
