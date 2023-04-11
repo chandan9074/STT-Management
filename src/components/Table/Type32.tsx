@@ -72,7 +72,7 @@ const Type32 = ({ data }: { data: historyDT[] }) => {
     ]
     return (
         <div>
-            <div className='billing-table'>
+            <div className='billing-table billing-table-even-bg'>
                 <Table
                     dataSource={data}
                     columns={Type18columns}

@@ -1,12 +1,14 @@
 import { assignAudioTrackDT } from "./assignTypes";
 import { roleDT } from "./billingTypes";
-import { scriptResDT } from "./script";
+import { remarkDt, scriptResDT } from "./script";
 
 export type audioManagementDT = {
     id: string;
     speech: assignAudioTrackDT;
     script: scriptResDT;
-    speaker: speakerLocalityDT;
+    speaker: speakerLocalityDT2;
+    remark: remarkInfoDT;
+    others: othersDT;
 }
 
 export type checkingStatusDT = {
@@ -145,9 +147,10 @@ export type annotationDT = {
     id: string;
     speech: assignAudioTrackDT
     script: scriptResDT
-    speaker: speakerLocalityDT
+    speaker: speakerLocalityDT2
     deadLine: string
     remark: remarkInfoDT
+    others: othersDT
 }
 
 export type collectAnnSenDataDT = {
@@ -156,7 +159,10 @@ export type collectAnnSenDataDT = {
     annotate: annotateInfoDT
     deadLine: string
     audioChecker: audioCheckerDT
-    speaker: speakerLocalityDT
+    speaker: speakerLocalityDT2
+    script: scriptResDT
+    remark: remarkInfoDT
+    others: othersDT
 }
 
 export type annotateInfoDT = {
@@ -202,7 +208,9 @@ export type audioRoleDT = {
 export type annotatedFilesDT = {
     id: string;
     speech: assignAudioTrackDT;
-    speaker: speakerLocalitySingleDT;
+    speaker: speakerLocalityDT2;
+    others: othersDT;
+    history: historyDT[];
     audioChecker: annotatedAudioCheckerDT;
     annotator: annotatedAnnotatorDT;
     status: string;
@@ -273,7 +281,10 @@ export type collectValSenDataDT = {
     deadLine: string;
     annotator: annotatedAnnotatorDT;
     audioChecker: annotatedAudioCheckerDT;
-    speaker: speakerLocalityDT;
+    speaker: speakerLocalityDT2;
+    script: scriptResDT;
+    remark: remarkInfoDT;
+    others: othersDT;
 }
 
 // export type speakerLocalitySingleDT = {

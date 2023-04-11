@@ -28,19 +28,6 @@ const Header = ({ setActiveTab, selectedScript, setSelectedScript }: Props) => {
                 </div>
                 <div className='flex items-center'>
                     <Buttons.BgHoverBtn
-                        title="Claim Permission"
-                        paddingY="py-2"
-                        paddingX="px-4"
-                        borderRadius="rounded-[6px]"
-                        textColor="text-secondary-blue-50"
-                        fontSize="text-small"
-                        fontWeight="font-medium"
-                        duration="duration-300"
-                        hoverBgColor="hover:bg-white"
-                        // onClick={() => setIsClaimModal(true)}
-                    // marginX="mx-2"
-                    />
-                    <Buttons.BgHoverBtn
                         title="Re-Assign"
                         paddingY="py-2"
                         paddingX="px-4"

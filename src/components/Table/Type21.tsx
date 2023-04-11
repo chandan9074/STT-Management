@@ -6,12 +6,13 @@ import { annotatedFilesDT } from '../../types/audioManagementTypes';
 import AudioTrack from '../common/AudioTrack';
 import Remark from '../common/Remark';
 import SpeechStatus from '../common/SpeechStatus';
-import SpeakerField from '../common/TableField/AudioManagement/SpeakerField';
 import RoleImage from '../Image/RoleImage';
 import Pagination from '../Pagination';
 import { STATUS_CLAIMED } from '../../helpers/ConditionVariable';
 import { CustomModal } from '../common/CustomModal';
 import ClaimApplicationModal from '../containers/AudioManagement/Annotation/AnnotatedFiles/ClaimApplicationModal';
+import { Drawer } from '../Drawer';
+import Speaker from '../common/TableField/AudioManagement/Speaker';
 
 
 type Props = {
@@ -20,9 +21,15 @@ type Props = {
 
 const Type21 = ({ data }: Props) => {
 
-    const [singleTargetData, setSingleTargetData] = useState<annotatedFilesDT>();
+    const [open, setOpen] = useState(false);
+
     const [remarkOpen, setRemarkOpen] = useState(false);
+    const [singleTargetData, setSingleTargetData] = useState<annotatedFilesDT>();
     const [isClaimModal, setIsClaimModal] = useState<boolean>(false);
+
+    const showDrawer = (item: annotatedFilesDT) => {
+        setOpen(true);
+    };
 
     const Type20columns: ColumnsType<annotatedFilesDT> = [
         {
@@ -82,7 +89,7 @@ const Type21 = ({ data }: Props) => {
             title: `${"Speaker".toLocaleUpperCase()}`,
             key: 'speaker',
             width: 206,
-            render: (data: annotatedFilesDT) => <SpeakerField data={data.speaker} />
+            render: (data: annotatedFilesDT) => <Speaker data={data.speaker} />
         },
 
         {
@@ -147,10 +154,10 @@ const Type21 = ({ data }: Props) => {
 
                     <div className='flex w-full justify-center items-center'>
                         <img
-                            // onClick={() => {
-                            //     showDrawer(record);
-                            //     setSingleTargetData(record);
-                            // }}
+                            onClick={() => {
+                                showDrawer(record);
+                                setSingleTargetData(record);
+                            }}
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
@@ -211,6 +218,20 @@ const Type21 = ({ data }: Props) => {
                     roleType={singleTargetData?.remark?.roleInfo?.role ? singleTargetData?.remark?.roleInfo?.role : ''}
                     dateTime={'07/02/2022, 5:34 PM'}
                     desc={singleTargetData?.remark?.des ? singleTargetData?.remark?.des : ''}
+                />
+            }
+            {
+                (open && singleTargetData) &&
+                <Drawer.AudioManagement.CheckingStatus
+                    isDrawerOpen={open}
+                    setIsDrawerOpen={setOpen}
+                    isEditHistory={true}
+                    speaker={singleTargetData.speaker}
+                    remark={singleTargetData.remark}
+                    script={singleTargetData.script}
+                    others={singleTargetData.others}
+                    id={singleTargetData.id}
+                    history={singleTargetData?.history}
                 />
             }
 

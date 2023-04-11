@@ -6,6 +6,7 @@ import { annotationDT } from "../../types/audioManagementTypes"
 import AudioTrack from "../common/AudioTrack"
 import Remark from "../common/Remark"
 import Speaker from "../common/TableField/AudioManagement/Speaker"
+import { Drawer } from "../Drawer"
 import Pagination from "../Pagination"
 
 type Props = {
@@ -16,6 +17,11 @@ const Type19 = ({ data }: Props) => {
 
     const [remarkOpen, setRemarkOpen] = useState(false);
     const [singleTargetData, setSingleTargetData] = useState<annotationDT>();
+    const [open, setOpen] = useState(false);
+
+    const showDrawer = (item: annotationDT) => {
+        setOpen(true);
+    };
 
     const Type19columns: ColumnsType<annotationDT> = [
         {
@@ -101,10 +107,10 @@ const Type19 = ({ data }: Props) => {
 
                     <div className='flex w-full justify-center items-center'>
                         <img
-                            // onClick={() => {
-                            //     showDrawer(record);
-                            //     setSingleTargetData(record);
-                            // }}
+                            onClick={() => {
+                                showDrawer(record);
+                                setSingleTargetData(record);
+                            }}
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
@@ -164,6 +170,19 @@ const Type19 = ({ data }: Props) => {
                     roleType={'speaker'}
                     dateTime={singleTargetData?.deadLine ? singleTargetData?.deadLine : ''}
                     desc={'this is remark'}
+                />
+            }
+            {
+                (open && singleTargetData) &&
+                <Drawer.AudioManagement.CheckingStatus
+                    isDrawerOpen={open}
+                    setIsDrawerOpen={setOpen}
+                    isEditHistory={false}
+                    speaker={singleTargetData.speaker}
+                    remark={singleTargetData.remark}
+                    script={singleTargetData.script}
+                    others={singleTargetData.others}
+                    id={singleTargetData.id}
                 />
             }
         </div>
