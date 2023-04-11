@@ -12,7 +12,7 @@ type Props = {
 
 const Remark2 = ({ open, setOpen, data }: Props) => {
     return open ? (
-        <div className='fixed top-[209px] right-[86px] z-[999] animate-fadeIn2 '>
+        <div >
             <div
                 className="fixed top-0 left-0 opacity-25 bg-black w-full h-screen z-[999]"
                 onClick={() => setOpen(false)}
