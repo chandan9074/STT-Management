@@ -19,7 +19,7 @@ export const uploadAudioData = [
             "speakerNo": "03",
             "gender": ["male", "female"],
             "area": "natore",
-            "age": "15-24 years"
+            "age": ["15-24 years", "35-44 years"]
         },
         "speechInfo": {
             "dataType": "STT",

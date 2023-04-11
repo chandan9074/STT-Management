@@ -332,7 +332,7 @@ export type speakerUploadAudioDT = {
     speakerNo: string;
     gender: string[];
     area: string;
-    age: string;
+    age: string[];
 }
 
 export type othersUploadAudioDT = {

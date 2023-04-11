@@ -4,6 +4,8 @@ import { othersUploadAudioDT, speakerUploadAudioDT, speechInfo } from '../../../
 import RoleImage from '../../../Image/RoleImage';
 import Buttons from '../../../Buttons';
 import SpeechInfo from './SpeechInfo';
+import Others from './Others';
+import SpeakerDetails from './SpeakerDetails';
 
 type Props = {
     isDrawerOpen: boolean,
@@ -62,7 +64,7 @@ const Type2 = ({ id, isDrawerOpen, setIsDrawerOpen: setOpen, speaker, others, sp
                             isSpeaker ?
                                 <div>
                                     {/* <SpeakerInformation data={speaker} setIsSpeaker={setIsSpeaker} /> */}
-                                    <div>Speaker information</div>
+                                    <SpeakerDetails setIsSpeaker={setIsSpeaker} data={speaker} />
                                 </div>
                                 :
                                 <div className='animate-fadeIn'>
@@ -128,7 +130,7 @@ const Type2 = ({ id, isDrawerOpen, setIsDrawerOpen: setOpen, speaker, others, sp
                                                     <>
                                                         {
                                                             // <Others data={others} remark={remark} />
-                                                            <div>this is others</div>
+                                                            <Others data={others} />
                                                         }
                                                     </>
                                                     :
