@@ -18,7 +18,7 @@ const Remark2 = ({ open, setOpen, data }: Props) => {
                 onClick={() => setOpen(false)}
             />
             <div className="relative z-[9999] bg-white w-[560px] rounded-[12px] overflow-hidden ">
-                <div className='flex justify-between pt-[18px] pb-2 pr-4 pl-6 bg-ct-blue-05 '>
+                <div className='flex justify-between pt-[18px] pb-2 pr-[19px] pl-10 bg-ct-blue-05 '>
                     <h3 className='text-ct-blue-90-68% text-base font-medium'>Remark</h3>
                     <CloseButton setOpen={setOpen} />
                 </div>
