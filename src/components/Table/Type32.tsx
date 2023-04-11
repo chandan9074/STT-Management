@@ -60,13 +60,16 @@ const Type32 = ({ data }: { data: historyDT[] }) => {
                     </div>
                     {
                         remarkOpen &&
-                        <Remark2
-                            open={remarkOpen}
-                            setOpen={setRemarkOpen}
-                            data={data.remark}
-                        />
+                        <div className='fixed top-[209px] right-[86px] z-[999] animate-fadeIn2'>
+                            <Remark2
+                                open={remarkOpen}
+                                setOpen={setRemarkOpen}
+                                data={data.remark}
+                            />
+                        </div>
+
                     }
-                </div>
+                </div >
             )
         },
     ]

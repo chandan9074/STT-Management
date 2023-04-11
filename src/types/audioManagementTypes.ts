@@ -13,6 +13,7 @@ export type audioManagementDT = {
 
 export type checkingStatusDT = {
     id: string;
+    deadline: string;
     speech: assignAudioTrackDT;
     script: scriptResDT;
     speaker: speakerLocalityDT2;
@@ -95,6 +96,7 @@ export type singleSpeakerDT = {
 
 export type allCheckedAudioDT = {
     id: string;
+    deadline: string;
     speech: assignAudioTrackDT;
     speaker: speakerLocalityDT2;
     audioChecker: audioCheckerDT;
@@ -329,6 +331,7 @@ export type validateDT = {
 
 export type uploadAudioDataDT = {
     id: string;
+    deadline: string;
     dataType: string;
     speech: assignAudioTrackDT;
     uploadDate: string;
@@ -343,7 +346,7 @@ export type speakerUploadAudioDT = {
     speakerNo: string;
     gender: string[];
     area: string;
-    age: string;
+    age: string[];
 }
 
 export type othersUploadAudioDT = {
@@ -385,6 +388,10 @@ export type allCheckedSpeechDT = {
     deadLine: string;
     submissionDate: string;
     remark: remarkInfoDT;
+    speechInfo: speechInfo
+    others: othersUploadAudioDT;
+    speaker: speakerUploadAudioDT;
+    history: historyDT[];
 }
 
 export type annotationUploadDT = {

@@ -24,10 +24,10 @@ const Remark2 = ({ open, setOpen, data }: Props) => {
                 </div>
 
                 {/* Body */}
-                <div className='pt-[21px] pb-10 px-10'>
+                <div className='pt-[21px] pb-10 px-10 flex flex-col gap-y-[34px]'>
                     {
                         data.map((item: historyRemark) => (
-                            <div className='mb-[34px]'>
+                            <div className=''>
                                 <div className='flex items-center gap-x-4'>
                                     <SpeechStatus data={item.status} />
                                     <p className='text-blue-gray-75 text-small'>{item.deadline}</p>

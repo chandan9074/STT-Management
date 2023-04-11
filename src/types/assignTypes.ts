@@ -291,7 +291,8 @@ export type speechDT3 = {
 }
 
 export type customSingleCriteriaDT = {
-  [key: string]: string;
+  // [key: string]: string;
+  [key: string]: string | string[];
 }
 
 export type createAssigneeParamsDT = {
