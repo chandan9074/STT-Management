@@ -5,6 +5,7 @@ import Icons from "../../assets/Icons"
 import { annotationUploadDT } from "../../types/audioManagementTypes"
 import AudioTrack from "../common/AudioTrack"
 import Remark2 from "../common/TableField/Remark2"
+import { Drawer } from "../Drawer"
 import Pagination from "../Pagination"
 
 type Props = {
@@ -14,6 +15,13 @@ type Props = {
 const Type26 = ({ data }: Props) => {
 
     const [remarkOpen, setRemarkOpen] = useState(false);
+    const [open, setOpen] = useState(false);
+
+    const [singleTargetData, setSingleTargetData] = useState<annotationUploadDT>();
+
+    const showDrawer = () => {
+        setOpen(true);
+    };
 
     const Type26columns: ColumnsType<annotationUploadDT> = [
         {
@@ -88,10 +96,10 @@ const Type26 = ({ data }: Props) => {
 
                     <div className='flex w-full justify-center items-center'>
                         <img
-                            // onClick={() => {
-                            //     showDrawer(record);
-                            //     setSingleTargetData(record);
-                            // }}
+                            onClick={() => {
+                                showDrawer();
+                                setSingleTargetData(record);
+                            }}
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
@@ -142,6 +150,19 @@ const Type26 = ({ data }: Props) => {
                     handleDataChange={handlePageChange}
                 />
             </div>
+            {
+                (open && singleTargetData) &&
+                <Drawer.AudioManagement.Type2
+                    isDrawerOpen={open}
+                    setIsDrawerOpen={setOpen}
+                    id={singleTargetData.id}
+                    speaker={singleTargetData.speaker}
+                    others={singleTargetData.others}
+                    speechInfo={singleTargetData.speechInfo}
+                    isEditHistory={false}
+                    deadline={singleTargetData.deadLine}
+                />
+            }
         </div>
     )
 }

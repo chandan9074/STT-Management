@@ -45,7 +45,7 @@ const Header = ({ setActiveTab, selectedScript, setSelectedScript }: Props) => {
             <div className='flex justify-between'>
                 <div>
                     {/* <p className='text-heading-6 font-medium text-ct-blue-95 pb-[11px]'>Annotated Files</p> */}
-                    <Buttons.TabButton.Secondary setActiveData={setActiveTab} tabLabel={['Sentence', "Completed", "Phoneme"]} />
+                    <Buttons.TabButton.Secondary setActiveData={setActiveTab} tabLabel={['Sentence', "Word", "Phoneme"]} />
                 </div>
             </div>
 

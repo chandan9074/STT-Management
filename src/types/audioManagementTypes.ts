@@ -376,6 +376,9 @@ export type checkingStatusUploadDataDT = {
     speech: assignAudioTrackDT;
     audioChecker: audioCheckerDT;
     deadLine: string;
+    speechInfo: speechInfo
+    others: othersUploadAudioDT;
+    speaker: speakerUploadAudioDT;
 }
 
 export type allCheckedSpeechDT = {
@@ -397,12 +400,18 @@ export type annotationUploadDT = {
     speech: assignAudioTrackDT;
     deadLine: string;
     remark: historyRemark[]
+    speechInfo: speechInfo;
+    others: othersUploadAudioDT;
+    speaker: speakerUploadAudioDT;
 }
 
 export type sentenceLevelUploadDT = {
     id: string;
     speech: assignAudioTrackDT
     annotate: annotateInfoDT
+    speechInfo: speechInfo;
+    others: othersUploadAudioDT;
+    speaker: speakerUploadAudioDT;
     deadLine: string
     audioChecker: audioCheckerDT
 }
@@ -417,4 +426,20 @@ export type statusColorsDataDT = {
     bgColor: string
     bulletColor: string
     textColor: string
+}
+
+export type annotatedFilesUploadDT = {
+    id: string;
+    speech: assignAudioTrackDT;
+    speechInfo: speechInfo;
+    speaker: speakerUploadAudioDT;
+    others: othersDT;
+    history: historyDT[];
+    audioChecker: annotatedAudioCheckerDT;
+    annotator: annotatedAnnotatorDT;
+    status: string;
+    script: scriptResDT;
+    deadLine: string;
+    submissionDate: string;
+    remark: historyRemark[];
 }
