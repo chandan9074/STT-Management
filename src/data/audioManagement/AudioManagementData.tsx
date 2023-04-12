@@ -1716,6 +1716,26 @@ export const validatedFilesData = [
     }
 ]
 
+export const district = [
+    "Dhaka",
+    "Comilla",
+    "Chittagong",
+    "Rajshahi",
+    "Sylhet",
+    "Barisal",
+    "Khulna",
+    "Mymensingh"
+]
+
+export const ageRange = [
+    "7-14",
+    "15-24",
+    "25-34",
+    "35-44",
+    "45-59",
+    "60-65"
+]
+
 export const collectedAudioFilterData: targetFilterDT[] = [
     {
         type: "select-with-checkbox",
@@ -1739,16 +1759,7 @@ export const collectedAudioFilterData: targetFilterDT[] = [
                 key: "collector_district",
                 title: "Collector",
                 isFromAPI: false,
-                child: [
-                    "Dhaka",
-                    "Comilla",
-                    "Chittagong",
-                    "Rajshahi",
-                    "Sylhet",
-                    "Barisal",
-                    "Khulna",
-                    "Mymensingh"
-                ]
+                child: district
             },
             {
                 type: "select-with-roleImg",
@@ -1766,6 +1777,7 @@ export const collectedAudioFilterData: targetFilterDT[] = [
         title: "Speaker",
         viewKey: "speaker_details",
         //   role: "collector",
+        viewRoleImg: "speaker",
         formData: [
             {
                 type: "checkbox",
@@ -1780,14 +1792,7 @@ export const collectedAudioFilterData: targetFilterDT[] = [
                 type: "check",
                 title: "Age",
                 key: "speaker_age",
-                child: [
-                    "7-14",
-                    "15-24",
-                    "25-34",
-                    "35-44",
-                    "45-59",
-                    "60-65"
-                ]
+                child: ageRange
             },
             {
                 type: "multiple-select",
@@ -1797,16 +1802,7 @@ export const collectedAudioFilterData: targetFilterDT[] = [
                         isFromAPI: false,
                         key: "speaker_district",
                         title: "Speaker",
-                        child: [
-                            "Dhaka",
-                            "Comilla",
-                            "Chittagong",
-                            "Rajshahi",
-                            "Sylhet",
-                            "Barisal",
-                            "Khulna",
-                            "Mymensingh"
-                        ]
+                        child: district
                     },
                     {
                         type: "select-with-roleImg",
@@ -1821,11 +1817,110 @@ export const collectedAudioFilterData: targetFilterDT[] = [
         ]
     },
     {
-        type: "date",
+        type: "date-ranger",
         key: "audioSubmissionPeriod",
         viewKey: "audioSubmissionPeriod",
         title: "Audio Submission Period",
     }
+
+]
+
+export const collectedAudioCheckingStatusFilterData: targetFilterDT[] = [
+    {
+        type: "select-with-checkbox",
+        key: "script",
+        title: "Script",
+        //   child: ["STT", "TTS"],
+        viewKey: "script",
+        isFromAPI: true,
+        child: []
+    },
+    {
+        type: "multiple-select",
+        key: "collector",
+        title: "Collector",
+        //   role: "collector",
+        viewKey: "collector_details",
+        viewRoleImg: "collector",
+        selects: [
+            {
+                type: "select",
+                key: "collector_district",
+                title: "Collector",
+                isFromAPI: false,
+                child: district
+            },
+            {
+                type: "select-with-roleImg",
+                key: "collector_details",
+                title: "Collector",
+                isFromAPI: true,
+                role: "collector",
+                child: []
+            }
+        ]
+    },
+    {
+        type: "form",
+        key: "speaker",
+        title: "Speaker",
+        viewKey: "speaker_details",
+        //   role: "collector",
+        viewRoleImg: "speaker",
+        formData: [
+            {
+                type: "checkbox",
+                title: "Gender",
+                key: "speaker_gender",
+                child: [
+                    "Male",
+                    "Female"
+                ]
+            },
+            {
+                type: "check",
+                title: "Age",
+                key: "speaker_age",
+                child: ageRange
+            },
+            {
+                type: "multiple-select",
+                selects: [
+                    {
+                        type: "select",
+                        isFromAPI: false,
+                        key: "speaker_district",
+                        title: "Speaker",
+                        child: district
+                    },
+                    {
+                        type: "select-with-roleImg",
+                        key: "speaker_details",
+                        title: "Speaker",
+                        isFromAPI: true,
+                        role: "speaker",
+                        child: []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        type: "date-ranger",
+        key: "audioUploadPeriod",
+        viewKey: "audioUploadPeriod",
+        title: "Audio Upload Period",
+    },
+    {
+        type: "check",
+        title: "Status",
+        key: "status",
+        viewKey: "status",
+        child: [
+            "Checking...",
+            "Took a break",
+        ]
+    },
 
 ]
 

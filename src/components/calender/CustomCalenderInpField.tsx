@@ -1,7 +1,9 @@
 import { DatePicker, DatePickerProps } from 'antd';
-import React from 'react'
+import React, { useEffect } from 'react'
 import Icons from '../../assets/Icons';
 import { targetFilterDT, targetFilterListDT } from '../../types/assignTypes';
+import CustomRangeCalender from './CustomRangeCalender';
+import { getDateRangeInMonthFormate } from '../../helpers/Utils';
 
 type Props = {
     data: targetFilterDT;
@@ -9,10 +11,21 @@ type Props = {
     filterList: targetFilterListDT;
     handleFilterList: (key: string, value: string) => void;
     popupClassName?: string;
+    dateRanger?: boolean;
 };
 
-const CustomCalenderInpField = ({ data, filterList, handleFilterList, isParent, popupClassName }: Props) => {
+const CustomCalenderInpField = ({ data, filterList, handleFilterList, isParent, popupClassName, dateRanger }: Props) => {
     const [open, setOpen] = React.useState(false);
+    const [dateValue, setDateValue] = React.useState<{ start: string, end: string }>({ start: "", end: "" });
+
+    useEffect(() => {
+        if (dateValue.start && dateValue.end) {
+            const newDate = getDateRangeInMonthFormate(dateValue);
+            if (newDate) {
+                handleFilterList(data.key, newDate)
+            }
+        }
+    }, [dateValue]);
 
     const onChange: DatePickerProps['onChange'] = (date, dateString) => {
         handleFilterList(data.key, dateString)
@@ -55,17 +68,26 @@ const CustomCalenderInpField = ({ data, filterList, handleFilterList, isParent, 
                     />
                 </button>
             </div>
-            <div className='userFormDate'>
-                <DatePicker
-                    bordered={false}
-                    onChange={onChange}
-                    open={open}
-                    popupClassName={popupClassName}
-                />
-            </div>
+            {dateRanger ?
+                (
+                    <CustomRangeCalender
+                        trigger={open}
+                        setOpen={setOpen}
+                        setDateValue={setDateValue}
+                    />)
+                :
+                (<div className='userFormDate'>
+                    <DatePicker
+                        bordered={false}
+                        onChange={onChange}
+                        open={open}
+                        popupClassName={popupClassName}
+                    />
+                </div>)
+            }
 
 
-        </div>
+        </div >
     )
 }
 

@@ -238,8 +238,6 @@ export const getStatusColor = (status: string, type: "bg" | "bullet" | "text") =
 
   if (data) {
     if (type === "bg") {
-      console.log("kisssssssssssssssss");
-
       return data.bgColor
     } else if (type === "bullet") {
       return data.bulletColor
@@ -251,6 +249,19 @@ export const getStatusColor = (status: string, type: "bg" | "bullet" | "text") =
   }
 }
 
-
+export const getDateRangeInMonthFormate = (date: { start: string, end: string }) => {
+  const startDate = date.start;
+  const endDate = date.end;
+  const startMonth = new Date(startDate.split('-').reverse().join('-')).toLocaleString("default", { month: "short" });
+  const endMonth = new Date(endDate.split('-').reverse().join('-')).toLocaleString("default", { month: "short" });
+  console.log(date, "date", startDate, endDate)
+  console.log("startMonth", startMonth, "endMonth", endMonth)
+  if (startMonth && endMonth) {
+    if (startDate.split("-")[2] === endDate.split("-")[2]) {
+      return `${startDate.split("-")[0]} ${startMonth} - ${startDate.split("-")[0]} ${endMonth} ${startDate.split("-")[2]}`
+    }
+    return `${startDate.split("-")[0]} ${startMonth} ${startDate.split("-")[2]} - ${endDate.split("-")[0]} ${endMonth} ${endDate.split("-")[2]}`;
+  }
+}
 
 

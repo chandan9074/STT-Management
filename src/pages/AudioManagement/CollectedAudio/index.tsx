@@ -57,7 +57,9 @@ const Header = () => {
         let count = 0;
         for (const key in filterList) {
             if (filterList[key].length > 0) {
-                count += 1
+                if (key === "script" || key === "collector" || key === "speaker" || key === "audioSubmissionPeriod") {
+                    count += 1
+                }
             }
         }
         setCount(count)
@@ -119,6 +121,13 @@ const Header = () => {
                     collector: filterList.collector.filter((item) => item !== value),
                 });
             }
+            else if (key === "speaker_gender" || key === "speaker_age" || key === "speaker_district" || key === "speaker_details") {
+                setFilterList({
+                    ...filterList,
+                    [key]: filterList[key].filter((item) => item !== value),
+                    speaker: filterList.speaker.filter((item) => item !== value),
+                });
+            }
             else {
                 setFilterList({
                     ...filterList,
@@ -133,7 +142,7 @@ const Header = () => {
                     collector: [...filterList.collector, value],
                 });
             }
-            else if (key === "speaker_gender" || key === "speaker_age" || key === "speaker_district" || key === "speaker_details"){
+            else if (key === "speaker_gender" || key === "speaker_age" || key === "speaker_district" || key === "speaker_details") {
                 setFilterList({
                     ...filterList,
                     [key]: [...filterList[key], value],
@@ -153,8 +162,14 @@ const Header = () => {
             setFilterList({
                 script: [],
                 collector: [],
+                collector_district: [],
+                collector_details: [],
                 speaker: [],
-                audioSubmissionPeriod: []
+                speaker_gender: [],
+                speaker_age: [],
+                speaker_district: [],
+                speaker_details: [],
+                audioSubmissionPeriod: [],
             })
         }
         else {

@@ -53,7 +53,7 @@ const Type7 = ({
                             {filterList[data.key].map((item: string, index: number) => (
                                 <div key={index} className="flex items-center py-1 px-2 rounded-[4px] bg-ct-blue-20 mr-2 animate-fadeIn">
                                     <h5 className="text-xs text-blue-gray-80 font-medium mb-0 mr-1 whitespace-nowrap">
-                                        {data.role && data.role === "speaker" ? (data.child && data.child.filter((single) => single.split("-")[1] === item).map((single) => single.split("-")[0] + " - " + single.split("-")[1])) : (data.child && data.child.filter((single) => single.split("-")[1] === item)[0])}
+                                        {data.role && data.role === "speaker" ? (data.child && data.child.filter((single) => single === item).map((single) => single.split("-")[0] + " - " + single.split("-")[1])) : (data.child && data.child.filter((single) => single.split("-")[1] === item)[0])}
                                     </h5>
                                     <button
                                         onClick={() => handleFilterList(data.key, item)}
@@ -140,8 +140,8 @@ const Type7 = ({
                         {data.child && data.child.map((item: string, index: number) => (
                             <button
                                 key={index}
-                                onClick={() => handleFilterList(data.key, item.split("-")[1])}
-                                className={`flex items-center justify-start py-3 px-4 w-full ${filterList[data.key].filter((singleItem) => item.split("-")[1] === singleItem).length > 0
+                                onClick={() => handleFilterList(data.key, data.role && data.role === "speaker" ? item : item.split("-")[1])}
+                                className={`flex items-center justify-start py-3 px-4 w-full ${filterList[data.key].filter((singleItem) => item === singleItem).length > 0
                                     ? "bg-blue-10 hover:bg-blue-20 active:bg-blue-30"
                                     : "hover:bg-ct-blue-05 active:bg-ct-blue-10"
                                     }`}

@@ -13,6 +13,18 @@ export default class audioManagementService {
         return collectedAudioSpeakersList;
     }
 
+    static getCollectedAudioCheckingStatusScript() {
+        return scriptFilterData;
+    }
+
+    static getCollectedAudioCheckingStatusCollector() {
+        return collectedAudioCollectorList;
+    }
+
+    static getCollectedAudioCheckingStatusSpeakers() {
+        return collectedAudioSpeakersList;
+    }
+
     static getCollectedAudioData() {
         return collectedAudio;
     }
