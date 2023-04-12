@@ -102,3 +102,15 @@ export const deviceData = [
         "lastDateModification": "01/01/2022, 3:30 PM"
     },
 ]
+
+export const organizeRole = [
+    'Admin',
+    'Audio Checker',
+    'Manager',
+    'Annotator',
+    'Team Leader',
+    'Validator',
+    'Collector',
+    'Speaker-Male',
+    'Speaker-Female'
+]
