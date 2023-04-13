@@ -443,3 +443,21 @@ export type annotatedFilesUploadDT = {
     submissionDate: string;
     remark: historyRemark[];
 }
+
+export type validatedFilesUploadDT = {
+    id: string;
+    speech: assignAudioTrackDT;
+    validatorFinal: validatorDT;
+    status: string;
+    validator2: validatorDT;
+    validator1: validatorDT;
+    annotator: annotatedAnnotatorDT;
+    audioChecker: audioCheckerDT;
+    speaker: speakerLocalityDT2;
+    deadLine: string;
+    submissionDate: string;
+    remark: historyRemark[]
+    speechInfo: speechInfo;
+    others: othersDT
+    history: historyDT[]
+}

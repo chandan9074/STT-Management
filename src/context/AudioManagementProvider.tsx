@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useState } from "react";
 import audioManagementService from "../services/audioManagementService";
-import { allCheckedAudioDT, allCheckedSpeechDT, annotatedFilesDT, annotatedFilesUploadDT, annotationDT, annotationUploadDT, audioManagementDT, checkingStatusDT, checkingStatusUploadDataDT, collectAnnSenDataDT, collectValSenDataDT, sentenceLevelUploadDT, uploadAudioDataDT, validatedFilesDT } from "../types/audioManagementTypes";
+import { allCheckedAudioDT, allCheckedSpeechDT, annotatedFilesDT, annotatedFilesUploadDT, annotationDT, annotationUploadDT, audioManagementDT, checkingStatusDT, checkingStatusUploadDataDT, collectAnnSenDataDT, collectValSenDataDT, sentenceLevelUploadDT, uploadAudioDataDT, validatedFilesDT, validatedFilesUploadDT } from "../types/audioManagementTypes";
 
 interface ContextProps {
     getScriptFilter: () => void;
@@ -53,6 +53,8 @@ interface ContextProps {
     wordLevelUploadVal: collectValSenDataDT[];
     getPhonemeLevelUploadVal: () => void;
     phonemeLevelUploadVal: collectValSenDataDT[];
+    getValidatedFilesUploadData: () => void
+    validatedFilesUploadData: validatedFilesUploadDT[]
 }
 
 export const AudioManagementContext = createContext({} as ContextProps);
@@ -84,6 +86,7 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
     const [sentenceLevelUploadVal, setSentenceLevelUploadVal] = useState<collectValSenDataDT[]>([] as collectValSenDataDT[])
     const [wordLevelUploadVal, setWordLevelUploadVal] = useState<collectValSenDataDT[]>([] as collectValSenDataDT[])
     const [phonemeLevelUploadVal, setPhonemeLevelUploadVal] = useState<collectValSenDataDT[]>([] as collectValSenDataDT[])
+    const [validatedFilesUploadData, setValidatedFilesUploadData] = useState<validatedFilesUploadDT[]>([] as validatedFilesUploadDT[])
 
     const getScriptFilter = () => {
         const res = audioManagementService.getScriptFilters();
@@ -215,6 +218,11 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
         setPhonemeLevelUploadVal(res);
     }
 
+    const getValidatedFilesUploadData = () => {
+        const res = audioManagementService.getValidatedFilesUploadData();
+        setValidatedFilesUploadData(res);
+    }
+
 
     return (
         <AudioManagementContext.Provider
@@ -267,8 +275,10 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
                 wordLevelUploadVal,
                 getPhonemeLevelUploadVal,
                 phonemeLevelUploadVal,
+                getCollectedAudioCollector,
                 collectedAudioCollector,
-                getCollectedAudioCollector
+                getValidatedFilesUploadData,
+                validatedFilesUploadData,
             }}
         >
             {children}
