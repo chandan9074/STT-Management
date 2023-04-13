@@ -1,5 +1,5 @@
 import { collectedAudioCollectorList, allCheckedAudiosData, annotationData, checkingStatusData, collectAnnSenData, collectedAudio, scriptFilterData, annotatedFiles, collectValSenData, validatedFilesData } from '../data/audioManagement/AudioManagementData';
-import { allCheckedSpeechData, annotatedFilesUploadData, annotationUploadData, checkingStatusUploadData, sentenceLevelUploadData, uploadAudioData, ValidatedFilesUploadData } from '../data/audioManagement/UploadAudiosData';
+import { allCheckedSpeechData, annotatedFilesUploadData, annotationUploadData, checkingStatusUploadData, sentenceLevelUploadData, sentenceLevelValUpload, uploadAudioData, ValidatedFilesUploadData } from '../data/audioManagement/UploadAudiosData';
 
 export default class audioManagementService {
     static getScriptFilters() {
@@ -90,15 +90,15 @@ export default class audioManagementService {
     }
 
     static getSentenceLevelUploadVal() {
-        return collectValSenData;
+        return sentenceLevelValUpload;
     }
 
     static getWordLevelUploadVal() {
-        return collectValSenData;
+        return sentenceLevelValUpload;
     }
 
     static getPhonemeLevelUploadVal() {
-        return collectValSenData;
+        return sentenceLevelValUpload;
     }
     static getValidatedFilesUploadData() {
         return ValidatedFilesUploadData;

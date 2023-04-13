@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useState } from "react";
 import audioManagementService from "../services/audioManagementService";
-import { allCheckedAudioDT, allCheckedSpeechDT, annotatedFilesDT, annotatedFilesUploadDT, annotationDT, annotationUploadDT, audioManagementDT, checkingStatusDT, checkingStatusUploadDataDT, collectAnnSenDataDT, collectValSenDataDT, sentenceLevelUploadDT, uploadAudioDataDT, validatedFilesDT, validatedFilesUploadDT } from "../types/audioManagementTypes";
+import { allCheckedAudioDT, allCheckedSpeechDT, annotatedFilesDT, annotatedFilesUploadDT, annotationDT, annotationUploadDT, audioManagementDT, checkingStatusDT, checkingStatusUploadDataDT, collectAnnSenDataDT, collectValSenDataDT, sentenceLevelUploadDT, sentenceLevelValUploadDT, uploadAudioDataDT, validatedFilesDT, validatedFilesUploadDT } from "../types/audioManagementTypes";
 
 interface ContextProps {
     getScriptFilter: () => void;
@@ -48,11 +48,11 @@ interface ContextProps {
     getAnnotatedFilesUploadData: () => void;
     annotatedFilesUploadData: annotatedFilesUploadDT[]
     getSentenceLevelUploadVal: () => void;
-    sentenceLevelUploadVal: collectValSenDataDT[]
+    sentenceLevelUploadVal: sentenceLevelValUploadDT[]
     getWordLevelUploadVal: () => void;
-    wordLevelUploadVal: collectValSenDataDT[];
+    wordLevelUploadVal: sentenceLevelValUploadDT[];
     getPhonemeLevelUploadVal: () => void;
-    phonemeLevelUploadVal: collectValSenDataDT[];
+    phonemeLevelUploadVal: sentenceLevelValUploadDT[];
     getValidatedFilesUploadData: () => void
     validatedFilesUploadData: validatedFilesUploadDT[]
 }
@@ -83,9 +83,9 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
     const [wordLevelUploadData, setWordLevelUploadData] = useState<sentenceLevelUploadDT[]>([] as sentenceLevelUploadDT[])
     const [phonemeLevelUploadData, setPhonemeLevelUploadData] = useState<sentenceLevelUploadDT[]>([] as sentenceLevelUploadDT[])
     const [annotatedFilesUploadData, setAnnotatedFilesUploadData] = useState<annotatedFilesUploadDT[]>([] as annotatedFilesUploadDT[])
-    const [sentenceLevelUploadVal, setSentenceLevelUploadVal] = useState<collectValSenDataDT[]>([] as collectValSenDataDT[])
-    const [wordLevelUploadVal, setWordLevelUploadVal] = useState<collectValSenDataDT[]>([] as collectValSenDataDT[])
-    const [phonemeLevelUploadVal, setPhonemeLevelUploadVal] = useState<collectValSenDataDT[]>([] as collectValSenDataDT[])
+    const [sentenceLevelUploadVal, setSentenceLevelUploadVal] = useState<sentenceLevelValUploadDT[]>([] as sentenceLevelValUploadDT[])
+    const [wordLevelUploadVal, setWordLevelUploadVal] = useState<sentenceLevelValUploadDT[]>([] as sentenceLevelValUploadDT[])
+    const [phonemeLevelUploadVal, setPhonemeLevelUploadVal] = useState<sentenceLevelValUploadDT[]>([] as sentenceLevelValUploadDT[])
     const [validatedFilesUploadData, setValidatedFilesUploadData] = useState<validatedFilesUploadDT[]>([] as validatedFilesUploadDT[])
 
     const getScriptFilter = () => {

@@ -18,11 +18,11 @@ type Props = {
 const Type22 = ({ data }: Props) => {
 
   const [singleTargetData, setSingleTargetData] = useState<collectValSenDataDT>();
-    const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
-    const showDrawer = (item: collectValSenDataDT) => {
-        setOpen(true);
-    };
+  const showDrawer = (item: collectValSenDataDT) => {
+    setOpen(true);
+  };
 
   const getColumnSearchProps = (dataIndex: string): ColumnType<collectValSenDataDT> => ({
 
@@ -154,8 +154,8 @@ const Type22 = ({ data }: Props) => {
           <div className='flex w-full justify-center items-center'>
             <img
               onClick={() => {
-                  showDrawer(record);
-                  setSingleTargetData(record);
+                showDrawer(record);
+                setSingleTargetData(record);
               }}
               className='w-[14px] h-[14px] cursor-pointer'
               src={Icons.open_in_new}
@@ -209,18 +209,18 @@ const Type22 = ({ data }: Props) => {
         />
       </div>
       {
-                (open && singleTargetData) &&
-                <Drawer.AudioManagement.CheckingStatus
-                    isDrawerOpen={open}
-                    setIsDrawerOpen={setOpen}
-                    isEditHistory={false}
-                    speaker={singleTargetData.speaker}
-                    remark={singleTargetData.remark}
-                    script={singleTargetData.script}
-                    others={singleTargetData.others}
-                    id={singleTargetData.id}
-                />
-            }
+        (open && singleTargetData) &&
+        <Drawer.AudioManagement.CheckingStatus
+          isDrawerOpen={open}
+          setIsDrawerOpen={setOpen}
+          isEditHistory={false}
+          speaker={singleTargetData.speaker}
+          remark={singleTargetData.remark}
+          script={singleTargetData.script}
+          others={singleTargetData.others}
+          id={singleTargetData.id}
+        />
+      }
     </div>
   )
 }
