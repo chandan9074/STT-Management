@@ -77,6 +77,14 @@
   .mediumIconButton {
     @apply text-base font-medium py-[10px] rounded-md;
   }
+
+  .activeColor {
+    @apply bg-blue-10 hover:bg-blue-20 active:bg-blue-30;
+  }
+
+  .deactiveColor {
+    @apply hover:bg-ct-blue-05 active:bg-ct-blue-10;
+  }
 }
 
 body {
@@ -161,8 +169,8 @@ pre {
   width: 8px;
 }
 
-.custom-scrollBar-width-5::-webkit-scrollbar {
-  width: 2px;
+.custom-scrollBar-height-5::-webkit-scrollbar {
+  height: 8px;
 }
 
 /* Track */

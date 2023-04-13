@@ -55,6 +55,14 @@ interface ContextProps {
     phonemeLevelUploadVal: sentenceLevelValUploadDT[];
     getValidatedFilesUploadData: () => void
     validatedFilesUploadData: validatedFilesUploadDT[]
+    getCollectedAudioSpeakers: () => void;
+    collectedAudioSpeakers: string[];
+    getCollectedAudioCheckingStatusScript: () => void;
+    collectedAudioCheckingStatusScript: string[];
+    getCollectedAudioCheckingStatusSpeakers: () => void;
+    collectedAudioCheckingStatusSpeaker: string[];
+    getCollectedAudioCheckingStatusCollector: () => void;
+    collectedAudioCheckingStatusCollector: string[];
 }
 
 export const AudioManagementContext = createContext({} as ContextProps);
@@ -63,6 +71,7 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
 
     const [scriptFilter, setScriptFilter] = useState<string[]>([] as string[]);
     const [collectedAudioCollector, setCollectedAudioCollector] = useState<string[]>([] as string[]);
+    const [collectedAudioSpeakers, setCollectedAudioSpeakers] = useState<string[]>([] as string[]);
     const [collectedAudio, setCollectedAudio] = useState<audioManagementDT[]>([] as audioManagementDT[]);
     const [checkingStatusData, setCheckingStatusData] = useState<checkingStatusDT[]>([] as checkingStatusDT[]);
     const [allCheckedAudiosData, setAllCheckedAudiosData] = useState<allCheckedAudioDT[]>([] as allCheckedAudioDT[]);
@@ -87,6 +96,9 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
     const [wordLevelUploadVal, setWordLevelUploadVal] = useState<sentenceLevelValUploadDT[]>([] as sentenceLevelValUploadDT[])
     const [phonemeLevelUploadVal, setPhonemeLevelUploadVal] = useState<sentenceLevelValUploadDT[]>([] as sentenceLevelValUploadDT[])
     const [validatedFilesUploadData, setValidatedFilesUploadData] = useState<validatedFilesUploadDT[]>([] as validatedFilesUploadDT[])
+    const [collectedAudioCheckingStatusScript, setCollectedAudioCheckingStatusScript] = useState<string[]>([] as string[]);
+    const [collectedAudioCheckingStatusCollector, setCollectedAudioCheckingStatusCollector] = useState<string[]>([] as string[]);
+    const [collectedAudioCheckingStatusSpeaker, setCollectedAudioCheckingStatusSpeaker] = useState<string[]>([] as string[]);
 
     const getScriptFilter = () => {
         const res = audioManagementService.getScriptFilters();
@@ -99,6 +111,31 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
         const res = audioManagementService.getCollectedAudioCollector();
         const concatenatedStrings = res.map(item => item.id + " - " + item.name);
         setCollectedAudioCollector(concatenatedStrings);
+    }
+
+    const getCollectedAudioSpeakers = () => {
+        const res = audioManagementService.getCollectedAudioSpeakers();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name + " - " + item.gender);
+        setCollectedAudioSpeakers(concatenatedStrings);
+    }
+
+    const getCollectedAudioCheckingStatusScript = () => {
+        const res = audioManagementService.getCollectedAudioCheckingStatusScript();
+        const concatenatedStrings = res.map(item => item.id.substring(0, 3) + "... - " + item.title);
+        console.log("hello", concatenatedStrings);
+        setCollectedAudioCheckingStatusScript(concatenatedStrings);
+    }
+
+    const getCollectedAudioCheckingStatusCollector = () => {
+        const res = audioManagementService.getCollectedAudioCheckingStatusCollector();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name);
+        setCollectedAudioCheckingStatusCollector(concatenatedStrings);
+    }
+
+    const getCollectedAudioCheckingStatusSpeakers = () => {
+        const res = audioManagementService.getCollectedAudioCheckingStatusSpeakers();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name + " - " + item.gender);
+        setCollectedAudioCheckingStatusSpeaker(concatenatedStrings);
     }
 
 
@@ -279,6 +316,14 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
                 collectedAudioCollector,
                 getValidatedFilesUploadData,
                 validatedFilesUploadData,
+                collectedAudioSpeakers,
+                getCollectedAudioSpeakers,
+                collectedAudioCheckingStatusCollector,
+                getCollectedAudioCheckingStatusCollector,
+                collectedAudioCheckingStatusSpeaker,
+                getCollectedAudioCheckingStatusSpeakers,
+                collectedAudioCheckingStatusScript,
+                getCollectedAudioCheckingStatusScript
             }}
         >
             {children}

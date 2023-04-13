@@ -7,19 +7,16 @@ import { Drawer } from '../../components/Drawer'
 import Table from '../../components/Table'
 import { roleData } from '../../data/organize/OrganizerData'
 import { RoleDataDT } from '../../types/organizerTypes'
+import RoleForm from './RoleForm'
 
 const Role = () => {
 
   const [open, setOpen] = useState<boolean>(false)
-  const [selectedRows, setSelectedRows] = useState<RoleDataDT[]>([] as RoleDataDT[])
+  const [selectedRows, setSelectedRows] = useState<RoleDataDT[]>([] as RoleDataDT[]);
 
   const handleSelectRow = (value: RoleDataDT[]) => {
     setSelectedRows(value)
   }
-
-  const drawerClose = () => {
-    setOpen(false);
-  };
 
   return (
     <div>
@@ -27,7 +24,9 @@ const Role = () => {
       <Table.Type28 data={roleData} handleSelectRow={handleSelectRow} open={open} setOpen={setOpen} />
       <Drawer.Organizer.Type1
         isDrawerOpen={open}
-        drawerClose={drawerClose}
+        // drawerClose={drawerClose}
+        setIsDrawerClose={setOpen}
+        isEdit={true}
         headerBgColor="bg-ct-blue-05"
         title="Role Details"
       >
@@ -48,6 +47,8 @@ type Props = {
   selectedRows: RoleDataDT[]
 }
 const Header = ({ open, setOpen, selectedRows }: Props) => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
+
   return (
     <div className='ml-6 mr-4 mb-5 flex items-center justify-between'>
       <div>
@@ -94,9 +95,21 @@ const Header = ({ open, setOpen, selectedRows }: Props) => {
           size="small"
           variant="Megenta"
           icon={<img src={Icons.Add} alt="add" />}
-        // onClick={() => scriptContext.setModalOpen(true)}
+          onClick={() => setIsDrawerOpen(true)}
         />
       </div>
+
+      <Drawer.Organizer.Type1
+        isDrawerOpen={isDrawerOpen}
+        // drawerClose={drawerClose}
+        setIsDrawerClose={setIsDrawerOpen}
+        headerBgColor="bg-ct-blue-20"
+        title="Create Role"
+        isEdit={false}
+      >
+        <RoleForm />
+      </Drawer.Organizer.Type1>
+
     </div>
   )
 }

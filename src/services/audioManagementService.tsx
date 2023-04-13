@@ -1,5 +1,5 @@
-import { collectedAudioCollectorList, allCheckedAudiosData, annotationData, checkingStatusData, collectAnnSenData, collectedAudio, scriptFilterData, annotatedFiles, collectValSenData, validatedFilesData } from '../data/audioManagement/AudioManagementData';
-import { allCheckedSpeechData, annotatedFilesUploadData, annotationUploadData, checkingStatusUploadData, sentenceLevelUploadData, sentenceLevelValUpload, uploadAudioData, ValidatedFilesUploadData } from '../data/audioManagement/UploadAudiosData';
+import { collectedAudioCollectorList, allCheckedAudiosData, annotationData, checkingStatusData, collectAnnSenData, collectedAudio, scriptFilterData, annotatedFiles, collectValSenData, validatedFilesData, collectedAudioSpeakersList } from '../data/audioManagement/AudioManagementData';
+import { allCheckedSpeechData, annotatedFilesUploadData, annotationUploadData, checkingStatusUploadData, sentenceLevelUploadData, uploadAudioData, ValidatedFilesUploadData, sentenceLevelValUpload } from '../data/audioManagement/UploadAudiosData';
 
 export default class audioManagementService {
     static getScriptFilters() {
@@ -7,6 +7,22 @@ export default class audioManagementService {
     }
     static getCollectedAudioCollector() {
         return collectedAudioCollectorList;
+    }
+
+    static getCollectedAudioSpeakers() {
+        return collectedAudioSpeakersList;
+    }
+
+    static getCollectedAudioCheckingStatusScript() {
+        return scriptFilterData;
+    }
+
+    static getCollectedAudioCheckingStatusCollector() {
+        return collectedAudioCollectorList;
+    }
+
+    static getCollectedAudioCheckingStatusSpeakers() {
+        return collectedAudioSpeakersList;
     }
 
     static getCollectedAudioData() {

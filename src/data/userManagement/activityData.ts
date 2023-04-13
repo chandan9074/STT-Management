@@ -230,6 +230,7 @@ export const speechFilter : targetFilterDT[] = [
       type: "date",
       key: "submissionDate",
       title: "Submission Date, Time",
+      viewKey: "submissionDate",
       // isParent: true,
       // child: [
       //     "Not Assigned",
@@ -241,6 +242,7 @@ export const speechFilter : targetFilterDT[] = [
       type: "check",
       key: "recordingArea",
       title: "Recording Area",
+      viewKey: "recordingArea",
       child: [
           "Room",
           "Outside Room",
@@ -257,6 +259,7 @@ export const speechFilter : targetFilterDT[] = [
   {
       type: "check",
       key: "recordingDistance",
+      viewKey: "recordingDistance",
       title: "Recording Distance",
       child: [
           "Far",
@@ -271,6 +274,7 @@ export const speechFilter : targetFilterDT[] = [
   {
       type: "check",
       key: "status",
+      viewKey: "status",
       title: "Status",
       child: [
           "Approved",
@@ -280,6 +284,7 @@ export const speechFilter : targetFilterDT[] = [
   {
       type: "select",
       key: "speakerLocality",
+      viewKey: "speakerLocality",
       title: "Speaker's Locality",
       isParent:"none",
       children: [
@@ -315,6 +320,7 @@ export const completedFilter : targetFilterDT[] = [
   {
     type: "check",
     key: "targetStatus",
+    viewKey: "targetStatus",
     title: "Target Status",
     // isParent: true,
     child: [

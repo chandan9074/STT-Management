@@ -17,20 +17,17 @@ const Device = () => {
     setSelectedRows(value)
   }
 
-  const drawerClose = () => {
-    setOpen(false);
-  };
-
-
   return (
     <div>
       <Header open={open} setOpen={setOpen} selectedRows={selectedRows} />
       <Table.Type30 data={deviceData} handleSelectRow={handleSelectRow} setOpen={setOpen} />
       <Drawer.Organizer.Type1
         isDrawerOpen={open}
-        drawerClose={drawerClose}
+        // drawerClose={drawerClose}
+        setIsDrawerClose={setOpen}
         headerBgColor="bg-ct-blue-05" 
         title="Device Details"
+        isEdit={true}
       >
         <div className=' flex items-center'>
           <SideDrawerContent data={deviceData} />

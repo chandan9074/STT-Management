@@ -1,0 +1,63 @@
+import RoleSelect from './RoleSelect';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+import { organizeRole } from '../../../data/organize/OrganizerData';
+import TextArea from 'antd/es/input/TextArea';
+import ActionButton from './ActionButton';
+
+const validationSchema = yup.object({
+    // gender: yup.string().required('Gender is Required'),
+});
+
+const RoleForm = () => {
+
+    const formik = useFormik({
+        enableReinitialize: true,
+        initialValues: {
+            role: '',
+            description: '',
+        },
+        validationSchema: validationSchema,
+        onSubmit: (values: any) => {
+            console.log('value-----', values);
+
+        }
+    });
+
+    return (
+        <div className='px-6 py-6'>
+            <form onSubmit={formik.handleSubmit}>
+                <div>
+                    <RoleSelect
+                        formikValues={formik.values.role}
+                        data={organizeRole}
+                        formikError={formik.errors.role}
+                        formikTouched={formik.touched.role}
+                        formik={formik}
+                        name={'role'}
+                        fieldLabel='Role'
+                    />
+                </div>
+
+                <div className='mt-4'>
+
+                    <TextArea
+                        id="description"
+                        name="description"
+                        value={formik.values.description}
+                        onChange={formik.handleChange}
+                        style={{ width: '100%', height: '120px' }}
+                        placeholder='Description'
+                    />
+                    {/* {formik.touched.description && formik.errors.description ? (
+                    <div className='text-red-600 text-xxs'>{formik.errors.description}</div>
+                ) : null} */}
+                </div>
+
+                <ActionButton />
+            </form>
+        </div>
+    );
+};
+
+export default RoleForm;

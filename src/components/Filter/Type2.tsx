@@ -4,6 +4,8 @@ import { targetFilterDT, targetFilterListDT } from "../../types/assignTypes";
 import Buttons from "../Buttons";
 import Dropdown from "../Dropdown";
 import CustomCalenderInpField from "../calender/CustomCalenderInpField";
+import RoleImage from "../Image/RoleImage";
+import FilterForm from "../Form/FilterForm";
 
 type Props = {
     filterData: targetFilterDT[];
@@ -77,23 +79,25 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                             className="animate-fadeIn"
                                         />
                                     )}
-                                    <h6 className="text-small text-blue-gray-80 font-medium mb-0 ml-2 flex items-center">
+                                    <h6 className="text-small text-blue-gray-80 font-medium mb-0 ml-2 flex items-center w-full truncate">
                                         <span className="whitespace-nowrap">{item.title}</span>
-                                        {filterList[item.key]?.length > 0 &&
+                                        {item.viewKey && filterList[item.viewKey]?.length > 0 &&
                                             currentState !==
                                             item.key && (
-                                                <h6 className="flex text-left w-72 selected-items">
-                                                    {filterList[item.key].map((singleItem, index) => (
-                                                        <span
-                                                            key={index}
-                                                            className={`animate-fadeIn text-xs font-medium text-ct-blue-60 whitespace-nowrap ${index === 0 ? "ml-3" : "ml-1"
-                                                                }`}
-                                                        >
-                                                            {singleItem}
-                                                            {filterList[item.key].length -
-                                                                1 !==
-                                                                index && ","}
-                                                        </span>
+                                                <h6 className="inline-flex truncate ml-3">
+                                                    {filterList[item.viewKey].map((singleItem, index) => (
+                                                        <>
+                                                            {item.viewRoleImg && (item.viewRoleImg === "speaker" ? <RoleImage role={singleItem.split(" - ")[2] === "male" ? "speaker" : "speakerFemale"} width="w-4" height="h-4" /> : <RoleImage role={item.viewRoleImg} width="w-4" height="h-4" />)}
+                                                            <span
+                                                                key={index}
+                                                                className={`animate-fadeIn text-xs font-medium text-ct-blue-60 whitespace-nowrap ml-1 mr-3`}
+                                                            >
+                                                                {item.viewRoleImg === "speaker" ? singleItem.split(" - ")[1] : singleItem}
+                                                                {item.viewKey && filterList[item.viewKey].length -
+                                                                    1 !==
+                                                                    index && ","}
+                                                            </span>
+                                                        </>
                                                     ))}
                                                 </h6>
                                             )}
@@ -138,7 +142,7 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                         // subdomainData={filterData["subDomain"]}
                                         />
                                     </div> : item.type === "date" ?
-                                        <div className={`${currentState === item.key ? "block" : "hidden"}`}>
+                                        <div className={`pt-3 pb-5  animate-fadeIn flex flex-col gap-y-3  ${currentState === item.key ? "block" : "hidden"}`}>
                                             <CustomCalenderInpField
                                                 data={item}
                                                 isParent={item.isParent}
@@ -147,7 +151,7 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                                 popupClassName={popupClassName}
                                             />
                                         </div> : item.type === "select-with-checkbox" ? <div
-                                            className={`pt-3 pb-5  animate-fadeIn ${currentState === item.key
+                                            className={`pt-3 pb-5  animate-fadeIn flex flex-col gap-y-3  ${currentState === item.key
                                                 ? "block"
                                                 : "hidden"
                                                 }`}
@@ -186,7 +190,28 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                                         /> : null}
                                                 </div>
                                             ))}
-                                        </div> : null}
+                                        </div> : item.type === "form" ?
+                                            <div
+                                                className={`pt-3 pb-5  animate-fadeIn flex flex-col gap-y-3 ${currentState === item.key
+                                                    ? "block"
+                                                    : "hidden"
+                                                    }`}
+                                            >
+                                                {item.formData && <FilterForm
+                                                    data={item}
+                                                    filterList={filterList}
+                                                    handleFilterList={handleFilterList} />}
+                                            </div> : item.type === "date-ranger" ?
+                                                <div className={`pt-3 pb-5  animate-fadeIn flex flex-col gap-y-3 ${currentState === item.key ? "block" : "hidden"}`}>
+                                                    <CustomCalenderInpField
+                                                        data={item}
+                                                        isParent={item.isParent}
+                                                        filterList={filterList}
+                                                        handleFilterList={handleFilterList}
+                                                        popupClassName={popupClassName}
+                                                        dateRanger={true}
+                                                    />
+                                                </div> : null}
                         </div>
                     ))}
                 </div>
