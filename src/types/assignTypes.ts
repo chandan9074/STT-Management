@@ -313,3 +313,8 @@ export type speechOtherInfoDT = {
     invalid: number;
   }
 }
+
+export type targetAssignParamDT = {
+  page: number;
+  pageSize: 20;
+}

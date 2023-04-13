@@ -20,3 +20,8 @@ export type DevcieDataDT = {
     lastDateCreation: string
     lastDateModification: string
 }
+
+export type roleParamDT = {
+    role: string;
+    description: string;
+}

@@ -16,6 +16,7 @@ export const GET_ALL_BILLING_PAYMENT_URL = `${REACT_APP_BASE_URL}/payment-histor
 
 // Role List
 export const GET_ROLE_LIST_URL = `${REACT_APP_BASE_URL}/roles-list`;
+export const CREATE_ROLE_URL = `${REACT_APP_BASE_URL}/`;
 
 // Dashboard
 export const GET_TOTAL_DATA_URL = `${REACT_APP_BASE_URL}/total-data-dashboard`;
@@ -47,6 +48,7 @@ export const POST_DRAFT_TARGET_URL = `${REACT_APP_BASE_URL2}/post_res_draft_targ
 export const GET_DRAFT_TARGET_URL = `${REACT_APP_BASE_URL2}/get_res_draft_target_assign_module`;
 export const UPDATE_DRAFT_TARGET_URL = `${REACT_APP_BASE_URL2}/update_draft_target_assign_module`;
 export const CREATE_ASSIGNEE_URL = `${REACT_APP_BASE_URL2}/post_res_selected_assignee_assign_module`;
+export const GET_TARGET_ASSIGN_URL = `${REACT_APP_BASE_URL2}/get_res_target_assign_module`;
 
 
 

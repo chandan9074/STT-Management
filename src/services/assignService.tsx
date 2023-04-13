@@ -1,9 +1,15 @@
 import axios from "axios";
 import { targetDataForRecreate } from "../data/assign/AssignData";
 import * as PATH from "../helpers/APIURL";
-import { allScriptParamsDT, createAssigneeParamsDT, CriteriaItemDT, postDraftTargetBodyDT, postSelectedScriptBodyDT, updateDraftTargetQueryParams } from "../types/assignTypes";
+import { allScriptParamsDT, createAssigneeParamsDT, CriteriaItemDT, postDraftTargetBodyDT, postSelectedScriptBodyDT, targetAssignParamDT, updateDraftTargetQueryParams } from "../types/assignTypes";
 
 export default class AssignService {
+
+  static async getTargetAssign(params: targetAssignParamDT) {
+    const res = axios.get(PATH.GET_TARGET_ASSIGN_URL, {params: params});
+    return res;
+  }
+
   static getAllScript(data: allScriptParamsDT) {
     const res = axios.get(PATH.GET_ALL_SCRIPT_URL, { params: data });
     return res;

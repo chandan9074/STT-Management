@@ -4,12 +4,20 @@ import * as yup from 'yup';
 import { organizeRole } from '../../../data/organize/OrganizerData';
 import TextArea from 'antd/es/input/TextArea';
 import ActionButton from './ActionButton';
+import { Dispatch, SetStateAction, useContext } from 'react';
+import { OrganizerContext } from '../../../context/OrganizerProvider';
 
 const validationSchema = yup.object({
     // gender: yup.string().required('Gender is Required'),
 });
 
-const RoleForm = () => {
+type Props = {
+    setIsDrawerOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+const RoleForm = ({setIsDrawerOpen}: Props) => {
+
+    const organizerContext = useContext(OrganizerContext);
 
     const formik = useFormik({
         enableReinitialize: true,
@@ -19,6 +27,8 @@ const RoleForm = () => {
         },
         validationSchema: validationSchema,
         onSubmit: (values: any) => {
+
+            organizerContext.createScript(values)
             console.log('value-----', values);
 
         }
@@ -54,7 +64,7 @@ const RoleForm = () => {
                 ) : null} */}
                 </div>
 
-                <ActionButton />
+                <ActionButton setIsDrawerOpen={setIsDrawerOpen} />
             </form>
         </div>
     );
