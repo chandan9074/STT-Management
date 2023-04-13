@@ -63,6 +63,31 @@ interface ContextProps {
     collectedAudioCheckingStatusSpeaker: string[];
     getCollectedAudioCheckingStatusCollector: () => void;
     collectedAudioCheckingStatusCollector: string[];
+    collectedAudioAllCheckingStatusScript: string[];
+    getCollectedAudioAllCheckingStatusScript: () => void;
+    collectedAudioAllCheckingStatusSpeaker: string[];
+    getCollectedAudioAllCheckingStatusSpeakers: () => void;
+    collectedAudioAllCheckingStatusCollector: string[];
+    getCollectedAudioAllCheckingStatusCollector: () => void;
+    collectedAudioAllCheckingStatusChecker: string[];
+    getCollectedAudioAllCheckingStatusChecker: () => void;
+    collectedAudioAnnotationTypeScript: string[];
+    getCollectedAudioAnnotationTypeScript: () => void;
+    collectedAudioAnnotationTypeSpeaker: string[];
+    getCollectedAudioAnnotationTypeSpeakers: () => void;
+    collectedAudioAnnotationSentenceSpeaker: string[];
+    getCollectedAudioAnnotationSentenceSpeakers: () => void;
+    collectedAudioAnnotationSentenceChecker: string[];
+    getCollectedAudioAnnotationSentenceChecker: () => void;
+    collectedAudioAnnotationWordSpeaker: string[];
+    getCollectedAudioAnnotationWordSpeakers: () => void;
+    collectedAudioAnnotationWordChecker: string[];
+    getCollectedAudioAnnotationWordChecker: () => void;
+    collectedAudioAnnotationPhonemeSpeaker: string[];
+    getCollectedAudioAnnotationPhonemeSpeakers: () => void;
+    collectedAudioAnnotationPhonemeChecker: string[];
+    getCollectedAudioAnnotationPhonemeChecker: () => void;
+
 }
 
 export const AudioManagementContext = createContext({} as ContextProps);
@@ -99,11 +124,23 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
     const [collectedAudioCheckingStatusScript, setCollectedAudioCheckingStatusScript] = useState<string[]>([] as string[]);
     const [collectedAudioCheckingStatusCollector, setCollectedAudioCheckingStatusCollector] = useState<string[]>([] as string[]);
     const [collectedAudioCheckingStatusSpeaker, setCollectedAudioCheckingStatusSpeaker] = useState<string[]>([] as string[]);
+    const [collectedAudioAllCheckingStatusScript, setCollectedAudioAllCheckingStatusScript] = useState<string[]>([] as string[]);
+    const [collectedAudioAllCheckingStatusCollector, setCollectedAudioAllCheckingStatusCollector] = useState<string[]>([] as string[]);
+    const [collectedAudioAllCheckingStatusChecker, setCollectedAudioAllCheckingStatusChecker] = useState<string[]>([] as string[]);
+    const [collectedAudioAllCheckingStatusSpeaker, setCollectedAudioAllCheckingStatusSpeaker] = useState<string[]>([] as string[]);
+    const [collectedAudioAnnotationTypeScript, setCollectedAudioAnnotationTypeScript] = useState<string[]>([] as string[]);
+    const [collectedAudioAnnotationTypeSpeaker, setCollectedAudioAnnotationTypeSpeaker] = useState<string[]>([] as string[]);
+    const [collectedAudioAnnotationSentenceSpeaker, setCollectedAudioAnnotationSentenceSpeaker] = useState<string[]>([] as string[]);
+    const [collectedAudioAnnotationSentenceChecker, setCollectedAudioAnnotationSentenceChecker] = useState<string[]>([] as string[]);
+    const [collectedAudioAnnotationWordSpeaker, setCollectedAudioAnnotationWordSpeaker] = useState<string[]>([] as string[]);
+    const [collectedAudioAnnotationWordChecker, setCollectedAudioAnnotationWordChecker] = useState<string[]>([] as string[]);
+    const [collectedAudioAnnotationPhonemeSpeaker, setCollectedAudioAnnotationPhonemeSpeaker] = useState<string[]>([] as string[]);
+    const [collectedAudioAnnotationPhonemeChecker, setCollectedAudioAnnotationPhonemeChecker] = useState<string[]>([] as string[]);
+
 
     const getScriptFilter = () => {
         const res = audioManagementService.getScriptFilters();
         const concatenatedStrings = res.map(item => item.id.substring(0, 3) + "... - " + item.title);
-        console.log("hello", concatenatedStrings);
         setScriptFilter(concatenatedStrings);
     }
 
@@ -122,7 +159,6 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
     const getCollectedAudioCheckingStatusScript = () => {
         const res = audioManagementService.getCollectedAudioCheckingStatusScript();
         const concatenatedStrings = res.map(item => item.id.substring(0, 3) + "... - " + item.title);
-        console.log("hello", concatenatedStrings);
         setCollectedAudioCheckingStatusScript(concatenatedStrings);
     }
 
@@ -138,6 +174,77 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
         setCollectedAudioCheckingStatusSpeaker(concatenatedStrings);
     }
 
+    const getCollectedAudioAllCheckingStatusScript = () => {
+        const res = audioManagementService.getCollectedAudioAllCheckingStatusScript();
+        const concatenatedStrings = res.map(item => item.id.substring(0, 3) + "... - " + item.title);
+        setCollectedAudioAllCheckingStatusScript(concatenatedStrings);
+    }
+
+    const getCollectedAudioAllCheckingStatusChecker = () => {
+        const res = audioManagementService.getCollectedAudioAllCheckingStatusChecker();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name);
+        setCollectedAudioAllCheckingStatusChecker(concatenatedStrings);
+    }
+
+    const getCollectedAudioAllCheckingStatusCollector = () => {
+        const res = audioManagementService.getCollectedAudioAllCheckingStatusCollector();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name);
+        setCollectedAudioAllCheckingStatusCollector(concatenatedStrings);
+    }
+
+    const getCollectedAudioAllCheckingStatusSpeakers = () => {
+        const res = audioManagementService.getCollectedAudioAllCheckingStatusSpeakers();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name + " - " + item.gender);
+        setCollectedAudioAllCheckingStatusSpeaker(concatenatedStrings);
+    }
+
+    const getCollectedAudioAnnotationTypeScript = () => {
+        const res = audioManagementService.getCollectedAudioAnnotationTypeScript();
+        const concatenatedStrings = res.map(item => item.id.substring(0, 3) + "... - " + item.title);
+        setCollectedAudioAnnotationTypeScript(concatenatedStrings);
+    }
+
+    const getCollectedAudioAnnotationTypeSpeakers = () => {
+        const res = audioManagementService.getCollectedAudioAnnotationTypeSpeakers();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name + " - " + item.gender);
+        setCollectedAudioAnnotationTypeSpeaker(concatenatedStrings);
+    }
+
+    const getCollectedAudioAnnotationSentenceChecker = () => {
+        const res = audioManagementService.getCollectedAudioAnnotationSentenceChecker();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name);
+        setCollectedAudioAnnotationSentenceChecker(concatenatedStrings);
+    }
+
+    const getCollectedAudioAnnotationSentenceSpeakers = () => {
+        const res = audioManagementService.getCollectedAudioAnnotationSentenceSpeakers();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name + " - " + item.gender);
+        setCollectedAudioAnnotationSentenceSpeaker(concatenatedStrings);
+    }
+
+    const getCollectedAudioAnnotationWordChecker = () => {
+        const res = audioManagementService.getCollectedAudioAnnotationWordChecker();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name);
+        setCollectedAudioAnnotationWordChecker(concatenatedStrings);
+    }
+
+    const getCollectedAudioAnnotationWordSpeakers = () => {
+        const res = audioManagementService.getCollectedAudioAnnotationWordSpeakers();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name + " - " + item.gender);
+        setCollectedAudioAnnotationWordSpeaker(concatenatedStrings);
+    }
+
+    const getCollectedAudioAnnotationPhonemeChecker = () => {
+        const res = audioManagementService.getCollectedAudioAnnotationPhonemeChecker();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name);
+        setCollectedAudioAnnotationPhonemeChecker(concatenatedStrings);
+    }
+
+    const getCollectedAudioAnnotationPhonemeSpeakers = () => {
+        const res = audioManagementService.getCollectedAudioAnnotationPhonemeSpeakers();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name + " - " + item.gender);
+        setCollectedAudioAnnotationPhonemeSpeaker(concatenatedStrings);
+    }
 
     const getCollectedAudioData = () => {
         const res = audioManagementService.getCollectedAudioData();
@@ -323,7 +430,31 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
                 collectedAudioCheckingStatusSpeaker,
                 getCollectedAudioCheckingStatusSpeakers,
                 collectedAudioCheckingStatusScript,
-                getCollectedAudioCheckingStatusScript
+                getCollectedAudioCheckingStatusScript,
+                collectedAudioAllCheckingStatusChecker,
+                getCollectedAudioAllCheckingStatusChecker,
+                collectedAudioAllCheckingStatusSpeaker,
+                getCollectedAudioAllCheckingStatusSpeakers,
+                collectedAudioAllCheckingStatusScript,
+                getCollectedAudioAllCheckingStatusScript,
+                collectedAudioAllCheckingStatusCollector,
+                getCollectedAudioAllCheckingStatusCollector,
+                collectedAudioAnnotationTypeScript,
+                collectedAudioAnnotationTypeSpeaker,
+                getCollectedAudioAnnotationTypeScript,
+                getCollectedAudioAnnotationTypeSpeakers,
+                collectedAudioAnnotationSentenceChecker,
+                collectedAudioAnnotationSentenceSpeaker,
+                getCollectedAudioAnnotationSentenceChecker,
+                getCollectedAudioAnnotationSentenceSpeakers,
+                collectedAudioAnnotationWordChecker,
+                collectedAudioAnnotationWordSpeaker,
+                getCollectedAudioAnnotationWordChecker,
+                getCollectedAudioAnnotationWordSpeakers,
+                collectedAudioAnnotationPhonemeChecker,
+                collectedAudioAnnotationPhonemeSpeaker,
+                getCollectedAudioAnnotationPhonemeChecker,
+                getCollectedAudioAnnotationPhonemeSpeakers,
             }}
         >
             {children}

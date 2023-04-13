@@ -21,6 +21,7 @@ const CustomCalenderInpField = ({ data, filterList, handleFilterList, isParent, 
     useEffect(() => {
         if (dateValue.start && dateValue.end) {
             const newDate = getDateRangeInMonthFormate(dateValue);
+            console.log(newDate, "newDate")
             if (newDate) {
                 handleFilterList(data.key, newDate)
             }

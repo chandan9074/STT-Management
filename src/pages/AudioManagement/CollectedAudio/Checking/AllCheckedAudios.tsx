@@ -1,17 +1,20 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import Buttons from "../../../../components/Buttons"
 import { SearchBox } from "../../../../components/SearchBox"
 import Table from "../../../../components/Table"
 import { AudioManagementContext } from "../../../../context/AudioManagementProvider"
+import { Filter } from "../../../../components/Filter"
+import { targetFilterListDT } from "../../../../types/assignTypes"
+import { collectedAudioAllCheckingStatusFilterData } from "../../../../data/audioManagement/AudioManagementData"
 
 const AllCheckedAudios = () => {
 
-  const {getAllCheckedAudiosData,allCheckedAudiosData} = useContext(AudioManagementContext)
+  const { getAllCheckedAudiosData, allCheckedAudiosData } = useContext(AudioManagementContext)
 
-  useEffect(()=>{
+  useEffect(() => {
     getAllCheckedAudiosData()
-       // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div>
@@ -24,6 +27,194 @@ const AllCheckedAudios = () => {
 export default AllCheckedAudios
 
 const Header = () => {
+
+  const [count, setCount] = useState<number>(0);
+  const [filterList, setFilterList] = useState<targetFilterListDT>({
+    script: [],
+    audioChecker: [],
+    audioChecker_district: [],
+    audioChecker_details: [],
+    collector: [],
+    collector_district: [],
+    collector_details: [],
+    speaker: [],
+    speaker_gender: [],
+    speaker_age: [],
+    speaker_district: [],
+    speaker_details: [],
+    audioSubmissionPeriod: [],
+    status: [],
+  })
+
+  const { collectedAudioAllCheckingStatusScript, getCollectedAudioAllCheckingStatusScript, collectedAudioAllCheckingStatusCollector, getCollectedAudioAllCheckingStatusCollector, getCollectedAudioAllCheckingStatusSpeakers, collectedAudioAllCheckingStatusSpeaker, collectedAudioAllCheckingStatusChecker, getCollectedAudioAllCheckingStatusChecker } = useContext(AudioManagementContext);
+
+  const prevScriptFilterRef = useRef(collectedAudioAllCheckingStatusScript);
+  const prevCollectedAudioCollectorRef = useRef(collectedAudioAllCheckingStatusCollector);
+  const prevCollectedAudioSpeakersRef = useRef(collectedAudioAllCheckingStatusSpeaker);
+  const prevCollectedAudioCheckerRef = useRef(collectedAudioAllCheckingStatusChecker);
+
+
+
+  useEffect(() => {
+    let count = 0;
+    for (const key in filterList) {
+      if (filterList[key].length > 0) {
+        if (key === "script" || key === "collector" || key === "speaker" || key === "audioUploadPeriod" || key === "status" || key === "audioChecker") {
+          count += 1
+        }
+      }
+    }
+    setCount(count)
+  }, [filterList]);
+
+  useEffect(() => {
+    getCollectedAudioAllCheckingStatusScript();
+    getCollectedAudioAllCheckingStatusCollector();
+    getCollectedAudioAllCheckingStatusSpeakers();
+    getCollectedAudioAllCheckingStatusChecker();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+
+    if (collectedAudioAllCheckingStatusScript !== prevScriptFilterRef.current) {
+      const collectorDetailsObject = collectedAudioAllCheckingStatusFilterData.find(obj => obj.key === "script");
+      if (collectorDetailsObject) {
+        collectorDetailsObject.child = collectedAudioAllCheckingStatusScript;
+      }
+    }
+    if (collectedAudioAllCheckingStatusCollector !== prevCollectedAudioCollectorRef.current) {
+      const collectorObject = collectedAudioAllCheckingStatusFilterData.find(obj => obj.key === "collector");
+      if (collectorObject && collectorObject.selects) {
+        // collectorDetailsObject.child = collectedAudioAllCheckingStatusCollector;
+        const collectorDetailsObject = collectorObject.selects.find(obj => obj.key === "collector_details");
+        if (collectorDetailsObject) {
+          collectorDetailsObject.child = collectedAudioAllCheckingStatusCollector;
+        }
+      }
+    }
+    if (collectedAudioAllCheckingStatusChecker !== prevCollectedAudioCheckerRef.current) {
+      const checkerObject = collectedAudioAllCheckingStatusFilterData.find(obj => obj.key === "audioChecker");
+      if (checkerObject && checkerObject.selects) {
+        // collectorDetailsObject.child = collectedAudioAllCheckingStatusChecker;
+        const checkerDetailsObject = checkerObject.selects.find(obj => obj.key === "audioChecker_details");
+        if (checkerDetailsObject) {
+          checkerDetailsObject.child = collectedAudioAllCheckingStatusChecker;
+        }
+      }
+    }
+    if (collectedAudioAllCheckingStatusSpeaker !== prevCollectedAudioSpeakersRef.current) {
+      const speakerObject = collectedAudioAllCheckingStatusFilterData.find(obj => obj.key === "speaker");
+      if (speakerObject) {
+        // collectorDetailsObject.child = collectedAudioAllCheckingStatusCollector;
+        const selectObject = speakerObject.formData && speakerObject.formData.find(obj => obj.type === "multiple-select");
+        if (selectObject && selectObject.selects) {
+          const speakers = selectObject.selects.find(obj => obj.key === "speaker_details");
+          if (speakers) {
+            speakers.child = collectedAudioAllCheckingStatusSpeaker;
+          }
+        }
+      }
+    }
+
+    prevScriptFilterRef.current = collectedAudioAllCheckingStatusScript;
+    prevCollectedAudioCollectorRef.current = collectedAudioAllCheckingStatusCollector;
+    prevCollectedAudioSpeakersRef.current = collectedAudioAllCheckingStatusSpeaker;
+    prevCollectedAudioCheckerRef.current = collectedAudioAllCheckingStatusChecker;
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [collectedAudioAllCheckingStatusScript, collectedAudioAllCheckingStatusCollector, collectedAudioAllCheckingStatusSpeaker, collectedAudioAllCheckingStatusChecker]);
+
+
+  const handleFilterList = (key: string, value: string) => {
+    if (filterList[key].includes(value)) {
+      if (key === "collector_district" || key === "collector_details") {
+        setFilterList({
+          ...filterList,
+          [key]: filterList[key].filter((item) => item !== value),
+          collector: filterList.collector.filter((item) => item !== value),
+        });
+      }
+      else if (key === "audioChecker_district" || key === "audioChecker_details") {
+        setFilterList({
+          ...filterList,
+          [key]: filterList[key].filter((item) => item !== value),
+          audioChecker: filterList.audioChecker.filter((item) => item !== value),
+        });
+      }
+      else if (key === "speaker_gender" || key === "speaker_age" || key === "speaker_district" || key === "speaker_details") {
+        setFilterList({
+          ...filterList,
+          [key]: filterList[key].filter((item) => item !== value),
+          speaker: filterList.speaker.filter((item) => item !== value),
+        });
+      }
+      else {
+        setFilterList({
+          ...filterList,
+          [key]: filterList[key].filter((item) => item !== value),
+        });
+      }
+    } else {
+      if (key === "collector_district" || key === "collector_details") {
+        setFilterList({
+          ...filterList,
+          [key]: [...filterList[key], value],
+          collector: [...filterList.collector, value],
+        });
+      }
+      else if (key === "audioChecker_district" || key === "audioChecker_details") {
+        setFilterList({
+          ...filterList,
+          [key]: [...filterList[key], value],
+          audioChecker: [...filterList.audioChecker, value],
+        });
+      }
+      else if (key === "speaker_gender" || key === "speaker_age" || key === "speaker_district" || key === "speaker_details") {
+        setFilterList({
+          ...filterList,
+          [key]: [...filterList[key], value],
+          speaker: [...filterList.speaker, value],
+        });
+      }
+      else {
+        setFilterList({
+          ...filterList,
+          [key]: [...filterList[key], value],
+        });
+      }
+    }
+  }
+  const handleReset = (key: string, type: "single" | "all") => {
+    if (type === "all") {
+      setFilterList({
+        script: [],
+        audioChecker: [],
+        audioChecker_district: [],
+        audioChecker_details: [],
+        collector: [],
+        collector_district: [],
+        collector_details: [],
+        speaker: [],
+        speaker_gender: [],
+        speaker_age: [],
+        speaker_district: [],
+        speaker_details: [],
+        audioSubmissionPeriod: [],
+        status: [],
+      })
+    }
+    else {
+      setFilterList({
+        ...filterList,
+        [key]: [],
+      });
+    }
+  }
+
+  const handleSubmitFilter = () => {
+  }
+
   return (
     <div className='ml-6 mr-4 mb-5 flex items-center justify-between'>
       <div>
@@ -44,8 +235,9 @@ const Header = () => {
             hoverBgColor="hover:bg-white"
           />
         </div>
-        <div>
+        <div className='flex items-center gap-x-3'>
           <SearchBox.Type1 inputWidth="w-44" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
+          <Filter.Type2 popupClassName='audio_submission_date_picker' handleSubmitFilter={handleSubmitFilter} filterData={collectedAudioAllCheckingStatusFilterData} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
         </div>
       </div>
     </div>
