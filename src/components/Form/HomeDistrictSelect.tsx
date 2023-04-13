@@ -1,4 +1,3 @@
-import { CaretDownOutlined } from '@ant-design/icons';
 import { FormControl, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
 import { useState } from 'react';
 import Icons from '../../assets/Icons';
@@ -83,12 +82,7 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
                     }}
                     endAdornment={
                         <InputAdornment position="end">
-                            {/* <IconButton
-                                aria-label="toggle password visibility"
-                                edge="end"
-                            > */}
-                            <CaretDownOutlined />
-                            {/* </IconButton> */}
+                            <img className='w-[8.41px] h-[5.37px]' src={Icons.arrow_drop_down_blue_gray_45} alt="" />
                         </InputAdornment>
                     }
                     style={{
@@ -118,8 +112,8 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
                                         <div
                                             key={i}
                                             onClick={() => handleDistrictClick(name)}
-                                            className={`pl-[16px] ${formikValues === name ? 'bg-blue-10 hover:bg-blue-20 active:bg-blue-30' : 'hover:bg-ct-blue-05 active:bg-ct-blue-10'} `}>
-                                            <div className='flex justify-between items-center cursor-pointer pr-[9px] py-[12px]'>
+                                            className={`pl-[16px] ${formikValues === name ? 'activeColor' : 'hover:bg-ct-blue-05 active:bg-ct-blue-10'} `}>
+                                            <div className='deactiveColor'>
                                                 <h3
                                                     className='text-blue-gray-90 text-small' key={name}>{name}</h3>
 

@@ -1,19 +1,21 @@
 import { Drawer } from "antd"
 import { Link } from "react-router-dom";
 import Buttons from "../../Buttons";
+import { Dispatch, SetStateAction } from "react";
 
 type Props = {
     children: any,
     isDrawerOpen: boolean,
-    drawerClose: () => void,
     headerBgColor: string,
     title: string,
+    setIsDrawerClose: Dispatch<SetStateAction<boolean>>;
+    isEdit: boolean;
 }
 
-const Type1 = ({ children, isDrawerOpen, drawerClose, title, headerBgColor }: Props) => {
+const Type1 = ({ children, isDrawerOpen, title, headerBgColor, setIsDrawerClose, isEdit }: Props) => {
 
     const onClose = () => {
-        drawerClose();
+        setIsDrawerClose(false);
     };
 
     return (
@@ -30,20 +32,23 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title, headerBgColor }: Pr
                     <h1 className="text-heading-6 font-medium text-ct-blue-95">{title}</h1>
                     <p className="text-small font-normal text-ct-blue-90-70%">XXXXXXXXXXXXXXXX</p>
                 </div>
-                <Link to={``}>
-                <Buttons.BgHoverBtn
-                  title="Edit"
-                  paddingY="py-2"
-                  paddingX="px-4"
-                  borderRadius="rounded-[6px]"
-                  textColor="text-secondary-blue-50"
-                  fontSize="text-small"
-                  fontWeight="font-medium"
-                  duration="duration-300"
-                  hoverBgColor="hover:bg-white"
-                  marginX="mx-2"
-                />
-              </Link>
+                {
+                    isEdit &&
+                    <Link to={``}>
+                        <Buttons.BgHoverBtn
+                            title="Edit"
+                            paddingY="py-2"
+                            paddingX="px-4"
+                            borderRadius="rounded-[6px]"
+                            textColor="text-secondary-blue-50"
+                            fontSize="text-small"
+                            fontWeight="font-medium"
+                            duration="duration-300"
+                            hoverBgColor="hover:bg-white"
+                            marginX="mx-2"
+                        />
+                    </Link>
+                }
             </div>
             {children}
         </Drawer>

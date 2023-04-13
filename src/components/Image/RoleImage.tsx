@@ -19,7 +19,7 @@ const RoleImage = ({ role, width, height }: { role: string, width?: string, heig
         <img src={Icons.validator} alt="validator" className={`${width ? `${width}` : "w-6"} ${height ? `${height}` : "h-6"}`} />
       ) : role.toLowerCase() === "speaker" ? (
         <img src={Icons.speakerMale} alt="speakerMale" className={`${width ? `${width}` : "w-6"} ${height ? `${height}` : "h-6"}`} />
-      )  : role === "speakerFemale" ? (
+      )  : role.toLowerCase() === "speakerFemale".toLowerCase() ? (
         <img src={Icons.speakerFemale} alt="speakerFemale" className={`${width ? `${width}` : "w-6"} ${height ? `${height}` : "h-6"}`} />
       ) : (
         ""

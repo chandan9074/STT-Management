@@ -17,10 +17,6 @@ const Tag = () => {
     setSelectedRows(value)
   }
 
-  const drawerClose = () => {
-    setOpen(false);
-  };
-
   return (
     <div>
       <Header open={open} setOpen={setOpen} selectedRows={selectedRows} />
@@ -28,8 +24,10 @@ const Tag = () => {
       <Drawer.Organizer.Type1
         isDrawerOpen={open}
         headerBgColor="bg-ct-blue-05"
-        drawerClose={drawerClose}
+        // drawerClose={drawerClose}
+        setIsDrawerClose={setOpen}
         title="Tag Details"
+        isEdit={true}
       >
         <div className=' flex items-center'>
           <SideDrawerContent data={tagData} />
