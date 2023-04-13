@@ -12,7 +12,7 @@ import { targetFilterDT } from "../../types/assignTypes";
 
 type Props = {
     data: targetFilterDT;
-    isParent: string | undefined;
+    isParent?: string | undefined;
     filterList: targetFilterListDT;
     placeHolder?: string;
     handleFilterList: (key: string, value: string) => void;
@@ -29,14 +29,14 @@ const Type5 = ({
     // console.log("singledata....", data)
     return (
         <div className="relative w-80">
-            <div className="p-3 border border-blue-gray-10 rounded-[7px] bg-white inline-flex">
-                <div className="w-72 overflow-x-auto flex items-center">
+            <div className="pt-3 px-3 pb-2 border border-blue-gray-10 rounded-[7px] bg-white inline-flex">
+                <div className="w-72 pb-1 overflow-x-auto custom-scrollBar custom-scrollBar-height-5 flex items-center">
                     {filterList[data.key].length === 0 ? (
                         <button
-                            onClick={() => setOpen(!open)}
-                            className="text-xs text-blue-gray-60 mb-0 py-0.5 w-full text-left"
+                            onClick={() => setOpen(!open)} 
+                            className="text-xs text-blue-gray-60 mb-0 py-0.5 w-full text-left" 
                         >
-                            {placeHolder ? placeHolder : "Select One"}
+                            {placeHolder ? placeHolder : "Select One"} 
                         </button>
                     ) : (
                         <>

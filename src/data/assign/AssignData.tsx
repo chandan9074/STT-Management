@@ -504,6 +504,7 @@ export const targetFilter: targetFilterDT[] = [
     {
         type: "check",
         key: "targetStatus",
+        viewKey: "targetStatus",
         title: "Target Status",
         // isParent: true,
         child: [
@@ -515,6 +516,7 @@ export const targetFilter: targetFilterDT[] = [
     {
         type: "check",
         key: "speechStatus",
+        viewKey: "speechStatus",
         title: "Speech Status",
         // isParent: true,
         child: [
@@ -1124,7 +1126,7 @@ export const targetSpeechData = {
                     duration: "",
                     url: ""
                 },
-                
+
                 speeches: '800',
                 maxSpeeches: '3000',
                 remark: "This Is Remark data",

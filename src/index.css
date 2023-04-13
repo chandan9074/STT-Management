@@ -169,8 +169,8 @@ pre {
   width: 8px;
 }
 
-.custom-scrollBar-width-5::-webkit-scrollbar {
-  width: 2px;
+.custom-scrollBar-height-5::-webkit-scrollbar {
+  height: 8px;
 }
 
 /* Track */
