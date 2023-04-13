@@ -33,17 +33,6 @@ const Header = () => {
       <div className='flex items-center gap-x-6'>
         <div className="flex items-center gap-x-3">
           <Buttons.BgHoverBtn
-            title="Claim Permission"
-            paddingY="py-2"
-            paddingX="px-4"
-            borderRadius="rounded-[6px]"
-            textColor="text-secondary-blue-50"
-            fontSize="text-small"
-            fontWeight="font-medium"
-            duration="duration-300"
-            hoverBgColor="hover:bg-white"
-          />
-          <Buttons.BgHoverBtn
             title="Re-Assign"
             paddingY="py-2"
             paddingX="px-4"

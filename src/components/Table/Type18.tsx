@@ -5,12 +5,12 @@ import Icons from '../../assets/Icons'
 import { CommonContext } from '../../context/CommonProvider'
 import { allCheckedAudioDT } from '../../types/audioManagementTypes'
 import AudioTrack from '../common/AudioTrack'
-import Remark from '../common/Remark'
 import SpeechStatus from '../common/SpeechStatus'
 import Speaker from '../common/TableField/AudioManagement/Speaker'
 import RoleImage from '../Image/RoleImage'
 import Pagination from '../Pagination'
 import { Drawer } from '../Drawer'
+import Remark2 from '../common/TableField/Remark2'
 
 type Props = {
   data: allCheckedAudioDT[]
@@ -116,7 +116,7 @@ const Type18 = ({ data }: Props) => {
       width: 85,
       align: "center",
       render: (data: allCheckedAudioDT) => (
-        <div className='flex justify-center'>
+        <div className='flex justify-center relative'>
           <img
             onClick={() => {
               setRemarkOpen(true);
@@ -125,6 +125,16 @@ const Type18 = ({ data }: Props) => {
             src={Icons.File} className="h-[16px] w-[16px] cursor-pointer"
             alt=""
           />
+          {
+                        remarkOpen &&
+                        <div className='fixed top-[209px] right-[86px] z-[999] animate-fadeIn2'>
+                            <Remark2
+                                open={remarkOpen}
+                                setOpen={setRemarkOpen}
+                                data={data.remark}
+                            />
+                        </div>
+                    }
         </div>
       )
     },
@@ -194,18 +204,6 @@ const Type18 = ({ data }: Props) => {
           handleDataChange={handlePageChange}
         />
       </div>
-
-      {
-        remarkOpen &&
-        <Remark
-          open={remarkOpen}
-          setOpen={setRemarkOpen}
-          roleName={'meem'}
-          roleType={'speaker'}
-          dateTime={singleTargetData?.deadLine ? singleTargetData?.deadLine : ''}
-          desc={'this is remark'}
-        />
-      }
 
       {
         (open && singleTargetData) &&

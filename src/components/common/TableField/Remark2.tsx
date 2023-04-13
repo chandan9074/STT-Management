@@ -12,7 +12,7 @@ type Props = {
 
 const Remark2 = ({ open, setOpen, data }: Props) => {
     return open ? (
-        <div className='fixed top-[209px] right-[86px] z-[999] animate-fadeIn2 '>
+        <div >
             <div
                 className="fixed top-0 left-0 opacity-25 bg-black w-full h-screen z-[999]"
                 onClick={() => setOpen(false)}
@@ -24,10 +24,10 @@ const Remark2 = ({ open, setOpen, data }: Props) => {
                 </div>
 
                 {/* Body */}
-                <div className='pt-[21px] pb-10 px-10'>
+                <div className='pt-[21px] pb-10 px-10 flex flex-col gap-y-[34px]'>
                     {
                         data.map((item: historyRemark) => (
-                            <div className='mb-[34px]'>
+                            <div className=''>
                                 <div className='flex items-center gap-x-4'>
                                     <SpeechStatus data={item.status} />
                                     <p className='text-blue-gray-75 text-small'>{item.deadline}</p>

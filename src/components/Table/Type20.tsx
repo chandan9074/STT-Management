@@ -1,5 +1,6 @@
 import { Table } from "antd";
 import { ColumnsType, ColumnType } from 'antd/es/table';
+import { useState } from "react";
 import Icons from "../../assets/Icons";
 import { colAnnSenStatusFilterData } from "../../data/audioManagement/AudioManagementData";
 import { STATUS_ANNOTATING, STATUS_TOOK_A_BREAK } from "../../helpers/ConditionVariable";
@@ -8,6 +9,7 @@ import AudioTrack from "../common/AudioTrack";
 import Annotate from "../common/TableField/AudioManagement/Annotate";
 import Speaker from "../common/TableField/AudioManagement/Speaker";
 import StatusFilter from "../common/TableField/AudioManagement/StatusFilter";
+import { Drawer } from "../Drawer";
 import RoleImage from "../Image/RoleImage";
 import Pagination from "../Pagination";
 
@@ -17,8 +19,12 @@ type Props = {
 
 const Type20 = ({ data }: Props) => {
 
-    // const [remarkOpen, setRemarkOpen] = useState(false);
-    // const [singleTargetData, setSingleTargetData] = useState<collectAnnSenDataDT>();
+    const [singleTargetData, setSingleTargetData] = useState<collectAnnSenDataDT>();
+    const [open, setOpen] = useState(false);
+
+    const showDrawer = (item: collectAnnSenDataDT) => {
+        setOpen(true);
+    };
 
     const getColumnSearchProps = (dataIndex: string): ColumnType<collectAnnSenDataDT> => ({
 
@@ -108,10 +114,10 @@ const Type20 = ({ data }: Props) => {
 
                     <div className='flex w-full justify-center items-center'>
                         <img
-                            // onClick={() => {
-                            //     showDrawer(record);
-                            //     setSingleTargetData(record);
-                            // }}
+                            onClick={() => {
+                                showDrawer(record);
+                                setSingleTargetData(record);
+                            }}
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
@@ -162,6 +168,19 @@ const Type20 = ({ data }: Props) => {
                     handleDataChange={handlePageChange}
                 />
             </div>
+            {
+                (open && singleTargetData) &&
+                <Drawer.AudioManagement.CheckingStatus
+                    isDrawerOpen={open}
+                    setIsDrawerOpen={setOpen}
+                    isEditHistory={false}
+                    speaker={singleTargetData.speaker}
+                    remark={singleTargetData.remark}
+                    script={singleTargetData.script}
+                    others={singleTargetData.others}
+                    id={singleTargetData.id}
+                />
+            }
         </div>
     )
 }

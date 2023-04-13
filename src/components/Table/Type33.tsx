@@ -2,7 +2,7 @@ import { Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import React, { useState } from 'react';
 import Icons from '../../assets/Icons';
-import { annotatedFilesDT } from '../../types/audioManagementTypes';
+import { annotatedFilesUploadDT } from '../../types/audioManagementTypes';
 import AudioTrack from '../common/AudioTrack';
 import SpeechStatus from '../common/SpeechStatus';
 import RoleImage from '../Image/RoleImage';
@@ -11,27 +11,26 @@ import { STATUS_CLAIMED } from '../../helpers/ConditionVariable';
 import { CustomModal } from '../common/CustomModal';
 import ClaimApplicationModal from '../containers/AudioManagement/Annotation/AnnotatedFiles/ClaimApplicationModal';
 import { Drawer } from '../Drawer';
-import Speaker from '../common/TableField/AudioManagement/Speaker';
 import Remark2 from '../common/TableField/Remark2';
 
 
 type Props = {
-    data: annotatedFilesDT[]
+    data: annotatedFilesUploadDT[]
 }
 
-const Type21 = ({ data }: Props) => {
+const Type33 = ({ data }: Props) => {
 
     const [open, setOpen] = useState(false);
 
     const [remarkOpen, setRemarkOpen] = useState(false);
-    const [singleTargetData, setSingleTargetData] = useState<annotatedFilesDT>();
+    const [singleTargetData, setSingleTargetData] = useState<annotatedFilesUploadDT>();
     const [isClaimModal, setIsClaimModal] = useState<boolean>(false);
 
-    const showDrawer = (item: annotatedFilesDT) => {
+    const showDrawer = (item: annotatedFilesUploadDT) => {
         setOpen(true);
     };
 
-    const Type20columns: ColumnsType<annotatedFilesDT> = [
+    const Type33columns: ColumnsType<annotatedFilesUploadDT> = [
         {
             title: `${"SN".toLocaleUpperCase()}`,
             key: 'sn',
@@ -46,13 +45,13 @@ const Type21 = ({ data }: Props) => {
             key: 'id',
             // align: 'center',
             width: 96,
-            render: (data: annotatedFilesDT) => <h1 className='w-20 truncate whitespace-nowrap'># {data.id}</h1>,
+            render: (data: annotatedFilesUploadDT) => <h1 className='w-20 truncate whitespace-nowrap'># {data.id}</h1>,
         },
         {
             title: `${"Raw Audio".toLocaleUpperCase()}`,
             key: 'speech',
             width: 180,
-            render: (data: annotatedFilesDT) => <>
+            render: (data: annotatedFilesUploadDT) => <>
                 <AudioTrack data={data.speech} />
             </>,
         },
@@ -62,7 +61,7 @@ const Type21 = ({ data }: Props) => {
             // className: "audio-management-status",
             width: 206,
             // render: (data: annotatedFilesDT) => <Annotator data={data.annotator} />
-            render: (data: annotatedFilesDT) =>
+            render: (data: annotatedFilesUploadDT) =>
                 <div className='flex flex-col gap-y-1'>
                     <div className='flex'>
                         <RoleImage role={data.annotator.annotator.role} height='h-4' width='w-4' />
@@ -76,7 +75,7 @@ const Type21 = ({ data }: Props) => {
             title: `${"Audio Checker".toLocaleUpperCase()}`,
             key: 'audioChecker',
             width: 180,
-            render: (data: annotatedFilesDT) =>
+            render: (data: annotatedFilesUploadDT) =>
                 <div >
                     <div className='flex'>
                         <RoleImage role='audio checker' height='h-4' width='w-4' />
@@ -85,13 +84,6 @@ const Type21 = ({ data }: Props) => {
                     <p className='text-blue-gray-75 text-xxs font-normal pl-[22px]'>{data.audioChecker.locality}</p>
                 </div>
         },
-        {
-            title: `${"Speaker".toLocaleUpperCase()}`,
-            key: 'speaker',
-            width: 206,
-            render: (data: annotatedFilesDT) => <Speaker data={data.speaker} />
-        },
-
         {
             title: `${"Status".toLocaleUpperCase()}`,
             width: 150,
@@ -115,7 +107,7 @@ const Type21 = ({ data }: Props) => {
             title: `${"DeadLine".toLocaleUpperCase()}`,
             key: 'deadLine',
             width: 130,
-            render: (data: annotatedFilesDT) => <h1 className='text-small text-blue-gray-80'>{data.deadLine}</h1>
+            render: (data: annotatedFilesUploadDT) => <h1 className='text-small text-blue-gray-80'>{data.deadLine}</h1>
         },
         {
             title: `${"Submission Date".toLocaleUpperCase()}`,
@@ -129,7 +121,7 @@ const Type21 = ({ data }: Props) => {
             title: `${"REMARK".toLocaleUpperCase()}`,
             width: 110,
             align: "center",
-            render: (data: annotatedFilesDT) => (
+            render: (data: annotatedFilesUploadDT) => (
                 <div className='flex justify-center relative'>
                     <img
                         onClick={() => {
@@ -159,7 +151,7 @@ const Type21 = ({ data }: Props) => {
             key: 'details',
             fixed: 'right',
             width: 100,
-            render: (_, record: annotatedFilesDT) => (
+            render: (_, record: annotatedFilesUploadDT) => (
                 <>
 
                     <div className='flex w-full justify-center items-center'>
@@ -178,13 +170,13 @@ const Type21 = ({ data }: Props) => {
     ]
 
     const rowSelection = {
-        onChange: (selectedRowKeys: React.Key[], selectedRows: annotatedFilesDT[]) => {
+        onChange: (selectedRowKeys: React.Key[], selectedRows: annotatedFilesUploadDT[]) => {
             // setSelectedTarget(selectedRows);
             console.log('*******', selectedRows);
 
 
         },
-        getCheckboxProps: (record: annotatedFilesDT) => ({
+        getCheckboxProps: (record: annotatedFilesUploadDT) => ({
             // disabled: record.name === 'Disabled User', // Column configuration not to be checked
             // name: record.assignee.name,
         }),
@@ -203,7 +195,7 @@ const Type21 = ({ data }: Props) => {
                     fixed: 'left',
                     ...rowSelection,
                 }}
-                columns={Type20columns}
+                columns={Type33columns}
                 dataSource={data}
                 scroll={{ x: 1366 }}
                 rowKey="id"
@@ -219,7 +211,7 @@ const Type21 = ({ data }: Props) => {
                 />
             </div>
 
-            
+{/* 
             {
                 (open && singleTargetData) &&
                 <Drawer.AudioManagement.CheckingStatus
@@ -233,7 +225,23 @@ const Type21 = ({ data }: Props) => {
                     id={singleTargetData.id}
                     history={singleTargetData?.history}
                 />
+            } */}
+
+               {
+                (open && singleTargetData) &&
+                <Drawer.AudioManagement.Type2
+                    isDrawerOpen={open}
+                    setIsDrawerOpen={setOpen}
+                    id={singleTargetData.id}
+                    speaker={singleTargetData.speaker}
+                    others={singleTargetData.others}
+                    speechInfo={singleTargetData.speechInfo}
+                    isEditHistory={true}
+                    submission={singleTargetData.submissionDate}
+                    history={singleTargetData.history}
+                />
             }
+
 
             <CustomModal.Primary
                 setOpen={setIsClaimModal}
@@ -246,4 +254,4 @@ const Type21 = ({ data }: Props) => {
     );
 };
 
-export default Type21;
+export default Type33;

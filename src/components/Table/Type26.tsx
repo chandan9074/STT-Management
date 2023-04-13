@@ -4,7 +4,8 @@ import { useState } from "react"
 import Icons from "../../assets/Icons"
 import { annotationUploadDT } from "../../types/audioManagementTypes"
 import AudioTrack from "../common/AudioTrack"
-import Remark from "../common/Remark"
+import Remark2 from "../common/TableField/Remark2"
+import { Drawer } from "../Drawer"
 import Pagination from "../Pagination"
 
 type Props = {
@@ -14,7 +15,13 @@ type Props = {
 const Type26 = ({ data }: Props) => {
 
     const [remarkOpen, setRemarkOpen] = useState(false);
+    const [open, setOpen] = useState(false);
+
     const [singleTargetData, setSingleTargetData] = useState<annotationUploadDT>();
+
+    const showDrawer = () => {
+        setOpen(true);
+    };
 
     const Type26columns: ColumnsType<annotationUploadDT> = [
         {
@@ -56,15 +63,24 @@ const Type26 = ({ data }: Props) => {
             width: 120,
             align: "center",
             render: (data: annotationUploadDT) => (
-                <div className='flex justify-center'>
+                <div className='flex justify-center relative'>
                     <img
                         onClick={() => {
                             setRemarkOpen(true);
-                            setSingleTargetData(data);
                         }}
                         src={Icons.File} className="h-[16px] w-[16px] cursor-pointer"
                         alt=""
                     />
+                    {
+                        remarkOpen &&
+                        <div className='fixed top-[209px] right-[86px] z-[999] animate-fadeIn2'>
+                            <Remark2
+                                open={remarkOpen}
+                                setOpen={setRemarkOpen}
+                                data={data.remark}
+                            />
+                        </div>
+                    }
                 </div>
             )
         },
@@ -80,10 +96,10 @@ const Type26 = ({ data }: Props) => {
 
                     <div className='flex w-full justify-center items-center'>
                         <img
-                            // onClick={() => {
-                            //     showDrawer(record);
-                            //     setSingleTargetData(record);
-                            // }}
+                            onClick={() => {
+                                showDrawer();
+                                setSingleTargetData(record);
+                            }}
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
@@ -134,16 +150,17 @@ const Type26 = ({ data }: Props) => {
                     handleDataChange={handlePageChange}
                 />
             </div>
-
             {
-                remarkOpen &&
-                <Remark
-                    open={remarkOpen}
-                    setOpen={setRemarkOpen}
-                    roleName={'meem'}
-                    roleType={'speaker'}
-                    dateTime={singleTargetData?.deadLine ? singleTargetData?.deadLine : ''}
-                    desc={'this is remark'}
+                (open && singleTargetData) &&
+                <Drawer.AudioManagement.Type2
+                    isDrawerOpen={open}
+                    setIsDrawerOpen={setOpen}
+                    id={singleTargetData.id}
+                    speaker={singleTargetData.speaker}
+                    others={singleTargetData.others}
+                    speechInfo={singleTargetData.speechInfo}
+                    isEditHistory={false}
+                    deadline={singleTargetData.deadLine}
                 />
             }
         </div>

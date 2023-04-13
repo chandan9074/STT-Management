@@ -19,7 +19,7 @@ const SpeechInfo = ({ data }: { data: speechInfo }) => {
         },
         {
             title: 'Data Source',
-            value: data.sourceReference ?? '-'
+            value: [data.sourceType, data.sourceReference] ?? '-'
         },
         {
             title: 'Domain',
@@ -44,9 +44,24 @@ const SpeechInfo = ({ data }: { data: speechInfo }) => {
                     </div>
 
                     <div className="col-span-8 pt-3 pr-2 pl-3">
-                        <h1 className="text-blue-gray-80 font-medium text-small leading-15px">
-                            {item?.value}
-                        </h1>
+                        {
+                            item.title.includes('Data Source') ?
+                                <div>
+                                    <h1 className="text-blue-gray-80 font-medium text-small leading-15px">
+                                        {item?.value[0]}
+                                    </h1>
+                                    <a className='text-secondary-blue-50 font-medium text-small underline hover:text-secondary-blue-50 hover:underline' href={item.value[1]} target='_blank' rel="noreferrer">
+                                        <h1>
+                                            {item.value[1]}
+                                        </h1>
+                                    </a>
+                                </div>
+                                :
+                                <h1 className="text-blue-gray-80 font-medium text-small leading-15px">
+                                    {item?.value}
+                                </h1>
+                        }
+
                     </div>
                 </div>
             ))}

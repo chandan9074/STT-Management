@@ -22,7 +22,7 @@ const Type23 = ({ data }: Props) => {
 
     const [singleTargetData, setSingleTargetData] = useState<uploadAudioDataDT>();
 
-    const showDrawer = (item: uploadAudioDataDT) => {
+    const showDrawer = () => {
         setOpen(true);
     };
 
@@ -107,7 +107,7 @@ const Type23 = ({ data }: Props) => {
                     <div className='flex w-full justify-center items-center'>
                         <img
                             onClick={() => {
-                                showDrawer(record);
+                                showDrawer();
                                 setSingleTargetData(record);
                             }}
                             className='w-[14px] h-[14px] cursor-pointer'
@@ -141,14 +141,11 @@ const Type23 = ({ data }: Props) => {
                     isDrawerOpen={open}
                     setIsDrawerOpen={setOpen}
                     id={singleTargetData.id}
-                //   isEditHistory={true}
-                  speaker={singleTargetData.speaker}
-                //   remark={singleTargetData.remark}
-                //   script={singleTargetData.script}
-                  others={singleTargetData.others}
-                  speechInfo={singleTargetData.speechInfo}
-                  isEditHistory={false}
-                //   history={singleTargetData?.history}
+                    speaker={singleTargetData.speaker}
+                    others={singleTargetData.others}
+                    speechInfo={singleTargetData.speechInfo}
+                    isEditHistory={false}
+                    deadline={singleTargetData.deadline}
                 />
             }
         </div>

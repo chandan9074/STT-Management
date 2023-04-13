@@ -148,14 +148,14 @@ function App() {
                 <Route path={PATH.SENETENCE_LEVEL} element={<SentenceLevelUpload />} />
                 <Route path={PATH.WORD_LEVEL} element={<WordLevelUpload />} />
                 <Route path={PATH.PHONEME_LEVEL} element={<PhonemeLevelUpload />} />
-                <Route path={PATH.ANNOTATED_FILES} element={<AnnotatedFiles />} />
+                <Route path={PATH.ANNOTATED_FILES} element={<AnnotatedFilesUpload />} />
               </Route>
               <Route path={PATH.VALIDATION}>
                 <Route path="" element={<ValidationUpload />} />
                 <Route path={PATH.SENETENCE_LEVEL} element={<SentenceLevelUploadVal />} />
                 <Route path={PATH.WORD_LEVEL} element={<WordLevelUploadVal />} />
                 <Route path={PATH.PHONEME_LEVEL} element={<PhonemeLevelUploadVal />} />
-                <Route path={PATH.ANNOTATED_FILES} element={<AnnotatedFilesUpload />} />
+                <Route path={PATH.VALIDATED_FILES} element={<AnnotatedFilesUpload />} />
               </Route>
             </Route>
           </Route>

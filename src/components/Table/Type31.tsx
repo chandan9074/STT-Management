@@ -4,8 +4,8 @@ import { useState } from "react"
 import Icons from "../../assets/Icons"
 import { validatedFilesDT } from "../../types/audioManagementTypes"
 import AudioTrack from "../common/AudioTrack"
-import Remark from "../common/Remark"
 import SpeechStatus from "../common/SpeechStatus"
+import Remark2 from "../common/TableField/Remark2"
 import { Drawer } from "../Drawer"
 import RoleImage from "../Image/RoleImage"
 import Pagination from "../Pagination"
@@ -15,6 +15,7 @@ type Props = {
 }
 
 const Type31 = ({ data }: Props) => {
+
 
     const [remarkOpen, setRemarkOpen] = useState(false);
     const [singleTargetData, setSingleTargetData] = useState<validatedFilesDT>();
@@ -168,7 +169,7 @@ const Type31 = ({ data }: Props) => {
             width: 85,
             align: "center",
             render: (data: validatedFilesDT) => (
-                <div className='flex justify-center'>
+                <div className='flex justify-center relative'>
                     <img
                         onClick={() => {
                             setRemarkOpen(true);
@@ -177,6 +178,16 @@ const Type31 = ({ data }: Props) => {
                         src={Icons.File} className="h-[16px] w-[16px] cursor-pointer"
                         alt=""
                     />
+                    {
+                        remarkOpen &&
+                        <div className='fixed top-[209px] right-[86px] z-[999] animate-fadeIn2'>
+                            <Remark2
+                                open={remarkOpen}
+                                setOpen={setRemarkOpen}
+                                data={data.remark}
+                            />
+                        </div>
+                    }
                 </div>
             )
         },
@@ -188,21 +199,21 @@ const Type31 = ({ data }: Props) => {
             fixed: 'right',
             width: 85,
             render: (_, record: validatedFilesDT) => (
-              <>
-      
-                <div className='flex w-full justify-center items-center'>
-                  <img
-                    onClick={() => {
-                      showDrawer(record);
-                      setSingleTargetData(record);
-                    }}
-                    className='w-[14px] h-[14px] cursor-pointer'
-                    src={Icons.open_in_new}
-                    alt="" />
-                </div>
-      
-              </>)
-          },
+                <>
+
+                    <div className='flex w-full justify-center items-center'>
+                        <img
+                            onClick={() => {
+                                showDrawer(record);
+                                setSingleTargetData(record);
+                            }}
+                            className='w-[14px] h-[14px] cursor-pointer'
+                            src={Icons.open_in_new}
+                            alt="" />
+                    </div>
+
+                </>)
+        },
     ]
 
 
@@ -247,31 +258,21 @@ const Type31 = ({ data }: Props) => {
                     handleDataChange={handlePageChange}
                 />
             </div>
-            {
-        remarkOpen &&
-        <Remark
-          open={remarkOpen}
-          setOpen={setRemarkOpen}
-          roleName={'meem'}
-          roleType={'speaker'}
-          dateTime={singleTargetData?.deadLine ? singleTargetData?.deadLine : ''}
-          desc={'this is remark'}
-        />
-      }
 
-      {
-        (open && singleTargetData) &&
-        <Drawer.AudioManagement.CheckingStatus
-          isDrawerOpen={open}
-          setIsDrawerOpen={setOpen}
-          isEditHistory={true}
-          speaker={singleTargetData.speaker}
-          remark={singleTargetData.remark}
-          script={singleTargetData.script}
-          others={singleTargetData.others}
-          id={singleTargetData.id}
-        />
-      }
+            {
+                (open && singleTargetData) &&
+                <Drawer.AudioManagement.CheckingStatus
+                    isDrawerOpen={open}
+                    setIsDrawerOpen={setOpen}
+                    isEditHistory={true}
+                    speaker={singleTargetData.speaker}
+                    remark={singleTargetData.remark}
+                    script={singleTargetData.script}
+                    others={singleTargetData.others}
+                    id={singleTargetData.id}
+                    history={singleTargetData.history}
+                />
+            }
         </div>
     )
 }

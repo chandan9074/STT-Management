@@ -5,10 +5,11 @@ import Icons from "../../assets/Icons"
 import { CommonContext } from "../../context/CommonProvider"
 import { allCheckedSpeechDT } from "../../types/audioManagementTypes"
 import AudioTrack from "../common/AudioTrack"
-import Remark from "../common/Remark"
 import SpeechStatus from "../common/SpeechStatus"
 import RoleImage from "../Image/RoleImage"
 import Pagination from "../Pagination"
+import { Drawer } from "../Drawer"
+import Remark2 from "../common/TableField/Remark2"
 
 type Props = {
     data: allCheckedSpeechDT[]
@@ -17,9 +18,13 @@ const Type25 = ({ data }: Props) => {
 
     const { roleName } = useContext(CommonContext);
 
-
     const [remarkOpen, setRemarkOpen] = useState(false);
     const [singleTargetData, setSingleTargetData] = useState<allCheckedSpeechDT>();
+    const [open, setOpen] = useState(false);
+
+    const showDrawer = () => {
+        setOpen(true);
+    };
 
     const Type25columns: ColumnsType<allCheckedSpeechDT> = [
         {
@@ -87,7 +92,7 @@ const Type25 = ({ data }: Props) => {
             width: 80,
             align: "center",
             render: (data: allCheckedSpeechDT) => (
-                <div className='flex justify-center'>
+                <div className='flex justify-center relative'>
                     <img
                         onClick={() => {
                             setRemarkOpen(true);
@@ -96,6 +101,16 @@ const Type25 = ({ data }: Props) => {
                         src={Icons.File} className="h-[16px] w-[16px] cursor-pointer"
                         alt=""
                     />
+                    {
+                        remarkOpen &&
+                        <div className='fixed top-[209px] right-[86px] z-[999] animate-fadeIn2'>
+                            <Remark2
+                                open={remarkOpen}
+                                setOpen={setRemarkOpen}
+                                data={data.remark}
+                            />
+                        </div>
+                    }
                 </div>
             )
         },
@@ -108,18 +123,16 @@ const Type25 = ({ data }: Props) => {
             width: 80,
             render: (_, record: allCheckedSpeechDT) => (
                 <>
-
                     <div className='flex w-full justify-center items-center'>
                         <img
-                            // onClick={() => {
-                            //     showDrawer(record);
-                            //     setSingleTargetData(record);
-                            // }}
+                            onClick={() => {
+                                showDrawer();
+                                setSingleTargetData(record);
+                            }}
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
                     </div>
-
                 </>)
         },
     ]
@@ -166,14 +179,17 @@ const Type25 = ({ data }: Props) => {
             </div>
 
             {
-                remarkOpen &&
-                <Remark
-                    open={remarkOpen}
-                    setOpen={setRemarkOpen}
-                    roleName={'meem'}
-                    roleType={'speaker'}
-                    dateTime={singleTargetData?.deadLine ? singleTargetData?.deadLine : ''}
-                    desc={'this is remark'}
+                (open && singleTargetData) &&
+                <Drawer.AudioManagement.Type2
+                    isDrawerOpen={open}
+                    setIsDrawerOpen={setOpen}
+                    id={singleTargetData.id}
+                    speaker={singleTargetData.speaker}
+                    others={singleTargetData.others}
+                    speechInfo={singleTargetData.speechInfo}
+                    isEditHistory={true}
+                    submission={singleTargetData.submissionDate}
+                    history={singleTargetData.history}
                 />
             }
         </div>

@@ -3,7 +3,7 @@ import { Drawer } from 'antd';
 import Buttons from '../../../Buttons';
 import Script from '../../Target/Script';
 import MetaData from '../../Target/MetaData';
-import { historyDT, othersDT, remarkInfoDT, singleSpeakerDT2, speakerLocalityDT2 } from '../../../../types/audioManagementTypes';
+import { historyDT, historyRemark, othersDT, singleSpeakerDT2, speakerLocalityDT2 } from '../../../../types/audioManagementTypes';
 import Others from './Others';
 import RoleImage from '../../../Image/RoleImage';
 import SpeakerInformation from './SpeakerInformation';
@@ -15,7 +15,7 @@ type Props = {
     setIsDrawerOpen: Dispatch<SetStateAction<boolean>>;
     isEditHistory: boolean
     speaker: speakerLocalityDT2;
-    remark: remarkInfoDT;
+    remark: historyRemark[];
     script: scriptResDT;
     others: othersDT;
     id: string;
@@ -129,14 +129,14 @@ const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory,
                                                 <Script data={script} setIsMetaData={setIsMetaData} isMetaData={isMetaData} />
                                                 :
                                                 activePanel.includes("Others") ?
-                                                <>
-                                                    {
-                                                        (remark) &&
-                                                        <Others data={others} remark={remark} />
-                                                    }
-                                                </>
-                                                :
-                                                <EditHistory data={history}/>
+                                                    <>
+                                                        {
+                                                            (remark) &&
+                                                            <Others data={others} remark={remark} />
+                                                        }
+                                                    </>
+                                                    :
+                                                    <EditHistory data={history} />
                                         }
                                     </div>
                                 </div>

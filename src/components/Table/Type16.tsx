@@ -1,9 +1,11 @@
 import { Table } from "antd"
 import { ColumnsType } from "antd/es/table"
+import { useState } from "react"
 import Icons from "../../assets/Icons"
 import { audioManagementDT } from "../../types/audioManagementTypes"
 import AudioTrack from "../common/AudioTrack"
 import Speaker from "../common/TableField/AudioManagement/Speaker"
+import { Drawer } from "../Drawer"
 import Pagination from "../Pagination"
 
 type Props = {
@@ -12,6 +14,12 @@ type Props = {
 
 const Type16 = ({ data }: Props) => {
 
+    const [open, setOpen] = useState(false);
+    const [singleTargetData, setSingleTargetData] = useState<audioManagementDT>();
+
+    const showDrawer = () => {
+        setOpen(true);
+    };
 
 
     const Type16columns: ColumnsType<audioManagementDT> = [
@@ -81,15 +89,15 @@ const Type16 = ({ data }: Props) => {
             key: 'details',
             // fixed: 'right',
             width: 93,
-            render: (data: audioManagementDT) => (
+            render: (_,record: audioManagementDT) => (
                 <>
 
                     <div className='flex w-full justify-center items-center'>
                         <img
-                            // onClick={() => {
-                            //     showDrawer(record);
-                            //     setSingleTargetData(record);
-                            // }}
+                            onClick={() => {
+                                showDrawer();
+                                setSingleTargetData(record);
+                            }}
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
@@ -115,6 +123,19 @@ const Type16 = ({ data }: Props) => {
                     handleDataChange={handlePageChange}
                 />
             </div>
+            {
+                (open && singleTargetData) &&
+                <Drawer.AudioManagement.CheckingStatus
+                    isDrawerOpen={open}
+                    setIsDrawerOpen={setOpen}
+                    isEditHistory={false}
+                    speaker={singleTargetData.speaker}
+                    remark={singleTargetData.remark}
+                    script={singleTargetData.script}
+                    others={singleTargetData.others}
+                    id={singleTargetData.id}
+                />
+            }
         </div>
     )
 }

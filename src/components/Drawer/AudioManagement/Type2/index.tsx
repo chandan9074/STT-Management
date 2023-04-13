@@ -1,9 +1,12 @@
 import { Drawer } from 'antd';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { othersUploadAudioDT, speakerUploadAudioDT, speechInfo } from '../../../../types/audioManagementTypes';
+import { historyDT, othersUploadAudioDT, speakerUploadAudioDT, speechInfo } from '../../../../types/audioManagementTypes';
 import RoleImage from '../../../Image/RoleImage';
 import Buttons from '../../../Buttons';
 import SpeechInfo from './SpeechInfo';
+import Others from './Others';
+import SpeakerDetails from './SpeakerDetails';
+import EditHistory from '../CheckingStatus/EditHistory';
 
 type Props = {
     isDrawerOpen: boolean,
@@ -13,9 +16,12 @@ type Props = {
     others: othersUploadAudioDT;
     speechInfo: speechInfo;
     isEditHistory: boolean;
+    deadline?: string;
+    submission?: string;
+    history?: historyDT[];
 }
 
-const Type2 = ({ id, isDrawerOpen, setIsDrawerOpen: setOpen, speaker, others, speechInfo, isEditHistory }: Props) => {
+const Type2 = ({ id, isDrawerOpen, setIsDrawerOpen: setOpen, speaker, others, speechInfo, isEditHistory, deadline, submission, history }: Props) => {
     const [activePanel, setActivePanel] = useState<string>("Speech Info");
     // const [isMetaData, setIsMetaData] = useState<boolean>(false);
     const [isSpeaker, setIsSpeaker] = useState<boolean>(false);
@@ -37,7 +43,7 @@ const Type2 = ({ id, isDrawerOpen, setIsDrawerOpen: setOpen, speaker, others, sp
             }
             return item;
         });
-       
+
     };
 
     useEffect(() => {
@@ -61,8 +67,7 @@ const Type2 = ({ id, isDrawerOpen, setIsDrawerOpen: setOpen, speaker, others, sp
                         {
                             isSpeaker ?
                                 <div>
-                                    {/* <SpeakerInformation data={speaker} setIsSpeaker={setIsSpeaker} /> */}
-                                    <div>Speaker information</div>
+                                    <SpeakerDetails setIsSpeaker={setIsSpeaker} data={speaker} />
                                 </div>
                                 :
                                 <div className='animate-fadeIn'>
@@ -71,9 +76,26 @@ const Type2 = ({ id, isDrawerOpen, setIsDrawerOpen: setOpen, speaker, others, sp
                                     <div className='border-b-[1px] border-ct-blue-20 bg-ct-blue-05 px-6 pt-6 pb-11 flex justify-between items-center relative'>
                                         <div>
                                             <h1 className='text-ct-blue-95 text-[18px] font-medium'>Details</h1>
-                                            <div className='flex'>
-                                                <h1 className='text-ct-blue-90-70% text-small'>Target ID: </h1>
-                                                <h1 className='pl-1 text-ct-blue-90-70% font-bold text-small'>{id?.slice(0, 25)}</h1>
+                                            <div className='flex items-center gap-x-3'>
+                                                <div className='flex'>
+                                                    <h1 className='text-ct-blue-90-70% text-xs'>Target ID: </h1>
+                                                    <h1 className='pl-1 text-ct-blue-90-70% font-bold text-xs'>{id?.slice(0, 25)}</h1>
+                                                </div>
+                                                {
+                                                    deadline ?
+                                                    <div className='flex'>
+                                                        <h1 className='text-ct-blue-90-70% text-xs'>Deadline: </h1>
+                                                        <h1 className='pl-1 text-ct-blue-90-70% font-bold text-xs'>{deadline}</h1>
+                                                    </div> :
+                                                     submission ?
+                                                     <div className='flex'>
+                                                         <h1 className='text-ct-blue-90-70% text-xs'>Submission: </h1>
+                                                         <h1 className='pl-1 text-ct-blue-90-70% font-bold text-xs'>{submission}</h1>
+                                                     </div>
+                                                     : 
+                                                     null
+                                                }
+
                                             </div>
                                         </div>
 
@@ -114,7 +136,7 @@ const Type2 = ({ id, isDrawerOpen, setIsDrawerOpen: setOpen, speaker, others, sp
                                                     />
                                             }
 
-                                        </div> 
+                                        </div>
                                     </div>
 
 
@@ -127,20 +149,17 @@ const Type2 = ({ id, isDrawerOpen, setIsDrawerOpen: setOpen, speaker, others, sp
                                                 activePanel.includes("Others") ?
                                                     <>
                                                         {
-                                                            // <Others data={others} remark={remark} />
-                                                            <div>this is others</div>
+                                                            <Others data={others} />
                                                         }
                                                     </>
                                                     :
-                                                    // <EditHistory data={history} />
-                                                    <div>this is edit history</div>
+                                                    <EditHistory data={history} />
                                         }
                                     </div>
                                 </div>
                         }
                     </div>
                     :
-                    // <MetaData data={script} setIsMetaData={setIsMetaData} />
                     <div>Data not found</div>
             }
 

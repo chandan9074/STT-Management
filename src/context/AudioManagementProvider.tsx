@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useState } from "react";
 import audioManagementService from "../services/audioManagementService";
-import { allCheckedAudioDT, allCheckedSpeechDT, annotatedFilesDT, annotationDT, annotationUploadDT, audioManagementDT, checkingStatusDT, checkingStatusUploadDataDT, collectAnnSenDataDT, collectValSenDataDT, sentenceLevelUploadDT, uploadAudioDataDT, validatedFilesDT } from "../types/audioManagementTypes";
+import { allCheckedAudioDT, allCheckedSpeechDT, annotatedFilesDT, annotatedFilesUploadDT, annotationDT, annotationUploadDT, audioManagementDT, checkingStatusDT, checkingStatusUploadDataDT, collectAnnSenDataDT, collectValSenDataDT, sentenceLevelUploadDT, uploadAudioDataDT, validatedFilesDT, validatedFilesUploadDT } from "../types/audioManagementTypes";
 
 interface ContextProps {
     getScriptFilter: () => void;
@@ -46,13 +46,15 @@ interface ContextProps {
     getPhonemeLevelUploadData: () => void;
     phonemeLevelUploadData: sentenceLevelUploadDT[];
     getAnnotatedFilesUploadData: () => void;
-    annotatedFilesUploadData: annotatedFilesDT[]
+    annotatedFilesUploadData: annotatedFilesUploadDT[]
     getSentenceLevelUploadVal: () => void;
     sentenceLevelUploadVal: collectValSenDataDT[]
     getWordLevelUploadVal: () => void;
     wordLevelUploadVal: collectValSenDataDT[];
     getPhonemeLevelUploadVal: () => void;
     phonemeLevelUploadVal: collectValSenDataDT[];
+    getValidatedFilesUploadData: () => void
+    validatedFilesUploadData: validatedFilesUploadDT[]
 }
 
 export const AudioManagementContext = createContext({} as ContextProps);
@@ -76,14 +78,15 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
     const [uploadAudioData, setUploadAudioData] = useState<uploadAudioDataDT[]>([] as uploadAudioDataDT[])
     const [checkingStatusUploadData, setCheckingStatusUploadData] = useState<checkingStatusUploadDataDT[]>([] as checkingStatusUploadDataDT[])
     const [allCheckedAudiosUploadData, setAllCheckedAudiosUploadData] = useState<allCheckedSpeechDT[]>([] as allCheckedSpeechDT[])
-    const [annotationUploadData, setAnnotationUploadData] = useState<annotationUploadDT[]>([] as annotatedFilesDT[])
+    const [annotationUploadData, setAnnotationUploadData] = useState<annotationUploadDT[]>([] as annotationUploadDT[])
     const [sentenceLevelUploadData, setSentenceLevelUploadData] = useState<sentenceLevelUploadDT[]>([] as sentenceLevelUploadDT[])
     const [wordLevelUploadData, setWordLevelUploadData] = useState<sentenceLevelUploadDT[]>([] as sentenceLevelUploadDT[])
     const [phonemeLevelUploadData, setPhonemeLevelUploadData] = useState<sentenceLevelUploadDT[]>([] as sentenceLevelUploadDT[])
-    const [annotatedFilesUploadData, setAnnotatedFilesUploadData] = useState<annotatedFilesDT[]>([] as annotatedFilesDT[])
+    const [annotatedFilesUploadData, setAnnotatedFilesUploadData] = useState<annotatedFilesUploadDT[]>([] as annotatedFilesUploadDT[])
     const [sentenceLevelUploadVal, setSentenceLevelUploadVal] = useState<collectValSenDataDT[]>([] as collectValSenDataDT[])
     const [wordLevelUploadVal, setWordLevelUploadVal] = useState<collectValSenDataDT[]>([] as collectValSenDataDT[])
     const [phonemeLevelUploadVal, setPhonemeLevelUploadVal] = useState<collectValSenDataDT[]>([] as collectValSenDataDT[])
+    const [validatedFilesUploadData, setValidatedFilesUploadData] = useState<validatedFilesUploadDT[]>([] as validatedFilesUploadDT[])
 
     const getScriptFilter = () => {
         const res = audioManagementService.getScriptFilters();
@@ -215,6 +218,11 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
         setPhonemeLevelUploadVal(res);
     }
 
+    const getValidatedFilesUploadData = () => {
+        const res = audioManagementService.getValidatedFilesUploadData();
+        setValidatedFilesUploadData(res);
+    }
+
 
     return (
         <AudioManagementContext.Provider
@@ -267,8 +275,10 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
                 wordLevelUploadVal,
                 getPhonemeLevelUploadVal,
                 phonemeLevelUploadVal,
+                getCollectedAudioCollector,
                 collectedAudioCollector,
-                getCollectedAudioCollector
+                getValidatedFilesUploadData,
+                validatedFilesUploadData,
             }}
         >
             {children}

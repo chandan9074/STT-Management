@@ -1,8 +1,10 @@
 import { Table } from "antd"
 import { ColumnsType } from "antd/es/table"
+import { useState } from "react"
 import Icons from "../../assets/Icons"
 import { checkingStatusUploadDataDT } from "../../types/audioManagementTypes"
 import AudioTrack from "../common/AudioTrack"
+import { Drawer } from "../Drawer"
 import RoleImage from "../Image/RoleImage"
 import Pagination from "../Pagination"
 
@@ -11,6 +13,14 @@ type Props = {
 }
 
 const Type24 = ({ data }: Props) => {
+
+    const [open, setOpen] = useState(false);
+
+    const [singleTargetData, setSingleTargetData] = useState<checkingStatusUploadDataDT>();
+
+    const showDrawer = () => {
+        setOpen(true);
+    };
 
     const Type24columns: ColumnsType<checkingStatusUploadDataDT> = [
         {
@@ -71,10 +81,10 @@ const Type24 = ({ data }: Props) => {
 
                     <div className='flex w-full justify-center items-center'>
                         <img
-                            // onClick={() => {
-                            //     showDrawer(record);
-                            //     setSingleTargetData(record);
-                            // }}
+                            onClick={() => {
+                                showDrawer();
+                                setSingleTargetData(record);
+                            }}
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
@@ -123,6 +133,19 @@ const Type24 = ({ data }: Props) => {
                     handleDataChange={handlePageChange}
                 />
             </div>
+            {
+                (open && singleTargetData) &&
+                <Drawer.AudioManagement.Type2
+                    isDrawerOpen={open}
+                    setIsDrawerOpen={setOpen}
+                    id={singleTargetData.id}
+                    speaker={singleTargetData.speaker}
+                    others={singleTargetData.others}
+                    speechInfo={singleTargetData.speechInfo}
+                    isEditHistory={false}
+                    deadline={singleTargetData.deadLine}
+                />
+            }
         </div>
     )
 }
