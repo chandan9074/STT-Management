@@ -55,6 +55,7 @@ import Device from "./pages/Organizer/Device";
 import AddSpeech from "./components/containers/AudioManagement/UploadAuidioVideo/AddSpeech";
 import AnnotatedFilesUpload from "./pages/AudioManagement/UploadAudio/Annotation/AnnotatedFilesUpload";
 import ValidatedFiles from "./pages/AudioManagement/CollectedAudio/Validation/ValidatedFiles";
+import ValidatedFilesUpload from "./pages/AudioManagement/UploadAudio/Validation/ValidatedFilesUpload";
 
 function App() {
   useEffect(() => {
@@ -155,7 +156,7 @@ function App() {
                 <Route path={PATH.SENETENCE_LEVEL} element={<SentenceLevelUploadVal />} />
                 <Route path={PATH.WORD_LEVEL} element={<WordLevelUploadVal />} />
                 <Route path={PATH.PHONEME_LEVEL} element={<PhonemeLevelUploadVal />} />
-                <Route path={PATH.VALIDATED_FILES} element={<AnnotatedFilesUpload />} />
+                <Route path={PATH.VALIDATED_FILES} element={<ValidatedFilesUpload />} />
               </Route>
             </Route>
           </Route>

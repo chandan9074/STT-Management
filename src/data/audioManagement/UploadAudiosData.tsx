@@ -120,6 +120,31 @@ export const checkingStatusUploadData = [
                 ],
             }
         },
+        "remark": [
+            {
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
+            },
+            {
+                "id": "385",
+                "roleInfo": {
+                    "id": "maksudalam@gmail.com",
+                    "name": "Maksud Alam",
+                    "role": "Manager",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Cancelled"
+            },
+        ],
         "speaker": {
             "speakerNo": "03",
             "gender": ["male", "female"],
@@ -128,132 +153,132 @@ export const checkingStatusUploadData = [
         },
         "deadLine": "01/02/2022",
     },
-    {
-        "id": "v4513245wqer2",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "audioChecker": {
-            "status": "Took a Break",
-            "name": "Taha Mozumder",
-            "role": "annotator",
-            "locality": "North-East Bangla",
-            "time": "01 Feb ; 3:30 PM"
-        },
-        "deadLine": "01/02/2022",
-        "speaker": {
-            "speakerNo": "03",
-            "gender": ["male", "female"],
-            "area": "natore",
-            "age": ["15-24 years", "35-44 years"]
-        },
-        "speechInfo": {
-            "dataType": "STT",
-            "fileType": "Audio",
-            "sourceType": "BBC",
-            "sourceReference": "https://www.bbc.com/bengali/news-62449191",
-            "dataSource": "Read",
-            "domain": "Educational or Informative",
-            "subDomain": "Educational Demnstrations"
-        },
-        "others": {
-            "journey": {
-                "role": [
-                    {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
-                    },
-                    {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
-                    },
-                    {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
-                    },
-                ],
-            }
-        }
-    },
-    {
-        "id": "v45132wqer2",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "audioChecker": {
-            "status": "Checking",
-            "name": "Zakir Hossain",
-            "role": "annotator",
-            "locality": "North-East Bangla",
-            "time": "01 Feb ; 3:30 PM"
-        },
-        "speechInfo": {
-            "dataType": "STT",
-            "fileType": "Audio",
-            "sourceType": "BBC",
-            "sourceReference": "https://www.bbc.com/bengali/news-62449191",
-            "dataSource": "Read",
-            "domain": "Educational or Informative",
-            "subDomain": "Educational Demnstrations"
-        },
-        "others": {
-            "journey": {
-                "role": [
-                    {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
-                    },
-                    {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
-                    },
-                    {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
-                    },
-                ],
-            }
-        },
-        "speaker": {
-            "speakerNo": "03",
-            "gender": ["male", "female"],
-            "area": "natore",
-            "age": ["15-24 years", "35-44 years"]
-        },
-        "deadLine": "01/02/2022",
-    },
+    // {
+    //     "id": "v4513245wqer2",
+    //     "speech": {
+    //         "id": '0',
+    //         "title": "Brahms,Two Pianos",
+    //         "duration": "5:00",
+    //         "url":
+    //             "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+    //     },
+    //     "audioChecker": {
+    //         "status": "Took a Break",
+    //         "name": "Taha Mozumder",
+    //         "role": "annotator",
+    //         "locality": "North-East Bangla",
+    //         "time": "01 Feb ; 3:30 PM"
+    //     },
+    //     "deadLine": "01/02/2022",
+    //     "speaker": {
+    //         "speakerNo": "03",
+    //         "gender": ["male", "female"],
+    //         "area": "natore",
+    //         "age": ["15-24 years", "35-44 years"]
+    //     },
+    //     "speechInfo": {
+    //         "dataType": "STT",
+    //         "fileType": "Audio",
+    //         "sourceType": "BBC",
+    //         "sourceReference": "https://www.bbc.com/bengali/news-62449191",
+    //         "dataSource": "Read",
+    //         "domain": "Educational or Informative",
+    //         "subDomain": "Educational Demnstrations"
+    //     },
+    //     "others": {
+    //         "journey": {
+    //             "role": [
+    //                 {
+    //                     "id": "1",
+    //                     "role": 'Admin',
+    //                     "name": 'Md. Jalal Uddin',
+    //                     "date": "01 Jan’ 22"
+    //                 },
+    //                 {
+    //                     "id": "2",
+    //                     "role": 'Manager',
+    //                     "name": 'Md. Eman Hassan',
+    //                     "date": "03 Jan’ 22"
+    //                 },
+    //                 {
+    //                     "id": "3",
+    //                     "role": 'Team Leader',
+    //                     "name": 'Jahida Ferdous Mim',
+    //                     "date": "05 Jan’ 22"
+    //                 },
+    //                 {
+    //                     "id": "4",
+    //                     "role": 'Collector',
+    //                     "name": 'Muhammad Miraz Mahmud',
+    //                     "date": "05 Jan’ 22"
+    //                 },
+    //             ],
+    //         }
+    //     }
+    // },
+    // {
+    //     "id": "v45132wqer2",
+    //     "speech": {
+    //         "id": '0',
+    //         "title": "Brahms,Two Pianos",
+    //         "duration": "5:00",
+    //         "url":
+    //             "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+    //     },
+    //     "audioChecker": {
+    //         "status": "Checking",
+    //         "name": "Zakir Hossain",
+    //         "role": "annotator",
+    //         "locality": "North-East Bangla",
+    //         "time": "01 Feb ; 3:30 PM"
+    //     },
+    //     "speechInfo": {
+    //         "dataType": "STT",
+    //         "fileType": "Audio",
+    //         "sourceType": "BBC",
+    //         "sourceReference": "https://www.bbc.com/bengali/news-62449191",
+    //         "dataSource": "Read",
+    //         "domain": "Educational or Informative",
+    //         "subDomain": "Educational Demnstrations"
+    //     },
+    //     "others": {
+    //         "journey": {
+    //             "role": [
+    //                 {
+    //                     "id": "1",
+    //                     "role": 'Admin',
+    //                     "name": 'Md. Jalal Uddin',
+    //                     "date": "01 Jan’ 22"
+    //                 },
+    //                 {
+    //                     "id": "2",
+    //                     "role": 'Manager',
+    //                     "name": 'Md. Eman Hassan',
+    //                     "date": "03 Jan’ 22"
+    //                 },
+    //                 {
+    //                     "id": "3",
+    //                     "role": 'Team Leader',
+    //                     "name": 'Jahida Ferdous Mim',
+    //                     "date": "05 Jan’ 22"
+    //                 },
+    //                 {
+    //                     "id": "4",
+    //                     "role": 'Collector',
+    //                     "name": 'Muhammad Miraz Mahmud',
+    //                     "date": "05 Jan’ 22"
+    //                 },
+    //             ],
+    //         }
+    //     },
+    //     "speaker": {
+    //         "speakerNo": "03",
+    //         "gender": ["male", "female"],
+    //         "area": "natore",
+    //         "age": ["15-24 years", "35-44 years"]
+    //     },
+    //     "deadLine": "01/02/2022",
+    // },
 ]
 
 export const allCheckedSpeechData = [
@@ -453,18 +478,18 @@ export const annotationUploadData = [
                 "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
                 "status": "Claim Approved"
             },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
-            },
+            // {
+            //     "id": "385",
+            //     "roleInfo": {
+            //         "id": "maksudalam@gmail.com",
+            //         "name": "Maksud Alam",
+            //         "role": "Manager",
+            //         "gender": "Male",
+            //     },
+            //     "deadline": "05/02/2022, 5:41 AM",
+            //     "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+            //     "status": "Cancelled"
+            // },
         ]
     },
     // {
@@ -792,17 +817,17 @@ export const sentenceLevelUploadData = [
                 "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
                 "status": "Claim Approved"
             },
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
-            },
+            // {
+            //     "roleInfo": {
+            //         "id": "maksudalam@gmail.com",
+            //         "name": "Maksud Alam",
+            //         "role": "Manager",
+            //         "gender": "Male",
+            //     },
+            //     "deadline": "05/02/2022, 5:41 AM",
+            //     "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+            //     "status": "Claim Approved"
+            // },
         ],
     },
     // {

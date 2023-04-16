@@ -379,6 +379,7 @@ export type checkingStatusUploadDataDT = {
     speechInfo: speechInfo
     others: othersUploadAudioDT;
     speaker: speakerUploadAudioDT;
+    remark: historyRemark[]
 }
 
 export type allCheckedSpeechDT = {
@@ -414,6 +415,7 @@ export type sentenceLevelUploadDT = {
     speaker: speakerUploadAudioDT;
     deadLine: string
     audioChecker: audioCheckerDT
+    remark: historyRemark[]
 }
 
 export type scriptFilterDT = {

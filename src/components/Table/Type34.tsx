@@ -138,6 +138,10 @@ const Type34 = ({ data }: Props) => {
                         ))
                     }
                 </div> */}
+                <div className='flex'>
+                    <RoleImage role={`${data.annotator.annotator.gender === "male" ? "speaker" : "speakerFemale"}`} height='h-4' width='w-4' />
+                    <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs'>{data.annotator.annotator.name}</h1>
+                </div>
                 <p className='text-blue-gray-75 text-xxs font-normal pl-[22px]'>{data.annotator.locality}</p>
             </div>
         },
@@ -215,8 +219,7 @@ const Type34 = ({ data }: Props) => {
                     setIsDrawerOpen={setOpen}
                     isEditHistory={false}
                     speaker={singleTargetData.speaker}
-                    // remark={singleTargetData.remark}
-                    // script={singleTargetData.script}
+                    remark={singleTargetData.remark}
                     speechInfo={singleTargetData.speechInfo}
                     others={singleTargetData.others}
                     id={singleTargetData.id}

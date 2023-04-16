@@ -173,6 +173,7 @@ const Type27 = ({ data }: Props) => {
                     speechInfo={singleTargetData.speechInfo}
                     isEditHistory={false}
                     deadline={singleTargetData.deadLine}
+                    remark={singleTargetData.remark}
                 />
             }
         </div>

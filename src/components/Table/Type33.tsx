@@ -239,6 +239,7 @@ const Type33 = ({ data }: Props) => {
                     isEditHistory={true}
                     submission={singleTargetData.submissionDate}
                     history={singleTargetData.history}
+                    remark={singleTargetData.remark}
                 />
             }
 
