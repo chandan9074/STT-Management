@@ -117,6 +117,18 @@ export default class audioManagementService {
         return collectedAudioSpeakersList;
     }
 
+    static getCollectedAudioValidationPhonemeChecker() {
+        return collectedAudioCheckerList;
+    }
+
+    static getCollectedAudioValidationPhonemeAnnotator() {
+        return collectedAudioAnnotatorList;
+    }
+
+    static getCollectedAudioValidationPhonemeSpeakers() {
+        return collectedAudioSpeakersList;
+    }
+
     static getCollectedAudioData() {
         return collectedAudio;
     }
