@@ -1,4 +1,4 @@
-import { collectedAudioCollectorList, allCheckedAudiosData, annotationData, checkingStatusData, collectAnnSenData, collectedAudio, scriptFilterData, annotatedFiles, collectValSenData, validatedFilesData, collectedAudioSpeakersList, collectedAudioCheckerList } from '../data/audioManagement/AudioManagementData';
+import { collectedAudioCollectorList, allCheckedAudiosData, annotationData, checkingStatusData, collectAnnSenData, collectedAudio, scriptFilterData, annotatedFiles, collectValSenData, validatedFilesData, collectedAudioSpeakersList, collectedAudioCheckerList, collectedAudioAnnotatorList } from '../data/audioManagement/AudioManagementData';
 import { allCheckedSpeechData, annotatedFilesUploadData, annotationUploadData, checkingStatusUploadData, sentenceLevelUploadData, uploadAudioData, ValidatedFilesUploadData } from '../data/audioManagement/UploadAudiosData';
 
 export default class audioManagementService {
@@ -70,6 +70,50 @@ export default class audioManagementService {
     }
 
     static getCollectedAudioAnnotationPhonemeSpeakers() {
+        return collectedAudioSpeakersList;
+    }
+
+    static getCollectedAudioAnnotationAnnotatedAnnotator() {
+        return collectedAudioAnnotatorList;
+    }
+
+    static getCollectedAudioAnnotationAnnotatedSpeakers() {
+        return collectedAudioSpeakersList;
+    }
+
+    static getCollectedAudioAnnotationAnnotatedScript() {
+        return scriptFilterData;
+    }
+
+    static getCollectedAudioAnnotationAnnotatedChecker() {
+        return collectedAudioCheckerList;
+    }
+
+    static getCollectedAudioAnnotationAnnotatedCollector() {
+        return collectedAudioCollectorList;
+    }
+
+    static getCollectedAudioValidationSentenceChecker() {
+        return collectedAudioCheckerList;
+    }
+
+    static getCollectedAudioValidationSentenceAnnotator() {
+        return collectedAudioAnnotatorList;
+    }
+
+    static getCollectedAudioValidationSentenceSpeakers() {
+        return collectedAudioSpeakersList;
+    }
+
+    static getCollectedAudioValidationWordChecker() {
+        return collectedAudioCheckerList;
+    }
+
+    static getCollectedAudioValidationWordAnnotator() {
+        return collectedAudioAnnotatorList;
+    }
+
+    static getCollectedAudioValidationWordSpeakers() {
         return collectedAudioSpeakersList;
     }
 

@@ -87,7 +87,28 @@ interface ContextProps {
     getCollectedAudioAnnotationPhonemeSpeakers: () => void;
     collectedAudioAnnotationPhonemeChecker: string[];
     getCollectedAudioAnnotationPhonemeChecker: () => void;
-
+    collectedAudioAnnotationAnnotatedScript: string[];
+    getCollectedAudioAnnotationAnnotatedScript: () => void;
+    collectedAudioAnnotationAnnotatedSpeaker: string[];
+    getCollectedAudioAnnotationAnnotatedSpeakers: () => void;
+    collectedAudioAnnotationAnnotatedChecker: string[];
+    getCollectedAudioAnnotationAnnotatedChecker: () => void;
+    getCollectedAudioAnnotationAnnotatedCollector: () => void;
+    collectedAudioAnnotationAnnotatedCollector: string[];
+    getCollectedAudioAnnotationAnnotatedAnnotator: () => void;
+    collectedAudioAnnotationAnnotatedAnnotator: string[];
+    collectedAudioValidationSentenceSpeaker: string[];
+    getCollectedAudioValidationSentenceSpeakers: () => void;
+    collectedAudioValidationSentenceChecker: string[];
+    getCollectedAudioValidationSentenceChecker: () => void;
+    collectedAudioValidationSentenceAnnotator: string[];
+    getCollectedAudioValidationSentenceAnnotator: () => void;
+    collectedAudioValidationWordSpeaker: string[];
+    getCollectedAudioValidationWordSpeakers: () => void;
+    collectedAudioValidationWordChecker: string[];
+    getCollectedAudioValidationWordChecker: () => void;
+    collectedAudioValidationWordAnnotator: string[];
+    getCollectedAudioValidationWordAnnotator: () => void;
 }
 
 export const AudioManagementContext = createContext({} as ContextProps);
@@ -136,6 +157,19 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
     const [collectedAudioAnnotationWordChecker, setCollectedAudioAnnotationWordChecker] = useState<string[]>([] as string[]);
     const [collectedAudioAnnotationPhonemeSpeaker, setCollectedAudioAnnotationPhonemeSpeaker] = useState<string[]>([] as string[]);
     const [collectedAudioAnnotationPhonemeChecker, setCollectedAudioAnnotationPhonemeChecker] = useState<string[]>([] as string[]);
+    const [collectedAudioAnnotationAnnotatedScript, setCollectedAudioAnnotationAnnotatedScript] = useState<string[]>([] as string[]);
+    const [collectedAudioAnnotationAnnotatedSpeaker, setCollectedAudioAnnotationAnnotatedSpeaker] = useState<string[]>([] as string[]);
+    const [collectedAudioAnnotationAnnotatedChecker, setCollectedAudioAnnotationAnnotatedChecker] = useState<string[]>([] as string[]);
+    const [collectedAudioAnnotationAnnotatedCollector, setCollectedAudioAnnotationAnnotatedCollector] = useState<string[]>([] as string[]);
+    const [collectedAudioAnnotationAnnotatedAnnotator, setCollectedAudioAnnotationAnnotatedAnnotator] = useState<string[]>([] as string[]);
+    const [collectedAudioValidationSentenceSpeaker, setCollectedAudioValidationSentenceSpeaker] = useState<string[]>([] as string[]);
+    const [collectedAudioValidationSentenceChecker, setCollectedAudioValidationSentenceChecker] = useState<string[]>([] as string[]);
+    const [collectedAudioValidationSentenceAnnotator, setCollectedAudioValidationSentenceAnnotator] = useState<string[]>([] as string[]);
+    const [collectedAudioValidationWordSpeaker, setCollectedAudioValidationWordSpeaker] = useState<string[]>([] as string[]);
+    const [collectedAudioValidationWordChecker, setCollectedAudioValidationWordChecker] = useState<string[]>([] as string[]);
+    const [collectedAudioValidationWordAnnotator, setCollectedAudioValidationWordAnnotator] = useState<string[]>([] as string[]);
+
+
 
 
     const getScriptFilter = () => {
@@ -244,6 +278,72 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
         const res = audioManagementService.getCollectedAudioAnnotationPhonemeSpeakers();
         const concatenatedStrings = res.map(item => item.id + " - " + item.name + " - " + item.gender);
         setCollectedAudioAnnotationPhonemeSpeaker(concatenatedStrings);
+    }
+
+    const getCollectedAudioAnnotationAnnotatedScript = () => {
+        const res = audioManagementService.getCollectedAudioAnnotationAnnotatedScript();
+        const concatenatedStrings = res.map(item => item.id.substring(0, 3) + "... - " + item.title);
+        setCollectedAudioAnnotationAnnotatedScript(concatenatedStrings);
+    }
+
+    const getCollectedAudioAnnotationAnnotatedAnnotator = () => {
+        const res = audioManagementService.getCollectedAudioAnnotationAnnotatedAnnotator();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name);
+        setCollectedAudioAnnotationAnnotatedAnnotator(concatenatedStrings);
+    }
+
+    const getCollectedAudioAnnotationAnnotatedChecker = () => {
+        const res = audioManagementService.getCollectedAudioAnnotationAnnotatedChecker();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name);
+        setCollectedAudioAnnotationAnnotatedChecker(concatenatedStrings);
+    }
+
+    const getCollectedAudioAnnotationAnnotatedCollector = () => {
+        const res = audioManagementService.getCollectedAudioAnnotationAnnotatedCollector();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name);
+        setCollectedAudioAnnotationAnnotatedCollector(concatenatedStrings);
+    }
+
+    const getCollectedAudioAnnotationAnnotatedSpeakers = () => {
+        const res = audioManagementService.getCollectedAudioAnnotationAnnotatedSpeakers();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name + " - " + item.gender);
+        setCollectedAudioAnnotationAnnotatedSpeaker(concatenatedStrings);
+    }
+
+    const getCollectedAudioValidationSentenceSpeakers = () => {
+        const res = audioManagementService.getCollectedAudioValidationSentenceSpeakers();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name + " - " + item.gender);
+        setCollectedAudioValidationSentenceSpeaker(concatenatedStrings);
+    }
+
+    const getCollectedAudioValidationSentenceChecker = () => {
+        const res = audioManagementService.getCollectedAudioValidationSentenceChecker();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name);
+        setCollectedAudioValidationSentenceChecker(concatenatedStrings);
+    }
+
+    const getCollectedAudioValidationSentenceAnnotator = () => {
+        const res = audioManagementService.getCollectedAudioValidationSentenceAnnotator();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name);
+        setCollectedAudioValidationSentenceAnnotator(concatenatedStrings);
+    }
+
+    const getCollectedAudioValidationWordSpeakers = () => {
+        const res = audioManagementService.getCollectedAudioValidationWordSpeakers();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name + " - " + item.gender);
+        setCollectedAudioValidationWordSpeaker(concatenatedStrings);
+    }
+
+    const getCollectedAudioValidationWordChecker = () => {
+        const res = audioManagementService.getCollectedAudioValidationWordChecker();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name);
+        setCollectedAudioValidationWordChecker(concatenatedStrings);
+    }
+
+    const getCollectedAudioValidationWordAnnotator = () => {
+        const res = audioManagementService.getCollectedAudioValidationWordAnnotator();
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name);
+        setCollectedAudioValidationWordAnnotator(concatenatedStrings);
     }
 
     const getCollectedAudioData = () => {
@@ -455,6 +555,28 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
                 collectedAudioAnnotationPhonemeSpeaker,
                 getCollectedAudioAnnotationPhonemeChecker,
                 getCollectedAudioAnnotationPhonemeSpeakers,
+                collectedAudioAnnotationAnnotatedAnnotator,
+                collectedAudioAnnotationAnnotatedSpeaker,
+                collectedAudioAnnotationAnnotatedChecker,
+                collectedAudioAnnotationAnnotatedCollector,
+                getCollectedAudioAnnotationAnnotatedAnnotator,
+                collectedAudioAnnotationAnnotatedScript,
+                getCollectedAudioAnnotationAnnotatedSpeakers,
+                getCollectedAudioAnnotationAnnotatedChecker,
+                getCollectedAudioAnnotationAnnotatedCollector,
+                getCollectedAudioAnnotationAnnotatedScript,
+                collectedAudioValidationSentenceChecker,
+                collectedAudioValidationSentenceSpeaker,
+                collectedAudioValidationSentenceAnnotator,
+                getCollectedAudioValidationSentenceChecker,
+                getCollectedAudioValidationSentenceSpeakers,
+                getCollectedAudioValidationSentenceAnnotator,
+                collectedAudioValidationWordAnnotator,
+                collectedAudioValidationWordChecker,
+                collectedAudioValidationWordSpeaker,
+                getCollectedAudioValidationWordAnnotator,
+                getCollectedAudioValidationWordChecker,
+                getCollectedAudioValidationWordSpeakers
             }}
         >
             {children}
