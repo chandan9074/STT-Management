@@ -1,4 +1,4 @@
-import { collectedAudioCollectorList, allCheckedAudiosData, annotationData, checkingStatusData, collectAnnSenData, collectedAudio, scriptFilterData, annotatedFiles, collectValSenData, validatedFilesData, collectedAudioSpeakersList } from '../data/audioManagement/AudioManagementData';
+import { collectedAudioCollectorList, allCheckedAudiosData, annotationData, checkingStatusData, collectAnnSenData, collectedAudio, scriptFilterData, annotatedFiles, collectValSenData, validatedFilesData, collectedAudioSpeakersList, collectedAudioCheckerList, collectedAudioAnnotatorList } from '../data/audioManagement/AudioManagementData';
 import { allCheckedSpeechData, annotatedFilesUploadData, annotationUploadData, checkingStatusUploadData, sentenceLevelUploadData, uploadAudioData, ValidatedFilesUploadData, sentenceLevelValUpload } from '../data/audioManagement/UploadAudiosData';
 
 export default class audioManagementService {
@@ -21,7 +21,111 @@ export default class audioManagementService {
         return collectedAudioCollectorList;
     }
 
+    static getCollectedAudioAllCheckingStatusSpeakers() {
+        return collectedAudioSpeakersList;
+    }
+
+    static getCollectedAudioAllCheckingStatusScript() {
+        return scriptFilterData;
+    }
+
+    static getCollectedAudioAllCheckingStatusChecker() {
+        return collectedAudioCheckerList;
+    }
+
+    static getCollectedAudioAllCheckingStatusCollector() {
+        return collectedAudioCollectorList;
+    }
+
     static getCollectedAudioCheckingStatusSpeakers() {
+        return collectedAudioSpeakersList;
+    }
+
+    static getCollectedAudioAnnotationTypeSpeakers() {
+        return collectedAudioSpeakersList;
+    }
+
+    static getCollectedAudioAnnotationTypeScript() {
+        return scriptFilterData;
+    }
+
+    static getCollectedAudioAnnotationSentenceChecker() {
+        return collectedAudioCheckerList;
+    }
+
+    static getCollectedAudioAnnotationSentenceSpeakers() {
+        return collectedAudioSpeakersList;
+    }
+
+    static getCollectedAudioAnnotationWordChecker() {
+        return collectedAudioCheckerList;
+    }
+
+    static getCollectedAudioAnnotationWordSpeakers() {
+        return collectedAudioSpeakersList;
+    }
+
+    static getCollectedAudioAnnotationPhonemeChecker() {
+        return collectedAudioCheckerList;
+    }
+
+    static getCollectedAudioAnnotationPhonemeSpeakers() {
+        return collectedAudioSpeakersList;
+    }
+
+    static getCollectedAudioAnnotationAnnotatedAnnotator() {
+        return collectedAudioAnnotatorList;
+    }
+
+    static getCollectedAudioAnnotationAnnotatedSpeakers() {
+        return collectedAudioSpeakersList;
+    }
+
+    static getCollectedAudioAnnotationAnnotatedScript() {
+        return scriptFilterData;
+    }
+
+    static getCollectedAudioAnnotationAnnotatedChecker() {
+        return collectedAudioCheckerList;
+    }
+
+    static getCollectedAudioAnnotationAnnotatedCollector() {
+        return collectedAudioCollectorList;
+    }
+
+    static getCollectedAudioValidationSentenceChecker() {
+        return collectedAudioCheckerList;
+    }
+
+    static getCollectedAudioValidationSentenceAnnotator() {
+        return collectedAudioAnnotatorList;
+    }
+
+    static getCollectedAudioValidationSentenceSpeakers() {
+        return collectedAudioSpeakersList;
+    }
+
+    static getCollectedAudioValidationWordChecker() {
+        return collectedAudioCheckerList;
+    }
+
+    static getCollectedAudioValidationWordAnnotator() {
+        return collectedAudioAnnotatorList;
+    }
+
+    static getCollectedAudioValidationWordSpeakers() {
+        return collectedAudioSpeakersList;
+    }
+
+    static getCollectedAudioValidationPhonemeChecker() {
+        return collectedAudioCheckerList;
+    }
+
+    static getCollectedAudioValidationPhonemeAnnotator() {
+        return collectedAudioAnnotatorList;
+    }
+
+    static getCollectedAudioValidationPhonemeSpeakers() {
         return collectedAudioSpeakersList;
     }
 

@@ -3930,6 +3930,518 @@ export const collectedAudioCheckingStatusFilterData: targetFilterDT[] = [
 
 ]
 
+export const collectedAudioAllCheckingStatusFilterData: targetFilterDT[] = [
+    {
+        type: "select-with-checkbox",
+        key: "script",
+        title: "Script",
+        //   child: ["STT", "TTS"],
+        viewKey: "script",
+        isFromAPI: true,
+        child: []
+    },
+    {
+        type: "multiple-select",
+        key: "audioChecker",
+        title: "Audio Checker",
+        //   role: "collector",
+        viewKey: "audioChecker_details",
+        viewRoleImg: "audio checker",
+        selects: [
+            {
+                type: "select",
+                key: "audioChecker_district",
+                title: "Audio Checker",
+                isFromAPI: false,
+                child: district
+            },
+            {
+                type: "select-with-roleImg",
+                key: "audioChecker_details",
+                title: "Audio Checker",
+                isFromAPI: true,
+                role: "audio checker",
+                child: []
+            }
+        ]
+    },
+    {
+        type: "form",
+        key: "speaker",
+        title: "Speaker",
+        viewKey: "speaker_details",
+        //   role: "collector",
+        viewRoleImg: "speaker",
+        formData: [
+            {
+                type: "checkbox",
+                title: "Gender",
+                key: "speaker_gender",
+                child: [
+                    "Male",
+                    "Female"
+                ]
+            },
+            {
+                type: "check",
+                title: "Age",
+                key: "speaker_age",
+                child: ageRange
+            },
+            {
+                type: "multiple-select",
+                selects: [
+                    {
+                        type: "select",
+                        isFromAPI: false,
+                        key: "speaker_district",
+                        title: "Speaker",
+                        child: district
+                    },
+                    {
+                        type: "select-with-roleImg",
+                        key: "speaker_details",
+                        title: "Speaker",
+                        isFromAPI: true,
+                        role: "speaker",
+                        child: []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        type: "multiple-select",
+        key: "collector",
+        title: "Collector",
+        //   role: "collector",
+        viewKey: "collector_details",
+        viewRoleImg: "collector",
+        selects: [
+            {
+                type: "select",
+                key: "collector_district",
+                title: "Collector",
+                isFromAPI: false,
+                child: district
+            },
+            {
+                type: "select-with-roleImg",
+                key: "collector_details",
+                title: "Collector",
+                isFromAPI: true,
+                role: "collector",
+                child: []
+            }
+        ]
+    },
+    {
+        type: "date-ranger",
+        key: "audioSubmissionPeriod",
+        viewKey: "audioSubmissionPeriod",
+        title: "Audio Submission Period",
+    },
+    {
+        type: "check",
+        title: "Status",
+        key: "status",
+        viewKey: "status",
+        child: [
+            "Checking...",
+            "Took a break",
+        ]
+    },
+]
+
+export const collectedAudioAnnotationTypeFilterData: targetFilterDT[] = [
+    {
+        type: "select-with-checkbox",
+        key: "script",
+        title: "Script",
+        //   child: ["STT", "TTS"],
+        viewKey: "script",
+        isFromAPI: true,
+        child: []
+    },
+    {
+        type: "form",
+        key: "speaker",
+        title: "Speaker",
+        viewKey: "speaker_details",
+        //   role: "collector",
+        viewRoleImg: "speaker",
+        formData: [
+            {
+                type: "checkbox",
+                title: "Gender",
+                key: "speaker_gender",
+                child: [
+                    "Male",
+                    "Female"
+                ]
+            },
+            {
+                type: "check",
+                title: "Age",
+                key: "speaker_age",
+                child: ageRange
+            },
+            {
+                type: "multiple-select",
+                selects: [
+                    {
+                        type: "select",
+                        isFromAPI: false,
+                        key: "speaker_district",
+                        title: "Speaker",
+                        child: district
+                    },
+                    {
+                        type: "select-with-roleImg",
+                        key: "speaker_details",
+                        title: "Speaker",
+                        isFromAPI: true,
+                        role: "speaker",
+                        child: []
+                    }
+                ]
+            }
+        ]
+    },
+]
+
+export const collectedAudioAnnotationSentenceFilterData: targetFilterDT[] = [
+    {
+        type: "date-ranger",
+        key: "dateRange",
+        viewKey: "dateRange",
+        title: "Date Range",
+    },
+    {
+        type: "form",
+        key: "speaker",
+        title: "Speaker",
+        viewKey: "speaker_details",
+        //   role: "collector",
+        viewRoleImg: "speaker",
+        formData: [
+            {
+                type: "checkbox",
+                title: "Gender",
+                key: "speaker_gender",
+                child: [
+                    "Male",
+                    "Female"
+                ]
+            },
+            {
+                type: "check",
+                title: "Age",
+                key: "speaker_age",
+                child: ageRange
+            },
+            {
+                type: "multiple-select",
+                selects: [
+                    {
+                        type: "select",
+                        isFromAPI: false,
+                        key: "speaker_district",
+                        title: "Speaker",
+                        child: district
+                    },
+                    {
+                        type: "select-with-roleImg",
+                        key: "speaker_details",
+                        title: "Speaker",
+                        isFromAPI: true,
+                        role: "speaker",
+                        child: []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        type: "multiple-select",
+        key: "audioChecker",
+        title: "Audio Checker",
+        //   role: "collector",
+        viewKey: "audioChecker_details",
+        viewRoleImg: "audio checker",
+        selects: [
+            {
+                type: "select",
+                key: "audioChecker_district",
+                title: "Audio Checker",
+                isFromAPI: false,
+                child: district
+            },
+            {
+                type: "select-with-roleImg",
+                key: "audioChecker_details",
+                title: "Audio Checker",
+                isFromAPI: true,
+                role: "audio checker",
+                child: []
+            }
+        ]
+    },
+]
+
+
+export const collectedAudioAnnotationAnnotatedFilterData: targetFilterDT[] = [
+    {
+        type: "select-with-checkbox",
+        key: "script",
+        title: "Script",
+        //   child: ["STT", "TTS"],
+        viewKey: "script",
+        isFromAPI: true,
+        child: []
+    },
+    {
+        type: "multiple-select",
+        key: "annotator",
+        title: "Annotator",
+        //   role: "collector",
+        viewKey: "annotator_details",
+        viewRoleImg: "annotator",
+        selects: [
+            {
+                type: "select",
+                key: "annotator_district",
+                title: "Annotator",
+                isFromAPI: false,
+                child: district
+            },
+            {
+                type: "select-with-roleImg",
+                key: "annotator_details",
+                title: "Annotator",
+                isFromAPI: true,
+                role: "annotator",
+                child: []
+            }
+        ]
+    },
+    {
+        type: "multiple-select",
+        key: "audioChecker",
+        title: "Audio Checker",
+        //   role: "collector",
+        viewKey: "audioChecker_details",
+        viewRoleImg: "audio checker",
+        selects: [
+            {
+                type: "select",
+                key: "audioChecker_district",
+                title: "Audio Checker",
+                isFromAPI: false,
+                child: district
+            },
+            {
+                type: "select-with-roleImg",
+                key: "audioChecker_details",
+                title: "Audio Checker",
+                isFromAPI: true,
+                role: "audio checker",
+                child: []
+            }
+        ]
+    },
+    {
+        type: "form",
+        key: "speaker",
+        title: "Speaker",
+        viewKey: "speaker_details",
+        //   role: "collector",
+        viewRoleImg: "speaker",
+        formData: [
+            {
+                type: "checkbox",
+                title: "Gender",
+                key: "speaker_gender",
+                child: [
+                    "Male",
+                    "Female"
+                ]
+            },
+            {
+                type: "check",
+                title: "Age",
+                key: "speaker_age",
+                child: ageRange
+            },
+            {
+                type: "multiple-select",
+                selects: [
+                    {
+                        type: "select",
+                        isFromAPI: false,
+                        key: "speaker_district",
+                        title: "Speaker",
+                        child: district
+                    },
+                    {
+                        type: "select-with-roleImg",
+                        key: "speaker_details",
+                        title: "Speaker",
+                        isFromAPI: true,
+                        role: "speaker",
+                        child: []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        type: "multiple-select",
+        key: "collector",
+        title: "Collector",
+        //   role: "collector",
+        viewKey: "collector_details",
+        viewRoleImg: "collector",
+        selects: [
+            {
+                type: "select",
+                key: "collector_district",
+                title: "Collector",
+                isFromAPI: false,
+                child: district
+            },
+            {
+                type: "select-with-roleImg",
+                key: "collector_details",
+                title: "Collector",
+                isFromAPI: true,
+                role: "collector",
+                child: []
+            }
+        ]
+    },
+    {
+        type: "date-ranger",
+        key: "audioSubmissionPeriod",
+        viewKey: "audioSubmissionPeriod",
+        title: "Audio Submission Period",
+    },
+    {
+        type: "check",
+        title: "Status",
+        key: "status",
+        viewKey: "status",
+        child: [
+            "Checking...",
+            "Took a break",
+        ]
+    },
+]
+
+export const collectedAudioValidationSentenceFilterData: targetFilterDT[] = [
+    {
+        type: "date-ranger",
+        key: "dateRange",
+        viewKey: "dateRange",
+        title: "Date Range",
+    },
+    {
+        type: "multiple-select",
+        key: "annotator",
+        title: "Annotator",
+        //   role: "collector",
+        viewKey: "annotator_details",
+        viewRoleImg: "annotator",
+        selects: [
+            {
+                type: "select",
+                key: "annotator_district",
+                title: "Annotator",
+                isFromAPI: false,
+                child: district
+            },
+            {
+                type: "select-with-roleImg",
+                key: "annotator_details",
+                title: "Annotator",
+                isFromAPI: true,
+                role: "annotator",
+                child: []
+            }
+        ]
+    },
+    {
+        type: "form",
+        key: "speaker",
+        title: "Speaker",
+        viewKey: "speaker_details",
+        //   role: "collector",
+        viewRoleImg: "speaker",
+        formData: [
+            {
+                type: "checkbox",
+                title: "Gender",
+                key: "speaker_gender",
+                child: [
+                    "Male",
+                    "Female"
+                ]
+            },
+            {
+                type: "check",
+                title: "Age",
+                key: "speaker_age",
+                child: ageRange
+            },
+            {
+                type: "multiple-select",
+                selects: [
+                    {
+                        type: "select",
+                        isFromAPI: false,
+                        key: "speaker_district",
+                        title: "Speaker",
+                        child: district
+                    },
+                    {
+                        type: "select-with-roleImg",
+                        key: "speaker_details",
+                        title: "Speaker",
+                        isFromAPI: true,
+                        role: "speaker",
+                        child: []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        type: "multiple-select",
+        key: "audioChecker",
+        title: "Audio Checker",
+        //   role: "collector",
+        viewKey: "audioChecker_details",
+        viewRoleImg: "audio checker",
+        selects: [
+            {
+                type: "select",
+                key: "audioChecker_district",
+                title: "Audio Checker",
+                isFromAPI: false,
+                child: district
+            },
+            {
+                type: "select-with-roleImg",
+                key: "audioChecker_details",
+                title: "Audio Checker",
+                isFromAPI: true,
+                role: "audio checker",
+                child: []
+            }
+        ]
+    },
+]
+
 export const scriptFilterData = [
     {
         id: "17956e2a-19f1-416e-97a3-4c0d55869c7b",
@@ -3952,6 +4464,36 @@ export const scriptFilterData = [
         title: "সুখী রাজকুমার",
     }
 
+]
+
+export const collectedAudioAnnotatorList = [
+    {
+        "id": "maksudalam@gmail.com",
+        "name": "Maksud Alam",
+        "role": "collector",
+        "contact": "01738463449",
+        "email": "maksudalam@gmail.com",
+        "address": "Dhaka",
+        "gender": "male"
+    },
+    {
+        "id": "01738463442",
+        "name": "Steve Smith",
+        "role": "collector",
+        "contact": "01738463442",
+        "email": "stevesmith@cric.au",
+        "address": "Dhaka",
+        "gender": "male"
+    },
+    {
+        "id": "mitchstarc@revesoft.au",
+        "name": "Mitchell Starc",
+        "role": "collector",
+        "contact": "01738463442",
+        "email": "mitchstarc@revesoft.au",
+        "address": "Dhaka",
+        "gender": "male"
+    },
 ]
 
 export const collectedAudioCollectorList = [
@@ -3985,6 +4527,36 @@ export const collectedAudioCollectorList = [
 ]
 
 export const collectedAudioSpeakersList = [
+    {
+        "id": "maksudalam@gmail.com",
+        "name": "Maksud Alam",
+        "role": "speaker",
+        "contact": "01738463449",
+        "email": "maksudalam@gmail.com",
+        "address": "Dhaka",
+        "gender": "male"
+    },
+    {
+        "id": "01738463442",
+        "name": "Kamola Banu",
+        "role": "speaker",
+        "contact": "01738463442",
+        "email": "stevesmith@cric.au",
+        "address": "Dhaka",
+        "gender": "female"
+    },
+    {
+        "id": "mitchstarc@revesoft.au",
+        "name": "Mitchell Starc",
+        "role": "speaker",
+        "contact": "01738463442",
+        "email": "mitchstarc@revesoft.au",
+        "address": "Dhaka",
+        "gender": "male"
+    },
+]
+
+export const collectedAudioCheckerList = [
     {
         "id": "maksudalam@gmail.com",
         "name": "Maksud Alam",
