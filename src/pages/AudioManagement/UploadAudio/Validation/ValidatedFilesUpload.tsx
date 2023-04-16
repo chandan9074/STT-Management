@@ -4,16 +4,16 @@ import { AudioManagementContext } from '../../../../context/AudioManagementProvi
 
 const ValidatedFilesUpload = () => {
 
-    const {getValidatedFilesData,validatedFilesData} = useContext(AudioManagementContext)
+    const {getValidatedFilesUploadData,validatedFilesUploadData} = useContext(AudioManagementContext)
 
     useEffect(()=>{
-        getValidatedFilesData()
+      getValidatedFilesUploadData()
            // eslint-disable-next-line react-hooks/exhaustive-deps
       },[])
 
   return (
     <div>
-        <Table.Type31 data={validatedFilesData}/>
+        <Table.Type35 data={validatedFilesUploadData}/>
     </div>
   )
 }

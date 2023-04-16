@@ -379,6 +379,7 @@ export type checkingStatusUploadDataDT = {
     speechInfo: speechInfo
     others: othersUploadAudioDT;
     speaker: speakerUploadAudioDT;
+    remark: historyRemark[]
 }
 
 export type allCheckedSpeechDT = {
@@ -414,6 +415,7 @@ export type sentenceLevelUploadDT = {
     speaker: speakerUploadAudioDT;
     deadLine: string
     audioChecker: audioCheckerDT
+    remark: historyRemark[]
 }
 
 export type scriptFilterDT = {
@@ -444,6 +446,22 @@ export type annotatedFilesUploadDT = {
     remark: historyRemark[];
 }
 
+export type sentenceLevelValUploadDT = {
+    id: string;
+    speech: assignAudioTrackDT;
+    validate1: validateDT;
+    validate2: validateDT;
+    validateFinal: validateDT;
+    deadLine: string;
+    annotator: annotatedAnnotatorDT;
+    audioChecker: annotatedAudioCheckerDT;
+    speaker: speakerUploadAudioDT;
+    script: scriptResDT;
+    remark: historyRemark[];
+    others: othersDT;
+    speechInfo: speechInfo
+}
+
 export type validatedFilesUploadDT = {
     id: string;
     speech: assignAudioTrackDT;
@@ -453,7 +471,7 @@ export type validatedFilesUploadDT = {
     validator1: validatorDT;
     annotator: annotatedAnnotatorDT;
     audioChecker: audioCheckerDT;
-    speaker: speakerLocalityDT2;
+    speaker: speakerUploadAudioDT;
     deadLine: string;
     submissionDate: string;
     remark: historyRemark[]

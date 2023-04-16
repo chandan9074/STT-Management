@@ -141,6 +141,7 @@ const Type24 = ({ data }: Props) => {
                     id={singleTargetData.id}
                     speaker={singleTargetData.speaker}
                     others={singleTargetData.others}
+                    // remark={singleTargetData.remark}
                     speechInfo={singleTargetData.speechInfo}
                     isEditHistory={false}
                     deadline={singleTargetData.deadLine}

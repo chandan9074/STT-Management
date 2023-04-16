@@ -13,7 +13,7 @@ const WordLevelUploadVal = () => {
 
 
   return (
-    <Table.Type22 data={wordLevelUploadVal} />
+    <Table.Type34 data={wordLevelUploadVal} />
   )
 }
 

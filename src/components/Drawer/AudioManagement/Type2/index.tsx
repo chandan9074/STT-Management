@@ -1,6 +1,6 @@
 import { Drawer } from 'antd';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { historyDT, othersUploadAudioDT, speakerUploadAudioDT, speechInfo } from '../../../../types/audioManagementTypes';
+import { historyDT, historyRemark, othersUploadAudioDT, speakerUploadAudioDT, speechInfo } from '../../../../types/audioManagementTypes';
 import RoleImage from '../../../Image/RoleImage';
 import Buttons from '../../../Buttons';
 import SpeechInfo from './SpeechInfo';
@@ -19,9 +19,13 @@ type Props = {
     deadline?: string;
     submission?: string;
     history?: historyDT[];
+    remark?: historyRemark[];
 }
 
-const Type2 = ({ id, isDrawerOpen, setIsDrawerOpen: setOpen, speaker, others, speechInfo, isEditHistory, deadline, submission, history }: Props) => {
+const Type2 = ({ id, isDrawerOpen, setIsDrawerOpen: setOpen, speaker, others, speechInfo, isEditHistory, deadline, submission, history, remark }: Props) => {
+
+    console.log('************', remark);
+
     const [activePanel, setActivePanel] = useState<string>("Speech Info");
     // const [isMetaData, setIsMetaData] = useState<boolean>(false);
     const [isSpeaker, setIsSpeaker] = useState<boolean>(false);
@@ -83,17 +87,17 @@ const Type2 = ({ id, isDrawerOpen, setIsDrawerOpen: setOpen, speaker, others, sp
                                                 </div>
                                                 {
                                                     deadline ?
-                                                    <div className='flex'>
-                                                        <h1 className='text-ct-blue-90-70% text-xs'>Deadline: </h1>
-                                                        <h1 className='pl-1 text-ct-blue-90-70% font-bold text-xs'>{deadline}</h1>
-                                                    </div> :
-                                                     submission ?
-                                                     <div className='flex'>
-                                                         <h1 className='text-ct-blue-90-70% text-xs'>Submission: </h1>
-                                                         <h1 className='pl-1 text-ct-blue-90-70% font-bold text-xs'>{submission}</h1>
-                                                     </div>
-                                                     : 
-                                                     null
+                                                        <div className='flex'>
+                                                            <h1 className='text-ct-blue-90-70% text-xs'>Deadline: </h1>
+                                                            <h1 className='pl-1 text-ct-blue-90-70% font-bold text-xs'>{deadline}</h1>
+                                                        </div> :
+                                                        submission ?
+                                                            <div className='flex'>
+                                                                <h1 className='text-ct-blue-90-70% text-xs'>Submission: </h1>
+                                                                <h1 className='pl-1 text-ct-blue-90-70% font-bold text-xs'>{submission}</h1>
+                                                            </div>
+                                                            :
+                                                            null
                                                 }
 
                                             </div>
@@ -149,7 +153,7 @@ const Type2 = ({ id, isDrawerOpen, setIsDrawerOpen: setOpen, speaker, others, sp
                                                 activePanel.includes("Others") ?
                                                     <>
                                                         {
-                                                            <Others data={others} />
+                                                            <Others data={others} remark={remark} />
                                                         }
                                                     </>
                                                     :

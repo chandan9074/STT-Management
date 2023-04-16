@@ -12,7 +12,7 @@ const SentenceLevelUploadVal = () => {
   }, [])
 
   return (
-    <Table.Type22 data={sentenceLevelUploadVal} />
+    <Table.Type34 data={sentenceLevelUploadVal}/>
   )
 }
 

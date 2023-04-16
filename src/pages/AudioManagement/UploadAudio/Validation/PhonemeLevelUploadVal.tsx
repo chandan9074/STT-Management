@@ -12,7 +12,7 @@ const PhonemeLevelUploadVal = () => {
   },[])
 
   return (
-    <Table.Type22 data={phonemeLevelUploadVal} />
+    <Table.Type34 data={phonemeLevelUploadVal} />
   )
 }
 
