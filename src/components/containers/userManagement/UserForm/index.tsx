@@ -8,7 +8,7 @@ import FileReport from './FileReport';
 import './UserForm.css';
 import PersonalInformation2 from './PersonalInformation2';
 import { useEffect, useState } from 'react';
-import { userPersonalInformationDt, userSpeakerDt } from '../../../../types/userManagementTypes';
+import { userRoleInformationDt, userSpeakerDt } from '../../../../types/userManagementTypes';
 import Layouts from '../../../Layouts';
 
 const validationSchema = yup.object({
@@ -58,6 +58,8 @@ const UserForm = () => {
             stutter: 'No',
             hearingStatus: '',
             reportingTo: '',
+            cvFile: '',
+            cvFileName: '',
             adminData: {
                 id: '4',
                 name: 'Jahir Uddin',
@@ -77,6 +79,7 @@ const UserForm = () => {
             lastDegreeAchived: '',
             subjectInStudy: '',
             cvFile: '',
+            cvFileName: '',
             reportingTo: '',
             adminData: {
                 id: '10',
@@ -91,7 +94,7 @@ const UserForm = () => {
         setIsSpeaker(isSpeaker);
     }
 
-    const handlePersonalInformationSubmit = (values: userPersonalInformationDt) => {
+    const handlePersonalInformationSubmit = (values: userRoleInformationDt) => {
         setIsSpeaker(isSpeaker);
     }
 
@@ -108,7 +111,7 @@ const UserForm = () => {
             if (isSpeaker) {
                 handleSpeakerSubmit(values as userSpeakerDt);
             } else {
-                handlePersonalInformationSubmit(values as userPersonalInformationDt);
+                handlePersonalInformationSubmit(values as userRoleInformationDt);
             }
         },
     });

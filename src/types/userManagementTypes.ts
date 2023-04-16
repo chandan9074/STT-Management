@@ -61,6 +61,7 @@ export type dayDataDT = {
 }
 
 export type userSpeakerDt = {
+    id?: string,
     role: string[],
     speakersName: string,
     gender: string,
@@ -75,12 +76,15 @@ export type userSpeakerDt = {
     smoking: string,
     stutter: string,
     hearingStatus: string,
+    cvFile: string,
+    cvFileName:string,
     reportingTo: string,
     adminData: adminDataDT,
 
 }
 
-export type userPersonalInformationDt = {
+export type userRoleInformationDt = {
+    id?: string,
     role: string[],
     primaryRole: string,
     name: string,
@@ -93,9 +97,9 @@ export type userPersonalInformationDt = {
     lastDegreeAchived: string,
     subjectInStudy: string,
     cvFile: string,
+    cvFileName:string,
     reportingTo: string,
     adminData: adminDataDT,
-
 }
 
 export type adminDataDT = {

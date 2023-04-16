@@ -1,5 +1,4 @@
 import { FormikValues } from 'formik';
-import React from 'react';
 import { urlPatternValidation } from '../../../../../helpers/Utils';
 import Icons from '../../../../../assets/Icons';
 import Dragger from 'antd/es/upload/Dragger';
@@ -12,10 +11,8 @@ const VideoAudioUpload = ({ formik }: { formik: FormikValues }) => {
         formik.setFieldValue("speechFileName", '');
     }
 
-    const handleFileUpload = (event: UploadChangeParam<UploadFile<File>>) => {
+    const handleFileUpload = async (event: UploadChangeParam<UploadFile<File>>) => {
         // event.prevntDefault();
-
-
         if (event.fileList?.length !== 0) {
             // let files = event.fileList || event.file || event.target.files;
             let files = event.fileList[0];
@@ -32,7 +29,10 @@ const VideoAudioUpload = ({ formik }: { formik: FormikValues }) => {
         }
     }
 
+
+    console.log('speech file', formik.values.speechFile);
     
+
 
     return (
         <div className={`bg-white w-[100%] `} >
