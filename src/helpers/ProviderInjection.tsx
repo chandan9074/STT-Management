@@ -9,7 +9,8 @@ const providers = [
   Context.ScriptProvider,
   Context.UserManagementProvider,
   Context.AssignProvider,
-  Context.AudioManagementProvider
+  Context.AudioManagementProvider,
+  Context.OrganizerProvider
 ];
 
 const ProviderInjection = ({ app }: { app: any }) => {

@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import Buttons from '../../../components/Buttons';
 
-const ActionButton = () => {
+type Props = {
+    setIsDrawerOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+const ActionButton = ({setIsDrawerOpen}: Props) => {
     return (
         <div className='flex gap-x-[16px] mt-7'>
             <Buttons.IconWithTextButton.Primary

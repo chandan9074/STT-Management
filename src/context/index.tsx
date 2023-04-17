@@ -6,6 +6,7 @@ import ScriptProvider from "./ScriptProvider";
 import UserManagementProvider from "./UserManagement";
 import AssignProvider from "./AssignProvider";
 import AudioManagementProvider from "./AudioManagementProvider";
+import OrganizerProvider from "./OrganizerProvider";
 
 const Context = {
   BillingProvider,
@@ -16,6 +17,7 @@ const Context = {
   UserManagementProvider,
   AssignProvider,
   AudioManagementProvider,
+  OrganizerProvider
 };
 
 export default Context;

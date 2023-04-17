@@ -1,27 +1,38 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Icons from '../../../../assets/Icons';
 import { targetFilter } from '../../../../data/assign/AssignData';
 import { targetData } from '../../../../data/assign/AssignData';
 import { RECREATE_TARGET_PATH } from '../../../../helpers/Slug';
-import { targetDT, targetFilterListDT } from '../../../../types/assignTypes';
+import { targetAssignParamDT, targetDT, targetFilterListDT } from '../../../../types/assignTypes';
 import Buttons from '../../../Buttons';
 import { CustomModal } from '../../../common/CustomModal';
 import { Filter } from '../../../Filter';
 import { SearchBox } from '../../../SearchBox';
 import Table from '../../../Table';
 import UpdateAssigneeModal from './UpdateAssigneeModal';
+import { AssignContext } from '../../../../context/AssignProvider';
 
 const TargetTable = () => {
+  const assignContext = useContext(AssignContext);
   const navigate = useNavigate();
   const [isOpenModal, setIsModalOpen] = useState<boolean>(false);
   const [selectedTarget, setSelectedTarget] = useState<targetDT[]>([] as targetDT[]);
   const [isConfirmModal, setIsConfirmModal] = useState<boolean>(false);
   const [count, setCount] = useState<number>(0);
+  const search: targetAssignParamDT = {
+    page: 1,
+    pageSize: 20
+  };
   const [filterList, setFilterList] = useState<targetFilterListDT>({
     targetStatus: [],
     speechStatus: [],
-  })
+  });
+
+  useEffect(() => {
+    assignContext.getTargetAssign(search);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   useEffect(() => {
     let count = 0;
@@ -116,6 +127,7 @@ const TargetTable = () => {
         </div>
       </div>
       <Table.Type10 data={targetData} setSelectedTarget={setSelectedTarget} />
+      {/* <Table.Type10 data={assignContext.targetsAssign} setSelectedTarget={setSelectedTarget} /> */}
 
 
       {

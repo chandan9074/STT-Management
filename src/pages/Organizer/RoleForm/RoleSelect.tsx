@@ -81,7 +81,7 @@ const RoleSelect = ({ formikValues, formik, data, formikError, formikTouched, na
             </FormControl>
             {
                 isRole &&
-                <div className='absolute z-[9999999999999] mt-2 rounded-lg w-[429px] flex flex-wrap justify-between shadow-bottom-light-blue-20'>
+                <div className='absolute z-[100] bg-white mt-2 rounded-lg w-[429px] flex flex-wrap justify-between shadow-bottom-light-blue-20 cursor-pointer'>
 
                     {
                         filteredDistrict.map((item: string, i: number) => (
@@ -95,7 +95,7 @@ const RoleSelect = ({ formikValues, formik, data, formikError, formikTouched, na
                                         !(item === 'Speaker-Female' || item === 'Speaker-Male') ?
                                             <RoleImage role={item} height='h-5' width='w-5' />
                                             :
-                                            <RoleImage role={item.includes('Speaker-Male') ? 'speaker' : 'Speakerfemale'} height='h-5' width='w-5' />
+                                            <RoleImage role={item.includes('Speaker-Male') ? 'speaker' : 'speakerfemale'} height='h-5' width='w-5' />
                                     }
                                     <p className='text-blue-gray-80 font-medium text-small'>{item}</p>
                                 </div>

@@ -1,5 +1,5 @@
 import { DatePicker, DatePickerProps } from 'antd';
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import Icons from '../../assets/Icons';
 import { targetFilterDT, targetFilterListDT } from '../../types/assignTypes';
 import CustomRangeCalender from './CustomRangeCalender';
@@ -21,10 +21,12 @@ const CustomCalenderInpField = ({ data, filterList, handleFilterList, isParent, 
     useEffect(() => {
         if (dateValue.start && dateValue.end) {
             const newDate = getDateRangeInMonthFormate(dateValue);
+            console.log(newDate, "newDate")
             if (newDate) {
                 handleFilterList(data.key, newDate)
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dateValue]);
 
     const onChange: DatePickerProps['onChange'] = (date, dateString) => {

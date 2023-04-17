@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Icons from "../../assets/Icons";
 import { filterSelectsDT, targetFilterListDT } from "../../types/assignTypes";
-import { targetFilterDT } from "../../types/assignTypes";
 import RoleImage from "../Image/RoleImage";
 
 // type filterListDT = {

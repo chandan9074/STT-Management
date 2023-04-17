@@ -107,7 +107,7 @@ const Header = ({ open, setOpen, selectedRows }: Props) => {
         title="Create Role"
         isEdit={false}
       >
-        <RoleForm />
+        <RoleForm setIsDrawerOpen={setIsDrawerOpen} />
       </Drawer.Organizer.Type1>
 
     </div>
