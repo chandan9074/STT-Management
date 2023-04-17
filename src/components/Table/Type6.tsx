@@ -69,7 +69,7 @@ const Type6 = () => {
             render: (data) => {
                 return (
                     <>
-                        <div className="flex items-center gap-2 ml-4">
+                        <div className="flex items-center gap-2">
                             <img src={data.img} className="h-6 w-6" alt="" />
                             <p className="text-small font-medium text-blue-gray-75">{data.role}</p>
                         </div>
@@ -83,16 +83,17 @@ const Type6 = () => {
             width: 184,
             render: (data, _, index: number) => (
                 <>
-                    <div className='flex rounded-md border border-blue-gray-30 mr-5 ml-4'>
+                    <div className='flex rounded-md border border-blue-gray-30 '>
                         <button
                             onClick={() => handleBlock(data.key, index, true)}
                             // className={`p-2 w-[50%] rounded-l-md text-xs font-medium ${(data.key === block.id && block.block) ? "bg-[#FF293D] text-white border-[#FF293D]" : "bg-white"}`}>
-                            className={`p-2 w-[50%] rounded-l-md text-xs font-medium ${(data.block) ? "bg-[#FF293D] text-white border-[#FF293D]" : "bg-white"}`}>
+                            // className={`p-2 w-[50%] rounded-l-md text-xs font-medium ${(data.block) ? "bg-[#FF293D] text-white border-[#FF293D]" : "bg-white"}`}>
+                            className={`p-2 w-[50%] leading-[15px] rounded-l-md text-xs font-medium ${(data.block) ? "bg-[#FF293D] text-white border-[#FF293D]" : "bg-white"}`}>
                             Block
                         </button>
                         <button
                             onClick={() => handleBlock(data.key, index, false)}
-                            className={`p-2  w-[50%] rounded-r-md text-xs font-medium ${(data.block) ? "bg-white" : "bg-[#05956F] border-[#05956F] text-white"}`}>
+                            className={`p-2  w-[50%] leading-[15px] rounded-r-md text-xs font-medium ${(data.block) ? "bg-white" : "bg-[#05956F] border-[#05956F] text-white"}`}>
                             Unblock
                         </button>
                     </div>
@@ -104,7 +105,7 @@ const Type6 = () => {
 
 
     return (
-        <div>
+        <div className='billing-table billing-table-even-bg'>
             <Table
                 pagination={false}
                 dataSource={tableData}

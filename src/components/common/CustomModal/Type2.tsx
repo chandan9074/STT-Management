@@ -25,15 +25,15 @@ const Type2 = ({ open, setOpen }: Props) => {
                 width="640px"
             >
                 <div>
-                    <div className="p-5 bg-ct-blue-05 rounded-t-lg">
-                        <SearchBox.Type1 inputWidth="w-full" placeholder="Search with script ID, Title..." bgColor="bg-white" textColor="text-ct-blue-90-70%" />
+                    <div className="p-6 pb-4 bg-blue-gray-20 rounded-t-lg">
+                        <SearchBox.Type1 inputWidth="w-full" placeholder="Search user by Login ID, Name..." bgColor="bg-white" textColor="text-ct-blue-90-70%" />
                     </div>
-                    <div className="m-3 p-4 border border-blue-gray-30 bg-blue-gray-05 rounded-lg">
+                    <div className="flex flex-col gap-y-3 m-4 p-4 border border-blue-gray-30 bg-blue-gray-05 rounded-lg">
                         <p className='text-heading-6 font-normal text-ct-blue-60'>
                             macpac49@gmail.com-
-                            <span className='font-medium'>Muhammad Miraz Mahmuz</span>
+                            <span className='font-medium'> Muhammad Miraz Mahmuz</span>
                         </p>
-                        <div className='flex gap-3 text-normal text-small text-ct-blue-90-70%'>
+                        <div className='flex gap-3 text-small text-ct-blue-90-70%'>
                             <div className='flex gap-2 items-center'>
                                 <img src={Icons.mail} className="h-4 w-4" alt="" />
                                 <p> miraz2710@gmail.com</p>
