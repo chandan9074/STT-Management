@@ -1,6 +1,6 @@
 import React from 'react';
-import RoleImage from '../../../Image/RoleImage';
-import { annotatedAnnotatorDT } from "../../../../types/audioManagementTypes"
+import RoleImage from '../../../../Image/RoleImage';
+import { annotatedAnnotatorDT } from "../../../../../types/audioManagementTypes"
 
 type Props = {
     data: annotatedAnnotatorDT 

@@ -7,61 +7,68 @@ import Image from '../../../Image';
 
 const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
 
+    console.log('************', formik.values.role.length);
+
+
     return (
-        <div>
+        // <div className='disableAutocompleteColor'>
+        <div >
             {/* <div className={`${!isHomeDistrict && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[90]`} onClick={() => setIsHomeDistrict(false)}></div> */}
             <Grid container spacing={5}>
                 {/* Primary Role */}
                 <Grid item xs={6}>
-                     <Autocomplete
-                        disableClearable
-                        placeholder='Choose one'
-                        id="primaryRole"
-                        style={{ width: '100%' }}
-                        options={formik.values.role}
-                        value={formik.values.primaryRole}
-                        // value={formik.values.role || scriptrole[0]}
-                        // defaultValue={formik.values.role}
-                        
-                        disabled={formik.values.role.length === 0}
-                        
+                    <div className={`${formik.values.role.length === 0 && 'disableAutocompleteColor'}`}>
+                        <Autocomplete
+                            disableClearable
+                            placeholder='Choose one'
+                            id="primaryRole"
+                            style={{ width: '100%' }}
+                            options={formik.values.role}
+                            value={formik.values.primaryRole}
+                            // value={formik.values.role || scriptrole[0]}
+                            // defaultValue={formik.values.role}
 
-                        onChange={(event, value) => {
-                            if (typeof value === 'string') {
+                            disabled={formik.values.role.length === 0}
+                            // className={`${formik.values.length === 0 && 'disableAutocompleteColor'}`}
+                            // className='disableAutocompleteColor'
 
-                                formik.setFieldValue('primaryRole', value)
-                            } else {
-                                formik.setFieldValue('primaryRole', '')
-                            }
-                        }}
+                            onChange={(event, value) => {
+                                if (typeof value === 'string') {
 
-                        renderOption={(props, option) => (
-                            <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
+                                    formik.setFieldValue('primaryRole', value)
+                                } else {
+                                    formik.setFieldValue('primaryRole', '')
+                                }
+                            }}
 
-                                <Image.RoleImage role={option} />
-                                {option}
-                            </Box>
-                        )}
+                            renderOption={(props, option) => (
+                                <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
 
-                         renderInput={(params) => (
+                                    <Image.RoleImage role={option} />
+                                    {option}
+                                </Box>
+                            )}
 
-                            <TextField
-                                placeholder='Choose one'
-                                {...params}
-                                name="primaryRole"
-                                error={formik.touched.primaryRole && Boolean(formik.errors.primaryRole)}
-                                helperText={formik.touched.primaryRole && formik.errors.primaryRole}
-                                // InputProps={{
-                                //     style: {
-                                //         height: '44px'
-                                //     }
-                                // }}
+                            renderInput={(params) => (
 
-                                label={<h1 className='comboBoxLabel'>Primary Role <span className='text-[red]'>*</span></h1>}
+                                <TextField
+                                    placeholder='Choose one'
+                                    {...params}
+                                    name="primaryRole"
+                                    error={formik.touched.primaryRole && Boolean(formik.errors.primaryRole)}
+                                    helperText={formik.touched.primaryRole && formik.errors.primaryRole}
+                                    // InputProps={{
+                                    //     style: {
+                                    //         height: '44px'
+                                    //     }
+                                    // }}
 
-                            />
-                        )}
-                    />
+                                    label={<h1 className='comboBoxLabel'>Primary Role <span className='text-[red]'>*</span></h1>}
+
+                                />
+                            )}
+                        />
+                    </div>
                 </Grid>
                 <Grid item xs={6}>
 
@@ -214,7 +221,7 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
 
 
                 <Grid item xs={6}>
-                     <Autocomplete
+                    <Autocomplete
                         disableClearable
                         placeholder='Choose one'
                         id="lastDegreeAchived"
@@ -230,7 +237,7 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                             }
                         }}
 
-                         renderInput={(params) => (
+                        renderInput={(params) => (
 
                             <TextField
                                 placeholder='Choose one'

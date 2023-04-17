@@ -1,5 +1,5 @@
-import { singleSpeakerDT, speakerLocalityDT } from "../../../../types/audioManagementTypes"
-import RoleImage from "../../../Image/RoleImage"
+import { singleSpeakerDT, speakerLocalityDT } from "../../../../../types/audioManagementTypes"
+import RoleImage from "../../../../Image/RoleImage"
 
 type Props = {
     data: speakerLocalityDT

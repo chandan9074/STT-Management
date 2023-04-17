@@ -1,5 +1,5 @@
-import { audioCheckerDT } from '../../../../types/audioManagementTypes'
-import RoleImage from '../../../Image/RoleImage'
+import { audioCheckerDT } from '../../../../../types/audioManagementTypes'
+import RoleImage from '../../../../Image/RoleImage'
 
 type Props = {
     data: audioCheckerDT

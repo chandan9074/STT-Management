@@ -1,4 +1,4 @@
-import { Autocomplete, FormControl, FormControlLabel, Grid, IconButton, InputAdornment, InputLabel, OutlinedInput, Radio, RadioGroup, TextField } from '@mui/material';
+import { Autocomplete, FormControl, FormControlLabel, Grid, IconButton, InputAdornment, OutlinedInput, Radio, RadioGroup, TextField } from '@mui/material';
 import { DatePicker, DatePickerProps } from 'antd';
 import { FormikValues } from 'formik';
 import { useState } from 'react';
@@ -64,13 +64,14 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                 <Grid item xs={6}>
                     <div>
                         <FormControl sx={{ width: '100%' }} variant="outlined">
-                            <InputLabel htmlFor='dateOfBirth'>{<h1 className='comboBoxLabel'>Date of Birth <span className='text-[red]'>*</span></h1>}</InputLabel>
+                            {/* <InputLabel htmlFor='dateOfBirth'>{<h1 className='comboBoxLabel'>Date of Birth <span className='text-[red]'>*</span></h1>}</InputLabel> */}
                             <OutlinedInput
                                 id='dateOfBirth'
                                 autoComplete='off'
                                 type='text'
                                 name={formik.values.dateOfBirth}
-                                label={<h1 className='comboBoxLabel'>Date of Birth <span className='text-[red]'>*</span></h1>}
+                                // label={<h1 className='comboBoxLabel'>Date of Birth <span className='text-[red]'>*</span></h1>}
+                                placeholder='Date of Birth'
                                 value={formik.values.dateOfBirth}
                                 onChange={formik.handleChange}
                                 onClick={() => setOpenCalender(true)}

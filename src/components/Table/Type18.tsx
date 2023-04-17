@@ -6,11 +6,11 @@ import { CommonContext } from '../../context/CommonProvider'
 import { allCheckedAudioDT } from '../../types/audioManagementTypes'
 import AudioTrack from '../common/AudioTrack'
 import SpeechStatus from '../common/SpeechStatus'
-import Speaker from '../common/TableField/AudioManagement/Speaker'
+import Speaker from '../containers/AudioManagement/TableField/AudioManagement/Speaker'
 import RoleImage from '../Image/RoleImage'
 import Pagination from '../Pagination'
 import { Drawer } from '../Drawer'
-import Remark2 from '../common/TableField/Remark2'
+import Remark2 from '../containers/AudioManagement/TableField/Remark2'
 
 type Props = {
   data: allCheckedAudioDT[]

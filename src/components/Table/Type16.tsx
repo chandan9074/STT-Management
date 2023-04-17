@@ -4,7 +4,7 @@ import { useState } from "react"
 import Icons from "../../assets/Icons"
 import { audioManagementDT } from "../../types/audioManagementTypes"
 import AudioTrack from "../common/AudioTrack"
-import Speaker from "../common/TableField/AudioManagement/Speaker"
+import Speaker from "../containers/AudioManagement/TableField/AudioManagement/Speaker"
 import { Drawer } from "../Drawer"
 import Pagination from "../Pagination"
 

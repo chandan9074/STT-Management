@@ -9,7 +9,7 @@ import SpeechStatus from "../common/SpeechStatus"
 import RoleImage from "../Image/RoleImage"
 import Pagination from "../Pagination"
 import { Drawer } from "../Drawer"
-import Remark2 from "../common/TableField/Remark2"
+import Remark2 from "../containers/AudioManagement/TableField/Remark2"
 
 type Props = {
     data: allCheckedSpeechDT[]

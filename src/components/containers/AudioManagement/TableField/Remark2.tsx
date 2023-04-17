@@ -1,8 +1,8 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import CloseButton from '../SideDrawer/CloseButton';
-import SpeechStatus from '../SpeechStatus';
-import { historyRemark } from '../../../types/audioManagementTypes';
-import RoleImage from '../../Image/RoleImage';
+import CloseButton from '../../../common/SideDrawer/CloseButton';
+import SpeechStatus from '../../../common/SpeechStatus';
+import { historyRemark } from '../../../../types/audioManagementTypes';
+import RoleImage from '../../../Image/RoleImage';
 
 type Props = {
     open: boolean;

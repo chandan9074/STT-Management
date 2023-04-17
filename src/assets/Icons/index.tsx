@@ -136,14 +136,15 @@ import File from "./File.svg";
 import check_magenta from "./check_magenta.svg";
 import check_blue from "./check_blue.svg";
 import like_emoji from "./like_emoji.svg";
-import AssignmentReturn from "./assignment_return.svg"
-import union from "./union.svg"
-import arrow_right_rounded_blue from "./arrow_right_rounded_blue.svg"
-import settings_purple from "./settings_purple.svg"
-import Laptop from './Laptop.svg'
-import Mobile from './Mobile.svg'
-import AudioRecorder from './AudioRecorder.svg'
-import Vector3 from './Vector_3.png'
+import AssignmentReturn from "./assignment_return.svg";
+import union from "./union.svg";
+import arrow_right_rounded_blue from "./arrow_right_rounded_blue.svg";
+import settings_purple from "./settings_purple.svg";
+import Laptop from './Laptop.svg';
+import Mobile from './Mobile.svg';
+import AudioRecorder from './AudioRecorder.svg';
+import Vector3 from './Vector_3.png';
+import UserSnippet from './User_Snippet_Skeleton.svg'
 
 const Icons = {
   currency,
@@ -291,7 +292,8 @@ const Icons = {
   Laptop,
   Mobile,
   AudioRecorder,
-  Vector3
+  Vector3,
+  UserSnippet
 };
 
 export default Icons;

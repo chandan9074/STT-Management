@@ -62,8 +62,8 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
     }
 
     return (
-        <div className='relative z-[100] homeDistrictSelect'>
-
+        <div className='relative homeDistrictSelect '>
+        {/* <div className='relative z-[100] homeDistrictSelect '> */}
             <div className={`${!isHomeDistrict && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[90]`} onClick={() => clickOutsideField()}></div>
 
             <FormControl sx={{ width: '100%' }} variant="outlined">
@@ -92,7 +92,8 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
             </FormControl>
             {
                 isHomeDistrict &&
-                <div className='absolute w-full h-[482px] bg-white rounded-[8px] py-[6px] animate-fadeIn z-[100] overflow-auto'>
+                // <div className='absolute w-full h-[336px] bg-white rounded-[8px] py-[6px] animate-fadeIn z-[100] overflow-auto shadow-bottom-light-blue-20'>
+                <div className='absolute w-full h-[336px] bg-white rounded-[8px] py-[6px] animate-fadeIn z-[99] overflow-auto shadow-bottom-light-blue-20'>
                     {filteredDistrict.map(({ division, district }) => (
                         <div key={division}>
                             <div className='bg-blue-gray-05 text-xxs text-blue-gray-60 pl-[16px] flex justify-between items-center pr-[9px]'>
@@ -112,8 +113,8 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
                                         <div
                                             key={i}
                                             onClick={() => handleDistrictClick(name)}
-                                            className={`pl-[16px] ${formikValues === name ? 'activeColor' : 'hover:bg-ct-blue-05 active:bg-ct-blue-10'} `}>
-                                            <div className='deactiveColor'>
+                                            className={`pl-[16px] ${formikValues === name ? 'bg-blue-10 hover:bg-blue-20 active:bg-blue-30' : 'hover:bg-ct-blue-05 active:bg-ct-blue-10'} `}>
+                                            <div className='flex justify-between items-center cursor-pointer pr-[9px] py-[12px]'>
                                                 <h3
                                                     className='text-blue-gray-90 text-small' key={name}>{name}</h3>
 
@@ -130,8 +131,6 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
                     ))}
                 </div>
             }
-
-
 
             {formikTouched && formikError ? (
                 <div className='text-red-600 text-xxs pl-[12px]'>{formikError}</div>

@@ -6,9 +6,9 @@ import { colAnnSenStatusFilterData } from "../../data/audioManagement/AudioManag
 import { STATUS_ANNOTATING, STATUS_TOOK_A_BREAK } from "../../helpers/ConditionVariable";
 import { collectAnnSenDataDT } from "../../types/audioManagementTypes";
 import AudioTrack from "../common/AudioTrack";
-import Annotate from "../common/TableField/AudioManagement/Annotate";
-import Speaker from "../common/TableField/AudioManagement/Speaker";
-import StatusFilter from "../common/TableField/AudioManagement/StatusFilter";
+import Annotate from "../containers/AudioManagement/TableField/AudioManagement/Annotate";
+import Speaker from "../containers/AudioManagement/TableField/AudioManagement/Speaker";
+import StatusFilter from "../containers/AudioManagement/TableField/AudioManagement/StatusFilter";
 import { Drawer } from "../Drawer";
 import RoleImage from "../Image/RoleImage";
 import Pagination from "../Pagination";

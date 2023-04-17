@@ -5,7 +5,7 @@ import Icons from '../../../../../assets/Icons';
 import { isEmpty } from '../../../../../helpers/Utils';
 import { speechDt } from '../../../../../types/assignTypes';
 import { roleDT } from '../../../../../types/billingTypes';
-import Collector from '../../../../common/TableField/Collector';
+import Collector from '../../../AudioManagement/TableField/Collector';
 
 type Props = {
     data: speechDt;
