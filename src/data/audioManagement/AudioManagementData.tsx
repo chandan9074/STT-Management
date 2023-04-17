@@ -1,4 +1,4 @@
-import { STATUS_ANNOTATING, STATUS_APPROVED, STATUS_CANCELLED, STATUS_CLAIMED, STATUS_CLAIM_APPROVED, STATUS_DECLINED, STATUS_REASSIGNED, STATUS_TOOK_A_BREAK, STATUS_VALIDATING, STTMODULE, TTSMODULE } from "../../helpers/ConditionVariable"
+import { STATUS_ACTIVE, STATUS_ANNOTATING, STATUS_APPROVED, STATUS_BLOCKED, STATUS_CANCELLED, STATUS_CLAIMED, STATUS_CLAIM_APPROVED, STATUS_DECLINED, STATUS_REASSIGNED, STATUS_TOOK_A_BREAK, STATUS_VALIDATING, STTMODULE, TTSMODULE } from "../../helpers/ConditionVariable"
 import { targetFilterDT } from "../../types/assignTypes"
 
 export const collectedAudio = [
@@ -4642,5 +4642,17 @@ export const statusColorsData = [
         "bgColor": "bg-purple-10",
         "bulletColor": "bg-secondary-purple-50",
         "textColor": "text-purple-60"
+    },
+    {
+        "name": STATUS_ACTIVE,
+        "bgColor": "bg-green-10",
+        "bulletColor": "bg-secondary-green-50",
+        "textColor": "text-green-60"
+    },
+    {
+        "name": STATUS_BLOCKED,
+        "bgColor": "bg-red-10",
+        "bulletColor": "bg-secondary-red-50",
+        "textColor": "text-red-60"
     },
 ]
