@@ -55,7 +55,7 @@ const Type5 = ({ data }: Props) => {
     // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
     const [drawerData, setDrawerData] = useState<userManagementTableDT>();
-    const [active, setActive] = useState<string>("")
+    // const [active, setActive] = useState<string>("")
     const navigate = useNavigate();
     // const [searchedColumn, setSearchedColumn] = useState("");
 
@@ -65,11 +65,11 @@ const Type5 = ({ data }: Props) => {
         setDrawerData(key)
     };
 
-    const handleActiveBlockChange = (value: string, confirm: any) => {
-        // confirm()
+    // const handleActiveBlockChange = (value: string, confirm: any) => {
+    //     // confirm()
 
-        setActive(value)
-    }
+    //     setActive(value)
+    // }
 
 
     const getColumnSearchProps = (dataIndex: any): any => ({
@@ -79,21 +79,9 @@ const Type5 = ({ data }: Props) => {
 
             <div onKeyDown={(e) => e.stopPropagation()} className="w-[260px]">
 
-                {/* <div
-                    className={`flex gap-1 items-center px-4 py-3 rounded-t-lg cursor-pointer ${active === "Active" ? "bg-[#DEF7F0]" : ""}`}
-                    onClick={() => handleActiveBlockChange("Active", confirm)}
-                >
-                    <div className='w-[9px] h-[9px] rounded-full bg-green/50-05956F' />
-                    <p>Active</p>
-                </div>
-                <div
-                    onClick={() => handleActiveBlockChange("Blocked", confirm)}
-                    className={`flex gap-1 items-center px-4 py-3 rounded-b-lg cursor-pointer ${active === "Blocked" ? "bg-[#F7DEE0]" : ""}`}>
-                    <div className='w-[9px] h-[9px] rounded-full bg-[#FF293D]' />
-                    <p>Blocked</p>
-                </div> */}
+                
 
-                <Dropdown.Type8 data={[STATUS_ACTIVE,STATUS_BLOCKED]} option1={STATUS_ACTIVE} option2={STATUS_BLOCKED} />
+                <Dropdown.Type8 data={[STATUS_ACTIVE, STATUS_BLOCKED]} option1={STATUS_ACTIVE} option2={STATUS_BLOCKED} />
 
             </div>
         ),
@@ -102,27 +90,27 @@ const Type5 = ({ data }: Props) => {
                 <img src={Icons.Unfold_More} className="w-[14px] h-[14px]" alt='' />
             </div>
         ),
-        onFilter: (value: any, record: any) =>
-            record["status"]
-                .toString()
-                .toLowerCase()
-                .includes(active.toLowerCase()),
+        // onFilter: (value: any, record: any) =>
+        //     record["status"]
+        //         .toString()
+        //         .toLowerCase()
+        //         .includes(active.toLowerCase()),
 
-        render: (text: any) =>
-            active === "Acitive" ? (
-                // <Highlighter
-                //   highlightStyle={{
-                //     backgroundColor: '#ffc069',
-                //     padding: 0,
-                //   }}
-                //   searchWords={[searchText]}
-                //   autoEscape
-                //   textToHighlight={text ? text.toString() : ''}
-                // />
-                <p>text</p>
-            ) : (
-                <p>hellow</p>
-            )
+        // render: (text: any) =>
+        //     active === "Acitive" ? (
+        //         // <Highlighter
+        //         //   highlightStyle={{
+        //         //     backgroundColor: '#ffc069',
+        //         //     padding: 0,
+        //         //   }}
+        //         //   searchWords={[searchText]}
+        //         //   autoEscape
+        //         //   textToHighlight={text ? text.toString() : ''}
+        //         // />
+        //         <p>text</p>
+        //     ) : (
+        //         <p>hellow</p>
+        //     )
     });
 
 
@@ -175,7 +163,7 @@ const Type5 = ({ data }: Props) => {
             align: "center",
             render: (data) => (<div>
                 {/* <Status.Type2 status={data} label={data === "Active" ? "Active" : "Blocked"} /> */}
-                <SpeechStatus data={data}/>
+                <SpeechStatus data={data} />
             </div>),
             onFilter: (value, record) => (console.log("reeeeeeeeeeee", record))
         },
