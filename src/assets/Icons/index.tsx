@@ -145,7 +145,10 @@ import Laptop from './Laptop.svg';
 import Mobile from './Mobile.svg';
 import AudioRecorder from './AudioRecorder.svg';
 import Vector3 from './Vector_3.png';
-import UserSnippet from './User_Snippet_Skeleton.svg'
+import UserSnippet from './User_Snippet_Skeleton.svg';
+import Rectangle1 from './rectancle_1.svg';
+import Rectangle2 from './rectangle_2.svg';
+import UserGray from './user_gray.svg';
 
 const Icons = {
   currency,
@@ -295,7 +298,10 @@ const Icons = {
   Mobile,
   AudioRecorder,
   Vector3,
-  UserSnippet
+  UserSnippet,
+  Rectangle1,
+  Rectangle2,
+  UserGray
 };
 
 export default Icons;

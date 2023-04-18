@@ -22,11 +22,12 @@ const PersonalInformation2 = ({ formik }: Prop) => {
     };
 
     return (
-        <div>
+        <div >
             <div className={`${!openCalender && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[90]`} onClick={() => setOpenCalender(false)}></div>
             <Grid container spacing={5}>
                 {/* Speakers name */}
                 <Grid item xs={6}>
+                    <div className='mt-[35px]'>
                     <TextField
                         id="speakersName"
                         name="speakersName"
@@ -44,15 +45,16 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                             }
                         }}
                         variant="outlined" />
+                    </div>
                 </Grid>
 
                 <Grid item xs={6}>
-                    <div className='flex gap-x-[16px] items-center h-[48px]'>
+                    <div className='flex gap-x-[16px] items-center h-[48px] mt-[35px]'>
                         <h1 className='text-blue-gray-75 font-medium text-small'>Gender</h1>
                         <div className='gap-x-2 flex'>
                             {
                                 gender.map(value => (
-                                    <div onClick={() => formik.setFieldValue('gender', value)} key={value} className={`${formik.values.gender === value ? 'text-[#136EE5] bg-blue-50 border-[1px] border-[#136EE5]' : 'bg-white text-blue-gray-75'}  px-[12px] py-[8px] rounded-[20px] border-[1px] border-blue-gray-20 cursor-pointer font-medium duration-200`}>
+                                    <div onClick={() => formik.setFieldValue('gender', value)} key={value} className={`${formik.values.gender === value ? 'text-secondary-blue-50 bg-blue-50 border-[1px] border-secondary-blue-50' : 'bg-white text-blue-gray-75'}  px-[12px] py-[8px] rounded-[20px] border-[1px] border-blue-gray-20 cursor-pointer font-medium duration-200`}>
                                         {value}
                                     </div>
                                 ))
@@ -62,7 +64,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                 </Grid>
 
                 <Grid item xs={6}>
-                    <div>
+                    <div className='mt-[10px]'>
                         <FormControl sx={{ width: '100%' }} variant="outlined">
                             {/* <InputLabel htmlFor='dateOfBirth'>{<h1 className='comboBoxLabel'>Date of Birth <span className='text-[red]'>*</span></h1>}</InputLabel> */}
                             <OutlinedInput
@@ -103,6 +105,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                 </Grid>
 
                 <Grid item xs={6}>
+                     <div className='mt-[10px]'>
                      <Autocomplete
                         disableClearable
                         placeholder='Choose one'
@@ -153,6 +156,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                             />
                         )}
                     />
+                     </div>
                 </Grid>
 
 

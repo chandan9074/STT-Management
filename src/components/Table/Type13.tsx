@@ -7,22 +7,23 @@ import RoleImage from '../Image/RoleImage';
 import { RoleInContext } from '../../context/RoleProvider';
 import { roleDT } from '../../types/billingTypes';
 import { sortStatus } from '../../data/assign/AssignData';
-import { speechDT3, targetAllSpeechDT } from '../../types/assignTypes';
+import { targetAllSpeechDT } from '../../types/assignTypes';
 import { ColumnsType, ColumnType } from 'antd/es/table';
 import Remark from '../common/Remark';
 import AudioTrack from '../common/AudioTrack';
 
 type Props = {
-    data: targetAllSpeechDT
+    // data: targetAllSpeechDT
+    data: targetAllSpeechDT[]
 }
 
 const Type13 = ({ data }: Props) => {
     const [isSpeakerModal, setIsSpeakerModal] = useState<boolean>(false);
     const [open, setOpen] = useState(false);
-    // const [speechData, setSpeechData] = useState<speechDT3[]>(data?.speechData);
+    // const [speechData, setSpeechData] = useState<targetAllSpeechDT[]>(data?.speechData);
 
     const [remarkOpen, setRemarkOpen] = useState<boolean>(false);
-    const [singleTargetData, setSingleTargetData] = useState<speechDT3>();
+    const [singleTargetData, setSingleTargetData] = useState<targetAllSpeechDT>();
 
     const managerContext = useContext(RoleInContext);
 
@@ -60,7 +61,7 @@ const Type13 = ({ data }: Props) => {
     }
 
 
-    const getColumnSearchProps = (dataIndex: string): ColumnType<speechDT3> => ({
+    const getColumnSearchProps = (dataIndex: string): ColumnType<targetAllSpeechDT> => ({
 
         filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
 
@@ -90,7 +91,7 @@ const Type13 = ({ data }: Props) => {
     });
 
 
-    const Type8columns: ColumnsType<speechDT3> = [
+    const Type8columns: ColumnsType<targetAllSpeechDT> = [
 
         {
             title: `${"SN".toLocaleUpperCase()}`,
@@ -209,7 +210,7 @@ const Type13 = ({ data }: Props) => {
 
             <Table
                 columns={Type8columns}
-                dataSource={data?.speechData}
+                dataSource={data}
                 // scroll={{ x: 1600 }}
                 rowKey='id'
             />

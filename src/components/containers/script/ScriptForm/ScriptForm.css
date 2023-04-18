@@ -96,7 +96,7 @@ textarea {
 }
 
 [disabled] {
-   background-color: #F9FAFC !important;
+    background-color: #F9FAFC !important;
     cursor: not-allowed !important;
 }
 
@@ -235,11 +235,28 @@ label {
 }
 
 .MuiAutocomplete-popper {
-    /* overflow-x: hidden !important; */
-    /* max-height: 50px !important; */
     scrollbar-width: none !important;
     -ms-overflow-style: none !important;
 }
+
+/* radio button */
+.Mui-checked {
+    pointer-events: none !important;
+}
+
+.MuiRadio-root {
+    pointer-events: none !important;
+}
+.radio-style .css-vqmohf-MuiButtonBase-root-MuiRadio-root {
+    padding: 6px 12px 6px 8px !important;
+}
+/* radio button */
+
+.custom-grid .css-1ld3b9g-MuiGrid-root>.MuiGrid-item {
+    padding-top: 10px !important;
+}
+
+
 /* 
 .MuiAutocomplete-popper::-webkit-scrollbar {
     width: 2px !important;
@@ -270,15 +287,15 @@ label {
     width: 8px !important;
     background-color: #f1f1f1 !important;
   } */
-  
-  /* Change the color and rounded border of the scrollbar thumb */
-  /* .MuiAutocomplete-popup::-webkit-scrollbar-thumb {
+
+/* Change the color and rounded border of the scrollbar thumb */
+/* .MuiAutocomplete-popup::-webkit-scrollbar-thumb {
     background-color: #888 !important;
     border-radius: 5px !important;
   } */
-  
-  /* Change the appearance of the scrollbar on Firefox */
-  /* .MuiAutocomplete-popup {
+
+/* Change the appearance of the scrollbar on Firefox */
+/* .MuiAutocomplete-popup {
     scrollbar-width: thin !important;
     scrollbar-color: #888 #f1f1f1 !important;
   } */
@@ -312,6 +329,3 @@ label {
   }
  
    */
-  
-  
-  

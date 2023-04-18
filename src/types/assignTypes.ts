@@ -278,20 +278,30 @@ export type speechDt2 = {
 
 export type targetAllSpeechDT = {
   id: string;
-  speechData: speechDT3[]
-}
-
-export type speechDT3 = {
-  id: string;
   speaker: roleDT[];
   collector: collectorDT;
   remark: string;
   speech: assignAudioTrackDT;
   status?: string;
-  submissionDate?: string; // Ensure submissionDate is a required string
-// export type customSingleCriteria1DT = {
-//   [key:string]: string | string[];
-// }
+  submissionDate?: string;
+  script: scriptResDT;
+  others: othersDT
+}
+
+export type othersDT = {
+  device: string;
+  journey: journeyDT
+}
+
+export type journeyDT = {
+  role: audioManagementRoleDT[];
+}
+
+export type audioManagementRoleDT = {
+  id: string;
+  role: string;
+  name: string;
+  date: string;
 }
 
 export type customSingleCriteriaDT = {

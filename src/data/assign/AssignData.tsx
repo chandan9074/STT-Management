@@ -1253,89 +1253,95 @@ export const targetSpeechData = {
         ]
 }
 
-export const targetAllSpeechData = {
-    id: '2',
-    speechData:
-        [
-            {
-                id: '1',
-                speaker: [
-                    {
-                        name: 'Maksuda Alam',
-                        gender: 'male',
-                        role: 'speaker',
-                        contact: '019',
-                        address: 'Dhaka',
-                        email: "maksudalam1@gmail.com",
-                        id: "maksudalam1@gmail.com"
-                    },
-                    {
-                        name: 'Bilkis banu',
-                        gender: 'female',
-                        role: 'speaker',
-                        contact: '019',
-                        address: 'Dhaka',
-                        email: "maksudalam1@gmail.com",
-                        id: "maksudalam2@gmail.com"
-                    }
-                ],
-                collector: {
-                    name: 'Muhammad Miraz',
+export const targetAllSpeechData =
+    [
+        {
+            id: '1',
+            speaker: [
+                {
+                    name: 'Maksuda Alam',
                     gender: 'male',
-                    role: 'collector',
+                    role: 'speaker',
                     contact: '019',
-                    address: 'Rajbongshi',
+                    address: 'Dhaka',
+                    email: "maksudalam1@gmail.com",
                     id: "maksudalam1@gmail.com"
                 },
-                speech: {
-                    id: '0',
-                    title: "Brahms: St Anthony Chorale - Theme, Two Pianos Op.56b",
-                    duration: "5:00",
-                    url:
-                        "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-                },
-                remark: "this is remark",
-                submissionDate: '30/01/2022; 3:14 PM',
-            },
-            {
-                id: '2',
-                speaker: [
-                    {
-                        name: 'Maksuda Alam',
-                        gender: 'male',
-                        role: 'speaker',
-                        contact: '019',
-                        address: 'Dhaka',
-                        email: "maksudalam1@gmail.com",
-                        id: "maksudalam1@gmail.com"
-                    },
-                    {
-                        name: 'Bilkis banu',
-                        gender: 'female',
-                        role: 'speaker',
-                        contact: '019',
-                        address: 'Dhaka',
-                        email: "maksudalam1@gmail.com",
-                        id: "maksudalam2@gmail.com"
-                    }
-                ],
-                collector: {
-                    name: 'Muhammad Miraz',
-                    gender: 'male',
-                    role: 'collector',
+                {
+                    name: 'Bilkis banu',
+                    gender: 'female',
+                    role: 'speaker',
                     contact: '019',
-                    address: 'Rajbongshi',
-                    id: "maksudalam1@gmail.com"
-                },
-                speech: {
-                    id: '0',
-                    title: "Brahms: St Anthony Chorale - Theme, Two Pianos Op.56b",
-                    duration: "5:00",
-                    url:
-                        "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-                },
-                remark: "this is remark",
-                submissionDate: '30/01/2022; 3:14 PM',
+                    address: 'Dhaka',
+                    email: "maksudalam1@gmail.com",
+                    id: "maksudalam2@gmail.com"
+                }
+            ],
+            collector: {
+                name: 'Muhammad Miraz',
+                gender: 'male',
+                role: 'collector',
+                contact: '019',
+                address: 'Rajbongshi',
+                id: "maksudalam1@gmail.com"
             },
-        ]
-}
+            speech: {
+                id: '0',
+                title: "Brahms: St Anthony Chorale - Theme, Two Pianos Op.56b",
+                duration: "5:00",
+                url:
+                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+            },
+            "script": {
+                "module": "STT",
+                "distributionSource": "Lecture",
+                "isAge": false,
+                "domain": "Applied science",
+                "subdomain": "Technology",
+                "sourceType": "",
+                "sourceUrl": "",
+                "sourceFile": "",
+                "sourceFileName": "",
+                "sourceFileImage": "",
+                "title": "",
+                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+                "date": "2023-02-16T12:45:58.536350",
+                "frequency": 0,
+                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+            },
+            "others": {
+                "device": 'Redmi-Note 7 pro',
+                "journey": {
+                    "role": [
+                        {
+                            "id": "1",
+                            "role": 'Admin',
+                            "name": 'Md. Jalal Uddin',
+                            "date": "01 Jan’ 22"
+                        },
+                        {
+                            "id": "2",
+                            "role": 'Manager',
+                            "name": 'Md. Eman Hassan',
+                            "date": "03 Jan’ 22"
+                        },
+                        {
+                            "id": "3",
+                            "role": 'Team Leader',
+                            "name": 'Jahida Ferdous Mim',
+                            "date": "05 Jan’ 22"
+                        },
+                        {
+                            "id": "4",
+                            "role": 'Collector',
+                            "name": 'Muhammad Miraz Mahmud',
+                            "date": "05 Jan’ 22"
+                        },
+                    ],
+                  
+                }
+            },
+            remark: "this is remark",
+            submissionDate: '30/01/2022; 3:14 PM',
+        },
+    ]

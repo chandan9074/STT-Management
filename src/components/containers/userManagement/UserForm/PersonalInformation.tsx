@@ -7,9 +7,6 @@ import Image from '../../../Image';
 
 const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
 
-    console.log('************', formik.values.role.length);
-
-
     return (
         // <div className='disableAutocompleteColor'>
         <div >
@@ -17,7 +14,7 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
             <Grid container spacing={5}>
                 {/* Primary Role */}
                 <Grid item xs={6}>
-                    <div className={`${formik.values.role.length === 0 && 'disableAutocompleteColor'}`}>
+                    <div className={`${formik.values.role.length === 0 && 'disableAutocompleteColor'} mt-[34px]`}>
                         <Autocomplete
                             disableClearable
                             placeholder='Choose one'
@@ -76,29 +73,32 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
 
                 {/* Name */}
                 <Grid item xs={6}>
-                    <TextField
-                        id="name"
-                        name="name"
-                        label={<h1 className='comboBoxLabel'>Name <span className='text-[red]'>*</span></h1>}
-                        value={formik.values.name}
-                        onChange={formik.handleChange}
-                        error={formik.touched.name && Boolean(formik.errors.name)}
-                        helperText={formik.touched.name && formik.errors.name}
-                        style={{ width: '100%' }}
-                        InputProps={{
-                            style: {
-                                color: '#464E5F',
-                                fontWeight: '600',
-                                fontSize: '15px'
-                            }
-                        }}
-                        variant="outlined" />
+                    <div className='mt-[17px]'>
+                        <TextField
+                            id="name"
+                            name="name"
+                            label={<h1 className='comboBoxLabel'>Name <span className='text-[red]'>*</span></h1>}
+                            value={formik.values.name}
+                            onChange={formik.handleChange}
+                            error={formik.touched.name && Boolean(formik.errors.name)}
+                            helperText={formik.touched.name && formik.errors.name}
+                            style={{ width: '100%' }}
+                            InputProps={{
+                                style: {
+                                    color: '#464E5F',
+                                    fontWeight: '600',
+                                    fontSize: '15px'
+                                }
+                            }}
+                            variant="outlined" />
+                    </div>
                 </Grid>
                 <Grid item xs={6}></Grid>
 
                 {/* Email */}
                 <Grid item xs={6}>
-                    <TextField
+                   <div className='mt-[17px]'>
+                   <TextField
                         id="email"
                         name="email"
                         label={<h1 className='comboBoxLabel'>Email <span className='text-[red]'>*</span></h1>}
@@ -115,11 +115,13 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                             }
                         }}
                         variant="outlined" />
+                   </div>
                 </Grid>
 
                 {/* Mobile Nujmber */}
                 <Grid item xs={6}>
-                    <TextField
+                   <div className='mt-[17px]'>
+                   <TextField
                         id="mobileNumber"
                         name="mobileNumber"
                         label={<h1 className='comboBoxLabel'>Mobile Number <span className='text-[red]'>*</span></h1>}
@@ -136,6 +138,7 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                             }
                         }}
                         variant="outlined" />
+                   </div>
                 </Grid>
 
 
@@ -143,10 +146,10 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
 
             </Grid>
 
-            <div className='py-[40px]'>
+            <div >
                 <Grid container>
                     <Grid item xs={6.20}>
-                        <div className='flex'>
+                        <div className='flex mt-[17px]'>
                             <TextField
                                 id="nid"
                                 name="nid"
@@ -167,6 +170,7 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                     </Grid>
 
                     <Grid item xs={5.8}>
+                        <div className='mt-[17px]'>
                         <TextField
                             id="birthRegNumber"
                             name="birthRegNumber"
@@ -182,6 +186,7 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                                 }
                             }}
                             variant="outlined" />
+                        </div>
                     </Grid>
 
                 </Grid>
@@ -190,7 +195,7 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
             <Grid container spacing={5}>
                 {/* Home District */}
                 <Grid item xs={6}>
-                    <div className=''>
+                    <div className='mt-[60px]'>
                         <HomeDistrictSelect
                             formikValues={formik.values.homeDistrict}
                             data={homeDistrict}
@@ -204,7 +209,7 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                 </Grid>
 
                 <Grid item xs={6}>
-                    <div className=''>
+                    <div className='mt-[60px]'>
                         <HomeDistrictSelect
                             formikValues={formik.values.presentDistrict}
                             data={homeDistrict}
@@ -221,7 +226,8 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
 
 
                 <Grid item xs={6}>
-                    <Autocomplete
+                   <div className='mt-[17px]'>
+                   <Autocomplete
                         disableClearable
                         placeholder='Choose one'
                         id="lastDegreeAchived"
@@ -251,9 +257,11 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                             />
                         )}
                     />
+                   </div>
                 </Grid>
 
                 <Grid item xs={6}>
+                    <div className='mt-[17px]'>
                     <TextField
                         id="subjectInStudy"
                         name="subjectInStudy"
@@ -269,6 +277,7 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                             }
                         }}
                         variant="outlined" />
+                    </div>
                 </Grid>
 
             </Grid>
