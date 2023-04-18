@@ -171,7 +171,7 @@ const Type5 = ({ data }: Props) => {
             title: `${"Activity".toLocaleUpperCase()}`,
             dataIndex: 'age',
             align: "center",
-            width: 112,
+            width: 150,
             render: (data) => (<>
                 <Buttons.LabelButton.Tertiary
                     onClick={() => navigate(`/user-management/activity/${data}`)}

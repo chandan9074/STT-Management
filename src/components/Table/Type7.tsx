@@ -100,7 +100,14 @@ const Type7 = ({ data }: Props) => {
                                 }
                             </div>
                         </div>
-                        <img className='w-[13px] h-[9px]' src={Icons.BlueRightArrow} alt="" />
+
+                        <div className='flex w-full justify-center items-center'>
+
+                            <button className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-ct-blue-10 active:border active:border-ct-blue-10'>
+                                <img className='w-[13px] h-[9px]' src={Icons.BlueRightArrow} alt="" />
+                            </button>
+
+                        </div>
                     </div>
                 </Link>
             )
@@ -140,15 +147,17 @@ const Type7 = ({ data }: Props) => {
             width: 80,
             align: "center",
             render: (data: targetDT) => (
-                <div className='flex justify-center'>
-                    <img
-                        onClick={() => {
-                            setRemarkOpen(true);
-                            setSingleTargetData(data);
-                        }}
-                        src={Icons.File} className="h-[15px] w-[12px] cursor-pointer"
-                        alt=""
-                    />
+                <div className='flex justify-center items-center'
+                    onClick={() => {
+                        setRemarkOpen(true);
+                        setSingleTargetData(data);
+                    }}>
+                    <button className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-blue-gray-20 active:border active:border-blue-gray-A10'>
+                        <img
+                            src={Icons.File} className="h-[15px] w-[12px] cursor-pointer"
+                            alt=""
+                        />
+                    </button>
                 </div>
             )
         },
@@ -161,20 +170,20 @@ const Type7 = ({ data }: Props) => {
             fixed: 'right',
             width: 80,
             render: (_, record: targetDT) => (
-                <>
+                <div className='flex w-full justify-center items-center'>
 
-                    <div className='flex w-full justify-center items-center'>
+                    <button className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-ct-blue-10 active:border active:border-ct-blue-10'
+                        onClick={() => {
+                            showDrawer(record)
+                            setSingleTargetData(record)
+                        }}>
                         <img
-                            onClick={() => {
-                                showDrawer(record);
-                                setSingleTargetData(record);
-                            }}
-                            className='w-[14px] h-[14px] cursor-pointer'
+                            className='w-[14px] h-[14px]'
                             src={Icons.open_in_new}
                             alt="" />
-                    </div>
+                    </button>
 
-                </>)
+                </div>)
         },
     ];
 

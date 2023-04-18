@@ -168,7 +168,7 @@ const AllTergets = () => {
                     <Buttons.TabButton.Secondary setActiveData={setActiveTab} tabLabel={['Pending', "Completed", "All Speeches"]} />
                 </div>
                 <div className='flex items-center gap-x-3'>
-                    <SearchBox.Type1 inputWidth="w-52" placeholder="Search with script ID, Title..." bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
+                    <SearchBox.Type1 inputWidth="w-52" placeholder="Search with Task ID, User..." bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
                     {activeTab === "Pending" ? <Filter.Type2 handleSubmitFilter={handleSubmitFilter} filterData={targetFilter} count={pendingCount} filterList={pendingFilterList} handleReset={handlePendingReset} handleFilterList={handlePendingFilterList} /> : activeTab === "Completed" ? <Filter.Type2 handleSubmitFilter={handleSubmitFilter} filterData={completedFilter} count={completedCount} filterList={completedFilterList} handleReset={handleCompletedReset} handleFilterList={handleCompletedFilterList} /> : <Filter.Type2 popupClassName='all_speech_deadline_date_picker' handleSubmitFilter={handleSubmitFilter} filterData={speechFilter} count={allSpeechCount} filterList={allSpeechFilterList} handleReset={handleAllSpeechReset} handleFilterList={handleAllSpeechFilterList} />}
                 </div>
             </div>
