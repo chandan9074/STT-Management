@@ -137,8 +137,45 @@ export const userManagementTable = [
         id: "9a-sdkf-asdfj-2348",
         name: "Mohammad Miraz",
         role: ["Team Leader", "Collector"],
+        primaryRole: "Team Leader",
         email: "tienlapspktnd@gmail.com",
-        userId: "8a-sdkf-asdfj-2348",
+        userId: "tienlapspktnd@gmail.com",
+        password: "123456",
+        mobileNumber: "01884654585",
+        presentDistrict: "Dhaka",
+        homeDistrict: "Chandpur",
+        education: "Honors 1st in Political Science",
+        status: "Active",
+        reportingTo: {
+            name: "Mohammad Miraz",
+            role: "Admin"
+        },
+        reportingChannel: [
+            {
+                name: "Mohammad Miraz",
+                role: "Admin"
+            },
+            {
+                name: "Mohammad Miraz",
+                role: "Manager"
+            },
+            {
+                name: "Mohammad Miraz",
+                role: "Team Leader"
+            },
+            {
+                name: "Mohammad Miraz",
+                role: "Collector"
+            },
+        ]
+    },
+    {
+        id: "9a-sdkf-asdfj-2338",
+        name: "Mohammad Miraz",
+        role: ["Team Leader", "Collector"],
+        primaryRole: "Collector",
+        email: "tienlapspktnd@gmail.com",
+        userId: "tienlapspktnd@gmail.com",
         password: "123456",
         mobileNumber: "01884654585",
         presentDistrict: "Dhaka",

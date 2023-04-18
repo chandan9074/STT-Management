@@ -79,7 +79,7 @@ const Type5 = ({ data }: Props) => {
 
             <div onKeyDown={(e) => e.stopPropagation()} className="w-[260px]">
 
-                
+
 
                 <Dropdown.Type8 data={[STATUS_ACTIVE, STATUS_BLOCKED]} option1={STATUS_ACTIVE} option2={STATUS_BLOCKED} />
 
@@ -188,17 +188,17 @@ const Type5 = ({ data }: Props) => {
             fixed: 'right',
             width: 80,
             render: (_, record: userManagementTableDT) => (
-                <>
+                <div className='flex w-full justify-center items-center'>
 
-                    <div className='flex w-full justify-center items-center'>
+                    <button className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-ct-blue-10 active:border active:border-ct-blue-10'
+                        onClick={() => showDrawer(record)}>
                         <img
-                            onClick={() => showDrawer(record)}
-                            className='w-[14px] h-[14px] cursor-pointer'
+                            className='w-[14px] h-[14px]'
                             src={Icons.open_in_new}
                             alt="" />
-                    </div>
+                    </button>
 
-                </>)
+                </div>)
         },
     ];
 
@@ -219,7 +219,7 @@ const Type5 = ({ data }: Props) => {
     };
 
     return (
-        <div className='type4-table billing-table billing-table-even-bg'>
+        <div className='type4-table billing-table billing-table-odd-bg'>
 
             <Table
 
@@ -234,9 +234,10 @@ const Type5 = ({ data }: Props) => {
                 pagination={false}
                 onChange={handleTableChange}
                 scroll={{ x: 1366 }}
+                rowKey="id"
             />
 
-            <SideDrawer.Type2 open={open} setOpen={setOpen} drawerData={drawerData} />
+            <SideDrawer.Type2 open={open} setOpen={setOpen} drawerData={drawerData ? drawerData : {} as userManagementTableDT} />
 
         </div >
     );

@@ -112,6 +112,7 @@ export type userManagementTableDT = {
     id: string;
     name: string;
     role: string[];
+    primaryRole: string;
     email: string;
     userId: string;
     password: string;
