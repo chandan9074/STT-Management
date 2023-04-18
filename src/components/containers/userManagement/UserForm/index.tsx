@@ -10,6 +10,7 @@ import PersonalInformation2 from './PersonalInformation2';
 import { useEffect, useState } from 'react';
 import { userRoleInformationDt, userSpeakerDt } from '../../../../types/userManagementTypes';
 import Layouts from '../../../Layouts';
+import Icons from '../../../../assets/Icons';
 
 const validationSchema = yup.object({
     role: yup.array().min(1, "Please select at least one role"),
@@ -40,57 +41,56 @@ const UserForm = () => {
 
     const [isSpeaker, setIsSpeaker] = useState<boolean>(false);
 
-    const initialValues = isSpeaker
-        ? {
-            // Speaker
-            role: [],
-            speakersName: '',
-            gender: '',
-            dateOfBirth: '',
-            ageRange: '',
-            education: '',
-            educationSituation: '',
-            childhoodPlace: '',
-            district: '',
-            upazilaCity: '',
-            villageArea: '',
-            smoking: 'Yes',
-            stutter: 'No',
-            hearingStatus: '',
-            reportingTo: '',
-            cvFile: '',
-            cvFileName: '',
-            adminData: {
-                id: '4',
-                name: 'Jahir Uddin',
-                number: '018684660691'
-            },
-        }
-        : {
-            role: [],
-            primaryRole: '',
-            name: '',
-            email: '',
-            mobileNumber: '',
-            nid: '',
-            birthRegNumber: '',
-            homeDistrict: '',
-            presentDistrict: '',
-            lastDegreeAchived: '',
-            subjectInStudy: '',
-            cvFile: '',
-            cvFileName: '',
-            reportingTo: '',
-            adminData: {
-                id: '10',
-                name: 'Jahir Uddin',
-                number: '018684660691'
-            },
-        };
+    const initialValues =
+        isSpeaker
+            ? {
+                // Speaker
+                role: ['Speaker'],
+                speakersName: '',
+                gender: 'Male',
+                dateOfBirth: '',
+                ageRange: '',
+                education: '',
+                educationSituation: '',
+                childhoodPlace: '',
+                district: '',
+                upazilaCity: '',
+                villageArea: '',
+                smoking: 'Yes',
+                stutter: 'No',
+                hearingStatus: '',
+                reportingTo: '',
+                cvFile: '',
+                cvFileName: '',
+                adminData: {
+                    id: '4',
+                    name: 'Jahir Uddin',
+                    number: '018684660691'
+                },
+            }
+            : {
+                role: [],
+                primaryRole: '',
+                name: '',
+                email: '',
+                mobileNumber: '',
+                nid: '',
+                birthRegNumber: '',
+                homeDistrict: '',
+                presentDistrict: '',
+                lastDegreeAchived: '',
+                subjectInStudy: '',
+                cvFile: '',
+                cvFileName: '',
+                reportingTo: '',
+                adminData: {
+                    id: '10',
+                    name: 'Jahir Uddin',
+                    number: '018684660691'
+                },
+            };
 
     const handleSpeakerSubmit = (values: userSpeakerDt) => {
-
-
         setIsSpeaker(isSpeaker);
     }
 
@@ -99,15 +99,12 @@ const UserForm = () => {
     }
 
     const formik = useFormik({
+        enableReinitialize: true,
         initialValues: initialValues,
         validationSchema: isSpeaker ? validationSchemaSpeaker : validationSchema,
-        // onSubmit: (values) => {
-
-        //     setIsSpeaker(isSpeaker);
-        // },
-        // onSubmit: isSpeaker ? handleSpeakerSubmit : handlePersonalInformationSubmit,
 
         onSubmit: (values) => {
+            
             if (isSpeaker) {
                 handleSpeakerSubmit(values as userSpeakerDt);
             } else {
@@ -122,15 +119,15 @@ const UserForm = () => {
             setIsSpeaker(false);
         }
 
-        formik.values.role?.map((value) => {
-            if (value === 'Speaker') {
+        formik.values.role?.map((value) => {            
+            if (value.toLowerCase() === 'speaker') {
                 setIsSpeaker(true);
-            }
-            else {
+            } else {                
                 setIsSpeaker(false);
             }
             return isSpeaker
         })
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [formik.values.role]);
 
@@ -149,9 +146,25 @@ const UserForm = () => {
                     <form onSubmit={formik.handleSubmit}>
                         <div className='px-[48px] py-[24px]'>
 
-                            <h1 className='text-ct-blue-95 font-medium text-[22px] mb-[33px]'>Create User</h1>
+                            <h1 className='text-ct-blue-95 font-medium text-[18px] mb-[33px]'>Create User</h1>
 
-                            <PersonalTitle />
+                            {
+                                (isSpeaker && formik.values.speakersName !== '') ?
+                                    <PersonalTitle
+                                        name={formik.values.speakersName}
+                                        role={['speaker']}
+                                        gender={formik.values.gender}
+                                    />
+                                    :
+                                    (!isSpeaker && formik.values.name !== '' && formik.values.primaryRole !== '' && formik.values.role.length > 0) ?
+                                        <PersonalTitle
+                                            name={formik.values.name}
+                                            primaryRole={formik.values.primaryRole}
+                                            role={formik.values.role}
+                                        />
+                                        :
+                                        <img className='h-8 w-[217px]' src={Icons.UserSnippet} alt="" />
+                            }
 
                             <h1 className='text-ct-blue-60 text-small font-semibold my-[28px]'>Personal Information</h1>
 

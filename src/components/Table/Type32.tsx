@@ -5,7 +5,7 @@ import { ColumnsType } from 'antd/es/table';
 import RoleImage from '../Image/RoleImage';
 import SpeechStatus from '../common/SpeechStatus';
 import Icons from '../../assets/Icons';
-import Remark2 from '../common/TableField/Remark2';
+import Remark2 from '../containers/AudioManagement/TableField/Remark2';
 
 const Type32 = ({ data }: { data: historyDT[] }) => {
     const [remarkOpen, setRemarkOpen] = useState(false);

@@ -1,5 +1,5 @@
-import { annotateInfoDT } from "../../../../types/audioManagementTypes"
-import RoleImage from "../../../Image/RoleImage"
+import { annotateInfoDT } from "../../../../../types/audioManagementTypes"
+import RoleImage from "../../../../Image/RoleImage"
 
 type Props = {
     data: annotateInfoDT

@@ -11,8 +11,8 @@ import { STATUS_CLAIMED } from '../../helpers/ConditionVariable';
 import { CustomModal } from '../common/CustomModal';
 import ClaimApplicationModal from '../containers/AudioManagement/Annotation/AnnotatedFiles/ClaimApplicationModal';
 import { Drawer } from '../Drawer';
-import Speaker from '../common/TableField/AudioManagement/Speaker';
-import Remark2 from '../common/TableField/Remark2';
+import Speaker from '../containers/AudioManagement/TableField/AudioManagement/Speaker';
+import Remark2 from '../containers/AudioManagement/TableField/Remark2';
 
 
 type Props = {

@@ -1,6 +1,6 @@
 import React from 'react';
-import { speakerLocalitySingleDT } from '../../../../types/audioManagementTypes';
-import RoleImage from '../../../Image/RoleImage';
+import { speakerLocalitySingleDT } from '../../../../../types/audioManagementTypes';
+import RoleImage from '../../../../Image/RoleImage';
 
 type Props = {
     data: speakerLocalitySingleDT

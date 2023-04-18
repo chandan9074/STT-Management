@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Icons from '../../../../assets/Icons';
 import { targetFilter } from '../../../../data/assign/AssignData';
-import { targetData } from '../../../../data/assign/AssignData';
 import { RECREATE_TARGET_PATH } from '../../../../helpers/Slug';
 import { targetAssignParamDT, targetDT, targetFilterListDT } from '../../../../types/assignTypes';
 import Buttons from '../../../Buttons';
@@ -126,8 +125,8 @@ const TargetTable = () => {
           </div>
         </div>
       </div>
-      <Table.Type10 data={targetData} setSelectedTarget={setSelectedTarget} />
-      {/* <Table.Type10 data={assignContext.targetsAssign} setSelectedTarget={setSelectedTarget} /> */}
+      {/* <Table.Type10 data={targetData} setSelectedTarget={setSelectedTarget} /> */}
+      <Table.Type10 data={assignContext.targetsAssign} setSelectedTarget={setSelectedTarget} />
 
 
       {

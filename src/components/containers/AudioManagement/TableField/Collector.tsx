@@ -1,5 +1,5 @@
-import { collectorDT } from '../../../types/assignTypes';
-import RoleImage from '../../Image/RoleImage';
+import { collectorDT } from '../../../../types/assignTypes';
+import RoleImage from '../../../Image/RoleImage';
 
 const Collector = ({ data }: { data: collectorDT }) => {
     return (

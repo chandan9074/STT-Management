@@ -95,17 +95,18 @@ textarea {
     content: "";
 }
 
-
-/* #sub-domain[disabled] {
-    cursor: not-allowed !important;
-} */
-
 [disabled] {
+   background-color: #F9FAFC !important;
     cursor: not-allowed !important;
 }
 
 .disabled-cursor[disabled] {
+    background-color: #F9FAFC !important;
     cursor: not-allowed !important;
+}
+
+.disableAutocompleteColor .MuiAutocomplete-hasPopupIcon.css-1qqsdnr-MuiAutocomplete-root .MuiOutlinedInput-root {
+    background-color: #F9FAFC !important;
 }
 
 .source-reference .css-honmcm-MuiGrid-root>.MuiGrid-item {

@@ -11,7 +11,7 @@ import { STATUS_CLAIMED } from '../../helpers/ConditionVariable';
 import { CustomModal } from '../common/CustomModal';
 import ClaimApplicationModal from '../containers/AudioManagement/Annotation/AnnotatedFiles/ClaimApplicationModal';
 import { Drawer } from '../Drawer';
-import Remark2 from '../common/TableField/Remark2';
+import Remark2 from '../containers/AudioManagement/TableField/Remark2';
 
 
 type Props = {

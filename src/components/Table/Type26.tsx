@@ -4,7 +4,7 @@ import { useState } from "react"
 import Icons from "../../assets/Icons"
 import { annotationUploadDT } from "../../types/audioManagementTypes"
 import AudioTrack from "../common/AudioTrack"
-import Remark2 from "../common/TableField/Remark2"
+import Remark2 from "../containers/AudioManagement/TableField/Remark2"
 import { Drawer } from "../Drawer"
 import Pagination from "../Pagination"
 

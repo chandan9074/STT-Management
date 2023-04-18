@@ -1,5 +1,5 @@
-import { validateDT } from "../../../../types/audioManagementTypes"
-import RoleImage from "../../../Image/RoleImage"
+import { validateDT } from "../../../../../types/audioManagementTypes"
+import RoleImage from "../../../../Image/RoleImage"
 
 type Props = {
     data: validateDT

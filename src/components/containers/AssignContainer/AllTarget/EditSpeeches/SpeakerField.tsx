@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import Icons from '../../../../../assets/Icons';
 import { speechDt } from '../../../../../types/assignTypes';
-import Speaker from '../../../../common/TableField/Speaker';
+import Speaker from '../../../AudioManagement/TableField/Speaker';
 
 type Props = {
     setIsSpeakerModal: Dispatch<SetStateAction<boolean>>;

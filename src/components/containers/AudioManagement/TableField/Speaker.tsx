@@ -1,5 +1,5 @@
-import { roleDT } from '../../../types/billingTypes';
-import RoleImage from '../../Image/RoleImage';
+import { roleDT } from '../../../../types/billingTypes';
+import RoleImage from '../../../Image/RoleImage';
 
 const Speaker = ({data}: {data: roleDT[]}) => {
     return (
