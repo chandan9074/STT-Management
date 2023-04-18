@@ -3,16 +3,16 @@
   background-color: #F9FAFC;
 } */
 
-.billing-table .ant-table-tbody > tr:nth-child(odd) > td {
+/* .billing-table .ant-table-tbody > tr:nth-child(odd) > td {
   background-color: #F9FAFC;
-}
+} */
 
 .billing-table-even-bg  .ant-table-tbody > tr:nth-child(even) > td {
   background-color: #F9FAFC;
 }
 
-.billing-table-even-bg  .ant-table-tbody > tr:nth-child(odd) > td {
-  background-color: white;
+.billing-table-odd-bg  .ant-table-tbody > tr:nth-child(odd) > td {
+  background-color: #F9FAFC;
 }
 
 .billing-table .ant-table-wrapper .ant-table-thead>tr>th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {

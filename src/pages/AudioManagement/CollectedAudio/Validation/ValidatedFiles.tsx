@@ -36,10 +36,10 @@ const ValidatedFiles = () => {
   const [activeTab, setActiveTab] = useState<string>("Sentence");
   const [selectedSpeech, setSelectedSpeech] = useState<validatedFilesDT[]>([] as validatedFilesDT[]);
 
-  const { getAnnotatedFilesUploadData, validatedFilesData } = useContext(AudioManagementContext);
+  const { getValidatedFilesData, validatedFilesData } = useContext(AudioManagementContext);
 
   useEffect(() => {
-    getAnnotatedFilesUploadData()
+    getValidatedFilesData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

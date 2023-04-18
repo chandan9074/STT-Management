@@ -242,7 +242,7 @@ const Type35 = ({ data }: Props) => {
 
 
     return (
-        <div className="billing-table billing-table-even-bg type4-table horizontal-table-padding">
+        <div className="billing-table billing-table-odd-bg type4-table horizontal-table-padding">
             <Table
                 dataSource={data}
                 columns={Type35columns}
