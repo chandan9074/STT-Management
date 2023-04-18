@@ -16,6 +16,9 @@ export const STATUS_VALIDATED = 'Validated';
 export const STATUS_VALIDATING = 'Validating';
 export const STATUS_TOOK_A_BREAK = 'Took a Break';
 export const STATUS_CLAIMED = 'Claimed';
+export const STATUS_ACTIVE = 'Active';
+export const STATUS_BLOCKED = 'Blocked';
+
 
 export const AUDIO_FILE_UPLOADED = 'Uploaded';
 export const AUDIO_FILE_FAILED = 'Upload Failed';

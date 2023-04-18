@@ -135,6 +135,7 @@ import openInNewGray from "./open_in_new_gray.svg"
 import File from "./File.svg";
 import check_magenta from "./check_magenta.svg";
 import check_blue from "./check_blue.svg";
+import check_red from "./check_red.svg";
 import like_emoji from "./like_emoji.svg";
 import AssignmentReturn from "./assignment_return.svg";
 import union from "./union.svg";
@@ -235,6 +236,7 @@ const Icons = {
   calenderIcon,
   double_up_arrow,
   info,
+  check_red,
   check_green,
   check_blue,
   check_magenta,

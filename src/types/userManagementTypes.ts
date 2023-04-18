@@ -77,7 +77,7 @@ export type userSpeakerDt = {
     stutter: string,
     hearingStatus: string,
     cvFile: string,
-    cvFileName:string,
+    cvFileName: string,
     reportingTo: string,
     adminData: adminDataDT,
 
@@ -97,7 +97,7 @@ export type userRoleInformationDt = {
     lastDegreeAchived: string,
     subjectInStudy: string,
     cvFile: string,
-    cvFileName:string,
+    cvFileName: string,
     reportingTo: string,
     adminData: adminDataDT,
 }
@@ -106,4 +106,25 @@ export type adminDataDT = {
     id: string,
     name: string,
     number: string
+}
+
+export type userManagementTableDT = {
+    id: string;
+    name: string;
+    role: string[];
+    email: string;
+    userId: string;
+    password: string;
+    mobileNumber: string;
+    presentDistrict: string;
+    homeDistrict: string;
+    education: string;
+    status: string;
+    reportingTo: reportingToDT
+    reportingChannel: reportingToDT[]
+}
+
+export type reportingToDT = {
+    name: string;
+    role: string;
 }
