@@ -51,7 +51,9 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                         <div className="flex gap-x-2 animate-fadeIn">
                             {count > 0 && (<><Buttons.LabelButton.Primary onClick={() => { handleSubmitFilter(); setOpen(!open) }} label="Apply" size="xSmall" variant="CT-Blue" />
                                 <Buttons.LabelButton.Tertiary label="Clear filter" size="xSmall" variant="CT-Blue" onClick={() => handleReset("", "all")} /></>)}
-                            <button onClick={() => setOpen(!open)}>
+                            <button
+                                className="border border-ct-blue-10 rounded-full p-[10.71px] transition-all ease-out duration-300 hover:bg-blue-gray-20 active:bg-blue-gray-A20"
+                                onClick={() => setOpen(!open)}>
                                 <img src={Icons.CloseIconButton} alt="" />
                             </button>
                         </div>
