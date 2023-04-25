@@ -11,6 +11,12 @@ export type links = {
     links: links[]
 }
 
+export type sizeStyleType = {
+    [key: string]: {
+        [key: string]: string;
+    };
+}
+
 export type IconButtonVariantStyleType = {
     [key: string]: {
         [key: string]: string;

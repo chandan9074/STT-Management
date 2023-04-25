@@ -108,6 +108,10 @@ type HeaderProps = {
 };
 
 const Header = ({ activeMonth, year }: HeaderProps) => {
+
+  const userManagementContext = React.useContext(UserManagementContext);
+
+
   const [calenderBtn, setCalenderBtn] = useState(false);
   const [currentYear, setCurrentYear] = useState(year);
 
@@ -144,14 +148,19 @@ const Header = ({ activeMonth, year }: HeaderProps) => {
             className={`fixed top-0 left-0 w-full h-full bg-transparent bg-opacity-50 z-[80] animate-fadeIn ${calenderBtn ? "block" : "hidden"
               }`}
           />
-          <div className="flex items-center relative z-[80]">
-            <button>
-              <img src={Icons.left_indicator} alt="" className="py-1.5 px-1.5" />
-            </button>
-            <Buttons.Date activeMonth={activeMonth} year={year} calenderBtn={calenderBtn} setCalenderBtn={setCalenderBtn} />
-            <button>
-              <img src={Icons.right_indicator} alt="" className="py-1.5 px-1.5" />
-            </button>
+          <div className="flex items-center gap-x-6 relative z-[80]">
+
+            <Buttons.TabButton.Secondary tabLabel={["week 1", "Week 2", "week 3", "Week 4", "Week 5"]} setActiveData={userManagementContext.setActiveRole} size='small' variant='White' />
+
+            <div className='flex items-center gap-x-2'>
+              <button>
+                <img src={Icons.left_indicator} alt="" className="py-1.5 px-1.5" />
+              </button>
+              <Buttons.Date activeMonth={activeMonth} year={year} calenderBtn={calenderBtn} setCalenderBtn={setCalenderBtn} />
+              <button>
+                <img src={Icons.right_indicator} alt="" className="py-1.5 px-1.5" />
+              </button>
+            </div>
           </div>
 
           <div

@@ -57,8 +57,8 @@ const Primary = (props: Props) => {
                 <button
                     key={index}
                     onClick={() => handleActive(data, index)}
-                    className={`${buttonSizeStyle[size].tabPadding} rounded-[24px] text-xxs duration-300 ${activeButton === index ? `${buttonVariantStyle[variant]?.selected} font-bold` :
-                        `${buttonVariantStyle[variant]?.hover} ${buttonVariantStyle[variant]?.pressed} ${buttonVariantStyle[variant]?.text} font-bold`}`}
+                    className={`${buttonSizeStyle[size].tabPadding} rounded-[24px] text-xxs duration-300 ${activeButton === index ? `${buttonVariantStyle[variant]?.selected} font-medium` :
+                        `${buttonVariantStyle[variant]?.hover} ${buttonVariantStyle[variant]?.pressed} ${buttonVariantStyle[variant]?.text} font-medium`}`}
                 >
                     {data}
                 </button>
