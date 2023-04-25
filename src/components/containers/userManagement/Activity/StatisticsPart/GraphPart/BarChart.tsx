@@ -76,7 +76,7 @@ const BarChart = ({ data }: { data: overTheTimeDataDT }) => {
           </div>
         </div>
       </div>
-      <div className='flex gap-x-6 justify-end w-full pt-10 pb-7'>
+      <div className='flex gap-x-6 justify-end font-semibold w-full pt-10 pb-7'>
         <div className='flex items-center'>
           <div className='w-2 h-2 bg-secondary-blue-50 mr-2 rounded-full' />
           <h4 className='mb-0 text-ct-blue-90-70% text-xxs'>Uploaded</h4>
