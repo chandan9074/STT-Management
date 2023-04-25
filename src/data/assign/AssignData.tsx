@@ -294,7 +294,7 @@ export const targetData = [
             "recordingDistance": "baire",
             "education": "secondary",
             "target": 2345,
-            "deadline": "2023-02-11",
+            "deadline": "30/01/2022",
             "reminder": [
                 "kisr",
                 "ki"
@@ -354,7 +354,7 @@ export const targetData = [
             "recordingDistance": "baire",
             "education": "secondary",
             "target": 2345,
-            "deadline": "2023-02-11",
+            "deadline": "30/01/2022",
             "reminder": [
                 "kisr",
                 "ki"
@@ -414,7 +414,7 @@ export const targetData = [
             "recordingDistance": "baire",
             "education": "secondary",
             "target": 2345,
-            "deadline": "2023-02-11",
+            "deadline": "30/01/2022",
             "reminder": [
                 "kisr",
                 "ki"
@@ -474,7 +474,7 @@ export const targetData = [
             "recordingDistance": "baire",
             "education": "secondary",
             "target": 2345,
-            "deadline": "2023-02-11",
+            "deadline": "30/01/2022",
             "reminder": [
                 "kisr",
                 "ki"
