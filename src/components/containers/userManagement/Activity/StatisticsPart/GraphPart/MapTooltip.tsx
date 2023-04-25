@@ -23,7 +23,7 @@ const MapTooltip = ({
                 <div className="py-1 px-2 rounded-[4px] bg-secondary-blue-50 bg-opacity-[0.12] w-24">
                     <h3 className="mb-0 text-white text-xxs">Collected</h3>
                     <h3 className="mb-0 text-blue-10 font-medium">
-                        {data?.collected}h
+                        {data?.collected} audios
                     </h3>
                 </div>
                 <div
@@ -35,7 +35,7 @@ const MapTooltip = ({
                 <div className="py-1 px-2 rounded-[4px] bg-medium-purple-bg bg-opacity-[0.12] w-24">
                     <h3 className="mb-0 text-white text-xxs">Speaker</h3>
                     <h3 className="mb-0 text-blue-10 font-medium">
-                        {data?.speaker}%
+                        {data?.speaker}
                     </h3>
                 </div>
             </div>
