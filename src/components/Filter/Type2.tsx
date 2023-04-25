@@ -72,7 +72,7 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                         <img
                                             src={Icons.dark_up_arrow}
                                             alt=""
-                                            className="animate-fadeIn"
+                                            className="animate-fadeIn p-0.5 rounded-full border border-transparent hover:bg-white transition-all duration-300 ease-out active:bg-blue-gray-A10"
                                         />
                                     ) : (
                                         <img
