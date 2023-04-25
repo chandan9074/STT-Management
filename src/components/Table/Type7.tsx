@@ -119,7 +119,7 @@ const Type7 = ({ data }: Props) => {
             width: 170,
             render: (data: targetDT) => (
                 <div className='flex gap-x-2 w-[212px]'>
-                    <RoleImage width='w-[18px]' height='h-[18px]' role='speaker' />
+                    <RoleImage width='w-[18px]' height='h-[18px]' role={data.assignee.role} />
                     <div>
                         <h1 className='text-xs text-blue-gray-80 font-medium m-0 leading-[15px]'>{data.assignee.name}</h1>
                         <h1 className='text-xxs text-blue-gray-75 leading-[14px]'>{data.assignee.role}</h1>
