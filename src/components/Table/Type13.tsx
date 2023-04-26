@@ -23,7 +23,6 @@ const Type13 = ({ data }: Props) => {
 
     const [remarkOpen, setRemarkOpen] = useState<boolean>(false);
     const [singleTargetData, setSingleTargetData] = useState<speechDT3>();
-    console.log("data---------------------_____>",singleTargetData);
     
 
     const managerContext = useContext(RoleInContext);
