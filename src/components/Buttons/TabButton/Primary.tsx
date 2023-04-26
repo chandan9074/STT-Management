@@ -43,7 +43,7 @@ const Primary = (props: Props) => {
     const buttonSizeStyle: IconButtonSizeStyleType = {
         "small": {
             btnPadding: "p-[2px] shadow-md",
-            tabPadding: "py-[11px] leading-[14.4px] px-9",
+            tabPadding: "py-[12px] leading-[14.4px] px-2 w-[121px]",
         },
         "medium": {
             btnPadding: "p-[3px]",
@@ -57,8 +57,8 @@ const Primary = (props: Props) => {
                 <button
                     key={index}
                     onClick={() => handleActive(data, index)}
-                    className={`${buttonSizeStyle[size].tabPadding} rounded-[24px] text-xxs duration-300 ${activeButton === index ? `${buttonVariantStyle[variant]?.selected} font-medium` :
-                        `${buttonVariantStyle[variant]?.hover} ${buttonVariantStyle[variant]?.pressed} ${buttonVariantStyle[variant]?.text} font-medium`}`}
+                    className={`${buttonSizeStyle[size].tabPadding} rounded-[24px] text-xxs duration-300 ${activeButton === index ? `${buttonVariantStyle[variant]?.selected} font-bold` :
+                        `${buttonVariantStyle[variant]?.hover} ${buttonVariantStyle[variant]?.pressed} ${buttonVariantStyle[variant]?.text} font-bold`}`}
                 >
                     {data}
                 </button>

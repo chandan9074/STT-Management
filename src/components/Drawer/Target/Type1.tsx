@@ -63,7 +63,7 @@ const Type1 = ({ isDrawerOpen, setIsDrawerOpen: setOpen, data }: Props) => {
                             </div>
 
 
-                            <div className='absolute -bottom-[20px] left-[45px]'>
+                            <div className='absolute -bottom-[20px] left-[55.5px]'>
                                 <Buttons.TabButton.Primary
                                     size='small'
                                     tabLabel={["Script", "Speaker Criteria", "Others"]}

@@ -1,4 +1,4 @@
-import { Dispatch, MouseEventHandler, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import Icons from '../../../assets/Icons';
 import { customSingleCriteriaDT } from '../../../types/assignTypes';
 import { scriptResDT } from '../../../types/script';
