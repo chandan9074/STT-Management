@@ -147,8 +147,16 @@ import AudioRecorder from './AudioRecorder.svg';
 import Vector3 from './Vector_3.png';
 import UserSnippet from './User_Snippet_Skeleton.svg'
 import metaDataImage from './scriptMetadataImage.png'
+import LatestCalBlue from './icon_wrapper_latest_blue.svg'
+import LatestCalGray from './icon_wrapper_latest_gray.svg'
+import OldestCalBlue from './icon_wrapper_oldest_blue.svg'
+import OldestCalGray from './icon_wrapper_oldest_gray.svg'
 
 const Icons = {
+  OldestCalGray,
+  OldestCalBlue,
+  LatestCalGray,
+  LatestCalBlue,
   currency,
   admin,
   hamburger,

@@ -241,7 +241,7 @@ export const targetDataForRecreate = {
         "recordingDistance": "baire",
         "education": "secondary",
         "target": 2345,
-        "deadline": "2023-02-11",
+        "deadline": "25/01/2023",
         "reminder": ["kisr", "ki"],
         "remark": "nai kono remark"
     },
@@ -875,7 +875,7 @@ export const targetCompletedData =
                 "recordingDistance": "baire",
                 "education": "secondary",
                 "target": 2345,
-                "deadline": "2023-02-11",
+                "deadline": "25/01/2023",
                 "reminder": [
                     "kisr",
                     "ki"
@@ -919,7 +919,7 @@ export const targetCompletedData =
                 "recordingDistance": "baire",
                 "education": "secondary",
                 "target": 2345,
-                "deadline": "2023-02-11",
+                "deadline": "25/01/2023",
                 "reminder": [
                     "kisr",
                     "ki"

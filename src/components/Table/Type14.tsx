@@ -6,6 +6,9 @@ import { targetCompletedDT } from '../../types/assignTypes';
 import Buttons from '../Buttons';
 import Remark from '../common/Remark';
 import RoleImage from '../Image/RoleImage';
+import Dropdown from '../Dropdown';
+import { Link, useLocation } from 'react-router-dom';
+import * as PATH from '../../helpers/Slug'
 
 
 type Props = {
@@ -13,9 +16,33 @@ type Props = {
 }
 
 const Type14 = ({ data }: Props) => {
+
+    const location = useLocation();
+
     const [remarkOpen, setRemarkOpen] = useState(false);
 
-    const [singleTargetData, setSingleTargetData] = useState<targetCompletedDT>();
+    const [singleTargetData] = useState<targetCompletedDT>();
+
+    const getColumnSearchProps = (dataIndex: any): any => ({
+
+
+        filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }: any) => (
+
+            <div onKeyDown={(e) => e.stopPropagation()} className="w-[260px]">
+
+
+
+                <Dropdown.Type9 option1={`Sort by latest ${dataIndex}`} option2={`Sort by oldest ${dataIndex}`} />
+
+            </div>
+        ),
+        filterIcon: (filtered: boolean) => (
+            <div>
+                <img src={Icons.Unfold_More} className="w-[14px] h-[14px] object-cover" alt='' />
+            </div>
+        ),
+    });
+
 
     const Type8columns: ColumnsType<targetCompletedDT> = [
         {
@@ -77,11 +104,12 @@ const Type14 = ({ data }: Props) => {
             )
         },
 
-        
+
         {
             title: `${"Deadline".toLocaleUpperCase()}`,
             key: 'deadline',
             width: 120,
+            ...getColumnSearchProps('Deadline'),
             render: (data: targetCompletedDT) => <h1 className='w-[120px] whitespace-nowrap'>{data.target.deadline}</h1>,
 
         },
@@ -90,29 +118,10 @@ const Type14 = ({ data }: Props) => {
             title: `${"Submission Date".toLocaleUpperCase()}`,
             key: 'deadline',
             width: 120,
+            ...getColumnSearchProps('Submission'),
             render: (data: targetCompletedDT) => <h1 className='w-[120px] whitespace-nowrap'>{data?.submissionDate}</h1>,
 
         },
-
-        {
-            title: `${"REMARK".toLocaleUpperCase()}`,
-            width: 80,
-            align: "center",
-            render: (data: targetCompletedDT) => (
-                <div className='flex justify-center'>
-                    <img
-                        onClick={() => {
-                            setRemarkOpen(true);
-                            setSingleTargetData(data);
-                        }}
-                        src={Icons.File} className="h-[15px] w-[12px] cursor-pointer"
-                        alt=""
-                    />
-                </div>
-            )
-        },
-        
-
         {
             title: `${"Details".toLocaleUpperCase()}`,
             align: 'center',
@@ -124,13 +133,15 @@ const Type14 = ({ data }: Props) => {
                 <>
 
                     <div className='flex w-full justify-center items-center'>
-                        <Buttons.IconButton.Circle
-                            size='medium'
-                            variant="CT-Blue"
-                            icon={<img src={Icons.East} alt="" />}
-                            border='none'
-                            background="white"
-                        />
+                        <Link to={`${location.pathname}/${PATH.USER_MANAGEMENT_SPEECHES_PATH}/${record.id}`}>
+                            <Buttons.IconButton.Circle
+                                size='medium'
+                                variant="CT-Blue"
+                                icon={<img src={Icons.East} alt="" />}
+                                border='none'
+                                background="white"
+                            />
+                        </Link>
                     </div>
 
                 </>)

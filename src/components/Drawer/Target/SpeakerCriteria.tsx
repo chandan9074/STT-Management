@@ -4,7 +4,7 @@ type Props = {
     data?: targetDT
 }
 
-const SpeakerCriteria = ({ data }: Props) => {
+const SpeakerCriteria = ({ data }: Props) => {    
 
     const singleValue1: customSingleCriteriaDT[] = [
         {
