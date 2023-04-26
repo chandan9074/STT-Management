@@ -68,7 +68,7 @@ const SpeechTable = ({ data }: Props) => {
             <div className='mb-5 flex items-center justify-between'>
                 <h2 className='text-ct-blue-95 text-heading-6 font-medium'>All Speeches</h2>
                 <div className='flex items-center gap-x-3'>
-                    <SearchBox.Type1 inputWidth="w-52" placeholder="Search with script ID, Title..." bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
+                    <SearchBox.Type1 inputWidth="w-52" placeholder="Search..." bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
                     <Filter.Type2 popupClassName='speech_deadline_date_picker' handleSubmitFilter={handleSubmitFilter} filterData={speechFilter} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
                 </div>
             </div>

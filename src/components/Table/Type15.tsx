@@ -6,12 +6,12 @@ import { Drawer } from '../Drawer';
 import RoleImage from '../Image/RoleImage';
 import { RoleInContext } from '../../context/RoleProvider';
 import { roleDT } from '../../types/billingTypes';
-import { sortStatus } from '../../data/assign/AssignData';
 import { speechDt2, targetSpeechDT } from '../../types/assignTypes';
-import { ColumnsType, ColumnType } from 'antd/es/table';
+import { ColumnsType } from 'antd/es/table';
 import Remark from '../common/Remark';
 import SpeechStatus from '../common/SpeechStatus';
 import AudioTrack from '../common/AudioTrack';
+import Dropdown from '../Dropdown';
 
 type Props = {
     data: targetSpeechDT
@@ -27,8 +27,8 @@ const Type15 = ({ data }: Props) => {
 
     const managerContext = useContext(RoleInContext);
 
-    const [isLatest, setIsLatest] = useState<boolean>(false);
-    const [isOlder, setIsOlder] = useState<boolean>(false);
+    // const [isLatest, setIsLatest] = useState<boolean>(false);
+    // const [isOlder, setIsOlder] = useState<boolean>(false);
 
 
     const managerParams = {
@@ -50,42 +50,33 @@ const Type15 = ({ data }: Props) => {
         setIsSpeakerModal(true)
     }
 
-    const onUploadStatus = (value: string) => {
-        if (value === sortStatus[0]) {
-            setIsLatest(!isLatest);
-            setIsOlder(false);
-        } else {
-            setIsOlder(!isOlder);
-            setIsLatest(false);
-        }
-    }
+    // const onUploadStatus = (value: string) => {
+    //     if (value === sortStatus[0]) {
+    //         setIsLatest(!isLatest);
+    //         setIsOlder(false);
+    //     } else {
+    //         setIsOlder(!isOlder);
+    //         setIsLatest(false);
+    //     }
+    // }
 
 
-    const getColumnSearchProps = (dataIndex: string): ColumnType<speechDt2> => ({
+    const getColumnSearchProps = (dataIndex: any): any => ({
 
-        filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
 
-            <div onKeyDown={(e) => e.stopPropagation()} className="w-[260px] -mr-[94px] -mt-[2px]  rounded-[8px] overflow-hidden" >
-                {
-                    sortStatus?.map((item: string, i: number) => (
-                        <div onClick={() => item === sortStatus[0] ? onUploadStatus(sortStatus[0]) : onUploadStatus(sortStatus[1])}
-                            className={`${(isLatest && item === sortStatus[0]) ? 'bg-blue-10' : (isOlder && item === sortStatus[1]) ? 'bg-blue-10' : 'bg-white'} h-[48px] py-4 pl-4 pr-3 flex items-center justify-between ${item === sortStatus[1] ? 'rounded-[8px] border-[1px] rounded-t-none border-t-transparent border-blue-gray-30' : 'rounded-[8px] border-[1px] rounded-b-none border-b-transparent border-blue-gray-30 '}`} key={i}>
-                            <div className='flex items-center gap-x-3'>
-                                <img className='h-4 w-4' src={Icons.IconsWrapper} alt="" />
-                                <h1 className='text-green-60 text-sm font-medium'>{item}</h1>
-                            </div>
-                            {
-                                ((isLatest && item === sortStatus[0]) || (isOlder && item === sortStatus[1])) &&
-                                <img className='h-3 w-4' src={Icons.CorrectIcon} alt="" />
-                            }
-                        </div>
-                    ))
-                }
+        filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }: any) => (
+
+            <div onKeyDown={(e) => e.stopPropagation()} className="w-[300px]">
+
+
+
+                <Dropdown.Type9 option1={`Sort by latest ${dataIndex}`} option2={`Sort by oldest ${dataIndex}`} />
+
             </div>
         ),
         filterIcon: (filtered: boolean) => (
             <div>
-                <img src={Icons.Unfold_More} className="w-[18px] h-[18px] object-cover" alt='' />
+                <img src={Icons.Unfold_More} className="w-[14px] h-[14px] object-cover" alt='' />
             </div>
         ),
     });
@@ -112,7 +103,7 @@ const Type15 = ({ data }: Props) => {
         {
             title: `${"Speaker".toLocaleUpperCase()}`,
             key: 'speaker',
-            width: 266,
+            width: 200,
             render: (data) =>
                 <div>
 
@@ -155,11 +146,11 @@ const Type15 = ({ data }: Props) => {
         },
 
         {
-            title: `${"Submission Date: Time".toLocaleUpperCase()}`,
+            title: `${"Submission Date & Time".toLocaleUpperCase()}`,
             width: 208,
             ...getColumnSearchProps('submissionDate'),
             render: (data) => (
-                <h4 className='text-gray-80 text-xxs'>{data?.submissionDate}</h4>
+                <h4 className='text-gray-80 w-[120px] whitespace-nowrap'>{data?.submissionDate}</h4>
             )
         },
 
@@ -172,12 +163,12 @@ const Type15 = ({ data }: Props) => {
                 <button onClick={() => {
                     setRemarkOpen(true);
                     setSingleTargetData(data);
-                }} className='flex justify-center'>
+                }} className=''>
                     {
                         data?.remark === "" ?
                             <h4>-</h4>
                             :
-                            <img src={Icons.File} className="h-[15px] w-[12px]" alt="" />
+                            <img src={Icons.File} className="h-4 w-4 cursor-pointer" alt="" />
                     }
 
                 </button>
@@ -187,6 +178,7 @@ const Type15 = ({ data }: Props) => {
         {
             title: `${"Status".toLocaleUpperCase()}`,
             width: 150,
+            align: 'center',
             render: (data) => (
                 <>
                     {
@@ -199,7 +191,7 @@ const Type15 = ({ data }: Props) => {
         },
 
         {
-            title: `${"Action".toLocaleUpperCase()}`,
+            title: `${"Details".toLocaleUpperCase()}`,
             align: 'center',
             dataIndex: 'details',
             key: 'action',
