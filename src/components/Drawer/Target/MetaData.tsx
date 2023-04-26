@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, MouseEventHandler, SetStateAction, useState } from 'react';
 import Icons from '../../../assets/Icons';
 import { customSingleCriteriaDT } from '../../../types/assignTypes';
 import { scriptResDT } from '../../../types/script';
@@ -10,6 +10,14 @@ type Props = {
 }
 
 const MetaData = ({ setIsMetaData, data }: Props) => {
+
+    // const [imageModal,setImageModal] = useState(false)
+
+    // const handleModal: MouseEventHandler<HTMLButtonElement> = () => {
+    //     setImageModal(!imageModal)
+    //     console.log("modal---------",imageModal);
+        
+    // };
 
     const singleValue1: customSingleCriteriaDT[] = [
         {
@@ -66,10 +74,16 @@ const MetaData = ({ setIsMetaData, data }: Props) => {
                                             {String(item.value)}
                                         </h1>
                                     </div>
-                                    <div className='mt-3 w-[119px] h-[119px] relative'>
-                                        <img className='w-full h-full' src={String(item.value)} alt="" />
-                                        <img className='w-10 h-10 absolute left-[35%] top-[35%] ' src={Icons.PhotoGallery} alt="" />
-                                    </div>
+                                    <button className='mt-3 w-[199px] h-[119px] rounded-xl relative'
+                                            // onClick={handleModal}
+                                    >
+                                        {/* <img className='w-full h-full' src={String(item.value)} alt="" /> */}
+                                        <img className='w-full h-full rounded-xl' src={Icons.metaDataImage} alt="" />
+                                        <div className='w-full h-full bg-black opacity-[63%] rounded-xl absolute top-0 left-0'/>
+                                        <div className='flex justify-center items-center'>
+                                            <img className='w-10 h-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50' src={Icons.Blank} alt="" />
+                                        </div>
+                                    </button>
                                 </div>
                             ) : (
                                 <h1 className="text-blue-gray-80 font-medium text-small leading-15px">

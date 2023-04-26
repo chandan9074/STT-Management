@@ -146,6 +146,7 @@ import Mobile from './Mobile.svg';
 import AudioRecorder from './AudioRecorder.svg';
 import Vector3 from './Vector_3.png';
 import UserSnippet from './User_Snippet_Skeleton.svg'
+import metaDataImage from './scriptMetadataImage.png'
 
 const Icons = {
   currency,
@@ -295,7 +296,8 @@ const Icons = {
   Mobile,
   AudioRecorder,
   Vector3,
-  UserSnippet
+  UserSnippet,
+  metaDataImage
 };
 
 export default Icons;

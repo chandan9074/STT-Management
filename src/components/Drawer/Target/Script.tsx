@@ -9,6 +9,7 @@ type Props = {
 }
 
 const Script = ({ isMetaData, setIsMetaData, data }: Props) => {
+    
     return (
         <div>
             <div className='flex items-center justify-between'>
@@ -27,7 +28,9 @@ const Script = ({ isMetaData, setIsMetaData, data }: Props) => {
                     <h1 className='text-orange-70 text-base font-medium'>{data?.domain}</h1>
                 </div>
 
-                <button onClick={() => setIsMetaData(true)}>
+                <button
+                    className='w-9 h-9 flex items-center justify-center rounded-full transition ease-out duration-300 hover:bg-blue-gray-20  active:bg-blue-gray-A20'
+                    onClick={() => setIsMetaData(true)}>
                     <img src={Icons.moreIcon} alt="" />
                 </button>
             </div>
