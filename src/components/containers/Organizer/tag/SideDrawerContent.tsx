@@ -15,14 +15,14 @@ const SideDrawerContent = ({ data }: Props) => {
       <div className="flex-col gap-6">
         <div className="mt-[35px] flex-col gap-[3px]">
           <h1 className="text-xxs text-blue-gray-75">Description</h1>
-          <p className="text-small font-medium text-blue-gray-80">Almost before we knew it, we had left the ground. we knew it, we had left the ground.</p>
+          <p className="text-[15px] font-semibold text-blue-gray-80">যদি অডিওতে একই বাক্যে একাধিক শব্দে আঞ্চলিক উচ্চারণ থাকে বা স্ক্রিপ্টে নেই এমন কোনো শব্দ উচ্চারণ করা হয় বা উচ্চারণের সময় স্ক্রিপ্টে শব্দের যে ক্রম রয়েছে তা না মানা হয়</p>
         </div>
         <div className="mt-[35px] flex-col gap-[3px]">
           <h1 className="text-xxs text-blue-gray-75">Date of creation</h1>
           <p className="text-small font-medium text-blue-gray-80">01/01/2022, 3:30 PM</p>
         </div>
         <div className="mt-[35px] flex-col gap-[3px]">
-          <h1 className="text-xxs text-blue-gray-75">Date of Modification</h1>
+          <h1 className="text-xxs text-blue-gray-75">Last date of Modification</h1>
           <p className="text-small font-medium text-blue-gray-80">01/01/2022, 3:30 PM</p>
         </div>
       </div>
