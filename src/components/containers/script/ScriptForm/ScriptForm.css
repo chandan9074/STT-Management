@@ -73,6 +73,7 @@ textarea {
     color: #464E5F !important;
     font-size: 19px;
     font-weight: 500;
+    outline: none;
 }
 
 .MuiAutocomplete-input {

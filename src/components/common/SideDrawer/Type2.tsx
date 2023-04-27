@@ -128,7 +128,7 @@ const Type2 = ({ open, setOpen, drawerData }: Props) => {
                     {/* body */}
                     <div className='absolute top-[133px] left-[114px]'>
                         <Buttons.TabButton.Primary
-                            size='medium'
+                            size='small'
                             tabLabel={["Personal Info", "Reporting"]}
                             setActiveData={setActivePanel}
                         />

@@ -163,7 +163,7 @@ const Type15 = ({ data }: Props) => {
                 <button onClick={() => {
                     setRemarkOpen(true);
                     setSingleTargetData(data);
-                }} className=''>
+                }} className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-blue-gray-20 active:border active:border-blue-gray-A10'>
                     {
                         data?.remark === "" ?
                             <h4>-</h4>
@@ -197,16 +197,16 @@ const Type15 = ({ data }: Props) => {
             key: 'action',
             width: 92,
             render: (_, record) => (
-                <>
+                <div className='flex justify-center items-center'>
 
-                    <div className='flex w-full justify-center items-center'>
+                    <div className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-ct-blue-10 active:border active:border-ct-blue-10'>
                         <img
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
                     </div>
 
-                </>)
+                </div>)
         },
     ];
 

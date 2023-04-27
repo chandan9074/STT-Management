@@ -57,7 +57,7 @@ const RoleForm = ({ setIsDrawerOpen }: Props) => {
                         value={formik.values.description}
                         onChange={formik.handleChange}
                         placeholder='Description'
-                        style={{ width: '100%', height: '120px', fontSize: "13px", fontWeight: '500', lineHeight: '15.6px', resize: 'none' }}
+                        style={{ width: '100%', height: '120px', fontSize: "13px", fontWeight: '500', lineHeight: '15.6px', resize: 'none', outline: 'none' }}
                     />
                     {/* {formik.touched.description && formik.errors.description ? (
                     <div className='text-red-600 text-xxs'>{formik.errors.description}</div>

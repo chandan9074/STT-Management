@@ -92,7 +92,7 @@ const AudioInfoPart = ({ data }: { data: speechOtherInfoDT }) => {
               </div>
             ))}
           </div>
-          <div className='absolute top-[14px] h-full w-full flex items-center rounded-t-[6px] overflow-hidden'>
+          <div className='absolute top-[13px] h-full w-full flex items-center rounded-t-[6px] overflow-hidden'>
             {["valid", "reject"].map((item, index) => (
               <div key={index} className={`${item === "valid" ? "bg-gradient-to-b from-light-green-17% to-light-green-0% rounded-tl-[10px]" : "bg-gradient-to-b from-light-red-17% to-light-red-0% rounded-tr-[10px]"} h-full ${index === 1 ? "" : "border-r-[1px] border-white"} `} style={{
                 width: `${Math.round((item === "valid" ? ((data.audioStatus.valid * 100) / data.receivedHour) : ((data.audioStatus.invalid * 100) / data.receivedHour)))}%`,

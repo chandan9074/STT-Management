@@ -1,4 +1,4 @@
-import { STATUS_ACTIVE, STATUS_ANNOTATING, STATUS_APPROVED, STATUS_BLOCKED, STATUS_CANCELLED, STATUS_CLAIMED, STATUS_CLAIM_APPROVED, STATUS_DECLINED, STATUS_REASSIGNED, STATUS_TOOK_A_BREAK, STATUS_VALIDATING, STTMODULE, TTSMODULE } from "../../helpers/ConditionVariable"
+import { STATUS_ACTIVE, STATUS_ANNOTATED, STATUS_ANNOTATING, STATUS_APPROVED, STATUS_BLOCKED, STATUS_CANCELLED, STATUS_CHECKED, STATUS_CLAIMED, STATUS_CLAIM_APPROVED, STATUS_DECLINED, STATUS_REASSIGNED, STATUS_REJECTED, STATUS_TOOK_A_BREAK, STATUS_UPOLOADED, STATUS_VALIDATED, STATUS_VALIDATING, STTMODULE, TTSMODULE } from "../../helpers/ConditionVariable"
 import { targetFilterDT } from "../../types/assignTypes"
 
 export const collectedAudio = [
@@ -5266,5 +5266,35 @@ export const statusColorsData = [
         "bgColor": "bg-red-10",
         "bulletColor": "bg-secondary-red-50",
         "textColor": "text-red-60"
+    },
+    {
+        "name": STATUS_REJECTED,
+        "bgColor": "bg-red-10",
+        "bulletColor": "bg-secondary-red-50",
+        "textColor": "text-red-60"
+    },
+    {
+        "name": STATUS_VALIDATED,
+        "bgColor": "bg-green-10",
+        "bulletColor": "bg-secondary-green-50",
+        "textColor": "text-green-60"
+    },
+    {
+        "name": STATUS_CHECKED,
+        "bgColor": "bg-orange-A10",
+        "bulletColor": "bg-orange-60",
+        "textColor": "text-secondary-orange-50"
+    },
+    {
+        "name": STATUS_ANNOTATED,
+        "bgColor": "bg-[#F3F4F6]",
+        "bulletColor": "bg-[#4B5563]",
+        "textColor": "text-[#4B5563]"
+    },
+    {
+        "name": STATUS_UPOLOADED,
+        "bgColor": "bg-blue-10",
+        "bulletColor": "bg-secondary-blue-50",
+        "textColor": "text-secondary-blue-50"
     },
 ]

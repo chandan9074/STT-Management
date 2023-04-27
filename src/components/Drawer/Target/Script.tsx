@@ -15,17 +15,17 @@ const Script = ({ isMetaData, setIsMetaData, data }: Props) => {
             <div className='flex items-center justify-between'>
                 <div>
                     <h1 className='text-xxs text-blue-gray-75'>Script ID</h1>
-                    <h1 className='text-[#780595] text-base font-medium'>{data?.id?.slice(0, 12)}</h1>
+                    <h1 className='text-[#780595] text-small font-medium'>{data?.id?.slice(0, 12)}</h1>
                 </div>
 
                 <div>
                     <h1 className='text-xxs text-blue-gray-75'>Data Source</h1>
-                    <h1 className='text-green-90 text-base font-medium'>Mono</h1>
+                    <h1 className='text-green-90 text-small font-medium'>Mono</h1>
                 </div>
 
                 <div>
                     <h1 className='text-xxs text-blue-gray-75'>Script Domain</h1>
-                    <h1 className='text-orange-70 text-base font-medium'>{data?.domain}</h1>
+                    <h1 className='text-orange-70 text-small font-medium'>{data?.domain}</h1>
                 </div>
 
                 <button

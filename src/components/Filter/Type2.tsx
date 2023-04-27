@@ -118,8 +118,8 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                         key={index}
                                         onClick={() => handleFilterList(item.key, singleItem)}
                                         className={`py-1.5 px-3 whitespace-nowrap flex items-center border rounded-full duration-200 mb-0 text-small font-medium  ${filterList[item.key].includes(singleItem)
-                                            ? "bg-secondary-blue-50 bg-opacity-[0.12] border-secondary-blue-50 text-secondary-blue-50 hover:bg-secondary-blue-50 hover:bg-opacity-[0.20] hover:text-ct-blue-70"
-                                            : "border-blue-gray-20 bg-white text-blue-gray-75 hover:bg-blue-gray-10 hover:border-ct-blue-30"
+                                            ? "bg-blue-10 border-secondary-blue-50 text-secondary-blue-50 hover:bg-blue-20 hover:text-blue-60 active:bg-blue-30"
+                                            : "border-blue-gray-20 bg-white text-blue-gray-75 hover:bg-ct-blue-10 hover:border-ct-blue-30 active:bg-ct-blue-30 active:text-blue-gray-80"
                                             }`}
                                     >
                                         {filterList[item.key].includes(singleItem) && (

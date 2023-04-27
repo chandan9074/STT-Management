@@ -18,6 +18,9 @@ export const STATUS_TOOK_A_BREAK = 'Took a Break';
 export const STATUS_CLAIMED = 'Claimed';
 export const STATUS_ACTIVE = 'Active';
 export const STATUS_BLOCKED = 'Blocked';
+export const STATUS_CHECKED = 'Checked';
+export const STATUS_UPOLOADED = 'Uploaded';
+
 
 
 export const AUDIO_FILE_UPLOADED = 'Uploaded';

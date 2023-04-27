@@ -48,7 +48,7 @@ const Secondary = (props: Props) => {
             text: "text-ct-blue-90 text-opacity-70 bg-white border border-blue-gray-30",
             hover: "hover:bg-ct-blue-05",
             pressed: "active:opacity-70 active:bg-[#E0E7EF]",
-            selected: "bg-blue-gray-30 text-ct-blue-90 font-medium text-opacity-70"
+            selected: "bg-blue-gray-30 text-ct-blue-90 font-medium text-opacity-70 bg-[#F4F7FA]"
         }
 
     }
@@ -60,7 +60,7 @@ const Secondary = (props: Props) => {
                     <button
                         key={index}
                         onClick={() => handleActive(data, index)}
-                        className={`text-xxs duration-300 ${sizeStyle ? sizeStyle[size].px : "px-6"} ${sizeStyle ? sizeStyle[size].py : "py-2"}  ${index === 0 ? "rounded-l-md" : ""} ${index === (tabLabel.length - 1) ? "rounded-r-md" : ""}
+                        className={`text-xs leading-[15.6px] duration-300 ${sizeStyle ? sizeStyle[size].px : "px-6"} ${sizeStyle ? sizeStyle[size].py : "py-2"}  ${index === 0 ? "rounded-l-md" : ""} ${index === (tabLabel.length - 1) ? "rounded-r-md" : ""}
                     ${activeButton === index ? `${buttonVariantStyle[variant]?.selected}` :
                                 `${buttonVariantStyle[variant]?.hover} ${buttonVariantStyle[variant]?.pressed} ${buttonVariantStyle[variant]?.text}
                         bg-blue-gray-A10 
