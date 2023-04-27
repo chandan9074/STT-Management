@@ -13,7 +13,7 @@ const Third = ({ children }: { children: any }) => {
             <Navbar.Secondary isSideDrawer={true} />
             <Sidebar.Primary />
             <Sidebar.SideDrawer />
-            <div className={`relative pl-[17rem] pb-6 bg-default ${(location.pathname === `${PATH.ASSIGN_PATH}/${PATH.ALL_TARGET_PTAH}` || location.pathname === `${PATH.ASSIGN_PATH}/${PATH.ALL_TARGET_PTAH}/${PATH.CREATE_TARGET_PATH}`) ? '' : ' pt-[110px]'}`}>
+            <div className={`relative pl-[17rem] pb-6 bg-default ${(location.pathname === `${PATH.ASSIGN_PATH}/${PATH.ALL_TARGET_PTAH}` || location.pathname === `${PATH.ASSIGN_PATH}/${PATH.ALL_TARGET_PTAH}/${PATH.CREATE_TARGET_PATH}`) ? '' : ' pt-[86px]'}`}>
                 {children}
             </div>
         </div>

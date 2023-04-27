@@ -52,20 +52,21 @@ const Type28 = ({ data, handleSelectRow, open, setOpen }: Props) => {
             // fixed: 'right',
             width: 93,
             render: (data: RoleDataDT) => (
-                <>
+                <div className='flex w-full justify-center items-center'>
 
-                    <div className='flex w-full justify-center items-center' onClick={()=>setOpen(true)}>
+                    <button className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-ct-blue-10 active:border active:border-ct-blue-10'
+                        // onClick={() => {
+                        //     showDrawer(record)
+                        //     setSingleTargetData(record)
+                        // }}
+                        onClick={()=> setOpen(true)}>
                         <img
-                            // onClick={() => {
-                            //     showDrawer(record);
-                            //     setSingleTargetData(record);
-                            // }}
-                            className='w-[14px] h-[14px] cursor-pointer'
+                            className='w-[14px] h-[14px]'
                             src={Icons.open_in_new}
                             alt="" />
-                    </div>
+                    </button>
 
-                </>)
+                </div>)
         },
     ]
 

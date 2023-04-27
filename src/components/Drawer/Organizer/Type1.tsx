@@ -27,10 +27,10 @@ const Type1 = ({ children, isDrawerOpen, title, headerBgColor, setIsDrawerClose,
             width='477px'
             zIndex={100}
         >
-            <div className={`flex justify-between items-center w-full h-[90px] ${headerBgColor} pl-6 pr-10`}>
-                <div>
-                    <h1 className="text-heading-6 font-medium text-ct-blue-95">{title}</h1>
-                    <p className="text-small font-normal text-ct-blue-90-70%">XXXXXXXXXXXXXXXX</p>
+            <div className={`flex justify-between items-center w-full h-[90px] ${headerBgColor} px-6 pt-2`}>
+                <div className="flex flex-col gap-y-2">
+                    <h1 className="text-heading-6 leading-[23.4px] font-medium text-ct-blue-95">{title}</h1>
+                    <p className="text-small leading-[16.8px] font-normal text-ct-blue-90-70%">XXXXXXXXXXXXXXXX</p>
                 </div>
                 {
                     isEdit &&

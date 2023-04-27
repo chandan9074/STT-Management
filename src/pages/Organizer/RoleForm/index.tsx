@@ -15,7 +15,7 @@ type Props = {
     setIsDrawerOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const RoleForm = ({setIsDrawerOpen}: Props) => {
+const RoleForm = ({ setIsDrawerOpen }: Props) => {
 
     const organizerContext = useContext(OrganizerContext);
 
@@ -56,8 +56,8 @@ const RoleForm = ({setIsDrawerOpen}: Props) => {
                         name="description"
                         value={formik.values.description}
                         onChange={formik.handleChange}
-                        style={{ width: '100%', height: '120px' }}
                         placeholder='Description'
+                        style={{ width: '100%', height: '120px', fontSize: "13px", fontWeight: '500', lineHeight: '15.6px', resize: 'none' }}
                     />
                     {/* {formik.touched.description && formik.errors.description ? (
                     <div className='text-red-600 text-xxs'>{formik.errors.description}</div>

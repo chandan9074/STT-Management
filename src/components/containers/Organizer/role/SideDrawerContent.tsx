@@ -17,12 +17,12 @@ const SideDrawerContent = ({ data }: Props) => {
           <h1 className="text-xxs text-blue-gray-75">Description</h1>
           <p className="text-small font-medium text-blue-gray-80">Almost before we knew it, we had left the ground. we knew it, we had left the ground.</p>
         </div>
-        <div className="mt-[35px] flex-col gap-[3px]">
+        <div className="mt-[24px] flex-col gap-[3px]">
           <h1 className="text-xxs text-blue-gray-75">Date of creation</h1>
           <p className="text-small font-medium text-blue-gray-80">01/01/2022, 3:30 PM</p>
         </div>
-        <div className="mt-[35px] flex-col gap-[3px]">
-          <h1 className="text-xxs text-blue-gray-75">Date of Modification</h1>
+        <div className="mt-[24px] flex-col gap-[3px]">
+          <h1 className="text-xxs text-blue-gray-75"> Last date of Modification</h1>
           <p className="text-small font-medium text-blue-gray-80">01/01/2022, 3:30 PM</p>
         </div>
       </div>
