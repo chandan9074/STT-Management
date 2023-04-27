@@ -51,9 +51,9 @@ const Type30 = ({ data,handleSelectRow,setOpen }: Props) => {
             // fixed: 'right',
             width: 93,
             render: (data: DevcieDataDT) => (
-                <>
+                <div className="flex justify-center items-center">
 
-                    <div className='flex w-full justify-center items-center' onClick={()=>setOpen(true)}>
+                    <div className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-ct-blue-10 active:border active:border-ct-blue-10' onClick={()=>setOpen(true)}>
                         <img
                             // onClick={() => {
                             //     showDrawer(record);
@@ -64,7 +64,7 @@ const Type30 = ({ data,handleSelectRow,setOpen }: Props) => {
                             alt="" />
                     </div>
 
-                </>)
+                </div>)
         },
     ]
 
