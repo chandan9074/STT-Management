@@ -33,6 +33,16 @@ export type journeyDT = {
     audioChecker: journeyAudioCheckerDT
 }
 
+export type journeyDT2 = {
+    role: audioManagementRoleDT[];
+    speakers: {
+        locality: string;
+        roleTitle: string;
+        role: journeySpeakersRoleDT[]
+    };
+    audioChecker: journeyAudioCheckerDT
+}
+
 export type journeyAudioCheckerDT = {
     id: string;
     locality: string;

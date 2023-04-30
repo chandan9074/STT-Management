@@ -10,7 +10,6 @@ import PersonalInformation2 from './PersonalInformation2';
 import { useEffect, useState } from 'react';
 import { userRoleInformationDt, userSpeakerDt } from '../../../../types/userManagementTypes';
 import Layouts from '../../../Layouts';
-import Icons from '../../../../assets/Icons';
 
 const validationSchema = yup.object({
     role: yup.array().min(1, "Please select at least one role"),
@@ -104,7 +103,7 @@ const UserForm = () => {
         validationSchema: isSpeaker ? validationSchemaSpeaker : validationSchema,
 
         onSubmit: (values) => {
-            
+
             if (isSpeaker) {
                 handleSpeakerSubmit(values as userSpeakerDt);
             } else {
@@ -119,10 +118,10 @@ const UserForm = () => {
             setIsSpeaker(false);
         }
 
-        formik.values.role?.map((value) => {            
+        formik.values.role?.map((value) => {
             if (value.toLowerCase() === 'speaker') {
                 setIsSpeaker(true);
-            } else {                
+            } else {
                 setIsSpeaker(false);
             }
             return isSpeaker
@@ -139,16 +138,18 @@ const UserForm = () => {
         }
     }
 
+    
+
     return (
-        <Layouts.Default>
-            <div className='w-full flex justify-center script-form bg-default'>
+        <Layouts.Sixth>
+            <div className='w-full flex justify-center script-form bg-default mt-[34px] custom-grid'>
                 <div className='bg-white-gray-45 w-[880px]'>
                     <form onSubmit={formik.handleSubmit}>
                         <div className='px-[48px] py-[24px]'>
 
                             <h1 className='text-ct-blue-95 font-medium text-[18px] mb-[33px]'>Create User</h1>
 
-                            {
+                            {/* {
                                 (isSpeaker && formik.values.speakersName !== '') ?
                                     <PersonalTitle
                                         name={formik.values.speakersName}
@@ -163,7 +164,23 @@ const UserForm = () => {
                                             role={formik.values.role}
                                         />
                                         :
-                                        <img className='h-8 w-[217px]' src={Icons.UserSnippet} alt="" />
+                                        <img className='h-8 ' src={Icons.UserSnippet} alt="" />
+                            } */}
+
+                            {
+                                isSpeaker ?
+                                    <PersonalTitle
+                                        name={formik.values.speakersName}
+                                        role={['speaker']}
+                                        gender={formik.values.gender}
+                                    />
+                                    :
+                                        <PersonalTitle
+                                            name={formik.values.name}
+                                            primaryRole={formik.values.primaryRole}
+                                            role={formik.values.role}
+                                        />
+                                      
                             }
 
                             <h1 className='text-ct-blue-60 text-small font-semibold my-[28px]'>Personal Information</h1>
@@ -210,7 +227,7 @@ const UserForm = () => {
                     </form>
                 </div>
             </div>
-        </Layouts.Default>
+        </Layouts.Sixth>
     );
 };
 

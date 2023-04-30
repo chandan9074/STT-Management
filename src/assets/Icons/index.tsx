@@ -151,6 +151,9 @@ import LatestCalBlue from './icon_wrapper_latest_blue.svg'
 import LatestCalGray from './icon_wrapper_latest_gray.svg'
 import OldestCalBlue from './icon_wrapper_oldest_blue.svg'
 import OldestCalGray from './icon_wrapper_oldest_gray.svg'
+import Rectangle1 from './rectancle_1.svg';
+import Rectangle2 from './rectangle_2.svg';
+import UserGray from './user_gray.svg';
 
 const Icons = {
   OldestCalGray,
@@ -305,7 +308,10 @@ const Icons = {
   AudioRecorder,
   Vector3,
   UserSnippet,
-  metaDataImage
+  metaDataImage,
+  Rectangle1,
+  Rectangle2,
+  UserGray
 };
 
 export default Icons;

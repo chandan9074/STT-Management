@@ -66,7 +66,7 @@ const FileReport = ({ getFile, formik }: { getFile: (file: File | null) => void,
             {/* Reporting To */}
             <div>
                 <h1 className='text-ct-blue-60 text-small font-semibold mt-[57px] mb-[28px]'>Reporting</h1>
-                <div>
+                <div className='radio-style'>
                     <FormControl>
                         <FormLabel style={{
                             color: '#5F6B7D',
@@ -92,14 +92,24 @@ const FileReport = ({ getFile, formik }: { getFile: (file: File | null) => void,
                                         style={{
                                             color: `${formik.values.reportingTo === value ? '#136EE5' : '#5F6B7D'} `,
                                             fontSize: '14px',
-                                            marginRight: '22px'
+                                            marginRight: '22px',
+                                            fontWeight: '800'
                                         }}
-                                        className={`${formik.values.reportingTo === value && 'ml-[4px] pr-[12px]  bg-blue-50 rounded-[30px] border-[1px] border-[#136EE5]'}`}
+                                        className={`${formik.values.reportingTo === value && 'ml-[4px] pr-[12px] bg-blue-50 rounded-[30px] border-[1px] border-[#136EE5]'}`}
                                         key={i}
                                         value={value}
                                         control={<Radio
+                                            style={{ fontWeight: '800' }}
+                                            size='small'
                                         />}
-                                        label={value} />
+                                        // label={value }
+                                        label={<span
+                                            style={
+                                                {
+                                                    fontWeight: formik.values.reportingTo === value ? '600' : ''
+                                                }}
+                                        >{value}</span>}
+                                    />
                                 ))
                             }
                         </RadioGroup>
@@ -112,8 +122,8 @@ const FileReport = ({ getFile, formik }: { getFile: (file: File | null) => void,
 
             <Grid container spacing={5}>
                 <Grid item xs={6}>
-                    <div className='mt-[35px]'>
-                         <Autocomplete
+                    <div className='mt-[60px]'>
+                        <Autocomplete
                             disableClearable
                             placeholder='Choose one'
                             id="adminData"

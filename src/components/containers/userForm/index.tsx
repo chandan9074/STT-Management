@@ -4,9 +4,9 @@ import UserForm from '../userManagement/UserForm';
 
 const UserManagement = () => {
     return (
-        <Layouts.Forth>
+        <Layouts.Third>
             <UserForm />
-        </Layouts.Forth>
+        </Layouts.Third>
     );
 };
 
