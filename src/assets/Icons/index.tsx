@@ -154,8 +154,10 @@ import OldestCalGray from './icon_wrapper_oldest_gray.svg'
 import Rectangle1 from './rectancle_1.svg';
 import Rectangle2 from './rectangle_2.svg';
 import UserGray from './user_gray.svg';
+import statistics from './statistics.svg';
 
 const Icons = {
+  statistics,
   OldestCalGray,
   OldestCalBlue,
   LatestCalGray,

@@ -95,12 +95,12 @@ const TargetTable = () => {
   return (
     <div className='pt-[42px] pb-[24px] pr-4 pl-6 '>
       <div className='flex items-center justify-between mb-[25px]'>
-        <h1 className='text-[18px] text-ct-blue-95 font-medium'>{selectedTarget.reduce((acc, obj) => acc + Number(obj.target.target), 0)} Target</h1>
+        <h1 className='text-[18px] text-ct-blue-95 font-medium'>{selectedTarget.reduce((acc, obj) => acc + Number(obj.target.target), 0)} Targets</h1>
         <div className='flex items-center gap-x-6'>
-          <div className='flex items-center gap-x-3'>
+          <div className='flex items-center'>
             {
               selectedTarget?.length > 0 &&
-              <Buttons.IconWithTextButton.Tertiary
+              <Buttons.LabelButton.Tertiary
                 label='Update Assignee'
                 size='small'
                 variant='CT-Blue'
@@ -111,7 +111,7 @@ const TargetTable = () => {
 
             {
               (selectedTarget?.length > 0 && selectedTarget?.length < 2) &&
-              <Buttons.IconWithTextButton.Tertiary
+              <Buttons.LabelButton.Tertiary
                 label='Re-create'
                 size='small'
                 variant='CT-Blue'
@@ -120,7 +120,7 @@ const TargetTable = () => {
             }
           </div>
           <div className='flex items-center gap-x-3'>
-            <SearchBox.Type1 inputWidth="w-52" placeholder="Search with script ID, Title..." bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
+            <SearchBox.Type1 inputWidth="w-[172px]" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
             <Filter.Type2 handleSubmitFilter={handleSubmitFilter} filterData={targetFilter} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
           </div>
         </div>

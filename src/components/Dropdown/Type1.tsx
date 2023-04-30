@@ -6,9 +6,11 @@ type Props = {
   children: ReactNode;
   top: string;
   width: string;
+  activeMonth?: string;
+  handleCurrentWeek?: (value: number) => void;
 }
 
-const Type1 = ({ data, children, handleSelectedItem, top, width }: Props) => {
+const Type1 = ({ data, children, handleSelectedItem, top, width, activeMonth, handleCurrentWeek }: Props) => {
   const [current, setCurrent] = React.useState(data[0]);
   const [open, setOpen] = React.useState(false);
 
@@ -24,23 +26,23 @@ const Type1 = ({ data, children, handleSelectedItem, top, width }: Props) => {
       >
         {data.map((item, index: number) => (
           <button
-          key={index}
+            key={index}
             onClick={() => {
               setCurrent(item);
               setOpen(false);
               handleSelectedItem(item);
+              handleCurrentWeek && handleCurrentWeek(index + 1)
             }}
-            className={`py-3 duration-300 ${width} ${current === item ? "bg-blue-10 hover:bg-blue-20 active:bg-blue-30" : "bg-white hover:bg-ct-blue-05 active:bg-ct-blue-10"
-              }`}
+            className={`py-3 pl-3 duration-300 text-xs font-medium ${width} ${current === item ? "bg-blue-10 hover:bg-blue-20 active:bg-blue-30 text-primary-ct-blue-60" : "bg-white hover:bg-ct-blue-05 active:bg-ct-blue-10 text-blue-gray-80"} whitespace-nowrap text-left`}
           >
-            <h3
+            {/* <h3
               className={`text-xs font-medium ${current === item
                 ? "text-primary-ct-blue-60"
                 : "text-blue-gray-80"
-                } text-center whitespace-nowrap`}
-            >
-              {item}
-            </h3>
+                } whitespace-nowrap`}
+            > */}
+            {item} {activeMonth && activeMonth.slice(0, 3)})
+            {/* </h3> */}
           </button>
         ))}
       </div>

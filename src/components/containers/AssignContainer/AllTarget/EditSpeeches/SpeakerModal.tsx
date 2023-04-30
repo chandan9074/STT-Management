@@ -77,7 +77,6 @@ const SpeakerModal = ({
     // }
 
     const handleRoleChange = (id: string, p: any) => {
-        console.log('ppppppppppppppppp', p, id);
 
         const _data = roleDatas?.filter((m: roleDT) => m.id === p.id);
 
