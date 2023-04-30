@@ -10,6 +10,9 @@ import PersonalInformation2 from './PersonalInformation2';
 import { useEffect, useState } from 'react';
 import { userRoleInformationDt, userSpeakerDt } from '../../../../types/userManagementTypes';
 import Layouts from '../../../Layouts';
+import Buttons from '../../../Buttons';
+import Icons from '../../../../assets/Icons';
+import { CustomModal } from '../../../common/CustomModal';
 
 const validationSchema = yup.object({
     role: yup.array().min(1, "Please select at least one role"),
@@ -39,6 +42,11 @@ const validationSchemaSpeaker = yup.object({
 const UserForm = () => {
 
     const [isSpeaker, setIsSpeaker] = useState<boolean>(false);
+    const [isConfirmCancelModal, setIsConfirmCancelModal] = useState<boolean>(false);
+
+    const onDrawerClose = () => {
+        setIsConfirmCancelModal(false);
+    }
 
     const initialValues =
         isSpeaker
@@ -138,7 +146,7 @@ const UserForm = () => {
         }
     }
 
-    
+
 
     return (
         <Layouts.Sixth>
@@ -147,25 +155,21 @@ const UserForm = () => {
                     <form onSubmit={formik.handleSubmit}>
                         <div className='px-[48px] py-[24px]'>
 
-                            <h1 className='text-ct-blue-95 font-medium text-[18px] mb-[33px]'>Create User</h1>
+                            <div className='flex justify-between'>
+                                <h1 className='text-ct-blue-95 font-medium text-[18px] mb-[33px]'>Create User</h1>
+                                <Buttons.IconButton.Circle
+                                    size='medium'
+                                    variant="CT-Blue"
+                                    icon={<img src={Icons.CloseIconButton} alt="" />}
+                                    border='border'
+                                    background="white"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setIsConfirmCancelModal(true);
+                                    }}
+                                />
+                            </div>
 
-                            {/* {
-                                (isSpeaker && formik.values.speakersName !== '') ?
-                                    <PersonalTitle
-                                        name={formik.values.speakersName}
-                                        role={['speaker']}
-                                        gender={formik.values.gender}
-                                    />
-                                    :
-                                    (!isSpeaker && formik.values.name !== '' && formik.values.primaryRole !== '' && formik.values.role.length > 0) ?
-                                        <PersonalTitle
-                                            name={formik.values.name}
-                                            primaryRole={formik.values.primaryRole}
-                                            role={formik.values.role}
-                                        />
-                                        :
-                                        <img className='h-8 ' src={Icons.UserSnippet} alt="" />
-                            } */}
 
                             {
                                 isSpeaker ?
@@ -175,12 +179,12 @@ const UserForm = () => {
                                         gender={formik.values.gender}
                                     />
                                     :
-                                        <PersonalTitle
-                                            name={formik.values.name}
-                                            primaryRole={formik.values.primaryRole}
-                                            role={formik.values.role}
-                                        />
-                                      
+                                    <PersonalTitle
+                                        name={formik.values.name}
+                                        primaryRole={formik.values.primaryRole}
+                                        role={formik.values.role}
+                                    />
+
                             }
 
                             <h1 className='text-ct-blue-60 text-small font-semibold my-[28px]'>Personal Information</h1>
@@ -215,17 +219,24 @@ const UserForm = () => {
                                     </div>
                             }
 
-                            {/* <div className='mt-[24px] mb-[48px]'>
-                            <FileReport formik={formik} getFile={getFile} />
-                        </div>
-                        
-                        <div>
-                            <ActionButton />
-                        </div> */}
-
                         </div>
                     </form>
                 </div>
+
+                {
+                    (isConfirmCancelModal) &&
+                    <CustomModal.Type6
+                        open={isConfirmCancelModal}
+                        setOpen={setIsConfirmCancelModal}
+                        onSave={onDrawerClose}
+                        title="Don't you want to create user?"
+                        cancelText='No'
+                        saveText='Yes'
+                        icon={Icons.GoBack}
+                        iconHeight='h-5'
+                        iconWidth='w-6'
+                    />
+                }
             </div>
         </Layouts.Sixth>
     );

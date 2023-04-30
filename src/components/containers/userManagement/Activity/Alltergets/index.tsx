@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { targetData, targetFilter, targetCompletedData, targetAllSpeechData } from '../../../../../data/assign/AssignData';
+import { targetFilter } from '../../../../../data/assign/AssignData';
 import { completedFilter, speechFilter } from '../../../../../data/userManagement/activityData';
 import { targetFilterListDT } from '../../../../../types/assignTypes';
 import Buttons from '../../../../Buttons';
@@ -7,6 +7,7 @@ import { Filter } from '../../../../Filter';
 import { SearchBox } from '../../../../SearchBox';
 import Table from '../../../../Table';
 import { CategoryMap } from '../../../dashboard/DataContainer/CollectData';
+import { targetAllSpeechData, targetCompletedData, targetData } from '../../../../../data/userManagement/UserManagementData';
 
 const AllTergets = () => {
     const [activeTab, setActiveTab] = useState<string>("Pending");

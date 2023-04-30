@@ -1,13 +1,13 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import CloseButton from '../../../common/SideDrawer/CloseButton';
 import SpeechStatus from '../../../common/SpeechStatus';
-import { historyRemark } from '../../../../types/audioManagementTypes';
+import { historyRemarkDT } from '../../../../types/audioManagementTypes';
 import RoleImage from '../../../Image/RoleImage';
 
 type Props = {
     open: boolean;
     setOpen: Dispatch<SetStateAction<boolean>>;
-    data: historyRemark[];
+    data: historyRemarkDT[];
 }
 
 const Remark2 = ({ open, setOpen, data }: Props) => {
@@ -26,10 +26,13 @@ const Remark2 = ({ open, setOpen, data }: Props) => {
                 {/* Body */}
                 <div className='pt-[21px] pb-10 px-10 flex flex-col gap-y-[34px]'>
                     {
-                        data.map((item: historyRemark) => (
-                            <div className=''>
+                        data.map((item: historyRemarkDT, i: number) => (
+                            <div key={i}>
                                 <div className='flex items-center gap-x-4'>
-                                    <SpeechStatus data={item.status} />
+                                    {
+                                        item.status &&
+                                        <SpeechStatus data={item.status} />
+                                    }
                                     <p className='text-blue-gray-75 text-small'>{item.deadline}</p>
                                     <div className='flex items-center'>
                                         <RoleImage role={item.roleInfo.role} height='h-5' width='w-5' />

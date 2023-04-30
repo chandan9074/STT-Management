@@ -1,10 +1,10 @@
 import React from 'react';
-import { audioManagementRoleDT, historyRemark, othersUploadAudioDT } from '../../../../types/audioManagementTypes';
+import { audioManagementRoleDT, historyRemarkDT, othersUploadAudioDT } from '../../../../types/audioManagementTypes';
 import RoleImage from '../../../Image/RoleImage';
 import Icons from '../../../../assets/Icons';
 import { isEmpty } from '../../../../helpers/Utils';
 
-const Others = ({ data, remark }: { data: othersUploadAudioDT, remark?: historyRemark[] }) => {
+const Others = ({ data, remark }: { data: othersUploadAudioDT, remark?: historyRemarkDT[] }) => {
 
 
     console.log('remark----', remark);
@@ -16,7 +16,7 @@ const Others = ({ data, remark }: { data: othersUploadAudioDT, remark?: historyR
                 {(remark && !isEmpty(remark)) && <h4 className='text-blue-gray-75 text-xxs'>Remark</h4>}
                 {
                     (remark && !isEmpty(remark)) &&
-                    remark.map((item: historyRemark, i: number) => (
+                    remark.map((item: historyRemarkDT, i: number) => (
                         <div className='mt-6' key={i}>
                             <div>
                                 <div className='gap-x-[10px] flex items-center'>

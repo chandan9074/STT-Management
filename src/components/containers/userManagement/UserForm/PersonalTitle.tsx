@@ -13,7 +13,7 @@ const PersonalTitle = ({ name, primaryRole, role, gender }: Props) => {
 
     return (
         // <div className='w-[265px] h-[43px] flex gap-x-[18px]'>
-        <div className='w-[265px] h-[43px] flex gap-x-[18px]'>
+        <div className='w-full h-[43px] flex gap-x-[18px]'>
             <div>
                 {
                     gender ?

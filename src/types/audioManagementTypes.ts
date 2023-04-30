@@ -7,7 +7,7 @@ export type audioManagementDT = {
     speech: assignAudioTrackDT;
     script: scriptResDT;
     speaker: speakerLocalityDT2;
-    remark: historyRemark[];
+    remark: historyRemarkDT[];
     others: othersDT;
 }
 
@@ -19,7 +19,7 @@ export type checkingStatusDT = {
     speaker: speakerLocalityDT2;
     audioChecker: audioCheckerDT;
     deadLine: string;
-    remark: historyRemark[];
+    remark: historyRemarkDT[];
     others: othersDT;
 }
 
@@ -93,7 +93,7 @@ export type singleSpeakerDT2 = {
 }
 
 export type speakerLocalityDT = {
-    locality: string;
+    locality?: string;
     speakers: singleSpeakerDT[]
 };
 
@@ -114,7 +114,7 @@ export type allCheckedAudioDT = {
     script: scriptResDT;
     deadLine: string;
     submissionDate: string;
-    remark: historyRemark[];
+    remark: historyRemarkDT[];
     others: othersDT;
     history: historyDT[];
 }
@@ -124,10 +124,10 @@ export type historyDT = {
     status: string;
     name: string;
     role: string;
-    remark: historyRemark[]
+    remark: historyRemarkDT[]
 }
 
-export type historyRemark = {
+export type historyRemarkDT = {
     roleInfo: {
         id: string;
         name: string;
@@ -136,7 +136,7 @@ export type historyRemark = {
     };
     deadline: string;
     des: string;
-    status: string;
+    status?: string;
 }
 
 export type audioCheckerDT = {
@@ -159,7 +159,7 @@ export type annotationDT = {
     script: scriptResDT
     speaker: speakerLocalityDT2
     deadLine: string
-    remark: historyRemark[]
+    remark: historyRemarkDT[]
     others: othersDT
 }
 
@@ -171,7 +171,7 @@ export type collectAnnSenDataDT = {
     audioChecker: audioCheckerDT
     speaker: speakerLocalityDT2
     script: scriptResDT
-    remark: historyRemark[]
+    remark: historyRemarkDT[]
     others: othersDT
 }
 
@@ -227,7 +227,7 @@ export type annotatedFilesDT = {
     script: scriptResDT;
     deadLine: string;
     submissionDate: string;
-    remark: historyRemark[];
+    remark: historyRemarkDT[];
     // annotate: annotateInfoDT;
 }
 
@@ -243,7 +243,7 @@ export type validatedFilesDT = {
     speaker: speakerLocalityDT2;
     deadLine: string;
     submissionDate: string;
-    remark: historyRemark[]
+    remark: historyRemarkDT[]
     script: scriptResDT
     others: othersDT
     history: historyDT[]
@@ -293,7 +293,7 @@ export type collectValSenDataDT = {
     audioChecker: annotatedAudioCheckerDT;
     speaker: speakerLocalityDT2;
     script: scriptResDT;
-    remark: historyRemark[];
+    remark: historyRemarkDT[];
     others: othersDT;
 }
 
@@ -389,7 +389,7 @@ export type checkingStatusUploadDataDT = {
     speechInfo: speechInfo
     others: othersUploadAudioDT;
     speaker: speakerUploadAudioDT;
-    remark: historyRemark[]
+    remark: historyRemarkDT[]
 }
 
 export type allCheckedSpeechDT = {
@@ -399,7 +399,7 @@ export type allCheckedSpeechDT = {
     status: string;
     deadLine: string;
     submissionDate: string;
-    remark: historyRemark[];
+    remark: historyRemarkDT[];
     speechInfo: speechInfo
     others: othersUploadAudioDT;
     speaker: speakerUploadAudioDT;
@@ -410,7 +410,7 @@ export type annotationUploadDT = {
     id: string;
     speech: assignAudioTrackDT;
     deadLine: string;
-    remark: historyRemark[]
+    remark: historyRemarkDT[]
     speechInfo: speechInfo;
     others: othersUploadAudioDT;
     speaker: speakerUploadAudioDT;
@@ -425,7 +425,7 @@ export type sentenceLevelUploadDT = {
     speaker: speakerUploadAudioDT;
     deadLine: string
     audioChecker: audioCheckerDT
-    remark: historyRemark[]
+    remark: historyRemarkDT[]
 }
 
 export type scriptFilterDT = {
@@ -453,7 +453,7 @@ export type annotatedFilesUploadDT = {
     script: scriptResDT;
     deadLine: string;
     submissionDate: string;
-    remark: historyRemark[];
+    remark: historyRemarkDT[];
 }
 
 export type sentenceLevelValUploadDT = {
@@ -467,7 +467,7 @@ export type sentenceLevelValUploadDT = {
     audioChecker: annotatedAudioCheckerDT;
     speaker: speakerUploadAudioDT;
     script: scriptResDT;
-    remark: historyRemark[];
+    remark: historyRemarkDT[];
     others: othersDT;
     speechInfo: speechInfo
 }
@@ -484,7 +484,7 @@ export type validatedFilesUploadDT = {
     speaker: speakerUploadAudioDT;
     deadLine: string;
     submissionDate: string;
-    remark: historyRemark[]
+    remark: historyRemarkDT[]
     speechInfo: speechInfo;
     others: othersDT
     history: historyDT[]

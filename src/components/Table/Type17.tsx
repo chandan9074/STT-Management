@@ -68,7 +68,7 @@ const Type17 = ({ data }: Props) => {
             title: `${"Speaker".toLocaleUpperCase()}`,
             key: 'speaker',
             width: 234,
-            render: (data: checkingStatusDT) => <Speaker data={data.speaker} />
+            render: (data: checkingStatusDT) => <Speaker isLocality={true} data={data.speaker} />
         },
         {
             title: `${"Audio Checker".toLocaleUpperCase()}`,

@@ -1,6 +1,6 @@
 import { Drawer } from 'antd';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { historyDT, historyRemark, othersUploadAudioDT, speakerUploadAudioDT, speechInfo } from '../../../../types/audioManagementTypes';
+import { historyDT, historyRemarkDT, othersUploadAudioDT, speakerUploadAudioDT, speechInfo } from '../../../../types/audioManagementTypes';
 import RoleImage from '../../../Image/RoleImage';
 import Buttons from '../../../Buttons';
 import SpeechInfo from './SpeechInfo';
@@ -19,7 +19,7 @@ type Props = {
     deadline?: string;
     submission?: string;
     history?: historyDT[];
-    remark?: historyRemark[];
+    remark?: historyRemarkDT[];
 }
 
 const Type2 = ({ id, isDrawerOpen, setIsDrawerOpen: setOpen, speaker, others, speechInfo, isEditHistory, deadline, submission, history, remark }: Props) => {

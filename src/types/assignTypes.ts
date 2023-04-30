@@ -1,5 +1,6 @@
+import { historyRemarkDT, othersDT, speakerLocalityDT2 } from "./audioManagementTypes";
 import { roleDT } from "./billingTypes";
-import { allScriptResDT, scriptResDT } from "./script";
+import { scriptResDT } from "./script";
 import { audioStatusDT, overTheTimeDataDT } from "./userManagementTypes";
 export type assignStatisticsDT = {
   target: number;
@@ -278,17 +279,19 @@ export type speechDt2 = {
 
 export type targetAllSpeechDT = {
   id: string;
-  speaker: roleDT[];
+  // speaker: roleDT[];
+  speaker: speakerLocalityDT2;
   collector: collectorDT;
-  remark: string;
+  remark: historyRemarkDT[];
   speech: assignAudioTrackDT;
   status?: string;
   submissionDate?: string;
   script: scriptResDT;
-  others: othersDT
+  others: othersDT;
 }
 
-export type othersDT = {
+
+export type assignOthersDT = {
   device: string;
   journey: journeyDT
 }

@@ -57,7 +57,7 @@ const Type18 = ({ data }: Props) => {
       title: `${"Speaker".toLocaleUpperCase()}`,
       key: 'speaker',
       width: 234,
-      render: (data: allCheckedAudioDT) => <Speaker data={data.speaker} />
+      render: (data: allCheckedAudioDT) => <Speaker isLocality={true} data={data.speaker} />
     },
     {
       title: `${"Audio Checker".toLocaleUpperCase()}`,

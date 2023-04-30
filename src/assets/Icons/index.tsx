@@ -154,6 +154,7 @@ import OldestCalGray from './icon_wrapper_oldest_gray.svg'
 import Rectangle1 from './rectancle_1.svg';
 import Rectangle2 from './rectangle_2.svg';
 import UserGray from './user_gray.svg';
+import GoBack from './go_back.svg';
 
 const Icons = {
   OldestCalGray,
@@ -311,7 +312,8 @@ const Icons = {
   metaDataImage,
   Rectangle1,
   Rectangle2,
-  UserGray
+  UserGray,
+  GoBack
 };
 
 export default Icons;

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { audioManagementRoleDT, historyRemark, journeySpeakersRoleDT, othersDT } from '../../../../types/audioManagementTypes';
+import { audioManagementRoleDT, historyRemarkDT, journeySpeakersRoleDT, othersDT } from '../../../../types/audioManagementTypes';
 import RoleImage from '../../../Image/RoleImage';
 import Icons from '../../../../assets/Icons';
 import { isEmpty } from '../../../../helpers/Utils';
 
 type Props = {
     data: othersDT;
-    remark: historyRemark[]
+    remark: historyRemarkDT[]
 }
 
 const Others = ({ data, remark }: Props) => {
@@ -35,7 +35,7 @@ const Others = ({ data, remark }: Props) => {
             </div>
 
             {
-                remark.map((item: historyRemark, i: number) => (
+                remark.map((item: historyRemarkDT, i: number) => (
                     <div className='mt-6' key={i}>
                         <div>
                             <p className='text-blue-gray-75 text-xxs'>Remark</p>

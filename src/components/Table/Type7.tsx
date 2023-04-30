@@ -44,9 +44,6 @@ const Type7 = ({ data }: Props) => {
             key: 'script',
             width: 104,
             render: (data: targetDT) => <h1 className='w-20 truncate whitespace-nowrap'>{data.script.id}</h1>,
-
-
-
         },
         {
             title: `${"target".toLocaleUpperCase()}`,

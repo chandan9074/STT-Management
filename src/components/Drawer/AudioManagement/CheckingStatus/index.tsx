@@ -3,7 +3,7 @@ import { Drawer } from 'antd';
 import Buttons from '../../../Buttons';
 import Script from '../../Target/Script';
 import MetaData from '../../Target/MetaData';
-import { historyDT, historyRemark, othersDT, singleSpeakerDT2, speakerLocalityDT2 } from '../../../../types/audioManagementTypes';
+import { historyDT, historyRemarkDT, othersDT, singleSpeakerDT2, speakerLocalityDT2 } from '../../../../types/audioManagementTypes';
 import Others from './Others';
 import RoleImage from '../../../Image/RoleImage';
 import SpeakerInformation from './SpeakerInformation';
@@ -15,17 +15,18 @@ type Props = {
     setIsDrawerOpen: Dispatch<SetStateAction<boolean>>;
     isEditHistory: boolean
     speaker: speakerLocalityDT2;
-    remark: historyRemark[];
+    remark: historyRemarkDT[];
     script: scriptResDT;
     others: othersDT;
     id: string;
     history?: historyDT[];
+    prevSpeaker?: boolean;
 }
 
-const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory, speaker, remark, script, others, id, history }: Props) => {
+const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory, speaker, remark, script, others, id, history, prevSpeaker }: Props) => {
     const [activePanel, setActivePanel] = useState<string>("Script");
     const [isMetaData, setIsMetaData] = useState<boolean>(false);
-    const [isSpeaker, setIsSpeaker] = useState<boolean>(false);
+    const [isSpeaker, setIsSpeaker] = useState<boolean>(prevSpeaker ? true : false);
 
     // const [gender, setIsGender] = useState<any>({ isMale: false, isFemale: false })
     const [isMale, setIsMale] = useState<boolean>(false);

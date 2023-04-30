@@ -89,7 +89,7 @@ const Type21 = ({ data }: Props) => {
             title: `${"Speaker".toLocaleUpperCase()}`,
             key: 'speaker',
             width: 206,
-            render: (data: annotatedFilesDT) => <Speaker data={data.speaker} />
+            render: (data: annotatedFilesDT) => <Speaker isLocality={true} data={data.speaker} />
         },
 
         {

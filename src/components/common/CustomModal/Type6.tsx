@@ -2,6 +2,7 @@ import React, { Dispatch, SetStateAction } from 'react';
 import { CustomModal } from '.';
 import Icons from '../../../assets/Icons';
 import Buttons from '../../Buttons';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
     open: boolean;
@@ -15,7 +16,8 @@ interface Props {
     iconHeight: string;
 }
 
-const Type3 = ({ open, setOpen , onSave, saveText, cancelText, title, icon, iconWidth, iconHeight}: Props) => {
+const Type6 = ({ open, setOpen, onSave, saveText, cancelText, title, icon, iconWidth, iconHeight }: Props) => {
+    const navigate = useNavigate();
     return (
         <CustomModal.Primary
             open={open}
@@ -32,22 +34,25 @@ const Type3 = ({ open, setOpen , onSave, saveText, cancelText, title, icon, icon
                 <img src={icon} className={`${iconWidth} ${iconHeight} p-1 mb-[18px] cursor-pointer`} alt="" onClick={() => setOpen(false)} />
                 <p className='text-base font-medium text-ct-blue-90 mb-[106px]'>{title}</p>
                 <div className='flex gap-3 justify-start'>
+
+                    <button
+                        onClick={() => navigate(-1)}
+                        className='py-3 px-[32px] border-[1px] border-secondary-red-50 text-secondary-red-50 text-base font-medium rounded-[6px]'
+                    >
+                        No
+                    </button>
                     <Buttons.LabelButton.Secondary
-                        label={cancelText}
-                        variant="Blue"
-                        size='small'
-                        onClick={() => setOpen(false)}
-                    />
-                    <Buttons.LabelButton.Primary
                         label={saveText}
-                        variant="CT-Blue"
-                        size="small"
-                        onClick={() => onSave()}
+                        variant="Blue"
+                        size='medium'
+                        onClick={() => {
+                            setOpen(false)
+                        }}
                     />
                 </div>
             </div>
         </CustomModal.Primary>
     );
-};
+}
 
-export default Type3;
+export default Type6;

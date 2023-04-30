@@ -100,7 +100,7 @@ const Type20 = ({ data }: Props) => {
             title: `${"Speaker".toLocaleUpperCase()}`,
             key: 'speaker',
             width: 206,
-            render: (data: collectAnnSenDataDT) => <Speaker data={data.speaker} />
+            render: (data: collectAnnSenDataDT) => <Speaker isLocality={true} data={data.speaker} />
         },
         {
             title: `${"Details".toLocaleUpperCase()}`,

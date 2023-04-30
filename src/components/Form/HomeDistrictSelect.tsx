@@ -64,7 +64,7 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
     return (
         <div className='relative homeDistrictSelect '>
         {/* <div className='relative z-[100] homeDistrictSelect '> */}
-            <div className={`${!isHomeDistrict && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[90]`} onClick={() => clickOutsideField()}></div>
+            <div className={`${!isHomeDistrict && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[50]`} onClick={() => clickOutsideField()}></div>
 
             <FormControl sx={{ width: '100%' }} variant="outlined">
                 <InputLabel htmlFor={name}>{<h1 className='comboBoxLabel'>{fieldLabel} <span className='text-[red]'>*</span></h1>}</InputLabel>
@@ -82,7 +82,7 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
                     }}
                     endAdornment={
                         <InputAdornment position="end">
-                            <img className='w-[8.41px] h-[5.37px]' src={Icons.arrow_drop_down_blue_gray_45} alt="" />
+                            <img className=' w-[9px] h-[5px]' src={Icons.arrow_drop_down_blue_gray} alt="" />
                         </InputAdornment>
                     }
                     style={{
@@ -92,8 +92,7 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
             </FormControl>
             {
                 isHomeDistrict &&
-                // <div className='absolute w-full h-[336px] bg-white rounded-[8px] py-[6px] animate-fadeIn z-[100] overflow-auto shadow-bottom-light-blue-20'>
-                <div className='absolute w-full h-[336px] bg-white rounded-[8px] py-[6px] animate-fadeIn z-[99] overflow-auto shadow-bottom-light-blue-20'>
+                <div className='absolute w-full h-[336px] bg-white rounded-[8px] py-[6px] animate-fadeIn z-[51] overflow-auto shadow-bottom-light-blue-20'>
                     {filteredDistrict.map(({ division, district }) => (
                         <div key={division}>
                             <div className='bg-blue-gray-05 text-xxs text-blue-gray-60 pl-[16px] flex justify-between items-center pr-[9px]'>

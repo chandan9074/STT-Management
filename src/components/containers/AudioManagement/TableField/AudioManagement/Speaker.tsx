@@ -2,10 +2,11 @@ import { singleSpeakerDT, speakerLocalityDT } from "../../../../../types/audioMa
 import RoleImage from "../../../../Image/RoleImage"
 
 type Props = {
-    data: speakerLocalityDT
+    data: speakerLocalityDT;
+    isLocality: boolean;
 }
 
-const Speaker = ({ data }: Props) => {
+const Speaker = ({ data, isLocality }: Props) => {
     return (
         <div className='flex justify-between items-center cursor-pointer'>
             <div>
@@ -21,7 +22,10 @@ const Speaker = ({ data }: Props) => {
                         ))
                     }
                 </div>
-                <h2 className="text-xxs font-normal text-blue-gray-75 pl-6">{data.locality}</h2>
+                {
+                    isLocality &&
+                    <h2 className="text-xxs font-normal text-blue-gray-75 pl-6">{data.locality}</h2>
+                }
             </div>
         </div>
     )

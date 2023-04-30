@@ -31,7 +31,7 @@ const FileReport = ({ getFile, formik }: { getFile: (file: File | null) => void,
     return (
         <div>
             <div className='flex gap-x-[16px] items-center'>
-                <h1 className='text-blue-gray-75 text-small font-medium'>Attach CV <span className='text-[red]'>*</span></h1>
+                <h1 className='text-blue-gray-75 text-small font-medium'>Attach CV  <span className='text-[red]'>*</span></h1>
                 {/* file?.length === 0 ? 'file-upload2' :  */}
                 <div className={`${file === null ? 'file-upload2' : 'file-upload-hidden2 bg-white px-[18px] py-[5px] border-[1px] border-dashed border-blue-gray-A20 rounded-[4px]'} `}>
                     <Upload
@@ -39,9 +39,9 @@ const FileReport = ({ getFile, formik }: { getFile: (file: File | null) => void,
                         onChange={(event) => handleFileUpload(event)}
                     //  {...props}
                     >
-                        <button className={` flex gap-x-2 px-[24px] py-[8px] border-[1px] border-ct-blue-30 rounded-[6px]`}>
+                        <button className={` flex gap-x-2 pl-[17px] pr-[24px] py-[8px] border-[1px] border-ct-blue-30 rounded-[6px] bg-white`}>
                             <img className='w-[20px] h-[20px]' src={Icons.upload} alt='' />
-                            <h1 className='text-ct-blue-80 text-small'> Attach CV</h1>
+                            <h1 className='text-ct-blue-80 text-small font-medium'> Attach</h1>
                         </button>
                     </Upload>
                 </div>
@@ -91,7 +91,7 @@ const FileReport = ({ getFile, formik }: { getFile: (file: File | null) => void,
                                     <FormControlLabel
                                         style={{
                                             color: `${formik.values.reportingTo === value ? '#136EE5' : '#5F6B7D'} `,
-                                            fontSize: '14px',
+                                            // fontSize: '5px',
                                             marginRight: '22px',
                                             fontWeight: '800'
                                         }}
@@ -106,7 +106,8 @@ const FileReport = ({ getFile, formik }: { getFile: (file: File | null) => void,
                                         label={<span
                                             style={
                                                 {
-                                                    fontWeight: formik.values.reportingTo === value ? '600' : ''
+                                                    fontWeight: formik.values.reportingTo === value ? '600' : '',
+                                                    fontSize: '14px',
                                                 }}
                                         >{value}</span>}
                                     />
