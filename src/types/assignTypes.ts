@@ -265,8 +265,8 @@ export type speechDt2 = {
   speaker: roleDT[];
   collector: collectorDT;
   device: string;
-  speeches: string;
-  maxSpeeches: string;
+  // speeches: string;
+  // maxSpeeches: string;
   remark: string;
   role: string;
   speech: assignAudioTrackDT;

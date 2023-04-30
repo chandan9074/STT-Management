@@ -1018,8 +1018,8 @@ export const targetSpeechData = {
                 //     address: 'Dhaka',
                 //     gender: 'Male'
                 // },
-                speeches: '355',
-                maxSpeeches: '1000',
+                // speeches: '355',
+                // maxSpeeches: '1000',
                 remark: "",
 
 
