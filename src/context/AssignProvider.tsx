@@ -8,12 +8,15 @@ import {
   CriteriaItemDT,
   postSelectedScriptBodyDT,
   recreateTableDT,
+  roleListByRoleParamDT,
   ScriptItemDT,
   targetAssignParamDT,
   targetDT,
   TargetItemDT,
+  updateAssigneeMainTargetParamDT,
   updateDraftTargetQueryParams,
 } from "../types/assignTypes";
+import { roleDT } from "../types/billingTypes";
 
 interface ContextProps {
   criterias: CriteriaItemDT[],
@@ -77,6 +80,9 @@ interface ContextProps {
   recreateTable: recreateTableDT;
   getTargetAssign: (data: targetAssignParamDT) => void;
   targetsAssign: any;
+  roleListByRole: roleDT[];
+  getRoleListByRole: (data: roleListByRoleParamDT) => void;
+  updateAssigneeMainTarget: (data: updateAssigneeMainTargetParamDT) => void;
 }
 
 
@@ -106,6 +112,20 @@ const AssignProvider = ({ children }: { children: any }) => {
   const [assigneeForRecreate, setAssigneeForRecreate] = useState<AssigneeItemDT[]>([] as AssigneeItemDT[]);
   const [recreateTable, setRecreateTable] = useState<recreateTableDT>({} as recreateTableDT);
   const [targetsAssign, setTargetsAssign] = useState<targetDT[]>([] as targetDT[]);
+  const [roleListByRole, setRoleListByRole] = useState<roleDT[]>([] as roleDT[]);
+
+  const getRoleListByRole = async (params: roleListByRoleParamDT) => {
+    const res = await AssignService.fetchRoleListByRole(params);
+    setRoleListByRole(res.data);
+  }
+
+  const updateAssigneeMainTarget = async (data: updateAssigneeMainTargetParamDT) => {
+    const res = await AssignService.updateAssigneeMainTarget(data);
+    if (res.status === 200) {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      // await getTargetAssign();
+    }
+  }
 
   const getTargetAssign = async (data: targetAssignParamDT) => {
     const res = await AssignService.getTargetAssign(data);
@@ -432,8 +452,11 @@ const AssignProvider = ({ children }: { children: any }) => {
         singleCriteriaRecreate,
         recreateTable,
         setRecreateTable,
-        getTargetAssign, 
-        targetsAssign
+        getTargetAssign,
+        targetsAssign,
+        roleListByRole,
+        getRoleListByRole,
+        updateAssigneeMainTarget
       }}
     >
       {children}

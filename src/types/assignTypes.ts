@@ -178,7 +178,7 @@ export type targetFilterDT = {
 }
 
 export type filterSelectsDT = {
-  type: "check" | "select" | "date" | "select-with-checkbox" | "multiple-select" | "form" | "date"| "select-with-roleImg" | "date-ranger";
+  type: "check" | "select" | "date" | "select-with-checkbox" | "multiple-select" | "form" | "date" | "select-with-roleImg" | "date-ranger";
   isFromAPI: boolean;
   key: string;
   title: string;
@@ -330,4 +330,14 @@ export type speechOtherInfoDT = {
 export type targetAssignParamDT = {
   page: number;
   pageSize: 20;
+}
+
+export type roleListByRoleParamDT = {
+  roleID: string;
+  role: string;
+}
+
+export type updateAssigneeMainTargetParamDT = {
+  targetId: string[];
+  assignee: string
 }

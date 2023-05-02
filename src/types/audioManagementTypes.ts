@@ -30,7 +30,7 @@ export type journeyDT = {
         roleTitle: string;
         role: journeySpeakersRoleDT[]
     };
-    audioChecker: journeyAudioCheckerDT
+    audioChecker?: journeyAudioCheckerDT
 }
 
 export type journeyDT2 = {

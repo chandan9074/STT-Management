@@ -216,26 +216,6 @@ label {
     height: 12px !important;
 }
 
-/* assign */
-.assign .ant-select-single.ant-select-show-arrow .ant-select-selection-item {
-    font-size: 13px !important;
-    color: #9099A1 !important;
-}
-
-.assign .ant-select-selector {
-    background-color: transparent !important;
-    padding: 0 !important;
-}
-
-/* Update assign model */
-.update-assign-model .css-j204z7-MuiFormControlLabel-root .MuiFormControlLabel-label {
-    width: 100%;
-}
-
-.update-assign-model .css-1nrlq1o-MuiFormControl-root {
-    width: 100%;
-}
-
 .MuiAutocomplete-popper {
     scrollbar-width: none !important;
     -ms-overflow-style: none !important;
@@ -258,76 +238,22 @@ label {
     padding-top: 10px !important;
 }
 
-
-/* 
-.MuiAutocomplete-popper::-webkit-scrollbar {
-    width: 2px !important;
-    background: red !important;
-
+/* assign */
+.assign .ant-select-single.ant-select-show-arrow .ant-select-selection-item {
+    font-size: 13px !important;
+    color: #9099A1 !important;
 }
 
-.MuiAutocomplete-popper::-webkit-scrollbar-track {
-    background: red !important;
-    width: 8px !important;
+.assign .ant-select-selector {
+    background-color: transparent !important;
+    padding: 0 !important;
 }
 
-.MuiAutocomplete-popper::-webkit-scrollbar-thumb {
-    background: #888 !important;
-    border-radius: 10px !important;
-    width: 8px !important;
-    background: red !important;
-
+/* Update assign model */
+.update-assign-model .css-j204z7-MuiFormControlLabel-root .MuiFormControlLabel-label {
+    width: 100%;
 }
 
-.MuiAutocomplete-popper::-webkit-scrollbar-thumb:hover {
-    background: #555 !important;
-    width: 8px !important;
-    background: red !important;
-} */
-
-/* .MuiAutocomplete-popup::-webkit-scrollbar-track {
-    width: 8px !important;
-    background-color: #f1f1f1 !important;
-  } */
-
-/* Change the color and rounded border of the scrollbar thumb */
-/* .MuiAutocomplete-popup::-webkit-scrollbar-thumb {
-    background-color: #888 !important;
-    border-radius: 5px !important;
-  } */
-
-/* Change the appearance of the scrollbar on Firefox */
-/* .MuiAutocomplete-popup {
-    scrollbar-width: thin !important;
-    scrollbar-color: #888 #f1f1f1 !important;
-  } */
-
-/* style the scrollbar track */
-/* ::-webkit-scrollbar-track {
-    background-color: red !important;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background-color: red !important;
-    border-radius: 5px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: red !important;
-  }
-  
-  .scrollbar::-webkit-scrollbar {
-    background-color: red !important;
-    width: 8px;
-  }
-  
-  .scrollbar::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    background-color: red !important;
-  }
-  
-  .scrollbar::-webkit-scrollbar-thumb:hover {
-    background-color: red !important;
-  }
- 
-   */
+.update-assign-model .css-1nrlq1o-MuiFormControl-root {
+    width: 100%;
+}

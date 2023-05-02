@@ -1,12 +1,13 @@
 import { Form, Select } from 'antd';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import Icons from '../../../../assets/Icons';
-import { RoleInContext } from '../../../../context/RoleProvider';
 import { roleDT } from '../../../../types/billingTypes';
 import Buttons from '../../../Buttons';
 import { FormControl, FormControlLabel, Radio, RadioGroup } from '@mui/material';
 import { StepBackwardOutlined } from '@ant-design/icons';
 import RoleImage from '../../../Image/RoleImage';
+import { AssignContext } from '../../../../context/AssignProvider';
+import { CommonContext } from '../../../../context/CommonProvider';
 
 const { Option } = Select;
 
@@ -67,7 +68,6 @@ const newRoleList = [
 const UpdateAssigneeModal = ({
     handleModal,
     targetId
-    // type
 }: {
     handleModal: (value: boolean) => void,
     targetId: string[]
@@ -79,10 +79,10 @@ const UpdateAssigneeModal = ({
 
     const [role, setRole] = useState<string>('Manager');
     const [customRoleData, setCustomRoleData] = useState<roleDT[]>(newRoleList);
-    // const [type, setType] = useState<>
 
-    const managerContext = useContext(RoleInContext);
-    const { roleDatas } = managerContext;
+    const assignContext = useContext(AssignContext);
+    const commonContext = useContext(CommonContext);
+    const [roleDatas, setRoleDatas] = useState<roleDT[]>([] as roleDT[]);
 
     const [isDropDownVisible, setIsDropDownVisible] = useState<boolean>(false);
     const [dropDownCount, setDropDownCount] = useState<number>(0);
@@ -91,16 +91,25 @@ const UpdateAssigneeModal = ({
 
     const [roleId, setRoleId] = useState<string>('');
 
-    const managerParams = {
-        id: '',
-        role: role,
-        type: ''
+    // const [roleParam, setRoleParam] = useState<roleListByRoleParamDT>({
+    //     roleID: commonContext.roleId,
+    //     role: role
+    // });
+    const roleParam = {
+        roleID: commonContext.roleId,
+        role: role
     }
 
     useEffect(() => {
-        managerContext.getManager(managerParams);
+        const _data = assignContext.roleListByRole.filter((item: roleDT) => item.role === role);
+        setRoleDatas(_data);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [role]);
+
+    useEffect(() => {
+        assignContext.getRoleListByRole(roleParam);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     useEffect(() => {
         if (!isDropDownVisible) {
@@ -125,21 +134,18 @@ const UpdateAssigneeModal = ({
     const handleRoleChange = (id: string, p: any) => {
 
         const _data = roleDatas?.filter((m: roleDT) => m.id === p.key);
-
         const index = customRoleData.findIndex((data) => data.id === p.key);
         if (_data && index === -1) {
             setCustomRoleData([...customRoleData, _data[0]]);
         }
     }
 
-
-    const deleteManager = (id: string | undefined) => {
-        const _data = customRoleData?.filter((item: roleDT) => item.id !== id);
-        setCustomRoleData(_data);
-        setIsDropDownSelect(false);
-        form.resetFields();
-    }
-
+    // const deleteManager = (id: string | undefined) => {
+    //     const _data = customRoleData?.filter((item: roleDT) => item.id !== id);
+    //     setCustomRoleData(_data);
+    //     setIsDropDownSelect(false);
+    //     form.resetFields();
+    // }
 
     const onDropDownVisible = () => {
         setIsDropDownVisible(true);
@@ -172,30 +178,24 @@ const UpdateAssigneeModal = ({
 
     const onAddHandle = () => {
 
-        // const _id = customRoleData?.map((item: any) => {
-        //     return item?.id;
-        // });
-
-        // const _data = { selectedAssignee: _id };
-        // // createAssignee(_data);
-        // console.log('data', _data);
-
         const _targetId = targetId?.map((item: string) => {
             return item;
         })
 
-        // console.log('%%%%%%%%%%%%%', _targetId);
-
-
         const _dataId = {
             targetId: _targetId,
-            selectedAssigneeId: roleId
+            assignee: roleId
+        }
+
+        if (_dataId.assignee === '') {
+
+        } else {
+            assignContext.updateAssigneeMainTarget(_dataId);
+            onClose();
         }
 
         console.log('--------------', _dataId);
 
-
-        onClose();
     }
 
     const onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -394,9 +394,9 @@ const UpdateAssigneeModal = ({
                                                                         </div>
 
                                                                     </div>
-                                                                    <button onClick={(id) => deleteManager(item?.id)}>
+                                                                    {/* <button onClick={(id) => deleteManager(item?.id)}>
                                                                         <img className='deleteIcon' src={Icons.deleteIcon} alt="" />
-                                                                    </button>
+                                                                    </button> */}
                                                                 </div>
 
                                                             </div>

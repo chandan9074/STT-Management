@@ -109,7 +109,7 @@ const Others = ({ data, remark }: Props) => {
                     </div>
 
                     {
-                        !isEmpty(data.journey.audioChecker) &&
+                       ( data.journey.audioChecker &&  !isEmpty(data.journey.audioChecker)) &&
                         <div >
                             <div className='flex justify-between'>
                                 <div className='flex gap-x-[10px]'>

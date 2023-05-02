@@ -1,7 +1,7 @@
 import axios from "axios";
 import { targetDataForRecreate } from "../data/assign/AssignData";
 import * as PATH from "../helpers/APIURL";
-import { allScriptParamsDT, createAssigneeParamsDT, CriteriaItemDT, postDraftTargetBodyDT, postSelectedScriptBodyDT, targetAssignParamDT, updateDraftTargetQueryParams } from "../types/assignTypes";
+import { allScriptParamsDT, createAssigneeParamsDT, CriteriaItemDT, postDraftTargetBodyDT, postSelectedScriptBodyDT, roleListByRoleParamDT, targetAssignParamDT, updateAssigneeMainTargetParamDT, updateDraftTargetQueryParams } from "../types/assignTypes";
 
 export default class AssignService {
 
@@ -83,4 +83,11 @@ export default class AssignService {
     return targetDataForRecreate;
   }
 
+  static fetchRoleListByRole(params: roleListByRoleParamDT) {
+    return axios.get(PATH.GET_ROLE_LIST_BY_ROLE, {params});
+  }
+
+  static updateAssigneeMainTarget(params: updateAssigneeMainTargetParamDT) {
+    return axios.put(PATH.UPDATE_ASSIGNEE_MAIN_TARGET_ASSIGN_PATH, params);
+  }
 }

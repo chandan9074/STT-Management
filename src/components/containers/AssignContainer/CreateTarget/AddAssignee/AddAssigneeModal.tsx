@@ -4,10 +4,10 @@ import { Form, Select } from 'antd';
 import { useContext, useEffect, useState } from 'react';
 import Icons from '../../../../../assets/Icons';
 import { AssignContext } from '../../../../../context/AssignProvider';
-import { RoleInContext } from '../../../../../context/RoleProvider';
 import { roleDT } from '../../../../../types/billingTypes';
 import Buttons from '../../../../Buttons';
 import RoleImage from '../../../../Image/RoleImage';
+import { CommonContext } from '../../../../../context/CommonProvider';
 
 const { Option } = Select;
 
@@ -40,31 +40,36 @@ const AddAssigneeModal = ({
     const [customRoleData, setCustomRoleData] = useState<roleDT[]>([]);
     // const [type, setType] = useState<>
 
-    const managerContext = useContext(RoleInContext);
-    const { roleDatas } = managerContext;
+    const assignContext = useContext(AssignContext);
+    const commonContext = useContext(CommonContext);
+    const [roleDatas, setRoleDatas] = useState<roleDT[]>([] as roleDT[]);
 
     const [isDropDownVisible, setIsDropDownVisible] = useState<boolean>(false);
     const [dropDownCount, setDropDownCount] = useState<number>(0);
     const [isDropDownSelect, setIsDropDownSelect] = useState<boolean>(false);
     const [isDropItemClick, setIsDropItemClick] = useState<boolean>(false);
 
-    const managerParams = {
-        id: '',
-        role: role,
-        type: ''
+    const roleParam = {
+        roleID: commonContext.roleId,
+        role: role
     }
 
     useEffect(() => {
-        managerContext.getManager(managerParams);
+        const _data = assignContext.roleListByRole.filter((item: roleDT) => item.role === role);
+        setRoleDatas(_data);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [role]);
+
+    useEffect(() => {
+        assignContext.getRoleListByRole(roleParam);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     useEffect(() => {
         if (!isDropDownVisible) {
             setIsDropItemClick(false);
         }
     }, [isDropDownVisible]);
-
 
     const onRoleChange = (e: SelectChangeEvent) => {
         setRole(e.target.value);

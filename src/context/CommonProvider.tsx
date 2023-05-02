@@ -14,7 +14,9 @@ interface ContextProps {
   setToastOpen: React.Dispatch<React.SetStateAction<boolean>>;
   toastMessage: string;
   setToastMessage: React.Dispatch<React.SetStateAction<string>>;
-  handleToast: (value: boolean) => void
+  handleToast: (value: boolean) => void;
+  setRoleId: React.Dispatch<React.SetStateAction<string>>;
+  roleId: string;
 }
 
 export const CommonContext = createContext({} as ContextProps);
@@ -24,7 +26,8 @@ const CommonProvider = ({ children }: { children: any }) => {
   // const [errorMsg, setErrorMsg] = useState<string>("");
   const [type, setType] = useState<string>("STT");
   const [role, setRole] = useState<string>("admin");
-  const [roleName,setRoleName] = useState<string>("Md. Jalal Uddin")
+  const [roleName, setRoleName] = useState<string>("Md. Jalal Uddin");
+  const [roleId, setRoleId] = useState<string>("shahrukkhan23@gmail.com");
   const [toastOpen, setToastOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
 
@@ -56,7 +59,9 @@ const CommonProvider = ({ children }: { children: any }) => {
         setToastOpen,
         toastMessage,
         setToastMessage,
-        handleToast
+        handleToast,
+        setRoleId,
+        roleId
       }}
     >
       {children}
