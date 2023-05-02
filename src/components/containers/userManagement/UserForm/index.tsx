@@ -34,6 +34,7 @@ const validationSchemaSpeaker = yup.object({
     district: yup.string().required('District place is Required'),
     upazilaCity: yup.string().required('Upazilla/ City is Required'),
     villageArea: yup.string().required('Village/ Area is Required'),
+    profession: yup.string().required('Profession is Required'),
 });
 
 const UserForm = () => {
@@ -51,12 +52,13 @@ const UserForm = () => {
                 ageRange: '',
                 education: '',
                 educationSituation: '',
+                profession: '',
                 childhoodPlace: '',
                 district: '',
                 upazilaCity: '',
                 villageArea: '',
-                smoking: 'Yes',
-                stutter: 'No',
+                smoking: '',
+                stutter: '',
                 hearingStatus: '',
                 reportingTo: '',
                 cvFile: '',
@@ -138,12 +140,12 @@ const UserForm = () => {
         }
     }
 
-    
+
 
     return (
         <Layouts.Sixth>
             <div className='w-full flex justify-center script-form bg-default mt-[34px] custom-grid'>
-                <div className='bg-white-gray-45 w-[880px]'>
+                <div className='bg-white-gray-45 w-[880px] rounded-xl'>
                     <form onSubmit={formik.handleSubmit}>
                         <div className='px-[48px] py-[24px]'>
 
@@ -175,12 +177,12 @@ const UserForm = () => {
                                         gender={formik.values.gender}
                                     />
                                     :
-                                        <PersonalTitle
-                                            name={formik.values.name}
-                                            primaryRole={formik.values.primaryRole}
-                                            role={formik.values.role}
-                                        />
-                                      
+                                    <PersonalTitle
+                                        name={formik.values.name}
+                                        primaryRole={formik.values.primaryRole}
+                                        role={formik.values.role}
+                                    />
+
                             }
 
                             <h1 className='text-ct-blue-60 text-small font-semibold my-[28px]'>Personal Information</h1>
@@ -190,30 +192,7 @@ const UserForm = () => {
                             </div>
 
 
-                            {
-                                isSpeaker ?
-                                    <div>
-                                        <PersonalInformation2 formik={formik} />
-                                        <div className='mt-[24px] mb-[48px]'>
-                                            <FileReport formik={formik} getFile={getFile} />
-                                        </div>
 
-                                        <div>
-                                            <ActionButton />
-                                        </div>
-                                    </div>
-                                    :
-                                    <div>
-                                        <PersonalInformation formik={formik} />
-                                        <div className='mt-[24px] mb-[48px]'>
-                                            <FileReport formik={formik} getFile={getFile} />
-                                        </div>
-
-                                        <div>
-                                            <ActionButton />
-                                        </div>
-                                    </div>
-                            }
 
                             {/* <div className='mt-[24px] mb-[48px]'>
                             <FileReport formik={formik} getFile={getFile} />
@@ -224,6 +203,28 @@ const UserForm = () => {
                         </div> */}
 
                         </div>
+                        {
+                            isSpeaker ?
+                                <>
+                                    <div className='px-12'>
+                                        <PersonalInformation2 formik={formik} />
+                                        <div className='mt-6 mb-12'>
+                                            <FileReport formik={formik} getFile={getFile} />
+                                        </div>
+                                    </div>
+                                    <ActionButton />
+                                </>
+                                :
+                                <>
+                                    <div className='px-12'>
+                                        <PersonalInformation formik={formik} />
+                                        <div className='mt-6 mb-12'>
+                                            <FileReport formik={formik} getFile={getFile} />
+                                        </div>
+                                    </div>
+                                    <ActionButton />
+                                </>
+                        }
                     </form>
                 </div>
             </div>

@@ -126,7 +126,7 @@ const Type5 = ({ data }: Props) => {
             title: `${"Name".toLocaleUpperCase()}`,
             dataIndex: 'name',
             render: (text: string) => <p className='text-small font-medium text-ct-blue-60'>{text}</p>,
-            width: 136
+            width: 170
 
         },
         {
@@ -142,12 +142,12 @@ const Type5 = ({ data }: Props) => {
         {
             title: `${"Mobile Number".toLocaleUpperCase()}`,
             dataIndex: 'mobileNumber',
-            width: 136
+            width: 150
         },
         {
             title: `${"Reporting to".toLocaleUpperCase()}`,
             dataIndex: 'reportingTo',
-            width: 136,
+            width: 150,
             render: (data: { name: string, role: string }) => (
                 <div>
                     <h3 className='text-xs font-medium text-blue-gray-80'>{data.name}</h3>
@@ -171,7 +171,7 @@ const Type5 = ({ data }: Props) => {
             title: `${"Activity".toLocaleUpperCase()}`,
             dataIndex: 'age',
             align: "center",
-            width: 150,
+            width: 170,
             render: (data) => (<>
                 <Buttons.LabelButton.Tertiary
                     onClick={() => navigate(`/user-management/activity/${data}`)}
@@ -186,7 +186,7 @@ const Type5 = ({ data }: Props) => {
             dataIndex: 'Details',
             align: 'center',
             fixed: 'right',
-            width: 80,
+            width: 85,
             render: (_, record: userManagementTableDT) => (
                 <div className='flex w-full justify-center items-center'>
 
