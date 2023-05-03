@@ -16,6 +16,7 @@ const Type16 = ({ data }: Props) => {
 
     const [open, setOpen] = useState(false);
     const [singleTargetData, setSingleTargetData] = useState<audioManagementDT>();
+    const [activePanel, setActivePanel] = useState('')
 
     const showDrawer = () => {
         setOpen(true);
@@ -52,7 +53,12 @@ const Type16 = ({ data }: Props) => {
             key: 'script',
             width: 200,
 
-            render: (data: audioManagementDT) => <div className='flex w-full justify-start items-center gap-x-[10px]'>
+            render: (data: audioManagementDT) => <button className='flex w-full justify-start items-center gap-x-[10px]'
+                onClick={() => {
+                    showDrawer();
+                    setSingleTargetData(data);
+                }}
+            >
                 <h1 className='w-28 truncate whitespace-nowrap'>{data.script.id}</h1>
                 <img
                     // onClick={() => {
@@ -62,7 +68,7 @@ const Type16 = ({ data }: Props) => {
                     className='w-[10px] h-[10px] cursor-pointer'
                     src={Icons.openInNewGray}
                     alt="" />
-            </div>,
+            </button>,
         },
         {
             title: `${"Speaker".toLocaleUpperCase()}`,
@@ -75,11 +81,17 @@ const Type16 = ({ data }: Props) => {
             key: "journey",
             align: 'center',
             width: 116,
-            render: () => (
+            render: (data: audioManagementDT) => (
                 <>
-                    <div className="flex w-full justify-center items-center">
+                    <button className="flex w-full justify-center items-center"
+                        onClick={() => {
+                            showDrawer();
+                            setSingleTargetData(data);
+                            setActivePanel('Others');
+                        }}
+                    >
                         <img src={Icons.Conversion} alt="" />
-                    </div>
+                    </button>
                 </>
             )
         },
@@ -89,7 +101,7 @@ const Type16 = ({ data }: Props) => {
             key: 'details',
             // fixed: 'right',
             width: 93,
-            render: (_,record: audioManagementDT) => (
+            render: (_, record: audioManagementDT) => (
                 <>
 
                     <div className='flex w-full justify-center items-center'>
@@ -97,6 +109,7 @@ const Type16 = ({ data }: Props) => {
                             onClick={() => {
                                 showDrawer();
                                 setSingleTargetData(record);
+                                setActivePanel('Script');
                             }}
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
@@ -134,6 +147,7 @@ const Type16 = ({ data }: Props) => {
                     script={singleTargetData.script}
                     others={singleTargetData.others}
                     id={singleTargetData.id}
+                    activePanelProp={activePanel}
                 />
             }
         </div>

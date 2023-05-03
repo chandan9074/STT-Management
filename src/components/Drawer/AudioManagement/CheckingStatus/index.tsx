@@ -21,10 +21,11 @@ type Props = {
     id: string;
     history?: historyDT[];
     prevSpeaker?: boolean;
+    activePanelProp?: string;
 }
 
-const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory, speaker, remark, script, others, id, history, prevSpeaker }: Props) => {
-    const [activePanel, setActivePanel] = useState<string>("Script");
+const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory, speaker, remark, script, others, id, history, prevSpeaker, activePanelProp }: Props) => {
+    const [activePanel, setActivePanel] = useState<string>("");
     const [isMetaData, setIsMetaData] = useState<boolean>(false);
     const [isSpeaker, setIsSpeaker] = useState<boolean>(prevSpeaker ? true : false);
 
@@ -38,7 +39,9 @@ const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory,
     };
 
     useEffect(() => {
-        setActivePanel('Script');
+        if(activePanelProp){
+            setActivePanel(activePanelProp);
+        }
 
         speaker.speakers.map((item: singleSpeakerDT2) => {
             if (item.gender.toLowerCase() === 'male'.toLowerCase()) {
@@ -48,7 +51,9 @@ const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory,
                 setIsFemale(true);
             }
             return item;
+            
         });
+        console.log(activePanel);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -116,6 +121,7 @@ const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory,
                                                         size='small'
                                                         tabLabel={["Script", "Others"]}
                                                         setActiveData={setActivePanel}
+                                                        activePanelProps={activePanelProp === "Script" ? 0 : 1}
                                                     />
                                             }
 

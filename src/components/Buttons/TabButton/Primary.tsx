@@ -7,10 +7,11 @@ interface Props {
     variant?: "Red" | "White" | "Blue";
     // icon?: React.ReactElement;
     setActiveData: Dispatch<SetStateAction<string>>;
+    activePanelProps?: number;
 }
 const Primary = (props: Props) => {
-    const { tabLabel, variant = "Blue", setActiveData, size } = props
-    const [activeButton, setActiveButton] = useState<number>(0)
+    const { tabLabel, variant = "Blue", setActiveData, size, activePanelProps = 0 } = props
+    const [activeButton, setActiveButton] = useState<number>(activePanelProps)
 
     const handleActive = (data: string, active: number) => {
         setActiveButton(active)

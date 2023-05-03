@@ -160,10 +160,10 @@ function App() {
               </Route>
             </Route>
           </Route>
-          <Route path={PATH.ORGANIZER_PATH} element={<Organizer/>}>
-            <Route path={PATH.ROLE} element={<Role/>}/>
-            <Route path={PATH.TAG} element={<Tag/>}/>
-            <Route path={PATH.DEVICE} element={<Device/>}/>
+          <Route path={PATH.ORGANIZER_PATH} element={<Organizer />}>
+            <Route path={PATH.ROLE} element={<Role />} />
+            <Route path={PATH.TAG} element={<Tag />} />
+            <Route path={PATH.DEVICE} element={<Device />} />
           </Route>
         </Routes>
       </BrowserRouter>

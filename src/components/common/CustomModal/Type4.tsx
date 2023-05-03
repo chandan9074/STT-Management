@@ -28,7 +28,7 @@ const Type4 = ({ open, setOpen, selectedTrack, data, audioMin }: Props) => {
                             <img src={Icons.MusicIcon} alt="" className='mr-[10px]' />
                             <div>{data?.title ? data?.title : data?.name}</div>
                             <div className='w-1 h-1 rounded-full bg-[#B8BFCC] mx-[6px]' />
-                            {!data?.duration ? audioMin : selectedTrack?.duration}
+                            {!data?.duration ? audioMin : selectedTrack?.duration} min
                         </div>
                         <Buttons.IconButton.Circle
                             size='medium'
