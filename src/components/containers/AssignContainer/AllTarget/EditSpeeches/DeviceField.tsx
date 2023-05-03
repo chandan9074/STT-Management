@@ -11,10 +11,10 @@ type Props = {
     device: string | null | undefined;
     setDevice: Dispatch<SetStateAction<string | null | undefined>>;
     speechData: speechDt[];
-    setSpeechData:  Dispatch<SetStateAction<speechDt[]>>;
+    setSpeechData: Dispatch<SetStateAction<speechDt[]>>;
 }
 
-const DeviceField = ({data, device, deviceData, deviceId, setDeviceId, setDevice, speechData, setSpeechData}: Props) => {
+const DeviceField = ({ data, device, deviceData, deviceId, setDeviceId, setDevice, speechData, setSpeechData }: Props) => {
 
     const deviceOnChange = (value: string) => {
         setDevice(value ?? undefined);
@@ -41,7 +41,7 @@ const DeviceField = ({data, device, deviceData, deviceId, setDeviceId, setDevice
                         <div className="fixed top-0 left-0 opacity-50 bg-transparent w-full h-screen "
                             onClick={() => setDeviceId('')} />
                         <div className='relative'>
-                             <Autocomplete
+                            <Autocomplete
                                 placeholder='Choose one'
                                 id="sourceType"
                                 style={{ width: '100%' }}
@@ -69,6 +69,7 @@ const DeviceField = ({data, device, deviceData, deviceId, setDeviceId, setDevice
                                         {...params}
                                         name="device"
                                         placeholder='Select One'
+                                        style={{ outlineColor: "red" }}
 
                                     />
                                 )}

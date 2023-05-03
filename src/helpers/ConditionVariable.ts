@@ -23,6 +23,6 @@ export const STATUS_UPOLOADED = 'Uploaded';
 
 
 
-export const AUDIO_FILE_UPLOADED = 'Uploaded';
+export const AUDIO_FILE_UPLOADED = 'Approved';
 export const AUDIO_FILE_FAILED = 'Upload Failed';
 

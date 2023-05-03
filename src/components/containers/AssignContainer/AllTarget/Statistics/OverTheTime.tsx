@@ -6,7 +6,7 @@ import MonthCalender from '../../../../calender/MonthCalender'
 import { compareWithCurrentMonthYear, handleIncDecMonth } from '../../../../../helpers/Utils'
 import { AssignContext } from '../../../../../context/AssignProvider'
 import Dropdown from '../../../../Dropdown'
-import { weekData } from '../../../../../data/assign/AssignData'
+import { februaryWeekData, weekData } from '../../../../../data/assign/AssignData'
 
 
 const OverTheTime = ({ data }: { data: overTheTimeDataDT }) => {
@@ -36,6 +36,10 @@ const OverTheTime = ({ data }: { data: overTheTimeDataDT }) => {
             borderColor: "bg-secondary-red-50"
         },
     ]
+
+    const handleCurrentWeek = (value: number) => {
+        assignContext.setCurrentWeek(value)
+    }
 
     const getBarCircleColor = (name: string, border: boolean) => {
         const color = barColor.filter(item => item.name === name)[0];
@@ -105,7 +109,7 @@ const OverTheTime = ({ data }: { data: overTheTimeDataDT }) => {
                             />
                         </div>
                     </div>
-                    <Dropdown.Type1 data={weekData} handleSelectedItem={handleSelectedItem} top="top-9" width='w-40' >
+                    <Dropdown.Type1 data={data.month.toLocaleLowerCase() === "february" ? februaryWeekData : weekData} handleSelectedItem={handleSelectedItem} handleCurrentWeek={handleCurrentWeek} top="top-9" width='w-40' activeMonth={data.month} >
                         <Buttons.DropdownWeekBtn week={assignContext.currentWeek} />
                     </Dropdown.Type1>
                 </div>
@@ -144,7 +148,7 @@ const OverTheTime = ({ data }: { data: overTheTimeDataDT }) => {
                         <div className='w-full border-b-[1px] border-blue-gray-30 ' />
                     </div>
                     <div className='absolute bottom-0 flex justify-between w-full px-2'>
-                        {data.weekData.filter(item => item.week === assignContext.currentWeek)[0].dayData.map((item, index) => (
+                        {data.weekData.filter(item => item.week === assignContext.currentWeek)[0]?.dayData.map((item, index) => (
                             <div key={index} className='w-8 relative flex flex-col items-center justify-end group cursor-pointer'>
                                 {item.target !== 0 ? (<>
                                     <div className={`flex ${data.weekData.filter(item => item.week === assignContext.currentWeek)[0].dayData.length - 3 < index ? "justify-end" : "justify-center"}`}>

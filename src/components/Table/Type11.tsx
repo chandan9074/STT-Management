@@ -19,13 +19,12 @@ import RecordingAreaField from '../containers/AssignContainer/AllTarget/EditSpee
 import DeviceField from '../containers/AssignContainer/AllTarget/EditSpeeches/DeviceField';
 import TargetStatus from '../containers/AssignContainer/AllTarget/EditSpeeches/TargetStatus';
 import RecordingDistanceField from '../containers/AssignContainer/AllTarget/EditSpeeches/RecordingDistanceField';
+import Pagination from '../Pagination';
 
 
 type Props = {
     data: assignSpeechDT
 }
-
-type RecordType = speechDt;
 
 const Type11 = ({ data }: Props) => {
 
@@ -229,13 +228,15 @@ const Type11 = ({ data }: Props) => {
             align: "center",
 
             render: (data) => (
-                <button onClick={() => {
-                    setRemarkOpen(true);
-                    setRemarkId(data?.id);
-                    setTempRemark(data?.remark);
-                }} className='flex justify-center'>
-                    <img src={data?.remark === "" ? Icons.EditGray : Icons.File} className="h-[15px] w-[12px]" alt="" />
-                </button>
+                <div className='flex justify-center relative'>
+                    <button onClick={() => {
+                        setRemarkOpen(true);
+                        setRemarkId(data?.id);
+                        setTempRemark(data?.remark);
+                    }} className='flex justify-center'>
+                        <img src={data?.remark === "" ? Icons.EditGray : Icons.File} className="h-4 w-4" alt="" />
+                    </button>
+                </div>
             )
         },
 
@@ -262,27 +263,20 @@ const Type11 = ({ data }: Props) => {
         },
     ];
 
+    const handlePageChange = (page: number) => {
+        // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
+    }
 
-    const rowSelection = {
-        onChange: (selectedRowKeys: React.Key[], selectedRows: speechDt[]) => {
-            // console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+    return (<>
 
-        },
-        getCheckboxProps: (record: RecordType) => ({
-
-        }),
-    };
-    return (
-        <div className='billing-table billing-table-odd-bg type4-table' >
+        <div className='billing-table billing-table-odd-bg type4-table bg-white' >
 
             <Table
-                rowSelection={{
-                    ...rowSelection,
-                }}
                 columns={column}
                 dataSource={speechData}
                 scroll={{ x: 1600 }}
                 rowKey='id'
+                pagination={false}
             />
 
             <Drawer.Target.Type1
@@ -314,6 +308,17 @@ const Type11 = ({ data }: Props) => {
             }
 
         </div >
+
+        <div className='flex w-full justify-end mt-4 mb-2'>
+            <Pagination.Type2
+                total={100}
+                pageSize={10}
+                // total={35}
+                // pageSize={5}
+                handleDataChange={handlePageChange}
+            />
+        </div>
+    </>
     );
 };
 

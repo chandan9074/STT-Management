@@ -134,17 +134,17 @@ const Type10 = ({ setSelectedTarget, data }: Props) => {
         },
 
         {
-            title: `${"Assigned date".toLocaleUpperCase()}`,
-            key: 'assignedDate',
-            width: 120,
-            render: (data: targetDT) => <h1 className='w-[120px] whitespace-nowrap'>{data.assignedDate}</h1>,
-
-        },
-        {
             title: `${"Deadline".toLocaleUpperCase()}`,
             key: 'deadline',
             width: 120,
             render: (data: targetDT) => <h1 className='w-[120px] whitespace-nowrap'>{data.target.deadline}</h1>,
+
+        },
+        {
+            title: `${"Assigned date".toLocaleUpperCase()}`,
+            key: 'assignedDate',
+            width: 120,
+            render: (data: targetDT) => <h1 className='w-[120px] whitespace-nowrap'>{data.assignedDate}</h1>,
 
         },
         {

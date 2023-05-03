@@ -29,7 +29,7 @@ const Type8 = ({ option1, option2, data }: Props) => {
                     <div onClick={() => item === option1 ? onUploadStatus(option1) : onUploadStatus(option2)} className={` cursor-pointer ${(isOption1 && item === option1) ? 'bg-[#DEF7F0]' : (isOption2 && item === option2) ? 'bg-red-10' : 'bg-white'} h-[40px] py-4 pl-4 pr-3 flex items-center justify-between ${item === option2 ? 'rounded-[8px] rounded-t-none ' : 'rounded-[8px]  rounded-b-none '}`} key={i}>
                         <div className='flex items-center gap-x-3'>
                             <div className={`${(item === option1) ? 'bg-secondary-green-50' : (item === option2) ? 'bg-secondary-red-50' : ''} w-[9px] h-[9px] rounded-[50%] `} />
-                            <h1 className={`${(item === option1) ? 'text-green-60' : (item === option2) ? 'text-red-60' : ''} text-small font-medium`}>{item}</h1>
+                            <h1 className={`${(isOption1 && item === option1) ? 'text-green-60' : (isOption2 && item === option2) ? 'text-red-60' : 'text-blue-gray-80'} text-small font-medium`}>{item}</h1>
                         </div>
                         {/* {
                             ((isOption1 && item === option1) ?

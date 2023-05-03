@@ -33,7 +33,7 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
 
     return (
         <div className={`relative flex ${align === "left" ? `justify-start` : align === "center" ? "justify-center" : "justify-end"}`}>
-            <div className="relative z-[90]">
+            <div className="relative z-[80]">
                 <Buttons.Filter label="Filter" count={count} onClick={() => setOpen(!open)} />
             </div>
             {open && (

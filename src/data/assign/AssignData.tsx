@@ -57,11 +57,18 @@ export const weekBtnData = [
 ]
 
 export const weekData = [
-    'Week 01(01-07',
-    'Week 02(08-14',
-    'Week 03(15-21',
-    'Week 04(22-28',
-    'Week 05(29-31',
+    'Week 01 (01-07',
+    'Week 02 (08-14',
+    'Week 03 (15-21',
+    'Week 04 (22-28',
+    'Week 05 (29-31',
+]
+
+export const februaryWeekData = [
+    'Week 01 (01-07',
+    'Week 02 (08-14',
+    'Week 03 (15-21',
+    'Week 04 (22-28',
 ]
 
 export const scriptColorData = [
