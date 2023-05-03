@@ -22,10 +22,12 @@ type Props = {
     history?: historyDT[];
     prevSpeaker?: boolean;
     activePanelProp?: string;
+    deadline?: string;
+    submissionDate?: string;
 }
 
-const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory, speaker, remark, script, others, id, history, prevSpeaker, activePanelProp }: Props) => {
-    const [activePanel, setActivePanel] = useState<string>("");
+const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory, speaker, remark, script, others, id, history, prevSpeaker, activePanelProp, deadline, submissionDate }: Props) => {
+    const [activePanel, setActivePanel] = useState<string>(activePanelProp ? activePanelProp : "Script");
     const [isMetaData, setIsMetaData] = useState<boolean>(false);
     const [isSpeaker, setIsSpeaker] = useState<boolean>(prevSpeaker ? true : false);
 
@@ -39,9 +41,9 @@ const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory,
     };
 
     useEffect(() => {
-        if(activePanelProp){
-            setActivePanel(activePanelProp);
-        }
+        // if (activePanelProp) {
+        //     setActivePanel(activePanelProp);
+        // }
 
         speaker.speakers.map((item: singleSpeakerDT2) => {
             if (item.gender.toLowerCase() === 'male'.toLowerCase()) {
@@ -51,11 +53,11 @@ const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory,
                 setIsFemale(true);
             }
             return item;
-            
+
         });
         console.log(activePanel);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [activePanelProp]);
 
     return (
         <Drawer
@@ -81,9 +83,19 @@ const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory,
                                     <div className='border-b-[1px] border-ct-blue-20 bg-ct-blue-05 px-6 pt-6 pb-11 flex justify-between items-center relative'>
                                         <div>
                                             <h1 className='text-ct-blue-95 text-[18px] font-medium'>Details</h1>
-                                            <div className='flex'>
-                                                <h1 className='text-ct-blue-90-70% text-small'>Target ID: </h1>
-                                                <h1 className='pl-1 text-ct-blue-90-70% font-bold text-small'>{id?.slice(0, 25)}</h1>
+                                            <div className='flex gap-x-3'>
+                                                <div className='flex'>
+                                                    <h1 className='text-ct-blue-90-70% text-xs'>Task ID: </h1>
+                                                    <h1 className='pl-1 text-ct-blue-90-70% font-semibold text-xs'>{id?.slice(0, 25)}</h1>
+                                                </div>
+                                                {deadline && <div className='flex'>
+                                                    <h1 className='text-ct-blue-90-70% text-xs'>Deadline: </h1>
+                                                    <h1 className='pl-1 text-ct-blue-90-70% font-semibold text-xs'>{deadline}</h1>
+                                                </div>}
+                                                {submissionDate && <div className='flex'>
+                                                    <h1 className='text-ct-blue-90-70% text-xs'>Submission: </h1>
+                                                    <h1 className='pl-1 text-ct-blue-90-70% font-semibold text-xs'>{submissionDate}</h1>
+                                                </div>}
                                             </div>
                                         </div>
 
@@ -121,7 +133,7 @@ const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory,
                                                         size='small'
                                                         tabLabel={["Script", "Others"]}
                                                         setActiveData={setActivePanel}
-                                                        activePanelProps={activePanelProp === "Script" ? 0 : 1}
+                                                        activePanelProps={activePanel.includes("Script") ? 0 : 1}
                                                     />
                                             }
 

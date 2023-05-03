@@ -217,6 +217,7 @@ const Type18 = ({ data }: Props) => {
           others={singleTargetData.others}
           id={singleTargetData.id}
           history={singleTargetData?.history}
+          submissionDate={singleTargetData.submissionDate}
         />
       }
     </div>

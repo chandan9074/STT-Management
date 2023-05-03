@@ -104,7 +104,7 @@ const Type16 = ({ data }: Props) => {
             render: (_, record: audioManagementDT) => (
                 <>
 
-                    <div className='flex w-full justify-center items-center'>
+                    <button className='flex w-full justify-center items-center'>
                         <img
                             onClick={() => {
                                 showDrawer();
@@ -114,7 +114,7 @@ const Type16 = ({ data }: Props) => {
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
-                    </div>
+                    </button>
 
                 </>)
         },
