@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Toast } from "../components/Toast";
 import { statusColorsData } from "../data/audioManagement/AudioManagementData";
+import { makeStyles } from '@material-ui/core/styles';
 
 export const isEmpty = (obj: any) => {
   if (obj) {
@@ -263,5 +264,14 @@ export const getDateRangeInMonthFormate = (date: { start: string, end: string })
     return `${startDate.split("-")[0]} ${startMonth} ${startDate.split("-")[2]} - ${endDate.split("-")[0]} ${endMonth} ${endDate.split("-")[2]}`;
   }
 }
+
+export const customMuiListStyle = makeStyles({
+  option: {
+      color: '#464E5F',
+      fontSize: '14px',
+      fontWeight: 500,
+  },
+});
+
 
 

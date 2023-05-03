@@ -92,29 +92,30 @@ const Type10 = ({ setSelectedTarget, data }: Props) => {
             key: 'speeches',
             width: 227,
             render: (data: targetDT) => (
-                <div className='flex items-center gap-x-[13px] w-[227px]'>
-                    <div>
-                        <div className='flex items-center gap-x-2'>
-                            <img className='w-4 h-4' src={Icons.MusicBlue} alt="" />
-                            <h1 className='text-xs text-secondary-blue-50 font-medium'>{data.speeches.uploaded + '/' + data?.speeches.total} Uploaded</h1>
-                        </div>
-                        <div className='bg-blue-gray-20 h-[6px] rounded-[21px] w-[175px]'>
-                            {
-                                data?.status > 0 &&
-                                <div
-                                    style={{
-                                        width: `${getPercentage(data?.speeches.total, data?.speeches.uploaded)}%`
-                                    }}
-                                    className='bg-secondary-blue-50 h-full rounded-l-[21px]' />
+                <Link to={`${EDIT_SPEECHES_PATH}/${data?.id}`}>
+                    <div className='flex items-center gap-x-[13px] w-[227px] cursor-pointer'>
+                        <div>
+                            <div className='flex items-center gap-x-2'>
+                                <img className='w-4 h-4' src={Icons.MusicBlue} alt="" />
+                                <h1 className='text-xs text-secondary-blue-50 font-medium'>{data.speeches.uploaded + '/' + data?.speeches.total} Uploaded</h1>
+                            </div>
+                            <div className='bg-blue-gray-20 h-[6px] rounded-[21px] w-[175px]'>
+                                {
+                                    data?.status > 0 &&
+                                    <div
+                                        style={{
+                                            width: `${getPercentage(data?.speeches.total, data?.speeches.uploaded)}%`
+                                        }}
+                                        className='bg-secondary-blue-50 h-full rounded-l-[21px]' />
 
-                            }
+                                }
+                            </div>
                         </div>
-                    </div>
-                    <Link to={`${EDIT_SPEECHES_PATH}/${data?.id}`}>
+
                         <img className='w-[13px] h-[9px]' src={Icons.BlueRightArrow} alt="" />
-                    </Link>
+                    </div>
+                </Link>
 
-                </div>
             )
         },
 
@@ -218,7 +219,7 @@ const Type10 = ({ setSelectedTarget, data }: Props) => {
                     isDrawerOpen={open}
                     setIsDrawerOpen={setOpen}
                     data={singleTargetData}
-    
+
                 />
             }
 

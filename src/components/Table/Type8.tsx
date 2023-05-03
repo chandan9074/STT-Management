@@ -1,10 +1,10 @@
 import { DatePicker, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import Icons from "../../assets/Icons";
 import "../../assets/css/table/type4Table.css";
 import { useAssigneeContext } from "../../context/AssignProvider";
-import { AssigneeItemDT, CriteriaItemDT, ScriptItemDT, TargetItemDT, updateDraftTargetQueryParams } from "../../types/assignTypes";
+import { AssigneeItemDT, CriteriaItemDT, ScriptItemDT, TargetItemDT, postResTargetAssignParamDT, updateDraftTargetQueryParams } from "../../types/assignTypes";
 import Buttons from "../Buttons";
 import ScriptTargetModal from "../containers/AssignContainer/CreateTarget/TargetTable/ScriptTargetModal";
 import RoleImage from "../Image/RoleImage";
@@ -12,15 +12,7 @@ import AssigneeTargetModal from "../containers/AssignContainer/CreateTarget/Targ
 import CriteriaTargetModal from "../containers/AssignContainer/CreateTarget/TargetTable/CriteriaTargetModal";
 import { Drawer } from "../Drawer";
 
-// interface Props {
-//   changeScriptModal: (open: boolean, target: TargetItemDT) => void;
-//   changeTargetModal: (open: boolean, target: TargetItemDT) => void;
-//   changeAssigneeModal: (open: boolean, target: TargetItemDT) => void;
-//   changeDeadlineModal: (open: boolean, target: TargetItemDT) => void;
-//   changeRemarkModal: (open: boolean, target: TargetItemDT) => void;
-// }
-
-const Type8 = () => {
+const Type8 = ({setSelectedRowsId}: {setSelectedRowsId: Dispatch<SetStateAction<postResTargetAssignParamDT>>}) => {
   const { selectedTargetList: dataList, updateDraftTarget, selectedScriptList, selectedCriteriaList, selectedAssigneList } = useAssigneeContext();
   const [open, setOpen] = useState(false);
   const [openScriptModal, setOpenScriptModal] = useState<boolean>(false);
@@ -231,11 +223,14 @@ const Type8 = () => {
 
   const rowSelection = {
     onChange: (selectedRowKeys: React.Key[], selectedRows: TargetItemDT[]) => {
+      setSelectedRowsId({
+        selectedTargets: selectedRowKeys.map((key) => key.toString())
+      });
     },
     getCheckboxProps: (record: TargetItemDT) => ({
       //   name: record.id,
     }),
-  };
+  };  
 
   return (
     <div className="billing-table billing-table-even-bg type4-table">

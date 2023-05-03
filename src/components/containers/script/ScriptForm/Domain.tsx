@@ -7,10 +7,12 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { FormikValues } from 'formik';
+import { customMuiListStyle } from '../../../../helpers/Utils';
 
 
 const Domain = ({ formik }: { formik: FormikValues }) => {
     // const [domain, sebDomain] = useState<string>('');
+    const classes = customMuiListStyle();
 
     return (
         <div className='mb-[28px] domain'>
@@ -69,7 +71,7 @@ const Domain = ({ formik }: { formik: FormikValues }) => {
                 <Grid item xs={6}>
                     <div>
                         <Autocomplete
-                            
+                            classes={{ option: classes.option }}
                             disableClearable
                             placeholder='Choose one'
                             id="sub-domain"
