@@ -24,7 +24,7 @@ const CommonProvider = ({ children }: { children: any }) => {
   // const [errorMsg, setErrorMsg] = useState<string>("");
   const [type, setType] = useState<string>("STT");
   const [role, setRole] = useState<string>("admin");
-  const [roleName,setRoleName] = useState<string>("Md. Jalal Uddin")
+  const [roleName, setRoleName] = useState<string>("Md. Jalal Uddin")
   const [toastOpen, setToastOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
 
