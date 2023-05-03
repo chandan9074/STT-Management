@@ -16,7 +16,7 @@ let SideDrawerLink = [
             },
             {
                 name: 'Draft',
-                route: PATH.UPLOAD_AUDION_VIDEO_PATH,
+                route: PATH.DRAFT_PATH,
                 links: []
             }
         ]

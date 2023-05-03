@@ -156,6 +156,7 @@ import Rectangle2 from './rectangle_2.svg';
 import UserGray from './user_gray.svg';
 import GoBack from './go_back.svg';
 import statistics from './statistics.svg';
+import union_box from './union_box.svg';
 
 const Icons = {
   statistics,
@@ -315,7 +316,8 @@ const Icons = {
   Rectangle1,
   Rectangle2,
   UserGray,
-  GoBack
+  GoBack,
+  union_box
 };
 
 export default Icons;

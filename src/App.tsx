@@ -56,6 +56,7 @@ import AddSpeech from "./components/containers/AudioManagement/UploadAuidioVideo
 import AnnotatedFilesUpload from "./pages/AudioManagement/UploadAudio/Annotation/AnnotatedFilesUpload";
 import ValidatedFiles from "./pages/AudioManagement/CollectedAudio/Validation/ValidatedFiles";
 import ValidatedFilesUpload from "./pages/AudioManagement/UploadAudio/Validation/ValidatedFilesUpload";
+import Draft from "./pages/Assign/Draft";
 
 function App() {
   useEffect(() => {
@@ -102,6 +103,7 @@ function App() {
               {/*<Route path={PATH.CREATE_TARGET_PATH} element={<CreateTarget />} />*/}
             </Route>
           </Route>
+          <Route path={PATH.DRAFT_PATH} element={<Draft />} />
           <Route path={PATH.CREATE_TARGET_PATH} element={<CreateTarget />} />
           <Route path={`${PATH.RECREATE_TARGET_PATH}/:id`} element={<RecreateTarget />} />
           <Route path={`${PATH.EDIT_SPEECHES_PATH}/:id`} element={<EditSpeeches />} />
@@ -160,10 +162,10 @@ function App() {
               </Route>
             </Route>
           </Route>
-          <Route path={PATH.ORGANIZER_PATH} element={<Organizer/>}>
-            <Route path={PATH.ROLE} element={<Role/>}/>
-            <Route path={PATH.TAG} element={<Tag/>}/>
-            <Route path={PATH.DEVICE} element={<Device/>}/>
+          <Route path={PATH.ORGANIZER_PATH} element={<Organizer />}>
+            <Route path={PATH.ROLE} element={<Role />} />
+            <Route path={PATH.TAG} element={<Tag />} />
+            <Route path={PATH.DEVICE} element={<Device />} />
           </Route>
         </Routes>
       </BrowserRouter>
