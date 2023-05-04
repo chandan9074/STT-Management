@@ -104,7 +104,7 @@ const Type16 = ({ data }: Props) => {
             render: (_, record: audioManagementDT) => (
                 <>
 
-                    <button className='flex w-full justify-center items-center'>
+                    <button className='flex justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full'>
                         <img
                             onClick={() => {
                                 showDrawer();
@@ -148,6 +148,7 @@ const Type16 = ({ data }: Props) => {
                     others={singleTargetData.others}
                     id={singleTargetData.id}
                     activePanelProp={activePanel}
+                    targetTitle={true}
                 />
             }
         </div>

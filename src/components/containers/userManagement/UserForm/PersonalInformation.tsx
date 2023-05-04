@@ -200,6 +200,7 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                 <Grid item xs={6}>
                     <div className='mt-6'>
                         <HomeDistrictSelect
+                            required={true}
                             formikValues={formik.values.homeDistrict}
                             data={homeDistrict}
                             formikError={formik.errors.homeDistrict}
@@ -214,6 +215,7 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                 <Grid item xs={6}>
                     <div className='mt-6'>
                         <HomeDistrictSelect
+                            required={true}
                             formikValues={formik.values.presentDistrict}
                             data={homeDistrict}
                             formikError={formik.errors.presentDistrict}

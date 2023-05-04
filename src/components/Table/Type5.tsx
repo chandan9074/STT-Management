@@ -188,7 +188,7 @@ const Type5 = ({ data }: Props) => {
             fixed: 'right',
             width: 85,
             render: (_, record: userManagementTableDT) => (
-                <div className='flex w-full justify-center items-center'>
+                <div className='flex w-full justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full'>
 
                     <button className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-ct-blue-10 active:border active:border-ct-blue-10'
                         onClick={() => showDrawer(record)}>

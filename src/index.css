@@ -27,6 +27,11 @@
 @tailwind utilities;
 
 @layer components {
+
+  .titleAudioManagement {
+    @apply text-heading-6 font-medium text-ct-blue-95 leading-6;
+  }
+
   .nameParagraph1 {
     @apply text-small font-medium text-ct-blue-95;
   }

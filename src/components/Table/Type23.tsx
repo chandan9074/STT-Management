@@ -104,7 +104,7 @@ const Type23 = ({ data }: Props) => {
             width: 85,
             render: (_, record: uploadAudioDataDT) => (
                 <>
-                    <div className='flex w-full justify-center items-center'>
+                    <div className='flex justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full'>
                         <img
                             onClick={() => {
                                 showDrawer();

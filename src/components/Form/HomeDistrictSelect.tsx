@@ -15,10 +15,11 @@ type Prop =
         formikError?: any,
         formikTouched?: any,
         name: string,
-        fieldLabel: string
+        fieldLabel: string,
+        required?: boolean
     }
 
-const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTouched, name, fieldLabel }: Prop) => {
+const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTouched, name, fieldLabel, required }: Prop) => {
 
     const [collapsed, setCollapsed] = useState<any>({});
 
@@ -67,14 +68,14 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
             <div className={`${!isHomeDistrict && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[50]`} onClick={() => clickOutsideField()}></div>
 
             <FormControl sx={{ width: '100%' }} variant="outlined">
-                <InputLabel htmlFor={name}>{<h1 className='comboBoxLabel'>{fieldLabel} <span className='text-[red]'>*</span></h1>}</InputLabel>
+                <InputLabel htmlFor={name}>{<h1 className='comboBoxLabel'>{fieldLabel} {required && <span className='text-[red]'>*</span>}</h1>}</InputLabel>
                 <OutlinedInput
                     id={name}
                     autoComplete='off'
                     type='text'
                     onMouseDown={onHomeDistrictFocus}
                     name={name}
-                    label={<h1 className='comboBoxLabel'>{fieldLabel} <span className='text-[red]'>*</span></h1>}
+                    label={<h1 className='comboBoxLabel'>{fieldLabel} {required && <span className='text-[red]'>*</span>}</h1>}
                     value={onTextField || ''}
                     onChange={(e) => {
                         handleSearch(e);

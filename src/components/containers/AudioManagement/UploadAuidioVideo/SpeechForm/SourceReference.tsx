@@ -5,6 +5,7 @@ import Icons from '../../../../../assets/Icons';
 import { Grid, TextField } from '@mui/material';
 import Dragger from 'antd/es/upload/Dragger';
 import { urlPatternValidation } from '../../../../../helpers/Utils';
+import LabelForm from '../../../../common/Form/LabelForm';
 
 const SourceReference = ({ formik }: { formik: FormikValues }) => {
     const [scriptSourceReference, setScriptSourceReference] = useState<{ isSource: boolean, isScript: boolean }>({
@@ -33,12 +34,7 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
 
 
         if (event.fileList?.length !== 0) {
-            // let files = event.fileList || event.file || event.target.files;
             let files = event.fileList[0];
-            // getFile(event.fileList[0]?.originFileObj);
-
-            console.log('&&&&&&&&&&', event.fileList[0]?.originFileObj);
-            
 
             formik.setFieldValue("sourceFile", event.fileList[0]?.originFileObj);
             formik.setFieldValue("sourceFileName", files?.originFileObj?.name);
@@ -57,14 +53,18 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
         formik.setFieldValue("sourceFileName", '');
     }
 
- 
+
 
     return (
         <div className='mb-[28px] source-reference'>
 
-            <h1 className='mb-[12px] text-blue-gray-80 text-small font-medium'>Source Reference</h1>
+            {/* <h1 className='mb-[12px] text-blue-gray-80 text-small font-medium'>Source Reference</h1> */}
+            <LabelForm
+                title='Source Reference'
+                required={true}
+            />
 
-            <div className=' border-[1px] border-[#D6E5F5] rounded-[7px] mb-[28px]'>
+            <div className=' border-[1px] border-[#D6E5F5] rounded-[7px] mb-[28px] mt-3'>
                 <Grid container >
                     <Grid item xs={6} style={{ cursor: 'pointer' }}>
                         <div onClick={(value) => onSourceReferencehandle('source')} className={`cursor-pointer p-[8px] ${scriptSourceReference?.isSource ? 'bg-ct-blue-20' : 'bg-ct-blue-10'}  flex justify-center items-center gap-x-[15px]`}>
@@ -87,13 +87,14 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
                             <Grid container spacing={6}>
                                 <Grid item xs={6}>
                                     <div>
-                                    <TextField
+                                        <TextField
                                             id="sourceName"
                                             name="sourceName"
                                             label={<h1 className='comboBoxLabel'>Name of the Sour</h1>}
                                             value={formik.values.sourceName}
                                             onChange={formik.handleChange}
-
+                                            error={formik.touched.sourceName && Boolean(formik.errors.sourceName)}
+                                            helperText={formik.touched.sourceName && formik.errors.sourceName}
                                             style={{ width: '100%', }}
                                             InputProps={{
                                                 style: {
@@ -114,10 +115,10 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
                                             id="sourceUrl"
                                             name="sourceUrl"
                                             label={<h1 className='comboBoxLabel'>Source URL</h1>}
-
                                             value={formik.values.sourceUrl}
                                             onChange={formik.handleChange}
-
+                                            error={formik.touched.sourceUrl && Boolean(formik.errors.sourceUrl)}
+                                            helperText={formik.touched.sourceUrl && formik.errors.sourceUrl}
                                             style={{ width: '100%', }}
                                             InputProps={{
                                                 style: {
@@ -165,7 +166,7 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
 
                                 {
                                     // (formik.values.sourceFileName || formik.values.sourceFile !== '' || formik.values.sourceFile?.length !== 0) &&
-                                    ( formik.values.sourceFile?.length !== 0 ) &&
+                                    (formik.values.sourceFile?.length !== 0) &&
                                     <div className='rounded-[4px] pt-[8px] pb-4 px-4 bg-ct-blue-05'>
                                         <div className='flex justify-between items-center'>
                                             <div className='flex gap-x-[11px] items-center'>

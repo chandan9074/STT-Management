@@ -101,7 +101,19 @@ const SpeakerInfo = ({ formik }: { formik: FormikValues }) => {
                     {/* Home District */}
                     <Grid item xs={6}>
                         <div className=''>
+                            {/* <HomeDistrictSelect
+                                required={true}
+                                formikValues={formik.values.homeDistrict}
+                                data={homeDistrict}
+                                formikError={formik.errors.homeDistrict}
+                                formikTouched={formik.touched.homeDistrict}
+                                formik={formik}
+                                name={'homeDistrict'}
+                                fieldLabel='Home District'
+                            />
+                             */}
                             <HomeDistrictSelect
+                                required={true}
                                 formikValues={formik.values.homeDistrict}
                                 data={homeDistrict}
                                 formikError={formik.errors.homeDistrict}

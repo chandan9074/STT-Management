@@ -7,7 +7,7 @@ type Props = {
     formik: FormikValues,
 }
 
-const SpeechInfo = ({formik}: Props) => {
+const SpeechInfo = ({ formik }: Props) => {
     return (
         <div>
             <div className='flex'>
@@ -45,7 +45,19 @@ const SpeechInfo = ({formik}: Props) => {
                                     value={value}
                                     control={<Radio
                                     />}
-                                    label={value.includes('STT') ? 'STT (Speech-to-Text)' : 'TTS (Text-to-Speech)'} />
+                                    label={
+                                        <h2
+                                            style={
+                                                {
+                                                    fontWeight: formik.values.dataType === value ? '500' : '',
+                                                    fontSize: '14px',
+                                                }}
+                                        >
+                                            {
+                                                value.includes('STT') ? 'STT (Speech-to-Text)' : 'TTS (Text-to-Speech)'
+                                            }
+                                        </h2>
+                                    } />
                             ))
                         }
                     </RadioGroup>

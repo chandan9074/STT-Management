@@ -12,7 +12,12 @@ import DomainSubDomain from './DomainSubDomain';
 import SpeakerInfo from './SpeakerInfo';
 
 const validationSchema = yup.object({
-    // title: yup.string().required('Source Type is required'),
+    sourceName: yup.string().required('Source name is required'),
+    sourceUrl: yup.string().required('Source url is required'),
+    domain: yup.string().required('Domain is required'),
+    subdomain: yup.string().required('subdomain is required'),
+    homeDistrict: yup.string().required('home District is required'),
+    // speechFile: yup.string().required('Source file is required'),
 });
 
 const SpeechForm = () => {

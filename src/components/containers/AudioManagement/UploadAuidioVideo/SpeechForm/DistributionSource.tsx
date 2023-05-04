@@ -5,7 +5,7 @@ import { audionManDistributionSource } from '../../../../../data/audioManagement
 
 const DistributionSource = ({ formik }: { formik: FormikValues })=> {
     return (
-             <div>
+             <div >
                 <h4 className='text-blue-gray-80 font-medium text-small'>Distribution Source</h4>
                 <FormControl>
                     <FormLabel style={{
@@ -35,7 +35,21 @@ const DistributionSource = ({ formik }: { formik: FormikValues })=> {
                                     value={value}
                                     control={<Radio
                                     />}
-                                    label={value} />
+                                    // label={value} 
+                                    label={
+                                        <h2
+                                            style={
+                                                {
+                                                    fontWeight: formik.values.dataType === value ? '500' : '',
+                                                    fontSize: '14px',
+                                                }}
+                                        >
+                                            {
+                                                value
+                                            }
+                                        </h2>
+                                    } 
+                                    />
                             ))
                         }
                     </RadioGroup>
