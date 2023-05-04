@@ -157,6 +157,10 @@ import UserGray from './user_gray.svg';
 import GoBack from './go_back.svg';
 import statistics from './statistics.svg';
 import union_box from './union_box.svg';
+import LoadingBlue from './loading_blue.svg';
+import LoadingCtBlue from './loading_ct_blue.svg';
+import LoadingMagenta from './loading_magenta.svg';
+import LoadingWhite from './loading_white.svg';
 
 const Icons = {
   statistics,
@@ -317,7 +321,11 @@ const Icons = {
   Rectangle2,
   UserGray,
   GoBack,
-  union_box
+  union_box,
+  LoadingBlue,
+  LoadingCtBlue,
+  LoadingMagenta,
+  LoadingWhite
 };
 
 export default Icons;

@@ -3,9 +3,11 @@ import { FormikValues } from 'formik';
 import { homeDistrict, lastDegreeAchived } from '../../../../data/userManagement/UserManagementData';
 import HomeDistrictSelect from '../../../Form/HomeDistrictSelect';
 import Image from '../../../Image';
+import { customMuiListStyle } from '../../../../helpers/Utils';
 
 
 const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
+    const classes = customMuiListStyle();
 
     return (
         // <div className='disableAutocompleteColor'>
@@ -16,6 +18,7 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                 <Grid item xs={6}>
                     <div className={`${formik.values.role.length === 0 && 'disableAutocompleteColor'} mt-4`}>
                         <Autocomplete
+                            classes={{ option: classes.option }}
                             disableClearable
                             placeholder='Choose one'
                             id="primaryRole"
@@ -228,6 +231,7 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                 <Grid item xs={6}>
                     <div className=''>
                         <Autocomplete
+                            classes={{ option: classes.option }}
                             disableClearable
                             placeholder='Choose one'
                             id="lastDegreeAchived"

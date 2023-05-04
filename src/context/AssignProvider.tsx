@@ -6,6 +6,7 @@ import {
   AssigneeItemDT,
   createAssigneeParamsDT,
   CriteriaItemDT,
+  postResTargetAssignParamDT,
   postSelectedScriptBodyDT,
   recreateTableDT,
   roleListByRoleParamDT,
@@ -83,9 +84,9 @@ interface ContextProps {
   roleListByRole: roleDT[];
   getRoleListByRole: (data: roleListByRoleParamDT) => void;
   updateAssigneeMainTarget: (data: updateAssigneeMainTargetParamDT) => void;
-}
-
-
+  postRestTargetAssign: (data: postResTargetAssignParamDT) => Promise<number | undefined>;
+  deleteDraftTargetAssign: (data: string) => void;
+} 
 
 export const AssignContext = createContext({} as ContextProps);
 export const useAssigneeContext = () => {
@@ -113,6 +114,21 @@ const AssignProvider = ({ children }: { children: any }) => {
   const [recreateTable, setRecreateTable] = useState<recreateTableDT>({} as recreateTableDT);
   const [targetsAssign, setTargetsAssign] = useState<targetDT[]>([] as targetDT[]);
   const [roleListByRole, setRoleListByRole] = useState<roleDT[]>([] as roleDT[]);
+
+  const postRestTargetAssign = async (data: postResTargetAssignParamDT) => {
+    const res = await AssignService.createTargetAssign(data);
+    if (res.status && res.status === 200) {
+      return 200;
+      // await getSelectedScript();
+    }
+  }
+
+  const deleteDraftTargetAssign = async (id: string) => {
+    const res = await AssignService.deleteDraftTargetAssign(id);
+    if (res.status === 200) {
+      setSelectedTargetList(selectedTargetList.filter((item) => item.id !== id))
+    }
+  }
 
   const getRoleListByRole = async (params: roleListByRoleParamDT) => {
     const res = await AssignService.fetchRoleListByRole(params);
@@ -456,7 +472,9 @@ const AssignProvider = ({ children }: { children: any }) => {
         targetsAssign,
         roleListByRole,
         getRoleListByRole,
-        updateAssigneeMainTarget
+        updateAssigneeMainTarget,
+        postRestTargetAssign,
+        deleteDraftTargetAssign
       }}
     >
       {children}

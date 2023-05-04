@@ -1,7 +1,7 @@
 import axios from "axios";
 import { targetDataForRecreate } from "../data/assign/AssignData";
 import * as PATH from "../helpers/APIURL";
-import { allScriptParamsDT, createAssigneeParamsDT, CriteriaItemDT, postDraftTargetBodyDT, postSelectedScriptBodyDT, roleListByRoleParamDT, targetAssignParamDT, updateAssigneeMainTargetParamDT, updateDraftTargetQueryParams } from "../types/assignTypes";
+import { allScriptParamsDT, createAssigneeParamsDT, CriteriaItemDT, postDraftTargetBodyDT, postResTargetAssignParamDT, postSelectedScriptBodyDT, roleListByRoleParamDT, targetAssignParamDT, updateAssigneeMainTargetParamDT, updateDraftTargetQueryParams } from "../types/assignTypes";
 
 export default class AssignService {
 
@@ -89,5 +89,14 @@ export default class AssignService {
 
   static updateAssigneeMainTarget(params: updateAssigneeMainTargetParamDT) {
     return axios.put(PATH.UPDATE_ASSIGNEE_MAIN_TARGET_ASSIGN_PATH, params);
+  }
+
+  static createTargetAssign(params: postResTargetAssignParamDT) {
+    return axios.post(PATH.POST_RES_TARGET_ASSIGN_PATH, params);
+  }
+
+  static async deleteDraftTargetAssign(id: string) {
+    const res = axios.delete(PATH.DELETE_DRAFT_TARGET_ASSIGN_PATH, { params: { id: id } });
+    return res;
   }
 }
