@@ -26,7 +26,7 @@ const Type2 = ({ open, setOpen }: Props) => {
             >
                 <div>
                     <div className="p-6 pb-4 bg-blue-gray-20 rounded-t-lg">
-                        <SearchBox.Type1 inputWidth="w-full" placeholder="Search user by Login ID, Name..." bgColor="bg-white" textColor="text-ct-blue-90-70%" />
+                        <SearchBox.Type1 inputWidth="w-full" placeholder="Search user by Login ID, Name..." bgColor="bg-white" textColor="text-blue-gray-45" />
                     </div>
                     <div className="flex flex-col gap-y-3 m-4 p-4 border border-blue-gray-30 bg-blue-gray-05 rounded-lg">
                         <p className='text-heading-6 font-normal text-ct-blue-60'>
@@ -36,11 +36,11 @@ const Type2 = ({ open, setOpen }: Props) => {
                         <div className='flex gap-3 text-small text-ct-blue-90-70%'>
                             <div className='flex gap-2 items-center'>
                                 <img src={Icons.mail} className="h-4 w-4" alt="" />
-                                <p> miraz2710@gmail.com</p>
+                                <a href={`mailto:miraz2710@gmail.com`}> miraz2710@gmail.com</a>
                             </div>
                             <div className='flex gap-2 items-center'>
                                 <img src={Icons.call} className="h-4 w-4" alt="" />
-                                <p> 01684610691</p>
+                                <a href={`tel:01684610691`}> 01684610691</a>
                             </div>
                             <div className='flex gap-2 items-center'>
                                 <img src={Icons.home} className="h-4 w-4 mb-[1px]" alt="" />
@@ -56,6 +56,7 @@ const Type2 = ({ open, setOpen }: Props) => {
                             label='Cancel'
                             variant="Blue"
                             size='small'
+                            onClick={()=>setOpen(!open)}
                         />
                         <Buttons.LabelButton.Primary
                             label='Save'
@@ -71,8 +72,8 @@ const Type2 = ({ open, setOpen }: Props) => {
                 setOpen={setConfirm}
                 onSave={onSave}
                 title='Are you sure you want to take this action?'
-                cancelText='Cancel'
-                saveText='Save'
+                cancelText='No'
+                saveText='Yes'
                 icon={Icons.Gavel}
                 iconHeight='h-9'
                 iconWidth='w-9'
