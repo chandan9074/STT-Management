@@ -20,6 +20,7 @@ const Draft = () => {
         if (selectedTargetList.length > 0) {
             navigate('/assign/all-target/create-target')
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedTargetList])
     return (
         <Layouts.Sixth>
