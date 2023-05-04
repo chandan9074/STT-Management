@@ -163,7 +163,7 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                                 isParent={item.isParent}
                                                 filterList={filterList}
                                                 handleFilterList={handleFilterList}
-                                                placeHolder="Write Script ID"
+                                                placeHolder="Search script by script id"
                                             // subdomainData={filterData["subDomain"]}
                                             />
                                         </div> : item.type === "multiple-select" ? <div

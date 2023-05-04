@@ -58,7 +58,7 @@ const Others = ({ data, remark }: Props) => {
             <div className='mt-6'>
                 <h4 className='text-blue-gray-75 text-xxs'>Journey</h4>
                 {/* Role */}
-                <div className='border-[1px] border-blue-gray-30 rounded-[7px] mt-[10px] px-4 py-5'>
+                <div className='w-[340px] border-[1px] border-blue-gray-30 rounded-[7px] mt-[10px] px-4 py-5'>
                     {
                         data.journey.role.map((item: audioManagementRoleDT, i: number) => (
                             <div key={i}>

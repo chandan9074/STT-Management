@@ -108,7 +108,7 @@ const SideDrawer = () => {
                                                     <img src={Icons.ArrowDropUp} className='w-[8px] h-[5px]' alt="" />
                                                 </div>
                                             </button> :
-                                            m?.links?.length > 0 ?
+                                            m?.links?.length > 0 && (m.route === location.pathname.split('/')[2] && location.pathname.split('/').length === 3) ?
                                                 <button onClick={() => setNavClickItem({
                                                     subRoute: '',
                                                     mainRoute: m.route

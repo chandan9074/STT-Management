@@ -46,7 +46,7 @@ const Script = ({ isMetaData, setIsMetaData, data }: Props) => {
                             className='w-[13px] h-[13px]'
                             src={Icons.fileDownload}
                             alt="" />
-                        <p className='text-small font-medium text-[#136EE5]'>Download Script</p>
+                        <p className='text-xxs font-medium text-[#136EE5]'>Download Script</p>
                     </div>
                 </div>
             </div>
