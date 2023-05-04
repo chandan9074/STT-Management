@@ -1,3 +1,5 @@
+import axios from "axios";
+import * as PATH from "../helpers/APIURL";
 import { targetSpeechData } from "../data/assign/AssignData";
 import { userManagementTable } from "../data/userManagement/UserManagementData";
 import { activityData } from "../data/userManagement/activityData";
@@ -8,12 +10,15 @@ export default class UserManagementService {
   }
 
   static getUserTargetPendingSpeeches(id: string) {
-    // const res = axios.get(PATH.GET_USER_TARGET_PENDING_SPEECHES_URL, { params: { id: id } });
+    // const res = axios.get(PATH.GET_ROLE_LIST_URL, { params: { id: id } });
     // return res;
     return targetSpeechData;
   }
 
-  static getUserManagementTable(){
+  static getUserManagementTable() {
     return userManagementTable;
+  }
+  static getUserRoleListByRole(role: string) {
+    return axios.get(PATH.GET_ROLE_LIST_URL, { params: { role: role } });
   }
 }

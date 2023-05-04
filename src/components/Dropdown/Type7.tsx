@@ -12,7 +12,7 @@ import RoleImage from "../Image/RoleImage";
 
 type Props = {
     data: filterSelectsDT;
-    isParent?: string | undefined;
+    isParent?: string;
     filterList: targetFilterListDT;
     placeHolder?: string;
     handleFilterList: (key: string, value: string) => void;
@@ -35,15 +35,14 @@ const Type7 = ({
         }
     }, [data.isFromAPI, handleDropdownAPICall, data.key])
 
-    console.log("from type 6", data)
     return (
         <div className="relative w-80">
-            <div className="px-3 pt-3 pb-2 border border-blue-gray-10 rounded-[7px] bg-white inline-flex">
+            <div className={`px-3 pt-3 pb-2 border border-blue-gray-10 rounded-[7px] bg-white inline-flex ${data.isParent && filterList[data.isParent].length === 0 ? "cursor-not-allowed" : ""}`}>
                 <div className="w-72 pb-1 overflow-x-auto custom-scrollBar custom-scrollBar-height-5 flex items-center">
                     {filterList[data.key].length === 0 ? (
                         <button
-                            onClick={() => setOpen(!open)}
-                            className="text-xs text-blue-gray-60 mb-0 py-0.5 w-full text-left"
+                            onClick={() => data.isParent ? filterList[data.isParent].length > 0 && setOpen(!open) : setOpen(!open)}
+                            className={`text-xs text-blue-gray-60 mb-0 py-0.5 w-full text-left ${data.isParent && filterList[data.isParent].length === 0 ? "cursor-not-allowed" : ""}`}
                         >
                             {placeHolder ? placeHolder : `Select one`}
                         </button>
@@ -65,7 +64,7 @@ const Type7 = ({
                         </>
                     )}
                 </div>
-                <button className="p-0.5" onClick={() => setOpen(!open)}>
+                <button className={`p-0.5 ${data.isParent && filterList[data.isParent].length === 0 ? "cursor-not-allowed" : ""}`} onClick={() => data.isParent ? filterList[data.isParent].length > 0 && setOpen(!open) : setOpen(!open)}>
                     <img
                         src={Icons.arrow_drop_down_blue_gray}
                         alt=""
@@ -73,8 +72,9 @@ const Type7 = ({
                     />
                 </button>
             </div>
+            <div className={`bg-transparent ${open ? "block" : "hidden"} z-40 w-full h-full fixed top-0 left-0`} onClick={() => setOpen(!open)} />
             <div
-                className={`absolute animate-fadeIn py-1.5 bg-white w-full rounded-[8px] shadow-bottom-light-blue-20 top-14 max-h-72 overflow-y-auto ${open ? "block" : "hidden"
+                className={`absolute z-50 animate-fadeIn py-1.5 bg-white w-full rounded-[8px] shadow-bottom-light-blue-20 top-14 max-h-72 overflow-y-auto ${open ? "block" : "hidden"
                     }`}
             >
                 {isParent ? (

@@ -164,7 +164,7 @@ export type targetCompletedDT = {
 }
 
 export type targetFilterDT = {
-  type: "check" | "select" | "date" | "select-with-checkbox" | "multiple-select" | "form" | "date" | "select-with-roleImg" | "date-ranger";
+  type: "check" | "select" | "date" | "select-with-checkbox" | "multiple-select" | "form" | "date" | "select-with-roleImg" | "date-ranger" | "select-with-subItem" | "select-with-role";
   isParent?: string;
   key: string;
   title: string;
@@ -175,16 +175,25 @@ export type targetFilterDT = {
   formData?: filterFromDT[];
   viewKey?: string;
   viewRoleImg?: string;
+  divisions?: divisionDT[];
+  placeholder?: string;
+}
+
+export type divisionDT = {
+  division: string;
+  district: string[];
 }
 
 export type filterSelectsDT = {
-  type: "check" | "select" | "date" | "select-with-checkbox" | "multiple-select" | "form" | "date" | "select-with-roleImg" | "date-ranger";
+  type: "check" | "select" | "date" | "select-with-checkbox" | "multiple-select" | "form" | "date" | "select-with-roleImg" | "date-ranger" | "select-with-subItem" | "select-with-role";
   isFromAPI: boolean;
   key: string;
   title: string;
   child?: string[];
   role?: string;
   children?: subChildDT[];
+  isParent?: string;
+  placeholder?: string;
 }
 
 export type filterFromDT = {

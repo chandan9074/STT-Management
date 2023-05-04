@@ -37,8 +37,8 @@ const CreateTarget = () => {
 
   return (
     <Layouts.Sixth>
-      <div className={`bg-red-03 shadow-box pl-[24px] pt-[30px] pr-4  ${dataShow ? "h-[29rem]" : "h-24 overflow-hidden"} duration-300 relative`}>
-        <div className='flex justify-between items-center mb-[23px] gap-x-3'>
+      <div className={`bg-red-03 shadow-box pl-[24px] pt-[30px] pr-4  ${dataShow ? "h-[31rem]" : "h-32 overflow-hidden"} duration-300 relative`}>
+        <div className='flex justify-between items-center mb-[23px] gap-x-3 mt-8'>
           <div className='flex items-center'>
             <h1 className='text-blue-95 text-[18px] font-medium pr-3'>Create Target</h1>
             <h2 className='text-ct-blue-90 text-small'>Create one or more target and assign</h2>
