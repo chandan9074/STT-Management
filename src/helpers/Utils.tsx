@@ -271,6 +271,9 @@ export const customMuiListStyle = makeStyles({
     fontSize: '14px',
     fontWeight: 500,
   },
+  focused: {
+    border: '2px solid blue'
+  },
 });
 
 

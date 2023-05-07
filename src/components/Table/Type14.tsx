@@ -3,12 +3,11 @@ import { ColumnsType } from 'antd/es/table';
 import { useState } from 'react';
 import Icons from '../../assets/Icons';
 import { targetCompletedDT } from '../../types/assignTypes';
-import Buttons from '../Buttons';
 import Remark from '../common/Remark';
 import RoleImage from '../Image/RoleImage';
 import Dropdown from '../Dropdown';
 import { Link, useLocation } from 'react-router-dom';
-import * as PATH from '../../helpers/Slug'
+import * as PATH from '../../helpers/Slug';
 
 
 type Props = {
@@ -123,28 +122,27 @@ const Type14 = ({ data }: Props) => {
 
         },
         {
-            title: `${"Details".toLocaleUpperCase()}`,
+            title: `${"Target Details".toLocaleUpperCase()}`,
             align: 'center',
             dataIndex: 'details',
             key: 'details',
             fixed: 'right',
-            width: 80,
+            width: 85,
             render: (_, record: targetCompletedDT) => (
-                <>
+                <div className='flex justify-center items-center'>
 
                     <div className='flex justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full'>
                         <Link to={`${location.pathname}/${PATH.USER_MANAGEMENT_SPEECHES_PATH}/${record.id}`}>
-                            <Buttons.IconButton.Circle
-                                size='medium'
-                                variant="CT-Blue"
-                                icon={<img src={Icons.East} alt="" />}
-                                border='none'
-                                background="white"
-                            />
+                        <button className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-ct-blue-10 active:border active:border-ct-blue-10'>
+                            <img
+                                className='w-[14px] h-[14px]'
+                                src={Icons.East}
+                                alt="" />
+                        </button>
                         </Link>
                     </div>
 
-                </>)
+                </div>)
         },
     ];
 

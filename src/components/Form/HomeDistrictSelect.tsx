@@ -1,11 +1,12 @@
 import { FormControl, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Icons from '../../assets/Icons';
 import { homeDistrict } from '../../data/userManagement/UserManagementData';
 import { homeDistrictSearch } from '../../helpers/Utils';
 import { homeDistrictTypes } from '../../types/userManagementTypes';
 import Buttons from '../Buttons';
 import './HomeDistrictSelect.css';
+import { UserManagementContext } from '../../context/UserManagement';
 
 type Prop =
     {
@@ -28,6 +29,9 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
     const [isHomeDistrict, setIsHomeDistrict] = useState<boolean>(false);
 
     const [filteredDistrict, setFilteredDistrict] = useState<homeDistrictTypes[]>(data);
+
+    const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
+
 
     const handleArrowClick = (division: string) => {
         setCollapsed({
@@ -64,33 +68,47 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
 
     return (
         <div className='relative homeDistrictSelect '>
-        {/* <div className='relative z-[100] homeDistrictSelect '> */}
+            {/* <div className='relative z-[100] homeDistrictSelect '> */}
             <div className={`${!isHomeDistrict && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[50]`} onClick={() => clickOutsideField()}></div>
 
-            <FormControl sx={{ width: '100%' }} variant="outlined">
-                <InputLabel htmlFor={name}>{<h1 className='comboBoxLabel'>{fieldLabel} {required && <span className='text-[red]'>*</span>}</h1>}</InputLabel>
-                <OutlinedInput
-                    id={name}
-                    autoComplete='off'
-                    type='text'
-                    onMouseDown={onHomeDistrictFocus}
-                    name={name}
-                    label={<h1 className='comboBoxLabel'>{fieldLabel} {required && <span className='text-[red]'>*</span>}</h1>}
-                    value={onTextField || ''}
-                    onChange={(e) => {
-                        handleSearch(e);
-                        setOnTextField(e.target.value);
-                    }}
-                    endAdornment={
-                        <InputAdornment position="end">
-                            <img className=' w-[9px] h-[5px]' src={Icons.arrow_drop_down_blue_gray} alt="" />
-                        </InputAdornment>
-                    }
-                    style={{
-                        height: '44px'
-                    }}
-                />
-            </FormControl>
+            <div className={`border ${selectedFieldOutline === name ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px]`}>
+                <FormControl sx={{ width: '100%' }} variant="outlined">
+                    <InputLabel htmlFor={name}>{<h1 className='comboBoxLabel'>{fieldLabel} {required && <span className='text-[red]'>*</span>}</h1>}</InputLabel>
+                    <OutlinedInput
+                        id={name}
+                        autoComplete='off'
+                        type='text'
+                        onMouseDown={onHomeDistrictFocus}
+                        name={name}
+                        label={<h1 className='comboBoxLabel'>{fieldLabel} {required && <span className='text-[red]'>*</span>}</h1>}
+                        value={onTextField || ''}
+                        onChange={(e) => {
+                            handleSearch(e);
+                            setOnTextField(e.target.value);
+                        }}
+                        endAdornment={
+                            <InputAdornment position="end">
+                                <img className=' w-[9px] h-[5px]' src={Icons.arrow_drop_down_blue_gray} alt="" />
+                            </InputAdornment>
+                        }
+                        // style={{
+                        //     height: '44px'
+                        // }}
+                        inputProps={{
+                            style: {
+                                color: '#464E5F',
+                                fontWeight: '600',
+                                fontSize: '15px',
+                                caretColor: '#136EE5',
+                                // border: selectedFieldOutline === name ? '1px solid #136EE5' : '1px solid transparent'
+                            }
+                        }}
+                        // variant="outlined"
+                        onFocus={() => setSelectedFieldOutline(name)}
+                        onBlur={() => setSelectedFieldOutline("")}
+                    />
+                </FormControl>
+            </div>
             {
                 isHomeDistrict &&
                 <div className='absolute w-full h-[336px] bg-white rounded-[8px] py-[6px] animate-fadeIn z-[51] overflow-auto shadow-bottom-light-blue-20'>
