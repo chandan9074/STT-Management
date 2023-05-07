@@ -1,8 +1,8 @@
 import React, { createContext, useState } from "react";
 import UserManagementService from "../services/userManagement";
 import { targetSpeechDT } from "../types/assignTypes";
-import { activityDT, roleDataDT, userManagementTableDT } from "../types/userManagementTypes";
-import { roleDT } from "../types/billingTypes"
+import { activityDT, userManagementTableDT } from "../types/userManagementTypes";
+import { roleDT } from "../types/billingTypes";
 
 interface ContextProps {
     activityStatistics: activityDT | undefined

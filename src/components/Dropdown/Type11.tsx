@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { divisionDT, filterSelectsDT, targetFilterDT, targetFilterListDT } from '../../types/assignTypes';
+import React from 'react';
+import { targetFilterDT, targetFilterListDT } from '../../types/assignTypes';
 import Icons from '../../assets/Icons';
 import RoleImage from '../Image/RoleImage';
 
@@ -19,7 +19,7 @@ const Type11 = ({
     placeHolder
 }: Props) => {
     const [open, setOpen] = React.useState(false);
-    const [openPanel, setOpenPanel] = React.useState<number[]>([]);
+    // const [openPanel, setOpenPanel] = React.useState<number[]>([]);
 
     return (
         <div className="relative w-80">

@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
-import { divisionDT, filterSelectsDT, targetFilterDT, targetFilterListDT } from '../../types/assignTypes';
+import React from 'react';
+import { divisionDT, targetFilterDT, targetFilterListDT } from '../../types/assignTypes';
 import Icons from '../../assets/Icons';
-import RoleImage from '../Image/RoleImage';
 
 type Props = {
     data: targetFilterDT;
@@ -58,7 +57,7 @@ const Type10 = ({
                     />
                 </button>
             </div>
-            <div className={`bg-transparent ${open ? "block" : "hidden"} z-40 w-full h-full fixed top-0 left-0`} onClick={()=> setOpen(!open)} />
+            <div className={`bg-transparent ${open ? "block" : "hidden"} z-40 w-full h-full fixed top-0 left-0`} onClick={() => setOpen(!open)} />
             <div
                 className={`absolute z-50 animate-fadeIn py-1.5 bg-white w-full rounded-[8px] shadow-bottom-light-blue-20 top-14 max-h-72 overflow-y-auto ${open ? "block" : "hidden"
                     }`}
