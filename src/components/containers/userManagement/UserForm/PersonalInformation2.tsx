@@ -6,6 +6,7 @@ import Icons from '../../../../assets/Icons';
 import { ageRange, education, educationSituation, gender, homeDistrict, profession, yesNoPreferData } from '../../../../data/userManagement/UserManagementData';
 import '../../../calender/customizeCalender.css';
 import HomeDistrictSelect from '../../../Form/HomeDistrictSelect';
+import { customMuiListStyle } from '../../../../helpers/Utils';
 
 type Prop =
     {
@@ -13,6 +14,7 @@ type Prop =
     }
 
 const PersonalInformation2 = ({ formik }: Prop) => {
+    const classes = customMuiListStyle();
 
     const [openCalender, setOpenCalender] = useState<boolean>(false);
 
@@ -112,8 +114,9 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                     </Grid>
 
                     <Grid item xs={5.8}>
-                        <div className='mt-6'>
+                        <div className='mt-6 personalInfo'>
                             <Autocomplete
+                                classes={{ option: classes.option }}
                                 disableClearable
                                 placeholder='Choose one'
                                 id="ageRange"
@@ -128,24 +131,15 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                                         formik.setFieldValue('ageRange', '')
                                     }
                                 }}
-
+                                renderOption={(props, option) => (
+                                    <Box key={option} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
+                                        <div className='flex justify-between items-center w-full'>
+                                            <h2 className='text-blue-gray-80 text-small font-medium'>{option}</h2>
+                                            <h2 className='text-blue-gray-A20 text-xs font-medium pr-[4pxx]'>year</h2>
+                                        </div>
+                                    </Box>
+                                )}
                                 renderInput={(params) => (
-
-                                    // <TextField
-                                    //     placeholder='Choose one'
-                                    //     {...params}
-                                    //     name="ageRange"
-                                    //     error={formik.touched.ageRange && Boolean(formik.errors.ageRange)}
-                                    //     helperText={formik.touched.ageRange && formik.errors.ageRange}
-                                    //     InputProps={{
-                                    //         style: {
-                                    //             height: '44px'
-                                    //         }
-                                    //     }}
-
-                                    //     label={<h1 className='comboBoxLabel'>Age Range <span className='text-[red]'>*</span></h1>}
-
-                                    // />
                                     <TextField
                                         placeholder='Choose one'
                                         {...params}
@@ -168,11 +162,12 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                 </Grid>
             </div>
 
-            <div className='mt-6'>
+            <div className='mt-6  personalInfo'>
                 <Grid container spacing={3.5}>
 
                     <Grid item xs={6}>
                         <Autocomplete
+                            classes={{ option: classes.option }}
                             disableClearable
                             placeholder='Choose one'
                             id="education"
@@ -198,9 +193,12 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                                     helperText={formik.touched.education && formik.errors.education}
                                     // InputProps={{
                                     //     style: {
-                                    //         height: '44px',
+                                    //         color: 'red',
+                                    //         fontWeight: '600',
+                                    //         fontSize: '30px',
                                     //     }
                                     // }}
+
 
                                     label={<h1 className='comboBoxLabel'>Education <span className='text-[red]'>*</span></h1>}
 
@@ -210,40 +208,45 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                     </Grid>
 
                     <Grid item xs={6}>
-                        <Autocomplete
-                            disableClearable
-                            placeholder='Choose one'
-                            id="educationSituation"
-                            style={{ width: '100%' }}
-                            options={educationSituation}
-                            value={formik.values.educationSituation}
-                            onChange={(event, value) => {
-                                if (typeof value === 'string') {
+                        <div className=' personalInfo'>
+                            <Autocomplete
+                                classes={{ option: classes.option }}
+                                disableClearable
+                                placeholder='Choose one'
+                                id="educationSituation"
+                                style={{ width: '100%' }}
+                                options={educationSituation}
+                                value={formik.values.educationSituation}
+                                onChange={(event, value) => {
+                                    if (typeof value === 'string') {
 
-                                    formik.setFieldValue('educationSituation', value)
-                                } else {
-                                    formik.setFieldValue('educationSituation', '')
-                                }
-                            }}
+                                        formik.setFieldValue('educationSituation', value)
+                                    } else {
+                                        formik.setFieldValue('educationSituation', '')
+                                    }
+                                }}
 
-                            renderInput={(params) => (
+                                renderInput={(params) => (
 
-                                <TextField
-                                    placeholder='Choose one'
-                                    {...params}
-                                    name="educationSituation"
-                                    error={formik.touched.educationSituation && Boolean(formik.errors.educationSituation)}
-                                    helperText={formik.touched.educationSituation && formik.errors.educationSituation}
-                                    label={<h1 className='comboBoxLabel'>Economic Situation <span className='text-[red]'>*</span></h1>}
+                                    <TextField
+                                        placeholder='Choose one'
+                                        {...params}
+                                        name="educationSituation"
+                                        error={formik.touched.educationSituation && Boolean(formik.errors.educationSituation)}
+                                        helperText={formik.touched.educationSituation && formik.errors.educationSituation}
+                                        label={<h1 className='comboBoxLabel'>Economic Situation <span className='text-[red]'>*</span></h1>}
 
-                                />
-                            )}
-                        />
+                                    />
+                                )}
+                            />
+                        </div>
+
                     </Grid>
 
                     <Grid item xs={6}>
                         <div>
                             <Autocomplete
+                                classes={{ option: classes.option }}
                                 disableClearable
                                 placeholder='Choose one'
                                 id="profession"

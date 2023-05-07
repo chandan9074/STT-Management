@@ -7,9 +7,12 @@ import { Grid } from '@mui/material';
 import { Box } from '@mui/system';
 import Image from '../../../Image';
 import { FormikValues } from 'formik';
+import { customMuiListStyle } from '../../../../helpers/Utils';
 
 const FileReport = ({ getFile, formik }: { getFile: (file: File | null) => void, formik: FormikValues }) => {
     // const [file, setFile] = useState<any>([]);
+    const classes = customMuiListStyle();
+
     const [file, setFile] = useState<File | null>(null);
 
 
@@ -125,6 +128,7 @@ const FileReport = ({ getFile, formik }: { getFile: (file: File | null) => void,
                 <Grid item xs={6}>
                     <div className='mt-[60px]'>
                         <Autocomplete
+                            classes={{ option: classes.option }}
                             disableClearable
                             placeholder='Choose one'
                             id="adminData"

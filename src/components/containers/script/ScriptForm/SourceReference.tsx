@@ -7,9 +7,11 @@ import TextField from '@mui/material/TextField';
 import { scriptSourceType } from '../../../../data/Script/Domain';
 import { FormikValues } from 'formik';
 import { UploadChangeParam, UploadFile } from 'antd/es/upload';
-import { urlPatternValidation } from '../../../../helpers/Utils';
+import { customMuiListStyle, urlPatternValidation } from '../../../../helpers/Utils';
 
 const SourceReference = ({ formik }: { formik: FormikValues }) => {
+    const classes = customMuiListStyle();
+    
     const [scriptSourceReference, setScriptSourceReference] = useState<{ isSource: boolean, isScript: boolean }>({
         isSource: true,
         isScript: false
@@ -41,7 +43,7 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
             // getFile(event.fileList[0]?.originFileObj);
 
             console.log('&&&&&&&&&&', event.fileList[0]?.originFileObj);
-            
+
 
             formik.setFieldValue("sourceFile", event.fileList[0]?.originFileObj);
             formik.setFieldValue("sourceFileName", files?.originFileObj?.name);
@@ -60,7 +62,7 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
         formik.setFieldValue("sourceFileName", '');
     }
 
- 
+
 
     return (
         <div className='mb-[28px] source-reference'>
@@ -91,8 +93,7 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
                                 <Grid item xs={6}>
                                     <div>
                                         <Autocomplete
-                                        
-                                            disableClearable
+                                            classes={{ option: classes.option }}
                                             placeholder='Choose one'
                                             id="sourceType"
                                             style={{ width: '100%' }}
@@ -187,7 +188,7 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
 
                                 {
                                     // (formik.values.sourceFileName || formik.values.sourceFile !== '' || formik.values.sourceFile?.length !== 0) &&
-                                    ( formik.values.sourceFile?.length !== 0 ) &&
+                                    (formik.values.sourceFile?.length !== 0) &&
                                     <div className='rounded-[4px] pt-[8px] pb-4 px-4 bg-ct-blue-05'>
                                         <div className='flex justify-between items-center'>
                                             <div className='flex gap-x-[11px] items-center'>

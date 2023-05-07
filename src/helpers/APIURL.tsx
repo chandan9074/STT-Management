@@ -50,6 +50,8 @@ export const CREATE_ASSIGNEE_URL = `${REACT_APP_BASE_URL2}/post_res_selected_ass
 export const GET_TARGET_ASSIGN_URL = `${REACT_APP_BASE_URL2}/get_res_target_assign_module`;
 export const GET_ROLE_LIST_BY_ROLE = `${REACT_APP_BASE_URL2}/get_res_role_list_by_role`;
 export const UPDATE_ASSIGNEE_MAIN_TARGET_ASSIGN_PATH = `${REACT_APP_BASE_URL2}/update_assignee_main_target_assign_module`;
+export const POST_RES_TARGET_ASSIGN_PATH = `${REACT_APP_BASE_URL2}/post_res_target_assign_module`;
+export const DELETE_DRAFT_TARGET_ASSIGN_PATH = `${REACT_APP_BASE_URL2}/delete_by_id_selected_draft_target_assign_module`;
 
 
 

@@ -78,7 +78,7 @@ textarea {
 
 .MuiAutocomplete-input {
     font-size: 14px !important;
-    color: #464E5F !important;
+    color: #464E5F !important; 
     font-weight: 600 !important;
 }
 
@@ -143,12 +143,11 @@ textarea {
     font-weight: 600 !important;
 }
 
-.css-gdh49b-MuiAutocomplete-listbox .MuiAutocomplete-option {
+.customMuiListBox .css-gdh49b-MuiAutocomplete-listbox .MuiAutocomplete-option {
     color: #464E5F !important;
     font-size: 14px !important;
     font-weight: 600 !important;
 }
-
 
 
 /* Form hieght */

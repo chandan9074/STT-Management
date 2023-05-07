@@ -2,7 +2,7 @@ import { Autocomplete, Popper, TextField } from '@mui/material';
 import { Box } from '@mui/system';
 import { Dispatch, SetStateAction, useState } from 'react';
 import Icons from '../../../../../assets/Icons';
-import { isEmpty } from '../../../../../helpers/Utils';
+import { customMuiListStyle, isEmpty } from '../../../../../helpers/Utils';
 import { speechDt } from '../../../../../types/assignTypes';
 import { roleDT } from '../../../../../types/billingTypes';
 import Collector from '../../../AudioManagement/TableField/Collector';
@@ -17,6 +17,8 @@ type Props = {
 }
 
 const CollectorField = ({ data, roleDatas, speechData, setSpeechData, collector, setCollector }: Props) => {
+    const classes = customMuiListStyle();
+
     const [collectorId, setCollectorId] = useState<string>("");
     // const [collector, setCollector] = useState<roleDT>();
 
@@ -98,7 +100,8 @@ const CollectorField = ({ data, roleDatas, speechData, setSpeechData, collector,
                             )}
                         /> */}
 
-                             <Autocomplete
+                            <Autocomplete
+                                classes={{ option: classes.option }}
                                 placeholder='Choose one'
                                 id="sourceType"
                                 style={{ width: '100%' }}
@@ -140,7 +143,7 @@ const CollectorField = ({ data, roleDatas, speechData, setSpeechData, collector,
                                     </Popper>
                                 )}
                                 renderOption={(props, option) => (
-                                    
+
                                     <Box
                                         key={option.id}
                                         component="li"

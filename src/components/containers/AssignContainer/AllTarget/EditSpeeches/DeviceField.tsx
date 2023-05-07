@@ -2,6 +2,7 @@ import { Autocomplete, Box, TextField } from '@mui/material';
 import { Dispatch, SetStateAction } from 'react';
 import Icons from '../../../../../assets/Icons';
 import { speechDt } from '../../../../../types/assignTypes';
+import { customMuiListStyle } from '../../../../../helpers/Utils';
 
 type Props = {
     deviceId: string;
@@ -15,6 +16,7 @@ type Props = {
 }
 
 const DeviceField = ({ data, device, deviceData, deviceId, setDeviceId, setDevice, speechData, setSpeechData }: Props) => {
+    const classes = customMuiListStyle();
 
     const deviceOnChange = (value: string) => {
         setDevice(value ?? undefined);
@@ -42,6 +44,7 @@ const DeviceField = ({ data, device, deviceData, deviceId, setDeviceId, setDevic
                             onClick={() => setDeviceId('')} />
                         <div className='relative'>
                             <Autocomplete
+                                classes={{ option: classes.option }}
                                 placeholder='Choose one'
                                 id="sourceType"
                                 style={{ width: '100%' }}

@@ -341,3 +341,7 @@ export type updateAssigneeMainTargetParamDT = {
   targetId: string[];
   assignee: string
 }
+
+export type postResTargetAssignParamDT = {
+  selectedTargets: string[];
+}
