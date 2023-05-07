@@ -33,10 +33,10 @@ const Type5 = ({
                 <div className="w-72 pb-1 overflow-x-auto custom-scrollBar custom-scrollBar-height-5 flex items-center">
                     {filterList[data.key].length === 0 ? (
                         <button
-                            onClick={() => setOpen(!open)} 
-                            className="text-xs text-blue-gray-60 mb-0 py-0.5 w-full text-left" 
+                            onClick={() => setOpen(!open)}
+                            className="text-xs text-blue-gray-60 mb-0 py-0.5 w-full text-left"
                         >
-                            {placeHolder ? placeHolder : "Select One"} 
+                            {placeHolder ? placeHolder : "Select One"}
                         </button>
                     ) : (
                         <>
@@ -93,6 +93,7 @@ const Type5 = ({
                     />
                 </button>
             </div>
+            <div className={`bg-transparent ${open ? "block" : "hidden"} z-40 w-full h-full fixed top-0 left-0`} onClick={()=> setOpen(!open)} />
             <div
                 className={`absolute z-50 animate-fadeIn py-1.5 bg-white w-full rounded-[8px] shadow-bottom-light-blue-20 top-14 max-h-72 overflow-y-auto ${open ? "block" : "hidden"
                     }`}

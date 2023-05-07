@@ -1,3 +1,5 @@
+import { targetFilterDT } from "../../types/assignTypes"
+
 export const RoleData = [
     'Admin',
     'Manager',
@@ -29,6 +31,58 @@ export const homeDistrict = [
         ]
     },
 
+]
+
+
+export const userManagementFilterData: targetFilterDT[] = [
+    {
+        type: "select-with-subItem",
+        key: "present_district",
+        title: "Present District",
+        //   child: ["STT", "TTS"],
+        viewKey: "present_district",
+        isFromAPI: false,
+        // child: homeDistrict
+        divisions: homeDistrict
+    },
+    {
+        type: "multiple-select",
+        key: "reporting",
+        title: "Reporting to",
+        //   role: "collector",
+        viewKey: "reporting_details",
+        viewRoleImg: "",
+        selects: [
+            {
+                type: "select-with-role",
+                key: "reporting_role",
+                title: "Reporting to",
+                placeholder: "Select Role",
+                isFromAPI: false,
+                child: [
+                    "Admin",
+                    "Manager",
+                    "Team Leader",
+                    "Collector",
+                    "Audio Checker",
+                    "Annotator",
+                    "Validator",
+                    "Speaker-Male",
+                    "Speaker-Female"
+                ]
+            },
+            {
+                type: "select-with-roleImg",
+                key: "reporting_details",
+                title: "Reporting to",
+                isParent: "reporting_role",
+                placeholder: "Select by Login ID or Name",
+                isFromAPI: true,
+                role: "collector",
+                child: []
+            }
+        ]
+    }
 ]
 
 
@@ -368,7 +422,7 @@ export const targetAllSpeechData =
                             }
                         ]
                     },
-                   
+
                 }
             },
             "deadLine": "01/02/2022",

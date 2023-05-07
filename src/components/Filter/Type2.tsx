@@ -188,7 +188,12 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                                             filterList={filterList}
                                                             handleFilterList={handleFilterList}
                                                             placeHolder="Search Collector by Login ID or Name"
-                                                        // subdomainData={filterData["subDomain"]}
+                                                        /> : singleItem.type === "select-with-role" ? <Dropdown.Type11
+                                                            data={singleItem}
+                                                            isParent={singleItem.isParent}
+                                                            filterList={filterList}
+                                                            handleFilterList={handleFilterList}
+                                                            placeHolder={singleItem.placeholder}
                                                         /> : null}
                                                 </div>
                                             ))}
@@ -212,6 +217,16 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                                         handleFilterList={handleFilterList}
                                                         popupClassName={popupClassName}
                                                         dateRanger={true}
+                                                    />
+                                                </div> :
+                                                item.type === "select-with-subItem" ? <div className={`pt-3 pb-5  animate-fadeIn flex flex-col gap-y-3  ${currentState === item.key ? "block" : "hidden"}`}>
+                                                    <Dropdown.Type10
+                                                        data={item}
+                                                        isParent={item.isParent}
+                                                        filterList={filterList}
+                                                        handleFilterList={handleFilterList}
+                                                        placeHolder="Select by district name"
+                                                    // subdomainData={filterData["subDomain"]}
                                                     />
                                                 </div> : null}
                         </div>

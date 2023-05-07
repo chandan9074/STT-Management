@@ -1,7 +1,8 @@
 import React, { createContext, useState } from "react";
 import UserManagementService from "../services/userManagement";
 import { targetSpeechDT } from "../types/assignTypes";
-import { activityDT, userManagementTableDT } from "../types/userManagementTypes";
+import { activityDT, roleDataDT, userManagementTableDT } from "../types/userManagementTypes";
+import { roleDT } from "../types/billingTypes"
 
 interface ContextProps {
     activityStatistics: activityDT | undefined
@@ -13,7 +14,9 @@ interface ContextProps {
     getUserTargetPendingSpeeches: (id: string) => void;
     targetPendingSpeeches: targetSpeechDT;
     getUserManagementTable: () => void;
-    userManagementTable: userManagementTableDT[]
+    userManagementTable: userManagementTableDT[];
+    getUserRoleListByRole: (role: string) => void;
+    roleList: string[];
 }
 
 export const UserManagementContext = createContext({} as ContextProps);
@@ -23,7 +26,8 @@ const UserManagementProvider = ({ children }: { children: any }) => {
     const [activeRole, setActiveRole] = useState<string>("")
     const [currentWeek, setCurrentWeek] = useState<number>(1);
     const [targetPendingSpeeches, setTargetPendingSpeeches] = useState<targetSpeechDT>({} as targetSpeechDT);
-    const [userManagementTable,setUserManagementTable] = useState<userManagementTableDT[]>([] as userManagementTableDT[])
+    const [userManagementTable, setUserManagementTable] = useState<userManagementTableDT[]>([] as userManagementTableDT[])
+    const [roleList, setRoleList] = useState<string[]>([] as string[])
 
 
     const getActivityStatistics = (id: string) => {
@@ -43,10 +47,16 @@ const UserManagementProvider = ({ children }: { children: any }) => {
         setUserManagementTable(res);
     }
 
+    const getUserRoleListByRole = async (role: string) => {
+        const res = await UserManagementService.getUserRoleListByRole(role);
+        const concatenatedStrings = res.data.map((item: roleDT) => item.id + " - " + item.name);
+        setRoleList(concatenatedStrings);
+    }
+
 
     return (
         <UserManagementContext.Provider
-            value={{ activityStatistics, getActivityStatistics, activeRole, setActiveRole, currentWeek, setCurrentWeek, getUserTargetPendingSpeeches, targetPendingSpeeches,getUserManagementTable,userManagementTable }}
+            value={{ activityStatistics, getActivityStatistics, activeRole, setActiveRole, currentWeek, setCurrentWeek, getUserTargetPendingSpeeches, targetPendingSpeeches, getUserManagementTable, userManagementTable, getUserRoleListByRole, roleList }}
         >
             {children}
         </UserManagementContext.Provider>
