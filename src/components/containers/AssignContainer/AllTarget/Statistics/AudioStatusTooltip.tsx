@@ -15,7 +15,7 @@ const AudioStatusTooltip = ({ data, hour }: Props) => {
     return (
         <div className='pt-3 px-4 rounded-[7px] pb-2 bg-tooltip-bg absolute bottom-7 z-[70] animate-fadeIn hidden group-hover:block'>
             <div className='flex items-center gap-x-3'>
-                <h1 className={`text-small font-semibold ${data.titleColor} mb-0 whitespace-nowrap`}>{data.title}</h1>
+                <h1 className={`text-small font-semibold ${data?.titleColor} mb-0 whitespace-nowrap`}>{data?.title}</h1>
                 <h1 className='text-heading-5 font-medium text-[#FFE5DA] mb-0'>{hour}h</h1>
             </div>
             <img
