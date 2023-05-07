@@ -197,7 +197,7 @@ const Type15 = ({ data }: Props) => {
             key: 'action',
             width: 92,
             render: (_, record) => (
-                <div className='flex justify-center items-center'>
+                <div className='flex justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full'>
 
                     <div className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-ct-blue-10 active:border active:border-ct-blue-10'>
                         <img

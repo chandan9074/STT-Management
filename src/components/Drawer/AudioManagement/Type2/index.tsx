@@ -82,7 +82,7 @@ const Type2 = ({ id, isDrawerOpen, setIsDrawerOpen: setOpen, speaker, others, sp
                                             <h1 className='text-ct-blue-95 text-[18px] font-medium'>Details</h1>
                                             <div className='flex items-center gap-x-3'>
                                                 <div className='flex'>
-                                                    <h1 className='text-ct-blue-90-70% text-xs'>Target ID: </h1>
+                                                    <h1 className='text-ct-blue-90-70% text-xs'>Task ID: </h1>
                                                     <h1 className='pl-1 text-ct-blue-90-70% font-bold text-xs'>{id?.slice(0, 25)}</h1>
                                                 </div>
                                                 {

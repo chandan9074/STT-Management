@@ -155,7 +155,7 @@ const Type34 = ({ data }: Props) => {
             render: (_, record: sentenceLevelValUploadDT) => (
                 <>
 
-                    <div className='flex w-full justify-center items-center'>
+                    <div className='flex hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 justify-center items-center'>
                         <img
                             onClick={() => {
                                 showDrawer(record);

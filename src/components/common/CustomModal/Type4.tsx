@@ -15,6 +15,23 @@ type Props = {
 
 const Type4 = ({ open, setOpen, selectedTrack, data, audioMin }: Props) => {
 
+    // const [remainingTime, setRemainingTime] = useState('');
+
+    // const calculateRemainingTime = (currentTime: number, duration: number) => {
+    //     const remainingSeconds = duration - currentTime;
+    //     const minutes = Math.floor(remainingSeconds / 60);
+    //     const seconds = Math.floor(remainingSeconds % 60);
+    //     const formattedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+    //     return `${minutes}:${formattedSeconds}`;
+    // }
+
+    // const handleTimeUpdate = (event: React.SyntheticEvent<HTMLAudioElement>) => {
+    //     const audioElement = event.target as HTMLAudioElement;
+    //     const { currentTime, duration } = audioElement;
+    //     const remainingTime = calculateRemainingTime(currentTime, duration);
+    //     setRemainingTime(remainingTime);
+    // }
+
     return (
         <div className={`fixed w-full h-screen z-[100] top-0 left-0 flex justify-center`}>
             <div className={`${open ? "block" : "hidden"} fixed top-0 left-0 bg-opacity-20 bg-black w-full h-screen z-40 animate-fadeIn2`}
@@ -44,6 +61,8 @@ const Type4 = ({ open, setOpen, selectedTrack, data, audioMin }: Props) => {
                         selectedTrack &&
                         <AudioWave data={data} selectedTrack={selectedTrack} audioMin={audioMin} />
                     }
+
+                    {/* Remaining Audio time */}
 
                 </div>
             </div>

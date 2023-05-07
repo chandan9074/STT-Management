@@ -7,6 +7,7 @@ import { ageRange, education, educationSituation, gender, homeDistrict, professi
 import '../../../calender/customizeCalender.css';
 import HomeDistrictSelect from '../../../Form/HomeDistrictSelect';
 import { customMuiListStyle } from '../../../../helpers/Utils';
+import LabelForm from '../../../common/Form/LabelForm';
 
 type Prop =
     {
@@ -292,6 +293,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                     <Grid item xs={6}>
                         <div>
                             <HomeDistrictSelect
+                                required={true}
                                 formikValues={formik.values.childhoodPlace}
                                 data={homeDistrict}
                                 formikError={formik.errors.childhoodPlace}
@@ -300,15 +302,27 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                                 name={'childhoodPlace'}
                                 fieldLabel='Childhood Place'
                             />
+                            <div className='flex items-center mt-[5px]'>
+                                <img className='w-[13.33px] h-[13.33px] mr-[5px]' src={Icons.Leading} alt="" />
+                                <p className='text-blue-gray-75 text-xxs'>Where lived from 2-15 years of age</p>
+                            </div>
                         </div>
                     </Grid>
                 </Grid>
             </div>
 
-            <div className='mt-6'>
+            <div className='mt-6 mb-3'>
+                <LabelForm
+                    title='Permanent Address'
+                    required={true}
+                />
+            </div>
+
+            <div >
                 <Grid container spacing={3.5}>
                     <Grid item xs={4}>
                         <HomeDistrictSelect
+                            required={true}
                             formikValues={formik.values.district}
                             data={homeDistrict}
                             formikError={formik.errors.district}
@@ -321,6 +335,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
 
                     <Grid item xs={4}>
                         <HomeDistrictSelect
+                            required={true}
                             formikValues={formik.values.upazilaCity}
                             data={homeDistrict}
                             formikError={formik.errors.upazilaCity}
@@ -379,7 +394,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                 </div>
             </div>
 
-            <div className='flex items-center gap-x-[35px] mt-6'>
+            <div className='flex items-center gap-x-[35px] mt-[5px]'>
                 <h1 className='text-blue-gray-75 text-small font-medium w-[94px]'>Stutter</h1>
                 <div>
                     <FormControl>
@@ -413,7 +428,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                 </div>
             </div>
 
-            <div className='flex items-center gap-x-[35px] mt-6'>
+            <div className='flex items-center gap-x-[35px] mt-[5px]'>
                 <h1 className='text-blue-gray-75 text-small font-medium'>Hearing Status</h1>
                 <div>
                     <FormControl>

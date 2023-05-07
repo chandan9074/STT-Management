@@ -15,11 +15,11 @@ const SpeechInfo = ({ data }: { data: speechInfo }) => {
         },
         {
             title: 'Source Reference',
-            value: data.dataType ?? '-'
+            value: [data.sourceType, data.sourceReference] ?? '-'
         },
         {
             title: 'Data Source',
-            value: [data.sourceType, data.sourceReference] ?? '-'
+            value: data.dataSource ?? '-'
         },
         {
             title: 'Domain',
@@ -45,7 +45,7 @@ const SpeechInfo = ({ data }: { data: speechInfo }) => {
 
                     <div className="col-span-8 pt-3 pr-2 pl-3">
                         {
-                            item.title.includes('Data Source') ?
+                            item.title.includes('Source Reference') ?
                                 <div>
                                     <h1 className="text-blue-gray-80 font-medium text-small leading-15px">
                                         {item?.value[0]}

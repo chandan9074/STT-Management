@@ -42,9 +42,9 @@ const FileReport = ({ getFile, formik }: { getFile: (file: File | null) => void,
                         onChange={(event) => handleFileUpload(event)}
                     //  {...props}
                     >
-                        <button className={` flex gap-x-2 pl-[17px] pr-[24px] py-[8px] border-[1px] border-ct-blue-30 rounded-[6px] bg-white`}>
+                        <button className={` flex items-center gap-x-2 pl-[17px] pr-6 py-[8px] border-[1px] border-ct-blue-30 rounded-[6px] bg-white`}>
                             <img className='w-[20px] h-[20px]' src={Icons.upload} alt='' />
-                            <h1 className='text-ct-blue-80 text-small font-medium'> Attach</h1>
+                            <h1 className='text-ct-blue-80 text-small font-medium leading-[17px]'> Attach</h1>
                         </button>
                     </Upload>
                 </div>
@@ -69,9 +69,10 @@ const FileReport = ({ getFile, formik }: { getFile: (file: File | null) => void,
             {/* Reporting To */}
             <div>
                 <h1 className='text-ct-blue-60 text-small font-semibold mt-[57px] mb-[28px]'>Reporting</h1>
-                <div className='radio-style'>
+                <div className='custom-radio-button'>
                     <FormControl>
-                        <FormLabel style={{
+                        <FormLabel 
+                        style={{
                             color: '#5F6B7D',
                             fontWeight: '600',
                             fontSize: '14px',

@@ -78,7 +78,7 @@ textarea {
 
 .MuiAutocomplete-input {
     font-size: 14px !important;
-    color: #464E5F !important; 
+    color: #464E5F !important;
     font-weight: 600 !important;
 }
 
@@ -228,9 +228,7 @@ label {
 .MuiRadio-root {
     pointer-events: none !important;
 }
-.radio-style .css-vqmohf-MuiButtonBase-root-MuiRadio-root {
-    padding: 6px 7px 6px 8px !important;
-}
+
 /* radio button */
 
 .custom-grid .css-1ld3b9g-MuiGrid-root>.MuiGrid-item {
@@ -255,4 +253,21 @@ label {
 
 .update-assign-model .css-1nrlq1o-MuiFormControl-root {
     width: 100%;
+}
+
+/* Radio Button */
+.custom-radio-button .css-vqmohf-MuiButtonBase-root-MuiRadio-root {
+    padding: 0 8px 0 0 !important;
+}
+
+.custom-radio-button .css-j204z7-MuiFormControlLabel-root {
+    padding: 2px 8px 2px 8px !important;
+}
+
+.custom-radio-button .css-vqmohf-MuiButtonBase-root-MuiRadio-root.Mui-checked {
+    margin-right: 0px;
+}
+
+.radio-style .css-vqmohf-MuiButtonBase-root-MuiRadio-root {
+    padding: 6px 7px 6px 8px !important;
 }

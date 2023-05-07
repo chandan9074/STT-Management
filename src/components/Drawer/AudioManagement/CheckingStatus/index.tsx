@@ -24,9 +24,10 @@ type Props = {
     activePanelProp?: string;
     deadline?: string;
     submissionDate?: string;
+    targetTitle?: boolean;
 }
 
-const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory, speaker, remark, script, others, id, history, prevSpeaker, activePanelProp, deadline, submissionDate }: Props) => {
+const CheckingStatus = ({ targetTitle, isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory, speaker, remark, script, others, id, history, prevSpeaker, activePanelProp, deadline, submissionDate }: Props) => {
     const [activePanel, setActivePanel] = useState<string>(activePanelProp ? activePanelProp : "Script");
     const [isMetaData, setIsMetaData] = useState<boolean>(false);
     const [isSpeaker, setIsSpeaker] = useState<boolean>(prevSpeaker ? true : false);
@@ -85,7 +86,7 @@ const CheckingStatus = ({ isDrawerOpen, setIsDrawerOpen: setOpen, isEditHistory,
                                             <h1 className='text-ct-blue-95 text-[18px] font-medium'>Details</h1>
                                             <div className='flex gap-x-3'>
                                                 <div className='flex'>
-                                                    <h1 className='text-ct-blue-90-70% text-xs'>Task ID: </h1>
+                                                    <h1 className='text-ct-blue-90-70% text-xs'>{targetTitle ? "Target" : 'Task'} ID: </h1>
                                                     <h1 className='pl-1 text-ct-blue-90-70% font-semibold text-xs'>{id?.slice(0, 25)}</h1>
                                                 </div>
                                                 {deadline && <div className='flex'>

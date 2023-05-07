@@ -136,7 +136,7 @@ const Type17 = ({ data }: Props) => {
             render: (_, record: checkingStatusDT) => (
                 <>
 
-                    <button className='flex w-full justify-center items-center'>
+                    <button className='flex hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-fulljustify-center items-center'>
                         <img
                             onClick={() => {
                                 showDrawer(record);

@@ -161,8 +161,10 @@ import LoadingBlue from './loading_blue.svg';
 import LoadingCtBlue from './loading_ct_blue.svg';
 import LoadingMagenta from './loading_magenta.svg';
 import LoadingWhite from './loading_white.svg';
+import Leading from './leading_icon.svg';
 
 const Icons = {
+  Leading,
   statistics,
   OldestCalGray,
   OldestCalBlue,
