@@ -66,7 +66,9 @@ const AudioUpload = ({ data, audioId, speechData, setSpeechData, setAudioUploadS
             <input type="file" accept="audio/mpeg" onChange={handleFileSelect} hidden ref={fileInputRef} />
 
             {
-                data?.url === '' && isUpload ?
+                // data?.url === '' && isUpload ?
+                !data && isUpload ?
+
 
                     <Buttons.IconWithTextButton.Secondary
                         label='Upload Audio'

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { targetDataForRecreate } from "../data/assign/AssignData";
 import * as PATH from "../helpers/APIURL";
-import { allScriptParamsDT, createAssigneeParamsDT, CriteriaItemDT, postDraftTargetBodyDT, postResTargetAssignParamDT, postSelectedScriptBodyDT, roleListByRoleParamDT, targetAssignParamDT, updateAssigneeMainTargetParamDT, updateDraftTargetQueryParams } from "../types/assignTypes";
+import { allScriptParamsDT, createAssigneeParamsDT, CriteriaItemDT, postDraftTargetBodyDT, postResTargetAssignParamDT, postSelectedScriptBodyDT, roleListByRoleParamDT, singleTargetSpeechesAssignDT, targetAssignParamDT, updateAssigneeMainTargetParamDT, updateDraftTargetQueryParams } from "../types/assignTypes";
 
 export default class AssignService {
 
@@ -99,4 +99,9 @@ export default class AssignService {
     const res = axios.delete(PATH.DELETE_DRAFT_TARGET_ASSIGN_PATH, { params: { id: id } });
     return res;
   }
+
+  static fetchResSingleTargetData(params: singleTargetSpeechesAssignDT) {
+    return axios.get(PATH.GET_RES_SINGLE_TARGET_SPEECHES_ASSIGN_PATH, {params});
+  }
+
 }

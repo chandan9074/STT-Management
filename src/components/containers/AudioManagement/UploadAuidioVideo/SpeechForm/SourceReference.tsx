@@ -188,6 +188,11 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
                                         </div>
                                     </div>
                                 }
+
+                                {/* Validation error message */}
+                                {formik.errors.sourceFileName && formik.touched.sourceFileName && (
+                                    <div className='text-red-600 text-xxs'>{formik.errors.sourceFileName}</div>
+                                )}
                             </div>
                         </div>
                 }

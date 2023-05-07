@@ -6,11 +6,12 @@ import { customSingleCriteriaDT } from '../../../../types/assignTypes';
 import RoleImage from '../../../Image/RoleImage';
 
 type Props = {
-    setIsSpeaker: Dispatch<SetStateAction<boolean>>;
+    setIsSpeaker?: Dispatch<SetStateAction<boolean>>;
     data: speakerLocalityDT2;
+    isHeader?: boolean;
 }
 
-const SpeakerInformation = ({ setIsSpeaker, data }: Props) => {
+const SpeakerInformation = ({isHeader, setIsSpeaker, data }: Props) => {
 
     const [singleSpeaker, setSingleSpeaker] = useState<singleSpeakerDT2>(data.speakers[0]);
     const [targetId, setTargetId] = useState<number>(0);
@@ -76,21 +77,24 @@ const SpeakerInformation = ({ setIsSpeaker, data }: Props) => {
     ]
 
     return (
-        <div className='py-[24px] pl-[24px] pr-[26px] animate-fadeIn'>
-            <div className='flex items-center justify-between  bg-white mb-[39px]'>
-                <div className='gap-x-[28px] flex items-center'>
-                    <Buttons.IconButton.Circle
-                        size='medium'
-                        variant="CT-Blue"
-                        icon={<img src={Icons.arrow_back} alt="" />}
-                        border='border'
-                        background="white"
-                        onClick={() => setIsSpeaker(false)}
-                    />
-                    <h1 className='text-ct-blue-95 text-[18px] font-medium'>Speaker Information</h1>
-                </div>
-               
-            </div>
+        <div className={`py-[24px] ${isHeader === false ? '' : "pl-[24px] pr-[26px]"} animate-fadeIn`}>
+           {
+            isHeader === false ? <div></div> :
+             <div className='flex items-center justify-between  bg-white mb-[39px]'>
+             <div className='gap-x-[28px] flex items-center'>
+                 <Buttons.IconButton.Circle
+                     size='medium'
+                     variant="CT-Blue"
+                     icon={<img src={Icons.arrow_back} alt="" />}
+                     border='border'
+                     background="white"
+                     onClick={() => setIsSpeaker && setIsSpeaker(false)}
+                 />
+                 <h1 className='text-ct-blue-95 text-[18px] font-medium'>Speaker Information</h1>
+             </div>
+            
+         </div>
+           }
 
             <div className='flex overflow-x-auto scrollbar-hide gap-x-3'>
                 {

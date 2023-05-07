@@ -272,12 +272,16 @@ export type targetSpeechDT = {
 
 export type speechDt2 = {
   id: string;
-  speaker: roleDT[];
+  // speaker: roleDT[];
+  speaker: speakerLocalityDT2;
+  others: othersDT;
+  script: scriptResDT;
   collector: collectorDT;
   device: string;
   // speeches: string;
   // maxSpeeches: string;
-  remark: string;
+  // remark: string;
+  remark: historyRemarkDT[],
   role: string;
   speech: assignAudioTrackDT;
   audioUploadStatus?: string;
@@ -353,4 +357,10 @@ export type updateAssigneeMainTargetParamDT = {
 
 export type postResTargetAssignParamDT = {
   selectedTargets: string[];
+}
+
+export type singleTargetSpeechesAssignDT = {
+  id: string;
+  page: number;
+  pageSize: number;
 }

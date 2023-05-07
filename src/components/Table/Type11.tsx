@@ -234,7 +234,8 @@ const Type11 = ({ data }: Props) => {
                         setRemarkId(data?.id);
                         setTempRemark(data?.remark);
                     }} className='flex justify-center'>
-                        <img src={data?.remark === "" ? Icons.EditGray : Icons.File} className="h-4 w-4" alt="" />
+                        {/* <img src={data?.remark === "" ? Icons.EditGray : Icons.File} className="h-4 w-4" alt="" /> */}
+                        <img src={!data?.remark ? Icons.EditGray : Icons.File} className="h-4 w-4" alt="" />
                     </button>
                 </div>
             )
@@ -251,17 +252,28 @@ const Type11 = ({ data }: Props) => {
                 <>
 
                     <div className='flex w-full justify-center items-center'>
-                        <Buttons.LabelButton.Tertiary
+                        {
+                            (record?.speech && record?.speaker && record?.collector && record?.recordingArea && record?.recordingDistance && record.device && record?.remark) ?
+                            <Buttons.LabelButton.Tertiary
                             label='Submit'
                             size='xSmall'
                             variant='CT-Blue'
                             onClick={() => onsubmit(record)}
                         />
+                        :
+                        <div>
+                            ---
+                        </div>
+                        }
+                       
                     </div>
 
                 </>)
         },
     ];
+
+    console.log('data-=', data);
+    
 
     const handlePageChange = (page: number) => {
         // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })

@@ -17,7 +17,9 @@ const validationSchema = yup.object({
     domain: yup.string().required('Domain is required'),
     subdomain: yup.string().required('subdomain is required'),
     homeDistrict: yup.string().required('home District is required'),
-    // speechFile: yup.string().required('Source file is required'),
+    speechFile: yup.string().required('Speech file is required'),
+    sourceFile: yup.string().required('Source file is required'),
+
 });
 
 const SpeechForm = () => {

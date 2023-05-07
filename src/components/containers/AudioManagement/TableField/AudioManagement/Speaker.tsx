@@ -8,7 +8,7 @@ type Props = {
 
 const Speaker = ({ data, isLocality }: Props) => {
     return (
-        <div className='flex justify-between items-center cursor-default'>
+        <div className='flex justify-between items-center'>
             <div>
                 <div className="flex flex-col gap-y-1">
                     {

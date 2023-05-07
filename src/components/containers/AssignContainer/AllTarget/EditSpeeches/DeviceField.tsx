@@ -82,7 +82,9 @@ const DeviceField = ({ data, device, deviceData, deviceId, setDeviceId, setDevic
                     :
                     <div onClick={() => setDeviceId(data?.id)} className=' flex justify-between items-center cursor-pointer'>
                         {
-                            data?.device !== '' ?
+                            // data?.device !== '' ?
+                            data.device ?
+
                                 <div>
                                     <h1 className='text-blue-gray-80 text-xs font-medium'>{data?.device}</h1>
                                 </div>

@@ -4,6 +4,7 @@ import {
   allScriptDT,
   allScriptParamsDT,
   AssigneeItemDT,
+  assignSpeechDT,
   createAssigneeParamsDT,
   CriteriaItemDT,
   postResTargetAssignParamDT,
@@ -11,6 +12,7 @@ import {
   recreateTableDT,
   roleListByRoleParamDT,
   ScriptItemDT,
+  singleTargetSpeechesAssignDT,
   targetAssignParamDT,
   targetDT,
   TargetItemDT,
@@ -86,7 +88,10 @@ interface ContextProps {
   updateAssigneeMainTarget: (data: updateAssigneeMainTargetParamDT) => void;
   postRestTargetAssign: (data: postResTargetAssignParamDT) => Promise<number | undefined>;
   deleteDraftTargetAssign: (data: string) => void;
-} 
+  getResSingleTargetSpeechesAssign: (data: singleTargetSpeechesAssignDT) => void;
+  singleTargetSpeechesAssign: assignSpeechDT | undefined,
+  setSingleTargetSpeechesAssign: React.Dispatch<React.SetStateAction<assignSpeechDT>>,
+}
 
 export const AssignContext = createContext({} as ContextProps);
 export const useAssigneeContext = () => {
@@ -114,6 +119,19 @@ const AssignProvider = ({ children }: { children: any }) => {
   const [recreateTable, setRecreateTable] = useState<recreateTableDT>({} as recreateTableDT);
   const [targetsAssign, setTargetsAssign] = useState<targetDT[]>([] as targetDT[]);
   const [roleListByRole, setRoleListByRole] = useState<roleDT[]>([] as roleDT[]);
+  const [singleTargetSpeechesAssign, setSingleTargetSpeechesAssign] = useState<assignSpeechDT>({} as assignSpeechDT)
+
+  const getResSingleTargetSpeechesAssign = async (data: singleTargetSpeechesAssignDT) => {
+
+    try {
+      const res = await AssignService.fetchResSingleTargetData(data);
+      setSingleTargetSpeechesAssign(res?.data);
+    } catch (error) {
+      console.log('error', error);
+
+    }
+  }
+
 
   const postRestTargetAssign = async (data: postResTargetAssignParamDT) => {
     const res = await AssignService.createTargetAssign(data);
@@ -474,7 +492,10 @@ const AssignProvider = ({ children }: { children: any }) => {
         getRoleListByRole,
         updateAssigneeMainTarget,
         postRestTargetAssign,
-        deleteDraftTargetAssign
+        deleteDraftTargetAssign,
+        getResSingleTargetSpeechesAssign,
+        singleTargetSpeechesAssign,
+        setSingleTargetSpeechesAssign,
       }}
     >
       {children}

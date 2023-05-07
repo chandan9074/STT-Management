@@ -25,7 +25,7 @@ const SpeakerModal = ({
 }: Props) => {
     const [form] = Form.useForm();
 
-    console.log(speechId);
+    console.log('speech id',speechId);
 
 
     const managerContext = useContext(RoleInContext);
@@ -45,7 +45,14 @@ const SpeakerModal = ({
 
     useEffect(() => {
         const _data = data?.filter((item: speechDt) => item?.id === speechId);
-        setSpeakerData(_data[0].speaker);
+
+        if(_data[0].speaker) {
+            setSpeakerData(_data[0].speaker);
+        } else {
+            setSpeakerData([]);
+        }
+        
+        
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -86,7 +93,7 @@ const SpeakerModal = ({
         }
     };
 
-    console.log('speaker data', speakerData);
+    console.log(' speaker data', speakerData);
 
 
 
@@ -196,7 +203,7 @@ const SpeakerModal = ({
                                     >
 
                                         <div
-                                            className={`relative ${speakerData.length !== 0 && 'bg-blue-gray-20'} border-[1px] ${isDropDownVisible ? 'border-secondary-blue-50' : 'border-blue-gray-20'} rounded-[7px] h-[44px] flex justify-center items-center ${isDropItemClick ? '' : isDropDownSelect ? 'searchByRoleSelect' : ''} ${(!isDropDownVisible) ? 'select-icon' : ''}`}>
+                                            className={`relative ${speakerData?.length !== 0 && 'bg-blue-gray-20'} border-[1px] ${isDropDownVisible ? 'border-secondary-blue-50' : 'border-blue-gray-20'} rounded-[7px] h-[44px] flex justify-center items-center ${isDropItemClick ? '' : isDropDownSelect ? 'searchByRoleSelect' : ''} ${(!isDropDownVisible) ? 'select-icon' : ''}`}>
 
                                             <Select
 
@@ -253,7 +260,7 @@ const SpeakerModal = ({
                     {/*body*/}
                     {
 
-                        speakerData.length !== 0 ?
+                        speakerData?.length !== 0 ?
                             <div className='border-[1px] border-blue-gray-20 m-6 rounded-[4px] max-h-[200px] overflow-y-auto'>
                                 {
                                     speakerData?.map((item: roleDT, i: number) => (

@@ -19,7 +19,7 @@ const SpeakerField = ({ data, setIsSpeakerModal, setSpeechId }: Props) => {
     return (
         <div onClick={() => onAddSpeaker(data?.id)} className='flex justify-between items-center cursor-pointer'>
             {
-                data?.speaker.length > 0 ?
+                data?.speaker?.length > 0 ?
                     <Speaker data={data?.speaker} />
                     :
                     <button className='flex items-center gap-x-[10px]'>
