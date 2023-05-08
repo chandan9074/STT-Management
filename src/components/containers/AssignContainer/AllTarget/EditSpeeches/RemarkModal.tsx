@@ -13,10 +13,11 @@ type Props = {
     speechData: speechDt[],
     setSpeechData: Dispatch<SetStateAction<speechDt[]>>,
     setRemarkId: Dispatch<SetStateAction<string>>,
-    tempRemark: string
+    tempRemark: string,
+    setTempRemark: Dispatch<SetStateAction<string>>
 }
 
-const RemarkModal = ({ open, setOpen, remarkId, speechData, setSpeechData, setRemarkId, tempRemark }: Props) => {
+const RemarkModal = ({setTempRemark, open, setOpen, remarkId, speechData, setSpeechData, setRemarkId, tempRemark }: Props) => {
 
     const [remark, setRemark] = useState<string>(tempRemark);
 
@@ -39,6 +40,7 @@ const RemarkModal = ({ open, setOpen, remarkId, speechData, setSpeechData, setRe
         setSpeechData(newData);
         setRemarkId('');
         setOpen(false);
+        setTempRemark('');
     }
 
 
@@ -46,7 +48,7 @@ const RemarkModal = ({ open, setOpen, remarkId, speechData, setSpeechData, setRe
         setRemark(value);
         setIsRemark(false);
     }
-
+    
     return (
         <div>
             <CustomModal.Primary open={open} setOpen={setOpen} width='658px' >
@@ -62,6 +64,7 @@ const RemarkModal = ({ open, setOpen, remarkId, speechData, setSpeechData, setRe
                                 iconAlign="start"
                                 onClick={() => setIsRemark(true)}
                                 disabled={remark !== ''}
+                                // disabled={remark !== undefined || remark !== ''}
                             />
 
                             {

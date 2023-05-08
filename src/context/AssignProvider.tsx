@@ -91,6 +91,9 @@ interface ContextProps {
   getResSingleTargetSpeechesAssign: (data: singleTargetSpeechesAssignDT) => void;
   singleTargetSpeechesAssign: assignSpeechDT | undefined,
   setSingleTargetSpeechesAssign: React.Dispatch<React.SetStateAction<assignSpeechDT>>,
+  postSingleTargetSpeechesAssign: (data: FormData) =>  Promise<number | undefined>,
+  loading: boolean, 
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -119,7 +122,20 @@ const AssignProvider = ({ children }: { children: any }) => {
   const [recreateTable, setRecreateTable] = useState<recreateTableDT>({} as recreateTableDT);
   const [targetsAssign, setTargetsAssign] = useState<targetDT[]>([] as targetDT[]);
   const [roleListByRole, setRoleListByRole] = useState<roleDT[]>([] as roleDT[]);
-  const [singleTargetSpeechesAssign, setSingleTargetSpeechesAssign] = useState<assignSpeechDT>({} as assignSpeechDT)
+  const [singleTargetSpeechesAssign, setSingleTargetSpeechesAssign] = useState<assignSpeechDT>({} as assignSpeechDT);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const postSingleTargetSpeechesAssign = async (data: FormData) => {
+    setLoading(true);
+    const res = await AssignService.postSingleTargetSpeechesAssign(data);
+    if (res.status && res.status === 200) {
+      setLoading(false);
+      return 200;
+      // await getSelectedScript();
+    } else {
+      setLoading(false);
+    }
+  }
 
   const getResSingleTargetSpeechesAssign = async (data: singleTargetSpeechesAssignDT) => {
 
@@ -131,7 +147,6 @@ const AssignProvider = ({ children }: { children: any }) => {
 
     }
   }
-
 
   const postRestTargetAssign = async (data: postResTargetAssignParamDT) => {
     const res = await AssignService.createTargetAssign(data);
@@ -496,6 +511,9 @@ const AssignProvider = ({ children }: { children: any }) => {
         getResSingleTargetSpeechesAssign,
         singleTargetSpeechesAssign,
         setSingleTargetSpeechesAssign,
+        postSingleTargetSpeechesAssign,
+        loading,
+        setLoading
       }}
     >
       {children}

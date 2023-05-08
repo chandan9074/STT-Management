@@ -230,9 +230,15 @@ export type speechDt = {
   speeches: string;
   maxSpeeches: string;
   remark: string;
+  // remark: {
+  //   roleName: string,
+  //   role: string,
+  //   date: string,
+  //   desc: string
+  // }
   role: string;
   speech: assignAudioTrackDT;
-  audioUploadStatus?: string;
+  // audioUploadStatus?: string;
   status?: string;
 }
 

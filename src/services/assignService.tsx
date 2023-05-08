@@ -1,7 +1,7 @@
 import axios from "axios";
 import { targetDataForRecreate } from "../data/assign/AssignData";
 import * as PATH from "../helpers/APIURL";
-import { allScriptParamsDT, createAssigneeParamsDT, CriteriaItemDT, postDraftTargetBodyDT, postResTargetAssignParamDT, postSelectedScriptBodyDT, roleListByRoleParamDT, singleTargetSpeechesAssignDT, targetAssignParamDT, updateAssigneeMainTargetParamDT, updateDraftTargetQueryParams } from "../types/assignTypes";
+import { allScriptParamsDT, assignSpeechDT, createAssigneeParamsDT, CriteriaItemDT, postDraftTargetBodyDT, postResTargetAssignParamDT, postSelectedScriptBodyDT, roleListByRoleParamDT, singleTargetSpeechesAssignDT, targetAssignParamDT, updateAssigneeMainTargetParamDT, updateDraftTargetQueryParams } from "../types/assignTypes";
 
 export default class AssignService {
 
@@ -102,6 +102,11 @@ export default class AssignService {
 
   static fetchResSingleTargetData(params: singleTargetSpeechesAssignDT) {
     return axios.get(PATH.GET_RES_SINGLE_TARGET_SPEECHES_ASSIGN_PATH, {params});
+  }
+
+  static postSingleTargetSpeechesAssign(data: FormData) {
+    const res = axios.post(PATH.POST_SINGLE_TARGET_SPEECHES_ASSIGN_PATH, data);
+    return res;
   }
 
 }

@@ -20,6 +20,8 @@ import DeviceField from '../containers/AssignContainer/AllTarget/EditSpeeches/De
 import TargetStatus from '../containers/AssignContainer/AllTarget/EditSpeeches/TargetStatus';
 import RecordingDistanceField from '../containers/AssignContainer/AllTarget/EditSpeeches/RecordingDistanceField';
 import Pagination from '../Pagination';
+import { AssignContext } from '../../context/AssignProvider';
+import { CommonContext } from '../../context/CommonProvider';
 
 
 type Props = {
@@ -28,20 +30,18 @@ type Props = {
 
 const Type11 = ({ data }: Props) => {
 
+    const assignContext = useContext(AssignContext);
+    const commonContext = useContext(CommonContext);
+
     const [isSpeakerModal, setIsSpeakerModal] = useState<boolean>(false);
     const [open, setOpen] = useState(false);
     const [speechData, setSpeechData] = useState<speechDt[]>(data?.speechData);
     const [speechId, setSpeechId] = useState<string>('');
 
-    // const [collectorId, setCollectorId] = useState<string>("");
     const [collector, setCollector] = useState<roleDT>();
 
     const [deviceId, setDeviceId] = useState<string>('');
     const [device, setDevice] = useState<string | null | undefined>();
-
-    const [recordingAreaId, setRecordingAreaId] = useState<string>('');
-
-    const [recordingDistanceId, setRecordingDistanceId] = useState<string>('');
 
     const [remarkOpen, setRemarkOpen] = useState<boolean>(false);
     const [remarkId, setRemarkId] = useState<string>('');
@@ -50,13 +50,15 @@ const Type11 = ({ data }: Props) => {
     const managerContext = useContext(RoleInContext);
     const { roleDatas } = managerContext;
 
-
-
     const managerParams = {
         id: '',
         role: 'Collector',
         type: ''
     }
+
+    useEffect(() => {
+        setSpeechData(data.speechData);
+    }, [data]);
 
     useEffect(() => {
         isSpeakerModal || remarkOpen ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'auto'
@@ -68,9 +70,7 @@ const Type11 = ({ data }: Props) => {
     }, []);
 
     const getColumnSearchProps = (dataIndex: string): ColumnType<speechDt> => ({
-
         filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
-
             <div onKeyDown={(e) => e.stopPropagation()} className="w-[260px] -mr-[150px] -mt-[50px]  rounded-[8px]" >
                 <TargetStatus />
             </div>
@@ -84,23 +84,42 @@ const Type11 = ({ data }: Props) => {
 
     const onsubmit = (value: speechDt) => {
 
+        let formData = new FormData();
+
         const _speakerId = value?.speaker?.map((item: roleDT) => {
             return item?.id;
-        })
+        });
 
         const _data = {
+            speechID: value?.id,
+            targetID: data?.id,
             speech: value?.speech,
-            speaker: _speakerId,
+            speaker: _speakerId.join(','),
             collector: collector?.id,
             recordingArea: value?.recordingArea,
             recordingDistance: value?.recordingDistance,
             device: value?.device,
             remark: value?.remark,
-            speechID: value?.id,
-            targetID: data?.id
+            fmt: 'mp3',
+            role: commonContext.roleName,
+            roleName: commonContext.role
         }
 
-        console.log('this is data', _data);
+        console.log('target id', _data.targetID);
+        console.log('data id', data);
+
+        for (const key in _data) {
+            if (_data.hasOwnProperty(key)) {
+                const value = _data[key as keyof typeof _data];
+
+                if (typeof value === 'string' || value instanceof Blob) {
+                    formData.append(key, value);
+                }
+            }
+        }
+
+        // postSingleTargetSpeechesAssign
+        assignContext.postSingleTargetSpeechesAssign(formData);
 
     }
 
@@ -167,8 +186,8 @@ const Type11 = ({ data }: Props) => {
                 <div>
                     <RecordingAreaField
                         data={data}
-                        recordingAreaId={recordingAreaId}
-                        setRecordingAreaId={setRecordingAreaId}
+                        // recordingAreaId={recordingAreaId}
+                        recordingAreaId={data?.id}
                         setSpeechData={setSpeechData}
                         speechData={speechData}
                     />
@@ -184,8 +203,8 @@ const Type11 = ({ data }: Props) => {
                 <>
                     <RecordingDistanceField
                         data={data}
-                        recordingDistanceId={recordingDistanceId}
-                        setRecordingDistanceId={setRecordingDistanceId}
+                        // recordingDistanceId={recordingDistanceId}
+                        recordingDistanceId={data.id}
                         setSpeechData={setSpeechData}
                         speechData={speechData}
 
@@ -218,7 +237,7 @@ const Type11 = ({ data }: Props) => {
             align: "center",
             ...getColumnSearchProps('Frequency'),
             render: (data) => (
-                <Status data={data?.audioUploadStatus} />
+                <Status data={data?.status} />
             )
         },
 
@@ -229,14 +248,14 @@ const Type11 = ({ data }: Props) => {
 
             render: (data) => (
                 <div className='flex justify-center relative'>
-                    <button onClick={() => {
+                    {<button onClick={() => {
                         setRemarkOpen(true);
                         setRemarkId(data?.id);
                         setTempRemark(data?.remark);
                     }} className='flex justify-center'>
                         {/* <img src={data?.remark === "" ? Icons.EditGray : Icons.File} className="h-4 w-4" alt="" /> */}
                         <img src={!data?.remark ? Icons.EditGray : Icons.File} className="h-4 w-4" alt="" />
-                    </button>
+                    </button>}
                 </div>
             )
         },
@@ -253,27 +272,38 @@ const Type11 = ({ data }: Props) => {
 
                     <div className='flex w-full justify-center items-center'>
                         {
+                            // (record?.speech && record?.speaker && record?.collector && record?.recordingArea && record?.recordingDistance && record.device && record?.remark) ?
                             (record?.speech && record?.speaker && record?.collector && record?.recordingArea && record?.recordingDistance && record.device && record?.remark) ?
-                            <Buttons.LabelButton.Tertiary
-                            label='Submit'
-                            size='xSmall'
-                            variant='CT-Blue'
-                            onClick={() => onsubmit(record)}
-                        />
-                        :
-                        <div>
-                            ---
-                        </div>
+                                <div>
+                                    {
+                                        assignContext.loading ?
+                                            <Buttons.LoadingButton.Tertiary
+                                                label='loading'
+                                                size='xSmall'
+                                                variant='CT-Blue'
+                                                iconAlign='start'
+                                            />
+                                            :
+                                            <Buttons.LabelButton.Tertiary
+                                                label='Submit'
+                                                size='xSmall'
+                                                variant='CT-Blue'
+                                                onClick={() => onsubmit(record)}
+                                            />
+                                    }
+                                </div>
+
+                                :
+                                <h2 className='font-medium text xs text-blue-gray-60'>
+                                    ---
+                                </h2>
                         }
-                       
+
                     </div>
 
                 </>)
         },
     ];
-
-    console.log('data-=', data);
-    
 
     const handlePageChange = (page: number) => {
         // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
@@ -316,12 +346,14 @@ const Type11 = ({ data }: Props) => {
                     speechData={speechData}
                     setRemarkId={setRemarkId}
                     tempRemark={tempRemark}
+                    setTempRemark={setTempRemark}
                 />
             }
 
         </div >
 
         <div className='flex w-full justify-end mt-4 mb-2'>
+
             <Pagination.Type2
                 total={100}
                 pageSize={10}

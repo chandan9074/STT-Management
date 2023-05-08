@@ -1,4 +1,5 @@
 import React from 'react';
+import Icons from '../../../assets/Icons';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     label: string;
@@ -23,9 +24,9 @@ const Tertiary = (props: Props) => {
                                 `}
 
                     >
-                        {iconAlign === "start" ? <span>{icon}</span> : null}
+                        {iconAlign === "start" ? <span>{variant === "CT-Blue" ? <img src={Icons.LoadingBlue} alt=''/> : variant === 'Blue' ? <img src={Icons.LoadingBlue} alt=''/> : ''}</span> : null}
                         <span>{label}</span>
-                        {iconAlign === "end" ? <span>{icon}</span> : null}
+                        {iconAlign === "end" ? <span>{variant === "CT-Blue" ? <img src={Icons.LoadingBlue} alt=''/> : variant === 'Blue' ? <img src={Icons.LoadingBlue} alt=''/> : ''}</span> : null}
                     </button>
                     :
                     <button {...rest}
@@ -38,9 +39,9 @@ const Tertiary = (props: Props) => {
                                 ${iconAlign === "start" ? "pl-4 pr-6" : "pl-6 pr-4"}
                                 `}
                     >
-                        {iconAlign === "start" ? <span>{icon}</span> : null}
+                        {iconAlign === "start" ? <span>{variant === "CT-Blue" ? <img src={Icons.LoadingBlue} alt=''/> : variant === 'Blue' ? <img src={Icons.LoadingBlue} alt=''/> : ''}</span> : null}
                         <span>{label}</span>
-                        {iconAlign === "end" ? <span>{icon}</span> : null}
+                        {iconAlign === "end" ? <span>{variant === "CT-Blue" ? <img src={Icons.LoadingBlue} alt=''/> : variant === 'Blue' ? <img src={Icons.LoadingBlue} alt=''/> : ''}</span> : null}
                     </button>
             }
         </>

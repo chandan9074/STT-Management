@@ -10,11 +10,10 @@ type Props = {
     data: speechDt;
     speechData: speechDt[];
     setSpeechData: Dispatch<SetStateAction<speechDt[]>>;
-    setRecordingDistanceId: Dispatch<SetStateAction<string>>;
     recordingDistanceId: string;
 }
 
-const RecordingDistanceField = ({data, setRecordingDistanceId, setSpeechData, speechData, recordingDistanceId}: Props) => {
+const RecordingDistanceField = ({data, setSpeechData, speechData, recordingDistanceId}: Props) => {
 
     const handleRecordingDistanceChange = (value: string) => {
         const index = speechData.findIndex((item: speechDt) => item?.id === recordingDistanceId);
@@ -27,7 +26,6 @@ const RecordingDistanceField = ({data, setRecordingDistanceId, setSpeechData, sp
             recordingDistance: value
         };
         setSpeechData(newData);
-        setRecordingDistanceId('');
     };
 
     return (

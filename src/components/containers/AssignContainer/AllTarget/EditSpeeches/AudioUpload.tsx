@@ -3,7 +3,6 @@ import Icons from '../../../../../assets/Icons';
 import Buttons from '../../../../Buttons';
 import Type4 from '../../../../common/CustomModal/Type4';
 import { assignAudioTrackDT, speechDt } from '../../../../../types/assignTypes';
-import { AUDIO_FILE_UPLOADED } from '../../../../../helpers/ConditionVariable';
 
 type Props = {
     data: assignAudioTrackDT,
@@ -50,16 +49,16 @@ const AudioUpload = ({ data, audioId, speechData, setSpeechData, setAudioUploadS
             newData[index] = {
                 ...newData[index],
                 speech: file,
-                audioUploadStatus: AUDIO_FILE_UPLOADED
+                // audioUploadStatus: AUDIO_FILE_UPLOADED
 
-            };
+            };            
             setSpeechData(newData);
         }
     };
 
     const handleButtonClick = () => {
         fileInputRef.current?.click();
-    }
+    }    
 
     return (
         <div>

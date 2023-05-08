@@ -158,7 +158,7 @@ import GoBack from './go_back.svg';
 import statistics from './statistics.svg';
 import union_box from './union_box.svg';
 import LoadingBlue from './loading_blue.svg';
-import LoadingCtBlue from './loading_ct_blue.svg';
+import LoadingGray from './loading_ct_blue.svg';
 import LoadingMagenta from './loading_magenta.svg';
 import LoadingWhite from './loading_white.svg';
 import Leading from './leading_icon.svg';
@@ -325,7 +325,7 @@ const Icons = {
   GoBack,
   union_box,
   LoadingBlue,
-  LoadingCtBlue,
+  LoadingGray,
   LoadingMagenta,
   LoadingWhite
 };

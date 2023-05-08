@@ -11,24 +11,27 @@ type Props = {
     speechData:speechDt[];
     recordingAreaId: string;
     setSpeechData: Dispatch<SetStateAction<speechDt[]>>;
-    setRecordingAreaId: Dispatch<SetStateAction<string>>;
 
 }
 
-const RecordingAreaField = ({data, recordingAreaId, setRecordingAreaId,setSpeechData, speechData}: Props) => {
+const RecordingAreaField = ({data, recordingAreaId,setSpeechData, speechData}: Props) => {
 
     const handleRecordingAreaChange = (value: string) => {
+        
         const index = speechData.findIndex((item: speechDt) => item?.id === recordingAreaId);
+        
         if (index === -1) {
             return;
         }
+        console.log('----', index);
+        
         const newData = [...speechData];
         newData[index] = {
             ...newData[index],
             recordingArea: value
         };
+        
         setSpeechData(newData);
-        setRecordingAreaId('');
     };
 
 
@@ -42,8 +45,10 @@ const RecordingAreaField = ({data, recordingAreaId, setRecordingAreaId,setSpeech
                         suffixIcon={<img src={Icons.arrow_drop_down_blue_gray} alt='' />}
                         placeholder={`Select one`}
                         style={{ border: 'none', width: '100%' }}
-                        onChange={(value) => handleRecordingAreaChange(value)}
-                        defaultValue={data?.recordingArea ? data?.recordingArea : 'Select One'}
+                        onChange={handleRecordingAreaChange} // Update this line
+                        value={data?.recordingArea || undefined} // Update this line
+                        // onChange={(value) => handleRecordingAreaChange(value)}
+                        // defaultValue={data?.recordingArea ? data?.recordingArea : 'Select One'}
                     >
                         {
                             recordingArea?.map((m: string, i: number) => (
