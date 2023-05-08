@@ -2,7 +2,7 @@ import { TextField } from '@mui/material';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import Icons from '../../../../../assets/Icons';
 import { predefined } from '../../../../../data/assign/AssignData';
-import { speechDt } from '../../../../../types/assignTypes';
+import { remark, speechDt } from '../../../../../types/assignTypes';
 import Buttons from '../../../../Buttons';
 import { CustomModal } from '../../../../common/CustomModal';
 
@@ -13,13 +13,13 @@ type Props = {
     speechData: speechDt[],
     setSpeechData: Dispatch<SetStateAction<speechDt[]>>,
     setRemarkId: Dispatch<SetStateAction<string>>,
-    tempRemark: string,
-    setTempRemark: Dispatch<SetStateAction<string>>
+    tempRemark: remark,
+    setTempRemark: Dispatch<SetStateAction<remark>>
 }
 
 const RemarkModal = ({setTempRemark, open, setOpen, remarkId, speechData, setSpeechData, setRemarkId, tempRemark }: Props) => {
 
-    const [remark, setRemark] = useState<string>(tempRemark);
+    const [remark, setRemark] = useState<remark>(tempRemark);
 
     useEffect(() => {
         setRemark(tempRemark)
@@ -35,17 +35,22 @@ const RemarkModal = ({setTempRemark, open, setOpen, remarkId, speechData, setSpe
         const newData = [...speechData];
         newData[index] = {
             ...newData[index],
-            remark: remark
+            remark: remark 
         };
         setSpeechData(newData);
         setRemarkId('');
         setOpen(false);
-        setTempRemark('');
+        // setTempRemark('');
+        setTempRemark({} as remark);
     }
 
 
     const onPredefinedValueClick = (value: string) => {
-        setRemark(value);
+        // setRemark(value);
+        setRemark({
+            ...remark,
+            desc: value
+          });
         setIsRemark(false);
     }
     
@@ -63,13 +68,11 @@ const RemarkModal = ({setTempRemark, open, setOpen, remarkId, speechData, setSpe
                                 icon={<img className='w-2 h-2' src={Icons.AddBlue} alt='' />}
                                 iconAlign="start"
                                 onClick={() => setIsRemark(true)}
-                                disabled={remark !== ''}
-                                // disabled={remark !== undefined || remark !== ''}
+                                disabled={remark && remark?.desc !== ''}
                             />
 
                             {
                                 isRemark &&
-
                                 <div>
                                     <div className="fixed top-0 left-0 opacity-50 bg-transparent w-full h-screen z-40" onClick={() => setIsRemark(false)} />
 
@@ -92,8 +95,12 @@ const RemarkModal = ({setTempRemark, open, setOpen, remarkId, speechData, setSpe
                             id="target"
                             name="target"
                             // label={<h1 className='comboBoxLabel'>Target <span className='text-[red]'></span></h1>}
-                            value={remark}
-                            onChange={(event) => setRemark(event.target.value)}
+                            value={remark?.desc}
+                            // onChange={(event) => setRemark(event.target.value)}
+                            onChange={(event) => setRemark({
+                                ...remark,
+                                desc: event.target.value
+                            })}
                             style={{
                                 width: '100%'
                             }}

@@ -229,17 +229,18 @@ export type speechDt = {
   device: string;
   speeches: string;
   maxSpeeches: string;
-  remark: string;
-  // remark: {
-  //   roleName: string,
-  //   role: string,
-  //   date: string,
-  //   desc: string
-  // }
+  remark: remark;
   role: string;
   speech: assignAudioTrackDT;
   // audioUploadStatus?: string;
   status?: string;
+}
+
+export type remark = {
+  roleName: string,
+  role: string
+  date: string,
+  desc: string
 }
 
 export type otherInfoDT = {

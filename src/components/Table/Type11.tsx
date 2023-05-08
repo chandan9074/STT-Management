@@ -11,7 +11,7 @@ import { deviceData } from '../../data/assign/AssignData';
 import AudioUpload from '../containers/AssignContainer/AllTarget/EditSpeeches/AudioUpload';
 import RemarkModal from '../containers/AssignContainer/AllTarget/EditSpeeches/RemarkModal';
 import Status from '../containers/AssignContainer/AllTarget/EditSpeeches/Status';
-import { assignSpeechDT, speechDt } from '../../types/assignTypes';
+import { assignSpeechDT, remark, speechDt } from '../../types/assignTypes';
 import { ColumnsType, ColumnType } from 'antd/es/table';
 import CollectorField from '../containers/AssignContainer/AllTarget/EditSpeeches/CollectorField';
 import SpeakerField from '../containers/AssignContainer/AllTarget/EditSpeeches/SpeakerField';
@@ -45,10 +45,12 @@ const Type11 = ({ data }: Props) => {
 
     const [remarkOpen, setRemarkOpen] = useState<boolean>(false);
     const [remarkId, setRemarkId] = useState<string>('');
-    const [tempRemark, setTempRemark] = useState<string>('');
+    const [tempRemark, setTempRemark] = useState<remark>({} as remark);
 
     const managerContext = useContext(RoleInContext);
     const { roleDatas } = managerContext;
+
+    // const [remarkModal2, setRemarkModal2] = useState<boolean>(false);
 
     const managerParams = {
         id: '',
@@ -99,7 +101,7 @@ const Type11 = ({ data }: Props) => {
             recordingArea: value?.recordingArea,
             recordingDistance: value?.recordingDistance,
             device: value?.device,
-            remark: value?.remark,
+            remark: value?.remark?.desc,
             fmt: 'mp3',
             role: commonContext.roleName,
             roleName: commonContext.role
@@ -248,17 +250,26 @@ const Type11 = ({ data }: Props) => {
 
             render: (data) => (
                 <div className='flex justify-center relative'>
-                    {<button onClick={() => {
-                        setRemarkOpen(true);
-                        setRemarkId(data?.id);
-                        setTempRemark(data?.remark);
-                    }} className='flex justify-center'>
-                        {/* <img src={data?.remark === "" ? Icons.EditGray : Icons.File} className="h-4 w-4" alt="" /> */}
-                        <img src={!data?.remark ? Icons.EditGray : Icons.File} className="h-4 w-4" alt="" />
-                    </button>}
+
+                    <div>
+                        <button onClick={() => {
+                            setRemarkOpen(true);
+                            setRemarkId(data?.id);
+                            setTempRemark(data?.remark);
+                        }} className='flex justify-center'>
+                            {/* <img src={!data?.remark ? Icons.EditGray : Icons.File} className="h-4 w-4" alt="" /> */}
+                            <img src={Icons.EditGray} className="h-4 w-4" alt="" />
+                        </button>
+                    </div>
                 </div>
             )
         },
+
+        //     <SingleRemark
+        //     open={remarkOpen}
+        //     setOpen={setRemarkOpen}
+        //     data={data.remark}
+        // />
 
         {
             title: `${"Action".toLocaleUpperCase()}`,
@@ -337,7 +348,7 @@ const Type11 = ({ data }: Props) => {
                 />
             }
 
-            {
+{
                 <RemarkModal
                     open={remarkOpen}
                     setOpen={setRemarkOpen}
@@ -349,6 +360,7 @@ const Type11 = ({ data }: Props) => {
                     setTempRemark={setTempRemark}
                 />
             }
+
 
         </div >
 
