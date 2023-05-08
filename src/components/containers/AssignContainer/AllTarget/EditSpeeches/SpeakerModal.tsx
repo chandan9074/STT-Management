@@ -25,7 +25,7 @@ const SpeakerModal = ({
 }: Props) => {
     const [form] = Form.useForm();
 
-    console.log('speech id',speechId);
+    console.log('speech id', data);
 
 
     const managerContext = useContext(RoleInContext);
@@ -37,27 +37,45 @@ const SpeakerModal = ({
     const [isDropItemClick, setIsDropItemClick] = useState<boolean>(false);
     const [speakerData, setSpeakerData] = useState<roleDT[]>([]);
 
+    const [tempSpeakerData, setTempSpeakerData] = useState<roleDT[]>([]);
+
+
+
     const managerParams = {
         id: '',
         role: 'Speaker',
         type: ''
     }
 
+    console.log(data, "data--------------------");
+
+
     useEffect(() => {
         const _data = data?.filter((item: speechDt) => item?.id === speechId);
 
-        if(_data[0].speaker) {
+        if (_data[0].speaker) {
             setSpeakerData(_data[0].speaker);
+            setTempSpeakerData(_data[0].speaker)
         } else {
             setSpeakerData([]);
+            setTempSpeakerData([])
         }
-        
-        
+
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+
     useEffect(() => {
         managerContext.getManager(managerParams);
+
+        const _data = data?.filter((item: speechDt) => item?.id === speechId);
+
+        if (_data[0].speaker) {
+            setTempSpeakerData(_data[0].speaker)
+        } else {
+            setTempSpeakerData([])
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [speakerData]);
 
@@ -146,6 +164,9 @@ const SpeakerModal = ({
         setModal(false);
     };
 
+    console.log('888888888888', tempSpeakerData);
+
+
     return (
         <div className='fixed top-0 left-0 flex justify-center items-center w-full h-screen z-40 animate-fadeIn2 '>
             <div className="fixed top-0 left-0 opacity-50 bg-black w-full h-screen z-40"
@@ -175,15 +196,17 @@ const SpeakerModal = ({
                                     onClick={() => onClose()}
                                 />
 
-                                <div className='flex justify-center items-center'>
-                                    <Buttons.LabelButton.Primary
-                                        label='Add'
-                                        size='small'
-                                        variant='CT-Blue'
-                                        onClick={() => onAdd()}
-                                    />
+                                {
+                                    (speakerData.length !== 0 || tempSpeakerData.length > 0) && <div className='flex justify-center items-center'>
+                                        <Buttons.LabelButton.Primary
+                                            label='Add'
+                                            size='small'
+                                            variant='CT-Blue'
+                                            onClick={() => onAdd()}
+                                        />
 
-                                </div>
+                                    </div>
+                                }
 
                             </div>
                         </div>
@@ -300,13 +323,16 @@ const SpeakerModal = ({
                             </div>
 
                             :
-                            <div className='p-6 h-[195px] flex flex-col justify-center items-center'>
-                                <div
-                                    className='h-[40px] w-[40px] rounded-[50%] bg-blue-gray-05 flex items-center justify-center'>
-                                    <img className='w-[18px] h-[18px]' src={Icons.Face} alt="" />
+                            <div className='p-6 h-[195px] flex  justify-center items-center'>
+                                <div className='relative w-14 flex items-center'>
+                                    <div className='relative z-20 border-[1.5px] border-white rounded-full'>
+                                        <RoleImage height='h-6' width='w-6' role={'speakerFemale'} />
+                                    </div>
+                                    <div className='absolute left-4 z-10'>
+                                        <RoleImage height='h-6' width='w-6' role={'speaker'} />
+                                    </div>
                                 </div>
-                                <h1 className='text-ct-blue-45 text-xs mt-[8px]'>By adding, speaker will be
-                                    shown here</h1>
+                                <p className='text-small font-normal leading-[16.8px] text-ct-blue-90 text-opacity-70'>No speaker have been selected yet!</p>
                             </div>
                     }
 

@@ -71,6 +71,19 @@
   .mediumButton {
     @apply text-base font-medium py-[10px] px-8 rounded-md;
   }
+
+  .xSmallButtonTertiary {
+    @apply text-xxs font-medium py-2 px-4 rounded-md;
+  }
+
+  .smallButtonTertiary {
+    @apply text-small font-medium py-2.5 px-4 rounded-md;
+  }
+
+  .mediumButtonTertiary {
+    @apply text-base font-medium py-3 px-6 rounded-md;
+  }
+
   .xSmallIconButton {
     @apply text-xxs font-medium py-2 rounded-md;
   }

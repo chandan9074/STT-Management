@@ -18,7 +18,7 @@ const Tertiary = (props: Props) => {
                         style={{ cursor: `url("/disableCursor.svg"), auto` }}
                         disabled
                         className={`bg-blue-gray-30 text-blue-gray-60 cursor-not-allowed ${marginX} ${marginY}
-                                ${size === "xSmall" ? "xSmallButton" : size === "small" ? "smallButton" : "mediumButton"}
+                                ${size === "xSmall" ? "xSmallButtonTertiary" : size === "small" ? "smallButtonTertiary" : "mediumButtonTertiary"}
                                 `}
 
                     >
@@ -31,7 +31,7 @@ const Tertiary = (props: Props) => {
                                 ${variant === "CT-Blue" ? "hover:border-blue-gray-A10 hover:bg-white" : "border-transparent bg-transparent"}
                                 ${variant === "Blue" ? "hover:border-blue-gray-A10 hover:bg-white" : "border-transparent bg-transparent"}
                                 ${variant === "CT-Blue" ? "active:bg-blue-gray-20" : variant === "Blue" ? "active:bg-blue-gray-A10" : ""}
-                                ${size === "xSmall" ? "xSmallButton" : size === "small" ? "smallButton" : "mediumButton"}
+                                ${size === "xSmall" ? "xSmallButtonTertiary" : size === "small" ? "smallButtonTertiary" : "mediumButtonTertiary"}
                                 `}
                     >
                         {label}

@@ -100,8 +100,9 @@ const Type10 = ({ setSelectedTarget, data, handlePageChange }: Props) => {
                                 }
                             </div>
                         </div>
-
-                        <img className='w-[13px] h-[9px]' src={Icons.BlueRightArrow} alt="" />
+                        <div className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-ct-blue-10 active:border active:border-ct-blue-10'>
+                            <img className='w-[13px] h-[9px]' src={Icons.BlueRightArrow} alt="" />
+                        </div>
                     </div>
                 </Link>
 
@@ -156,7 +157,7 @@ const Type10 = ({ setSelectedTarget, data, handlePageChange }: Props) => {
             fixed: 'right',
             width: 80,
             render: (_, record: targetDT) => (
-                <>
+                <div className='flex justify-center'>
 
                     <div className='flex justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full'>
                         <img
@@ -169,7 +170,7 @@ const Type10 = ({ setSelectedTarget, data, handlePageChange }: Props) => {
                             alt="" />
                     </div>
 
-                </>)
+                </div>)
         },
     ];
 
