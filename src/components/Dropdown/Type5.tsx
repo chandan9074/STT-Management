@@ -29,7 +29,7 @@ const Type5 = ({
     // console.log("singledata....", data)
     return (
         <div className="relative w-80">
-            <div className="pt-3 px-3 pb-2 border border-blue-gray-10 rounded-[7px] bg-white inline-flex">
+            <div className={`pt-2 px-2 pb-1.5 border ${open ? "border-secondary-blue-50" : "border-blue-gray-10"} rounded-[7px] bg-white inline-flex`}>
                 <div className="w-72 pb-1 overflow-x-auto custom-scrollBar custom-scrollBar-height-5 flex items-center">
                     {filterList[data.key].length === 0 ? (
                         <button
@@ -93,7 +93,7 @@ const Type5 = ({
                     />
                 </button>
             </div>
-            <div className={`bg-transparent ${open ? "block" : "hidden"} z-40 w-full h-full fixed top-0 left-0`} onClick={()=> setOpen(!open)} />
+            <div className={`bg-transparent ${open ? "block" : "hidden"} z-40 w-full h-full fixed top-0 left-0`} onClick={() => setOpen(!open)} />
             <div
                 className={`absolute z-50 animate-fadeIn py-1.5 bg-white w-full rounded-[8px] shadow-bottom-light-blue-20 top-14 max-h-72 overflow-y-auto ${open ? "block" : "hidden"
                     }`}

@@ -1,6 +1,8 @@
 import RoleImage from '../../../../Image/RoleImage';
 import Icons from '../../../../../assets/Icons';
 import { speechOtherInfoDT } from '../../../../../types/assignTypes';
+import AudioStatusTooltip from '../../../AssignContainer/AllTarget/Statistics/AudioStatusTooltip';
+import { tooltipData } from '../../../../../data/assign/AssignData';
 
 const SpeechHeader = ({ data }: { data: speechOtherInfoDT }) => {
   console.log('data---------', data)
@@ -83,12 +85,11 @@ const AudioInfoPart = ({ data }: { data: speechOtherInfoDT }) => {
           <div className='h-3 rounded-[10px] w-full bg-blue-gray-20 border-[1px] border-white flex items-center relative z-50'>
             {["valid", "reject"].map((item, index) => (
               <div key={index}
-                // className={`${item === "valid" ? "bg-[#00B86E]" : "bg-[#A10008]"} h-full ${index === 1 ? "" : "border-r-[1px] border-white"} ${index === 1 ? "rounded-r-[15px]" : ""} ${index === 0 ? "rounded-l-[15px]" : ""} flex justify-center group cursor-pointer ${tooltipData.filter(tData => tData.name === item.name)[0].barBgHover} duration-200`} 
-                className={`${item === "valid" ? "bg-[#00B86E]" : "bg-[#A10008]"} h-full ${index === 1 ? "" : "border-r-[1px] border-white"} ${index === 1 ? "rounded-r-[15px]" : ""} ${index === 0 ? "rounded-l-[15px]" : ""} flex justify-center group  duration-200`}
+                className={`${item === "valid" ? "bg-[#00B86E]" : "bg-[#A10008]"} h-full ${index === 1 ? "" : "border-r-[1px] border-white"} ${index === 1 ? "rounded-r-[15px]" : ""} ${index === 0 ? "rounded-l-[15px]" : ""} flex justify-center group ${tooltipData.filter(tData => tData.name === (item === "valid" ? "Valid" : "Rejected"))[0].barBgHover}  duration-200`}
                 style={{
                   width: `${Math.round((item === "valid" ? ((data.audioStatus.valid * 100) / data.receivedHour) : ((data.audioStatus.invalid * 100) / data.receivedHour)))}%`,
                 }}>
-                {/* <AudioStatusTooltip data={tooltipData.filter(tData => tData.name === item.name)[0]} hour={item.hour} /> */}
+                <AudioStatusTooltip data={tooltipData.filter(tData => tData.name === (item === "valid" ? "Valid" : "Rejected"))[0]} hour={item === "valid" ? data.audioStatus.valid : data.audioStatus.invalid} />
               </div>
             ))}
           </div>

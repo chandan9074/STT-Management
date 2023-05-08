@@ -8,14 +8,16 @@ import RoleImage from '../Image/RoleImage';
 import { Drawer } from '../Drawer';
 import { EDIT_SPEECHES_PATH } from '../../helpers/Slug';
 import { targetDT } from '../../types/assignTypes';
+import Pagination from '../Pagination';
 
 
 type Props = {
     setSelectedTarget: Dispatch<SetStateAction<targetDT[]>>;
-    data: targetDT[]
+    data: targetDT[];
+    handlePageChange: (page: number) => void;
 }
 
-const Type10 = ({ setSelectedTarget, data }: Props) => {
+const Type10 = ({ setSelectedTarget, data, handlePageChange }: Props) => {
     // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
     // const [searchedColumn, setSearchedColumn] = useState("");
@@ -32,15 +34,6 @@ const Type10 = ({ setSelectedTarget, data }: Props) => {
     const [singleTargetData, setSingleTargetData] = useState<targetDT>();
 
     const Type8columns: ColumnsType<targetDT> = [
-        // {
-        //     title: '',
-        //     dataIndex: 'selection',
-        //     fixed: 'left', // add this property to fix the column
-        //     render: (_, record) => (
-        //         <Checkbox checked={record.selected} />
-        //     ),
-        // },
-
         {
             title: `${"# Target ID".toLocaleUpperCase()}`,
             key: 'key',
@@ -54,16 +47,12 @@ const Type10 = ({ setSelectedTarget, data }: Props) => {
             key: 'script',
             width: 104,
             render: (data: targetDT) => <h1 className='w-20 truncate whitespace-nowrap'>{data.script.id}</h1>,
-
-
-
         },
         {
             title: `${"target".toLocaleUpperCase()}`,
             key: 'key',
             width: 88,
             render: (data: targetDT) => <h1 className='w-[88px] whitespace-nowrap'> {data.target.target}</h1>,
-
         },
         {
             title: `${"status".toLocaleUpperCase()}`,
@@ -197,33 +186,42 @@ const Type10 = ({ setSelectedTarget, data }: Props) => {
     };
 
     return (
-        <div className='billing-table billing-table-odd-bg type4-table' >
+        <>
+            <div className='billing-table billing-table-odd-bg type4-table' >
 
-            <Table
-                rowSelection={{
-                    // type: selectionType,
-                    fixed: 'left',
-                    ...rowSelection,
-                }}
-                columns={Type8columns}
-                dataSource={data}
-                // pagination={false}
-                // scroll={{ x: 768, y: 1000 }}
-                scroll={{ x: 1600 }}
-                rowKey='id'
-            />
-
-            {
-                open &&
-                <Drawer.Target.Type1
-                    isDrawerOpen={open}
-                    setIsDrawerOpen={setOpen}
-                    data={singleTargetData}
-
+                <Table
+                    rowSelection={{
+                        // type: selectionType,
+                        fixed: 'left',
+                        ...rowSelection,
+                    }}
+                    columns={Type8columns}
+                    dataSource={data}
+                    pagination={false}
+                    // scroll={{ x: 768, y: 1000 }}
+                    scroll={{ x: 1600 }}
+                    rowKey='id'
                 />
-            }
 
-        </div >
+                {
+                    open &&
+                    <Drawer.Target.Type1
+                        isDrawerOpen={open}
+                        setIsDrawerOpen={setOpen}
+                        data={singleTargetData}
+
+                    />
+                }
+
+            </div >
+            <div className='w-full flex justify-end mt-4'>
+                <Pagination.Type2
+                    total={100}
+                    pageSize={1}
+                    handleDataChange={handlePageChange}
+                />
+            </div>
+        </>
     );
 };
 

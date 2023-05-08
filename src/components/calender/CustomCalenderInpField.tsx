@@ -12,9 +12,10 @@ type Props = {
     handleFilterList: (key: string, value: string) => void;
     popupClassName?: string;
     dateRanger?: boolean;
+    placeHolder?: string;
 };
 
-const CustomCalenderInpField = ({ data, filterList, handleFilterList, isParent, popupClassName, dateRanger }: Props) => {
+const CustomCalenderInpField = ({ data, filterList, handleFilterList, isParent, popupClassName, dateRanger, placeHolder }: Props) => {
     const [open, setOpen] = React.useState(false);
     const [dateValue, setDateValue] = React.useState<{ start: string, end: string }>({ start: "", end: "" });
 
@@ -35,14 +36,14 @@ const CustomCalenderInpField = ({ data, filterList, handleFilterList, isParent, 
 
     return (
         <div className="relative w-80">
-            <div className="p-3 border border-blue-gray-10 rounded-[7px] bg-white inline-flex">
+            <div className={`p-2 border ${open ? "border-secondary-blue-50" : "border-blue-gray-10"} rounded-[7px] bg-white inline-flex`}>
                 <div className="w-72 overflow-x-auto flex items-center">
                     {filterList[data.key].length === 0 ? (
                         <button
                             onClick={() => setOpen(!open)}
                             className="text-xs text-blue-gray-60 mb-0 py-0.5 w-full text-left"
                         >
-                            Select One
+                            {placeHolder ? placeHolder : "Select Date"}
                         </button>
                     ) : (
                         <>

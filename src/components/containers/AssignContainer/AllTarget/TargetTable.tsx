@@ -92,6 +92,9 @@ const TargetTable = () => {
     setIsModalOpen(true);
   };
 
+  const handlePageChange = (page: number) => {
+  };
+
   return (
     <div className='pt-[42px] pb-[24px] pr-4 pl-6 '>
       <div className='flex items-center justify-between mb-[25px]'>
@@ -126,7 +129,7 @@ const TargetTable = () => {
         </div>
       </div>
       {/* <Table.Type10 data={targetData} setSelectedTarget={setSelectedTarget} /> */}
-      <Table.Type10 data={assignContext.targetsAssign} setSelectedTarget={setSelectedTarget} />
+      <Table.Type10 data={assignContext.targetsAssign} setSelectedTarget={setSelectedTarget} handlePageChange={handlePageChange} />
 
 
       {

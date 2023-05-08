@@ -22,7 +22,7 @@ const Type10 = ({
 
     return (
         <div className="relative w-80">
-            <div className="pt-3 px-3 pb-2 border border-blue-gray-10 rounded-[7px] bg-white inline-flex">
+            <div className={`pt-2 px-2 pb-1.5 border ${open ? "border-secondary-blue-50" : "border-blue-gray-10"} rounded-[7px] bg-white inline-flex`}>
                 <div className="w-72 pb-1 overflow-x-auto custom-scrollBar custom-scrollBar-height-5 flex items-center">
                     {filterList[data.key].length === 0 ? (
                         <button

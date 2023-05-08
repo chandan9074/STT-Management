@@ -217,6 +217,7 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                                         handleFilterList={handleFilterList}
                                                         popupClassName={popupClassName}
                                                         dateRanger={true}
+                                                        placeHolder="Start to End Date"
                                                     />
                                                 </div> :
                                                 item.type === "select-with-subItem" ? <div className={`pt-3 pb-5  animate-fadeIn flex flex-col gap-y-3  ${currentState === item.key ? "block" : "hidden"}`}>

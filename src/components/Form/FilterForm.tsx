@@ -34,7 +34,7 @@ const FilterForm = ({ data, filterList, handleFilterList }: Props) => {
                                             onClick={() => item.key && handleFilterList(item.key, singleItem)}
                                             className={`py-1.5 px-3 whitespace-nowrap flex items-center border rounded-full duration-200 mb-0 text-small font-medium text-blue-gray-75 ${item.key && filterList[item.key].includes(singleItem)
                                                 ? "bg-secondary-blue-50 bg-opacity-[0.12] border-secondary-blue-50"
-                                                : "border-white bg-white"
+                                                : "border-blue-gray-20 bg-white"
                                                 }`}
                                         >
                                             {item.key && filterList[item.key].includes(singleItem) && (
