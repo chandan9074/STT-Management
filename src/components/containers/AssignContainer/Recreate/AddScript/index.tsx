@@ -54,6 +54,7 @@ const AddSript = () => {
           modalOpen={modalOpen}
           setModalOpen={setModalOpen}
           setModalScript={setModalScript}
+          isRecreate={true}
         />
       </div>
       {modalOpen && (

@@ -1,7 +1,6 @@
 import TargetTable from './TargetTable';
 import Statistics from './Statistics';
 import Header from "./Header";
-import { assignStatisticsData } from '../../../../data/assign/AssignData';
 import { useContext, useEffect } from 'react';
 import { AssignContext } from '../../../../context/AssignProvider';
 
