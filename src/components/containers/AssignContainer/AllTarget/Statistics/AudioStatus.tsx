@@ -5,6 +5,7 @@ import { assignStatisticsDT } from '../../../../../types/assignTypes'
 import AudioStatusTooltip from './AudioStatusTooltip'
 
 const AudioStatus = ({ data }: { data: assignStatisticsDT }) => {
+    console.log('AudioStatus called', data)
     return (
         <div className='flex flex-col justify-between h-full'>
             <div className='mb-7'>
@@ -14,7 +15,7 @@ const AudioStatus = ({ data }: { data: assignStatisticsDT }) => {
             <div className='relative'>
                 <div className='h-[60px] w-full mb-0.5 flex items-end relative'>
                     <div className='h-3 rounded-[10px] w-full bg-blue-gray-20 border-[1px] border-white flex items-center relative z-50'>
-                        {data.audioStatus.map((item, index) => (
+                        {data?.audioStatus.map((item, index) => (
                             <div key={index} className={`${item.name === "Valid" ? "bg-[#00B86E]" : "bg-[#A10008]"} h-full ${data.audioStatus.length - 1 === index ? "" : "border-r-[1px] border-white"} ${data.audioStatus.length - 1 === index ? "rounded-r-[15px]" : ""} ${index === 0 ? "rounded-l-[15px]" : ""} flex justify-center group cursor-pointer ${tooltipData.filter(tData => tData.name === item.name)[0].barBgHover} duration-200`} style={{
                                 width: `${Math.round((item.hour * 100) / data.received)}%`,
                             }}>

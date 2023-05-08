@@ -5,6 +5,8 @@ import {
   allScriptParamsDT,
   AssigneeItemDT,
   assignSpeechDT,
+  assignStatisticsDT,
+  audioStatisticsParamDT,
   createAssigneeParamsDT,
   CriteriaItemDT,
   postResTargetAssignParamDT,
@@ -91,6 +93,10 @@ interface ContextProps {
   getResSingleTargetSpeechesAssign: (data: singleTargetSpeechesAssignDT) => void;
   singleTargetSpeechesAssign: assignSpeechDT | undefined,
   setSingleTargetSpeechesAssign: React.Dispatch<React.SetStateAction<assignSpeechDT>>,
+  fetchResAudioStatistics: () => void;
+  audioStatisticsParams: audioStatisticsParamDT;
+  setAudioStatisticsParams: React.Dispatch<React.SetStateAction<audioStatisticsParamDT>>;
+  audioStatisticsData: assignStatisticsDT;
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -120,6 +126,16 @@ const AssignProvider = ({ children }: { children: any }) => {
   const [targetsAssign, setTargetsAssign] = useState<targetDT[]>([] as targetDT[]);
   const [roleListByRole, setRoleListByRole] = useState<roleDT[]>([] as roleDT[]);
   const [singleTargetSpeechesAssign, setSingleTargetSpeechesAssign] = useState<assignSpeechDT>({} as assignSpeechDT)
+  const [audioStatisticsData, setAudioStatisticsData] = useState<assignStatisticsDT>({} as assignStatisticsDT)
+  const [audioStatisticsParams, setAudioStatisticsParams] = useState<audioStatisticsParamDT>({
+    overall: false,
+  } as audioStatisticsParamDT)
+
+  const fetchResAudioStatistics = async () => {
+    const res = await AssignService.fetchResAudioStatistics(audioStatisticsParams);
+    console.log("res", res.data)
+    setAudioStatisticsData(res.data);
+  }
 
   const getResSingleTargetSpeechesAssign = async (data: singleTargetSpeechesAssignDT) => {
 
@@ -496,6 +512,10 @@ const AssignProvider = ({ children }: { children: any }) => {
         getResSingleTargetSpeechesAssign,
         singleTargetSpeechesAssign,
         setSingleTargetSpeechesAssign,
+        audioStatisticsParams,
+        fetchResAudioStatistics,
+        setAudioStatisticsParams,
+        audioStatisticsData
       }}
     >
       {children}

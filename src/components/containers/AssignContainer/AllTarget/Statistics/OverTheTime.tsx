@@ -26,7 +26,7 @@ const OverTheTime = ({ data }: { data: overTheTimeDataDT }) => {
             borderColor: "bg-blue-gray-A10 group-hover:bg-ct-blue-medium"
         },
         {
-            name: 'close',
+            name: 'closed',
             bgColor: "bg-white",
             borderColor: "bg-secondary-yellow-50"
         },
@@ -43,10 +43,11 @@ const OverTheTime = ({ data }: { data: overTheTimeDataDT }) => {
 
     const getBarCircleColor = (name: string, border: boolean) => {
         const color = barColor.filter(item => item.name === name)[0];
+        // console.log("color", color)
         if (border) {
-            return `${color.borderColor}`;
+            return `${color?.borderColor}`;
         }
-        return `${color.bgColor}`;
+        return `${color?.bgColor}`;
     }
 
     const handleYear = (year: number) => {
@@ -69,17 +70,16 @@ const OverTheTime = ({ data }: { data: overTheTimeDataDT }) => {
 
     const handleOverTheTimeData = (year: number, month: string) => {
         const dateStatus = compareWithCurrentMonthYear(month, year);
+        console.log("dateStatus", dateStatus)
         if (dateStatus) {
             return;
         }
         else {
-            // console.log("dateStatus", dateStatus)
-            // dashboardContext.getOverTheTimeData(
-            //     commonContext.type,
-            //     commonContext.role,
-            //     year,
-            //     month
-            // );
+            assignContext.setAudioStatisticsParams({
+                year: year.toString(),
+                month: month,
+                overall: false,
+            })
         }
     };
 

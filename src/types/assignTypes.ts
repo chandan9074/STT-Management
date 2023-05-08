@@ -364,3 +364,9 @@ export type singleTargetSpeechesAssignDT = {
   page: number;
   pageSize: number;
 }
+
+export type audioStatisticsParamDT = {
+  month?: string;
+  year?: string;
+  overall?: boolean;
+}
