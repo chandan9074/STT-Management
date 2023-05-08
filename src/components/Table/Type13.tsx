@@ -73,7 +73,7 @@ const Type13 = ({ data }: Props) => {
         {
             title: `${"SN".toLocaleUpperCase()}`,
             key: 'key',
-            width: 56,
+            width: 48,
             render: (text, record, index) => (
                 <span>{(index + 1)}</span>
             ),
@@ -81,7 +81,7 @@ const Type13 = ({ data }: Props) => {
         {
             title: `${"# Speech ID".toLocaleUpperCase()}`,
             key: 'key',
-            width: 120,
+            width: 100,
             render: (data: speechDt) => <h1 className='w-20 truncate whitespace-nowrap'># {data.id}</h1>,
 
         },
@@ -96,7 +96,7 @@ const Type13 = ({ data }: Props) => {
         {
             title: `${"Speaker".toLocaleUpperCase()}`,
             key: 'speaker',
-            width: 234,
+            width: 150,
             render: (data: targetAllSpeechDT) =>
                 <div className='cursor-pointer' onClick={() => onAddSpeaker(data)}>
                     <Speaker isLocality={false} data={data.speaker} />
@@ -106,7 +106,7 @@ const Type13 = ({ data }: Props) => {
         {
             title: `${"collector".toLocaleUpperCase()}`,
             key: 'collector',
-            width: 218,
+            width: 150,
             render: (data) =>
                 <div>
                     <div className='flex items-center gap-x-2'>
@@ -131,7 +131,7 @@ const Type13 = ({ data }: Props) => {
         {
             title: `${"Remark".toLocaleUpperCase()}`,
             key: 'remark',
-            width: 85,
+            width: 80,
             // align: "center",
             render: (data: targetAllSpeechDT) => (
                 <div className='flex justify-center relative'>
@@ -159,21 +159,23 @@ const Type13 = ({ data }: Props) => {
         },
 
         {
-            title: `${"Action".toLocaleUpperCase()}`,
+            title: `${"Target Details".toLocaleUpperCase()}`,
             align: 'center',
             dataIndex: 'details',
             key: 'action',
-            width: 92,
+            width: 118,
             render: (_, record) => (
                 <div className='flex w-full justify-center items-center'>
 
-                    <button className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-ct-blue-10 active:border active:border-ct-blue-10'>
+                    <button
+                        onClick={() => {
+                            showDrawer(record);
+                            setSingleTargetData(record);
+                            setIsSpeaker(false);
+                        }}
+                        className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-ct-blue-10 active:border active:border-ct-blue-10'>
                         <img
-                            onClick={() => {
-                                showDrawer(record);
-                                setSingleTargetData(record);
-                                setIsSpeaker(false);
-                            }}
+
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />

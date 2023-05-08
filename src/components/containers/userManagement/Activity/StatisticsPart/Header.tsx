@@ -13,7 +13,7 @@ const Header = ({ data }: { data: activityDT }) => {
         <div className='w-full pl-6 pr-8 py-4 bg-ct-blue-60 rounded-t-[8px] flex justify-between relative'>
             <div>
                 <div className='flex items-center mb-2'>
-                    <RoleImage role='admin' height='h-8' width='w-8' />
+                    <RoleImage role={userManagementContext.activeRole} height='h-8' width='w-8' />
                     <h1 className='mb-0 text-heading-4 font-medium text-white ml-2'>{data.name}</h1>
                     <p className='mt-1 ml-3 text-small text-white text-opacity-[0.85]'>{data.email}, {data.phone}, {data.address}</p>
                 </div>

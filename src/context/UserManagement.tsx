@@ -17,6 +17,8 @@ interface ContextProps {
     userManagementTable: userManagementTableDT[];
     getUserRoleListByRole: (role: string) => void;
     roleList: string[];
+    selectedFieldOutline: string;
+    setSelectedFieldOutline: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const UserManagementContext = createContext({} as ContextProps);
@@ -28,6 +30,7 @@ const UserManagementProvider = ({ children }: { children: any }) => {
     const [targetPendingSpeeches, setTargetPendingSpeeches] = useState<targetSpeechDT>({} as targetSpeechDT);
     const [userManagementTable, setUserManagementTable] = useState<userManagementTableDT[]>([] as userManagementTableDT[])
     const [roleList, setRoleList] = useState<string[]>([] as string[])
+    const [selectedFieldOutline,setSelectedFieldOutline] = useState<string>("")
 
 
     const getActivityStatistics = (id: string) => {
@@ -56,7 +59,7 @@ const UserManagementProvider = ({ children }: { children: any }) => {
 
     return (
         <UserManagementContext.Provider
-            value={{ activityStatistics, getActivityStatistics, activeRole, setActiveRole, currentWeek, setCurrentWeek, getUserTargetPendingSpeeches, targetPendingSpeeches, getUserManagementTable, userManagementTable, getUserRoleListByRole, roleList }}
+            value={{ activityStatistics, getActivityStatistics, activeRole, setActiveRole, currentWeek, setCurrentWeek, getUserTargetPendingSpeeches, targetPendingSpeeches, getUserManagementTable, userManagementTable, getUserRoleListByRole, roleList, selectedFieldOutline,setSelectedFieldOutline }}
         >
             {children}
         </UserManagementContext.Provider>

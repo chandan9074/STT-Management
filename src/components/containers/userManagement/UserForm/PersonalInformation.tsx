@@ -4,10 +4,16 @@ import { homeDistrict, lastDegreeAchived } from '../../../../data/userManagement
 import HomeDistrictSelect from '../../../Form/HomeDistrictSelect';
 import Image from '../../../Image';
 import { customMuiListStyle } from '../../../../helpers/Utils';
+import { useContext } from 'react';
+import { UserManagementContext } from '../../../../context/UserManagement';
 
 
 const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
     const classes = customMuiListStyle();
+
+    const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
+
+
 
     return (
         // <div className='disableAutocompleteColor'>
@@ -57,11 +63,18 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                                     name="primaryRole"
                                     error={formik.touched.primaryRole && Boolean(formik.errors.primaryRole)}
                                     helperText={formik.touched.primaryRole && formik.errors.primaryRole}
-                                    // InputProps={{
-                                    //     style: {
-                                    //         height: '44px'
-                                    //     }
-                                    // }}
+                                    InputProps={{
+                                        style: {
+                                            color: '#464E5F',
+                                            fontWeight: '600',
+                                            fontSize: '15px',
+                                            caretColor: '#136EE5',
+                                            border: selectedFieldOutline === 'primaryRole' ? '1px solid #136EE5' : '1px solid transparent'
+                                        }
+                                    }}
+                                    variant="outlined"
+                                    onFocus={() => setSelectedFieldOutline("primaryRole")}
+                                    onBlur={() => setSelectedFieldOutline("")}
 
                                     label={<h1 className='comboBoxLabel'>Select Primary Role <span className='text-[red]'>*</span></h1>}
 
@@ -90,10 +103,20 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                                 style: {
                                     color: '#464E5F',
                                     fontWeight: '600',
-                                    fontSize: '15px'
+                                    fontSize: '15px',
+                                    caretColor: '#136EE5',
+                                    border: selectedFieldOutline === 'name' ? '1px solid #136EE5' : '1px solid transparent'
                                 }
                             }}
-                            variant="outlined" />
+                            variant="outlined"
+                            onFocus={() => setSelectedFieldOutline("name")}
+                            onBlur={() => setSelectedFieldOutline("")}
+                        // classes={{
+                        //     option: classes.focused,
+                        // }}
+                        // classes={{ option: classes.option }}
+                        // className={formik.touched.name && formik.errors.name ? "focused" : ""}
+                        />
                     </div>
                 </Grid>
                 <Grid item xs={6}></Grid>
@@ -114,10 +137,15 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                                 style: {
                                     color: '#464E5F',
                                     fontWeight: '600',
-                                    fontSize: '15px'
+                                    fontSize: '15px',
+                                    caretColor: '#136EE5',
+                                    border: selectedFieldOutline === 'email' ? '1px solid #136EE5' : '1px solid transparent'
                                 }
                             }}
-                            variant="outlined" />
+                            variant="outlined"
+                            onFocus={() => setSelectedFieldOutline("email")}
+                            onBlur={() => setSelectedFieldOutline("")}
+                        />
                     </div>
                 </Grid>
 
@@ -137,10 +165,15 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                                 style: {
                                     color: '#464E5F',
                                     fontWeight: '600',
-                                    fontSize: '15px'
+                                    fontSize: '15px',
+                                    caretColor: '#136EE5',
+                                    border: selectedFieldOutline === 'mobileNumber' ? '1px solid #136EE5' : '1px solid transparent'
                                 }
                             }}
-                            variant="outlined" />
+                            variant="outlined"
+                            onFocus={() => setSelectedFieldOutline("mobileNumber")}
+                            onBlur={() => setSelectedFieldOutline("")}
+                        />
                     </div>
                 </Grid>
 
@@ -164,10 +197,15 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                                     style: {
                                         color: '#464E5F',
                                         fontWeight: '600',
-                                        fontSize: '15px'
+                                        fontSize: '15px',
+                                        caretColor: '#136EE5',
+                                        border: selectedFieldOutline === 'nid' ? '1px solid #136EE5' : '1px solid transparent'
                                     }
                                 }}
-                                variant="outlined" />
+                                variant="outlined"
+                                onFocus={() => setSelectedFieldOutline("nid")}
+                                onBlur={() => setSelectedFieldOutline("")}
+                            />
                             <div className='w-[28px] text-small text-blue-gray-75 font-medium flex justify-center items-center'>or</div>
                         </div>
                     </Grid>
@@ -185,10 +223,15 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                                     style: {
                                         color: '#464E5F',
                                         fontWeight: '600',
-                                        fontSize: '15px'
+                                        fontSize: '15px',
+                                        caretColor: '#136EE5',
+                                        border: selectedFieldOutline === 'birthRegNumber' ? '1px solid #136EE5' : '1px solid transparent'
                                     }
                                 }}
-                                variant="outlined" />
+                                variant="outlined"
+                                onFocus={() => setSelectedFieldOutline("birthRegNumber")}
+                                onBlur={() => setSelectedFieldOutline("")}
+                            />
                         </div>
                     </Grid>
 
@@ -231,13 +274,15 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
 
 
                 <Grid item xs={6}>
-                    <div className=''>
+                    <div className={`border ${selectedFieldOutline === 'lastDegreeAchived' ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px]`}>
                         <Autocomplete
                             classes={{ option: classes.option }}
                             disableClearable
                             placeholder='Choose one'
                             id="lastDegreeAchived"
-                            style={{ width: '100%' }}
+                            style={{
+                                width: '100%',
+                                }}
                             options={lastDegreeAchived}
                             value={formik.values.lastDegreeAchived}
                             onChange={(event, value) => {
@@ -259,7 +304,18 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                                     helperText={formik.touched.lastDegreeAchived && formik.errors.lastDegreeAchived}
 
                                     label={<h1 className='comboBoxLabel'>Last Degree Achieved <span className='text-[red]'>*</span></h1>}
-
+                                    // InputProps={{
+                                    //     style: {
+                                    //         color: '#464E5F',
+                                    //         fontWeight: '600',
+                                    //         fontSize: '15px',
+                                    //         caretColor: '#136EE5',
+                                    //         border: selectedFieldOutline === 'lastDegreeAchived' ? '1px solid #136EE5' : '1px solid transparent'
+                                    //     }
+                                    // }}
+                                    variant="outlined"
+                                    onFocus={() => setSelectedFieldOutline("lastDegreeAchived")}
+                                    onBlur={() => setSelectedFieldOutline("")}
                                 />
                             )}
                         />
@@ -279,10 +335,15 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                                 style: {
                                     color: '#464E5F',
                                     fontWeight: '600',
-                                    fontSize: '15px'
+                                    fontSize: '15px',
+                                    caretColor: '#136EE5',
+                                    border: selectedFieldOutline === 'subjectInStudy' ? '1px solid #136EE5' : '1px solid transparent'
                                 }
                             }}
-                            variant="outlined" />
+                            variant="outlined"
+                            onFocus={() => setSelectedFieldOutline("subjectInStudy")}
+                            onBlur={() => setSelectedFieldOutline("")}
+                        />
                     </div>
                 </Grid>
 

@@ -209,3 +209,6 @@ pre {
 .Toastify__toast-container{
   width: auto !important;
 }
+.focused .MuiOutlinedInput-notchedOutline {
+  border-color: blue; /* Change the outline color here */
+}

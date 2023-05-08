@@ -32,17 +32,17 @@ const Type3 = ({ open, setOpen , onSave, saveText, cancelText, title, icon, icon
                 <img src={icon} className={`${iconWidth} ${iconHeight} p-1 mb-[18px] cursor-pointer`} alt="" onClick={() => setOpen(false)} />
                 <p className='text-base font-medium text-ct-blue-90 mb-[106px]'>{title}</p>
                 <div className='flex gap-3 justify-start'>
-                    <Buttons.LabelButton.Secondary
-                        label={cancelText}
-                        variant="Blue"
-                        size='small'
-                        onClick={() => setOpen(false)}
-                    />
                     <Buttons.LabelButton.Primary
                         label={saveText}
                         variant="CT-Blue"
                         size="small"
                         onClick={() => onSave()}
+                    />
+                    <Buttons.LabelButton.Secondary
+                        label={cancelText}
+                        variant="Blue"
+                        size='small'
+                        onClick={() => setOpen(false)}
                     />
                 </div>
             </div>
