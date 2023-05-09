@@ -8,10 +8,14 @@ import Layouts from "../../components/Layouts";
 import TargetTable from "../../components/containers/AssignContainer/CreateTarget/TargetTable";
 import { AssigneeItemDT, CriteriaItemDT, ScriptItemDT } from "../../types/assignTypes";
 import { useAssigneeContext } from "../../context/AssignProvider";
+import { useNavigate } from "react-router-dom";
 const CreateTarget = () => {
   const [dataShow, setDataShow] = useState<boolean>(true);
   const [showSave, setShowSave] = useState<boolean>(false);
   const { selectedScriptList, selectedAssigneList, selectedCriteriaList, postDraftTarget } = useAssigneeContext();
+
+  const navigate = useNavigate();
+
 
   function checkSelected(arr: ScriptItemDT[] | AssigneeItemDT[] | CriteriaItemDT[]) {
     const result = [];
@@ -32,6 +36,7 @@ const CreateTarget = () => {
     } else {
       setShowSave(false);
     }
+    
   }, [selectedScriptList, selectedAssigneList, selectedCriteriaList]);
 
 
@@ -41,7 +46,11 @@ const CreateTarget = () => {
         <div className='flex justify-between items-center mb-[23px] gap-x-3 mt-8'>
           <div className='flex items-center'>
             <h1 className='text-blue-95 text-[18px] font-medium pr-3'>Create Target</h1>
-            <h2 className='text-ct-blue-90 text-small'>Create one or more target and assign</h2>
+            <h2 className='text-ct-blue-90 text-opacity-70 text-small'>
+              {
+                dataShow ? "Create one or more target and assign" : ("Script: " + (selectedScriptList.length < 10 ? ('0' + selectedScriptList.length) : selectedScriptList.length) + ", Criteria: " + (selectedCriteriaList.length < 10 ? ('0' + selectedCriteriaList.length) : selectedCriteriaList.length) + ", Assignee: " + (selectedAssigneList.length < 10 ? ('0' + selectedAssigneList.length) : selectedAssigneList.length))
+              }
+            </h2>
           </div>
           <div className="flex items-center gap-x-4">
             <div className={`${dataShow ? "hidden" : "block"} animate-fadeIn`}>
@@ -58,18 +67,27 @@ const CreateTarget = () => {
               />
             </div>
             <div className='flex gap-x-[15px]'>
-              <button
+              {/* <button
                 onClick={() => setDataShow(!dataShow)}
-                className={`border-[1px] bg-white border-ct-blue-20 rounded-full p-[11px] z-[80] right-0 duration-1000`}
+                className={`border-[1px] bg-white border-ct-blue-20 rounded-full py-[10.5px] px-[11px] z-[80] right-0 duration-1000`}
               >
-                <img src={dataShow ? Icons.DoubleArroDownDark : Icons.DoubleDarkICon} alt="" className="w-[7px] h-[8px] " />
-              </button>
+                <img src={dataShow ? Icons.DoubleDarkICon : Icons.DoubleArroDownDark} alt="" className="" />
+              </button> */}
               <Buttons.IconButton.Circle
                 size='medium'
                 variant="CT-Blue"
-                icon={<img src={Icons.CloseIconButton} alt="" />}
+                icon={<img src={dataShow ? Icons.DoubleDarkICon : Icons.DoubleArroDownDark} alt="" className="" />}
                 border='border'
                 background="white"
+                onClick={() => setDataShow(!dataShow)}
+              />
+              <Buttons.IconButton.Circle
+                size='medium'
+                variant="CT-Blue"
+                icon={<img src={Icons.CloseIconButton} alt="" className="w-[10.58px] h-[10.58px]" />}
+                border='border'
+                background="white"
+                onClick={()=>navigate(-1)}
               />
             </div>
           </div>

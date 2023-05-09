@@ -1,12 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { AssignContext, useAssigneeContext } from "../../../../../context/AssignProvider";
 import Table from "../../../../Table";
-import { postResTargetAssignParamDT } from "../../../../../types/assignTypes";
+import { TargetItemDT, postResTargetAssignParamDT } from "../../../../../types/assignTypes";
 import Buttons from "../../../../Buttons";
 import { useNavigate } from "react-router-dom";
 const TargetTable = () => {
   const { getDraftTarget } = useAssigneeContext()
   const [selectedRowsId, setSelectedRowsId] = useState<postResTargetAssignParamDT>({ selectedTargets: [] } as postResTargetAssignParamDT);
+  const [selectedTarget, setSelectedTarget] = useState<TargetItemDT[]>([] as TargetItemDT[]);
+
   const assignContext = useContext(AssignContext);
   const navigate = useNavigate();
   // postRestTargetAssign
@@ -28,15 +30,14 @@ const TargetTable = () => {
   }
 
   return (
-    <div className="mt-10 mx-5">
+    <div className="mt-10 mx-5 h-[calc(100vh-230px)] flex flex-col gap-y-5">
       <div className="flex items-center justify-between">
-        <p className="text-heading-6 font-normal text-ct-blue-95 mb-4">
-          1000 Targets
-        </p>
+      <h1 className='text-[18px] text-ct-blue-95 font-medium'>{selectedTarget.reduce((acc, obj) => acc + Number(obj.target.target), 0)} Targets</h1>
+
 
         {
           selectedRowsId.selectedTargets.length > 0 &&
-          <div>
+          <div className="flex gap-x-4">
             <Buttons.LabelButton.Tertiary
               label="Remove"
               size="small"
@@ -52,7 +53,7 @@ const TargetTable = () => {
           </div>
         }
       </div>
-      <Table.Type8 setSelectedRowsId={setSelectedRowsId} />
+      <Table.Type8 setSelectedRowsId={setSelectedRowsId} setSelectedTargetState={setSelectedTarget} />
     </div>
   );
 };

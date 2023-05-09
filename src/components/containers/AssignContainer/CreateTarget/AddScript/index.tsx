@@ -31,7 +31,7 @@ const AddSript = () => {
       {selectedScriptList?.length > 0 && (
         <div className="mb-2">
           <Buttons.IconWithTextButton.Tertiary
-            style={{ border: "none" }}
+            // style={{ border: "none" }}
             label={"Add Script"}
             size="small"
             variant="Blue"
@@ -41,6 +41,7 @@ const AddSript = () => {
             }
             iconAlign="start"
             onClick={openDrawer}
+            
           />
         </div>
       )}

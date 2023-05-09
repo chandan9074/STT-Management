@@ -5,6 +5,8 @@ import { Key } from 'antd/lib/table/interface';
 import Icons from '../../assets/Icons';
 import "../../assets/css/table/type4Table.css";
 import { singleScriptDT } from '../../types/assignTypes';
+import { Tooltip } from '../Tooltip';
+import Dropdown from '../Dropdown';
 
 
 // interface DataType {
@@ -54,7 +56,7 @@ type Props = {
 const Type9 = ({ data, handleSelectedScript, uncheckedScript, isDrawerOpen }: Props) => {
     // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const selectionType = "checkbox";
-    const [active, setActive] = useState("Active");
+    // const [active, setActive] = useState("Active");
     const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
     const tableRef = useRef<HTMLDivElement>(null);
 
@@ -74,9 +76,9 @@ const Type9 = ({ data, handleSelectedScript, uncheckedScript, isDrawerOpen }: Pr
     //     setDrawerData(key)
     // };
 
-    const handleActiveFrequencyChange = (value: string) => {
-        setActive(value)
-    }
+    // const handleActiveFrequencyChange = (value: string) => {
+    //     setActive(value)
+    // }
 
     // rowSelection object indicates the need for row selection
     const rowSelection = {
@@ -93,7 +95,7 @@ const Type9 = ({ data, handleSelectedScript, uncheckedScript, isDrawerOpen }: Pr
 
             <div onKeyDown={(e) => e.stopPropagation()} className="w-[260px]">
 
-                <div
+                {/* <div
                     className={`flex gap-1 items-center justify-between px-4 py-3 rounded-t-lg cursor-pointer ${active === "asc" ? "text-[#2C79BE] font-bold bg-[rgba(44,121,190,0.12)]" : ""}`}
                     onClick={() => handleActiveFrequencyChange("asc")}
                 >
@@ -125,7 +127,9 @@ const Type9 = ({ data, handleSelectedScript, uncheckedScript, isDrawerOpen }: Pr
                         <img alt="" src={Icons.CorrectIcon} />
                     </div>
 
-                </div>
+                </div> */}
+                <Dropdown.Type9 option1={`Sort Ascending`} option2={`Sort Descending`} icon="arrowStick" />
+
             </div>
         ),
         filterIcon: (filtered: boolean) => (
@@ -133,27 +137,27 @@ const Type9 = ({ data, handleSelectedScript, uncheckedScript, isDrawerOpen }: Pr
                 <img src={Icons.Unfold_More} className="w-[18px] h-[18px] object-cover" alt='' />
             </div>
         ),
-        onFilter: (value: any, record: any) =>
-            record["status"]
-                .toString()
-                .toLowerCase()
-                .includes(active.toLowerCase()),
+        // onFilter: (value: any, record: any) =>
+        //     record["status"]
+        //         .toString()
+        //         .toLowerCase()
+        //         .includes(active.toLowerCase()),
 
-        render: (text: any) =>
-            active === "Acitive" ? (
-                // <Highlighter
-                //   highlightStyle={{
-                //     backgroundColor: '#ffc069',
-                //     padding: 0,
-                //   }}
-                //   searchWords={[searchText]}
-                //   autoEscape
-                //   textToHighlight={text ? text.toString() : ''}
-                // />
-                <p>text</p>
-            ) : (
-                <p>hellow</p>
-            )
+        // render: (text: any) =>
+        //     active === "Acitive" ? (
+        //         <Highlighter
+        //           highlightStyle={{
+        //             backgroundColor: '#ffc069',
+        //             padding: 0,
+        //           }}
+        //           searchWords={[searchText]}
+        //           autoEscape
+        //           textToHighlight={text ? text.toString() : ''}
+        //         />
+        //         <p>text</p>
+        //     ) : (
+        //         <p>hellow</p>
+        //     )
     });
 
 
@@ -165,7 +169,14 @@ const Type9 = ({ data, handleSelectedScript, uncheckedScript, isDrawerOpen }: Pr
             width: 100,
             // align: "center",
             dataIndex: 'id',
-            render: (id: number) => <h1 className='text-ct-blue-60 text-xs font-medium w-11 truncate'>{id}</h1>,
+            render: (id: number) => <div className=' flex flex-col items-start'>
+                <div className='relative group flex flex-col items-center'>
+                    <h1 className='text-ct-blue-60 text-xs font-medium w-11 truncate'>{id}</h1>
+                    <div className="absolute group-hover:block hidden animate-fadeIn top-6 left-2 z-[99999]">
+                        <Tooltip.Type1 title={id.toString()} align="left" />
+                    </div>
+                </div>
+            </div>
         },
         {
             title: "Script",
