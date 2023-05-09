@@ -5,7 +5,6 @@ import AudioStatusTooltip from '../../../AssignContainer/AllTarget/Statistics/Au
 import { tooltipData } from '../../../../../data/assign/AssignData';
 
 const SpeechHeader = ({ data }: { data: speechOtherInfoDT }) => {
-  console.log('data---------', data)
   return (
     <div className='grid grid-cols-12 gap-x-24'>
       <div className='col-span-4'>

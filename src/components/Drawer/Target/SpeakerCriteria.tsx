@@ -4,7 +4,7 @@ type Props = {
     data?: targetDT
 }
 
-const SpeakerCriteria = ({ data }: Props) => {    
+const SpeakerCriteria = ({ data }: Props) => {
 
     const singleValue1: customSingleCriteriaDT[] = [
         {
@@ -66,7 +66,7 @@ const SpeakerCriteria = ({ data }: Props) => {
                     {singleValue1?.map((item: customSingleCriteriaDT, i: number) => (
                         <div className={` grid grid-cols-12`} key={i}>
 
-                            <div className={`${(i === 0) && 'rounded-t-[5px]'} ${(i === (singleValue1.length - 1)) && 'rounded-b-[5px] pb-[10px]'} col-span-4 bg-ct-blue-05 pt-3 pr-2 pl-3`}>
+                            <div className={`${(i === 0) && 'rounded-t-[5px]'} ${(i === (singleValue1.length - 1)) && 'rounded-b-[5px] pb-2.5'} ${(i === 0) ? 'pt-3 pb-2.5' : (i > 0) ? 'py-2.5' : ''} col-span-4 bg-ct-blue-05 pr-2 pl-3`}>
                                 <h1 className="text-blue-gray-75 font-medium text-xxs leading-15px whitespace-nowrap">
                                     {item?.title}
                                 </h1>
@@ -86,11 +86,11 @@ const SpeakerCriteria = ({ data }: Props) => {
 
             <div className='border-t-[2px] border-blue-gray-20 my-4'></div>
 
-            <div className='pr-7'>
+            <div className='pr-0'>
                 {singleValue2?.map((item: customSingleCriteriaDT, i: number) => (
                     <div className={` grid grid-cols-12`} key={i}>
 
-                        <div className={`${(i === 0) && 'rounded-t-[5px]'} ${(i === (singleValue1.length - 1)) && 'rounded-b-[5px] pb-[10px]'} col-span-4 bg-ct-blue-05 pt-3  pl-3`}>
+                        <div className={`${(i === 0) && 'rounded-t-[5px]'} ${(i === (singleValue1.length - 1)) && 'rounded-b-[5px] pb-2.5'} ${(i === 0) ? 'pt-3 pb-2.5' : (i > 0) ? 'py-2.5' : ''} col-span-4 bg-ct-blue-05 pr-2 pl-3`}>
                             <h1 className="text-blue-gray-75 font-medium text-xxs  leading-15px">
                                 {item?.title}
                             </h1>

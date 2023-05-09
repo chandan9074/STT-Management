@@ -107,9 +107,10 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                 </button>
                                 {currentState ===
                                     item.key && filterList[item.key].length > 0 && (
-                                        <button onClick={() => handleReset(item.key, "single")} className="text-xxs font-medium text-ct-blue-60 animate-fadeIn">
-                                            Reset
-                                        </button>
+                                        // <button onClick={() => handleReset(item.key, "single")} className="text-xxs font-medium text-ct-blue-60 animate-fadeIn">
+                                        //     Reset
+                                        // </button>
+                                        <Buttons.LabelButton.Tertiary label="Reset" size="xSmall" variant="CT-Blue" onClick={() => handleReset(item.key, "single")} />
                                     )}
                             </div>
                             {item.type === "check" ? <div className={`flex flex-wrap items-center gap-2 pb-5 pt-3 animate-fadeIn ${currentState === item.key ? "block" : "hidden"}`}>

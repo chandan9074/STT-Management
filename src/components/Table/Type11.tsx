@@ -167,7 +167,7 @@ const Type11 = ({ data }: Props) => {
             title: `${"collector".toLocaleUpperCase()}`,
             key: 'collector',
             width: 174,
-            render: (data) =>
+            render: (data, index) =>
                 <>
                     <CollectorField
                         collector={collector}

@@ -1,10 +1,11 @@
 import { useContext, useEffect } from 'react';
-import BackButtonTitle from '../../../../common/BackButtonTitle';
 import Layouts from '../../../../Layouts';
 import Table from '../../../../Table';
 import SpeechHeader from './SpeechHeader';
 import { AssignContext } from '../../../../../context/AssignProvider';
 import { useParams } from 'react-router-dom';
+import * as PATH from '../../../../../helpers/Slug';
+import { Navigator } from '../../../../Navigator';
 
 const EditSpeeches = () => {
 
@@ -26,9 +27,7 @@ const EditSpeeches = () => {
     return (
         <div>
             <Layouts.Default>
-                <BackButtonTitle
-                    title='Speech Upload'
-                />
+            <Navigator.Back path={`${PATH.ASSIGN_PATH}/${PATH.ALL_TARGET_PTAH}`} title={`Speech Upload, Id: ${id?.substring(0, 7)}`} />
 
                 <div className='mt-[9px] shadow-light-gray-4'>
                     {

@@ -1,11 +1,12 @@
 import { Autocomplete, Popper, TextField } from '@mui/material';
 import { Box } from '@mui/system';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useContext, useState } from 'react';
 import Icons from '../../../../../assets/Icons';
 import { customMuiListStyle, isEmpty } from '../../../../../helpers/Utils';
 import { speechDt } from '../../../../../types/assignTypes';
 import { roleDT } from '../../../../../types/billingTypes';
 import Collector from '../../../AudioManagement/TableField/Collector';
+import { UserManagementContext } from '../../../../../context/UserManagement';
 
 type Props = {
     data: speechDt;
@@ -18,6 +19,9 @@ type Props = {
 
 const CollectorField = ({ data, roleDatas, speechData, setSpeechData, collector, setCollector }: Props) => {
     const classes = customMuiListStyle();
+
+    const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
+
 
     const [collectorId, setCollectorId] = useState<string>("");
     // const [collector, setCollector] = useState<roleDT>();
@@ -52,121 +56,79 @@ const CollectorField = ({ data, roleDatas, speechData, setSpeechData, collector,
                         <div className="fixed top-0 left-0 opacity-50 bg-transparent w-full h-screen "
                             onClick={() => setCollectorId('')} />
                         <div className='relative'>
-
-                            {/*  <Autocomplete
-                            placeholder='Choose one'
-                            id="sourceType"
-                            style={{ width: '100%' }}
-                            options={roleDatas ?? []}
-
-                            value={collector}
-                            getOptionLabel={(option) => {
-                                if (!option) return '';
-                                return `${option?.name}`;
-                            }}
-
-                            onChange={(event, value) => {
-                                if (value !== null) {
-                                    collectorOnChange(value);
-                                }
-                            }}
-
-                            renderOption={(props, option) => (
-                                <Box
-                                    key={option.id}
-                                    component="li"
-                                    sx={{
-                                        '& > img': { mr: 2, flexShrink: 0 }
+                            <div className={` ${selectedFieldOutline === data.id ? 'border border-secondary-blue-50' : 'border-transparent'} rounded-[7px]`}>
+                                <Autocomplete
+                                    classes={{ option: classes.option }}
+                                    placeholder='Choose one'
+                                    id="sourceType"
+                                    
+                                    style={{ width: '100%' }}
+                                    options={roleDatas ?? []}
+                                    value={collector}
+                                    getOptionLabel={(option) => {
+                                        if (!option) return '';
+                                        return `${option?.name}`;
                                     }}
-                                    {...props}
-                                   
-                                >
-                                    <h1
-                                        className='text-small text-blue-gray-80 font-normal'
-                                    >
-                                        {`${option?.id} - ${option?.name}`}
-                                    </h1>
-                                </Box>
-                            )}
+                                    onChange={(event, value) => {
+                                        if (value !== null) {
+                                            collectorOnChange(value);
+                                        }
+                                    }}
+                                    PopperComponent={({ children, ...popperProps }: any) => (
+                                        <Popper {...popperProps}>
+                                            <Box
+                                                sx={{
+                                                    width: '254px',
+                                                    // overfloMaksud AlamwX: 'hidden',
+                                                    // overflow: 'auto',
+                                                    // maxHeight: '200px',
+                                                    // '::-webkit-scrollbar': {
+                                                    //     width: '4px',
+                                                    //     height: '2px',
+                                                    // },
+                                                    // '::-webkit-scrollbar-thumb': {
+                                                    //     // background: 'rgba(0, 0, 0, 0.2)',
+                                                    //     borderRadius: '6px',
+                                                    //     background: 'red'
+                                                    // },
+                                                    // '::-webkit-scrollbar-thumb:hover': {
+                                                    //     background: 'red'
+                                                    // },
+                                                }}
+                                            >
+                                                {children}
+                                            </Box>
+                                        </Popper>
+                                    )}
+                                    renderOption={(props, option) => (
 
-
-                            renderInput={(params) => (
-
-                                <TextField
-                                    {...params}
-                                    name="sourceType"
-                                    placeholder='Add Collector'
-                                />
-                            )}
-                        /> */}
-
-                            <Autocomplete
-                                classes={{ option: classes.option }}
-                                placeholder='Choose one'
-                                id="sourceType"
-                                style={{ width: '100%' }}
-                                options={roleDatas ?? []}
-                                value={collector}
-                                getOptionLabel={(option) => {
-                                    if (!option) return '';
-                                    return `${option?.name}`;
-                                }}
-                                onChange={(event, value) => {
-                                    if (value !== null) {
-                                        collectorOnChange(value);
-                                    }
-                                }}
-                                PopperComponent={({ children, ...popperProps }: any) => (
-                                    <Popper {...popperProps}>
                                         <Box
+                                            key={option.id}
+                                            component="li"
                                             sx={{
-                                                width: '254px',
-                                                // overflowX: 'hidden',
-                                                // overflow: 'auto',
-                                                // maxHeight: '200px',
-                                                // '::-webkit-scrollbar': {
-                                                //     width: '4px',
-                                                //     height: '2px',
-                                                // },
-                                                // '::-webkit-scrollbar-thumb': {
-                                                //     // background: 'rgba(0, 0, 0, 0.2)',
-                                                //     borderRadius: '6px',
-                                                //     background: 'red'
-                                                // },
-                                                // '::-webkit-scrollbar-thumb:hover': {
-                                                //     background: 'red'
-                                                // },
+                                                '& > img': { mr: 2, flexShrink: 0 }
                                             }}
+                                            {...props}
                                         >
-                                            {children}
+                                            <h1
+                                                className='text-small text-blue-gray-80 font-normal'
+                                            >
+                                                {`${option?.id} - ${option?.name}`}
+                                            </h1>
                                         </Box>
-                                    </Popper>
-                                )}
-                                renderOption={(props, option) => (
-
-                                    <Box
-                                        key={option.id}
-                                        component="li"
-                                        sx={{
-                                            '& > img': { mr: 2, flexShrink: 0 }
-                                        }}
-                                        {...props}
-                                    >
-                                        <h1
-                                            className='text-small text-blue-gray-80 font-normal'
-                                        >
-                                            {`${option?.id} - ${option?.name}`}
-                                        </h1>
-                                    </Box>
-                                )}
-                                renderInput={(params) => (
-                                    <TextField
-                                        {...params}
-                                        name="sourceType"
-                                        placeholder='Add Collector'
-                                    />
-                                )}
-                            />
+                                    )}
+                                    renderInput={(params) => (
+                                        <TextField
+                                            {...params}
+                                            name="sourceType"
+                                            placeholder='Add Collector'
+                                            variant="outlined"
+                                            onFocus={() => setSelectedFieldOutline(data.id)}
+                                            onBlur={() => setSelectedFieldOutline("")}
+                                        />
+                                    )}
+                                />
+                            </div>
                         </div>
                     </div>
                     :
@@ -174,15 +136,7 @@ const CollectorField = ({ data, roleDatas, speechData, setSpeechData, collector,
                         {
                             !isEmpty(data?.collector) ?
                                 <Collector data={data?.collector} />
-                                // <div>
-                                //     <div className='flex items-center gap-x-2'>
-                                //         <RoleImage height='h-4' width='w-4' role={data?.collector?.role} />
-                                //         <div>
-                                //             <h1 className='text-blue-gray-80 text-xs font-medium'>{data?.collector?.name}</h1>
-                                //             <h1 className='text-blue-gray-75 text-xxs'>{data?.collector?.address}</h1>
-                                //         </div>
-                                //     </div>
-                                // </div>
+                             
                                 :
                                 <button className='flex items-center gap-x-[10px]'>
                                     <img className='w-4 h-4' src={Icons.AccountCircle} alt="" />
@@ -190,7 +144,7 @@ const CollectorField = ({ data, roleDatas, speechData, setSpeechData, collector,
                                 </button>
                         }
                         {
-                            <img className='w-[7px] h-1' src={Icons.arrow_drop_down_blue_gray} alt="" />
+                            <img className='w-2 h-2' src={Icons.arrow_drop_down_blue_gray} alt="" />
                         }
                     </div>
             }

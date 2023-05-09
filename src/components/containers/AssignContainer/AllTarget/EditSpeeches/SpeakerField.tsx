@@ -27,7 +27,7 @@ const SpeakerField = ({ data, setIsSpeakerModal, setSpeechId }: Props) => {
                         <h1 className='text-blue-gray-60 text-xs font-medium'>Add Speaker</h1>
                     </button>
             }
-            <img className='w-[7px] h-1' src={Icons.arrow_drop_down_blue_gray} alt="" />
+            <img className='w-2 h-2' src={Icons.arrow_drop_down_blue_gray} alt="" />
         </div>
     );
 };
