@@ -5,6 +5,8 @@ import {
   allScriptParamsDT,
   AssigneeItemDT,
   assignSpeechDT,
+  assignStatisticsDT,
+  audioStatisticsParamDT,
   createAssigneeParamsDT,
   CriteriaItemDT,
   postResTargetAssignParamDT,
@@ -91,9 +93,13 @@ interface ContextProps {
   getResSingleTargetSpeechesAssign: (data: singleTargetSpeechesAssignDT) => void;
   singleTargetSpeechesAssign: assignSpeechDT | undefined,
   setSingleTargetSpeechesAssign: React.Dispatch<React.SetStateAction<assignSpeechDT>>,
-  postSingleTargetSpeechesAssign: (data: FormData) =>  Promise<number | undefined>,
-  loading: boolean, 
+  postSingleTargetSpeechesAssign: (data: FormData) => Promise<number | undefined>,
+  loading: boolean,
   setLoading: React.Dispatch<React.SetStateAction<boolean>>,
+  fetchResAudioStatistics: () => void;
+  audioStatisticsParams: audioStatisticsParamDT;
+  setAudioStatisticsParams: React.Dispatch<React.SetStateAction<audioStatisticsParamDT>>;
+  audioStatisticsData: assignStatisticsDT;
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -122,7 +128,11 @@ const AssignProvider = ({ children }: { children: any }) => {
   const [recreateTable, setRecreateTable] = useState<recreateTableDT>({} as recreateTableDT);
   const [targetsAssign, setTargetsAssign] = useState<targetDT[]>([] as targetDT[]);
   const [roleListByRole, setRoleListByRole] = useState<roleDT[]>([] as roleDT[]);
-  const [singleTargetSpeechesAssign, setSingleTargetSpeechesAssign] = useState<assignSpeechDT>({} as assignSpeechDT);
+  const [singleTargetSpeechesAssign, setSingleTargetSpeechesAssign] = useState<assignSpeechDT>({} as assignSpeechDT)
+  const [audioStatisticsData, setAudioStatisticsData] = useState<assignStatisticsDT>({} as assignStatisticsDT)
+  const [audioStatisticsParams, setAudioStatisticsParams] = useState<audioStatisticsParamDT>({
+    overall: false,
+  } as audioStatisticsParamDT)
   const [loading, setLoading] = useState<boolean>(false);
 
   const postSingleTargetSpeechesAssign = async (data: FormData) => {
@@ -135,6 +145,12 @@ const AssignProvider = ({ children }: { children: any }) => {
     } else {
       setLoading(false);
     }
+  }
+
+  const fetchResAudioStatistics = async () => {
+    const res = await AssignService.fetchResAudioStatistics(audioStatisticsParams);
+    console.log("res", res.data)
+    setAudioStatisticsData(res.data);
   }
 
   const getResSingleTargetSpeechesAssign = async (data: singleTargetSpeechesAssignDT) => {
@@ -513,7 +529,11 @@ const AssignProvider = ({ children }: { children: any }) => {
         setSingleTargetSpeechesAssign,
         postSingleTargetSpeechesAssign,
         loading,
-        setLoading
+        setLoading,
+        audioStatisticsParams,
+        fetchResAudioStatistics,
+        setAudioStatisticsParams,
+        audioStatisticsData
       }}
     >
       {children}

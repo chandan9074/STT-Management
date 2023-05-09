@@ -1,12 +1,12 @@
 import axios from "axios";
 import { targetDataForRecreate } from "../data/assign/AssignData";
 import * as PATH from "../helpers/APIURL";
-import { allScriptParamsDT, createAssigneeParamsDT, CriteriaItemDT, postDraftTargetBodyDT, postResTargetAssignParamDT, postSelectedScriptBodyDT, roleListByRoleParamDT, singleTargetSpeechesAssignDT, targetAssignParamDT, updateAssigneeMainTargetParamDT, updateDraftTargetQueryParams } from "../types/assignTypes";
+import { allScriptParamsDT, audioStatisticsParamDT, createAssigneeParamsDT, CriteriaItemDT, postDraftTargetBodyDT, postResTargetAssignParamDT, postSelectedScriptBodyDT, roleListByRoleParamDT, singleTargetSpeechesAssignDT, targetAssignParamDT, updateAssigneeMainTargetParamDT, updateDraftTargetQueryParams } from "../types/assignTypes";
 
 export default class AssignService {
 
   static async getTargetAssign(params: targetAssignParamDT) {
-    const res = axios.get(PATH.GET_TARGET_ASSIGN_URL, {params: params});
+    const res = axios.get(PATH.GET_TARGET_ASSIGN_URL, { params: params });
     return res;
   }
 
@@ -71,8 +71,8 @@ export default class AssignService {
   }
 
   static getAssignCriteriaById(id: string) {
-    return axios.get(PATH.GET_ASSIGN_CRITERIA_BY_ID_URL, { params: { id: id }});   
-  
+    return axios.get(PATH.GET_ASSIGN_CRITERIA_BY_ID_URL, { params: { id: id } });
+
   }
 
   static createAssignee(params: createAssigneeParamsDT) {
@@ -84,7 +84,7 @@ export default class AssignService {
   }
 
   static fetchRoleListByRole(params: roleListByRoleParamDT) {
-    return axios.get(PATH.GET_ROLE_LIST_BY_ROLE, {params});
+    return axios.get(PATH.GET_ROLE_LIST_BY_ROLE, { params });
   }
 
   static updateAssigneeMainTarget(params: updateAssigneeMainTargetParamDT) {
@@ -101,7 +101,7 @@ export default class AssignService {
   }
 
   static fetchResSingleTargetData(params: singleTargetSpeechesAssignDT) {
-    return axios.get(PATH.GET_RES_SINGLE_TARGET_SPEECHES_ASSIGN_PATH, {params});
+    return axios.get(PATH.GET_RES_SINGLE_TARGET_SPEECHES_ASSIGN_PATH, { params });
   }
 
   static postSingleTargetSpeechesAssign(data: FormData) {
@@ -109,4 +109,7 @@ export default class AssignService {
     return res;
   }
 
+  static fetchResAudioStatistics(params: audioStatisticsParamDT) {
+    return axios.get(PATH.GET_RES_AUDIO_STATISTICS_PATH, { params });
+  }
 }

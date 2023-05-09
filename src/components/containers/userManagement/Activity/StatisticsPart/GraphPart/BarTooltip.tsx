@@ -1,4 +1,3 @@
-import React from "react";
 import Icons from "../../../../../../assets/Icons";
 import { dayDataDT } from "../../../../../../types/userManagementTypes";
 
@@ -31,7 +30,7 @@ const BarTooltip = ({
             </div>
             <div className="w-full border-t border-blue-gray-75 bg-opacity-50 border-dashed mt-5" />
             <div className="mt-2 flex items-center">
-                <img src={data.status === "pending" ? Icons.calender_white : data.status === "uploaded" ? Icons.check_green : data.status === "close" ? Icons.info : data.status === "crossed" ? Icons.warning : ""} alt="schedule" />
+                <img src={data.status === "pending" ? Icons.calender_white : data.status === "uploaded" ? Icons.check_green : data.status === "closed" ? Icons.info : data.status === "crossed" ? Icons.warning : ""} alt="schedule" />
                 <h4 className={`text-small text-white mb-0 ml-2 ${data.status === "pending" ? "text-white" : data.status === "uploaded" ? "text-green-A10" : data.status === "close" ? "text-[#FFF3E0]" : data.status === "crossed" ? "text-red-15" : ""}`}>
                     Deadline: {data?.deadline}
                 </h4>

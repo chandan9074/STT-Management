@@ -111,6 +111,7 @@ const Type1 = ({ isDrawerOpen, drawerClose, modalOpen, setModalOpen, setModalScr
     };
 
     const handleSubmit = () => {
+        console.log("from script", isRecreate)
         if (!isRecreate) {
             let newScript = [];
             for (let script of selectedScript) {
@@ -125,8 +126,8 @@ const Type1 = ({ isDrawerOpen, drawerClose, modalOpen, setModalOpen, setModalScr
             drawerClose();
         }
         else {
+            console.log("from recreate")
             if (selectedScript.length > 0) {
-                console.log("from script")
                 setScriptForRecreate(prev => [...prev, ...selectedScript])
                 setSelectedScript([])
                 drawerClose();
