@@ -5054,6 +5054,105 @@ export const collectedAudioValidationSentenceFilterData: targetFilterDT[] = [
     },
 ]
 
+export const uploadAudioCheckingFilterData: targetFilterDT[] = [
+    {
+        type: "check",
+        title: "Status",
+        key: "status",
+        viewKey: "status",
+        child: [
+            "Checking...",
+            "Took a break",
+        ]
+    },
+]
+
+export const uploadAudioAllCheckingFilterData: targetFilterDT[] = [
+    {
+        type: "multiple-select",
+        key: "audioChecker",
+        title: "Audio Checker",
+        //   role: "collector",
+        viewKey: "audioChecker_details",
+        viewRoleImg: "audio checker",
+        selects: [
+            {
+                type: "select",
+                key: "audioChecker_district",
+                title: "Audio Checker",
+                isFromAPI: false,
+                child: district
+            },
+            {
+                type: "select-with-roleImg",
+                key: "audioChecker_details",
+                title: "Audio Checker",
+                isFromAPI: true,
+                role: "audio checker",
+                child: []
+            }
+        ]
+    },
+    {
+        type: "check",
+        title: "Status",
+        key: "status",
+        viewKey: "status",
+        child: [
+            "Reject",
+            "Approved",
+            "Claimed",
+            "Claime Approved",
+            "CLaime Decline"
+        ]
+    },
+    {
+        type: "date-ranger",
+        key: "audioSubmissionPeriod",
+        viewKey: "audioSubmissionPeriod",
+        title: "Audio Submission Period",
+    }
+]
+
+export const uploadAudioAnnotationTypeFilterData: targetFilterDT[] = [
+    {
+        type: "form",
+        key: "speaker",
+        title: "Speaker",
+        viewKey: "speaker",
+        formData: [
+            {
+                type: "checkbox",
+                title: "Gender",
+                key: "speaker_gender",
+                child: [
+                    "Male",
+                    "Female"
+                ]
+            },
+            {
+                type: "check",
+                title: "Age",
+                key: "speaker_age",
+                child: ageRange
+            },
+            {
+                type: "multiple-select",
+                selects: [
+                    {
+                        type: "select",
+                        isFromAPI: false,
+                        key: "speaker_district",
+                        title: "Speaker",
+                        child: district
+                    },
+                ]
+            }
+        ]
+    }
+]
+
+
 export const scriptFilterData = [
     {
         id: "17956e2a-19f1-416e-97a3-4c0d55869c7b",
@@ -5298,3 +5397,4 @@ export const statusColorsData = [
         "textColor": "text-secondary-blue-50"
     },
 ]
+

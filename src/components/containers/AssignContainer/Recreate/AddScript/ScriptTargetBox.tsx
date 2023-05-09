@@ -1,5 +1,5 @@
 import { SearchOutlined } from "@ant-design/icons";
-import { Radio } from "@mui/material";
+import { FormControl, Radio } from "@mui/material";
 import Icons from "../../../../../assets/Icons";
 import { useAssigneeContext } from "../../../../../context/AssignProvider";
 import { scriptColorData } from "../../../../../data/assign/AssignData";
@@ -19,6 +19,7 @@ const ScriptTargetBox = ({
   const selectScript = (
     selectedItem: ScriptItemDT | null,
   ) => {
+    console.log(selectedItem)
     if (selectedItem?.id) {
       setScriptForRecreate((prevList) => {
         return prevList?.map((item) => {
@@ -77,12 +78,16 @@ const ScriptTargetBox = ({
                   onChange={(e) => selectScript(item, e.target.checked)}
                   checked={item?.isSelected}
                 /> */}
-                <Radio
-                  checked={recreateTable.script ? recreateTable.script.id === item?.id : scriptForRecreate[0].id === item?.id}
-                  onChange={(e) => selectScript(item)}
-                  name="radio-buttons"
-                  size="small"
-                />
+                <FormControl>
+
+                  <Radio
+                    checked={recreateTable.script ? recreateTable.script.id === item?.id : scriptForRecreate[0].id === item?.id}
+                    onChange={(e) => selectScript(item)}
+                    // onChange={(e) => console.log('checked value')}
+                    name="radio-buttons"
+                    size="small"
+                  />
+                </FormControl>
                 <div className="flex-1 ml-[11px]">
                   <button className="w-full inline-flex gap-x-2 items-center">
                     <div
