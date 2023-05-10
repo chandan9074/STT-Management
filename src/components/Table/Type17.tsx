@@ -1,6 +1,6 @@
 import { Table } from 'antd'
 import { ColumnsType } from 'antd/es/table'
-import { Dispatch, SetStateAction, useState } from 'react'
+import { useState } from 'react'
 import Icons from '../../assets/Icons'
 import { checkingStatusDT } from '../../types/audioManagementTypes'
 import AudioTrack from '../common/AudioTrack'
@@ -12,10 +12,9 @@ import Remark2 from '../containers/AudioManagement/TableField/Remark2'
 
 type Props = {
     data: checkingStatusDT[]
-    setSelectedRowSData: Dispatch<SetStateAction<checkingStatusDT[]>>,
 }
 
-const Type17 = ({ data, setSelectedRowSData }: Props) => {
+const Type17 = ({ data }: Props) => {
     const [remarkOpen, setRemarkOpen] = useState(false);
     const [singleTargetData, setSingleTargetData] = useState<checkingStatusDT>();
     const [open, setOpen] = useState(false);
@@ -156,8 +155,6 @@ const Type17 = ({ data, setSelectedRowSData }: Props) => {
         onChange: (selectedRowKeys: React.Key[], selectedRows: checkingStatusDT[]) => {
             // setSelectedTarget(selectedRows);
             console.log('*******', selectedRows);
-            setSelectedRowSData(selectedRows)
-        
 
 
         },
