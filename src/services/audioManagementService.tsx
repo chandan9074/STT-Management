@@ -223,7 +223,4 @@ export default class audioManagementService {
     static getValidatedFilesUploadData() {
         return ValidatedFilesUploadData;
     }
-    static getAudioCheckerList = (type: string) => {
-        return collectedAudioCheckerList;
-    }
 }

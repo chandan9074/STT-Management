@@ -115,8 +115,6 @@ interface ContextProps {
     getCollectedAudioValidationPhonemeChecker: () => void;
     collectedAudioValidationPhonemeAnnotator: string[];
     getCollectedAudioValidationPhonemeAnnotator: () => void;
-    audioCheckerList: string[];
-    getAudioCheckerList: (type: string) => void;
 }
 
 export const AudioManagementContext = createContext({} as ContextProps);
@@ -179,7 +177,6 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
     const [collectedAudioValidationPhonemeSpeaker, setCollectedAudioValidationPhonemeSpeaker] = useState<string[]>([] as string[]);
     const [collectedAudioValidationPhonemeChecker, setCollectedAudioValidationPhonemeChecker] = useState<string[]>([] as string[]);
     const [collectedAudioValidationPhonemeAnnotator, setCollectedAudioValidationPhonemeAnnotator] = useState<string[]>([] as string[]);
-    const [audioCheckerList, setAudioCheckerList] = useState<string[]>([] as string[]);
 
 
 
@@ -374,12 +371,6 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
         const res = audioManagementService.getCollectedAudioValidationPhonemeAnnotator();
         const concatenatedStrings = res.map(item => item.id + " - " + item.name);
         setCollectedAudioValidationPhonemeAnnotator(concatenatedStrings);
-    }
-
-    const getAudioCheckerList = (type: string) => {
-        const res = audioManagementService.getAudioCheckerList(type);
-        const concatenatedStrings = res.map(item => item.id + " - " + item.name);
-        setAudioCheckerList(concatenatedStrings);
     }
 
     const getCollectedAudioData = () => {
@@ -618,9 +609,7 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
                 collectedAudioValidationPhonemeSpeaker,
                 getCollectedAudioValidationPhonemeAnnotator,
                 getCollectedAudioValidationPhonemeChecker,
-                getCollectedAudioValidationPhonemeSpeakers,
-                audioCheckerList,
-                getAudioCheckerList
+                getCollectedAudioValidationPhonemeSpeakers
             }}
         >
             {children}
