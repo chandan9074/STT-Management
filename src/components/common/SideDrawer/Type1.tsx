@@ -37,7 +37,8 @@ const Type1 = ({ open, setOpen, drawerData }: Props) => {
                             setMetaDataOpen={setMetaDataOpen}
                             drawerData={drawerData}
                         />
-                        : <SideDrawerDetails.ScriptsDetails
+                        :
+                         <SideDrawerDetails.ScriptsDetails
                             drawerData={drawerData}
                             setMetaDataOpen={setMetaDataOpen}
                         />

@@ -6,10 +6,13 @@ import { AudioManagementContext } from '../../../../context/AudioManagementProvi
 import { Filter } from '../../../../components/Filter';
 import { targetFilterListDT } from '../../../../types/assignTypes';
 import { collectedAudioCheckingStatusFilterData } from '../../../../data/audioManagement/AudioManagementData';
+import { checkingStatusDT } from '../../../../types/audioManagementTypes';
 
 const CheckingStatus = () => {
 
     const { getCheckingStatusData, checkingStatusData } = useContext(AudioManagementContext);
+
+    const [selectedRowsData, setSelectedRowSData] = useState<checkingStatusDT[]>([]);
 
     useEffect(() => {
         getCheckingStatusData()
@@ -18,8 +21,8 @@ const CheckingStatus = () => {
 
     return (
         <div>
-            <Header />
-            <Table.Type17 data={checkingStatusData} />
+            <Header selectedRowsData={selectedRowsData} />
+            <Table.Type17 data={checkingStatusData} setSelectedRowSData={setSelectedRowSData} />
         </div>
 
     );
@@ -27,7 +30,7 @@ const CheckingStatus = () => {
 
 export default CheckingStatus;
 
-const Header = () => {
+const Header = ({ selectedRowsData }: { selectedRowsData: checkingStatusDT[] }) => {
 
     const [count, setCount] = useState<number>(0);
     const [filterList, setFilterList] = useState<targetFilterListDT>({
@@ -199,7 +202,12 @@ const Header = () => {
                     fontWeight="font-medium"
                     duration="duration-300"
                     hoverBgColor="hover:bg-white"
+                    // onClick={() => onDownloadHandle()}
                 />
+                {/* {
+                    selectedRowsData.length > 0 &&
+                    <PDF.Type3 data={selectedRowsData} />
+                } */}
                 <div className='flex items-center gap-x-3'>
                     <SearchBox.Type1 inputWidth="w-44" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
                     <Filter.Type2 popupClassName='audio_submission_date_picker' handleSubmitFilter={handleSubmitFilter} filterData={collectedAudioCheckingStatusFilterData} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
