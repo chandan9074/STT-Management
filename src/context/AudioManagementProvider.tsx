@@ -117,6 +117,16 @@ interface ContextProps {
     getCollectedAudioValidationPhonemeAnnotator: () => void;
     audioCheckerList: string[];
     getAudioCheckerList: (type: string) => void;
+    getSpeakerList: (type: string) => void;
+    speakerList: string[];
+    getCollectorList: (type: string) => void;
+    collectorList: string[];
+    getAnnotatorList: (type: string) => void;
+    annotatorList: string[];
+    validatorList: string[];
+    getValidatorList: (type: string) => void;
+    scriptList: string[];
+    getScriptList: (type: string) => void;
 }
 
 export const AudioManagementContext = createContext({} as ContextProps);
@@ -180,7 +190,11 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
     const [collectedAudioValidationPhonemeChecker, setCollectedAudioValidationPhonemeChecker] = useState<string[]>([] as string[]);
     const [collectedAudioValidationPhonemeAnnotator, setCollectedAudioValidationPhonemeAnnotator] = useState<string[]>([] as string[]);
     const [audioCheckerList, setAudioCheckerList] = useState<string[]>([] as string[]);
-
+    const [speakerList, setSpeakerList] = useState<string[]>([] as string[]);
+    const [collectorList, setCollectorList] = useState<string[]>([] as string[]);
+    const [annotatorList, setAnnotatorList] = useState<string[]>([] as string[]);
+    const [validatorList, setValidatorList] = useState<string[]>([] as string[]);
+    const [scriptList, setScriptList] = useState<string[]>([] as string[]);
 
 
 
@@ -380,6 +394,35 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
         const res = audioManagementService.getAudioCheckerList(type);
         const concatenatedStrings = res.map(item => item.id + " - " + item.name);
         setAudioCheckerList(concatenatedStrings);
+    }
+    const getSpeakerList = (type: string) => {
+        const res = audioManagementService.getSpeakerList(type);
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name + " - " + item.gender);
+        setSpeakerList(concatenatedStrings);
+    }
+
+    const getCollectorList = (type: string) => {
+        const res = audioManagementService.getCollectorList(type);
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name);
+        setCollectorList(concatenatedStrings);
+    }
+
+    const getAnnotatorList = (type: string) => {
+        const res = audioManagementService.getAnnotatorList(type);
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name);
+        setAnnotatorList(concatenatedStrings);
+    }
+
+    const getValidatorList = (type: string) => {
+        const res = audioManagementService.getValidatorList(type);
+        const concatenatedStrings = res.map(item => item.id + " - " + item.name);
+        setValidatorList(concatenatedStrings);
+    }
+
+    const getScriptList = (type: string) => {
+        const res = audioManagementService.getScriptList();
+        const concatenatedStrings = res.map(item => item.id.substring(0, 3) + "... - " + item.title);
+        setScriptList(concatenatedStrings);
     }
 
     const getCollectedAudioData = () => {
@@ -620,7 +663,17 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
                 getCollectedAudioValidationPhonemeChecker,
                 getCollectedAudioValidationPhonemeSpeakers,
                 audioCheckerList,
-                getAudioCheckerList
+                getAudioCheckerList,
+                speakerList,
+                getSpeakerList,
+                collectorList,
+                getCollectorList,
+                annotatorList,
+                getAnnotatorList,
+                getValidatorList,
+                validatorList,
+                getScriptList,
+                scriptList
             }}
         >
             {children}
