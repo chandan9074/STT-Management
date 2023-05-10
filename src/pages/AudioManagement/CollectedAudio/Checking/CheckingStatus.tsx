@@ -7,6 +7,7 @@ import { Filter } from '../../../../components/Filter';
 import { targetFilterListDT } from '../../../../types/assignTypes';
 import { collectedAudioCheckingStatusFilterData } from '../../../../data/audioManagement/AudioManagementData';
 import { checkingStatusDT } from '../../../../types/audioManagementTypes';
+import { PDF } from '../../../../components/PDF';
 
 const CheckingStatus = () => {
 
@@ -192,7 +193,7 @@ const Header = ({ selectedRowsData }: { selectedRowsData: checkingStatusDT[] }) 
                 <p className='text-small text-ct-blue-90-70% mt-1.5'>List of unprocessed audio to be checked</p>
             </div>
             <div className='flex items-center gap-x-6'>
-                <Buttons.BgHoverBtn
+                {/* <Buttons.BgHoverBtn
                     title="Download Script"
                     paddingY="py-2"
                     paddingX="px-4"
@@ -203,11 +204,11 @@ const Header = ({ selectedRowsData }: { selectedRowsData: checkingStatusDT[] }) 
                     duration="duration-300"
                     hoverBgColor="hover:bg-white"
                     // onClick={() => onDownloadHandle()}
-                />
-                {/* {
+                /> */}
+                {
                     selectedRowsData.length > 0 &&
                     <PDF.Type3 data={selectedRowsData} />
-                } */}
+                }
                 <div className='flex items-center gap-x-3'>
                     <SearchBox.Type1 inputWidth="w-44" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
                     <Filter.Type2 popupClassName='audio_submission_date_picker' handleSubmitFilter={handleSubmitFilter} filterData={collectedAudioCheckingStatusFilterData} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
