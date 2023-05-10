@@ -32,7 +32,7 @@
 }
 
 .billing-table .ant-table-wrapper .ant-table{
-  overflow: hidden;
+  /* overflow: hidden; */
   border-radius: 12 12 0 0;
 }
 

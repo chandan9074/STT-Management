@@ -49,7 +49,7 @@ const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
             recordingArea: data?.recordingArea || singleCriteria?.recordingArea || '',
             recordingDistance: data?.recordingDistance || singleCriteria?.recordingDistance || '',
             // educationSituation: singleCriteria?.educationSituation || '',
-            target: data?.target || singleCriteria?.target || 0,
+            target: data?.target || singleCriteria?.target ,
             deadline: data?.deadline || singleCriteria?.deadline || '',
             reminder: data?.reminder || singleCriteria?.reminder || [],
             remark: data?.remark || singleCriteria?.remark || '',

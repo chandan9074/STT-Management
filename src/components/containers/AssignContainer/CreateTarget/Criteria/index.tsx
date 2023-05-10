@@ -30,7 +30,7 @@ const CreateCriteria = () => {
         <div className="mb-2">
           <Buttons.IconWithTextButton.Tertiary
             style={{ border: "none" }}
-            label={"Create Critaria"}
+            label={"Create Criteria"}
             size="small"
             variant="Blue"
             disabled={false}

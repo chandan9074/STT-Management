@@ -1,3 +1,4 @@
 import Type1 from "./Type1";
+import Type2 from "./Type2";
 
-export const SearchBox = { Type1 };
+export const SearchBox = { Type1,Type2 };

@@ -4,9 +4,13 @@ import { healthFactors, recordingArea, recordingDistanceAssign } from '../../../
 import MultipleSelect from '../../../../../Form/MultipleSelect';
 import Icons from '../../../../../../assets/Icons';
 import { FormikValues } from 'formik';
+import { useContext } from 'react';
+import { UserManagementContext } from '../../../../../../context/UserManagement';
 
 
 const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
+
+    const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
 
 
     return (
@@ -16,7 +20,7 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                     <h1 className='text-ct-blue-60 text-small font-semibold'>Speaker Information</h1>
                 </div>
                 <div className='flex gap-x-[16px] items-center h-[48px]'>
-                    <h1 className='text-blue-gray-75 font-medium text-small'>Gender</h1>                   
+                    <h1 className='text-blue-gray-75 font-medium text-small'>Gender</h1>
                     <div className='gap-x-2 flex'>
                         {
                             gender.map(value => (
@@ -32,7 +36,7 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                     </div>
                 </div>
 
-                <div className='mt-2'>
+                <div className={`personalInfo border ${selectedFieldOutline === 'ageRange' ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px] mt-2`}>
                     <Autocomplete
                         disableClearable
                         placeholder='Choose one'
@@ -68,7 +72,28 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                                 error={formik.touched.ageRange && Boolean(formik.errors.ageRange)}
                                 helperText={formik.touched.ageRange && formik.errors.ageRange}
 
-                                label={<h1 className='comboBoxLabel'>Age Range <span className='text-[red]'>*</span></h1>}
+                                InputLabelProps={{
+                                    // shrink: true,
+                                    style: {
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        width: '100%'
+                                    }
+                                }}
+
+                                label={
+                                    <div className='flex'>
+                                        <h1 className='comboBoxLabel'>
+                                            Age Range
+                                            <span className='text-[red]'>*</span>
+                                        </h1>
+                                        <h1 className='text-xs font-medium text-blue-gray-A20'>year</h1>
+                                    </div>
+                                }
+
+                                variant="outlined"
+                                onFocus={() => setSelectedFieldOutline("ageRange")}
+                                onBlur={() => setSelectedFieldOutline("")}
 
                             />
                         )}
@@ -88,7 +113,7 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                 </div>
 
                 <div className='flex gap-3'>
-                    <div className='mt-4'>
+                    <div className={`mt-4 personalInfo border ${selectedFieldOutline === 'profession' ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px]`}>
                         <Autocomplete
                             disableClearable
                             placeholder='Choose one'
@@ -125,14 +150,16 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                                     label={<h1 className='comboBoxLabel'>Profession
                                         {/* <span className='text-[red]'>*</span> */}
                                     </h1>}
-
+                                    variant="outlined"
+                                    onFocus={() => setSelectedFieldOutline("profession")}
+                                    onBlur={() => setSelectedFieldOutline("")}
                                 />
                             )}
                         />
                     </div>
 
 
-                    <div className='mt-4'>
+                    <div className={`mt-4 personalInfo border ${selectedFieldOutline === 'economicSituation' ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px]`}>
                         <Autocomplete
                             disableClearable
                             placeholder='Choose one'
@@ -169,14 +196,16 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                                     label={<h1 className='comboBoxLabel'>Economic Situation
                                         {/* <span className='text-[red]'>*</span> */}
                                     </h1>}
-
+                                    variant="outlined"
+                                    onFocus={() => setSelectedFieldOutline("economicSituation")}
+                                    onBlur={() => setSelectedFieldOutline("")}
                                 />
                             )}
                         />
                     </div>
                 </div>
 
-                <div className='mt-4'>
+                <div className={`mt-4 personalInfo border ${selectedFieldOutline === 'education' ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px]`}>
                     <Autocomplete
                         disableClearable
                         placeholder='Choose one'
@@ -201,6 +230,9 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                                 error={formik.touched.education && Boolean(formik.errors.education)}
                                 helperText={formik.touched.education && formik.errors.education}
                                 label={<h1 className='comboBoxLabel'>Education </h1>}
+                                variant="outlined"
+                                onFocus={() => setSelectedFieldOutline("education")}
+                                onBlur={() => setSelectedFieldOutline("")}
                             />
                         )}
                     />
@@ -234,7 +266,7 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                     </FormGroup>
                 </div>
 
-                <div className='mt-4'>
+                <div className={`mt-4 personalInfo border ${selectedFieldOutline === 'recordingArea' ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px]`}>
                     <Autocomplete
                         disableClearable
                         placeholder='Choose one'
@@ -263,13 +295,15 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                                 label={<h1 className='comboBoxLabel'>Recording Area
                                     {/* <span className='text-[red]'>*</span> */}
                                 </h1>}
-
+                                variant="outlined"
+                                onFocus={() => setSelectedFieldOutline("recordingArea")}
+                                onBlur={() => setSelectedFieldOutline("")}
                             />
                         )}
                     />
                 </div>
 
-                <div className='mt-4'>
+                <div className={`mt-4 personalInfo border ${selectedFieldOutline === 'recordingDistance' ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px]`}>
                     <Autocomplete
                         disableClearable
                         placeholder='Choose one'
@@ -298,7 +332,9 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                                 label={<h1 className='comboBoxLabel'>Recording Area
                                     {/* <span className='text-[red]'>*</span> */}
                                 </h1>}
-
+                                variant="outlined"
+                                onFocus={() => setSelectedFieldOutline("recordingDistance")}
+                                onBlur={() => setSelectedFieldOutline("")}
                             />
                         )}
                     />

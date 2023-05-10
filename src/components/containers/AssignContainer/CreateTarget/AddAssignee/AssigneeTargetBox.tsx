@@ -4,6 +4,8 @@ import Icons from "../../../../../assets/Icons";
 import { useAssigneeContext } from "../../../../../context/AssignProvider";
 import Buttons from "../../../../Buttons";
 import AssigneeRowItem from "./AssigneeRowItem";
+import { useState } from "react";
+import { SearchBox } from "../../../../SearchBox";
 
 const AssigneeTargetBox = ({
   targetTitle,
@@ -12,6 +14,8 @@ const AssigneeTargetBox = ({
   targetTitle: string;
   onClick: () => void;
 }) => {
+  const [isSearchBox, setIsSearchBox] = useState(false);
+
   const { selectedAssigneList, selectAssigne } = useAssigneeContext();
 
   const checkedAssigneeList = selectedAssigneList?.filter(
@@ -40,26 +44,30 @@ const AssigneeTargetBox = ({
           />
         </div>
       ) : (
-        <div className="flex flex-col items-start justify-start h-full w-full py-1">
+        <div className="flex flex-col items-start justify-start h-full w-full pb-1">
           {/* headers  */}
-          <div className="flex items-center gap-1 w-full pt-3 pb-1 px-[11px]">
-            <Checkbox
-              onChange={(e) => selectAssigne(null, e.target.checked, true)}
-              checked={isAllSelected}
-              indeterminate={indeterminate}
-            />
-            <div className="flex-1 ml-5">
-              <p className="text-ct-blue-40 font-semibold text-xxs">ASSIGNEE: {selectedAssigneList.length}</p>
-            </div>
-            <div className="self-end">
-              <Buttons.IconButton.Circle
-                size="medium"
-                variant="CT-Blue"
-                icon={<SearchOutlined style={{ color: "#6B7B8C" }} />}
-                background="white"
+          {
+            !isSearchBox ? 
+            <div className="flex items-center gap-1 w-full pt-3 pb-1 px-[11px]">
+              <Checkbox
+                onChange={(e) => selectAssigne(null, e.target.checked, true)}
+                checked={isAllSelected}
+                indeterminate={indeterminate}
               />
-            </div>
-          </div>
+              <div className="flex-1 ml-5">
+                <p className="text-ct-blue-40 font-semibold text-xxs">ASSIGNEE: {selectedAssigneList.length}</p>
+              </div>
+              <div className="self-end">
+                <Buttons.IconButton.Circle
+                  size="medium"
+                  variant="CT-Blue"
+                  icon={<SearchOutlined style={{ color: "#6B7B8C" }} />}
+                  background="white"
+                  onClick={() => setIsSearchBox(true)}
+                />
+              </div>
+            </div> : <SearchBox.Type2 inputWidth='w-[310px]' placeholder='Search Assignee...' bgColor='bg-white' textColor='text-blue-gray-80' setIsSearchBox={setIsSearchBox}/>
+          }
           {/* //body  */}
           <div className="flex flex-col gap-1 items-start justify-start h-full w-full py-1 overflow-y-auto custom_scrollbar">
             {selectedAssigneList.map((item, index) => (

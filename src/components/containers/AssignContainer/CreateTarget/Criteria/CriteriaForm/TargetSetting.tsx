@@ -1,15 +1,19 @@
 import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
 import { DatePicker, DatePickerProps } from 'antd';
 import { FormikValues } from 'formik';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Icons from '../../../../../../assets/Icons';
 import { getDateWithMonthName2 } from '../../../../../../helpers/Utils';
+import { UserManagementContext } from '../../../../../../context/UserManagement';
 
 const TargetSetting = ({ formik }: { formik: FormikValues }) => {
 
     const [openCalender, setOpenCalender] = useState<boolean>(false);
 
     const [openReminderCalender, setOpenReminderCaleder] = useState<boolean>(false);
+
+    const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
+
 
     const onDateChange: DatePickerProps['onChange'] = (date, dateString) => {
         formik.setFieldValue("deadline", dateString);
@@ -48,7 +52,8 @@ const TargetSetting = ({ formik }: { formik: FormikValues }) => {
                     // error={formik.touched.target && Boolean(formik.errors.target)}
                     // helperText={formik.touched.target && formik.errors.target}
                     style={{
-                        width: '122px'
+                        width: '122px',
+                        border: selectedFieldOutline === 'target' ? '1px solid #136EE5' : '1px solid transparent'
                     }}
                     InputProps={{
                         style: {
@@ -58,38 +63,45 @@ const TargetSetting = ({ formik }: { formik: FormikValues }) => {
                         }
                     }}
 
-                    variant="outlined" />
+                    variant="outlined"
+                    onFocus={() => setSelectedFieldOutline("target")}
+                    onBlur={() => setSelectedFieldOutline("")}
+                />
 
                 <p className='text-blue-gray-75 text-xxs mt-[4px] pl-[14px]'>No. of audio to be uploaded</p>
             </div>
 
 
-            <div className='mt-[13px]'>
-                <FormControl sx={{ width: '100%' }} variant="outlined">
-                    <InputLabel htmlFor='deadline'>{<h1 className='comboBoxLabel'>Deadline <span className='text-[red]'></span></h1>}</InputLabel>
-                    <OutlinedInput
-                        id='deadline'
-                        autoComplete='off'
-                        type='text'
-                        name={formik.values.deadline}
-                        label={<h1 className='comboBoxLabel'>Deadline <span className='text-[red]'>*</span></h1>}
-                        value={formik.values.deadline}
-                        onChange={formik.handleChange}
-                        onClick={() => setOpenCalender(true)}
-                        endAdornment={
-                            <InputAdornment position="end">
-                                <IconButton
+            <div className='pt-4'>
+                <div className={`border ${selectedFieldOutline === 'deadline' ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px] `}>
+                    <FormControl sx={{ width: '100%' }} variant="outlined">
+                        <InputLabel htmlFor='deadline'>{<h1 className='comboBoxLabel'>Deadline <span className='text-[red]'></span></h1>}</InputLabel>
+                        <OutlinedInput
+                            id='deadline'
+                            autoComplete='off'
+                            type='text'
+                            name={formik.values.deadline}
+                            label={<h1 className='comboBoxLabel'>Deadline <span className='text-[red]'>*</span></h1>}
+                            value={formik.values.deadline}
+                            onChange={formik.handleChange}
+                            onClick={() => setOpenCalender(true)}
+                            endAdornment={
+                                <InputAdornment position="end">
+                                    <IconButton
 
-                                    // aria-label="toggle password visibility"
-                                    // edge="end"
-                                    onClick={() => setOpenCalender(true)}
-                                >
-                                    <img src={Icons.calenderIcon} alt="" />
-                                </IconButton>
-                            </InputAdornment>
-                        }
-                    />
-                </FormControl>
+                                        // aria-label="toggle password visibility"
+                                        // edge="end"
+                                        onClick={() => setOpenCalender(true)}
+                                    >
+                                        <img src={Icons.calenderIcon} alt="" />
+                                    </IconButton>
+                                </InputAdornment>
+                            }
+                            onFocus={() => setSelectedFieldOutline("deadline")}
+                            onBlur={() => setSelectedFieldOutline("")}
+                        />
+                    </FormControl>
+                </div>
 
                 <div className='userFormDate relative'>
                     <DatePicker
@@ -115,7 +127,7 @@ const TargetSetting = ({ formik }: { formik: FormikValues }) => {
                     </FormControl>
                 </div> */}
 
-                <div className='-mt-[10px]'>
+                {/* <div className='-mt-[10px]'>
                     <div className='w-full border-[1px] border-blue-gray-20 rounded-[7px] py-[8px] pr-[15px] pl-3 bg-white flex items-center justify-between relative'>
                         {
                             formik.values.reminder.length !== 0 &&
@@ -173,6 +185,44 @@ const TargetSetting = ({ formik }: { formik: FormikValues }) => {
                         />
                     </div>
 
+                </div> */}
+                <div className={`border ${selectedFieldOutline === 'reminder' ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px] `}>
+                    <FormControl sx={{ width: '100%' }} variant="outlined">
+                        <InputLabel htmlFor='reminder'>{<h1 className='comboBoxLabel'>Reminder <span className='text-[red]'></span></h1>}</InputLabel>
+                        <OutlinedInput
+                            id='reminder'
+                            autoComplete='off'
+                            type='text'
+                            name={formik.values.reminder}
+                            label={<h1 className='comboBoxLabel'>Reminder <span className='text-[red]'>*</span></h1>}
+                            value={formik.values.reminder}
+                            onChange={formik.onReminderDateChange}
+                            onClick={() => setOpenReminderCaleder(true)}
+                            endAdornment={
+                                <InputAdornment position="end">
+                                    <IconButton
+
+                                        // aria-label="toggle password visibility"
+                                        // edge="end"
+                                        onClick={() => setOpenReminderCaleder(true)}
+                                    >
+                                        <img src={Icons.calenderIcon} alt="" />
+                                    </IconButton>
+                                </InputAdornment>
+                            }
+                            onFocus={() => setSelectedFieldOutline("reminder")}
+                            onBlur={() => setSelectedFieldOutline("")}
+                        />
+                    </FormControl>
+                </div>
+
+                <div className='userFormDate relative'>
+                    <DatePicker
+                        bordered={false}
+                        open={openReminderCalender}
+                        popupClassName='reminderDatePicker'
+                        onChange={onReminderDateChange}
+                    />
                 </div>
 
                 <div>
@@ -187,7 +237,10 @@ const TargetSetting = ({ formik }: { formik: FormikValues }) => {
                         onChange={formik.handleChange}
                         // error={formik.touched.remark && Boolean(formik.errors.remark)}
                         // helperText={formik.touched.remark && formik.errors.remark}
-                        style={{ width: '100%' }}
+                        style={{
+                            width: '100%',
+                            border: selectedFieldOutline === 'primaryRole' ? '1px solid #136EE5' : '1px solid transparent'
+                        }}
                         InputProps={{
                             style: {
                                 color: '#464E5F',
@@ -195,7 +248,10 @@ const TargetSetting = ({ formik }: { formik: FormikValues }) => {
                                 fontSize: '15px'
                             }
                         }}
-                        variant="outlined" />
+                        variant="outlined"
+                        onFocus={() => setSelectedFieldOutline("primaryRole")}
+                        onBlur={() => setSelectedFieldOutline("")}
+                    />
                 </div>
             </div>
         </div>

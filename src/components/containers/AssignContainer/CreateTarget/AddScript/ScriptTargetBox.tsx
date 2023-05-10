@@ -6,6 +6,8 @@ import { scriptColorData } from "../../../../../data/assign/AssignData";
 import { getRandomInt } from "../../../../../helpers/Utils";
 import Buttons from "../../../../Buttons";
 import { Tooltip } from "../../../../Tooltip";
+import { useState } from "react";
+import { SearchBox } from "../../../../SearchBox";
 const ScriptTargetBox = ({
   targetTitle,
   onClick,
@@ -14,6 +16,8 @@ const ScriptTargetBox = ({
   onClick: () => void;
 }) => {
   const { selectedScriptList, selectScript, deleteSingleScript } = useAssigneeContext();
+
+  const [isSearchBox, setIsSearchBox] = useState(false);
 
   const checkedScriptList = selectedScriptList?.filter(
     (item) => item?.isSelected
@@ -44,26 +48,30 @@ const ScriptTargetBox = ({
       ) : (
         <div className="flex flex-col items-start justify-start h-full w-full pb-1">
           {/* headers  */}
-          <div className="flex items-center gap-1 w-full px-[11px] pt-3 pb-1">
-            <Checkbox
-              onChange={(e) => selectScript(null, e.target.checked, true)}
-              checked={isAllSelected}
-              indeterminate={indeterminate}
-            />
-            <div className="flex-1 ml-5">
-              <p className="text-ct-blue-40 font-semibold text-xxs">
-                Script: {selectedScriptList?.length}
-              </p>
-            </div>
-            <div className="self-end">
-              <Buttons.IconButton.Circle
-                size="medium"
-                variant="CT-Blue"
-                icon={<SearchOutlined style={{ color: "#6B7B8C" }} />}
-                background="white"
+          {
+            !isSearchBox ?
+            <div className="flex items-center gap-1 w-full px-[11px] pt-3 pb-1">
+              <Checkbox
+                onChange={(e) => selectScript(null, e.target.checked, true)}
+                checked={isAllSelected}
+                indeterminate={indeterminate}
               />
-            </div>
-          </div>
+              <div className="flex-1 ml-5">
+                <p className="text-ct-blue-40 font-semibold text-xxs uppercase">
+                  Script: {selectedScriptList?.length}
+                </p>
+              </div>
+              <div className="self-end">
+                <Buttons.IconButton.Circle
+                  size="medium"
+                  variant="CT-Blue"
+                  icon={<SearchOutlined style={{ color: "#6B7B8C" }} />}
+                  background="white"
+                  onClick={() => setIsSearchBox(true)}
+                />
+              </div>
+            </div> : <SearchBox.Type2 inputWidth='w-[320px]' placeholder='Search script...' bgColor='bg-white' textColor='text-blue-gray-80' setIsSearchBox={setIsSearchBox}/>
+          }
           {/* //body  */}
           <div className="flex flex-col items-start justify-start h-full w-full  overflow-y-auto custom_scrollbar">
             {selectedScriptList?.map((item, index) => (

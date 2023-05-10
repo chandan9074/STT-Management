@@ -43,7 +43,7 @@ const AddAssignee = () => {
       {
         <div className="bg-white w-full h-[332px] flex rounded-t-[6px]">
           <AssigneeTargetBox
-            targetTitle={"Create Assignee"}
+            targetTitle={"Add Assignee"}
             onClick={openDrawer}
           />
         </div>

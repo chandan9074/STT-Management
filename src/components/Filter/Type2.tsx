@@ -72,27 +72,27 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                                         <img
                                             src={Icons.dark_up_arrow}
                                             alt=""
-                                            className="animate-fadeIn p-0.5 rounded-full border border-transparent hover:bg-white transition-all duration-300 ease-out active:bg-blue-gray-A10"
+                                            className="animate-fadeIn rounded-full border border-transparent hover:bg-white hover:border hover:border-[#D9D9D9] transition-all duration-300 ease-out active:bg-blue-gray-A10"
                                         />
                                     ) : (
                                         <img
                                             src={Icons.dark_right_arrow}
                                             alt=""
-                                            className="animate-fadeIn"
+                                            className="animate-fadeIn rounded-full border border-transparent hover:bg-white hover:border hover:border-[#D9D9D9] transition-all duration-300 ease-out active:bg-blue-gray-A10"
                                         />
                                     )}
-                                    <h6 className="text-small text-blue-gray-80 font-medium mb-0 ml-2 flex items-center w-full truncate">
+                                    <h6 className="text-small text-blue-gray-80 font-medium mb-0 ml-2 flex items-center  w-96 truncate">
                                         <span className="whitespace-nowrap">{item.title}</span>
                                         {item.viewKey && filterList[item.viewKey]?.length > 0 &&
                                             currentState !==
                                             item.key && (
-                                                <h6 className="inline-flex truncate ml-3">
+                                                <h6 className="flex ml-3">
                                                     {filterList[item.viewKey].map((singleItem, index) => (
                                                         <>
                                                             {item.viewRoleImg && (item.viewRoleImg === "speaker" ? <RoleImage role={singleItem.split(" - ")[2] === "male" ? "speaker" : "speakerFemale"} width="w-4" height="h-4" /> : <RoleImage role={item.viewRoleImg} width="w-4" height="h-4" />)}
                                                             <span
                                                                 key={index}
-                                                                className={`animate-fadeIn text-xs font-medium text-ct-blue-60 whitespace-nowrap ml-1 mr-3`}
+                                                                className={`animate-fadeIn text-xs font-medium text-ct-blue-60 whitespace-nowrap ml-1`}
                                                             >
                                                                 {item.viewRoleImg === "speaker" ? singleItem.split(" - ")[1] : singleItem}
                                                                 {item.viewKey && filterList[item.viewKey].length -
