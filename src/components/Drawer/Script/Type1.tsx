@@ -160,7 +160,7 @@ const Type1 = ({ isDrawerOpen, drawerClose, modalOpen, setModalOpen, setModalScr
                         </div>
                         <div className='inline-flex items-center justify-between w-full'>
                             <div className='inline-flex items-center'>
-                                <SearchBox.Type1 inputWidth='w-[172px]' placeholder='Search' bgColor='bg-blue-gray-A10' textColor='text-blue-gray-80' />
+                                <SearchBox.Type1 inputWidth='w-[128px]' placeholder='Search' bgColor='bg-blue-gray-A10' textColor='text-blue-gray-80' />
                                 {/* <Filter.Type1 filterData={filterData} align="center" /> */}
                                 <Filter.Type2 align="center" handleSubmitFilter={handleSubmitFilter} filterData={filterData} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
                             </div>

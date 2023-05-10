@@ -36,9 +36,9 @@ const CriteriaTargetBox = ({
       {selectedCriteriaList?.length === 0 ? (
         <div className="w-full h-full flex justify-center items-center">
           <Buttons.IconWithTextButton.Tertiary
-            style={{ border: "none" }}
+            // style={{ border: "none" }}
             label={targetTitle}
-            size="medium"
+            size="small"
             variant="Blue"
             disabled={false}
             icon={

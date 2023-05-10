@@ -93,7 +93,7 @@
   }
 
   .mediumIconButton {
-    @apply text-base font-medium py-[10px] rounded-md;
+    @apply text-base font-medium py-2.5 rounded-md;
   }
 
   .activeColor {

@@ -12,7 +12,11 @@ import AssigneeTargetModal from "../containers/AssignContainer/CreateTarget/Targ
 import CriteriaTargetModal from "../containers/AssignContainer/CreateTarget/TargetTable/CriteriaTargetModal";
 import { Drawer } from "../Drawer";
 
-const Type8 = ({setSelectedRowsId}: {setSelectedRowsId: Dispatch<SetStateAction<postResTargetAssignParamDT>>}) => {
+const Type8 = ({setSelectedRowsId, setSelectedTargetState}: {
+  setSelectedRowsId: Dispatch<SetStateAction<postResTargetAssignParamDT>> 
+  setSelectedTargetState: Dispatch<SetStateAction<TargetItemDT[]>>;
+
+}) => {
   const { selectedTargetList: dataList, updateDraftTarget, selectedScriptList, selectedCriteriaList, selectedAssigneList } = useAssigneeContext();
   const [open, setOpen] = useState(false);
   const [openScriptModal, setOpenScriptModal] = useState<boolean>(false);
@@ -226,6 +230,8 @@ const Type8 = ({setSelectedRowsId}: {setSelectedRowsId: Dispatch<SetStateAction<
       setSelectedRowsId({
         selectedTargets: selectedRowKeys.map((key) => key.toString())
       });
+      setSelectedTargetState(selectedRows);
+
     },
     getCheckboxProps: (record: TargetItemDT) => ({
       //   name: record.id,
