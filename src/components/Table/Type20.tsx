@@ -1,6 +1,6 @@
 import { Table } from "antd";
 import { ColumnsType, ColumnType } from 'antd/es/table';
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import Icons from "../../assets/Icons";
 import { colAnnSenStatusFilterData } from "../../data/audioManagement/AudioManagementData";
 import { STATUS_ANNOTATING, STATUS_TOOK_A_BREAK } from "../../helpers/ConditionVariable";
@@ -15,9 +15,10 @@ import Pagination from "../Pagination";
 
 type Props = {
     data: collectAnnSenDataDT[]
+    setSelectedRowSData?: Dispatch<SetStateAction<collectAnnSenDataDT[]>>,
 }
 
-const Type20 = ({ data }: Props) => {
+const Type20 = ({ data, setSelectedRowSData }: Props) => {
 
     const [singleTargetData, setSingleTargetData] = useState<collectAnnSenDataDT>();
     const [open, setOpen] = useState(false);
@@ -130,8 +131,10 @@ const Type20 = ({ data }: Props) => {
     const rowSelection = {
         onChange: (selectedRowKeys: React.Key[], selectedRows: collectAnnSenDataDT[]) => {
             // setSelectedTarget(selectedRows);
-            console.log('*******', selectedRows);
+            if (setSelectedRowSData) {
+                setSelectedRowSData(selectedRows)
 
+            }
 
         },
         getCheckboxProps: (record: collectAnnSenDataDT) => ({

@@ -1,10 +1,10 @@
 import { useContext, useEffect, useRef, useState } from 'react';
+import { Filter } from '../../../../components/Filter';
 import { SearchBox } from '../../../../components/SearchBox';
 import Table from '../../../../components/Table';
 import { AudioManagementContext } from '../../../../context/AudioManagementProvider';
-import { Filter } from '../../../../components/Filter';
-import { targetFilterListDT } from '../../../../types/assignTypes';
 import { collectedAudioCheckingStatusFilterData } from '../../../../data/audioManagement/AudioManagementData';
+import { targetFilterListDT } from '../../../../types/assignTypes';
 import { checkingStatusDT } from '../../../../types/audioManagementTypes';
 import { PDF } from '../../../../components/PDF';
 
@@ -192,21 +192,9 @@ const Header = ({ selectedRowsData }: { selectedRowsData: checkingStatusDT[] }) 
                 <p className='text-small text-ct-blue-90-70% mt-1.5'>List of unprocessed audio to be checked</p>
             </div>
             <div className='flex items-center gap-x-6'>
-                {/* <Buttons.BgHoverBtn
-                    title="Download Script"
-                    paddingY="py-2"
-                    paddingX="px-4"
-                    borderRadius="rounded-[6px]"
-                    textColor="text-secondary-blue-50"
-                    fontSize="text-small"
-                    fontWeight="font-medium"
-                    duration="duration-300"
-                    hoverBgColor="hover:bg-white"
-                    // onClick={() => onDownloadHandle()}
-                /> */}
                 {
-                    selectedRowsData.length > 0 &&
-                    <PDF.Type3 data={selectedRowsData} />
+                    (selectedRowsData.length === 1) &&
+                    <PDF.Type2 data={selectedRowsData[0].script} />
                 }
                 <div className='flex items-center gap-x-3'>
                     <SearchBox.Type1 inputWidth="w-44" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
