@@ -58,6 +58,7 @@ const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
         },
         validationSchema: validationSchema,
         onSubmit: (values: CriteriaItemDT) => {
+            console.log('values', values)
 
             // formik.resetForm();
             // if (isEmpty(data)) {
@@ -75,7 +76,7 @@ const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
                     } else {
 
                         const { buttonName, ...newValues } = values;
-                        creteAssignCriteria(newValues);
+                        creteAssignCriteria([newValues]);
                         emptyCriteria();
                         drawerClose();
                     }
@@ -128,7 +129,7 @@ const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
     }
 
     const onCreate = () => {
-
+        console.log('onCreate', criterias);
         creteAssignCriteria(criterias);
         emptyCriteria();
         drawerClose();

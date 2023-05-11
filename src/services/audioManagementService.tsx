@@ -1,4 +1,4 @@
-import { collectedAudioCollectorList, allCheckedAudiosData, annotationData, checkingStatusData, collectAnnSenData, collectedAudio, scriptFilterData, annotatedFiles, collectValSenData, validatedFilesData, collectedAudioSpeakersList, collectedAudioCheckerList, collectedAudioAnnotatorList } from '../data/audioManagement/AudioManagementData';
+import { collectedAudioCollectorList, allCheckedAudiosData, annotationData, checkingStatusData, collectAnnSenData, collectedAudio, scriptFilterData, annotatedFiles, collectValSenData, validatedFilesData, collectedAudioSpeakersList, collectedAudioCheckerList, collectedAudioAnnotatorList, collectedAudioValidatorList } from '../data/audioManagement/AudioManagementData';
 import { allCheckedSpeechData, annotatedFilesUploadData, annotationUploadData, checkingStatusUploadData, sentenceLevelUploadData, uploadAudioData, ValidatedFilesUploadData, sentenceLevelValUpload } from '../data/audioManagement/UploadAudiosData';
 
 export default class audioManagementService {
@@ -220,7 +220,32 @@ export default class audioManagementService {
     static getPhonemeLevelUploadVal() {
         return sentenceLevelValUpload;
     }
+
     static getValidatedFilesUploadData() {
         return ValidatedFilesUploadData;
+    }
+
+    static getAudioCheckerList = (type: string) => {
+        return collectedAudioCheckerList;
+    }
+
+    static getSpeakerList = (type: string) => {
+        return collectedAudioSpeakersList;
+    }
+
+    static getCollectorList = (type: string) => {
+        return collectedAudioCollectorList;
+    }
+
+    static getAnnotatorList = (type: string) => {
+        return collectedAudioAnnotatorList;
+    }
+
+    static getValidatorList = (type: string) => {
+        return collectedAudioValidatorList;
+    }
+
+    static getScriptList() {
+        return scriptFilterData;
     }
 }
