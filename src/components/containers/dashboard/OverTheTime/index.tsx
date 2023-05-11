@@ -15,12 +15,12 @@ const OverTheTime = () => {
 
   useEffect(() => {
     dashboardContext.getOverTheTimeData(commonContext.type, commonContext.role);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [commonContext.type, commonContext.role]);
 
   useEffect(() => {
     setOverTheTimeData(dashboardContext.overTheTimeData);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dashboardContext.overTheTimeData]);
   return (
     <div className="p-4 bg-white border-t border-blue-gray-30">

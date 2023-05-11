@@ -1,15 +1,17 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import Table from '../../../../components/Table'
+import Table from '../../../../components/Table';
 import { AudioManagementContext } from '../../../../context/AudioManagementProvider';
-import Buttons from '../../../../components/Buttons';
 import { SearchBox } from '../../../../components/SearchBox';
 import { Filter } from '../../../../components/Filter';
 import { collectedAudioValidationSentenceFilterData } from '../../../../data/audioManagement/AudioManagementData';
 import { targetFilterListDT } from '../../../../types/assignTypes';
+import { collectValSenDataDT } from '../../../../types/audioManagementTypes';
+import { PDF } from '../../../../components/PDF';
 
 const SentenceLevelValidation = () => {
 
   const { getCollectValSenData, collectValSenData } = useContext(AudioManagementContext);
+  const [selectedRowsData, setSelectedRowSData] = useState<collectValSenDataDT[]>([]);
 
   useEffect(() => {
     getCollectValSenData()
@@ -18,8 +20,8 @@ const SentenceLevelValidation = () => {
 
   return (
     <div>
-      <Header />
-      <Table.Type22 data={collectValSenData} />
+      <Header selectedRowsData={selectedRowsData} />
+      <Table.Type22 data={collectValSenData} setSelectedRowSData={setSelectedRowSData} />
     </div>
   )
 }
@@ -28,7 +30,7 @@ export default SentenceLevelValidation;
 
 
 
-const Header = () => {
+const Header = ({ selectedRowsData }: { selectedRowsData: collectValSenDataDT[] }) => {
 
   const [count, setCount] = useState<number>(0);
   const [filterList, setFilterList] = useState<targetFilterListDT>({
@@ -209,17 +211,10 @@ const Header = () => {
         <p className='text-small text-ct-blue-90-70% mt-1.5'>List of audios that is needed to sentence validation</p>
       </div>
       <div className='flex items-center gap-x-6'>
-        <Buttons.BgHoverBtn
-          title="Download Script"
-          paddingY="py-2"
-          paddingX="px-4"
-          borderRadius="rounded-[6px]"
-          textColor="text-secondary-blue-50"
-          fontSize="text-small"
-          fontWeight="font-medium"
-          duration="duration-300"
-          hoverBgColor="hover:bg-white"
-        />
+        {
+          (selectedRowsData.length === 1) &&
+          <PDF.Type2 data={selectedRowsData[0].script} />
+        }
         <div className='flex items-center gap-x-3'>
           <SearchBox.Type1 inputWidth="w-44" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
           <Filter.Type2 popupClassName='audio_submission_date_picker' handleSubmitFilter={handleSubmitFilter} filterData={collectedAudioValidationSentenceFilterData} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
