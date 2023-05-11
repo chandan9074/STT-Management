@@ -12,21 +12,21 @@ import AssigneeTargetModal from "../containers/AssignContainer/CreateTarget/Targ
 import CriteriaTargetModal from "../containers/AssignContainer/CreateTarget/TargetTable/CriteriaTargetModal";
 import { Drawer } from "../Drawer";
 
-const Type8 = ({setSelectedRowsId, setSelectedTargetState}: {
-  setSelectedRowsId: Dispatch<SetStateAction<postResTargetAssignParamDT>> 
+const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
+  setSelectedRowsId: Dispatch<SetStateAction<postResTargetAssignParamDT>>
   setSelectedTargetState: Dispatch<SetStateAction<TargetItemDT[]>>;
 
 }) => {
   const { selectedTargetList: dataList, updateDraftTarget, selectedScriptList, selectedCriteriaList, selectedAssigneList } = useAssigneeContext();
   const [open, setOpen] = useState(false);
   const [openScriptModal, setOpenScriptModal] = useState<boolean>(false);
-  const [selectedTarget, setSelectedTarget] = useState<TargetItemDT | null>(
-    null
-  );
+  const [selectedTarget, setSelectedTarget] = useState<TargetItemDT | null>(null);
   const [openTargetModal, setOpenTargetModal] = useState<boolean>(false);
   const [openAssigneeModal, setOpenAssigneeModal] = useState<boolean>(false);
   const [openDeadlineModal, setOpenDeadlineModal] = useState<boolean>(false);
   const [remarkModal, setRemrkModal] = useState<boolean>(false);
+  const [singleTargetData, setSingleTargetData] = useState<TargetItemDT>();
+
 
   // const [drawerData, setDrawerData] = useState<any>();
 
@@ -72,10 +72,12 @@ const Type8 = ({setSelectedRowsId, setSelectedTargetState}: {
   const Type8columns: ColumnsType<TargetItemDT> = [
     {
       title: `${"# Target ID".toLocaleUpperCase()}`,
+      width: 178,
       render: (data: TargetItemDT) => <p className="text-small text-blue-gray-80 w-20 truncate"># {data?.id}</p>,
     },
     {
       title: `${"Script".toLocaleUpperCase()}`,
+      width: 178,
       render: (data: TargetItemDT) => (
         <div className="flex items-center gap-1 relative">
           <p className="text-small text-blue-gray-80 w-40 truncate"># {data.script.id}</p>
@@ -92,8 +94,12 @@ const Type8 = ({setSelectedRowsId, setSelectedTargetState}: {
             onClick={() => setOpenScriptModal(false)}
           ></div>
           {openScriptModal && selectedTarget?.id === data?.id && (
-            <div className="absolute bottom-11 right-0 w-[376px] bg-white rounded-md z-[100]">
-              {data.script.id && <ScriptTargetModal handleSelectItem={handleSelectItem} selectedItemList={selectedScriptList} selectedScriptId={data.script.id} selectedTargetId={selectedTarget.id} />}
+            <div className="absolute bottom-11 left-0  bg-white rounded-md z-[100]">
+              {
+                data.script.id &&
+                // <ScriptTargetBox targetTitle="Add Script" onClick={showDrawer}/>
+                <ScriptTargetModal handleSelectItem={handleSelectItem} selectedItemList={selectedScriptList} selectedScriptId={data.script.id} selectedTargetId={selectedTarget.id} />
+              }
             </div>
           )}
         </div>
@@ -101,6 +107,7 @@ const Type8 = ({setSelectedRowsId, setSelectedTargetState}: {
     },
     {
       title: `${"target".toLocaleUpperCase()}`,
+      width: 140,
       render: (data: TargetItemDT) => (
         <div className="flex items-center gap-1 relative">
           <p className="text-small text-blue-gray-80">{data.target.target}</p>
@@ -117,7 +124,7 @@ const Type8 = ({setSelectedRowsId, setSelectedTargetState}: {
             onClick={() => setOpenTargetModal(false)}
           ></div>
           {openTargetModal && selectedTarget?.id === data?.id && (
-            <div className="absolute bottom-11 right-0 w-[424px] bg-white rounded-md z-[100]">
+            <div className="absolute bottom-11 left-0  bg-white rounded-md z-[100]">
               {data.target.id && <CriteriaTargetModal handleSelectItem={handleSelectItem} selectedItemList={selectedCriteriaList} selectedCriteriaId={data.target.id} selectedTargetId={selectedTarget.id} />}
             </div>
           )}
@@ -126,6 +133,7 @@ const Type8 = ({setSelectedRowsId, setSelectedTargetState}: {
     },
     {
       title: `${"Assignee".toLocaleUpperCase()}`,
+      width: 264,
       render: (data: TargetItemDT) => (
         <div className="flex items-center justify-between gap-1 relative">
           <div className="flex items-start gap-2">
@@ -151,7 +159,7 @@ const Type8 = ({setSelectedRowsId, setSelectedTargetState}: {
             onClick={() => setOpenAssigneeModal(false)}
           ></div>
           {openAssigneeModal && selectedTarget?.id === data?.id && (
-            <div className="absolute bottom-11 right-0 w-[376px] bg-white rounded-md z-[100]">
+            <div className="absolute bottom-11 left-0 bg-white rounded-md z-[100]">
               {data.assignee.id && <AssigneeTargetModal handleSelectItem={handleSelectItem} selectedItemList={selectedAssigneList} selectedAssigneeId={data.assignee.id} selectedTargetId={selectedTarget.id} />}
             </div>
           )}
@@ -160,6 +168,7 @@ const Type8 = ({setSelectedRowsId, setSelectedTargetState}: {
     },
     {
       title: `${"Deadline".toLocaleUpperCase()}`,
+      width: 170,
       render: (data: TargetItemDT) => (
         <div className="flex items-center gap-1 relative">
           <p className="text-blue-gray-80 text-small">{data.target.deadline}</p>
@@ -175,15 +184,16 @@ const Type8 = ({setSelectedRowsId, setSelectedTargetState}: {
     },
     {
       title: `${"REMARK".toLocaleUpperCase()}`,
-      width: 136,
+      align: 'center',
+      width: 146,
       render: (data) => (
-        <div className="relative">
+        <div className="relative flex justify-center items-center">
           <Buttons.IconButton.Circle
             onClick={() => changeRemarkModal(true, data)}
             size="medium"
             variant="CT-Blue"
             icon={
-              <img src={Icons.File} className="h-[15px] w-[12px]" alt="" />
+              <img src={Icons.File} className="h-4 w-4" alt="" />
             }
             background="transparent"
           />
@@ -192,11 +202,11 @@ const Type8 = ({setSelectedRowsId, setSelectedTargetState}: {
               } bg-opacity-10 inset-0 bg-black animate-fadeIn fixed top-0 left-0 h-full w-full z-[90]`}
             onClick={() => setRemrkModal(false)}
           ></div>
-          {remarkModal && selectedTarget?.id === data?.id && (
+          {remarkModal && selectedTarget?.id === data?.id && selectedTarget?.target?.remark && (
             <div className="absolute top-6 right-0 w-[560px] bg-white rounded-md z-[100]">
               {/* <RemarkTargetModal
                 setModalOpen={setRemrkModal}
-                remark={selectedTarget.target.remark}
+                remark={selectedTarget?.target.remark}
               /> */}
             </div>
           )}
@@ -204,23 +214,28 @@ const Type8 = ({setSelectedRowsId, setSelectedTargetState}: {
       ),
     },
     {
-      title: `${"Details".toLocaleUpperCase()}`,
+      title: `${"Speaker Criteria".toLocaleUpperCase()}`,
       align: "center",
-      width: 80,
+      width: 178,
       render: (value, record) => (
-        <Buttons.IconButton.Circle
-          onClick={() => showDrawer(record)}
-          size="medium"
-          variant="CT-Blue"
-          icon={
-            <img
-              className="w-[14px] h-[14px] cursor-pointer"
-              src={Icons.open_in_new}
-              alt=""
-            />
-          }
-          background="transparent"
-        />
+        <div className="flex justify-center items-center">
+          <Buttons.IconButton.Circle
+            onClick={() => {
+              showDrawer(record)
+              setSingleTargetData(record)
+            }}
+            size="medium"
+            variant="CT-Blue"
+            icon={
+              <img
+                className="w-[14px] h-[14px] cursor-pointer"
+                src={Icons.open_in_new}
+                alt=""
+              />
+            }
+            background="transparent"
+          />
+        </div>
       ),
     },
   ];
@@ -236,7 +251,7 @@ const Type8 = ({setSelectedRowsId, setSelectedTargetState}: {
     getCheckboxProps: (record: TargetItemDT) => ({
       //   name: record.id,
     }),
-  };  
+  };
 
   return (
     <div className="billing-table billing-table-even-bg type4-table">
@@ -269,6 +284,7 @@ const Type8 = ({setSelectedRowsId, setSelectedTargetState}: {
       <Drawer.Target.Type1
         isDrawerOpen={open}
         setIsDrawerOpen={setOpen}
+        data={singleTargetData}
       />
     </div>
   );

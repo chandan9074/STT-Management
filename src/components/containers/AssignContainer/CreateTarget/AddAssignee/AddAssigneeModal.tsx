@@ -36,12 +36,13 @@ const AddAssigneeModal = ({
 
     const [form] = Form.useForm();
 
-    const [role, setRole] = useState<string>('Manager');
+    const commonContext = useContext(CommonContext)
+
+    const [role, setRole] = useState<string>(commonContext.role);
     const [customRoleData, setCustomRoleData] = useState<roleDT[]>([]);
     // const [type, setType] = useState<>
 
     const assignContext = useContext(AssignContext);
-    const commonContext = useContext(CommonContext);
     const [roleDatas, setRoleDatas] = useState<roleDT[]>([] as roleDT[]);
 
     const [isDropDownVisible, setIsDropDownVisible] = useState<boolean>(false);

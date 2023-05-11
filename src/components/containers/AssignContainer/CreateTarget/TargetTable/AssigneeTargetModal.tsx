@@ -41,7 +41,7 @@ const AssigneeTargetModal = ({ selectedAssigneeId, selectedTargetId, handleSelec
   };
 
   return (
-    <div className="flex flex-col w-full  pb-2 overflow-y-auto custom_scrollbar">
+    <div className="flex flex-col w-[376px] h-[175px] pb-2 overflow-y-auto custom_scrollbar">
       <div className="flex flex-col gap-3 items-start justify-start h-full w-full py-1">
         {/* headers  */}
         {searchEnable ? (

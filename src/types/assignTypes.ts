@@ -56,7 +56,7 @@ export interface TargetItemDT {
   script: scriptResDT;
   target: CriteriaItemDT;
   assignee: AssigneeItemDT;
-  // deadLine: string;
+  deadLine: string;
   // remark: {
   //   date: string;
   //   time: string;
