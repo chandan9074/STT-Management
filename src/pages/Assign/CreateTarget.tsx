@@ -105,7 +105,7 @@ const CreateTarget = () => {
           </div>
         </div>
         {showSave && <div className="absolute right-7 -bottom-4 animate-fadeIn">
-          <Buttons.LabelButton.Primary label="Save" size="xSmall" variant="Megenta" onClick={postDraftTarget} /></div>}
+          <Buttons.LabelButton.Primary label="Save" size="small" variant="Megenta" onClick={postDraftTarget} /></div>}
       </div>
 
       <TargetTable />

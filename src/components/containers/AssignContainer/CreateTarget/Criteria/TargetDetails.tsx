@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { AssignContext } from '../../../../../context/AssignProvider';
 import { CriteriaItemDT, customSingleCriteriaDT } from '../../../../../types/assignTypes';
 import Image from '../../../../Image';
+import Buttons from '../../../../Buttons';
 
 const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void }) => {
 
@@ -143,7 +144,8 @@ const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void 
                 </div>
                 <div
                     className='ml-auto'>
-                    <button onClick={() => onEditClick()} className='text-ct-blue-60'>Edit</button>
+                    {/* <button onClick={() => onEditClick()} className='text-ct-blue-60'>Edit</button> */}
+                    <Buttons.LabelButton.Tertiary label='Edit' size='xSmall' variant='Blue' onClick={() => onEditClick()}/>
                 </div>
             </div>
 
