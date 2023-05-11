@@ -3,7 +3,6 @@ import { DatePicker, DatePickerProps } from 'antd';
 import { FormikValues } from 'formik';
 import { useContext, useState } from 'react';
 import Icons from '../../../../../../assets/Icons';
-import { getDateWithMonthName2 } from '../../../../../../helpers/Utils';
 import { UserManagementContext } from '../../../../../../context/UserManagement';
 
 const TargetSetting = ({ formik }: { formik: FormikValues }) => {
@@ -26,13 +25,13 @@ const TargetSetting = ({ formik }: { formik: FormikValues }) => {
         setOpenReminderCaleder(false);
     };
 
-    const onReminderRemove = (value: string) => {
+    // const onReminderRemove = (value: string) => {
 
-        const _data = formik.values.reminder?.filter((m: string, index: number) => m !== value);
+    //     const _data = formik.values.reminder?.filter((m: string, index: number) => m !== value);
 
-        formik.setFieldValue("reminder", _data);
+    //     formik.setFieldValue("reminder", _data);
 
-    }
+    // }
 
     return (
         <div className='w-[308px]'>
