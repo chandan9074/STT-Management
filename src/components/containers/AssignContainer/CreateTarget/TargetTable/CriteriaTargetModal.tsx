@@ -67,7 +67,7 @@ const CriteriaTargetModal = ({ selectedCriteriaId, selectedTargetId,  handleSele
   }
 
   return (
-    <div className="flex flex-col w-full h-[300px] pb-2 overflow-y-auto custom_scrollbar">
+    <div className="w-[424px] h-[249px] flex flex-col  pb-2 overflow-y-auto custom_scrollbar">
       <div className="flex flex-col gap-3 items-start justify-start h-full w-full py-1">
         {/* headers  */}
         {searchEnable ? (

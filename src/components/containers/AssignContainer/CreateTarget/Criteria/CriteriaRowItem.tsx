@@ -34,7 +34,7 @@ const CriteriaRowItem = ({
           const itemArray = data[item as keyof CriteriaItemDT] as string[];
           if (itemArray.length > 0) {
             for (let i = 0; i < itemArray.length; i++) {
-              text += itemArray[i] + "- ";
+              text += itemArray[i] + ", ";
             }
           }
         } else if (typeof data[item as keyof CriteriaItemDT] === "string") {

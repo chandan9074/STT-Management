@@ -24,7 +24,7 @@ const ActionButton = ({ formik, onCreate, data }: Props) => {
 
                     <div className='flex gap-x-[16px] '>
                         {
-                            isEmpty(data) &&
+                            isEmpty(data) && (formik.values.ageRange !== '' && formik.values.district.length !== 0) &&
                             <button
                                 // onClick={(event) => {
                                 //     event?.preventDefault();
@@ -34,7 +34,7 @@ const ActionButton = ({ formik, onCreate, data }: Props) => {
                                 onClick={(event) => {
                                     if (criterias?.length > 0) {
                                         event.preventDefault();
-                                        onCreate(); 
+                                        onCreate();
                                     } else {
                                         formik.setValues({
                                             ...formik.values,
@@ -43,15 +43,33 @@ const ActionButton = ({ formik, onCreate, data }: Props) => {
                                         formik.handleSubmit(event); // call formik handleSubmit function
                                     }
                                 }}
-                                className='duration-700 border-[1px] border-blue-30 text-ct-blue-60 hover:border-ct-blue-30 rounded-[6px] py-[9px] px-[32px]'
+                                className='text-small font-semibold duration-300 transition ease-out border-[1px] border-blue-30 text-ct-blue-80 active:text-blue-gray-75 hover:bg-ct-blue-10 active:bg-blue-gray-10 hover:border-ct-blue-30 rounded-[6px] py-[9px] px-[32px]'
                             >
                                 Create
                             </button>
                         }
 
                         {
+                            (formik.values.ageRange === '' && formik.values.district.length === 0) &&
+                            <button onClick={(event) => {
+                                if (criterias?.length > 0) {
+                                    event.preventDefault();
+                                    onCreate();
+                                } else {
+                                    formik.setValues({
+                                        ...formik.values,
+                                        buttonName: 'create-button'
+                                    });
+                                    formik.handleSubmit(event); // call formik handleSubmit function
+                                }
+                            }} type='submit' className='text-small font-semibold duration-300 transition ease-out bg-primary-ct-blue-60 hover:bg-ct-blue-70 active:text-opacity-60 text-white rounded-[6px] py-[9px] px-[32px]'>
+                                create
+                            </button>
+                        }
+
+                        {
                             (formik.values.ageRange !== '' && formik.values.district.length !== 0) &&
-                            <button type='submit' className='duration-300 bg-primary-ct-blue-60 text-white rounded-[6px] py-[9px] px-[32px]'>
+                            <button className='text-small font-semibold duration-300 transition ease-out bg-primary-ct-blue-60 hover:bg-ct-blue-70 active:text-opacity-60 text-white rounded-[6px] py-[9px] px-[32px]'>
                                 Save
                             </button>
                         }

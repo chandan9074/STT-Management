@@ -329,7 +329,7 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                                 // error={formik.touched.recordingDistance && Boolean(formik.errors.recordingDistance)}
                                 // helperText={formik.touched.recordingDistance && formik.errors.recordingDistance}
 
-                                label={<h1 className='comboBoxLabel'>Recording Area
+                                label={<h1 className='comboBoxLabel'>Recording Distance/ Mode
                                     {/* <span className='text-[red]'>*</span> */}
                                 </h1>}
                                 variant="outlined"

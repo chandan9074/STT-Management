@@ -1,7 +1,7 @@
-import { customSingleCriteriaDT, targetDT } from '../../../types/assignTypes';
+import { TargetItemDT, customSingleCriteriaDT, targetDT } from '../../../types/assignTypes';
 
 type Props = {
-    data?: targetDT
+    data?: targetDT | TargetItemDT
 }
 
 const SpeakerCriteria = ({ data }: Props) => {
@@ -30,7 +30,7 @@ const SpeakerCriteria = ({ data }: Props) => {
         },
         {
             title: 'Education',
-            value: 'higher Secondary'
+            value: data?.target?.education || '-'
         },
         {
             title: 'Smoking Habit',

@@ -36,12 +36,13 @@ const AddAssigneeModal = ({
 
     const [form] = Form.useForm();
 
-    const [role, setRole] = useState<string>('Manager');
+    const commonContext = useContext(CommonContext)
+
+    const [role, setRole] = useState<string>(commonContext.role);
     const [customRoleData, setCustomRoleData] = useState<roleDT[]>([]);
     // const [type, setType] = useState<>
 
     const assignContext = useContext(AssignContext);
-    const commonContext = useContext(CommonContext);
     const [roleDatas, setRoleDatas] = useState<roleDT[]>([] as roleDT[]);
 
     const [isDropDownVisible, setIsDropDownVisible] = useState<boolean>(false);
@@ -188,15 +189,18 @@ const AddAssigneeModal = ({
                             </h3>
 
                             <div className='flex items-center gap-x-6'>
-                                <div className='flex justify-center items-center'>
-                                    {/* <Link to={`${BILLING_PAYMENT_HISTORY_PATH}/${singleManager?.id}`}> */}
-                                    <button
-                                        onClick={() => isRecreate ? onAddRecreateHandle() : onAddHandle()}
-                                        className=' text-white text-base bg-primary-ct-blue-60 rounded-[6px] py-[9px] px-8'>
-                                        Add
-                                    </button>
-                                    {/* </Link> */}
-                                </div>
+                                {
+                                    (customRoleData.length > 0) &&
+                                    <div className='flex justify-center items-center'>
+                                        {/* <Link to={`${BILLING_PAYMENT_HISTORY_PATH}/${singleManager?.id}`}> */}
+                                        <button
+                                            onClick={() => isRecreate ? onAddRecreateHandle() : onAddHandle()}
+                                            className=' text-white text-base bg-primary-ct-blue-60 rounded-[6px] py-[9px] px-8'>
+                                            Add
+                                        </button>
+                                        {/* </Link> */}
+                                    </div>
+                                }
 
                                 <Buttons.IconButton.Circle
                                     size='medium'

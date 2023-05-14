@@ -43,7 +43,7 @@ const ScriptTargetModal = ({ selectedScriptId, selectedTargetId, handleSelectIte
   };
 
   return (
-    <div className="flex flex-col pb-2 overflow-y-auto custom_scrollbar">
+    <div className="w-[376px] h-[249px]  flex flex-col pb-2 overflow-y-auto custom_scrollbar">
       <div className="flex flex-col gap-3 items-start justify-start h-full py-1">
         {/* headers  */}
         {searchEnable ? (

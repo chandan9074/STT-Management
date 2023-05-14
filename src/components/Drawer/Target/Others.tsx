@@ -1,7 +1,7 @@
-import { customSingleCriteriaDT, targetDT } from '../../../types/assignTypes';
+import { TargetItemDT, customSingleCriteriaDT, targetDT } from '../../../types/assignTypes';
 
 type Props = {
-    data?: targetDT
+    data?: targetDT | TargetItemDT
 }
 
 const Others = ({ data }: Props) => {

@@ -25,9 +25,9 @@ const CommonProvider = ({ children }: { children: any }) => {
   // const [loading, setLoading] = useState<boolean>(true);
   // const [errorMsg, setErrorMsg] = useState<string>("");
   const [type, setType] = useState<string>("STT");
-  const [role, setRole] = useState<string>("admin");
+  const [role, setRole] = useState<string>("Admin");
   const [roleName, setRoleName] = useState<string>("Md. Jalal Uddin");
-  const [roleId, setRoleId] = useState<string>("shahrukkhan23@gmail.com");
+  const [roleId, setRoleId] = useState<string>("rahim@gmail.com");
   const [toastOpen, setToastOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
 

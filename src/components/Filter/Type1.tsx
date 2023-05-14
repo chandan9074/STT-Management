@@ -174,7 +174,7 @@ const Type1 = ({ filterData, align }: { filterData: FilterDT, align?: "center" |
                             distributionSource: [],
                           })
                       }
-                      className="text-xxs font-medium text-ct-blue-60 animate-fadeIn"
+                      className="text-xxs font-medium text-ct-blue-60 animate-fadeIn pr-3"
                     >
                       Reset
                     </button>
@@ -324,7 +324,7 @@ const Type1 = ({ filterData, align }: { filterData: FilterDT, align?: "center" |
                             subdomain: [],
                           })
                       }
-                      className="text-xxs font-medium text-ct-blue-60 animate-fadeIn"
+                      className="text-xxs font-medium text-ct-blue-60 animate-fadeIn pr-3"
                     >
                       Reset
                     </button>

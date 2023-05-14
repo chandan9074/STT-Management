@@ -2,10 +2,9 @@ import React from "react";
 import Icons from "../../../../../assets/Icons";
 import Buttons from "../../../../Buttons";
 import "../../../../../assets/css/table/criteria_details.css";
-import { TargetItemDT } from "../../../../../types/assignTypes";
 type Props = {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  remark: string;
+  remark?: string;
 };
 
 const RemarkTargetModal = ({ setModalOpen, remark }: Props) => {
@@ -30,7 +29,7 @@ const RemarkTargetModal = ({ setModalOpen, remark }: Props) => {
           {/* {remark?.date} , {remark?.time} */}
         </p>
         <img
-        alt=""
+          alt=""
           src={Icons.admin}
           className="w-[20px] h-[20px] object-cover ml-2"
         />

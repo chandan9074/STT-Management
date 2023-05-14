@@ -66,7 +66,7 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
                             <div className={`flex items-center justify-between py-2 w-full`}>
                                 <button
                                     onClick={() => item.isParent && filterList[item.isParent].length === 0 ? setCurrentState("") : currentState === item.key ? setCurrentState("") : setCurrentState(item.key)}
-                                    className={`flex items-center w-full mr-5 ${item.isParent && filterList[item.isParent].length === 0 ? "cursor-not-allowed opacity-60" : "cursor-pointer"}`}
+                                    className={`flex items-center w-full mr-2 ${item.isParent && filterList[item.isParent].length === 0 ? "cursor-not-allowed opacity-60" : "cursor-pointer"}`}
                                 >
                                     {currentState === item.key ? (
                                         <img
