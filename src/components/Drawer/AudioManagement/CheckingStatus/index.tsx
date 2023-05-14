@@ -146,7 +146,7 @@ const CheckingStatus = ({ targetTitle, isDrawerOpen, setIsDrawerOpen: setOpen, i
                                     <div className='px-5 pt-[46px]'>
                                         {
                                             activePanel.includes("Script") ?
-                                                <Script data={script} setIsMetaData={setIsMetaData} isMetaData={isMetaData} />
+                                                <Script data={script} setIsMetaData={setIsMetaData} isMetaData={isMetaData} downloadable={true} />
                                                 :
                                                 activePanel.includes("Others") ?
                                                     <>

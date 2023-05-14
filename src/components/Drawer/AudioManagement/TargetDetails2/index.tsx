@@ -98,7 +98,7 @@ const TargetDetails2 = ({ status, targetTitle, isDrawerOpen, setIsDrawerOpen: se
                                             <SpeakerInformation data={speaker} isHeader={false} />
                                             :
                                             activePanel.includes("Script") ?
-                                                <Script data={script} setIsMetaData={setIsMetaData} isMetaData={isMetaData} />
+                                                <Script data={script} setIsMetaData={setIsMetaData} isMetaData={isMetaData} downloadable={true} />
                                                 :
                                                 activePanel.includes("Others") ?
                                                     <>

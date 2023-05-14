@@ -222,6 +222,8 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
           <Buttons.IconButton.Circle
             onClick={() => {
               showDrawer(record)
+              console.log("click hoisi");
+              
               setSingleTargetData(record)
             }}
             size="medium"

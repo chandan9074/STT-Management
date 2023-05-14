@@ -48,6 +48,7 @@ export const GET_DRAFT_TARGET_URL = `${REACT_APP_BASE_URL2}/get_res_draft_target
 export const UPDATE_DRAFT_TARGET_URL = `${REACT_APP_BASE_URL2}/update_draft_target_assign_module`;
 export const CREATE_ASSIGNEE_URL = `${REACT_APP_BASE_URL2}/post_res_selected_assignee_assign_module`;
 export const GET_TARGET_ASSIGN_URL = `${REACT_APP_BASE_URL2}/get_res_target_assign_module`;
+export const GET_ID_TARGET_ASSIGN_URL = `${REACT_APP_BASE_URL2}/get_res_by_id_target_module`;
 export const GET_ROLE_LIST_BY_ROLE = `${REACT_APP_BASE_URL2}/get_res_role_list_by_role`;
 export const UPDATE_ASSIGNEE_MAIN_TARGET_ASSIGN_PATH = `${REACT_APP_BASE_URL2}/update_assignee_main_target_assign_module`;
 export const POST_RES_TARGET_ASSIGN_PATH = `${REACT_APP_BASE_URL2}/post_res_target_assign_module`;

@@ -130,15 +130,15 @@ const Type14 = ({ data }: Props) => {
             width: 85,
             render: (_, record: targetCompletedDT) => (
                 <div className='flex justify-center items-center'>
-
+targetCompletedData
                     <div className='flex justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full'>
                         <Link to={`${location.pathname}/${PATH.USER_MANAGEMENT_SPEECHES_PATH}/${record.id}`}>
-                        <button className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-ct-blue-10 active:border active:border-ct-blue-10'>
-                            <img
-                                className='w-[14px] h-[14px]'
-                                src={Icons.East}
-                                alt="" />
-                        </button>
+                            <button className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-ct-blue-10 active:border active:border-ct-blue-10'>
+                                <img
+                                    className='w-[14px] h-[14px]'
+                                    src={Icons.East}
+                                    alt="" />
+                            </button>
                         </Link>
                     </div>
 
@@ -168,7 +168,7 @@ const Type14 = ({ data }: Props) => {
                     roleName={singleTargetData?.assignee?.name ? singleTargetData?.assignee?.name : ''}
                     roleType={singleTargetData?.assignee?.role ? singleTargetData?.assignee?.role : ''}
                     dateTime={'07/02/2022, 5:34 PM'}
-                    desc={singleTargetData?.target?.remark ? singleTargetData?.target?.remark : ''}
+                    desc={singleTargetData?.target?.remark ? singleTargetData?.target?.remark.des : ''}
                 />
             }
 

@@ -35,7 +35,16 @@ export interface CriteriaItemDT {
   target: number;
   deadline: string;
   reminder: string[];
-  remark: string;
+  remark: {
+    roleInfo: {
+      id: string;
+      name: string;
+      role: string;
+      gender: string;
+    },
+    des: string;
+    deadline: string;
+  };
   buttonName?: "";
 }
 

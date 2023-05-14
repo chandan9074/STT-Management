@@ -11,7 +11,7 @@ const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void 
         criterias,
         singleCriteria,
         getSingleCriteria,
-    } = AssignContexts;    
+    } = AssignContexts;
 
     const singleValue1: customSingleCriteriaDT[] = [
         {
@@ -76,7 +76,7 @@ const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void 
         },
         {
             title: 'Note',
-            value: singleCriteria?.remark || '-'
+            value: singleCriteria?.remark.des || '-'
         },
 
     ]
@@ -145,7 +145,7 @@ const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void 
                 <div
                     className='ml-auto'>
                     {/* <button onClick={() => onEditClick()} className='text-ct-blue-60'>Edit</button> */}
-                    <Buttons.LabelButton.Tertiary label='Edit' size='xSmall' variant='Blue' onClick={() => onEditClick()}/>
+                    <Buttons.LabelButton.Tertiary label='Edit' size='xSmall' variant='Blue' onClick={() => onEditClick()} />
                 </div>
             </div>
 

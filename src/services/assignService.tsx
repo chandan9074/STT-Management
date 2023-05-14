@@ -1,5 +1,4 @@
 import axios from "axios";
-import { targetDataForRecreate } from "../data/assign/AssignData";
 import * as PATH from "../helpers/APIURL";
 import { allScriptParamsDT, audioStatisticsParamDT, createAssigneeParamsDT, CriteriaItemDT, postDraftTargetBodyDT, postResTargetAssignParamDT, postSelectedScriptBodyDT, roleListByRoleParamDT, singleTargetSpeechesAssignDT, targetAssignParamDT, updateAssigneeMainTargetParamDT, updateDraftTargetQueryParams } from "../types/assignTypes";
 
@@ -80,7 +79,7 @@ export default class AssignService {
   }
 
   static fetchTargetForRecreate(id: string) {
-    return targetDataForRecreate;
+    return axios.get(`${PATH.GET_ID_TARGET_ASSIGN_URL}`, { params: { id: id } });
   }
 
   static fetchRoleListByRole(params: roleListByRoleParamDT) {

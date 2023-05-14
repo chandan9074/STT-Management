@@ -457,7 +457,16 @@ export const targetCompletedData =
                     "kisr",
                     "ki"
                 ],
-                "remark": "nai kono remark"
+                "remark": {
+                    "roleInfo": {
+                        "id": "252b94fc-ba67-4907-bf8f-906988b69dd2",
+                        "name": "mr rahman",
+                        "role": "Collector",
+                        "gender": "male"
+                    },
+                    "deadline": "2023-02-11",
+                    "des": "this is new des for remark"
+                }
             },
             "assignee": {
                 "id": "2ce4e033-59f4-4381-94c0-2f435dd3bfb4",
@@ -501,7 +510,16 @@ export const targetCompletedData =
                     "kisr",
                     "ki"
                 ],
-                "remark": "nai kono remark"
+                "remark": {
+                    "roleInfo": {
+                        "id": "252b94fc-ba67-4907-bf8f-906988b69dd2",
+                        "name": "mr rahman",
+                        "role": "Collector",
+                        "gender": "male"
+                    },
+                    "deadline": "2023-02-11",
+                    "des": "this is new des for remark"
+                }
             },
             "assignee": {
                 "id": "2ce4e033-59f4-4381-94c0-2f435dd3bfb4",
@@ -565,7 +583,16 @@ export const targetData = [
                 "kisr",
                 "ki"
             ],
-            "remark": "nai kono remark"
+            "remark": {
+                "roleInfo": {
+                    "id": "252b94fc-ba67-4907-bf8f-906988b69dd2",
+                    "name": "mr rahman",
+                    "role": "Collector",
+                    "gender": "male"
+                },
+                "deadline": "2023-02-11",
+                "des": "this is new des for remark"
+            }
         },
         "assignee": {
             "id": "2ce4e033-59f4-4381-94c0-2f435dd3bfb4",
@@ -625,7 +652,16 @@ export const targetData = [
                 "kisr",
                 "ki"
             ],
-            "remark": "nai kono remark"
+            "remark": {
+                "roleInfo": {
+                    "id": "252b94fc-ba67-4907-bf8f-906988b69dd2",
+                    "name": "mr rahman",
+                    "role": "Collector",
+                    "gender": "male"
+                },
+                "deadline": "2023-02-11",
+                "des": "this is new des for remark"
+            }
         },
         "assignee": {
             "id": "2ce4e033-59f4-4381-94c0-2f435dd3bfb4",
@@ -685,7 +721,16 @@ export const targetData = [
                 "kisr",
                 "ki"
             ],
-            "remark": "nai kono remark"
+            "remark": {
+                "roleInfo": {
+                    "id": "252b94fc-ba67-4907-bf8f-906988b69dd2",
+                    "name": "mr rahman",
+                    "role": "Collector",
+                    "gender": "male"
+                },
+                "deadline": "2023-02-11",
+                "des": "this is new des for remark"
+            }
         },
         "assignee": {
             "id": "2ce4e033-59f4-4381-94c0-2f435dd3bfb4",
@@ -745,7 +790,16 @@ export const targetData = [
                 "kisr",
                 "ki"
             ],
-            "remark": "nai kono remark"
+            "remark": {
+                "roleInfo": {
+                    "id": "252b94fc-ba67-4907-bf8f-906988b69dd2",
+                    "name": "mr rahman",
+                    "role": "Collector",
+                    "gender": "male"
+                },
+                "deadline": "2023-02-11",
+                "des": "this is new des for remark"
+            }
         },
         "assignee": {
             "id": "2ce4e033-59f4-4381-94c0-2f435dd3bfb4",
