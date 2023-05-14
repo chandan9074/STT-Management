@@ -22,7 +22,7 @@ const Others = ({ data }: Props) => {
         },
         {
             title: 'Note',
-            value: data?.target?.remark.des || '-'
+            value: (data?.target.remark &&  (typeof(data?.target?.remark) !== 'string') && data?.target?.remark.Des) || '-'
         },
         {
             title: 'Assignee',

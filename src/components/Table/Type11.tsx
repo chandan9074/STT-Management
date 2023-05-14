@@ -22,6 +22,7 @@ import RecordingDistanceField from '../containers/AssignContainer/AllTarget/Edit
 import Pagination from '../Pagination';
 import { AssignContext } from '../../context/AssignProvider';
 import { CommonContext } from '../../context/CommonProvider';
+import '../../assets/css/table/speech_upload.css'
 
 
 type Props = {
@@ -217,7 +218,7 @@ const Type11 = ({ data }: Props) => {
         {
             title: `${"device".toLocaleUpperCase()}`,
             key: 'device',
-            width: 126,
+            width: 160,
             render: (data) =>
                 <>
                     <DeviceField

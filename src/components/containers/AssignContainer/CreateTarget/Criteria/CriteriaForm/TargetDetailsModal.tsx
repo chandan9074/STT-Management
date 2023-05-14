@@ -77,7 +77,7 @@ const TargetDetailsModal = ({ setModalOpen, targetId }: { setModalOpen: React.Di
         },
         {
             title: 'Note',
-            value: singleCriteria?.remark.des || '-'
+            value: (singleCriteria.remark && (typeof(singleCriteria?.remark) !== 'string') && singleCriteria?.remark.Des) || '-'
         },
 
     ]

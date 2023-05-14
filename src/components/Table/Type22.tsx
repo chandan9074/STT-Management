@@ -170,13 +170,9 @@ const Type22 = ({ data, setSelectedRowSData }: Props) => {
 
   const rowSelection = {
     onChange: (selectedRowKeys: React.Key[], selectedRows: collectValSenDataDT[]) => {
-      // setSelectedTarget(selectedRows);
       if (setSelectedRowSData) {
         setSelectedRowSData(selectedRows)
-
-    }
-
-
+      }
     },
     getCheckboxProps: (record: collectValSenDataDT) => ({
       // disabled: record.name === 'Disabled User', // Column configuration not to be checked
