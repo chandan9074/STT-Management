@@ -11,7 +11,7 @@ const Secondary = ({ isSideDrawer }: { isSideDrawer: boolean }) => {
   console.log("paths", paths)
   const breadcrumbs = paths.map((path, index) => ({
     name: slugFormatter(path),
-    path: `${ROOT_PATH}${paths.slice(0, path === 'assign' ? index + 2 : path === "audio-management" ? index + 2 : path === "checking" ? index + 2 : path === 'annotation' ? index + 2 : path === 'validation' ? index + 2 : index + 1).join('/')}`,
+    path: `${ROOT_PATH}${paths.slice(0, path === 'assign' ? index + 2 : path === "audio-management" ? index + 2 : path === "checking" ? index + 2 : path === 'annotation' ? index + 2 : path === 'validation' ? index + 2  : path === 'recreate' ? index + 2 : index + 1).join('/')}`,
     // path: `${ROOT_PATH}${paths.slice(0, path === "assign" ? index + 2 : index + 1).join('/')}}`,
   }));
   console.log(breadcrumbs)

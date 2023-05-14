@@ -20,7 +20,7 @@ const CriteriaTargetBox = ({
     useState(false);
 
 
-  const { targetForRecreate, setTargetForRecreate, singleCriteriaData, getCriteriaByID, getSingleCriteriaRecreate, singleCriteriaRecreate, setRecreateTable, recreateTable } = useAssigneeContext();
+  const { targetForRecreate, setTargetForRecreate, singleCriteriaData, getCriteriaByID, getSingleCriteriaRecreate, singleCriteriaRecreate, setRecreateTable, recreateTable, setEmptySingleCriteria } = useAssigneeContext();
   const optionMenuRef = useRef<null | HTMLDivElement>(null);
   const [criteriaId, setCriteriaId] = useState<string>();
 
@@ -77,6 +77,12 @@ const CriteriaTargetBox = ({
   const drawerClose = () => {
     setDrawerOpen(false);
   };
+
+  const onEditCriteriaClick = (id: string) => {
+    setEmptySingleCriteria();
+    setDrawerOpen(true);
+    getCriteriaByID(id);
+  }
 
 
   return (
@@ -174,6 +180,18 @@ const CriteriaTargetBox = ({
                               </div>
                             </button>
                             <button
+                              onClick={() => {
+                                onEditCriteriaClick(criteria?.id)
+                                setCriteriaId("")
+                              }}
+                              className={`flex w-full items-center justify-between px-4 py-3 rounded-t-lg cursor-pointer  hover:bg-[rgba(44,121,190,0.12)]`}
+                            >
+                              <div className="flex items-center gap-4 cursor-pointer">
+                                <img src={Icons.edit_blue} alt="" />
+                                <p>Edit</p>
+                              </div>
+                            </button>
+                            <button
                               onClick={() => setTargetForRecreate(targetForRecreate?.filter((item) => item?.id !== criteria?.id))}
                               className={`flex w-full items-center justify-between px-4 py-3 rounded-t-lg cursor-pointer  hover:bg-[rgba(44,121,190,0.12)]`}
                             >
@@ -196,7 +214,7 @@ const CriteriaTargetBox = ({
                 <Drawer.Criteria.Type1
                   isDrawerOpen={drawerOpen}
                   drawerClose={drawerClose}
-                  title="Create Critaria"
+                  title="Update Critaria"
                 >
                   <CriteriaForm drawerClose={drawerClose} data={singleCriteriaData} />
                 </Drawer.Criteria.Type1>

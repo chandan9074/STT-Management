@@ -1,3 +1,4 @@
+import Icons from '../../../assets/Icons';
 import { TargetItemDT, targetDT } from '../../../types/assignTypes';
 import RoleImage from '../../Image/RoleImage';
 
@@ -48,9 +49,27 @@ const Others = ({ data }: Props) => {
                         )) : item.title === "Assignee" ? <div>
                             <div>
                                 {data?.assignee.role &&
-                                    <div className='flex gap-x-2'>
-                                        <RoleImage role={data?.assignee.role} height='h-4' width='w-4' />
-                                        <h3 className='text-small font-medium text-ct-blue-95'>{data.assignee.name}</h3>
+                                    <div className='flex flex-col gap-y-3'>
+                                        <div className='flex items-center gap-x-2'>
+                                            <RoleImage role={data?.assignee.role} height='h-4' width='w-4' />
+                                            <h3 className='text-small font-medium text-ct-blue-95'>{data.assignee.name}</h3>
+                                        </div>
+                                        <div className='flex items-center gap-x-2'>
+                                            <img src={Icons.military_tech} alt=''/>
+                                            <h3 className='text-small text-blue-gray-80'>{data.assignee.role}</h3>
+                                        </div>
+                                        <div className='flex items-center gap-x-2'>
+                                            <img src={Icons.mail} alt=''/>
+                                            <h3 className='text-small text-blue-gray-80'>{data.assignee.email}</h3>
+                                        </div>
+                                        <div className='flex items-center gap-x-2'>
+                                            <img src={Icons.call} alt=''/>
+                                            <h3 className='text-small text-blue-gray-80'>{data.assignee.contact}</h3>
+                                        </div>
+                                        <div className='flex items-center gap-x-2'>
+                                            <img src={Icons.home} alt=''/>
+                                            <h3 className='text-small text-blue-gray-80'>{data.assignee.address}</h3>
+                                        </div>
                                     </div>
                                 }
                             </div>
