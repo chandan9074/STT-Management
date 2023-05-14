@@ -35,6 +35,7 @@ export interface CriteriaItemDT {
   target: number;
   deadline: string;
   reminder: string[];
+  childhoodArea?: string,
   remark?: {
     roleInfo: {
       id: string;
@@ -152,6 +153,7 @@ export type targetDT = {
   id: string;
   script: targetScriptDT;
   target: CriteriaItemDT;
+  // target: userSpeakerDt;
   assignee: AssigneeItemDT;
   status: number;
   speeches: {

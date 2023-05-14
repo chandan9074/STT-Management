@@ -524,6 +524,7 @@ export const targetData = [
             ],
             "recordingArea": "baire",
             "recordingDistance": "baire",
+            "childhoodArea": "Chottogram",
             "education": "secondary",
             "target": 2345,
             "deadline": "30/01/2022",

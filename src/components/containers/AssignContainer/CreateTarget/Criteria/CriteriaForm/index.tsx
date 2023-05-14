@@ -10,7 +10,6 @@ import { AssignContext, useAssigneeContext } from '../../../../../../context/Ass
 import { isEmpty } from '../../../../../../helpers/Utils';
 import { CriteriaItemDT } from '../../../../../../types/assignTypes';
 import { CommonContext } from '../../../../../../context/CommonProvider';
-import Remark from '../../../../../common/Remark';
 
 const validationSchema = yup.object({
     // gender: yup.string().required('Gender is Required'),
