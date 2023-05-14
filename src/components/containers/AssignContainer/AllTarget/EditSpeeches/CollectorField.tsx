@@ -79,21 +79,6 @@ const CollectorField = ({ data, roleDatas, speechData, setSpeechData, collector,
                                             <Box
                                                 sx={{
                                                     width: '254px',
-                                                    // overfloMaksud AlamwX: 'hidden',
-                                                    // overflow: 'auto',
-                                                    // maxHeight: '200px',
-                                                    // '::-webkit-scrollbar': {
-                                                    //     width: '4px',
-                                                    //     height: '2px',
-                                                    // },
-                                                    // '::-webkit-scrollbar-thumb': {
-                                                    //     // background: 'rgba(0, 0, 0, 0.2)',
-                                                    //     borderRadius: '6px',
-                                                    //     background: 'red'
-                                                    // },
-                                                    // '::-webkit-scrollbar-thumb:hover': {
-                                                    //     background: 'red'
-                                                    // },
                                                 }}
                                             >
                                                 {children}

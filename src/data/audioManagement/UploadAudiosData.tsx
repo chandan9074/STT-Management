@@ -183,31 +183,31 @@ export const checkingStatusUploadData = [
                 ],
             }
         },
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
-            },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
-            },
-        ],
+        // "remark": [
+        //     {
+        //         "roleInfo": {
+        //             "id": "maksudalam@gmail.com",
+        //             "name": "Maksud Alam",
+        //             "role": "Manager",
+        //             "gender": "Male",
+        //         },
+        //         "deadline": "05/02/2022, 5:41 AM",
+        //         "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+        //         "status": "Claim Approved"
+        //     },
+        //     {
+        //         "id": "385",
+        //         "roleInfo": {
+        //             "id": "maksudalam@gmail.com",
+        //             "name": "Maksud Alam",
+        //             "role": "Manager",
+        //             "gender": "Male",
+        //         },
+        //         "deadline": "05/02/2022, 5:41 AM",
+        //         "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+        //         "status": "Cancelled"
+        //     },
+        // ],
         "speaker": {
             "speakerNo": "03",
             "gender": ["male", "female"],
@@ -215,224 +215,11 @@ export const checkingStatusUploadData = [
             "age": ["15-24 years", "35-44 years"]
         },
         "deadLine": "01/02/2022",
-    },
-    {
-        "id": "dasrtgb451",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "audioChecker": {
-            "status": "Checking",
-            "name": "Peter Bailish",
-            "role": "annotator",
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM"
-        },
-        "speechInfo": {
-            "dataType": "STT",
-            "fileType": "Audio",
-            "sourceType": "BBC",
-            "sourceReference": "https://www.bbc.com/bengali/news-62449191",
-            "dataSource": "Read",
-            "domain": "Educational or Informative",
-            "subDomain": "Educational Demnstrations"
-        },
-        "others": {
-            "journey": {
-                "role": [
-                    {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
-                    },
-                    {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
-                    },
-                    {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
-                    },
-                ],
-            }
-        },
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
-            },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
-            },
-        ],
-        "speaker": {
-            "speakerNo": "03",
-            "gender": ["male", "female"],
-            "area": "natore",
-            "age": ["15-24 years", "35-44 years"]
-        },
-        "deadLine": "01/02/2022",
-    },
+    }
 
 ]
 
 export const allCheckedSpeechData = [
-    {
-        "id": "v4513245wqer2",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "audioChecker": {
-            "status": "Took a Break",
-            "name": "Zakir Hossain",
-            "role": "audio checker",
-            "locality": "North-East Bangla",
-            "time": "01 Feb ; 3:30 PM"
-        },
-        "status": "Cancelled",
-        "deadLine": "01/02/2022",
-        "submissionDate": "01/02/2022",
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
-            },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
-            },
-        ],
-        "speaker": {
-            "speakerNo": "03",
-            "gender": ["male", "female"],
-            "area": "natore",
-            "age": ["15-24 years", "35-44 years"]
-        },
-        "speechInfo": {
-            "dataType": "STT",
-            "fileType": "Audio",
-            "sourceType": "BBC",
-            "sourceReference": "https://www.bbc.com/bengali/news-62449191",
-            "dataSource": "Read",
-            "domain": "Educational or Informative",
-            "subDomain": "Educational Demnstrations"
-        },
-        "others": {
-            "journey": {
-                "role": [
-                    {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
-                    },
-                    {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
-                    },
-                    {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
-                    },
-                ],
-            }
-        },
-        "history": [
-            {
-                "id": "123",
-                "lastEdited": '01/02/2022',
-                "status": "Reassigned",
-                "name": "Md. Jalal Uddin",
-                "role": "Admin",
-                "remark": [
-                    {
-                        "id": "333",
-                        "roleInfo": {
-                            "id": "maksudalam@gmail.com",
-                            "name": "Maksud Alam",
-                            "role": "Manager",
-                            "gender": "Male",
-                        },
-                        "deadline": "05/02/2022, 5:41 AM",
-                        "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                        "status": "Claim Approved"
-                    },
-                    {
-                        "id": "385",
-                        "roleInfo": {
-                            "id": "maksudalam@gmail.com",
-                            "name": "Maksud Alam",
-                            "role": "Manager",
-                            "gender": "Male",
-                        },
-                        "deadline": "05/02/2022, 5:41 AM",
-                        "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                        "status": "Cancelled"
-                    },
-                ]
-            }
-        ],
-    },
     {
         "id": "v4513245wqer2",
         "speech": {
@@ -628,18 +415,17 @@ export const annotationUploadData = [
                 "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
                 "status": "Claim Approved"
             },
-            // {
-            //     "id": "385",
-            //     "roleInfo": {
-            //         "id": "maksudalam@gmail.com",
-            //         "name": "Maksud Alam",
-            //         "role": "Manager",
-            //         "gender": "Male",
-            //     },
-            //     "deadline": "05/02/2022, 5:41 AM",
-            //     "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-            //     "status": "Cancelled"
-            // },
+            {
+                "roleInfo": {
+                    "id": "shahrukh@gmail.com",
+                    "name": "Shah Rukh khan",
+                    "role": "Team Leader",
+                    "gender": "Male",
+                },
+                "deadline": "05/02/2022, 5:41 AM",
+                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                "status": "Claim Approved"
+            },
         ]
     },
     {

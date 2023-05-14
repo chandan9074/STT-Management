@@ -1,8 +1,9 @@
-import { Autocomplete, Box, TextField } from '@mui/material';
-import { Dispatch, SetStateAction } from 'react';
+import { Autocomplete, Box, Popper, TextField } from '@mui/material';
+import { Dispatch, SetStateAction, useContext } from 'react';
 import Icons from '../../../../../assets/Icons';
 import { speechDt } from '../../../../../types/assignTypes';
 import { customMuiListStyle } from '../../../../../helpers/Utils';
+import { UserManagementContext } from '../../../../../context/UserManagement';
 
 type Props = {
     deviceId: string;
@@ -17,6 +18,8 @@ type Props = {
 
 const DeviceField = ({ data, device, deviceData, deviceId, setDeviceId, setDevice, speechData, setSpeechData }: Props) => {
     const classes = customMuiListStyle();
+
+    const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
 
     const deviceOnChange = (value: string) => {
         setDevice(value ?? undefined);
@@ -36,13 +39,14 @@ const DeviceField = ({ data, device, deviceData, deviceId, setDeviceId, setDevic
     }
 
     return (
-        <div className='assign'>
+        <div className='assign custom-dpd-icon'>
             {
                 deviceId === data?.id ?
                     <div className='animate-fadeIn'>
                         <div className="fixed top-0 left-0 opacity-50 bg-transparent w-full h-screen "
                             onClick={() => setDeviceId('')} />
-                        <div className='relative'>
+                        {/* <div className='relative border border-secondary-blue-50'> */}
+                        <div className={`relative ${selectedFieldOutline === data.id ? 'border border-secondary-blue-50' : 'border-transparent'} rounded-[7px]`}>
                             <Autocomplete
                                 classes={{ option: classes.option }}
                                 placeholder='Choose one'
@@ -59,12 +63,25 @@ const DeviceField = ({ data, device, deviceData, deviceId, setDeviceId, setDevic
                                     }
                                 }}
 
+                                // popupIcon={< />}
+                                PopperComponent={(props: any) => (
+                                    <Popper {...props}>
+                                      <Box
+                                        sx={{
+                                          width: '200px',
+                                        }}
+                                      >
+                                        {props.children}
+                                      </Box>
+                                    </Popper>
+                                  )}
+
+
                                 renderOption={(props, option) => (
                                     <Box key={option} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
                                         <h1 className='text-small text-blue-gray-80 font-medium'>{`${option}`}</h1>
                                     </Box>
                                 )}
-
 
                                 renderInput={(params) => (
 
@@ -73,7 +90,9 @@ const DeviceField = ({ data, device, deviceData, deviceId, setDeviceId, setDevic
                                         name="device"
                                         placeholder='Select One'
                                         style={{ outlineColor: "red" }}
-
+                                        variant='outlined'
+                                        onFocus={() => setSelectedFieldOutline(data.id)}
+                                        onBlur={() => setSelectedFieldOutline("")}
                                     />
                                 )}
                             />

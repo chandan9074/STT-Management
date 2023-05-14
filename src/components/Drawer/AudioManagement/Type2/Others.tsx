@@ -11,7 +11,7 @@ const Others = ({ data, remark }: { data: othersUploadAudioDT, remark?: historyR
 
 
     return (
-        <div className='flex flex-col gap-y-6'>
+        <div className='flex flex-col gap-y-6 mb-4'>
             <div>
                 {(remark && !isEmpty(remark)) && <h4 className='text-blue-gray-75 text-xxs'>Remark</h4>}
                 {

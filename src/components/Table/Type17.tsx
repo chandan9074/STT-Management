@@ -1,6 +1,6 @@
 import { Table } from 'antd'
 import { ColumnsType } from 'antd/es/table'
-import { useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import Icons from '../../assets/Icons'
 import { checkingStatusDT } from '../../types/audioManagementTypes'
 import AudioTrack from '../common/AudioTrack'
@@ -11,15 +11,16 @@ import { Drawer } from '../Drawer'
 import Remark2 from '../containers/AudioManagement/TableField/Remark2'
 
 type Props = {
-    data: checkingStatusDT[]
+    data: checkingStatusDT[],
+    setSelectedRowSData?: Dispatch<SetStateAction<checkingStatusDT[]>>,
 }
 
-const Type17 = ({ data }: Props) => {
+const Type17 = ({ data, setSelectedRowSData }: Props) => {
     const [remarkOpen, setRemarkOpen] = useState(false);
     const [singleTargetData, setSingleTargetData] = useState<checkingStatusDT>();
     const [open, setOpen] = useState(false);
     console.log(singleTargetData);
-    
+
 
     const showDrawer = (item: checkingStatusDT) => {
         setOpen(true);
@@ -153,10 +154,9 @@ const Type17 = ({ data }: Props) => {
 
     const rowSelection = {
         onChange: (selectedRowKeys: React.Key[], selectedRows: checkingStatusDT[]) => {
-            // setSelectedTarget(selectedRows);
-            console.log('*******', selectedRows);
-
-
+            if (setSelectedRowSData) {
+                setSelectedRowSData(selectedRows)
+            }
         },
         getCheckboxProps: (record: checkingStatusDT) => ({
             // disabled: record.name === 'Disabled User', // Column configuration not to be checked

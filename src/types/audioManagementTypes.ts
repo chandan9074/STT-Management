@@ -389,7 +389,7 @@ export type checkingStatusUploadDataDT = {
     speechInfo: speechInfo
     others: othersUploadAudioDT;
     speaker: speakerUploadAudioDT;
-    remark: historyRemarkDT[]
+    // remark: historyRemarkDT[]
 }
 
 export type allCheckedSpeechDT = {
