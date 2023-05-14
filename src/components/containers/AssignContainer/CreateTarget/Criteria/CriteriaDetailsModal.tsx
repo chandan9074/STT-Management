@@ -13,6 +13,7 @@ type Props = {
 
 const CriteriaDetailsModal = ({ modalOpen, setModalOpen, data }: Props) => {
 
+  console.log("data=========", data)
   const singleValue1 = [
     {
       title: 'Gender',
@@ -76,7 +77,7 @@ const CriteriaDetailsModal = ({ modalOpen, setModalOpen, data }: Props) => {
     },
     {
       title: 'Note',
-      value: data?.remark || '-'
+      value: (typeof (data?.remark) !== "string" && data?.remark?.Des) || '-'
     },
 
   ]
@@ -111,12 +112,12 @@ const CriteriaDetailsModal = ({ modalOpen, setModalOpen, data }: Props) => {
             <div className='mt-[30px]'>
               <div
 
-                className={`bg-ct-blue-10 h-[54px] w-[176px] rounded-[65px] flex justify-center items-center gap-x-2 cursor-pointer`}
+                className={`bg-ct-blue-10 h-[54px] w-[176px] rounded-[65px] flex justify-center items-center gap-x-2`}
               >
                 <Image.RoleImage role={data?.gender === 'Male' ? 'Speaker' : 'speakerFemale'} />
                 <div>
                   {/* <h1 className='text-ct-blue-80 text-xxs'>Target ID- 23-23456-7</h1> */}
-                  <h1 className='text-ct-blue-90 text-xxs font-medium'>target: {data.target}</h1>
+                  <h1 className='text-ct-blue-90 text-xxs font-medium'>Target ID: {data.target}</h1>
                 </div>
               </div>
 
