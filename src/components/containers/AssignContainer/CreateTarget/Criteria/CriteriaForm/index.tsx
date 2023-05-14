@@ -9,6 +9,8 @@ import { useContext } from 'react';
 import { AssignContext, useAssigneeContext } from '../../../../../../context/AssignProvider';
 import { isEmpty } from '../../../../../../helpers/Utils';
 import { CriteriaItemDT } from '../../../../../../types/assignTypes';
+import { CommonContext } from '../../../../../../context/CommonProvider';
+import Remark from '../../../../../common/Remark';
 
 const validationSchema = yup.object({
     // gender: yup.string().required('Gender is Required'),
@@ -36,6 +38,8 @@ const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
         UpdateAssignCriteria
     } = AssignContexts;
 
+    const commonContext = useContext(CommonContext);
+
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
@@ -52,7 +56,7 @@ const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
             target: data?.target || singleCriteria?.target ,
             deadline: data?.deadline || singleCriteria?.deadline || '',
             reminder: data?.reminder || singleCriteria?.reminder || [],
-            remark: data?.remark || singleCriteria?.remark || '',
+            remark:(typeof( data?.remark) !== 'string' && data?.remark?.Des) || (typeof( singleCriteria?.remark) !== 'string' && singleCriteria?.remark?.Des)  || '',
             education: data?.education || singleCriteria?.education || '',
             buttonName: '',
         },
@@ -66,6 +70,13 @@ const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
             // } else {
             //     onCriteriaUpdate()
             // }
+
+            values.remarkRoleID = commonContext.roleId;
+            if(values.remark && (typeof(values.remark) === 'string')) {
+                values.remarkDes = values.remark;
+            }
+
+            delete values.remark;
 
             if (values.buttonName && values?.buttonName === 'create-button') {
                 formik.resetForm();

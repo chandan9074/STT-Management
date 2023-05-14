@@ -168,7 +168,7 @@ targetCompletedData
                     roleName={singleTargetData?.assignee?.name ? singleTargetData?.assignee?.name : ''}
                     roleType={singleTargetData?.assignee?.role ? singleTargetData?.assignee?.role : ''}
                     dateTime={'07/02/2022, 5:34 PM'}
-                    desc={singleTargetData?.target?.remark ? singleTargetData?.target?.remark.Des : ''}
+                    desc={ singleTargetData?.target?.remark ? typeof(singleTargetData?.target?.remark) !== 'string' ? singleTargetData?.target?.remark.Des : '' : ""}
                 />
             }
 

@@ -35,7 +35,7 @@ export interface CriteriaItemDT {
   target: number;
   deadline: string;
   reminder: string[];
-  remark: {
+  remark?: {
     roleInfo: {
       id: string;
       name: string;
@@ -44,7 +44,9 @@ export interface CriteriaItemDT {
     },
     Des: string;
     deadline: string;
-  } ;
+  }| string;
+  remarkDes?: string,
+  remarkRoleID?: string,
   buttonName?: "";
 }
 
