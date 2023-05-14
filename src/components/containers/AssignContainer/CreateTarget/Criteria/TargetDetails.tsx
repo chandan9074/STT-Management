@@ -76,7 +76,7 @@ const TargetDetails = ({ onLengthClickClose }: { onLengthClickClose: () => void 
         },
         {
             title: 'Note',
-            value: singleCriteria?.remark.des || '-'
+            value: singleCriteria?.remark.Des || '-'
         },
 
     ]

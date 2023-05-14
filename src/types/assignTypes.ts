@@ -42,9 +42,9 @@ export interface CriteriaItemDT {
       role: string;
       gender: string;
     },
-    des: string;
+    Des: string;
     deadline: string;
-  };
+  } ;
   buttonName?: "";
 }
 

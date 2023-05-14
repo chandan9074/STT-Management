@@ -21,7 +21,7 @@ const Others = ({ data }: Props) => {
         },
         {
             title: 'Note',
-            value: data?.target?.remark.des || '-'
+            value: data?.target?.remark.Des || '-'
         },
         {
             title: 'Assignee',

@@ -219,7 +219,7 @@ const Type7 = ({ data }: Props) => {
                     roleName={singleTargetData?.assignee?.name ? singleTargetData?.assignee?.name : ''}
                     roleType={singleTargetData?.assignee?.role ? singleTargetData?.assignee?.role : ''}
                     dateTime={'07/02/2022, 5:34 PM'}
-                    desc={singleTargetData?.target?.remark ? singleTargetData?.target?.remark.des : ''}
+                    desc={singleTargetData?.target?.remark ? singleTargetData?.target?.remark.Des : ''}
                 />
             }
 
