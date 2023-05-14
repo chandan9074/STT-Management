@@ -335,16 +335,16 @@ const AssignProvider = ({ children }: { children: any }) => {
   }
 
   const getTargetForRecreate = async (id: string) => {
-    const res = AssignService.fetchTargetForRecreate(id);
+    const res = await AssignService.fetchTargetForRecreate(id);
     console.log('getTargetForRecreate', res)
     // const newScript = {
     //   isSelected: true,
     //   ...res.script
     // }
-    setScriptForRecreate([{ ...res.script }])
-    setTargetForRecreate([{ ...res.target }])
-    setAssigneeForRecreate([{ ...res.assignee }])
-    setRecreateTable({ script: res.script, target: res.target, assignee: res.assignee })
+    setScriptForRecreate([{ ...res.data.script }])
+    setTargetForRecreate([{ ...res.data.target }])
+    setAssigneeForRecreate([{ ...res.data.assignee }])
+    setRecreateTable({ script: res.data.script, target: res.data.target, assignee: res.data.assignee })
   }
 
   const getSingleCriteriaRecreate = (id: string) => {
