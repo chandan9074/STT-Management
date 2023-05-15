@@ -225,3 +225,7 @@ pre {
 .focused .MuiOutlinedInput-notchedOutline {
   border-color: blue; /* Change the outline color here */
 }
+
+.hidden-label label {
+  display: none !important;
+}

@@ -90,7 +90,7 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
           />
           <div
             className={`${!openScriptModal && "hidden"
-              } bg-opacity-10 inset-0 bg-black animate-fadeIn fixed top-0 left-0 h-full w-full z-[90]`}
+              } opacity-10  bg-black animate-fadeIn fixed top-0 left-0 h-full w-full z-[90]`}
             onClick={() => setOpenScriptModal(false)}
           ></div>
           {openScriptModal && selectedTarget?.id === data?.id && (
@@ -223,7 +223,7 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
             onClick={() => {
               showDrawer(record)
               console.log("click hoisi");
-              
+
               setSingleTargetData(record)
             }}
             size="medium"
