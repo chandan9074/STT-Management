@@ -10,6 +10,13 @@ export const scriptDomain = [
     'Literature'
 ];
 
+export const scriptDomainAddSpeech = [
+    'Leisure',
+    'Educational or Informative',
+    'Business',
+    'Public or Institutional',
+];
+
 export const scriptSubDomain = [
     'Physics',
     'Chemistry',

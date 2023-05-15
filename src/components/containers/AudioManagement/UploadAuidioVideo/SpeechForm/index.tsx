@@ -4,12 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import VideoAudioUpload from './VideoAudioUpload';
-import ActionButton from './ActionButton';
+// import ActionButton from './ActionButton';
 import SpeechInfo from './SpeechInfo';
 import SourceReference from './SourceReference';
 import DistributionSource from './DistributionSource';
 import DomainSubDomain from './DomainSubDomain';
 import SpeakerInfo from './SpeakerInfo';
+// import ActionButton from '../../../AssignContainer/CreateTarget/Criteria/CriteriaForm/ActionButton';
 
 const validationSchema = yup.object({
     sourceName: yup.string().required('Source name is required'),
@@ -38,7 +39,7 @@ const SpeechForm = () => {
             distributionSource: 'Read',
             domain: '',
             subdomain: '',
-            speakerNumber: 0,
+            speakerNumber: null,
             gender: 'male',
             ageRange: [],
             homeDistrict: ''
@@ -52,7 +53,7 @@ const SpeechForm = () => {
     });
 
     return (
-        <div className='w-full flex justify-center script-form '>
+        <div className='w-full flex justify-center script-form rounded-xl'>
             <div className='bg-white-gray-45 w-[885px] rounded-xl'>
                 <form onSubmit={formik.handleSubmit}>
                     <div className='px-[53px] py-[24px]'>
@@ -94,8 +95,21 @@ const SpeechForm = () => {
                         </div>
                     </div>
 
-                    <div className='flex justify-end px-5 py-[28px] bg-white'>
-                        <ActionButton />
+                    <div className='flex justify-end px-5 py-4 bg-white rounded-b-xl'>
+                        {/* <ActionButton /> */}
+                        <div className='flex gap-x-[16px] '>
+                            <button
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    navigate(-1);
+                                }}
+                                className='text-small font-semibold duration-300 transition ease-out border-[1px] border-blue-30 text-ct-blue-80 active:text-blue-gray-75 hover:bg-ct-blue-10 active:bg-blue-gray-10 hover:border-ct-blue-30 rounded-[6px] py-[9px] px-[32px]'>
+                                Cancel
+                            </button>
+                            <button className='font-medium duration-300 transition ease-out bg-primary-ct-blue-60 hover:bg-ct-blue-70 active:text-opacity-60 text-white rounded-[6px] py-2.5 px-4 w-[96px]'>
+                                Save
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>

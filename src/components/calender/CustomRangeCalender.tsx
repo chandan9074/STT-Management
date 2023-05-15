@@ -37,7 +37,8 @@ const CssTextField = styled(TextField)({
         background: "black",
         fontWeight: "500",
         borderRadius: "4px",
-        fontFamily: "Fira Sans"
+        fontFamily: "Fira Sans",
+        padding: "0px 14px"
 
     },
     '& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {

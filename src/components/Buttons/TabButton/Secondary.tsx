@@ -28,6 +28,11 @@ const Secondary = (props: Props) => {
         "medium": {
             py: "py-2",
             px: "px-6"
+        },
+        "large": {
+            w: "w-[120px]",
+            py: "py-2.5",
+            px: "px-2"
         }
     }
 
@@ -60,7 +65,7 @@ const Secondary = (props: Props) => {
                     <button
                         key={index}
                         onClick={() => handleActive(data, index)}
-                        className={`text-xs leading-[15.6px] duration-300 ${sizeStyle ? sizeStyle[size].px : "px-6"} ${sizeStyle ? sizeStyle[size].py : "py-2"}  ${index === 0 ? "rounded-l-md" : ""} ${index === (tabLabel.length - 1) ? "rounded-r-md" : ""}
+                        className={`text-xs leading-[15.6px] duration-300 ${sizeStyle ? sizeStyle[size].w : ""} ${sizeStyle ? sizeStyle[size].px : "px-6"} ${sizeStyle ? sizeStyle[size].py : "py-2"}  ${index === 0 ? "rounded-l-md" : ""} ${index === (tabLabel.length - 1) ? "rounded-r-md" : ""}
                     ${activeButton === index ? `${buttonVariantStyle[variant]?.selected}` :
                                 `${buttonVariantStyle[variant]?.hover} ${buttonVariantStyle[variant]?.pressed} ${buttonVariantStyle[variant]?.text}
                         bg-blue-gray-A10 

@@ -234,7 +234,7 @@ const Header = ({ selectedRowsData, setIsConfirmCancelModal, isConfirmCancelModa
 
     postReassignAudios(selectedIds)
 
-    callingToast(selectedIds.length > 1 ? `${selectedIds[selectedIds.length - 1]} & ${selectedIds.length - 1} others has been reasigned.` : `${selectedIds[selectedIds.length - 1]} has been reasigned`)
+    callingToast(selectedIds.length > 1 ? `${selectedIds[selectedIds.length - 1]} & ${selectedIds.length - 1} others have been reassigned.` : `${selectedIds[selectedIds.length - 1]} has been reassigned`)
 
   }
 

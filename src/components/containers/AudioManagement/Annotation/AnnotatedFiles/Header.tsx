@@ -9,16 +9,19 @@ import { Filter } from '../../../../Filter';
 import { targetFilterListDT } from '../../../../../types/assignTypes';
 import { AudioManagementContext } from '../../../../../context/AudioManagementProvider';
 import { collectedAudioAnnotationAnnotatedFilterData } from '../../../../../data/audioManagement/AudioManagementData';
+import { callingToast } from '../../../../../helpers/Utils';
 
 type Props = {
     setActiveTab: Dispatch<SetStateAction<string>>;
     selectedScript: annotatedFilesDT[];
     setSelectedScript: React.Dispatch<React.SetStateAction<annotatedFilesDT[]>>;
+    selectedRowsData: annotatedFilesDT[],
+    setIsConfirmCancelModal: Dispatch<SetStateAction<boolean>>,
+    isConfirmCancelModal: boolean
 }
 
-const Header = ({ setActiveTab, selectedScript, setSelectedScript }: Props) => {
+const Header = ({ setActiveTab, selectedScript, setSelectedScript, selectedRowsData, setIsConfirmCancelModal, isConfirmCancelModal }: Props) => {
 
-    const [isConfirmModal, setIsConfirmModal] = useState<boolean>(false);
     // const [isClaimModal, setIsClaimModal] = useState<boolean>(false);
 
     const [count, setCount] = useState<number>(0);
@@ -42,7 +45,7 @@ const Header = ({ setActiveTab, selectedScript, setSelectedScript }: Props) => {
         status: [],
     })
 
-    const { collectedAudioAnnotationAnnotatedScript, getCollectedAudioAnnotationAnnotatedScript, collectedAudioAnnotationAnnotatedCollector, getCollectedAudioAnnotationAnnotatedCollector, getCollectedAudioAnnotationAnnotatedSpeakers, collectedAudioAnnotationAnnotatedSpeaker, collectedAudioAnnotationAnnotatedChecker, getCollectedAudioAnnotationAnnotatedChecker, collectedAudioAnnotationAnnotatedAnnotator, getCollectedAudioAnnotationAnnotatedAnnotator } = useContext(AudioManagementContext);
+    const { collectedAudioAnnotationAnnotatedScript, getCollectedAudioAnnotationAnnotatedScript, collectedAudioAnnotationAnnotatedCollector, getCollectedAudioAnnotationAnnotatedCollector, getCollectedAudioAnnotationAnnotatedSpeakers, collectedAudioAnnotationAnnotatedSpeaker, collectedAudioAnnotationAnnotatedChecker, getCollectedAudioAnnotationAnnotatedChecker, collectedAudioAnnotationAnnotatedAnnotator, getCollectedAudioAnnotationAnnotatedAnnotator, postReassignAudios } = useContext(AudioManagementContext);
 
     const prevScriptFilterRef = useRef(collectedAudioAnnotationAnnotatedScript);
     const prevCollectedAudioCollectorRef = useRef(collectedAudioAnnotationAnnotatedCollector);
@@ -239,8 +242,14 @@ const Header = ({ setActiveTab, selectedScript, setSelectedScript }: Props) => {
     const handleSubmitFilter = () => {
     }
 
-    const onSave = () => {
-        setIsConfirmModal(false);
+    const onDrawerClose = () => {
+        const selectedIds = selectedRowsData.map(item => item.id)
+        setIsConfirmCancelModal(false)
+
+        postReassignAudios(selectedIds)
+
+        callingToast(selectedIds.length > 1 ? `${selectedIds[selectedIds.length - 1]} & ${selectedIds.length - 1} others have been reassigned.` : `${selectedIds[selectedIds.length - 1]} has been reassigned`)
+
     }
 
     return (
@@ -250,33 +259,57 @@ const Header = ({ setActiveTab, selectedScript, setSelectedScript }: Props) => {
                     <TableHeading title='Annotated Files' />
                 </div>
                 <div className='flex items-center gap-x-3'>
-                    <Buttons.BgHoverBtn
-                        title="Re-Assign"
-                        paddingY="py-2"
-                        paddingX="px-4"
-                        borderRadius="rounded-[6px]"
-                        textColor="text-secondary-blue-50"
-                        fontSize="text-small"
-                        fontWeight="font-medium"
-                        duration="duration-300"
-                        hoverBgColor="hover:bg-white"
-                        onClick={() => setIsConfirmModal(true)}
-                    // marginX="mx-2"
-                    />
+
+
+                    {
+                        (selectedRowsData.length > 0) && <div className="flex items-center gap-x-3">
+                            <Buttons.BgHoverBtn
+                                title="Re-Assign"
+                                paddingY="py-2"
+                                paddingX="px-4"
+                                borderRadius="rounded-[6px]"
+                                textColor="text-secondary-blue-50"
+                                fontSize="text-small"
+                                fontWeight="font-medium"
+                                duration="duration-300"
+                                hoverBgColor="hover:bg-white"
+                                onClick={() => setIsConfirmCancelModal(!isConfirmCancelModal)}
+                            />
+
+                            {
+                                (isConfirmCancelModal) &&
+                                <CustomModal.Type3
+                                    open={isConfirmCancelModal}
+                                    setOpen={setIsConfirmCancelModal}
+                                    onSave={onDrawerClose}
+                                    title='Do you want to re-assign this and make available to other annotator?'
+                                    cancelText='No'
+                                    saveText='Yes'
+                                    icon={Icons.AssignmentReturn}
+                                    iconHeight='h-9'
+                                    iconWidth='w-9'
+                                />
+                            }
+
+                        </div>
+                    }
                     <div className='flex items-center gap-x-3'>
-                        <SearchBox.Type1 inputWidth="w-44" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
-                        <Filter.Type2 popupClassName='audio_submission_date_picker' handleSubmitFilter={handleSubmitFilter} filterData={collectedAudioAnnotationAnnotatedFilterData} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
+
+                        <div className='flex items-center gap-x-3'>
+                            <SearchBox.Type1 inputWidth="w-44" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
+                            <Filter.Type2 popupClassName='audio_submission_date_picker' handleSubmitFilter={handleSubmitFilter} filterData={collectedAudioAnnotationAnnotatedFilterData} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
+                        </div>
                     </div>
                 </div>
             </div>
             <div className='flex justify-between'>
                 <div>
                     {/* <p className='text-heading-6 font-medium text-ct-blue-95 pb-[11px]'>Annotated Files</p> */}
-                    <Buttons.TabButton.Secondary setActiveData={setActiveTab} tabLabel={['Sentence', "Word", "Phoneme"]} />
+                    <Buttons.TabButton.Secondary size='large' setActiveData={setActiveTab} tabLabel={['Sentence', "Word", "Phoneme"]} />
                 </div>
             </div>
 
-            <CustomModal.Type3
+            {/* <CustomModal.Type3
                 open={isConfirmModal}
                 setOpen={setIsConfirmModal}
                 onSave={onSave}
@@ -286,7 +319,7 @@ const Header = ({ setActiveTab, selectedScript, setSelectedScript }: Props) => {
                 icon={Icons.AssignmentReturn}
                 iconHeight='h-9'
                 iconWidth='w-9'
-            />
+            /> */}
 
             {/* <CustomModal.Primary
                 setOpen={setIsClaimModal}

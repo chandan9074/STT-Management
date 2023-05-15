@@ -1,6 +1,6 @@
 import { Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import Icons from '../../assets/Icons';
 import { annotatedFilesDT } from '../../types/audioManagementTypes';
 import AudioTrack from '../common/AudioTrack';
@@ -16,10 +16,12 @@ import Remark2 from '../containers/AudioManagement/TableField/Remark2';
 
 
 type Props = {
-    data: annotatedFilesDT[]
+    data: annotatedFilesDT[],
+    setSelectedRowSData?: Dispatch<SetStateAction<annotatedFilesDT[]>>,
+
 }
 
-const Type21 = ({ data }: Props) => {
+const Type21 = ({ data,setSelectedRowSData }: Props) => {
 
     const [open, setOpen] = useState(false);
 
@@ -179,10 +181,9 @@ const Type21 = ({ data }: Props) => {
 
     const rowSelection = {
         onChange: (selectedRowKeys: React.Key[], selectedRows: annotatedFilesDT[]) => {
-            // setSelectedTarget(selectedRows);
-            console.log('*******', selectedRows);
-
-
+            if (setSelectedRowSData) {
+                setSelectedRowSData(selectedRows)
+              }
         },
         getCheckboxProps: (record: annotatedFilesDT) => ({
             // disabled: record.name === 'Disabled User', // Column configuration not to be checked
@@ -219,7 +220,7 @@ const Type21 = ({ data }: Props) => {
                 />
             </div>
 
-            
+
             {
                 (open && singleTargetData) &&
                 <Drawer.AudioManagement.CheckingStatus

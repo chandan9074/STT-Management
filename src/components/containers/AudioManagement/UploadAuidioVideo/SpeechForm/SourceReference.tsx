@@ -74,7 +74,7 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
                     </Grid>
                     <Grid item xs={6}>
                         <div onClick={(value) => onSourceReferencehandle('script')} className={`cursor-pointer p-[8px] ${scriptSourceReference?.isScript ? 'bg-ct-blue-20' : 'bg-ct-blue-10'}  flex justify-center items-center gap-x-[15px]`}>
-                            <img src={Icons.Link} className='h-[18px] w-[18px]' alt="" />
+                            <img src={Icons.AddLink} className='h-[18px] w-[18px]' alt="" />
                             <h1 className='text-ct-blue-45 text-small font-medium'>Script Attachment</h1>
                         </div>
                     </Grid>
@@ -90,7 +90,7 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
                                         <TextField
                                             id="sourceName"
                                             name="sourceName"
-                                            label={<h1 className='comboBoxLabel'>Name of the Sour</h1>}
+                                            label={<h1 className='comboBoxLabel'>Name of the Source</h1>}
                                             value={formik.values.sourceName}
                                             onChange={formik.handleChange}
                                             error={formik.touched.sourceName && Boolean(formik.errors.sourceName)}

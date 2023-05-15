@@ -54,7 +54,7 @@ const VideoAudioUpload = ({ formik }: { formik: FormikValues }) => {
                         <div className={`h-[114px] ant-upload-drag-icon flex flex-col justify-center items-center gap-y-[8px]`}>
                             <div className='border-[1px] border-ct-blue-30 px-[18px] rounded-[6px] flex justify-center items-center gap-x-[5px] pl-[17px] pr-6 pt-[9px] pb-2'>
                                 <img src={Icons.Backup} alt="" />
-                                <h1 className='text-ct-blue-80 text-small font-medium'>Upload Audio/ Video<span className='text-[red]'> *</span></h1>
+                                <h1 className='text-ct-blue-80 text-small font-medium'>Upload Audio/ Video</h1>
                             </div>
                             <div>
                                 <span className='text-small font-medium text-blue-gray-90 underline'>Click to upload </span>

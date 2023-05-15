@@ -17,10 +17,11 @@ type Prop =
         formikTouched?: any,
         name: string,
         fieldLabel: string,
-        required?: boolean
+        required?: boolean;
+        align?: "top" | "bottom";
     }
 
-const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTouched, name, fieldLabel, required }: Prop) => {
+const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTouched, name, fieldLabel, required, align }: Prop) => {
 
     const [collapsed, setCollapsed] = useState<any>({});
 
@@ -111,7 +112,7 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
             </div>
             {
                 isHomeDistrict &&
-                <div className='absolute w-full h-[336px] bg-white rounded-[8px] py-[6px] animate-fadeIn z-[51] overflow-auto shadow-bottom-light-blue-20'>
+                <div className={`absolute w-full h-[336px] ${align === "top" ? "-top-[22rem]" : ""} bg-white rounded-[8px] py-[6px] animate-fadeIn z-[51] overflow-auto shadow-bottom-light-blue-20`}>
                     {filteredDistrict.map(({ division, district }) => (
                         <div key={division}>
                             <div className='bg-blue-gray-05 text-xxs text-blue-gray-60 pl-[16px] flex justify-between items-center pr-[9px]'>
