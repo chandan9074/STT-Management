@@ -11,6 +11,7 @@ import RoleImage from "../Image/RoleImage";
 import AssigneeTargetModal from "../containers/AssignContainer/CreateTarget/TargetTable/AssigneeTargetModal";
 import CriteriaTargetModal from "../containers/AssignContainer/CreateTarget/TargetTable/CriteriaTargetModal";
 import { Drawer } from "../Drawer";
+import RemarkTargetModal from "../containers/AssignContainer/CreateTarget/TargetTable/RemarkTargetModal";
 
 const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
   setSelectedRowsId: Dispatch<SetStateAction<postResTargetAssignParamDT>>
@@ -65,6 +66,8 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
       updateDraftTarget(params);
     }
     setOpenScriptModal(false);
+    setOpenAssigneeModal(false);
+    setOpenTargetModal(false);
     console.log("hello")
     // }
   };
@@ -88,17 +91,11 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
             icon={<img src={Icons.arrow_drop_down_blue_gray_45} alt="" />}
             background="transparent"
           />
-          <div
-            className={`${!openScriptModal && "hidden"
-              } opacity-10  bg-black animate-fadeIn fixed top-0 left-0 h-full w-full z-[90]`}
-            onClick={() => setOpenScriptModal(false)}
-          ></div>
           {openScriptModal && selectedTarget?.id === data?.id && (
             <div className="absolute bottom-11 left-0  bg-white rounded-md z-[100]">
               {
                 data.script.id &&
-                // <ScriptTargetBox targetTitle="Add Script" onClick={showDrawer}/>
-                <ScriptTargetModal handleSelectItem={handleSelectItem} selectedItemList={selectedScriptList} selectedScriptId={data.script.id} selectedTargetId={selectedTarget.id} />
+                <ScriptTargetModal setOpenScriptModal={setOpenScriptModal} handleSelectItem={handleSelectItem} selectedItemList={selectedScriptList} selectedScriptId={data.script.id} selectedTargetId={selectedTarget.id} />
               }
             </div>
           )}
@@ -118,14 +115,9 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
             icon={<img src={Icons.arrow_drop_down_blue_gray_45} alt="" />}
             background="transparent"
           />
-          <div
-            className={`${!openTargetModal && "hidden"
-              } bg-opacity-10 inset-0 bg-black animate-fadeIn fixed top-0 left-0 h-full w-full z-[90]`}
-            onClick={() => setOpenTargetModal(false)}
-          ></div>
           {openTargetModal && selectedTarget?.id === data?.id && (
             <div className="absolute bottom-11 left-0  bg-white rounded-md z-[100]">
-              {data.target.id && <CriteriaTargetModal handleSelectItem={handleSelectItem} selectedItemList={selectedCriteriaList} selectedCriteriaId={data.target.id} selectedTargetId={selectedTarget.id} />}
+              {data.target.id && <CriteriaTargetModal setOpenTargetModal={setOpenTargetModal} handleSelectItem={handleSelectItem} selectedItemList={selectedCriteriaList} selectedCriteriaId={data.target.id} selectedTargetId={selectedTarget.id} />}
             </div>
           )}
         </div>
@@ -153,14 +145,9 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
             icon={<img src={Icons.arrow_drop_down_blue_gray_45} alt="" />}
             background="transparent"
           />
-          <div
-            className={`${!openAssigneeModal && "hidden"
-              } bg-opacity-10 inset-0 bg-black animate-fadeIn fixed top-0 left-0 h-full w-full z-[90]`}
-            onClick={() => setOpenAssigneeModal(false)}
-          ></div>
           {openAssigneeModal && selectedTarget?.id === data?.id && (
             <div className="absolute bottom-11 left-0 bg-white rounded-md z-[100]">
-              {data.assignee.id && <AssigneeTargetModal handleSelectItem={handleSelectItem} selectedItemList={selectedAssigneList} selectedAssigneeId={data.assignee.id} selectedTargetId={selectedTarget.id} />}
+              {data.assignee.id && <AssigneeTargetModal setOpenAssigneeModal={setOpenAssigneeModal} handleSelectItem={handleSelectItem} selectedItemList={selectedAssigneList} selectedAssigneeId={data.assignee.id} selectedTargetId={selectedTarget.id} />}
             </div>
           )}
         </div>
@@ -197,17 +184,12 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
             }
             background="transparent"
           />
-          <div
-            className={`${!remarkModal && "hidden"
-              } bg-opacity-10 inset-0 bg-black animate-fadeIn fixed top-0 left-0 h-full w-full z-[90]`}
-            onClick={() => setRemrkModal(false)}
-          ></div>
           {remarkModal && selectedTarget?.id === data?.id && selectedTarget?.target?.remark && (
-            <div className="absolute top-6 right-0 w-[560px] bg-white rounded-md z-[100]">
-              {/* <RemarkTargetModal
+            <div className="absolute top-10 right-0 w-[560px] bg-white rounded-md z-[100]">
+              <RemarkTargetModal
                 setModalOpen={setRemrkModal}
-                remark={selectedTarget?.target.remark}
-              /> */}
+                remark={typeof (selectedTarget?.target.remark) !== "string" ? selectedTarget?.target.remark : undefined}
+              />
             </div>
           )}
         </div>

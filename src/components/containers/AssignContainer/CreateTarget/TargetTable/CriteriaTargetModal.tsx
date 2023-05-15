@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Icons from "../../../../../assets/Icons";
 import Buttons from "../../../../Buttons";
 import "../../../../../assets/css/table/criteria_details.css";
@@ -6,15 +6,16 @@ import { CriteriaItemDT, updateDraftTargetQueryParams } from "../../../../../typ
 import { Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { useAssigneeContext } from "../../../../../context/AssignProvider";
-import { Radio } from "@mui/material";
+import { FormControl, FormControlLabel, Radio, RadioGroup, Typography } from "@mui/material";
 type Props = {
-  selectedItemList:  CriteriaItemDT[];
+  selectedItemList: CriteriaItemDT[];
   selectedCriteriaId: string;
   selectedTargetId: string;
   handleSelectItem: (item: CriteriaItemDT, params?: updateDraftTargetQueryParams) => void;
+  setOpenTargetModal?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const CriteriaTargetModal = ({ selectedCriteriaId, selectedTargetId,  handleSelectItem, selectedItemList }: Props) => {
+const CriteriaTargetModal = ({ selectedCriteriaId, selectedTargetId, handleSelectItem, selectedItemList, setOpenTargetModal }: Props) => {
 
   const [searchEnable, setSearchEnable] = useState(false);
   const { getCriteria } = useAssigneeContext();
@@ -32,7 +33,7 @@ const CriteriaTargetModal = ({ selectedCriteriaId, selectedTargetId,  handleSele
     // updateDraftTarget(params);
 
     // setOpenTargetModal(false);
-    // console.log("hello")
+    console.log("hello")
     handleSelectItem(item, params);
   };
 
@@ -67,86 +68,98 @@ const CriteriaTargetModal = ({ selectedCriteriaId, selectedTargetId,  handleSele
   }
 
   return (
-    <div className="w-[424px] h-[249px] flex flex-col  pb-2 overflow-y-auto custom_scrollbar">
-      <div className="flex flex-col gap-3 items-start justify-start h-full w-full py-1">
-        {/* headers  */}
-        {searchEnable ? (
-          <Input
-            className="animate-fadeIn mt-[-4px]"
-            placeholder="Search"
-            prefix={
-              <SearchOutlined
-                className="site-form-item-icon"
-                style={{
-                  color: "#136EE5",
-                }}
-              />
-            }
-            suffix={
-              <Buttons.IconButton.Circle
-                onClick={() => setSearchEnable(false)}
-                size="medium"
-                variant="CT-Blue"
-                icon={<img src={Icons.CloseIconButton} alt="Close" />}
-                background="white"
-              />
-            }
-          />
-        ) : (
-          <div className="flex items-center gap-1 w-full px-4 pt-1 justify-between">
-            <div>
-              <p className="text-[#6B7B8C] font-[500]">
-                CRITERIA: {selectedItemList?.length}
-              </p>
-            </div>
-            <div>
-              <Buttons.IconButton.Circle
-                onClick={() => setSearchEnable(true)}
-                size="medium"
-                variant="CT-Blue"
-                icon={<SearchOutlined style={{ color: "#6B7B8C" }} />}
-                background="white"
-              />
-            </div>
-          </div>
-        )}
-
-        {/* //body  */}
-        <div className="flex flex-col gap-1 items-start justify-start h-full w-full py-1 overflow-y-auto custom_scrollbar">
-          {selectedItemList.map((item, index) => (
-            <div
-              key={index}
-              className={`flex items-center gap-1 w-full pr-4 pl-1.5 py-1 justify-between group ${selectedCriteriaId === item?.id && "bg-[#E1EFFE]"
-                }`}
-            >
-              <div className="flex-[13] flex gap-3">
-                <div className="flex items-start">
-                  <Radio style={{ backgroundColor: "transparent", marginTop: "-6px" }} size="small" checked={selectedCriteriaId === item?.id} onChange={() => handleSelectCriteria(item)} />
-                  <div className="w-full flex flex-col">
-                    <div className="w-full flex justify-between items-center">
-                      <h4 className={`font-semibold ${selectedCriteriaId === item?.id ? "text-ct-blue-60" : "text-ct-blue-80"}`}>
-                        Target {item?.target}
-                      </h4>
-                      {selectedCriteriaId === item?.id && (
-                        <img src={Icons.CorrectIcon} alt="" />
-                      )}
-                    </div>
-                    <p className={`m-0 ${selectedCriteriaId === item?.id ? "text-ct-blue-60" : "text-ct-blue-90-68%"}  text-xs font-[300] truncate text-ellipsis w-[360px] group-hover:text-overflow-clip group-hover:whitespace-normal`}>
-                      {handleTextConcatenation(item)}
-                    </p>
-                  </div>
-                </div>
+    <>
+      <div onClick={() => setOpenTargetModal && setOpenTargetModal(false)} className="bg-opacity-5 fixed top-0 left-0 w-full h-screen bg-black animate-fadeIn z-[90]" />
+      <div className="w-[424px] h-[249px] flex flex-col  pb-2 overflow-y-auto custom_scrollbar relative z-[110] bg-white rounded-[4px]">
+        <div className="flex flex-col gap-3 items-start justify-start h-full w-full py-1">
+          {/* headers  */}
+          {searchEnable ? (
+            <Input
+              className="animate-fadeIn mt-[-4px]"
+              placeholder="Search"
+              prefix={
+                <SearchOutlined
+                  className="site-form-item-icon"
+                  style={{
+                    color: "#136EE5",
+                  }}
+                />
+              }
+              suffix={
+                <Buttons.IconButton.Circle
+                  onClick={() => setSearchEnable(false)}
+                  size="medium"
+                  variant="CT-Blue"
+                  icon={<img src={Icons.CloseIconButton} alt="Close" />}
+                  background="white"
+                />
+              }
+            />
+          ) : (
+            <div className="flex items-center gap-1 w-full px-4 pt-1 justify-between">
+              <div>
+                <p className="text-[#6B7B8C] font-[500]">
+                  CRITERIA: {selectedItemList?.length}
+                </p>
               </div>
-              {selectedCriteriaId === item?.id && (
-                <div className="flex-[1] ml-10">
-                  <img src={Icons.CorrectIcon} alt="" />
-                </div>
-              )}
+              <div>
+                <Buttons.IconButton.Circle
+                  onClick={() => setSearchEnable(true)}
+                  size="medium"
+                  variant="CT-Blue"
+                  icon={<SearchOutlined style={{ color: "#6B7B8C" }} />}
+                  background="white"
+                />
+              </div>
             </div>
-          ))}
+          )}
+
+          {/* //body  */}
+          <div className="flex flex-col gap-1 items-start justify-start h-full w-full py-1 overflow-y-auto custom_scrollbar">
+            <FormControl sx={{ width: "100%" }}>
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue={selectedCriteriaId}
+                name="radio-buttons-group"
+              >
+                {selectedItemList.map((item, index) => (
+                  <div
+                    key={index}
+                    className={`flex items-center gap-1 w-full pr-4 pl-1.5 py-1 justify-between group ${selectedCriteriaId === item?.id && "bg-[#E1EFFE]"
+                      }`}
+                  >
+                    <div className="flex-[13] flex gap-3">
+                      <div className="flex items-start">
+                        {/* <Radio style={{ backgroundColor: "transparent", marginTop: "-6px" }} size="small" checked={selectedCriteriaId === item?.id} onChange={() => handleSelectCriteria(item)} /> */}
+                        <FormControlLabel value={item?.id} sx={{ m: 0 }} control={<Radio size="small" onChange={() => handleSelectCriteria(item)} />} label={<Typography sx={{ display: "none" }}>Criteria</Typography>} />
+                        <div className="w-full flex flex-col">
+                          <div className="w-full flex justify-between items-center">
+                            <h4 className={`font-semibold ${selectedCriteriaId === item?.id ? "text-ct-blue-60" : "text-ct-blue-80"}`}>
+                              Target {item?.target}
+                            </h4>
+                            {selectedCriteriaId === item?.id && (
+                              <img src={Icons.CorrectIcon} alt="" />
+                            )}
+                          </div>
+                          <p className={`m-0 ${selectedCriteriaId === item?.id ? "text-ct-blue-60" : "text-ct-blue-90-68%"}  text-xs font-[300] truncate text-ellipsis w-[360px] group-hover:text-overflow-clip group-hover:whitespace-normal`}>
+                            {handleTextConcatenation(item)}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    {selectedCriteriaId === item?.id && (
+                      <div className="flex-[1] ml-10">
+                        <img src={Icons.CorrectIcon} alt="" />
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </RadioGroup>
+            </FormControl>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

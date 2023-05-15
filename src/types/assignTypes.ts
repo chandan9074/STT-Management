@@ -36,19 +36,21 @@ export interface CriteriaItemDT {
   deadline: string;
   reminder: string[];
   childhoodArea?: string,
-  remark?: {
-    roleInfo: {
-      id: string;
-      name: string;
-      role: string;
-      gender: string;
-    },
-    Des: string;
-    deadline: string;
-  }| string;
+  remark?: remarkDT| string;
   remarkDes?: string,
   remarkRoleID?: string,
   buttonName?: "";
+}
+
+export type remarkDT = {
+  roleInfo: {
+    id: string;
+    name: string;
+    role: string;
+    gender: string;
+  },
+  Des: string;
+  deadline: string;
 }
 
 export interface AssigneeItemDT {
