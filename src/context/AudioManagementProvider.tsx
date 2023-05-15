@@ -127,6 +127,7 @@ interface ContextProps {
     getValidatorList: (type: string) => void;
     scriptList: string[];
     getScriptList: (type: string) => void;
+    postReassignAudios: (ids: string[]) => void;
 }
 
 export const AudioManagementContext = createContext({} as ContextProps);
@@ -546,6 +547,9 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
         setValidatedFilesUploadData(res);
     }
 
+    const postReassignAudios = async (ids: string[]) => {
+        audioManagementService.postReassignAudios(ids);
+    }
 
     return (
         <AudioManagementContext.Provider
@@ -673,7 +677,8 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
                 getValidatorList,
                 validatorList,
                 getScriptList,
-                scriptList
+                scriptList,
+                postReassignAudios
             }}
         >
             {children}
