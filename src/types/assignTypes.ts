@@ -392,3 +392,9 @@ export type audioStatisticsParamDT = {
   year?: string;
   overall?: boolean;
 }
+
+export type postRecreateTargetParamDT = {
+  script: string;
+  target: CriteriaItemDT;
+  assignee: string;
+}

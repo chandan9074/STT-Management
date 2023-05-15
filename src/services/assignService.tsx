@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as PATH from "../helpers/APIURL";
-import { allScriptParamsDT, audioStatisticsParamDT, createAssigneeParamsDT, CriteriaItemDT, postDraftTargetBodyDT, postResTargetAssignParamDT, postSelectedScriptBodyDT, roleListByRoleParamDT, singleTargetSpeechesAssignDT, targetAssignParamDT, updateAssigneeMainTargetParamDT, updateDraftTargetQueryParams } from "../types/assignTypes";
+import { allScriptParamsDT, audioStatisticsParamDT, createAssigneeParamsDT, CriteriaItemDT, postDraftTargetBodyDT, postRecreateTargetParamDT, postResTargetAssignParamDT, postSelectedScriptBodyDT, roleListByRoleParamDT, singleTargetSpeechesAssignDT, targetAssignParamDT, updateAssigneeMainTargetParamDT, updateDraftTargetQueryParams } from "../types/assignTypes";
 
 export default class AssignService {
 
@@ -110,5 +110,10 @@ export default class AssignService {
 
   static fetchResAudioStatistics(params: audioStatisticsParamDT) {
     return axios.get(PATH.GET_RES_AUDIO_STATISTICS_PATH, { params });
+  }
+
+  static postRecreateTargetAssign(data: postRecreateTargetParamDT) {
+    const res = axios.post(PATH.POST_RES_RECREATE_TARGET_ASSIGN_PATH, data);
+    return res;
   }
 }

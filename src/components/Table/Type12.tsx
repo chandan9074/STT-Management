@@ -84,10 +84,10 @@ const Type12 = () => {
 
 
   const Type12columns: ColumnsType<recreateTableDT> = [
-    {
-      title: `${"# Target ID".toLocaleUpperCase()}`,
-      render: (data: recreateTableDT) => <p className="text-small text-blue-gray-80 w-20 truncate"># hello</p>,
-    },
+    // {
+    //   title: `${"# Target ID".toLocaleUpperCase()}`,
+    //   render: (data: recreateTableDT) => <p className="text-small text-blue-gray-80 w-20 truncate"># hello</p>,
+    // },
     {
       title: `${"Script".toLocaleUpperCase()}`,
       render: (data: recreateTableDT) => (
@@ -100,14 +100,14 @@ const Type12 = () => {
             icon={<img src={Icons.arrow_drop_down_blue_gray_45} alt="" />}
             background="transparent"
           />
-          <div
+          {/* <div
             className={`${!openScriptModal && "hidden"
               } bg-opacity-10 inset-0 bg-black animate-fadeIn fixed top-0 left-0 h-full w-full z-[90]`}
             onClick={() => setOpenScriptModal(false)}
-          ></div>
+          ></div> */}
           {openScriptModal && data.script.id && (
             <div className="absolute bottom-11 right-0 w-[376px] bg-white rounded-md z-[100]">
-              {data.script.id && <ScriptTargetModal handleSelectItem={handleSelectScript} selectedItemList={scriptForRecreate} selectedScriptId={data.script.id} selectedTargetId={""} />}
+              {data.script.id && <ScriptTargetModal setOpenScriptModal={setOpenScriptModal} handleSelectItem={handleSelectScript} selectedItemList={scriptForRecreate} selectedScriptId={data.script.id} selectedTargetId={""} />}
             </div>
           )}
         </div>
@@ -125,14 +125,14 @@ const Type12 = () => {
             icon={<img src={Icons.arrow_drop_down_blue_gray_45} alt="" />}
             background="transparent"
           />
-          <div
+          {/* <div
             className={`${!openTargetModal && "hidden"
               } bg-opacity-10 inset-0 bg-black animate-fadeIn fixed top-0 left-0 h-full w-full z-[90]`}
             onClick={() => setOpenTargetModal(false)}
-          ></div>
+          ></div> */}
           {openTargetModal && data.target && (
             <div className="absolute bottom-11 right-0 w-[424px] bg-white rounded-md z-[100]">
-              {data.target.id && <CriteriaTargetModal handleSelectItem={handleSelectTarget} selectedItemList={targetForRecreate} selectedCriteriaId={data.target.id} selectedTargetId={""} />}
+              {data.target.id && <CriteriaTargetModal setOpenTargetModal={setOpenTargetModal} handleSelectItem={handleSelectTarget} selectedItemList={targetForRecreate} selectedCriteriaId={data.target.id} selectedTargetId={""} />}
             </div>
           )}
         </div>
@@ -159,14 +159,14 @@ const Type12 = () => {
             icon={<img src={Icons.arrow_drop_down_blue_gray_45} alt="" />}
             background="transparent"
           />
-          <div
+          {/* <div
             className={`${!openAssigneeModal && "hidden"
               } bg-opacity-10 inset-0 bg-black animate-fadeIn fixed top-0 left-0 h-full w-full z-[90]`}
             onClick={() => setOpenAssigneeModal(false)}
-          ></div>
+          ></div> */}
           {openAssigneeModal && data.assignee.id && (
             <div className="absolute bottom-11 right-0 w-[376px] bg-white rounded-md z-[100]">
-              {data.assignee.id && <AssigneeTargetModal handleSelectItem={handleSelectAssignee} selectedItemList={assigneeForRecreate} selectedAssigneeId={data.assignee.id} selectedTargetId={""} />}
+              {data.assignee.id && <AssigneeTargetModal setOpenAssigneeModal={setOpenAssigneeModal} handleSelectItem={handleSelectAssignee} selectedItemList={assigneeForRecreate} selectedAssigneeId={data.assignee.id} selectedTargetId={""} />}
             </div>
           )}
         </div>

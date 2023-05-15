@@ -16,9 +16,9 @@ import { useNavigate } from "react-router-dom";
 const RecreateTarget = () => {
     const [dataShow, setDataShow] = useState<boolean>(true);
     const { id } = useParams<{ id: string }>();
-    const { getTargetForRecreate, recreateTable } = useAssigneeContext();
+    const { getTargetForRecreate, recreateTable, postRecreateTargetAssign } = useAssigneeContext();
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -27,6 +27,21 @@ const RecreateTarget = () => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id])
+
+    const handleRecreateTable = async () => {
+        console.log("recreateTable", recreateTable);
+        const body = {
+            script: recreateTable?.script.id,
+            target: recreateTable?.target,
+            assignee: recreateTable?.assignee.email,
+        }
+        const res = await postRecreateTargetAssign(body);
+        if (res === "ok") {
+            navigate(-1);
+        }
+    }
+
+
     return (
         <Layouts.Sixth>
             <div className={`bg-red-03 shadow-box pl-[24px] pt-[30px] pr-4  ${dataShow ? "h-[31rem]" : "h-32 overflow-hidden"} duration-300 relative`}>
@@ -47,29 +62,29 @@ const RecreateTarget = () => {
                             />
                         </div>
                         <div className='flex gap-x-[15px]'>
-              {/* <button
+                            {/* <button
                 onClick={() => setDataShow(!dataShow)}
                 className={`border-[1px] bg-white border-ct-blue-20 rounded-full py-[10.5px] px-[11px] z-[80] right-0 duration-1000`}
               >
                 <img src={dataShow ? Icons.DoubleDarkICon : Icons.DoubleArroDownDark} alt="" className="" />
               </button> */}
-              <Buttons.IconButton.Circle
-                size='medium'
-                variant="CT-Blue"
-                icon={<img src={dataShow ? Icons.DoubleDarkICon : Icons.DoubleArroDownDark} alt="" className="" />}
-                border='border'
-                background="white"
-                onClick={() => setDataShow(!dataShow)}
-              />
-              <Buttons.IconButton.Circle
-                size='medium'
-                variant="CT-Blue"
-                icon={<img src={Icons.CloseIconButton} alt="" className="w-[10.58px] h-[10.58px]" />}
-                border='border'
-                background="white"
-                onClick={()=>navigate(-1)}
-              />
-            </div>
+                            <Buttons.IconButton.Circle
+                                size='medium'
+                                variant="CT-Blue"
+                                icon={<img src={dataShow ? Icons.DoubleDarkICon : Icons.DoubleArroDownDark} alt="" className="" />}
+                                border='border'
+                                background="white"
+                                onClick={() => setDataShow(!dataShow)}
+                            />
+                            <Buttons.IconButton.Circle
+                                size='medium'
+                                variant="CT-Blue"
+                                icon={<img src={Icons.CloseIconButton} alt="" className="w-[10.58px] h-[10.58px]" />}
+                                border='border'
+                                background="white"
+                                onClick={() => navigate(-1)}
+                            />
+                        </div>
                     </div>
                 </div>
                 <div className={`flex gap-x-4`}>
@@ -90,7 +105,7 @@ const RecreateTarget = () => {
                     <h1 className="text-heading-6 font-normal text-ct-blue-95">
                         {recreateTable?.target?.target} Targets
                     </h1>
-                    <Buttons.LabelButton.Primary label='Create and Send' variant='CT-Blue' size='small' />
+                    <Buttons.LabelButton.Primary label='Create and Send' variant='CT-Blue' size='small' onClick={() => handleRecreateTable()} />
                 </div>
                 <Table.Type12 />
             </div>

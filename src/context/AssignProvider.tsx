@@ -9,6 +9,7 @@ import {
   audioStatisticsParamDT,
   createAssigneeParamsDT,
   CriteriaItemDT,
+  postRecreateTargetParamDT,
   postResTargetAssignParamDT,
   postSelectedScriptBodyDT,
   recreateTableDT,
@@ -100,6 +101,7 @@ interface ContextProps {
   audioStatisticsParams: audioStatisticsParamDT;
   setAudioStatisticsParams: React.Dispatch<React.SetStateAction<audioStatisticsParamDT>>;
   audioStatisticsData: assignStatisticsDT;
+  postRecreateTargetAssign: (data: postRecreateTargetParamDT) => Promise<"ok" | "error">;
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -466,6 +468,20 @@ const AssignProvider = ({ children }: { children: any }) => {
     }
   }
 
+  const postRecreateTargetAssign = async (data: postRecreateTargetParamDT) => {
+    setLoading(true);
+    const res = await AssignService.postRecreateTargetAssign(data);
+    if (res.status === 200) {
+      // await new Promise(resolve => setTimeout(resolve, 1000));
+      setLoading(false);
+      return "ok"
+    }
+    else {
+      setLoading(false);
+      return "error"
+    }
+  }
+
 
   return (
     <AssignContext.Provider
@@ -533,7 +549,8 @@ const AssignProvider = ({ children }: { children: any }) => {
         audioStatisticsParams,
         fetchResAudioStatistics,
         setAudioStatisticsParams,
-        audioStatisticsData
+        audioStatisticsData,
+        postRecreateTargetAssign
       }}
     >
       {children}
