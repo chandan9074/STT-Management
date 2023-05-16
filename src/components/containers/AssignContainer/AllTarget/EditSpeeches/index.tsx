@@ -24,6 +24,13 @@ const EditSpeeches = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    const onsubmitSpeech = async (values: FormData) => {
+        const res = await  assignContext.postSingleTargetSpeechesAssign(values);
+        if(res === 200) {
+            assignContext.getResSingleTargetSpeechesAssign(param);
+        }
+    }
+
     return (
         <div>
             <Layouts.Default>
@@ -38,7 +45,7 @@ const EditSpeeches = () => {
 
                 {
                     assignContext.singleTargetSpeechesAssign &&
-                    <Table.Type11 data={assignContext.singleTargetSpeechesAssign} />
+                    <Table.Type11 data={assignContext.singleTargetSpeechesAssign} onsubmitSpeech={onsubmitSpeech} />
                 }
 
             </Layouts.Default>

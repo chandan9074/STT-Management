@@ -23,13 +23,15 @@ import Pagination from '../Pagination';
 import { AssignContext } from '../../context/AssignProvider';
 import { CommonContext } from '../../context/CommonProvider';
 import '../../assets/css/table/speech_upload.css'
+import SingleRemark from '../containers/AudioManagement/TableField/SingleRemark';
 
 
 type Props = {
-    data: assignSpeechDT
+    data: assignSpeechDT,
+    onsubmitSpeech: (data: FormData) => void,
 }
 
-const Type11 = ({ data }: Props) => {
+const Type11 = ({ data, onsubmitSpeech }: Props) => {
 
     const assignContext = useContext(AssignContext);
     const commonContext = useContext(CommonContext);
@@ -50,6 +52,8 @@ const Type11 = ({ data }: Props) => {
 
     const managerContext = useContext(RoleInContext);
     const { roleDatas } = managerContext;
+
+    const [singleRemarkOpen, setSingleRemarkOpen] = useState<boolean>(false);
 
     // const [remarkModal2, setRemarkModal2] = useState<boolean>(false);
 
@@ -108,9 +112,6 @@ const Type11 = ({ data }: Props) => {
             roleName: commonContext.role
         }
 
-        console.log('target id', _data.targetID);
-        console.log('data id', data);
-
         for (const key in _data) {
             if (_data.hasOwnProperty(key)) {
                 const value = _data[key as keyof typeof _data];
@@ -121,8 +122,7 @@ const Type11 = ({ data }: Props) => {
             }
         }
 
-        // postSingleTargetSpeechesAssign
-        assignContext.postSingleTargetSpeechesAssign(formData);
+        onsubmitSpeech(formData);
 
     }
 
@@ -253,24 +253,37 @@ const Type11 = ({ data }: Props) => {
                 <div className='flex justify-center relative'>
 
                     <div>
-                        <button onClick={() => {
-                            setRemarkOpen(true);
-                            setRemarkId(data?.id);
-                            setTempRemark(data?.remark);
-                        }} className='flex justify-center'>
-                            {/* <img src={!data?.remark ? Icons.EditGray : Icons.File} className="h-4 w-4" alt="" /> */}
-                            <img src={Icons.EditGray} className="h-4 w-4" alt="" />
-                        </button>
+                        {
+                            data?.status === 'Uploaded' ?
+                                // !data?.remark ?
+                                <button onClick={() => {
+                                    setSingleRemarkOpen(true)
+                                }} className='flex justify-center'>
+                                    <img src={Icons.File} className="h-4 w-4" alt="" />
+                                </button>
+                                :
+                                <button onClick={() => {
+                                    setRemarkOpen(true);
+                                    setRemarkId(data?.id);
+                                    setTempRemark(data?.remark);
+                                }} className='flex justify-center'>
+                                    <img src={Icons.EditGray} className="h-4 w-4" alt="" />
+                                </button>
+
+                        }
+
+                        {
+                            singleRemarkOpen &&
+                            <SingleRemark
+                                open={singleRemarkOpen}
+                                setOpen={setSingleRemarkOpen}
+                                data={data?.remark}
+                            />
+                        }
                     </div>
                 </div>
             )
         },
-
-        //     <SingleRemark
-        //     open={remarkOpen}
-        //     setOpen={setRemarkOpen}
-        //     data={data.remark}
-        // />
 
         {
             title: `${"Action".toLocaleUpperCase()}`,
@@ -349,7 +362,7 @@ const Type11 = ({ data }: Props) => {
                 />
             }
 
-{
+            {
                 <RemarkModal
                     open={remarkOpen}
                     setOpen={setRemarkOpen}

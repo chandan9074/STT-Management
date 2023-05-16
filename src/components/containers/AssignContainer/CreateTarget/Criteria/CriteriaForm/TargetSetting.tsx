@@ -46,7 +46,7 @@ const TargetSetting = ({ formik }: { formik: FormikValues }) => {
                     id="target"
                     name="target"
                     label={<h1 className='comboBoxLabel'>Target <span className='text-[red]'></span></h1>}
-                    value={formik.values.target}
+                    value={formik.values.target === 0 ? "": formik.values.target}
                     onChange={formik.handleChange}
                     // error={formik.touched.target && Boolean(formik.errors.target)}
                     // helperText={formik.touched.target && formik.errors.target}

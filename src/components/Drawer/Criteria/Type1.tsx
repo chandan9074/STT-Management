@@ -1,5 +1,5 @@
 import { Drawer } from 'antd';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Icons from '../../../assets/Icons';
 import { AssignContext } from '../../../context/AssignProvider';
 import Buttons from '../../Buttons';
@@ -22,11 +22,18 @@ const Type1 = ({ children, isDrawerOpen, drawerClose, title }: Props) => {
         sumTarget,
         setEmptySingleCriteria,
         setEmptyEditId,
-        emptyCriteria
+        emptyCriteria,
+        setIsCriteriaClosed
     } = AssignContexts;
 
     const [lengthClick, setLengthClick] = useState<boolean>(false);
     const [isConfirmCancelModal, setIsConfirmCancelModal] = useState<boolean>(false);
+
+    useEffect(() => {
+        // isCriteriaClosed,
+        setIsCriteriaClosed(isConfirmCancelModal);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isConfirmCancelModal])
 
     const onCancelModalOpen = () => {
         setIsConfirmCancelModal(true);

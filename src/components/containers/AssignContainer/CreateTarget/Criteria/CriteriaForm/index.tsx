@@ -5,7 +5,7 @@ import SpeakerInformation from './SpeakerInformation';
 import TargetSetting from './TargetSetting';
 import './TargetElement.css';
 import ActionButton from './ActionButton';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AssignContext, useAssigneeContext } from '../../../../../../context/AssignProvider';
 import { isEmpty } from '../../../../../../helpers/Utils';
 import { CriteriaItemDT } from '../../../../../../types/assignTypes';
@@ -34,7 +34,8 @@ const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
         creteAssignCriteria,
         criterias,
         emptyCriteria,
-        UpdateAssignCriteria
+        UpdateAssignCriteria,
+        isCriteriaClosed
     } = AssignContexts;
 
     const commonContext = useContext(CommonContext);
@@ -52,10 +53,10 @@ const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
             recordingArea: data?.recordingArea || singleCriteria?.recordingArea || '',
             recordingDistance: data?.recordingDistance || singleCriteria?.recordingDistance || '',
             // educationSituation: singleCriteria?.educationSituation || '',
-            target: data?.target || singleCriteria?.target ,
+            target: data?.target || singleCriteria?.target || 0,
             deadline: data?.deadline || singleCriteria?.deadline || '',
             reminder: data?.reminder || singleCriteria?.reminder || [],
-            remark:(typeof( data?.remark) !== 'string' && data?.remark?.Des) || (typeof( singleCriteria?.remark) !== 'string' && singleCriteria?.remark?.Des)  || '',
+            remark: (typeof (data?.remark) !== 'string' && data?.remark?.Des) || (typeof (singleCriteria?.remark) !== 'string' && singleCriteria?.remark?.Des) || '',
             education: data?.education || singleCriteria?.education || '',
             buttonName: '',
         },
@@ -71,14 +72,18 @@ const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
             // }
 
             values.remarkRoleID = commonContext.roleId;
-            if(values.remark && (typeof(values.remark) === 'string')) {
+            if (values.remark && (typeof (values.remark) === 'string')) {
                 values.remarkDes = values.remark;
+            }
+            else {
+                values.remarkDes = "";
             }
 
             delete values.remark;
 
             if (values.buttonName && values?.buttonName === 'create-button') {
                 formik.resetForm();
+                formik.setFieldValue("target", 0);
 
                 if (isEmpty(data)) {
                     if (isRecreate) {
@@ -96,6 +101,7 @@ const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
 
             } else {
                 formik.resetForm();
+                formik.setFieldValue("target", 0);
                 if (isEmpty(data)) {
                     saveCriteria(values);
                 } else {
@@ -104,6 +110,13 @@ const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
             }
         }
     });
+
+    useEffect(() => {
+        if (!isCriteriaClosed) {
+            formik.resetForm()
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isCriteriaClosed])
 
 
     const onSingleRecreate = (values: CriteriaItemDT) => {

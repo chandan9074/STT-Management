@@ -102,6 +102,8 @@ interface ContextProps {
   setAudioStatisticsParams: React.Dispatch<React.SetStateAction<audioStatisticsParamDT>>;
   audioStatisticsData: assignStatisticsDT;
   postRecreateTargetAssign: (data: postRecreateTargetParamDT) => Promise<"ok" | "error">;
+  isCriteriaClosed: boolean, 
+  setIsCriteriaClosed:  React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -136,6 +138,8 @@ const AssignProvider = ({ children }: { children: any }) => {
     overall: false,
   } as audioStatisticsParamDT)
   const [loading, setLoading] = useState<boolean>(false);
+
+  const [isCriteriaClosed, setIsCriteriaClosed] = useState<boolean>(false);
 
   const postSingleTargetSpeechesAssign = async (data: FormData) => {
     setLoading(true);
@@ -550,7 +554,9 @@ const AssignProvider = ({ children }: { children: any }) => {
         fetchResAudioStatistics,
         setAudioStatisticsParams,
         audioStatisticsData,
-        postRecreateTargetAssign
+        postRecreateTargetAssign,
+        isCriteriaClosed,
+        setIsCriteriaClosed
       }}
     >
       {children}
