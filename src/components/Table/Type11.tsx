@@ -41,7 +41,7 @@ const Type11 = ({ data, onsubmitSpeech, handlePageChange }: Props) => {
     const [open, setOpen] = useState(false);
     const [speechData, setSpeechData] = useState<speechDt[]>(data?.speechData);
     const [speechId, setSpeechId] = useState<string>('');
-    const [page, setPage] = useState<number>(1);
+    const page = 1;
 
     const [collector, setCollector] = useState<roleDT>();
 
