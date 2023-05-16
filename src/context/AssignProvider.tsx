@@ -161,7 +161,7 @@ const AssignProvider = ({ children }: { children: any }) => {
 
     try {
       const res = await AssignService.fetchResSingleTargetData(data);
-      setSingleTargetSpeechesAssign(res?.data);
+      setSingleTargetSpeechesAssign(res.data.data);
     } catch (error) {
       console.log('error', error);
 
@@ -198,7 +198,7 @@ const AssignProvider = ({ children }: { children: any }) => {
 
   const getTargetAssign = async (data: targetAssignParamDT) => {
     const res = await AssignService.getTargetAssign(data);
-    setTargetsAssign(res.data);
+    setTargetsAssign(res.data.data);
   }
 
   const saveCriteria = (data: CriteriaItemDT) => {
@@ -327,7 +327,7 @@ const AssignProvider = ({ children }: { children: any }) => {
 
   const getDraftTarget = async () => {
     const res = await AssignService.fetchTargetList();
-    setSelectedTargetList(res.data);
+    setSelectedTargetList(res.data.data);
   }
 
   const updateDraftTarget = async (data: updateDraftTargetQueryParams) => {
