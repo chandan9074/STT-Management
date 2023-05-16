@@ -11,6 +11,7 @@ import { targetDT } from '../../types/assignTypes';
 import Pagination from '../Pagination';
 import Buttons from '../Buttons';
 import RemarkTargetModal from '../containers/AssignContainer/CreateTarget/TargetTable/RemarkTargetModal';
+import { useAssigneeContext } from '../../context/AssignProvider';
 
 
 type Props = {
@@ -20,13 +21,14 @@ type Props = {
 }
 
 const Type10 = ({ setSelectedTarget, data, handlePageChange }: Props) => {
-    // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
     // const [searchedColumn, setSearchedColumn] = useState("");
     const [selectedTargetData, setSelectedTargetData] = useState<targetDT | null>(null);
     const [remarkModal, setRemrkModal] = useState<boolean>(false);
 
 
+    const { targetDataLength } = useAssigneeContext();
+    const [page, setPage] = useState(1);
 
     const showDrawer = (item: targetDT) => {
         setOpen(true);
@@ -244,8 +246,8 @@ const Type10 = ({ setSelectedTarget, data, handlePageChange }: Props) => {
             </div >
             <div className='w-full flex justify-end mt-4'>
                 <Pagination.Type2
-                    total={100}
-                    pageSize={1}
+                    total={targetDataLength}
+                    pageSize={page}
                     handleDataChange={handlePageChange}
                 />
             </div>
