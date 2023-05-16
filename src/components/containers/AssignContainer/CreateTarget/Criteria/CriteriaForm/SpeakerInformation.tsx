@@ -4,12 +4,13 @@ import { healthFactors, recordingArea, recordingDistanceAssign } from '../../../
 import MultipleSelect from '../../../../../Form/MultipleSelect';
 import Icons from '../../../../../../assets/Icons';
 import { FormikValues } from 'formik';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { UserManagementContext } from '../../../../../../context/UserManagement';
 
 
 const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
 
+    const [clicked, setClicked] = useState(false);
     const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
 
 
@@ -77,23 +78,28 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                                     style: {
                                         display: 'flex',
                                         justifyContent: 'space-between',
-                                        width: '100%'
                                     }
                                 }}
 
                                 label={
-                                    <div className='flex'>
+                                    <div className={`w-[90%] flex justify-between`}>
                                         <h1 className='comboBoxLabel'>
                                             Age Range
                                             <span className='text-[red]'>*</span>
                                         </h1>
-                                        <h1 className='text-xs font-medium text-blue-gray-A20'>year</h1>
+                                        <h1 className={`${clicked && 'hidden'} text-xs font-medium text-blue-gray-A20`}>year</h1>
                                     </div>
                                 }
 
                                 variant="outlined"
-                                onFocus={() => setSelectedFieldOutline("ageRange")}
-                                onBlur={() => setSelectedFieldOutline("")}
+                                onFocus={() => {
+                                    setSelectedFieldOutline("ageRange");
+                                    setClicked(!clicked)
+                                }}
+                                onBlur={() => {
+                                    setSelectedFieldOutline("")
+                                    setClicked(!clicked)
+                                }}
 
                             />
                         )}

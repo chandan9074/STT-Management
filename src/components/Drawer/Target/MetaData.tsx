@@ -68,9 +68,9 @@ const MetaData = ({ setIsMetaData, data }: Props) => {
                         <div className="col-span-8 pt-3 pr-2 pl-3">
                             {item?.title === "Source Reference" ? (
                                 <div>
-                                    <div className='gap-x-2 flex items-center'>
+                                    <div className='gap-x-2 flex items-start'>
                                         <img className='w-6 h-6' src={Icons.PhotoGallery} alt="" />
-                                        <h1 className="text-blue-gray-80 font-medium text-small leading-15px">
+                                        <h1 className="w-64 break-words text-blue-gray-80 font-medium text-small leading-15px">
                                             {String(item.value)}
                                         </h1>
                                     </div>

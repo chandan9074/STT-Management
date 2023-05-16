@@ -29,6 +29,10 @@ const TargetTable = () => {
   });
 
   useEffect(() => {
+    isOpenModal ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'auto'
+  }, [isOpenModal])
+
+  useEffect(() => {
     assignContext.getTargetAssign(search);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

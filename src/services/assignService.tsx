@@ -116,4 +116,12 @@ export default class AssignService {
     const res = axios.post(PATH.POST_RES_RECREATE_TARGET_ASSIGN_PATH, data);
     return res;
   }
+
+  static getResPredefinedRemark() {
+    return axios.get(PATH.GET_RES_PREDEFINED_REMARKS);
+  }
+
+  static getResRolesUpdateAssigneeAssignModule() {
+    return axios.get(PATH.GET_RES_ROLES_UPDATE_ASSIGNEE_ASSIGN_MODULE);
+  }
 }

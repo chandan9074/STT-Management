@@ -102,8 +102,12 @@ interface ContextProps {
   setAudioStatisticsParams: React.Dispatch<React.SetStateAction<audioStatisticsParamDT>>;
   audioStatisticsData: assignStatisticsDT;
   postRecreateTargetAssign: (data: postRecreateTargetParamDT) => Promise<"ok" | "error">;
-  isCriteriaClosed: boolean, 
-  setIsCriteriaClosed:  React.Dispatch<React.SetStateAction<boolean>>
+  isCriteriaClosed: boolean,
+  setIsCriteriaClosed: React.Dispatch<React.SetStateAction<boolean>>
+  predefinedRemarks: string[];
+  getResPredefinedRemarks: () => void;
+  targetRoleList: roleDT[];
+  getResRolesUpdateAssigneeAssignModule: () => void;
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -138,6 +142,8 @@ const AssignProvider = ({ children }: { children: any }) => {
     overall: false,
   } as audioStatisticsParamDT)
   const [loading, setLoading] = useState<boolean>(false);
+  const [predefinedRemarks, setPredefinedRemarks] = useState<string[]>([] as string[]);
+  const [targetRoleList, setTargetRoleList] = useState<roleDT[]>([] as roleDT[]);
 
   const [isCriteriaClosed, setIsCriteriaClosed] = useState<boolean>(false);
 
@@ -486,6 +492,27 @@ const AssignProvider = ({ children }: { children: any }) => {
     }
   }
 
+  const getResPredefinedRemarks = async () => {
+    try {
+      const res = await AssignService.getResPredefinedRemark();
+      setPredefinedRemarks(res.data);
+    } catch (error) {
+      console.log('error', error);
+
+    }
+  }
+
+  const getResRolesUpdateAssigneeAssignModule = async () => {
+    try {
+      const res = await AssignService.getResRolesUpdateAssigneeAssignModule();
+      console.log("res----------ut", res.data)
+      setTargetRoleList(res.data);
+    } catch (error) {
+      console.log('error', error);
+
+    }
+  }
+
 
   return (
     <AssignContext.Provider
@@ -556,7 +583,11 @@ const AssignProvider = ({ children }: { children: any }) => {
         audioStatisticsData,
         postRecreateTargetAssign,
         isCriteriaClosed,
-        setIsCriteriaClosed
+        setIsCriteriaClosed,
+        predefinedRemarks,
+        getResPredefinedRemarks,
+        targetRoleList,
+        getResRolesUpdateAssigneeAssignModule
       }}
     >
       {children}
