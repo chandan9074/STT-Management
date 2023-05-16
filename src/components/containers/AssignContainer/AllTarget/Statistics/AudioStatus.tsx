@@ -16,7 +16,7 @@ const AudioStatus = ({ data }: { data: assignStatisticsDT }) => {
                 <div className='h-[60px] w-full mb-0.5 flex items-end relative'>
                     <div className='h-3 rounded-[10px] w-full bg-blue-gray-20 border-[1px] border-white flex items-center relative z-50'>
                         {data?.audioStatus.map((item, index) => (
-                            <div key={index} className={`${item.name === "Valid" ? "bg-[#00B86E]" : "bg-[#A10008]"} h-full ${data.audioStatus.length - 1 === index ? "" : "border-r-[1px] border-white"} ${data.audioStatus.length - 1 === index ? "rounded-r-[15px]" : ""} ${index === 0 ? "rounded-l-[15px]" : ""} flex justify-center group cursor-pointer ${tooltipData.filter(tData => tData.name === item.name)[0].barBgHover} duration-200`} style={{
+                            <div key={index} className={`${item.name === "Valid" ? "bg-[#00B86E]" : "bg-[#F54542]"} h-full ${data.audioStatus.length - 1 === index ? "" : "border-r-[1px] border-white"} ${data.audioStatus.length - 1 === index ? "rounded-r-[15px]" : ""} ${index === 0 ? "rounded-l-[15px]" : ""} flex justify-center group cursor-pointer ${tooltipData.filter(tData => tData.name === item.name)[0].barBgHover} duration-200`} style={{
                                 width: `${Math.round((item.hour * 100) / data.received)}%`,
                             }}>
                                 <AudioStatusTooltip data={tooltipData.filter(tData => tData.name === item.name)[0]} hour={item.hour} />
