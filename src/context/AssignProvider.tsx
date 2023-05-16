@@ -102,6 +102,7 @@ interface ContextProps {
   setAudioStatisticsParams: React.Dispatch<React.SetStateAction<audioStatisticsParamDT>>;
   audioStatisticsData: assignStatisticsDT;
   postRecreateTargetAssign: (data: postRecreateTargetParamDT) => Promise<"ok" | "error">;
+  targetDataLength: number;
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -129,8 +130,10 @@ const AssignProvider = ({ children }: { children: any }) => {
   const [assigneeForRecreate, setAssigneeForRecreate] = useState<AssigneeItemDT[]>([] as AssigneeItemDT[]);
   const [recreateTable, setRecreateTable] = useState<recreateTableDT>({} as recreateTableDT);
   const [targetsAssign, setTargetsAssign] = useState<targetDT[]>([] as targetDT[]);
+  const [targetDataLength, setTargetDataLength] = useState<number>(0);
   const [roleListByRole, setRoleListByRole] = useState<roleDT[]>([] as roleDT[]);
   const [singleTargetSpeechesAssign, setSingleTargetSpeechesAssign] = useState<assignSpeechDT>({} as assignSpeechDT)
+  const [singleTargetSpeechesLength, setSingleTargetSpeechesLength] = useState<number>(0);
   const [audioStatisticsData, setAudioStatisticsData] = useState<assignStatisticsDT>({} as assignStatisticsDT)
   const [audioStatisticsParams, setAudioStatisticsParams] = useState<audioStatisticsParamDT>({
     overall: false,
@@ -160,6 +163,7 @@ const AssignProvider = ({ children }: { children: any }) => {
     try {
       const res = await AssignService.fetchResSingleTargetData(data);
       setSingleTargetSpeechesAssign(res.data.data);
+      setSingleTargetSpeechesLength(res.data.total_data_size);
     } catch (error) {
       console.log('error', error);
 
@@ -197,6 +201,7 @@ const AssignProvider = ({ children }: { children: any }) => {
   const getTargetAssign = async (data: targetAssignParamDT) => {
     const res = await AssignService.getTargetAssign(data);
     setTargetsAssign(res.data.data);
+    setTargetDataLength(res.data.total_data_size);
   }
 
   const saveCriteria = (data: CriteriaItemDT) => {
@@ -550,7 +555,8 @@ const AssignProvider = ({ children }: { children: any }) => {
         fetchResAudioStatistics,
         setAudioStatisticsParams,
         audioStatisticsData,
-        postRecreateTargetAssign
+        postRecreateTargetAssign,
+        targetDataLength
       }}
     >
       {children}

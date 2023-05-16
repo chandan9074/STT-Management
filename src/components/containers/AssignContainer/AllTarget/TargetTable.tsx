@@ -19,10 +19,10 @@ const TargetTable = () => {
   const [selectedTarget, setSelectedTarget] = useState<targetDT[]>([] as targetDT[]);
   const [isConfirmModal, setIsConfirmModal] = useState<boolean>(false);
   const [count, setCount] = useState<number>(0);
-  const search: targetAssignParamDT = {
+  const [search, setSearch] = useState<targetAssignParamDT>({
     page: 1,
     pageSize: 20
-  };
+  });
   const [filterList, setFilterList] = useState<targetFilterListDT>({
     targetStatus: [],
     speechStatus: [],
@@ -31,7 +31,7 @@ const TargetTable = () => {
   useEffect(() => {
     assignContext.getTargetAssign(search);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [search])
 
   useEffect(() => {
     let count = 0;
@@ -93,6 +93,10 @@ const TargetTable = () => {
   };
 
   const handlePageChange = (page: number) => {
+    setSearch({
+      ...search,
+      page: page
+    })
   };
 
   return (
