@@ -276,5 +276,9 @@ export const customMuiListStyle = makeStyles({
   },
 });
 
-
+export const DDMMYYFormater = (date: string) => { //dd/mm/yy
+  const dateArray = date.split("-");
+  const newDate = dateArray[2] + "/" + dateArray[1] + "/" + dateArray[0]
+  return newDate;
+}
 

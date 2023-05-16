@@ -8,6 +8,7 @@ import Buttons from "../../../../Buttons";
 import { Drawer } from "../../../../Drawer";
 import CriteriaDetailsModal from "../../CreateTarget/Criteria/CriteriaDetailsModal";
 import CriteriaForm from "../../CreateTarget/Criteria/CriteriaForm";
+import { SearchBox } from "../../../../SearchBox";
 
 const CriteriaTargetBox = ({
   targetTitle,
@@ -16,8 +17,9 @@ const CriteriaTargetBox = ({
   targetTitle: string;
   onClick: () => void;
 }) => {
-  const [openCriteriaDetailsModal, setOpenCriteriaDetailsModal] =
-    useState(false);
+  const [openCriteriaDetailsModal, setOpenCriteriaDetailsModal] = useState(false);
+  const [isSearchBox, setIsSearchBox] = useState(false);
+
 
 
   const { targetForRecreate, setTargetForRecreate, singleCriteriaData, getCriteriaByID, getSingleCriteriaRecreate, singleCriteriaRecreate, setRecreateTable, recreateTable, setEmptySingleCriteria } = useAssigneeContext();
@@ -105,19 +107,22 @@ const CriteriaTargetBox = ({
       ) : (
         <div className="flex flex-col items-start justify-start h-full w-full pb-1">
           {/* headers  */}
-          <div className="w-full flex items-center justify-between pt-3 pb-1 px-[11px]">
-            <p className="text-ct-blue-40 font-semibold text-xxs">
-              CRITERIA: {targetForRecreate?.length}
-            </p>
-            <div className="self-end">
-              <Buttons.IconButton.Circle
-                size="medium"
-                variant="CT-Blue"
-                icon={<SearchOutlined style={{ color: "#6B7B8C" }} />}
-                background="white"
-              />
-            </div>
-          </div>
+          {
+            !isSearchBox ? <div className="w-full flex items-center justify-between pt-3 pb-1 px-[11px]">
+              <p className="text-ct-blue-40 font-semibold text-xxs">
+                CRITERIA: {targetForRecreate?.length}
+              </p>
+              <div className="self-end">
+                <Buttons.IconButton.Circle
+                  size="medium"
+                  variant="CT-Blue"
+                  icon={<SearchOutlined style={{ color: "#6B7B8C" }} />}
+                  background="white"
+                  onClick={() => setIsSearchBox(true)}
+                />
+              </div>
+            </div> : <SearchBox.Type2 inputWidth='w-[380px]' placeholder='Search criteria...' bgColor='bg-white' textColor='text-blue-gray-80' setIsSearchBox={setIsSearchBox} />
+          }
           <div className="flex flex-col gap-x-3 items-start justify-start h-full w-full py-1 overflow-y-auto custom_scrollbar">
             {/* //body  */}
             <FormControl>

@@ -38,7 +38,7 @@ const AddAssigneeModal = ({
 
     const commonContext = useContext(CommonContext)
 
-    const [role, setRole] = useState<string>(commonContext.role);
+    const [role, setRole] = useState<string>(roleData[0].title);
     const [customRoleData, setCustomRoleData] = useState<roleDT[]>([]);
     // const [type, setType] = useState<>
 

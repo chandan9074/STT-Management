@@ -1,4 +1,4 @@
-import { DatePicker, Table } from "antd";
+import { Table } from "antd";
 import { ColumnsType } from "antd/es/table";
 import { Dispatch, SetStateAction, useState } from "react";
 import Icons from "../../assets/Icons";
@@ -43,10 +43,10 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
     setOpenAssigneeModal(open);
     setSelectedTarget(target);
   };
-  const changeDeadlineModal = (open: boolean, target: TargetItemDT) => {
-    setOpenDeadlineModal(open);
-    setSelectedTarget(target);
-  };
+  // const changeDeadlineModal = (open: boolean, target: TargetItemDT) => {
+  //   setOpenDeadlineModal(open);
+  //   setSelectedTarget(target);
+  // };
   const changeRemarkModal = (open: boolean, target: TargetItemDT) => {
     setRemrkModal(open);
     setSelectedTarget(target);
@@ -71,6 +71,16 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
     console.log("hello")
     // }
   };
+
+  // const onDateChange: DatePickerProps['onChange'] = (date, dateString) => {
+  //   const newDate = DDMMYYFormater(dateString)
+  //   const params = {
+  //     id: selectedTarget?.id,
+  //     deadline: newDate
+  //   }
+  //   handleSelectItem(params)
+  //   setOpenDeadlineModal(false);
+  // };
 
   const Type8columns: ColumnsType<TargetItemDT> = [
     {
@@ -159,13 +169,13 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
       render: (data: TargetItemDT) => (
         <div className="flex items-center gap-1 relative">
           <p className="text-blue-gray-80 text-small">{data.target.deadline}</p>
-          <Buttons.IconButton.Circle
+          {/* <Buttons.IconButton.Circle
             onClick={() => changeDeadlineModal(true, data)}
             size="medium"
             variant="CT-Blue"
             icon={<img src={Icons.calenderIcon} alt="" className="w-5 h-5" />}
             background="transparent"
-          />
+          /> */}
         </div>
       ),
     },
@@ -266,15 +276,16 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
         dataSource={dataList}
         pagination={false}
       />
-      {openDeadlineModal && selectedTarget !== null && (
+      {/* {openDeadlineModal && selectedTarget !== null && (
         <div className="absolute top-0 right-0">
           <DatePicker
             bordered={false}
             open={openDeadlineModal}
             popupClassName="target_deadline_date_picker"
+            onChange={onDateChange}
           />
         </div>
-      )}
+      )} */}
 
       {/* <SideDrawer.Type3 open={open} setOpen={setOpen} drawerData={drawerData} /> */}
       <Drawer.Target.Type1

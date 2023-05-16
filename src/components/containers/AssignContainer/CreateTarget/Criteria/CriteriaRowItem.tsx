@@ -34,7 +34,13 @@ const CriteriaRowItem = ({
           const itemArray = data[item as keyof CriteriaItemDT] as string[];
           if (itemArray.length > 0) {
             for (let i = 0; i < itemArray.length; i++) {
-              text += itemArray[i] + ", ";
+              if (itemArray[i].includes("Smoker") || itemArray[i].includes("Hearing") || itemArray[i].includes("Stutter"))  {
+                text += itemArray[i] + "(Yes)" + ", ";
+              }
+              else {
+                text += itemArray[i] + ", ";
+
+              }
             }
           }
         } else if (typeof data[item as keyof CriteriaItemDT] === "string") {
@@ -138,7 +144,7 @@ const CriteriaRowItem = ({
         drawerClose={drawerClose}
         title="Create Critaria"
       >
-        <CriteriaForm drawerClose={drawerClose} data={singleCriteriaData}/>
+        <CriteriaForm drawerClose={drawerClose} data={singleCriteriaData} />
       </Drawer.Criteria.Type1>
 
     </div>

@@ -82,7 +82,7 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                                 }}
 
                                 label={
-                                    <div className={`w-[90%] flex justify-between`}>
+                                    <div className={`${!clicked && "w-[15.7rem]"} flex justify-between`}>
                                         <h1 className='comboBoxLabel'>
                                             Age Range
                                             <span className='text-[red]'>*</span>

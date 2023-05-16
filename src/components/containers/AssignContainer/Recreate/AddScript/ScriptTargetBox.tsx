@@ -7,6 +7,8 @@ import { getRandomInt } from "../../../../../helpers/Utils";
 import { ScriptItemDT } from "../../../../../types/assignTypes";
 import Buttons from "../../../../Buttons";
 import { Tooltip } from "../../../../Tooltip";
+import { useState } from "react";
+import { SearchBox } from "../../../../SearchBox";
 const ScriptTargetBox = ({
   targetTitle,
   onClick,
@@ -15,6 +17,9 @@ const ScriptTargetBox = ({
   onClick: () => void;
 }) => {
   const { scriptForRecreate, setScriptForRecreate, setRecreateTable, recreateTable } = useAssigneeContext();
+
+  const [isSearchBox, setIsSearchBox] = useState(false);
+
 
   const selectScript = (
     selectedItem: ScriptItemDT | null,
@@ -56,17 +61,20 @@ const ScriptTargetBox = ({
       ) : (
         <div className="flex flex-col items-start justify-start h-full w-full pb-1">
           {/* headers  */}
-          <div className="w-full px-[11px] pt-3 pb-1 flex items-center justify-between">
-            <p className="text-ct-blue-40 font-semibold text-xxs">
-              Script: {scriptForRecreate?.length}
-            </p>
-            <Buttons.IconButton.Circle
-              size="medium"
-              variant="CT-Blue"
-              icon={<SearchOutlined style={{ color: "#6B7B8C" }} />}
-              background="white"
-            />
-          </div>
+          {
+            !isSearchBox ? <div className="w-full px-[11px] pt-3 pb-1 flex items-center justify-between">
+              <p className="text-ct-blue-40 font-semibold text-xxs">
+                Script: {scriptForRecreate?.length}
+              </p>
+              <Buttons.IconButton.Circle
+                size="medium"
+                variant="CT-Blue"
+                icon={<SearchOutlined style={{ color: "#6B7B8C" }} />}
+                background="white"
+                onClick={() => setIsSearchBox(true)}
+              />
+            </div> : <SearchBox.Type2 inputWidth='w-[330px]' placeholder='Search script...' bgColor='bg-white' textColor='text-blue-gray-80' setIsSearchBox={setIsSearchBox} />
+          }
           {/* //body  */}
           <div className="flex flex-col items-start justify-start h-full w-full  overflow-y-auto custom_scrollbar">
             <FormControl>

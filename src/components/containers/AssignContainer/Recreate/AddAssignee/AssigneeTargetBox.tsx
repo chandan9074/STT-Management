@@ -6,6 +6,8 @@ import { AssigneeItemDT } from "../../../../../types/assignTypes";
 import Buttons from "../../../../Buttons";
 import RoleImage from "../../../../Image/RoleImage";
 import { Tooltip } from "../../../../Tooltip";
+import { useState } from "react";
+import { SearchBox } from "../../../../SearchBox";
 
 const AssigneeTargetBox = ({
   targetTitle,
@@ -17,6 +19,8 @@ const AssigneeTargetBox = ({
 
   const { setAssigneeForRecreate, assigneeForRecreate, setRecreateTable, recreateTable } = useAssigneeContext();
   // const [selectedValue, setSelectedValue] = useState<string>("");
+  const [isSearchBox, setIsSearchBox] = useState(false);
+
 
   const selectAssignee = (
     selectedItem: AssigneeItemDT | null,
@@ -65,7 +69,8 @@ const AssigneeTargetBox = ({
       ) : (
         <div className="flex flex-col items-start justify-start h-full w-full py-1">
           {/* headers  */}
-          <div className="flex items-center justify-between w-full pt-3 pb-1 px-[11px]">
+          {
+            !isSearchBox ? <div className="flex items-center justify-between w-full pt-3 pb-1 px-[11px]">
             <p className="text-ct-blue-40 font-semibold text-xxs">ASSIGNEE: {assigneeForRecreate.length}</p>
             <div className="self-end">
               <Buttons.IconButton.Circle
@@ -73,9 +78,11 @@ const AssigneeTargetBox = ({
                 variant="CT-Blue"
                 icon={<SearchOutlined style={{ color: "#6B7B8C" }} />}
                 background="white"
+                onClick={()=> setIsSearchBox(true)}
               />
             </div>
-          </div>
+          </div> : <SearchBox.Type2 inputWidth='w-[290px]' placeholder='Search assignee...' bgColor='bg-white' textColor='text-blue-gray-80' setIsSearchBox={setIsSearchBox}/>
+          }
           {/* //body  */}
           <div className="flex flex-col gap-1 items-start justify-start h-full w-full py-1 overflow-y-auto custom_scrollbar">
             <FormControl sx={{ width: "100%" }}>
