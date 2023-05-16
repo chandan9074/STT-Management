@@ -61,10 +61,19 @@ const Header = ({ selectedScript, setSelectedScript }: Props) => {
       })
     }
     else {
-      setFilterList({
-        ...filterList,
-        [key]: [],
-      });
+      if (key === "domain") {
+        setFilterList({
+          ...filterList,
+          [key]: [],
+          subDomain: []
+        })
+      }
+      else {
+        setFilterList({
+          ...filterList,
+          [key]: []
+        })
+      }
     }
   }
 

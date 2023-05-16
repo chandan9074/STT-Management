@@ -75,10 +75,19 @@ const Type1 = ({ isDrawerOpen, drawerClose, modalOpen, setModalOpen, setModalScr
             })
         }
         else {
-            setFilterList({
-                ...filterList,
-                [key]: [],
-            });
+            if (key === "domain") {
+                setFilterList({
+                    ...filterList,
+                    [key]: [],
+                    subDomain: []
+                })
+            }
+            else {
+                setFilterList({
+                    ...filterList,
+                    [key]: []
+                })
+            }
         }
     }
 
@@ -235,7 +244,7 @@ const SubDrawer = ({ data, modalOpen, setModalOpen, setModalScript, handleScript
                             <p className='m-0 text-ct-blue-95 text-xs font-[300] truncate text-ellipsis w-[190px]'>{item.description}</p>
                         </button>
                         <button onClick={() => handleScriptRemove(item.id)}>
-                            <img src={Icons.cancel} alt=""  />
+                            <img src={Icons.cancel} alt="" />
                         </button>
                     </div>
                 ))}
