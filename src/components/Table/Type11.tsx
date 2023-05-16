@@ -29,9 +29,10 @@ import SingleRemark from '../containers/AudioManagement/TableField/SingleRemark'
 type Props = {
     data: assignSpeechDT,
     onsubmitSpeech: (data: FormData) => void,
+    handlePageChange: (page: number) => void,
 }
 
-const Type11 = ({ data, onsubmitSpeech }: Props) => {
+const Type11 = ({ data, onsubmitSpeech, handlePageChange }: Props) => {
 
     const assignContext = useContext(AssignContext);
     const commonContext = useContext(CommonContext);
@@ -40,6 +41,7 @@ const Type11 = ({ data, onsubmitSpeech }: Props) => {
     const [open, setOpen] = useState(false);
     const [speechData, setSpeechData] = useState<speechDt[]>(data?.speechData);
     const [speechId, setSpeechId] = useState<string>('');
+    const [page, setPage] = useState<number>(1);
 
     const [collector, setCollector] = useState<roleDT>();
 
@@ -331,10 +333,6 @@ const Type11 = ({ data, onsubmitSpeech }: Props) => {
         },
     ];
 
-    const handlePageChange = (page: number) => {
-        // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
-    }
-
     return (<>
 
         <div className='billing-table billing-table-odd-bg type4-table bg-white' >
@@ -382,8 +380,8 @@ const Type11 = ({ data, onsubmitSpeech }: Props) => {
         <div className='flex w-full justify-end mt-4 mb-2'>
 
             <Pagination.Type2
-                total={100}
-                pageSize={10}
+                total={assignContext.singleTargetSpeechesLength}
+                pageSize={page}
                 // total={35}
                 // pageSize={5}
                 handleDataChange={handlePageChange}
