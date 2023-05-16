@@ -1,4 +1,4 @@
-import { DatePicker, Table } from "antd";
+import { Table } from "antd";
 import { ColumnsType } from "antd/es/table";
 import { Dispatch, SetStateAction, useState } from "react";
 import Icons from "../../assets/Icons";
@@ -43,10 +43,10 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
     setOpenAssigneeModal(open);
     setSelectedTarget(target);
   };
-  const changeDeadlineModal = (open: boolean, target: TargetItemDT) => {
-    setOpenDeadlineModal(open);
-    setSelectedTarget(target);
-  };
+  // const changeDeadlineModal = (open: boolean, target: TargetItemDT) => {
+  //   setOpenDeadlineModal(open);
+  //   setSelectedTarget(target);
+  // };
   const changeRemarkModal = (open: boolean, target: TargetItemDT) => {
     setRemrkModal(open);
     setSelectedTarget(target);
@@ -82,15 +82,17 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
       title: `${"Script".toLocaleUpperCase()}`,
       width: 178,
       render: (data: TargetItemDT) => (
-        <div className="flex items-center gap-1 relative">
-          <p className="text-small text-blue-gray-80 w-40 truncate"># {data.script.id}</p>
-          <Buttons.IconButton.Circle
-            onClick={() => changeScriptModal(true, data)}
-            size="medium"
-            variant="CT-Blue"
-            icon={<img src={Icons.arrow_drop_down_blue_gray_45} alt="" />}
-            background="transparent"
-          />
+        <div className="relative">
+          <button onClick={() => changeScriptModal(true, data)} className="flex items-center gap-1">
+            <p className="text-small text-blue-gray-80 w-40 truncate"># {data.script.id}</p>
+            <button className='flex justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 p-2 rounded-full'>
+              <img
+
+                className='w-2 h-2 cursor-pointer'
+                src={Icons.arrow_drop_down_blue_gray_45}
+                alt="" />
+            </button>
+          </button>
           {openScriptModal && selectedTarget?.id === data?.id && (
             <div className="absolute bottom-11 left-0  bg-white rounded-md z-[100]">
               {
@@ -106,15 +108,17 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
       title: `${"target".toLocaleUpperCase()}`,
       width: 140,
       render: (data: TargetItemDT) => (
-        <div className="flex items-center gap-1 relative">
-          <p className="text-small text-blue-gray-80">{data.target.target}</p>
-          <Buttons.IconButton.Circle
-            onClick={() => changeTargetModal(true, data)}
-            size="medium"
-            variant="CT-Blue"
-            icon={<img src={Icons.arrow_drop_down_blue_gray_45} alt="" />}
-            background="transparent"
-          />
+        <div className="relative">
+          <button onClick={() => changeTargetModal(true, data)} className="flex items-center gap-1">
+            <p className="text-small text-blue-gray-80">{data.target.target}</p>
+            <button className='flex justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 p-2 rounded-full'>
+              <img
+
+                className='w-2 h-2 cursor-pointer'
+                src={Icons.arrow_drop_down_blue_gray_45}
+                alt="" />
+            </button>
+          </button>
           {openTargetModal && selectedTarget?.id === data?.id && (
             <div className="absolute bottom-11 left-0  bg-white rounded-md z-[100]">
               {data.target.id && <CriteriaTargetModal setOpenTargetModal={setOpenTargetModal} handleSelectItem={handleSelectItem} selectedItemList={selectedCriteriaList} selectedCriteriaId={data.target.id} selectedTargetId={selectedTarget.id} />}
@@ -127,24 +131,24 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
       title: `${"Assignee".toLocaleUpperCase()}`,
       width: 264,
       render: (data: TargetItemDT) => (
-        <div className="flex items-center justify-between gap-1 relative">
-          <div className="flex items-start gap-2">
-            <RoleImage role={data.assignee.role} />
-            <div className="flex flex-col ">
-              <h2 className="font-semibold text-blue-gray-80 text-xs leading-4 mb-0.5">
-                {data.assignee.name}
-              </h2>
-              <p className="text-blue-gray-75 text-xxs mt-0 leading-[14px]">{data.assignee.role}</p>
+        <div className="relative w-full flex">
+          <button onClick={() => changeAssigneeModal(true, data)} className="flex w-full items-center justify-between gap-1">
+            <div className="flex items-start gap-2">
+              <RoleImage role={data.assignee.role} />
+              <div className="flex flex-col ">
+                <h2 className="font-semibold text-blue-gray-80 text-xs leading-4 mb-0.5">
+                  {data.assignee.name}
+                </h2>
+                <p className="text-blue-gray-75 text-xxs mt-0 leading-[14px]">{data.assignee.role}</p>
+              </div>
             </div>
-          </div>
-
-          <Buttons.IconButton.Circle
-            onClick={() => changeAssigneeModal(true, data)}
-            size="medium"
-            variant="CT-Blue"
-            icon={<img src={Icons.arrow_drop_down_blue_gray_45} alt="" />}
-            background="transparent"
-          />
+            <button className='flex justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 p-2 rounded-full'>
+              <img
+                className='w-2 h-2 cursor-pointer'
+                src={Icons.arrow_drop_down_blue_gray_45}
+                alt="" />
+            </button>
+          </button>
           {openAssigneeModal && selectedTarget?.id === data?.id && (
             <div className="absolute bottom-11 left-0 bg-white rounded-md z-[100]">
               {data.assignee.id && <AssigneeTargetModal setOpenAssigneeModal={setOpenAssigneeModal} handleSelectItem={handleSelectItem} selectedItemList={selectedAssigneList} selectedAssigneeId={data.assignee.id} selectedTargetId={selectedTarget.id} />}
@@ -158,14 +162,14 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
       width: 170,
       render: (data: TargetItemDT) => (
         <div className="flex items-center gap-1 relative">
-          <p className="text-blue-gray-80 text-small">{data.target.deadline}</p>
-          <Buttons.IconButton.Circle
+          <p className="text-blue-gray-80 text-small">{data.target.deadline ? data.target.deadline : "--"}</p>
+          {/* <Buttons.IconButton.Circle
             onClick={() => changeDeadlineModal(true, data)}
             size="medium"
             variant="CT-Blue"
             icon={<img src={Icons.calenderIcon} alt="" className="w-5 h-5" />}
             background="transparent"
-          />
+          /> */}
         </div>
       ),
     },
@@ -266,7 +270,7 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
         dataSource={dataList}
         pagination={false}
       />
-      {openDeadlineModal && selectedTarget !== null && (
+      {/* {openDeadlineModal && selectedTarget !== null && (
         <div className="absolute top-0 right-0">
           <DatePicker
             bordered={false}
@@ -274,7 +278,7 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
             popupClassName="target_deadline_date_picker"
           />
         </div>
-      )}
+      )} */}
 
       {/* <SideDrawer.Type3 open={open} setOpen={setOpen} drawerData={drawerData} /> */}
       <Drawer.Target.Type1
