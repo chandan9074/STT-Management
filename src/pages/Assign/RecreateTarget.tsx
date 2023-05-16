@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 const RecreateTarget = () => {
     const [dataShow, setDataShow] = useState<boolean>(true);
     const { id } = useParams<{ id: string }>();
-    const { getTargetForRecreate, recreateTable, postRecreateTargetAssign } = useAssigneeContext();
+    const { getTargetForRecreate, recreateTable, postRecreateTargetAssign, loading } = useAssigneeContext();
 
     const navigate = useNavigate();
 
@@ -62,12 +62,6 @@ const RecreateTarget = () => {
                             />
                         </div>
                         <div className='flex gap-x-[15px]'>
-                            {/* <button
-                onClick={() => setDataShow(!dataShow)}
-                className={`border-[1px] bg-white border-ct-blue-20 rounded-full py-[10.5px] px-[11px] z-[80] right-0 duration-1000`}
-              >
-                <img src={dataShow ? Icons.DoubleDarkICon : Icons.DoubleArroDownDark} alt="" className="" />
-              </button> */}
                             <Buttons.IconButton.Circle
                                 size='medium'
                                 variant="CT-Blue"
@@ -105,7 +99,7 @@ const RecreateTarget = () => {
                     <h1 className="text-heading-6 font-normal text-ct-blue-95">
                         {recreateTable?.target?.target} Targets
                     </h1>
-                    <Buttons.LabelButton.Primary label='Create and Send' variant='CT-Blue' size='small' onClick={() => handleRecreateTable()} />
+                    <Buttons.LabelButton.Primary label={`Create and Send${loading ? "..." : ""}`} variant='CT-Blue' size='small' onClick={() => handleRecreateTable()} />
                 </div>
                 <Table.Type12 />
             </div>
