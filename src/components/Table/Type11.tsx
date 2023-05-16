@@ -69,6 +69,7 @@ const Type11 = ({ data }: Props) => {
 
     useEffect(() => {
         managerContext.getManager(managerParams);
+        assignContext.getResPredefinedRemarks();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

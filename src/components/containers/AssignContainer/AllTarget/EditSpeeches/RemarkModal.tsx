@@ -1,10 +1,11 @@
 import { TextField } from '@mui/material';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import Icons from '../../../../../assets/Icons';
-import { predefined } from '../../../../../data/assign/AssignData';
+// import { predefined } from '../../../../../data/assign/AssignData';
 import { remark, speechDt } from '../../../../../types/assignTypes';
 import Buttons from '../../../../Buttons';
 import { CustomModal } from '../../../../common/CustomModal';
+import { useAssigneeContext } from '../../../../../context/AssignProvider';
 
 type Props = {
     open: boolean,
@@ -20,6 +21,7 @@ type Props = {
 const RemarkModal = ({setTempRemark, open, setOpen, remarkId, speechData, setSpeechData, setRemarkId, tempRemark }: Props) => {
 
     const [remark, setRemark] = useState<remark>(tempRemark);
+    const {predefinedRemarks} = useAssigneeContext()
 
     useEffect(() => {
         setRemark(tempRemark)
@@ -76,10 +78,10 @@ const RemarkModal = ({setTempRemark, open, setOpen, remarkId, speechData, setSpe
                                 <div>
                                     <div className="fixed top-0 left-0 opacity-50 bg-transparent w-full h-screen z-40" onClick={() => setIsRemark(false)} />
 
-                                    <div className='w-[408px] pt-5 pl-5 pr-3 bg-white z-50 rounded-[6px] absolute -bottom-[358px] left-4'>
+                                    <div className='w-[408px] pt-5 pl-5 pr-3 bg-white z-50 rounded-[6px] absolute top-10 left-4'>
 
                                         {
-                                            predefined?.map((item: string, i: number) => (
+                                            predefinedRemarks?.map((item: string, i: number) => (
                                                 <h1 onClick={() => onPredefinedValueClick(item)} key={i} className='text-blue-gray-80 text text-small font-medium mb-[22px] cursor-pointer'>{item}</h1>
                                             ))
                                         }

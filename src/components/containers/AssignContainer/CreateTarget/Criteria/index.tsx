@@ -55,7 +55,7 @@ const CreateCriteria = () => {
         <Drawer.Criteria.Type1
           isDrawerOpen={drawerOpen}
           drawerClose={drawerClose}
-          title="Create Critaria"
+          title="Create Criteria"
         >
           <CriteriaForm drawerClose={drawerClose} />
         </Drawer.Criteria.Type1>

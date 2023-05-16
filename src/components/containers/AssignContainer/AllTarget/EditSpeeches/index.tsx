@@ -38,7 +38,7 @@ const EditSpeeches = () => {
 
                 {
                     assignContext.singleTargetSpeechesAssign &&
-                    <Table.Type11 data={assignContext.singleTargetSpeechesAssign} />
+                    <Table.Type11 data={assignContext.singleTargetSpeechesAssign}/>
                 }
 
             </Layouts.Default>

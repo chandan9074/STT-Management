@@ -58,6 +58,7 @@ export const POST_SINGLE_TARGET_SPEECHES_ASSIGN_PATH = `${REACT_APP_BASE_URL2}/p
 export const GET_RES_AUDIO_STATISTICS_PATH = `${REACT_APP_BASE_URL2}/get_res_statistics_assign_module`;
 export const POST_RES_RECREATE_TARGET_ASSIGN_PATH = `${REACT_APP_BASE_URL2}/post_res_recreate_target_table_assign_module`;
 export const GET_RES_PREDEFINED_REMARKS = `${REACT_APP_BASE_URL2}/get_res_predefined_remarks`;
+export const GET_RES_ROLES_UPDATE_ASSIGNEE_ASSIGN_MODULE = `${REACT_APP_BASE_URL2}/get_res_roles_update_assignee_assign_module`;
 
 
 

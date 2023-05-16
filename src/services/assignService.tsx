@@ -120,4 +120,8 @@ export default class AssignService {
   static getResPredefinedRemark() {
     return axios.get(PATH.GET_RES_PREDEFINED_REMARKS);
   }
+
+  static getResRolesUpdateAssigneeAssignModule() {
+    return axios.get(PATH.GET_RES_ROLES_UPDATE_ASSIGNEE_ASSIGN_MODULE);
+  }
 }

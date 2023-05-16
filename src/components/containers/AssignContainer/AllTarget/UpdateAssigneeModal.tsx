@@ -77,11 +77,11 @@ const UpdateAssigneeModal = ({
 
     const [form] = Form.useForm();
 
-    const [role, setRole] = useState<string>('Manager');
+    const commonContext = useContext(CommonContext);
+    const [role, setRole] = useState<string>(commonContext.role);
     const [customRoleData, setCustomRoleData] = useState<roleDT[]>(newRoleList);
 
     const assignContext = useContext(AssignContext);
-    const commonContext = useContext(CommonContext);
     const [roleDatas, setRoleDatas] = useState<roleDT[]>([] as roleDT[]);
 
     const [isDropDownVisible, setIsDropDownVisible] = useState<boolean>(false);
@@ -108,6 +108,7 @@ const UpdateAssigneeModal = ({
 
     useEffect(() => {
         assignContext.getRoleListByRole(roleParam);
+        assignContext.getResRolesUpdateAssigneeAssignModule();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -360,7 +361,7 @@ const UpdateAssigneeModal = ({
                                         onChange={(e) => onValueChange(e)}
                                     >
                                         {
-                                            customRoleData?.map((item: roleDT, i: number) => (
+                                            assignContext.targetRoleList?.map((item: roleDT, i: number) => (
                                                 <FormControlLabel
                                                     style={{
                                                         marginLeft: '0px',

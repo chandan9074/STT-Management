@@ -102,7 +102,10 @@ interface ContextProps {
   setAudioStatisticsParams: React.Dispatch<React.SetStateAction<audioStatisticsParamDT>>;
   audioStatisticsData: assignStatisticsDT;
   postRecreateTargetAssign: (data: postRecreateTargetParamDT) => Promise<"ok" | "error">;
+  predefinedRemarks: string[];
   getResPredefinedRemarks: () => void;
+  targetRoleList: roleDT[];
+  getResRolesUpdateAssigneeAssignModule: () => void;
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -138,6 +141,7 @@ const AssignProvider = ({ children }: { children: any }) => {
   } as audioStatisticsParamDT)
   const [loading, setLoading] = useState<boolean>(false);
   const [predefinedRemarks, setPredefinedRemarks] = useState<string[]>([] as string[]);
+  const [targetRoleList, setTargetRoleList] = useState<roleDT[]>([] as roleDT[]);
 
   const postSingleTargetSpeechesAssign = async (data: FormData) => {
     setLoading(true);
@@ -494,6 +498,17 @@ const AssignProvider = ({ children }: { children: any }) => {
     }
   }
 
+  const getResRolesUpdateAssigneeAssignModule = async () => {
+    try {
+      const res = await AssignService.getResRolesUpdateAssigneeAssignModule();
+      console.log("res----------ut", res.data)
+      setTargetRoleList(res.data);
+    } catch (error) {
+      console.log('error', error);
+
+    }
+  }
+
 
   return (
     <AssignContext.Provider
@@ -564,7 +579,9 @@ const AssignProvider = ({ children }: { children: any }) => {
         audioStatisticsData,
         postRecreateTargetAssign,
         predefinedRemarks,
-        getResPredefinedRemarks
+        getResPredefinedRemarks,
+        targetRoleList,
+        getResRolesUpdateAssigneeAssignModule
       }}
     >
       {children}

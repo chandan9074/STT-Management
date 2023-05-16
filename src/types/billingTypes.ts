@@ -1,5 +1,3 @@
-import managerImage from "../assets/Icons/manager.png";
-
 export type totalAmountDisbursedDT = {
   // yearlyHistory: {
   yearList: number[];
@@ -77,7 +75,7 @@ export type lastBillingsDT = {
   dateOfPayment: string;
   role: string;
   type: string;
-  numberOfBills:number;
+  numberOfBills: number;
   payable: boolean;
   amount: number;
   billingInfo: lastBillingInfoDT[];

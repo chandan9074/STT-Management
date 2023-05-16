@@ -110,7 +110,7 @@ const DeviceField = ({ data, device, deviceData, deviceId, setDeviceId, setDevic
                                 :
                                 <h1 className='text-blue-gray-60 text-xs font-medium'>Select One</h1>
                         }
-                        <img className='w-[7px] h-1' src={Icons.arrow_drop_down_blue_gray} alt="" />
+                        <img className='w-2 h-2' src={Icons.arrow_drop_down_blue_gray} alt="" />
                     </div>
             }
         </div>
