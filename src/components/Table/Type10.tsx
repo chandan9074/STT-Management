@@ -9,6 +9,8 @@ import { Drawer } from '../Drawer';
 import { EDIT_SPEECHES_PATH } from '../../helpers/Slug';
 import { targetDT } from '../../types/assignTypes';
 import Pagination from '../Pagination';
+import Buttons from '../Buttons';
+import RemarkTargetModal from '../containers/AssignContainer/CreateTarget/TargetTable/RemarkTargetModal';
 
 
 type Props = {
@@ -21,6 +23,10 @@ const Type10 = ({ setSelectedTarget, data, handlePageChange }: Props) => {
     // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
     const [open, setOpen] = useState(false);
     // const [searchedColumn, setSearchedColumn] = useState("");
+    const [selectedTargetData, setSelectedTargetData] = useState<targetDT | null>(null);
+    const [remarkModal, setRemrkModal] = useState<boolean>(false);
+
+
 
     const showDrawer = (item: targetDT) => {
         setOpen(true);
@@ -30,6 +36,11 @@ const Type10 = ({ setSelectedTarget, data, handlePageChange }: Props) => {
         const result = (100 * value) / max;
         return result;
     }
+
+    const changeRemarkModal = (open: boolean, target: targetDT) => {
+        setRemrkModal(open);
+        setSelectedTargetData(target);
+    };
 
     const [singleTargetData, setSingleTargetData] = useState<targetDT>();
 
@@ -140,13 +151,29 @@ const Type10 = ({ setSelectedTarget, data, handlePageChange }: Props) => {
         },
         {
             title: `${"REMARK".toLocaleUpperCase()}`,
-            width: 80,
-            align: "center",
-            render: (data: targetDT) => (
-                <div className='flex justify-center'>
-                    <img src={Icons.File} className="h-[15px] w-[12px]" alt="" />
+            align: 'center',
+            width: 146,
+            render: (_, record: targetDT, index: number) => (
+                <div className="relative flex justify-center items-center">
+                    <Buttons.IconButton.Circle
+                        onClick={() => changeRemarkModal(true, record)}
+                        size="medium"
+                        variant="CT-Blue"
+                        icon={
+                            <img src={Icons.File} className="h-4 w-4" alt="" />
+                        }
+                        background="transparent"
+                    />
+                    {remarkModal && selectedTargetData?.id === record?.id && selectedTargetData?.target?.remark && (
+                        <div className={`absolute ${data.length - 4 < index ? "-top-44" : "top-10"} right-0 w-[560px] bg-white rounded-md z-[100]`}>
+                            <RemarkTargetModal
+                                setModalOpen={setRemrkModal}
+                                remark={typeof (selectedTargetData?.target.remark) !== "string" ? selectedTargetData?.target.remark : undefined}
+                            />
+                        </div>
+                    )}
                 </div>
-            )
+            ),
         },
 
         {
@@ -159,16 +186,16 @@ const Type10 = ({ setSelectedTarget, data, handlePageChange }: Props) => {
             render: (_, record: targetDT) => (
                 <div className='flex justify-center'>
 
-                    <div className='flex justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full'>
+                    <button onClick={() => {
+                        showDrawer(record);
+                        setSingleTargetData(record);
+                    }} className='flex justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full'>
                         <img
-                            onClick={() => {
-                                showDrawer(record);
-                                setSingleTargetData(record);
-                            }}
+
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
-                    </div>
+                    </button>
 
                 </div>)
         },

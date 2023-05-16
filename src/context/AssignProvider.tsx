@@ -102,6 +102,7 @@ interface ContextProps {
   setAudioStatisticsParams: React.Dispatch<React.SetStateAction<audioStatisticsParamDT>>;
   audioStatisticsData: assignStatisticsDT;
   postRecreateTargetAssign: (data: postRecreateTargetParamDT) => Promise<"ok" | "error">;
+  getResPredefinedRemarks: () => void;
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -136,6 +137,7 @@ const AssignProvider = ({ children }: { children: any }) => {
     overall: false,
   } as audioStatisticsParamDT)
   const [loading, setLoading] = useState<boolean>(false);
+  const [predefinedRemarks, setPredefinedRemarks] = useState<string[]>([] as string[]);
 
   const postSingleTargetSpeechesAssign = async (data: FormData) => {
     setLoading(true);
@@ -482,6 +484,16 @@ const AssignProvider = ({ children }: { children: any }) => {
     }
   }
 
+  const getResPredefinedRemarks = async () => {
+    try {
+      const res = await AssignService.getResPredefinedRemark();
+      setPredefinedRemarks(res.data);
+    } catch (error) {
+      console.log('error', error);
+
+    }
+  }
+
 
   return (
     <AssignContext.Provider
@@ -550,7 +562,9 @@ const AssignProvider = ({ children }: { children: any }) => {
         fetchResAudioStatistics,
         setAudioStatisticsParams,
         audioStatisticsData,
-        postRecreateTargetAssign
+        postRecreateTargetAssign,
+        predefinedRemarks,
+        getResPredefinedRemarks
       }}
     >
       {children}

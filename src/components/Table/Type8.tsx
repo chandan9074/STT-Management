@@ -201,7 +201,7 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
       width: 178,
       render: (value, record) => (
         <div className="flex justify-center items-center">
-          <Buttons.IconButton.Circle
+          {/* <Buttons.IconButton.Circle
             onClick={() => {
               showDrawer(record)
               console.log("click hoisi");
@@ -218,7 +218,19 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
               />
             }
             background="transparent"
-          />
+          /> */}
+          <button onClick={() => {
+            showDrawer(record)
+            console.log("click hoisi");
+
+            setSingleTargetData(record)
+          }} className='flex justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full'>
+            <img
+
+              className='w-[14px] h-[14px] cursor-pointer'
+              src={Icons.open_in_new}
+              alt="" />
+          </button>
         </div>
       ),
     },
