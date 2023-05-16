@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { FormikValues } from 'formik';
-import { scriptDomain, scriptSubDomain } from '../../../../../data/Script/Domain';
+import { scriptDomainAddSpeech, scriptSubDomain } from '../../../../../data/Script/Domain';
 import { customMuiListStyle } from '../../../../../helpers/Utils';
 
 
@@ -48,7 +48,7 @@ const DomainSubDomain = ({ formik }: { formik: FormikValues }) => {
                             >
 
                                 {
-                                    scriptDomain?.map((value, i) => (
+                                    scriptDomainAddSpeech?.map((value, i) => (
                                         <MenuItem
                                             key={i}
                                             value={value}

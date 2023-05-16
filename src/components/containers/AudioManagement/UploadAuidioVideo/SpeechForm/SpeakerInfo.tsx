@@ -73,6 +73,9 @@ const SpeakerInfo = ({ formik }: { formik: FormikValues }) => {
             </div>
 
             <div className='mt-6'>
+
+                <h4 className='text-blue-gray-80 font-medium text-small'>Age Range</h4>
+
                 <FormGroup row>
                     {
                         audioManAgeRange.map((value, i) => (
@@ -113,14 +116,15 @@ const SpeakerInfo = ({ formik }: { formik: FormikValues }) => {
                             />
                              */}
                             <HomeDistrictSelect
-                                required={true}
+                                required={false}
                                 formikValues={formik.values.homeDistrict}
                                 data={homeDistrict}
                                 formikError={formik.errors.homeDistrict}
                                 formikTouched={formik.touched.homeDistrict}
                                 formik={formik}
                                 name={'homeDistrict'}
-                                fieldLabel='Home District'
+                                fieldLabel='Select Division/ District'
+                                align='top'
                             />
                         </div>
                     </Grid>

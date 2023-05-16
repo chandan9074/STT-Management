@@ -9,17 +9,21 @@ const AllAnnotatedFiles = () => {
 
     const [activeTab, setActiveTab] = useState<string>("Sentence");
     const [selectedScript, setSelectedScript] = useState<annotatedFilesDT[]>([] as annotatedFilesDT[]);
+    const [selectedRowsData, setSelectedRowSData] = useState<annotatedFilesDT[]>([]);
 
-    const {getAnnotatedFilesData,annotatedFilesData} = useContext(AudioManagementContext);
+    const [isConfirmCancelModal, setIsConfirmCancelModal] = useState<boolean>(false);
 
-  useEffect(()=>{
-    getAnnotatedFilesData()
-       // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+
+    const { getAnnotatedFilesData, annotatedFilesData } = useContext(AudioManagementContext);
+
+    useEffect(() => {
+        getAnnotatedFilesData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     const allTergetMenu = (key: string) => {
         const Category: CategoryMap = {
-            "Sentence": <><Table.Type21 data={annotatedFilesData} /></>,
+            "Sentence": <><Table.Type21 data={annotatedFilesData} setSelectedRowSData={setSelectedRowSData} /></>,
             "Word": <></>,
             "Phoneme": <></>
         };
@@ -29,7 +33,7 @@ const AllAnnotatedFiles = () => {
 
     return (
         <div>
-             <Header setActiveTab={setActiveTab} selectedScript={selectedScript} setSelectedScript={setSelectedScript}/>
+            <Header setActiveTab={setActiveTab} selectedScript={selectedScript} setSelectedScript={setSelectedScript} selectedRowsData={selectedRowsData} isConfirmCancelModal={isConfirmCancelModal} setIsConfirmCancelModal={setIsConfirmCancelModal} />
             <div>
                 {allTergetMenu(activeTab)}
             </div>

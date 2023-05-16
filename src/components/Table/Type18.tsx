@@ -1,6 +1,6 @@
 import { Table } from 'antd'
 import { ColumnsType } from 'antd/es/table'
-import React, { useContext, useState } from 'react'
+import React, { Dispatch, SetStateAction, useContext, useState } from 'react'
 import Icons from '../../assets/Icons'
 import { CommonContext } from '../../context/CommonProvider'
 import { allCheckedAudioDT } from '../../types/audioManagementTypes'
@@ -13,10 +13,11 @@ import { Drawer } from '../Drawer'
 import Remark2 from '../containers/AudioManagement/TableField/Remark2'
 
 type Props = {
-  data: allCheckedAudioDT[]
+  data: allCheckedAudioDT[],
+  setSelectedRowSData?: Dispatch<SetStateAction<allCheckedAudioDT[]>>,
 }
 
-const Type18 = ({ data }: Props) => {
+const Type18 = ({ data, setSelectedRowSData }: Props) => {
 
   const { roleName } = useContext(CommonContext);
   const [open, setOpen] = useState(false);
@@ -126,15 +127,15 @@ const Type18 = ({ data }: Props) => {
             alt=""
           />
           {
-                        remarkOpen &&
-                        <div className='fixed top-[209px] right-[86px] z-[999] animate-fadeIn2'>
-                            <Remark2
-                                open={remarkOpen}
-                                setOpen={setRemarkOpen}
-                                data={data.remark}
-                            />
-                        </div>
-                    }
+            remarkOpen &&
+            <div className='fixed top-[209px] right-[86px] z-[999] animate-fadeIn2'>
+              <Remark2
+                open={remarkOpen}
+                setOpen={setRemarkOpen}
+                data={data.remark}
+              />
+            </div>
+          }
         </div>
       )
     },
@@ -165,10 +166,9 @@ const Type18 = ({ data }: Props) => {
 
   const rowSelection = {
     onChange: (selectedRowKeys: React.Key[], selectedRows: allCheckedAudioDT[]) => {
-      // setSelectedTarget(selectedRows);
-      console.log('*******', selectedRows);
-
-
+      if (setSelectedRowSData) {
+        setSelectedRowSData(selectedRows)
+      }
     },
     getCheckboxProps: (record: allCheckedAudioDT) => ({
       // disabled: record.name === 'Disabled User', // Column configuration not to be checked

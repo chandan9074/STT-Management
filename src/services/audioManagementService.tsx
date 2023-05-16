@@ -248,4 +248,8 @@ export default class audioManagementService {
     static getScriptList() {
         return scriptFilterData;
     }
+
+    static postReassignAudios (ids: string[]) {
+        return "";
+    }
 }

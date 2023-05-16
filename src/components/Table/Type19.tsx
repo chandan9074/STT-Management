@@ -1,4 +1,4 @@
-import { Table } from "antd"
+import { Checkbox, Table } from "antd"
 import { ColumnsType } from "antd/es/table"
 import { useState } from "react"
 import Icons from "../../assets/Icons"
@@ -8,6 +8,7 @@ import Speaker from "../containers/AudioManagement/TableField/AudioManagement/Sp
 import Remark2 from "../containers/AudioManagement/TableField/Remark2"
 import { Drawer } from "../Drawer"
 import Pagination from "../Pagination"
+import { CheckboxChangeEvent } from "antd/es/checkbox"
 
 type Props = {
     data: annotationDT[]
@@ -22,6 +23,10 @@ const Type19 = ({ data }: Props) => {
     const showDrawer = (item: annotationDT) => {
         setOpen(true);
     };
+
+    const onChange = (e: CheckboxChangeEvent) => {
+        console.log(`checked = ${e.target.checked}`);
+      };
 
     const Type19columns: ColumnsType<annotationDT> = [
         {
@@ -68,14 +73,14 @@ const Type19 = ({ data }: Props) => {
             key: 'wordAnnotation',
             align: "center",
             width: 119,
-            render: () => <>unknown</>
+            render: () => <><Checkbox onChange={onChange}></Checkbox></>
         },
         {
             title: `${"Phoneme annotation".toLocaleUpperCase().slice(0, 13)}...`,
             key: 'wordAnnotation',
             align: "center",
             width: 119,
-            render: () => <>unknown</>
+            render: () => <><Checkbox onChange={onChange}></Checkbox></>
         },
         {
             title: `${"Remark".toLocaleUpperCase()}`,

@@ -6,7 +6,7 @@ import { audionManDistributionSource } from '../../../../../data/audioManagement
 const DistributionSource = ({ formik }: { formik: FormikValues })=> {
     return (
              <div >
-                <h4 className='text-blue-gray-80 font-medium text-small'>Distribution Source</h4>
+                <h4 className='text-blue-gray-80 font-medium text-small'>Distribution Source<span className='text-[red]'> *</span></h4>
                 <FormControl>
                     <FormLabel style={{
                         color: '#5F6B7D',
