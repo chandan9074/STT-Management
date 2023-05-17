@@ -127,6 +127,12 @@ const Header = ({ open, setOpen }: Props) => {
                     reporting_details: [],
                 })
             }
+            else {
+                setFilterList({
+                    ...filterList,
+                    [key]: [],
+                })
+            }
         }
     }
 

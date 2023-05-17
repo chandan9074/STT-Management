@@ -136,7 +136,7 @@ const Type15 = ({ data }: Props) => {
 
         {
             title: `${"Submission Date & Time".toLocaleUpperCase()}`,
-            width: 208,
+            width: 220,
             ...getColumnSearchProps('submissionDate'),
             render: (data) => (
                 <h4 className='text-gray-80 w-[120px] whitespace-nowrap'>{data?.submissionDate}</h4>
@@ -243,11 +243,11 @@ const Type15 = ({ data }: Props) => {
                 rowKey='id'
             />
 
-            <Drawer.Target.Type1
+            {/* <Drawer.Target.Type1
                 isDrawerOpen={open}
                 setIsDrawerOpen={setOpen}
 
-            />
+            /> */}
 
             {
                 (open && singleTargetData) &&

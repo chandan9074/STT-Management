@@ -31,7 +31,10 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
 
     const [filteredDistrict, setFilteredDistrict] = useState<homeDistrictTypes[]>(data);
 
+    const [clicked, setClicked] = useState<boolean>(false)
+
     const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
+    
 
 
     const handleArrowClick = (division: string) => {
@@ -66,13 +69,16 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
         setOnTextField(formikValues);
         setFilteredDistrict(data);
     }
+    const handleDistrictInputClick = () => {
+        setClicked(!clicked)
+    }
 
     return (
         <div className='relative homeDistrictSelect '>
             {/* <div className='relative z-[100] homeDistrictSelect '> */}
             <div className={`${!isHomeDistrict && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[50]`} onClick={() => clickOutsideField()}></div>
 
-            <div className={`border ${selectedFieldOutline === name ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px]`}>
+            <div className={`border ${selectedFieldOutline === name ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px] relative`}>
                 <FormControl sx={{ width: '100%' }} variant="outlined">
                     <InputLabel htmlFor={name}>{<h1 className='comboBoxLabel'>{fieldLabel} {required && <span className='text-[red]'>*</span>}</h1>}</InputLabel>
                     <OutlinedInput
@@ -87,9 +93,12 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
                             handleSearch(e);
                             setOnTextField(e.target.value);
                         }}
+
                         endAdornment={
                             <InputAdornment position="end">
-                                <img className=' w-[9px] h-[5px]' src={Icons.arrow_drop_down_blue_gray} alt="" />
+                                <button onClick={() => handleDistrictInputClick()} className='absolute right-2 flex justify-center items-center rounded-full w-7 h-7 cursor-pointer hover:bg-blue-gray-20 active:bg-blue-gray-A10 duration-300 ease-out'>
+                                    <img className=' w-2.5 h-2.5 ' src={!clicked ? Icons.arrow_drop_down_blue_gray : Icons.ArrowDropUp} alt="" />
+                                </button>
                             </InputAdornment>
                         }
                         // style={{
@@ -105,8 +114,14 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
                             }
                         }}
                         // variant="outlined"
-                        onFocus={() => setSelectedFieldOutline(name)}
-                        onBlur={() => setSelectedFieldOutline("")}
+                        onFocus={() => {
+                            setSelectedFieldOutline(name);
+                            handleDistrictInputClick()
+                        }}
+                        onBlur={() => {
+                            setSelectedFieldOutline("");
+                            handleDistrictInputClick()
+                        }}
                     />
                 </FormControl>
             </div>
@@ -152,7 +167,7 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
             }
 
             {formikTouched && formikError ? (
-                <div className='text-red-600 text-xxs pl-[12px]'>{formikError}</div>
+                <div className='text-red-500 text-xxs pl-3.5 mt-1'>{formikError}</div>
             ) : null}
         </div>
     );

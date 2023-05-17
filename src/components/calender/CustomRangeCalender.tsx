@@ -28,7 +28,6 @@ const CssTextField = styled(TextField)({
     },
     '& .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root': {
         background: "black",
-
     },
 
     '& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input': {

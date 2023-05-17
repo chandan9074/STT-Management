@@ -30,13 +30,14 @@ const validationSchema = yup.object({
 
 const validationSchemaSpeaker = yup.object({
     speakersName: yup.string().required('Speakers Name is Required'),
+    dateOfBirth: yup.string().required('Date of Birth Name is Required'),
     ageRange: yup.string().required('Age Range is Required'),
     education: yup.string().required('Education is Required'),
     educationSituation: yup.string().required('Education situation is Required'),
     childhoodPlace: yup.string().required('Childhood place is Required'),
     district: yup.string().required('District place is Required'),
     upazilaCity: yup.string().required('Upazilla/ City is Required'),
-    // villageArea: yup.string().required('Village/ Area is Required'),
+    villageArea: yup.string().required('Village/ Area is Required'),
     profession: yup.string().required('Profession is Required'),
 });
 
