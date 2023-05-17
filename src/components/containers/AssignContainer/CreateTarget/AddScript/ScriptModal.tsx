@@ -16,7 +16,6 @@ const ScriptModal = ({ modalOpen, setModalOpen, data }: Props) => {
     useEffect(() => {
         if (divRef.current) {
             setHeight(divRef.current.offsetHeight);
-            console.log('height:', divRef.current.offsetHeight);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [divRef]);

@@ -73,7 +73,6 @@ const UpdateAssigneeModal = ({
     targetId: string[]
 }) => {
 
-    console.log(targetId)
 
     const [form] = Form.useForm();
 
@@ -195,7 +194,6 @@ const UpdateAssigneeModal = ({
             onClose();
         }
 
-        console.log('--------------', _dataId);
 
     }
 

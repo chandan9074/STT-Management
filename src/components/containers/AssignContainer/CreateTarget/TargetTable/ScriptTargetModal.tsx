@@ -38,7 +38,6 @@ const ScriptTargetModal = ({ selectedScriptId, selectedTargetId, handleSelectIte
     // updateDraftTarget(params);
 
     // setOpenScriptModal(false);
-    console.log("hello target")
     // }
     handleSelectItem(item, params);
   };

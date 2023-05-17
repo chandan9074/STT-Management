@@ -62,7 +62,6 @@ const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
         },
         validationSchema: validationSchema,
         onSubmit: (values: CriteriaItemDT) => {
-            console.log('values', values)
 
             // formik.resetForm();
             // if (isEmpty(data)) {

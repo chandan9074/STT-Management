@@ -21,7 +21,6 @@ const AssigneeTargetModal = ({ selectedAssigneeId, selectedTargetId, handleSelec
 
   const { getAssignee } = useAssigneeContext();
 
-  console.log(selectedAssigneeId)
 
   useEffect(() => {
     getAssignee();
@@ -36,7 +35,6 @@ const AssigneeTargetModal = ({ selectedAssigneeId, selectedTargetId, handleSelec
     // updateDraftTarget(params);
 
     // setOpenAssigneeModal(false);
-    // console.log("hello")
     handleSelectItem(item, params);
   };
 

@@ -31,7 +31,6 @@ const AudioUpload = ({ data, audioId, speechData, setSpeechData, setAudioUploadS
             const minutes = Math.floor(duration / 60);
             const seconds = Math.floor(duration % 60);
             setAudioMin(minutes + '.' + seconds);
-            console.log(file, "file");
 
         });
     }

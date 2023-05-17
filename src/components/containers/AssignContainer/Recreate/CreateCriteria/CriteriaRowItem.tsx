@@ -61,7 +61,6 @@ const CriteriaRowItem = ({
           }
         });
       });
-      console.log('checked value',)
       setSelectedValue(selectedItem?.id);
     }
   };

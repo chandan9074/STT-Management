@@ -23,7 +23,6 @@ const RecordingAreaField = ({data, recordingAreaId,setSpeechData, speechData}: P
         if (index === -1) {
             return;
         }
-        console.log('----', index);
         
         const newData = [...speechData];
         newData[index] = {

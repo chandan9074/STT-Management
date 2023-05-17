@@ -8,13 +8,11 @@ const Secondary = ({ isSideDrawer }: { isSideDrawer: boolean }) => {
   const location = useLocation();
 
   const paths = location.pathname.split('/').slice(1);
-  console.log("paths", paths)
   const breadcrumbs = paths.map((path, index) => ({
     name: slugFormatter(path),
     path: `${ROOT_PATH}${paths.slice(0, path === 'assign' ? index + 2 : path === "audio-management" ? index + 2 : path === "checking" ? index + 2 : path === 'annotation' ? index + 2 : path === 'validation' ? index + 2  : path === 'recreate' ? index + 2 : index + 1).join('/')}`,
     // path: `${ROOT_PATH}${paths.slice(0, path === "assign" ? index + 2 : index + 1).join('/')}}`,
   }));
-  console.log(breadcrumbs)
 
   return (
     <div className={`flex justify-between items-center pt-4 pb-2 pr-4 ${isSideDrawer ? "pl-[296px]" : "pl-[85px]"} fixed w-full z-[90] bg-white`}>

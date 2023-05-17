@@ -43,7 +43,6 @@ const OverTheTime = ({ data }: { data: overTheTimeDataDT }) => {
 
     const getBarCircleColor = (name: string, border: boolean) => {
         const color = barColor.filter(item => item.name === name)[0];
-        // console.log("color", color)
         if (border) {
             return `${color?.borderColor}`;
         }
@@ -70,7 +69,6 @@ const OverTheTime = ({ data }: { data: overTheTimeDataDT }) => {
 
     const handleOverTheTimeData = (year: number, month: string) => {
         const dateStatus = compareWithCurrentMonthYear(month, year);
-        console.log("dateStatus", dateStatus)
         if (dateStatus) {
             return;
         }

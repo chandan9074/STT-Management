@@ -14,7 +14,6 @@ const AddSript = () => {
   const { scriptForRecreate } = useAssigneeContext();
 
 
-  console.log("selectedScriptList", scriptForRecreate)
 
   const drawerClose = () => {
     setDrawerOpen(false);

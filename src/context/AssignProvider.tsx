@@ -165,7 +165,6 @@ const AssignProvider = ({ children }: { children: any }) => {
 
   const fetchResAudioStatistics = async () => {
     const res = await AssignService.fetchResAudioStatistics(audioStatisticsParams);
-    console.log("res", res.data)
     setAudioStatisticsData(res.data);
   }
 
@@ -176,8 +175,6 @@ const AssignProvider = ({ children }: { children: any }) => {
       setSingleTargetSpeechesAssign(res.data.data);
       setSingleTargetSpeechesLength(res.data.total_data_size);
     } catch (error) {
-      console.log('error', error);
-
     }
   }
 
@@ -246,9 +243,7 @@ const AssignProvider = ({ children }: { children: any }) => {
 
   const getAllScript = async (data: allScriptParamsDT) => {
     const res = await AssignService.getAllScript(data);
-    // console.log(res)
     setAllScript(res.data);
-    // return res;
   }
 
   const postSelectedScript = async (data: postSelectedScriptBodyDT) => {
@@ -276,7 +271,6 @@ const AssignProvider = ({ children }: { children: any }) => {
 
   const deleteSingleScript = async (id: string) => {
     const res = await AssignService.deleteSingleScript(id);
-    console.log('AssignService.deleteSingleScript response:', res);
     if (res.status === 200) {
       // await new Promise(resolve => setTimeout(resolve, 1000));
       // await getSelectedScript();
@@ -354,7 +348,6 @@ const AssignProvider = ({ children }: { children: any }) => {
 
   const getTargetForRecreate = async (id: string) => {
     const res = await AssignService.fetchTargetForRecreate(id);
-    console.log('getTargetForRecreate', res)
     // const newScript = {
     //   isSelected: true,
     //   ...res.script
@@ -391,7 +384,6 @@ const AssignProvider = ({ children }: { children: any }) => {
           return item;
         });
       });
-      console.log('selectedScriptList', selectedScriptList)
     }
   };
   const selectAssigne = (
@@ -465,8 +457,6 @@ const AssignProvider = ({ children }: { children: any }) => {
       const res = await AssignService.getAssignCriteriaById(id);
       setSingleCriteriaData(res?.data);
     } catch (error) {
-      console.log('error', error);
-
     }
   }
 
@@ -503,18 +493,14 @@ const AssignProvider = ({ children }: { children: any }) => {
       const res = await AssignService.getResPredefinedRemark();
       setPredefinedRemarks(res.data);
     } catch (error) {
-      console.log('error', error);
-
     }
   }
 
   const getResRolesUpdateAssigneeAssignModule = async () => {
     try {
       const res = await AssignService.getResRolesUpdateAssigneeAssignModule();
-      console.log("res----------ut", res.data)
       setTargetRoleList(res.data);
     } catch (error) {
-      console.log('error', error);
 
     }
   }

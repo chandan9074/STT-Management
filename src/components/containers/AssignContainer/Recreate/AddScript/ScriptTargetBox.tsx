@@ -24,7 +24,6 @@ const ScriptTargetBox = ({
   const selectScript = (
     selectedItem: ScriptItemDT | null,
   ) => {
-    console.log(selectedItem)
     if (selectedItem?.id) {
       setScriptForRecreate((prevList) => {
         return prevList?.map((item) => {
@@ -36,7 +35,6 @@ const ScriptTargetBox = ({
           }
         });
       });
-      console.log('checked value', scriptForRecreate)
       setRecreateTable({ ...recreateTable, script: selectedItem })
     }
   };

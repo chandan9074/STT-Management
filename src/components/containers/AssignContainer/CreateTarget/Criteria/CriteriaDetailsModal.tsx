@@ -13,7 +13,6 @@ type Props = {
 
 const CriteriaDetailsModal = ({ modalOpen, setModalOpen, data }: Props) => {
 
-  console.log("data=========", data)
   const singleValue1 = [
     {
       title: 'Gender',

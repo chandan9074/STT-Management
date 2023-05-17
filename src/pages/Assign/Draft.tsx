@@ -32,7 +32,7 @@ const Draft = () => {
                         <h3 className='text-base text-ct-blue-90-68% mt-2'>No target is in draft now</h3>
                     </div>
                     <Buttons.IconWithTextButton.Primary
-                        label="Create Script"
+                        label="Create Draft"
                         size="small"
                         variant="Megenta"
                         icon={<img src={Icons.Add} alt="add" />}

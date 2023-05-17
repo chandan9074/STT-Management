@@ -29,7 +29,6 @@ const RecreateTarget = () => {
     }, [id])
 
     const handleRecreateTable = async () => {
-        console.log("recreateTable", recreateTable);
         const body = {
             script: recreateTable?.script.id,
             target: recreateTable?.target,

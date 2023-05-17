@@ -33,7 +33,6 @@ const CriteriaTargetModal = ({ selectedCriteriaId, selectedTargetId, handleSelec
     // updateDraftTarget(params);
 
     // setOpenTargetModal(false);
-    console.log("hello")
     handleSelectItem(item, params);
   };
 

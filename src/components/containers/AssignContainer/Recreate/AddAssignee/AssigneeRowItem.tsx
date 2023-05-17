@@ -29,7 +29,6 @@ const AssigneeRowItem = ({ assignee }: Props) => {
           }
         });
       });
-      console.log('checked value',)
       setSelectedValue(selectedItem?.id);
     }
   };

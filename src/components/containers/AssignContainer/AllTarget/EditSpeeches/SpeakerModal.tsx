@@ -25,7 +25,6 @@ const SpeakerModal = ({
 }: Props) => {
     const [form] = Form.useForm();
 
-    console.log('speech id', data);
 
 
     const managerContext = useContext(RoleInContext);
@@ -47,7 +46,6 @@ const SpeakerModal = ({
         type: ''
     }
 
-    console.log(data, "data--------------------");
 
 
     useEffect(() => {
@@ -111,7 +109,6 @@ const SpeakerModal = ({
         }
     };
 
-    console.log(' speaker data', speakerData);
 
 
 
@@ -163,8 +160,6 @@ const SpeakerModal = ({
         }
         setModal(false);
     };
-
-    console.log('888888888888', tempSpeakerData);
 
 
     return (

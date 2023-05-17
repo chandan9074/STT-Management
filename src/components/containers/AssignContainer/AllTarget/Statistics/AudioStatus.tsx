@@ -5,7 +5,6 @@ import { assignStatisticsDT } from '../../../../../types/assignTypes'
 import AudioStatusTooltip from './AudioStatusTooltip'
 
 const AudioStatus = ({ data }: { data: assignStatisticsDT }) => {
-    console.log('AudioStatus called', data)
     return (
         <div className='flex flex-col justify-between h-full'>
             <div className='mb-7'>

@@ -25,7 +25,6 @@ export default class AssignService {
   }
   static async deleteSingleScript(id: string) {
     const res = axios.delete(PATH.DELETE_SINGLE_SCRIPT_URL, { params: { id: id, testID: "1" } });
-    console.log('delete script called');
     return res;
   }
   static async fetchCriteriaList() {
@@ -50,13 +49,10 @@ export default class AssignService {
   }
   static async postDraftTarget(data: postDraftTargetBodyDT) {
     const res = axios.post(PATH.POST_DRAFT_TARGET_URL, data);
-    // console.log('postDraftTarget called', data);
     return res;
   }
   static async updateDraftTarget(data: updateDraftTargetQueryParams) {
-    console.log('updateDraftTarget called', data)
     const res = axios.put(PATH.UPDATE_DRAFT_TARGET_URL, null, { params: data });
-    // console.log('postDraftTarget called', data);
     return res;
   }
 
