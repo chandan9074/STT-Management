@@ -22,7 +22,7 @@ const UserManagement = () => {
         <Layouts.Forth>
             <div className="min-h-[calc(100vh-9.5vh)]">
                 <Header open={open} setOpen={setOpen} selectedRowId={selectedRowId} />
-                <Table.Type5 data={userManagementTable} handleSelectedRow={handleSelectedRow} />
+                <Table.Type5 data={userManagementTable.data} handleSelectedRow={handleSelectedRow} />
                 <CustomModal.Type2 open={open} setOpen={setOpen} />
             </div>
         </Layouts.Forth>

@@ -10,7 +10,7 @@ export type activityDT = {
     address: string,
     PrimaryRole: string,
     roleList: string[],
-    roleData: roleDataDT[]
+    roleData: roleDataDT
 }
 
 export type roleDataDT = {
@@ -108,6 +108,11 @@ export type adminDataDT = {
     number: string
 }
 
+export type userManagementDT = {
+    total_data_size: number;
+    data: userManagementTableDT[];
+}
+
 export type userManagementTableDT = {
     id: string;
     name: string;
@@ -138,4 +143,9 @@ export type userManagementParamsDT = {
     reportingTo: string,
     district: string,
     gender: string,
+}
+
+export type activityQueryParamsDT = {
+    id: string,
+    role: string,
 }

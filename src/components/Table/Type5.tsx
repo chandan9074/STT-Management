@@ -127,9 +127,9 @@ const Type5 = ({ data, handleSelectedRow }: Props) => {
             dataIndex: 'age',
             align: "center",
             width: 170,
-            render: (data) => (<>
+            render: (_, data: userManagementTableDT) => (<>
                 <Buttons.LabelButton.Tertiary
-                    onClick={() => navigate(`/user-management/activity/${data}`)}
+                    onClick={() => navigate(`/user-management/activity/${data.id}`)}
                     size='xSmall'
                     variant='Blue'
                     label='Check Activity'
