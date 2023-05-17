@@ -60,6 +60,10 @@ export const POST_RES_RECREATE_TARGET_ASSIGN_PATH = `${REACT_APP_BASE_URL2}/post
 export const GET_RES_PREDEFINED_REMARKS = `${REACT_APP_BASE_URL2}/get_res_predefined_remarks`;
 export const GET_RES_ROLES_UPDATE_ASSIGNEE_ASSIGN_MODULE = `${REACT_APP_BASE_URL2}/get_res_roles_update_assignee_assign_module`;
 
+// User Management
+
+export const GET_RES_USER_MANAGEMENT_MODULE = `${REACT_APP_BASE_URL2}/get_res_user_userManagement_module`;
+
 
 
 

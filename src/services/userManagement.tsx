@@ -1,8 +1,8 @@
 import axios from "axios";
 import * as PATH from "../helpers/APIURL";
 import { targetSpeechData } from "../data/assign/AssignData";
-import { userManagementTable } from "../data/userManagement/UserManagementData";
 import { activityData } from "../data/userManagement/activityData";
+import { userManagementParamsDT } from "../types/userManagementTypes";
 
 export default class UserManagementService {
   static getActivityStatistics(id: string) {
@@ -15,9 +15,10 @@ export default class UserManagementService {
     return targetSpeechData;
   }
 
-  static getUserManagementTable() {
-    return userManagementTable;
+  static getUserManagementTable(values: userManagementParamsDT) {
+    return axios.get(PATH.GET_RES_USER_MANAGEMENT_MODULE, { params: values });
   }
+
   static getUserRoleListByRole(role: string) {
     return axios.get(PATH.GET_ROLE_LIST_URL, { params: { role: role } });
   }

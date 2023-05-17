@@ -129,3 +129,13 @@ export type reportingToDT = {
     name: string;
     role: string;
 }
+
+export type userManagementParamsDT = {
+    page: number,
+    pageSize: number,
+    role: string,
+    status: string,
+    reportingTo: string,
+    district: string,
+    gender: string,
+}

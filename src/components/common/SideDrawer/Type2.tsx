@@ -201,17 +201,19 @@ const Type2 = ({ open, setOpen, drawerData }: Props) => {
                             <div className='duration-300'>
                                 <p className='text-xxs font-normal text-blue-gray-75'>Reporting to</p>
 
-                                <div className='w-[210px] px-4 py-3 border border-blue-gray-30 rounded mt-3 '>
-                                    <div className='flex gap-[10px]'>
-                                        {/* <img src={Icons.speakerFemale} className="h-6 w-6" alt="" /> */}
-                                        <RoleImage role={drawerData.reportingTo.role} height='h-6' width='w-6' />
+                                {drawerData.reportingTo ? (
+                                    <div className='w-[210px] px-4 py-3 border border-blue-gray-30 rounded mt-3 '>
+                                        <div className='flex gap-[10px]'>
+                                            {/* <img src={Icons.speakerFemale} className="h-6 w-6" alt="" /> */}
+                                            <RoleImage role={drawerData.reportingTo.role} height='h-6' width='w-6' />
 
-                                        <div>
-                                            <p className='text-xxs font-medium text-blue-gray-80'>{drawerData.reportingTo.name}</p>
-                                            <p className='text-xxs font-normal text-blue-gray-75'>{drawerData.reportingTo.role}</p>
+                                            <div>
+                                                <p className='text-xxs font-medium text-blue-gray-80'>{drawerData.reportingTo.name}</p>
+                                                <p className='text-xxs font-normal text-blue-gray-75'>{drawerData.reportingTo.role}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                ) : <div className='ml-2 text-blue-gray-75'>--</div>}
 
                                 <p className='text-xxs font-normal text-blue-gray-75 mt-9 '>Reporting Channel</p>
                                 <div className='w-[210px] px-4 py-3 border border-blue-gray-30 rounded mt-3 mb-4'>

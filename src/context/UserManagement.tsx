@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react";
 import UserManagementService from "../services/userManagement";
 import { targetSpeechDT } from "../types/assignTypes";
-import { activityDT, userManagementTableDT } from "../types/userManagementTypes";
+import { activityDT, userManagementParamsDT, userManagementTableDT } from "../types/userManagementTypes";
 import { roleDT } from "../types/billingTypes";
 
 interface ContextProps {
@@ -13,12 +13,14 @@ interface ContextProps {
     setCurrentWeek: React.Dispatch<React.SetStateAction<number>>;
     getUserTargetPendingSpeeches: (id: string) => void;
     targetPendingSpeeches: targetSpeechDT;
-    getUserManagementTable: () => void;
+    getUserManagementTable: (values: userManagementParamsDT) => void;
     userManagementTable: userManagementTableDT[];
     getUserRoleListByRole: (role: string) => void;
     roleList: string[];
     selectedFieldOutline: string;
     setSelectedFieldOutline: React.Dispatch<React.SetStateAction<string>>;
+    queryParams: userManagementParamsDT;
+    setQueryParams: React.Dispatch<React.SetStateAction<userManagementParamsDT>>;
 }
 
 export const UserManagementContext = createContext({} as ContextProps);
@@ -30,7 +32,16 @@ const UserManagementProvider = ({ children }: { children: any }) => {
     const [targetPendingSpeeches, setTargetPendingSpeeches] = useState<targetSpeechDT>({} as targetSpeechDT);
     const [userManagementTable, setUserManagementTable] = useState<userManagementTableDT[]>([] as userManagementTableDT[])
     const [roleList, setRoleList] = useState<string[]>([] as string[])
-    const [selectedFieldOutline,setSelectedFieldOutline] = useState<string>("")
+    const [selectedFieldOutline, setSelectedFieldOutline] = useState<string>("")
+    const [queryParams, setQueryParams] = useState<userManagementParamsDT>({
+        page: 1,
+        pageSize: 10,
+        role: "Admin",
+        status: "",
+        reportingTo: "",
+        district: "",
+        gender: "",
+    })
 
 
     const getActivityStatistics = (id: string) => {
@@ -45,9 +56,10 @@ const UserManagementProvider = ({ children }: { children: any }) => {
         setTargetPendingSpeeches(res);
     }
 
-    const getUserManagementTable = () => {
-        const res = UserManagementService.getUserManagementTable();
-        setUserManagementTable(res);
+    const getUserManagementTable = async (values: userManagementParamsDT) => {
+        const res = await UserManagementService.getUserManagementTable(values);
+        console.log(res.data, "res.data")
+        setUserManagementTable(res.data);
     }
 
     const getUserRoleListByRole = async (role: string) => {
@@ -59,7 +71,7 @@ const UserManagementProvider = ({ children }: { children: any }) => {
 
     return (
         <UserManagementContext.Provider
-            value={{ activityStatistics, getActivityStatistics, activeRole, setActiveRole, currentWeek, setCurrentWeek, getUserTargetPendingSpeeches, targetPendingSpeeches, getUserManagementTable, userManagementTable, getUserRoleListByRole, roleList, selectedFieldOutline,setSelectedFieldOutline }}
+            value={{ activityStatistics, getActivityStatistics, activeRole, setActiveRole, currentWeek, setCurrentWeek, getUserTargetPendingSpeeches, targetPendingSpeeches, getUserManagementTable, userManagementTable, getUserRoleListByRole, roleList, selectedFieldOutline, setSelectedFieldOutline, queryParams, setQueryParams }}
         >
             {children}
         </UserManagementContext.Provider>

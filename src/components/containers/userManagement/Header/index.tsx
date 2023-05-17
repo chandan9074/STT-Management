@@ -13,9 +13,10 @@ import { UserManagementContext } from '../../../../context/UserManagement'
 type Props = {
     open: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    selectedRowId: string[];
 }
 
-const Header = ({ open, setOpen }: Props) => {
+const Header = ({ open, setOpen, selectedRowId }: Props) => {
     const [activeRole, setActiveRole] = React.useState<string>(userRoleDropdownData[0])
     const [count, setCount] = useState<number>(0);
     const [filterList, setFilterList] = useState<targetFilterListDT>({
@@ -25,7 +26,7 @@ const Header = ({ open, setOpen }: Props) => {
         reporting_details: [],
     })
 
-    const { getUserRoleListByRole, roleList } = useContext(UserManagementContext);
+    const { getUserRoleListByRole, roleList, setQueryParams, queryParams } = useContext(UserManagementContext);
 
     const prevRoleListRef = useRef(roleList);
 
@@ -131,10 +132,28 @@ const Header = ({ open, setOpen }: Props) => {
     }
 
     const handleSubmitFilter = () => {
+        setQueryParams({
+            ...queryParams,
+            district: filterList.present_district.join(","),
+            reportingTo: filterList.reporting.join(","),
+        })
     }
 
     const handleActivePanel = (value: string) => {
         setActiveRole(value)
+        if (value.includes("Speaker")) {
+            setQueryParams({
+                ...queryParams,
+                role: "Speaker",
+                gender: value.split("-")[1].toLocaleLowerCase()
+            })
+        }
+        else {
+            setQueryParams({
+                ...queryParams,
+                role: value
+            })
+        }
     }
 
     return (
@@ -144,7 +163,7 @@ const Header = ({ open, setOpen }: Props) => {
                 <p className='text-ct-blue-90-70% text-small mt-0.5 mb-0 pl-2'>List of Users, Create and Manage</p>
             </div>
             <div className='flex items-center'>
-                <Buttons.LabelButton.Tertiary label='Manage' size='xSmall' variant='CT-Blue' marginX='mr-2' onClick={() => setOpen(!open)} />
+                {selectedRowId.length === 1 && <Buttons.LabelButton.Tertiary label='Manage' size='xSmall' variant='CT-Blue' marginX='mr-2' onClick={() => setOpen(!open)} />}
                 <SearchBox.Type1 inputWidth="w-52" placeholder="Search with script ID, Title..." bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
                 <Filter.Type2 popupClassName='audio_submission_date_picker' handleSubmitFilter={handleSubmitFilter} filterData={userManagementFilterData} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
                 <Link to={CREATE_USER_PATH}>

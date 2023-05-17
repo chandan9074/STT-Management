@@ -12,65 +12,20 @@ import Dropdown from '../Dropdown';
 import { STATUS_ACTIVE, STATUS_BLOCKED } from '../../helpers/ConditionVariable';
 
 type Props = {
-    data: userManagementTableDT[]
+    data: userManagementTableDT[];
+    handleSelectedRow: (values: string[]) => void;
 }
-// interface TableParams {
-//     pagination?: TablePaginationConfig;
-//     sortField?: string;
-//     sortOrder?: string;
-//     filters?: Record<string, FilterValue>;
-// }
 
-// const data: DataType[] = [
-//     {
-//         key: '1',
-//         name: 'John Brown',
-//         age: 32,
-//         address: 'New York No.',
-//         status: "Blocked",
-//     },
-//     {
-//         key: '2',
-//         name: 'Jim Green',
-//         age: 42,
-//         address: 'London No.',
-//         status: "Active",
-//     },
-//     {
-//         key: '3',
-//         name: 'Joe Black',
-//         age: 32,
-//         address: 'Sidney No',
-//         status: "Active",
-//     },
-//     {
-//         key: '4',
-//         name: 'Disabled User',
-//         age: 99,
-//         address: 'Sidney No. ',
-//         status: "Active",
-//     },
-// ];
-const Type5 = ({ data }: Props) => {
-    // const [selectionType, setSelectionType] = useState<'checkbox'>('checkbox');
+const Type5 = ({ data, handleSelectedRow }: Props) => {
     const [open, setOpen] = useState(false);
     const [drawerData, setDrawerData] = useState<userManagementTableDT>();
-    // const [active, setActive] = useState<string>("")
     const navigate = useNavigate();
-    // const [searchedColumn, setSearchedColumn] = useState("");
 
     const showDrawer = (key: userManagementTableDT) => {
 
         setOpen(true);
         setDrawerData(key)
     };
-
-    // const handleActiveBlockChange = (value: string, confirm: any) => {
-    //     // confirm()
-
-    //     setActive(value)
-    // }
-
 
     const getColumnSearchProps = (dataIndex: any): any => ({
 
@@ -204,6 +159,8 @@ const Type5 = ({ data }: Props) => {
 
     const rowSelection = {
         onChange: (selectedRowKeys: React.Key[], selectedRows: userManagementTableDT[]) => {
+            const selectedRowsId = selectedRows.map((row) => row.id)
+            handleSelectedRow(selectedRowsId)
         },
         getCheckboxProps: (record: userManagementTableDT) => ({
             // disabled: record.name === 'Disabled User', // Column configuration not to be checked

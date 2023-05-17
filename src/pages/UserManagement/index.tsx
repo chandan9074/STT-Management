@@ -3,27 +3,27 @@ import { CustomModal } from '../../components/common/CustomModal';
 import Layouts from '../../components/Layouts';
 import Table from '../../components/Table';
 import Header from '../../components/containers/userManagement/Header';
-import  { UserManagementContext } from '../../context/UserManagement';
+import { UserManagementContext } from '../../context/UserManagement';
 
 const UserManagement = () => {
     const [open, setOpen] = useState<boolean>(false)
-    const {getUserManagementTable,userManagementTable} = useContext(UserManagementContext);
+    const { getUserManagementTable, userManagementTable, queryParams } = useContext(UserManagementContext);
+    const [selectedRowId, setSelectedRowId] = useState<string[]>([])
+
     useEffect(() => {
-        getUserManagementTable()
+        getUserManagementTable(queryParams)
         // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [])
+    }, [queryParams])
+
+    const handleSelectedRow = (values: string[]) => {
+        setSelectedRowId(values)
+    }
     return (
         <Layouts.Forth>
             <div className="min-h-[calc(100vh-9.5vh)]">
-                <Header open={open} setOpen={setOpen} />
-                <Table.Type5 data={userManagementTable} />
+                <Header open={open} setOpen={setOpen} selectedRowId={selectedRowId} />
+                <Table.Type5 data={userManagementTable} handleSelectedRow={handleSelectedRow} />
                 <CustomModal.Type2 open={open} setOpen={setOpen} />
-                {/* <Toast.Type1
-                    massages='A user has been created'
-                    iconSrc={Icons.home}
-                /> */}
-              
-
             </div>
         </Layouts.Forth>
     );
