@@ -109,6 +109,7 @@ interface ContextProps {
   targetRoleList: roleDT[];
   getResRolesUpdateAssigneeAssignModule: () => void;
   targetDataLength: number;
+  singleTargetSpeechesLength: number;
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -593,7 +594,8 @@ const AssignProvider = ({ children }: { children: any }) => {
         getResPredefinedRemarks,
         targetRoleList,
         getResRolesUpdateAssigneeAssignModule,
-        targetDataLength
+        targetDataLength,
+        singleTargetSpeechesLength
       }}
     >
       {children}

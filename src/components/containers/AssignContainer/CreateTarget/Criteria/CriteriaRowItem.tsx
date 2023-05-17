@@ -34,8 +34,8 @@ const CriteriaRowItem = ({
           const itemArray = data[item as keyof CriteriaItemDT] as string[];
           if (itemArray.length > 0) {
             for (let i = 0; i < itemArray.length; i++) {
-              if (itemArray[i].includes("Smoker") || itemArray[i].includes("Hearing") || itemArray[i].includes("Stutter"))  {
-                text += itemArray[i] + "(Yes)" + ", ";
+              if (itemArray[i].includes("Smoker") || itemArray[i].includes("Hearing") || itemArray[i].includes("Stutter")) {
+                text += `${itemArray[i]}(Yes), `;
               }
               else {
                 text += itemArray[i] + ", ";

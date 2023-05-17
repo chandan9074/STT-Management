@@ -135,7 +135,7 @@ export const labelData = [
     {
         name: "Rejected",
         label: "Rejected",
-        bulletBg: "bg-[#A10008]",
+        bulletBg: "bg-[#F54542]",
     }
 ]
 
@@ -697,7 +697,7 @@ export const targetSpeechData = {
                             "note": "Dark Ux is ---"
                         },
                     ],
-    
+
                 },
                 "script": {
                     "module": "STT",
@@ -762,7 +762,7 @@ export const targetSpeechData = {
                                 }
                             ]
                         },
-    
+
                     }
                 },
                 collector: {
@@ -805,7 +805,7 @@ export const targetSpeechData = {
                         "deadline": "05/02/2022, 5:41 AM",
                         "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
                     },
-                   
+
                 ],
 
 

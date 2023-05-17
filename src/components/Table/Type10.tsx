@@ -28,7 +28,7 @@ const Type10 = ({ setSelectedTarget, data, handlePageChange }: Props) => {
 
 
     const { targetDataLength } = useAssigneeContext();
-    const [page, setPage] = useState(1);
+    const page = 1;
 
     const showDrawer = (item: targetDT) => {
         setOpen(true);
