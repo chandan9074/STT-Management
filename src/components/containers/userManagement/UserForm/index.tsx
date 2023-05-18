@@ -154,7 +154,7 @@ const UserForm = ({ data }: Props) => {
         //         if (!valueToAppend) {
         //             formData.append(key, " ");
         //         } else {
-        //             if (key === 'sourceFile' && formik.values.cvFile?.length === 0) {
+        //             if (key === 'cvFile' && formik.values.cvFile?.length === 0) {
         //                 const emptyFileBlob = new Blob([], { type: "application/pdf" });
         //                 formData.append(key, emptyFileBlob, '');
         //             }
