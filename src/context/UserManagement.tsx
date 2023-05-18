@@ -1,12 +1,12 @@
 import React, { createContext, useState } from "react";
 import UserManagementService from "../services/userManagement";
 import { targetSpeechDT } from "../types/assignTypes";
-import { activityDT, userManagementParamsDT, userManagementTableDT } from "../types/userManagementTypes";
+import { activityDT, activityQueryParamsDT, userManagementDT, userManagementParamsDT } from "../types/userManagementTypes";
 import { roleDT } from "../types/billingTypes";
 
 interface ContextProps {
     activityStatistics: activityDT | undefined
-    getActivityStatistics: (id: string) => void;
+    getActivityStatistics: (value: activityQueryParamsDT) => void;
     activeRole: string;
     setActiveRole: React.Dispatch<React.SetStateAction<string>>;
     currentWeek: number;
@@ -14,13 +14,15 @@ interface ContextProps {
     getUserTargetPendingSpeeches: (id: string) => void;
     targetPendingSpeeches: targetSpeechDT;
     getUserManagementTable: (values: userManagementParamsDT) => void;
-    userManagementTable: userManagementTableDT[];
+    userManagementTable: userManagementDT;
     getUserRoleListByRole: (role: string) => void;
     roleList: string[];
     selectedFieldOutline: string;
     setSelectedFieldOutline: React.Dispatch<React.SetStateAction<string>>;
     queryParams: userManagementParamsDT;
     setQueryParams: React.Dispatch<React.SetStateAction<userManagementParamsDT>>;
+    activityQueryParams: activityQueryParamsDT;
+    setActivityQueryParams: React.Dispatch<React.SetStateAction<activityQueryParamsDT>>;
 }
 
 export const UserManagementContext = createContext({} as ContextProps);
@@ -30,7 +32,7 @@ const UserManagementProvider = ({ children }: { children: any }) => {
     const [activeRole, setActiveRole] = useState<string>("")
     const [currentWeek, setCurrentWeek] = useState<number>(1);
     const [targetPendingSpeeches, setTargetPendingSpeeches] = useState<targetSpeechDT>({} as targetSpeechDT);
-    const [userManagementTable, setUserManagementTable] = useState<userManagementTableDT[]>([] as userManagementTableDT[])
+    const [userManagementTable, setUserManagementTable] = useState<userManagementDT>({} as userManagementDT)
     const [roleList, setRoleList] = useState<string[]>([] as string[])
     const [selectedFieldOutline, setSelectedFieldOutline] = useState<string>("")
     const [queryParams, setQueryParams] = useState<userManagementParamsDT>({
@@ -42,12 +44,16 @@ const UserManagementProvider = ({ children }: { children: any }) => {
         district: "",
         gender: "",
     })
+    const [activityQueryParams, setActivityQueryParams] = useState<activityQueryParamsDT>({
+        id: "",
+        role: "",
+    })
 
 
-    const getActivityStatistics = (id: string) => {
-        const res = UserManagementService.getActivityStatistics(id);
-        setActivityStatistics(res);
-        setActiveRole(res.roleList[0])
+    const getActivityStatistics = async (value: activityQueryParamsDT) => {
+        const res = await UserManagementService.getActivityStatistics(value);
+        setActivityStatistics(res.data);
+        setActiveRole(res.data.roleList[0])
     }
 
     const getUserTargetPendingSpeeches = async (id: string) => {
@@ -71,7 +77,7 @@ const UserManagementProvider = ({ children }: { children: any }) => {
 
     return (
         <UserManagementContext.Provider
-            value={{ activityStatistics, getActivityStatistics, activeRole, setActiveRole, currentWeek, setCurrentWeek, getUserTargetPendingSpeeches, targetPendingSpeeches, getUserManagementTable, userManagementTable, getUserRoleListByRole, roleList, selectedFieldOutline, setSelectedFieldOutline, queryParams, setQueryParams }}
+            value={{ activityStatistics, getActivityStatistics, activeRole, setActiveRole, currentWeek, setCurrentWeek, getUserTargetPendingSpeeches, targetPendingSpeeches, getUserManagementTable, userManagementTable, getUserRoleListByRole, roleList, selectedFieldOutline, setSelectedFieldOutline, queryParams, setQueryParams, activityQueryParams, setActivityQueryParams }}
         >
             {children}
         </UserManagementContext.Provider>

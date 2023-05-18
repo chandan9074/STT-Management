@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import Header from './Header'
 import * as PATH from "../../../../../helpers/Slug"
 import { Navigator } from '../../../../Navigator'
@@ -9,10 +9,10 @@ const StatisticsPart = () => {
 
   const userManagementContext = useContext(UserManagementContext);
 
-  useEffect(() => {
-    userManagementContext.getActivityStatistics('1');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  // useEffect(() => {
+  //   userManagementContext.getActivityStatistics('1');
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [])
   return (
     <>
       <Navigator.Back path={PATH.USER_PATH} title="Activity" />

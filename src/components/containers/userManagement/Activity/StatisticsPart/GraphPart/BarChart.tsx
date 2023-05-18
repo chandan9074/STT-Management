@@ -22,7 +22,7 @@ const BarChart = ({ data }: { data: overTheTimeDataDT }) => {
       borderColor: "bg-blue-gray-A10 group-hover:bg-ct-blue-medium"
     },
     {
-      name: 'close',
+      name: 'closed',
       bgColor: "bg-white",
       borderColor: "bg-secondary-yellow-50"
     },

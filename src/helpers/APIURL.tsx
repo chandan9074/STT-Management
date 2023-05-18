@@ -63,6 +63,7 @@ export const GET_RES_ROLES_UPDATE_ASSIGNEE_ASSIGN_MODULE = `${REACT_APP_BASE_URL
 // User Management
 
 export const GET_RES_USER_MANAGEMENT_MODULE = `${REACT_APP_BASE_URL2}/get_res_user_userManagement_module`;
+export const GET_RES_ACTIVITY_STATISTICS_USER_MANAGEMENT_MODULE = `${REACT_APP_BASE_URL2}/get_res_activity_statistics_userManagement_module`;
 
 
 

@@ -1,12 +1,11 @@
 import axios from "axios";
 import * as PATH from "../helpers/APIURL";
 import { targetSpeechData } from "../data/assign/AssignData";
-import { activityData } from "../data/userManagement/activityData";
-import { userManagementParamsDT } from "../types/userManagementTypes";
+import { activityQueryParamsDT, userManagementParamsDT } from "../types/userManagementTypes";
 
 export default class UserManagementService {
-  static getActivityStatistics(id: string) {
-    return activityData;
+  static getActivityStatistics(value: activityQueryParamsDT) {
+    return axios.get(PATH.GET_RES_ACTIVITY_STATISTICS_USER_MANAGEMENT_MODULE, { params: value });
   }
 
   static getUserTargetPendingSpeeches(id: string) {
@@ -22,4 +21,5 @@ export default class UserManagementService {
   static getUserRoleListByRole(role: string) {
     return axios.get(PATH.GET_ROLE_LIST_URL, { params: { role: role } });
   }
+
 }
