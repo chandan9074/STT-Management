@@ -21,7 +21,6 @@ const Type7 = ({ data }: Props) => {
 
     const showDrawer = (item: targetDT) => {
         setOpen(true);
-        console.log("click hoi?");
     };
 
     const getPercentage = (max: number, value: number) => {
@@ -212,7 +211,8 @@ const Type7 = ({ data }: Props) => {
                     isDrawerOpen={open}
                     setIsDrawerOpen={setOpen}
                     data={singleTargetData}
-                    totalBadge= {false}
+                    totalBadge={false}
+                    isParmanentAddress={true}
                 />
             }
 

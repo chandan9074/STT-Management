@@ -1,3 +1,5 @@
+import axios from 'axios';
+import * as PATH from '../helpers/APIURL'
 import { collectedAudioCollectorList, allCheckedAudiosData, annotationData, checkingStatusData, collectAnnSenData, collectedAudio, scriptFilterData, annotatedFiles, collectValSenData, validatedFilesData, collectedAudioSpeakersList, collectedAudioCheckerList, collectedAudioAnnotatorList, collectedAudioValidatorList } from '../data/audioManagement/AudioManagementData';
 import { allCheckedSpeechData, annotatedFilesUploadData, annotationUploadData, checkingStatusUploadData, sentenceLevelUploadData, uploadAudioData, ValidatedFilesUploadData, sentenceLevelValUpload } from '../data/audioManagement/UploadAudiosData';
 
@@ -139,6 +141,7 @@ export default class audioManagementService {
 
     static getAllCheckedAudiosData() {
         return allCheckedAudiosData;
+        // return axios.get(PATH.GET_RES_COLLECTED_AUDIO_ALL_CHECKED_AUDIOS_AUDIO_MGT_MODULE)
     }
 
     static getAnnotationData() {

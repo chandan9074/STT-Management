@@ -65,7 +65,9 @@ export const GET_RES_ROLES_UPDATE_ASSIGNEE_ASSIGN_MODULE = `${REACT_APP_BASE_URL
 export const GET_RES_USER_MANAGEMENT_MODULE = `${REACT_APP_BASE_URL2}/get_res_user_userManagement_module`;
 export const GET_RES_ACTIVITY_STATISTICS_USER_MANAGEMENT_MODULE = `${REACT_APP_BASE_URL2}/get_res_activity_statistics_userManagement_module`;
 
+//Audio Management
 
+export const GET_RES_COLLECTED_AUDIO_ALL_CHECKED_AUDIOS_AUDIO_MGT_MODULE = `${REACT_APP_BASE_URL2}/get_res_collected_audio_all_checked_audios_audio_mgt_module`
 
 
 

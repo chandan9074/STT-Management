@@ -1,29 +1,31 @@
+import { useEffect, useState } from 'react';
 import { TargetItemDT, customSingleCriteriaDT, targetDT } from '../../../types/assignTypes';
 
 type Props = {
-    data?: targetDT | TargetItemDT
+    data?: targetDT | TargetItemDT;
+    isParmanentAddress?: boolean;
 }
 
-const SpeakerCriteria = ({ data }: Props) => {
+const SpeakerCriteria = ({ data, isParmanentAddress }: Props) => {
 
-    const singleValue1: customSingleCriteriaDT[] = [
+    const [singleValue1, setSingleValue1] = useState<customSingleCriteriaDT[]>([
         {
             title: 'Gender',
             value: data?.target?.gender || '-'
         },
         {
-            title: 'Division/ District',
-            value: data?.target.district.join() ?? "-"
+            title: 'Childhood Area',
+            value: data?.target?.childhoodPlace ? data?.target?.childhoodPlace : "-"
         },
         {
             title: 'Age',
             value: data?.target?.ageRange || '-'
         },
 
-        {
-            title: 'profession',
-            value: data?.target?.profession || '-'
-        },
+        // {
+        //     title: 'profession',
+        //     value: data?.target?.profession || '-'
+        // },
         {
             title: 'Econimic Situation',
             value: data?.target?.economicSituation || '-'
@@ -46,7 +48,7 @@ const SpeakerCriteria = ({ data }: Props) => {
         },
 
 
-    ]
+    ])
 
     const singleValue2 = [
         {
@@ -58,6 +60,36 @@ const SpeakerCriteria = ({ data }: Props) => {
             value: data?.target?.recordingDistance || '-'
         },
     ]
+
+    useEffect(() => {
+        if (isParmanentAddress) {
+            // console.log("dhukeche")
+            const newData = {
+                title: 'Parmanent Address',
+                value: data?.target?.district.join() || "-"
+            }
+            // singleValue1.splice(2, 0, newData)
+            // console.log(singleValue1)
+            const newArray = [...singleValue1];
+            newArray.splice(2, 0, newData);
+            setSingleValue1(newArray);
+
+        }
+        else {
+            // console.log("dhukeche")
+            const newData = {
+                title: 'profession',
+                value: data?.target?.profession || '-'
+            }
+            // singleValue1.splice(2, 0, newData)
+            // console.log(singleValue1)
+            const newArray = [...singleValue1];
+            newArray.splice(6, 0, newData);
+            setSingleValue1(newArray);
+
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isParmanentAddress,data?.target?.profession,data?.target?.district])
 
     return (
         <div>

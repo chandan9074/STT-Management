@@ -35,7 +35,7 @@ export interface CriteriaItemDT {
   target: number;
   deadline: string;
   reminder: string[];
-  childhoodArea?: string,
+  childhoodPlace?: string,
   remark?: remarkDT| string;
   remarkDes?: string,
   remarkRoleID?: string,

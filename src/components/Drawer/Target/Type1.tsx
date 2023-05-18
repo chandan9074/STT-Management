@@ -11,10 +11,11 @@ type Props = {
     isDrawerOpen: boolean,
     setIsDrawerOpen: Dispatch<SetStateAction<boolean>>;
     data?: targetDT | TargetItemDT;
-    totalBadge?: boolean
+    totalBadge?: boolean;
+    isParmanentAddress?: boolean;
 }
 
-const Type1 = ({ isDrawerOpen, setIsDrawerOpen: setOpen, data, totalBadge }: Props) => {
+const Type1 = ({ isDrawerOpen, setIsDrawerOpen: setOpen, data, totalBadge, isParmanentAddress }: Props) => {
     const [activePanel, setActivePanel] = useState<string>("Script");
     const [isMetaData, setIsMetaData] = useState<boolean>(false);
 
@@ -126,7 +127,7 @@ const Type1 = ({ isDrawerOpen, setIsDrawerOpen: setOpen, data, totalBadge }: Pro
                                     <Script data={data?.script} setIsMetaData={setIsMetaData} isMetaData={isMetaData} downloadable={false} />
                                     :
                                     activePanel.includes("Speaker Criteria") ?
-                                        <SpeakerCriteria data={data} /> :
+                                        <SpeakerCriteria data={data} isParmanentAddress={isParmanentAddress ? isParmanentAddress : false} /> :
                                         <Others data={data} />
                             }
                         </div>
