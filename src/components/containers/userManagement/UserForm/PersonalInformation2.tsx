@@ -22,7 +22,6 @@ const PersonalInformation2 = ({ formik }: Prop) => {
 
     const onDateChange: DatePickerProps['onChange'] = (date, dateString) => {
         formik.setFieldValue("dateOfBirth", dateString)
-
     };
 
     const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
@@ -42,13 +41,13 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                             value={formik.values.speakersName}
                             onChange={formik.handleChange}
                             error={formik.touched.speakersName && Boolean(formik.errors.speakersName)}
-                            helperText={formik.touched.speakersName && formik.errors.speakersName}
+                            // helperText={formik.touched.speakersName && formik.errors.speakersName}
                             style={{ width: '100%' }}
                             InputProps={{
                                 style: {
                                     color: '#464E5F',
-                                    fontWeight: '600',
-                                    fontSize: '15px',
+                                    fontWeight: '500',
+                                    fontSize: '14px',
                                     caretColor: '#136EE5',
                                     border: selectedFieldOutline === 'speakersName' ? '1px solid #136EE5' : '1px solid transparent'
                                 }
@@ -57,6 +56,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                             onFocus={() => setSelectedFieldOutline("speakersName")}
                             onBlur={() => setSelectedFieldOutline("")}
                         />
+                        {(formik.touched.speakersName && formik.errors.speakersName) && <p className='text-xxs text-red-500 ml-3.5 mt-1'>{formik.errors.speakersName}</p>}
                     </div>
                 </Grid>
 
@@ -78,9 +78,9 @@ const PersonalInformation2 = ({ formik }: Prop) => {
             </Grid>
 
             <div>
-                <Grid container spacing={0}>
+                <Grid container spacing={0} alignItems={"center"}>
                     <Grid item xs={5.8}>
-                        <div className={`border ${selectedFieldOutline === 'dateOfBirth' ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px] flex mt-6`}>
+                        <div className={`border ${selectedFieldOutline === 'dateOfBirth' ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px] mt-6`}>
                             <FormControl sx={{ width: '100%' }} variant="outlined">
                                 <InputLabel htmlFor='dateOfBirth'>{<h1 className='comboBoxLabel'>Date of Birth <span className='text-[red]'>*</span></h1>}</InputLabel>
                                 <OutlinedInput
@@ -88,7 +88,8 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                                     autoComplete='off'
                                     type='text'
                                     name={formik.values.dateOfBirth}
-                                    // label={<h1 className='comboBoxLabel'>Date of Birth <span className='text-[red]'>*</span></h1>}
+                                    error={formik.touched.dateOfBirth && Boolean(formik.errors.dateOfBirth)}
+                                    label={<h1 className='comboBoxLabel'>Date of Birth <span className='text-[red]'>*</span></h1>}
                                     placeholder='DD-MM-YYYY'
                                     value={formik.values.dateOfBirth}
                                     onChange={formik.handleChange}
@@ -108,19 +109,22 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                                     onFocus={() => setSelectedFieldOutline("dateOfBirth")}
                                     onBlur={() => setSelectedFieldOutline("")}
                                 />
+
                             </FormControl>
-                            <div className={`userFormDate relative ${openCalender ? "block" : "hidden"}`}>
-                                <DatePicker
-                                    bordered={false}
-                                    open={openCalender}
-                                    popupClassName='datePicker2'
-                                    onChange={onDateChange}
-                                />
-                            </div>
+                        </div>
+                        {(formik.touched.dateOfBirth && formik.errors.dateOfBirth) && <p className='text-xxs text-red-500 ml-3.5 mt-1'>{formik.errors.dateOfBirth}</p>}
+                        {/* <div className={`userFormDate relative ${openCalender ? "block" : "hidden"}`}> */}
+                        <div className={`userFormDate relative ${openCalender ? "block" : "hidden"}`}>
+                            <DatePicker
+                                bordered={false}
+                                open={openCalender}
+                                popupClassName='datePicker2'
+                                onChange={onDateChange}
+                            />
                         </div>
                     </Grid>
                     <Grid item xs={0.4}>
-                        <div className='text-small text-blue-gray-75 font-medium flex justify-center items-center h-full mt-3'><span>or</span></div>
+                        <div className={`text-small text-blue-gray-75 font-medium flex justify-center items-center h-full ${(formik.touched.dateOfBirth && formik.errors.dateOfBirth) && (formik.touched.ageRange && formik.errors.ageRange) ? "" : "pt-6"}`}><span>or</span></div>
                     </Grid>
 
                     <Grid item xs={5.8}>
@@ -150,26 +154,31 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                                     </Box>
                                 )}
                                 renderInput={(params) => (
-                                    <TextField
-                                        placeholder='Choose one'
-                                        {...params}
-                                        name="ageRange"
-                                        error={formik.touched.ageRange && Boolean(formik.errors.ageRange)}
-                                        helperText={formik.touched.ageRange && formik.errors.ageRange}
-                                        // InputProps={{
-                                        //     style: {
-                                        //         height: '44px',
-                                        //     }
-                                        // }}
-                                        variant="outlined"
-                                        onFocus={() => setSelectedFieldOutline("ageRange")}
-                                        onBlur={() => setSelectedFieldOutline("")}
-                                        label={<h1 className='comboBoxLabel'>Age Range <span className='text-[red]'>*</span></h1>}
+                                    <>
+                                        <TextField
+                                            placeholder='Choose one'
+                                            {...params}
+                                            name="ageRange"
+                                            error={formik.touched.ageRange && Boolean(formik.errors.ageRange)}
+                                            // helperText={formik.touched.ageRange && formik.errors.ageRange}
+                                            // InputProps={{
+                                            //     style: {
+                                            //         height: '44px',
+                                            //     }
+                                            // }}
+                                            variant="outlined"
+                                            onFocus={() => setSelectedFieldOutline("ageRange")}
+                                            onBlur={() => setSelectedFieldOutline("")}
+                                            label={<h1 className='comboBoxLabel'>Age Range <span className='text-[red]'>*</span></h1>}
+                                        />
 
-                                    />
+                                    </>
+
                                 )}
+
                             />
                         </div>
+                        {(formik.touched.ageRange && formik.errors.ageRange) && <p className='text-xxs text-red-500 ml-3.5 mt-1'>{formik.errors.ageRange}</p>}
                     </Grid>
                 </Grid>
             </div>
@@ -197,30 +206,32 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                                 }}
 
                                 renderInput={(params) => (
+                                    <>
+                                        <TextField
+                                            placeholder='Choose one'
+                                            {...params}
+                                            name="education"
+                                            error={formik.touched.education && Boolean(formik.errors.education)}
+                                            // helperText={formik.touched.education && formik.errors.education}
+                                            // InputProps={{
+                                            //     style: {
+                                            //         color: 'red',
+                                            //         fontWeight: '600',
+                                            //         fontSize: '30px',
+                                            //     }
+                                            // }}
+                                            variant="outlined"
+                                            onFocus={() => setSelectedFieldOutline("education")}
+                                            onBlur={() => setSelectedFieldOutline("")}
 
-                                    <TextField
-                                        placeholder='Choose one'
-                                        {...params}
-                                        name="education"
-                                        error={formik.touched.education && Boolean(formik.errors.education)}
-                                        helperText={formik.touched.education && formik.errors.education}
-                                        // InputProps={{
-                                        //     style: {
-                                        //         color: 'red',
-                                        //         fontWeight: '600',
-                                        //         fontSize: '30px',
-                                        //     }
-                                        // }}
-                                        variant="outlined"
-                                        onFocus={() => setSelectedFieldOutline("education")}
-                                        onBlur={() => setSelectedFieldOutline("")}
+                                            label={<h1 className='comboBoxLabel'>Education <span className='text-[red]'>*</span></h1>}
+                                        />
 
-                                        label={<h1 className='comboBoxLabel'>Education <span className='text-[red]'>*</span></h1>}
-
-                                    />
+                                    </>
                                 )}
                             />
                         </div>
+                        {(formik.touched.education && formik.errors.education) && <p className='text-xxs text-red-500 ml-3.5 mt-1'>{formik.errors.education}</p>}
 
                     </Grid>
 
@@ -244,18 +255,21 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                                 }}
 
                                 renderInput={(params) => (
+                                    <>
+                                        <TextField
+                                            placeholder='Choose one'
+                                            {...params}
+                                            name="educationSituation"
+                                            error={formik.touched.educationSituation && Boolean(formik.errors.educationSituation)}
+                                            // helperText={formik.touched.educationSituation && formik.errors.educationSituation}
+                                            label={<h1 className='comboBoxLabel'>Economic Situation <span className='text-[red]'>*</span></h1>}
+                                            variant="outlined"
+                                            onFocus={() => setSelectedFieldOutline("educationSituation")}
+                                            onBlur={() => setSelectedFieldOutline("")}
+                                        />
+                                        {(formik.touched.educationSituation && formik.errors.educationSituation) && <p className='text-xxs text-red-500 ml-3.5 mt-1'>{formik.errors.educationSituation}</p>}
 
-                                    <TextField
-                                        placeholder='Choose one'
-                                        {...params}
-                                        name="educationSituation"
-                                        error={formik.touched.educationSituation && Boolean(formik.errors.educationSituation)}
-                                        helperText={formik.touched.educationSituation && formik.errors.educationSituation}
-                                        label={<h1 className='comboBoxLabel'>Economic Situation <span className='text-[red]'>*</span></h1>}
-                                        variant="outlined"
-                                        onFocus={() => setSelectedFieldOutline("educationSituation")}
-                                        onBlur={() => setSelectedFieldOutline("")}
-                                    />
+                                    </>
                                 )}
                             />
                         </div>
@@ -291,20 +305,21 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                                 )}
 
                                 renderInput={(params) => (
-
-                                    <TextField
-                                        {...params}
-                                        name="profession"
-                                        error={formik.touched.profession && Boolean(formik.errors.profession)}
-                                        helperText={formik.touched.profession && formik.errors.profession}
-                                        variant="outlined"
-                                        onFocus={() => setSelectedFieldOutline("profession")}
-                                        onBlur={() => setSelectedFieldOutline("")}
-                                        label={<h1 className='comboBoxLabel'>Profession
-                                            <span className='text-[red]'> *</span>
-                                        </h1>}
-
-                                    />
+                                    <>
+                                        <TextField
+                                            {...params}
+                                            name="profession"
+                                            error={formik.touched.profession && Boolean(formik.errors.profession)}
+                                            // helperText={formik.touched.profession && formik.errors.profession}
+                                            variant="outlined"
+                                            onFocus={() => setSelectedFieldOutline("profession")}
+                                            onBlur={() => setSelectedFieldOutline("")}
+                                            label={<h1 className='comboBoxLabel'>Profession
+                                                <span className='text-[red]'> *</span>
+                                            </h1>}
+                                        />
+                                        {(formik.touched.profession && formik.errors.profession) && <p className='text-xxs text-red-500 ml-3.5 mt-1'>{formik.errors.profession}</p>}
+                                    </>
                                 )}
                             />
                         </div>
@@ -367,7 +382,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                     </Grid>
 
                     <Grid item xs={4}>
-                        <HomeDistrictSelect
+                        {/* <HomeDistrictSelect
                             formikValues={formik.values.villageArea}
                             data={homeDistrict}
                             formikError={formik.errors.villageArea}
@@ -375,7 +390,30 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                             formik={formik}
                             name={'villageArea'}
                             fieldLabel='Village/ Area'
+                        /> */}
+                        <TextField
+                            id="villageArea"
+                            name="villageArea"
+                            label={<h1 className='comboBoxLabel'>Village/Area <span className='text-[red]'>*</span></h1>}
+                            value={formik.values.villageArea}
+                            onChange={formik.handleChange}
+                            error={formik.touched.villageArea && Boolean(formik.errors.villageArea)}
+                            // helperText={formik.touched.villageArea && formik.errors.villageArea}
+                            style={{ width: '100%' }}
+                            InputProps={{
+                                style: {
+                                    color: '#464E5F',
+                                    fontWeight: '500',
+                                    fontSize: '14px',
+                                    caretColor: '#136EE5',
+                                    border: selectedFieldOutline === 'villageArea' ? '1px solid #136EE5' : '1px solid transparent'
+                                }
+                            }}
+                            variant="outlined"
+                            onFocus={() => setSelectedFieldOutline("villageArea")}
+                            onBlur={() => setSelectedFieldOutline("")}
                         />
+                        {(formik.touched.villageArea && formik.errors.villageArea) && <p className='text-xxs text-red-500 ml-3.5 mt-1'>{formik.errors.villageArea}</p>}
                     </Grid>
                 </Grid>
             </div>
@@ -482,7 +520,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                 </div>
             </div>
 
-        </div>
+        </div >
     );
 };
 

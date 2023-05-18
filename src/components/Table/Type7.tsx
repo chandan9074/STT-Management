@@ -21,6 +21,7 @@ const Type7 = ({ data }: Props) => {
 
     const showDrawer = (item: targetDT) => {
         setOpen(true);
+        console.log("click hoi?");
     };
 
     const getPercentage = (max: number, value: number) => {
@@ -43,7 +44,10 @@ const Type7 = ({ data }: Props) => {
             title: `${"Script".toLocaleUpperCase()}`,
             key: 'script',
             width: 104,
-            render: (data: targetDT) => <h1 className='w-20 truncate whitespace-nowrap'>{data.script.id}</h1>,
+            render: (_, record: targetDT) => <button onClick={() => {
+                showDrawer(record)
+                setSingleTargetData(record)
+            }} className='w-20 truncate whitespace-nowrap'>{record.script.id}</button>,
         },
         {
             title: `${"target".toLocaleUpperCase()}`,
@@ -174,6 +178,7 @@ const Type7 = ({ data }: Props) => {
                             onClick={() => {
                                 showDrawer(record)
                                 setSingleTargetData(record)
+
                             }}>
                             <img
                                 className='w-[14px] h-[14px]'
@@ -207,7 +212,7 @@ const Type7 = ({ data }: Props) => {
                     isDrawerOpen={open}
                     setIsDrawerOpen={setOpen}
                     data={singleTargetData}
-
+                    totalBadge= {false}
                 />
             }
 
@@ -219,7 +224,7 @@ const Type7 = ({ data }: Props) => {
                     roleName={singleTargetData?.assignee?.name ? singleTargetData?.assignee?.name : ''}
                     roleType={singleTargetData?.assignee?.role ? singleTargetData?.assignee?.role : ''}
                     dateTime={'07/02/2022, 5:34 PM'}
-                    desc={ singleTargetData?.target?.remark ? typeof(singleTargetData?.target?.remark) !== 'string' ? singleTargetData?.target?.remark.Des : '': ""}
+                    desc={singleTargetData?.target?.remark ? typeof (singleTargetData?.target?.remark) !== 'string' ? singleTargetData?.target?.remark.Des : '' : ""}
                 />
             }
 
