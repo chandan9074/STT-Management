@@ -2,13 +2,13 @@ import { Autocomplete, FormControl, FormControlLabel, FormLabel, Radio, RadioGro
 import { Typography, Upload } from 'antd';
 import { useContext, useState } from 'react';
 import Icons from '../../../../assets/Icons';
-import { adminData, reportingRoleData } from '../../../../data/userManagement/UserManagementData';
+import { reportingRoleData } from '../../../../data/userManagement/UserManagementData';
 import { Grid } from '@mui/material';
 import { Box } from '@mui/system';
 import Image from '../../../Image';
 import { FormikValues } from 'formik';
 import { customMuiListStyle } from '../../../../helpers/Utils';
-import { UserManagementContext } from '../../../../context/UserManagement';
+import { UserManagementContext } from '../../../../context/UserManagementProvider';
 
 const FileReport = ({ getFile, formik }: { getFile: (file: File | null) => void, formik: FormikValues }) => {
     // const [file, setFile] = useState<any>([]);
@@ -16,9 +16,7 @@ const FileReport = ({ getFile, formik }: { getFile: (file: File | null) => void,
 
     const [file, setFile] = useState<File | null>(null);
 
-    const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
-
-
+    const {newRoleList, selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
 
     // const handleFileUpload = (event: any) => {
     const handleFileUpload = (event: any) => {
@@ -26,14 +24,15 @@ const FileReport = ({ getFile, formik }: { getFile: (file: File | null) => void,
             // let files = event.fileList || event.file || event.target.files;
             let files = event.fileList[0];
             setFile(files);
-            getFile(event.fileList[0]?.originFileObj);
+            // getFile(event.fileList[0]?.originFileObj);
+            formik.setFieldValue("cvFile", event.fileList[0]?.originFileObj);
         } else {
             // setFile([]);
             setFile(null);
             // getFile([]);
             getFile(null);
         }
-    }
+    }    
 
     return (
         <div>
@@ -138,20 +137,22 @@ const FileReport = ({ getFile, formik }: { getFile: (file: File | null) => void,
                             placeholder='Choose one'
                             id="adminData"
                             style={{ width: '100%' }}
-                            options={adminData}
+                            options={newRoleList}
                             value={formik.values.adminData}
                             onChange={(event, value) => {
-                                formik.setFieldValue('adminData', value)
+                                formik.setFieldValue('adminID', value.id);
+                                formik.setFieldValue('adminData', value);
                             }}
+
                             getOptionLabel={(option) => {
                                 if (!option) return '';
-                                return `${option.number} - ${option.name}`;
+                                return `${option.id !== '' ? (option.id + ' - ' + option.name) : ''}`;
                             }}
 
 
                             renderOption={(props, option) => (
                                 <Box key={option.id} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
-                                    <Image.RoleImage role='Admin' /> <Typography>{`${option.number} - ${option.name}`}</Typography>
+                                    <Image.RoleImage role='Admin' /> <Typography>{`${option.id} - ${option.name}`}</Typography>
                                 </Box>
                             )}
 

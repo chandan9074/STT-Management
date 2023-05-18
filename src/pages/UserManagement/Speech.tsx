@@ -5,7 +5,7 @@ import SpeechTable from '../../components/containers/userManagement/Speeches/Spe
 import Layouts from '../../components/Layouts'
 import { Navigator } from '../../components/Navigator'
 import * as PATH from '../../helpers/Slug'
-import { UserManagementContext } from '../../context/UserManagement'
+import { UserManagementContext } from '../../context/UserManagementProvider'
 
 const Speech = () => {
     const { id, sId } = useParams<{ id: string, sId: string }>();

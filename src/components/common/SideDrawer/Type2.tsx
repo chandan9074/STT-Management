@@ -6,6 +6,8 @@ import './type1DrawerStyle.css';
 import { callingToast } from '../../../helpers/Utils';
 import { userManagementTableDT } from '../../../types/userManagementTypes';
 import RoleImage from '../../Image/RoleImage';
+import { EDIT_USER_PATH } from '../../../helpers/Slug';
+import { Link } from 'react-router-dom';
 
 interface Props {
     open: boolean;
@@ -106,7 +108,9 @@ const Type2 = ({ open, setOpen, drawerData }: Props) => {
                                 >
                                     Edit
                                 </button> */}
-                                <Buttons.LabelButton.Tertiary label='Edit' size='xSmall' variant='Blue' />
+                                <Link to={`${EDIT_USER_PATH}/${drawerData?.id}`}>
+                                    <Buttons.LabelButton.Tertiary label='Edit' size='xSmall' variant='Blue' />
+                                </Link>
                             </div>
 
                         </div>

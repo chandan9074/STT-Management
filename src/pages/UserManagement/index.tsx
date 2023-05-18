@@ -3,7 +3,7 @@ import { CustomModal } from '../../components/common/CustomModal';
 import Layouts from '../../components/Layouts';
 import Table from '../../components/Table';
 import Header from '../../components/containers/userManagement/Header';
-import { UserManagementContext } from '../../context/UserManagement';
+import { UserManagementContext } from '../../context/UserManagementProvider';
 
 const UserManagement = () => {
     const [open, setOpen] = useState<boolean>(false)

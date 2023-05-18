@@ -5,7 +5,7 @@ import HomeDistrictSelect from '../../../Form/HomeDistrictSelect';
 import Image from '../../../Image';
 import { customMuiListStyle } from '../../../../helpers/Utils';
 import { useContext } from 'react';
-import { UserManagementContext } from '../../../../context/UserManagement';
+import { UserManagementContext } from '../../../../context/UserManagementProvider';
 
 
 const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
@@ -13,6 +13,7 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
 
     const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
 
+    console.log('*************************', formik.values.role);
 
 
     return (
@@ -63,15 +64,17 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                                     name="primaryRole"
                                     error={formik.touched.primaryRole && Boolean(formik.errors.primaryRole)}
                                     helperText={formik.touched.primaryRole && formik.errors.primaryRole}
-                                    InputProps={{
-                                        style: {
-                                            color: '#464E5F',
-                                            fontWeight: '600',
-                                            fontSize: '15px',
-                                            caretColor: '#136EE5',
-                                            border: selectedFieldOutline === 'primaryRole' ? '1px solid #136EE5' : '1px solid transparent'
-                                        }
-                                    }}
+
+                                    // Meem have to do
+                                    // InputProps={{
+                                    //     style: {
+                                    //         color: '#464E5F',
+                                    //         fontWeight: '600',
+                                    //         fontSize: '15px',
+                                    //         caretColor: '#136EE5',
+                                    //         border: selectedFieldOutline === 'primaryRole' ? '1px solid #136EE5' : '1px solid transparent'
+                                    //     }
+                                    // }}
                                     variant="outlined"
                                     onFocus={() => setSelectedFieldOutline("primaryRole")}
                                     onBlur={() => setSelectedFieldOutline("")}
@@ -282,7 +285,7 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                             id="lastDegreeAchived"
                             style={{
                                 width: '100%',
-                                }}
+                            }}
                             options={lastDegreeAchived}
                             value={formik.values.lastDegreeAchived}
                             onChange={(event, value) => {

@@ -4,7 +4,7 @@ import { compareWithCurrentMonthYear } from '../../../../../../helpers/Utils';
 import { overTheTimeDataDT } from '../../../../../../types/userManagementTypes';
 import Buttons from '../../../../../Buttons';
 import MonthCalender from '../../../../../calender/MonthCalender';
-import { UserManagementContext } from '../../../../../../context/UserManagement';
+import { UserManagementContext } from '../../../../../../context/UserManagementProvider';
 import BarTooltip from './BarTooltip';
 
 const BarChart = ({ data }: { data: overTheTimeDataDT }) => {

@@ -29,6 +29,7 @@ export const EDIT_SCRIPT_PATH = "/script/edit-script";
 export const CREATE_USER_PATH = "/user-management/create-user";
 export const ACTIVE_USER_PATH = "/user-management/activity";
 export const USER_MANAGEMENT_SPEECHES_PATH = "speeches";
+export const EDIT_USER_PATH = "/script/edit-user";
 
 //Audio Management
 export const TEST = "/test";

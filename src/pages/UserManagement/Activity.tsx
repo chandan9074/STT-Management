@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react'
 import ActivityContainer from '../../components/containers/userManagement/Activity'
 import Layouts from '../../components/Layouts'
 import { useParams } from 'react-router-dom'
-import { UserManagementContext } from '../../context/UserManagement'
+import { UserManagementContext } from '../../context/UserManagementProvider'
 
 const Activity = () => {
   const { id } = useParams<{ id: string }>()

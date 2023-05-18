@@ -64,6 +64,11 @@ export const GET_RES_ROLES_UPDATE_ASSIGNEE_ASSIGN_MODULE = `${REACT_APP_BASE_URL
 
 export const GET_RES_USER_MANAGEMENT_MODULE = `${REACT_APP_BASE_URL2}/get_res_user_userManagement_module`;
 export const GET_RES_ACTIVITY_STATISTICS_USER_MANAGEMENT_MODULE = `${REACT_APP_BASE_URL2}/get_res_activity_statistics_userManagement_module`;
+export const POST_RES_USER_MANAGEMENT_MODULE = `${REACT_APP_BASE_URL2}/post_res_create_user_userManagement_module`;
+export const GET_RES_USER_MANAGEMENT_BY_ID_MODULE = `${REACT_APP_BASE_URL2}/get_res_by_id_user_userManagement_module`;
+export const UPDATE_RES_USER_MANAGEMENT_BY_ID_MODULE = `${REACT_APP_BASE_URL2}/update_res_user_userManagement_module`;
+
+
 
 
 

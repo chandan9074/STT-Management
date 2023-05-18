@@ -3,7 +3,7 @@ import { DatePicker, DatePickerProps } from 'antd';
 import { FormikValues } from 'formik';
 import { useContext, useState } from 'react';
 import Icons from '../../../../../../assets/Icons';
-import { UserManagementContext } from '../../../../../../context/UserManagement';
+import { UserManagementContext } from '../../../../../../context/UserManagementProvider';
 
 const TargetSetting = ({ formik }: { formik: FormikValues }) => {
 
