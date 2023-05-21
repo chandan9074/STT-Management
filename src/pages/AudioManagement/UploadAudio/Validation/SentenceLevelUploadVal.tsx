@@ -18,7 +18,7 @@ const SentenceLevelUploadVal = () => {
   return (
     <>
       <Header />
-      <Table.Type34 data={sentenceLevelUploadVal} />
+      <Table.Type34 data={sentenceLevelUploadVal.data} />
     </>
   )
 }

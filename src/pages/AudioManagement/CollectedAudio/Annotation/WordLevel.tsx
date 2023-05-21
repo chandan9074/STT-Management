@@ -22,7 +22,7 @@ const WordLevel = () => {
   return (
     <div>
       <Header selectedRowsData={selectedRowsData} />
-      <Table.Type20 data={collectAnnWordData} setSelectedRowSData={setSelectedRowSData} />
+      <Table.Type20 data={collectAnnWordData.data} setSelectedRowSData={setSelectedRowSData} />
     </div>
   )
 }

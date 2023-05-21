@@ -19,7 +19,7 @@ const PhonemeLevelUpload = () => {
   return (
     <div>
       <Header />
-      <Table.Type27 data={phonemeLevelUploadData} />
+      <Table.Type27 data={phonemeLevelUploadData.data} />
     </div>
   )
 }

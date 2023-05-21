@@ -18,7 +18,7 @@ const Annotation = () => {
   return (
     <div>
       <Header />
-      <Table.Type19 data={annotationData} />
+      <Table.Type19 data={annotationData.data} />
     </div>
   )
 }

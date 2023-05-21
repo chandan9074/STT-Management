@@ -26,7 +26,7 @@ const ValidatedFiles = () => {
 
   const allTergetMenu = (key: string) => {
     const Category: CategoryMap = {
-      "Sentence": <><Table.Type31 data={validatedFilesData} /></>,
+      "Sentence": <><Table.Type31 data={validatedFilesData.data} /></>,
       "Word": <></>,
       "Phoneme": <></>
     };

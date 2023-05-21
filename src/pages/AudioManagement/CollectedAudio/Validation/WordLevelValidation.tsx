@@ -21,7 +21,7 @@ const WordLevelValidation = () => {
   return (
     <div>
       <Header selectedRowsData={selectedRowsData} />
-      <Table.Type22 data={collectValWordData} setSelectedRowSData={setSelectedRowSData} />
+      <Table.Type22 data={collectValWordData.data} setSelectedRowSData={setSelectedRowSData} />
     </div >
   )
 }

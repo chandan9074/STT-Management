@@ -7,6 +7,7 @@ import AudioTrack from "../common/AudioTrack"
 import Remark2 from "../containers/AudioManagement/TableField/Remark2"
 import { Drawer } from "../Drawer"
 import Pagination from "../Pagination"
+import Checkbox, { CheckboxChangeEvent } from "antd/es/checkbox"
 
 type Props = {
     data: annotationUploadDT[]
@@ -23,6 +24,10 @@ const Type26 = ({ data }: Props) => {
         setOpen(true);
     };
 
+    const onChange = (e: CheckboxChangeEvent) => {
+        console.log(`checked = ${e.target.checked}`);
+      };
+
     const Type26columns: ColumnsType<annotationUploadDT> = [
         {
             title: `${"SN".toLocaleUpperCase()}`,
@@ -36,26 +41,24 @@ const Type26 = ({ data }: Props) => {
         {
             title: `${"Raw Audio".toLocaleUpperCase()}`,
             key: 'speech',
-            width: 244,
+            width: 260,
             render: (data: annotationUploadDT) => <>
                 <AudioTrack data={data.speech} />
             </>,
         },
         {
-            // title: `${"Word annotation".toLocaleUpperCase().slice(0, 10)}...`,
             title: `${"Word annotation".toLocaleUpperCase()}`,
             key: 'wordAnnotation',
             align: "center",
-            width: 244,
-            render: () => <>unknown</>
+            width: 260,
+            render: () => <><Checkbox onChange={onChange}></Checkbox></>
         },
         {
-            // title: `${"Phoneme annotation".toLocaleUpperCase().slice(0, 13)}...`,
             title: `${"Phoneme annotation".toLocaleUpperCase()}`,
             key: 'wordAnnotation',
             align: "center",
-            width: 244,
-            render: () => <>unknown</>
+            width: 260,
+            render: () => <><Checkbox onChange={onChange}></Checkbox></>
         },
         {
             title: `${"Remark".toLocaleUpperCase()}`,

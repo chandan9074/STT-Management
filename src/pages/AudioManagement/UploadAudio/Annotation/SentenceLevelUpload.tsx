@@ -19,7 +19,7 @@ const SentenceLevelUpload = () => {
   return (
     <div>
       <Header />
-      <Table.Type27 data={sentenceLevelUploadData} />
+      <Table.Type27 data={sentenceLevelUploadData.data} />
     </div>
   )
 }

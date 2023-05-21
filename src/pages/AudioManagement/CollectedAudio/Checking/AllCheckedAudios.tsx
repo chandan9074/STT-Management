@@ -26,7 +26,7 @@ const AllCheckedAudios = () => {
   return (
     <div>
       <Header selectedRowsData={selectedRowsData} isConfirmCancelModal={isConfirmCancelModal} setIsConfirmCancelModal={setIsConfirmCancelModal} />
-      <Table.Type18 data={allCheckedAudiosData} setSelectedRowSData={setSelectedRowSData} />
+      <Table.Type18 data={allCheckedAudiosData.data} setSelectedRowSData={setSelectedRowSData} />
     </div>
   )
 }

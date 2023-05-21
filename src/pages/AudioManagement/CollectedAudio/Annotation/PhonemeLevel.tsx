@@ -21,7 +21,7 @@ const PhonemeLevel = () => {
   return (
     <div>
       <Header selectedRowsData={selectedRowsData} />
-      <Table.Type20 data={collectAnnPhonemeData} setSelectedRowSData={setSelectedRowSData} />
+      <Table.Type20 data={collectAnnPhonemeData.data} setSelectedRowSData={setSelectedRowSData} />
     </div>
   )
 }

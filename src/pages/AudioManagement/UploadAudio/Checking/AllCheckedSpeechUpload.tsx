@@ -19,7 +19,7 @@ const AllCheckedAudiosUpload = () => {
   return (
     <div>
       <Header />
-      <Table.Type25 data={allCheckedAudiosUploadData} />
+      <Table.Type25 data={allCheckedAudiosUploadData.data} />
     </div>
   )
 }

@@ -21,7 +21,7 @@ const CollectedAudio = () => {
         // <Layouts.Third>
         <div>
             <Header />
-            <Table.Type16 data={collectedAudio} />
+            <Table.Type16 data={collectedAudio.data} />
             {/* <Outlet /> */}
         </div>
         // </Layouts.Third>

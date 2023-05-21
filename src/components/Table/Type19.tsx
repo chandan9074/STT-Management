@@ -65,7 +65,7 @@ const Type19 = ({ data }: Props) => {
         {
             title: `${"Speaker".toLocaleUpperCase()}`,
             key: 'speaker',
-            width: 193,
+            width: 150,
             render: (data: annotationDT) => <Speaker isLocality={true} data={data.speaker} />
         },
         {
@@ -79,7 +79,7 @@ const Type19 = ({ data }: Props) => {
             title: `${"Phoneme annotation".toLocaleUpperCase().slice(0, 13)}...`,
             key: 'wordAnnotation',
             align: "center",
-            width: 119,
+            width: 112,
             render: () => <><Checkbox onChange={onChange}></Checkbox></>
         },
         {

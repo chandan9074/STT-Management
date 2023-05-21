@@ -22,7 +22,7 @@ const CheckingStatus = () => {
     return (
         <div>
             <Header selectedRowsData={selectedRowsData} />
-            <Table.Type17 data={checkingStatusData} setSelectedRowSData={setSelectedRowSData}/>
+            <Table.Type17 data={checkingStatusData.data} setSelectedRowSData={setSelectedRowSData}/>
         </div>
 
     );

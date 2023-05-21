@@ -19,7 +19,7 @@ const WordLevelUpload = () => {
   return (
     <div>
       <Header />
-      <Table.Type27 data={wordLevelUploadData} />
+      <Table.Type27 data={wordLevelUploadData.data} />
     </div>
   )
 }

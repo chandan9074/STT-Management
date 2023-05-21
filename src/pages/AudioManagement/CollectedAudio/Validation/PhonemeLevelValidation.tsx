@@ -21,7 +21,7 @@ const PhonemeLevelValidation = () => {
   return (
     <div>
       <Header selectedRowsData={selectedRowsData} />
-      <Table.Type22 data={collectValPhonemeData} setSelectedRowSData={setSelectedRowSData} />
+      <Table.Type22 data={collectValPhonemeData.data} setSelectedRowSData={setSelectedRowSData} />
     </div>
   )
 }

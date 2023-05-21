@@ -18,7 +18,7 @@ const CheckingStatusUpload = () => {
   return (
     <div>
       <Header />
-      <Table.Type24 data={checkingStatusUploadData} />
+      <Table.Type24 data={checkingStatusUploadData.data} />
     </div>
   )
 }

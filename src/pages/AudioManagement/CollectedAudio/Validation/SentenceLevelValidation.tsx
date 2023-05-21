@@ -21,7 +21,7 @@ const SentenceLevelValidation = () => {
   return (
     <div>
       <Header selectedRowsData={selectedRowsData} />
-      <Table.Type22 data={collectValSenData} setSelectedRowSData={setSelectedRowSData} />
+      <Table.Type22 data={collectValSenData.data} setSelectedRowSData={setSelectedRowSData} />
     </div>
   )
 }

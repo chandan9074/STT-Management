@@ -23,7 +23,7 @@ const SentenceLevel = () => {
     <div>
       <Header selectedRowsData={selectedRowsData} />
       {/* <Table.Type20 data={collectAnnSenData} setSelectedRowSData={setSelectedRowSData} /> */}
-      <Table.Type20 data={collectAnnSenData} setSelectedRowSData={setSelectedRowSData} />
+      <Table.Type20 data={collectAnnSenData.data} setSelectedRowSData={setSelectedRowSData} />
     </div>
   )
 }

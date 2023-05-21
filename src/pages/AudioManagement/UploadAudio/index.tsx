@@ -16,7 +16,7 @@ const UploadAudio = () => {
   return (
     <div>
       <Header />
-      <Table.Type23 data={uploadAudioData} />
+      <Table.Type23 data={uploadAudioData.data} />
     </div>
   )
 }

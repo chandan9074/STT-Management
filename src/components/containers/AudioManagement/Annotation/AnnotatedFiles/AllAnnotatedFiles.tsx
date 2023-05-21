@@ -23,7 +23,7 @@ const AllAnnotatedFiles = () => {
 
     const allTergetMenu = (key: string) => {
         const Category: CategoryMap = {
-            "Sentence": <><Table.Type21 data={annotatedFilesData} setSelectedRowSData={setSelectedRowSData} /></>,
+            "Sentence": <><Table.Type21 data={annotatedFilesData.data} setSelectedRowSData={setSelectedRowSData} /></>,
             "Word": <></>,
             "Phoneme": <></>
         };

@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useState } from "react";
 import audioManagementService from "../services/audioManagementService";
-import { allCheckedAudioDT, allCheckedSpeechDT, annotatedFilesDT, annotatedFilesUploadDT, annotationDT, annotationUploadDT, audioManagementDT, checkingStatusDT, checkingStatusUploadDataDT, collectAnnSenDataDT, collectValSenDataDT, sentenceLevelUploadDT, sentenceLevelValUploadDT, uploadAudioDataDT, validatedFilesDT, validatedFilesUploadDT } from "../types/audioManagementTypes";
+import { allCheckedAudioRootDt, allCheckedSpeechRootDT, annotatedFilesRootDT, annotatedFilesUploadRootDT, annotationRootDT, annotationUploadRootDT, checkingStatusRootDT, checkingStatusUploadRootDT, collectAnnSenRootDT, collectValSenRootDT, collectedAudioDT, sentenceLevelUploadRootDT, sentenceLevelValUploadRootDT, uploadAudioRootDT, validatedFilesRootDT, validatedFilesUploadRootDT } from "../types/audioManagementTypes";
 
 interface ContextProps {
     getScriptFilter: () => void;
@@ -8,53 +8,53 @@ interface ContextProps {
     collectedAudioCollector: string[];
     scriptFilter: string[];
     getCollectedAudioData: () => void;
-    collectedAudio: audioManagementDT[];
+    collectedAudio: collectedAudioDT;
     getCheckingStatusData: () => void;
-    checkingStatusData: checkingStatusDT[];
+    checkingStatusData: checkingStatusRootDT;
     getAllCheckedAudiosData: () => void;
-    allCheckedAudiosData: allCheckedAudioDT[];
+    allCheckedAudiosData: allCheckedAudioRootDt;
     getAnnotationData: () => void;
-    annotationData: annotationDT[];
+    annotationData: annotationRootDT;
     getCollectAnnSenData: () => void;
-    collectAnnSenData: collectAnnSenDataDT[]
+    collectAnnSenData: collectAnnSenRootDT
     getCollectAnnWordData: () => void;
-    collectAnnWordData: collectAnnSenDataDT[]
+    collectAnnWordData: collectAnnSenRootDT
     getCollectAnnPhonemeData: () => void;
-    collectAnnPhonemeData: collectAnnSenDataDT[]
+    collectAnnPhonemeData: collectAnnSenRootDT
     getAnnotatedFilesData: () => void;
-    annotatedFilesData: annotatedFilesDT[]
+    annotatedFilesData: annotatedFilesRootDT
     getCollectValSenData: () => void;
-    collectValSenData: collectValSenDataDT[]
+    collectValSenData: collectValSenRootDT
     getCollectValWordData: () => void;
-    collectValWordData: collectValSenDataDT[]
+    collectValWordData: collectValSenRootDT
     getCollectValPhonemeData: () => void;
-    collectValPhonemeData: collectValSenDataDT[]
+    collectValPhonemeData: collectValSenRootDT
     getValidatedFilesData: () => void;
-    validatedFilesData: validatedFilesDT[]
+    validatedFilesData: validatedFilesRootDT
     getUploadAudioData: () => void;
-    uploadAudioData: uploadAudioDataDT[];
+    uploadAudioData: uploadAudioRootDT;
     getCheckingStatusUploadData: () => void;
-    checkingStatusUploadData: checkingStatusUploadDataDT[]
+    checkingStatusUploadData: checkingStatusUploadRootDT
     getAllCheckedAudiosUploadData: () => void;
-    allCheckedAudiosUploadData: allCheckedSpeechDT[]
+    allCheckedAudiosUploadData: allCheckedSpeechRootDT
     getAnnotationUploadData: () => void;
-    annotationUploadData: annotationUploadDT[];
+    annotationUploadData: annotationUploadRootDT;
     getSentenceLevelUploadData: () => void;
-    sentenceLevelUploadData: sentenceLevelUploadDT[];
+    sentenceLevelUploadData: sentenceLevelUploadRootDT;
     getWordLevelUploadData: () => void;
-    wordLevelUploadData: sentenceLevelUploadDT[]
+    wordLevelUploadData: sentenceLevelUploadRootDT
     getPhonemeLevelUploadData: () => void;
-    phonemeLevelUploadData: sentenceLevelUploadDT[];
+    phonemeLevelUploadData: sentenceLevelUploadRootDT;
     getAnnotatedFilesUploadData: () => void;
-    annotatedFilesUploadData: annotatedFilesUploadDT[]
+    annotatedFilesUploadData: annotatedFilesUploadRootDT
     getSentenceLevelUploadVal: () => void;
-    sentenceLevelUploadVal: sentenceLevelValUploadDT[]
+    sentenceLevelUploadVal: sentenceLevelValUploadRootDT
     getWordLevelUploadVal: () => void;
-    wordLevelUploadVal: sentenceLevelValUploadDT[];
+    wordLevelUploadVal: sentenceLevelValUploadRootDT;
     getPhonemeLevelUploadVal: () => void;
-    phonemeLevelUploadVal: sentenceLevelValUploadDT[];
+    phonemeLevelUploadVal: sentenceLevelValUploadRootDT;
     getValidatedFilesUploadData: () => void
-    validatedFilesUploadData: validatedFilesUploadDT[]
+    validatedFilesUploadData: validatedFilesUploadRootDT
     getCollectedAudioSpeakers: () => void;
     collectedAudioSpeakers: string[];
     getCollectedAudioCheckingStatusScript: () => void;
@@ -137,30 +137,30 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
     const [scriptFilter, setScriptFilter] = useState<string[]>([] as string[]);
     const [collectedAudioCollector, setCollectedAudioCollector] = useState<string[]>([] as string[]);
     const [collectedAudioSpeakers, setCollectedAudioSpeakers] = useState<string[]>([] as string[]);
-    const [collectedAudio, setCollectedAudio] = useState<audioManagementDT[]>([] as audioManagementDT[]);
-    const [checkingStatusData, setCheckingStatusData] = useState<checkingStatusDT[]>([] as checkingStatusDT[]);
-    const [allCheckedAudiosData, setAllCheckedAudiosData] = useState<allCheckedAudioDT[]>([] as allCheckedAudioDT[]);
-    const [annotationData, setAnnotationData] = useState<annotationDT[]>([] as annotationDT[]);
-    const [collectAnnSenData, setCollectAnnSenData] = useState<collectAnnSenDataDT[]>([] as collectAnnSenDataDT[]);
-    const [collectAnnWordData, setCollectAnnWordData] = useState<collectAnnSenDataDT[]>([] as collectAnnSenDataDT[]);
-    const [collectAnnPhonemeData, setCollectAnnPhonemeData] = useState<collectAnnSenDataDT[]>([] as collectAnnSenDataDT[]);
-    const [annotatedFilesData, setAnnotatedFilesData] = useState<annotatedFilesDT[]>([] as annotatedFilesDT[]);
-    const [collectValSenData, setCollectValSenData] = useState<collectValSenDataDT[]>([] as collectValSenDataDT[]);
-    const [collectValWordData, setCollectValWordData] = useState<collectValSenDataDT[]>([] as collectValSenDataDT[]);
-    const [collectValPhonemeData, setCollectValPhonemeData] = useState<collectValSenDataDT[]>([] as collectValSenDataDT[]);
-    const [validatedFilesData, setValidatedFilesData] = useState<validatedFilesDT[]>([] as validatedFilesDT[])
-    const [uploadAudioData, setUploadAudioData] = useState<uploadAudioDataDT[]>([] as uploadAudioDataDT[])
-    const [checkingStatusUploadData, setCheckingStatusUploadData] = useState<checkingStatusUploadDataDT[]>([] as checkingStatusUploadDataDT[])
-    const [allCheckedAudiosUploadData, setAllCheckedAudiosUploadData] = useState<allCheckedSpeechDT[]>([] as allCheckedSpeechDT[])
-    const [annotationUploadData, setAnnotationUploadData] = useState<annotationUploadDT[]>([] as annotationUploadDT[])
-    const [sentenceLevelUploadData, setSentenceLevelUploadData] = useState<sentenceLevelUploadDT[]>([] as sentenceLevelUploadDT[])
-    const [wordLevelUploadData, setWordLevelUploadData] = useState<sentenceLevelUploadDT[]>([] as sentenceLevelUploadDT[])
-    const [phonemeLevelUploadData, setPhonemeLevelUploadData] = useState<sentenceLevelUploadDT[]>([] as sentenceLevelUploadDT[])
-    const [annotatedFilesUploadData, setAnnotatedFilesUploadData] = useState<annotatedFilesUploadDT[]>([] as annotatedFilesUploadDT[])
-    const [sentenceLevelUploadVal, setSentenceLevelUploadVal] = useState<sentenceLevelValUploadDT[]>([] as sentenceLevelValUploadDT[])
-    const [wordLevelUploadVal, setWordLevelUploadVal] = useState<sentenceLevelValUploadDT[]>([] as sentenceLevelValUploadDT[])
-    const [phonemeLevelUploadVal, setPhonemeLevelUploadVal] = useState<sentenceLevelValUploadDT[]>([] as sentenceLevelValUploadDT[])
-    const [validatedFilesUploadData, setValidatedFilesUploadData] = useState<validatedFilesUploadDT[]>([] as validatedFilesUploadDT[])
+    const [collectedAudio, setCollectedAudio] = useState<collectedAudioDT>({} as collectedAudioDT);
+    const [checkingStatusData, setCheckingStatusData] = useState<checkingStatusRootDT>({} as checkingStatusRootDT);
+    const [allCheckedAudiosData, setAllCheckedAudiosData] = useState<allCheckedAudioRootDt>({} as allCheckedAudioRootDt);
+    const [annotationData, setAnnotationData] = useState<annotationRootDT>({} as annotationRootDT);
+    const [collectAnnSenData, setCollectAnnSenData] = useState<collectAnnSenRootDT>({} as collectAnnSenRootDT);
+    const [collectAnnWordData, setCollectAnnWordData] = useState<collectAnnSenRootDT>({} as collectAnnSenRootDT);
+    const [collectAnnPhonemeData, setCollectAnnPhonemeData] = useState<collectAnnSenRootDT>({} as collectAnnSenRootDT);
+    const [annotatedFilesData, setAnnotatedFilesData] = useState<annotatedFilesRootDT>({} as annotatedFilesRootDT);
+    const [collectValSenData, setCollectValSenData] = useState<collectValSenRootDT>({} as collectValSenRootDT);
+    const [collectValWordData, setCollectValWordData] = useState<collectValSenRootDT>({} as collectValSenRootDT);
+    const [collectValPhonemeData, setCollectValPhonemeData] = useState<collectValSenRootDT>({} as collectValSenRootDT);
+    const [validatedFilesData, setValidatedFilesData] = useState<validatedFilesRootDT>({} as validatedFilesRootDT)
+    const [uploadAudioData, setUploadAudioData] = useState<uploadAudioRootDT>({} as uploadAudioRootDT)
+    const [checkingStatusUploadData, setCheckingStatusUploadData] = useState<checkingStatusUploadRootDT>({} as checkingStatusUploadRootDT)
+    const [allCheckedAudiosUploadData, setAllCheckedAudiosUploadData] = useState<allCheckedSpeechRootDT>({} as allCheckedSpeechRootDT)
+    const [annotationUploadData, setAnnotationUploadData] = useState<annotationUploadRootDT>({} as annotationUploadRootDT)
+    const [sentenceLevelUploadData, setSentenceLevelUploadData] = useState<sentenceLevelUploadRootDT>({} as sentenceLevelUploadRootDT)
+    const [wordLevelUploadData, setWordLevelUploadData] = useState<sentenceLevelUploadRootDT>({} as sentenceLevelUploadRootDT)
+    const [phonemeLevelUploadData, setPhonemeLevelUploadData] = useState<sentenceLevelUploadRootDT>({} as sentenceLevelUploadRootDT)
+    const [annotatedFilesUploadData, setAnnotatedFilesUploadData] = useState<annotatedFilesUploadRootDT>({} as annotatedFilesUploadRootDT)
+    const [sentenceLevelUploadVal, setSentenceLevelUploadVal] = useState<sentenceLevelValUploadRootDT>({} as sentenceLevelValUploadRootDT)
+    const [wordLevelUploadVal, setWordLevelUploadVal] = useState<sentenceLevelValUploadRootDT>({} as sentenceLevelValUploadRootDT)
+    const [phonemeLevelUploadVal, setPhonemeLevelUploadVal] = useState<sentenceLevelValUploadRootDT>({} as sentenceLevelValUploadRootDT)
+    const [validatedFilesUploadData, setValidatedFilesUploadData] = useState<validatedFilesUploadRootDT>({} as validatedFilesUploadRootDT)
     const [collectedAudioCheckingStatusScript, setCollectedAudioCheckingStatusScript] = useState<string[]>([] as string[]);
     const [collectedAudioCheckingStatusCollector, setCollectedAudioCheckingStatusCollector] = useState<string[]>([] as string[]);
     const [collectedAudioCheckingStatusSpeaker, setCollectedAudioCheckingStatusSpeaker] = useState<string[]>([] as string[]);

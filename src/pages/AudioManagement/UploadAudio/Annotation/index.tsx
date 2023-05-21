@@ -18,7 +18,7 @@ const AnnotationUpload = () => {
   return (
     <div>
       <Header />
-      <Table.Type26 data={annotationUploadData} />
+      <Table.Type26 data={annotationUploadData.data} />
     </div>
   )
 }

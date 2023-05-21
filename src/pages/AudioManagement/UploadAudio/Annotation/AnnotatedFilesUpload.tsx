@@ -26,7 +26,7 @@ const AnnotatedFilesUpload = () => {
 
     const allTergetMenu = (key: string) => {
         const Category: CategoryMap = {
-            "Sentence": <><Table.Type33 data={annotatedFilesUploadData} /></>,
+            "Sentence": <><Table.Type33 data={annotatedFilesUploadData.data} /></>,
             "Word": <></>,
             "Phoneme": <></>
         };

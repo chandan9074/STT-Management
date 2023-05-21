@@ -1,3204 +1,3231 @@
 import { STATUS_ACTIVE, STATUS_ANNOTATED, STATUS_ANNOTATING, STATUS_APPROVED, STATUS_BLOCKED, STATUS_CANCELLED, STATUS_CHECKED, STATUS_CLAIMED, STATUS_CLAIM_APPROVED, STATUS_DECLINED, STATUS_REASSIGNED, STATUS_REJECTED, STATUS_TOOK_A_BREAK, STATUS_UPOLOADED, STATUS_VALIDATED, STATUS_VALIDATING, STTMODULE, TTSMODULE } from "../../helpers/ConditionVariable"
 import { targetFilterDT } from "../../types/assignTypes"
 
-export const collectedAudio = [
-    {
-        "id": "1gaytertgq96",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
-
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "",
-            "sourceFileName": "",
-            "sourceFileImage": "",
-            "title": "",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-        "speaker": {
-            "locality": "North-East Bangla",
-            "speakers": [
-                {
-                    "id": "bilkis@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                    "childhoodArea": "Nator",
-                    "age": "27",
-                    "profession": "teacher",
-                    "economicSituation": "poor",
-                    "education": "secondary",
-                    "smokingHabit": "Prefer not say",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is"
-                },
-                {
-                    "id": "maksud@gmail.com",
-                    "name": 'maksud alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "barishal",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-                {
-                    "id": "rakib@gmail.com",
-                    "name": 'rakib alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "rangpur",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-            ],
-
-        },
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
+export const collectedAudio = {
+    total_data_size: 1,
+    data: [
+        {
+            "id": "1gaytertgq96",
+            "speech": {
+                "id": '0',
+                "title": "Brahms,Two Pianos",
+                "duration": "5:00",
+                "url":
+                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
             },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
+            "script": {
+                "module": "STT",
+                "distributionSource": "Lecture",
+                "isAge": false,
+                "domain": "Applied science",
+                "subdomain": "Technology",
+
+                "sourceType": "",
+                "sourceUrl": "",
+                "sourceFile": "",
+                "sourceFileName": "",
+                "sourceFileImage": "",
+                "title": "",
+                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+                "date": "2023-02-16T12:45:58.536350",
+                "frequency": 0,
+                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
             },
-        ],
-        "others": {
-            "device": 'Redmi-Note 7 pro',
-            "journey": {
-                "role": [
+            "speaker": {
+                "locality": "North-East Bangla",
+                "speakers": [
                     {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
+                        "id": "bilkis@gmail.com",
+                        "name": 'Bilkis banu',
+                        "role": 'speaker',
+                        "gender": 'female',
+                        "childhoodArea": "Nator",
+                        "age": "27",
+                        "profession": "teacher",
+                        "economicSituation": "poor",
+                        "education": "secondary",
+                        "smokingHabit": "Prefer not say",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is"
                     },
                     {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
+                        "id": "maksud@gmail.com",
+                        "name": 'maksud alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "barishal",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
                     },
                     {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
+                        "id": "rakib@gmail.com",
+                        "name": 'rakib alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "rangpur",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
                     },
                 ],
-                "speakers":
-                {
-                    "locality": 'Middle-East Bangal',
-                    "roleTitle": 'speaker',
-                    "role": [
-                        {
-                            "id": "22",
-                            "name": 'Raihan Mozumdar',
-                            "gender": "male"
-                        },
-                        {
-                            "id": "223",
-                            "name": 'Bilkis Khatun',
-                            "gender": "female"
-                        }
-                    ]
-                },
-                "audioChecker": {
-                    "id": "55",
-                    "locality": "North-East  Bangla",
-                    "name": "Zakir Hossain",
-                    "role": 'Audio Checker',
-                    "pickedDate": "23 Jan’23; 3:30 PM"
-                }
-            }
-        },
-    },
-    {
-        "id": "1astgayterrga",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
 
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "",
-            "sourceFileName": "",
-            "sourceFileImage": "",
-            "title": "",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-        "speaker": {
-            "locality": "North-East Bangla",
-            "speakers": [
+            },
+            "remark": [
                 {
-                    "id": "bilkis@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                    "childhoodArea": "Nator",
-                    "age": "27",
-                    "profession": "teacher",
-                    "economicSituation": "poor",
-                    "education": "secondary",
-                    "smokingHabit": "Prefer not say",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is"
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Claim Approved"
                 },
-                // {
-                //     "id": "maksud@gmail.com",
-                //     "name": 'maksud alam',
-                //     "role": 'speaker',
-                //     "gender": 'male',
-                //     "childhoodArea": "barishal",
-                //     "age": "55",
-                //     "profession": "Doctor",
-                //     "economicSituation": "rich",
-                //     "education": "higher secondary",
-                //     "smokingHabit": "yes",
-                //     "hearingDisability": "no",
-                //     "shutter": "yes",
-                //     "recordingArea": "Inside Room",
-                //     "recordingDistance": "Close",
-                //     "note": "Dark Ux is ---"
-                // },
                 {
-                    "id": "rakib@gmail.com",
-                    "name": 'rakib alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "rangpur",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
+                    "id": "385",
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Cancelled"
                 },
             ],
-
-        },
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
-            },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
-            },
-        ],
-        "others": {
-            "device": 'Redmi-Note 7 pro',
-            "journey": {
-                "role": [
-                    {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
-                    },
-                    {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
-                    },
-                    {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
-                    },
-                ],
-                "speakers":
-                {
-                    "locality": 'Middle-East Bangal',
-                    "roleTitle": 'speaker',
+            "others": {
+                "device": 'Redmi-Note 7 pro',
+                "journey": {
                     "role": [
                         {
-                            "id": "22",
-                            "name": 'Raihan Mozumdar',
-                            "gender": "male"
+                            "id": "1",
+                            "role": 'Admin',
+                            "name": 'Md. Jalal Uddin',
+                            "date": "01 Jan’ 22"
                         },
                         {
-                            "id": "223",
-                            "name": 'Bilkis Khatun',
-                            "gender": "female"
-                        }
-                    ]
-                },
-                "audioChecker": {
-                    "id": "55",
-                    "locality": "North-East  Bangla",
-                    "name": "Zakir Hossain",
-                    "role": 'Audio Checker',
-                    "pickedDate": "23 Jan’23; 3:30 PM"
+                            "id": "2",
+                            "role": 'Manager',
+                            "name": 'Md. Eman Hassan',
+                            "date": "03 Jan’ 22"
+                        },
+                        {
+                            "id": "3",
+                            "role": 'Team Leader',
+                            "name": 'Jahida Ferdous Mim',
+                            "date": "05 Jan’ 22"
+                        },
+                        {
+                            "id": "4",
+                            "role": 'Collector',
+                            "name": 'Muhammad Miraz Mahmud',
+                            "date": "05 Jan’ 22"
+                        },
+                    ],
+                    "speakers":
+                    {
+                        "locality": 'Middle-East Bangal',
+                        "roleTitle": 'speaker',
+                        "role": [
+                            {
+                                "id": "22",
+                                "name": 'Raihan Mozumdar',
+                                "gender": "male"
+                            },
+                            {
+                                "id": "223",
+                                "name": 'Bilkis Khatun',
+                                "gender": "female"
+                            }
+                        ]
+                    },
+                    "audioChecker": {
+                        "id": "55",
+                        "locality": "North-East  Bangla",
+                        "name": "Zakir Hossain",
+                        "role": 'Audio Checker',
+                        "pickedDate": "23 Jan’23; 3:30 PM"
+                    }
                 }
-            }
+            },
         },
-    }
-]
+        {
+            "id": "1astgayterrga",
+            "speech": {
+                "id": '0',
+                "title": "Brahms,Two Pianos",
+                "duration": "5:00",
+                "url":
+                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+            },
+            "script": {
+                "module": "STT",
+                "distributionSource": "Lecture",
+                "isAge": false,
+                "domain": "Applied science",
+                "subdomain": "Technology",
 
-export const checkingStatusData = [
-    {
-        "id": "1yb2bse5ywetyb",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "deadline": "01/01/2022",
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "",
-            "sourceFileName": "",
-            // "sourceFileImage": "",
-            "title": "",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            // "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-        "speaker": {
-            "locality": "North-East Bangla",
-            "speakers": [
+                "sourceType": "",
+                "sourceUrl": "",
+                "sourceFile": "",
+                "sourceFileName": "",
+                "sourceFileImage": "",
+                "title": "",
+                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+                "date": "2023-02-16T12:45:58.536350",
+                "frequency": 0,
+                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+            },
+            "speaker": {
+                "locality": "North-East Bangla",
+                "speakers": [
+                    {
+                        "id": "bilkis@gmail.com",
+                        "name": 'Bilkis banu',
+                        "role": 'speaker',
+                        "gender": 'female',
+                        "childhoodArea": "Nator",
+                        "age": "27",
+                        "profession": "teacher",
+                        "economicSituation": "poor",
+                        "education": "secondary",
+                        "smokingHabit": "Prefer not say",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is"
+                    },
+                    // {
+                    //     "id": "maksud@gmail.com",
+                    //     "name": 'maksud alam',
+                    //     "role": 'speaker',
+                    //     "gender": 'male',
+                    //     "childhoodArea": "barishal",
+                    //     "age": "55",
+                    //     "profession": "Doctor",
+                    //     "economicSituation": "rich",
+                    //     "education": "higher secondary",
+                    //     "smokingHabit": "yes",
+                    //     "hearingDisability": "no",
+                    //     "shutter": "yes",
+                    //     "recordingArea": "Inside Room",
+                    //     "recordingDistance": "Close",
+                    //     "note": "Dark Ux is ---"
+                    // },
+                    {
+                        "id": "rakib@gmail.com",
+                        "name": 'rakib alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "rangpur",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                ],
+
+            },
+            "remark": [
                 {
-                    "id": "bilkis@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                    "childhoodArea": "Nator",
-                    "age": "27",
-                    "profession": "teacher",
-                    "economicSituation": "poor",
-                    "education": "secondary",
-                    "smokingHabit": "Prefer not say",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is"
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Claim Approved"
                 },
                 {
-                    "id": "maksud@gmail.com",
-                    "name": 'maksud alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "barishal",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-                {
-                    "id": "rakib@gmail.com",
-                    "name": 'rakib alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "rangpur",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
+                    "id": "385",
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Cancelled"
                 },
             ],
-
-        },
-        "audioChecker": {
-            "status": "Checking",
-            "name": "Peter Bailish",
-            "role": "annotator",
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM"
-        },
-        "deadLine": "01/02/2022",
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
-            },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
-            },
-        ],
-        "others": {
-            "device": 'Redmi-Note 7 pro',
-            "journey": {
-                "role": [
-                    {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
-                    },
-                    {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
-                    },
-                    {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
-                    },
-                ],
-                "speakers":
-                {
-                    "locality": 'Middle-East Bangal',
-                    "roleTitle": 'speaker',
+            "others": {
+                "device": 'Redmi-Note 7 pro',
+                "journey": {
                     "role": [
                         {
-                            "id": "22",
-                            "name": 'Raihan Mozumdar',
-                            "gender": "male"
+                            "id": "1",
+                            "role": 'Admin',
+                            "name": 'Md. Jalal Uddin',
+                            "date": "01 Jan’ 22"
                         },
                         {
-                            "id": "223",
-                            "name": 'Bilkis Khatun',
-                            "gender": "female"
-                        }
-                    ]
-                },
-                "audioChecker": {
-                    "id": "55",
-                    "locality": "North-East  Bangla",
-                    "name": "Zakir Hossain",
-                    "role": 'Audio Checker',
-                    "pickedDate": "23 Jan’23; 3:30 PM"
+                            "id": "2",
+                            "role": 'Manager',
+                            "name": 'Md. Eman Hassan',
+                            "date": "03 Jan’ 22"
+                        },
+                        {
+                            "id": "3",
+                            "role": 'Team Leader',
+                            "name": 'Jahida Ferdous Mim',
+                            "date": "05 Jan’ 22"
+                        },
+                        {
+                            "id": "4",
+                            "role": 'Collector',
+                            "name": 'Muhammad Miraz Mahmud',
+                            "date": "05 Jan’ 22"
+                        },
+                    ],
+                    "speakers":
+                    {
+                        "locality": 'Middle-East Bangal',
+                        "roleTitle": 'speaker',
+                        "role": [
+                            {
+                                "id": "22",
+                                "name": 'Raihan Mozumdar',
+                                "gender": "male"
+                            },
+                            {
+                                "id": "223",
+                                "name": 'Bilkis Khatun',
+                                "gender": "female"
+                            }
+                        ]
+                    },
+                    "audioChecker": {
+                        "id": "55",
+                        "locality": "North-East  Bangla",
+                        "name": "Zakir Hossain",
+                        "role": 'Audio Checker',
+                        "pickedDate": "23 Jan’23; 3:30 PM"
+                    }
                 }
-            }
-        },
+            },
+        }
+    ]
+}
 
-    },
-    {
-        "id": "1yb2bywetyb",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "deadline": "01/01/2022",
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "",
-            "sourceFileName": "",
-            // "sourceFileImage": "",
-            "title": "",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            // "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-        "speaker": {
-            "locality": "North-East Bangla",
-            "speakers": [
+export const checkingStatusData = {
+    total_data_size: 1,
+    data: [
+        {
+            "id": "1yb2bse5ywetyb",
+            "speech": {
+                "id": '0',
+                "title": "Brahms,Two Pianos",
+                "duration": "5:00",
+                "url":
+                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+            },
+            "deadline": "01/01/2022",
+            "script": {
+                "module": "STT",
+                "distributionSource": "Lecture",
+                "isAge": false,
+                "domain": "Applied science",
+                "subdomain": "Technology",
+                "sourceType": "",
+                "sourceUrl": "",
+                "sourceFile": "",
+                "sourceFileName": "",
+                // "sourceFileImage": "",
+                "title": "",
+                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+                "date": "2023-02-16T12:45:58.536350",
+                // "frequency": 0,
+                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+            },
+            "speaker": {
+                "locality": "North-East Bangla",
+                "speakers": [
+                    {
+                        "id": "bilkis@gmail.com",
+                        "name": 'Bilkis banu',
+                        "role": 'speaker',
+                        "gender": 'female',
+                        "childhoodArea": "Nator",
+                        "age": "27",
+                        "profession": "teacher",
+                        "economicSituation": "poor",
+                        "education": "secondary",
+                        "smokingHabit": "Prefer not say",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is"
+                    },
+                    {
+                        "id": "maksud@gmail.com",
+                        "name": 'maksud alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "barishal",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                    {
+                        "id": "rakib@gmail.com",
+                        "name": 'rakib alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "rangpur",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                ],
+    
+            },
+            "audioChecker": {
+                "status": "Checking",
+                "name": "Peter Bailish",
+                "role": "annotator",
+                "locality": "Middle-East Bangla",
+                "time": "01 Feb ; 3:30 PM"
+            },
+            "deadLine": "01/02/2022",
+            "remark": [
                 {
-                    "id": "bilkis@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                    "childhoodArea": "Nator",
-                    "age": "27",
-                    "profession": "teacher",
-                    "economicSituation": "poor",
-                    "education": "secondary",
-                    "smokingHabit": "Prefer not say",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is"
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Claim Approved"
                 },
                 {
-                    "id": "maksud@gmail.com",
-                    "name": 'maksud alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "barishal",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-                {
-                    "id": "rakib@gmail.com",
-                    "name": 'rakib alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "rangpur",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
+                    "id": "385",
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Cancelled"
                 },
             ],
-
-        },
-        "audioChecker": {
-            "status": "Checking",
-            "name": "Peter Bailish",
-            "role": "annotator",
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM"
-        },
-        "deadLine": "01/02/2022",
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
-            },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
-            },
-        ],
-        "others": {
-            "device": 'Redmi-Note 7 pro',
-            "journey": {
-                "role": [
-                    {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
-                    },
-                    {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
-                    },
-                    {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
-                    },
-                ],
-                "speakers":
-                {
-                    "locality": 'Middle-East Bangal',
-                    "roleTitle": 'speaker',
+            "others": {
+                "device": 'Redmi-Note 7 pro',
+                "journey": {
                     "role": [
                         {
-                            "id": "22",
-                            "name": 'Raihan Mozumdar',
-                            "gender": "male"
+                            "id": "1",
+                            "role": 'Admin',
+                            "name": 'Md. Jalal Uddin',
+                            "date": "01 Jan’ 22"
                         },
                         {
-                            "id": "223",
-                            "name": 'Bilkis Khatun',
-                            "gender": "female"
-                        }
-                    ]
-                },
-                "audioChecker": {
-                    "id": "55",
-                    "locality": "North-East  Bangla",
-                    "name": "Zakir Hossain",
-                    "role": 'Audio Checker',
-                    "pickedDate": "23 Jan’23; 3:30 PM"
+                            "id": "2",
+                            "role": 'Manager',
+                            "name": 'Md. Eman Hassan',
+                            "date": "03 Jan’ 22"
+                        },
+                        {
+                            "id": "3",
+                            "role": 'Team Leader',
+                            "name": 'Jahida Ferdous Mim',
+                            "date": "05 Jan’ 22"
+                        },
+                        {
+                            "id": "4",
+                            "role": 'Collector',
+                            "name": 'Muhammad Miraz Mahmud',
+                            "date": "05 Jan’ 22"
+                        },
+                    ],
+                    "speakers":
+                    {
+                        "locality": 'Middle-East Bangal',
+                        "roleTitle": 'speaker',
+                        "role": [
+                            {
+                                "id": "22",
+                                "name": 'Raihan Mozumdar',
+                                "gender": "male"
+                            },
+                            {
+                                "id": "223",
+                                "name": 'Bilkis Khatun',
+                                "gender": "female"
+                            }
+                        ]
+                    },
+                    "audioChecker": {
+                        "id": "55",
+                        "locality": "North-East  Bangla",
+                        "name": "Zakir Hossain",
+                        "role": 'Audio Checker',
+                        "pickedDate": "23 Jan’23; 3:30 PM"
+                    }
                 }
-            }
+            },
+    
         },
-
-    },
-]
-
-export const allCheckedAudiosData = [
-
-    {
-        "id": "1vbuyb4yw45b",
-        "deadline": "01/01/2022",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "speaker": {
-            "locality": "North-East Bangla",
-            "speakers": [
+        {
+            "id": "1yb2bywetyb",
+            "speech": {
+                "id": '0',
+                "title": "Brahms,Two Pianos",
+                "duration": "5:00",
+                "url":
+                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+            },
+            "deadline": "01/01/2022",
+            "script": {
+                "module": "STT",
+                "distributionSource": "Lecture",
+                "isAge": false,
+                "domain": "Applied science",
+                "subdomain": "Technology",
+                "sourceType": "",
+                "sourceUrl": "",
+                "sourceFile": "",
+                "sourceFileName": "",
+                // "sourceFileImage": "",
+                "title": "",
+                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+                "date": "2023-02-16T12:45:58.536350",
+                // "frequency": 0,
+                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+            },
+            "speaker": {
+                "locality": "North-East Bangla",
+                "speakers": [
+                    {
+                        "id": "bilkis@gmail.com",
+                        "name": 'Bilkis banu',
+                        "role": 'speaker',
+                        "gender": 'female',
+                        "childhoodArea": "Nator",
+                        "age": "27",
+                        "profession": "teacher",
+                        "economicSituation": "poor",
+                        "education": "secondary",
+                        "smokingHabit": "Prefer not say",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is"
+                    },
+                    {
+                        "id": "maksud@gmail.com",
+                        "name": 'maksud alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "barishal",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                    {
+                        "id": "rakib@gmail.com",
+                        "name": 'rakib alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "rangpur",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                ],
+    
+            },
+            "audioChecker": {
+                "status": "Checking",
+                "name": "Peter Bailish",
+                "role": "annotator",
+                "locality": "Middle-East Bangla",
+                "time": "01 Feb ; 3:30 PM"
+            },
+            "deadLine": "01/02/2022",
+            "remark": [
                 {
-                    "id": "bilkis@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                    "childhoodArea": "Nator",
-                    "age": "27",
-                    "profession": "teacher",
-                    "economicSituation": "poor",
-                    "education": "secondary",
-                    "smokingHabit": "Prefer not say",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is"
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Claim Approved"
                 },
                 {
-                    "id": "maksud@gmail.com",
-                    "name": 'maksud alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "barishal",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-                {
-                    "id": "rakib@gmail.com",
-                    "name": 'rakib alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "rangpur",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
+                    "id": "385",
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Cancelled"
                 },
             ],
-
-        },
-        "audioChecker": {
-            "status": "Checking",
-            "name": "Peter Bailish",
-            "role": "annotator",
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM"
-        },
-        "status": "Claim Declined",
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
-
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "https://fastly.picsum.photos/id/923/200/300.jpg?hmac=eiYSYaG7v46VlrE38Amrg33bd2FzVjaCsQrLMdekyAU",
-            "sourceFileName": "",
-            // "sourceFileImage": "https://fastly.picsum.photos/id/923/200/300.jpg?hmac=eiYSYaG7v46VlrE38Amrg33bd2FzVjaCsQrLMdekyAU",
-            "title": "ভুল বাক্য ",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-        "deadLine": "01/02/2022",
-        "submissionDate": "01/02/2022",
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
-            },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
-            },
-        ],
-        "others": {
-            "device": 'Redmi-Note 7 pro',
-            "journey": {
-                "role": [
-                    {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
-                    },
-                    {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
-                    },
-                    {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
-                    },
-                ],
-                "speakers":
-                {
-                    "locality": 'Middle-East Bangal',
-                    "roleTitle": 'speaker',
+            "others": {
+                "device": 'Redmi-Note 7 pro',
+                "journey": {
                     "role": [
                         {
-                            "id": "22",
-                            "name": 'Raihan Mozumdar',
-                            "gender": "male"
+                            "id": "1",
+                            "role": 'Admin',
+                            "name": 'Md. Jalal Uddin',
+                            "date": "01 Jan’ 22"
                         },
                         {
-                            "id": "223",
-                            "name": 'Bilkis Khatun',
-                            "gender": "female"
-                        }
-                    ]
-                },
-                "audioChecker": {
-                    "id": "55",
-                    "locality": "North-East  Bangla",
-                    "name": "Zakir Hossain",
-                    "role": 'Audio Checker',
-                    "pickedDate": "23 Jan’23; 3:30 PM"
+                            "id": "2",
+                            "role": 'Manager',
+                            "name": 'Md. Eman Hassan',
+                            "date": "03 Jan’ 22"
+                        },
+                        {
+                            "id": "3",
+                            "role": 'Team Leader',
+                            "name": 'Jahida Ferdous Mim',
+                            "date": "05 Jan’ 22"
+                        },
+                        {
+                            "id": "4",
+                            "role": 'Collector',
+                            "name": 'Muhammad Miraz Mahmud',
+                            "date": "05 Jan’ 22"
+                        },
+                    ],
+                    "speakers":
+                    {
+                        "locality": 'Middle-East Bangal',
+                        "roleTitle": 'speaker',
+                        "role": [
+                            {
+                                "id": "22",
+                                "name": 'Raihan Mozumdar',
+                                "gender": "male"
+                            },
+                            {
+                                "id": "223",
+                                "name": 'Bilkis Khatun',
+                                "gender": "female"
+                            }
+                        ]
+                    },
+                    "audioChecker": {
+                        "id": "55",
+                        "locality": "North-East  Bangla",
+                        "name": "Zakir Hossain",
+                        "role": 'Audio Checker',
+                        "pickedDate": "23 Jan’23; 3:30 PM"
+                    }
                 }
-            }
+            },
+    
         },
-        "history": [
-            {
-                "lastEdited": '01/02/2022',
-                "status": "Reassigned",
-                "name": "Md. Jalal Uddin",
-                "role": "Admin",
-                "remark": [
+    ]
+}
+
+export const allCheckedAudiosData = {
+    total_data_size: 500,
+    data: [
+        {
+            "id": "1vbuyb4yw45b",
+            "deadline": "01/01/2022",
+            "speech": {
+                "id": '0',
+                "title": "Brahms,Two Pianos",
+                "duration": "5:00",
+                "url":
+                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+            },
+            "speaker": {
+                "locality": "North-East Bangla",
+                "speakers": [
                     {
-                        "roleInfo": {
-                            "id": "maksudalam@gmail.com",
-                            "name": "Maksud Alam",
-                            "role": "Manager",
-                            "gender": "Male",
-                        },
-                        "deadline": "05/02/2022, 5:41 AM",
-                        "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                        "status": "Claim Approved"
+                        "id": "bilkis@gmail.com",
+                        "name": 'Bilkis banu',
+                        "role": 'speaker',
+                        "gender": 'female',
+                        "childhoodArea": "Nator",
+                        "age": "27",
+                        "profession": "teacher",
+                        "economicSituation": "poor",
+                        "education": "secondary",
+                        "smokingHabit": "Prefer not say",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is"
                     },
                     {
-                        "id": "385",
-                        "roleInfo": {
-                            "id": "maksudalam@gmail.com",
-                            "name": "Maksud Alam",
-                            "role": "Manager",
-                            "gender": "Male",
-                        },
-                        "deadline": "05/02/2022, 5:41 AM",
-                        "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                        "status": "Cancelled"
+                        "id": "maksud@gmail.com",
+                        "name": 'maksud alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "barishal",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
                     },
-                ]
-            }
-        ]
-    },
-    {
-        "id": "1vbuy546yb4y5b",
-        "deadline": "01/01/2022",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "speaker": {
-            "locality": "North-East Bangla",
-            "speakers": [
+                    {
+                        "id": "rakib@gmail.com",
+                        "name": 'rakib alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "rangpur",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                ],
+    
+            },
+            "audioChecker": {
+                "status": "Checking",
+                "name": "Peter Bailish",
+                "role": "annotator",
+                "locality": "Middle-East Bangla",
+                "time": "01 Feb ; 3:30 PM"
+            },
+            "status": "Claim Declined",
+            "script": {
+                "module": "STT",
+                "distributionSource": "Lecture",
+                "isAge": false,
+                "domain": "Applied science",
+                "subdomain": "Technology",
+    
+                "sourceType": "",
+                "sourceUrl": "",
+                "sourceFile": "https://fastly.picsum.photos/id/923/200/300.jpg?hmac=eiYSYaG7v46VlrE38Amrg33bd2FzVjaCsQrLMdekyAU",
+                "sourceFileName": "",
+                // "sourceFileImage": "https://fastly.picsum.photos/id/923/200/300.jpg?hmac=eiYSYaG7v46VlrE38Amrg33bd2FzVjaCsQrLMdekyAU",
+                "title": "ভুল বাক্য ",
+                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+                "date": "2023-02-16T12:45:58.536350",
+                "frequency": 0,
+                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+            },
+            "deadLine": "01/02/2022",
+            "submissionDate": "01/02/2022",
+            "remark": [
                 {
-                    "id": "bilkis@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                    "childhoodArea": "Nator",
-                    "age": "27",
-                    "profession": "teacher",
-                    "economicSituation": "poor",
-                    "education": "secondary",
-                    "smokingHabit": "Prefer not say",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is"
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Claim Approved"
                 },
                 {
-                    "id": "maksud@gmail.com",
-                    "name": 'maksud alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "barishal",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-                {
-                    "id": "rakib@gmail.com",
-                    "name": 'rakib alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "rangpur",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
+                    "id": "385",
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Cancelled"
                 },
             ],
-
-        },
-        "audioChecker": {
-            "status": "Checking",
-            "name": "Peter Bailish",
-            "role": "annotator",
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM"
-        },
-        "status": "Claim Declined",
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
-
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "https://fastly.picsum.photos/id/923/200/300.jpg?hmac=eiYSYaG7v46VlrE38Amrg33bd2FzVjaCsQrLMdekyAU",
-            "sourceFileName": "",
-            // "sourceFileImage": "https://fastly.picsum.photos/id/923/200/300.jpg?hmac=eiYSYaG7v46VlrE38Amrg33bd2FzVjaCsQrLMdekyAU",
-            "title": "ভুল বাক্য ",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-        "deadLine": "01/02/2022",
-        "submissionDate": "01/02/2022",
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
-            },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
-            },
-        ],
-        "others": {
-            "device": 'Redmi-Note 7 pro',
-            "journey": {
-                "role": [
-                    {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
-                    },
-                    {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
-                    },
-                    {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
-                    },
-                ],
-                "speakers":
-                {
-                    "locality": 'Middle-East Bangal',
-                    "roleTitle": 'speaker',
+            "others": {
+                "device": 'Redmi-Note 7 pro',
+                "journey": {
                     "role": [
                         {
-                            "id": "22",
-                            "name": 'Raihan Mozumdar',
-                            "gender": "male"
+                            "id": "1",
+                            "role": 'Admin',
+                            "name": 'Md. Jalal Uddin',
+                            "date": "01 Jan’ 22"
                         },
                         {
-                            "id": "223",
-                            "name": 'Bilkis Khatun',
-                            "gender": "female"
-                        }
-                    ]
-                },
-                "audioChecker": {
-                    "id": "55",
-                    "locality": "North-East  Bangla",
-                    "name": "Zakir Hossain",
-                    "role": 'Audio Checker',
-                    "pickedDate": "23 Jan’23; 3:30 PM"
+                            "id": "2",
+                            "role": 'Manager',
+                            "name": 'Md. Eman Hassan',
+                            "date": "03 Jan’ 22"
+                        },
+                        {
+                            "id": "3",
+                            "role": 'Team Leader',
+                            "name": 'Jahida Ferdous Mim',
+                            "date": "05 Jan’ 22"
+                        },
+                        {
+                            "id": "4",
+                            "role": 'Collector',
+                            "name": 'Muhammad Miraz Mahmud',
+                            "date": "05 Jan’ 22"
+                        },
+                    ],
+                    "speakers":
+                    {
+                        "locality": 'Middle-East Bangal',
+                        "roleTitle": 'speaker',
+                        "role": [
+                            {
+                                "id": "22",
+                                "name": 'Raihan Mozumdar',
+                                "gender": "male"
+                            },
+                            {
+                                "id": "223",
+                                "name": 'Bilkis Khatun',
+                                "gender": "female"
+                            }
+                        ]
+                    },
+                    "audioChecker": {
+                        "id": "55",
+                        "locality": "North-East  Bangla",
+                        "name": "Zakir Hossain",
+                        "role": 'Audio Checker',
+                        "pickedDate": "23 Jan’23; 3:30 PM"
+                    }
                 }
-            }
-        },
-        "history": [
-            {
-                "lastEdited": '01/02/2022',
-                "status": "Reassigned",
-                "name": "Md. Jalal Uddin",
-                "role": "Admin",
-                "remark": [
-                    {
-                        "roleInfo": {
-                            "id": "maksudalam@gmail.com",
-                            "name": "Maksud Alam",
-                            "role": "Manager",
-                            "gender": "Male",
+            },
+            "history": [
+                {
+                    "lastEdited": '01/02/2022',
+                    "status": "Reassigned",
+                    "name": "Md. Jalal Uddin",
+                    "role": "Admin",
+                    "remark": [
+                        {
+                            "roleInfo": {
+                                "id": "maksudalam@gmail.com",
+                                "name": "Maksud Alam",
+                                "role": "Manager",
+                                "gender": "Male",
+                            },
+                            "deadline": "05/02/2022, 5:41 AM",
+                            "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                            "status": "Claim Approved"
                         },
-                        "deadline": "05/02/2022, 5:41 AM",
-                        "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                        "status": "Claim Approved"
+                        {
+                            "id": "385",
+                            "roleInfo": {
+                                "id": "maksudalam@gmail.com",
+                                "name": "Maksud Alam",
+                                "role": "Manager",
+                                "gender": "Male",
+                            },
+                            "deadline": "05/02/2022, 5:41 AM",
+                            "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                            "status": "Cancelled"
+                        },
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "1vbuy546yb4y5b",
+            "deadline": "01/01/2022",
+            "speech": {
+                "id": '0',
+                "title": "Brahms,Two Pianos",
+                "duration": "5:00",
+                "url":
+                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+            },
+            "speaker": {
+                "locality": "North-East Bangla",
+                "speakers": [
+                    {
+                        "id": "bilkis@gmail.com",
+                        "name": 'Bilkis banu',
+                        "role": 'speaker',
+                        "gender": 'female',
+                        "childhoodArea": "Nator",
+                        "age": "27",
+                        "profession": "teacher",
+                        "economicSituation": "poor",
+                        "education": "secondary",
+                        "smokingHabit": "Prefer not say",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is"
                     },
                     {
-                        "id": "385",
-                        "roleInfo": {
-                            "id": "maksudalam@gmail.com",
-                            "name": "Maksud Alam",
-                            "role": "Manager",
-                            "gender": "Male",
-                        },
-                        "deadline": "05/02/2022, 5:41 AM",
-                        "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                        "status": "Cancelled"
+                        "id": "maksud@gmail.com",
+                        "name": 'maksud alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "barishal",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
                     },
-                ]
-            }
-        ]
-    },
-]
-
-export const annotationData = [
-    {
-        "id": "1b254626234t62456b25",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
-
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "",
-            "sourceFileName": "",
-            "sourceFileImage": "",
-            "title": "",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-        "speaker": {
-            "locality": "North-East Bangla",
-            "speakers": [
+                    {
+                        "id": "rakib@gmail.com",
+                        "name": 'rakib alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "rangpur",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                ],
+    
+            },
+            "audioChecker": {
+                "status": "Checking",
+                "name": "Peter Bailish",
+                "role": "annotator",
+                "locality": "Middle-East Bangla",
+                "time": "01 Feb ; 3:30 PM"
+            },
+            "status": "Claim Declined",
+            "script": {
+                "module": "STT",
+                "distributionSource": "Lecture",
+                "isAge": false,
+                "domain": "Applied science",
+                "subdomain": "Technology",
+    
+                "sourceType": "",
+                "sourceUrl": "",
+                "sourceFile": "https://fastly.picsum.photos/id/923/200/300.jpg?hmac=eiYSYaG7v46VlrE38Amrg33bd2FzVjaCsQrLMdekyAU",
+                "sourceFileName": "",
+                // "sourceFileImage": "https://fastly.picsum.photos/id/923/200/300.jpg?hmac=eiYSYaG7v46VlrE38Amrg33bd2FzVjaCsQrLMdekyAU",
+                "title": "ভুল বাক্য ",
+                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+                "date": "2023-02-16T12:45:58.536350",
+                "frequency": 0,
+                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+            },
+            "deadLine": "01/02/2022",
+            "submissionDate": "01/02/2022",
+            "remark": [
                 {
-                    "id": "bilkis@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                    "childhoodArea": "Nator",
-                    "age": "27",
-                    "profession": "teacher",
-                    "economicSituation": "poor",
-                    "education": "secondary",
-                    "smokingHabit": "Prefer not say",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is"
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Claim Approved"
                 },
                 {
-                    "id": "maksud@gmail.com",
-                    "name": 'maksud alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "barishal",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-                {
-                    "id": "rakib@gmail.com",
-                    "name": 'rakib alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "rangpur",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
+                    "id": "385",
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Cancelled"
                 },
             ],
-
-        },
-        "others": {
-            "device": 'Redmi-Note 7 pro',
-            "journey": {
-                "role": [
-                    {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
-                    },
-                    {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
-                    },
-                    {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
-                    },
-                ],
-                "speakers":
-                {
-                    "locality": 'Middle-East Bangal',
-                    "roleTitle": 'speaker',
+            "others": {
+                "device": 'Redmi-Note 7 pro',
+                "journey": {
                     "role": [
                         {
-                            "id": "22",
-                            "name": 'Raihan Mozumdar',
-                            "gender": "male"
+                            "id": "1",
+                            "role": 'Admin',
+                            "name": 'Md. Jalal Uddin',
+                            "date": "01 Jan’ 22"
                         },
                         {
-                            "id": "223",
-                            "name": 'Bilkis Khatun',
-                            "gender": "female"
-                        }
-                    ]
-                },
-                "audioChecker": {
-                    "id": "55",
-                    "locality": "North-East  Bangla",
-                    "name": "Zakir Hossain",
-                    "role": 'Audio Checker',
-                    "pickedDate": "23 Jan’23; 3:30 PM"
+                            "id": "2",
+                            "role": 'Manager',
+                            "name": 'Md. Eman Hassan',
+                            "date": "03 Jan’ 22"
+                        },
+                        {
+                            "id": "3",
+                            "role": 'Team Leader',
+                            "name": 'Jahida Ferdous Mim',
+                            "date": "05 Jan’ 22"
+                        },
+                        {
+                            "id": "4",
+                            "role": 'Collector',
+                            "name": 'Muhammad Miraz Mahmud',
+                            "date": "05 Jan’ 22"
+                        },
+                    ],
+                    "speakers":
+                    {
+                        "locality": 'Middle-East Bangal',
+                        "roleTitle": 'speaker',
+                        "role": [
+                            {
+                                "id": "22",
+                                "name": 'Raihan Mozumdar',
+                                "gender": "male"
+                            },
+                            {
+                                "id": "223",
+                                "name": 'Bilkis Khatun',
+                                "gender": "female"
+                            }
+                        ]
+                    },
+                    "audioChecker": {
+                        "id": "55",
+                        "locality": "North-East  Bangla",
+                        "name": "Zakir Hossain",
+                        "role": 'Audio Checker',
+                        "pickedDate": "23 Jan’23; 3:30 PM"
+                    }
                 }
-            }
-        },
-        "deadLine": "01/02/2022",
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
             },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
+            "history": [
+                {
+                    "lastEdited": '01/02/2022',
+                    "status": "Reassigned",
+                    "name": "Md. Jalal Uddin",
+                    "role": "Admin",
+                    "remark": [
+                        {
+                            "roleInfo": {
+                                "id": "maksudalam@gmail.com",
+                                "name": "Maksud Alam",
+                                "role": "Manager",
+                                "gender": "Male",
+                            },
+                            "deadline": "05/02/2022, 5:41 AM",
+                            "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                            "status": "Claim Approved"
+                        },
+                        {
+                            "id": "385",
+                            "roleInfo": {
+                                "id": "maksudalam@gmail.com",
+                                "name": "Maksud Alam",
+                                "role": "Manager",
+                                "gender": "Male",
+                            },
+                            "deadline": "05/02/2022, 5:41 AM",
+                            "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                            "status": "Cancelled"
+                        },
+                    ]
+                }
+            ]
+        },
+    ]
+}
+
+export const annotationData = {
+    total_data_size: 500,
+    data: [
+        {
+            "id": "1b254626234t62456b25",
+            "speech": {
+                "id": '0',
+                "title": "Brahms,Two Pianos",
+                "duration": "5:00",
+                "url":
+                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
             },
-        ],
-
-    },
-    {
-        "id": "2b456254bt6256",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
-
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "",
-            "sourceFileName": "",
-            "sourceFileImage": "",
-            "title": "",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-        "speaker": {
-            "locality": "North-East Bangla",
-            "speakers": [
+            "script": {
+                "module": "STT",
+                "distributionSource": "Lecture",
+                "isAge": false,
+                "domain": "Applied science",
+                "subdomain": "Technology",
+    
+                "sourceType": "",
+                "sourceUrl": "",
+                "sourceFile": "",
+                "sourceFileName": "",
+                "sourceFileImage": "",
+                "title": "",
+                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+                "date": "2023-02-16T12:45:58.536350",
+                "frequency": 0,
+                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+            },
+            "speaker": {
+                "locality": "North-East Bangla",
+                "speakers": [
+                    {
+                        "id": "bilkis@gmail.com",
+                        "name": 'Bilkis banu',
+                        "role": 'speaker',
+                        "gender": 'female',
+                        "childhoodArea": "Nator",
+                        "age": "27",
+                        "profession": "teacher",
+                        "economicSituation": "poor",
+                        "education": "secondary",
+                        "smokingHabit": "Prefer not say",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is"
+                    },
+                    {
+                        "id": "maksud@gmail.com",
+                        "name": 'maksud alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "barishal",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                    {
+                        "id": "rakib@gmail.com",
+                        "name": 'rakib alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "rangpur",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                ],
+    
+            },
+            "wordAnnotation": false,
+            "phonemeAnnotation": false,
+            "others": {
+                "device": 'Redmi-Note 7 pro',
+                "journey": {
+                    "role": [
+                        {
+                            "id": "1",
+                            "role": 'Admin',
+                            "name": 'Md. Jalal Uddin',
+                            "date": "01 Jan’ 22"
+                        },
+                        {
+                            "id": "2",
+                            "role": 'Manager',
+                            "name": 'Md. Eman Hassan',
+                            "date": "03 Jan’ 22"
+                        },
+                        {
+                            "id": "3",
+                            "role": 'Team Leader',
+                            "name": 'Jahida Ferdous Mim',
+                            "date": "05 Jan’ 22"
+                        },
+                        {
+                            "id": "4",
+                            "role": 'Collector',
+                            "name": 'Muhammad Miraz Mahmud',
+                            "date": "05 Jan’ 22"
+                        },
+                    ],
+                    "speakers":
+                    {
+                        "locality": 'Middle-East Bangal',
+                        "roleTitle": 'speaker',
+                        "role": [
+                            {
+                                "id": "22",
+                                "name": 'Raihan Mozumdar',
+                                "gender": "male"
+                            },
+                            {
+                                "id": "223",
+                                "name": 'Bilkis Khatun',
+                                "gender": "female"
+                            }
+                        ]
+                    },
+                    "audioChecker": {
+                        "id": "55",
+                        "locality": "North-East  Bangla",
+                        "name": "Zakir Hossain",
+                        "role": 'Audio Checker',
+                        "pickedDate": "23 Jan’23; 3:30 PM"
+                    }
+                }
+            },
+            "deadLine": "01/02/2022",
+            "remark": [
                 {
-                    "id": "bilkis@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                    "childhoodArea": "Nator",
-                    "age": "27",
-                    "profession": "teacher",
-                    "economicSituation": "poor",
-                    "education": "secondary",
-                    "smokingHabit": "Prefer not say",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is"
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Claim Approved"
                 },
                 {
-                    "id": "maksud@gmail.com",
-                    "name": 'maksud alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "barishal",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-                {
-                    "id": "rakib@gmail.com",
-                    "name": 'rakib alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "rangpur",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
+                    "id": "385",
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Cancelled"
                 },
             ],
-
+    
         },
-        "others": {
-            "device": 'Redmi-Note 7 pro',
-            "journey": {
-                "role": [
+        {
+            "id": "2b456254bt6256",
+            "speech": {
+                "id": '0',
+                "title": "Brahms,Two Pianos",
+                "duration": "5:00",
+                "url":
+                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+            },
+            "script": {
+                "module": "STT",
+                "distributionSource": "Lecture",
+                "isAge": false,
+                "domain": "Applied science",
+                "subdomain": "Technology",
+    
+                "sourceType": "",
+                "sourceUrl": "",
+                "sourceFile": "",
+                "sourceFileName": "",
+                "sourceFileImage": "",
+                "title": "",
+                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+                "date": "2023-02-16T12:45:58.536350",
+                "frequency": 0,
+                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+            },
+            "speaker": {
+                "locality": "North-East Bangla",
+                "speakers": [
                     {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
+                        "id": "bilkis@gmail.com",
+                        "name": 'Bilkis banu',
+                        "role": 'speaker',
+                        "gender": 'female',
+                        "childhoodArea": "Nator",
+                        "age": "27",
+                        "profession": "teacher",
+                        "economicSituation": "poor",
+                        "education": "secondary",
+                        "smokingHabit": "Prefer not say",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is"
                     },
                     {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
+                        "id": "maksud@gmail.com",
+                        "name": 'maksud alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "barishal",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
                     },
                     {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
+                        "id": "rakib@gmail.com",
+                        "name": 'rakib alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "rangpur",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
                     },
                 ],
-                "speakers":
-                {
-                    "locality": 'Middle-East Bangal',
-                    "roleTitle": 'speaker',
+    
+            },
+            "wordAnnotation": false,
+            "phonemeAnnotation": false,
+            "others": {
+                "device": 'Redmi-Note 7 pro',
+                "journey": {
                     "role": [
                         {
-                            "id": "22",
-                            "name": 'Raihan Mozumdar',
-                            "gender": "male"
+                            "id": "1",
+                            "role": 'Admin',
+                            "name": 'Md. Jalal Uddin',
+                            "date": "01 Jan’ 22"
                         },
                         {
-                            "id": "223",
-                            "name": 'Bilkis Khatun',
-                            "gender": "female"
-                        }
-                    ]
-                },
-                "audioChecker": {
-                    "id": "55",
-                    "locality": "North-East  Bangla",
-                    "name": "Zakir Hossain",
-                    "role": 'Audio Checker',
-                    "pickedDate": "23 Jan’23; 3:30 PM"
+                            "id": "2",
+                            "role": 'Manager',
+                            "name": 'Md. Eman Hassan',
+                            "date": "03 Jan’ 22"
+                        },
+                        {
+                            "id": "3",
+                            "role": 'Team Leader',
+                            "name": 'Jahida Ferdous Mim',
+                            "date": "05 Jan’ 22"
+                        },
+                        {
+                            "id": "4",
+                            "role": 'Collector',
+                            "name": 'Muhammad Miraz Mahmud',
+                            "date": "05 Jan’ 22"
+                        },
+                    ],
+                    "speakers":
+                    {
+                        "locality": 'Middle-East Bangal',
+                        "roleTitle": 'speaker',
+                        "role": [
+                            {
+                                "id": "22",
+                                "name": 'Raihan Mozumdar',
+                                "gender": "male"
+                            },
+                            {
+                                "id": "223",
+                                "name": 'Bilkis Khatun',
+                                "gender": "female"
+                            }
+                        ]
+                    },
+                    "audioChecker": {
+                        "id": "55",
+                        "locality": "North-East  Bangla",
+                        "name": "Zakir Hossain",
+                        "role": 'Audio Checker',
+                        "pickedDate": "23 Jan’23; 3:30 PM"
+                    }
                 }
-            }
-        },
-        "deadLine": "01/02/2022",
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
             },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
+            "deadLine": "01/02/2022",
+            "remark": [
+                {
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Claim Approved"
                 },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
-            },
-        ]
-    },
-    {
-        "id": "3b45t5tb54tb45",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+                {
+                    "id": "385",
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Cancelled"
+                },
+            ]
         },
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
+        {
+            "id": "3b45t5tb54tb45",
+            "speech": {
+                "id": '0',
+                "title": "Brahms,Two Pianos",
+                "duration": "5:00",
+                "url":
+                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+            },
+            "script": {
+                "module": "STT",
+                "distributionSource": "Lecture",
+                "isAge": false,
+                "domain": "Applied science",
+                "subdomain": "Technology",
+    
+                "sourceType": "",
+                "sourceUrl": "",
+                "sourceFile": "",
+                "sourceFileName": "",
+                "sourceFileImage": "",
+                "title": "",
+                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+                "date": "2023-02-16T12:45:58.536350",
+                "frequency": 0,
+                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+            },
+            "speaker": {
+                "locality": "North-East Bangla",
+                "speakers": [
+                    {
+                        "id": "bilkis@gmail.com",
+                        "name": 'Bilkis banu',
+                        "role": 'speaker',
+                        "gender": 'female',
+                        "childhoodArea": "Nator",
+                        "age": "27",
+                        "profession": "teacher",
+                        "economicSituation": "poor",
+                        "education": "secondary",
+                        "smokingHabit": "Prefer not say",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is"
+                    },
+                    {
+                        "id": "maksud@gmail.com",
+                        "name": 'maksud alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "barishal",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                    {
+                        "id": "rakib@gmail.com",
+                        "name": 'rakib alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "rangpur",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                ],
+    
+            },
+            "wordAnnotation": false,
+            "phonemeAnnotation": false,
+            "others": {
+                "device": 'Redmi-Note 7 pro',
+                "journey": {
+                    "role": [
+                        {
+                            "id": "1",
+                            "role": 'Admin',
+                            "name": 'Md. Jalal Uddin',
+                            "date": "01 Jan’ 22"
+                        },
+                        {
+                            "id": "2",
+                            "role": 'Manager',
+                            "name": 'Md. Eman Hassan',
+                            "date": "03 Jan’ 22"
+                        },
+                        {
+                            "id": "3",
+                            "role": 'Team Leader',
+                            "name": 'Jahida Ferdous Mim',
+                            "date": "05 Jan’ 22"
+                        },
+                        {
+                            "id": "4",
+                            "role": 'Collector',
+                            "name": 'Muhammad Miraz Mahmud',
+                            "date": "05 Jan’ 22"
+                        },
+                    ],
+                    "speakers":
+                    {
+                        "locality": 'Middle-East Bangal',
+                        "roleTitle": 'speaker',
+                        "role": [
+                            {
+                                "id": "22",
+                                "name": 'Raihan Mozumdar',
+                                "gender": "male"
+                            },
+                            {
+                                "id": "223",
+                                "name": 'Bilkis Khatun',
+                                "gender": "female"
+                            }
+                        ]
+                    },
+                    "audioChecker": {
+                        "id": "55",
+                        "locality": "North-East  Bangla",
+                        "name": "Zakir Hossain",
+                        "role": 'Audio Checker',
+                        "pickedDate": "23 Jan’23; 3:30 PM"
+                    }
+                }
+            },
+            "deadLine": "01/02/2022",
+            "remark": [
+                {
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Claim Approved"
+                },
+                {
+                    "id": "385",
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Cancelled"
+                },
+            ]
+        },
+        {
+            "id": "4b2542y546t254b",
+            "speech": {
+                "id": '0',
+                "title": "Brahms,Two Pianos",
+                "duration": "5:00",
+                "url":
+                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+            },
+            "script": {
+                "module": "STT",
+                "distributionSource": "Lecture",
+                "isAge": false,
+                "domain": "Applied science",
+                "subdomain": "Technology",
+    
+                "sourceType": "",
+                "sourceUrl": "",
+                "sourceFile": "",
+                "sourceFileName": "",
+                "sourceFileImage": "",
+                "title": "",
+                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+                "date": "2023-02-16T12:45:58.536350",
+                "frequency": 0,
+                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+            },
+            "speaker": {
+                "locality": "North-East Bangla",
+                "speakers": [
+                    {
+                        "id": "bilkis@gmail.com",
+                        "name": 'Bilkis banu',
+                        "role": 'speaker',
+                        "gender": 'female',
+                        "childhoodArea": "Nator",
+                        "age": "27",
+                        "profession": "teacher",
+                        "economicSituation": "poor",
+                        "education": "secondary",
+                        "smokingHabit": "Prefer not say",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is"
+                    },
+                    {
+                        "id": "maksud@gmail.com",
+                        "name": 'maksud alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "barishal",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                    {
+                        "id": "rakib@gmail.com",
+                        "name": 'rakib alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "rangpur",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                ],
+    
+            },
+            "wordAnnotation": false,
+            "phonemeAnnotation": false,
+            "others": {
+                "device": 'Redmi-Note 7 pro',
+                "journey": {
+                    "role": [
+                        {
+                            "id": "1",
+                            "role": 'Admin',
+                            "name": 'Md. Jalal Uddin',
+                            "date": "01 Jan’ 22"
+                        },
+                        {
+                            "id": "2",
+                            "role": 'Manager',
+                            "name": 'Md. Eman Hassan',
+                            "date": "03 Jan’ 22"
+                        },
+                        {
+                            "id": "3",
+                            "role": 'Team Leader',
+                            "name": 'Jahida Ferdous Mim',
+                            "date": "05 Jan’ 22"
+                        },
+                        {
+                            "id": "4",
+                            "role": 'Collector',
+                            "name": 'Muhammad Miraz Mahmud',
+                            "date": "05 Jan’ 22"
+                        },
+                    ],
+                    "speakers":
+                    {
+                        "locality": 'Middle-East Bangal',
+                        "roleTitle": 'speaker',
+                        "role": [
+                            {
+                                "id": "22",
+                                "name": 'Raihan Mozumdar',
+                                "gender": "male"
+                            },
+                            {
+                                "id": "223",
+                                "name": 'Bilkis Khatun',
+                                "gender": "female"
+                            }
+                        ]
+                    },
+                    "audioChecker": {
+                        "id": "55",
+                        "locality": "North-East  Bangla",
+                        "name": "Zakir Hossain",
+                        "role": 'Audio Checker',
+                        "pickedDate": "23 Jan’23; 3:30 PM"
+                    }
+                }
+            },
+            "deadLine": "01/02/2022",
+            "remark": [
+                {
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Claim Approved"
+                },
+                {
+                    "id": "385",
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Cancelled"
+                },
+            ]
+        },
+    ]
+}
 
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "",
-            "sourceFileName": "",
-            "sourceFileImage": "",
-            "title": "",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-        "speaker": {
-            "locality": "North-East Bangla",
-            "speakers": [
+export const collectAnnSenData = {
+    total_data_size: 500,
+    data: [
+        {
+            "id": "1b45254t6b23623",
+            "speech": {
+                "id": '0',
+                "title": "Brahms,Two Pianos",
+                "duration": "5:00",
+                "url":
+                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+            },
+            "annotate": {
+                "status": "Annotating",
+                "roleName": "Maksud Alam",
+                "locality": "Barendri"
+            },
+            "deadLine": "01/02/2022",
+            "audioChecker": {
+                "status": "Checking",
+                "name": "Peter Bailish",
+                "role": "annotator",
+                "locality": "Middle-East Bangla",
+                "time": "01 Feb ; 3:30 PM"
+            },
+            "script": {
+                "module": "STT",
+                "distributionSource": "Lecture",
+                "isAge": false,
+                "domain": "Applied science",
+                "subdomain": "Technology",
+                "sourceType": "",
+                "sourceUrl": "",
+                "sourceFile": "",
+                "sourceFileName": "",
+                // "sourceFileImage": "",
+                "title": "",
+                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+                "date": "2023-02-16T12:45:58.536350",
+                // "frequency": 0,
+                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+            },
+            "speaker": {
+                "locality": "North-East Bangla",
+                "speakers": [
+                    {
+                        "id": "bilkis@gmail.com",
+                        "name": 'Bilkis banu',
+                        "role": 'speaker',
+                        "gender": 'female',
+                        "childhoodArea": "Nator",
+                        "age": "27",
+                        "profession": "teacher",
+                        "economicSituation": "poor",
+                        "education": "secondary",
+                        "smokingHabit": "Prefer not say",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is"
+                    },
+                    {
+                        "id": "maksud@gmail.com",
+                        "name": 'maksud alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "barishal",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                    {
+                        "id": "rakib@gmail.com",
+                        "name": 'rakib alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "rangpur",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                ],
+    
+            },
+            "remark": [
                 {
-                    "id": "bilkis@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                    "childhoodArea": "Nator",
-                    "age": "27",
-                    "profession": "teacher",
-                    "economicSituation": "poor",
-                    "education": "secondary",
-                    "smokingHabit": "Prefer not say",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is"
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Claim Approved"
                 },
                 {
-                    "id": "maksud@gmail.com",
-                    "name": 'maksud alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "barishal",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-                {
-                    "id": "rakib@gmail.com",
-                    "name": 'rakib alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "rangpur",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
+                    "id": "385",
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Cancelled"
                 },
             ],
-
-        },
-        "others": {
-            "device": 'Redmi-Note 7 pro',
-            "journey": {
-                "role": [
-                    {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
-                    },
-                    {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
-                    },
-                    {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
-                    },
-                ],
-                "speakers":
-                {
-                    "locality": 'Middle-East Bangal',
-                    "roleTitle": 'speaker',
+            "others": {
+                "device": 'Redmi-Note 7 pro',
+                "journey": {
                     "role": [
                         {
-                            "id": "22",
-                            "name": 'Raihan Mozumdar',
-                            "gender": "male"
+                            "id": "1",
+                            "role": 'Admin',
+                            "name": 'Md. Jalal Uddin',
+                            "date": "01 Jan’ 22"
                         },
                         {
-                            "id": "223",
-                            "name": 'Bilkis Khatun',
-                            "gender": "female"
-                        }
-                    ]
-                },
-                "audioChecker": {
-                    "id": "55",
-                    "locality": "North-East  Bangla",
-                    "name": "Zakir Hossain",
-                    "role": 'Audio Checker',
-                    "pickedDate": "23 Jan’23; 3:30 PM"
+                            "id": "2",
+                            "role": 'Manager',
+                            "name": 'Md. Eman Hassan',
+                            "date": "03 Jan’ 22"
+                        },
+                        {
+                            "id": "3",
+                            "role": 'Team Leader',
+                            "name": 'Jahida Ferdous Mim',
+                            "date": "05 Jan’ 22"
+                        },
+                        {
+                            "id": "4",
+                            "role": 'Collector',
+                            "name": 'Muhammad Miraz Mahmud',
+                            "date": "05 Jan’ 22"
+                        },
+                    ],
+                    "speakers":
+                    {
+                        "locality": 'Middle-East Bangal',
+                        "roleTitle": 'speaker',
+                        "role": [
+                            {
+                                "id": "22",
+                                "name": 'Raihan Mozumdar',
+                                "gender": "male"
+                            },
+                            {
+                                "id": "223",
+                                "name": 'Bilkis Khatun',
+                                "gender": "female"
+                            }
+                        ]
+                    },
+                    "audioChecker": {
+                        "id": "55",
+                        "locality": "North-East  Bangla",
+                        "name": "Zakir Hossain",
+                        "role": 'Audio Checker',
+                        "pickedDate": "23 Jan’23; 3:30 PM"
+                    }
                 }
-            }
-        },
-        "deadLine": "01/02/2022",
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
             },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
+        },
+        {
+            "id": "b35t62t625t2",
+            "speech": {
+                "id": '0',
+                "title": "Brahms,Two Pianos",
+                "duration": "5:00",
+                "url":
+                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
             },
-        ]
-    },
-    {
-        "id": "4b2542y546t254b",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
-
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "",
-            "sourceFileName": "",
-            "sourceFileImage": "",
-            "title": "",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-        "speaker": {
-            "locality": "North-East Bangla",
-            "speakers": [
+            "annotate": {
+                "status": "Took a Break",
+                "roleName": "Maksud Alam",
+                "locality": "Barendri"
+            },
+            "deadLine": "01/02/2022",
+            "audioChecker": {
+                "status": "Checking",
+                "name": "Peter Bailish",
+                "role": "audio checker",
+                "locality": "Middle-East Bangla",
+                "time": "01 Feb ; 3:30 PM"
+            },
+            "script": {
+                "module": "STT",
+                "distributionSource": "Lecture",
+                "isAge": false,
+                "domain": "Applied science",
+                "subdomain": "Technology",
+                "sourceType": "",
+                "sourceUrl": "",
+                "sourceFile": "",
+                "sourceFileName": "",
+                // "sourceFileImage": "",
+                "title": "",
+                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+                "date": "2023-02-16T12:45:58.536350",
+                // "frequency": 0,
+                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+            },
+            "speaker": {
+                "locality": "North-East Bangla",
+                "speakers": [
+                    {
+                        "id": "bilkis@gmail.com",
+                        "name": 'Bilkis banu',
+                        "role": 'speaker',
+                        "gender": 'female',
+                        "childhoodArea": "Nator",
+                        "age": "27",
+                        "profession": "teacher",
+                        "economicSituation": "poor",
+                        "education": "secondary",
+                        "smokingHabit": "Prefer not say",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is"
+                    },
+                    {
+                        "id": "maksud@gmail.com",
+                        "name": 'maksud alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "barishal",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                    {
+                        "id": "rakib@gmail.com",
+                        "name": 'rakib alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "rangpur",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                ],
+    
+            },
+            "remark": [
                 {
-                    "id": "bilkis@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                    "childhoodArea": "Nator",
-                    "age": "27",
-                    "profession": "teacher",
-                    "economicSituation": "poor",
-                    "education": "secondary",
-                    "smokingHabit": "Prefer not say",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is"
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Claim Approved"
                 },
                 {
-                    "id": "maksud@gmail.com",
-                    "name": 'maksud alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "barishal",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-                {
-                    "id": "rakib@gmail.com",
-                    "name": 'rakib alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "rangpur",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
+                    "id": "385",
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Cancelled"
                 },
             ],
-
-        },
-        "others": {
-            "device": 'Redmi-Note 7 pro',
-            "journey": {
-                "role": [
-                    {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
-                    },
-                    {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
-                    },
-                    {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
-                    },
-                ],
-                "speakers":
-                {
-                    "locality": 'Middle-East Bangal',
-                    "roleTitle": 'speaker',
+            "others": {
+                "device": 'Redmi-Note 7 pro',
+                "journey": {
                     "role": [
                         {
-                            "id": "22",
-                            "name": 'Raihan Mozumdar',
-                            "gender": "male"
+                            "id": "1",
+                            "role": 'Admin',
+                            "name": 'Md. Jalal Uddin',
+                            "date": "01 Jan’ 22"
                         },
                         {
-                            "id": "223",
-                            "name": 'Bilkis Khatun',
-                            "gender": "female"
-                        }
-                    ]
-                },
-                "audioChecker": {
-                    "id": "55",
-                    "locality": "North-East  Bangla",
-                    "name": "Zakir Hossain",
-                    "role": 'Audio Checker',
-                    "pickedDate": "23 Jan’23; 3:30 PM"
+                            "id": "2",
+                            "role": 'Manager',
+                            "name": 'Md. Eman Hassan',
+                            "date": "03 Jan’ 22"
+                        },
+                        {
+                            "id": "3",
+                            "role": 'Team Leader',
+                            "name": 'Jahida Ferdous Mim',
+                            "date": "05 Jan’ 22"
+                        },
+                        {
+                            "id": "4",
+                            "role": 'Collector',
+                            "name": 'Muhammad Miraz Mahmud',
+                            "date": "05 Jan’ 22"
+                        },
+                    ],
+                    "speakers":
+                    {
+                        "locality": 'Middle-East Bangal',
+                        "roleTitle": 'speaker',
+                        "role": [
+                            {
+                                "id": "22",
+                                "name": 'Raihan Mozumdar',
+                                "gender": "male"
+                            },
+                            {
+                                "id": "223",
+                                "name": 'Bilkis Khatun',
+                                "gender": "female"
+                            }
+                        ]
+                    },
+                    "audioChecker": {
+                        "id": "55",
+                        "locality": "North-East  Bangla",
+                        "name": "Zakir Hossain",
+                        "role": 'Audio Checker',
+                        "pickedDate": "23 Jan’23; 3:30 PM"
+                    }
                 }
-            }
-        },
-        "deadLine": "01/02/2022",
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
             },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
+        },
+        {
+            "id": "3b25625462653",
+            "speech": {
+                "id": '0',
+                "title": "Brahms,Two Pianos",
+                "duration": "5:00",
+                "url":
+                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
             },
-        ]
-    },
-]
-
-export const collectAnnSenData = [
-    {
-        "id": "1b45254t6b23623",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "annotate": {
-            "status": "Annotating",
-            "roleName": "Maksud Alam",
-            "locality": "Barendri"
-        },
-        "deadLine": "01/02/2022",
-        "audioChecker": {
-            "status": "Checking",
-            "name": "Peter Bailish",
-            "role": "annotator",
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM"
-        },
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "",
-            "sourceFileName": "",
-            // "sourceFileImage": "",
-            "title": "",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            // "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-        "speaker": {
-            "locality": "North-East Bangla",
-            "speakers": [
+            "annotate": {
+                "status": "Annotating",
+                "roleName": "Maksud Alam",
+                "locality": "Barendri"
+            },
+            "deadLine": "01/02/2022",
+            "audioChecker": {
+                "status": "Checking",
+                "name": "Peter Bailish",
+                "role": "annotator",
+                "locality": "Middle-East Bangla",
+                "time": "01 Feb ; 3:30 PM"
+            },
+            "script": {
+                "module": "STT",
+                "distributionSource": "Lecture",
+                "isAge": false,
+                "domain": "Applied science",
+                "subdomain": "Technology",
+                "sourceType": "",
+                "sourceUrl": "",
+                "sourceFile": "",
+                "sourceFileName": "",
+                // "sourceFileImage": "",
+                "title": "",
+                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+                "date": "2023-02-16T12:45:58.536350",
+                // "frequency": 0,
+                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+            },
+            "speaker": {
+                "locality": "North-East Bangla",
+                "speakers": [
+                    {
+                        "id": "bilkis@gmail.com",
+                        "name": 'Bilkis banu',
+                        "role": 'speaker',
+                        "gender": 'female',
+                        "childhoodArea": "Nator",
+                        "age": "27",
+                        "profession": "teacher",
+                        "economicSituation": "poor",
+                        "education": "secondary",
+                        "smokingHabit": "Prefer not say",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is"
+                    },
+                    {
+                        "id": "maksud@gmail.com",
+                        "name": 'maksud alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "barishal",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                    {
+                        "id": "rakib@gmail.com",
+                        "name": 'rakib alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "rangpur",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                ],
+    
+            },
+            "remark": [
                 {
-                    "id": "bilkis@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                    "childhoodArea": "Nator",
-                    "age": "27",
-                    "profession": "teacher",
-                    "economicSituation": "poor",
-                    "education": "secondary",
-                    "smokingHabit": "Prefer not say",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is"
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Claim Approved"
                 },
                 {
-                    "id": "maksud@gmail.com",
-                    "name": 'maksud alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "barishal",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-                {
-                    "id": "rakib@gmail.com",
-                    "name": 'rakib alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "rangpur",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
+                    "id": "385",
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Cancelled"
                 },
             ],
-
-        },
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
-            },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
-            },
-        ],
-        "others": {
-            "device": 'Redmi-Note 7 pro',
-            "journey": {
-                "role": [
-                    {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
-                    },
-                    {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
-                    },
-                    {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
-                    },
-                ],
-                "speakers":
-                {
-                    "locality": 'Middle-East Bangal',
-                    "roleTitle": 'speaker',
+            "others": {
+                "device": 'Redmi-Note 7 pro',
+                "journey": {
                     "role": [
                         {
-                            "id": "22",
-                            "name": 'Raihan Mozumdar',
-                            "gender": "male"
+                            "id": "1",
+                            "role": 'Admin',
+                            "name": 'Md. Jalal Uddin',
+                            "date": "01 Jan’ 22"
                         },
                         {
-                            "id": "223",
-                            "name": 'Bilkis Khatun',
-                            "gender": "female"
-                        }
-                    ]
-                },
-                "audioChecker": {
-                    "id": "55",
-                    "locality": "North-East  Bangla",
-                    "name": "Zakir Hossain",
-                    "role": 'Audio Checker',
-                    "pickedDate": "23 Jan’23; 3:30 PM"
+                            "id": "2",
+                            "role": 'Manager',
+                            "name": 'Md. Eman Hassan',
+                            "date": "03 Jan’ 22"
+                        },
+                        {
+                            "id": "3",
+                            "role": 'Team Leader',
+                            "name": 'Jahida Ferdous Mim',
+                            "date": "05 Jan’ 22"
+                        },
+                        {
+                            "id": "4",
+                            "role": 'Collector',
+                            "name": 'Muhammad Miraz Mahmud',
+                            "date": "05 Jan’ 22"
+                        },
+                    ],
+                    "speakers":
+                    {
+                        "locality": 'Middle-East Bangal',
+                        "roleTitle": 'speaker',
+                        "role": [
+                            {
+                                "id": "22",
+                                "name": 'Raihan Mozumdar',
+                                "gender": "male"
+                            },
+                            {
+                                "id": "223",
+                                "name": 'Bilkis Khatun',
+                                "gender": "female"
+                            }
+                        ]
+                    },
+                    "audioChecker": {
+                        "id": "55",
+                        "locality": "North-East  Bangla",
+                        "name": "Zakir Hossain",
+                        "role": 'Audio Checker',
+                        "pickedDate": "23 Jan’23; 3:30 PM"
+                    }
                 }
-            }
+            },
         },
-    },
-    {
-        "id": "b35t62t625t2",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "annotate": {
-            "status": "Took a Break",
-            "roleName": "Maksud Alam",
-            "locality": "Barendri"
-        },
-        "deadLine": "01/02/2022",
-        "audioChecker": {
-            "status": "Checking",
-            "name": "Peter Bailish",
-            "role": "audio checker",
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM"
-        },
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "",
-            "sourceFileName": "",
-            // "sourceFileImage": "",
-            "title": "",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            // "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-        "speaker": {
-            "locality": "North-East Bangla",
-            "speakers": [
+        {
+            "id": "b2546254v6t256vb2454",
+            "speech": {
+                "id": '0',
+                "title": "Brahms,Two Pianos",
+                "duration": "5:00",
+                "url":
+                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+            },
+            "annotate": {
+                "status": "Annotating",
+                "roleName": "Maksud Alam",
+                "locality": "Barendri"
+            },
+            "deadLine": "01/02/2022",
+            "audioChecker": {
+                "status": "Checking",
+                "name": "Peter Bailish",
+                "role": "annotator",
+                "locality": "Middle-East Bangla",
+                "time": "01 Feb ; 3:30 PM"
+            },
+            "script": {
+                "module": "STT",
+                "distributionSource": "Lecture",
+                "isAge": false,
+                "domain": "Applied science",
+                "subdomain": "Technology",
+                "sourceType": "",
+                "sourceUrl": "",
+                "sourceFile": "",
+                "sourceFileName": "",
+                // "sourceFileImage": "",
+                "title": "",
+                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+                "date": "2023-02-16T12:45:58.536350",
+                // "frequency": 0,
+                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+            },
+            "speaker": {
+                "locality": "North-East Bangla",
+                "speakers": [
+                    {
+                        "id": "bilkis@gmail.com",
+                        "name": 'Bilkis banu',
+                        "role": 'speaker',
+                        "gender": 'female',
+                        "childhoodArea": "Nator",
+                        "age": "27",
+                        "profession": "teacher",
+                        "economicSituation": "poor",
+                        "education": "secondary",
+                        "smokingHabit": "Prefer not say",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is"
+                    },
+                    {
+                        "id": "maksud@gmail.com",
+                        "name": 'maksud alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "barishal",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                    {
+                        "id": "rakib@gmail.com",
+                        "name": 'rakib alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "rangpur",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                ],
+    
+            },
+            "remark": [
                 {
-                    "id": "bilkis@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                    "childhoodArea": "Nator",
-                    "age": "27",
-                    "profession": "teacher",
-                    "economicSituation": "poor",
-                    "education": "secondary",
-                    "smokingHabit": "Prefer not say",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is"
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Claim Approved"
                 },
                 {
-                    "id": "maksud@gmail.com",
-                    "name": 'maksud alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "barishal",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-                {
-                    "id": "rakib@gmail.com",
-                    "name": 'rakib alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "rangpur",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
+                    "id": "385",
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Cancelled"
                 },
             ],
-
-        },
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
-            },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
-            },
-        ],
-        "others": {
-            "device": 'Redmi-Note 7 pro',
-            "journey": {
-                "role": [
-                    {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
-                    },
-                    {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
-                    },
-                    {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
-                    },
-                ],
-                "speakers":
-                {
-                    "locality": 'Middle-East Bangal',
-                    "roleTitle": 'speaker',
+            "others": {
+                "device": 'Redmi-Note 7 pro',
+                "journey": {
                     "role": [
                         {
-                            "id": "22",
-                            "name": 'Raihan Mozumdar',
-                            "gender": "male"
+                            "id": "1",
+                            "role": 'Admin',
+                            "name": 'Md. Jalal Uddin',
+                            "date": "01 Jan’ 22"
                         },
                         {
-                            "id": "223",
-                            "name": 'Bilkis Khatun',
-                            "gender": "female"
-                        }
-                    ]
-                },
-                "audioChecker": {
-                    "id": "55",
-                    "locality": "North-East  Bangla",
-                    "name": "Zakir Hossain",
-                    "role": 'Audio Checker',
-                    "pickedDate": "23 Jan’23; 3:30 PM"
+                            "id": "2",
+                            "role": 'Manager',
+                            "name": 'Md. Eman Hassan',
+                            "date": "03 Jan’ 22"
+                        },
+                        {
+                            "id": "3",
+                            "role": 'Team Leader',
+                            "name": 'Jahida Ferdous Mim',
+                            "date": "05 Jan’ 22"
+                        },
+                        {
+                            "id": "4",
+                            "role": 'Collector',
+                            "name": 'Muhammad Miraz Mahmud',
+                            "date": "05 Jan’ 22"
+                        },
+                    ],
+                    "speakers":
+                    {
+                        "locality": 'Middle-East Bangal',
+                        "roleTitle": 'speaker',
+                        "role": [
+                            {
+                                "id": "22",
+                                "name": 'Raihan Mozumdar',
+                                "gender": "male"
+                            },
+                            {
+                                "id": "223",
+                                "name": 'Bilkis Khatun',
+                                "gender": "female"
+                            }
+                        ]
+                    },
+                    "audioChecker": {
+                        "id": "55",
+                        "locality": "North-East  Bangla",
+                        "name": "Zakir Hossain",
+                        "role": 'Audio Checker',
+                        "pickedDate": "23 Jan’23; 3:30 PM"
+                    }
                 }
-            }
+            },
         },
-    },
-    {
-        "id": "3b25625462653",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "annotate": {
-            "status": "Annotating",
-            "roleName": "Maksud Alam",
-            "locality": "Barendri"
-        },
-        "deadLine": "01/02/2022",
-        "audioChecker": {
-            "status": "Checking",
-            "name": "Peter Bailish",
-            "role": "annotator",
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM"
-        },
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "",
-            "sourceFileName": "",
-            // "sourceFileImage": "",
-            "title": "",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            // "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-        "speaker": {
-            "locality": "North-East Bangla",
-            "speakers": [
+    ]
+}
+
+export const annotatedFiles = {
+    total_data_size: 500,
+    data: [
+        {
+            "id": "1b25462v54546",
+            "speech": {
+                "id": '0',
+                "title": "Brahms,Two Pianos",
+                "duration": "5:00",
+                "url":
+                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+            },
+            "speaker": {
+                "locality": "North-East Bangla",
+                "speakers": [
+                    {
+                        "id": "bilkis@gmail.com",
+                        "name": 'Bilkis banu',
+                        "role": 'speaker',
+                        "gender": 'female',
+                        "childhoodArea": "Nator",
+                        "age": "27",
+                        "profession": "teacher",
+                        "economicSituation": "poor",
+                        "education": "secondary",
+                        "smokingHabit": "Prefer not say",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is"
+                    },
+                    {
+                        "id": "maksud@gmail.com",
+                        "name": 'maksud alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "barishal",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                    {
+                        "id": "rakib@gmail.com",
+                        "name": 'rakib alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "rangpur",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                ],
+    
+            },
+            "others": {
+                "device": 'Redmi-Note 7 pro',
+                "journey": {
+                    "role": [
+                        {
+                            "id": "1",
+                            "role": 'Admin',
+                            "name": 'Md. Jalal Uddin',
+                            "date": "01 Jan’ 22"
+                        },
+                        {
+                            "id": "2",
+                            "role": 'Manager',
+                            "name": 'Md. Eman Hassan',
+                            "date": "03 Jan’ 22"
+                        },
+                        {
+                            "id": "3",
+                            "role": 'Team Leader',
+                            "name": 'Jahida Ferdous Mim',
+                            "date": "05 Jan’ 22"
+                        },
+                        {
+                            "id": "4",
+                            "role": 'Collector',
+                            "name": 'Muhammad Miraz Mahmud',
+                            "date": "05 Jan’ 22"
+                        },
+                    ],
+                    "speakers":
+                    {
+                        "locality": 'Middle-East Bangal',
+                        "roleTitle": 'speaker',
+                        "role": [
+                            {
+                                "id": "22",
+                                "name": 'Raihan Mozumdar',
+                                "gender": "male"
+                            },
+                            {
+                                "id": "223",
+                                "name": 'Bilkis Khatun',
+                                "gender": "female"
+                            }
+                        ]
+                    },
+                    "audioChecker": {
+                        "id": "55",
+                        "locality": "North-East  Bangla",
+                        "name": "Zakir Hossain",
+                        "role": 'Audio Checker',
+                        "pickedDate": "23 Jan’23; 3:30 PM"
+                    }
+                }
+            },
+            "history": [
                 {
-                    "id": "bilkis@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                    "childhoodArea": "Nator",
-                    "age": "27",
-                    "profession": "teacher",
-                    "economicSituation": "poor",
-                    "education": "secondary",
-                    "smokingHabit": "Prefer not say",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is"
-                },
-                {
-                    "id": "maksud@gmail.com",
-                    "name": 'maksud alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "barishal",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-                {
-                    "id": "rakib@gmail.com",
-                    "name": 'rakib alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "rangpur",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
+                    "id": "123",
+                    "lastEdited": '01/02/2022',
+                    "status": "Reassigned",
+                    "name": "Md. Jalal Uddin",
+                    "role": "Admin",
+                    "remark": [
+                        {
+                            "id": "333",
+                            "roleInfo": {
+                                "id": "maksudalam@gmail.com",
+                                "name": "Maksud Alam",
+                                "role": "Manager",
+                                "gender": "Male",
+                            },
+                            "deadline": "05/02/2022, 5:41 AM",
+                            "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                            "status": "Claim Approved"
+                        },
+                        {
+                            "id": "385",
+                            "roleInfo": {
+                                "id": "maksudalam@gmail.com",
+                                "name": "Maksud Alam",
+                                "role": "Manager",
+                                "gender": "Male",
+                            },
+                            "deadline": "05/02/2022, 5:41 AM",
+                            "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                            "status": "Cancelled"
+                        },
+                    ]
+                }
             ],
-
-        },
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
-            },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
-            },
-        ],
-        "others": {
-            "device": 'Redmi-Note 7 pro',
-            "journey": {
-                "role": [
-                    {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
-                    },
-                    {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
-                    },
-                    {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
-                    },
-                ],
-                "speakers":
-                {
-                    "locality": 'Middle-East Bangal',
-                    "roleTitle": 'speaker',
-                    "role": [
-                        {
-                            "id": "22",
-                            "name": 'Raihan Mozumdar',
-                            "gender": "male"
-                        },
-                        {
-                            "id": "223",
-                            "name": 'Bilkis Khatun',
-                            "gender": "female"
-                        }
-                    ]
-                },
-                "audioChecker": {
-                    "id": "55",
-                    "locality": "North-East  Bangla",
-                    "name": "Zakir Hossain",
-                    "role": 'Audio Checker',
-                    "pickedDate": "23 Jan’23; 3:30 PM"
-                }
-            }
-        },
-    },
-    {
-        "id": "b2546254v6t256vb2454",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "annotate": {
-            "status": "Annotating",
-            "roleName": "Maksud Alam",
-            "locality": "Barendri"
-        },
-        "deadLine": "01/02/2022",
-        "audioChecker": {
-            "status": "Checking",
-            "name": "Peter Bailish",
-            "role": "annotator",
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM"
-        },
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "",
-            "sourceFileName": "",
-            // "sourceFileImage": "",
-            "title": "",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            // "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-        "speaker": {
-            "locality": "North-East Bangla",
-            "speakers": [
-                {
-                    "id": "bilkis@gmail.com",
+            "audioChecker": {
+                "status": "Checking",
+                "locality": "Middle-East Bangla",
+                "time": "01 Feb ; 3:30 PM",
+                "audioCheckers": {
+                    "id": "maksudalam2@gmail.com",
                     "name": 'Bilkis banu',
-                    "role": 'speaker',
+                    "role": 'audio Checker',
                     "gender": 'female',
-                    "childhoodArea": "Nator",
-                    "age": "27",
-                    "profession": "teacher",
-                    "economicSituation": "poor",
-                    "education": "secondary",
-                    "smokingHabit": "Prefer not say",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is"
                 },
-                {
-                    "id": "maksud@gmail.com",
-                    "name": 'maksud alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "barishal",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-                {
-                    "id": "rakib@gmail.com",
-                    "name": 'rakib alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "rangpur",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-            ],
-
-        },
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
             },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
-            },
-        ],
-        "others": {
-            "device": 'Redmi-Note 7 pro',
-            "journey": {
-                "role": [
-                    {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
-                    },
-                    {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
-                    },
-                    {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
-                    },
-                ],
-                "speakers":
-                {
-                    "locality": 'Middle-East Bangal',
-                    "roleTitle": 'speaker',
-                    "role": [
-                        {
-                            "id": "22",
-                            "name": 'Raihan Mozumdar',
-                            "gender": "male"
-                        },
-                        {
-                            "id": "223",
-                            "name": 'Bilkis Khatun',
-                            "gender": "female"
-                        }
-                    ]
-                },
-                "audioChecker": {
-                    "id": "55",
-                    "locality": "North-East  Bangla",
-                    "name": "Zakir Hossain",
-                    "role": 'Audio Checker',
-                    "pickedDate": "23 Jan’23; 3:30 PM"
-                }
-            }
-        },
-    },
-]
-
-export const annotatedFiles = [
-    {
-        "id": "1b25462v54546",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "speaker": {
-            "locality": "North-East Bangla",
-            "speakers": [
-                {
-                    "id": "bilkis@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                    "childhoodArea": "Nator",
-                    "age": "27",
-                    "profession": "teacher",
-                    "economicSituation": "poor",
-                    "education": "secondary",
-                    "smokingHabit": "Prefer not say",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is"
-                },
-                {
-                    "id": "maksud@gmail.com",
-                    "name": 'maksud alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "barishal",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-                {
-                    "id": "rakib@gmail.com",
-                    "name": 'rakib alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "rangpur",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-            ],
-
-        },
-        "others": {
-            "device": 'Redmi-Note 7 pro',
-            "journey": {
-                "role": [
-                    {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
-                    },
-                    {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
-                    },
-                    {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
-                    },
-                ],
-                "speakers":
-                {
-                    "locality": 'Middle-East Bangal',
-                    "roleTitle": 'speaker',
-                    "role": [
-                        {
-                            "id": "22",
-                            "name": 'Raihan Mozumdar',
-                            "gender": "male"
-                        },
-                        {
-                            "id": "223",
-                            "name": 'Bilkis Khatun',
-                            "gender": "female"
-                        }
-                    ]
-                },
-                "audioChecker": {
-                    "id": "55",
-                    "locality": "North-East  Bangla",
-                    "name": "Zakir Hossain",
-                    "role": 'Audio Checker',
-                    "pickedDate": "23 Jan’23; 3:30 PM"
-                }
-            }
-        },
-        "history": [
-            {
-                "id": "123",
-                "lastEdited": '01/02/2022',
-                "status": "Reassigned",
-                "name": "Md. Jalal Uddin",
-                "role": "Admin",
-                "remark": [
-                    {
-                        "id": "333",
-                        "roleInfo": {
-                            "id": "maksudalam@gmail.com",
-                            "name": "Maksud Alam",
-                            "role": "Manager",
-                            "gender": "Male",
-                        },
-                        "deadline": "05/02/2022, 5:41 AM",
-                        "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                        "status": "Claim Approved"
-                    },
-                    {
-                        "id": "385",
-                        "roleInfo": {
-                            "id": "maksudalam@gmail.com",
-                            "name": "Maksud Alam",
-                            "role": "Manager",
-                            "gender": "Male",
-                        },
-                        "deadline": "05/02/2022, 5:41 AM",
-                        "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                        "status": "Cancelled"
-                    },
-                ]
-            }
-        ],
-        "audioChecker": {
-            "status": "Checking",
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM",
-            "audioCheckers": {
-                "id": "maksudalam2@gmail.com",
-                "name": 'Bilkis banu',
-                "role": 'audio Checker',
-                "gender": 'female',
-            },
-        },
-        "annotator": {
-            "status": "",
-            "locality": "Barendri",
-            "time": "01 Feb ; 3:30 PM",
             "annotator": {
-                "id": "maksudalam2@gmail.com",
-                "name": 'Bilkis banu',
-                "role": 'annotator',
-                "gender": 'female',
-            },
-        },
-        "status": "Cancelled",
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
-
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "",
-            "sourceFileName": "",
-            "sourceFileImage": "",
-            "title": "",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-
-        "deadLine": "01/02/2022",
-        "submissionDate": "01/02/2022",
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
-            },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
-            },
-        ]
-    },
-    {
-        "id": "2",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "speaker": {
-            "locality": "North-East Bangla",
-            "speakers": [
-                {
-                    "id": "bilkis@gmail.com",
+                "status": "",
+                "locality": "Barendri",
+                "time": "01 Feb ; 3:30 PM",
+                "annotator": {
+                    "id": "maksudalam2@gmail.com",
                     "name": 'Bilkis banu',
-                    "role": 'speaker',
+                    "role": 'annotator',
                     "gender": 'female',
-                    "childhoodArea": "Nator",
-                    "age": "27",
-                    "profession": "teacher",
-                    "economicSituation": "poor",
-                    "education": "secondary",
-                    "smokingHabit": "Prefer not say",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is"
+                },
+            },
+            "status": "Cancelled",
+            "script": {
+                "module": "STT",
+                "distributionSource": "Lecture",
+                "isAge": false,
+                "domain": "Applied science",
+                "subdomain": "Technology",
+    
+                "sourceType": "",
+                "sourceUrl": "",
+                "sourceFile": "",
+                "sourceFileName": "",
+                "sourceFileImage": "",
+                "title": "",
+                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+                "date": "2023-02-16T12:45:58.536350",
+                "frequency": 0,
+                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+            },
+    
+            "deadLine": "01/02/2022",
+            "submissionDate": "01/02/2022",
+            "remark": [
+                {
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Claim Approved"
                 },
                 {
-                    "id": "maksud@gmail.com",
-                    "name": 'maksud alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "barishal",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
+                    "id": "385",
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Cancelled"
                 },
-                {
-                    "id": "rakib@gmail.com",
-                    "name": 'rakib alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "rangpur",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-            ],
-
+            ]
         },
-        "others": {
-            "device": 'Redmi-Note 7 pro',
-            "journey": {
-                "role": [
+        {
+            "id": "2",
+            "speech": {
+                "id": '0',
+                "title": "Brahms,Two Pianos",
+                "duration": "5:00",
+                "url":
+                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+            },
+            "speaker": {
+                "locality": "North-East Bangla",
+                "speakers": [
                     {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
+                        "id": "bilkis@gmail.com",
+                        "name": 'Bilkis banu',
+                        "role": 'speaker',
+                        "gender": 'female',
+                        "childhoodArea": "Nator",
+                        "age": "27",
+                        "profession": "teacher",
+                        "economicSituation": "poor",
+                        "education": "secondary",
+                        "smokingHabit": "Prefer not say",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is"
                     },
                     {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
+                        "id": "maksud@gmail.com",
+                        "name": 'maksud alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "barishal",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
                     },
                     {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
+                        "id": "rakib@gmail.com",
+                        "name": 'rakib alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "rangpur",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
                     },
                 ],
-                "speakers":
-                {
-                    "locality": 'Middle-East Bangal',
-                    "roleTitle": 'speaker',
+    
+            },
+            "others": {
+                "device": 'Redmi-Note 7 pro',
+                "journey": {
                     "role": [
                         {
-                            "id": "22",
-                            "name": 'Raihan Mozumdar',
-                            "gender": "male"
+                            "id": "1",
+                            "role": 'Admin',
+                            "name": 'Md. Jalal Uddin',
+                            "date": "01 Jan’ 22"
                         },
                         {
-                            "id": "223",
-                            "name": 'Bilkis Khatun',
-                            "gender": "female"
-                        }
+                            "id": "2",
+                            "role": 'Manager',
+                            "name": 'Md. Eman Hassan',
+                            "date": "03 Jan’ 22"
+                        },
+                        {
+                            "id": "3",
+                            "role": 'Team Leader',
+                            "name": 'Jahida Ferdous Mim',
+                            "date": "05 Jan’ 22"
+                        },
+                        {
+                            "id": "4",
+                            "role": 'Collector',
+                            "name": 'Muhammad Miraz Mahmud',
+                            "date": "05 Jan’ 22"
+                        },
+                    ],
+                    "speakers":
+                    {
+                        "locality": 'Middle-East Bangal',
+                        "roleTitle": 'speaker',
+                        "role": [
+                            {
+                                "id": "22",
+                                "name": 'Raihan Mozumdar',
+                                "gender": "male"
+                            },
+                            {
+                                "id": "223",
+                                "name": 'Bilkis Khatun',
+                                "gender": "female"
+                            }
+                        ]
+                    },
+                    "audioChecker": {
+                        "id": "55",
+                        "locality": "North-East  Bangla",
+                        "name": "Zakir Hossain",
+                        "role": 'Audio Checker',
+                        "pickedDate": "23 Jan’23; 3:30 PM"
+                    }
+                }
+            },
+            "history": [
+                {
+                    "id": "123",
+                    "lastEdited": '01/02/2022',
+                    "status": "Reassigned",
+                    "name": "Md. Jalal Uddin",
+                    "role": "Admin",
+                    "remark": [
+                        {
+                            "id": "333",
+                            "roleInfo": {
+                                "id": "maksudalam@gmail.com",
+                                "name": "Maksud Alam",
+                                "role": "Manager",
+                                "gender": "Male",
+                            },
+                            "deadline": "05/02/2022, 5:41 AM",
+                            "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                            "status": "Claim Approved"
+                        },
+                        {
+                            "id": "385",
+                            "roleInfo": {
+                                "id": "maksudalam@gmail.com",
+                                "name": "Maksud Alam",
+                                "role": "Manager",
+                                "gender": "Male",
+                            },
+                            "deadline": "05/02/2022, 5:41 AM",
+                            "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                            "status": "Cancelled"
+                        },
                     ]
                 },
-                "audioChecker": {
-                    "id": "55",
-                    "locality": "North-East  Bangla",
-                    "name": "Zakir Hossain",
-                    "role": 'Audio Checker',
-                    "pickedDate": "23 Jan’23; 3:30 PM"
+                {
+                    "id": "12124233",
+                    "lastEdited": '01/02/2022',
+                    "status": "Reassigned",
+                    "name": "Md. Jalal Uddin",
+                    "role": "Admin",
+                    "remark": [
+                        {
+                            "id": "333",
+                            "roleInfo": {
+                                "id": "maksudalam@gmail.com",
+                                "name": "Maksud Alam",
+                                "role": "Manager",
+                                "gender": "Male",
+                            },
+                            "deadline": "05/02/2022, 5:41 AM",
+                            "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                            "status": "Claim Approved"
+                        },
+                        {
+                            "id": "385",
+                            "roleInfo": {
+                                "id": "maksudalam@gmail.com",
+                                "name": "Maksud Alam",
+                                "role": "Manager",
+                                "gender": "Male",
+                            },
+                            "deadline": "05/02/2022, 5:41 AM",
+                            "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                            "status": "Cancelled"
+                        },
+                    ]
                 }
-            }
-        },
-        "history": [
-            {
-                "id": "123",
-                "lastEdited": '01/02/2022',
-                "status": "Reassigned",
-                "name": "Md. Jalal Uddin",
-                "role": "Admin",
-                "remark": [
-                    {
-                        "id": "333",
-                        "roleInfo": {
-                            "id": "maksudalam@gmail.com",
-                            "name": "Maksud Alam",
-                            "role": "Manager",
-                            "gender": "Male",
-                        },
-                        "deadline": "05/02/2022, 5:41 AM",
-                        "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                        "status": "Claim Approved"
-                    },
-                    {
-                        "id": "385",
-                        "roleInfo": {
-                            "id": "maksudalam@gmail.com",
-                            "name": "Maksud Alam",
-                            "role": "Manager",
-                            "gender": "Male",
-                        },
-                        "deadline": "05/02/2022, 5:41 AM",
-                        "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                        "status": "Cancelled"
-                    },
-                ]
-            },
-            {
-                "id": "12124233",
-                "lastEdited": '01/02/2022',
-                "status": "Reassigned",
-                "name": "Md. Jalal Uddin",
-                "role": "Admin",
-                "remark": [
-                    {
-                        "id": "333",
-                        "roleInfo": {
-                            "id": "maksudalam@gmail.com",
-                            "name": "Maksud Alam",
-                            "role": "Manager",
-                            "gender": "Male",
-                        },
-                        "deadline": "05/02/2022, 5:41 AM",
-                        "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                        "status": "Claim Approved"
-                    },
-                    {
-                        "id": "385",
-                        "roleInfo": {
-                            "id": "maksudalam@gmail.com",
-                            "name": "Maksud Alam",
-                            "role": "Manager",
-                            "gender": "Male",
-                        },
-                        "deadline": "05/02/2022, 5:41 AM",
-                        "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                        "status": "Cancelled"
-                    },
-                ]
-            }
-        ],
-        "audioChecker": {
-            "status": "Checking",
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM",
-            "audioCheckers": {
-                "id": "maksudalam2@gmail.com",
-                "name": 'Bilkis banu',
-                "role": 'audio Checker',
-                "gender": 'female',
-            },
-        },
-        "annotator": {
-            "status": "",
-            "locality": "Barendri",
-            "time": "01 Feb ; 3:30 PM",
-            "annotator": {
-                "id": "maksudalam2@gmail.com",
-                "name": 'Bilkis banu',
-                "role": 'annotator',
-                "gender": 'female',
-            },
-        },
-        "status": "Approved",
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
-
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "",
-            "sourceFileName": "",
-            "sourceFileImage": "",
-            "title": "",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-
-        "deadLine": "01/02/2022",
-        "submissionDate": "01/02/2022",
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
-            },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
-            },
-        ]
-    },
-    {
-        "id": "3",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "speaker": {
-            "locality": "North-East Bangla",
-            "speakers": [
-                {
-                    "id": "bilkis@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                    "childhoodArea": "Nator",
-                    "age": "27",
-                    "profession": "teacher",
-                    "economicSituation": "poor",
-                    "education": "secondary",
-                    "smokingHabit": "Prefer not say",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is"
-                },
-                {
-                    "id": "maksud@gmail.com",
-                    "name": 'maksud alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "barishal",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-                {
-                    "id": "rakib@gmail.com",
-                    "name": 'rakib alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "rangpur",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
             ],
-
+            "audioChecker": {
+                "status": "Checking",
+                "locality": "Middle-East Bangla",
+                "time": "01 Feb ; 3:30 PM",
+                "audioCheckers": {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'audio Checker',
+                    "gender": 'female',
+                },
+            },
+            "annotator": {
+                "status": "",
+                "locality": "Barendri",
+                "time": "01 Feb ; 3:30 PM",
+                "annotator": {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'annotator',
+                    "gender": 'female',
+                },
+            },
+            "status": "Approved",
+            "script": {
+                "module": "STT",
+                "distributionSource": "Lecture",
+                "isAge": false,
+                "domain": "Applied science",
+                "subdomain": "Technology",
+    
+                "sourceType": "",
+                "sourceUrl": "",
+                "sourceFile": "",
+                "sourceFileName": "",
+                "sourceFileImage": "",
+                "title": "",
+                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+                "date": "2023-02-16T12:45:58.536350",
+                "frequency": 0,
+                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+            },
+    
+            "deadLine": "01/02/2022",
+            "submissionDate": "01/02/2022",
+            "remark": [
+                {
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Claim Approved"
+                },
+                {
+                    "id": "385",
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Cancelled"
+                },
+            ]
         },
-        "others": {
-            "device": 'Redmi-Note 7 pro',
-            "journey": {
-                "role": [
+        {
+            "id": "3",
+            "speech": {
+                "id": '0',
+                "title": "Brahms,Two Pianos",
+                "duration": "5:00",
+                "url":
+                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+            },
+            "speaker": {
+                "locality": "North-East Bangla",
+                "speakers": [
                     {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
+                        "id": "bilkis@gmail.com",
+                        "name": 'Bilkis banu',
+                        "role": 'speaker',
+                        "gender": 'female',
+                        "childhoodArea": "Nator",
+                        "age": "27",
+                        "profession": "teacher",
+                        "economicSituation": "poor",
+                        "education": "secondary",
+                        "smokingHabit": "Prefer not say",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is"
                     },
                     {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
+                        "id": "maksud@gmail.com",
+                        "name": 'maksud alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "barishal",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
                     },
                     {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
+                        "id": "rakib@gmail.com",
+                        "name": 'rakib alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "rangpur",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
                     },
                 ],
-                "speakers":
-                {
-                    "locality": 'Middle-East Bangal',
-                    "roleTitle": 'speaker',
+    
+            },
+            "others": {
+                "device": 'Redmi-Note 7 pro',
+                "journey": {
                     "role": [
                         {
-                            "id": "22",
-                            "name": 'Raihan Mozumdar',
-                            "gender": "male"
+                            "id": "1",
+                            "role": 'Admin',
+                            "name": 'Md. Jalal Uddin',
+                            "date": "01 Jan’ 22"
                         },
                         {
-                            "id": "223",
-                            "name": 'Bilkis Khatun',
-                            "gender": "female"
-                        }
-                    ]
-                },
-                "audioChecker": {
-                    "id": "55",
-                    "locality": "North-East  Bangla",
-                    "name": "Zakir Hossain",
-                    "role": 'Audio Checker',
-                    "pickedDate": "23 Jan’23; 3:30 PM"
+                            "id": "2",
+                            "role": 'Manager',
+                            "name": 'Md. Eman Hassan',
+                            "date": "03 Jan’ 22"
+                        },
+                        {
+                            "id": "3",
+                            "role": 'Team Leader',
+                            "name": 'Jahida Ferdous Mim',
+                            "date": "05 Jan’ 22"
+                        },
+                        {
+                            "id": "4",
+                            "role": 'Collector',
+                            "name": 'Muhammad Miraz Mahmud',
+                            "date": "05 Jan’ 22"
+                        },
+                    ],
+                    "speakers":
+                    {
+                        "locality": 'Middle-East Bangal',
+                        "roleTitle": 'speaker',
+                        "role": [
+                            {
+                                "id": "22",
+                                "name": 'Raihan Mozumdar',
+                                "gender": "male"
+                            },
+                            {
+                                "id": "223",
+                                "name": 'Bilkis Khatun',
+                                "gender": "female"
+                            }
+                        ]
+                    },
+                    "audioChecker": {
+                        "id": "55",
+                        "locality": "North-East  Bangla",
+                        "name": "Zakir Hossain",
+                        "role": 'Audio Checker',
+                        "pickedDate": "23 Jan’23; 3:30 PM"
+                    }
                 }
-            }
-        },
-        "history": [
-            {
-                "id": "123",
-                "lastEdited": '01/02/2022',
-                "status": "Reassigned",
-                "name": "Md. Jalal Uddin",
-                "role": "Admin",
-                "remark": [
-                    {
-                        "id": "333",
-                        "roleInfo": {
-                            "id": "maksudalam@gmail.com",
-                            "name": "Maksud Alam",
-                            "role": "Manager",
-                            "gender": "Male",
-                        },
-                        "deadline": "05/02/2022, 5:41 AM",
-                        "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                        "status": "Claim Approved"
-                    },
-                    {
-                        "id": "385",
-                        "roleInfo": {
-                            "id": "maksudalam@gmail.com",
-                            "name": "Maksud Alam",
-                            "role": "Manager",
-                            "gender": "Male",
-                        },
-                        "deadline": "05/02/2022, 5:41 AM",
-                        "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                        "status": "Cancelled"
-                    },
-                ]
-            }
-        ],
-        "audioChecker": {
-            "status": "Checking",
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM",
-            "audioCheckers": {
-                "id": "maksudalam2@gmail.com",
-                "name": 'Bilkis banu',
-                "role": 'audio Checker',
-                "gender": 'female',
             },
-        },
-        "annotator": {
-            "status": "",
-            "locality": "Barendri",
-            "time": "01 Feb ; 3:30 PM",
+            "history": [
+                {
+                    "id": "123",
+                    "lastEdited": '01/02/2022',
+                    "status": "Reassigned",
+                    "name": "Md. Jalal Uddin",
+                    "role": "Admin",
+                    "remark": [
+                        {
+                            "id": "333",
+                            "roleInfo": {
+                                "id": "maksudalam@gmail.com",
+                                "name": "Maksud Alam",
+                                "role": "Manager",
+                                "gender": "Male",
+                            },
+                            "deadline": "05/02/2022, 5:41 AM",
+                            "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                            "status": "Claim Approved"
+                        },
+                        {
+                            "id": "385",
+                            "roleInfo": {
+                                "id": "maksudalam@gmail.com",
+                                "name": "Maksud Alam",
+                                "role": "Manager",
+                                "gender": "Male",
+                            },
+                            "deadline": "05/02/2022, 5:41 AM",
+                            "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                            "status": "Cancelled"
+                        },
+                    ]
+                }
+            ],
+            "audioChecker": {
+                "status": "Checking",
+                "locality": "Middle-East Bangla",
+                "time": "01 Feb ; 3:30 PM",
+                "audioCheckers": {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'audio Checker',
+                    "gender": 'female',
+                },
+            },
             "annotator": {
-                "id": "maksudalam2@gmail.com",
-                "name": 'Bilkis banu',
-                "role": 'annotator',
-                "gender": 'female',
-            },
-        },
-        "status": "Claimed",
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
-
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "",
-            "sourceFileName": "",
-            "sourceFileImage": "",
-            "title": "",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-
-        "deadLine": "01/02/2022",
-        "submissionDate": "01/02/2022",
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
+                "status": "",
+                "locality": "Barendri",
+                "time": "01 Feb ; 3:30 PM",
+                "annotator": {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'annotator',
+                    "gender": 'female',
                 },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
             },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
+            "status": "Claimed",
+            "script": {
+                "module": "STT",
+                "distributionSource": "Lecture",
+                "isAge": false,
+                "domain": "Applied science",
+                "subdomain": "Technology",
+    
+                "sourceType": "",
+                "sourceUrl": "",
+                "sourceFile": "",
+                "sourceFileName": "",
+                "sourceFileImage": "",
+                "title": "",
+                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+                "date": "2023-02-16T12:45:58.536350",
+                "frequency": 0,
+                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+            },
+    
+            "deadLine": "01/02/2022",
+            "submissionDate": "01/02/2022",
+            "remark": [
+                {
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Claim Approved"
                 },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
-            },
-        ]
-    },
-]
+                {
+                    "id": "385",
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Cancelled"
+                },
+            ]
+        },
+    ]
+}
+
+
 export const colAnnSenStatusFilterData = [
     STATUS_ANNOTATING,
     STATUS_TOOK_A_BREAK
@@ -3215,1124 +3242,1130 @@ export const uploadAudioDataTypeFilterData = [
 ]
 
 
-export const collectValSenData = [
-    {
-        "id": "vn4yv7yt05tv597vy4",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "validate1": {
-            "status": "Validating",
-            "locality": "Barendri",
-            "validators": {
-                "id": "raihanrohan@gmail.com",
-                "role": "validator",
-                "name": "Raihan Rohan",
-                "gender": "male"
-            }
-        },
-        "validate2": {
-            "status": "",
-            "locality": "",
-            "validators": {
-                "id": "",
-                "role": "",
-                "name": "",
-                "gender": ""
-            }
-        },
-        "validateFinal": {
-            "status": "",
-            "locality": "",
-            "validators": {
-                "id": "",
-                "role": "",
-                "name": "",
-                "gender": ""
-            }
-        },
-        "deadLine": "01/02/2022",
-        "annotator": {
-            "status": "",
-            "locality": "Barendri",
-            "time": "01 Feb ; 3:30 PM",
+export const collectValSenData = {
+    total_data_size: 500,
+    data: [
+        {
+            "id": "vn4yv7yt05tv597vy4",
+            "speech": {
+                "id": '0',
+                "title": "Brahms,Two Pianos",
+                "duration": "5:00",
+                "url":
+                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+            },
+            "validate1": {
+                "status": "Validating",
+                "locality": "Barendri",
+                "validators": {
+                    "id": "raihanrohan@gmail.com",
+                    "role": "validator",
+                    "name": "Raihan Rohan",
+                    "gender": "male"
+                }
+            },
+            "validate2": {
+                "status": "",
+                "locality": "",
+                "validators": {
+                    "id": "",
+                    "role": "",
+                    "name": "",
+                    "gender": ""
+                }
+            },
+            "validateFinal": {
+                "status": "",
+                "locality": "",
+                "validators": {
+                    "id": "",
+                    "role": "",
+                    "name": "",
+                    "gender": ""
+                }
+            },
+            "deadLine": "01/02/2022",
             "annotator": {
-                "id": "maksudalam2@gmail.com",
-                "name": 'Bilkis banu',
-                "role": 'annotator',
-                "gender": 'female',
-            },
-        },
-        "audioChecker": {
-            "status": "Checking",
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM",
-            "audioCheckers": {
-                "id": "maksudalam2@gmail.com",
-                "name": 'Bilkis banu',
-                "role": 'audio Checker',
-                "gender": 'female',
-            },
-        },
-        "speaker": {
-            "locality": "North-East Bangla",
-            "speakers": [
-                {
-                    "id": "bilkis@gmail.com",
+                "status": "",
+                "locality": "Barendri",
+                "time": "01 Feb ; 3:30 PM",
+                "annotator": {
+                    "id": "maksudalam2@gmail.com",
                     "name": 'Bilkis banu',
-                    "role": 'speaker',
+                    "role": 'annotator',
                     "gender": 'female',
-                    "childhoodArea": "Nator",
-                    "age": "27",
-                    "profession": "teacher",
-                    "economicSituation": "poor",
-                    "education": "secondary",
-                    "smokingHabit": "Prefer not say",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is"
                 },
-                {
-                    "id": "maksud@gmail.com",
-                    "name": 'maksud alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "barishal",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-                {
-                    "id": "rakib@gmail.com",
-                    "name": 'rakib alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "rangpur",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-            ],
-
-        },
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "",
-            "sourceFileName": "",
-            // "sourceFileImage": "",
-            "title": "",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            // "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
             },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
+            "audioChecker": {
+                "status": "Checking",
+                "locality": "Middle-East Bangla",
+                "time": "01 Feb ; 3:30 PM",
+                "audioCheckers": {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'audio Checker',
+                    "gender": 'female',
                 },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
             },
-        ],
-        "others": {
-            "device": 'Redmi-Note 7 pro',
-            "journey": {
-                "role": [
+            "speaker": {
+                "locality": "North-East Bangla",
+                "speakers": [
                     {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
+                        "id": "bilkis@gmail.com",
+                        "name": 'Bilkis banu',
+                        "role": 'speaker',
+                        "gender": 'female',
+                        "childhoodArea": "Nator",
+                        "age": "27",
+                        "profession": "teacher",
+                        "economicSituation": "poor",
+                        "education": "secondary",
+                        "smokingHabit": "Prefer not say",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is"
                     },
                     {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
+                        "id": "maksud@gmail.com",
+                        "name": 'maksud alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "barishal",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
                     },
                     {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
+                        "id": "rakib@gmail.com",
+                        "name": 'rakib alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "rangpur",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
                     },
                 ],
-                "speakers":
+    
+            },
+            "script": {
+                "module": "STT",
+                "distributionSource": "Lecture",
+                "isAge": false,
+                "domain": "Applied science",
+                "subdomain": "Technology",
+                "sourceType": "",
+                "sourceUrl": "",
+                "sourceFile": "",
+                "sourceFileName": "",
+                // "sourceFileImage": "",
+                "title": "",
+                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+                "date": "2023-02-16T12:45:58.536350",
+                // "frequency": 0,
+                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+            },
+            "remark": [
                 {
-                    "locality": 'Middle-East Bangal',
-                    "roleTitle": 'speaker',
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Claim Approved"
+                },
+                {
+                    "id": "385",
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Cancelled"
+                },
+            ],
+            "others": {
+                "device": 'Redmi-Note 7 pro',
+                "journey": {
                     "role": [
                         {
-                            "id": "22",
-                            "name": 'Raihan Mozumdar',
-                            "gender": "male"
+                            "id": "1",
+                            "role": 'Admin',
+                            "name": 'Md. Jalal Uddin',
+                            "date": "01 Jan’ 22"
                         },
                         {
-                            "id": "223",
-                            "name": 'Bilkis Khatun',
-                            "gender": "female"
-                        }
-                    ]
-                },
-                "audioChecker": {
-                    "id": "55",
-                    "locality": "North-East  Bangla",
-                    "name": "Zakir Hossain",
-                    "role": 'Audio Checker',
-                    "pickedDate": "23 Jan’23; 3:30 PM"
+                            "id": "2",
+                            "role": 'Manager',
+                            "name": 'Md. Eman Hassan',
+                            "date": "03 Jan’ 22"
+                        },
+                        {
+                            "id": "3",
+                            "role": 'Team Leader',
+                            "name": 'Jahida Ferdous Mim',
+                            "date": "05 Jan’ 22"
+                        },
+                        {
+                            "id": "4",
+                            "role": 'Collector',
+                            "name": 'Muhammad Miraz Mahmud',
+                            "date": "05 Jan’ 22"
+                        },
+                    ],
+                    "speakers":
+                    {
+                        "locality": 'Middle-East Bangal',
+                        "roleTitle": 'speaker',
+                        "role": [
+                            {
+                                "id": "22",
+                                "name": 'Raihan Mozumdar',
+                                "gender": "male"
+                            },
+                            {
+                                "id": "223",
+                                "name": 'Bilkis Khatun',
+                                "gender": "female"
+                            }
+                        ]
+                    },
+                    "audioChecker": {
+                        "id": "55",
+                        "locality": "North-East  Bangla",
+                        "name": "Zakir Hossain",
+                        "role": 'Audio Checker',
+                        "pickedDate": "23 Jan’23; 3:30 PM"
+                    }
                 }
-            }
+            },
         },
-    },
-    {
-        "id": "vn4yvtv597vy4",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+        {
+            "id": "vn4yvtv597vy4",
+            "speech": {
+                "id": '0',
+                "title": "Brahms,Two Pianos",
+                "duration": "5:00",
+                "url":
+                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+            },
+            "validate1": {
+                "status": "",
+                "locality": "Barendri",
+                "validators": {
+                    "id": "raihanrohan@gmail.com",
+                    "role": "validator",
+                    "name": "Raihan Rohan",
+                    "gender": "male"
+                }
+            },
+            "validate2": {
+                "status": "Validating",
+                "locality": "Barendri",
+                "validators": {
+                    "id": "raihanrohan@gmail.com",
+                    "role": "annotator",
+                    "name": "Raihan Rohan",
+                    "gender": "male"
+                }
+            },
+            "validateFinal": {
+                "status": "",
+                "locality": "",
+                "validators": {
+                    "id": "",
+                    "role": "",
+                    "name": "",
+                    "gender": ""
+                }
+            },
+            "deadLine": "01/02/2022",
+            "annotator": {
+                "status": "",
+                "locality": "Barendri",
+                "time": "01 Feb ; 3:30 PM",
+                "annotator": {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'annotator',
+                    "gender": 'female',
+                },
+            },
+            "audioChecker": {
+                "status": "Checking",
+                "locality": "Middle-East Bangla",
+                "time": "01 Feb ; 3:30 PM",
+                "audioCheckers": {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'audio Checker',
+                    "gender": 'female',
+                },
+            },
+            "speaker": {
+                "locality": "North-East Bangla",
+                "speakers": [
+                    {
+                        "id": "bilkis@gmail.com",
+                        "name": 'Bilkis banu',
+                        "role": 'speaker',
+                        "gender": 'female',
+                        "childhoodArea": "Nator",
+                        "age": "27",
+                        "profession": "teacher",
+                        "economicSituation": "poor",
+                        "education": "secondary",
+                        "smokingHabit": "Prefer not say",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is"
+                    },
+                    {
+                        "id": "maksud@gmail.com",
+                        "name": 'maksud alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "barishal",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                    {
+                        "id": "rakib@gmail.com",
+                        "name": 'rakib alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "rangpur",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                ],
+    
+            },
+            "script": {
+                "module": "STT",
+                "distributionSource": "Lecture",
+                "isAge": false,
+                "domain": "Applied science",
+                "subdomain": "Technology",
+                "sourceType": "",
+                "sourceUrl": "",
+                "sourceFile": "",
+                "sourceFileName": "",
+                // "sourceFileImage": "",
+                "title": "",
+                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+                "date": "2023-02-16T12:45:58.536350",
+                // "frequency": 0,
+                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+            },
+            "remark": [
+                {
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Claim Approved"
+                },
+                {
+                    "id": "385",
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Cancelled"
+                },
+            ],
+            "others": {
+                "device": 'Redmi-Note 7 pro',
+                "journey": {
+                    "role": [
+                        {
+                            "id": "1",
+                            "role": 'Admin',
+                            "name": 'Md. Jalal Uddin',
+                            "date": "01 Jan’ 22"
+                        },
+                        {
+                            "id": "2",
+                            "role": 'Manager',
+                            "name": 'Md. Eman Hassan',
+                            "date": "03 Jan’ 22"
+                        },
+                        {
+                            "id": "3",
+                            "role": 'Team Leader',
+                            "name": 'Jahida Ferdous Mim',
+                            "date": "05 Jan’ 22"
+                        },
+                        {
+                            "id": "4",
+                            "role": 'Collector',
+                            "name": 'Muhammad Miraz Mahmud',
+                            "date": "05 Jan’ 22"
+                        },
+                    ],
+                    "speakers":
+                    {
+                        "locality": 'Middle-East Bangal',
+                        "roleTitle": 'speaker',
+                        "role": [
+                            {
+                                "id": "22",
+                                "name": 'Raihan Mozumdar',
+                                "gender": "male"
+                            },
+                            {
+                                "id": "223",
+                                "name": 'Bilkis Khatun',
+                                "gender": "female"
+                            }
+                        ]
+                    },
+                    "audioChecker": {
+                        "id": "55",
+                        "locality": "North-East  Bangla",
+                        "name": "Zakir Hossain",
+                        "role": 'Audio Checker',
+                        "pickedDate": "23 Jan’23; 3:30 PM"
+                    }
+                }
+            },
         },
-        "validate1": {
-            "status": "",
-            "locality": "Barendri",
-            "validators": {
-                "id": "raihanrohan@gmail.com",
-                "role": "validator",
-                "name": "Raihan Rohan",
-                "gender": "male"
-            }
+        {
+            "id": "vn4yvtv597vy4",
+            "speech": {
+                "id": '0',
+                "title": "Brahms,Two Pianos",
+                "duration": "5:00",
+                "url":
+                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+            },
+            "validate1": {
+                "status": "",
+                "locality": "Barendri",
+                "validators": {
+                    "id": "raihanrohan@gmail.com",
+                    "role": "validator",
+                    "name": "Raihan Rohan",
+                    "gender": "male"
+                }
+            },
+            "validate2": {
+                "status": "",
+                "locality": "Barendri",
+                "validators": {
+                    "id": "raihanrohan@gmail.com",
+                    "role": "validator",
+                    "name": "Raihan Rohan",
+                    "gender": "male"
+                }
+            },
+            "validateFinal": {
+                "status": "Took a Break",
+                "locality": "Middle-East Bangla",
+                "validators": {
+                    "id": "Jahangir@gmail.com",
+                    "role": "validator",
+                    "name": "Jahangir",
+                    "gender": "male"
+                }
+            },
+            "deadLine": "01/02/2022",
+            "annotator": {
+                "status": "",
+                "locality": "Barendri",
+                "time": "01 Feb ; 3:30 PM",
+                "annotator": {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'annotator',
+                    "gender": 'female',
+                },
+            },
+            "audioChecker": {
+                "status": "Checking",
+                "locality": "Middle-East Bangla",
+                "time": "01 Feb ; 3:30 PM",
+                "audioCheckers": {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'audio Checker',
+                    "gender": 'female',
+                },
+            },
+            "speaker": {
+                "locality": "North-East Bangla",
+                "speakers": [
+                    {
+                        "id": "bilkis@gmail.com",
+                        "name": 'Bilkis banu',
+                        "role": 'speaker',
+                        "gender": 'female',
+                        "childhoodArea": "Nator",
+                        "age": "27",
+                        "profession": "teacher",
+                        "economicSituation": "poor",
+                        "education": "secondary",
+                        "smokingHabit": "Prefer not say",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is"
+                    },
+                    {
+                        "id": "maksud@gmail.com",
+                        "name": 'maksud alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "barishal",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                    {
+                        "id": "rakib@gmail.com",
+                        "name": 'rakib alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "rangpur",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
+                    },
+                ],
+    
+            },
+            "script": {
+                "module": "STT",
+                "distributionSource": "Lecture",
+                "isAge": false,
+                "domain": "Applied science",
+                "subdomain": "Technology",
+                "sourceType": "",
+                "sourceUrl": "",
+                "sourceFile": "",
+                "sourceFileName": "",
+                // "sourceFileImage": "",
+                "title": "",
+                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+                "date": "2023-02-16T12:45:58.536350",
+                // "frequency": 0,
+                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+            },
+            "remark": [
+                {
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Claim Approved"
+                },
+                {
+                    "id": "385",
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Cancelled"
+                },
+            ],
+            "others": {
+                "device": 'Redmi-Note 7 pro',
+                "journey": {
+                    "role": [
+                        {
+                            "id": "1",
+                            "role": 'Admin',
+                            "name": 'Md. Jalal Uddin',
+                            "date": "01 Jan’ 22"
+                        },
+                        {
+                            "id": "2",
+                            "role": 'Manager',
+                            "name": 'Md. Eman Hassan',
+                            "date": "03 Jan’ 22"
+                        },
+                        {
+                            "id": "3",
+                            "role": 'Team Leader',
+                            "name": 'Jahida Ferdous Mim',
+                            "date": "05 Jan’ 22"
+                        },
+                        {
+                            "id": "4",
+                            "role": 'Collector',
+                            "name": 'Muhammad Miraz Mahmud',
+                            "date": "05 Jan’ 22"
+                        },
+                    ],
+                    "speakers":
+                    {
+                        "locality": 'Middle-East Bangal',
+                        "roleTitle": 'speaker',
+                        "role": [
+                            {
+                                "id": "22",
+                                "name": 'Raihan Mozumdar',
+                                "gender": "male"
+                            },
+                            {
+                                "id": "223",
+                                "name": 'Bilkis Khatun',
+                                "gender": "female"
+                            }
+                        ]
+                    },
+                    "audioChecker": {
+                        "id": "55",
+                        "locality": "North-East  Bangla",
+                        "name": "Zakir Hossain",
+                        "role": 'Audio Checker',
+                        "pickedDate": "23 Jan’23; 3:30 PM"
+                    }
+                }
+            },
         },
-        "validate2": {
-            "status": "Validating",
-            "locality": "Barendri",
-            "validators": {
-                "id": "raihanrohan@gmail.com",
+    ]
+}
+
+export const validatedFilesData = {
+    total_data_size: 500,
+    data: [
+        {
+            "id": "ughsdfiouwfhidu",
+            "speech": {
+                "id": '0',
+                "title": "Brahms,Two Pianos",
+                "duration": "5:00",
+                "url":
+                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+            },
+            "validatorFinal": {
+                "locality": "Middle-East Bangla",
+                "time": "01 Feb ; 3:30 PM",
+                "name": 'Wade Warren',
+                "role": 'validator',
+                "gender": 'female',
+            },
+            "status": "Cancelled",
+            "validator2": {
+                "locality": "Middle-East Bangla",
+                "time": "01 Feb ; 3:30 PM",
+                "name": 'Wade Warren',
+                "role": 'validator',
+                "gender": 'female',
+            },
+            "validator1": {
+                "locality": "Middle-East Bangla",
+                "time": "01 Feb ; 3:30 PM",
+                "name": 'Wade Warren',
+                "role": 'validator',
+                "gender": 'female',
+            },
+            "annotator": {
+                "status": "",
+                "locality": "Barendri",
+                "time": "01 Feb ; 3:30 PM",
+                "annotator": {
+                    "id": "maksudalam2@gmail.com",
+                    "name": 'Bilkis banu',
+                    "role": 'annotator',
+                    "gender": 'female',
+                },
+            },
+            "audioChecker": {
+                "status": "Checking",
+                "name": "Peter Bailish",
                 "role": "annotator",
-                "name": "Raihan Rohan",
-                "gender": "male"
-            }
-        },
-        "validateFinal": {
-            "status": "",
-            "locality": "",
-            "validators": {
-                "id": "",
-                "role": "",
-                "name": "",
-                "gender": ""
-            }
-        },
-        "deadLine": "01/02/2022",
-        "annotator": {
-            "status": "",
-            "locality": "Barendri",
-            "time": "01 Feb ; 3:30 PM",
-            "annotator": {
-                "id": "maksudalam2@gmail.com",
-                "name": 'Bilkis banu',
-                "role": 'annotator',
-                "gender": 'female',
+                "locality": "Middle-East Bangla",
+                "time": "01 Feb ; 3:30 PM"
             },
-        },
-        "audioChecker": {
-            "status": "Checking",
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM",
-            "audioCheckers": {
-                "id": "maksudalam2@gmail.com",
-                "name": 'Bilkis banu',
-                "role": 'audio Checker',
-                "gender": 'female',
-            },
-        },
-        "speaker": {
-            "locality": "North-East Bangla",
-            "speakers": [
-                {
-                    "id": "bilkis@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                    "childhoodArea": "Nator",
-                    "age": "27",
-                    "profession": "teacher",
-                    "economicSituation": "poor",
-                    "education": "secondary",
-                    "smokingHabit": "Prefer not say",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is"
-                },
-                {
-                    "id": "maksud@gmail.com",
-                    "name": 'maksud alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "barishal",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-                {
-                    "id": "rakib@gmail.com",
-                    "name": 'rakib alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "rangpur",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-            ],
-
-        },
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "",
-            "sourceFileName": "",
-            // "sourceFileImage": "",
-            "title": "",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            // "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
-            },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
-            },
-        ],
-        "others": {
-            "device": 'Redmi-Note 7 pro',
-            "journey": {
-                "role": [
+            "speaker": {
+                "locality": "North-East Bangla",
+                "speakers": [
                     {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
+                        "id": "bilkis@gmail.com",
+                        "name": 'Bilkis banu',
+                        "role": 'speaker',
+                        "gender": 'female',
+                        "childhoodArea": "Nator",
+                        "age": "27",
+                        "profession": "teacher",
+                        "economicSituation": "poor",
+                        "education": "secondary",
+                        "smokingHabit": "Prefer not say",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is"
                     },
                     {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
+                        "id": "maksud@gmail.com",
+                        "name": 'maksud alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "barishal",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
                     },
                     {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
+                        "id": "rakib@gmail.com",
+                        "name": 'rakib alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "rangpur",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
                     },
                 ],
-                "speakers":
-                {
-                    "locality": 'Middle-East Bangal',
-                    "roleTitle": 'speaker',
-                    "role": [
-                        {
-                            "id": "22",
-                            "name": 'Raihan Mozumdar',
-                            "gender": "male"
-                        },
-                        {
-                            "id": "223",
-                            "name": 'Bilkis Khatun',
-                            "gender": "female"
-                        }
-                    ]
-                },
-                "audioChecker": {
-                    "id": "55",
-                    "locality": "North-East  Bangla",
-                    "name": "Zakir Hossain",
-                    "role": 'Audio Checker',
-                    "pickedDate": "23 Jan’23; 3:30 PM"
-                }
-            }
-        },
-    },
-    {
-        "id": "vn4yvtv597vy4",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "validate1": {
-            "status": "",
-            "locality": "Barendri",
-            "validators": {
-                "id": "raihanrohan@gmail.com",
-                "role": "validator",
-                "name": "Raihan Rohan",
-                "gender": "male"
-            }
-        },
-        "validate2": {
-            "status": "",
-            "locality": "Barendri",
-            "validators": {
-                "id": "raihanrohan@gmail.com",
-                "role": "validator",
-                "name": "Raihan Rohan",
-                "gender": "male"
-            }
-        },
-        "validateFinal": {
-            "status": "Took a Break",
-            "locality": "Middle-East Bangla",
-            "validators": {
-                "id": "Jahangir@gmail.com",
-                "role": "validator",
-                "name": "Jahangir",
-                "gender": "male"
-            }
-        },
-        "deadLine": "01/02/2022",
-        "annotator": {
-            "status": "",
-            "locality": "Barendri",
-            "time": "01 Feb ; 3:30 PM",
-            "annotator": {
-                "id": "maksudalam2@gmail.com",
-                "name": 'Bilkis banu',
-                "role": 'annotator',
-                "gender": 'female',
+    
             },
-        },
-        "audioChecker": {
-            "status": "Checking",
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM",
-            "audioCheckers": {
-                "id": "maksudalam2@gmail.com",
-                "name": 'Bilkis banu',
-                "role": 'audio Checker',
-                "gender": 'female',
-            },
-        },
-        "speaker": {
-            "locality": "North-East Bangla",
-            "speakers": [
+            "deadLine": "01/02/2022",
+            "submissionDate": "01/02/2022",
+            "remark": [
                 {
-                    "id": "bilkis@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                    "childhoodArea": "Nator",
-                    "age": "27",
-                    "profession": "teacher",
-                    "economicSituation": "poor",
-                    "education": "secondary",
-                    "smokingHabit": "Prefer not say",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is"
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Claim Approved"
                 },
                 {
-                    "id": "maksud@gmail.com",
-                    "name": 'maksud alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "barishal",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-                {
-                    "id": "rakib@gmail.com",
-                    "name": 'rakib alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "rangpur",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
+                    "id": "385",
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Cancelled"
                 },
             ],
-
-        },
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "",
-            "sourceFileName": "",
-            // "sourceFileImage": "",
-            "title": "",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            // "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
+            "script": {
+                "module": "STT",
+                "distributionSource": "Lecture",
+                "isAge": false,
+                "domain": "Applied science",
+                "subdomain": "Technology",
+    
+                "sourceType": "",
+                "sourceUrl": "",
+                "sourceFile": "",
+                "sourceFileName": "",
+                "sourceFileImage": "",
+                "title": "",
+                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+                "date": "2023-02-16T12:45:58.536350",
+                "frequency": 0,
+                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
             },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
-            },
-        ],
-        "others": {
-            "device": 'Redmi-Note 7 pro',
-            "journey": {
-                "role": [
-                    {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
-                    },
-                    {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
-                    },
-                    {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
-                    },
-                ],
-                "speakers":
-                {
-                    "locality": 'Middle-East Bangal',
-                    "roleTitle": 'speaker',
+            "others": {
+                "device": 'Redmi-Note 7 pro',
+                "journey": {
                     "role": [
                         {
-                            "id": "22",
-                            "name": 'Raihan Mozumdar',
-                            "gender": "male"
+                            "id": "1",
+                            "role": 'Admin',
+                            "name": 'Md. Jalal Uddin',
+                            "date": "01 Jan’ 22"
                         },
                         {
-                            "id": "223",
-                            "name": 'Bilkis Khatun',
-                            "gender": "female"
-                        }
-                    ]
-                },
-                "audioChecker": {
-                    "id": "55",
-                    "locality": "North-East  Bangla",
-                    "name": "Zakir Hossain",
-                    "role": 'Audio Checker',
-                    "pickedDate": "23 Jan’23; 3:30 PM"
+                            "id": "2",
+                            "role": 'Manager',
+                            "name": 'Md. Eman Hassan',
+                            "date": "03 Jan’ 22"
+                        },
+                        {
+                            "id": "3",
+                            "role": 'Team Leader',
+                            "name": 'Jahida Ferdous Mim',
+                            "date": "05 Jan’ 22"
+                        },
+                        {
+                            "id": "4",
+                            "role": 'Collector',
+                            "name": 'Muhammad Miraz Mahmud',
+                            "date": "05 Jan’ 22"
+                        },
+                    ],
+                    "speakers":
+                    {
+                        "locality": 'Middle-East Bangal',
+                        "roleTitle": 'speaker',
+                        "role": [
+                            {
+                                "id": "22",
+                                "name": 'Raihan Mozumdar',
+                                "gender": "male"
+                            },
+                            {
+                                "id": "223",
+                                "name": 'Bilkis Khatun',
+                                "gender": "female"
+                            }
+                        ]
+                    },
+                    "audioChecker": {
+                        "id": "55",
+                        "locality": "North-East  Bangla",
+                        "name": "Zakir Hossain",
+                        "role": 'Audio Checker',
+                        "pickedDate": "23 Jan’23; 3:30 PM"
+                    }
                 }
-            }
+            },
+            "history": [
+                {
+                    "id": "123",
+                    "lastEdited": '01/02/2022',
+                    "status": "Reassigned",
+                    "name": "Md. Jalal Uddin",
+                    "role": "Admin",
+                    "remark": [
+                        {
+                            "id": "333",
+                            "roleInfo": {
+                                "id": "maksudalam@gmail.com",
+                                "name": "Maksud Alam",
+                                "role": "Manager",
+                                "gender": "Male",
+                                "date": "08/02/2022, 4:31 PM"
+                            },
+                            "deadline": "05/02/2022, 5:41 AM",
+                            "des": "Dark UX is when designers create an experience that        pushes users in a direction that benefits the interests of the company",
+                            "status": "Claim Approved"
+                        },
+                    ]
+                }
+            ]
         },
-    },
-]
-
-export const validatedFilesData = [
-    {
-        "id": "ughsdfiouwfhidu",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "validatorFinal": {
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM",
-            "name": 'Wade Warren',
-            "role": 'validator',
-            "gender": 'female',
-        },
-        "status": "Cancelled",
-        "validator2": {
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM",
-            "name": 'Wade Warren',
-            "role": 'validator',
-            "gender": 'female',
-        },
-        "validator1": {
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM",
-            "name": 'Wade Warren',
-            "role": 'validator',
-            "gender": 'female',
-        },
-        "annotator": {
-            "status": "",
-            "locality": "Barendri",
-            "time": "01 Feb ; 3:30 PM",
-            "annotator": {
-                "id": "maksudalam2@gmail.com",
-                "name": 'Bilkis banu',
-                "role": 'annotator',
+        {
+            "id": "ughsdfiouwfhidu",
+            "speech": {
+                "id": '0',
+                "title": "Brahms,Two Pianos",
+                "duration": "5:00",
+                "url":
+                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
+            },
+            "validatorFinal": {
+                "locality": "Middle-East Bangla",
+                "time": "01 Feb ; 3:30 PM",
+                "name": 'Wade Warren',
+                "role": 'validator',
                 "gender": 'female',
             },
-        },
-        "audioChecker": {
-            "status": "Checking",
-            "name": "Peter Bailish",
-            "role": "annotator",
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM"
-        },
-        "speaker": {
-            "locality": "North-East Bangla",
-            "speakers": [
-                {
-                    "id": "bilkis@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'speaker',
-                    "gender": 'female',
-                    "childhoodArea": "Nator",
-                    "age": "27",
-                    "profession": "teacher",
-                    "economicSituation": "poor",
-                    "education": "secondary",
-                    "smokingHabit": "Prefer not say",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is"
-                },
-                {
-                    "id": "maksud@gmail.com",
-                    "name": 'maksud alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "barishal",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-                {
-                    "id": "rakib@gmail.com",
-                    "name": 'rakib alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "rangpur",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-            ],
-
-        },
-        "deadLine": "01/02/2022",
-        "submissionDate": "01/02/2022",
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
-            },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
-            },
-        ],
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
-
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "",
-            "sourceFileName": "",
-            "sourceFileImage": "",
-            "title": "",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-        "others": {
-            "device": 'Redmi-Note 7 pro',
-            "journey": {
-                "role": [
-                    {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
-                    },
-                    {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
-                    },
-                    {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
-                    },
-                ],
-                "speakers":
-                {
-                    "locality": 'Middle-East Bangal',
-                    "roleTitle": 'speaker',
-                    "role": [
-                        {
-                            "id": "22",
-                            "name": 'Raihan Mozumdar',
-                            "gender": "male"
-                        },
-                        {
-                            "id": "223",
-                            "name": 'Bilkis Khatun',
-                            "gender": "female"
-                        }
-                    ]
-                },
-                "audioChecker": {
-                    "id": "55",
-                    "locality": "North-East  Bangla",
-                    "name": "Zakir Hossain",
-                    "role": 'Audio Checker',
-                    "pickedDate": "23 Jan’23; 3:30 PM"
-                }
-            }
-        },
-        "history": [
-            {
-                "id": "123",
-                "lastEdited": '01/02/2022',
-                "status": "Reassigned",
-                "name": "Md. Jalal Uddin",
-                "role": "Admin",
-                "remark": [
-                    {
-                        "id": "333",
-                        "roleInfo": {
-                            "id": "maksudalam@gmail.com",
-                            "name": "Maksud Alam",
-                            "role": "Manager",
-                            "gender": "Male",
-                            "date": "08/02/2022, 4:31 PM"
-                        },
-                        "deadline": "05/02/2022, 5:41 AM",
-                        "des": "Dark UX is when designers create an experience that        pushes users in a direction that benefits the interests of the company",
-                        "status": "Claim Approved"
-                    },
-                ]
-            }
-        ]
-    },
-    {
-        "id": "ughsdfiouwfhidu",
-        "speech": {
-            "id": '0',
-            "title": "Brahms,Two Pianos",
-            "duration": "5:00",
-            "url":
-                "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-        },
-        "validatorFinal": {
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM",
-            "name": 'Wade Warren',
-            "role": 'validator',
-            "gender": 'female',
-        },
-        "status": "Cancelled",
-        "validator2": {
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM",
-            "name": 'Wade Warren',
-            "role": 'validator',
-            "gender": 'female',
-        },
-        "validator1": {
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM",
-            "name": 'Wade Warren',
-            "role": 'validator',
-            "gender": 'female',
-        },
-        "annotator": {
-            "status": "",
-            "locality": "Barendri",
-            "time": "01 Feb ; 3:30 PM",
-            "annotator": {
-                "id": "maksudalam2@gmail.com",
-                "name": 'Bilkis banu',
-                "role": 'annotator',
+            "status": "Cancelled",
+            "validator2": {
+                "locality": "Middle-East Bangla",
+                "time": "01 Feb ; 3:30 PM",
+                "name": 'Wade Warren',
+                "role": 'validator',
                 "gender": 'female',
             },
-        },
-        "audioChecker": {
-            "status": "Checking",
-            "name": "Peter Bailish",
-            "role": "annotator",
-            "locality": "Middle-East Bangla",
-            "time": "01 Feb ; 3:30 PM"
-        },
-        "speaker": {
-            "locality": "North-East Bangla",
-            "speakers": [
-                {
-                    "id": "bilkis@gmail.com",
+            "validator1": {
+                "locality": "Middle-East Bangla",
+                "time": "01 Feb ; 3:30 PM",
+                "name": 'Wade Warren',
+                "role": 'validator',
+                "gender": 'female',
+            },
+            "annotator": {
+                "status": "",
+                "locality": "Barendri",
+                "time": "01 Feb ; 3:30 PM",
+                "annotator": {
+                    "id": "maksudalam2@gmail.com",
                     "name": 'Bilkis banu',
-                    "role": 'speaker',
+                    "role": 'annotator',
                     "gender": 'female',
-                    "childhoodArea": "Nator",
-                    "age": "27",
-                    "profession": "teacher",
-                    "economicSituation": "poor",
-                    "education": "secondary",
-                    "smokingHabit": "Prefer not say",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is"
                 },
-                {
-                    "id": "maksud@gmail.com",
-                    "name": 'maksud alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "barishal",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-                {
-                    "id": "rakib@gmail.com",
-                    "name": 'rakib alam',
-                    "role": 'speaker',
-                    "gender": 'male',
-                    "childhoodArea": "rangpur",
-                    "age": "55",
-                    "profession": "Doctor",
-                    "economicSituation": "rich",
-                    "education": "higher secondary",
-                    "smokingHabit": "yes",
-                    "hearingDisability": "no",
-                    "shutter": "yes",
-                    "recordingArea": "Inside Room",
-                    "recordingDistance": "Close",
-                    "note": "Dark Ux is ---"
-                },
-            ],
-
-        },
-        "deadLine": "01/02/2022",
-        "submissionDate": "01/02/2022",
-        "remark": [
-            {
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Claim Approved"
             },
-            {
-                "id": "385",
-                "roleInfo": {
-                    "id": "maksudalam@gmail.com",
-                    "name": "Maksud Alam",
-                    "role": "Manager",
-                    "gender": "Male",
-                },
-                "deadline": "05/02/2022, 5:41 AM",
-                "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                "status": "Cancelled"
+            "audioChecker": {
+                "status": "Checking",
+                "name": "Peter Bailish",
+                "role": "annotator",
+                "locality": "Middle-East Bangla",
+                "time": "01 Feb ; 3:30 PM"
             },
-        ],
-        "script": {
-            "module": "STT",
-            "distributionSource": "Lecture",
-            "isAge": false,
-            "domain": "Applied science",
-            "subdomain": "Technology",
-
-            "sourceType": "",
-            "sourceUrl": "",
-            "sourceFile": "",
-            "sourceFileName": "",
-            "sourceFileImage": "",
-            "title": "",
-            "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-            "date": "2023-02-16T12:45:58.536350",
-            "frequency": 0,
-            "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-        },
-        "others": {
-            "device": 'Redmi-Note 7 pro',
-            "journey": {
-                "role": [
+            "speaker": {
+                "locality": "North-East Bangla",
+                "speakers": [
                     {
-                        "id": "1",
-                        "role": 'Admin',
-                        "name": 'Md. Jalal Uddin',
-                        "date": "01 Jan’ 22"
+                        "id": "bilkis@gmail.com",
+                        "name": 'Bilkis banu',
+                        "role": 'speaker',
+                        "gender": 'female',
+                        "childhoodArea": "Nator",
+                        "age": "27",
+                        "profession": "teacher",
+                        "economicSituation": "poor",
+                        "education": "secondary",
+                        "smokingHabit": "Prefer not say",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is"
                     },
                     {
-                        "id": "2",
-                        "role": 'Manager',
-                        "name": 'Md. Eman Hassan',
-                        "date": "03 Jan’ 22"
+                        "id": "maksud@gmail.com",
+                        "name": 'maksud alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "barishal",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
                     },
                     {
-                        "id": "3",
-                        "role": 'Team Leader',
-                        "name": 'Jahida Ferdous Mim',
-                        "date": "05 Jan’ 22"
-                    },
-                    {
-                        "id": "4",
-                        "role": 'Collector',
-                        "name": 'Muhammad Miraz Mahmud',
-                        "date": "05 Jan’ 22"
+                        "id": "rakib@gmail.com",
+                        "name": 'rakib alam',
+                        "role": 'speaker',
+                        "gender": 'male',
+                        "childhoodArea": "rangpur",
+                        "age": "55",
+                        "profession": "Doctor",
+                        "economicSituation": "rich",
+                        "education": "higher secondary",
+                        "smokingHabit": "yes",
+                        "hearingDisability": "no",
+                        "shutter": "yes",
+                        "recordingArea": "Inside Room",
+                        "recordingDistance": "Close",
+                        "note": "Dark Ux is ---"
                     },
                 ],
-                "speakers":
+    
+            },
+            "deadLine": "01/02/2022",
+            "submissionDate": "01/02/2022",
+            "remark": [
                 {
-                    "locality": 'Middle-East Bangal',
-                    "roleTitle": 'speaker',
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Claim Approved"
+                },
+                {
+                    "id": "385",
+                    "roleInfo": {
+                        "id": "maksudalam@gmail.com",
+                        "name": "Maksud Alam",
+                        "role": "Manager",
+                        "gender": "Male",
+                    },
+                    "deadline": "05/02/2022, 5:41 AM",
+                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
+                    "status": "Cancelled"
+                },
+            ],
+            "script": {
+                "module": "STT",
+                "distributionSource": "Lecture",
+                "isAge": false,
+                "domain": "Applied science",
+                "subdomain": "Technology",
+    
+                "sourceType": "",
+                "sourceUrl": "",
+                "sourceFile": "",
+                "sourceFileName": "",
+                "sourceFileImage": "",
+                "title": "",
+                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
+                "date": "2023-02-16T12:45:58.536350",
+                "frequency": 0,
+                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
+            },
+            "others": {
+                "device": 'Redmi-Note 7 pro',
+                "journey": {
                     "role": [
                         {
-                            "id": "22",
-                            "name": 'Raihan Mozumdar',
-                            "gender": "male"
+                            "id": "1",
+                            "role": 'Admin',
+                            "name": 'Md. Jalal Uddin',
+                            "date": "01 Jan’ 22"
                         },
                         {
-                            "id": "223",
-                            "name": 'Bilkis Khatun',
-                            "gender": "female"
-                        }
-                    ]
-                },
-                "audioChecker": {
-                    "id": "55",
-                    "locality": "North-East  Bangla",
-                    "name": "Zakir Hossain",
-                    "role": 'Audio Checker',
-                    "pickedDate": "23 Jan’23; 3:30 PM"
-                }
-            }
-        },
-        "history": [
-            {
-                "id": "123",
-                "lastEdited": '01/02/2022',
-                "status": "Reassigned",
-                "name": "Md. Jalal Uddin",
-                "role": "Admin",
-                "remark": [
-                    {
-                        "id": "333",
-                        "roleInfo": {
-                            "id": "maksudalam@gmail.com",
-                            "name": "Maksud Alam",
-                            "role": "Manager",
-                            "gender": "Male",
-                            "date": "08/02/2022, 4:31 PM"
+                            "id": "2",
+                            "role": 'Manager',
+                            "name": 'Md. Eman Hassan',
+                            "date": "03 Jan’ 22"
                         },
-                        "deadline": "05/02/2022, 5:41 AM",
-                        "des": "Dark UX is when designers create an experience that        pushes users in a direction that benefits the interests of the company",
-                        "status": "Claim Approved"
+                        {
+                            "id": "3",
+                            "role": 'Team Leader',
+                            "name": 'Jahida Ferdous Mim',
+                            "date": "05 Jan’ 22"
+                        },
+                        {
+                            "id": "4",
+                            "role": 'Collector',
+                            "name": 'Muhammad Miraz Mahmud',
+                            "date": "05 Jan’ 22"
+                        },
+                    ],
+                    "speakers":
+                    {
+                        "locality": 'Middle-East Bangal',
+                        "roleTitle": 'speaker',
+                        "role": [
+                            {
+                                "id": "22",
+                                "name": 'Raihan Mozumdar',
+                                "gender": "male"
+                            },
+                            {
+                                "id": "223",
+                                "name": 'Bilkis Khatun',
+                                "gender": "female"
+                            }
+                        ]
                     },
-                ]
-            }
-        ]
-    }
-]
+                    "audioChecker": {
+                        "id": "55",
+                        "locality": "North-East  Bangla",
+                        "name": "Zakir Hossain",
+                        "role": 'Audio Checker',
+                        "pickedDate": "23 Jan’23; 3:30 PM"
+                    }
+                }
+            },
+            "history": [
+                {
+                    "id": "123",
+                    "lastEdited": '01/02/2022',
+                    "status": "Reassigned",
+                    "name": "Md. Jalal Uddin",
+                    "role": "Admin",
+                    "remark": [
+                        {
+                            "id": "333",
+                            "roleInfo": {
+                                "id": "maksudalam@gmail.com",
+                                "name": "Maksud Alam",
+                                "role": "Manager",
+                                "gender": "Male",
+                                "date": "08/02/2022, 4:31 PM"
+                            },
+                            "deadline": "05/02/2022, 5:41 AM",
+                            "des": "Dark UX is when designers create an experience that        pushes users in a direction that benefits the interests of the company",
+                            "status": "Claim Approved"
+                        },
+                    ]
+                }
+            ]
+        }
+    ]
+}
 
 export const district = [
     "Dhaka",

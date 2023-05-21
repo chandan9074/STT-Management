@@ -2,6 +2,11 @@ import { assignAudioTrackDT } from "./assignTypes";
 import { roleDT } from "./billingTypes";
 import { remarkDt, scriptResDT } from "./script";
 
+export type collectedAudioDT = {
+    total_data_size: number;
+    data: audioManagementDT[];
+}
+
 export type audioManagementDT = {
     id: string;
     speech: assignAudioTrackDT;
@@ -9,6 +14,11 @@ export type audioManagementDT = {
     speaker: speakerLocalityDT2;
     remark: historyRemarkDT[];
     others: othersDT;
+}
+
+export type checkingStatusRootDT = {
+    total_data_size: number;
+    data: checkingStatusDT[];
 }
 
 export type checkingStatusDT = {
@@ -104,6 +114,11 @@ export type singleSpeakerDT = {
     gender: string;
 }
 
+export type allCheckedAudioRootDt = {
+    total_data_size: number;
+    data: allCheckedAudioDT[];
+}
+
 export type allCheckedAudioDT = {
     id: string;
     deadline: string;
@@ -153,14 +168,26 @@ export type remarkInfoDT = {
     des: string;
 }
 
+export type annotationRootDT = {
+    total_data_size: number;
+    data: annotationDT[];
+}
+
 export type annotationDT = {
     id: string;
     speech: assignAudioTrackDT
     script: scriptResDT
     speaker: speakerLocalityDT2
+    wordAnnotation: boolean
+    phonemeAnnotation: boolean
     deadLine: string
     remark: historyRemarkDT[]
     others: othersDT
+}
+
+export type collectAnnSenRootDT = {
+    total_data_size: number;
+    data: collectAnnSenDataDT[];
 }
 
 export type collectAnnSenDataDT = {
@@ -214,6 +241,10 @@ export type audioRoleDT = {
     gender: string;
 }
 
+export type annotatedFilesRootDT = {
+    total_data_size: number;
+    data: annotatedFilesDT[]
+}
 
 export type annotatedFilesDT = {
     id: string;
@@ -229,6 +260,11 @@ export type annotatedFilesDT = {
     submissionDate: string;
     remark: historyRemarkDT[];
     // annotate: annotateInfoDT;
+}
+
+export type validatedFilesRootDT = {
+    total_data_size: number;
+    data: validatedFilesDT[]
 }
 
 export type validatedFilesDT = {
@@ -281,6 +317,12 @@ export type validatorDT = {
     role: string;
     gender: string;
 }
+
+export type collectValSenRootDT = {
+    total_data_size: number;
+    data: collectValSenDataDT[]
+}
+
 
 export type collectValSenDataDT = {
     id: string;
@@ -337,6 +379,11 @@ export type validateDT = {
 //     gender: string;
 // }
 
+export type uploadAudioRootDT = {
+    total_data_size: number;
+    data: uploadAudioDataDT[]
+}
+
 export type uploadAudioDataDT = {
     id: string;
     deadline: string;
@@ -381,6 +428,11 @@ export type uploaderDT = {
     name: string;
 }
 
+export type checkingStatusUploadRootDT = {
+    total_data_size: number;
+    data: checkingStatusUploadDataDT[]
+}
+
 export type checkingStatusUploadDataDT = {
     id: string;
     speech: assignAudioTrackDT;
@@ -390,6 +442,11 @@ export type checkingStatusUploadDataDT = {
     others: othersUploadAudioDT;
     speaker: speakerUploadAudioDT;
     // remark: historyRemarkDT[]
+}
+
+export type allCheckedSpeechRootDT = {
+    total_data_size: number;
+    data: allCheckedSpeechDT[]
 }
 
 export type allCheckedSpeechDT = {
@@ -406,14 +463,26 @@ export type allCheckedSpeechDT = {
     history: historyDT[];
 }
 
+export type annotationUploadRootDT = {
+    total_data_size: number;
+    data: annotationUploadDT[]
+}
+
 export type annotationUploadDT = {
     id: string;
     speech: assignAudioTrackDT;
+    wordAnnotation: boolean
+    phonemeAnnotation: boolean
     deadLine: string;
     remark: historyRemarkDT[]
     speechInfo: speechInfo;
     others: othersUploadAudioDT;
     speaker: speakerUploadAudioDT;
+}
+
+export type sentenceLevelUploadRootDT = {
+    total_data_size: number;
+    data: sentenceLevelUploadDT[]
 }
 
 export type sentenceLevelUploadDT = {
@@ -440,6 +509,11 @@ export type statusColorsDataDT = {
     textColor: string
 }
 
+export type annotatedFilesUploadRootDT = {
+    total_data_size: number;
+    data: annotatedFilesUploadDT[]
+}
+
 export type annotatedFilesUploadDT = {
     id: string;
     speech: assignAudioTrackDT;
@@ -456,6 +530,11 @@ export type annotatedFilesUploadDT = {
     remark: historyRemarkDT[];
 }
 
+export type sentenceLevelValUploadRootDT = {
+    total_data_size: number;
+    data: sentenceLevelValUploadDT[]
+}
+
 export type sentenceLevelValUploadDT = {
     id: string;
     speech: assignAudioTrackDT;
@@ -470,6 +549,11 @@ export type sentenceLevelValUploadDT = {
     remark: historyRemarkDT[];
     others: othersDT;
     speechInfo: speechInfo
+}
+
+export type validatedFilesUploadRootDT = {
+    total_data_size: number;
+    data: validatedFilesUploadDT[]
 }
 
 export type validatedFilesUploadDT = {
