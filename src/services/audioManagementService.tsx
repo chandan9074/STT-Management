@@ -246,6 +246,10 @@ export default class audioManagementService {
         return collectedAudioValidatorList;
     }
 
+    static getUploaderList = (type: string) => {
+        return collectedAudioCollectorList;
+    }
+
     static getScriptList() {
         return scriptFilterData;
     }

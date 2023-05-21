@@ -5054,6 +5054,61 @@ export const collectedAudioValidationSentenceFilterData: targetFilterDT[] = [
     },
 ]
 
+export const uploadAudioFilterData: targetFilterDT[] = [
+    {
+        type: "check",
+        title: "Data Type",
+        key: "dataType",
+        viewKey: "dataType",
+        child: [
+            "STT",
+            "TTS",
+        ]
+    },
+    {
+        type: "multiple-select",
+        key: "uploader",
+        title: "Uploader",
+        viewKey: "uploader_details",
+        viewRoleImg: "collector",
+        selects: [
+            {
+                type: "select",
+                key: "uploader_district",
+                title: "Uploader",
+                isFromAPI: false,
+                child: district
+            },
+            {
+                type: "select-with-roleImg",
+                key: "uploader_details",
+                title: "Uploader",
+                isFromAPI: true,
+                role: "collector",
+                child: []
+            }
+        ]
+    },
+    {
+        type: "date-ranger",
+        key: "uploadPeriod",
+        viewKey: "uploadPeriod",
+        title: "Upload Period",
+    },
+    {
+        type: "check",
+        title: "Domain",
+        key: "domain",
+        viewKey: "domain",
+        child: [
+            "Leisure",
+            "Educational or Informative",
+            "Business",
+            "Public or institutional",
+        ]
+    },
+]
+
 export const uploadAudioCheckingFilterData: targetFilterDT[] = [
     {
         type: "check",
