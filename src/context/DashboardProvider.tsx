@@ -44,38 +44,50 @@ const DashboardProvider = ({ children }: { children: any }) => {
     year?: number,
     month?: string
   ) => {
-    setLoading(true);
-    setErrorMsg("");
-    // fetch data from api
-    const response = await DashboardService.getOverTheTimeData(
-      module,
-      role,
-      year,
-      month
-    );
-    setOverTheTimeData(response.data);
-    setLoading(false);
+    try {
+      setLoading(true);
+      setErrorMsg("");
+      // fetch data from api
+      const response = await DashboardService.getOverTheTimeData(
+        module,
+        role,
+        year,
+        month
+      );
+      setOverTheTimeData(response.data);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   const getCreateCollectData = async (role: string, module: string) => {
-    setLoading(true);
-    setErrorMsg("");
-    // fetch data from api
-    const response = await DashboardService.getCreateCollectData({
-      role: role,
-      module: module,
-    });
-    setCreateCollectData(response.data);
-    // console.log(response.data);
-    setLoading(false);
+    try {
+      setLoading(true);
+      setErrorMsg("");
+      // fetch data from api
+      const response = await DashboardService.getCreateCollectData({
+        role: role,
+        module: module,
+      });
+      setCreateCollectData(response.data);
+      // console.log(response.data);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   const getTotalDataCollection = async (data: totalDataParamsDT) => {
-    setLoading(true);
-    setErrorMsg("");
-    const response = await DashboardService.getTotalDataCollection(data);
-    setTotalDataCollection(response.data);
-    setLoading(false);
+    try {
+      setLoading(true);
+      setErrorMsg("");
+      const response = await DashboardService.getTotalDataCollection(data);
+      setTotalDataCollection(response.data);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   return (

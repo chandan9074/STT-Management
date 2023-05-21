@@ -74,36 +74,48 @@ const BillingProvider = ({ children }: { children: any }) => {
   });
 
   const GetAmountDisbursed = async () => {
-    setLoading(true);
-    setErrorMsg("");
-    // fetch data from api
-    const response = await BillingService.amountDisbursed();
-    setAmountDisbursed(response.data);
-    setAmountDropDown(response.data.yearList[0]);
-    setLoading(false);
+    try {
+      setLoading(true);
+      setErrorMsg("");
+      // fetch data from api
+      const response = await BillingService.amountDisbursed();
+      setAmountDisbursed(response.data);
+      setAmountDropDown(response.data.yearList[0]);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   const handleAmountDropDown = (value: number) => {
     setAmountDropDown(value);
   };
   const GetAllBillingInfo = async (data: allBillingParamsDT) => {
-    setLoading(true);
-    setErrorMsg("");
-    // fetch data from api
-    const response = await BillingService.allBillingInfo(data);
-    setAllBillings(response.data);
-    setLoading(false);
+    try {
+      setLoading(true);
+      setErrorMsg("");
+      // fetch data from api
+      const response = await BillingService.allBillingInfo(data);
+      setAllBillings(response.data);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   const GetLastBillingsInfo = async (data: lastBillingParamsDT) => {
-    setLoading(true);
-    setErrorMsg("");
-    // fetch data from api
-    const response = await BillingService.lastBillingInfo(data);
+    try {
+      setLoading(true);
+      setErrorMsg("");
+      // fetch data from api
+      const response = await BillingService.lastBillingInfo(data);
 
-    setLastBillings(response.data);
-    GetBillingExcelData(response.data.billingInfo);
-    setLoading(false);
+      setLastBillings(response.data);
+      GetBillingExcelData(response.data.billingInfo);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   const GetBillingExcelData = (data: any) => {
@@ -119,13 +131,17 @@ const BillingProvider = ({ children }: { children: any }) => {
   };
 
   const GetBillingPaymentHistoryData = async (data: paymentHistoryParamsDT) => {
-    setLoading(true);
-    setErrorMsg("");
-    // fetch data from api
-    const response = await BillingService.paymentHistory(data);
-    setPaymentHistory(response.data);
-    // setLastBillings(response.data);
-    setLoading(false);
+    try {
+      setLoading(true);
+      setErrorMsg("");
+      // fetch data from api
+      const response = await BillingService.paymentHistory(data);
+      setPaymentHistory(response.data);
+      // setLastBillings(response.data);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   return (

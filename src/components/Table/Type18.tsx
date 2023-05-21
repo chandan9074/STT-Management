@@ -90,10 +90,10 @@ const Type18 = ({ data, setSelectedRowSData }: Props) => {
       render: (data: allCheckedAudioDT) => <div className='flex w-full justify-start items-center gap-x-[10px]'>
         <h1 className='w-28 truncate whitespace-nowrap'>{data.script.id}</h1>
         <img
-          // onClick={() => {
-          //     showDrawer(record);
-          //     setSingleTargetData(record);
-          // }}
+          onClick={() => {
+            showDrawer(data);
+            setSingleTargetData(data);
+          }}
           className='w-[10px] h-[10px] cursor-pointer'
           src={Icons.openInNewGray}
           alt="" />
@@ -118,14 +118,17 @@ const Type18 = ({ data, setSelectedRowSData }: Props) => {
       align: "center",
       render: (data: allCheckedAudioDT) => (
         <div className='flex justify-center relative'>
-          <img
+          <button
+            className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-blue-gray-20 active:border active:border-blue-gray-A10'
             onClick={() => {
               setRemarkOpen(true);
               setSingleTargetData(data);
-            }}
-            src={Icons.File} className="h-[16px] w-[16px] cursor-pointer"
-            alt=""
-          />
+            }}>
+            <img
+              src={Icons.File} className="h-[16px] w-[16px] cursor-pointer"
+              alt=""
+            />
+          </button>
           {
             remarkOpen &&
             <div className='fixed top-[209px] right-[86px] z-[999] animate-fadeIn2'>
@@ -147,20 +150,20 @@ const Type18 = ({ data, setSelectedRowSData }: Props) => {
       fixed: 'right',
       width: 85,
       render: (_, record: allCheckedAudioDT) => (
-        <>
-
-          <div className='flex hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full justify-center items-center'>
+        <div className='flex justify-center items-center'>
+          <button
+            onClick={() => {
+              showDrawer(record);
+              setSingleTargetData(record);
+            }}
+            className='flex hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full justify-center items-center'>
             <img
-              onClick={() => {
-                showDrawer(record);
-                setSingleTargetData(record);
-              }}
               className='w-[14px] h-[14px] cursor-pointer'
               src={Icons.open_in_new}
               alt="" />
-          </div>
+          </button>
 
-        </>)
+        </div>)
     },
   ]
 

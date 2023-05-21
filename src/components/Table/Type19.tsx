@@ -26,13 +26,13 @@ const Type19 = ({ data }: Props) => {
 
     const onChange = (e: CheckboxChangeEvent) => {
         console.log(`checked = ${e.target.checked}`);
-      };
+    };
 
     const Type19columns: ColumnsType<annotationDT> = [
         {
             title: `${"SN".toLocaleUpperCase()}`,
             key: 'sn',
-            width: 80,
+            width: 60,
             align: "center",
             render: (text, record, index) => (
                 <span>{(index + 1)}</span>
@@ -79,7 +79,7 @@ const Type19 = ({ data }: Props) => {
             title: `${"Phoneme annotation".toLocaleUpperCase().slice(0, 13)}...`,
             key: 'wordAnnotation',
             align: "center",
-            width: 112,
+            width: 119,
             render: () => <><Checkbox onChange={onChange}></Checkbox></>
         },
         {
@@ -88,15 +88,19 @@ const Type19 = ({ data }: Props) => {
             width: 80,
             align: "center",
             render: (data: annotationDT) => (
-                <div className='flex justify-center relative'>
-                    <img
+                <div className="flex justify-center items-center">
+                    <button
                         onClick={() => {
                             setRemarkOpen(true);
-                            setSingleTargetData(data);                            
+                            setSingleTargetData(data);
                         }}
-                        src={Icons.File} className="h-[16px] w-[16px] cursor-pointer"
-                        alt=""
-                    />
+                        className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-blue-gray-20 active:border active:border-blue-gray-A10'>
+                        <img
+
+                            src={Icons.File} className="h-[16px] w-[16px] cursor-pointer"
+                            alt=""
+                        />
+                    </button>
                     {
                         remarkOpen &&
                         <div className='fixed top-[209px] right-[86px] z-[999] animate-fadeIn2'>
@@ -118,20 +122,19 @@ const Type19 = ({ data }: Props) => {
             fixed: 'right',
             width: 80,
             render: (_, record: annotationDT) => (
-                <>
-
-                    <div className='flex hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full justify-center items-center'>
+                <div className="flex justify-center items-center">
+                    <button
+                        onClick={() => {
+                            showDrawer(record);
+                            setSingleTargetData(record);
+                        }}
+                        className='flex hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full justify-center items-center'>
                         <img
-                            onClick={() => {
-                                showDrawer(record);
-                                setSingleTargetData(record);
-                            }}
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
-                    </div>
-
-                </>)
+                    </button>
+                </div>)
         },
     ]
 
@@ -151,7 +154,7 @@ const Type19 = ({ data }: Props) => {
     const handlePageChange = (page: number) => {
         // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
     }
-    
+
     return (
         <div className='billing-table billing-table-odd-bg type4-table horizontal-table-padding'>
             <Table
@@ -163,7 +166,7 @@ const Type19 = ({ data }: Props) => {
                 }}
                 dataSource={data}
                 columns={Type19columns}
-                scroll={{ x: 1366 }}
+                scroll={{ x: 1300 }}
                 rowKey="id"
                 pagination={false}
             />
@@ -176,7 +179,7 @@ const Type19 = ({ data }: Props) => {
                     handleDataChange={handlePageChange}
                 />
             </div>
-    
+
             {
                 (open && singleTargetData) &&
                 <Drawer.AudioManagement.CheckingStatus
@@ -187,7 +190,6 @@ const Type19 = ({ data }: Props) => {
                     remark={singleTargetData.remark}
                     script={singleTargetData.script}
                     others={singleTargetData.others}
-                    id={singleTargetData.id}
                 />
             }
         </div>

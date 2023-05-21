@@ -109,22 +109,20 @@ const Type20 = ({ data, setSelectedRowSData }: Props) => {
             dataIndex: 'details',
             key: 'details',
             fixed: 'right',
-            width: 100,
+            width: 80,
             render: (_, record: collectAnnSenDataDT) => (
-                <>
-
-                    <div className='flex hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full justify-center items-center'>
+                <div className="flex justify-center items-center">
+                    <button
+                        onClick={() => {
+                            showDrawer(record);
+                            setSingleTargetData(record);
+                        }} className='flex hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full justify-center items-center'>
                         <img
-                            onClick={() => {
-                                showDrawer(record);
-                                setSingleTargetData(record);
-                            }}
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
-                    </div>
-
-                </>)
+                    </button>
+                </div>)
         },
     ]
 
@@ -182,6 +180,7 @@ const Type20 = ({ data, setSelectedRowSData }: Props) => {
                     script={singleTargetData.script}
                     others={singleTargetData.others}
                     id={singleTargetData.id}
+                    deadline={singleTargetData.deadLine}
                 />
             }
         </div>

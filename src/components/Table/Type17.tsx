@@ -103,12 +103,13 @@ const Type17 = ({ data, setSelectedRowSData }: Props) => {
             align: "center",
             render: (data: checkingStatusDT) => (
                 <div className='flex justify-center relative'>
-                    <button className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-blue-gray-20 active:border active:border-blue-gray-A10'>
+                    <button
+                        onClick={() => {
+                            setRemarkOpen(true);
+                            setSingleTargetData(data);
+                        }}
+                        className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-blue-gray-20 active:border active:border-blue-gray-A10'>
                         <img
-                            onClick={() => {
-                                setRemarkOpen(true);
-                                setSingleTargetData(data);
-                            }}
                             src={Icons.File} className="h-[16px] w-[16px] cursor-pointer"
                             alt=""
                         />
@@ -135,20 +136,20 @@ const Type17 = ({ data, setSelectedRowSData }: Props) => {
             fixed: 'right',
             width: 85,
             render: (_, record: checkingStatusDT) => (
-                <>
-
-                    <button className='flex hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-fulljustify-center items-center'>
+                <div className='flex justify-center items-center'>
+                    <button
+                        onClick={() => {
+                            showDrawer(record);
+                            setSingleTargetData(record);
+                        }}
+                        className='flex hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full justify-center items-center'>
                         <img
-                            onClick={() => {
-                                showDrawer(record);
-                                setSingleTargetData(record);
-                            }}
+
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
                     </button>
-
-                </>)
+                </div>)
         },
     ]
 

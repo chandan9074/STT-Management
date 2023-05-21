@@ -18,7 +18,7 @@ type Props = {
     remark: historyRemarkDT[];
     script: scriptResDT;
     others: othersDT;
-    id: string;
+    id?: string;
     history?: historyDT[];
     prevSpeaker?: boolean;
     activePanelProp?: string;
@@ -85,10 +85,12 @@ const CheckingStatus = ({ targetTitle, isDrawerOpen, setIsDrawerOpen: setOpen, i
                                         <div>
                                             <h1 className='text-ct-blue-95 text-[18px] font-medium'>Details</h1>
                                             <div className='flex gap-x-3'>
-                                                <div className='flex'>
-                                                    <h1 className='text-ct-blue-90-70% text-xs'>{targetTitle ? "Target" : 'Task'} ID: </h1>
-                                                    <h1 className='pl-1 text-ct-blue-90-70% font-semibold text-xs'>{id?.slice(0, 25)}</h1>
-                                                </div>
+                                                {
+                                                    id && <div className='flex'>
+                                                        <h1 className='text-ct-blue-90-70% text-xs'>{targetTitle ? "Target" : 'Task'} ID: </h1>
+                                                        <h1 className='pl-1 text-ct-blue-90-70% font-semibold text-xs'>{id?.slice(0, 25)}</h1>
+                                                    </div>
+                                                }
                                                 {deadline && <div className='flex'>
                                                     <h1 className='text-ct-blue-90-70% text-xs'>Deadline: </h1>
                                                     <h1 className='pl-1 text-ct-blue-90-70% font-semibold text-xs'>{deadline}</h1>

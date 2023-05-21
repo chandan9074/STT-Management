@@ -21,7 +21,7 @@ type Props = {
 
 }
 
-const Type21 = ({ data,setSelectedRowSData }: Props) => {
+const Type21 = ({ data, setSelectedRowSData }: Props) => {
 
     const [open, setOpen] = useState(false);
 
@@ -133,14 +133,17 @@ const Type21 = ({ data,setSelectedRowSData }: Props) => {
             align: "center",
             render: (data: annotatedFilesDT) => (
                 <div className='flex justify-center relative'>
-                    <img
+                    <button
+                        className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-blue-gray-20 active:border active:border-blue-gray-A10'
                         onClick={() => {
                             setRemarkOpen(true);
                             setSingleTargetData(data);
-                        }}
-                        src={Icons.File} className="h-4 w-4 cursor-pointer"
-                        alt=""
-                    />
+                        }}>
+                        <img
+                            src={Icons.File} className="h-4 w-4 cursor-pointer"
+                            alt=""
+                        />
+                    </button>
                     {
                         remarkOpen &&
                         <div className='fixed top-[209px] right-[86px] z-[999] animate-fadeIn2'>
@@ -162,20 +165,22 @@ const Type21 = ({ data,setSelectedRowSData }: Props) => {
             fixed: 'right',
             width: 100,
             render: (_, record: annotatedFilesDT) => (
-                <>
+                <div className='flex justify-center items-center'>
 
-                    <div className='flex hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full justify-center items-center'>
+                    <button
+                        onClick={() => {
+                            showDrawer(record);
+                            setSingleTargetData(record);
+                        }}
+                        className='flex hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full justify-center items-center'>
                         <img
-                            onClick={() => {
-                                showDrawer(record);
-                                setSingleTargetData(record);
-                            }}
+
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
-                    </div>
+                    </button>
 
-                </>)
+                </div>)
         },
     ]
 
@@ -183,7 +188,7 @@ const Type21 = ({ data,setSelectedRowSData }: Props) => {
         onChange: (selectedRowKeys: React.Key[], selectedRows: annotatedFilesDT[]) => {
             if (setSelectedRowSData) {
                 setSelectedRowSData(selectedRows)
-              }
+            }
         },
         getCheckboxProps: (record: annotatedFilesDT) => ({
             // disabled: record.name === 'Disabled User', // Column configuration not to be checked
@@ -233,6 +238,7 @@ const Type21 = ({ data,setSelectedRowSData }: Props) => {
                     others={singleTargetData.others}
                     id={singleTargetData.id}
                     history={singleTargetData?.history}
+                    submissionDate={singleTargetData.submissionDate}
                 />
             }
 

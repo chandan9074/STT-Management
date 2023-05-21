@@ -102,21 +102,22 @@ const Type16 = ({ data }: Props) => {
             // fixed: 'right',
             width: 93,
             render: (_, record: audioManagementDT) => (
-                <>
+                <div className="flex justify-center items-center">
 
-                    <button className='flex justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full'>
+                    <button onClick={() => {
+                        showDrawer();
+                        setSingleTargetData(record);
+                        setActivePanel('Script');
+                    }}
+                        className='flex justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full'>
                         <img
-                            onClick={() => {
-                                showDrawer();
-                                setSingleTargetData(record);
-                                setActivePanel('Script');
-                            }}
+
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
                     </button>
 
-                </>)
+                </div>)
         },
     ]
 

@@ -152,20 +152,23 @@ const AssignProvider = ({ children }: { children: any }) => {
   const [isCriteriaClosed, setIsCriteriaClosed] = useState<boolean>(false);
 
   const postSingleTargetSpeechesAssign = async (data: FormData) => {
-    setLoading(true);
-    const res = await AssignService.postSingleTargetSpeechesAssign(data);
-    if (res.status && res.status === 200) {
+    try {
+      setLoading(true);
+      const res = await AssignService.postSingleTargetSpeechesAssign(data);
       setLoading(false);
       return 200;
       // await getSelectedScript();
-    } else {
-      setLoading(false);
+    } catch (error) {
+      setLoading(false)
     }
   }
 
   const fetchResAudioStatistics = async () => {
-    const res = await AssignService.fetchResAudioStatistics(audioStatisticsParams);
-    setAudioStatisticsData(res.data);
+    try {
+      const res = await AssignService.fetchResAudioStatistics(audioStatisticsParams);
+      setAudioStatisticsData(res.data);
+    } catch (error) {
+    }
   }
 
   const getResSingleTargetSpeechesAssign = async (data: singleTargetSpeechesAssignDT) => {
@@ -179,37 +182,51 @@ const AssignProvider = ({ children }: { children: any }) => {
   }
 
   const postRestTargetAssign = async (data: postResTargetAssignParamDT) => {
-    const res = await AssignService.createTargetAssign(data);
-    if (res.status && res.status === 200) {
+    try {
+      const res = await AssignService.createTargetAssign(data);
       return 200;
       // await getSelectedScript();
+    } catch (error) {
+
     }
   }
 
   const deleteDraftTargetAssign = async (id: string) => {
-    const res = await AssignService.deleteDraftTargetAssign(id);
-    if (res.status === 200) {
+    try {
+      const res = await AssignService.deleteDraftTargetAssign(id);
       setSelectedTargetList(selectedTargetList.filter((item) => item.id !== id))
+    } catch (error) {
+
     }
   }
 
   const getRoleListByRole = async (params: roleListByRoleParamDT) => {
-    const res = await AssignService.fetchRoleListByRole(params);
-    setRoleListByRole(res.data);
+    try {
+      const res = await AssignService.fetchRoleListByRole(params);
+      setRoleListByRole(res.data);
+    } catch (error) {
+
+    }
   }
 
   const updateAssigneeMainTarget = async (data: updateAssigneeMainTargetParamDT) => {
-    const res = await AssignService.updateAssigneeMainTarget(data);
-    if (res.status === 200) {
+    try {
+      const res = await AssignService.updateAssigneeMainTarget(data);
       await new Promise(resolve => setTimeout(resolve, 1000));
       // await getTargetAssign();
+    } catch (error) {
+
     }
   }
 
   const getTargetAssign = async (data: targetAssignParamDT) => {
-    const res = await AssignService.getTargetAssign(data);
-    setTargetsAssign(res.data.data);
-    setTargetDataLength(res.data.total_data_size);
+    try {
+      const res = await AssignService.getTargetAssign(data);
+      setTargetsAssign(res.data.data);
+      setTargetDataLength(res.data.total_data_size);
+    } catch (error) {
+
+    }
   }
 
   const saveCriteria = (data: CriteriaItemDT) => {
@@ -247,52 +264,56 @@ const AssignProvider = ({ children }: { children: any }) => {
   }
 
   const postSelectedScript = async (data: postSelectedScriptBodyDT) => {
-    const res = await AssignService.postSelectedScript(data);
-    if (res.status === 200) {
+    try {
+      const res = await AssignService.postSelectedScript(data);
       await new Promise(resolve => setTimeout(resolve, 1000));
       await getSelectedScript();
-    }
+    } catch (error) { }
   }
 
   const getSelectedScript = async () => {
-    const res = await AssignService.fetchScriptList();
-    setSelectedScriptList(res.data);
+    try {
+      const res = await AssignService.fetchScriptList();
+      setSelectedScriptList(res.data);
+    } catch (error) { }
   }
 
   const getCriteria = async () => {
-    const res = await AssignService.fetchCriteriaList();
-    setSelectedCriteriaList(res.data);
+    try {
+      const res = await AssignService.fetchCriteriaList();
+      setSelectedCriteriaList(res.data);
+    } catch (error) { }
   }
 
   const getAssignee = async () => {
-    const res = await AssignService.fetchAssignList();
-    setSelectedAssigneList(res.data);
+    try {
+      const res = await AssignService.fetchAssignList();
+      setSelectedAssigneList(res.data);
+    } catch (error) { }
   }
 
   const deleteSingleScript = async (id: string) => {
-    const res = await AssignService.deleteSingleScript(id);
-    if (res.status === 200) {
-      // await new Promise(resolve => setTimeout(resolve, 1000));
-      // await getSelectedScript();
+    try {
+      const res = await AssignService.deleteSingleScript(id);
       setSelectedScriptList(selectedScriptList.filter((item) => item.id !== id));
-    }
+    } catch (error) { }
   }
 
   const deleteSingleCriteria = async (id: string) => {
-    const res = await AssignService.deleteSingleCriteria(id);
-    if (res.status === 200) {
-      // await new Promise(resolve => setTimeout(resolve, 1000));
-      // await getCriteria();
+    try {
+      const res = await AssignService.deleteSingleCriteria(id);
       setSelectedCriteriaList(selectedCriteriaList.filter((item) => item.id !== id));
+    } catch (error) {
+
     }
   }
 
   const deleteSingleAssignee = async (id: string) => {
-    const res = await AssignService.deleteSingleAssignee(id);
-    if (res.status === 200) {
-      // await new Promise(resolve => setTimeout(resolve, 1000));
-      // await getAssignee();
+    try {
+      const res = await AssignService.deleteSingleAssignee(id);
       setSelectedAssigneList(selectedAssigneList.filter((item) => item.id !== id));
+    } catch (error) {
+
     }
   }
 
@@ -334,28 +355,28 @@ const AssignProvider = ({ children }: { children: any }) => {
   }
 
   const getDraftTarget = async () => {
-    const res = await AssignService.fetchTargetList();
-    setSelectedTargetList(res.data.data);
+    try {
+      const res = await AssignService.fetchTargetList();
+      setSelectedTargetList(res.data.data);
+    } catch (error) { }
   }
 
   const updateDraftTarget = async (data: updateDraftTargetQueryParams) => {
-    const res = await AssignService.updateDraftTarget({ ...data });
-    if (res.status === 200) {
+    try {
+      const res = await AssignService.updateDraftTarget({ ...data });
       await new Promise(resolve => setTimeout(resolve, 1000));
       await getDraftTarget();
-    }
+    } catch (error) { }
   }
 
   const getTargetForRecreate = async (id: string) => {
-    const res = await AssignService.fetchTargetForRecreate(id);
-    // const newScript = {
-    //   isSelected: true,
-    //   ...res.script
-    // }
-    setScriptForRecreate([{ ...res.data.script }])
-    setTargetForRecreate([{ ...res.data.target }])
-    setAssigneeForRecreate([{ ...res.data.assignee }])
-    setRecreateTable({ script: res.data.script, target: res.data.target, assignee: res.data.assignee })
+    try {
+      const res = await AssignService.fetchTargetForRecreate(id);
+      setScriptForRecreate([{ ...res.data.script }])
+      setTargetForRecreate([{ ...res.data.target }])
+      setAssigneeForRecreate([{ ...res.data.assignee }])
+      setRecreateTable({ script: res.data.script, target: res.data.target, assignee: res.data.assignee })
+    } catch (error) { }
   }
 
   const getSingleCriteriaRecreate = (id: string) => {
@@ -435,19 +456,23 @@ const AssignProvider = ({ children }: { children: any }) => {
 
 
   const creteAssignCriteria = async (data: CriteriaItemDT | CriteriaItemDT[]) => {
-    const res = await AssignService.createAssignCriteria(data);
-    if (res.status === 200) {
+    try {
+      const res = await AssignService.createAssignCriteria(data);
       await new Promise(resolve => setTimeout(resolve, 1000));
       getCriteria();
+    } catch (error) {
+
     }
   }
 
   const UpdateAssignCriteria = async (data: CriteriaItemDT) => {
-    const res = await AssignService.UpdateAssignCriteria(data);
-    if (res.status === 200) {
+    try {
+      const res = await AssignService.UpdateAssignCriteria(data);
       await new Promise(resolve => setTimeout(resolve, 1000));
       getCriteria();
       setSingleCriteriaData({} as CriteriaItemDT);
+    } catch (error) {
+
     }
   }
 
@@ -467,22 +492,22 @@ const AssignProvider = ({ children }: { children: any }) => {
   }, [criterias]);
 
   const createAssignee = async (data: createAssigneeParamsDT) => {
-    const res = await AssignService.createAssignee(data);
-    if (res.status === 200) {
+    try {
+      const res = await AssignService.createAssignee(data);
       await new Promise(resolve => setTimeout(resolve, 1000));
       getAssignee();
+    } catch (error) {
+
     }
   }
 
   const postRecreateTargetAssign = async (data: postRecreateTargetParamDT) => {
-    setLoading(true);
-    const res = await AssignService.postRecreateTargetAssign(data);
-    if (res.status === 200) {
-      // await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      setLoading(true);
+      const res = await AssignService.postRecreateTargetAssign(data);
       setLoading(false);
       return "ok"
-    }
-    else {
+    } catch (error) {
       setLoading(false);
       return "error"
     }
