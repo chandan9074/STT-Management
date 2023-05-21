@@ -26,7 +26,7 @@ const AddAssignee = () => {
       {selectedAssigneList?.length > 0 && (
         <div className="mb-2">
           <Buttons.IconWithTextButton.Tertiary
-            style={{ border: "none" }}
+            // style={{ border: "none" }}
             label={"Add Assignee"}
             size="small"
             variant="Blue"

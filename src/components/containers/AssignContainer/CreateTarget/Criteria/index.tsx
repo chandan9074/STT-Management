@@ -29,7 +29,7 @@ const CreateCriteria = () => {
       {selectedCriteriaList?.length > 0 && (
         <div className="mb-2">
           <Buttons.IconWithTextButton.Tertiary
-            style={{ border: "none" }}
+            // style={{ border: "none" }}
             label={"Create Criteria"}
             size="small"
             variant="Blue"
