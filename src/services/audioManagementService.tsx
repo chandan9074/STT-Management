@@ -1,5 +1,3 @@
-import axios from 'axios';
-import * as PATH from '../helpers/APIURL'
 import { collectedAudioCollectorList, allCheckedAudiosData, annotationData, checkingStatusData, collectAnnSenData, collectedAudio, scriptFilterData, annotatedFiles, collectValSenData, validatedFilesData, collectedAudioSpeakersList, collectedAudioCheckerList, collectedAudioAnnotatorList, collectedAudioValidatorList } from '../data/audioManagement/AudioManagementData';
 import { allCheckedSpeechData, annotatedFilesUploadData, annotationUploadData, checkingStatusUploadData, sentenceLevelUploadData, uploadAudioData, ValidatedFilesUploadData, sentenceLevelValUpload } from '../data/audioManagement/UploadAudiosData';
 
@@ -252,7 +250,7 @@ export default class audioManagementService {
         return scriptFilterData;
     }
 
-    static postReassignAudios (ids: string[]) {
+    static postReassignAudios(ids: string[]) {
         return "";
     }
 }
