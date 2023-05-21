@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction, useContext } from 'react';
 import Icons from '../../../../../assets/Icons';
 import { speechDt } from '../../../../../types/assignTypes';
 import { customMuiListStyle } from '../../../../../helpers/Utils';
-import { UserManagementContext } from '../../../../../context/UserManagement';
+import { UserManagementContext } from '../../../../../context/UserManagementProvider';
 
 type Props = {
     deviceId: string;

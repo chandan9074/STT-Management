@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 import { CREATE_USER_PATH } from '../../../../helpers/Slug'
 import { targetFilterListDT } from '../../../../types/assignTypes'
 import { Filter } from '../../../Filter'
-import { UserManagementContext } from '../../../../context/UserManagement'
+import { UserManagementContext } from '../../../../context/UserManagementProvider'
 
 type Props = {
     open: boolean;

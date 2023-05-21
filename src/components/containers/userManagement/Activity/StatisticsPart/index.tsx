@@ -3,7 +3,7 @@ import Header from './Header'
 import * as PATH from "../../../../../helpers/Slug"
 import { Navigator } from '../../../../Navigator'
 import GraphPart from './GraphPart'
-import { UserManagementContext } from '../../../../../context/UserManagement'
+import { UserManagementContext } from '../../../../../context/UserManagementProvider'
 
 const StatisticsPart = () => {
 

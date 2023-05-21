@@ -1,3 +1,5 @@
+import { roleDT } from "./billingTypes"
+
 export type homeDistrictTypes = {
     division: string,
     district: string[]
@@ -57,7 +59,8 @@ export type dayDataDT = {
     uploaded: number,
     pending: number,
     deadline: string,
-    status: string
+    status: string,
+    adminData?: roleDT
 }
 
 export type userSpeakerDt = {
@@ -79,7 +82,10 @@ export type userSpeakerDt = {
     cvFile: string,
     cvFileName: string,
     reportingTo: string,
-    adminData: adminDataDT,
+    userID?: string,
+    adminID?: string,
+    adminData?: roleDT
+    // adminData: adminDataDT,
 
 }
 
@@ -99,13 +105,52 @@ export type userRoleInformationDt = {
     cvFile: string,
     cvFileName: string,
     reportingTo: string,
-    adminData: adminDataDT,
+    userID?: string,
+    adminID?: string,
+    adminData?: roleDT
+    
+    // adminData: adminDataDT,
+}
+
+export type userInfoDT = {
+    id?: string,
+    role: string[],
+    primaryRole: string,
+    name: string,
+    email: string,
+    mobileNumber: string,
+    nid: string,
+    birthRegNumber: string,
+    homeDistrict: string,
+    presentDistrict: string,
+    lastDegreeAchived: string,
+    subjectInStudy: string,
+    cvFile: string,
+    cvFileName: string,
+    reportingTo: string,
+    userID?: string,
+    adminID?: string,
+    adminData?: roleDT
+    speakersName: string,
+    gender: string,
+    dateOfBirth: string,
+    ageRange: string,
+    education: string,
+    educationSituation: string,
+    childhoodPlace: string,
+    district: string,
+    upazilaCity: string,
+    villageArea: string,
+    smoking: string,
+    stutter: string,
+    hearingStatus: string,
+  
 }
 
 export type adminDataDT = {
-    id: string,
-    name: string,
-    number: string
+    id?: string,
+    name?: string,
+    number?: string
 }
 
 export type userManagementDT = {
@@ -144,6 +189,11 @@ export type userManagementParamsDT = {
     district: string,
     gender: string,
 }
+
+export type getUserByIdParamsDT = {
+    id: string;
+}
+
 
 export type activityQueryParamsDT = {
     id: string,

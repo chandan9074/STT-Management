@@ -3,7 +3,7 @@ import Icons from '../../../../../assets/Icons'
 import { activityDT } from '../../../../../types/userManagementTypes'
 import Buttons from '../../../../Buttons'
 import RoleImage from '../../../../Image/RoleImage'
-import { UserManagementContext } from '../../../../../context/UserManagement'
+import { UserManagementContext } from '../../../../../context/UserManagementProvider'
 
 
 const Header = ({ data }: { data: activityDT }) => {

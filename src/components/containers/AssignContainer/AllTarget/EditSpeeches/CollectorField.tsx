@@ -6,7 +6,7 @@ import { customMuiListStyle, isEmpty } from '../../../../../helpers/Utils';
 import { speechDt } from '../../../../../types/assignTypes';
 import { roleDT } from '../../../../../types/billingTypes';
 import Collector from '../../../AudioManagement/TableField/Collector';
-import { UserManagementContext } from '../../../../../context/UserManagement';
+import { UserManagementContext } from '../../../../../context/UserManagementProvider';
 
 type Props = {
     data: speechDt;

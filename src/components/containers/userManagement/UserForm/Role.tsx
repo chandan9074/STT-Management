@@ -18,7 +18,8 @@ const Role = ({ formik }: { formik: FormikValues }) => {
                                     icon={((formik.values.role.length > 0 && !formik.values.role.includes("Speaker") && value === "Speaker") || (formik.values.role.includes("Speaker") && value !== "Speaker")) ? <div className='h-4 w-4 bg-blue-gray-40'></div> : undefined}
                                     disabled={(formik.values.role.length > 0 && !formik.values.role.includes("Speaker") && value === "Speaker") || (formik.values.role.includes("Speaker") && value !== "Speaker")}
                                     name={value}
-                                    checked={formik.values.role.includes(value)}
+                                    checked={formik.values.role.some((role: any) => role.toLowerCase() === value.toLowerCase())}
+                                    // formik.values.role.some((role: any) => role.toLowerCase() === value.toLowerCase())
                                     onChange={(e) => {
                                         if (e.target.checked) {
                                             if (value === "Speaker") {
@@ -35,8 +36,8 @@ const Role = ({ formik }: { formik: FormikValues }) => {
 
                                 />
                             }
-                            // label={<h1 className={`text-small font-medium ${formik.values.role.includes(value) ? 'text-secondary-blue-50' : ((formik.values.role.length > 0 && !formik.values.role.includes("Speaker") && value === "Speaker") || (formik.values.role.includes("Speaker") && value !== "Speaker")) ? 'text-blue-gray-45' : 'text-blue-gray-75 '} `}>{value}</h1>}
-                            label={<h1 className={`text-small ${formik.values.role.includes(value) ? 'text-secondary-blue-50 font-medium' : ((formik.values.role.length > 0 && !formik.values.role.includes("Speaker") && value === "Speaker") || (formik.values.role.includes("Speaker") && value !== "Speaker")) ? 'text-blue-gray-45 ' : 'text-blue-gray-75 '} `}>{value}</h1>}
+                            // label={<h1 className={`text-small font-medium ${formik.values.role.some((role: any) => role.toLowerCase() === value.toLowerCase()) ? 'text-secondary-blue-50' : ((formik.values.role.length > 0 && !formik.values.role.includes("Speaker") && value === "Speaker") || (formik.values.role.includes("Speaker") && value !== "Speaker")) ? 'text-blue-gray-45' : 'text-blue-gray-75 '} `}>{value}</h1>}
+                            label={<h1 className={`text-small ${formik.values.role.some((role: any) => role.toLowerCase() === value.toLowerCase()) ? 'text-secondary-blue-50 font-medium' : ((formik.values.role.length > 0 && !formik.values.role.includes("Speaker") && value === "Speaker") || (formik.values.role.includes("Speaker") && value !== "Speaker")) ? 'text-blue-gray-45 ' : 'text-blue-gray-75 '} `}>{value}</h1>}
                         />
                     </div>
                 ))}

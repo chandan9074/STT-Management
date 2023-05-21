@@ -42,9 +42,6 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
             let files = event.fileList[0];
             // getFile(event.fileList[0]?.originFileObj);
 
-            console.log('&&&&&&&&&&', event.fileList[0]?.originFileObj);
-
-
             formik.setFieldValue("sourceFile", event.fileList[0]?.originFileObj);
             formik.setFieldValue("sourceFileName", files?.originFileObj?.name);
 

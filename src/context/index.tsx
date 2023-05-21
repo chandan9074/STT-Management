@@ -3,7 +3,7 @@ import RoleProvider from "./RoleProvider";
 import CommonProvider from "./CommonProvider";
 import DashboardProvider from "./DashboardProvider";
 import ScriptProvider from "./ScriptProvider";
-import UserManagementProvider from "./UserManagement";
+import UserManagementProvider from "./UserManagementProvider";
 import AssignProvider from "./AssignProvider";
 import AudioManagementProvider from "./AudioManagementProvider";
 import OrganizerProvider from "./OrganizerProvider";

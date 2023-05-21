@@ -57,6 +57,7 @@ import AnnotatedFilesUpload from "./pages/AudioManagement/UploadAudio/Annotation
 import ValidatedFiles from "./pages/AudioManagement/CollectedAudio/Validation/ValidatedFiles";
 import ValidatedFilesUpload from "./pages/AudioManagement/UploadAudio/Validation/ValidatedFilesUpload";
 import Draft from "./pages/Assign/Draft";
+import EditUser from "./components/containers/userManagement/EditUser";
 
 function App() {
   useEffect(() => {
@@ -95,6 +96,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
 
           <Route path={PATH.CREATE_USER_PATH} element={<UserForm />} />
+          <Route path={`${PATH.EDIT_USER_PATH}/:id`} element={<EditUser />} />
 
           {/* Assign */}
           <Route path={PATH.ASSIGN_PATH} element={<Assign />} >

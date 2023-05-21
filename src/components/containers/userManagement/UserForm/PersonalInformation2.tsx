@@ -8,7 +8,7 @@ import '../../../calender/customizeCalender.css';
 import HomeDistrictSelect from '../../../Form/HomeDistrictSelect';
 import { customMuiListStyle } from '../../../../helpers/Utils';
 import LabelForm from '../../../common/Form/LabelForm';
-import { UserManagementContext } from '../../../../context/UserManagement';
+import { UserManagementContext } from '../../../../context/UserManagementProvider';
 
 type Prop =
     {
@@ -35,12 +35,12 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                 <Grid item xs={6}>
                     <div>
                         <TextField
-                            id="speakersName"
-                            name="speakersName"
+                            id="name"
+                            name="name"
                             label={<h1 className='comboBoxLabel'>Speakers Name <span className='text-[red]'>*</span></h1>}
-                            value={formik.values.speakersName}
+                            value={formik.values.name}
                             onChange={formik.handleChange}
-                            error={formik.touched.speakersName && Boolean(formik.errors.speakersName)}
+                            error={formik.touched.name && Boolean(formik.errors.name)}
                             // helperText={formik.touched.speakersName && formik.errors.speakersName}
                             style={{ width: '100%' }}
                             InputProps={{
@@ -56,7 +56,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                             onFocus={() => setSelectedFieldOutline("speakersName")}
                             onBlur={() => setSelectedFieldOutline("")}
                         />
-                        {(formik.touched.speakersName && formik.errors.speakersName) && <p className='text-xxs text-red-500 ml-3.5 mt-1'>{formik.errors.speakersName}</p>}
+                        {(formik.touched.name && formik.errors.name) && <p className='text-xxs text-red-500 ml-3.5 mt-1'>{formik.errors.name}</p>}
                     </div>
                 </Grid>
 

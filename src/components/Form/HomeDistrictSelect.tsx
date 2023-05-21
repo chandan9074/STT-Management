@@ -6,7 +6,7 @@ import { homeDistrictSearch } from '../../helpers/Utils';
 import { homeDistrictTypes } from '../../types/userManagementTypes';
 import Buttons from '../Buttons';
 import './HomeDistrictSelect.css';
-import { UserManagementContext } from '../../context/UserManagement';
+import { UserManagementContext } from '../../context/UserManagementProvider';
 
 type Prop =
     {

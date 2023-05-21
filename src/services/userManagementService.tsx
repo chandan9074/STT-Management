@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as PATH from "../helpers/APIURL";
 import { targetSpeechData } from "../data/assign/AssignData";
-import { activityQueryParamsDT, userManagementParamsDT } from "../types/userManagementTypes";
+import { activityQueryParamsDT, getUserByIdParamsDT, userManagementParamsDT } from "../types/userManagementTypes";
 
 export default class UserManagementService {
   static getActivityStatistics(value: activityQueryParamsDT) {
@@ -20,6 +20,20 @@ export default class UserManagementService {
 
   static getUserRoleListByRole(role: string) {
     return axios.get(PATH.GET_ROLE_LIST_URL, { params: { role: role } });
+  }
+
+  static createUser(params: FormData) {
+    return axios.post(PATH.POST_RES_USER_MANAGEMENT_MODULE, params);
+  }
+
+  static getUserById(params: getUserByIdParamsDT) {
+    console.log('--------params---------', params);
+    
+    return axios.get(PATH.GET_RES_USER_MANAGEMENT_BY_ID_MODULE, { params: params });
+  }
+
+  static updateUser(params: FormData) {
+    return axios.put(PATH.UPDATE_RES_USER_MANAGEMENT_BY_ID_MODULE, params);
   }
 
 }

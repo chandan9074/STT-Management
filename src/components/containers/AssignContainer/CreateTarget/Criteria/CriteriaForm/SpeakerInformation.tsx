@@ -5,7 +5,7 @@ import MultipleSelect from '../../../../../Form/MultipleSelect';
 import Icons from '../../../../../../assets/Icons';
 import { FormikValues } from 'formik';
 import { useContext, useState } from 'react';
-import { UserManagementContext } from '../../../../../../context/UserManagement';
+import { UserManagementContext } from '../../../../../../context/UserManagementProvider';
 
 
 const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
