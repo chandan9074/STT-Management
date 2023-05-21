@@ -2,133 +2,7 @@ import { collectedAudioCollectorList, allCheckedAudiosData, annotationData, chec
 import { allCheckedSpeechData, annotatedFilesUploadData, annotationUploadData, checkingStatusUploadData, sentenceLevelUploadData, uploadAudioData, ValidatedFilesUploadData, sentenceLevelValUpload } from '../data/audioManagement/UploadAudiosData';
 
 export default class audioManagementService {
-    static getScriptFilters() {
-        return scriptFilterData;
-    }
-    static getCollectedAudioCollector() {
-        return collectedAudioCollectorList;
-    }
-
-    static getCollectedAudioSpeakers() {
-        return collectedAudioSpeakersList;
-    }
-
-    static getCollectedAudioCheckingStatusScript() {
-        return scriptFilterData;
-    }
-
-    static getCollectedAudioCheckingStatusCollector() {
-        return collectedAudioCollectorList;
-    }
-
-    static getCollectedAudioAllCheckingStatusSpeakers() {
-        return collectedAudioSpeakersList;
-    }
-
-    static getCollectedAudioAllCheckingStatusScript() {
-        return scriptFilterData;
-    }
-
-    static getCollectedAudioAllCheckingStatusChecker() {
-        return collectedAudioCheckerList;
-    }
-
-    static getCollectedAudioAllCheckingStatusCollector() {
-        return collectedAudioCollectorList;
-    }
-
-    static getCollectedAudioCheckingStatusSpeakers() {
-        return collectedAudioSpeakersList;
-    }
-
-    static getCollectedAudioAnnotationTypeSpeakers() {
-        return collectedAudioSpeakersList;
-    }
-
-    static getCollectedAudioAnnotationTypeScript() {
-        return scriptFilterData;
-    }
-
-    static getCollectedAudioAnnotationSentenceChecker() {
-        return collectedAudioCheckerList;
-    }
-
-    static getCollectedAudioAnnotationSentenceSpeakers() {
-        return collectedAudioSpeakersList;
-    }
-
-    static getCollectedAudioAnnotationWordChecker() {
-        return collectedAudioCheckerList;
-    }
-
-    static getCollectedAudioAnnotationWordSpeakers() {
-        return collectedAudioSpeakersList;
-    }
-
-    static getCollectedAudioAnnotationPhonemeChecker() {
-        return collectedAudioCheckerList;
-    }
-
-    static getCollectedAudioAnnotationPhonemeSpeakers() {
-        return collectedAudioSpeakersList;
-    }
-
-    static getCollectedAudioAnnotationAnnotatedAnnotator() {
-        return collectedAudioAnnotatorList;
-    }
-
-    static getCollectedAudioAnnotationAnnotatedSpeakers() {
-        return collectedAudioSpeakersList;
-    }
-
-    static getCollectedAudioAnnotationAnnotatedScript() {
-        return scriptFilterData;
-    }
-
-    static getCollectedAudioAnnotationAnnotatedChecker() {
-        return collectedAudioCheckerList;
-    }
-
-    static getCollectedAudioAnnotationAnnotatedCollector() {
-        return collectedAudioCollectorList;
-    }
-
-    static getCollectedAudioValidationSentenceChecker() {
-        return collectedAudioCheckerList;
-    }
-
-    static getCollectedAudioValidationSentenceAnnotator() {
-        return collectedAudioAnnotatorList;
-    }
-
-    static getCollectedAudioValidationSentenceSpeakers() {
-        return collectedAudioSpeakersList;
-    }
-
-    static getCollectedAudioValidationWordChecker() {
-        return collectedAudioCheckerList;
-    }
-
-    static getCollectedAudioValidationWordAnnotator() {
-        return collectedAudioAnnotatorList;
-    }
-
-    static getCollectedAudioValidationWordSpeakers() {
-        return collectedAudioSpeakersList;
-    }
-
-    static getCollectedAudioValidationPhonemeChecker() {
-        return collectedAudioCheckerList;
-    }
-
-    static getCollectedAudioValidationPhonemeAnnotator() {
-        return collectedAudioAnnotatorList;
-    }
-
-    static getCollectedAudioValidationPhonemeSpeakers() {
-        return collectedAudioSpeakersList;
-    }
-
+    
     static getCollectedAudioData() {
         return collectedAudio;
     }
@@ -244,10 +118,6 @@ export default class audioManagementService {
 
     static getValidatorList = (type: string) => {
         return collectedAudioValidatorList;
-    }
-
-    static getUploaderList = (type: string) => {
-        return collectedAudioCollectorList;
     }
 
     static getScriptList() {

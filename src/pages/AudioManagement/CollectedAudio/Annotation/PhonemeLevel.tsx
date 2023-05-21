@@ -42,10 +42,10 @@ const Header = ({ selectedRowsData }: { selectedRowsData: collectAnnSenDataDT[] 
     speaker_details: [],
   })
 
-  const { collectedAudioAnnotationPhonemeChecker, getCollectedAudioAnnotationPhonemeChecker, getCollectedAudioAnnotationPhonemeSpeakers, collectedAudioAnnotationPhonemeSpeaker, } = useContext(AudioManagementContext);
+  const { audioCheckerList, getAudioCheckerList, getSpeakerList, speakerList, } = useContext(AudioManagementContext);
 
-  const prevCollectedAudioSpeakersRef = useRef(collectedAudioAnnotationPhonemeSpeaker);
-  const prevCollectedAudioCheckerRef = useRef(collectedAudioAnnotationPhonemeChecker);
+  const prevCollectedAudioSpeakersRef = useRef(speakerList);
+  const prevCollectedAudioCheckerRef = useRef(audioCheckerList);
 
 
   useEffect(() => {
@@ -61,40 +61,40 @@ const Header = ({ selectedRowsData }: { selectedRowsData: collectAnnSenDataDT[] 
   }, [filterList]);
 
   useEffect(() => {
-    getCollectedAudioAnnotationPhonemeChecker();
-    getCollectedAudioAnnotationPhonemeSpeakers();
+    getAudioCheckerList("collectedAudioAnnotationPhoneme");
+    getSpeakerList("collectedAudioAnnotationPhoneme");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
 
-    if (collectedAudioAnnotationPhonemeSpeaker !== prevCollectedAudioSpeakersRef.current) {
+    if (speakerList !== prevCollectedAudioSpeakersRef.current) {
       const speakerObject = collectedAudioAnnotationSentenceFilterData.find(obj => obj.key === "speaker");
       if (speakerObject) {
         const selectObject = speakerObject.formData && speakerObject.formData.find(obj => obj.type === "multiple-select");
         if (selectObject && selectObject.selects) {
           const speakers = selectObject.selects.find(obj => obj.key === "speaker_details");
           if (speakers) {
-            speakers.child = collectedAudioAnnotationPhonemeSpeaker;
+            speakers.child = speakerList;
           }
         }
       }
     }
-    if (collectedAudioAnnotationPhonemeChecker !== prevCollectedAudioCheckerRef.current) {
+    if (audioCheckerList !== prevCollectedAudioCheckerRef.current) {
       const checkerObject = collectedAudioAnnotationSentenceFilterData.find(obj => obj.key === "audioChecker");
       if (checkerObject && checkerObject.selects) {
         const checkerDetailsObject = checkerObject.selects.find(obj => obj.key === "audioChecker_details");
         if (checkerDetailsObject) {
-          checkerDetailsObject.child = collectedAudioAnnotationPhonemeChecker;
+          checkerDetailsObject.child = audioCheckerList;
         }
       }
     }
 
-    prevCollectedAudioSpeakersRef.current = collectedAudioAnnotationPhonemeSpeaker;
-    prevCollectedAudioCheckerRef.current = collectedAudioAnnotationPhonemeChecker;
+    prevCollectedAudioSpeakersRef.current = speakerList;
+    prevCollectedAudioCheckerRef.current = audioCheckerList;
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [collectedAudioAnnotationPhonemeSpeaker, collectedAudioAnnotationPhonemeChecker]);
+  }, [speakerList, audioCheckerList]);
 
 
   const handleFilterList = (key: string, value: string) => {
@@ -175,7 +175,7 @@ const Header = ({ selectedRowsData }: { selectedRowsData: collectAnnSenDataDT[] 
         <p className='text-small text-ct-blue-90-70% mt-1.5'>List of audios that is needed to word annotation</p>
       </div>
       <div className='flex items-center gap-x-6'>
-      {
+        {
           (selectedRowsData.length === 1) &&
           <PDF.Type2 data={selectedRowsData[0].script} />
         }

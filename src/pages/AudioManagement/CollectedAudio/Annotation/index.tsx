@@ -37,10 +37,10 @@ const Header = () => {
     speaker_details: [],
   })
 
-  const { collectedAudioAnnotationTypeScript, getCollectedAudioAnnotationTypeScript, getCollectedAudioAnnotationTypeSpeakers, collectedAudioAnnotationTypeSpeaker, } = useContext(AudioManagementContext);
+  const { scriptList, getScriptList, getSpeakerList, speakerList, } = useContext(AudioManagementContext);
 
-  const prevScriptFilterRef = useRef(collectedAudioAnnotationTypeScript);
-  const prevCollectedAudioSpeakersRef = useRef(collectedAudioAnnotationTypeSpeaker);
+  const prevScriptFilterRef = useRef(scriptList);
+  const prevCollectedAudioSpeakersRef = useRef(speakerList);
 
 
   useEffect(() => {
@@ -56,37 +56,37 @@ const Header = () => {
   }, [filterList]);
 
   useEffect(() => {
-    getCollectedAudioAnnotationTypeScript();
-    getCollectedAudioAnnotationTypeSpeakers();
+    getScriptList("collectedAudioAnnotationType");
+    getSpeakerList("collectedAudioAnnotationType");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
 
-    if (collectedAudioAnnotationTypeScript !== prevScriptFilterRef.current) {
+    if (scriptList !== prevScriptFilterRef.current) {
       const collectorDetailsObject = collectedAudioAnnotationTypeFilterData.find(obj => obj.key === "script");
       if (collectorDetailsObject) {
-        collectorDetailsObject.child = collectedAudioAnnotationTypeScript;
+        collectorDetailsObject.child = scriptList;
       }
     }
-    if (collectedAudioAnnotationTypeSpeaker !== prevCollectedAudioSpeakersRef.current) {
+    if (speakerList !== prevCollectedAudioSpeakersRef.current) {
       const speakerObject = collectedAudioAnnotationTypeFilterData.find(obj => obj.key === "speaker");
       if (speakerObject) {
         const selectObject = speakerObject.formData && speakerObject.formData.find(obj => obj.type === "multiple-select");
         if (selectObject && selectObject.selects) {
           const speakers = selectObject.selects.find(obj => obj.key === "speaker_details");
           if (speakers) {
-            speakers.child = collectedAudioAnnotationTypeSpeaker;
+            speakers.child = speakerList;
           }
         }
       }
     }
 
-    prevScriptFilterRef.current = collectedAudioAnnotationTypeScript;
-    prevCollectedAudioSpeakersRef.current = collectedAudioAnnotationTypeSpeaker;
+    prevScriptFilterRef.current = scriptList;
+    prevCollectedAudioSpeakersRef.current = speakerList;
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [collectedAudioAnnotationTypeScript, collectedAudioAnnotationTypeSpeaker]);
+  }, [scriptList, speakerList]);
 
 
   const handleFilterList = (key: string, value: string) => {
