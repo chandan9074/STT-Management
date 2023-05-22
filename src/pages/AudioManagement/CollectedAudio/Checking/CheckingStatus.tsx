@@ -47,11 +47,11 @@ const Header = ({ selectedRowsData }: { selectedRowsData: checkingStatusDT[] }) 
         status: [],
     })
 
-    const { collectedAudioCheckingStatusScript, getCollectedAudioCheckingStatusScript, collectedAudioCheckingStatusCollector, getCollectedAudioCheckingStatusCollector, getCollectedAudioCheckingStatusSpeakers, collectedAudioCheckingStatusSpeaker, } = useContext(AudioManagementContext);
+    const { scriptList, getScriptList, collectorList, getCollectorList, getSpeakerList, speakerList, } = useContext(AudioManagementContext);
 
-    const prevScriptFilterRef = useRef(collectedAudioCheckingStatusScript);
-    const prevCollectedAudioCollectorRef = useRef(collectedAudioCheckingStatusCollector);
-    const prevCollectedAudioSpeakersRef = useRef(collectedAudioCheckingStatusSpeaker);
+    const prevScriptFilterRef = useRef(scriptList);
+    const prevCollectedAudioCollectorRef = useRef(collectorList);
+    const prevCollectedAudioSpeakersRef = useRef(speakerList);
 
 
     useEffect(() => {
@@ -67,50 +67,50 @@ const Header = ({ selectedRowsData }: { selectedRowsData: checkingStatusDT[] }) 
     }, [filterList]);
 
     useEffect(() => {
-        getCollectedAudioCheckingStatusScript();
-        getCollectedAudioCheckingStatusCollector();
-        getCollectedAudioCheckingStatusSpeakers();
+        getScriptList("collectAudioCheckingStatus");
+        getCollectorList("collectAudioCheckingStatus");
+        getSpeakerList("collectAudioCheckingStatus");
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
 
-        if (collectedAudioCheckingStatusScript !== prevScriptFilterRef.current) {
+        if (scriptList !== prevScriptFilterRef.current) {
             const collectorDetailsObject = collectedAudioCheckingStatusFilterData.find(obj => obj.key === "script");
             if (collectorDetailsObject) {
-                collectorDetailsObject.child = collectedAudioCheckingStatusScript;
+                collectorDetailsObject.child = scriptList;
             }
         }
-        if (collectedAudioCheckingStatusCollector !== prevCollectedAudioCollectorRef.current) {
+        if (collectorList !== prevCollectedAudioCollectorRef.current) {
             const collectorObject = collectedAudioCheckingStatusFilterData.find(obj => obj.key === "collector");
             if (collectorObject && collectorObject.selects) {
-                // collectorDetailsObject.child = collectedAudioCheckingStatusCollector;
+                // collectorDetailsObject.child = collectorList;
                 const collectorDetailsObject = collectorObject.selects.find(obj => obj.key === "collector_details");
                 if (collectorDetailsObject) {
-                    collectorDetailsObject.child = collectedAudioCheckingStatusCollector;
+                    collectorDetailsObject.child = collectorList;
                 }
             }
         }
-        if (collectedAudioCheckingStatusSpeaker !== prevCollectedAudioSpeakersRef.current) {
+        if (speakerList !== prevCollectedAudioSpeakersRef.current) {
             const speakerObject = collectedAudioCheckingStatusFilterData.find(obj => obj.key === "speaker");
             if (speakerObject) {
-                // collectorDetailsObject.child = collectedAudioCheckingStatusCollector;
+                // collectorDetailsObject.child = collectorList;
                 const selectObject = speakerObject.formData && speakerObject.formData.find(obj => obj.type === "multiple-select");
                 if (selectObject && selectObject.selects) {
                     const speakers = selectObject.selects.find(obj => obj.key === "speaker_details");
                     if (speakers) {
-                        speakers.child = collectedAudioCheckingStatusSpeaker;
+                        speakers.child = speakerList;
                     }
                 }
             }
         }
 
-        prevScriptFilterRef.current = collectedAudioCheckingStatusScript;
-        prevCollectedAudioCollectorRef.current = collectedAudioCheckingStatusCollector;
-        prevCollectedAudioSpeakersRef.current = collectedAudioCheckingStatusSpeaker;
+        prevScriptFilterRef.current = scriptList;
+        prevCollectedAudioCollectorRef.current = collectorList;
+        prevCollectedAudioSpeakersRef.current = speakerList;
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [collectedAudioCheckingStatusScript, collectedAudioCheckingStatusCollector, collectedAudioCheckingStatusSpeaker]);
+    }, [scriptList, collectorList, speakerList]);
 
 
     const handleFilterList = (key: string, value: string) => {
