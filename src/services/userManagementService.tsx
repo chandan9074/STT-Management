@@ -27,13 +27,11 @@ export default class UserManagementService {
   }
 
   static getUserById(params: getUserByIdParamsDT) {
-    console.log('--------params---------', params);
-    
     return axios.get(PATH.GET_RES_USER_MANAGEMENT_BY_ID_MODULE, { params: params });
   }
 
   static updateUser(params: FormData) {
-    return axios.put(PATH.UPDATE_RES_USER_MANAGEMENT_BY_ID_MODULE, params);
+    return axios.post(PATH.UPDATE_RES_USER_MANAGEMENT_BY_ID_MODULE, params);
   }
 
 }

@@ -24,12 +24,12 @@ interface ContextProps {
     setQueryParams: React.Dispatch<React.SetStateAction<userManagementParamsDT>>;
     activityQueryParams: activityQueryParamsDT;
     setActivityQueryParams: React.Dispatch<React.SetStateAction<activityQueryParamsDT>>;
-    createUser: (data: FormData) => void,
+    createUser: (data: FormData) => Promise<number | undefined>,
     newRoleList: string[]
     userData: userInfoDT;
     setUserData: React.Dispatch<React.SetStateAction<userInfoDT>>;
     getUserById: (id: getUserByIdParamsDT) => void,
-    updateUser: (data: FormData) => void
+    updateUser: (data: FormData) => Promise<number | undefined>,
 }
 
 export const UserManagementContext = createContext({} as ContextProps);
@@ -44,7 +44,7 @@ const UserManagementProvider = ({ children }: { children: any }) => {
     const [selectedFieldOutline, setSelectedFieldOutline] = useState<string>("");
     const [newRoleList, setNewRoleList] = useState<string[]>([] as string[]);
     const [userData, setUserData] = useState<userInfoDT>({} as userInfoDT)
-    
+
 
     const [queryParams, setQueryParams] = useState<userManagementParamsDT>({
         page: 1,
@@ -62,35 +62,39 @@ const UserManagementProvider = ({ children }: { children: any }) => {
 
     const updateUser = async (params: FormData) => {
         try {
-        //   setLoading(true);
-          await UserManagementService.updateUser(params);
-        //   setLoading(false);
-          callingToast("Script updated successfully");
-        //   getAllScript({ role: commonContext?.role });
+            //   setLoading(true);
+            await UserManagementService.updateUser(params);
+            //   setLoading(false);
+            callingToast("User updated successfully");
+            return 200;
+
+            //   getAllScript({ role: commonContext?.role });
         } catch (error) {
-        //   setLoading(false);
-    
+            //   setLoading(false);
+
         }
-      }
+    }
 
     const getUserById = async (id: getUserByIdParamsDT) => {
         try {
-          const response = await UserManagementService.getUserById(id);
-          setUserData(response?.data);
-        //   setScriptModule(response?.data?.module)
+            const response = await UserManagementService.getUserById(id);
+            setUserData(response?.data);
+            //   setScriptModule(response?.data?.module)
         } catch (error) {
         }
-      }  
+    }
 
     const createUser = async (params: FormData) => {
         try {
-            const response = await UserManagementService.createUser(params);
+            await UserManagementService.createUser(params);
             callingToast("User created successfully");
             //   getAllScript({ role: commonContext?.role });
-            return {
-                message: response?.data?.message,
-                status: response?.status
-            }
+            // return {
+            //     message: response?.data?.message,
+            //     status: response?.status
+            // }
+            return 200;            
+
         } catch (error) {
 
         }
@@ -120,7 +124,7 @@ const UserManagementProvider = ({ children }: { children: any }) => {
         const concatenatedStrings = res.data.map((item: roleDT) => item.id + " - " + item.name);
         setRoleList(concatenatedStrings);
         setNewRoleList(res.data)
-        
+
     }
 
     return (

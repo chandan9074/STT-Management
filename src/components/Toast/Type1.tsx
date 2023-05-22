@@ -7,8 +7,6 @@ interface Props {
 const Type1 = ({ massage }: Props) => {
 
 
-    console.log("hello toast")
-
     // const commonContext = useContext(CommonContext);
 
     // const { massages, iconSrc, open, setOpen } = props

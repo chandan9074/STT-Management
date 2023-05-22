@@ -13,9 +13,6 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
 
     const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
 
-    console.log('*************************', formik.values.role);
-
-
     return (
         // <div className='disableAutocompleteColor'>
         <div >
@@ -247,12 +244,12 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                     <div className='mt-6'>
                         <HomeDistrictSelect
                             required={true}
-                            formikValues={formik.values.homeDistrict}
+                            formikValues={formik.values.district}
                             data={homeDistrict}
-                            formikError={formik.errors.homeDistrict}
-                            formikTouched={formik.touched.homeDistrict}
+                            formikError={formik.errors.district}
+                            formikTouched={formik.touched.district}
                             formik={formik}
-                            name={'homeDistrict'}
+                            name={'district'}
                             fieldLabel='Home District'
                         />
                     </div>
