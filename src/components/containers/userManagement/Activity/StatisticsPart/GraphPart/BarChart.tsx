@@ -115,6 +115,13 @@ const Header = ({ activeMonth, year }: HeaderProps) => {
   const [calenderBtn, setCalenderBtn] = useState(false);
   const [currentYear, setCurrentYear] = useState(year);
 
+  const handleWeekData = (value: string) => {
+    console.log(value, 'week data')
+    const week = Number(value.split(' ')[1]);
+    userManagementContext.setCurrentWeek(week);
+
+  }
+
   const handleYear = (year: number) => {
     setCurrentYear(year);
   };
@@ -135,6 +142,7 @@ const Header = ({ activeMonth, year }: HeaderProps) => {
       //   year,
       //   month
       // );
+      userManagementContext.setActivityQueryParams({ ...userManagementContext.activityQueryParams, year: year, month: month })
     }
   };
 
@@ -150,7 +158,7 @@ const Header = ({ activeMonth, year }: HeaderProps) => {
           />
           <div className="flex items-center gap-x-6 relative z-[80]">
 
-            <Buttons.TabButton.Secondary tabLabel={["week 1", "Week 2", "week 3", "Week 4", "Week 5"]} setActiveData={userManagementContext.setActiveRole} size='small' variant='White' />
+            <Buttons.TabButton.Secondary tabLabel={["Week 1", "Week 2", "Week 3", "Week 4", "Week 5"]} handleActiveData={handleWeekData} setActiveData={userManagementContext.setActiveRole} size='small' variant='White' />
 
             <div className='flex items-center gap-x-2'>
               <button>

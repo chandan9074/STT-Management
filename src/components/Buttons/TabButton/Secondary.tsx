@@ -7,14 +7,16 @@ interface Props {
     variant?: "Red" | "CT-Blue" | "Blue" | "White";
     // icon?: React.ReactElement;
     setActiveData: Dispatch<SetStateAction<string>>;
+    handleActiveData?: (value: string) => void;
 }
 const Secondary = (props: Props) => {
-    const { tabLabel, variant = "Blue", setActiveData, size = "medium" } = props
+    const { tabLabel, handleActiveData, variant = "Blue", setActiveData, size = "medium" } = props
     const [activeButton, setActiveButton] = useState<number>(0)
 
     const handleActive = (data: string, active: number) => {
         setActiveButton(active)
         setActiveData(data)
+        handleActiveData && handleActiveData(data);
     }
 
     const sizeStyle: sizeStyleType = {
@@ -61,19 +63,19 @@ const Secondary = (props: Props) => {
         <div
             style={{ boxShadow: "0px 1px 3px rgba(96, 108, 128, 0.05)" }}
             className='flex p-[3px] rounded-[9px] bg-white'>
-                {tabLabel.map((data: string, index: number) =>
-                    <button
-                        key={index}
-                        onClick={() => handleActive(data, index)}
-                        className={`text-xs leading-[15.6px] duration-300 ${sizeStyle ? sizeStyle[size].w : ""} ${sizeStyle ? sizeStyle[size].px : "px-6"} ${sizeStyle ? sizeStyle[size].py : "py-2"}  ${index === 0 ? "rounded-l-md" : ""} ${index === (tabLabel.length - 1) ? "rounded-r-md" : ""}
+            {tabLabel.map((data: string, index: number) =>
+                <button
+                    key={index}
+                    onClick={() => handleActive(data, index)}
+                    className={`text-xs leading-[15.6px] duration-300 ${sizeStyle ? sizeStyle[size].w : ""} ${sizeStyle ? sizeStyle[size].px : "px-6"} ${sizeStyle ? sizeStyle[size].py : "py-2"}  ${index === 0 ? "rounded-l-md" : ""} ${index === (tabLabel.length - 1) ? "rounded-r-md" : ""}
                     ${activeButton === index ? `${buttonVariantStyle[variant]?.selected}` :
-                                `${buttonVariantStyle[variant]?.hover} ${buttonVariantStyle[variant]?.pressed} ${buttonVariantStyle[variant]?.text}
+                            `${buttonVariantStyle[variant]?.hover} ${buttonVariantStyle[variant]?.pressed} ${buttonVariantStyle[variant]?.text}
                         bg-blue-gray-A10 
                         `}`}
-                    >
-                        {data}
-                    </button>
-                )}
+                >
+                    {data}
+                </button>
+            )}
         </div>
     );
 };

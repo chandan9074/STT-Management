@@ -44,7 +44,7 @@ const UserManagementProvider = ({ children }: { children: any }) => {
     const [selectedFieldOutline, setSelectedFieldOutline] = useState<string>("");
     const [newRoleList, setNewRoleList] = useState<string[]>([] as string[]);
     const [userData, setUserData] = useState<userInfoDT>({} as userInfoDT)
-    
+
 
     const [queryParams, setQueryParams] = useState<userManagementParamsDT>({
         page: 1,
@@ -58,29 +58,31 @@ const UserManagementProvider = ({ children }: { children: any }) => {
     const [activityQueryParams, setActivityQueryParams] = useState<activityQueryParamsDT>({
         id: "",
         role: "",
+        year: new Date().getFullYear(),
+        month: new Date().toLocaleString('default', { month: 'long' }),
     })
 
     const updateUser = async (params: FormData) => {
         try {
-        //   setLoading(true);
-          await UserManagementService.updateUser(params);
-        //   setLoading(false);
-          callingToast("Script updated successfully");
-        //   getAllScript({ role: commonContext?.role });
+            //   setLoading(true);
+            await UserManagementService.updateUser(params);
+            //   setLoading(false);
+            callingToast("Script updated successfully");
+            //   getAllScript({ role: commonContext?.role });
         } catch (error) {
-        //   setLoading(false);
-    
+            //   setLoading(false);
+
         }
-      }
+    }
 
     const getUserById = async (id: getUserByIdParamsDT) => {
         try {
-          const response = await UserManagementService.getUserById(id);
-          setUserData(response?.data);
-        //   setScriptModule(response?.data?.module)
+            const response = await UserManagementService.getUserById(id);
+            setUserData(response?.data);
+            //   setScriptModule(response?.data?.module)
         } catch (error) {
         }
-      }  
+    }
 
     const createUser = async (params: FormData) => {
         try {
@@ -100,6 +102,7 @@ const UserManagementProvider = ({ children }: { children: any }) => {
     const getActivityStatistics = async (value: activityQueryParamsDT) => {
         const res = await UserManagementService.getActivityStatistics(value);
         setActivityStatistics(res.data);
+        console.log(res.data, "res.data from provider")
         setActiveRole(res.data.roleList[0])
     }
 
@@ -120,7 +123,7 @@ const UserManagementProvider = ({ children }: { children: any }) => {
         const concatenatedStrings = res.data.map((item: roleDT) => item.id + " - " + item.name);
         setRoleList(concatenatedStrings);
         setNewRoleList(res.data)
-        
+
     }
 
     return (

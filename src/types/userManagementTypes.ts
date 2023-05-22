@@ -10,7 +10,7 @@ export type activityDT = {
     email: string,
     phone: string,
     address: string,
-    PrimaryRole: string,
+    primaryRole: string,
     roleList: string[],
     roleData: roleDataDT
 }
@@ -198,4 +198,6 @@ export type getUserByIdParamsDT = {
 export type activityQueryParamsDT = {
     id: string,
     role: string,
+    year: number,
+    month: string,
 }

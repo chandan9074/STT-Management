@@ -11,7 +11,8 @@ const Activity = () => {
 
   useEffect(() => {
     if (id) {
-      setActivityQueryParams({
+      console.log("from activity page", id)
+      setActivityQueryParams({ 
         ...activityQueryParams,
         id: id
       })
@@ -21,7 +22,9 @@ const Activity = () => {
 
   useEffect(() => {
     console.log("from activity page now", id)
-    getActivityStatistics(activityQueryParams)
+    if (activityQueryParams.id) {
+      getActivityStatistics(activityQueryParams)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activityQueryParams])
   return (
