@@ -45,10 +45,10 @@ const Header = ({ selectedRowsData }: { selectedRowsData: collectAnnSenDataDT[] 
     speaker_details: [],
   })
 
-  const { collectedAudioAnnotationSentenceChecker, getCollectedAudioAnnotationSentenceChecker, getCollectedAudioAnnotationSentenceSpeakers, collectedAudioAnnotationSentenceSpeaker, } = useContext(AudioManagementContext);
+  const { audioCheckerList, getAudioCheckerList, getSpeakerList, speakerList, } = useContext(AudioManagementContext);
 
-  const prevCollectedAudioSpeakersRef = useRef(collectedAudioAnnotationSentenceSpeaker);
-  const prevCollectedAudioCheckerRef = useRef(collectedAudioAnnotationSentenceChecker);
+  const prevCollectedAudioSpeakersRef = useRef(speakerList);
+  const prevCollectedAudioCheckerRef = useRef(audioCheckerList);
 
 
   useEffect(() => {
@@ -64,40 +64,40 @@ const Header = ({ selectedRowsData }: { selectedRowsData: collectAnnSenDataDT[] 
   }, [filterList]);
 
   useEffect(() => {
-    getCollectedAudioAnnotationSentenceChecker();
-    getCollectedAudioAnnotationSentenceSpeakers();
+    getAudioCheckerList("collectedAudioAnnotationSentence");
+    getSpeakerList("collectedAudioAnnotationSentence");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
 
-    if (collectedAudioAnnotationSentenceSpeaker !== prevCollectedAudioSpeakersRef.current) {
+    if (speakerList !== prevCollectedAudioSpeakersRef.current) {
       const speakerObject = collectedAudioAnnotationSentenceFilterData.find(obj => obj.key === "speaker");
       if (speakerObject) {
         const selectObject = speakerObject.formData && speakerObject.formData.find(obj => obj.type === "multiple-select");
         if (selectObject && selectObject.selects) {
           const speakers = selectObject.selects.find(obj => obj.key === "speaker_details");
           if (speakers) {
-            speakers.child = collectedAudioAnnotationSentenceSpeaker;
+            speakers.child = speakerList;
           }
         }
       }
     }
-    if (collectedAudioAnnotationSentenceChecker !== prevCollectedAudioCheckerRef.current) {
+    if (audioCheckerList !== prevCollectedAudioCheckerRef.current) {
       const checkerObject = collectedAudioAnnotationSentenceFilterData.find(obj => obj.key === "audioChecker");
       if (checkerObject && checkerObject.selects) {
         const checkerDetailsObject = checkerObject.selects.find(obj => obj.key === "audioChecker_details");
         if (checkerDetailsObject) {
-          checkerDetailsObject.child = collectedAudioAnnotationSentenceChecker;
+          checkerDetailsObject.child = audioCheckerList;
         }
       }
     }
 
-    prevCollectedAudioSpeakersRef.current = collectedAudioAnnotationSentenceSpeaker;
-    prevCollectedAudioCheckerRef.current = collectedAudioAnnotationSentenceChecker;
+    prevCollectedAudioSpeakersRef.current = speakerList;
+    prevCollectedAudioCheckerRef.current = audioCheckerList;
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [collectedAudioAnnotationSentenceSpeaker, collectedAudioAnnotationSentenceChecker]);
+  }, [speakerList, audioCheckerList]);
 
 
   const handleFilterList = (key: string, value: string) => {

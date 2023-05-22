@@ -154,7 +154,7 @@ const AssignProvider = ({ children }: { children: any }) => {
   const postSingleTargetSpeechesAssign = async (data: FormData) => {
     try {
       setLoading(true);
-      const res = await AssignService.postSingleTargetSpeechesAssign(data);
+      await AssignService.postSingleTargetSpeechesAssign(data);
       setLoading(false);
       return 200;
       // await getSelectedScript();
@@ -183,7 +183,7 @@ const AssignProvider = ({ children }: { children: any }) => {
 
   const postRestTargetAssign = async (data: postResTargetAssignParamDT) => {
     try {
-      const res = await AssignService.createTargetAssign(data);
+      await AssignService.createTargetAssign(data);
       return 200;
       // await getSelectedScript();
     } catch (error) {
@@ -193,7 +193,7 @@ const AssignProvider = ({ children }: { children: any }) => {
 
   const deleteDraftTargetAssign = async (id: string) => {
     try {
-      const res = await AssignService.deleteDraftTargetAssign(id);
+      await AssignService.deleteDraftTargetAssign(id);
       setSelectedTargetList(selectedTargetList.filter((item) => item.id !== id))
     } catch (error) {
 
@@ -211,7 +211,7 @@ const AssignProvider = ({ children }: { children: any }) => {
 
   const updateAssigneeMainTarget = async (data: updateAssigneeMainTargetParamDT) => {
     try {
-      const res = await AssignService.updateAssigneeMainTarget(data);
+      await AssignService.updateAssigneeMainTarget(data);
       await new Promise(resolve => setTimeout(resolve, 1000));
       // await getTargetAssign();
     } catch (error) {
@@ -265,7 +265,7 @@ const AssignProvider = ({ children }: { children: any }) => {
 
   const postSelectedScript = async (data: postSelectedScriptBodyDT) => {
     try {
-      const res = await AssignService.postSelectedScript(data);
+      await AssignService.postSelectedScript(data);
       await new Promise(resolve => setTimeout(resolve, 1000));
       await getSelectedScript();
     } catch (error) { }
@@ -294,14 +294,14 @@ const AssignProvider = ({ children }: { children: any }) => {
 
   const deleteSingleScript = async (id: string) => {
     try {
-      const res = await AssignService.deleteSingleScript(id);
+      await AssignService.deleteSingleScript(id);
       setSelectedScriptList(selectedScriptList.filter((item) => item.id !== id));
     } catch (error) { }
   }
 
   const deleteSingleCriteria = async (id: string) => {
     try {
-      const res = await AssignService.deleteSingleCriteria(id);
+      await AssignService.deleteSingleCriteria(id);
       setSelectedCriteriaList(selectedCriteriaList.filter((item) => item.id !== id));
     } catch (error) {
 
@@ -310,7 +310,7 @@ const AssignProvider = ({ children }: { children: any }) => {
 
   const deleteSingleAssignee = async (id: string) => {
     try {
-      const res = await AssignService.deleteSingleAssignee(id);
+      await AssignService.deleteSingleAssignee(id);
       setSelectedAssigneList(selectedAssigneList.filter((item) => item.id !== id));
     } catch (error) {
 
@@ -363,7 +363,7 @@ const AssignProvider = ({ children }: { children: any }) => {
 
   const updateDraftTarget = async (data: updateDraftTargetQueryParams) => {
     try {
-      const res = await AssignService.updateDraftTarget({ ...data });
+      await AssignService.updateDraftTarget({ ...data });
       await new Promise(resolve => setTimeout(resolve, 1000));
       await getDraftTarget();
     } catch (error) { }
@@ -457,7 +457,7 @@ const AssignProvider = ({ children }: { children: any }) => {
 
   const creteAssignCriteria = async (data: CriteriaItemDT | CriteriaItemDT[]) => {
     try {
-      const res = await AssignService.createAssignCriteria(data);
+      await AssignService.createAssignCriteria(data);
       await new Promise(resolve => setTimeout(resolve, 1000));
       getCriteria();
     } catch (error) {
@@ -467,7 +467,7 @@ const AssignProvider = ({ children }: { children: any }) => {
 
   const UpdateAssignCriteria = async (data: CriteriaItemDT) => {
     try {
-      const res = await AssignService.UpdateAssignCriteria(data);
+      await AssignService.UpdateAssignCriteria(data);
       await new Promise(resolve => setTimeout(resolve, 1000));
       getCriteria();
       setSingleCriteriaData({} as CriteriaItemDT);
@@ -493,7 +493,7 @@ const AssignProvider = ({ children }: { children: any }) => {
 
   const createAssignee = async (data: createAssigneeParamsDT) => {
     try {
-      const res = await AssignService.createAssignee(data);
+      await AssignService.createAssignee(data);
       await new Promise(resolve => setTimeout(resolve, 1000));
       getAssignee();
     } catch (error) {
@@ -504,7 +504,7 @@ const AssignProvider = ({ children }: { children: any }) => {
   const postRecreateTargetAssign = async (data: postRecreateTargetParamDT) => {
     try {
       setLoading(true);
-      const res = await AssignService.postRecreateTargetAssign(data);
+      await AssignService.postRecreateTargetAssign(data);
       setLoading(false);
       return "ok"
     } catch (error) {

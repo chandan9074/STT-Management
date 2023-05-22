@@ -46,11 +46,11 @@ const Header = ({ selectedRowsData }: { selectedRowsData: collectValSenDataDT[] 
     annotator_details: [],
   })
 
-  const { collectedAudioValidationPhonemeChecker, collectedAudioValidationPhonemeAnnotator, getCollectedAudioValidationPhonemeAnnotator, getCollectedAudioValidationPhonemeChecker, getCollectedAudioValidationPhonemeSpeakers, collectedAudioValidationPhonemeSpeaker, } = useContext(AudioManagementContext);
+  const { audioCheckerList, annotatorList, getAnnotatorList, getAudioCheckerList, getScriptList, speakerList, } = useContext(AudioManagementContext);
 
-  const prevCollectedAudioSpeakersRef = useRef(collectedAudioValidationPhonemeSpeaker);
-  const prevCollectedAudioCheckerRef = useRef(collectedAudioValidationPhonemeChecker);
-  const prevCollectedAudioAnnotatorRef = useRef(collectedAudioValidationPhonemeAnnotator);
+  const prevCollectedAudioSpeakersRef = useRef(speakerList);
+  const prevCollectedAudioCheckerRef = useRef(audioCheckerList);
+  const prevCollectedAudioAnnotatorRef = useRef(annotatorList);
 
 
 
@@ -67,51 +67,51 @@ const Header = ({ selectedRowsData }: { selectedRowsData: collectValSenDataDT[] 
   }, [filterList]);
 
   useEffect(() => {
-    getCollectedAudioValidationPhonemeChecker();
-    getCollectedAudioValidationPhonemeSpeakers();
-    getCollectedAudioValidationPhonemeAnnotator();
+    getAudioCheckerList("collectedAudioValidationPhoneme");
+    getScriptList("collectedAudioValidationPhoneme");
+    getAnnotatorList("collectedAudioValidationPhoneme");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
 
-    if (collectedAudioValidationPhonemeSpeaker !== prevCollectedAudioSpeakersRef.current) {
+    if (speakerList !== prevCollectedAudioSpeakersRef.current) {
       const speakerObject = collectedAudioValidationSentenceFilterData.find(obj => obj.key === "speaker");
       if (speakerObject) {
         const selectObject = speakerObject.formData && speakerObject.formData.find(obj => obj.type === "multiple-select");
         if (selectObject && selectObject.selects) {
           const speakers = selectObject.selects.find(obj => obj.key === "speaker_details");
           if (speakers) {
-            speakers.child = collectedAudioValidationPhonemeSpeaker;
+            speakers.child = speakerList;
           }
         }
       }
     }
-    if (collectedAudioValidationPhonemeChecker !== prevCollectedAudioCheckerRef.current) {
+    if (audioCheckerList !== prevCollectedAudioCheckerRef.current) {
       const checkerObject = collectedAudioValidationSentenceFilterData.find(obj => obj.key === "audioChecker");
       if (checkerObject && checkerObject.selects) {
         const checkerDetailsObject = checkerObject.selects.find(obj => obj.key === "audioChecker_details");
         if (checkerDetailsObject) {
-          checkerDetailsObject.child = collectedAudioValidationPhonemeChecker;
+          checkerDetailsObject.child = audioCheckerList;
         }
       }
     }
-    if (collectedAudioValidationPhonemeAnnotator !== prevCollectedAudioAnnotatorRef.current) {
+    if (annotatorList !== prevCollectedAudioAnnotatorRef.current) {
       const annotatorObject = collectedAudioValidationSentenceFilterData.find(obj => obj.key === "annotator");
       if (annotatorObject && annotatorObject.selects) {
         const annotatorDetailsObject = annotatorObject.selects.find(obj => obj.key === "annotator_details");
         if (annotatorDetailsObject) {
-          annotatorDetailsObject.child = collectedAudioValidationPhonemeAnnotator;
+          annotatorDetailsObject.child = annotatorList;
         }
       }
     }
 
-    prevCollectedAudioSpeakersRef.current = collectedAudioValidationPhonemeSpeaker;
-    prevCollectedAudioCheckerRef.current = collectedAudioValidationPhonemeChecker;
-    prevCollectedAudioAnnotatorRef.current = collectedAudioValidationPhonemeAnnotator;
+    prevCollectedAudioSpeakersRef.current = speakerList;
+    prevCollectedAudioCheckerRef.current = audioCheckerList;
+    prevCollectedAudioAnnotatorRef.current = annotatorList;
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [collectedAudioValidationPhonemeSpeaker, collectedAudioValidationPhonemeChecker, collectedAudioValidationPhonemeAnnotator]);
+  }, [speakerList, audioCheckerList, annotatorList]);
 
 
   const handleFilterList = (key: string, value: string) => {
