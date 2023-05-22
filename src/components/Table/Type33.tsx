@@ -16,9 +16,10 @@ import Remark2 from '../containers/AudioManagement/TableField/Remark2';
 
 type Props = {
     data: annotatedFilesUploadDT[]
+    setSelectedRowsData: React.Dispatch<React.SetStateAction<annotatedFilesUploadDT[]>>
 }
 
-const Type33 = ({ data }: Props) => {
+const Type33 = ({ data,setSelectedRowsData }: Props) => {
 
     const [open, setOpen] = useState(false);
 
@@ -152,29 +153,26 @@ const Type33 = ({ data }: Props) => {
             fixed: 'right',
             width: 100,
             render: (_, record: annotatedFilesUploadDT) => (
-                <>
-
-                    <div className='flex hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 justify-center items-center'>
+               <div className="flex justify-center items-center">
+                    <button
+                        onClick={() => {
+                            showDrawer(record);
+                            setSingleTargetData(record);
+                        }}
+                        className='flex justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full'>
                         <img
-                            onClick={() => {
-                                showDrawer(record);
-                                setSingleTargetData(record);
-                            }}
+
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
-                    </div>
-
-                </>)
+                    </button>
+                </div>)
         },
     ]
 
     const rowSelection = {
-        onChange: (selectedRowKeys: React.Key[], selectedRows: annotatedFilesUploadDT[]) => {
-            // setSelectedTarget(selectedRows);
-            console.log('*******', selectedRows);
-
-
+        onChange: (selectedRowKeys: React.Key[], selectedRows: annotatedFilesUploadDT[]) => {    
+            setSelectedRowsData(selectedRows)
         },
         getCheckboxProps: (record: annotatedFilesUploadDT) => ({
             // disabled: record.name === 'Disabled User', // Column configuration not to be checked

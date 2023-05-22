@@ -12,9 +12,10 @@ import { Drawer } from "../Drawer"
 import Remark2 from "../containers/AudioManagement/TableField/Remark2"
 
 type Props = {
-    data: allCheckedSpeechDT[]
+    data: allCheckedSpeechDT[];
+    setSelectedRowsData: React.Dispatch<React.SetStateAction<allCheckedSpeechDT[]>>
 }
-const Type25 = ({ data }: Props) => {
+const Type25 = ({ data,setSelectedRowsData }: Props) => {
 
     const { roleName } = useContext(CommonContext);
 
@@ -122,27 +123,26 @@ const Type25 = ({ data }: Props) => {
             fixed: 'right',
             width: 80,
             render: (_, record: allCheckedSpeechDT) => (
-                <>
-                    <div className='flex hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 justify-center items-center'>
-                        <img
-                            onClick={() => {
-                                showDrawer();
-                                setSingleTargetData(record);
-                            }}
-                            className='w-[14px] h-[14px] cursor-pointer'
-                            src={Icons.open_in_new}
-                            alt="" />
-                    </div>
-                </>)
+                <div className="flex justify-center items-center">
+                <button
+                    onClick={() => {
+                        showDrawer();
+                        setSingleTargetData(record);
+                    }}
+                    className='flex justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full'>
+                    <img
+
+                        className='w-[14px] h-[14px] cursor-pointer'
+                        src={Icons.open_in_new}
+                        alt="" />
+                </button>
+            </div>)
         },
     ]
 
     const rowSelection = {
         onChange: (selectedRowKeys: React.Key[], selectedRows: allCheckedSpeechDT[]) => {
-            // setSelectedTarget(selectedRows);
-            console.log('*******', selectedRows);
-
-
+            setSelectedRowsData(selectedRows)
         },
         getCheckboxProps: (record: allCheckedSpeechDT) => ({
             // disabled: record.name === 'Disabled User', // Column configuration not to be checked
@@ -167,6 +167,7 @@ const Type25 = ({ data }: Props) => {
                 columns={Type25columns}
                 scroll={{ x: 1366 }}
                 rowKey="id"
+                pagination={false}
             />
             <div className='flex w-full justify-end mt-4 mb-2'>
                 <Pagination.Type2

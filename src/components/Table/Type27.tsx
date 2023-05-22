@@ -1,6 +1,6 @@
 import { Table } from "antd"
 import { ColumnType, ColumnsType } from "antd/es/table"
-import { useState } from "react"
+import React, { useState } from "react"
 import Icons from "../../assets/Icons"
 import { colAnnSenStatusFilterData } from "../../data/audioManagement/AudioManagementData"
 import { STATUS_ANNOTATING, STATUS_TOOK_A_BREAK } from "../../helpers/ConditionVariable"
@@ -14,9 +14,10 @@ import Pagination from "../Pagination"
 
 type Props = {
     data: sentenceLevelUploadDT[]
+    setSelectedRowsData: React.Dispatch<React.SetStateAction<sentenceLevelUploadDT[]>>
 }
 
-const Type27 = ({ data }: Props) => {
+const Type27 = ({ data, setSelectedRowsData }: Props) => {
 
     const [open, setOpen] = useState(false);
 
@@ -104,29 +105,26 @@ const Type27 = ({ data }: Props) => {
             fixed: 'right',
             width: 71,
             render: (_, record: sentenceLevelUploadDT) => (
-                <>
-
-                    <div className='flex hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 justify-center items-center'>
+                <div className="flex justify-center items-center">
+                    <button
+                        onClick={() => {
+                            showDrawer();
+                            setSingleTargetData(record);
+                        }}
+                        className='flex justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full'>
                         <img
-                            onClick={() => {
-                                showDrawer();
-                                setSingleTargetData(record);
-                            }}
+
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
-                    </div>
-
-                </>)
+                    </button>
+                </div>)
         },
     ]
 
     const rowSelection = {
         onChange: (selectedRowKeys: React.Key[], selectedRows: sentenceLevelUploadDT[]) => {
-            // setSelectedTarget(selectedRows);
-            console.log('*******', selectedRows);
-
-
+            setSelectedRowsData(selectedRows)
         },
         getCheckboxProps: (record: sentenceLevelUploadDT) => ({
             // disabled: record.name === 'Disabled User', // Column configuration not to be checked

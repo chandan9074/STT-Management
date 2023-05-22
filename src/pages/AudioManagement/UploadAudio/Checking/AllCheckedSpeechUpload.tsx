@@ -6,10 +6,13 @@ import { SearchBox } from "../../../../components/SearchBox";
 import { Filter } from "../../../../components/Filter";
 import { targetFilterListDT } from "../../../../types/assignTypes";
 import { uploadAudioAllCheckingFilterData } from "../../../../data/audioManagement/AudioManagementData";
+import { allCheckedSpeechDT } from "../../../../types/audioManagementTypes";
 
 const AllCheckedAudiosUpload = () => {
 
   const { getAllCheckedAudiosUploadData, allCheckedAudiosUploadData } = useContext(AudioManagementContext);
+
+  const [selectedRowsData, setSelectedRowsData] = useState<allCheckedSpeechDT[]>([])
 
   useEffect(() => {
     getAllCheckedAudiosUploadData()
@@ -18,15 +21,15 @@ const AllCheckedAudiosUpload = () => {
 
   return (
     <div>
-      <Header />
-      <Table.Type25 data={allCheckedAudiosUploadData.data} />
+      <Header selectedRowsData={selectedRowsData} />
+      <Table.Type25 data={allCheckedAudiosUploadData.data} setSelectedRowsData={setSelectedRowsData} />
     </div>
   )
 }
 
 export default AllCheckedAudiosUpload
 
-const Header = () => {
+const Header = ({ selectedRowsData }: { selectedRowsData: allCheckedSpeechDT[] }) => {
 
   const [count, setCount] = useState<number>(0);
   const [filterList, setFilterList] = useState<targetFilterListDT>({
@@ -131,25 +134,28 @@ const Header = () => {
   return (
     <div className='ml-6 mr-4 mb-5 flex items-center justify-between'>
       <div>
-        <h1 className='text-heading-6 font-semibold text-ct-blue-95 leading-6'>All checked Speech</h1>
+        <h1 className='text-heading-6 font-medium text-ct-blue-95 leading-6'>All checked Speech</h1>
         <p className='text-small text-ct-blue-60 mt-1.5 font-medium'>01 Selected</p>
       </div>
       <div className='flex items-center gap-x-6'>
-        <div className="flex items-center gap-x-3">
-          <Buttons.BgHoverBtn
-            title="Re-Assign"
-            paddingY="py-2"
-            paddingX="px-4"
-            borderRadius="rounded-[6px]"
-            textColor="text-secondary-blue-50"
-            fontSize="text-small"
-            fontWeight="font-medium"
-            duration="duration-300"
-            hoverBgColor="hover:bg-white"
-          />
-        </div>
+        {
+          (selectedRowsData.length === 1) &&
+          <div className="flex items-center gap-x-3">
+            <Buttons.BgHoverBtn
+              title="Re-Assign"
+              paddingY="py-2"
+              paddingX="px-4"
+              borderRadius="rounded-[6px]"
+              textColor="text-secondary-blue-50"
+              fontSize="text-small"
+              fontWeight="font-medium"
+              duration="duration-300"
+              hoverBgColor="hover:bg-white"
+            />
+          </div>
+        }
         <div className='flex items-center gap-x-3'>
-          <SearchBox.Type1 inputWidth="w-44" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
+          <SearchBox.Type1 inputWidth="w-28" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
           <Filter.Type2 popupClassName='audio_submission_date_picker' handleSubmitFilter={handleSubmitFilter} filterData={uploadAudioAllCheckingFilterData} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
         </div>
       </div>

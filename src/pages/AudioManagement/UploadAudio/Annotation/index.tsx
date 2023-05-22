@@ -5,7 +5,6 @@ import { targetFilterListDT } from "../../../../types/assignTypes"
 import { uploadAudioAnnotationTypeFilterData } from "../../../../data/audioManagement/AudioManagementData"
 import { SearchBox } from "../../../../components/SearchBox"
 import { Filter } from "../../../../components/Filter"
-import Buttons from "../../../../components/Buttons"
 
 const AnnotationUpload = () => {
   const { getAnnotationUploadData, annotationUploadData } = useContext(AudioManagementContext)
@@ -101,12 +100,12 @@ const Header = () => {
   return (
     <div className='ml-6 mr-4 mb-5 flex items-center justify-between'>
       <div>
-        <h1 className='text-heading-6 font-semibold text-ct-blue-95 leading-6'>All checked Speech</h1>
-        <p className='text-small text-ct-blue-60 mt-1.5 font-medium'>01 Selected</p>
+        <h1 className='text-heading-6 font-medium text-ct-blue-95 leading-6'>Assign Audio to Annotation Type</h1>
+        <p className='text-small text-ct-blue-90-70% text-opacity-70 mt-1.5 font-normal'>Assign Audio in types of Anntation</p>
       </div>
       <div className='flex items-center gap-x-6'>
         <div className="flex items-center gap-x-3">
-          <Buttons.BgHoverBtn
+          {/* <Buttons.BgHoverBtn
             title="Re-Assign"
             paddingY="py-2"
             paddingX="px-4"
@@ -116,10 +115,10 @@ const Header = () => {
             fontWeight="font-medium"
             duration="duration-300"
             hoverBgColor="hover:bg-white"
-          />
+          /> */}
         </div>
         <div className='flex items-center gap-x-3'>
-          <SearchBox.Type1 inputWidth="w-44" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
+          <SearchBox.Type1 inputWidth="w-28" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
           <Filter.Type2 popupClassName='audio_submission_date_picker' handleSubmitFilter={handleSubmitFilter} filterData={uploadAudioAnnotationTypeFilterData} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
         </div>
       </div>

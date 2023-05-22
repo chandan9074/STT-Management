@@ -66,10 +66,10 @@ const VideoAudioUpload = ({ formik }: { formik: FormikValues }) => {
 
                 {
                     (formik.values.speechFile?.length !== 0) &&
-                    <div className='rounded-[4px] pt-[8px] pb-4 px-4 bg-ct-blue-05'>
+                    <div className='rounded-[4px] py-4 px-4 bg-ct-blue-05'>
                         <div className='flex justify-between items-center'>
                             <div className='flex gap-x-[11px] items-center'>
-                                <img src={Icons.Pdf} alt="" />
+                                {/* <img src={Icons.Pdf} alt="" /> */}
                                 <a href={urlPatternValidation(formik.values.speechFile) && formik.values.speechFile} rel="noreferrer" target="_blank" className='cursor-pointer'>
                                     <div >
                                         {
@@ -82,7 +82,7 @@ const VideoAudioUpload = ({ formik }: { formik: FormikValues }) => {
                                 e.preventDefault();
                                 onDeleteFile();
                             }}>
-                                <img className='w-[13px] h-[14px]' src={Icons.deleteIcon} alt="" />
+                                <img className='w-5 h-5' src={Icons.deleteIcon} alt="" />
                             </button>
                         </div>
                     </div>

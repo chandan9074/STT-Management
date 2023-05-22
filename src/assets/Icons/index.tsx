@@ -61,7 +61,9 @@ import ArrowRight from "./arrow_right.png";
 import ArrowDropUp from "./arrow_drop_up.svg";
 import ChevronRight from "./chevron_right.svg";
 import Link from "./link.svg";
+import Link_Black from "./link_black.svg";
 import AddLink from "./add_link.svg";
+import AddLink_Black from "./add_link_black.svg";
 import Backup from "./backup.svg";
 import Add from "./add.svg";
 import ArrowRightBack from "./arrow_right_alt.svg";
@@ -233,7 +235,9 @@ const Icons = {
   ArrowDropUp,
   ChevronRight,
   Link,
+  Link_Black,
   AddLink,
+  AddLink_Black,
   Backup,
   Add,
   ArrowRightBack,

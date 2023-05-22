@@ -16,6 +16,7 @@ const AnnotatedFilesUpload = () => {
 
     const [activeTab, setActiveTab] = useState<string>("Sentence");
     const [selectedSpeech, setSelectedSpeech] = useState<annotatedFilesUploadDT[]>([] as annotatedFilesUploadDT[]);
+    const [selectedRowsData, setSelectedRowsData] = useState<annotatedFilesUploadDT[]>([])
 
     const { getAnnotatedFilesUploadData, annotatedFilesUploadData } = useContext(AudioManagementContext);
 
@@ -26,7 +27,7 @@ const AnnotatedFilesUpload = () => {
 
     const allTergetMenu = (key: string) => {
         const Category: CategoryMap = {
-            "Sentence": <><Table.Type33 data={annotatedFilesUploadData.data} /></>,
+            "Sentence": <><Table.Type33 data={annotatedFilesUploadData.data} setSelectedRowsData={setSelectedRowsData} /></>,
             "Word": <></>,
             "Phoneme": <></>
         };
@@ -35,7 +36,7 @@ const AnnotatedFilesUpload = () => {
 
     return (
         <div className="pl-[26px]">
-            <Header setActiveTab={setActiveTab} selectedSpeech={selectedSpeech} setSelectedSpeech={setSelectedSpeech} />
+            <Header setActiveTab={setActiveTab} selectedSpeech={selectedSpeech} setSelectedSpeech={setSelectedSpeech} selectedRowsData={selectedRowsData} />
             <div>
                 {allTergetMenu(activeTab)}
             </div>
@@ -47,10 +48,11 @@ type Props = {
     setActiveTab: Dispatch<SetStateAction<string>>;
     selectedSpeech: annotatedFilesUploadDT[];
     setSelectedSpeech: React.Dispatch<React.SetStateAction<annotatedFilesUploadDT[]>>;
+    selectedRowsData: annotatedFilesUploadDT[]
 }
 
 
-const Header = ({ setActiveTab, selectedSpeech, setSelectedSpeech }: Props) => {
+const Header = ({ setActiveTab, selectedSpeech, setSelectedSpeech, selectedRowsData }: Props) => {
 
     const [isConfirmModal, setIsConfirmModal] = useState<boolean>(false);
     // const [isClaimModal, setIsClaimModal] = useState<boolean>(false);
@@ -271,22 +273,27 @@ const Header = ({ setActiveTab, selectedSpeech, setSelectedSpeech }: Props) => {
                 <div>
                     <TableHeading title='Annotated Files' />
                 </div>
-                <div className='flex items-center'>
-                    <Buttons.BgHoverBtn
-                        title="Re-Assign"
-                        paddingY="py-2"
-                        paddingX="px-4"
-                        borderRadius="rounded-[6px]"
-                        textColor="text-secondary-blue-50"
-                        fontSize="text-small"
-                        fontWeight="font-medium"
-                        duration="duration-300"
-                        hoverBgColor="hover:bg-white"
-                        onClick={() => setIsConfirmModal(true)}
-                    // marginX="mx-2"
-                    />
-                    <SearchBox.Type1 inputWidth="w-44" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
-                    <Filter.Type2 popupClassName='audio_submission_date_picker' handleSubmitFilter={handleSubmitFilter} filterData={uploadAudioAnnotationAnnotatedFilterData} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
+                <div className='flex items-center gap-x-7'>
+                    {
+                        (selectedRowsData.length === 1) &&
+                        <Buttons.BgHoverBtn
+                            title="Re-Assign"
+                            paddingY="py-2"
+                            paddingX="px-4"
+                            borderRadius="rounded-[6px]"
+                            textColor="text-secondary-blue-50"
+                            fontSize="text-small"
+                            fontWeight="font-medium"
+                            duration="duration-300"
+                            hoverBgColor="hover:bg-white"
+                            onClick={() => setIsConfirmModal(true)}
+                        // marginX="mx-2"
+                        />
+                    }
+                    <div className="flex justify-center items-center gap-x-3">
+                        <SearchBox.Type1 inputWidth="w-28" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
+                        <Filter.Type2 popupClassName='audio_submission_date_picker' handleSubmitFilter={handleSubmitFilter} filterData={uploadAudioAnnotationAnnotatedFilterData} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
+                    </div>
                 </div>
             </div>
             <div className='flex justify-between'>

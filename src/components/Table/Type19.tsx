@@ -138,18 +138,18 @@ const Type19 = ({ data }: Props) => {
         },
     ]
 
-    const rowSelection = {
-        onChange: (selectedRowKeys: React.Key[], selectedRows: annotationDT[]) => {
-            // setSelectedTarget(selectedRows);
-            console.log('*******', selectedRows);
+    // const rowSelection = {
+    //     onChange: (selectedRowKeys: React.Key[], selectedRows: annotationDT[]) => {
+    //         // setSelectedTarget(selectedRows);
+    //         console.log('*******', selectedRows);
 
 
-        },
-        getCheckboxProps: (record: annotationDT) => ({
-            // disabled: record.name === 'Disabled User', // Column configuration not to be checked
-            // name: record.assignee.name,
-        }),
-    };
+    //     },
+    //     getCheckboxProps: (record: annotationDT) => ({
+    //         // disabled: record.name === 'Disabled User', // Column configuration not to be checked
+    //         // name: record.assignee.name,
+    //     }),
+    // };
 
     const handlePageChange = (page: number) => {
         // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
@@ -158,12 +158,12 @@ const Type19 = ({ data }: Props) => {
     return (
         <div className='billing-table billing-table-odd-bg type4-table horizontal-table-padding'>
             <Table
-                rowSelection={{
-                    // type: selectionType,
-                    columnWidth: 48,
-                    fixed: 'left',
-                    ...rowSelection,
-                }}
+                // rowSelection={{
+                //     // type: selectionType,
+                //     columnWidth: 48,
+                //     fixed: 'left',
+                //     ...rowSelection,
+                // }}
                 dataSource={data}
                 columns={Type19columns}
                 scroll={{ x: 1300 }}

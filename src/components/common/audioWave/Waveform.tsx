@@ -77,8 +77,7 @@ const Waveform = ({ data, audioMin }: Props) => {
       wavesurfer.current.load(data.url);
 
     }
-
-
+    // wavesurfer.current.load("/home/pijush/ZAAG/speeches/c1ff028f-80a3-41c6-8a8a-2c661da009e4.flac");
 
     wavesurfer.current.on("ready", function () {
       if (wavesurfer.current) {

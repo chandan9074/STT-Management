@@ -95,35 +95,35 @@ const Type26 = ({ data }: Props) => {
             fixed: 'right',
             width: 71,
             render: (_, record: annotationUploadDT) => (
-                <>
-
-                    <div className='flex hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 justify-center items-center'>
+                <div className="flex justify-center items-center">
+                    <button
+                        onClick={() => {
+                            showDrawer();
+                            setSingleTargetData(record);
+                        }}
+                        className='flex justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full'>
                         <img
-                            onClick={() => {
-                                showDrawer();
-                                setSingleTargetData(record);
-                            }}
+
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
-                    </div>
-
-                </>)
+                    </button>
+                </div>)
         },
     ]
 
-    const rowSelection = {
-        onChange: (selectedRowKeys: React.Key[], selectedRows: annotationUploadDT[]) => {
-            // setSelectedTarget(selectedRows);
-            console.log('*******', selectedRows);
+    // const rowSelection = {
+    //     onChange: (selectedRowKeys: React.Key[], selectedRows: annotationUploadDT[]) => {
+    //         // setSelectedTarget(selectedRows);
+    //         console.log('*******', selectedRows);
 
 
-        },
-        getCheckboxProps: (record: annotationUploadDT) => ({
-            // disabled: record.name === 'Disabled User', // Column configuration not to be checked
-            // name: record.assignee.name,
-        }),
-    };
+    //     },
+    //     getCheckboxProps: (record: annotationUploadDT) => ({
+    //         // disabled: record.name === 'Disabled User', // Column configuration not to be checked
+    //         // name: record.assignee.name,
+    //     }),
+    // };
 
     const handlePageChange = (page: number) => {
         // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
@@ -132,12 +132,12 @@ const Type26 = ({ data }: Props) => {
     return (
         <div className='billing-table billing-table-even-bg type4-table horizontal-table-padding'>
             <Table
-                rowSelection={{
-                    // type: selectionType,
-                    columnWidth: 48,
-                    fixed: 'left',
-                    ...rowSelection,
-                }}
+                // rowSelection={{
+                //     // type: selectionType,
+                //     columnWidth: 48,
+                //     fixed: 'left',
+                //     ...rowSelection,
+                // }}
                 dataSource={data}
                 columns={Type26columns}
                 // scroll={{ x: 1366 }}
@@ -158,12 +158,10 @@ const Type26 = ({ data }: Props) => {
                 <Drawer.AudioManagement.Type2
                     isDrawerOpen={open}
                     setIsDrawerOpen={setOpen}
-                    id={singleTargetData.id}
                     speaker={singleTargetData.speaker}
                     others={singleTargetData.others}
                     speechInfo={singleTargetData.speechInfo}
                     isEditHistory={false}
-                    deadline={singleTargetData.deadLine}
                     remark={singleTargetData.remark}
                 />
             }

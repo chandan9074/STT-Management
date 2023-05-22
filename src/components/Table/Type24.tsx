@@ -77,20 +77,20 @@ const Type24 = ({ data }: Props) => {
             fixed: 'right',
             width: 85,
             render: (_, record: checkingStatusUploadDataDT) => (
-                <>
-
-                    <div className='flex w-full justify-center items-center'>
+                <div className="flex justify-center items-center">
+                    <button
+                        onClick={() => {
+                            showDrawer();
+                            setSingleTargetData(record);
+                        }}
+                        className='flex justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full'>
                         <img
-                            onClick={() => {
-                                showDrawer();
-                                setSingleTargetData(record);
-                            }}
+
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
-                    </div>
-
-                </>)
+                    </button>
+                </div>)
         },
     ]
 

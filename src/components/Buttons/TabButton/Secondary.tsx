@@ -44,16 +44,16 @@ const Secondary = (props: Props) => {
 
         },
         "Blue": {
-            text: "text-[#1F384CB2]",
-            hover: "hover:bg-[#F9FAFC]",
-            pressed: "active:opacity-70 active:bg-[#E0E7EF]",
-            selected: "bg-ct-blue-60 text-white"
+            text: "text-[#1F384CB2]  rounded-none",
+            hover: "hover:bg-[#F9FAFC] hover:rounded-md",
+            pressed: "active:opacity-70 active:bg-[#E0E7EF] rounded-md",
+            selected: "bg-ct-blue-60 text-white rounded-md"
         },
         "White": {
-            text: "text-ct-blue-90 text-opacity-70 bg-white border border-blue-gray-30",
-            hover: "hover:bg-ct-blue-05",
-            pressed: "active:opacity-70 active:bg-[#E0E7EF]",
-            selected: "bg-blue-gray-30 text-ct-blue-90 font-medium text-opacity-70 bg-[#F4F7FA]"
+            text: "text-ct-blue-90 text-opacity-70 bg-white border border-blue-gray-30 rounded-none",
+            hover: "hover:bg-ct-blue-05 hover:rounded-md",
+            pressed: "active:opacity-70 active:bg-[#E0E7EF] rounded-md",
+            selected: "bg-blue-gray-30 text-ct-blue-90 font-medium text-opacity-70 bg-[#F4F7FA] rounded-md"
         }
 
     }

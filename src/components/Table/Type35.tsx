@@ -1,6 +1,6 @@
 import { Table } from "antd"
 import { ColumnsType } from "antd/es/table"
-import { useState } from "react"
+import React, { useState } from "react"
 import Icons from "../../assets/Icons"
 import { validatedFilesUploadDT } from "../../types/audioManagementTypes"
 import AudioTrack from "../common/AudioTrack"
@@ -203,36 +203,36 @@ const Type35 = ({ data }: Props) => {
             fixed: 'right',
             width: 85,
             render: (_, record: validatedFilesUploadDT) => (
-                <>
-
-                    <div className='flex hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 justify-center items-center'>
+                <div className="flex justify-center items-center">
+                    <button
+                        onClick={() => {
+                            showDrawer(record);
+                            setSingleTargetData(record);
+                        }}
+                        className='flex justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full'>
                         <img
-                            onClick={() => {
-                                showDrawer(record);
-                                setSingleTargetData(record);
-                            }}
+
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
-                    </div>
-
-                </>)
+                    </button>
+                </div>)
         },
     ]
 
 
-    const rowSelection = {
-        onChange: (selectedRowKeys: React.Key[], selectedRows: validatedFilesUploadDT[]) => {
-            // setSelectedTarget(selectedRows);
-            console.log('*******', selectedRows);
+    // const rowSelection = {
+    //     onChange: (selectedRowKeys: React.Key[], selectedRows: validatedFilesUploadDT[]) => {
+    //         // setSelectedTarget(selectedRows);
+    //         console.log('*******', selectedRows);
 
 
-        },
-        getCheckboxProps: (record: validatedFilesUploadDT) => ({
-            // disabled: record.name === 'Disabled User', // Column configuration not to be checked
-            // name: record.assignee.name,
-        }),
-    };
+    //     },
+    //     getCheckboxProps: (record: validatedFilesUploadDT) => ({
+    //         // disabled: record.name === 'Disabled User', // Column configuration not to be checked
+    //         // name: record.assignee.name,
+    //     }),
+    // };
 
     const handlePageChange = (page: number) => {
         // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
@@ -246,12 +246,12 @@ const Type35 = ({ data }: Props) => {
             <Table
                 dataSource={data}
                 columns={Type35columns}
-                rowSelection={{
-                    // type: selectionType,
-                    columnWidth: 48,
-                    fixed: 'left',
-                    ...rowSelection,
-                }}
+                // rowSelection={{
+                //     // type: selectionType,
+                //     columnWidth: 48,
+                //     fixed: 'left',
+                //     ...rowSelection,
+                // }}
                 scroll={{ x: 1300 }}
                 rowKey="id"
                 pagination={false}
