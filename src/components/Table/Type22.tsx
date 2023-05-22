@@ -47,7 +47,7 @@ const Type22 = ({ data, setSelectedRowSData }: Props) => {
     {
       title: `${"SN".toLocaleUpperCase()}`,
       key: 'sn',
-      width: 55,
+      width: 50,
       align: "center",
       render: (text, record, index) => (
         <span>{(index + 1)}</span>
@@ -150,20 +150,19 @@ const Type22 = ({ data, setSelectedRowSData }: Props) => {
       fixed: 'right',
       width: 85,
       render: (_, record: collectValSenDataDT) => (
-        <>
-
-          <div className='flex hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full justify-center items-center'>
+        <div className="flex justify-center items-center">
+          <button
+            onClick={() => {
+              showDrawer(record);
+              setSingleTargetData(record);
+            }}
+            className='flex hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full justify-center items-center'>
             <img
-              onClick={() => {
-                showDrawer(record);
-                setSingleTargetData(record);
-              }}
               className='w-[14px] h-[14px] cursor-pointer'
               src={Icons.open_in_new}
               alt="" />
-          </div>
-
-        </>)
+          </button>
+        </div>)
     },
   ]
 

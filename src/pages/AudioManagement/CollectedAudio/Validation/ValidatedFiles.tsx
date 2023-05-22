@@ -16,6 +16,7 @@ const ValidatedFiles = () => {
 
   const [activeTab, setActiveTab] = useState<string>("Sentence");
   const [selectedSpeech, setSelectedSpeech] = useState<validatedFilesDT[]>([] as validatedFilesDT[]);
+  const [selectedRowsData, setSelectedRowsData] = useState<validatedFilesDT[]>([] as validatedFilesDT[]);
 
   const { getValidatedFilesData, validatedFilesData } = useContext(AudioManagementContext);
 
@@ -26,7 +27,7 @@ const ValidatedFiles = () => {
 
   const allTergetMenu = (key: string) => {
     const Category: CategoryMap = {
-      "Sentence": <><Table.Type31 data={validatedFilesData.data} /></>,
+      "Sentence": <><Table.Type31 data={validatedFilesData.data} setSelectedRowsData={setSelectedRowsData} /></>,
       "Word": <></>,
       "Phoneme": <></>
     };
@@ -35,7 +36,7 @@ const ValidatedFiles = () => {
 
   return (
     <div className="pl-[26px]">
-      <Header setActiveTab={setActiveTab} selectedSpeech={selectedSpeech} setSelectedSpeech={setSelectedSpeech} />
+      <Header setActiveTab={setActiveTab} selectedSpeech={selectedSpeech} setSelectedSpeech={setSelectedSpeech} selectedRowsData={selectedRowsData} />
       <div>
         {allTergetMenu(activeTab)}
       </div>
@@ -47,10 +48,11 @@ type Props = {
   setActiveTab: Dispatch<SetStateAction<string>>;
   selectedSpeech: validatedFilesDT[];
   setSelectedSpeech: React.Dispatch<React.SetStateAction<validatedFilesDT[]>>;
+  selectedRowsData: validatedFilesDT[]
 }
 
 
-const Header = ({ setActiveTab, selectedSpeech, setSelectedSpeech }: Props) => {
+const Header = ({ setActiveTab, selectedSpeech, setSelectedSpeech, selectedRowsData }: Props) => {
 
   const [isConfirmModal, setIsConfirmModal] = useState<boolean>(false);
   // const [isClaimModal, setIsClaimModal] = useState<boolean>(false);
@@ -315,20 +317,23 @@ const Header = ({ setActiveTab, selectedSpeech, setSelectedSpeech }: Props) => {
         <div>
           <TableHeading title='Annotated Files' />
         </div>
-        <div className='flex items-center'>
-          <Buttons.BgHoverBtn
-            title="Re-Assign"
-            paddingY="py-2"
-            paddingX="px-4"
-            borderRadius="rounded-[6px]"
-            textColor="text-secondary-blue-50"
-            fontSize="text-small"
-            fontWeight="font-medium"
-            duration="duration-300"
-            hoverBgColor="hover:bg-white"
-            onClick={() => setIsConfirmModal(true)}
-          // marginX="mx-2"
-          />
+        <div className='flex items-center gap-x-6'>
+          {
+            (selectedRowsData.length === 1) &&
+            <Buttons.BgHoverBtn
+              title="Re-Assign"
+              paddingY="py-2"
+              paddingX="px-4"
+              borderRadius="rounded-[6px]"
+              textColor="text-secondary-blue-50"
+              fontSize="text-small"
+              fontWeight="font-medium"
+              duration="duration-300"
+              hoverBgColor="hover:bg-white"
+              onClick={() => setIsConfirmModal(true)}
+            // marginX="mx-2"
+            />
+          }
           <div className="flex justify-between items-center">
             <SearchBox.Type1 inputWidth="w-44" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
             <Filter.Type2 popupClassName='audio_submission_date_picker' handleSubmitFilter={handleSubmitFilter} filterData={collectedAudioValidationValidatedFilterData} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
