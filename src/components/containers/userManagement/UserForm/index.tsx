@@ -136,6 +136,7 @@ const UserForm = ({ data }: Props) => {
         }
 
         formData.append('role', values.role.join(','));
+        formData.append('adminID', values.adminID ? values.adminID : '');
         formData.delete('adminData');
 
         // if data have then it is create, otherwise update
@@ -151,7 +152,6 @@ const UserForm = ({ data }: Props) => {
             }
             // Checking cv file already have or not
             if (typeof (values.cvFile) === 'string') {
-
                 formData.delete('cvFile');
             }
              else {
@@ -164,12 +164,9 @@ const UserForm = ({ data }: Props) => {
                     formData.append('cvFile', values.cvFile);
                 }
             }
-            const formDataEntries = Array.from(formData.entries());
-            formDataEntries.forEach(([key, value]) => {
-                console.log(key);
-            });
 
             const res = await updateUser(formData);
+
             if (res === 200) {
                 navigate(-1);
             }
@@ -179,6 +176,10 @@ const UserForm = ({ data }: Props) => {
         setIsSpeaker(isSpeaker);
 
     };
+
+
+    console.log('&&&&&&&', data?.adminID);
+    
 
     useEffect(() => {
         getUserRoleListByRole(formik.values.reportingTo)

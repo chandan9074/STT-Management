@@ -191,6 +191,7 @@ const FileReport = ({ getFile, formik }: Props) => {
                             style={{ width: '100%' }}
                             options={newRoleList}
                             value={formik.values.adminData}
+                            defaultValue={newRoleList.filter((item: any) => item.id === formik.values.adminID )}
                             onChange={(event, value) => {
                                 formik.setFieldValue('adminID', value.id);
                                 formik.setFieldValue('adminData', value);
