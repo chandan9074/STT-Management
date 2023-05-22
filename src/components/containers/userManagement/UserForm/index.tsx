@@ -155,10 +155,9 @@ const UserForm = ({ data }: Props) => {
                 formData.delete('cvFile');
             }
              else {
-                // if cv file removed
+                // if cv file removed or empty
                 if (formik.values.cvFile.length === 0) {
-                    const emptyFileBlob = new Blob([], { type: "application/pdf" });
-                    formData.append('cvFile', emptyFileBlob, '');
+                    formData.append('cvFile', '');
                 }
                 // if cv file pass new file 
                 else {
@@ -169,8 +168,6 @@ const UserForm = ({ data }: Props) => {
             formDataEntries.forEach(([key, value]) => {
                 console.log(key);
             });
-            console.log('*************************', formData.get('cvFile'));
-
 
             const res = await updateUser(formData);
             if (res === 200) {
