@@ -132,7 +132,8 @@ textarea {
 }
 
 .MuiMenuItem-root {
-    font-weight: 600 !important;
+    /* font-weight: 600 !important; */
+    /* font-weight: 600; */
     font-size: 14px !important;
     color: #464E5F !important;
 }

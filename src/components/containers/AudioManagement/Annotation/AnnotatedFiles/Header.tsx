@@ -296,7 +296,7 @@ const Header = ({ setActiveTab, selectedScript, setSelectedScript, selectedRowsD
                     <div className='flex items-center gap-x-3'>
 
                         <div className='flex items-center gap-x-3'>
-                            <SearchBox.Type1 inputWidth="w-44" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
+                            <SearchBox.Type1 inputWidth="w-28" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
                             <Filter.Type2 popupClassName='audio_submission_date_picker' handleSubmitFilter={handleSubmitFilter} filterData={collectedAudioAnnotationAnnotatedFilterData} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
                         </div>
                     </div>

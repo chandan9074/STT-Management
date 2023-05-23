@@ -36,7 +36,7 @@ const ValidatedFilesUpload = () => {
 
   return (
     <div>
-      <Header setActiveTab={setActiveTab} selectedSpeech={selectedSpeech} setSelectedSpeech={setSelectedSpeech} />
+      <Header setActiveTab={setActiveTab} selectedSpeech={selectedSpeech} setSelectedSpeech={setSelectedSpeech}  />
       {/* <Table.Type35 data={validatedFilesUploadData} /> */}
       <div>
         {allTergetMenu(activeTab)}
@@ -309,21 +309,21 @@ const Header = ({ setActiveTab, selectedSpeech, setSelectedSpeech }: Props) => {
         <div>
           <TableHeading title='Validated Files' />
         </div>
-        <div className='flex items-center'>
-          <Buttons.BgHoverBtn
-            title="Re-Assign"
-            paddingY="py-2"
-            paddingX="px-4"
-            borderRadius="rounded-[6px]"
-            textColor="text-secondary-blue-50"
-            fontSize="text-small"
-            fontWeight="font-medium"
-            duration="duration-300"
-            hoverBgColor="hover:bg-white"
-            onClick={() => setIsConfirmModal(true)}
-          // marginX="mx-2"
-          />
-          <SearchBox.Type1 inputWidth="w-44" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
+        <div className='flex items-center gap-x-3'>
+            {/* <Buttons.BgHoverBtn
+              title="Re-Assign"
+              paddingY="py-2"
+              paddingX="px-4"
+              borderRadius="rounded-[6px]"
+              textColor="text-secondary-blue-50"
+              fontSize="text-small"
+              fontWeight="font-medium"
+              duration="duration-300"
+              hoverBgColor="hover:bg-white"
+              onClick={() => setIsConfirmModal(true)}
+            // marginX="mx-2"
+            /> */}
+          <SearchBox.Type1 inputWidth="w-28" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
           <Filter.Type2 popupClassName='audio_submission_date_picker' handleSubmitFilter={handleSubmitFilter} filterData={uploadAudioAnnotationValidatedFilterData} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
         </div>
       </div>

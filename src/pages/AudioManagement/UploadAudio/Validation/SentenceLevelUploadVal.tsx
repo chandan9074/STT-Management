@@ -203,12 +203,12 @@ const Header = () => {
   return (
     <div className='ml-6 mr-4 mb-5 flex items-center justify-between'>
       <div>
-        <h1 className='text-heading-6 font-semibold text-ct-blue-95 leading-6'>Sentence Validation</h1>
+        <h1 className='text-heading-6 font-medium text-ct-blue-95 leading-6'>Sentence Validation</h1>
         <p className='text-small text-ct-blue-90-70% mt-1.5'>List of audios that is needed to sentence validation</p>
       </div>
       <div className='flex items-center gap-x-6'>
         <div className='flex items-center gap-x-3'>
-          <SearchBox.Type1 inputWidth="w-44" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
+          <SearchBox.Type1 inputWidth="w-28" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
           <Filter.Type2 popupClassName='audio_submission_date_picker' handleSubmitFilter={handleSubmitFilter} filterData={collectedAudioValidationSentenceFilterData} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
         </div>
       </div>

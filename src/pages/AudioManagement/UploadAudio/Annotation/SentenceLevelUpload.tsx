@@ -6,10 +6,13 @@ import { SearchBox } from "../../../../components/SearchBox"
 import Buttons from "../../../../components/Buttons"
 import { targetFilterListDT } from "../../../../types/assignTypes"
 import { collectedAudioAnnotationSentenceFilterData } from "../../../../data/audioManagement/AudioManagementData"
+import { sentenceLevelUploadDT } from "../../../../types/audioManagementTypes"
 
 const SentenceLevelUpload = () => {
 
   const { getSentenceLevelUploadData, sentenceLevelUploadData } = useContext(AudioManagementContext)
+
+  const [selectedRowsData, setSelectedRowsData] = useState<sentenceLevelUploadDT[]>([])
 
   useEffect(() => {
     getSentenceLevelUploadData();
@@ -18,8 +21,8 @@ const SentenceLevelUpload = () => {
 
   return (
     <div>
-      <Header />
-      <Table.Type27 data={sentenceLevelUploadData.data} />
+      <Header selectedRowsData={selectedRowsData} />
+      <Table.Type27 data={sentenceLevelUploadData.data} setSelectedRowsData={setSelectedRowsData} />
     </div>
   )
 }
@@ -27,7 +30,7 @@ const SentenceLevelUpload = () => {
 export default SentenceLevelUpload
 
 
-const Header = () => {
+const Header = ({ selectedRowsData }: { selectedRowsData: sentenceLevelUploadDT[] }) => {
 
   const [count, setCount] = useState<number>(0);
   const [filterList, setFilterList] = useState<targetFilterListDT>({
@@ -175,19 +178,22 @@ const Header = () => {
         <p className='text-small text-ct-blue-90-70% mt-1.5'>List of audios that is needed to sentence annotation</p>
       </div>
       <div className='flex items-center gap-x-6'>
-        <Buttons.BgHoverBtn
-          title="Download Script"
-          paddingY="py-2"
-          paddingX="px-4"
-          borderRadius="rounded-[6px]"
-          textColor="text-secondary-blue-50"
-          fontSize="text-small"
-          fontWeight="font-medium"
-          duration="duration-300"
-          hoverBgColor="hover:bg-white"
-        />
+        {
+          (selectedRowsData.length === 1) &&
+          <Buttons.BgHoverBtn
+            title="Download Script"
+            paddingY="py-2"
+            paddingX="px-4"
+            borderRadius="rounded-[6px]"
+            textColor="text-secondary-blue-50"
+            fontSize="text-small"
+            fontWeight="font-medium"
+            duration="duration-300"
+            hoverBgColor="hover:bg-white"
+          />
+        }
         <div className='flex items-center gap-x-3'>
-          <SearchBox.Type1 inputWidth="w-44" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
+          <SearchBox.Type1 inputWidth="w-28" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
           <Filter.Type2 popupClassName='audio_submission_date_picker' handleSubmitFilter={handleSubmitFilter} filterData={collectedAudioAnnotationSentenceFilterData} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
         </div>
       </div>

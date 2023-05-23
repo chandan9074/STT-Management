@@ -68,14 +68,14 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
                 <Grid container >
                     <Grid item xs={6} style={{ cursor: 'pointer' }}>
                         <div onClick={(value) => onSourceReferencehandle('source')} className={`cursor-pointer p-[8px] ${scriptSourceReference?.isSource ? 'bg-ct-blue-20' : 'bg-ct-blue-10'}  flex justify-center items-center gap-x-[15px]`}>
-                            <img src={Icons.Link} className='h-[18px] w-[18px]' alt="" />
-                            <h1 className='text-ct-blue-45 text-small font-medium'>Add Source</h1>
+                            <img src={scriptSourceReference?.isSource ? Icons.Link_Black : Icons.Link} className='h-[18px] w-[18px]' alt="" />
+                            <h1 className={`${scriptSourceReference?.isSource ? 'text-ct-blue-95' : 'text-ct-blue-45'}  text-small font-medium`}>Add Source</h1>
                         </div>
                     </Grid>
                     <Grid item xs={6}>
                         <div onClick={(value) => onSourceReferencehandle('script')} className={`cursor-pointer p-[8px] ${scriptSourceReference?.isScript ? 'bg-ct-blue-20' : 'bg-ct-blue-10'}  flex justify-center items-center gap-x-[15px]`}>
-                            <img src={Icons.AddLink} className='h-[18px] w-[18px]' alt="" />
-                            <h1 className='text-ct-blue-45 text-small font-medium'>Script Attachment</h1>
+                            <img src={scriptSourceReference?.isScript ? Icons.AddLink_Black : Icons.AddLink} className='h-[18px] w-[18px]' alt="" />
+                            <h1 className={`${scriptSourceReference?.isScript ? 'text-ct-blue-95' : 'text-ct-blue-45'}  text-small font-medium`}>Script Attachment</h1>
                         </div>
                     </Grid>
                 </Grid>

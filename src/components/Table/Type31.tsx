@@ -11,10 +11,11 @@ import RoleImage from "../Image/RoleImage"
 import Pagination from "../Pagination"
 
 type Props = {
-    data: validatedFilesDT[]
+    data: validatedFilesDT[];
+    setSelectedRowsData: React.Dispatch<React.SetStateAction<validatedFilesDT[]>>
 }
 
-const Type31 = ({ data }: Props) => {
+const Type31 = ({ data,setSelectedRowsData }: Props) => {
 
 
     const [remarkOpen, setRemarkOpen] = useState(false);
@@ -219,10 +220,7 @@ const Type31 = ({ data }: Props) => {
 
     const rowSelection = {
         onChange: (selectedRowKeys: React.Key[], selectedRows: validatedFilesDT[]) => {
-            // setSelectedTarget(selectedRows);
-            console.log('*******', selectedRows);
-
-
+            setSelectedRowsData(selectedRows);
         },
         getCheckboxProps: (record: validatedFilesDT) => ({
             // disabled: record.name === 'Disabled User', // Column configuration not to be checked
