@@ -12,8 +12,17 @@ const CollectedAudio = () => {
 
     const { getCollectedAudioData, collectedAudio } = useContext(AudioManagementContext);
 
+    const [query, setQuery] = useState({
+        page: 1,
+        pageSize: 20,
+        script: "",
+        speaker: "",
+        collector: "",
+        audioSubmissionPeriod: "",
+      })
+
     useEffect(() => {
-        getCollectedAudioData()
+        getCollectedAudioData(query)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

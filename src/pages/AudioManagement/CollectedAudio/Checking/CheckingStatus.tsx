@@ -12,10 +12,19 @@ const CheckingStatus = () => {
 
     const { getCheckingStatusData, checkingStatusData } = useContext(AudioManagementContext);
     const [selectedRowsData, setSelectedRowSData] = useState<checkingStatusDT[]>([]);
+    const [query, setQuery] = useState({
+        page: 1,
+        pageSize: 20,
+        script: "",
+        speaker: "",
+        collector: "",
+        audioUploadPeriod: "",
+        status: ""
+      })
 
 
     useEffect(() => {
-        getCheckingStatusData()
+        getCheckingStatusData(query)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

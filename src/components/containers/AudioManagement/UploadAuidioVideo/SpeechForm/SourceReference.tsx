@@ -1,17 +1,20 @@
 import { UploadChangeParam, UploadFile } from 'antd/es/upload';
 import { FormikValues } from 'formik';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Icons from '../../../../../assets/Icons';
 import { Grid, TextField } from '@mui/material';
 import Dragger from 'antd/es/upload/Dragger';
 import { urlPatternValidation } from '../../../../../helpers/Utils';
 import LabelForm from '../../../../common/Form/LabelForm';
+import { UserManagementContext } from '../../../../../context/UserManagementProvider';
 
 const SourceReference = ({ formik }: { formik: FormikValues }) => {
     const [scriptSourceReference, setScriptSourceReference] = useState<{ isSource: boolean, isScript: boolean }>({
         isSource: true,
         isScript: false
     });
+
+    const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
 
     const onSourceReferencehandle = (value: string) => {
         if (value === 'source') {
@@ -101,10 +104,12 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
                                                     color: '#464E5F',
                                                     fontWeight: '600',
                                                     fontSize: '15px',
-
+                                                    border: selectedFieldOutline === 'sourceName' ? '1px solid #136EE5' : '1px solid transparent'
                                                 }
                                             }}
-                                            variant="outlined" />
+                                            variant="outlined"
+                                            onFocus={() => setSelectedFieldOutline("sourceName")}
+                                            onBlur={() => setSelectedFieldOutline("")} />
                                     </div>
                                 </Grid>
 
@@ -125,10 +130,12 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
                                                     color: '#464E5F',
                                                     fontWeight: '600',
                                                     fontSize: '15px',
-
+                                                    border: selectedFieldOutline === 'sourceUrl' ? '1px solid #136EE5' : '1px solid transparent'
                                                 }
                                             }}
-                                            variant="outlined" />
+                                            variant="outlined"
+                                            onFocus={() => setSelectedFieldOutline("sourceUrl")}
+                                            onBlur={() => setSelectedFieldOutline("")} />
                                     </div>
                                 </Grid>
                             </Grid>

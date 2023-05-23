@@ -53,10 +53,10 @@ const Type19 = ({ data }: Props) => {
             render: (data: annotationDT) => <div className='flex w-full justify-start items-center gap-x-[10px]'>
                 <h1 className='w-28 truncate whitespace-nowrap'>{data.script.id}</h1>
                 <img
-                    // onClick={() => {
-                    //     showDrawer(record);
-                    //     setSingleTargetData(record);
-                    // }}
+                    onClick={() => {
+                        showDrawer(data);
+                        setSingleTargetData(data);
+                    }}
                     className='w-[10px] h-[10px] cursor-pointer'
                     src={Icons.openInNewGray}
                     alt="" />

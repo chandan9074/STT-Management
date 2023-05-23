@@ -8,10 +8,17 @@ import { collectedAudioAnnotationTypeFilterData } from "../../../../data/audioMa
 
 const Annotation = () => {
 
+  const [query, setQuery] = useState({
+    page: 1,
+    pageSize: 20,
+    script: "",
+    speaker: "",
+  })
+
   const { getAnnotationData, annotationData } = useContext(AudioManagementContext)
 
   useEffect(() => {
-    getAnnotationData();
+    getAnnotationData(query);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

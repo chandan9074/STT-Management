@@ -12,9 +12,16 @@ const PhonemeLevel = () => {
 
   const { getCollectAnnPhonemeData, collectAnnPhonemeData } = useContext(AudioManagementContext);
   const [selectedRowsData, setSelectedRowSData] = useState<collectAnnSenDataDT[]>([]);
+  const [query, setQuery] = useState({
+    page: 1,
+    pageSize: 20,
+    dateRange: "",
+    speaker: "",
+    audioChecker: "",
+  })
 
   useEffect(() => {
-    getCollectAnnPhonemeData()
+    getCollectAnnPhonemeData(query)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

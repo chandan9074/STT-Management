@@ -102,10 +102,14 @@ textarea {
     cursor: not-allowed !important;
 }
 
-.disabled-cursor[disabled] {
+/* .disabled-cursor[disabled] {
     background-color: #F9FAFC !important;
     cursor: not-allowed !important;
-}
+} */
+
+/* .subdomain-cls{
+    background-color: red !important;
+} */
 
 .disableAutocompleteColor .MuiAutocomplete-hasPopupIcon.css-1qqsdnr-MuiAutocomplete-root .MuiOutlinedInput-root {
     background-color: #F9FAFC !important;
@@ -202,6 +206,7 @@ label {
 .css-q8hpuo-MuiFormControl-root {
     background-color: white !important;
     border-radius: 7px !important;
+    /* overflow: hidden !important; */
 }
 
 .css-wb57ya-MuiFormControl-root-MuiTextField-root {

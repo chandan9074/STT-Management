@@ -12,9 +12,16 @@ const SentenceLevel = () => {
 
   const { getCollectAnnSenData, collectAnnSenData } = useContext(AudioManagementContext);
   const [selectedRowsData, setSelectedRowSData] = useState<collectAnnSenDataDT[]>([]);
+  const [query, setQuery] = useState({
+    page: 1,
+    pageSize: 20,
+    dateRange: "",
+    speaker: "",
+    audioChecker: "",
+  })
 
   useEffect(() => {
-    getCollectAnnSenData()
+    getCollectAnnSenData(query)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

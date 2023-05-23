@@ -72,9 +72,13 @@ export const UPDATE_RES_USER_MANAGEMENT_BY_ID_MODULE = `${REACT_APP_BASE_URL2}/u
 
 //Audio Management
 
-export const GET_RES_COLLECTED_AUDIO_ALL_CHECKED_AUDIOS_AUDIO_MGT_MODULE = `${REACT_APP_BASE_URL2}/get_res_collected_audio_all_checked_audios_audio_mgt_module`
-
-
+export const GET_RES_COLLECTED_AUDIO_AUDIO_MGT_MODULE = `${REACT_APP_BASE_URL2}/get_res_collected_audio_audio_mgt_module`;
+export const GET_RES_COLLECTED_AUDIO_CHECKING_STATUS_AUDIO_MGT_MODULE = `${REACT_APP_BASE_URL2}/get_res_collected_audio_checking_status_audio_mgt_module`;
+export const GET_RES_COLLECTED_AUDIO_ALL_CHECKED_AUDIOS_AUDIO_MGT_MODULE = `${REACT_APP_BASE_URL2}/get_res_collected_audio_all_checked_audios_audio_mgt_module`;
+export const GET_RES_COLLECTED_AUDIO_ANNOTATION_TYPE_AUDIO_MGT_MODULE = `${REACT_APP_BASE_URL2}/get_res_collected_audio_annotation_type_audio_mgt_module`;
+export const GET_RES_COLLECTED_AUDIO_ANNOTATION_SENTENCE_AUDIO_MGT_MODULE = `${REACT_APP_BASE_URL2}/get_res_collected_audio_annotation_sentence_audio_mgt_module`;
+export const GET_RES_COLLECTED_AUDIO_ANNOTATION_WORD_AUDIO_MGT_MODULE = `${REACT_APP_BASE_URL2}/get_res_collected_audio_annotation_word_audio_mgt_module`;
+export const GET_RES_COLLECTED_AUDIO_ANNOTATION_PHONEME_AUDIO_MGT_MODULE = `${REACT_APP_BASE_URL2}/get_res_collected_audio_annotation_phoneme_audio_mgt_module`;
 
 
 

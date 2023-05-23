@@ -12,10 +12,16 @@ const WordLevel = () => {
 
   const { getCollectAnnWordData, collectAnnWordData } = useContext(AudioManagementContext)
   const [selectedRowsData, setSelectedRowSData] = useState<collectAnnSenDataDT[]>([]);
-
+  const [query, setQuery] = useState({
+    page: 1,
+    pageSize: 20,
+    dateRange: "",
+    speaker: "",
+    audioChecker: "",
+  })
 
   useEffect(() => {
-    getCollectAnnWordData()
+    getCollectAnnWordData(query)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

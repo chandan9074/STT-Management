@@ -573,3 +573,47 @@ export type validatedFilesUploadDT = {
     others: othersDT
     history: historyDT[]
 }
+
+export type allCheckedAudioQueryDT = {
+    page: number,
+    pageSize: number,
+    script: string,
+    audioChecker: string,
+    collector: string,
+    audioSubmissionPeriod: string,
+    status: string
+}
+
+export type CollectedAudioQueryDT = {
+    page: number,
+    pageSize: number,
+    script: string,
+    speaker: string,
+    collector: string,
+    audioSubmissionPeriod: string,
+}
+
+export type checkingStatusQueryDT = {
+    page: number,
+    pageSize: number,
+    script: string,
+    speaker: string,
+    collector: string,
+    status: string,
+    audioUploadPeriod: string,
+}
+
+export type annotationTypeQueryDT = {
+    page: number,
+    pageSize: number,
+    script: string,
+    speaker: string,
+}
+
+export type collectAnnSenQueryDT = {
+    page: number,
+    pageSize: number,
+    dateRange: string,
+    speaker: string,
+    audioChecker: string
+}

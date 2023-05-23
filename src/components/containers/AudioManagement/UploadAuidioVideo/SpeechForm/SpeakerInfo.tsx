@@ -1,12 +1,15 @@
 import { Checkbox, FormControlLabel, FormGroup, Grid, TextField } from '@mui/material';
 import { FormikValues } from 'formik';
-import React from 'react';
+import React, { useContext } from 'react';
 import { gender, homeDistrict } from '../../../../../data/userManagement/UserManagementData';
 import Icons from '../../../../../assets/Icons';
 import { audioManAgeRange } from '../../../../../data/audioManagement/AudioManagementData';
 import HomeDistrictSelect from '../../../../Form/HomeDistrictSelect';
+import { UserManagementContext } from '../../../../../context/UserManagementProvider';
 
 const SpeakerInfo = ({ formik }: { formik: FormikValues }) => {
+
+    const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
 
     const onAgeRangeChange = (e: React.ChangeEvent<HTMLInputElement>, value: string) => {
         const isChecked = e.target.checked;
@@ -47,10 +50,13 @@ const SpeakerInfo = ({ formik }: { formik: FormikValues }) => {
                                     color: '#464E5F',
                                     fontWeight: '600',
                                     fontSize: '15px',
+                                    border: selectedFieldOutline === 'speakerNumber' ? '1px solid #136EE5' : '1px solid transparent'
                                 }
                             }}
 
-                            variant="outlined" />
+                            variant="outlined"
+                            onFocus={() => setSelectedFieldOutline("speakerNumber")}
+                            onBlur={() => setSelectedFieldOutline("")} />
                     </Grid>
                 </Grid>
             </div>

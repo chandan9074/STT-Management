@@ -8,10 +8,14 @@ import Select from '@mui/material/Select';
 import { FormikValues } from 'formik';
 import { scriptDomainAddSpeech, scriptSubDomain } from '../../../../../data/Script/Domain';
 import { customMuiListStyle } from '../../../../../helpers/Utils';
+import { useContext } from 'react';
+import { UserManagementContext } from '../../../../../context/UserManagementProvider';
 
 
 const DomainSubDomain = ({ formik }: { formik: FormikValues }) => {
     const classes = customMuiListStyle();
+
+    const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
 
     return (
         <div className='mb-[28px] domain'>
@@ -25,7 +29,10 @@ const DomainSubDomain = ({ formik }: { formik: FormikValues }) => {
                                 <h1 className='comboBoxLabel'>Domain <span className='text-[red]'>*</span></h1>
                             </InputLabel>
                             <Select
-                                style={{ height: '44px' }}
+                                style={{
+                                    height: '44px',
+                                    border: selectedFieldOutline === 'Domain' ? '1px solid #136EE5' : '1px solid transparent'
+                                }}
                                 className="custom-select"
                                 labelId="demo-simple-select-helper-label"
                                 id="demo-simple-select-helper"
@@ -45,6 +52,9 @@ const DomainSubDomain = ({ formik }: { formik: FormikValues }) => {
 
                                     }
                                 }}
+                                variant="outlined"
+                                onFocus={() => setSelectedFieldOutline("Domain")}
+                                onBlur={() => setSelectedFieldOutline("")}
                             >
 
                                 {
@@ -68,7 +78,7 @@ const DomainSubDomain = ({ formik }: { formik: FormikValues }) => {
                     </div>
                 </Grid>
                 <Grid item xs={6}>
-                    <div>
+                    <div className={`border ${selectedFieldOutline === 'subdomain' ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px]`}>
                         <Autocomplete
                             classes={{ option: classes.option }}
                             disableClearable
@@ -76,7 +86,7 @@ const DomainSubDomain = ({ formik }: { formik: FormikValues }) => {
                             id="sub-domain"
                             disabled={formik.values.domain === ''}
                             className={`${formik.values.domain === '' && 'sub-domain'}`}
-                            style={{ width: '100%', cursor: 'pointer' }}
+                            style={{ width: '100%', cursor: 'pointer', }}
                             options={scriptSubDomain}
                             // value={formik.values.subdomain || scriptsubdomain[0]}
                             value={formik.values.subdomain}
@@ -101,7 +111,13 @@ const DomainSubDomain = ({ formik }: { formik: FormikValues }) => {
                                     error={formik.touched.subdomain && Boolean(formik.errors.subdomain)}
                                     helperText={formik.touched.subdomain && formik.errors.subdomain}
                                     {...params}
+                                    // className='subdomain-cls'
+                                    sx={{ backgroundColor: `${formik.values.domain === '' ? "#F9FAFC" : "white"}`, borderRadius: "7px" }}
                                     label={<h1 className={`${formik.values.domain === '' ? 'text-blue-gray-A30 text-small font-medium' : 'comboBoxLabel'}`}>Sub Domain <span className='text-[red]'>*</span></h1>}
+
+                                    variant="outlined"
+                                    onFocus={() => setSelectedFieldOutline("subdomain")}
+                                    onBlur={() => setSelectedFieldOutline("")}
 
                                 // InputProps={{
                                 //     style: {

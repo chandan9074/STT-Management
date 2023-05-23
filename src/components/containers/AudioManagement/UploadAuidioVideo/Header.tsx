@@ -103,10 +103,20 @@ const Header = () => {
             })
         }
         else {
-            setFilterList({
-                ...filterList,
-                [key]: [],
-            });
+            if (key === "uploader") {
+                setFilterList({
+                    ...filterList,
+                    [key]: [],
+                    uploader_district: [],
+                    uploader_details: [],
+                });
+            }
+            else {
+                setFilterList({
+                    ...filterList,
+                    [key]: [],
+                });
+            }
         }
     }
 

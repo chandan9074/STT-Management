@@ -15,11 +15,20 @@ const AllCheckedAudios = () => {
 
   const [selectedRowsData, setSelectedRowSData] = useState<allCheckedAudioDT[]>([]);
   const [isConfirmCancelModal, setIsConfirmCancelModal] = useState<boolean>(false);
+  const [query, setQuery] = useState({
+    page: 1,
+    pageSize: 20,
+    script: "",
+    audioChecker: "",
+    collector: "",
+    audioSubmissionPeriod: "",
+    status: ""
+  })
 
   const { getAllCheckedAudiosData, allCheckedAudiosData } = useContext(AudioManagementContext)
 
   useEffect(() => {
-    getAllCheckedAudiosData()
+    getAllCheckedAudiosData(query)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

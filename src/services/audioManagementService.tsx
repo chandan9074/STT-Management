@@ -1,35 +1,46 @@
+import axios from 'axios';
 import { collectedAudioCollectorList, allCheckedAudiosData, annotationData, checkingStatusData, collectAnnSenData, collectedAudio, scriptFilterData, annotatedFiles, collectValSenData, validatedFilesData, collectedAudioSpeakersList, collectedAudioCheckerList, collectedAudioAnnotatorList, collectedAudioValidatorList } from '../data/audioManagement/AudioManagementData';
 import { allCheckedSpeechData, annotatedFilesUploadData, annotationUploadData, checkingStatusUploadData, sentenceLevelUploadData, uploadAudioData, ValidatedFilesUploadData, sentenceLevelValUpload } from '../data/audioManagement/UploadAudiosData';
+import * as PATH from '../helpers/APIURL'
+import { CollectedAudioQueryDT, allCheckedAudioQueryDT, annotationTypeQueryDT, checkingStatusQueryDT, collectAnnSenQueryDT } from '../types/audioManagementTypes';
+
 
 export default class audioManagementService {
-    
-    static getCollectedAudioData() {
-        return collectedAudio;
+
+    static getCollectedAudioData(params:CollectedAudioQueryDT) {
+        // return collectedAudio;
+        return axios.get(PATH.GET_RES_COLLECTED_AUDIO_AUDIO_MGT_MODULE, { params: params })
     }
 
-    static getCheckingStatusData() {
-        return checkingStatusData;
+    static getCheckingStatusData(params:checkingStatusQueryDT) {
+        // return checkingStatusData;
+        return axios.get(PATH.GET_RES_COLLECTED_AUDIO_CHECKING_STATUS_AUDIO_MGT_MODULE, { params: params })
+
     }
 
-    static getAllCheckedAudiosData() {
-        return allCheckedAudiosData;
-        // return axios.get(PATH.GET_RES_COLLECTED_AUDIO_ALL_CHECKED_AUDIOS_AUDIO_MGT_MODULE)
+    static getAllCheckedAudiosData(params: allCheckedAudioQueryDT) {
+        // return allCheckedAudiosData;
+        return axios.get(PATH.GET_RES_COLLECTED_AUDIO_ALL_CHECKED_AUDIOS_AUDIO_MGT_MODULE, { params: params })
     }
 
-    static getAnnotationData() {
-        return annotationData;
+    static getAnnotationData(params:annotationTypeQueryDT) {
+        // return annotationData;
+        return axios.get(PATH.GET_RES_COLLECTED_AUDIO_ANNOTATION_TYPE_AUDIO_MGT_MODULE, { params: params })
     }
 
-    static getCollectAnnSenData() {
-        return collectAnnSenData;
+    static getCollectAnnSenData(params:collectAnnSenQueryDT) {
+        // return collectAnnSenData;
+        return axios.get(PATH.GET_RES_COLLECTED_AUDIO_ANNOTATION_SENTENCE_AUDIO_MGT_MODULE, { params: params })
     }
 
-    static getCollectAnnWordData() {
-        return collectAnnSenData;
+    static getCollectAnnWordData(params:collectAnnSenQueryDT) {
+        // return collectAnnSenData;
+        return axios.get(PATH.GET_RES_COLLECTED_AUDIO_ANNOTATION_WORD_AUDIO_MGT_MODULE, { params: params })
     }
 
-    static getCollectAnnPhonemeData() {
-        return collectAnnSenData;
+    static getCollectAnnPhonemeData(params:collectAnnSenQueryDT) {
+        // return collectAnnSenData;
+        return axios.get(PATH.GET_RES_COLLECTED_AUDIO_ANNOTATION_PHONEME_AUDIO_MGT_MODULE, { params: params })
     }
 
     static getAnnotatedFilesData() {
