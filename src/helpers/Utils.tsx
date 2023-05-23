@@ -235,7 +235,6 @@ export const urlPatternValidation = (url: string) => {
 
 export const getStatusColor = (status: string, type: "bg" | "bullet" | "text") => {
   const data = statusColorsData.find((item) => item.name === status)
-  console.log("color-------------------", data);
 
   if (data) {
     if (type === "bg") {

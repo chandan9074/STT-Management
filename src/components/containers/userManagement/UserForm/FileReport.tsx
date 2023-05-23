@@ -7,16 +7,21 @@ import { Grid } from '@mui/material';
 import { Box } from '@mui/system';
 import Image from '../../../Image';
 import { FormikValues } from 'formik';
-import { customMuiListStyle } from '../../../../helpers/Utils';
+import { customMuiListStyle, urlPatternValidation } from '../../../../helpers/Utils';
 import { UserManagementContext } from '../../../../context/UserManagementProvider';
 
-const FileReport = ({ getFile, formik }: { getFile: (file: File | null) => void, formik: FormikValues }) => {
+type Props = {
+    getFile: (file: File | null) => void,
+    formik: FormikValues,
+}
+
+const FileReport = ({ getFile, formik }: Props) => {
     // const [file, setFile] = useState<any>([]);
     const classes = customMuiListStyle();
 
     const [file, setFile] = useState<File | null>(null);
 
-    const {newRoleList, selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
+    const { newRoleList, selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
 
     // const handleFileUpload = (event: any) => {
     const handleFileUpload = (event: any) => {
@@ -25,6 +30,8 @@ const FileReport = ({ getFile, formik }: { getFile: (file: File | null) => void,
             let files = event.fileList[0];
             setFile(files);
             // getFile(event.fileList[0]?.originFileObj);
+            console.log('*******', event.fileList[0]?.originFileObj);
+            
             formik.setFieldValue("cvFile", event.fileList[0]?.originFileObj);
         } else {
             // setFile([]);
@@ -32,29 +39,74 @@ const FileReport = ({ getFile, formik }: { getFile: (file: File | null) => void,
             // getFile([]);
             getFile(null);
         }
-    }    
+    }
+
+    const onDeleteFile = () => {
+        // formik.setFieldValue("sourceFile", []);
+        formik.setFieldValue("cvFile", []);
+        setFile(null);
+            // getFile([]);
+            getFile(null);
+    }
 
     return (
         <div>
             <div className='flex gap-x-[16px] items-center'>
                 <h1 className='text-blue-gray-75 text-small font-medium'>Attach CV  <span className='text-[red]'>*</span></h1>
                 {/* file?.length === 0 ? 'file-upload2' :  */}
-                <div className={`${file === null ? 'file-upload2' : 'file-upload-hidden2 bg-ct-blue-05 px-[18px] py-[5px] rounded-[4px]'} `}>
-                    <Upload
-                        accept='.doc, .pdf'
-                        onChange={(event) => handleFileUpload(event)}
-                    //  {...props}
-                    >
-                        <button className={` flex items-center gap-x-[5px] pl-[16px] pr-6 py-2 border-[1px] border-ct-blue-30 rounded-[6px] bg-white hover:bg-ct-blue-10 active:bg-ct-blue-30 transition ease-out duration-300`}>
-                            <img className='w-[20px] h-[20px]' src={Icons.upload} alt='' />
-                            <h1 className='text-ct-blue-80 text-small font-medium leading-[17px]'> Attach</h1>
-                        </button>
-                    </Upload>
-                </div>
+                {
+                    (formik.values.cvFile?.length !== 0) ?
+                        <div className='rounded-[4px] pt-[8px] pb-4 px-4 bg-ct-blue-05'>
+                            <div className='flex justify-between items-center'>
+                                <div className='flex gap-x-[11px] items-center'>
+                                    <img src={Icons.Pdf} alt="" />
+                                    <a href={urlPatternValidation(formik.values.cvFile) && formik.values.cvFile} rel="noreferrer" target="_blank" className='cursor-pointer'>
+                                        <div >
+                                            {
+                                                typeof(formik.values.cvFile) !== 'string' ?
+                                                formik.values.cvFile.name 
+                                                :
+                                                formik.values.cvFileName
+                                                // (formik.values.cvFileName && formik.values.cvFileName !== '') ? formik.values.cvFileName : formik.values.cvFile.name  
+                                            }
+                                        </div>
+                                    </a>
+                                </div>
+                                <button onClick={(e) => {
+                                    e.preventDefault();
+                                    onDeleteFile();
+                                }}>
+                                    <img className='w-[13px] h-[14px] ml-4' src={Icons.deleteIcon} alt="" />
+                                </button>
+                            </div>
+                        </div>
+                        :
+                        <div className={`${file === null ? 'file-upload2' : 'file-upload-hidden2 bg-ct-blue-05 px-[18px] py-[5px] rounded-[4px]'} `}>
+                            {/* <Upload */}
+                            <Upload
+                                accept='.doc, .pdf'
+                                onChange={(event) => {
+                                    handleFileUpload(event);
+                                    return false;
+                                }}
+                            //  {...props}
+                            >
+                                <button
+                                    onClick={(event) => {
+                                        event.preventDefault(); // Prevents the default click behavior of the button
+                                    }}
+                                    className={` flex items-center gap-x-[5px] pl-[16px] pr-6 py-2 border-[1px] border-ct-blue-30 rounded-[6px] bg-white hover:bg-ct-blue-10 active:bg-ct-blue-30 transition ease-out duration-300`}>
+                                    <img className='w-[20px] h-[20px]' src={Icons.upload} alt='' />
+                                    <h1 className='text-ct-blue-80 text-small font-medium leading-[17px]'> Attach</h1>
+                                </button>
+                            </Upload>
+                        </div>
+                }
+
 
                 {
                     // file?.length === 0 &&
-                    file === null &&
+                    (file === null && formik.values.cvFile?.length === 0) &&
                     <h2 className='text-blue-gray-75 text-small'>Format: .doc, .pdf</h2>
                 }
 
@@ -139,6 +191,7 @@ const FileReport = ({ getFile, formik }: { getFile: (file: File | null) => void,
                             style={{ width: '100%' }}
                             options={newRoleList}
                             value={formik.values.adminData}
+                            defaultValue={newRoleList.filter((item: any) => item.id === formik.values.adminID )}
                             onChange={(event, value) => {
                                 formik.setFieldValue('adminID', value.id);
                                 formik.setFieldValue('adminData', value);
@@ -166,18 +219,18 @@ const FileReport = ({ getFile, formik }: { getFile: (file: File | null) => void,
                                     error={formik.touched.adminData && Boolean(formik.errors.adminData)}
                                     helperText={formik.touched.adminData && formik.errors.adminData}
                                     label={<h1 className='comboBoxLabel'>Select Admin <span className='text-[red]'>*</span></h1>}
-                                // InputProps={{
-                                //     style: {
-                                //         color: '#464E5F',
-                                //         fontWeight: '600',
-                                //         fontSize: '15px',
-                                //         caretColor: '#136EE5',
-                                //         border: selectedFieldOutline === 'adminData' ? '1px solid #136EE5' : '1px solid transparent'
-                                //     }
-                                // }}
-                                variant="outlined"
-                                onFocus={() => setSelectedFieldOutline("adminData")}
-                                onBlur={() => setSelectedFieldOutline("")}
+                                    // InputProps={{
+                                    //     style: {
+                                    //         color: '#464E5F',
+                                    //         fontWeight: '600',
+                                    //         fontSize: '15px',
+                                    //         caretColor: '#136EE5',
+                                    //         border: selectedFieldOutline === 'adminData' ? '1px solid #136EE5' : '1px solid transparent'
+                                    //     }
+                                    // }}
+                                    variant="outlined"
+                                    onFocus={() => setSelectedFieldOutline("adminData")}
+                                    onBlur={() => setSelectedFieldOutline("")}
                                 />
                             )}
                         />

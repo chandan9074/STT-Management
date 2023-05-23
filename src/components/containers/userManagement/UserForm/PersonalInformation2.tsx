@@ -75,6 +75,61 @@ const PersonalInformation2 = ({ formik }: Prop) => {
                     </div>
                 </Grid>
 
+                <Grid item xs={6}>
+                    <div className=''>
+                        <TextField
+                            id="email"
+                            name="email"
+                            label={<h1 className='comboBoxLabel'>Email <span className='text-[red]'>*</span></h1>}
+                            value={formik.values.email}
+                            onChange={formik.handleChange}
+                            error={formik.touched.email && Boolean(formik.errors.email)}
+                            helperText={formik.touched.email && formik.errors.email}
+                            style={{ width: '100%' }}
+                            InputProps={{
+                                style: {
+                                    color: '#464E5F',
+                                    fontWeight: '600',
+                                    fontSize: '15px',
+                                    caretColor: '#136EE5',
+                                    border: selectedFieldOutline === 'email' ? '1px solid #136EE5' : '1px solid transparent'
+                                }
+                            }}
+                            variant="outlined"
+                            onFocus={() => setSelectedFieldOutline("email")}
+                            onBlur={() => setSelectedFieldOutline("")}
+                        />
+                    </div>
+                </Grid>
+
+                {/* Mobile Nujmber */}
+                <Grid item xs={6}>
+                    <div className=''>
+                        <TextField
+                            id="mobileNumber"
+                            name="mobileNumber"
+                            label={<h1 className='comboBoxLabel'>Mobile Number <span className='text-[red]'>*</span></h1>}
+                            value={formik.values.mobileNumber}
+                            onChange={formik.handleChange}
+                            error={formik.touched.mobileNumber && Boolean(formik.errors.mobileNumber)}
+                            helperText={formik.touched.mobileNumber && formik.errors.mobileNumber}
+                            style={{ width: '100%' }}
+                            InputProps={{
+                                style: {
+                                    color: '#464E5F',
+                                    fontWeight: '600',
+                                    fontSize: '15px',
+                                    caretColor: '#136EE5',
+                                    border: selectedFieldOutline === 'mobileNumber' ? '1px solid #136EE5' : '1px solid transparent'
+                                }
+                            }}
+                            variant="outlined"
+                            onFocus={() => setSelectedFieldOutline("mobileNumber")}
+                            onBlur={() => setSelectedFieldOutline("")}
+                        />
+                    </div>
+                </Grid>
+
             </Grid>
 
             <div>

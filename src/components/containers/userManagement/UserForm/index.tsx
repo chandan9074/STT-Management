@@ -14,6 +14,7 @@ import Buttons from '../../../Buttons';
 import Icons from '../../../../assets/Icons';
 import { CustomModal } from '../../../common/CustomModal';
 import { UserManagementContext } from '../../../../context/UserManagementProvider';
+import { useNavigate } from 'react-router-dom';
 
 // const validationSchema = yup.object({
 //     role: yup.array().min(1, "Please select at least one role"),
@@ -50,8 +51,8 @@ const UserForm = ({ data }: Props) => {
 
     const [isSpeaker, setIsSpeaker] = useState<boolean>(false);
     const [isConfirmCancelModal, setIsConfirmCancelModal] = useState<boolean>(false);
-    const { getUserRoleListByRole, createUser } = useContext(UserManagementContext);
-
+    const { getUserRoleListByRole, createUser, updateUser } = useContext(UserManagementContext);
+    const navigate = useNavigate();
 
     const onDrawerClose = () => {
         setIsConfirmCancelModal(false);
@@ -105,7 +106,6 @@ const UserForm = ({ data }: Props) => {
         // validationSchema: isSpeaker ? validationSchemaSpeaker : validationSchema,
         validationSchema: validationSchemaSpeaker,
 
-
         onSubmit: (values) => {
 
             if (isSpeaker) {
@@ -119,12 +119,12 @@ const UserForm = ({ data }: Props) => {
         },
     });
 
-    const handleSpeakerSubmit = (values: userInfoDT) => {
+    const handleSpeakerSubmit = async (values: userInfoDT) => {
 
-        console.log('%%%values%%%%%', values);
 
         let formData = new FormData();
 
+        // adding value in form data
         for (const key in values) {
             if (values.hasOwnProperty(key)) {
                 const value = values[key as keyof typeof values];
@@ -135,59 +135,51 @@ const UserForm = ({ data }: Props) => {
             }
         }
 
-        formData.append('cvFile', values.cvFile);
-        formData.append('role', JSON.stringify(values.role));
+        formData.append('role', values.role.join(','));
+        formData.append('adminID', values.adminID ? values.adminID : '');
+        formData.delete('adminData');
 
-        createUser(formData);
+        // if data have then it is create, otherwise update
+        if (!data) {
+            formData.append('cvFile', values.cvFile);
+            const res = await createUser(formData);
+            if (res === 200) {
+                navigate(-1);
+            }
+        } else {
+            if (data.id) {
+                formData.append('id', data.id)
+            }
+            // Checking cv file already have or not
+            if (typeof (values.cvFile) === 'string') {
+                formData.delete('cvFile');
+            }
+             else {
+                // if cv file removed or empty
+                if (formik.values.cvFile.length === 0) {
+                    formData.append('cvFile', '');
+                }
+                // if cv file pass new file 
+                else {
+                    formData.append('cvFile', values.cvFile);
+                }
+            }
 
+            const res = await updateUser(formData);
 
-        // let hasChanges = false;
-        // for (const [key, value] of Object.entries(values)) {
-        //     // Check if the value has changed from the initial data
-        //     if (value !== data?.[key as keyof userInfoDT]) {
-        //         hasChanges = true;
-        //         // Convert boolean values to strings
-        //         // const valueToAppend = typeof value === 'boolean' ? value.toString() : value;
-        //         const valueToAppend: any = value ;
-        //         // Check if the value is empty or null and add the default value " "
+            if (res === 200) {
+                navigate(-1);
+            }
+        }
 
-        //         if (!valueToAppend) {
-        //             formData.append(key, " ");
-        //         } else {
-        //             if (key === 'cvFile' && formik.values.cvFile?.length === 0) {
-        //                 const emptyFileBlob = new Blob([], { type: "application/pdf" });
-        //                 formData.append(key, emptyFileBlob, '');
-        //             }
-        //             // this is create
-        //             else {
-        //                 formData.append(key, valueToAppend);
-        //             }
-        //         }
-        //     }
-        // }
-
-        // // If no values have changed, add only the module field to the formData object
-        // if (!hasChanges) {
-        //     formData = new FormData();
-        // }
-
-        // // Add the id to the formData object if data exists
-        // if (data && data.id) {
-        //     formData.append('id', data.id);
-        //     updateUser(formData);
-        //     // updateScript(formData);
-        //     // navigate(SCRIPT_PATH);
-        // } else {
-        //     if (formik.values.cvFile === '') {
-        //         formData.delete('cvFile');
-        //         createUser(formData)
-        //     }
-        //     // createScript(formData);
-        //     // navigate(SCRIPT_PATH);
-        // }
 
         setIsSpeaker(isSpeaker);
-    }
+
+    };
+
+
+    console.log('&&&&&&&', data?.adminID);
+    
 
     useEffect(() => {
         getUserRoleListByRole(formik.values.reportingTo)

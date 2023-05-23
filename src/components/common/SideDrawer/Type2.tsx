@@ -20,8 +20,6 @@ const Type2 = ({ open, setOpen, drawerData }: Props) => {
         // setMetaDataOpen(false)
     };
 
-    console.log("data----------------", drawerData);
-
     // const [metaDataOpen, setMetaDataOpen] = useState<boolean>(false)
     const [activePanle, setActivePanel] = useState<string>("Personal Info")
 
