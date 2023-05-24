@@ -16,21 +16,18 @@ type Props = {
 }
 
 const FileReport = ({ getFile, formik }: Props) => {
-    // const [file, setFile] = useState<any>([]);
     const classes = customMuiListStyle();
 
     const [file, setFile] = useState<File | null>(null);
 
     const { newRoleList, selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
 
-    // const handleFileUpload = (event: any) => {
     const handleFileUpload = (event: any) => {
         if (event.fileList?.length !== 0) {
             // let files = event.fileList || event.file || event.target.files;
             let files = event.fileList[0];
             setFile(files);
             // getFile(event.fileList[0]?.originFileObj);
-            console.log('*******', event.fileList[0]?.originFileObj);
             
             formik.setFieldValue("cvFile", event.fileList[0]?.originFileObj);
         } else {
@@ -48,7 +45,7 @@ const FileReport = ({ getFile, formik }: Props) => {
             // getFile([]);
             getFile(null);
     }
-
+    
     return (
         <div>
             <div className='flex gap-x-[16px] items-center'>
@@ -191,7 +188,6 @@ const FileReport = ({ getFile, formik }: Props) => {
                             style={{ width: '100%' }}
                             options={newRoleList}
                             value={formik.values.adminData}
-                            defaultValue={newRoleList.filter((item: any) => item.id === formik.values.adminID )}
                             onChange={(event, value) => {
                                 formik.setFieldValue('adminID', value.id);
                                 formik.setFieldValue('adminData', value);

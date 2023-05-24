@@ -15,32 +15,33 @@ import Icons from '../../../../assets/Icons';
 import { CustomModal } from '../../../common/CustomModal';
 import { UserManagementContext } from '../../../../context/UserManagementProvider';
 import { useNavigate } from 'react-router-dom';
+import { roleDT } from '../../../../types/billingTypes';
 
-// const validationSchema = yup.object({
-//     role: yup.array().min(1, "Please select at least one role"),
-//     primaryRole: yup.string().required('Primary Role is Required'),
-//     name: yup.string().required('Name is Required'),
-//     email: yup.string().email('Enter a valid email').required('Email is Required'),
-//     mobileNumber: yup.string().required('Mobile number is Required'),
-//     homeDistrict: yup.string().required('Home District is Required'),
-//     presentDistrict: yup.string().required('Present District is Required'),
-//     lastDegreeAchived: yup.string().required('Last Degree Achieved District is Required'),
-//     cvFile: yup.mixed().required("File is required"),
-//     // adminData: yup.string().required('Admin data is Required'),
-// });
+const validationSchema = yup.object({
+    role: yup.array().min(1, "Please select at least one role"),
+    primaryRole: yup.string().required('Primary Role is Required'),
+    name: yup.string().required('Name is Required'),
+    email: yup.string().email('Enter a valid email').required('Email is Required'),
+    mobileNumber: yup.string().required('Mobile number is Required'),
+    district: yup.string().required('Home District is Required'),
+    presentDistrict: yup.string().required('Present District is Required'),
+    lastDegreeAchived: yup.string().required('Last Degree Achieved District is Required'),
+    cvFile: yup.mixed().required("File is required"),
+    // adminData: yup.string().required('Admin data is Required'),
+});
 
 
 const validationSchemaSpeaker = yup.object({
-    // Name: yup.string().required('Name is Required'),
-    // dateOfBirth: yup.string().required('Date of Birth Name is Required'),
-    // ageRange: yup.string().required('Age Range is Required'),
-    // education: yup.string().required('Education is Required'),
-    // educationSituation: yup.string().required('Education situation is Required'),
-    // childhoodPlace: yup.string().required('Childhood place is Required'),
-    // district: yup.string().required('District place is Required'),
-    // upazilaCity: yup.string().required('Upazilla/ City is Required'),
-    // villageArea: yup.string().required('Village/ Area is Required'),
-    // profession: yup.string().required('Profession is Required'),
+    name: yup.string().required('Name is Required'),
+    dateOfBirth: yup.string().required('Date of Birth Name is Required'),
+    ageRange: yup.string().required('Age Range is Required'),
+    education: yup.string().required('Education is Required'),
+    educationSituation: yup.string().required('Education situation is Required'),
+    childhoodPlace: yup.string().required('Childhood place is Required'),
+    district: yup.string().required('District place is Required'),
+    upazilaCity: yup.string().required('Upazilla/ City is Required'),
+    villageArea: yup.string().required('Village/ Area is Required'),
+    profession: yup.string().required('Profession is Required'),
 });
 
 type Props = {
@@ -51,22 +52,23 @@ const UserForm = ({ data }: Props) => {
 
     const [isSpeaker, setIsSpeaker] = useState<boolean>(false);
     const [isConfirmCancelModal, setIsConfirmCancelModal] = useState<boolean>(false);
-    const { getUserRoleListByRole, createUser, updateUser } = useContext(UserManagementContext);
+    const { getUserRoleListByRole, createUser, updateUser, newRoleList } = useContext(UserManagementContext);
     const navigate = useNavigate();
+    const [singleAdminData, setSingleAdminData] = useState<roleDT>({} as roleDT);
 
     const onDrawerClose = () => {
         setIsConfirmCancelModal(false);
     }
 
     const initialValues = {
-        role: data?.role || [],
+        role: data?.role?.map(role => role.charAt(0).toUpperCase() + role.slice(1).toLowerCase()) || [],
         speakersName: data?.name || '',
         gender: data?.gender || 'Male',
         dateOfBirth: data?.dateOfBirth || '',
         ageRange: data?.ageRange || '',
         education: data?.education || '',
         educationSituation: data?.educationSituation || '',
-        // profession: data?.profession || '',
+        profession: data?.profession || '',
         childhoodPlace: data?.childhoodPlace || '',
         district: data?.district || '',
         upazilaCity: data?.upazilaCity || '',
@@ -78,14 +80,16 @@ const UserForm = ({ data }: Props) => {
         cvFile: data?.cvFile || '',
         cvFileName: data?.cvFileName || '',
         adminID: data?.adminID || '',
+        adminId: data?.adminId || '',
         adminData: {
-            id: data?.adminData?.id || '',
-            name: data?.adminData?.name || '',
-            role: data?.adminData?.role || '',
-            contact: data?.adminData?.contact || '',
-            email: data?.adminData?.email || '',
-            address: data?.adminData?.address || '',
-            gender: data?.adminData?.gender || '',
+            id: singleAdminData?.id || '',
+            name: singleAdminData?.name || '',
+            role: singleAdminData?.role || '',
+            contact: singleAdminData?.contact || '',
+            email: singleAdminData?.email || '',
+            address: singleAdminData?.address || '',
+            gender: singleAdminData?.gender || '',
+
         },
         primaryRole: data?.primaryRole || '',
         name: data?.name || '',
@@ -99,12 +103,13 @@ const UserForm = ({ data }: Props) => {
         subjectInStudy: data?.subjectInStudy || '',
         // sourceUrl: data?.sourceUrl || '',
     }
+    
 
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: initialValues,
-        // validationSchema: isSpeaker ? validationSchemaSpeaker : validationSchema,
-        validationSchema: validationSchemaSpeaker,
+        validationSchema: isSpeaker ? validationSchemaSpeaker : validationSchema,
+        // validationSchema: validationSchemaSpeaker,
 
         onSubmit: (values) => {
 
@@ -118,6 +123,7 @@ const UserForm = ({ data }: Props) => {
             // handleSpeakerSubmit(values)
         },
     });
+
 
     const handleSpeakerSubmit = async (values: userInfoDT) => {
 
@@ -138,6 +144,8 @@ const UserForm = ({ data }: Props) => {
         formData.append('role', values.role.join(','));
         formData.append('adminID', values.adminID ? values.adminID : '');
         formData.delete('adminData');
+        formData.append('removeCvFile', 'false');
+
 
         // if data have then it is create, otherwise update
         if (!data) {
@@ -157,7 +165,8 @@ const UserForm = ({ data }: Props) => {
              else {
                 // if cv file removed or empty
                 if (formik.values.cvFile.length === 0) {
-                    formData.append('cvFile', '');
+                    formData.append('removeCvFile', 'true');
+                    formData.delete('cvFile');
                 }
                 // if cv file pass new file 
                 else {
@@ -177,9 +186,12 @@ const UserForm = ({ data }: Props) => {
 
     };
 
+    useEffect(() => {
+        if (newRoleList) {
+          setSingleAdminData(newRoleList.find((role: roleDT) => role.id === formik.values.adminId) || ({} as roleDT));
+        }
+      }, [newRoleList, formik.values.adminId]);
 
-    console.log('&&&&&&&', data?.adminID);
-    
 
     useEffect(() => {
         getUserRoleListByRole(formik.values.reportingTo)
