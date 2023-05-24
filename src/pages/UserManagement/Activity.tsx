@@ -7,14 +7,18 @@ import { UserManagementContext } from '../../context/UserManagementProvider'
 const Activity = () => {
   const { id } = useParams<{ id: string }>()
   // console.log("from activity page", id)
-  const { getActivityStatistics, setActivityQueryParams, activityQueryParams } = useContext(UserManagementContext);
+  const { getActivityStatistics, setActivityQueryParams, activityQueryParams, getActivityTable, activityTableParams, setActivityTableParams } = useContext(UserManagementContext);
 
   useEffect(() => {
     if (id) {
       console.log("from activity page", id)
-      setActivityQueryParams({ 
+      setActivityQueryParams({
         ...activityQueryParams,
         id: id
+      })
+      setActivityTableParams({
+        ...activityTableParams,
+        userID: id
       })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -27,6 +31,13 @@ const Activity = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activityQueryParams])
+
+  useEffect(() => {
+    if (activityTableParams.userID) {
+      getActivityTable(activityTableParams)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activityTableParams])
   return (
     <Layouts.Forth>
       <div className="min-h-[calc(100vh-9.5vh)]">
