@@ -17,7 +17,7 @@ const Tertiary = (props: Props) => {
                     <button
                         style={{ cursor: `url("/disableCursor.svg"), auto` }}
                         disabled
-                        className={` text-blue-gray-40 flex gap-2 items-center cursor-not-allowed
+                        className={` text-blue-gray-40 flex gap-2 items-center cursor-not-allowed 
                                 ${size === "xSmall" ? "xSmallIconButton" : size === "small" ? "smallIconButton" : "mediumIconButton"}
                                 ${iconAlign === "start" ? "pl-4 pr-6" : "pl-6 pr-4"}
                                 `}
@@ -38,8 +38,8 @@ const Tertiary = (props: Props) => {
                                 ${iconAlign === "start" ? "pl-4 pr-6" : "pl-6 pr-4"}
                                 `}
                     >
-                        {iconAlign === "start" ? <span>{icon}</span> : null}
-                        <span>{label}</span>
+                        {iconAlign === "start" ? <>{icon}</> : null}
+                        <span className='whitespace-nowrap'>{label}</span>
                         {iconAlign === "end" ? <span>{icon}</span> : null}
                     </button>
             }

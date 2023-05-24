@@ -21,7 +21,7 @@ const Type2 = ({ data }: Props) => {
                         label="Downlaod Script"
                         size="xSmall"
                         variant="Blue"
-                        icon={<img alt="" src={Icons.fileDownload} />}
+                        icon={<img alt="" src={Icons.fileDownload} className="w-3 h-3" />}
                         iconAlign="start"
 
                     />

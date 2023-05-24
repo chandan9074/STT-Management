@@ -88,7 +88,7 @@ const CheckingStatus = ({ targetTitle, isDrawerOpen, setIsDrawerOpen: setOpen, i
                                                 {
                                                     id && <div className='flex'>
                                                         <h1 className='text-ct-blue-90-70% text-xs'>{targetTitle ? "Target" : 'Task'} ID: </h1>
-                                                        <h1 className='pl-1 text-ct-blue-90-70% font-semibold text-xs'>{id?.slice(0, 25)}</h1>
+                                                        <h1 className='pl-1 text-ct-blue-90-70% font-semibold text-xs w-20 truncate'>{id}</h1>
                                                     </div>
                                                 }
                                                 {deadline && <div className='flex'>
