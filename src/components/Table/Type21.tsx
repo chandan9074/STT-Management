@@ -97,6 +97,7 @@ const Type21 = ({ data, setSelectedRowSData }: Props) => {
         {
             title: `${"Status".toLocaleUpperCase()}`,
             width: 150,
+            align: "center",
             render: (data) => (
                 <>
                     {
@@ -145,7 +146,7 @@ const Type21 = ({ data, setSelectedRowSData }: Props) => {
                         />
                     </button>
                     {
-                        remarkOpen &&
+                       (remarkOpen && data.id === singleTargetData?.id) &&
                         <div className='fixed top-[209px] right-[86px] z-[999] animate-fadeIn2'>
                             <Remark2
                                 open={remarkOpen}

@@ -3,8 +3,15 @@ import { urlPatternValidation } from '../../../../../helpers/Utils';
 import Icons from '../../../../../assets/Icons';
 import Dragger from 'antd/es/upload/Dragger';
 import { UploadChangeParam, UploadFile } from 'antd/es/upload';
+import { useState } from 'react';
 
 const VideoAudioUpload = ({ formik }: { formik: FormikValues }) => {
+
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [convertedFileUrl, setConvertedFileUrl] = useState<string>("");
+    const [conversionProgress, setConversionProgress] = useState(0);
+    const [conversionETA, setConversionETA] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const onDeleteFile = () => {
         formik.setFieldValue("speechFile", []);
@@ -17,9 +24,15 @@ const VideoAudioUpload = ({ formik }: { formik: FormikValues }) => {
             // let files = event.fileList || event.file || event.target.files;
             let files = event.fileList[0];
             // getFile(event.fileList[0]?.originFileObj);
+            if (files && files.type === "audio/mpeg") {
+                console.log(files, "files")
+                formik.setFieldValue("speechFile", event.fileList[0]?.originFileObj);
+                formik.setFieldValue("speechFileName", files?.originFileObj?.name);
+            }
+            else {
+                convertToMP3(files)
+            }
 
-            formik.setFieldValue("speechFile", event.fileList[0]?.originFileObj);
-            formik.setFieldValue("speechFileName", files?.originFileObj?.name);
 
         } else {
             // getFile([]);
@@ -28,6 +41,68 @@ const VideoAudioUpload = ({ formik }: { formik: FormikValues }) => {
             // formik.setFieldValue("file",  []);
         }
     }
+
+
+    const convertToMP3 = async (files: any) => {
+        const videoFile = files;
+        setLoading(true)
+        console.log("hello")
+
+        if (!videoFile) {
+            console.error('Please select a video file.');
+            setLoading(false);
+            return;
+        }
+
+        const videoElement = document.createElement('video');
+        // videoElement.src = URL.createObjectURL(videoFile);
+
+        // try {
+        //     await videoElement.play();
+        // } catch (error) {
+        //     console.error('Error playing the video:', error);
+        //     return;
+        // }
+
+        // const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const audioContext = new window.AudioContext();
+        const sourceNode = audioContext.createMediaElementSource(videoElement);
+        const destinationNode = audioContext.createMediaStreamDestination();
+        const mediaRecorder = new MediaRecorder(destinationNode.stream);
+        const chunks: Blob[] = [];
+
+        sourceNode.connect(destinationNode);
+
+        mediaRecorder.ondataavailable = (event) => {
+            console.log('Data available:', event.data);
+            chunks.push(event.data);
+            const progress = Math.floor((chunks.length / (videoElement.duration * 20)) * 100); // Assuming 20 chunks per second
+            setConversionProgress(progress);
+
+            const etaSeconds = Math.floor(((100 - progress) / progress) * (videoElement.duration / 20));
+            const etaMinutes = Math.floor(etaSeconds / 60);
+            const etaSecondsRemaining = etaSeconds % 60;
+            setConversionETA(`${etaMinutes}m ${etaSecondsRemaining}s`);
+        };
+
+        mediaRecorder.addEventListener('stop', () => {
+            const audioBlob = new Blob(chunks, { type: 'audio/mp3' });
+            // const audioUrl = URL.createObjectURL(audioBlob);
+            console.log(audioBlob, "audio blob")
+            formik.setFieldValue("speechFile", audioBlob);
+            formik.setFieldValue("speechFileName", files?.originFileObj?.name);
+            // setConvertedFileUrl(audioUrl);
+            setLoading(false);
+            chunks.length = 0;
+        });
+
+        mediaRecorder.start();
+        setTimeout(() => {
+            mediaRecorder.stop();
+            videoElement.pause();
+            URL.revokeObjectURL(videoElement.src);
+        }, videoElement.duration * 1000);
+    };
 
 
     console.log('speech file', formik.values.speechFile);
@@ -63,6 +138,7 @@ const VideoAudioUpload = ({ formik }: { formik: FormikValues }) => {
                         </div>
                     </Dragger>
                 }
+                {loading && <span>loading...</span>}
 
                 {
                     (formik.values.speechFile?.length !== 0) &&

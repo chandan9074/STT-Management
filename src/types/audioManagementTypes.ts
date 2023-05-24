@@ -617,3 +617,37 @@ export type collectAnnSenQueryDT = {
     speaker: string,
     audioChecker: string
 }
+
+export type annotatedFilesQueryDT = {
+    page: number,
+    pageSize: number,
+    script: string,
+    annotator: string,
+    audioChecker: string
+    speaker: string,
+    collector: string,
+    audioSubmissionPeriod: string,
+    status: string
+}
+
+export type validatedFilesQueryDT = {
+    page: number,
+    pageSize: number,
+    script: string,
+    validator: string,
+    annotator: string,
+    speaker: string,
+    audioChecker: string
+    collector: string,
+    audioSubmissionPeriod: string,
+    status: string
+}
+
+export type collectValSenDataQueryDT = {
+    page: number,
+    pageSize: number,
+    dateRange: string,
+    annotator: string,
+    speaker: string,
+    audioChecker: string
+}

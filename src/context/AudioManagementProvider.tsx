@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useState } from "react";
 import audioManagementService from "../services/audioManagementService";
-import { CollectedAudioQueryDT, allCheckedAudioQueryDT, allCheckedAudioRootDt, allCheckedSpeechRootDT, annotatedFilesRootDT, annotatedFilesUploadRootDT, annotationRootDT, annotationTypeQueryDT, annotationUploadRootDT, checkingStatusQueryDT, checkingStatusRootDT, checkingStatusUploadRootDT, collectAnnSenQueryDT, collectAnnSenRootDT, collectValSenRootDT, collectedAudioDT, sentenceLevelUploadRootDT, sentenceLevelValUploadRootDT, uploadAudioRootDT, validatedFilesRootDT, validatedFilesUploadRootDT } from "../types/audioManagementTypes";
+import { CollectedAudioQueryDT, allCheckedAudioQueryDT, allCheckedAudioRootDt, allCheckedSpeechRootDT, annotatedFilesQueryDT, annotatedFilesRootDT, annotatedFilesUploadRootDT, annotationRootDT, annotationTypeQueryDT, annotationUploadRootDT, checkingStatusQueryDT, checkingStatusRootDT, checkingStatusUploadRootDT, collectAnnSenQueryDT, collectAnnSenRootDT, collectValSenDataQueryDT, collectValSenRootDT, collectedAudioDT, sentenceLevelUploadRootDT, sentenceLevelValUploadRootDT, uploadAudioRootDT, validatedFilesQueryDT, validatedFilesRootDT, validatedFilesUploadRootDT } from "../types/audioManagementTypes";
 
 interface ContextProps {
     getCollectedAudioData: (params: CollectedAudioQueryDT) => void;
@@ -17,15 +17,15 @@ interface ContextProps {
     collectAnnWordData: collectAnnSenRootDT
     getCollectAnnPhonemeData: (params: collectAnnSenQueryDT) => void;
     collectAnnPhonemeData: collectAnnSenRootDT
-    getAnnotatedFilesData: () => void;
+    getAnnotatedFilesData: (params:annotatedFilesQueryDT) => void;
     annotatedFilesData: annotatedFilesRootDT
     getCollectValSenData: () => void;
     collectValSenData: collectValSenRootDT
     getCollectValWordData: () => void;
     collectValWordData: collectValSenRootDT
-    getCollectValPhonemeData: () => void;
+    getCollectValPhonemeData: (params:collectValSenDataQueryDT) => void;
     collectValPhonemeData: collectValSenRootDT
-    getValidatedFilesData: () => void;
+    getValidatedFilesData: (params:validatedFilesQueryDT) => void;
     validatedFilesData: validatedFilesRootDT
     getUploadAudioData: () => void;
     uploadAudioData: uploadAudioRootDT;
@@ -175,9 +175,9 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
         setCollectAnnPhonemeData(res.data);
     }
 
-    const getAnnotatedFilesData = () => {
-        const res = audioManagementService.getAnnotatedFilesData();
-        setAnnotatedFilesData(res);
+    const getAnnotatedFilesData = async (params:annotatedFilesQueryDT) => {
+        const res = await audioManagementService.getAnnotatedFilesData(params);
+        setAnnotatedFilesData(res.data);
     }
 
     const getCollectValSenData = () => {
@@ -190,14 +190,14 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
         setCollectValWordData(res);
     }
 
-    const getCollectValPhonemeData = () => {
-        const res = audioManagementService.getCollectValPhonemeData();
-        setCollectValPhonemeData(res);
+    const getCollectValPhonemeData = async (params:collectValSenDataQueryDT) => {
+        const res = await audioManagementService.getCollectValPhonemeData(params);
+        setCollectValPhonemeData(res.data);
     }
 
-    const getValidatedFilesData = () => {
-        const res = audioManagementService.getValidatedFilesData();
-        setValidatedFilesData(res);
+    const getValidatedFilesData = async (params:validatedFilesQueryDT) => {
+        const res = await audioManagementService.getValidatedFilesData(params);
+        setValidatedFilesData(res.data);
     }
 
     const getUploadAudioData = () => {

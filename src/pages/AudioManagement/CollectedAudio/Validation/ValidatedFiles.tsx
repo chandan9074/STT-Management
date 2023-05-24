@@ -17,11 +17,23 @@ const ValidatedFiles = () => {
   const [activeTab, setActiveTab] = useState<string>("Sentence");
   const [selectedSpeech, setSelectedSpeech] = useState<validatedFilesDT[]>([] as validatedFilesDT[]);
   const [selectedRowsData, setSelectedRowsData] = useState<validatedFilesDT[]>([] as validatedFilesDT[]);
+  const [query, setQuery] = useState({
+    page: 1,
+    pageSize: 20,
+    script: "",
+    validator: "",
+    annotator: "",
+    speaker: "",
+    audioChecker: "",
+    collector: "",
+    audioSubmissionPeriod: "",
+    status: ""
+  })
 
   const { getValidatedFilesData, validatedFilesData } = useContext(AudioManagementContext);
 
   useEffect(() => {
-    getValidatedFilesData()
+    getValidatedFilesData(query)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

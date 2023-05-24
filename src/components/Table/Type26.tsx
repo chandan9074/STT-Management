@@ -26,7 +26,7 @@ const Type26 = ({ data }: Props) => {
 
     const onChange = (e: CheckboxChangeEvent) => {
         console.log(`checked = ${e.target.checked}`);
-      };
+    };
 
     const Type26columns: ColumnsType<annotationUploadDT> = [
         {
@@ -67,15 +67,19 @@ const Type26 = ({ data }: Props) => {
             align: "center",
             render: (data: annotationUploadDT) => (
                 <div className='flex justify-center relative'>
-                    <img
+                    <button
+                        className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-blue-gray-20 active:border active:border-blue-gray-A10'
                         onClick={() => {
                             setRemarkOpen(true);
-                        }}
-                        src={Icons.File} className="h-[16px] w-[16px] cursor-pointer"
-                        alt=""
-                    />
+                            setSingleTargetData(data);
+                        }}>
+                        <img
+                            src={Icons.File} className="h-[16px] w-[16px] cursor-pointer"
+                            alt=""
+                        />
+                    </button>
                     {
-                        remarkOpen &&
+                        (remarkOpen && data.id === singleTargetData?.id) &&
                         <div className='fixed top-[209px] right-[86px] z-[999] animate-fadeIn2'>
                             <Remark2
                                 open={remarkOpen}

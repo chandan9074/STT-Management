@@ -133,7 +133,7 @@ const Type33 = ({ data,setSelectedRowsData }: Props) => {
                         alt=""
                     />
                     {
-                        remarkOpen &&
+                       (remarkOpen && data.id === singleTargetData?.id) &&
                         <div className='fixed top-[209px] right-[86px] z-[999] animate-fadeIn2'>
                             <Remark2
                                 open={remarkOpen}

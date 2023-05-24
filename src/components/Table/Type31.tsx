@@ -68,6 +68,7 @@ const Type31 = ({ data,setSelectedRowsData }: Props) => {
         {
             title: `${"Status".toLocaleUpperCase()}`,
             width: 150,
+            align: "center",
             render: (data) => (
                 <>
                     {
@@ -180,7 +181,7 @@ const Type31 = ({ data,setSelectedRowsData }: Props) => {
                         alt=""
                     />
                     {
-                        remarkOpen &&
+                        (remarkOpen && data.id === singleTargetData?.id) &&
                         <div className='fixed top-[209px] right-[86px] z-[999] animate-fadeIn2'>
                             <Remark2
                                 open={remarkOpen}
@@ -269,6 +270,7 @@ const Type31 = ({ data,setSelectedRowsData }: Props) => {
                     others={singleTargetData.others}
                     id={singleTargetData.id}
                     history={singleTargetData.history}
+                    submissionDate={singleTargetData.submissionDate}
                 />
             }
         </div>

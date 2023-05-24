@@ -10,14 +10,24 @@ const AllAnnotatedFiles = () => {
     const [activeTab, setActiveTab] = useState<string>("Sentence");
     const [selectedScript, setSelectedScript] = useState<annotatedFilesDT[]>([] as annotatedFilesDT[]);
     const [selectedRowsData, setSelectedRowSData] = useState<annotatedFilesDT[]>([]);
-
     const [isConfirmCancelModal, setIsConfirmCancelModal] = useState<boolean>(false);
+    const [query, setQuery] = useState({
+        page: 1,
+        pageSize: 20,
+        script: "",
+        annotator: "",
+        audioChecker: "",
+        speaker: "",
+        collector: "",
+        audioSubmissionPeriod: "",
+        status: ""
+    })
 
 
     const { getAnnotatedFilesData, annotatedFilesData } = useContext(AudioManagementContext);
 
     useEffect(() => {
-        getAnnotatedFilesData()
+        getAnnotatedFilesData(query)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
