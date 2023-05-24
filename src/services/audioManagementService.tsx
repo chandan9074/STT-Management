@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { collectedAudioCollectorList, allCheckedAudiosData, annotationData, checkingStatusData, collectAnnSenData, collectedAudio, scriptFilterData, annotatedFiles, collectValSenData, validatedFilesData, collectedAudioSpeakersList, collectedAudioCheckerList, collectedAudioAnnotatorList, collectedAudioValidatorList } from '../data/audioManagement/AudioManagementData';
+import { collectedAudioCollectorList, scriptFilterData, annotatedFiles, collectValSenData, validatedFilesData, collectedAudioSpeakersList, collectedAudioCheckerList, collectedAudioAnnotatorList, collectedAudioValidatorList } from '../data/audioManagement/AudioManagementData';
 import { allCheckedSpeechData, annotatedFilesUploadData, annotationUploadData, checkingStatusUploadData, sentenceLevelUploadData, uploadAudioData, ValidatedFilesUploadData, sentenceLevelValUpload } from '../data/audioManagement/UploadAudiosData';
-import * as PATH from '../helpers/APIURL'
+import * as PATH from '../helpers/APIURL';
 import { CollectedAudioQueryDT, allCheckedAudioQueryDT, annotationTypeQueryDT, checkingStatusQueryDT, collectAnnSenQueryDT } from '../types/audioManagementTypes';
 
 
