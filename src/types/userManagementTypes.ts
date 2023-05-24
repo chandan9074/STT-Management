@@ -108,7 +108,7 @@ export type userRoleInformationDt = {
     userID?: string,
     adminID?: string,
     adminData?: roleDT
-    
+
     // adminData: adminDataDT,
 }
 
@@ -144,7 +144,9 @@ export type userInfoDT = {
     smoking: string,
     stutter: string,
     hearingStatus: string,
-  
+    removeCvFile?: string;
+    adminId?: string;
+    profession?: string;
 }
 
 export type adminDataDT = {

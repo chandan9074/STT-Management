@@ -1,5 +1,5 @@
 import { FormControl, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Icons from '../../assets/Icons';
 import { homeDistrict } from '../../data/userManagement/UserManagementData';
 import { homeDistrictSearch } from '../../helpers/Utils';
@@ -34,8 +34,10 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
     const [clicked, setClicked] = useState<boolean>(false)
 
     const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
-    
 
+    useEffect(() => {
+        setOnTextField(formikValues)
+    }, [formikValues])
 
     const handleArrowClick = (division: string) => {
         setCollapsed({

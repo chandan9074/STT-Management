@@ -109,7 +109,7 @@ const Type18 = ({ data, setSelectedRowSData }: Props) => {
       title: `${"Submission Date".toLocaleUpperCase()}`,
       key: 'submissionDate',
       width: 150,
-      render: (data: allCheckedAudioDT) => <h1 className='text-small text-blue-gray-80'>{data.deadLine}</h1>
+      render: (data: allCheckedAudioDT) => <h1 className='text-small text-blue-gray-80'>{data.submissionDate}</h1>
     },
     {
       title: `${"Remark".toLocaleUpperCase()}`,

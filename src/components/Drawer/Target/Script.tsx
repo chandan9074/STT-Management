@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import Icons from '../../../assets/Icons';
 import { scriptResDT } from '../../../types/script';
+import { PDF } from '../../PDF';
 
 type Props = {
     isMetaData: boolean,
@@ -39,18 +40,19 @@ const Script = ({ isMetaData, setIsMetaData, data, downloadable }: Props) => {
             <div className='border-t-[2px] border-blue-gray-20 border-dashed mt-7 mb-[21px]' />
 
             {
-                downloadable && <div className='flex w-full items-center justify-between'>
+                downloadable && <div className='flex w-full items-center justify-between gap-x-3'>
                     <h1>{data?.title}</h1>
 
-                    <div className='flex gap-4 items-center'>
-                        <div className='flex gap-2 items-center animate-fadeIn px-2 py-2 cursor-pointer border border-white hover:border-gray-300 rounded-[4px]'>
+                    {/* <div className='flex gap-4 items-center'>
+                        <button className='flex gap-2 items-center animate-fadeIn px-2 py-2 cursor-pointer border border-white hover:border-gray-300 rounded-[4px] whitespace-nowrap'>
                             <img
                                 className='w-[13px] h-[13px]'
                                 src={Icons.fileDownload}
                                 alt="" />
                             <p className='text-xxs font-medium text-[#136EE5]'>Download Script</p>
-                        </div>
-                    </div>
+                        </button>
+                    </div> */}
+                    <PDF.Type2 data={data} />
                 </div>
             }
             {/* content */}

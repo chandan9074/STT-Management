@@ -25,7 +25,7 @@ interface ContextProps {
     activityQueryParams: activityQueryParamsDT;
     setActivityQueryParams: React.Dispatch<React.SetStateAction<activityQueryParamsDT>>;
     createUser: (data: FormData) => Promise<number | undefined>,
-    newRoleList: string[]
+    newRoleList: roleDT[]
     userData: userInfoDT;
     setUserData: React.Dispatch<React.SetStateAction<userInfoDT>>;
     getUserById: (id: getUserByIdParamsDT) => void,
@@ -42,7 +42,7 @@ const UserManagementProvider = ({ children }: { children: any }) => {
     const [userManagementTable, setUserManagementTable] = useState<userManagementDT>({} as userManagementDT)
     const [roleList, setRoleList] = useState<string[]>([] as string[]);
     const [selectedFieldOutline, setSelectedFieldOutline] = useState<string>("");
-    const [newRoleList, setNewRoleList] = useState<string[]>([] as string[]);
+    const [newRoleList, setNewRoleList] = useState<roleDT[]>([] as roleDT[]);
     const [userData, setUserData] = useState<userInfoDT>({} as userInfoDT)
 
 
