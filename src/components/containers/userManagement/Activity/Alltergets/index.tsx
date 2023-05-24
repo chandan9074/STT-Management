@@ -9,7 +9,7 @@ import Table from '../../../../Table';
 import { CategoryMap } from '../../../dashboard/DataContainer/CollectData';
 import { targetAllSpeechData, targetCompletedData, targetData } from '../../../../../data/userManagement/UserManagementData';
 
-const AllTergets = () => {
+const  AllTergets = () => {
     const [activeTab, setActiveTab] = useState<string>("Pending");
     const [pendingCount, setPendingCount] = useState<number>(0);
     const [completedCount, setCompletedCount] = useState<number>(0);

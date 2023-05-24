@@ -21,7 +21,7 @@ const AllAnnotatedFiles = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const allTergetMenu = (key: string) => {
+    const allTargetMenu = (key: string) => {
         const Category: CategoryMap = {
             "Sentence": <><Table.Type21 data={annotatedFilesData.data} setSelectedRowSData={setSelectedRowSData} /></>,
             "Word": <></>,
@@ -35,7 +35,7 @@ const AllAnnotatedFiles = () => {
         <div>
             <Header setActiveTab={setActiveTab} selectedScript={selectedScript} setSelectedScript={setSelectedScript} selectedRowsData={selectedRowsData} isConfirmCancelModal={isConfirmCancelModal} setIsConfirmCancelModal={setIsConfirmCancelModal} />
             <div>
-                {allTergetMenu(activeTab)}
+                {allTargetMenu(activeTab)}
             </div>
         </div>
     );
