@@ -83,6 +83,7 @@ module.exports = {
         "secondary-purple-50": "#6918B4",
         "secondary-orange-50": "#FF8000",
         "secondary-blue-50": "#136EE5",
+        "secondary-blue-50-55%": "rgba(225, 239, 254, 0.55)",
         "secondary-pink-50": "#FF00FF",
         "secondary-yellow-50": "#F5AC42",
         "border-light": "#E5E7EB",

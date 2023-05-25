@@ -7,6 +7,7 @@ import { Drawer } from "../../components/Drawer"
 import Table from "../../components/Table"
 import { deviceData } from "../../data/organize/OrganizerData"
 import { DevcieDataDT } from "../../types/organizerTypes"
+import DeviceForm from "./DeviceForm"
 
 const Device = () => {
 
@@ -25,7 +26,7 @@ const Device = () => {
         isDrawerOpen={open}
         // drawerClose={drawerClose}
         setIsDrawerClose={setOpen}
-        headerBgColor="bg-ct-blue-05" 
+        headerBgColor="bg-ct-blue-05"
         title="Device Details"
         isEdit={true}
       >
@@ -45,6 +46,10 @@ type Props = {
   selectedRows: DevcieDataDT[]
 }
 const Header = ({ open, setOpen, selectedRows }: Props) => {
+
+  const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
+
+
   return (
     <div className='ml-6 mr-4 mb-5 flex items-center justify-between'>
       <div>
@@ -91,8 +96,18 @@ const Header = ({ open, setOpen, selectedRows }: Props) => {
           size="small"
           variant="Megenta"
           icon={<img src={Icons.Add} alt="add" />}
-        // onClick={() => scriptContext.setModalOpen(true)}
+          onClick={() => setIsFormOpen(true)}
         />
+        <Drawer.Organizer.Type1
+          isDrawerOpen={isFormOpen}
+          // drawerClose={drawerClose}
+          setIsDrawerClose={setIsFormOpen}
+          headerBgColor="bg-ct-blue-20"
+          title="Create Device"
+          isEdit={false}
+        >
+          <DeviceForm setIsFormOpen={setIsFormOpen} />
+        </Drawer.Organizer.Type1>
       </div>
     </div>
   )

@@ -1,8 +1,9 @@
 import { FormControl, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { organizeRole } from '../../../data/organize/OrganizerData';
 import RoleImage from '../../../components/Image/RoleImage';
 import Icons from '../../../assets/Icons';
+import { UserManagementContext } from '../../../context/UserManagementProvider';
 
 type Prop =
     {
@@ -22,6 +23,11 @@ const RoleSelect = ({ formikValues, formik, data, formikError, formikTouched, na
     const [isRole, setIsRole] = useState<boolean>(false);
 
     const [filteredDistrict, setFilteredDistrict] = useState<string[]>(data);
+
+    const [clicked, setClicked] = useState<boolean>(false)
+
+
+    const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
 
     const onRoleFocus = () => {
         setIsRole(true)
@@ -50,35 +56,49 @@ const RoleSelect = ({ formikValues, formik, data, formikError, formikTouched, na
         setIsRole(false)
     }
 
+    const handleRoleInputClick = () => {
+        setClicked(!clicked)
+    }
+
     return (
         <div className='relative z-[9999]'>
 
             <div className={`${!isRole && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[90]`} onClick={() => clickOutsideField()}></div>
 
-            <FormControl sx={{ width: '100%' }} variant="outlined">
-                <InputLabel htmlFor={name}>{<h1 className='comboBoxLabel'>{fieldLabel} <span className='text-[red]'>*</span></h1>}</InputLabel>
-                <OutlinedInput
-                    id={name}
-                    autoComplete='off'
-                    type='text'
-                    onMouseDown={onRoleFocus}
-                    name={name}
-                    label={<h1 className='comboBoxLabel'>{fieldLabel} <span className='text-[red]'>*</span></h1>}
-                    value={onTextField || ''}
-                    onChange={(e) => {
-                        handleSearch(e);
-                        setOnTextField(e.target.value);
-                    }}
-                    endAdornment={
-                        <InputAdornment position="end">
-                            <img className='w-[8.41px] h-[5.37px]' src={Icons.arrow_drop_down_blue_gray_45} alt="" />
-                        </InputAdornment>
-                    }
-                    style={{
-                        height: '44px'
-                    }}
-                />
-            </FormControl>
+            <div className={`border ${selectedFieldOutline === name ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px] relative`}>
+                <FormControl sx={{ width: '100%' }} variant="outlined">
+                    <InputLabel htmlFor={name}>{<h1 className='comboBoxLabel'>{fieldLabel} <span className='text-[red]'>*</span></h1>}</InputLabel>
+                    <OutlinedInput
+                        id={name}
+                        autoComplete='off'
+                        type='text'
+                        onMouseDown={onRoleFocus}
+                        name={name}
+                        label={<h1 className='comboBoxLabel'>{fieldLabel} <span className='text-[red]'>*</span></h1>}
+                        value={onTextField || ''}
+                        onChange={(e) => {
+                            handleSearch(e);
+                            setOnTextField(e.target.value);
+                        }}
+                        endAdornment={
+                            <InputAdornment position="end">
+                                <img className='w-[8.41px] h-[5.37px]' src={Icons.arrow_drop_down_blue_gray_45} alt="" />
+                            </InputAdornment>
+                        }
+                        style={{
+                            height: '44px'
+                        }}
+                        onFocus={() => {
+                            setSelectedFieldOutline(name);
+                            handleRoleInputClick()
+                        }}
+                        onBlur={() => {
+                            setSelectedFieldOutline("");
+                            handleRoleInputClick()
+                        }}
+                    />
+                </FormControl>
+            </div>
             {
                 isRole &&
                 <div className='absolute z-[100] bg-white mt-2 rounded-lg w-[429px] flex flex-wrap justify-between shadow-bottom-light-blue-20 cursor-pointer'>

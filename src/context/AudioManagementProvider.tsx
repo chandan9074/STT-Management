@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useState } from "react";
 import audioManagementService from "../services/audioManagementService";
-import { CollectedAudioQueryDT, allCheckedAudioQueryDT, allCheckedAudioRootDt, allCheckedSpeechRootDT, annotatedFilesQueryDT, annotatedFilesRootDT, annotatedFilesUploadRootDT, annotationRootDT, annotationTypeQueryDT, annotationUploadRootDT, checkingStatusQueryDT, checkingStatusRootDT, checkingStatusUploadRootDT, collectAnnSenQueryDT, collectAnnSenRootDT, collectValSenDataQueryDT, collectValSenRootDT, collectedAudioDT, sentenceLevelUploadRootDT, sentenceLevelValUploadRootDT, uploadAudioRootDT, validatedFilesQueryDT, validatedFilesRootDT, validatedFilesUploadRootDT } from "../types/audioManagementTypes";
+import { CollectedAudioQueryDT, allCheckedAudioQueryDT, allCheckedAudioRootDt, allCheckedSpeechQueryDT, allCheckedSpeechRootDT, annotatedFilesQueryDT, annotatedFilesRootDT, annotatedFilesUploadRootDT, annotationRootDT, annotationTypeQueryDT, annotationUploadRootDT, checkingStatusQueryDT, checkingStatusRootDT, checkingStatusUploadRootDT, collectAnnSenQueryDT, collectAnnSenRootDT, collectValSenDataQueryDT, collectValSenRootDT, collectedAudioDT, sentenceLevelUploadRootDT, sentenceLevelValUploadRootDT, uploadAudioRootDT, validatedFilesQueryDT, validatedFilesRootDT, validatedFilesUploadRootDT } from "../types/audioManagementTypes";
 
 interface ContextProps {
     getCollectedAudioData: (params: CollectedAudioQueryDT) => void;
@@ -17,21 +17,21 @@ interface ContextProps {
     collectAnnWordData: collectAnnSenRootDT
     getCollectAnnPhonemeData: (params: collectAnnSenQueryDT) => void;
     collectAnnPhonemeData: collectAnnSenRootDT
-    getAnnotatedFilesData: (params:annotatedFilesQueryDT) => void;
+    getAnnotatedFilesData: (params: annotatedFilesQueryDT) => void;
     annotatedFilesData: annotatedFilesRootDT
-    getCollectValSenData: () => void;
+    getCollectValSenData: (params: collectValSenDataQueryDT) => void;
     collectValSenData: collectValSenRootDT
-    getCollectValWordData: () => void;
+    getCollectValWordData: (params: collectValSenDataQueryDT) => void;
     collectValWordData: collectValSenRootDT
-    getCollectValPhonemeData: (params:collectValSenDataQueryDT) => void;
+    getCollectValPhonemeData: (params: collectValSenDataQueryDT) => void;
     collectValPhonemeData: collectValSenRootDT
-    getValidatedFilesData: (params:validatedFilesQueryDT) => void;
+    getValidatedFilesData: (params: validatedFilesQueryDT) => void;
     validatedFilesData: validatedFilesRootDT
     getUploadAudioData: () => void;
     uploadAudioData: uploadAudioRootDT;
     getCheckingStatusUploadData: () => void;
     checkingStatusUploadData: checkingStatusUploadRootDT
-    getAllCheckedAudiosUploadData: () => void;
+    getAllCheckedAudiosUploadData: (params:allCheckedSpeechQueryDT) => void;
     allCheckedAudiosUploadData: allCheckedSpeechRootDT
     getAnnotationUploadData: () => void;
     annotationUploadData: annotationUploadRootDT;
@@ -160,42 +160,42 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
         setAnnotationData(res.data);
     }
 
-    const getCollectAnnSenData = async (params:collectAnnSenQueryDT) => {
+    const getCollectAnnSenData = async (params: collectAnnSenQueryDT) => {
         const res = await audioManagementService.getCollectAnnSenData(params);
         setCollectAnnSenData(res.data);
     }
 
-    const getCollectAnnWordData = async (params:collectAnnSenQueryDT) => {
+    const getCollectAnnWordData = async (params: collectAnnSenQueryDT) => {
         const res = await audioManagementService.getCollectAnnWordData(params);
         setCollectAnnWordData(res.data);
     }
 
-    const getCollectAnnPhonemeData = async (params:collectAnnSenQueryDT) => {
+    const getCollectAnnPhonemeData = async (params: collectAnnSenQueryDT) => {
         const res = await audioManagementService.getCollectAnnPhonemeData(params);
         setCollectAnnPhonemeData(res.data);
     }
 
-    const getAnnotatedFilesData = async (params:annotatedFilesQueryDT) => {
+    const getAnnotatedFilesData = async (params: annotatedFilesQueryDT) => {
         const res = await audioManagementService.getAnnotatedFilesData(params);
         setAnnotatedFilesData(res.data);
     }
 
-    const getCollectValSenData = () => {
-        const res = audioManagementService.getCollectValSenData();
-        setCollectValSenData(res);
+    const getCollectValSenData = async (params: collectValSenDataQueryDT) => {
+        const res = await audioManagementService.getCollectValSenData(params);
+        setCollectValSenData(res.data);
     }
 
-    const getCollectValWordData = () => {
-        const res = audioManagementService.getCollectValWordData();
-        setCollectValWordData(res);
+    const getCollectValWordData = async (params: collectValSenDataQueryDT) => {
+        const res = await audioManagementService.getCollectValWordData(params);
+        setCollectValWordData(res.data);
     }
 
-    const getCollectValPhonemeData = async (params:collectValSenDataQueryDT) => {
+    const getCollectValPhonemeData = async (params: collectValSenDataQueryDT) => {
         const res = await audioManagementService.getCollectValPhonemeData(params);
         setCollectValPhonemeData(res.data);
     }
 
-    const getValidatedFilesData = async (params:validatedFilesQueryDT) => {
+    const getValidatedFilesData = async (params: validatedFilesQueryDT) => {
         const res = await audioManagementService.getValidatedFilesData(params);
         setValidatedFilesData(res.data);
     }
@@ -210,9 +210,9 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
         setCheckingStatusUploadData(res);
     }
 
-    const getAllCheckedAudiosUploadData = () => {
-        const res = audioManagementService.getAllCheckedAudiosUploadData();
-        setAllCheckedAudiosUploadData(res);
+    const getAllCheckedAudiosUploadData = async (params:allCheckedSpeechQueryDT) => {
+        const res = await audioManagementService.getAllCheckedAudiosUploadData(params);
+        setAllCheckedAudiosUploadData(res.data);
     }
 
     const getAnnotationUploadData = () => {

@@ -422,7 +422,7 @@ export const checkingStatusData = {
                         "note": "Dark Ux is ---"
                     },
                 ],
-    
+
             },
             "audioChecker": {
                 "status": "Checking",
@@ -512,7 +512,7 @@ export const checkingStatusData = {
                     }
                 }
             },
-    
+
         },
         {
             "id": "1yb2bywetyb",
@@ -596,7 +596,7 @@ export const checkingStatusData = {
                         "note": "Dark Ux is ---"
                     },
                 ],
-    
+
             },
             "audioChecker": {
                 "status": "Checking",
@@ -686,7 +686,7 @@ export const checkingStatusData = {
                     }
                 }
             },
-    
+
         },
     ]
 }
@@ -759,7 +759,7 @@ export const allCheckedAudiosData = {
                         "note": "Dark Ux is ---"
                     },
                 ],
-    
+
             },
             "audioChecker": {
                 "status": "Checking",
@@ -775,7 +775,7 @@ export const allCheckedAudiosData = {
                 "isAge": false,
                 "domain": "Applied science",
                 "subdomain": "Technology",
-    
+
                 "sourceType": "",
                 "sourceUrl": "",
                 "sourceFile": "https://fastly.picsum.photos/id/923/200/300.jpg?hmac=eiYSYaG7v46VlrE38Amrg33bd2FzVjaCsQrLMdekyAU",
@@ -968,7 +968,7 @@ export const allCheckedAudiosData = {
                         "note": "Dark Ux is ---"
                     },
                 ],
-    
+
             },
             "audioChecker": {
                 "status": "Checking",
@@ -984,7 +984,7 @@ export const allCheckedAudiosData = {
                 "isAge": false,
                 "domain": "Applied science",
                 "subdomain": "Technology",
-    
+
                 "sourceType": "",
                 "sourceUrl": "",
                 "sourceFile": "https://fastly.picsum.photos/id/923/200/300.jpg?hmac=eiYSYaG7v46VlrE38Amrg33bd2FzVjaCsQrLMdekyAU",
@@ -1133,7 +1133,7 @@ export const annotationData = {
                 "isAge": false,
                 "domain": "Applied science",
                 "subdomain": "Technology",
-    
+
                 "sourceType": "",
                 "sourceUrl": "",
                 "sourceFile": "",
@@ -1200,7 +1200,7 @@ export const annotationData = {
                         "note": "Dark Ux is ---"
                     },
                 ],
-    
+
             },
             "wordAnnotation": false,
             "phonemeAnnotation": false,
@@ -1285,7 +1285,7 @@ export const annotationData = {
                     "status": "Cancelled"
                 },
             ],
-    
+
         },
         {
             "id": "2b456254bt6256",
@@ -1302,7 +1302,7 @@ export const annotationData = {
                 "isAge": false,
                 "domain": "Applied science",
                 "subdomain": "Technology",
-    
+
                 "sourceType": "",
                 "sourceUrl": "",
                 "sourceFile": "",
@@ -1369,7 +1369,7 @@ export const annotationData = {
                         "note": "Dark Ux is ---"
                     },
                 ],
-    
+
             },
             "wordAnnotation": false,
             "phonemeAnnotation": false,
@@ -1470,7 +1470,7 @@ export const annotationData = {
                 "isAge": false,
                 "domain": "Applied science",
                 "subdomain": "Technology",
-    
+
                 "sourceType": "",
                 "sourceUrl": "",
                 "sourceFile": "",
@@ -1537,7 +1537,7 @@ export const annotationData = {
                         "note": "Dark Ux is ---"
                     },
                 ],
-    
+
             },
             "wordAnnotation": false,
             "phonemeAnnotation": false,
@@ -1638,7 +1638,7 @@ export const annotationData = {
                 "isAge": false,
                 "domain": "Applied science",
                 "subdomain": "Technology",
-    
+
                 "sourceType": "",
                 "sourceUrl": "",
                 "sourceFile": "",
@@ -1705,7 +1705,7 @@ export const annotationData = {
                         "note": "Dark Ux is ---"
                     },
                 ],
-    
+
             },
             "wordAnnotation": false,
             "phonemeAnnotation": false,
@@ -1891,7 +1891,7 @@ export const collectAnnSenData = {
                         "note": "Dark Ux is ---"
                     },
                 ],
-    
+
             },
             "remark": [
                 {
@@ -2068,7 +2068,7 @@ export const collectAnnSenData = {
                         "note": "Dark Ux is ---"
                     },
                 ],
-    
+
             },
             "remark": [
                 {
@@ -2245,7 +2245,7 @@ export const collectAnnSenData = {
                         "note": "Dark Ux is ---"
                     },
                 ],
-    
+
             },
             "remark": [
                 {
@@ -2422,7 +2422,7 @@ export const collectAnnSenData = {
                         "note": "Dark Ux is ---"
                     },
                 ],
-    
+
             },
             "remark": [
                 {
@@ -2575,7 +2575,7 @@ export const annotatedFiles = {
                         "note": "Dark Ux is ---"
                     },
                 ],
-    
+
             },
             "others": {
                 "device": 'Redmi-Note 7 pro',
@@ -2696,7 +2696,7 @@ export const annotatedFiles = {
                 "isAge": false,
                 "domain": "Applied science",
                 "subdomain": "Technology",
-    
+
                 "sourceType": "",
                 "sourceUrl": "",
                 "sourceFile": "",
@@ -2708,7 +2708,7 @@ export const annotatedFiles = {
                 "frequency": 0,
                 "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
             },
-    
+
             "deadLine": "01/02/2022",
             "submissionDate": "01/02/2022",
             "remark": [
@@ -2801,7 +2801,7 @@ export const annotatedFiles = {
                         "note": "Dark Ux is ---"
                     },
                 ],
-    
+
             },
             "others": {
                 "device": 'Redmi-Note 7 pro',
@@ -2955,7 +2955,7 @@ export const annotatedFiles = {
                 "isAge": false,
                 "domain": "Applied science",
                 "subdomain": "Technology",
-    
+
                 "sourceType": "",
                 "sourceUrl": "",
                 "sourceFile": "",
@@ -2967,7 +2967,7 @@ export const annotatedFiles = {
                 "frequency": 0,
                 "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
             },
-    
+
             "deadLine": "01/02/2022",
             "submissionDate": "01/02/2022",
             "remark": [
@@ -3060,7 +3060,7 @@ export const annotatedFiles = {
                         "note": "Dark Ux is ---"
                     },
                 ],
-    
+
             },
             "others": {
                 "device": 'Redmi-Note 7 pro',
@@ -3181,7 +3181,7 @@ export const annotatedFiles = {
                 "isAge": false,
                 "domain": "Applied science",
                 "subdomain": "Technology",
-    
+
                 "sourceType": "",
                 "sourceUrl": "",
                 "sourceFile": "",
@@ -3193,7 +3193,7 @@ export const annotatedFiles = {
                 "frequency": 0,
                 "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
             },
-    
+
             "deadLine": "01/02/2022",
             "submissionDate": "01/02/2022",
             "remark": [
@@ -3254,35 +3254,26 @@ export const collectValSenData = {
                 "url":
                     "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
             },
-            "validate1": {
+            "validator1": {
                 "status": "Validating",
                 "locality": "Barendri",
-                "validators": {
-                    "id": "raihanrohan@gmail.com",
-                    "role": "validator",
-                    "name": "Raihan Rohan",
-                    "gender": "male"
-                }
+                "role": "validator",
+                "name": "Raihan Rohan",
+                "gender": "male"
             },
-            "validate2": {
+            "validator2": {
                 "status": "",
                 "locality": "",
-                "validators": {
-                    "id": "",
-                    "role": "",
-                    "name": "",
-                    "gender": ""
-                }
+                "role": "validator",
+                "name": "Raihan Rohan",
+                "gender": "male"
             },
-            "validateFinal": {
+            "validatorFinal": {
                 "status": "",
                 "locality": "",
-                "validators": {
-                    "id": "",
-                    "role": "",
-                    "name": "",
-                    "gender": ""
-                }
+                "role": "validator",
+                "name": "Raihan Rohan",
+                "gender": "male"
             },
             "deadLine": "01/02/2022",
             "annotator": {
@@ -3300,12 +3291,8 @@ export const collectValSenData = {
                 "status": "Checking",
                 "locality": "Middle-East Bangla",
                 "time": "01 Feb ; 3:30 PM",
-                "audioCheckers": {
-                    "id": "maksudalam2@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'audio Checker',
-                    "gender": 'female',
-                },
+                "name": 'Bilkis banu',
+                "role": 'audio Checker',
             },
             "speaker": {
                 "locality": "North-East Bangla",
@@ -3362,441 +3349,7 @@ export const collectValSenData = {
                         "note": "Dark Ux is ---"
                     },
                 ],
-    
-            },
-            "script": {
-                "module": "STT",
-                "distributionSource": "Lecture",
-                "isAge": false,
-                "domain": "Applied science",
-                "subdomain": "Technology",
-                "sourceType": "",
-                "sourceUrl": "",
-                "sourceFile": "",
-                "sourceFileName": "",
-                // "sourceFileImage": "",
-                "title": "",
-                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-                "date": "2023-02-16T12:45:58.536350",
-                // "frequency": 0,
-                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-            },
-            "remark": [
-                {
-                    "roleInfo": {
-                        "id": "maksudalam@gmail.com",
-                        "name": "Maksud Alam",
-                        "role": "Manager",
-                        "gender": "Male",
-                    },
-                    "deadline": "05/02/2022, 5:41 AM",
-                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                    "status": "Claim Approved"
-                },
-                {
-                    "id": "385",
-                    "roleInfo": {
-                        "id": "maksudalam@gmail.com",
-                        "name": "Maksud Alam",
-                        "role": "Manager",
-                        "gender": "Male",
-                    },
-                    "deadline": "05/02/2022, 5:41 AM",
-                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                    "status": "Cancelled"
-                },
-            ],
-            "others": {
-                "device": 'Redmi-Note 7 pro',
-                "journey": {
-                    "role": [
-                        {
-                            "id": "1",
-                            "role": 'Admin',
-                            "name": 'Md. Jalal Uddin',
-                            "date": "01 Jan’ 22"
-                        },
-                        {
-                            "id": "2",
-                            "role": 'Manager',
-                            "name": 'Md. Eman Hassan',
-                            "date": "03 Jan’ 22"
-                        },
-                        {
-                            "id": "3",
-                            "role": 'Team Leader',
-                            "name": 'Jahida Ferdous Mim',
-                            "date": "05 Jan’ 22"
-                        },
-                        {
-                            "id": "4",
-                            "role": 'Collector',
-                            "name": 'Muhammad Miraz Mahmud',
-                            "date": "05 Jan’ 22"
-                        },
-                    ],
-                    "speakers":
-                    {
-                        "locality": 'Middle-East Bangal',
-                        "roleTitle": 'speaker',
-                        "role": [
-                            {
-                                "id": "22",
-                                "name": 'Raihan Mozumdar',
-                                "gender": "male"
-                            },
-                            {
-                                "id": "223",
-                                "name": 'Bilkis Khatun',
-                                "gender": "female"
-                            }
-                        ]
-                    },
-                    "audioChecker": {
-                        "id": "55",
-                        "locality": "North-East  Bangla",
-                        "name": "Zakir Hossain",
-                        "role": 'Audio Checker',
-                        "pickedDate": "23 Jan’23; 3:30 PM"
-                    }
-                }
-            },
-        },
-        {
-            "id": "vn4yvtv597vy4",
-            "speech": {
-                "id": '0',
-                "title": "Brahms,Two Pianos",
-                "duration": "5:00",
-                "url":
-                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-            },
-            "validate1": {
-                "status": "",
-                "locality": "Barendri",
-                "validators": {
-                    "id": "raihanrohan@gmail.com",
-                    "role": "validator",
-                    "name": "Raihan Rohan",
-                    "gender": "male"
-                }
-            },
-            "validate2": {
-                "status": "Validating",
-                "locality": "Barendri",
-                "validators": {
-                    "id": "raihanrohan@gmail.com",
-                    "role": "annotator",
-                    "name": "Raihan Rohan",
-                    "gender": "male"
-                }
-            },
-            "validateFinal": {
-                "status": "",
-                "locality": "",
-                "validators": {
-                    "id": "",
-                    "role": "",
-                    "name": "",
-                    "gender": ""
-                }
-            },
-            "deadLine": "01/02/2022",
-            "annotator": {
-                "status": "",
-                "locality": "Barendri",
-                "time": "01 Feb ; 3:30 PM",
-                "annotator": {
-                    "id": "maksudalam2@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'annotator',
-                    "gender": 'female',
-                },
-            },
-            "audioChecker": {
-                "status": "Checking",
-                "locality": "Middle-East Bangla",
-                "time": "01 Feb ; 3:30 PM",
-                "audioCheckers": {
-                    "id": "maksudalam2@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'audio Checker',
-                    "gender": 'female',
-                },
-            },
-            "speaker": {
-                "locality": "North-East Bangla",
-                "speakers": [
-                    {
-                        "id": "bilkis@gmail.com",
-                        "name": 'Bilkis banu',
-                        "role": 'speaker',
-                        "gender": 'female',
-                        "childhoodArea": "Nator",
-                        "age": "27",
-                        "profession": "teacher",
-                        "economicSituation": "poor",
-                        "education": "secondary",
-                        "smokingHabit": "Prefer not say",
-                        "hearingDisability": "no",
-                        "shutter": "yes",
-                        "recordingArea": "Inside Room",
-                        "recordingDistance": "Close",
-                        "note": "Dark Ux is"
-                    },
-                    {
-                        "id": "maksud@gmail.com",
-                        "name": 'maksud alam',
-                        "role": 'speaker',
-                        "gender": 'male',
-                        "childhoodArea": "barishal",
-                        "age": "55",
-                        "profession": "Doctor",
-                        "economicSituation": "rich",
-                        "education": "higher secondary",
-                        "smokingHabit": "yes",
-                        "hearingDisability": "no",
-                        "shutter": "yes",
-                        "recordingArea": "Inside Room",
-                        "recordingDistance": "Close",
-                        "note": "Dark Ux is ---"
-                    },
-                    {
-                        "id": "rakib@gmail.com",
-                        "name": 'rakib alam',
-                        "role": 'speaker',
-                        "gender": 'male',
-                        "childhoodArea": "rangpur",
-                        "age": "55",
-                        "profession": "Doctor",
-                        "economicSituation": "rich",
-                        "education": "higher secondary",
-                        "smokingHabit": "yes",
-                        "hearingDisability": "no",
-                        "shutter": "yes",
-                        "recordingArea": "Inside Room",
-                        "recordingDistance": "Close",
-                        "note": "Dark Ux is ---"
-                    },
-                ],
-    
-            },
-            "script": {
-                "module": "STT",
-                "distributionSource": "Lecture",
-                "isAge": false,
-                "domain": "Applied science",
-                "subdomain": "Technology",
-                "sourceType": "",
-                "sourceUrl": "",
-                "sourceFile": "",
-                "sourceFileName": "",
-                // "sourceFileImage": "",
-                "title": "",
-                "description": "মহেশপুর থানার ওসি সাইফুল ইসলাম বলেন, খবর পেয়ে পুলিশ ঘটনাস্থলে পৌঁছে মরদেহটি উদ্ধার করে থানায় নিয়ে আসে। পঁয়ত্রিশ - চল্লিশ বছর বয়সী এই নারীর পরনে সালোয়ার কামিজ রয়েছে।",
-                "date": "2023-02-16T12:45:58.536350",
-                // "frequency": 0,
-                "id": "a9750dad-0e9b-4d23-9585-c7ff249616e9_20"
-            },
-            "remark": [
-                {
-                    "roleInfo": {
-                        "id": "maksudalam@gmail.com",
-                        "name": "Maksud Alam",
-                        "role": "Manager",
-                        "gender": "Male",
-                    },
-                    "deadline": "05/02/2022, 5:41 AM",
-                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                    "status": "Claim Approved"
-                },
-                {
-                    "id": "385",
-                    "roleInfo": {
-                        "id": "maksudalam@gmail.com",
-                        "name": "Maksud Alam",
-                        "role": "Manager",
-                        "gender": "Male",
-                    },
-                    "deadline": "05/02/2022, 5:41 AM",
-                    "des": "Dark UX is when designers create an experience that pushes users in a direction that benefits the interests of the company",
-                    "status": "Cancelled"
-                },
-            ],
-            "others": {
-                "device": 'Redmi-Note 7 pro',
-                "journey": {
-                    "role": [
-                        {
-                            "id": "1",
-                            "role": 'Admin',
-                            "name": 'Md. Jalal Uddin',
-                            "date": "01 Jan’ 22"
-                        },
-                        {
-                            "id": "2",
-                            "role": 'Manager',
-                            "name": 'Md. Eman Hassan',
-                            "date": "03 Jan’ 22"
-                        },
-                        {
-                            "id": "3",
-                            "role": 'Team Leader',
-                            "name": 'Jahida Ferdous Mim',
-                            "date": "05 Jan’ 22"
-                        },
-                        {
-                            "id": "4",
-                            "role": 'Collector',
-                            "name": 'Muhammad Miraz Mahmud',
-                            "date": "05 Jan’ 22"
-                        },
-                    ],
-                    "speakers":
-                    {
-                        "locality": 'Middle-East Bangal',
-                        "roleTitle": 'speaker',
-                        "role": [
-                            {
-                                "id": "22",
-                                "name": 'Raihan Mozumdar',
-                                "gender": "male"
-                            },
-                            {
-                                "id": "223",
-                                "name": 'Bilkis Khatun',
-                                "gender": "female"
-                            }
-                        ]
-                    },
-                    "audioChecker": {
-                        "id": "55",
-                        "locality": "North-East  Bangla",
-                        "name": "Zakir Hossain",
-                        "role": 'Audio Checker',
-                        "pickedDate": "23 Jan’23; 3:30 PM"
-                    }
-                }
-            },
-        },
-        {
-            "id": "vn4yvtv597vy4",
-            "speech": {
-                "id": '0',
-                "title": "Brahms,Two Pianos",
-                "duration": "5:00",
-                "url":
-                    "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3"
-            },
-            "validate1": {
-                "status": "",
-                "locality": "Barendri",
-                "validators": {
-                    "id": "raihanrohan@gmail.com",
-                    "role": "validator",
-                    "name": "Raihan Rohan",
-                    "gender": "male"
-                }
-            },
-            "validate2": {
-                "status": "",
-                "locality": "Barendri",
-                "validators": {
-                    "id": "raihanrohan@gmail.com",
-                    "role": "validator",
-                    "name": "Raihan Rohan",
-                    "gender": "male"
-                }
-            },
-            "validateFinal": {
-                "status": "Took a Break",
-                "locality": "Middle-East Bangla",
-                "validators": {
-                    "id": "Jahangir@gmail.com",
-                    "role": "validator",
-                    "name": "Jahangir",
-                    "gender": "male"
-                }
-            },
-            "deadLine": "01/02/2022",
-            "annotator": {
-                "status": "",
-                "locality": "Barendri",
-                "time": "01 Feb ; 3:30 PM",
-                "annotator": {
-                    "id": "maksudalam2@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'annotator',
-                    "gender": 'female',
-                },
-            },
-            "audioChecker": {
-                "status": "Checking",
-                "locality": "Middle-East Bangla",
-                "time": "01 Feb ; 3:30 PM",
-                "audioCheckers": {
-                    "id": "maksudalam2@gmail.com",
-                    "name": 'Bilkis banu',
-                    "role": 'audio Checker',
-                    "gender": 'female',
-                },
-            },
-            "speaker": {
-                "locality": "North-East Bangla",
-                "speakers": [
-                    {
-                        "id": "bilkis@gmail.com",
-                        "name": 'Bilkis banu',
-                        "role": 'speaker',
-                        "gender": 'female',
-                        "childhoodArea": "Nator",
-                        "age": "27",
-                        "profession": "teacher",
-                        "economicSituation": "poor",
-                        "education": "secondary",
-                        "smokingHabit": "Prefer not say",
-                        "hearingDisability": "no",
-                        "shutter": "yes",
-                        "recordingArea": "Inside Room",
-                        "recordingDistance": "Close",
-                        "note": "Dark Ux is"
-                    },
-                    {
-                        "id": "maksud@gmail.com",
-                        "name": 'maksud alam',
-                        "role": 'speaker',
-                        "gender": 'male',
-                        "childhoodArea": "barishal",
-                        "age": "55",
-                        "profession": "Doctor",
-                        "economicSituation": "rich",
-                        "education": "higher secondary",
-                        "smokingHabit": "yes",
-                        "hearingDisability": "no",
-                        "shutter": "yes",
-                        "recordingArea": "Inside Room",
-                        "recordingDistance": "Close",
-                        "note": "Dark Ux is ---"
-                    },
-                    {
-                        "id": "rakib@gmail.com",
-                        "name": 'rakib alam',
-                        "role": 'speaker',
-                        "gender": 'male',
-                        "childhoodArea": "rangpur",
-                        "age": "55",
-                        "profession": "Doctor",
-                        "economicSituation": "rich",
-                        "education": "higher secondary",
-                        "smokingHabit": "yes",
-                        "hearingDisability": "no",
-                        "shutter": "yes",
-                        "recordingArea": "Inside Room",
-                        "recordingDistance": "Close",
-                        "note": "Dark Ux is ---"
-                    },
-                ],
-    
+
             },
             "script": {
                 "module": "STT",
@@ -4006,7 +3559,7 @@ export const validatedFilesData = {
                         "note": "Dark Ux is ---"
                     },
                 ],
-    
+
             },
             "deadLine": "01/02/2022",
             "submissionDate": "01/02/2022",
@@ -4041,7 +3594,7 @@ export const validatedFilesData = {
                 "isAge": false,
                 "domain": "Applied science",
                 "subdomain": "Technology",
-    
+
                 "sourceType": "",
                 "sourceUrl": "",
                 "sourceFile": "",
@@ -4237,7 +3790,7 @@ export const validatedFilesData = {
                         "note": "Dark Ux is ---"
                     },
                 ],
-    
+
             },
             "deadLine": "01/02/2022",
             "submissionDate": "01/02/2022",
@@ -4272,7 +3825,7 @@ export const validatedFilesData = {
                 "isAge": false,
                 "domain": "Applied science",
                 "subdomain": "Technology",
-    
+
                 "sourceType": "",
                 "sourceUrl": "",
                 "sourceFile": "",

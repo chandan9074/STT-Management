@@ -13,9 +13,16 @@ const AllCheckedAudiosUpload = () => {
   const { getAllCheckedAudiosUploadData, allCheckedAudiosUploadData } = useContext(AudioManagementContext);
 
   const [selectedRowsData, setSelectedRowsData] = useState<allCheckedSpeechDT[]>([])
+  const [query, setQuery] = useState({
+    page: 1,
+    pageSize: 20,
+    audioChecker: "",
+    status: "",
+    audioSubmissionPeriod: "",
+  })
 
   useEffect(() => {
-    getAllCheckedAudiosUploadData()
+    getAllCheckedAudiosUploadData(query)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

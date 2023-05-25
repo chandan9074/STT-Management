@@ -82,7 +82,10 @@ export const GET_RES_COLLECTED_AUDIO_ANNOTATION_WORD_AUDIO_MGT_MODULE = `${REACT
 export const GET_RES_COLLECTED_AUDIO_ANNOTATION_PHONEME_AUDIO_MGT_MODULE = `${REACT_APP_BASE_URL2}/get_res_collected_audio_annotation_phoneme_audio_mgt_module`;
 export const GET_RES_COLLECTED_AUDIO_ANNOTATED_FILES_AUDIO_MGT_MODULE = `${REACT_APP_BASE_URL2}/get_res_collected_audio_annotated_files_audio_mgt_module`;
 export const GET_RES_COLLECTED_AUDIO_VALIDATED_LEVEL_AUDIO_MGT_MODULE = `${REACT_APP_BASE_URL2}/get_res_collected_audio_validated_level_audio_mgt_module`;
+export const GET_RES_COLLECTED_AUDIO_VALIDATION_SENTENCE_AUDIO_MGT_MODULE = `${REACT_APP_BASE_URL2}/get_res_collected_audio_validation_sentence_audio_mgt_module`;
+export const GET_RES_COLLECTED_AUDIO_VALIDATION_WORD_AUDIO_MGT_MODULE = `${REACT_APP_BASE_URL2}/get_res_collected_audio_validation_word_audio_mgt_module`;
 export const GET_RES_COLLECTED_AUDIO_VALIDATION_PHONEME_AUDIO_MGT_MODULE = `${REACT_APP_BASE_URL2}/get_res_collected_audio_validation_phoneme_audio_mgt_module`;
+export const GET_RES_UPLOAD_AUDIO_ALL_CHECKED_AUDIO_MGT_MODULE = `${REACT_APP_BASE_URL2}/get_res_upload_audio_all_checked_audio_mgt_module`;
 
 
 

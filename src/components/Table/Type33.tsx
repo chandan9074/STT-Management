@@ -19,7 +19,7 @@ type Props = {
     setSelectedRowsData: React.Dispatch<React.SetStateAction<annotatedFilesUploadDT[]>>
 }
 
-const Type33 = ({ data,setSelectedRowsData }: Props) => {
+const Type33 = ({ data, setSelectedRowsData }: Props) => {
 
     const [open, setOpen] = useState(false);
 
@@ -80,7 +80,7 @@ const Type33 = ({ data,setSelectedRowsData }: Props) => {
                 <div >
                     <div className='flex'>
                         <RoleImage role='audio checker' height='h-4' width='w-4' />
-                        <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs'>{data?.audioChecker?.audioCheckers?.name}</h1>
+                        <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs'>{data?.audioChecker?.name}</h1>
                     </div>
                     <p className='text-blue-gray-75 text-xxs font-normal pl-[22px]'>{data.audioChecker.locality}</p>
                 </div>
@@ -133,7 +133,7 @@ const Type33 = ({ data,setSelectedRowsData }: Props) => {
                         alt=""
                     />
                     {
-                       (remarkOpen && data.id === singleTargetData?.id) &&
+                        (remarkOpen && data.id === singleTargetData?.id) &&
                         <div className='fixed top-[209px] right-[86px] z-[999] animate-fadeIn2'>
                             <Remark2
                                 open={remarkOpen}
@@ -153,7 +153,7 @@ const Type33 = ({ data,setSelectedRowsData }: Props) => {
             fixed: 'right',
             width: 100,
             render: (_, record: annotatedFilesUploadDT) => (
-               <div className="flex justify-center items-center">
+                <div className="flex justify-center items-center">
                     <button
                         onClick={() => {
                             showDrawer(record);
@@ -171,7 +171,7 @@ const Type33 = ({ data,setSelectedRowsData }: Props) => {
     ]
 
     const rowSelection = {
-        onChange: (selectedRowKeys: React.Key[], selectedRows: annotatedFilesUploadDT[]) => {    
+        onChange: (selectedRowKeys: React.Key[], selectedRows: annotatedFilesUploadDT[]) => {
             setSelectedRowsData(selectedRows)
         },
         getCheckboxProps: (record: annotatedFilesUploadDT) => ({
@@ -209,7 +209,7 @@ const Type33 = ({ data,setSelectedRowsData }: Props) => {
                 />
             </div>
 
-{/* 
+            {/* 
             {
                 (open && singleTargetData) &&
                 <Drawer.AudioManagement.CheckingStatus
@@ -225,7 +225,7 @@ const Type33 = ({ data,setSelectedRowsData }: Props) => {
                 />
             } */}
 
-               {
+            {
                 (open && singleTargetData) &&
                 <Drawer.AudioManagement.Type2
                     isDrawerOpen={open}

@@ -6,6 +6,8 @@ import TextArea from 'antd/es/input/TextArea';
 import ActionButton from './ActionButton';
 import { Dispatch, SetStateAction, useContext } from 'react';
 import { OrganizerContext } from '../../../context/OrganizerProvider';
+import { TextField } from '@mui/material';
+import { UserManagementContext } from '../../../context/UserManagementProvider';
 
 const validationSchema = yup.object({
     // gender: yup.string().required('Gender is Required'),
@@ -18,6 +20,7 @@ type Props = {
 const RoleForm = ({ setIsDrawerOpen }: Props) => {
 
     const organizerContext = useContext(OrganizerContext);
+    const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
 
     const formik = useFormik({
         enableReinitialize: true,
@@ -51,13 +54,29 @@ const RoleForm = ({ setIsDrawerOpen }: Props) => {
 
                 <div className='mt-4'>
 
-                    <TextArea
+                    <TextField
                         id="description"
                         name="description"
+                        multiline={true}
+                        rows={4}
+                        label={<h1 className='comboBoxLabel'>Description </h1>}
                         value={formik.values.description}
                         onChange={formik.handleChange}
-                        placeholder='Description'
-                        style={{ width: '100%', height: '120px', fontSize: "13px", fontWeight: '500', lineHeight: '15.6px', resize: 'none', outline: 'none' }}
+                        error={formik.touched.description && Boolean(formik.errors.description)}
+                        helperText={formik.touched.description && formik.errors.description}
+                        style={{ width: '100%' }}
+                        InputProps={{
+                            style: {
+                                color: '#464E5F',
+                                fontWeight: '600',
+                                fontSize: '15px',
+                                caretColor: '#136EE5',
+                                border: selectedFieldOutline === 'description' ? '1px solid #136EE5' : '1px solid transparent',
+                            }
+                        }}
+                        variant="outlined"
+                        onFocus={() => setSelectedFieldOutline("description")}
+                        onBlur={() => setSelectedFieldOutline("")}
                     />
                     {/* {formik.touched.description && formik.errors.description ? (
                     <div className='text-red-600 text-xxs'>{formik.errors.description}</div>

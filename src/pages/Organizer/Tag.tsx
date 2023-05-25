@@ -7,11 +7,13 @@ import { Drawer } from '../../components/Drawer'
 import Table from '../../components/Table'
 import { tagData } from '../../data/organize/OrganizerData'
 import { TagDataDT } from '../../types/organizerTypes'
+import TagForm from './TagForm'
 
 const Tag = () => {
 
   const [open, setOpen] = useState<boolean>(false)
   const [selectedRows, setSelectedRows] = useState<TagDataDT[]>([] as TagDataDT[])
+
 
   const handleSelectRow = (value: TagDataDT[]) => {
     setSelectedRows(value)
@@ -20,7 +22,7 @@ const Tag = () => {
   return (
     <div>
       <Header open={open} setOpen={setOpen} selectedRows={selectedRows} />
-      <Table.Type29 data={tagData} handleSelectRow={handleSelectRow} setOpen={setOpen}/>
+      <Table.Type29 data={tagData} handleSelectRow={handleSelectRow} setOpen={setOpen} />
       <Drawer.Organizer.Type1
         isDrawerOpen={open}
         headerBgColor="bg-ct-blue-05"
@@ -45,6 +47,10 @@ type Props = {
   selectedRows: TagDataDT[]
 }
 const Header = ({ open, setOpen, selectedRows }: Props) => {
+
+  const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
+
+
   return (
     <div className='ml-6 mr-4 mb-5 flex items-center justify-between'>
       <div>
@@ -91,8 +97,18 @@ const Header = ({ open, setOpen, selectedRows }: Props) => {
           size="small"
           variant="Megenta"
           icon={<img src={Icons.Add} alt="add" />}
-        // onClick={() => scriptContext.setModalOpen(true)}
+          onClick={() => setIsFormOpen(true)}
         />
+        <Drawer.Organizer.Type1
+          isDrawerOpen={isFormOpen}
+          // drawerClose={drawerClose}
+          setIsDrawerClose={setIsFormOpen}
+          headerBgColor="bg-ct-blue-20"
+          title="Create Tag"
+          isEdit={false}
+        >
+          <TagForm setIsFormOpen={setIsFormOpen} />
+        </Drawer.Organizer.Type1>
       </div>
     </div>
   )

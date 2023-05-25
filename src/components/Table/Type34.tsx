@@ -118,7 +118,7 @@ const Type34 = ({ data }: Props) => {
             render: (data: sentenceLevelValUploadDT) => <div >
                 <div className='flex'>
                     <RoleImage role='audio checker' height='h-4' width='w-4' />
-                    <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs'>{data.audioChecker.audioCheckers.name}</h1>
+                    <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs'>{data.audioChecker.name}</h1>
                 </div>
                 <p className='text-blue-gray-75 text-xxs font-normal pl-[22px]'>{data.audioChecker.locality}</p>
             </div>

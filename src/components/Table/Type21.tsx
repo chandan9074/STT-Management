@@ -82,7 +82,7 @@ const Type21 = ({ data, setSelectedRowSData }: Props) => {
                 <div >
                     <div className='flex'>
                         <RoleImage role='audio checker' height='h-4' width='w-4' />
-                        <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs'>{data?.audioChecker?.audioCheckers?.name}</h1>
+                        <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs'>{data?.audioChecker?.name}</h1>
                     </div>
                     <p className='text-blue-gray-75 text-xxs font-normal pl-[22px]'>{data.audioChecker.locality}</p>
                 </div>
@@ -146,7 +146,7 @@ const Type21 = ({ data, setSelectedRowSData }: Props) => {
                         />
                     </button>
                     {
-                       (remarkOpen && data.id === singleTargetData?.id) &&
+                        (remarkOpen && data.id === singleTargetData?.id) &&
                         <div className='fixed top-[209px] right-[86px] z-[999] animate-fadeIn2'>
                             <Remark2
                                 open={remarkOpen}

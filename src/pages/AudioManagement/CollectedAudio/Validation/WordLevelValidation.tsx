@@ -12,9 +12,17 @@ const WordLevelValidation = () => {
 
   const { getCollectValWordData, collectValWordData } = useContext(AudioManagementContext);
   const [selectedRowsData, setSelectedRowSData] = useState<collectValSenDataDT[]>([]);
+  const [query, setQuery] = useState({
+    page: 1,
+    pageSize: 20,
+    dateRange: "",
+    annotator: "",
+    speaker: "",
+    audioChecker: "",
+  })
 
   useEffect(() => {
-    getCollectValWordData()
+    getCollectValWordData(query)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

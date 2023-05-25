@@ -74,7 +74,7 @@ const Type22 = ({ data, setSelectedRowSData }: Props) => {
       ...getColumnSearchProps('validate1'),
       // className: "audio-management-status",
       width: 200,
-      render: (data: collectValSenDataDT) => <ValidateCol data={data.validate1} />
+      render: (data: collectValSenDataDT) => <ValidateCol data={data.validator1} />
     },
     {
       title: `${"Validate2".toLocaleUpperCase()}`,
@@ -82,7 +82,7 @@ const Type22 = ({ data, setSelectedRowSData }: Props) => {
       ...getColumnSearchProps('validate2'),
       // className: "audio-management-status",
       width: 200,
-      render: (data: collectValSenDataDT) => <ValidateCol data={data.validate2} />
+      render: (data: collectValSenDataDT) => <ValidateCol data={data.validator2} />
     },
     {
       title: `${"Validate-Final".toLocaleUpperCase()}`,
@@ -90,7 +90,7 @@ const Type22 = ({ data, setSelectedRowSData }: Props) => {
       ...getColumnSearchProps('validateFinal'),
       // className: "audio-management-status",
       width: 200,
-      render: (data: collectValSenDataDT) => <ValidateCol data={data.validateFinal} />
+      render: (data: collectValSenDataDT) => <ValidateCol data={data.validatorFinal} />
     },
     {
       title: `${"DeadLine".toLocaleUpperCase()}`,
@@ -119,7 +119,7 @@ const Type22 = ({ data, setSelectedRowSData }: Props) => {
       render: (data: collectValSenDataDT) => <div >
         <div className='flex'>
           <RoleImage role='audio checker' height='h-4' width='w-4' />
-          <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs'>{data.audioChecker.audioCheckers.name}</h1>
+          <h1 className='ml-1.5 text-blue-gray-80 font-medium text-xxs'>{data.audioChecker.name}</h1>
         </div>
         <p className='text-blue-gray-75 text-xxs font-normal pl-[22px]'>{data.audioChecker.locality}</p>
       </div>

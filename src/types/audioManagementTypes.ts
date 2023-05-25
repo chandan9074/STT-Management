@@ -231,7 +231,8 @@ export type annotatedAudioCheckerDT = {
     status: string;
     locality: string;
     time: string;
-    audioCheckers: audioRoleDT
+    name: string;
+    role: string;
 }
 
 export type audioRoleDT = {
@@ -327,9 +328,9 @@ export type collectValSenRootDT = {
 export type collectValSenDataDT = {
     id: string;
     speech: assignAudioTrackDT;
-    validate1: validateDT;
-    validate2: validateDT;
-    validateFinal: validateDT;
+    validator1: validateDT;
+    validator2: validateDT;
+    validatorFinal: validateDT;
     deadLine: string;
     annotator: annotatedAnnotatorDT;
     audioChecker: annotatedAudioCheckerDT;
@@ -355,7 +356,10 @@ export type collectValSenDataDT = {
 export type validateDT = {
     status: string;
     locality: string;
-    validators: audioRoleDT
+    // validators: audioRoleDT
+    name: string;
+    role: string;
+    gender: string;
 }
 
 // export type audioRoleDT = {
@@ -650,4 +654,10 @@ export type collectValSenDataQueryDT = {
     annotator: string,
     speaker: string,
     audioChecker: string
+}
+
+export type allCheckedSpeechQueryDT = {
+    audioChecker: string,
+    status: string,
+    audioSubmissionPeriod: string
 }

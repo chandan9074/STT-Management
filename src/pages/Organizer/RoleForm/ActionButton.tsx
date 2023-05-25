@@ -18,6 +18,7 @@ const ActionButton = ({setIsDrawerOpen}: Props) => {
             <button
                 onClick={(e) => {
                     e.preventDefault();
+                    setIsDrawerOpen(false);
                 }}
                 className='duration-700 border-[1px] border-white text-ct-blue-60 hover:border-ct-blue-30 rounded-[6px] py-[12px] px-[32px]'>
                 Cancel

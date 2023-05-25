@@ -85,7 +85,7 @@ const Type2 = ({ id, isDrawerOpen, setIsDrawerOpen: setOpen, speaker, others, sp
                                                     id &&
                                                     <div className='flex'>
                                                         <h1 className='text-ct-blue-90-70% text-xs'>Task ID: </h1>
-                                                        <h1 className='pl-1 text-ct-blue-90-70% font-bold text-xs'>{id?.slice(0, 25)}</h1>
+                                                        <h1 className='pl-1 text-ct-blue-90-70% font-bold text-xs w-20 truncate'>{id}</h1>
                                                     </div>
                                                 }
                                                 {
