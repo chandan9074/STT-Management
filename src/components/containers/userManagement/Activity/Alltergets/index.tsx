@@ -29,7 +29,7 @@ const AllTergets = () => {
         speakerLocality: [],
     })
 
-    const { activityTableAllSpeeches, activityTablePending, activityTableCompleted } = useContext(UserManagementContext)
+    const { activityTablePending } = useContext(UserManagementContext)
 
     useEffect(() => {
         if (pendingFilterList) {

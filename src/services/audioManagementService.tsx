@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { collectedAudioCollectorList, scriptFilterData, annotatedFiles, collectValSenData, validatedFilesData, collectedAudioSpeakersList, collectedAudioCheckerList, collectedAudioAnnotatorList, collectedAudioValidatorList } from '../data/audioManagement/AudioManagementData';
+import { collectedAudioCollectorList, scriptFilterData, collectValSenData, collectedAudioSpeakersList, collectedAudioCheckerList, collectedAudioAnnotatorList, collectedAudioValidatorList } from '../data/audioManagement/AudioManagementData';
 import { allCheckedSpeechData, annotatedFilesUploadData, annotationUploadData, checkingStatusUploadData, sentenceLevelUploadData, uploadAudioData, ValidatedFilesUploadData, sentenceLevelValUpload } from '../data/audioManagement/UploadAudiosData';
 import * as PATH from '../helpers/APIURL';
-import { CollectedAudioQueryDT, allCheckedAudioQueryDT, annotatedFilesQueryDT, annotationTypeQueryDT, checkingStatusQueryDT, collectAnnSenQueryDT, collectValSenDataDT, collectValSenDataQueryDT, validatedFilesQueryDT } from '../types/audioManagementTypes';
+import { CollectedAudioQueryDT, allCheckedAudioQueryDT, annotatedFilesQueryDT, annotationTypeQueryDT, checkingStatusQueryDT, collectAnnSenQueryDT, collectValSenDataQueryDT, validatedFilesQueryDT } from '../types/audioManagementTypes';
 
 
 export default class audioManagementService {
