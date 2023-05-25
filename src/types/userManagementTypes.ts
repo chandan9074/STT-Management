@@ -196,10 +196,21 @@ export type getUserByIdParamsDT = {
     id: string;
 }
 
-
 export type activityQueryParamsDT = {
     id: string,
     role: string,
     year: number,
     month: string,
+}
+
+export type  activityTableParamsDT = {
+    userID: string,
+    targetStatus: string,
+    type: string,
+    speechStatus: string,
+    audioSubmissionPeriod: string,
+    recordingArea: string,
+    recordingDistance: string,
+    status: string,
+    speakerLocality: string
 }

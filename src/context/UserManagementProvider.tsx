@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react";
 import UserManagementService from "../services/userManagementService";
-import { targetSpeechDT } from "../types/assignTypes";
-import { activityDT, activityQueryParamsDT, getUserByIdParamsDT, userInfoDT, userManagementDT, userManagementParamsDT } from "../types/userManagementTypes";
+import { targetAllSpeechDT, targetCompletedDT, targetDT, targetSpeechDT } from "../types/assignTypes";
+import { activityDT, activityQueryParamsDT, getUserByIdParamsDT, userInfoDT, userManagementDT, userManagementParamsDT, activityTableParamsDT } from "../types/userManagementTypes";
 import { roleDT } from "../types/billingTypes";
 import { callingToast } from "../helpers/Utils";
 
@@ -30,12 +30,21 @@ interface ContextProps {
     setUserData: React.Dispatch<React.SetStateAction<userInfoDT>>;
     getUserById: (id: getUserByIdParamsDT) => void,
     updateUser: (data: FormData) => Promise<number | undefined>,
+    getActivityTable: (value: activityTableParamsDT) => void;
+    activityTablePending: targetDT[];
+    activityTableCompleted: targetCompletedDT[];
+    activityTableAllSpeeches: targetAllSpeechDT[];
+    activityTableParams: activityTableParamsDT;
+    setActivityTableParams: React.Dispatch<React.SetStateAction<activityTableParamsDT>>;
 }
 
 export const UserManagementContext = createContext({} as ContextProps);
 
 const UserManagementProvider = ({ children }: { children: any }) => {
     const [activityStatistics, setActivityStatistics] = useState<activityDT | undefined>();
+    const [activityTablePending, setActivityTablePending] = useState<targetDT[]>({} as targetDT[])
+    const [activityTableCompleted, setActivityTableCompleted] = useState<targetCompletedDT[]>({} as targetCompletedDT[])
+    const [activityTableAllSpeeches, setActivityTableAllSpeeches] = useState<targetAllSpeechDT[]>({} as targetAllSpeechDT[])
     const [activeRole, setActiveRole] = useState<string>("")
     const [currentWeek, setCurrentWeek] = useState<number>(1);
     const [targetPendingSpeeches, setTargetPendingSpeeches] = useState<targetSpeechDT>({} as targetSpeechDT);
@@ -44,7 +53,6 @@ const UserManagementProvider = ({ children }: { children: any }) => {
     const [selectedFieldOutline, setSelectedFieldOutline] = useState<string>("");
     const [newRoleList, setNewRoleList] = useState<roleDT[]>([] as roleDT[]);
     const [userData, setUserData] = useState<userInfoDT>({} as userInfoDT)
-
 
     const [queryParams, setQueryParams] = useState<userManagementParamsDT>({
         page: 1,
@@ -60,6 +68,18 @@ const UserManagementProvider = ({ children }: { children: any }) => {
         role: "",
         year: new Date().getFullYear(),
         month: new Date().toLocaleString('default', { month: 'long' }),
+    })
+
+    const [activityTableParams, setActivityTableParams] = useState<activityTableParamsDT>({
+        userID: "",
+        targetStatus: "",
+        type: "pending",
+        speechStatus: "",
+        audioSubmissionPeriod: "",
+        recordingArea: "",
+        recordingDistance: "",
+        status: "",
+        speakerLocality: ""
     })
 
     const updateUser = async (params: FormData) => {
@@ -95,7 +115,7 @@ const UserManagementProvider = ({ children }: { children: any }) => {
             //     message: response?.data?.message,
             //     status: response?.status
             // }
-            return 200;            
+            return 200;
 
         } catch (error) {
 
@@ -108,6 +128,19 @@ const UserManagementProvider = ({ children }: { children: any }) => {
         setActivityStatistics(res.data);
         console.log(res.data, "res.data from provider")
         setActiveRole(res.data.roleList[0])
+    }
+
+    const getActivityTable = async (value: activityTableParamsDT) => {
+        const res = await UserManagementService.getActivityTable(value);
+        if (activityTableParams.type === "pending") {
+            setActivityTablePending(res.data);
+        }
+        else if (activityTableParams.type === "completed") {
+            setActivityTableCompleted(res.data);
+        }
+        else {
+            setActivityTableAllSpeeches(res.data);
+        }
     }
 
     const getUserTargetPendingSpeeches = async (id: string) => {
@@ -156,7 +189,13 @@ const UserManagementProvider = ({ children }: { children: any }) => {
                 getUserById,
                 setUserData,
                 userData,
-                updateUser
+                updateUser,
+                getActivityTable,
+                activityTableAllSpeeches,
+                activityTableCompleted,
+                activityTablePending,
+                activityTableParams,
+                setActivityTableParams
             }}
         >
             {children}

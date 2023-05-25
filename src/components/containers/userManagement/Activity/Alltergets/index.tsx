@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { targetFilter } from '../../../../../data/assign/AssignData';
 import { completedFilter, speechFilter } from '../../../../../data/userManagement/activityData';
 import { targetFilterListDT } from '../../../../../types/assignTypes';
@@ -7,7 +7,7 @@ import { Filter } from '../../../../Filter';
 import { SearchBox } from '../../../../SearchBox';
 import Table from '../../../../Table';
 import { CategoryMap } from '../../../dashboard/DataContainer/CollectData';
-import { targetAllSpeechData, targetCompletedData, targetData } from '../../../../../data/userManagement/UserManagementData';
+import { UserManagementContext } from '../../../../../context/UserManagementProvider';
 
 const AllTergets = () => {
     const [activeTab, setActiveTab] = useState<string>("Pending");
@@ -28,6 +28,8 @@ const AllTergets = () => {
         status: [],
         speakerLocality: [],
     })
+
+    const { activityTableAllSpeeches, activityTablePending, activityTableCompleted } = useContext(UserManagementContext)
 
     useEffect(() => {
         if (pendingFilterList) {
@@ -154,9 +156,9 @@ const AllTergets = () => {
 
     const allTergetMenu = (key: string) => {
         const Category: CategoryMap = {
-            "Pending": <><Table.Type7 data={targetData} /></>,
-            "Completed": <> <Table.Type14 data={targetCompletedData} /></>,
-            "All Speeches": <><Table.Type13 data={targetAllSpeechData} /></>
+            "Pending": <><Table.Type7 data={activityTablePending} /></>,
+            // "Completed": <> <Table.Type14 data={activityTableCompleted} /></>,
+            // "All Speeches": <><Table.Type13 data={activityTableAllSpeeches} /></>
         };
         return Category[key];
     };

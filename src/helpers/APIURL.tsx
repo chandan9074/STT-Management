@@ -67,6 +67,7 @@ export const GET_RES_ACTIVITY_STATISTICS_USER_MANAGEMENT_MODULE = `${REACT_APP_B
 export const POST_RES_USER_MANAGEMENT_MODULE = `${REACT_APP_BASE_URL2}/post_res_create_user_userManagement_module`;
 export const GET_RES_USER_MANAGEMENT_BY_ID_MODULE = `${REACT_APP_BASE_URL2}/get_res_update_user_userManagement_module`;
 export const UPDATE_RES_USER_MANAGEMENT_BY_ID_MODULE = `${REACT_APP_BASE_URL2}/update_res_user_userManagement_module`;
+export const GET_RES_ACTIVITY_TABLE_USER_MANAGEMENT_MODULE = `${REACT_APP_BASE_URL2}/get_res_activity_table_userManagement_module`;
 
 
 
@@ -82,7 +83,6 @@ export const GET_RES_COLLECTED_AUDIO_ANNOTATION_PHONEME_AUDIO_MGT_MODULE = `${RE
 export const GET_RES_COLLECTED_AUDIO_ANNOTATED_FILES_AUDIO_MGT_MODULE = `${REACT_APP_BASE_URL2}/get_res_collected_audio_annotated_files_audio_mgt_module`;
 export const GET_RES_COLLECTED_AUDIO_VALIDATED_LEVEL_AUDIO_MGT_MODULE = `${REACT_APP_BASE_URL2}/get_res_collected_audio_validated_level_audio_mgt_module`;
 export const GET_RES_COLLECTED_AUDIO_VALIDATION_PHONEME_AUDIO_MGT_MODULE = `${REACT_APP_BASE_URL2}/get_res_collected_audio_validation_phoneme_audio_mgt_module`;
-
 
 
 
