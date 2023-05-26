@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useState } from "react";
 import audioManagementService from "../services/audioManagementService";
-import { CollectedAudioQueryDT, allCheckedAudioQueryDT, allCheckedAudioRootDt, allCheckedSpeechQueryDT, allCheckedSpeechRootDT, annotatedFilesQueryDT, annotatedFilesRootDT, annotatedFilesUploadRootDT, annotationRootDT, annotationTypeQueryDT, annotationUploadRootDT, checkingStatusQueryDT, checkingStatusRootDT, checkingStatusUploadRootDT, collectAnnSenQueryDT, collectAnnSenRootDT, collectValSenDataQueryDT, collectValSenRootDT, collectedAudioDT, sentenceLevelUploadRootDT, sentenceLevelValUploadRootDT, uploadAudioRootDT, validatedFilesQueryDT, validatedFilesRootDT, validatedFilesUploadRootDT } from "../types/audioManagementTypes";
+import { CollectedAudioQueryDT, allCheckedAudioQueryDT, allCheckedAudioRootDt, allCheckedSpeechQueryDT, allCheckedSpeechRootDT, annotatedFilesQueryDT, annotatedFilesRootDT, annotatedFilesUploadRootDT, annotationRootDT, annotationTypeQueryDT, annotationUploadRootDT, checkingStatusQueryDT, checkingStatusRootDT, checkingStatusUploadQueryDT, checkingStatusUploadRootDT, collectAnnSenQueryDT, collectAnnSenRootDT, collectValSenDataQueryDT, collectValSenRootDT, collectedAudioDT, sentenceLevelUploadRootDT, sentenceLevelValUploadRootDT, uploadAudioQueryDT, uploadAudioRootDT, validatedFilesQueryDT, validatedFilesRootDT, validatedFilesUploadRootDT } from "../types/audioManagementTypes";
 
 interface ContextProps {
     getCollectedAudioData: (params: CollectedAudioQueryDT) => void;
@@ -27,9 +27,9 @@ interface ContextProps {
     collectValPhonemeData: collectValSenRootDT
     getValidatedFilesData: (params: validatedFilesQueryDT) => void;
     validatedFilesData: validatedFilesRootDT
-    getUploadAudioData: () => void;
+    getUploadAudioData: (params:uploadAudioQueryDT) => void;
     uploadAudioData: uploadAudioRootDT;
-    getCheckingStatusUploadData: () => void;
+    getCheckingStatusUploadData: (params:checkingStatusUploadQueryDT) => void;
     checkingStatusUploadData: checkingStatusUploadRootDT
     getAllCheckedAudiosUploadData: (params:allCheckedSpeechQueryDT) => void;
     allCheckedAudiosUploadData: allCheckedSpeechRootDT
@@ -200,14 +200,14 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
         setValidatedFilesData(res.data);
     }
 
-    const getUploadAudioData = () => {
-        const res = audioManagementService.getUploadAudiosData();
-        setUploadAudioData(res);
+    const getUploadAudioData = async (params: uploadAudioQueryDT) => {
+        const res = await audioManagementService.getUploadAudiosData(params);
+        setUploadAudioData(res.data);
     }
 
-    const getCheckingStatusUploadData = () => {
-        const res = audioManagementService.getCheckinStatusUploadData();
-        setCheckingStatusUploadData(res);
+    const getCheckingStatusUploadData = async (params: checkingStatusUploadQueryDT) => {
+        const res = await audioManagementService.getCheckinStatusUploadData(params);
+        setCheckingStatusUploadData(res.data);
     }
 
     const getAllCheckedAudiosUploadData = async (params:allCheckedSpeechQueryDT) => {

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { collectedAudioCollectorList, scriptFilterData, collectValSenData, collectedAudioSpeakersList, collectedAudioCheckerList, collectedAudioAnnotatorList, collectedAudioValidatorList } from '../data/audioManagement/AudioManagementData';
 import { allCheckedSpeechData, annotatedFilesUploadData, annotationUploadData, checkingStatusUploadData, sentenceLevelUploadData, uploadAudioData, ValidatedFilesUploadData, sentenceLevelValUpload } from '../data/audioManagement/UploadAudiosData';
 import * as PATH from '../helpers/APIURL';
-import { CollectedAudioQueryDT, allCheckedAudioQueryDT, allCheckedSpeechQueryDT, annotatedFilesQueryDT, annotationTypeQueryDT, checkingStatusQueryDT, collectAnnSenQueryDT, collectValSenDataQueryDT, validatedFilesQueryDT } from '../types/audioManagementTypes';
+import { CollectedAudioQueryDT, allCheckedAudioQueryDT, allCheckedSpeechQueryDT, annotatedFilesQueryDT, annotationTypeQueryDT, checkingStatusQueryDT, checkingStatusUploadQueryDT, collectAnnSenQueryDT, collectValSenDataQueryDT, uploadAudioQueryDT, validatedFilesQueryDT } from '../types/audioManagementTypes';
 
 
 export default class audioManagementService {
@@ -70,12 +70,15 @@ export default class audioManagementService {
 
     }
 
-    static getUploadAudiosData() {
-        return uploadAudioData;
+    static getUploadAudiosData(params:uploadAudioQueryDT) {
+        // return uploadAudioData;
+        return axios.get(PATH.GET_RES_UPLOAD_AUDIO_AUDIO_MGT_MODULE, { params: params })
+
     }
 
-    static getCheckinStatusUploadData() {
-        return checkingStatusUploadData;
+    static getCheckinStatusUploadData(params:checkingStatusUploadQueryDT) {
+        // return checkingStatusUploadData;
+        return axios.get(PATH.GET_RES_UPLOAD_AUDIO_CHECKING_STATUS_AUDIO_MGT_MODULE, { params: params })
     }
 
     static getAllCheckedAudiosUploadData(params:allCheckedSpeechQueryDT) {

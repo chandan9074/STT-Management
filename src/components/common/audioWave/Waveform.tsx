@@ -125,7 +125,7 @@ const Waveform = ({ data, audioMin }: Props) => {
         }} />
 
       </div>
-      <div>{!data?.duration ? audioMin : data?.duration}</div>
+      <div>{data?.duration && (data?.duration.toString().split(".")[0]) + "." + (data?.duration.toString().split(".")[1].slice(0, 2))}</div>
     </div>
   );
 }

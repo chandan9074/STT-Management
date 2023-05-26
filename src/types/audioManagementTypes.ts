@@ -661,3 +661,14 @@ export type allCheckedSpeechQueryDT = {
     status: string,
     audioSubmissionPeriod: string
 }
+
+export type uploadAudioQueryDT = {
+    dataType: string,
+    uploader: string,
+    uploadPeriod: string,
+    domain: string
+}
+
+export type checkingStatusUploadQueryDT = {
+    status: string,
+}

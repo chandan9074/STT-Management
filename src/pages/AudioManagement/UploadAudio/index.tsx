@@ -1,14 +1,23 @@
 import Table from "../../../components/Table"
 import Header from "../../../components/containers/AudioManagement/UploadAuidioVideo/Header"
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { AudioManagementContext } from "../../../context/AudioManagementProvider"
 
 const UploadAudio = () => {
 
   const { getUploadAudioData, uploadAudioData } = useContext(AudioManagementContext)
 
+  const [query, setQuery] = useState({
+    page: 1,
+    pageSize: 20,
+    dataType: "",
+    uploader: "",
+    uploadPeriod: "",
+    domain: ""
+  })
+
   useEffect(() => {
-    getUploadAudioData()
+    getUploadAudioData(query)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
