@@ -1,10 +1,13 @@
 import React, { createContext, useState } from 'react';
 import OrganizerService from '../services/ organizerService';
-import { DevcieDataDT, RoleDataDT, TagDataDT, roleParamDT } from '../types/organizerTypes';
+import { DevcieDataDT, RoleDataDT, TagDataDT, roleBodyDT, roleParamDT } from '../types/organizerTypes';
+import { callingToast } from '../helpers/Utils';
 
 interface ContextProps {
     createScript: (params: roleParamDT) => void;
     getRole: () => void;
+    postRole: (body: roleBodyDT) => void;
+    deleteRole: (id: string) => void;
     roleData: RoleDataDT[];
     getTag: () => void;
     tagData: TagDataDT[];
@@ -37,6 +40,24 @@ const OrganizerProvider = ({ children }: { children: any }) => {
         setRoleData(res.data);
     }
 
+    const postRole = async (body: roleBodyDT) => {
+        const res = await OrganizerService.postRole(body);
+        if (res.status === 200) {
+            callingToast("A role has been created")
+            getRole()
+        }
+    }
+
+    const deleteRole = async (id: string) => {
+        console.log("andaje", id);
+
+        const res = await OrganizerService.deleteRole(id);
+        if (res.status === 200) {
+            callingToast("Role has been deleted")
+            getRole()
+        }
+    }
+
     const getTag = async () => {
         const res = await OrganizerService.getTag();
         setTagData(res.data);
@@ -53,6 +74,8 @@ const OrganizerProvider = ({ children }: { children: any }) => {
                 value={{
                     createScript,
                     getRole,
+                    postRole,
+                    deleteRole,
                     roleData,
                     getTag,
                     tagData,

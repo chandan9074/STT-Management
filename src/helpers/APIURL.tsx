@@ -102,11 +102,25 @@ export const GET_RES_UPLOAD_AUDIO_VALIDATED_FILES_AUDIO_MGT_MODULE = `${REACT_AP
 //Organize
 
 export const GET_RES_ROLE_ORGANIZE_MODULE = `${REACT_APP_BASE_URL2}/get_res_role_organize_module`;
-export const CREATE_ROLE_URL = `${REACT_APP_BASE_URL}/`;
 export const GET_RES_TAG_ORGANIZE_MODULE = `${REACT_APP_BASE_URL2}/get_res_tag_organize_module`;
 export const GET_RES_DEVICE_ORGANIZE_MODULE = `${REACT_APP_BASE_URL2}/get_res_device_organize_module`;
 
+//Organize->POST
 
+export const POST_RES_ROLE_ORGANIZE_MODULE = `${REACT_APP_BASE_URL2}/post_res_role_organize_module`;
+export const POST_RES_TAG_ORGANIZE_MODULE = `${REACT_APP_BASE_URL2}/post_res_tag_organize_module`;
+export const POST_RES_DEVICE_ORGANIZE_MODULE = `${REACT_APP_BASE_URL2}/post_res_device_organize_module`;
 
+//Organize->UPDATE
+
+export const UPDATE_RES_ROLE_ORGANIZE_MODULE = `${REACT_APP_BASE_URL2}/update_res_role_organize_module`;
+export const UPDATE_RES_TAG_ORGANIZE_MODULE = `${REACT_APP_BASE_URL2}/update_res_tag_organize_module`;
+export const UPDATE_RES_DEVICE_ORGANIZE_MODULE = `${REACT_APP_BASE_URL2}/update_res_device_organize_module`;
+
+//Organize->DELETE
+
+export const DELETE_RES_ROLE_ORGANIZE_MODULE = `${REACT_APP_BASE_URL2}/delete_res_role_organize_module`;
+export const DELETE_RES_TAG_ORGANIZE_MODULE = `${REACT_APP_BASE_URL2}/delete_res_tag_organize_module`;
+export const DELETE_RES_DEVICE_ORGANIZE_MODULE = `${REACT_APP_BASE_URL2}/delete_res_device_organize_module`;
 
 

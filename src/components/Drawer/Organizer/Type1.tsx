@@ -10,9 +10,10 @@ type Props = {
     title: string,
     setIsDrawerClose: Dispatch<SetStateAction<boolean>>;
     isEdit: boolean;
+    handleEdit?: () => void;
 }
 
-const Type1 = ({ children, isDrawerOpen, title, headerBgColor, setIsDrawerClose, isEdit }: Props) => {
+const Type1 = ({ children, isDrawerOpen, title, headerBgColor, setIsDrawerClose, isEdit, handleEdit }: Props) => {
 
     const onClose = () => {
         setIsDrawerClose(false);
@@ -36,6 +37,7 @@ const Type1 = ({ children, isDrawerOpen, title, headerBgColor, setIsDrawerClose,
                     isEdit &&
                     <Link to={``}>
                         <Buttons.BgHoverBtn
+                            onClick={handleEdit}
                             title="Edit"
                             paddingY="py-2"
                             paddingX="px-4"

@@ -7,6 +7,7 @@ import Pagination from "../Pagination"
 import { Drawer } from "../Drawer"
 import SideDrawerContent from "../containers/Organizer/role/SideDrawerContent"
 import { useState } from "react"
+import RoleForm from "../../pages/Organizer/RoleForm"
 
 type Props = {
     data: RoleDataDT[]
@@ -17,7 +18,12 @@ type Props = {
 
 const Type28 = ({ data, handleSelectRow, open, setOpen }: Props) => {
 
-    const [selectedRoleData,setSelectedRoleData] = useState<RoleDataDT>({} as RoleDataDT);
+    const [selectedRoleData, setSelectedRoleData] = useState<RoleDataDT>({} as RoleDataDT);
+    const [isFormDrawer, setIsFormDrawer] = useState(false);
+
+    const handleEdit = () => {
+        setIsFormDrawer(!isFormDrawer);
+    }
 
     const Type28columns: ColumnsType<RoleDataDT> = [
         {
@@ -64,7 +70,7 @@ const Type28 = ({ data, handleSelectRow, open, setOpen }: Props) => {
                         //     showDrawer(record)
                         //     setSingleTargetData(record)
                         // }}
-                        onClick={()=> {setOpen(true); setSelectedRoleData(data)}}>
+                        onClick={() => { setOpen(true); setSelectedRoleData(data) }}>
                         <img
                             className='w-[14px] h-[14px]'
                             src={Icons.open_in_new}
@@ -106,17 +112,20 @@ const Type28 = ({ data, handleSelectRow, open, setOpen }: Props) => {
                 pagination={false}
             />
             <Drawer.Organizer.Type1
-            isDrawerOpen={open}
-            // drawerClose={drawerClose}
-            setIsDrawerClose={setOpen}
-            isEdit={true}
-            headerBgColor="bg-ct-blue-05"
-            title="Role Details"
-          >
-            <div className=' flex items-center'>
-              <SideDrawerContent data={selectedRoleData} />
-            </div>
-          </Drawer.Organizer.Type1>
+                isDrawerOpen={open}
+                // drawerClose={drawerClose}
+                setIsDrawerClose={setOpen}
+                isEdit={true}
+                headerBgColor="bg-ct-blue-05"
+                title="Role Details"
+                handleEdit={handleEdit}
+            >
+                <div className=' flex items-center'>
+                    {
+                        isFormDrawer ? <RoleForm setIsDrawerOpen={setOpen} data={selectedRoleData} /> : <SideDrawerContent data={selectedRoleData} />
+                    }
+                </div>
+            </Drawer.Organizer.Type1>
             {/* <div className='flex w-full justify-end mt-4 mb-2'>
                 <Pagination.Type2
                     total={100}
@@ -127,6 +136,16 @@ const Type28 = ({ data, handleSelectRow, open, setOpen }: Props) => {
 
                 />
             </div> */}
+            {/* <Drawer.Organizer.Type1
+                isDrawerOpen={isFormDrawer}
+                // drawerClose={drawerClose}
+                setIsDrawerClose={setIsFormDrawer}
+                headerBgColor="bg-ct-blue-20"
+                title="Create Role"
+                isEdit={false}
+            >
+                <RoleForm setIsDrawerOpen={setIsDrawerOpen} data={selectedData} />
+            </Drawer.Organizer.Type1> */}
         </div>
     )
 }

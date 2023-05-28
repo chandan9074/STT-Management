@@ -8,16 +8,18 @@ import { Dispatch, SetStateAction, useContext } from 'react';
 import { OrganizerContext } from '../../../context/OrganizerProvider';
 import { TextField } from '@mui/material';
 import { UserManagementContext } from '../../../context/UserManagementProvider';
+import { RoleDataDT, roleBodyDT } from '../../../types/organizerTypes';
 
 const validationSchema = yup.object({
-    // gender: yup.string().required('Gender is Required'),
+    role: yup.string().required('Role is Required'),
 });
 
 type Props = {
     setIsDrawerOpen: Dispatch<SetStateAction<boolean>>;
+    data?: RoleDataDT; 
 }
 
-const RoleForm = ({ setIsDrawerOpen }: Props) => {
+const RoleForm = ({ setIsDrawerOpen, data }: Props) => {
 
     const organizerContext = useContext(OrganizerContext);
     const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
@@ -25,14 +27,16 @@ const RoleForm = ({ setIsDrawerOpen }: Props) => {
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            role: '',
-            description: '',
+            role: data ? data?.role : '',
+            description: data ? data.description : '',
         },
         validationSchema: validationSchema,
-        onSubmit: (values: any) => {
+        onSubmit: (values: roleBodyDT) => {
 
-            organizerContext.createScript(values)
-            console.log('value-----', values);
+            organizerContext.postRole(values)
+            // console.log('value-----', values);
+            formik.resetForm();
+            setIsDrawerOpen(false)
 
         }
     });

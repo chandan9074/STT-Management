@@ -29,3 +29,8 @@ export type roleParamDT = {
     description: string;
 }
 
+export type roleBodyDT = {
+    role: string;
+    description: string;
+}
+

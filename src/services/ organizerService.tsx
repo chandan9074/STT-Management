@@ -1,15 +1,23 @@
 import axios from "axios";
 import * as PATH from "../helpers/APIURL";
-import { roleParamDT } from "../types/organizerTypes";
+import { roleBodyDT, roleParamDT } from "../types/organizerTypes";
 
 export default class OrganizerService {
 
   static createRole(params: roleParamDT) {
-    return axios.post(PATH.CREATE_ROLE_URL, params);
+    return axios.post(PATH.POST_RES_ROLE_ORGANIZE_MODULE, params);
   }
 
   static getRole() {
     return axios.get(PATH.GET_RES_ROLE_ORGANIZE_MODULE);
+  }
+
+  static postRole(body: roleBodyDT) {
+    return axios.post(PATH.POST_RES_ROLE_ORGANIZE_MODULE, body);
+  }
+
+  static deleteRole(id: string) {
+    return axios.delete(PATH.DELETE_RES_ROLE_ORGANIZE_MODULE, { params: { id: id } });
   }
 
   static getTag() {

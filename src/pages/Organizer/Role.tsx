@@ -4,7 +4,7 @@ import Icons from '../../assets/Icons'
 import Buttons from '../../components/Buttons'
 import { Drawer } from '../../components/Drawer'
 import Table from '../../components/Table'
-import { RoleDataDT } from '../../types/organizerTypes'
+import { RoleDataDT, roleBodyDT } from '../../types/organizerTypes'
 import RoleForm from './RoleForm'
 import { OrganizerContext } from '../../context/OrganizerProvider'
 
@@ -13,7 +13,7 @@ const Role = () => {
   const [open, setOpen] = useState<boolean>(false)
   const [selectedRows, setSelectedRows] = useState<RoleDataDT[]>([] as RoleDataDT[]);
 
-  const {getRole,roleData} = useContext(OrganizerContext)
+  const { getRole, roleData } = useContext(OrganizerContext)
 
   useEffect(() => {
     getRole()
@@ -28,7 +28,7 @@ const Role = () => {
     <div>
       <Header open={open} setOpen={setOpen} selectedRows={selectedRows} />
       <Table.Type28 data={roleData} handleSelectRow={handleSelectRow} open={open} setOpen={setOpen} />
-      
+
     </div>
   )
 }
@@ -43,6 +43,9 @@ type Props = {
 }
 const Header = ({ open, setOpen, selectedRows }: Props) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
+  const [selectedData, setSelectedData] = useState<RoleDataDT>({} as RoleDataDT)
+
+  const { deleteRole } = useContext(OrganizerContext)
 
   return (
     <div className='ml-6 mr-4 mb-5 flex items-center justify-between'>
@@ -54,9 +57,7 @@ const Header = ({ open, setOpen, selectedRows }: Props) => {
         <div className="flex items-center">
           {selectedRows.length > 0 ? <>
             <Buttons.BgHoverBtn
-              // onClick={() => {
-              //   scriptContext.deleteScript(commonContext.role, selectedRows.map((item) => item.id).join(",")); setselectedRows([]);
-              // }}
+              onClick={() => deleteRole(selectedRows.map((item) => item.id).join(","))}
               title="Delete"
               paddingY="py-2"
               paddingX="px-4"
@@ -68,20 +69,22 @@ const Header = ({ open, setOpen, selectedRows }: Props) => {
               hoverBgColor="hover:bg-white"
             />
             {selectedRows.length === 1 &&
-              <Link to={``}>
-                <Buttons.BgHoverBtn
-                  title="Edit"
-                  paddingY="py-2"
-                  paddingX="px-4"
-                  borderRadius="rounded-[6px]"
-                  textColor="text-secondary-blue-50"
-                  fontSize="text-small"
-                  fontWeight="font-medium"
-                  duration="duration-300"
-                  hoverBgColor="hover:bg-white"
-                  marginX="mx-2"
-                />
-              </Link>
+              <Buttons.BgHoverBtn
+                onClick={() => {
+                  setSelectedData(selectedRows[0]);
+                  setIsDrawerOpen(!isDrawerOpen)
+                }}
+                title="Edit"
+                paddingY="py-2"
+                paddingX="px-4"
+                borderRadius="rounded-[6px]"
+                textColor="text-secondary-blue-50"
+                fontSize="text-small"
+                fontWeight="font-medium"
+                duration="duration-300"
+                hoverBgColor="hover:bg-white"
+                marginX="mx-2"
+              />
             }
           </> : null}
         </div>
@@ -102,7 +105,7 @@ const Header = ({ open, setOpen, selectedRows }: Props) => {
         title="Create Role"
         isEdit={false}
       >
-        <RoleForm setIsDrawerOpen={setIsDrawerOpen} />
+        <RoleForm setIsDrawerOpen={setIsDrawerOpen} data={selectedData} />
       </Drawer.Organizer.Type1>
 
     </div>
