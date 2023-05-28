@@ -10,8 +10,17 @@ const SentenceLevelUploadVal = () => {
 
   const { getSentenceLevelUploadVal, sentenceLevelUploadVal } = useContext(AudioManagementContext)
 
+  const [query, setQuery] = useState({
+    page: 1,
+    pageSize: 20,
+    dateRange: "",
+    annotator: "",
+    speaker: "",
+    audioChecker: "",
+  })
+
   useEffect(() => {
-    getSentenceLevelUploadVal();
+    getSentenceLevelUploadVal(query);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

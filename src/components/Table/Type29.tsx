@@ -3,14 +3,21 @@ import { ColumnsType } from "antd/es/table";
 import Icons from "../../assets/Icons";
 import { TagDataDT } from "../../types/organizerTypes";
 import Pagination from "../Pagination";
+import { Drawer } from "../Drawer";
+import SideDrawerContent from "../containers/Organizer/tag/SideDrawerContent";
+import { useState } from "react";
 
 type Props = {
     data: TagDataDT[]
     handleSelectRow: (value: TagDataDT[]) => void;
+    open: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Type29 = ({ data,handleSelectRow,setOpen }: Props) => {
+const Type29 = ({ data, handleSelectRow, open, setOpen }: Props) => {
+
+    const [selectedTagData, setSelectedTagData] = useState<TagDataDT>({} as TagDataDT);
+
 
     const Type29columns: ColumnsType<TagDataDT> = [
         {
@@ -24,21 +31,21 @@ const Type29 = ({ data,handleSelectRow,setOpen }: Props) => {
         },
         {
             title: `${"Tag Name".toLocaleUpperCase()}`,
-            key: 'roleName',
+            key: 'tagName',
             // align: 'center',
             width: 194,
             render: (data: TagDataDT) => <h1 className="text-small font-medium text-ct-blue-60">{data.tagName}</h1>,
         },
         {
             title: `${"Shortcut".toLocaleUpperCase()}`,
-            key: 'roleName',
+            key: 'tagName',
             // align: 'center',
             width: 130,
-            render: (data: TagDataDT) => <h1 className="text-small font-normal text-blue-gray-80">{data.shortcut}</h1>,
+            render: (data: TagDataDT) => <h1 className="text-small font-normal text-blue-gray-80">{data.shortCut}</h1>,
         },
         {
             title: `${"Description".toLocaleUpperCase()}`,
-            key: 'roleName',
+            key: 'description',
             // align: 'center',
             width: 537,
             render: (data: TagDataDT) => <h1 className="text-small font-normal text-blue-gray-80">{data.description}</h1>,
@@ -52,7 +59,7 @@ const Type29 = ({ data,handleSelectRow,setOpen }: Props) => {
             render: (data: TagDataDT) => (
                 <div className="flex justify-center items-center">
 
-                    <div className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-ct-blue-10 active:border active:border-ct-blue-10' onClick={()=>setOpen(true)}>
+                    <button className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-ct-blue-10 active:border active:border-ct-blue-10' onClick={() => { setOpen(true); setSelectedTagData(data) }}>
                         <img
                             // onClick={() => {
                             //     showDrawer(record);
@@ -61,7 +68,7 @@ const Type29 = ({ data,handleSelectRow,setOpen }: Props) => {
                             className='w-[14px] h-[14px] cursor-pointer'
                             src={Icons.open_in_new}
                             alt="" />
-                    </div>
+                    </button>
 
                 </div>)
         },
@@ -97,7 +104,7 @@ const Type29 = ({ data,handleSelectRow,setOpen }: Props) => {
                 rowKey="id"
                 pagination={false}
             />
-            <div className='flex w-full justify-end mt-4 mb-2'>
+            {/* <div className='flex w-full justify-end mt-4 mb-2'>
                 <Pagination.Type2
                     total={100}
                     pageSize={10}
@@ -106,7 +113,19 @@ const Type29 = ({ data,handleSelectRow,setOpen }: Props) => {
                     handleDataChange={handlePageChange}
 
                 />
-            </div>
+            </div> */}
+            <Drawer.Organizer.Type1
+                isDrawerOpen={open}
+                headerBgColor="bg-ct-blue-05"
+                // drawerClose={drawerClose}
+                setIsDrawerClose={setOpen}
+                title="Tag Details"
+                isEdit={true}
+            >
+                <div className=' flex items-center'>
+                    <SideDrawerContent data={selectedTagData} />
+                </div>
+            </Drawer.Organizer.Type1>
         </div>
     )
 }

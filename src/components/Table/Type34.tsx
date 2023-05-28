@@ -19,7 +19,7 @@ const Type34 = ({ data }: Props) => {
 
     const [singleTargetData, setSingleTargetData] = useState<sentenceLevelValUploadDT>();
     const [open, setOpen] = useState(false);
-
+    console.log("data---------------------",data);
     const showDrawer = (item: sentenceLevelValUploadDT) => {
         setOpen(true);
     };
@@ -73,7 +73,7 @@ const Type34 = ({ data }: Props) => {
             ...getColumnSearchProps('validate1'),
             // className: "audio-management-status",
             width: 200,
-            render: (data: sentenceLevelValUploadDT) => <ValidateCol data={data.validate1} />
+            render: (data: sentenceLevelValUploadDT) => <ValidateCol data={data.validator1} />
         },
         {
             title: `${"Validate2".toLocaleUpperCase()}`,
@@ -81,7 +81,7 @@ const Type34 = ({ data }: Props) => {
             ...getColumnSearchProps('validate2'),
             // className: "audio-management-status",
             width: 200,
-            render: (data: sentenceLevelValUploadDT) => <ValidateCol data={data.validate2} />
+            render: (data: sentenceLevelValUploadDT) => <ValidateCol data={data.validator2} />
         },
         {
             title: `${"Validate-Final".toLocaleUpperCase()}`,
@@ -89,7 +89,7 @@ const Type34 = ({ data }: Props) => {
             ...getColumnSearchProps('validateFinal'),
             // className: "audio-management-status",
             width: 200,
-            render: (data: sentenceLevelValUploadDT) => <ValidateCol data={data.validateFinal} />
+            render: (data: sentenceLevelValUploadDT) => <ValidateCol data={data.validatorFinal} />
         },
         {
             title: `${"DeadLine".toLocaleUpperCase()}`,

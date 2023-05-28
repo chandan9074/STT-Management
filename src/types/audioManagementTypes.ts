@@ -542,9 +542,9 @@ export type sentenceLevelValUploadRootDT = {
 export type sentenceLevelValUploadDT = {
     id: string;
     speech: assignAudioTrackDT;
-    validate1: validateDT;
-    validate2: validateDT;
-    validateFinal: validateDT;
+    validator1: validateDT;
+    validator2: validateDT;
+    validatorFinal: validateDT;
     deadLine: string;
     annotator: annotatedAnnotatorDT;
     audioChecker: annotatedAudioCheckerDT;
@@ -657,12 +657,16 @@ export type collectValSenDataQueryDT = {
 }
 
 export type allCheckedSpeechQueryDT = {
+    page: number,
+    pageSize: number,
     audioChecker: string,
     status: string,
     audioSubmissionPeriod: string
 }
 
 export type uploadAudioQueryDT = {
+    page: number,
+    pageSize: number,
     dataType: string,
     uploader: string,
     uploadPeriod: string,
@@ -670,5 +674,54 @@ export type uploadAudioQueryDT = {
 }
 
 export type checkingStatusUploadQueryDT = {
+    page: number,
+    pageSize: number,
     status: string,
+}
+
+export type uploadAnnSenQueryDT = {
+    page: number,
+    pageSize: number,
+    dateRange: string,
+    speaker: string,
+    audioChecker: string,
+}
+
+export type annotatedFilesUploadQueryDT = {
+    page: number,
+    pageSize: number,
+    script: string,
+    annotator: string,
+    audioChecker: string
+    speaker: string,
+    collector: string,
+    audioSubmissionPeriod: string,
+    status: string
+}
+
+export type uploadValSenDataQueryDT = {
+    page: number,
+    pageSize: number,
+    dateRange: string,
+    annotator: string,
+    speaker: string,
+    audioChecker: string
+}
+
+export type uploadAnnotationTypeQueryDT = {
+    page: number,
+    pageSize: number,
+    speaker: string
+}
+
+export type uploadValidatedQueryDT = {
+    page: number,
+    pageSize: number,
+    validator: string,
+    annotator: string,
+    audioChecker: string,
+    speaker: string,
+    collector: string,
+    audioSubmissionPeriod: string,
+    status: string
 }

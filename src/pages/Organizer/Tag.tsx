@@ -1,18 +1,25 @@
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icons from '../../assets/Icons'
 import Buttons from '../../components/Buttons'
 import SideDrawerContent from '../../components/containers/Organizer/tag/SideDrawerContent'
 import { Drawer } from '../../components/Drawer'
 import Table from '../../components/Table'
-import { tagData } from '../../data/organize/OrganizerData'
 import { TagDataDT } from '../../types/organizerTypes'
 import TagForm from './TagForm'
+import { OrganizerContext } from '../../context/OrganizerProvider'
 
 const Tag = () => {
 
   const [open, setOpen] = useState<boolean>(false)
   const [selectedRows, setSelectedRows] = useState<TagDataDT[]>([] as TagDataDT[])
+
+  const {getTag,tagData} = useContext(OrganizerContext)
+
+  useEffect(() => {
+    getTag()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
 
   const handleSelectRow = (value: TagDataDT[]) => {
@@ -22,19 +29,8 @@ const Tag = () => {
   return (
     <div>
       <Header open={open} setOpen={setOpen} selectedRows={selectedRows} />
-      <Table.Type29 data={tagData} handleSelectRow={handleSelectRow} setOpen={setOpen} />
-      <Drawer.Organizer.Type1
-        isDrawerOpen={open}
-        headerBgColor="bg-ct-blue-05"
-        // drawerClose={drawerClose}
-        setIsDrawerClose={setOpen}
-        title="Tag Details"
-        isEdit={true}
-      >
-        <div className=' flex items-center'>
-          <SideDrawerContent data={tagData} />
-        </div>
-      </Drawer.Organizer.Type1>
+      <Table.Type29 data={tagData} handleSelectRow={handleSelectRow} open={open} setOpen={setOpen} />
+      
     </div>
   )
 }

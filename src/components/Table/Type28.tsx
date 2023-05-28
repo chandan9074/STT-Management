@@ -4,6 +4,9 @@ import Icons from "../../assets/Icons"
 import { RoleDataDT } from "../../types/organizerTypes"
 import RoleImage from "../Image/RoleImage"
 import Pagination from "../Pagination"
+import { Drawer } from "../Drawer"
+import SideDrawerContent from "../containers/Organizer/role/SideDrawerContent"
+import { useState } from "react"
 
 type Props = {
     data: RoleDataDT[]
@@ -13,6 +16,8 @@ type Props = {
 }
 
 const Type28 = ({ data, handleSelectRow, open, setOpen }: Props) => {
+
+    const [selectedRoleData,setSelectedRoleData] = useState<RoleDataDT>({} as RoleDataDT);
 
     const Type28columns: ColumnsType<RoleDataDT> = [
         {
@@ -36,7 +41,7 @@ const Type28 = ({ data, handleSelectRow, open, setOpen }: Props) => {
             key: 'roleName',
             // align: 'center',
             width: 250,
-            render: (data: RoleDataDT) => <h1 className="text-small font-medium text-ct-blue-60">{data.roleName}</h1>,
+            render: (data: RoleDataDT) => <h1 className="text-small font-medium text-ct-blue-60">{data.role}</h1>,
         },
         {
             title: `${"Last Date of Modification".toLocaleUpperCase()}`,
@@ -59,7 +64,7 @@ const Type28 = ({ data, handleSelectRow, open, setOpen }: Props) => {
                         //     showDrawer(record)
                         //     setSingleTargetData(record)
                         // }}
-                        onClick={()=> setOpen(true)}>
+                        onClick={()=> {setOpen(true); setSelectedRoleData(data)}}>
                         <img
                             className='w-[14px] h-[14px]'
                             src={Icons.open_in_new}
@@ -100,7 +105,19 @@ const Type28 = ({ data, handleSelectRow, open, setOpen }: Props) => {
                 rowKey="id"
                 pagination={false}
             />
-            <div className='flex w-full justify-end mt-4 mb-2'>
+            <Drawer.Organizer.Type1
+            isDrawerOpen={open}
+            // drawerClose={drawerClose}
+            setIsDrawerClose={setOpen}
+            isEdit={true}
+            headerBgColor="bg-ct-blue-05"
+            title="Role Details"
+          >
+            <div className=' flex items-center'>
+              <SideDrawerContent data={selectedRoleData} />
+            </div>
+          </Drawer.Organizer.Type1>
+            {/* <div className='flex w-full justify-end mt-4 mb-2'>
                 <Pagination.Type2
                     total={100}
                     pageSize={10}
@@ -109,7 +126,7 @@ const Type28 = ({ data, handleSelectRow, open, setOpen }: Props) => {
                     handleDataChange={handlePageChange}
 
                 />
-            </div>
+            </div> */}
         </div>
     )
 }

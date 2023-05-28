@@ -17,11 +17,22 @@ const AnnotatedFilesUpload = () => {
     const [activeTab, setActiveTab] = useState<string>("Sentence");
     const [selectedSpeech, setSelectedSpeech] = useState<annotatedFilesUploadDT[]>([] as annotatedFilesUploadDT[]);
     const [selectedRowsData, setSelectedRowsData] = useState<annotatedFilesUploadDT[]>([])
+    const [query, setQuery] = useState({
+        page: 1,
+        pageSize: 20,
+        script: "",
+        annotator: "",
+        audioChecker: "",
+        speaker: "",
+        collector: "",
+        audioSubmissionPeriod: "",
+        status: ""
+    })
 
     const { getAnnotatedFilesUploadData, annotatedFilesUploadData } = useContext(AudioManagementContext);
 
     useEffect(() => {
-        getAnnotatedFilesUploadData()
+        getAnnotatedFilesUploadData(query)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

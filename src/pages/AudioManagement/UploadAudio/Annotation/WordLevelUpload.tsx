@@ -13,10 +13,17 @@ const WordLevelUpload = () => {
   const { getWordLevelUploadData, wordLevelUploadData } = useContext(AudioManagementContext)
 
   const [selectedRowsData, setSelectedRowsData] = useState<sentenceLevelUploadDT[]>([])
+  const [query, setQuery] = useState({
+    page: 1,
+    pageSize: 20,
+    dateRange: "",
+    speaker: "",
+    audioChecker: "",
+  })
 
 
   useEffect(() => {
-    getWordLevelUploadData();
+    getWordLevelUploadData(query);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -194,7 +201,7 @@ const Header = ({ selectedRowsData }: { selectedRowsData: sentenceLevelUploadDT[
           />
         }
         <div className='flex items-center gap-x-3'>
-          <SearchBox.Type1 inputWidth="w-44" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
+          <SearchBox.Type1 inputWidth="w-28" placeholder="Search" bgColor="bg-blue-gray-A10" textColor="text-ct-blue-90-70%" />
           <Filter.Type2 popupClassName='audio_submission_date_picker' handleSubmitFilter={handleSubmitFilter} filterData={collectedAudioAnnotationSentenceFilterData} count={count} filterList={filterList} handleReset={handleReset} handleFilterList={handleFilterList} />
         </div>
       </div>

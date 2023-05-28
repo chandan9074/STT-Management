@@ -2,7 +2,7 @@ import axios from 'axios';
 import { collectedAudioCollectorList, scriptFilterData, collectValSenData, collectedAudioSpeakersList, collectedAudioCheckerList, collectedAudioAnnotatorList, collectedAudioValidatorList } from '../data/audioManagement/AudioManagementData';
 import { allCheckedSpeechData, annotatedFilesUploadData, annotationUploadData, checkingStatusUploadData, sentenceLevelUploadData, uploadAudioData, ValidatedFilesUploadData, sentenceLevelValUpload } from '../data/audioManagement/UploadAudiosData';
 import * as PATH from '../helpers/APIURL';
-import { CollectedAudioQueryDT, allCheckedAudioQueryDT, allCheckedSpeechQueryDT, annotatedFilesQueryDT, annotationTypeQueryDT, checkingStatusQueryDT, checkingStatusUploadQueryDT, collectAnnSenQueryDT, collectValSenDataQueryDT, uploadAudioQueryDT, validatedFilesQueryDT } from '../types/audioManagementTypes';
+import { CollectedAudioQueryDT, allCheckedAudioQueryDT, allCheckedSpeechQueryDT, annotatedFilesQueryDT, annotatedFilesUploadQueryDT, annotationTypeQueryDT, checkingStatusQueryDT, checkingStatusUploadQueryDT, collectAnnSenQueryDT, collectValSenDataQueryDT, uploadAnnSenQueryDT, uploadAnnotationTypeQueryDT, uploadAudioQueryDT, uploadValSenDataQueryDT, uploadValidatedQueryDT, validatedFilesQueryDT } from '../types/audioManagementTypes';
 
 
 export default class audioManagementService {
@@ -86,40 +86,50 @@ export default class audioManagementService {
         return axios.get(PATH.GET_RES_UPLOAD_AUDIO_ALL_CHECKED_AUDIO_MGT_MODULE, { params: params })
     }
 
-    static getAnnotationUploadData() {
-        return annotationUploadData;
+    static getAnnotationUploadData(params:uploadAnnotationTypeQueryDT) {
+        // return annotationUploadData;
+        return axios.get(PATH.GET_RES_UPLOAD_AUDIO_ANNOTATION_TYPE_AUDIO_MGT_MODULE, { params: params })
     }
 
-    static getSentenceLevelUploadData() {
-        return sentenceLevelUploadData;
+    static getSentenceLevelUploadData(params:uploadAnnSenQueryDT) {
+        // return sentenceLevelUploadData;
+        return axios.get(PATH.GET_RES_UPLOAD_AUDIO_ANNOTATION_SENTENCE_AUDIO_MGT_MODULE, { params: params })
     }
 
-    static getWordLevelUploadData() {
-        return sentenceLevelUploadData;
+    static getWordLevelUploadData(params:uploadAnnSenQueryDT) {
+        // return sentenceLevelUploadData;
+        return axios.get(PATH.GET_RES_UPLOAD_AUDIO_ANNOTATION_WORD_AUDIO_MGT_MODULE, { params: params })
     }
 
-    static getPhonemeLevelUploadData() {
-        return sentenceLevelUploadData;
+    static getPhonemeLevelUploadData(params:uploadAnnSenQueryDT) {
+        // return sentenceLevelUploadData;
+        return axios.get(PATH.GET_RES_UPLOAD_AUDIO_ANNOTATION_PHONEME_AUDIO_MGT_MODULE, { params: params })
+
     }
 
-    static getAnnotatedFilesUploadData() {
-        return annotatedFilesUploadData;
+    static getAnnotatedFilesUploadData(params:annotatedFilesUploadQueryDT) {
+        // return annotatedFilesUploadData;
+        return axios.get(PATH.GET_RES_UPLOAD_AUDIO_ANNOTATED_FILES_AUDIO_MGT_MODULE, { params: params })
     }
 
-    static getSentenceLevelUploadVal() {
-        return sentenceLevelValUpload;
+    static getSentenceLevelUploadVal(params:uploadValSenDataQueryDT) {
+        // return sentenceLevelValUpload;
+        return axios.get(PATH.GET_RES_UPLOAD_AUDIO_VALIDATION_SENTENCE_AUDIO_MGT_MODULE, { params: params })
     }
 
-    static getWordLevelUploadVal() {
-        return sentenceLevelValUpload;
+    static getWordLevelUploadVal(params:uploadValSenDataQueryDT) {
+        // return sentenceLevelValUpload;
+        return axios.get(PATH.GET_RES_UPLOAD_AUDIO_VALIDATION_WORD_AUDIO_MGT_MODULE, { params: params })
     }
 
-    static getPhonemeLevelUploadVal() {
-        return sentenceLevelValUpload;
+    static getPhonemeLevelUploadVal(params:uploadValSenDataQueryDT) {
+        // return sentenceLevelValUpload;
+        return axios.get(PATH.GET_RES_UPLOAD_AUDIO_VALIDATION_PHONEME_AUDIO_MGT_MODULE, { params: params })
     }
 
-    static getValidatedFilesUploadData() {
-        return ValidatedFilesUploadData;
+    static getValidatedFilesUploadData(params:uploadValidatedQueryDT) {
+        // return ValidatedFilesUploadData;
+        return axios.get(PATH.GET_RES_UPLOAD_AUDIO_VALIDATED_FILES_AUDIO_MGT_MODULE, { params: params })
     }
 
     static getAudioCheckerList = (type: string) => {

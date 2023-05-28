@@ -4,14 +4,20 @@ import Icons from "../../assets/Icons";
 import { DevcieDataDT } from "../../types/organizerTypes";
 import DeviceImage from "../Image/DeviceImage";
 import Pagination from "../Pagination";
+import { Drawer } from "../Drawer";
+import SideDrawerContent from "../containers/Organizer/device/SideDrawerContent";
+import { useState } from "react";
 
 type Props = {
     data: DevcieDataDT[]
     handleSelectRow: (value: DevcieDataDT[]) => void;
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Type30 = ({ data,handleSelectRow,setOpen }: Props) => {
+const Type30 = ({ data, handleSelectRow }: Props) => {
+
+    const [open, setOpen] = useState<boolean>(false)
+    const [selectedDeviceData, setSelectedDeviceData] = useState<DevcieDataDT>({} as DevcieDataDT);
+
 
     const Type30columns: ColumnsType<DevcieDataDT> = [
         {
@@ -42,7 +48,7 @@ const Type30 = ({ data,handleSelectRow,setOpen }: Props) => {
             key: 'lastDate',
             // align: 'center',
             width: 491,
-            render: (data: DevcieDataDT) => <h1 className="text-small font-normal text-ct-blue-80">{data.lastDateCreation}</h1>,
+            render: (data: DevcieDataDT) => <h1 className="text-small font-normal text-ct-blue-80">{data.lastDate}</h1>,
         },
         {
             title: `${"Details".toLocaleUpperCase()}`,
@@ -53,7 +59,7 @@ const Type30 = ({ data,handleSelectRow,setOpen }: Props) => {
             render: (data: DevcieDataDT) => (
                 <div className="flex justify-center items-center">
 
-                    <div className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-ct-blue-10 active:border active:border-ct-blue-10' onClick={()=>setOpen(true)}>
+                    <div className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-ct-blue-10 active:border active:border-ct-blue-10' onClick={() => { setOpen(true); setSelectedDeviceData(data) }}>
                         <img
                             // onClick={() => {
                             //     showDrawer(record);
@@ -85,8 +91,8 @@ const Type30 = ({ data,handleSelectRow,setOpen }: Props) => {
         // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
     }
 
-  return (
-    <div className="billing-table billing-table-even-bg type4-table horizontal-table-padding">
+    return (
+        <div className="billing-table billing-table-even-bg type4-table horizontal-table-padding">
             <Table
                 dataSource={data}
                 columns={Type30columns}
@@ -99,7 +105,7 @@ const Type30 = ({ data,handleSelectRow,setOpen }: Props) => {
                 rowKey="id"
                 pagination={false}
             />
-            <div className='flex w-full justify-end mt-4 mb-2'>
+            {/* <div className='flex w-full justify-end mt-4 mb-2'>
                 <Pagination.Type2
                     total={100}
                     pageSize={10}
@@ -108,9 +114,21 @@ const Type30 = ({ data,handleSelectRow,setOpen }: Props) => {
                     handleDataChange={handlePageChange}
 
                 />
-            </div>
+            </div> */}
+            <Drawer.Organizer.Type1
+                isDrawerOpen={open}
+                // drawerClose={drawerClose}
+                setIsDrawerClose={setOpen}
+                headerBgColor="bg-ct-blue-05"
+                title="Device Details"
+                isEdit={true}
+            >
+                <div className=' flex items-center'>
+                    <SideDrawerContent data={selectedDeviceData} />
+                </div>
+            </Drawer.Organizer.Type1>
         </div>
-  )
+    )
 }
 
 export default Type30

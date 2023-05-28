@@ -85,7 +85,7 @@ const Type25 = ({ data,setSelectedRowsData }: Props) => {
             title: `${"Submission Date".toLocaleUpperCase()}`,
             key: 'submissionDate',
             width: 137,
-            render: (data: allCheckedSpeechDT) => <h1 className='text-small text-blue-gray-80'>{data.deadLine}</h1>
+            render: (data: allCheckedSpeechDT) => <h1 className='text-small text-blue-gray-80'>{data.submissionDate}</h1>
         },
         {
             title: `${"Remark".toLocaleUpperCase()}`,

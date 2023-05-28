@@ -174,14 +174,19 @@ const Type35 = ({ data }: Props) => {
             align: "center",
             render: (data: validatedFilesUploadDT) => (
                 <div className='flex justify-center relative'>
-                    <img
+                    <button
                         onClick={() => {
                             setRemarkOpen(true);
                             setSingleTargetData(data);
                         }}
-                        src={Icons.File} className="h-[16px] w-[16px] cursor-pointer"
-                        alt=""
-                    />
+                        className="flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-blue-gray-20 active:border active:border-blue-gray-A10">
+
+                        <img
+
+                            src={Icons.File} className="h-[16px] w-[16px] cursor-pointer"
+                            alt=""
+                        />
+                    </button>
                     {
                         (remarkOpen && data.id === singleTargetData?.id) &&
                         <div className='fixed top-[209px] right-[86px] z-[999] animate-fadeIn2'>

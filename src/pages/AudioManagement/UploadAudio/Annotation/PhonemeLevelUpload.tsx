@@ -13,10 +13,17 @@ const PhonemeLevelUpload = () => {
   const { getPhonemeLevelUploadData, phonemeLevelUploadData } = useContext(AudioManagementContext)
 
   const [selectedRowsData, setSelectedRowsData] = useState<sentenceLevelUploadDT[]>([])
+  const [query, setQuery] = useState({
+    page: 1,
+    pageSize: 20,
+    dateRange: "",
+    speaker: "",
+    audioChecker: "",
+  })
 
 
   useEffect(() => {
-    getPhonemeLevelUploadData();
+    getPhonemeLevelUploadData(query);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

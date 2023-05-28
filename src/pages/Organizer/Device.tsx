@@ -1,18 +1,25 @@
-import { useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import Icons from "../../assets/Icons"
 import Buttons from "../../components/Buttons"
 import SideDrawerContent from "../../components/containers/Organizer/device/SideDrawerContent"
 import { Drawer } from "../../components/Drawer"
 import Table from "../../components/Table"
-import { deviceData } from "../../data/organize/OrganizerData"
 import { DevcieDataDT } from "../../types/organizerTypes"
 import DeviceForm from "./DeviceForm"
+import { OrganizerContext } from "../../context/OrganizerProvider"
 
 const Device = () => {
 
-  const [open, setOpen] = useState<boolean>(false)
+  
   const [selectedRows, setSelectedRows] = useState<DevcieDataDT[]>([] as DevcieDataDT[])
+
+  const {getDevice,deviceData} = useContext(OrganizerContext)
+
+  useEffect(() => {
+    getDevice()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const handleSelectRow = (value: DevcieDataDT[]) => {
     setSelectedRows(value)
@@ -20,20 +27,9 @@ const Device = () => {
 
   return (
     <div>
-      <Header open={open} setOpen={setOpen} selectedRows={selectedRows} />
-      <Table.Type30 data={deviceData} handleSelectRow={handleSelectRow} setOpen={setOpen} />
-      <Drawer.Organizer.Type1
-        isDrawerOpen={open}
-        // drawerClose={drawerClose}
-        setIsDrawerClose={setOpen}
-        headerBgColor="bg-ct-blue-05"
-        title="Device Details"
-        isEdit={true}
-      >
-        <div className=' flex items-center'>
-          <SideDrawerContent data={deviceData} />
-        </div>
-      </Drawer.Organizer.Type1>
+      <Header  selectedRows={selectedRows} />
+      <Table.Type30 data={deviceData} handleSelectRow={handleSelectRow} />
+      
     </div>
   )
 }
@@ -41,11 +37,10 @@ const Device = () => {
 export default Device
 
 type Props = {
-  open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  
   selectedRows: DevcieDataDT[]
 }
-const Header = ({ open, setOpen, selectedRows }: Props) => {
+const Header = ({ selectedRows }: Props) => {
 
   const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
 

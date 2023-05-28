@@ -1,15 +1,18 @@
 export type RoleDataDT = {
     id: string
     role: string
-    roleName: string
+    description: string
+    createdAt:string
     lastDate: string
 } 
 
 export type TagDataDT = {
     id: string
     tagName: string
-    shortcut: string
+    shortCut: string
     description: string
+    createdAt:string
+    lastDate: string
 }
 
 export type DevcieDataDT = {
@@ -17,11 +20,12 @@ export type DevcieDataDT = {
     device: string
     brand: string
     model: string
-    lastDateCreation: string
-    lastDateModification: string
+    createdAt:string
+    lastDate: string
 }
 
 export type roleParamDT = {
     role: string;
     description: string;
 }
+

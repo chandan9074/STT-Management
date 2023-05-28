@@ -18,8 +18,20 @@ const ValidatedFilesUpload = () => {
 
   const { getValidatedFilesUploadData, validatedFilesUploadData } = useContext(AudioManagementContext)
 
+  const [query, setQuery] = useState({
+    page: 1,
+    pageSize: 20,
+    validator: "",
+    annotator: "",
+    audioChecker: "",
+    speaker: "",
+    collector: "",
+    audioSubmissionPeriod: "",
+    status: ""
+  })
+
   useEffect(() => {
-    getValidatedFilesUploadData()
+    getValidatedFilesUploadData(query)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
