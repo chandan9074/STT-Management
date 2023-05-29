@@ -5,6 +5,7 @@ import { OrganizerContext } from '../../../context/OrganizerProvider';
 import { Grid, TextField } from '@mui/material';
 import { UserManagementContext } from '../../../context/UserManagementProvider';
 import ActionButton from '../RoleForm/ActionButton';
+import { TagDataDT, tagBodyDT } from '../../../types/organizerTypes';
 
 const validationSchema = yup.object({
     // gender: yup.string().required('Gender is Required'),
@@ -12,9 +13,13 @@ const validationSchema = yup.object({
 
 type Props = {
     setIsFormOpen: Dispatch<SetStateAction<boolean>>;
+    data?: TagDataDT;
+    isEdit?: boolean;
+    handleEdit?: () => void;
+    handleSelectRow?: (value: TagDataDT[]) => void;
 }
 
-const TagForm = ({ setIsFormOpen }: Props) => {
+const TagForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }: Props) => {
 
     const organizerContext = useContext(OrganizerContext);
     const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
@@ -22,15 +27,26 @@ const TagForm = ({ setIsFormOpen }: Props) => {
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            tagName: '',
-            shortcut: '',
-            description: '',
+            tagName: isEdit ? data ? data?.tagName : '' : "",
+            shortCut: isEdit ? data ? data?.shortCut : '' : "",
+            description: isEdit ? data ? data?.description : '' : "",
         },
         validationSchema: validationSchema,
-        onSubmit: (values: any) => {
+        onSubmit: (values: tagBodyDT) => {
 
-            organizerContext.createScript(values)
-            console.log('value-----', values);
+            if (isEdit && data) {
+                console.log("edit activate");
+                values.id = data.id;
+                organizerContext.updateTag(values);
+                handleSelectRow && handleSelectRow([])
+                handleEdit && handleEdit();
+            }
+            else {
+                organizerContext.postTag(values)
+            }
+            // console.log('value-----', values);
+            formik.resetForm();
+            setIsFormOpen(false)
 
         }
     });
@@ -71,13 +87,13 @@ const TagForm = ({ setIsFormOpen }: Props) => {
                     </Grid>
                     <Grid item xs={4.8}>
                         <TextField
-                            id="shortcut"
-                            name="shortcut"
+                            id="shortCut"
+                            name="shortCut"
                             label={<h1 className='comboBoxLabel'>Shortcut <span className='text-[red]'>*</span></h1>}
-                            value={formik.values.shortcut}
+                            value={formik.values.shortCut}
                             onChange={formik.handleChange}
-                            error={formik.touched.shortcut && Boolean(formik.errors.shortcut)}
-                            helperText={formik.touched.shortcut && formik.errors.shortcut}
+                            error={formik.touched.shortCut && Boolean(formik.errors.shortCut)}
+                            helperText={formik.touched.shortCut && formik.errors.shortCut}
                             style={{ width: '100%' }}
                             InputProps={{
                                 style: {
@@ -85,11 +101,11 @@ const TagForm = ({ setIsFormOpen }: Props) => {
                                     fontWeight: '600',
                                     fontSize: '15px',
                                     caretColor: '#136EE5',
-                                    border: selectedFieldOutline === 'shortcut' ? '1px solid #136EE5' : '1px solid transparent'
+                                    border: selectedFieldOutline === 'shortCut' ? '1px solid #136EE5' : '1px solid transparent'
                                 }
                             }}
                             variant="outlined"
-                            onFocus={() => setSelectedFieldOutline("shortcut")}
+                            onFocus={() => setSelectedFieldOutline("shortCut")}
                             onBlur={() => setSelectedFieldOutline("")}
                         // classes={{
                         //     option: classes.focused,

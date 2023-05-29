@@ -6,6 +6,7 @@ import { Grid, TextField } from '@mui/material';
 import { UserManagementContext } from '../../../context/UserManagementProvider';
 import ActionButton from '../RoleForm/ActionButton';
 import Icons from '../../../assets/Icons';
+import { DeviceDataDT, deviceBodyDT } from '../../../types/organizerTypes';
 
 const validationSchema = yup.object({
     // gender: yup.string().required('Gender is Required'),
@@ -13,9 +14,13 @@ const validationSchema = yup.object({
 
 type Props = {
     setIsFormOpen: Dispatch<SetStateAction<boolean>>;
+    data?: DeviceDataDT;
+    isEdit?: boolean;
+    handleEdit?: () => void;
+    handleSelectRow?: (value: DeviceDataDT[]) => void;
 }
 
-const DeviceForm = ({ setIsFormOpen }: Props) => {
+const DeviceForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }: Props) => {
 
     const organizerContext = useContext(OrganizerContext);
     const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
@@ -25,15 +30,27 @@ const DeviceForm = ({ setIsFormOpen }: Props) => {
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            deviceName: '',
-            model: '',
-            description: '',
+            deviceName: isEdit ? data ? data?.brand : '' : "",
+            model: isEdit ? data ? data?.model : '' : "",
+            deviceType: isEdit ? data ? data?.device : '' : "",
         },
         validationSchema: validationSchema,
-        onSubmit: (values: any) => {
+        onSubmit: (values: deviceBodyDT) => {
 
-            organizerContext.createScript(values)
-            console.log('value-----', values);
+            if (isEdit && data) {
+                console.log("edit activate");
+                values.id = data.id;
+                organizerContext.updateDevice(values);
+                handleSelectRow && handleSelectRow([])
+                handleEdit && handleEdit();
+            }
+            else {
+                values.deviceType = active; 
+                organizerContext.postDevice(values)
+            }
+            // console.log('value-----', values);
+            formik.resetForm();
+            setIsFormOpen(false)
 
         }
     });
@@ -65,10 +82,10 @@ const DeviceForm = ({ setIsFormOpen }: Props) => {
                                 devices.map((item, index) =>
                                     <button
                                         key={index}
-                                        onClick={() => setActive(item.device)}
+                                        onClick={(e) => { e.preventDefault(); setActive(item.device) }}
                                         className={`w-32 h-20 flex flex-col gap-y-2 justify-center items-center border ${(active === item.device) ? 'border-secondary-blue-50 bg-secondary-blue-50-55%' : 'border-border-light-blue'} rounded-lg`}>
                                         <img src={item.icon} alt="" />
-                                        <p className='text-small text-blu-gray-75'
+                                        <p className='text-small text-blue-gray-75'
                                         >{item.device}</p>
                                     </button>
                                 )

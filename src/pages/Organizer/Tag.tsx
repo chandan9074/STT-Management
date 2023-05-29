@@ -13,8 +13,9 @@ const Tag = () => {
 
   const [open, setOpen] = useState<boolean>(false)
   const [selectedRows, setSelectedRows] = useState<TagDataDT[]>([] as TagDataDT[])
+  const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([])
 
-  const {getTag,tagData} = useContext(OrganizerContext)
+  const { getTag, tagData } = useContext(OrganizerContext)
 
   useEffect(() => {
     getTag()
@@ -22,15 +23,26 @@ const Tag = () => {
   }, [])
 
 
-  const handleSelectRow = (value: TagDataDT[]) => {
-    setSelectedRows(value)
+  const handleSelectRow = (value: TagDataDT[], keys?: React.Key[]) => {
+    console.log("hello")
+    if (value.length > 0) {
+      setSelectedRows(value)
+    }
+    else {
+      setSelectedRows([])
+      setSelectedRowKeys([])
+      console.log("rows selected")
+    }
+    if (keys) {
+      setSelectedRowKeys(keys);
+    }
   }
 
   return (
     <div>
-      <Header open={open} setOpen={setOpen} selectedRows={selectedRows} />
-      <Table.Type29 data={tagData} handleSelectRow={handleSelectRow} open={open} setOpen={setOpen} />
-      
+      <Header selectedRows={selectedRows} handleSelectRow={handleSelectRow} />
+      <Table.Type29 data={tagData} handleSelectRow={handleSelectRow} open={open} setOpen={setOpen} selectedRowKeys={selectedRowKeys} />
+
     </div>
   )
 }
@@ -38,14 +50,16 @@ const Tag = () => {
 export default Tag
 
 type Props = {
-  open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   selectedRows: TagDataDT[]
+  handleSelectRow: (value: TagDataDT[]) => void;
 }
-const Header = ({ open, setOpen, selectedRows }: Props) => {
+const Header = ({ selectedRows, handleSelectRow }: Props) => {
 
   const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
+  const [selectedData, setSelectedData] = useState<TagDataDT>({} as TagDataDT);
+  const [isEdit, setIsEdit] = useState<boolean>(false);
 
+  const { deleteTag } = useContext(OrganizerContext)
 
   return (
     <div className='ml-6 mr-4 mb-5 flex items-center justify-between'>
@@ -60,6 +74,7 @@ const Header = ({ open, setOpen, selectedRows }: Props) => {
               // onClick={() => {
               //   scriptContext.deleteScript(commonContext.role, selectedRows.map((item) => item.id).join(",")); setselectedRows([]);
               // }}
+              onClick={() => deleteTag(selectedRows.map((item) => item.id).join(","))}
               title="Delete"
               paddingY="py-2"
               paddingX="px-4"
@@ -73,6 +88,11 @@ const Header = ({ open, setOpen, selectedRows }: Props) => {
             {selectedRows.length === 1 &&
               <Link to={``}>
                 <Buttons.BgHoverBtn
+                  onClick={() => {
+                    setSelectedData(selectedRows[0]);
+                    setIsFormOpen(!isFormOpen);
+                    setIsEdit(!isEdit);
+                  }}
                   title="Edit"
                   paddingY="py-2"
                   paddingX="px-4"
@@ -93,7 +113,8 @@ const Header = ({ open, setOpen, selectedRows }: Props) => {
           size="small"
           variant="Megenta"
           icon={<img src={Icons.Add} alt="add" />}
-          onClick={() => setIsFormOpen(true)}
+          onClick={() => { setSelectedData({} as TagDataDT); setIsEdit(false); setIsFormOpen(true); }}
+
         />
         <Drawer.Organizer.Type1
           isDrawerOpen={isFormOpen}
@@ -103,7 +124,7 @@ const Header = ({ open, setOpen, selectedRows }: Props) => {
           title="Create Tag"
           isEdit={false}
         >
-          <TagForm setIsFormOpen={setIsFormOpen} />
+          {isEdit ? <TagForm handleSelectRow={handleSelectRow} isEdit={isEdit} setIsFormOpen={setIsFormOpen} data={selectedData} /> : <TagForm setIsFormOpen={setIsFormOpen} data={{} as TagDataDT} />}
         </Drawer.Organizer.Type1>
       </div>
     </div>

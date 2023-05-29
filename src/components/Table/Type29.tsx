@@ -9,12 +9,13 @@ import { useState } from "react";
 
 type Props = {
     data: TagDataDT[]
-    handleSelectRow: (value: TagDataDT[]) => void;
+    handleSelectRow: (value: TagDataDT[], keys?: React.Key[]) => void;
     open: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    selectedRowKeys: React.Key[];
 }
 
-const Type29 = ({ data, handleSelectRow, open, setOpen }: Props) => {
+const Type29 = ({ data, handleSelectRow, open, setOpen, selectedRowKeys }: Props) => {
 
     const [selectedTagData, setSelectedTagData] = useState<TagDataDT>({} as TagDataDT);
 
@@ -77,7 +78,7 @@ const Type29 = ({ data, handleSelectRow, open, setOpen }: Props) => {
     const rowSelection = {
         onChange: (selectedRowKeys: React.Key[], selectedRows: TagDataDT[]) => {
             // setSelectedTarget(selectedRows);
-            handleSelectRow(selectedRows)
+            handleSelectRow(selectedRows,selectedRowKeys)
 
         },
         getCheckboxProps: (record: TagDataDT) => ({
@@ -97,6 +98,7 @@ const Type29 = ({ data, handleSelectRow, open, setOpen }: Props) => {
                 columns={Type29columns}
                 rowSelection={{
                     // type: selectionType,
+                    selectedRowKeys,
                     columnWidth: 48,
                     fixed: 'left',
                     ...rowSelection,

@@ -11,12 +11,13 @@ import RoleForm from "../../pages/Organizer/RoleForm"
 
 type Props = {
     data: RoleDataDT[]
-    handleSelectRow: (value: RoleDataDT[]) => void;
+    handleSelectRow: (value: RoleDataDT[], keys?: React.Key[]) => void;
     open: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    selectedRowKeys: React.Key[];
 }
 
-const Type28 = ({ data, handleSelectRow, open, setOpen }: Props) => {
+const Type28 = ({ data, handleSelectRow, open, setOpen, selectedRowKeys }: Props) => {
 
     const [selectedRoleData, setSelectedRoleData] = useState<RoleDataDT>({} as RoleDataDT);
     const [isFormDrawer, setIsFormDrawer] = useState(false);
@@ -84,7 +85,7 @@ const Type28 = ({ data, handleSelectRow, open, setOpen }: Props) => {
     const rowSelection = {
         onChange: (selectedRowKeys: React.Key[], selectedRows: RoleDataDT[]) => {
             // setSelectedTarget(selectedRows);
-            handleSelectRow(selectedRows)
+            handleSelectRow(selectedRows, selectedRowKeys)
 
         },
         getCheckboxProps: (record: RoleDataDT) => ({
@@ -104,6 +105,7 @@ const Type28 = ({ data, handleSelectRow, open, setOpen }: Props) => {
                 columns={Type28columns}
                 rowSelection={{
                     // type: selectionType,
+                    selectedRowKeys,
                     columnWidth: 48,
                     fixed: 'left',
                     ...rowSelection,
@@ -117,12 +119,12 @@ const Type28 = ({ data, handleSelectRow, open, setOpen }: Props) => {
                 setIsDrawerClose={setOpen}
                 isEdit={true}
                 headerBgColor="bg-ct-blue-05"
-                title="Role Details"
+                title={isFormDrawer ? "Update Role" : "Role Details"}
                 handleEdit={handleEdit}
             >
                 <div className=' flex items-center'>
                     {
-                        isFormDrawer ? <RoleForm setIsDrawerOpen={setOpen} data={selectedRoleData} /> : <SideDrawerContent data={selectedRoleData} />
+                        isFormDrawer ? <RoleForm setIsDrawerOpen={setOpen} isEdit={true} data={selectedRoleData} handleEdit={handleEdit} /> : <SideDrawerContent data={selectedRoleData} />
                     }
                 </div>
             </Drawer.Organizer.Type1>

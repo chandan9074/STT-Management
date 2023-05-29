@@ -34,7 +34,7 @@ const Type1 = ({ children, isDrawerOpen, title, headerBgColor, setIsDrawerClose,
                     <p className="text-small leading-[16.8px] font-normal text-ct-blue-90-70%">XXXXXXXXXXXXXXXX</p>
                 </div>
                 {
-                    isEdit &&
+                    (isEdit && title !== "Update Role") &&
                     <Link to={``}>
                         <Buttons.BgHoverBtn
                             onClick={handleEdit}

@@ -5,31 +5,32 @@ import Buttons from "../../components/Buttons"
 import SideDrawerContent from "../../components/containers/Organizer/device/SideDrawerContent"
 import { Drawer } from "../../components/Drawer"
 import Table from "../../components/Table"
-import { DevcieDataDT } from "../../types/organizerTypes"
+import { DeviceDataDT } from "../../types/organizerTypes"
 import DeviceForm from "./DeviceForm"
 import { OrganizerContext } from "../../context/OrganizerProvider"
 
 const Device = () => {
 
-  
-  const [selectedRows, setSelectedRows] = useState<DevcieDataDT[]>([] as DevcieDataDT[])
+  const [open, setOpen] = useState<boolean>(false)
+  const [selectedRows, setSelectedRows] = useState<DeviceDataDT[]>([] as DeviceDataDT[])
+  const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([])
 
-  const {getDevice,deviceData} = useContext(OrganizerContext)
+  const { getDevice, deviceData } = useContext(OrganizerContext)
 
   useEffect(() => {
     getDevice()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const handleSelectRow = (value: DevcieDataDT[]) => {
+  const handleSelectRow = (value: DeviceDataDT[]) => {
     setSelectedRows(value)
   }
 
   return (
     <div>
-      <Header  selectedRows={selectedRows} />
+      <Header selectedRows={selectedRows} handleSelectRow={handleSelectRow} />
       <Table.Type30 data={deviceData} handleSelectRow={handleSelectRow} />
-      
+
     </div>
   )
 }
@@ -37,13 +38,18 @@ const Device = () => {
 export default Device
 
 type Props = {
-  
-  selectedRows: DevcieDataDT[]
+
+  selectedRows: DeviceDataDT[]
+  handleSelectRow: (value: DeviceDataDT[]) => void;
+
 }
-const Header = ({ selectedRows }: Props) => {
+const Header = ({ selectedRows, handleSelectRow }: Props) => {
 
   const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
+  const [selectedData, setSelectedData] = useState<DeviceDataDT>({} as DeviceDataDT);
+  const [isEdit, setIsEdit] = useState<boolean>(false);
 
+  const { deleteDevice } = useContext(OrganizerContext)
 
   return (
     <div className='ml-6 mr-4 mb-5 flex items-center justify-between'>
@@ -58,6 +64,7 @@ const Header = ({ selectedRows }: Props) => {
               // onClick={() => {
               //   scriptContext.deleteScript(commonContext.role, selectedRows.map((item) => item.id).join(",")); setselectedRows([]);
               // }}
+              onClick={() => deleteDevice(selectedRows.map((item) => item.id).join(","))}
               title="Delete"
               paddingY="py-2"
               paddingX="px-4"
@@ -71,6 +78,11 @@ const Header = ({ selectedRows }: Props) => {
             {selectedRows.length === 1 &&
               <Link to={``}>
                 <Buttons.BgHoverBtn
+                  onClick={() => {
+                    setSelectedData(selectedRows[0]);
+                    setIsFormOpen(!isFormOpen);
+                    setIsEdit(!isEdit);
+                  }}
                   title="Edit"
                   paddingY="py-2"
                   paddingX="px-4"
@@ -91,7 +103,9 @@ const Header = ({ selectedRows }: Props) => {
           size="small"
           variant="Megenta"
           icon={<img src={Icons.Add} alt="add" />}
-          onClick={() => setIsFormOpen(true)}
+          // onClick={() => setIsFormOpen(true)}
+          onClick={() => { setSelectedData({} as DeviceDataDT); setIsEdit(false); setIsFormOpen(true); }}
+
         />
         <Drawer.Organizer.Type1
           isDrawerOpen={isFormOpen}
@@ -101,7 +115,7 @@ const Header = ({ selectedRows }: Props) => {
           title="Create Device"
           isEdit={false}
         >
-          <DeviceForm setIsFormOpen={setIsFormOpen} />
+          {isEdit ? <DeviceForm handleSelectRow={handleSelectRow} isEdit={isEdit} setIsFormOpen={setIsFormOpen} data={selectedData} /> : <DeviceForm setIsFormOpen={setIsFormOpen} data={{} as DeviceDataDT} />}
         </Drawer.Organizer.Type1>
       </div>
     </div>

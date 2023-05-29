@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icons from '../../assets/Icons'
 import Buttons from '../../components/Buttons'
@@ -12,6 +12,7 @@ const Role = () => {
 
   const [open, setOpen] = useState<boolean>(false)
   const [selectedRows, setSelectedRows] = useState<RoleDataDT[]>([] as RoleDataDT[]);
+  const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([])
 
   const { getRole, roleData } = useContext(OrganizerContext)
 
@@ -20,15 +21,25 @@ const Role = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const handleSelectRow = (value: RoleDataDT[]) => {
-    setSelectedRows(value)
+  const handleSelectRow = (value: RoleDataDT[], keys?: React.Key[]) => {
+    console.log("hello")
+    if (value.length > 0) {
+      setSelectedRows(value)
+    }
+    else {
+      setSelectedRows([])
+      setSelectedRowKeys([])
+      console.log("rows selected")
+    }
+    if (keys) {
+      setSelectedRowKeys(keys);
+    }
   }
 
   return (
     <div>
-      <Header open={open} setOpen={setOpen} selectedRows={selectedRows} />
-      <Table.Type28 data={roleData} handleSelectRow={handleSelectRow} open={open} setOpen={setOpen} />
-
+      <Header selectedRows={selectedRows} handleSelectRow={handleSelectRow} />
+      <Table.Type28 data={roleData} handleSelectRow={handleSelectRow} open={open} setOpen={setOpen} selectedRowKeys={selectedRowKeys} />
     </div>
   )
 }
@@ -37,13 +48,14 @@ export default Role
 
 
 type Props = {
-  open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  selectedRows: RoleDataDT[]
+  // open: boolean;
+  handleSelectRow: (value: RoleDataDT[]) => void;
+  selectedRows: RoleDataDT[];
 }
-const Header = ({ open, setOpen, selectedRows }: Props) => {
+const Header = ({ selectedRows, handleSelectRow }: Props) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
-  const [selectedData, setSelectedData] = useState<RoleDataDT>({} as RoleDataDT)
+  const [selectedData, setSelectedData] = useState<RoleDataDT>({} as RoleDataDT);
+  const [isEdit, setIsEdit] = useState<boolean>(false);
 
   const { deleteRole } = useContext(OrganizerContext)
 
@@ -72,7 +84,8 @@ const Header = ({ open, setOpen, selectedRows }: Props) => {
               <Buttons.BgHoverBtn
                 onClick={() => {
                   setSelectedData(selectedRows[0]);
-                  setIsDrawerOpen(!isDrawerOpen)
+                  setIsDrawerOpen(!isDrawerOpen);
+                  setIsEdit(!isEdit);
                 }}
                 title="Edit"
                 paddingY="py-2"
@@ -93,7 +106,7 @@ const Header = ({ open, setOpen, selectedRows }: Props) => {
           size="small"
           variant="Megenta"
           icon={<img src={Icons.Add} alt="add" />}
-          onClick={() => setIsDrawerOpen(true)}
+          onClick={() => { setSelectedData({} as RoleDataDT); setIsEdit(false); setIsDrawerOpen(true); }}
         />
       </div>
 
@@ -102,10 +115,10 @@ const Header = ({ open, setOpen, selectedRows }: Props) => {
         // drawerClose={drawerClose}
         setIsDrawerClose={setIsDrawerOpen}
         headerBgColor="bg-ct-blue-20"
-        title="Create Role"
-        isEdit={false}
+        title={isEdit ? "Update Role" : "Create Role"}
+        isEdit={isEdit}
       >
-        <RoleForm setIsDrawerOpen={setIsDrawerOpen} data={selectedData} />
+        {isEdit ? <RoleForm handleSelectRow={handleSelectRow} isEdit={isEdit} setIsDrawerOpen={setIsDrawerOpen} data={selectedData} /> : <RoleForm setIsDrawerOpen={setIsDrawerOpen} data={{} as RoleDataDT} />}
       </Drawer.Organizer.Type1>
 
     </div>
