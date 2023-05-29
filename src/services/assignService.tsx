@@ -120,4 +120,10 @@ export default class AssignService {
   static getResRolesUpdateAssigneeAssignModule() {
     return axios.get(PATH.GET_RES_ROLES_UPDATE_ASSIGNEE_ASSIGN_MODULE);
   }
+
+  static async postResSpeechUploadAudioMgtService(data: FormData) {
+    const res = axios.post(PATH.POST_RES_SPEECH_UPLOAD_AUDIO_MGT_MODULE_URL, data);
+    return res;
+  }
+  
 }

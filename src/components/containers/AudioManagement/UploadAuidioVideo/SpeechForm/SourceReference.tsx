@@ -44,7 +44,7 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
 
         } else {
             // getFile([]);
-            formik.setFieldValue("sourceFile", []);
+            formik.setFieldValue("sourceFile", '');
             formik.setFieldValue("sourceFileName", '');
             // formik.setFieldValue("file",  []);
         }
@@ -201,6 +201,11 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
                                     <div className='text-red-600 text-xxs'>{formik.errors.sourceFileName}</div>
                                 )}
                             </div>
+
+                            {/* Validation error message */}
+                            {formik.errors.sourceFile && formik.touched.sourceFile && (
+                                <div className='text-red-600 text-xxs'>{formik.errors.sourceFile}</div>
+                            )}
                         </div>
                 }
             </div>

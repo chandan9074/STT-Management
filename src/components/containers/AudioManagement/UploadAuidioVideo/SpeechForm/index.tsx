@@ -10,6 +10,9 @@ import SourceReference from './SourceReference';
 import DistributionSource from './DistributionSource';
 import DomainSubDomain from './DomainSubDomain';
 import SpeakerInfo from './SpeakerInfo';
+import { postResSpeechUploadAudioMgtDT } from '../../../../../types/assignTypes';
+import { useContext } from 'react';
+import { AssignContext } from '../../../../../context/AssignProvider';
 // import ActionButton from '../../../AssignContainer/CreateTarget/Criteria/CriteriaForm/ActionButton';
 
 const validationSchema = yup.object({
@@ -26,6 +29,8 @@ const validationSchema = yup.object({
 const SpeechForm = () => {
     const navigate = useNavigate();
 
+    const assignContext = useContext(AssignContext);
+
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
@@ -39,15 +44,41 @@ const SpeechForm = () => {
             distributionSource: 'Read',
             domain: '',
             subdomain: '',
-            speakerNumber: null,
+            speakerNumber: 0,
             gender: 'male',
             ageRange: [],
             homeDistrict: ''
         },
         validationSchema: validationSchema,
 
-        onSubmit: (values: any) => {
-            console.log('*********', values);
+        onSubmit: async (values: postResSpeechUploadAudioMgtDT) => {
+            let formData = new FormData();
+
+            // adding value in form data
+            for (const key in values) {
+                if (values.hasOwnProperty(key)) {
+                    const value = values[key as keyof typeof values];
+
+                    if (typeof value === 'string' || value instanceof Blob) {
+                        formData.append(key, value);
+                    }
+                }
+            }
+
+            formData.append('ageRange', values.ageRange.join(','));
+            formData.append('speakerNumber', values.speakerNumber.toString());
+            formData.delete('sourceFileName');
+            formData.delete('speechFileName');
+
+            // Log the formData values
+            formData.forEach((value, key) => {
+                console.log(key, value);
+            });
+
+            const res = await assignContext.postResSpeechUploadAudioMgModule(formData);
+            if (res === 200) {
+                navigate(-1);
+            }
 
         }
     });
