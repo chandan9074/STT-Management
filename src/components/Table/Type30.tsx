@@ -3,20 +3,31 @@ import { ColumnsType } from "antd/es/table";
 import Icons from "../../assets/Icons";
 import { DeviceDataDT } from "../../types/organizerTypes";
 import DeviceImage from "../Image/DeviceImage";
-import Pagination from "../Pagination";
 import { Drawer } from "../Drawer";
 import SideDrawerContent from "../containers/Organizer/device/SideDrawerContent";
 import { useState } from "react";
+import UpdateForm from "../../pages/Organizer/DeviceForm/UpdateForm";
 
 type Props = {
     data: DeviceDataDT[]
-    handleSelectRow: (value: DeviceDataDT[]) => void;
+    open: boolean;
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    handleSelectRow: (value: DeviceDataDT[], key?: React.Key[]) => void;
+    selectedRowKeys: React.Key[];
+    setIsEdit: React.Dispatch<React.SetStateAction<boolean>>
+    isEdit: boolean;
 }
 
-const Type30 = ({ data, handleSelectRow }: Props) => {
+const Type30 = ({ data, handleSelectRow, selectedRowKeys, setIsEdit, isEdit }: Props) => {
 
     const [open, setOpen] = useState<boolean>(false)
     const [selectedDeviceData, setSelectedDeviceData] = useState<DeviceDataDT>({} as DeviceDataDT);
+    const [isFormDrawer, setIsFormDrawer] = useState(false);
+
+    const handleEdit = () => {
+        setIsFormDrawer(!isFormDrawer);
+        setIsEdit(true);
+    }
 
 
     const Type30columns: ColumnsType<DeviceDataDT> = [
@@ -59,7 +70,7 @@ const Type30 = ({ data, handleSelectRow }: Props) => {
             render: (data: DeviceDataDT) => (
                 <div className="flex justify-center items-center">
 
-                    <div className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-ct-blue-10 active:border active:border-ct-blue-10' onClick={() => { setOpen(true); setSelectedDeviceData(data) }}>
+                    <div className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-ct-blue-10 active:border active:border-ct-blue-10' onClick={() => { setOpen(true); setSelectedDeviceData(data); setIsEdit(false) }}>
                         <img
                             // onClick={() => {
                             //     showDrawer(record);
@@ -78,7 +89,7 @@ const Type30 = ({ data, handleSelectRow }: Props) => {
     const rowSelection = {
         onChange: (selectedRowKeys: React.Key[], selectedRows: DeviceDataDT[]) => {
             // setSelectedTarget(selectedRows);
-            handleSelectRow(selectedRows)
+            handleSelectRow(selectedRows, selectedRowKeys)
 
         },
         getCheckboxProps: (record: DeviceDataDT) => ({
@@ -98,6 +109,7 @@ const Type30 = ({ data, handleSelectRow }: Props) => {
                 columns={Type30columns}
                 rowSelection={{
                     // type: selectionType,
+                    selectedRowKeys,
                     columnWidth: 48,
                     fixed: 'left',
                     ...rowSelection,
@@ -122,9 +134,12 @@ const Type30 = ({ data, handleSelectRow }: Props) => {
                 headerBgColor="bg-ct-blue-05"
                 title="Device Details"
                 isEdit={true}
+                handleEdit={handleEdit}
             >
-                <div className=' flex items-center'>
-                    <SideDrawerContent data={selectedDeviceData} />
+                <div className=' w-full'>
+                    {
+                        isEdit ? <UpdateForm setIsFormOpen={setOpen} data={selectedDeviceData} handleEdit={handleEdit} /> : <SideDrawerContent data={selectedDeviceData} />
+                    }
                 </div>
             </Drawer.Organizer.Type1>
         </div>

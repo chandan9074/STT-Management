@@ -1,19 +1,21 @@
-import { useContext, useEffect, useState } from "react"
+import React, { Dispatch, SetStateAction, useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import Icons from "../../assets/Icons"
 import Buttons from "../../components/Buttons"
-import SideDrawerContent from "../../components/containers/Organizer/device/SideDrawerContent"
 import { Drawer } from "../../components/Drawer"
 import Table from "../../components/Table"
 import { DeviceDataDT } from "../../types/organizerTypes"
 import DeviceForm from "./DeviceForm"
 import { OrganizerContext } from "../../context/OrganizerProvider"
+import UpdateForm from "./DeviceForm/UpdateForm"
 
 const Device = () => {
 
   const [open, setOpen] = useState<boolean>(false)
   const [selectedRows, setSelectedRows] = useState<DeviceDataDT[]>([] as DeviceDataDT[])
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([])
+  const [isEdit, setIsEdit] = useState<boolean>(false);
+
 
   const { getDevice, deviceData } = useContext(OrganizerContext)
 
@@ -22,14 +24,24 @@ const Device = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const handleSelectRow = (value: DeviceDataDT[]) => {
-    setSelectedRows(value)
+  const handleSelectRow = (value: DeviceDataDT[], keys?: React.Key[]) => {
+    if (value.length > 0) {
+      setSelectedRows(value)
+    }
+    else {
+      setSelectedRows([])
+      setSelectedRowKeys([])
+      console.log("rows selected")
+    }
+    if (keys) {
+      setSelectedRowKeys(keys);
+    }
   }
 
   return (
     <div>
-      <Header selectedRows={selectedRows} handleSelectRow={handleSelectRow} />
-      <Table.Type30 data={deviceData} handleSelectRow={handleSelectRow} />
+      <Header selectedRows={selectedRows} handleSelectRow={handleSelectRow} isEdit={isEdit} setIsEdit={setIsEdit} />
+      <Table.Type30 open={open} setOpen={setOpen} data={deviceData} handleSelectRow={handleSelectRow} selectedRowKeys={selectedRowKeys} isEdit={isEdit} setIsEdit={setIsEdit} />
 
     </div>
   )
@@ -39,17 +51,22 @@ export default Device
 
 type Props = {
 
+  isEdit: boolean;
+  setIsEdit: Dispatch<SetStateAction<boolean>>;
   selectedRows: DeviceDataDT[]
   handleSelectRow: (value: DeviceDataDT[]) => void;
 
 }
-const Header = ({ selectedRows, handleSelectRow }: Props) => {
+const Header = ({ selectedRows, handleSelectRow, isEdit, setIsEdit }: Props) => {
 
   const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
   const [selectedData, setSelectedData] = useState<DeviceDataDT>({} as DeviceDataDT);
-  const [isEdit, setIsEdit] = useState<boolean>(false);
 
   const { deleteDevice } = useContext(OrganizerContext)
+
+  const handleEdit = (value: boolean) => {
+    setIsEdit(value)
+  }
 
   return (
     <div className='ml-6 mr-4 mb-5 flex items-center justify-between'>
@@ -81,7 +98,7 @@ const Header = ({ selectedRows, handleSelectRow }: Props) => {
                   onClick={() => {
                     setSelectedData(selectedRows[0]);
                     setIsFormOpen(!isFormOpen);
-                    setIsEdit(!isEdit);
+                    setIsEdit(true);
                   }}
                   title="Edit"
                   paddingY="py-2"
@@ -112,10 +129,11 @@ const Header = ({ selectedRows, handleSelectRow }: Props) => {
           // drawerClose={drawerClose}
           setIsDrawerClose={setIsFormOpen}
           headerBgColor="bg-ct-blue-20"
-          title="Create Device"
-          isEdit={false}
+          title={isEdit ? "Update Device" : "Create Device"}
+          isEdit={isEdit}
+          handleEdit={handleEdit}
         >
-          {isEdit ? <DeviceForm handleSelectRow={handleSelectRow} isEdit={isEdit} setIsFormOpen={setIsFormOpen} data={selectedData} /> : <DeviceForm setIsFormOpen={setIsFormOpen} data={{} as DeviceDataDT} />}
+          {isEdit ? <UpdateForm setIsFormOpen={setIsFormOpen} handleSelectRow={handleSelectRow} data={selectedData} handleEdit={handleEdit} /> : <DeviceForm setIsFormOpen={setIsFormOpen} />}
         </Drawer.Organizer.Type1>
       </div>
     </div>

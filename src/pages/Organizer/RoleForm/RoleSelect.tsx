@@ -65,7 +65,7 @@ const RoleSelect = ({ formikValues, formik, data, formikError, formikTouched, na
 
             <div className={`${!isRole && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[90]`} onClick={() => clickOutsideField()}></div>
 
-            <div className={`border ${selectedFieldOutline === name ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px] relative`}>
+            {/* <div className={`border ${selectedFieldOutline === name ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px] relative`}> */}
                 <FormControl sx={{ width: '100%' }} variant="outlined">
                     <InputLabel htmlFor={name}>{<h1 className='comboBoxLabel'>{fieldLabel} <span className='text-[red]'>*</span></h1>}</InputLabel>
                     <OutlinedInput
@@ -98,7 +98,7 @@ const RoleSelect = ({ formikValues, formik, data, formikError, formikTouched, na
                         }}
                     />
                 </FormControl>
-            </div>
+            {/* </div> */}
             {
                 isRole &&
                 <div className='absolute z-[100] bg-white mt-2 rounded-lg w-[429px] flex flex-wrap justify-between shadow-bottom-light-blue-20 cursor-pointer'>
