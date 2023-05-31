@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { organizeRole } from '../../../data/organize/OrganizerData';
 import ActionButton from './ActionButton';
-import { Dispatch, SetStateAction, useContext } from 'react';
+import { Dispatch, SetStateAction, useContext, useState } from 'react';
 import { OrganizerContext } from '../../../context/OrganizerProvider';
 import { TextField } from '@mui/material';
 import { RoleDataDT, roleBodyDT } from '../../../types/organizerTypes';
@@ -23,6 +23,9 @@ const UpdateForm = ({ setIsDrawerOpen, data, handleEdit, handleSelectRow }: Prop
 
     const organizerContext = useContext(OrganizerContext);
     // const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
+
+    const [focus, setFocus] = useState("")
+
 
     const formik = useFormik({
         enableReinitialize: true,
@@ -68,7 +71,15 @@ const UpdateForm = ({ setIsDrawerOpen, data, handleEdit, handleSelectRow }: Prop
                         name="description"
                         multiline={true}
                         rows={4}
-                        label={<h1 className='comboBoxLabel'>Description </h1>}
+                        size='small'
+                        sx={{
+                            '&:hover fieldset': {
+                                borderColor: 'rgb(19, 110, 229) !important',
+                            },
+                        }}
+                        label={<div className={`${(focus === "description" || formik.values.description !== "") ? "" : "mt-[3px]"}`} ><span className={`${(focus === "description" || formik.values.description !== "") ? "font-medium" : "text-[14px] font-semibold"}`}>Description </span></div>}
+                        onFocus={() => setFocus("description")}
+                        onBlur={() => setFocus("")}
                         value={formik.values.description}
                         onChange={formik.handleChange}
                         error={formik.touched.description && Boolean(formik.errors.description)}

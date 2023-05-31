@@ -11,6 +11,9 @@ const TargetSetting = ({ formik }: { formik: FormikValues }) => {
 
     const [openReminderCalender, setOpenReminderCaleder] = useState<boolean>(false);
 
+    const [focus, setFocus] = useState("")
+
+
     const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
 
 
@@ -45,14 +48,22 @@ const TargetSetting = ({ formik }: { formik: FormikValues }) => {
                     type='number'
                     id="target"
                     name="target"
-                    label={<h1 className='comboBoxLabel'>Target <span className='text-[red]'></span></h1>}
-                    value={formik.values.target === 0 ? "": formik.values.target}
+                    size='small'
+                    sx={{
+                        '&:hover fieldset': {
+                            borderColor: 'rgb(19, 110, 229) !important',
+                        },
+                    }}
+                    label={<div className={`${focus === "description" ? "" : "mt-[3px]"}`} ><span className={`${focus === "description" ? "font-medium" : "text-[14px] font-semibold"}`}>Target <span className='text-red-500'>*</span></span></div>}
+                    onFocus={() => setFocus("description")}
+                    onBlur={() => setFocus("")}
+                    value={formik.values.target === 0 ? "" : formik.values.target}
                     onChange={formik.handleChange}
                     // error={formik.touched.target && Boolean(formik.errors.target)}
                     // helperText={formik.touched.target && formik.errors.target}
                     style={{
                         width: '122px',
-                        border: selectedFieldOutline === 'target' ? '1px solid #136EE5' : '1px solid transparent'
+                        // border: selectedFieldOutline === 'target' ? '1px solid #136EE5' : '1px solid transparent'
                     }}
                     InputProps={{
                         style: {
@@ -63,8 +74,8 @@ const TargetSetting = ({ formik }: { formik: FormikValues }) => {
                     }}
 
                     variant="outlined"
-                    onFocus={() => setSelectedFieldOutline("target")}
-                    onBlur={() => setSelectedFieldOutline("")}
+                // onFocus={() => setSelectedFieldOutline("target")}
+                // onBlur={() => setSelectedFieldOutline("")}
                 />
 
                 <p className='text-blue-gray-75 text-xxs mt-[4px] pl-[14px]'>No. of audio to be uploaded</p>
@@ -231,14 +242,22 @@ const TargetSetting = ({ formik }: { formik: FormikValues }) => {
                         multiline
                         rows={4}
                         maxRows={4}
-                        label={<h1 className='comboBoxLabel'>Remark</h1>}
+                        size='small'
+                        sx={{
+                            '&:hover fieldset': {
+                                borderColor: 'rgb(19, 110, 229) !important',
+                            },
+                        }}
+                        label={<div className={`${focus === "remark" ? "" : "mt-[3px]"}`} ><span className={`${focus === "remark" ? "font-medium" : "text-[14px] font-semibold"}`}>Remark </span></div>}
+                        onFocus={() => setFocus("remark")}
+                        onBlur={() => setFocus("")}
                         value={formik.values.remark}
                         onChange={formik.handleChange}
                         // error={formik.touched.remark && Boolean(formik.errors.remark)}
                         // helperText={formik.touched.remark && formik.errors.remark}
                         style={{
                             width: '100%',
-                            border: selectedFieldOutline === 'primaryRole' ? '1px solid #136EE5' : '1px solid transparent'
+                            // border: selectedFieldOutline === 'primaryRole' ? '1px solid #136EE5' : '1px solid transparent'
                         }}
                         InputProps={{
                             style: {
@@ -248,8 +267,8 @@ const TargetSetting = ({ formik }: { formik: FormikValues }) => {
                             }
                         }}
                         variant="outlined"
-                        onFocus={() => setSelectedFieldOutline("primaryRole")}
-                        onBlur={() => setSelectedFieldOutline("")}
+                    // onFocus={() => setSelectedFieldOutline("primaryRole")}
+                    // onBlur={() => setSelectedFieldOutline("")}
                     />
                 </div>
             </div>

@@ -13,6 +13,7 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
         isSource: true,
         isScript: false
     });
+    const [focus, setFocus] = useState("")
 
     const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
 
@@ -85,7 +86,7 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
 
                 {
                     scriptSourceReference?.isSource ?
-                        <div className='h-[104px] bg-white flex items-center px-[16px] pt-[48px] rounded-[7px] source-reference'>
+                        <div className='h-[104px] bg-white flex items-center px-[16px] rounded-[7px] source-reference'>
 
                             <Grid container spacing={6}>
                                 <Grid item xs={6}>
@@ -93,7 +94,15 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
                                         <TextField
                                             id="sourceName"
                                             name="sourceName"
-                                            label={<h1 className='comboBoxLabel'>Name of the Source</h1>}
+                                            size='small'
+                                            sx={{
+                                                '&:hover fieldset': {
+                                                    borderColor: 'rgb(19, 110, 229) !important',
+                                                },
+                                            }}
+                                            label={<div className={`${focus === "sourceName" ? "" : "mt-[3px]"}`} ><span className={`${focus === "sourceName" ? "font-medium" : "text-[14px] font-semibold"}`}>Source Name </span><span className='text-[red]'>*</span></div>}
+                                            onFocus={() => setFocus("sourceName")}
+                                            onBlur={() => setFocus("")}
                                             value={formik.values.sourceName}
                                             onChange={formik.handleChange}
                                             error={formik.touched.sourceName && Boolean(formik.errors.sourceName)}
@@ -108,8 +117,9 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
                                                 }
                                             }}
                                             variant="outlined"
-                                            onFocus={() => setSelectedFieldOutline("sourceName")}
-                                            onBlur={() => setSelectedFieldOutline("")} />
+                                        // onFocus={() => setSelectedFieldOutline("sourceName")}
+                                        // onBlur={() => setSelectedFieldOutline("")} 
+                                        />
                                     </div>
                                 </Grid>
 
@@ -119,7 +129,15 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
                                         <TextField
                                             id="sourceUrl"
                                             name="sourceUrl"
-                                            label={<h1 className='comboBoxLabel'>Source URL</h1>}
+                                            size='small'
+                                            sx={{
+                                                '&:hover fieldset': {
+                                                    borderColor: 'rgb(19, 110, 229) !important',
+                                                },
+                                            }}
+                                            label={<div className={`${focus === "sourceUrl" ? "" : "mt-[3px]"}`} ><span className={`${focus === "sourceUrl" ? "font-medium" : "text-[14px] font-semibold"}`}>Source URL </span><span className='text-[red]'>*</span></div>}
+                                            onFocus={() => setFocus("sourceUrl")}
+                                            onBlur={() => setFocus("")}
                                             value={formik.values.sourceUrl}
                                             onChange={formik.handleChange}
                                             error={formik.touched.sourceUrl && Boolean(formik.errors.sourceUrl)}
@@ -134,8 +152,9 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
                                                 }
                                             }}
                                             variant="outlined"
-                                            onFocus={() => setSelectedFieldOutline("sourceUrl")}
-                                            onBlur={() => setSelectedFieldOutline("")} />
+                                        // onFocus={() => setSelectedFieldOutline("sourceUrl")}
+                                        // onBlur={() => setSelectedFieldOutline("")} 
+                                        />
                                     </div>
                                 </Grid>
                             </Grid>

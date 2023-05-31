@@ -1,6 +1,6 @@
 import { Checkbox, FormControlLabel, FormGroup, Grid, TextField } from '@mui/material';
 import { FormikValues } from 'formik';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { gender, homeDistrict } from '../../../../../data/userManagement/UserManagementData';
 import Icons from '../../../../../assets/Icons';
 import { audioManAgeRange } from '../../../../../data/audioManagement/AudioManagementData';
@@ -10,6 +10,8 @@ import { UserManagementContext } from '../../../../../context/UserManagementProv
 const SpeakerInfo = ({ formik }: { formik: FormikValues }) => {
 
     const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
+
+    const [focus, setFocus] = useState("")
 
     const onAgeRangeChange = (e: React.ChangeEvent<HTMLInputElement>, value: string) => {
         const isChecked = e.target.checked;
@@ -37,7 +39,15 @@ const SpeakerInfo = ({ formik }: { formik: FormikValues }) => {
                             type='number'
                             id="speakerNumber"
                             name="speakerNumber"
-                            label={<h1 className='comboBoxLabel'>Number of Speaker <span className='text-[red]'></span></h1>}
+                            size='small'
+                            sx={{
+                                '&:hover fieldset': {
+                                    borderColor: 'rgb(19, 110, 229) !important',
+                                },
+                            }}
+                            label={<div className={`${focus === "speakerNumber" ? "" : "mt-[3px]"}`} ><span className={`${focus === "speakerNumber" ? "font-medium" : "text-[14px] font-semibold"}`}>Number of Speaker</span><span className='text-[red]'>*</span></div>}
+                            onFocus={() => setFocus("speakerNumber")}
+                            onBlur={() => setFocus("")}
                             value={formik.values.speakerNumber}
                             onChange={formik.handleChange}
                             // error={formik.touched.speakerNumber && Boolean(formik.errors.speakerNumber)}
@@ -55,8 +65,9 @@ const SpeakerInfo = ({ formik }: { formik: FormikValues }) => {
                             }}
 
                             variant="outlined"
-                            onFocus={() => setSelectedFieldOutline("speakerNumber")}
-                            onBlur={() => setSelectedFieldOutline("")} />
+                            // onFocus={() => setSelectedFieldOutline("speakerNumber")}
+                            // onBlur={() => setSelectedFieldOutline("")} 
+                            />
                     </Grid>
                 </Grid>
             </div>

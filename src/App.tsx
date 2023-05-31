@@ -27,7 +27,7 @@ function App() {
     <>
       <ToastContainer />
       <BrowserRouter>
-        <Suspense fallback={<div className="relative flex justify-center items-center h-screen">
+        <Suspense fallback={<div className="relative flex justify-center items-center h-screen overflow-hidden">
           <img src={LoadingSkeleton.sidebarSkeleton} alt="" className="absolute top-0 left-0" />
           <img src={LoadingSkeleton.navbarSkeleton} alt="" className="absolute top-0 left-14" />
           <Space size="middle">

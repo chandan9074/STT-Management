@@ -1,6 +1,6 @@
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { Dispatch, SetStateAction, useContext } from 'react';
+import { Dispatch, SetStateAction, useContext, useState } from 'react';
 import { OrganizerContext } from '../../../context/OrganizerProvider';
 import { Grid, TextField } from '@mui/material';
 import { UserManagementContext } from '../../../context/UserManagementProvider';
@@ -22,7 +22,9 @@ type Props = {
 const TagForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }: Props) => {
 
     const organizerContext = useContext(OrganizerContext);
-    const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
+    // const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
+    const [focus, setFocus] = useState("")
+
 
     const formik = useFormik({
         enableReinitialize: true,
@@ -60,7 +62,15 @@ const TagForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }: P
                         <TextField
                             id="tagName"
                             name="tagName"
-                            label={<h1 className='comboBoxLabel'>Tag Name <span className='text-[red]'>*</span></h1>}
+                            size='small'
+                            sx={{
+                                '&:hover fieldset': {
+                                    borderColor: 'rgb(19, 110, 229) !important',
+                                },
+                            }}
+                            label={<div className={`${focus === "tagName" ? "" : "mt-[3px]"}`} ><span className={`${focus === "tagName" ? "font-medium" : "text-[14px] font-semibold"}`}>Tag Name </span><span className='text-[red]'>*</span></div>}
+                            onFocus={() => setFocus("tagName")}
+                            onBlur={() => setFocus("")}
                             value={formik.values.tagName}
                             onChange={formik.handleChange}
                             error={formik.touched.tagName && Boolean(formik.errors.tagName)}
@@ -76,8 +86,8 @@ const TagForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }: P
                                 }
                             }}
                             variant="outlined"
-                            // onFocus={() => setSelectedFieldOutline("tagName")}
-                            // onBlur={() => setSelectedFieldOutline("")}
+                        // onFocus={() => setSelectedFieldOutline("tagName")}
+                        // onBlur={() => setSelectedFieldOutline("")}
                         // classes={{
                         //     option: classes.focused,
                         // }}
@@ -89,7 +99,15 @@ const TagForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }: P
                         <TextField
                             id="shortCut"
                             name="shortCut"
-                            label={<h1 className='comboBoxLabel'>Shortcut <span className='text-[red]'>*</span></h1>}
+                            size='small'
+                            sx={{
+                                '&:hover fieldset': {
+                                    borderColor: 'rgb(19, 110, 229) !important',
+                                },
+                            }}
+                            label={<div className={`${focus === "shortCut" ? "" : "mt-[3px]"}`} ><span className={`${focus === "shortCut" ? "font-medium" : "text-[14px] font-semibold"}`}>Shortcut </span><span className='text-[red]'>*</span></div>}
+                            onFocus={() => setFocus("shortCut")}
+                            onBlur={() => setFocus("")}
                             value={formik.values.shortCut}
                             onChange={formik.handleChange}
                             error={formik.touched.shortCut && Boolean(formik.errors.shortCut)}
@@ -105,8 +123,8 @@ const TagForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }: P
                                 }
                             }}
                             variant="outlined"
-                            // onFocus={() => setSelectedFieldOutline("shortCut")}
-                            // onBlur={() => setSelectedFieldOutline("")}
+                        // onFocus={() => setSelectedFieldOutline("shortCut")}
+                        // onBlur={() => setSelectedFieldOutline("")}
                         // classes={{
                         //     option: classes.focused,
                         // }}
@@ -124,7 +142,15 @@ const TagForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }: P
                         name="description"
                         multiline={true}
                         rows={4}
-                        label={<h1 className='comboBoxLabel'>Description </h1>}
+                        size='small'
+                        sx={{
+                            '&:hover fieldset': {
+                                borderColor: 'rgb(19, 110, 229) !important',
+                            },
+                        }}
+                        label={<div className={`${focus === "description" ? "" : "mt-[3px]"}`} ><span className={`${focus === "description" ? "font-medium" : "text-[14px] font-semibold"}`}>Description </span></div>}
+                        onFocus={() => setFocus("description")}
+                        onBlur={() => setFocus("")}
                         value={formik.values.description}
                         onChange={formik.handleChange}
                         error={formik.touched.description && Boolean(formik.errors.description)}
@@ -140,8 +166,8 @@ const TagForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }: P
                             }
                         }}
                         variant="outlined"
-                        // onFocus={() => setSelectedFieldOutline("description")}
-                        // onBlur={() => setSelectedFieldOutline("")}
+                    // onFocus={() => setSelectedFieldOutline("description")}
+                    // onBlur={() => setSelectedFieldOutline("")}
                     />
                     {/* {formik.touched.description && formik.errors.description ? (
                     <div className='text-red-600 text-xxs'>{formik.errors.description}</div>

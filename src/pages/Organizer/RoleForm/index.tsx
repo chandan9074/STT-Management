@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { organizeRole } from '../../../data/organize/OrganizerData';
 import TextArea from 'antd/es/input/TextArea';
 import ActionButton from './ActionButton';
-import { Dispatch, SetStateAction, useContext, useEffect } from 'react';
+import { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
 import { OrganizerContext } from '../../../context/OrganizerProvider';
 import { TextField } from '@mui/material';
 import { UserManagementContext } from '../../../context/UserManagementProvider';
@@ -25,7 +25,9 @@ type Props = {
 const RoleForm = ({ setIsDrawerOpen, data, isEdit, handleEdit, handleSelectRow }: Props) => {
 
     const organizerContext = useContext(OrganizerContext);
-    const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
+    // const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
+    const [focus, setFocus] = useState("")
+
 
     const formik = useFormik({
         enableReinitialize: true,
@@ -65,7 +67,15 @@ const RoleForm = ({ setIsDrawerOpen, data, isEdit, handleEdit, handleSelectRow }
                         name="description"
                         multiline={true}
                         rows={4}
-                        label={<h1 className='comboBoxLabel'>Description </h1>}
+                        size='small'
+                        sx={{
+                            '&:hover fieldset': {
+                                borderColor: 'rgb(19, 110, 229) !important',
+                            },
+                        }}
+                        label={<div className={`${focus === "description" ? "" : "mt-[3px]"}`} ><span className={`${focus === "description" ? "font-medium" : "text-[14px] font-semibold"}`}>Description </span></div>}
+                        onFocus={() => setFocus("description")}
+                        onBlur={() => setFocus("")}
                         value={formik.values.description}
                         onChange={formik.handleChange}
                         error={formik.touched.description && Boolean(formik.errors.description)}

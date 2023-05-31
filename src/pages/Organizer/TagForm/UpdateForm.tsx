@@ -1,6 +1,6 @@
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { Dispatch, SetStateAction, useContext } from 'react';
+import { Dispatch, SetStateAction, useContext, useState } from 'react';
 import { OrganizerContext } from '../../../context/OrganizerProvider';
 import { Grid, TextField } from '@mui/material';
 import ActionButton from '../RoleForm/ActionButton';
@@ -18,6 +18,8 @@ type Props = {
 }
 
 const UpdateForm = ({ setIsFormOpen, data, handleEdit, handleSelectRow }: Props) => {
+
+    const [focus, setFocus] = useState("")
 
     const organizerContext = useContext(OrganizerContext);
     // const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
@@ -52,7 +54,15 @@ const UpdateForm = ({ setIsFormOpen, data, handleEdit, handleSelectRow }: Props)
                         <TextField
                             id="tagName"
                             name="tagName"
-                            label={<h1 className='comboBoxLabel'>Tag Name <span className='text-[red]'>*</span></h1>}
+                            size='small'
+                            sx={{
+                                '&:hover fieldset': {
+                                    borderColor: 'rgb(19, 110, 229) !important',
+                                },
+                            }}
+                            label={<div className={`${(focus === "tagName" || formik.values.tagName !== "") ? "" : "mt-[3px]"}`} ><span className={`${(focus === "tagName" || formik.values.tagName !== "") ? "font-medium" : "text-[14px] font-semibold"}`}>Tag Name </span><span className='text-[red]'>*</span></div>}
+                            onFocus={() => setFocus("tagName")}
+                            onBlur={() => setFocus("")}
                             value={formik.values.tagName}
                             onChange={formik.handleChange}
                             error={formik.touched.tagName && Boolean(formik.errors.tagName)}
@@ -81,7 +91,15 @@ const UpdateForm = ({ setIsFormOpen, data, handleEdit, handleSelectRow }: Props)
                         <TextField
                             id="shortCut"
                             name="shortCut"
-                            label={<h1 className='comboBoxLabel'>Shortcut <span className='text-[red]'>*</span></h1>}
+                            size='small'
+                            sx={{
+                                '&:hover fieldset': {
+                                    borderColor: 'rgb(19, 110, 229) !important',
+                                },
+                            }}
+                            label={<div className={`${(focus === "shortCut" || formik.values.shortCut !== "") ? "" : "mt-[3px]"}`} ><span className={`${(focus === "shortCut" || formik.values.shortCut !== "") ? "font-medium" : "text-[14px] font-semibold"}`}>Shortcut </span><span className='text-[red]'>*</span></div>}
+                            onFocus={() => setFocus("shortCut")}
+                            onBlur={() => setFocus("")}
                             value={formik.values.shortCut}
                             onChange={formik.handleChange}
                             error={formik.touched.shortCut && Boolean(formik.errors.shortCut)}
@@ -116,7 +134,15 @@ const UpdateForm = ({ setIsFormOpen, data, handleEdit, handleSelectRow }: Props)
                         name="description"
                         multiline={true}
                         rows={4}
-                        label={<h1 className='comboBoxLabel'>Description </h1>}
+                        size='small'
+                        sx={{
+                            '&:hover fieldset': {
+                                borderColor: 'rgb(19, 110, 229) !important',
+                            },
+                        }}
+                        label={<div className={`${(focus === "description" || formik.values.description !== "") ? "" : "mt-[3px]"}`} ><span className={`${(focus === "description" || formik.values.description !== "") ? "font-medium" : "text-[14px] font-semibold"}`}>Description </span></div>}
+                        onFocus={() => setFocus("description")}
+                        onBlur={() => setFocus("")}
                         value={formik.values.description}
                         onChange={formik.handleChange}
                         error={formik.touched.description && Boolean(formik.errors.description)}

@@ -18,12 +18,16 @@ type Props = {
     handleSelectRow?: (value: DeviceDataDT[]) => void;
 }
 
+
+
 const UpdateForm = ({ setIsFormOpen, data, handleEdit, handleSelectRow }: Props) => {
 
     const organizerContext = useContext(OrganizerContext);
     // const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
 
     const [active, setActive] = useState(data?.device ? data.device : "");
+    const [focus, setFocus] = useState("")
+
 
     const formik = useFormik({
         enableReinitialize: true,
@@ -35,13 +39,13 @@ const UpdateForm = ({ setIsFormOpen, data, handleEdit, handleSelectRow }: Props)
         validationSchema: validationSchema,
         onSubmit: (values: deviceBodyDT) => {
 
-                console.log("edit activate");
-                values.id = data?.id;
-                values.deviceType = active;
-                organizerContext.updateDevice(values);
-                handleSelectRow && handleSelectRow([])
-                handleEdit && handleEdit(false);
-            
+            console.log("edit activate");
+            values.id = data?.id;
+            values.deviceType = active;
+            organizerContext.updateDevice(values);
+            handleSelectRow && handleSelectRow([])
+            handleEdit && handleEdit(false);
+
             // console.log('value-----', values);
             formik.resetForm();
             setIsFormOpen(false)
@@ -88,7 +92,15 @@ const UpdateForm = ({ setIsFormOpen, data, handleEdit, handleSelectRow }: Props)
                     <TextField
                         id="deviceName"
                         name="deviceName"
-                        label={<h1 className='comboBoxLabel'>Device Name <span className='text-[red]'>*</span></h1>}
+                        size='small'
+                        sx={{
+                            '&:hover fieldset': {
+                                borderColor: 'rgb(19, 110, 229) !important',
+                            },
+                        }}
+                        label={<div className={`${(focus === "deviceName" || formik.values.deviceName !== "") ? "" : "mt-[3px]"}`} ><span className={`${(focus === "deviceName" || formik.values.deviceName !== "") ? "font-medium" : "text-[14px] font-semibold"}`}>Device Name </span><span className='text-[red]'>*</span></div>}
+                        onFocus={() => setFocus("deviceName")}
+                        onBlur={() => setFocus("")}
                         value={formik.values.deviceName}
                         onChange={formik.handleChange}
                         error={formik.touched.deviceName && Boolean(formik.errors.deviceName)}
@@ -103,9 +115,10 @@ const UpdateForm = ({ setIsFormOpen, data, handleEdit, handleSelectRow }: Props)
                                 // border: selectedFieldOutline === 'deviceName' ? '1px solid #136EE5' : '1px solid transparent'
                             }
                         }}
+
                         variant="outlined"
-                        // onFocus={() => setSelectedFieldOutline("deviceName")}
-                        // onBlur={() => setSelectedFieldOutline("")}
+                    // onFocus={() => setSelectedFieldOutline("deviceName")}
+                    // onBlur={() => setSelectedFieldOutline("")}
                     // classes={{
                     //     option: classes.focused,
                     // }}
@@ -114,8 +127,16 @@ const UpdateForm = ({ setIsFormOpen, data, handleEdit, handleSelectRow }: Props)
                     />
                     <TextField
                         id="model"
+                        size='small'
+                        sx={{
+                            '&:hover fieldset': {
+                                borderColor: 'rgb(19, 110, 229) !important',
+                            },
+                        }}
+                        label={<div className={`${(focus === "model" || formik.values.model !== "") ? "" : "mt-[3px]"}`} ><span className={`${focus === "model" ? "font-medium" : "text-[14px] font-semibold"}`}>Model</span><span className='text-[red]'>*</span></div>}
+                        onFocus={() => setFocus("model")}
+                        onBlur={() => setFocus("")}
                         name="model"
-                        label={<h1 className='comboBoxLabel'>Model <span className='text-[red]'>*</span></h1>}
                         value={formik.values.model}
                         onChange={formik.handleChange}
                         error={formik.touched.model && Boolean(formik.errors.model)}
@@ -125,14 +146,14 @@ const UpdateForm = ({ setIsFormOpen, data, handleEdit, handleSelectRow }: Props)
                             style: {
                                 color: '#464E5F',
                                 fontWeight: '600',
-                                fontSize: '15px',
+                                fontSize: '14px',
                                 caretColor: '#136EE5',
                                 // border: selectedFieldOutline === 'model' ? '1px solid #136EE5' : '1px solid transparent'
                             }
                         }}
                         variant="outlined"
-                        // onFocus={() => setSelectedFieldOutline("model")}
-                        // onBlur={() => setSelectedFieldOutline("")}
+                    // onFocus={() => setSelectedFieldOutline("model")}
+                    // onBlur={() => setSelectedFieldOutline("")}
                     // classes={{
                     //     option: classes.focused,
                     // }}
