@@ -1,9 +1,9 @@
-import { FormControl, TextField } from '@mui/material';
-import React, { useState } from 'react';
-// import { organizeRole } from '../../../data/organize/OrganizerData';
-// import RoleImage from '../../../components/Image/RoleImage';
-// import Icons from '../../../assets/Icons';
+import { FormControl, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
+import React, { useContext, useState } from 'react';
+import { organizeRole } from '../../data/organize/OrganizerData';
 import Icons from '../../assets/Icons';
+import RoleImage from '../Image/RoleImage';
+
 
 type Prop =
     {
@@ -14,18 +14,15 @@ type Prop =
         formikTouched?: any,
         name: string,
         fieldLabel: string
-        optional?: boolean
-        dropdownAlign?: "top" | "bottom"
-        optionWidth?: string
     }
 
-const Type1 = ({ formikValues, formik, data, formikError, formikTouched, name, fieldLabel, optional, dropdownAlign, optionWidth }: Prop) => {
+const RoleSelect = ({ formikValues, formik, data, formikError, formikTouched, name, fieldLabel }: Prop) => {
 
     const [onTextField, setOnTextField] = useState<string>(formikValues)
 
     const [isRole, setIsRole] = useState<boolean>(false);
 
-    const [filteredList, setFilteredList] = useState<string[]>(data);
+    const [filteredDistrict, setFilteredDistrict] = useState<string[]>(data);
 
     const [clicked, setClicked] = useState<boolean>(false)
 
@@ -46,14 +43,14 @@ const Type1 = ({ formikValues, formik, data, formikError, formikTouched, name, f
     const clickOutsideField = () => {
         setIsRole(false);
         setOnTextField(formikValues);
-        setFilteredList(data);
+        setFilteredDistrict(data);
     }
 
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 
-        const matchedRoles = filteredList.filter((role: string) => role.toLowerCase().includes(event.target.value.toLowerCase()));
+        const matchedRoles = organizeRole.filter((role: string) => role.toLowerCase().includes(event.target.value.toLowerCase()));
 
-        setFilteredList(matchedRoles);
+        setFilteredDistrict(matchedRoles);
     }
 
     const onSelect = (value: string) => {
@@ -67,7 +64,7 @@ const Type1 = ({ formikValues, formik, data, formikError, formikTouched, name, f
     }
 
     return (
-        <div className='relative'>
+        <div className='relative z-[9999]'>
 
             <div className={`${!isRole && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[90]`} onClick={() => clickOutsideField()}></div>
             <FormControl sx={{ width: '100%' }} variant="outlined">
@@ -83,15 +80,15 @@ const Type1 = ({ formikValues, formik, data, formikError, formikTouched, name, f
                             borderColor: 'rgb(19, 110, 229) !important',
                         },
                     }}
-                    label={<div className={`${(focus === name || onTextField !== "") ? "" : "mt-[3px]"}`} ><span className={`${(focus === name || onTextField !== "") ? "font-medium" : "text-[14px] font-semibold"}`}>{fieldLabel} </span>{!optional && <span className='text-[red]'>*</span>}</div>}
+                    label={<div className={`${(focus === name || onTextField !== "") ? "" : "mt-[3px]"}`} ><span className={`${(focus === name || onTextField !== "") ? "font-medium" : "text-[14px] font-semibold"}`}>{fieldLabel} </span><span className='text-[red]'>*</span></div>}
                     onFocus={() => setFocus(name)}
                     onBlur={() => setFocus("")}
-
                     value={onTextField || ''}
                     onChange={(e) => {
                         handleSearch(e);
                         setOnTextField(e.target.value);
                     }}
+                    
                     InputProps={{
                         style: {
                             color: '#464E5F',
@@ -109,15 +106,15 @@ const Type1 = ({ formikValues, formik, data, formikError, formikTouched, name, f
             {/* </div> */}
             {
                 isRole &&
-                <div className={`absolute z-[9999] ${dropdownAlign === "top" ? "bottom-14" : ""} bg-white mt-2 rounded-lg overflow-hidden ${optionWidth ? optionWidth : "w-[429px]"} flex flex-wrap justify-between shadow-bottom-light-blue-20 cursor-pointer`}>
+                <div className='absolute z-[100] bg-white mt-2 rounded-lg w-[380px] flex flex-col justify-between shadow-bottom-light-blue-20 cursor-pointer'>
 
                     {
-                        filteredList.map((item: string, i: number) => (
+                        filteredDistrict.map((item: string, i: number) => (
                             <div
                                 key={i}
                                 onClick={() => onSelect(item)}
-                                className={`w-full justify-between flex item-center pl-4 py-[11.5px] pr-2 ${formik.values[name] === item ? 'activeColor' : 'deactiveColor'}`}>
-                                {/* <div
+                                className={`w-full justify-between flex item-center pl-4 py-[11.5px] pr-2 rounded-lg ${formik.values.role === item ? 'activeColor' : 'deactiveColor'}`}>
+                                <div
                                     key={i} className={`flex items-center gap-x-3 cursor-pointer`}>
                                     {
                                         !(item === 'Speaker-Female' || item === 'Speaker-Male') ?
@@ -126,12 +123,11 @@ const Type1 = ({ formikValues, formik, data, formikError, formikTouched, name, f
                                             <RoleImage role={item.includes('Speaker-Male') ? 'speaker' : 'speakerfemale'} height='h-5' width='w-5' />
                                     }
                                     <p className='text-blue-gray-80 font-medium text-small'>{item}</p>
-                                </div> */}
-                                {/* {
+                                </div>
+                                {
                                     formik.values.role === item &&
                                     <img className='w-6 h-6' src={Icons.check_blue} alt="" />
-                                } */}
-                                <p className='text-small font-medium text-blue-gray-80'>{item}</p>
+                                }
                             </div>
                         ))
                     }
@@ -145,4 +141,4 @@ const Type1 = ({ formikValues, formik, data, formikError, formikTouched, name, f
     );
 };
 
-export default Type1;
+export default RoleSelect;

@@ -24,9 +24,9 @@
     z-index: 99999 !important;
 }
 
-.datePicker2  {
+.datePicker2 .ant-picker-dropdown  {
     position: absolute !important;
-    top: calc(50% - -552px) !important;
+    top: calc(50% - -127px) !important;
     left: calc(50% - 362px) !important;
     z-index: 99999 !important;
 }

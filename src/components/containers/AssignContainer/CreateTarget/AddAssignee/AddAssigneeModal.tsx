@@ -260,53 +260,50 @@ const AddAssigneeModal = ({
                                         name="managerId"
                                     >
 
-                                        <div
-                                            className={`relative ${customRoleData.length !== 0 && 'bg-blue-gray-20'} border-[1px] ${isDropDownVisible ? 'border-secondary-blue-50' : 'border-blue-gray-20'} rounded-[7px] h-[44px] flex justify-center items-center ${isDropItemClick ? '' : isDropDownSelect ? 'searchByRoleSelect' : ''} ${(!isDropDownVisible) ? 'select-icon' : ''}`}>
+                                        {/* <div
+                                            className={`relative ${customRoleData.length !== 0 && 'bg-blue-gray-20'} border-[1px] ${isDropDownVisible ? 'border-secondary-blue-50' : 'border-blue-gray-20'} rounded-[7px] h-[44px] flex justify-center items-center ${isDropItemClick ? '' : isDropDownSelect ? 'searchByRoleSelect' : ''} ${(!isDropDownVisible) ? 'select-icon' : ''}`}> */}
 
-                                            <Select
+                                        <Select
 
-                                                // open={isDropItemClick ? true : isDropDownOpen}
-                                                // mode='multiple'
-                                                suffixIcon={<StepBackwardOutlined style={{ display: 'none' }} />}
-                                                onClick={onDropDownClick}
-                                                onDropdownVisibleChange={onDropDownVisible}
-                                                onInputKeyDown={onInputKeyDown}
-                                                onSelect={onSelect}
-                                                showSearch
-                                                placeholder={`Select ${role} by Login ID/ Name`}
-                                                style={{ border: 'none' }}
-                                                onChange={(value, p) => handleRoleChange(value, p)}
-                                                filterOption={(inputValue: string, option: any) =>
-                                                    option.value.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0 ||
-                                                    option.id.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0
-                                                }
+                                            // open={isDropItemClick ? true : isDropDownOpen}
+                                            // mode='multiple'
+                                            suffixIcon={<StepBackwardOutlined style={{ display: 'none' }} />}
+                                            onClick={onDropDownClick}
+                                            onDropdownVisibleChange={onDropDownVisible}
+                                            onInputKeyDown={onInputKeyDown}
+                                            onSelect={onSelect}
+                                            showSearch
+                                            placeholder={`Select ${role} by Login ID/ Name`}
+                                            style={{ border: 'none' }}
+                                            onChange={(value, p) => handleRoleChange(value, p)}
+                                            filterOption={(inputValue: string, option: any) =>
+                                                option.value.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0 ||
+                                                option.id.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0
+                                            }
 
-                                            >
-                                                {
-                                                    roleDatas?.map((m: roleDT, i: number) => (
-                                                        <Option key={m.id} value={m.name} id={m.id}>
-                                                            <div className='flex gap-x-4'>
-                                                                {/* <img className='h-[18px] w-[18px]' src={Icons.manager}
+                                        >
+                                            {
+                                                roleDatas?.map((m: roleDT, i: number) => (
+                                                    <Option key={m.id} value={m.name} id={m.id}>
+                                                        <div className='flex gap-x-4'>
+                                                            {/* <img className='h-[18px] w-[18px]' src={Icons.manager}
                                                                     alt="" /> */}
-                                                                <RoleImage role={role} />
-                                                                <h1 className='text-blue-gray-90 text-small'>{m.id} - {m.name}</h1>
-                                                            </div>
-                                                        </Option>
-                                                    ))
-                                                }
-                                            </Select>
-                                            <div
-                                                // className={(!isDropDownVisible) ? 'bg-whitelock h-[24px] w-[24px] flex justify-center items-center pr-[15px]' : 'hidden'}>
-                                                className={(!isDropDownVisible) ? 'select-icon' : 'hidden'}>
-                                                {/*<img onClick={dropDownArrowClick} className='' src={arrowDropDownIcon} alt=""/>*/}
-                                            </div>
-                                        </div>
-
-
+                                                            <RoleImage role={role} />
+                                                            <h1 className='text-blue-gray-90 text-small'>{m.id} - {m.name}</h1>
+                                                        </div>
+                                                    </Option>
+                                                ))
+                                            }
+                                        </Select>
                                         <div
-                                            className={isDropDownVisible ? 'bg-white px-[6px] block w-[fit-content] absolute bottom-[34px] left-[12px]' : 'hidden'}>
-                                            <p className='text-blue-gray-80 font-bold text-xxs'>{role}</p>
+                                            // className={(!isDropDownVisible) ? 'bg-whitelock h-[24px] w-[24px] flex justify-center items-center pr-[15px]' : 'hidden'}>
+                                            className={(!isDropDownVisible) ? 'select-icon' : 'hidden'}>
+                                            {/*<img onClick={dropDownArrowClick} className='' src={arrowDropDownIcon} alt=""/>*/}
                                         </div>
+                                        {/* </div> */}
+
+
+                                        
                                     </Form.Item>
                                 </Form>
                             </div>

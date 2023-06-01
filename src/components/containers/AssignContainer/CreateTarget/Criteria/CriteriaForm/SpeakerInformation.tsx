@@ -18,7 +18,7 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
     return (
         <div className=''>
             <div className='w-[308px]'>
-                <div className='mb-[18px]'>
+                <div className='mb-6'>
                     <h1 className='text-ct-blue-60 text-small font-semibold'>Speaker Information</h1>
                 </div>
                 <div className='flex gap-x-[16px] items-center h-[48px]'>
@@ -121,16 +121,18 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                     )}
                 /> */}
 
-                <CustomSelect.Type1
-                    formikValues={formik.values.ageRange}
-                    data={ageRange}
-                    formikError={formik.errors.ageRange}
-                    formikTouched={formik.touched.ageRange}
-                    formik={formik}
-                    name={'ageRange'}
-                    fieldLabel='Age Range'
+                <div className='mt-4'>
+                    <CustomSelect.Type1
+                        formikValues={formik.values.ageRange}
+                        data={ageRange}
+                        formikError={formik.errors.ageRange}
+                        formikTouched={formik.touched.ageRange}
+                        formik={formik}
+                        name={'ageRange'}
+                        fieldLabel='Age Range'
 
-                />
+                    />
+                </div>
 
                 <div className='mt-4'>
                     <HomeDistrictSelect
@@ -144,7 +146,7 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                     />
                 </div>
 
-                <div className='flex gap-3'>
+                <div className='flex gap-3 mt-4'>
 
                     {/* <Autocomplete
                         disableClearable
@@ -285,16 +287,18 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                         />
                     )}
                 /> */}
-                <CustomSelect.Type1
-                    formikValues={formik.values.education}
-                    data={education}
-                    formikError={formik.errors.education}
-                    formikTouched={formik.touched.education}
-                    formik={formik}
-                    name={'education'}
-                    fieldLabel='Education'
-                    optional={true}
-                />
+                <div className='mt-4'>
+                    <CustomSelect.Type1
+                        formikValues={formik.values.education}
+                        data={education}
+                        formikError={formik.errors.education}
+                        formikTouched={formik.touched.education}
+                        formik={formik}
+                        name={'education'}
+                        fieldLabel='Education'
+                        optional={true}
+                    />
+                </div>
 
 
                 <div className='mt-4'>
@@ -357,17 +361,19 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                         />
                     )}
                 /> */}
-                <CustomSelect.Type1
-                    formikValues={formik.values.recordingArea}
-                    data={recordingArea}
-                    formikError={formik.errors.recordingArea}
-                    formikTouched={formik.touched.recordingArea}
-                    formik={formik}
-                    name={'recordingArea'}
-                    fieldLabel='Recording Area'
-                    optional={true}
-                    dropdownAlign='top'
-                />
+                <div className='mt-4'>
+                    <CustomSelect.Type1
+                        formikValues={formik.values.recordingArea}
+                        data={recordingArea}
+                        formikError={formik.errors.recordingArea}
+                        formikTouched={formik.touched.recordingArea}
+                        formik={formik}
+                        name={'recordingArea'}
+                        fieldLabel='Recording Area'
+                        optional={true}
+                        dropdownAlign='top'
+                    />
+                </div>
 
 
                 {/* <Autocomplete
@@ -401,17 +407,19 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                     )}
                 /> */}
 
-                <CustomSelect.Type1
-                    formikValues={formik.values.recordingDistance}
-                    data={recordingDistanceAssign}
-                    formikError={formik.errors.recordingDistance}
-                    formikTouched={formik.touched.recordingDistance}
-                    formik={formik}
-                    name={'recordingDistance'}
-                    fieldLabel='Recording Distance'
-                    optional={true}
-                    dropdownAlign='top'
-                />
+                <div className='mt-4'>
+                    <CustomSelect.Type1
+                        formikValues={formik.values.recordingDistance}
+                        data={recordingDistanceAssign}
+                        formikError={formik.errors.recordingDistance}
+                        formikTouched={formik.touched.recordingDistance}
+                        formik={formik}
+                        name={'recordingDistance'}
+                        fieldLabel='Recording Distance'
+                        optional={true}
+                        dropdownAlign='top'
+                    />
+                </div>
 
             </div>
         </div>
