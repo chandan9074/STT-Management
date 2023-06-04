@@ -1,14 +1,11 @@
-import { Autocomplete, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, TextField } from '@mui/material';
-import { Typography, Upload } from 'antd';
-import { useContext, useState } from 'react';
+import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
+import { Upload } from 'antd';
+import { useState } from 'react';
 import Icons from '../../../../assets/Icons';
 import { reportingRoleData } from '../../../../data/userManagement/UserManagementData';
 import { Grid } from '@mui/material';
-import { Box } from '@mui/system';
-import Image from '../../../Image';
 import { FormikValues } from 'formik';
-import { customMuiListStyle, urlPatternValidation } from '../../../../helpers/Utils';
-import { UserManagementContext } from '../../../../context/UserManagementProvider';
+import { urlPatternValidation } from '../../../../helpers/Utils';
 import CustomSelect from '../../../CustomSelect';
 
 type Props = {
@@ -17,11 +14,8 @@ type Props = {
 }
 
 const FileReport = ({ getFile, formik }: Props) => {
-    const classes = customMuiListStyle();
 
     const [file, setFile] = useState<File | null>(null);
-
-    const { newRoleList, selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
 
     const handleFileUpload = (event: any) => {
         if (event.fileList?.length !== 0) {

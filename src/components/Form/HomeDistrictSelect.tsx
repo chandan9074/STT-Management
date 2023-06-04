@@ -1,12 +1,11 @@
-import { FormControl, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
-import { useContext, useEffect, useState } from 'react';
+import { FormControl, TextField } from '@mui/material';
+import { useEffect, useState } from 'react';
 import Icons from '../../assets/Icons';
 import { homeDistrict } from '../../data/userManagement/UserManagementData';
 import { homeDistrictSearch } from '../../helpers/Utils';
 import { homeDistrictTypes } from '../../types/userManagementTypes';
 import Buttons from '../Buttons';
 import './HomeDistrictSelect.css';
-import { UserManagementContext } from '../../context/UserManagementProvider';
 
 type Prop =
     {
@@ -30,8 +29,6 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
     const [isHomeDistrict, setIsHomeDistrict] = useState<boolean>(false);
 
     const [filteredDistrict, setFilteredDistrict] = useState<homeDistrictTypes[]>(data);
-
-    const [clicked, setClicked] = useState<boolean>(false)
 
     const [focus, setFocus] = useState("")
 
@@ -72,9 +69,9 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
         setOnTextField(formikValues);
         setFilteredDistrict(data);
     }
-    const handleDistrictInputClick = () => {
-        setClicked(!clicked)
-    }
+    // const handleDistrictInputClick = () => {
+    //     setClicked(!clicked)
+    // }
 
     return (
         <div className='relative homeDistrictSelect '>

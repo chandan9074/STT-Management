@@ -1,4 +1,4 @@
-import { Autocomplete, Box, FormControl, FormControlLabel, Grid, IconButton, InputAdornment, InputLabel, OutlinedInput, Radio, RadioGroup, TextField } from '@mui/material';
+import { FormControl, FormControlLabel, Grid, IconButton, InputAdornment, Radio, RadioGroup, TextField } from '@mui/material';
 import { DatePicker, DatePickerProps } from 'antd';
 import { FormikValues } from 'formik';
 import { useContext, useState } from 'react';
@@ -6,7 +6,6 @@ import Icons from '../../../../assets/Icons';
 import { ageRange, education, educationSituation, gender, homeDistrict, profession, yesNoPreferData } from '../../../../data/userManagement/UserManagementData';
 import '../../../calender/customizeCalender.css';
 import HomeDistrictSelect from '../../../Form/HomeDistrictSelect';
-import { customMuiListStyle } from '../../../../helpers/Utils';
 import LabelForm from '../../../common/Form/LabelForm';
 import { UserManagementContext } from '../../../../context/UserManagementProvider';
 import CustomSelect from '../../../CustomSelect';
@@ -17,7 +16,6 @@ type Prop =
     }
 
 const PersonalInformation2 = ({ formik }: Prop) => {
-    const classes = customMuiListStyle();
 
     const [openCalender, setOpenCalender] = useState<boolean>(false);
 
@@ -27,7 +25,7 @@ const PersonalInformation2 = ({ formik }: Prop) => {
         formik.setFieldValue("dateOfBirth", dateString)
     };
 
-    const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
+    const { selectedFieldOutline } = useContext(UserManagementContext);
 
 
     return (

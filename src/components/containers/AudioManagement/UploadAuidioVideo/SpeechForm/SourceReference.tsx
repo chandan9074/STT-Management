@@ -15,7 +15,7 @@ const SourceReference = ({ formik }: { formik: FormikValues }) => {
     });
     const [focus, setFocus] = useState("")
 
-    const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
+    const { selectedFieldOutline } = useContext(UserManagementContext);
 
     const onSourceReferencehandle = (value: string) => {
         if (value === 'source') {

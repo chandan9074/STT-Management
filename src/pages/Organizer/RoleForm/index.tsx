@@ -2,12 +2,10 @@ import RoleSelect from './RoleSelect';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { organizeRole } from '../../../data/organize/OrganizerData';
-import TextArea from 'antd/es/input/TextArea';
 import ActionButton from './ActionButton';
-import { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useContext, useState } from 'react';
 import { OrganizerContext } from '../../../context/OrganizerProvider';
 import { TextField } from '@mui/material';
-import { UserManagementContext } from '../../../context/UserManagementProvider';
 import { RoleDataDT, roleBodyDT } from '../../../types/organizerTypes';
 
 const validationSchema = yup.object({

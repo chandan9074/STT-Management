@@ -1,9 +1,7 @@
-import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
+import { FormControl, TextField } from '@mui/material';
 import { DatePicker, DatePickerProps } from 'antd';
 import { FormikValues } from 'formik';
-import { useContext, useState } from 'react';
-import Icons from '../../../../../../assets/Icons';
-import { UserManagementContext } from '../../../../../../context/UserManagementProvider';
+import { useState } from 'react';
 
 const TargetSetting = ({ formik }: { formik: FormikValues }) => {
 
@@ -12,10 +10,6 @@ const TargetSetting = ({ formik }: { formik: FormikValues }) => {
     const [openReminderCalender, setOpenReminderCaleder] = useState<boolean>(false);
 
     const [focus, setFocus] = useState("")
-
-
-    const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
-
 
     const onDateChange: DatePickerProps['onChange'] = (date, dateString) => {
         formik.setFieldValue("deadline", dateString);

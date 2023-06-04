@@ -1,21 +1,14 @@
-import { Autocomplete, Box, Grid, TextField } from '@mui/material';
+import { Grid, TextField } from '@mui/material';
 import { FormikValues } from 'formik';
-import { homeDistrict, lastDegreeAchived, role } from '../../../../data/userManagement/UserManagementData';
+import { homeDistrict, lastDegreeAchived } from '../../../../data/userManagement/UserManagementData';
 import HomeDistrictSelect from '../../../Form/HomeDistrictSelect';
-import Image from '../../../Image';
-import { customMuiListStyle } from '../../../../helpers/Utils';
-import { useContext, useState } from 'react';
-import { UserManagementContext } from '../../../../context/UserManagementProvider';
+import { useState } from 'react';
 import CustomSelect from '../../../CustomSelect';
 
 
 const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
-    const classes = customMuiListStyle();
 
     const [focus, setFocus] = useState("")
-
-
-    const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
 
     return (
         // <div className='disableAutocompleteColor'>
@@ -372,7 +365,7 @@ const PersonalInformation = ({ formik }: { formik: FormikValues }) => {
                             )}
                         />
                     </div> */}
-                    <CustomSelect.Type1 
+                    <CustomSelect.Type1
                         data={lastDegreeAchived}
                         fieldLabel='Last Degree Achieved'
                         name='lastDegreeAchived'

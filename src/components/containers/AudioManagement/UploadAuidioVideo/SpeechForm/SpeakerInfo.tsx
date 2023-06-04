@@ -9,7 +9,7 @@ import { UserManagementContext } from '../../../../../context/UserManagementProv
 
 const SpeakerInfo = ({ formik }: { formik: FormikValues }) => {
 
-    const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
+    const { selectedFieldOutline } = useContext(UserManagementContext);
 
     const [focus, setFocus] = useState("")
 
@@ -65,9 +65,9 @@ const SpeakerInfo = ({ formik }: { formik: FormikValues }) => {
                             }}
 
                             variant="outlined"
-                            // onFocus={() => setSelectedFieldOutline("speakerNumber")}
-                            // onBlur={() => setSelectedFieldOutline("")} 
-                            />
+                        // onFocus={() => setSelectedFieldOutline("speakerNumber")}
+                        // onBlur={() => setSelectedFieldOutline("")} 
+                        />
                     </Grid>
                 </Grid>
             </div>
@@ -77,9 +77,9 @@ const SpeakerInfo = ({ formik }: { formik: FormikValues }) => {
                 <div className='gap-x-2 flex'>
                     {
                         gender.map((value, i) => (
-                            <div 
-                            key={i}
-                            onClick={() => formik.setFieldValue('gender', value)} className={`${formik.values.gender.toLowerCase() === value.toLowerCase() ? ' text-[#136EE5] bg-blue-50 border-[1px] border-secondary-blue-50' : 'bg-white text-blue-gray-75'}  px-[12px] py-[8px] rounded-[20px] border-[1px] border-blue-gray-20 cursor-pointer font-medium duration-200 flex gap-x-[7px] items-center`}>
+                            <div
+                                key={i}
+                                onClick={() => formik.setFieldValue('gender', value)} className={`${formik.values.gender.toLowerCase() === value.toLowerCase() ? ' text-[#136EE5] bg-blue-50 border-[1px] border-secondary-blue-50' : 'bg-white text-blue-gray-75'}  px-[12px] py-[8px] rounded-[20px] border-[1px] border-blue-gray-20 cursor-pointer font-medium duration-200 flex gap-x-[7px] items-center`}>
                                 {
                                     formik.values.gender.toLowerCase() === value.toLowerCase() &&
                                     <img className='w-[11px] h-[8px]' src={Icons.CorrectIcon} alt="" />

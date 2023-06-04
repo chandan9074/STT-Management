@@ -1,25 +1,10 @@
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
 import { Grid } from '@mui/material';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import { FormikValues } from 'formik';
 import { scriptDomainAddSpeech, scriptSubDomain } from '../../../../../data/Script/Domain';
-import { customMuiListStyle } from '../../../../../helpers/Utils';
-import { useContext, useState } from 'react';
-import { UserManagementContext } from '../../../../../context/UserManagementProvider';
 import CustomSelect from '../../../../CustomSelect';
 
 
 const DomainSubDomain = ({ formik }: { formik: FormikValues }) => {
-    const classes = customMuiListStyle();
-
-    const [focus, setFocus] = useState("")
-
-
-    // const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
 
     return (
         <div className='mb-[28px] domain'>

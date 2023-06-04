@@ -3,11 +3,9 @@ import { ColumnsType } from "antd/es/table"
 import Icons from "../../assets/Icons"
 import { RoleDataDT } from "../../types/organizerTypes"
 import RoleImage from "../Image/RoleImage"
-import Pagination from "../Pagination"
 import { Drawer } from "../Drawer"
 import SideDrawerContent from "../containers/Organizer/role/SideDrawerContent"
 import { useState } from "react"
-import RoleForm from "../../pages/Organizer/RoleForm"
 import UpdateForm from "../../pages/Organizer/RoleForm/UpdateForm"
 
 type Props = {
@@ -23,8 +21,6 @@ type Props = {
 const Type28 = ({ data, handleSelectRow, open, setOpen, selectedRowKeys, setIsEdit, isEdit }: Props) => {
 
     const [selectedRoleData, setSelectedRoleData] = useState<RoleDataDT>({} as RoleDataDT);
-    const [isFormDrawer, setIsFormDrawer] = useState(false);
-    console.log(isEdit, "isedit")
 
     const handleEdit = () => {
         // setIsFormDrawer(!isFormDrawer);
@@ -99,9 +95,9 @@ const Type28 = ({ data, handleSelectRow, open, setOpen, selectedRowKeys, setIsEd
         }),
     };
 
-    const handlePageChange = (page: number) => {
-        // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
-    }
+    // const handlePageChange = (page: number) => {
+    //     // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
+    // }
 
     return (
         <div className="billing-table billing-table-even-bg type4-table horizontal-table-padding w-full">

@@ -98,9 +98,9 @@ const Type30 = ({ data, handleSelectRow, selectedRowKeys, setIsEdit, isEdit }: P
         }),
     };
 
-    const handlePageChange = (page: number) => {
-        // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
-    }
+    // const handlePageChange = (page: number) => {
+    //     // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
+    // }
 
     return (
         <div className="billing-table billing-table-even-bg type4-table horizontal-table-padding">

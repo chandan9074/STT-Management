@@ -2,7 +2,6 @@ import { Table } from "antd";
 import { ColumnsType } from "antd/es/table";
 import Icons from "../../assets/Icons";
 import { TagDataDT } from "../../types/organizerTypes";
-import Pagination from "../Pagination";
 import { Drawer } from "../Drawer";
 import SideDrawerContent from "../containers/Organizer/tag/SideDrawerContent";
 import { useState } from "react";
@@ -96,9 +95,9 @@ const Type29 = ({ data, handleSelectRow, open, setOpen, selectedRowKeys, isEdit,
         }),
     };
 
-    const handlePageChange = (page: number) => {
-        // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
-    }
+    // const handlePageChange = (page: number) => {
+    //     // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
+    // }
 
     return (
         <div className="billing-table billing-table-even-bg type4-table horizontal-table-padding">

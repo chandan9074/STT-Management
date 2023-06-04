@@ -1,19 +1,13 @@
-import { Autocomplete, Box, Checkbox, FormControlLabel, FormGroup, TextField } from '@mui/material';
+import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
 import { ageRange, education, educationSituation, gender, homeDistrict, profession } from '../../../../../../data/userManagement/UserManagementData';
 import { healthFactors, recordingArea, recordingDistanceAssign } from '../../../../../../data/assign/AssignData';
-import MultipleSelect from '../../../../../Form/MultipleSelect';
 import Icons from '../../../../../../assets/Icons';
 import { FormikValues } from 'formik';
-import { useState } from 'react';
 import CustomSelect from '../../../../../CustomSelect';
 import HomeDistrictSelect from '../../../../../Form/HomeDistrictSelect';
 
 
 const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
-
-    const [clicked, setClicked] = useState(false);
-    const [focus, setFocus] = useState("")
-
 
     return (
         <div className=''>

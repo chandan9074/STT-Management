@@ -1,8 +1,5 @@
 import { FormControl, TextField } from '@mui/material';
 import React, { useState } from 'react';
-// import { organizeRole } from '../../../data/organize/OrganizerData';
-// import RoleImage from '../../../components/Image/RoleImage';
-// import Icons from '../../../assets/Icons';
 import Icons from '../../assets/Icons';
 
 type Prop =
@@ -27,11 +24,7 @@ const Type1 = ({ formikValues, formik, data, formikError, formikTouched, name, f
 
     const [filteredList, setFilteredList] = useState<string[]>(data);
 
-    const [clicked, setClicked] = useState<boolean>(false)
-
     const [focus, setFocus] = useState("")
-
-
 
     // const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
 
@@ -62,9 +55,9 @@ const Type1 = ({ formikValues, formik, data, formikError, formikTouched, name, f
         setIsRole(false)
     }
 
-    const handleRoleInputClick = () => {
-        setClicked(!clicked)
-    }
+    // const handleRoleInputClick = () => {
+    //     setClicked(!clicked)
+    // }
 
     return (
         <div className='relative'>

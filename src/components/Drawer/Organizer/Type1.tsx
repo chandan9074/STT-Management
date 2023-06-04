@@ -19,12 +19,6 @@ const Type1 = ({ children, isDrawerOpen, title, headerBgColor, setIsDrawerClose,
         setIsDrawerClose(false);
     };
 
-    const handlecall = (value: boolean) => {
-        console.log("value", isEdit)
-
-        // setIsEdit && setIsEdit(true)
-    }
-
     return (
         <Drawer
             closeIcon={false}
