@@ -23,6 +23,8 @@ import {
   updateDraftTargetQueryParams,
 } from "../types/assignTypes";
 import { roleDT } from "../types/billingTypes";
+import { callingToast } from "../helpers/Utils";
+import { useNavigate } from "react-router-dom";
 
 interface ContextProps {
   criterias: CriteriaItemDT[],
@@ -110,6 +112,8 @@ interface ContextProps {
   getResRolesUpdateAssigneeAssignModule: () => void;
   targetDataLength: number;
   singleTargetSpeechesLength: number;
+  postResSpeechUploadAudioMgModule: (data: FormData) => Promise<number | undefined>,
+
 }
 
 export const AssignContext = createContext({} as ContextProps);
@@ -150,6 +154,19 @@ const AssignProvider = ({ children }: { children: any }) => {
   const [targetRoleList, setTargetRoleList] = useState<roleDT[]>([] as roleDT[]);
 
   const [isCriteriaClosed, setIsCriteriaClosed] = useState<boolean>(false);
+
+  const postResSpeechUploadAudioMgModule = async (data: FormData) => {
+    try {
+      setLoading(true);
+      await AssignService.postResSpeechUploadAudioMgtService(data);
+      setLoading(false);
+      callingToast("Speech updated successfully");
+      return 200;
+      // await getSelectedScript();
+    } catch (error) {
+      setLoading(false)
+    }
+  }
 
   const postSingleTargetSpeechesAssign = async (data: FormData) => {
     try {
@@ -606,7 +623,8 @@ const AssignProvider = ({ children }: { children: any }) => {
         targetRoleList,
         getResRolesUpdateAssigneeAssignModule,
         targetDataLength,
-        singleTargetSpeechesLength
+        singleTargetSpeechesLength,
+        postResSpeechUploadAudioMgModule
       }}
     >
       {children}

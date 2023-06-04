@@ -14,7 +14,7 @@ const VideoAudioUpload = ({ formik }: { formik: FormikValues }) => {
     const [loading, setLoading] = useState(false);
 
     const onDeleteFile = () => {
-        formik.setFieldValue("speechFile", []);
+        formik.setFieldValue("speechFile", '');
         formik.setFieldValue("speechFileName", '');
     }
 
@@ -36,7 +36,7 @@ const VideoAudioUpload = ({ formik }: { formik: FormikValues }) => {
 
         } else {
             // getFile([]);
-            formik.setFieldValue("speechFile", []);
+            formik.setFieldValue("speechFile", '');
             formik.setFieldValue("speechFileName", '');
             // formik.setFieldValue("file",  []);
         }

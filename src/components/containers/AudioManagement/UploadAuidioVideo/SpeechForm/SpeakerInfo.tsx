@@ -76,8 +76,10 @@ const SpeakerInfo = ({ formik }: { formik: FormikValues }) => {
                 <h1 className='text-blue-gray-75 font-medium text-small'>Gender</h1>
                 <div className='gap-x-2 flex'>
                     {
-                        gender.map(value => (
-                            <div onClick={() => formik.setFieldValue('gender', value)} key={value} className={`${formik.values.gender.toLowerCase() === value.toLowerCase() ? ' text-[#136EE5] bg-blue-50 border-[1px] border-secondary-blue-50' : 'bg-white text-blue-gray-75'}  px-[12px] py-[8px] rounded-[20px] border-[1px] border-blue-gray-20 cursor-pointer font-medium duration-200 flex gap-x-[7px] items-center`}>
+                        gender.map((value, i) => (
+                            <div 
+                            key={i}
+                            onClick={() => formik.setFieldValue('gender', value)} className={`${formik.values.gender.toLowerCase() === value.toLowerCase() ? ' text-[#136EE5] bg-blue-50 border-[1px] border-secondary-blue-50' : 'bg-white text-blue-gray-75'}  px-[12px] py-[8px] rounded-[20px] border-[1px] border-blue-gray-20 cursor-pointer font-medium duration-200 flex gap-x-[7px] items-center`}>
                                 {
                                     formik.values.gender.toLowerCase() === value.toLowerCase() &&
                                     <img className='w-[11px] h-[8px]' src={Icons.CorrectIcon} alt="" />

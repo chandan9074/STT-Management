@@ -36,7 +36,7 @@ export interface CriteriaItemDT {
   deadline: string;
   reminder: string[];
   childhoodPlace?: string,
-  remark?: remarkDT| string;
+  remark?: remarkDT | string;
   remarkDes?: string,
   remarkRoleID?: string,
   buttonName?: "";
@@ -397,4 +397,21 @@ export type postRecreateTargetParamDT = {
   script: string;
   target: CriteriaItemDT;
   assignee: string;
+}
+
+export type postResSpeechUploadAudioMgtDT = {
+  sourceFile: string;
+  sourceFileName?: string;
+  dataType: string;
+  sourceName: string;
+  sourceUrl: string;
+  speechFile: string;
+  speechFileName?: string;
+  distributionSource: string;
+  domain: string;
+  subdomain: string,
+  speakerNumber: number,
+  gender: string,
+  ageRange: string[],
+  homeDistrict: string;
 }
