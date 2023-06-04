@@ -1,6 +1,6 @@
 import { Table } from "antd"
 import { ColumnsType } from "antd/es/table"
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import Icons from "../../assets/Icons"
 import { validatedFilesUploadDT } from "../../types/audioManagementTypes"
 import AudioTrack from "../common/AudioTrack"
@@ -9,6 +9,10 @@ import Remark2 from "../containers/AudioManagement/TableField/Remark2"
 import { Drawer } from "../Drawer"
 import RoleImage from "../Image/RoleImage"
 import Pagination from "../Pagination"
+import { STATUS_CLAIMED } from "../../helpers/ConditionVariable"
+import { AudioManagementContext } from "../../context/AudioManagementProvider"
+import { CustomModal } from "../common/CustomModal"
+import ClaimApplicationModal from "../containers/AudioManagement/Annotation/AnnotatedFiles/ClaimApplicationModal"
 
 type Props = {
     data: validatedFilesUploadDT[]
@@ -20,10 +24,25 @@ const Type35 = ({ data }: Props) => {
     const [remarkOpen, setRemarkOpen] = useState(false);
     const [singleTargetData, setSingleTargetData] = useState<validatedFilesUploadDT>();
     const [open, setOpen] = useState(false);
+    const [isClaimModal, setIsClaimModal] = useState<boolean>(false);
+
+    const { postClaimValidatedLevel } = useContext(AudioManagementContext);
 
     const showDrawer = (item: validatedFilesUploadDT) => {
         setOpen(true);
     };
+
+    const handleClaimSubmit = (status: string, remark: string) => {
+        if (singleTargetData?.id) {
+            const body = {
+                id: singleTargetData.id,
+                remark: remark,
+                status: status ? status : ""
+            }
+
+            postClaimValidatedLevel(body);
+        }
+    }
 
     const Type35columns: ColumnsType<validatedFilesUploadDT> = [
         {
@@ -68,13 +87,15 @@ const Type35 = ({ data }: Props) => {
             title: `${"Status".toLocaleUpperCase()}`,
             width: 150,
             render: (data) => (
-                <>
+                <div className='flex gap-x-2'>
+                    <SpeechStatus data={data?.status} />
                     {
-                        data?.status !== '' &&
-                        <SpeechStatus data={data?.status} />
-
+                        data?.status === STATUS_CLAIMED &&
+                        <button onClick={() => { setSingleTargetData(data); setIsClaimModal(true); }}>
+                            <img src={Icons.openInNewGray} alt="" className='cursor-pointer' />
+                        </button>
                     }
-                </>
+                </div>
             )
         },
         {
@@ -225,20 +246,6 @@ const Type35 = ({ data }: Props) => {
         },
     ]
 
-
-    // const rowSelection = {
-    //     onChange: (selectedRowKeys: React.Key[], selectedRows: validatedFilesUploadDT[]) => {
-    //         // setSelectedTarget(selectedRows);
-    //         console.log('*******', selectedRows);
-
-
-    //     },
-    //     getCheckboxProps: (record: validatedFilesUploadDT) => ({
-    //         // disabled: record.name === 'Disabled User', // Column configuration not to be checked
-    //         // name: record.assignee.name,
-    //     }),
-    // };
-
     const handlePageChange = (page: number) => {
         // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
     }
@@ -251,12 +258,6 @@ const Type35 = ({ data }: Props) => {
             <Table
                 dataSource={data}
                 columns={Type35columns}
-                // rowSelection={{
-                //     // type: selectionType,
-                //     columnWidth: 48,
-                //     fixed: 'left',
-                //     ...rowSelection,
-                // }}
                 scroll={{ x: 1300 }}
                 rowKey="id"
                 pagination={false}
@@ -265,8 +266,6 @@ const Type35 = ({ data }: Props) => {
                 <Pagination.Type2
                     total={100}
                     pageSize={10}
-                    // total={35}
-                    // pageSize={5}
                     handleDataChange={handlePageChange}
                 />
             </div>
@@ -284,6 +283,14 @@ const Type35 = ({ data }: Props) => {
                     id={singleTargetData.id}
                 />
             }
+
+            {singleTargetData?.claimReason && <CustomModal.Primary
+                setOpen={setIsClaimModal}
+                open={isClaimModal}
+                width="658px"
+            >
+                <ClaimApplicationModal data={singleTargetData.claimReason} setOpen={setIsClaimModal} handleClaimSubmit={handleClaimSubmit} />
+            </CustomModal.Primary>}
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import { Table } from "antd"
 import { ColumnsType } from "antd/es/table"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import Icons from "../../assets/Icons"
 import { validatedFilesDT } from "../../types/audioManagementTypes"
 import AudioTrack from "../common/AudioTrack"
@@ -9,22 +9,40 @@ import Remark2 from "../containers/AudioManagement/TableField/Remark2"
 import { Drawer } from "../Drawer"
 import RoleImage from "../Image/RoleImage"
 import Pagination from "../Pagination"
+import { STATUS_CLAIMED } from "../../helpers/ConditionVariable"
+import { CustomModal } from "../common/CustomModal"
+import ClaimApplicationModal from "../containers/AudioManagement/Annotation/AnnotatedFiles/ClaimApplicationModal"
+import { AudioManagementContext } from "../../context/AudioManagementProvider"
 
 type Props = {
     data: validatedFilesDT[];
     setSelectedRowsData: React.Dispatch<React.SetStateAction<validatedFilesDT[]>>
 }
 
-const Type31 = ({ data,setSelectedRowsData }: Props) => {
+const Type31 = ({ data, setSelectedRowsData }: Props) => {
 
 
     const [remarkOpen, setRemarkOpen] = useState(false);
     const [singleTargetData, setSingleTargetData] = useState<validatedFilesDT>();
     const [open, setOpen] = useState(false);
+    const [isClaimModal, setIsClaimModal] = useState<boolean>(false);
+    const { postClaimValidatedLevel } = useContext(AudioManagementContext);
 
     const showDrawer = (item: validatedFilesDT) => {
         setOpen(true);
     };
+
+    const handleClaimSubmit = (status: string, remark: string) => {
+        if (singleTargetData?.id) {
+            const body = {
+                id: singleTargetData.id,
+                remark: remark,
+                status: status ? status : ""
+            }
+
+            postClaimValidatedLevel(body);
+        }
+    }
 
     const Type31columns: ColumnsType<validatedFilesDT> = [
         {
@@ -70,13 +88,15 @@ const Type31 = ({ data,setSelectedRowsData }: Props) => {
             width: 150,
             align: "center",
             render: (data) => (
-                <>
+                <div className='flex gap-x-2'>
+                    <SpeechStatus data={data?.status} />
                     {
-                        data?.status !== '' &&
-                        <SpeechStatus data={data?.status} />
-
+                        data?.status === STATUS_CLAIMED &&
+                        <button onClick={() => { setSingleTargetData(data); setIsClaimModal(true); }}>
+                            <img src={Icons.openInNewGray} alt="" className='cursor-pointer' />
+                        </button>
                     }
-                </>
+                </div>
             )
         },
         {
@@ -273,6 +293,13 @@ const Type31 = ({ data,setSelectedRowsData }: Props) => {
                     submissionDate={singleTargetData.submissionDate}
                 />
             }
+            {singleTargetData?.claimReason && <CustomModal.Primary
+                setOpen={setIsClaimModal}
+                open={isClaimModal}
+                width="658px"
+            >
+                <ClaimApplicationModal data={singleTargetData?.claimReason} setOpen={setIsClaimModal} handleClaimSubmit={handleClaimSubmit} />
+            </CustomModal.Primary>}
         </div>
     )
 }
