@@ -11,6 +11,7 @@ import { Filter } from "../../../../components/Filter";
 import { SearchBox } from "../../../../components/SearchBox";
 import { uploadAudioAnnotationAnnotatedFilterData } from "../../../../data/audioManagement/AudioManagementData";
 import { targetFilterListDT } from "../../../../types/assignTypes";
+import { callingToast } from "../../../../helpers/Utils";
 
 const AnnotatedFilesUpload = () => {
 
@@ -26,21 +27,26 @@ const AnnotatedFilesUpload = () => {
         speaker: "",
         collector: "",
         audioSubmissionPeriod: "",
-        status: ""
+        status: "",
+        type: ""
     })
 
     const { getAnnotatedFilesUploadData, annotatedFilesUploadData } = useContext(AudioManagementContext);
 
     useEffect(() => {
-        getAnnotatedFilesUploadData(query)
+        setQuery({
+            ...query,
+            type: activeTab
+        })
+        getAnnotatedFilesUploadData(query);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [query, activeTab])
 
     const allTergetMenu = (key: string) => {
         const Category: CategoryMap = {
             "Sentence": <><Table.Type33 data={annotatedFilesUploadData.data} setSelectedRowsData={setSelectedRowsData} /></>,
-            "Word": <></>,
-            "Phoneme": <></>
+            "Word": <><Table.Type33 data={annotatedFilesUploadData.data} setSelectedRowsData={setSelectedRowsData} /></>,
+            "Phoneme": <><Table.Type33 data={annotatedFilesUploadData.data} setSelectedRowsData={setSelectedRowsData} /></>
         };
         return Category[key];
     };
@@ -88,7 +94,7 @@ const Header = ({ setActiveTab, selectedSpeech, setSelectedSpeech, selectedRowsD
         status: [],
     })
 
-    const { collectorList, getCollectorList, getSpeakerList, speakerList, audioCheckerList, getAudioCheckerList, annotatorList, getAnnotatorList } = useContext(AudioManagementContext);
+    const { collectorList, getCollectorList, getSpeakerList, speakerList, audioCheckerList, getAudioCheckerList, annotatorList, getAnnotatorList, postReassignAnnotatedFiles } = useContext(AudioManagementContext);
 
     const prevCollectorRef = useRef(collectorList);
     const prevSpeakersRef = useRef(speakerList);
@@ -275,7 +281,10 @@ const Header = ({ setActiveTab, selectedSpeech, setSelectedSpeech, selectedRowsD
     }
 
     const onSave = () => {
+        const selectedIds = selectedRowsData.map(item => item.id);
         setIsConfirmModal(false);
+        postReassignAnnotatedFiles(selectedIds);
+        callingToast(selectedIds.length > 1 ? `${selectedIds[selectedIds.length - 1]} & ${selectedIds.length - 1} others have been reassigned.` : `${selectedIds[selectedIds.length - 1]} has been reassigned`)
     }
 
     return (

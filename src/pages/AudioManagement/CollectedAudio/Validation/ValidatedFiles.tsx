@@ -11,6 +11,7 @@ import { SearchBox } from "../../../../components/SearchBox";
 import { Filter } from "../../../../components/Filter";
 import { targetFilterListDT } from "../../../../types/assignTypes";
 import { collectedAudioValidationValidatedFilterData } from "../../../../data/audioManagement/AudioManagementData";
+import { callingToast } from "../../../../helpers/Utils";
 
 const ValidatedFiles = () => {
 
@@ -27,21 +28,26 @@ const ValidatedFiles = () => {
     audioChecker: "",
     collector: "",
     audioSubmissionPeriod: "",
-    status: ""
+    status: "",
+    type: ""
   })
 
   const { getValidatedFilesData, validatedFilesData } = useContext(AudioManagementContext);
 
   useEffect(() => {
+    setQuery({
+      ...query,
+      type: activeTab
+    })
     getValidatedFilesData(query)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [query, activeTab])
 
   const allTergetMenu = (key: string) => {
     const Category: CategoryMap = {
       "Sentence": <><Table.Type31 data={validatedFilesData.data} setSelectedRowsData={setSelectedRowsData} /></>,
-      "Word": <></>,
-      "Phoneme": <></>
+      "Word": <><Table.Type31 data={validatedFilesData.data} setSelectedRowsData={setSelectedRowsData} /></>,
+      "Phoneme": <><Table.Type31 data={validatedFilesData.data} setSelectedRowsData={setSelectedRowsData} /></>
     };
     return Category[key];
   };
@@ -94,7 +100,7 @@ const Header = ({ setActiveTab, selectedSpeech, setSelectedSpeech, selectedRowsD
     status: [],
   })
 
-  const { scriptList, getScriptList, validatorList, getValidatorList, collectorList, getCollectorList, getSpeakerList, speakerList, audioCheckerList, getAudioCheckerList, annotatorList, getAnnotatorList } = useContext(AudioManagementContext);
+  const { scriptList, getScriptList, validatorList, getValidatorList, collectorList, getCollectorList, getSpeakerList, speakerList, audioCheckerList, getAudioCheckerList, annotatorList, getAnnotatorList, postReassignValidationLevel } = useContext(AudioManagementContext);
 
   const prevCollectorRef = useRef(collectorList);
   const prevSpeakersRef = useRef(speakerList);
@@ -320,7 +326,11 @@ const Header = ({ setActiveTab, selectedSpeech, setSelectedSpeech, selectedRowsD
   }
 
   const onSave = () => {
+    const selectedIds = selectedRowsData.map(item => item.id);
     setIsConfirmModal(false);
+    postReassignValidationLevel(selectedIds)
+    callingToast(selectedIds.length > 1 ? `${selectedIds[selectedIds.length - 1]} & ${selectedIds.length - 1} others have been reassigned.` : `${selectedIds[selectedIds.length - 1]} has been reassigned`)
+
   }
 
   return (

@@ -68,7 +68,7 @@ const Header = ({ selectedRowsData, setIsConfirmCancelModal, isConfirmCancelModa
     status: [],
   })
 
-  const { scriptList, getScriptList, collectorList, getCollectorList, getSpeakerList, speakerList, audioCheckerList, getAudioCheckerList, postReassignAudios } = useContext(AudioManagementContext);
+  const { scriptList, getScriptList, collectorList, getCollectorList, getSpeakerList, speakerList, audioCheckerList, getAudioCheckerList, postReassignAllChecking } = useContext(AudioManagementContext);
 
   const prevScriptFilterRef = useRef(scriptList);
   const prevCollectedAudioCollectorRef = useRef(collectorList);
@@ -241,7 +241,7 @@ const Header = ({ selectedRowsData, setIsConfirmCancelModal, isConfirmCancelModa
     const selectedIds = selectedRowsData.map(item => item.id)
     setIsConfirmCancelModal(false)
 
-    postReassignAudios(selectedIds)
+    postReassignAllChecking(selectedIds)
 
     callingToast(selectedIds.length > 1 ? `${selectedIds[selectedIds.length - 1]} & ${selectedIds.length - 1} others have been reassigned.` : `${selectedIds[selectedIds.length - 1]} has been reassigned`)
 

@@ -132,6 +132,7 @@ export type allCheckedAudioDT = {
     remark: historyRemarkDT[];
     others: othersDT;
     history: historyDT[];
+    claimReason?: historyRemarkDT[];
 }
 
 export type historyDT = {
@@ -260,8 +261,10 @@ export type annotatedFilesDT = {
     deadLine: string;
     submissionDate: string;
     remark: historyRemarkDT[];
+    claimReason?: historyRemarkDT[];
     // annotate: annotateInfoDT;
 }
+
 
 export type validatedFilesRootDT = {
     total_data_size: number;
@@ -284,6 +287,7 @@ export type validatedFilesDT = {
     script: scriptResDT
     others: othersDT
     history: historyDT[]
+    claimReason?: historyRemarkDT[];
 }
 
 // export type historyDT = {
@@ -465,6 +469,7 @@ export type allCheckedSpeechDT = {
     others: othersUploadAudioDT;
     speaker: speakerUploadAudioDT;
     history: historyDT[];
+    claimReason?: historyRemarkDT[];
 }
 
 export type annotationUploadRootDT = {
@@ -532,6 +537,7 @@ export type annotatedFilesUploadDT = {
     deadLine: string;
     submissionDate: string;
     remark: historyRemarkDT[];
+    claimReason?: historyRemarkDT[];
 }
 
 export type sentenceLevelValUploadRootDT = {
@@ -576,6 +582,7 @@ export type validatedFilesUploadDT = {
     speechInfo: speechInfo;
     others: othersDT
     history: historyDT[]
+    claimReason?: historyRemarkDT[];
 }
 
 export type allCheckedAudioQueryDT = {
@@ -632,6 +639,7 @@ export type annotatedFilesQueryDT = {
     collector: string,
     audioSubmissionPeriod: string,
     status: string
+    type: string
 }
 
 export type validatedFilesQueryDT = {
@@ -644,7 +652,8 @@ export type validatedFilesQueryDT = {
     audioChecker: string
     collector: string,
     audioSubmissionPeriod: string,
-    status: string
+    status: string,
+    type: string
 }
 
 export type collectValSenDataQueryDT = {
@@ -723,5 +732,12 @@ export type uploadValidatedQueryDT = {
     speaker: string,
     collector: string,
     audioSubmissionPeriod: string,
-    status: string
+    status: string,
+    type: string
+}
+
+export type claimApplicationBodyParamsDT = {
+    id: string;
+    remark: string;
+    status: string;
 }

@@ -11,6 +11,7 @@ import { uploadAudioAnnotationValidatedFilterData } from '../../../../data/audio
 import { annotatedFilesUploadDT } from '../../../../types/audioManagementTypes'
 import { targetFilterListDT } from '../../../../types/assignTypes'
 import { CategoryMap } from '../../../../components/containers/dashboard/DataContainer/CollectData'
+import { callingToast } from '../../../../helpers/Utils'
 
 const ValidatedFilesUpload = () => {
   const [activeTab, setActiveTab] = useState<string>("Sentence");
@@ -27,28 +28,33 @@ const ValidatedFilesUpload = () => {
     speaker: "",
     collector: "",
     audioSubmissionPeriod: "",
-    status: ""
+    status: "",
+    type: ""
   })
 
   useEffect(() => {
+    setQuery({
+      ...query,
+      type: activeTab
+    })
     getValidatedFilesUploadData(query)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [query, activeTab])
 
 
 
   const allTergetMenu = (key: string) => {
     const Category: CategoryMap = {
       "Sentence": <><Table.Type35 data={validatedFilesUploadData.data} /></>,
-      "Word": <></>,
-      "Phoneme": <></>
+      "Word": <><Table.Type35 data={validatedFilesUploadData.data} /></>,
+      "Phoneme": <><Table.Type35 data={validatedFilesUploadData.data} /></>
     };
     return Category[key];
   };
 
   return (
     <div>
-      <Header setActiveTab={setActiveTab} selectedSpeech={selectedSpeech} setSelectedSpeech={setSelectedSpeech}  />
+      <Header setActiveTab={setActiveTab} selectedSpeech={selectedSpeech} setSelectedSpeech={setSelectedSpeech} />
       {/* <Table.Type35 data={validatedFilesUploadData} /> */}
       <div>
         {allTergetMenu(activeTab)}
@@ -95,7 +101,7 @@ const Header = ({ setActiveTab, selectedSpeech, setSelectedSpeech }: Props) => {
     status: [],
   })
 
-  const { validatorList, getValidatorList, collectorList, getCollectorList, getSpeakerList, speakerList, audioCheckerList, getAudioCheckerList, annotatorList, getAnnotatorList } = useContext(AudioManagementContext);
+  const { validatorList, getValidatorList, collectorList, getCollectorList, getSpeakerList, speakerList, audioCheckerList, getAudioCheckerList, annotatorList, getAnnotatorList, postReassignValidationLevel } = useContext(AudioManagementContext);
 
   const prevCollectorRef = useRef(collectorList);
   const prevSpeakersRef = useRef(speakerList);
@@ -312,7 +318,10 @@ const Header = ({ setActiveTab, selectedSpeech, setSelectedSpeech }: Props) => {
   }
 
   const onSave = () => {
+    const selectedIds = selectedSpeech.map(item => item.id);
     setIsConfirmModal(false);
+    postReassignValidationLevel(selectedIds)
+    callingToast(selectedIds.length > 1 ? `${selectedIds[selectedIds.length - 1]} & ${selectedIds.length - 1} others have been reassigned.` : `${selectedIds[selectedIds.length - 1]} has been reassigned`)
   }
 
   return (
@@ -322,7 +331,7 @@ const Header = ({ setActiveTab, selectedSpeech, setSelectedSpeech }: Props) => {
           <TableHeading title='Validated Files' />
         </div>
         <div className='flex items-center gap-x-3'>
-            {/* <Buttons.BgHoverBtn
+          {/* <Buttons.BgHoverBtn
               title="Re-Assign"
               paddingY="py-2"
               paddingX="px-4"

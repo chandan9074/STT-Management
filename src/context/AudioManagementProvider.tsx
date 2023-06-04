@@ -1,6 +1,7 @@
 import { ReactNode, createContext, useState } from "react";
 import audioManagementService from "../services/audioManagementService";
-import { CollectedAudioQueryDT, allCheckedAudioQueryDT, allCheckedAudioRootDt, allCheckedSpeechQueryDT, allCheckedSpeechRootDT, annotatedFilesQueryDT, annotatedFilesRootDT, annotatedFilesUploadRootDT, annotationRootDT, annotationTypeQueryDT, annotationUploadRootDT, checkingStatusQueryDT, checkingStatusRootDT, checkingStatusUploadQueryDT, checkingStatusUploadRootDT, collectAnnSenQueryDT, collectAnnSenRootDT, collectValSenDataQueryDT, collectValSenRootDT, collectedAudioDT, sentenceLevelUploadRootDT, sentenceLevelValUploadRootDT, uploadAnnSenQueryDT, uploadAnnotationTypeQueryDT, uploadAudioQueryDT, uploadAudioRootDT, uploadValSenDataQueryDT, uploadValidatedQueryDT, validatedFilesQueryDT, validatedFilesRootDT, validatedFilesUploadRootDT } from "../types/audioManagementTypes";
+import { CollectedAudioQueryDT, allCheckedAudioQueryDT, allCheckedAudioRootDt, allCheckedSpeechQueryDT, allCheckedSpeechRootDT, annotatedFilesQueryDT, annotatedFilesRootDT, annotatedFilesUploadRootDT, annotationRootDT, annotationTypeQueryDT, annotationUploadRootDT, checkingStatusQueryDT, checkingStatusRootDT, checkingStatusUploadQueryDT, checkingStatusUploadRootDT, claimApplicationBodyParamsDT, collectAnnSenQueryDT, collectAnnSenRootDT, collectValSenDataQueryDT, collectValSenRootDT, collectedAudioDT, sentenceLevelUploadRootDT, sentenceLevelValUploadRootDT, uploadAnnSenQueryDT, uploadAnnotationTypeQueryDT, uploadAudioQueryDT, uploadAudioRootDT, uploadValSenDataQueryDT, uploadValidatedQueryDT, validatedFilesQueryDT, validatedFilesRootDT, validatedFilesUploadRootDT } from "../types/audioManagementTypes";
+import { callingToast } from "../helpers/Utils";
 
 interface ContextProps {
     getCollectedAudioData: (params: CollectedAudioQueryDT) => void;
@@ -27,29 +28,29 @@ interface ContextProps {
     collectValPhonemeData: collectValSenRootDT
     getValidatedFilesData: (params: validatedFilesQueryDT) => void;
     validatedFilesData: validatedFilesRootDT
-    getUploadAudioData: (params:uploadAudioQueryDT) => void;
+    getUploadAudioData: (params: uploadAudioQueryDT) => void;
     uploadAudioData: uploadAudioRootDT;
-    getCheckingStatusUploadData: (params:checkingStatusUploadQueryDT) => void;
+    getCheckingStatusUploadData: (params: checkingStatusUploadQueryDT) => void;
     checkingStatusUploadData: checkingStatusUploadRootDT
-    getAllCheckedAudiosUploadData: (params:allCheckedSpeechQueryDT) => void;
+    getAllCheckedAudiosUploadData: (params: allCheckedSpeechQueryDT) => void;
     allCheckedAudiosUploadData: allCheckedSpeechRootDT
-    getAnnotationUploadData: (params:uploadAnnotationTypeQueryDT) => void;
+    getAnnotationUploadData: (params: uploadAnnotationTypeQueryDT) => void;
     annotationUploadData: annotationUploadRootDT;
-    getSentenceLevelUploadData: (params:uploadAnnSenQueryDT) => void;
+    getSentenceLevelUploadData: (params: uploadAnnSenQueryDT) => void;
     sentenceLevelUploadData: sentenceLevelUploadRootDT;
-    getWordLevelUploadData: (params:uploadAnnSenQueryDT) => void;
+    getWordLevelUploadData: (params: uploadAnnSenQueryDT) => void;
     wordLevelUploadData: sentenceLevelUploadRootDT
-    getPhonemeLevelUploadData: (params:uploadAnnSenQueryDT) => void;
+    getPhonemeLevelUploadData: (params: uploadAnnSenQueryDT) => void;
     phonemeLevelUploadData: sentenceLevelUploadRootDT;
-    getAnnotatedFilesUploadData: (params:annotatedFilesQueryDT) => void;
+    getAnnotatedFilesUploadData: (params: annotatedFilesQueryDT) => void;
     annotatedFilesUploadData: annotatedFilesUploadRootDT
-    getSentenceLevelUploadVal: (params:uploadValSenDataQueryDT) => void;
+    getSentenceLevelUploadVal: (params: uploadValSenDataQueryDT) => void;
     sentenceLevelUploadVal: sentenceLevelValUploadRootDT
-    getWordLevelUploadVal: (params:uploadValSenDataQueryDT) => void;
+    getWordLevelUploadVal: (params: uploadValSenDataQueryDT) => void;
     wordLevelUploadVal: sentenceLevelValUploadRootDT;
-    getPhonemeLevelUploadVal: (params:uploadValSenDataQueryDT) => void;
+    getPhonemeLevelUploadVal: (params: uploadValSenDataQueryDT) => void;
     phonemeLevelUploadVal: sentenceLevelValUploadRootDT;
-    getValidatedFilesUploadData: (params:uploadValidatedQueryDT) => void
+    getValidatedFilesUploadData: (params: uploadValidatedQueryDT) => void
     validatedFilesUploadData: validatedFilesUploadRootDT
     audioCheckerList: string[];
     getAudioCheckerList: (type: string) => void;
@@ -63,7 +64,12 @@ interface ContextProps {
     getValidatorList: (type: string) => void;
     scriptList: string[];
     getScriptList: (type: string) => void;
-    postReassignAudios: (ids: string[]) => void;
+    postReassignAllChecking: (ids: string[]) => void;
+    postReassignAnnotatedFiles: (ids: string[]) => void;
+    postReassignValidationLevel: (ids: string[]) => void;
+    postClaimValidatedLevel: (params: claimApplicationBodyParamsDT) => void;
+    postClaimAnnotatedFiles: (params: claimApplicationBodyParamsDT) => void;
+    postClaimAllChecked: (params: claimApplicationBodyParamsDT) => void;
 }
 
 export const AudioManagementContext = createContext({} as ContextProps);
@@ -210,59 +216,94 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
         setCheckingStatusUploadData(res.data);
     }
 
-    const getAllCheckedAudiosUploadData = async (params:allCheckedSpeechQueryDT) => {
+    const getAllCheckedAudiosUploadData = async (params: allCheckedSpeechQueryDT) => {
         const res = await audioManagementService.getAllCheckedAudiosUploadData(params);
         setAllCheckedAudiosUploadData(res.data);
     }
 
-    const getAnnotationUploadData = async (params:uploadAnnotationTypeQueryDT) => {
+    const getAnnotationUploadData = async (params: uploadAnnotationTypeQueryDT) => {
         const res = await audioManagementService.getAnnotationUploadData(params);
         setAnnotationUploadData(res.data);
     }
 
-    const getSentenceLevelUploadData = async (params:uploadAnnSenQueryDT) => {
+    const getSentenceLevelUploadData = async (params: uploadAnnSenQueryDT) => {
         const res = await audioManagementService.getSentenceLevelUploadData(params);
         setSentenceLevelUploadData(res.data);
     }
 
-    const getWordLevelUploadData = async (params:uploadAnnSenQueryDT) => {
+    const getWordLevelUploadData = async (params: uploadAnnSenQueryDT) => {
         const res = await audioManagementService.getWordLevelUploadData(params);
         setWordLevelUploadData(res.data);
     }
 
-    const getPhonemeLevelUploadData = async (params:uploadAnnSenQueryDT) => {
+    const getPhonemeLevelUploadData = async (params: uploadAnnSenQueryDT) => {
         const res = await audioManagementService.getPhonemeLevelUploadData(params);
         setPhonemeLevelUploadData(res.data);
     }
 
-    const getAnnotatedFilesUploadData = async (params:annotatedFilesQueryDT) => {
+    const getAnnotatedFilesUploadData = async (params: annotatedFilesQueryDT) => {
         const res = await audioManagementService.getAnnotatedFilesUploadData(params);
         setAnnotatedFilesUploadData(res.data);
     }
 
-    const getSentenceLevelUploadVal = async (params:uploadValSenDataQueryDT) => {
+    const getSentenceLevelUploadVal = async (params: uploadValSenDataQueryDT) => {
         const res = await audioManagementService.getSentenceLevelUploadVal(params);
 
         setSentenceLevelUploadVal(res.data);
     }
 
-    const getWordLevelUploadVal = async (params:uploadValSenDataQueryDT) => {
+    const getWordLevelUploadVal = async (params: uploadValSenDataQueryDT) => {
         const res = await audioManagementService.getWordLevelUploadVal(params);
         setWordLevelUploadVal(res.data);
     }
 
-    const getPhonemeLevelUploadVal = async (params:uploadValSenDataQueryDT) => {
+    const getPhonemeLevelUploadVal = async (params: uploadValSenDataQueryDT) => {
         const res = await audioManagementService.getPhonemeLevelUploadVal(params);
         setPhonemeLevelUploadVal(res.data);
     }
 
-    const getValidatedFilesUploadData = async (params:uploadValidatedQueryDT) => {
+    const getValidatedFilesUploadData = async (params: uploadValidatedQueryDT) => {
         const res = await audioManagementService.getValidatedFilesUploadData(params);
         setValidatedFilesUploadData(res.data);
     }
 
-    const postReassignAudios = async (ids: string[]) => {
-        audioManagementService.postReassignAudios(ids);
+    const postReassignAllChecking = async (ids: string[]) => {
+        const res = await audioManagementService.postReassignAllChecking(ids);
+        if (res.status === 200) {
+        }
+    }
+
+    const postReassignAnnotatedFiles = async (ids: string[]) => {
+        const res = await audioManagementService.postReassignAnnotatedFiles(ids);
+        if (res.status === 200) {
+        }
+    }
+
+    const postReassignValidationLevel = async (ids: string[]) => {
+        const res = await audioManagementService.postReassignValidationLevel(ids);
+        if (res.status === 200) {
+        }
+    }
+
+    const postClaimValidatedLevel = async (params: claimApplicationBodyParamsDT) => {
+        const res = await audioManagementService.postClaimValidatedLevel(params);
+        if (res.status === 200) {
+            callingToast("Claim application has been sent")
+        }
+    }
+
+    const postClaimAnnotatedFiles = async (params: claimApplicationBodyParamsDT) => {
+        const res = await audioManagementService.postClaimAnnotatedFiles(params);
+        if (res.status === 200) {
+            callingToast("Claim application has been sent")
+        }
+    }
+
+    const postClaimAllChecked = async (params: claimApplicationBodyParamsDT) => {
+        const res = await audioManagementService.postClaimAllChecked(params);
+        if (res.status === 200) {
+            callingToast("Claim application has been sent")
+        }
     }
 
     return (
@@ -330,7 +371,12 @@ const AudioManagementProvider = ({ children }: { children: ReactNode }) => {
                 validatorList,
                 getScriptList,
                 scriptList,
-                postReassignAudios
+                postReassignAllChecking,
+                postReassignAnnotatedFiles,
+                postReassignValidationLevel,
+                postClaimAllChecked,
+                postClaimAnnotatedFiles,
+                postClaimValidatedLevel
             }}
         >
             {children}

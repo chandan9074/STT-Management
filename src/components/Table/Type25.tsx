@@ -10,22 +10,40 @@ import RoleImage from "../Image/RoleImage"
 import Pagination from "../Pagination"
 import { Drawer } from "../Drawer"
 import Remark2 from "../containers/AudioManagement/TableField/Remark2"
+import { STATUS_CLAIMED } from "../../helpers/ConditionVariable"
+import { CustomModal } from "../common/CustomModal"
+import ClaimApplicationModal from "../containers/AudioManagement/Annotation/AnnotatedFiles/ClaimApplicationModal"
+import { AudioManagementContext } from "../../context/AudioManagementProvider"
 
 type Props = {
     data: allCheckedSpeechDT[];
     setSelectedRowsData: React.Dispatch<React.SetStateAction<allCheckedSpeechDT[]>>
 }
-const Type25 = ({ data,setSelectedRowsData }: Props) => {
+const Type25 = ({ data, setSelectedRowsData }: Props) => {
 
     const { roleName } = useContext(CommonContext);
 
     const [remarkOpen, setRemarkOpen] = useState(false);
     const [singleTargetData, setSingleTargetData] = useState<allCheckedSpeechDT>();
+    const [isClaimModal, setIsClaimModal] = useState<boolean>(false);
     const [open, setOpen] = useState(false);
+    const { postClaimAllChecked } = useContext(AudioManagementContext);
 
     const showDrawer = () => {
         setOpen(true);
     };
+
+    const handleClaimSubmit = (status: string, remark: string) => {
+        if (singleTargetData?.id) {
+            const body = {
+                id: singleTargetData.id,
+                remark: remark,
+                status: status ? status : ""
+            }
+
+            postClaimAllChecked(body);
+        }
+    }
 
     const Type25columns: ColumnsType<allCheckedSpeechDT> = [
         {
@@ -73,7 +91,15 @@ const Type25 = ({ data,setSelectedRowsData }: Props) => {
             key: 'status',
             align: "center",
             width: 141,
-            render: (data: allCheckedSpeechDT) => <SpeechStatus data={data.status} />
+            render: (data: allCheckedSpeechDT) => <div className='flex gap-x-2'>
+                <SpeechStatus data={data?.status} />
+                {
+                    data?.status === STATUS_CLAIMED &&
+                    <button onClick={() => { setSingleTargetData(data); setIsClaimModal(true); }}>
+                        <img src={Icons.openInNewGray} alt="" className='cursor-pointer' />
+                    </button>
+                }
+            </div>
         },
         {
             title: `${"DeadLine (DD/MM)".toLocaleUpperCase()}`,
@@ -124,19 +150,19 @@ const Type25 = ({ data,setSelectedRowsData }: Props) => {
             width: 80,
             render: (_, record: allCheckedSpeechDT) => (
                 <div className="flex justify-center items-center">
-                <button
-                    onClick={() => {
-                        showDrawer();
-                        setSingleTargetData(record);
-                    }}
-                    className='flex justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full'>
-                    <img
+                    <button
+                        onClick={() => {
+                            showDrawer();
+                            setSingleTargetData(record);
+                        }}
+                        className='flex justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full'>
+                        <img
 
-                        className='w-[14px] h-[14px] cursor-pointer'
-                        src={Icons.open_in_new}
-                        alt="" />
-                </button>
-            </div>)
+                            className='w-[14px] h-[14px] cursor-pointer'
+                            src={Icons.open_in_new}
+                            alt="" />
+                    </button>
+                </div>)
         },
     ]
 
@@ -194,6 +220,13 @@ const Type25 = ({ data,setSelectedRowsData }: Props) => {
                     remark={singleTargetData.remark}
                 />
             }
+            {singleTargetData?.claimReason && <CustomModal.Primary
+                setOpen={setIsClaimModal}
+                open={isClaimModal}
+                width="658px"
+            >
+                <ClaimApplicationModal data={singleTargetData?.claimReason} setOpen={setIsClaimModal} handleClaimSubmit={handleClaimSubmit} />
+            </CustomModal.Primary>}
         </div>
     )
 }

@@ -4,7 +4,12 @@ import { TextField } from '@mui/material';
 import Icons from '../../../../../assets/Icons';
 import { predefined } from '../../../../../data/assign/AssignData';
 
-const ReasonOfApprove = ({setActiveTitle}: {setActiveTitle: Dispatch<SetStateAction<string>>}) => {
+type Props = {
+    handleSubmit: (remark: string) => void;
+    handleClose: () => void;
+}
+
+const ReasonOfApprove = ({ handleClose, handleSubmit }: Props) => {
     const [isRemark, setIsRemark] = useState<boolean>(false);
     const [remark, setRemark] = useState<string>('');
 
@@ -15,6 +20,13 @@ const ReasonOfApprove = ({setActiveTitle}: {setActiveTitle: Dispatch<SetStateAct
 
     const onRemarkSubmit = () => {
         console.log('remark...', remark);
+        handleSubmit(remark);
+    }
+
+    const onClose = () => {
+        setRemark('');
+        setIsRemark(false);
+        handleClose();
     }
 
     return (
@@ -87,17 +99,17 @@ const ReasonOfApprove = ({setActiveTitle}: {setActiveTitle: Dispatch<SetStateAct
                 />
 
                 <Buttons.BgHoverBtn
-                        title="Cancel"
-                        paddingY="py-3"
-                        paddingX="px-5"
-                        borderRadius="rounded-[6px]"
-                        textColor="text-secondary-blue-50"
-                        fontSize="medium"
-                        fontWeight="font-medium"
-                        duration="duration-300"
-                        hoverBgColor="hover:bg-white"
-                        onClick={() => setActiveTitle('')}
-                    />
+                    title="Cancel"
+                    paddingY="py-3"
+                    paddingX="px-5"
+                    borderRadius="rounded-[6px]"
+                    textColor="text-secondary-blue-50"
+                    fontSize="medium"
+                    fontWeight="font-medium"
+                    duration="duration-300"
+                    hoverBgColor="hover:bg-white"
+                    onClick={onClose}
+                />
             </div>
         </div>
     );

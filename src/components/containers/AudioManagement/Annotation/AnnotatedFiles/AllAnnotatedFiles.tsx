@@ -20,22 +20,28 @@ const AllAnnotatedFiles = () => {
         speaker: "",
         collector: "",
         audioSubmissionPeriod: "",
-        status: ""
+        status: "",
+        type: ""
     })
 
 
     const { getAnnotatedFilesData, annotatedFilesData } = useContext(AudioManagementContext);
 
     useEffect(() => {
+        setQuery({
+            ...query,
+            type: activeTab
+        })
+        
         getAnnotatedFilesData(query)
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [query, activeTab])
 
     const allTargetMenu = (key: string) => {
         const Category: CategoryMap = {
             "Sentence": <><Table.Type21 data={annotatedFilesData.data} setSelectedRowSData={setSelectedRowSData} /></>,
-            "Word": <></>,
-            "Phoneme": <></>
+            "Word": <><Table.Type21 data={annotatedFilesData.data} setSelectedRowSData={setSelectedRowSData} /></>,
+            "Phoneme": <><Table.Type21 data={annotatedFilesData.data} setSelectedRowSData={setSelectedRowSData} /></>
         };
         return Category[key];
     };

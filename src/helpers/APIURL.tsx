@@ -96,7 +96,12 @@ export const GET_RES_UPLOAD_AUDIO_VALIDATION_SENTENCE_AUDIO_MGT_MODULE = `${REAC
 export const GET_RES_UPLOAD_AUDIO_VALIDATION_WORD_AUDIO_MGT_MODULE = `${REACT_APP_BASE_URL2}/get_res_upload_audio_validation_word_audio_mgt_module`;
 export const GET_RES_UPLOAD_AUDIO_VALIDATION_PHONEME_AUDIO_MGT_MODULE = `${REACT_APP_BASE_URL2}/get_res_upload_audio_validation_phoneme_audio_mgt_module`;
 export const GET_RES_UPLOAD_AUDIO_VALIDATED_FILES_AUDIO_MGT_MODULE = `${REACT_APP_BASE_URL2}/get_res_upload_audio_validated_files_audio_mgt_module`;
-
+export const POST_RES_REASSIGN_ALL_CHECKING_AUDIO_MGT = `${REACT_APP_BASE_URL2}/post_res_reassign_all_checking_audio_mgt`;
+export const POST_RES_REASSIGN_ANNOTATED_FILES_AUDIO_MGT = `${REACT_APP_BASE_URL2}/post_res_reassign_annotated_files_audio_mgt`;
+export const POST_RES_REASSIGN_VALIDATION_LEVEL_AUDIO_MGT = `${REACT_APP_BASE_URL2}/post_res_reassign_validation_level_audio_mgt`;
+export const POST_RES_CLAIM_APPLICATION_ALL_CHECKED_AUDIO_MGT = `${REACT_APP_BASE_URL2}/post_res_claim_application_all_checked_audio_mgt`;
+export const POST_RES_CLAIM_APPLICATION_ANNOTATED_FILES_AUDIO_MGT = `${REACT_APP_BASE_URL2}/post_res_claim_application_annotated_files_audio_mgt`;
+export const POST_RES_CLAIM_APPLICATION_VALIDATED_LEVEL_AUDIO_MGT = `${REACT_APP_BASE_URL2}/post_res_claim_application_validated_level_audio_mgt`;
 
 
 //Organize

@@ -11,6 +11,10 @@ import RoleImage from '../Image/RoleImage'
 import Pagination from '../Pagination'
 import { Drawer } from '../Drawer'
 import Remark2 from '../containers/AudioManagement/TableField/Remark2'
+import { CustomModal } from '../common/CustomModal'
+import ClaimApplicationModal from '../containers/AudioManagement/Annotation/AnnotatedFiles/ClaimApplicationModal'
+import { AudioManagementContext } from '../../context/AudioManagementProvider'
+import { STATUS_CLAIMED } from '../../helpers/ConditionVariable'
 
 type Props = {
   data: allCheckedAudioDT[],
@@ -21,13 +25,27 @@ const Type18 = ({ data, setSelectedRowSData }: Props) => {
 
   const { roleName } = useContext(CommonContext);
   const [open, setOpen] = useState(false);
+  const [isClaimModal, setIsClaimModal] = useState<boolean>(false);
 
   const [remarkOpen, setRemarkOpen] = useState(false);
   const [singleTargetData, setSingleTargetData] = useState<allCheckedAudioDT>();
+  const { postClaimAllChecked } = useContext(AudioManagementContext);
 
   const showDrawer = (item: allCheckedAudioDT) => {
     setOpen(true);
   };
+
+  const handleClaimSubmit = (status: string, remark: string) => {
+    if (singleTargetData?.id) {
+      const body = {
+        id: singleTargetData.id,
+        remark: remark,
+        status: status ? status : ""
+      }
+
+      postClaimAllChecked(body);
+    }
+  }
 
   const Type18columns: ColumnsType<allCheckedAudioDT> = [
     {
@@ -81,7 +99,17 @@ const Type18 = ({ data, setSelectedRowSData }: Props) => {
       key: 'status',
       align: "center",
       width: 150,
-      render: (data: allCheckedAudioDT) => <SpeechStatus data={data.status} />
+      render: (data: allCheckedAudioDT) => <>
+        <div className='flex gap-x-2'>
+          <SpeechStatus data={data?.status} />
+          {
+            data?.status === STATUS_CLAIMED &&
+            <button onClick={() => { setSingleTargetData(data); setIsClaimModal(true); }}>
+              <img src={Icons.openInNewGray} alt="" className='cursor-pointer' />
+            </button>
+          }
+        </div>
+      </>
     },
     {
       title: `${"Script".toLocaleUpperCase()}`,
@@ -223,6 +251,14 @@ const Type18 = ({ data, setSelectedRowSData }: Props) => {
           submissionDate={singleTargetData.submissionDate}
         />
       }
+
+      {singleTargetData?.claimReason && <CustomModal.Primary
+        setOpen={setIsClaimModal}
+        open={isClaimModal}
+        width="658px"
+      >
+        <ClaimApplicationModal data={singleTargetData.claimReason} setOpen={setIsClaimModal} handleClaimSubmit={handleClaimSubmit} />
+      </CustomModal.Primary>}
     </div>
   )
 }

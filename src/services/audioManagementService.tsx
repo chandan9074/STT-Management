@@ -1,8 +1,7 @@
 import axios from 'axios';
-import { collectedAudioCollectorList, scriptFilterData, collectValSenData, collectedAudioSpeakersList, collectedAudioCheckerList, collectedAudioAnnotatorList, collectedAudioValidatorList } from '../data/audioManagement/AudioManagementData';
-import { allCheckedSpeechData, annotatedFilesUploadData, annotationUploadData, checkingStatusUploadData, sentenceLevelUploadData, uploadAudioData, ValidatedFilesUploadData, sentenceLevelValUpload } from '../data/audioManagement/UploadAudiosData';
+import { collectedAudioCollectorList, scriptFilterData, collectedAudioSpeakersList, collectedAudioCheckerList, collectedAudioAnnotatorList, collectedAudioValidatorList } from '../data/audioManagement/AudioManagementData';
 import * as PATH from '../helpers/APIURL';
-import { CollectedAudioQueryDT, allCheckedAudioQueryDT, allCheckedSpeechQueryDT, annotatedFilesQueryDT, annotatedFilesUploadQueryDT, annotationTypeQueryDT, checkingStatusQueryDT, checkingStatusUploadQueryDT, collectAnnSenQueryDT, collectValSenDataQueryDT, uploadAnnSenQueryDT, uploadAnnotationTypeQueryDT, uploadAudioQueryDT, uploadValSenDataQueryDT, uploadValidatedQueryDT, validatedFilesQueryDT } from '../types/audioManagementTypes';
+import { CollectedAudioQueryDT, allCheckedAudioQueryDT, allCheckedSpeechQueryDT, annotatedFilesQueryDT, annotatedFilesUploadQueryDT, annotationTypeQueryDT, checkingStatusQueryDT, checkingStatusUploadQueryDT, claimApplicationBodyParamsDT, collectAnnSenQueryDT, collectValSenDataQueryDT, uploadAnnSenQueryDT, uploadAnnotationTypeQueryDT, uploadAudioQueryDT, uploadValSenDataQueryDT, uploadValidatedQueryDT, validatedFilesQueryDT } from '../types/audioManagementTypes';
 
 
 export default class audioManagementService {
@@ -70,67 +69,101 @@ export default class audioManagementService {
 
     }
 
-    static getUploadAudiosData(params:uploadAudioQueryDT) {
+    static getUploadAudiosData(params: uploadAudioQueryDT) {
         // return uploadAudioData;
         return axios.get(PATH.GET_RES_UPLOAD_AUDIO_AUDIO_MGT_MODULE, { params: params })
 
     }
 
-    static getCheckinStatusUploadData(params:checkingStatusUploadQueryDT) {
+    static getCheckinStatusUploadData(params: checkingStatusUploadQueryDT) {
         // return checkingStatusUploadData;
         return axios.get(PATH.GET_RES_UPLOAD_AUDIO_CHECKING_STATUS_AUDIO_MGT_MODULE, { params: params })
     }
 
-    static getAllCheckedAudiosUploadData(params:allCheckedSpeechQueryDT) {
+    static getAllCheckedAudiosUploadData(params: allCheckedSpeechQueryDT) {
         // return allCheckedSpeechData;
         return axios.get(PATH.GET_RES_UPLOAD_AUDIO_ALL_CHECKED_AUDIO_MGT_MODULE, { params: params })
     }
 
-    static getAnnotationUploadData(params:uploadAnnotationTypeQueryDT) {
+    static getAnnotationUploadData(params: uploadAnnotationTypeQueryDT) {
         // return annotationUploadData;
         return axios.get(PATH.GET_RES_UPLOAD_AUDIO_ANNOTATION_TYPE_AUDIO_MGT_MODULE, { params: params })
     }
 
-    static getSentenceLevelUploadData(params:uploadAnnSenQueryDT) {
+    static getSentenceLevelUploadData(params: uploadAnnSenQueryDT) {
         // return sentenceLevelUploadData;
         return axios.get(PATH.GET_RES_UPLOAD_AUDIO_ANNOTATION_SENTENCE_AUDIO_MGT_MODULE, { params: params })
     }
 
-    static getWordLevelUploadData(params:uploadAnnSenQueryDT) {
+    static getWordLevelUploadData(params: uploadAnnSenQueryDT) {
         // return sentenceLevelUploadData;
         return axios.get(PATH.GET_RES_UPLOAD_AUDIO_ANNOTATION_WORD_AUDIO_MGT_MODULE, { params: params })
     }
 
-    static getPhonemeLevelUploadData(params:uploadAnnSenQueryDT) {
+    static getPhonemeLevelUploadData(params: uploadAnnSenQueryDT) {
         // return sentenceLevelUploadData;
         return axios.get(PATH.GET_RES_UPLOAD_AUDIO_ANNOTATION_PHONEME_AUDIO_MGT_MODULE, { params: params })
 
     }
 
-    static getAnnotatedFilesUploadData(params:annotatedFilesUploadQueryDT) {
+    static getAnnotatedFilesUploadData(params: annotatedFilesUploadQueryDT) {
         // return annotatedFilesUploadData;
         return axios.get(PATH.GET_RES_UPLOAD_AUDIO_ANNOTATED_FILES_AUDIO_MGT_MODULE, { params: params })
     }
 
-    static getSentenceLevelUploadVal(params:uploadValSenDataQueryDT) {
+    static getSentenceLevelUploadVal(params: uploadValSenDataQueryDT) {
         // return sentenceLevelValUpload;
         return axios.get(PATH.GET_RES_UPLOAD_AUDIO_VALIDATION_SENTENCE_AUDIO_MGT_MODULE, { params: params })
     }
 
-    static getWordLevelUploadVal(params:uploadValSenDataQueryDT) {
+    static getWordLevelUploadVal(params: uploadValSenDataQueryDT) {
         // return sentenceLevelValUpload;
         return axios.get(PATH.GET_RES_UPLOAD_AUDIO_VALIDATION_WORD_AUDIO_MGT_MODULE, { params: params })
     }
 
-    static getPhonemeLevelUploadVal(params:uploadValSenDataQueryDT) {
+    static getPhonemeLevelUploadVal(params: uploadValSenDataQueryDT) {
         // return sentenceLevelValUpload;
         return axios.get(PATH.GET_RES_UPLOAD_AUDIO_VALIDATION_PHONEME_AUDIO_MGT_MODULE, { params: params })
     }
 
-    static getValidatedFilesUploadData(params:uploadValidatedQueryDT) {
+    static getValidatedFilesUploadData(params: uploadValidatedQueryDT) {
         // return ValidatedFilesUploadData;
         return axios.get(PATH.GET_RES_UPLOAD_AUDIO_VALIDATED_FILES_AUDIO_MGT_MODULE, { params: params })
     }
+
+    static postReassignAllChecking(id: string[]) {
+        const body = {
+            selectedID: id
+        }
+        return axios.post(PATH.POST_RES_REASSIGN_ALL_CHECKING_AUDIO_MGT, body);
+    }
+
+    static postReassignAnnotatedFiles(id: string[]) {
+        const body = {
+            selectedID: id
+        }
+        return axios.post(PATH.POST_RES_REASSIGN_ANNOTATED_FILES_AUDIO_MGT, body);
+    }
+
+    static postReassignValidationLevel(id: string[]) {
+        const body = {
+            selectedID: id
+        }
+        return axios.post(PATH.POST_RES_REASSIGN_VALIDATION_LEVEL_AUDIO_MGT, body);
+    }
+
+    static postClaimValidatedLevel(body: claimApplicationBodyParamsDT) {
+        return axios.post(PATH.POST_RES_CLAIM_APPLICATION_VALIDATED_LEVEL_AUDIO_MGT, body);
+    }
+
+    static postClaimAnnotatedFiles(body: claimApplicationBodyParamsDT) {
+        return axios.post(PATH.POST_RES_CLAIM_APPLICATION_ANNOTATED_FILES_AUDIO_MGT, body);
+    }
+
+    static postClaimAllChecked(body: claimApplicationBodyParamsDT) {
+        return axios.post(PATH.POST_RES_CLAIM_APPLICATION_ALL_CHECKED_AUDIO_MGT, body);
+    }
+
 
     static getAudioCheckerList = (type: string) => {
         return collectedAudioCheckerList;
