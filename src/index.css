@@ -12,6 +12,23 @@
   width: 5px;
 }
 
+.css-1h38hvx-MuiFormControl-root-MuiTextField-root, .css-1qqsdnr-MuiAutocomplete-root{
+  background-color: white !important;
+}
+
+.css-19qh8xo-MuiInputBase-input-MuiOutlinedInput-input{
+  padding: 13px 14px !important;
+}
+
+.css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input{
+  padding: 13px 14px !important;
+  background-color: white !important;
+}
+
+.css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input:hover{
+  outline: transparent !important;
+}
+
 .custom_scrollbar::-webkit-scrollbar-track {
   background: inherit;
   border-radius: 5px;
@@ -229,3 +246,4 @@ pre {
 .hidden-label label {
   display: none !important;
 }
+

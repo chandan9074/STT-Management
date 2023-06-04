@@ -2,8 +2,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { Dispatch, SetStateAction, useContext, useState } from 'react';
 import { OrganizerContext } from '../../../context/OrganizerProvider';
-import { Grid, TextField } from '@mui/material';
-import { UserManagementContext } from '../../../context/UserManagementProvider';
+import { TextField } from '@mui/material';
 import ActionButton from '../RoleForm/ActionButton';
 import Icons from '../../../assets/Icons';
 import { DeviceDataDT, deviceBodyDT } from '../../../types/organizerTypes';
@@ -15,41 +14,38 @@ const validationSchema = yup.object({
 type Props = {
     setIsFormOpen: Dispatch<SetStateAction<boolean>>;
     data?: DeviceDataDT;
-    isEdit?: boolean;
-    handleEdit?: () => void;
+    handleEdit?: (value: boolean) => void;
     handleSelectRow?: (value: DeviceDataDT[]) => void;
 }
 
-const DeviceForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }: Props) => {
+
+
+const UpdateForm = ({ setIsFormOpen, data, handleEdit, handleSelectRow }: Props) => {
 
     const organizerContext = useContext(OrganizerContext);
     // const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
-    const [focus, setFocus] = useState("")
 
     const [active, setActive] = useState(data?.device ? data.device : "");
+    const [focus, setFocus] = useState("")
+
 
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            deviceName: isEdit ? data ? data?.brand : '' : "",
-            model: isEdit ? data ? data?.model : '' : "",
-            deviceType: isEdit ? data ? data?.device : '' : "",
+            deviceName: data ? data?.brand : '',
+            model: data ? data?.model : '',
+            deviceType: data ? data?.device : '',
         },
         validationSchema: validationSchema,
         onSubmit: (values: deviceBodyDT) => {
 
-            if (isEdit && data) {
-                console.log("edit activate");
-                values.id = data.id;
-                values.deviceType = active;
-                organizerContext.updateDevice(values);
-                handleSelectRow && handleSelectRow([])
-                handleEdit && handleEdit();
-            }
-            else {
-                values.deviceType = active;
-                organizerContext.postDevice(values)
-            }
+            console.log("edit activate");
+            values.id = data?.id;
+            values.deviceType = active;
+            organizerContext.updateDevice(values);
+            handleSelectRow && handleSelectRow([])
+            handleEdit && handleEdit(false);
+
             // console.log('value-----', values);
             formik.resetForm();
             setIsFormOpen(false)
@@ -102,7 +98,7 @@ const DeviceForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }
                                 borderColor: 'rgb(19, 110, 229) !important',
                             },
                         }}
-                        label={<div className={`${focus === "deviceName" ? "" : "mt-[3px]"}`} ><span className={`${focus === "deviceName" ? "font-medium" : "text-[14px] font-semibold"}`}>Device Name </span><span className='text-[red]'>*</span></div>}
+                        label={<div className={`${(focus === "deviceName" || formik.values.deviceName !== "") ? "" : "mt-[3px]"}`} ><span className={`${(focus === "deviceName" || formik.values.deviceName !== "") ? "font-medium" : "text-[14px] font-semibold"}`}>Device Name </span><span className='text-[red]'>*</span></div>}
                         onFocus={() => setFocus("deviceName")}
                         onBlur={() => setFocus("")}
                         value={formik.values.deviceName}
@@ -119,8 +115,8 @@ const DeviceForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }
                                 // border: selectedFieldOutline === 'deviceName' ? '1px solid #136EE5' : '1px solid transparent'
                             }
                         }}
-                        variant="outlined"
 
+                        variant="outlined"
                     // onFocus={() => setSelectedFieldOutline("deviceName")}
                     // onBlur={() => setSelectedFieldOutline("")}
                     // classes={{
@@ -131,16 +127,16 @@ const DeviceForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }
                     />
                     <TextField
                         id="model"
-                        name="model"
                         size='small'
                         sx={{
                             '&:hover fieldset': {
                                 borderColor: 'rgb(19, 110, 229) !important',
                             },
                         }}
-                        label={<div className={`${focus === "model" ? "" : "mt-[3px]"}`} ><span className={`${focus === "model" ? "font-medium" : "text-[14px] font-semibold"}`}>Model </span><span className='text-[red]'>*</span></div>}
+                        label={<div className={`${(focus === "model" || formik.values.model !== "") ? "" : "mt-[3px]"}`} ><span className={`${focus === "model" ? "font-medium" : "text-[14px] font-semibold"}`}>Model</span><span className='text-[red]'>*</span></div>}
                         onFocus={() => setFocus("model")}
                         onBlur={() => setFocus("")}
+                        name="model"
                         value={formik.values.model}
                         onChange={formik.handleChange}
                         error={formik.touched.model && Boolean(formik.errors.model)}
@@ -150,7 +146,7 @@ const DeviceForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }
                             style: {
                                 color: '#464E5F',
                                 fontWeight: '600',
-                                fontSize: '15px',
+                                fontSize: '14px',
                                 caretColor: '#136EE5',
                                 // border: selectedFieldOutline === 'model' ? '1px solid #136EE5' : '1px solid transparent'
                             }
@@ -171,4 +167,4 @@ const DeviceForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }
     );
 };
 
-export default DeviceForm;
+export default UpdateForm;

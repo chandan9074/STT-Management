@@ -9,6 +9,7 @@ import Image from '../../../Image';
 import { FormikValues } from 'formik';
 import { customMuiListStyle, urlPatternValidation } from '../../../../helpers/Utils';
 import { UserManagementContext } from '../../../../context/UserManagementProvider';
+import CustomSelect from '../../../CustomSelect';
 
 type Props = {
     getFile: (file: File | null) => void,
@@ -28,7 +29,7 @@ const FileReport = ({ getFile, formik }: Props) => {
             let files = event.fileList[0];
             setFile(files);
             // getFile(event.fileList[0]?.originFileObj);
-            
+
             formik.setFieldValue("cvFile", event.fileList[0]?.originFileObj);
         } else {
             // setFile([]);
@@ -42,10 +43,10 @@ const FileReport = ({ getFile, formik }: Props) => {
         // formik.setFieldValue("sourceFile", []);
         formik.setFieldValue("cvFile", []);
         setFile(null);
-            // getFile([]);
-            getFile(null);
+        // getFile([]);
+        getFile(null);
     }
-    
+
     return (
         <div>
             <div className='flex gap-x-[16px] items-center'>
@@ -60,10 +61,10 @@ const FileReport = ({ getFile, formik }: Props) => {
                                     <a href={urlPatternValidation(formik.values.cvFile) && formik.values.cvFile} rel="noreferrer" target="_blank" className='cursor-pointer'>
                                         <div >
                                             {
-                                                typeof(formik.values.cvFile) !== 'string' ?
-                                                formik.values.cvFile.name 
-                                                :
-                                                formik.values.cvFileName
+                                                typeof (formik.values.cvFile) !== 'string' ?
+                                                    formik.values.cvFile.name
+                                                    :
+                                                    formik.values.cvFileName
                                                 // (formik.values.cvFileName && formik.values.cvFileName !== '') ? formik.values.cvFileName : formik.values.cvFile.name  
                                             }
                                         </div>
@@ -179,7 +180,7 @@ const FileReport = ({ getFile, formik }: Props) => {
 
             <Grid container spacing={5}>
                 <Grid item xs={6}>
-                    <div className={`border ${selectedFieldOutline === 'adminData' ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px] mt-[60px]`}>
+                    {/* <div className={`border ${selectedFieldOutline === 'adminData' ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px] mt-[60px]`}>
                         <Autocomplete
                             classes={{ option: classes.option }}
                             disableClearable
@@ -229,6 +230,14 @@ const FileReport = ({ getFile, formik }: Props) => {
                                     onBlur={() => setSelectedFieldOutline("")}
                                 />
                             )}
+                        />
+                    </div> */}
+                    <div className='mt-7'>
+                        <CustomSelect.RoleSelect
+                            data={formik.values.role}
+                            fieldLabel='Select Admin'
+                            name='selectAdmin'
+                            formik={formik}
                         />
                     </div>
                 </Grid>

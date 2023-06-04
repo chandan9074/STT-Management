@@ -8,6 +8,8 @@ import NotFound from "./pages/NotFound";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Billing, Dashboard, Activity, AddScript, AddSpeech, AllCheckedAudios, AllCheckedAudiosUpload, AllTarget, AnnotatedFiles, AnnotatedFilesUpload, Annotation, AnnotationUpload, Assign, AssignContainer, AudioManagement, CheckingUploadAudio, CheckingStatus, CheckingStatusUpload, CollectedAudio, CreateTarget, Device, Draft, EditScript, EditSpeeches, EditUser, Organizer, PaymentHistory, PhonemeLevel, PhonemeLevelUpload, PhonemeLevelUploadVal, PhonemeLevelValidation, RecreateTarget, Role, Script, SentenceLevel, SentenceLevelUpload, SentenceLevelUploadVal, SentenceLevelValidation, Speech, Tag, UploadAudio, UserForm, UserManagement, ValidatedFiles, ValidatedFilesUpload, Validation, ValidationUpload, WordLevel, WordLevelUpload, WordLevelUploadVal, WordLevelValidation } from "./helpers/ComponentLoad";
+import { LoadingSkeleton } from "./assets/loadingSkeleton";
+import { Space, Spin } from "antd";
 
 function App() {
   useEffect(() => {
@@ -25,7 +27,13 @@ function App() {
     <>
       <ToastContainer />
       <BrowserRouter>
-        <Suspense>
+        <Suspense fallback={<div className="relative flex justify-center items-center h-screen overflow-hidden">
+          <img src={LoadingSkeleton.sidebarSkeleton} alt="" className="absolute top-0 left-0" />
+          <img src={LoadingSkeleton.navbarSkeleton} alt="" className="absolute top-0 left-14" />
+          <Space size="middle">
+            <Spin size="large" />
+          </Space>
+        </div>}>
           <Routes>
             <Route path="/" element={<Navigate to={PATH.BILLING_PATH} replace />} />
             <Route path={PATH.ASSIGN_PATH} element={<Navigate to={`${PATH.ASSIGN_PATH}/${PATH.ALL_TARGET_PTAH}`} replace />} />

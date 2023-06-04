@@ -151,6 +151,16 @@ export const gender = [
     'Female'
 ]
 
+export const role = [
+    'Admin',
+    'Manager',
+    'Collector',
+    'Team Leader',
+    'Annotator',
+    'Audio Checker',
+    'Validator',
+]
+
 export const education = [
     'Uneducated',
     'Secondary',

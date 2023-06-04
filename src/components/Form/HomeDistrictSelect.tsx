@@ -1,4 +1,4 @@
-import { FormControl, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
+import { FormControl, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import Icons from '../../assets/Icons';
 import { homeDistrict } from '../../data/userManagement/UserManagementData';
@@ -33,7 +33,8 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
 
     const [clicked, setClicked] = useState<boolean>(false)
 
-    const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
+    const [focus, setFocus] = useState("")
+
 
     useEffect(() => {
         setOnTextField(formikValues)
@@ -80,9 +81,9 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
             {/* <div className='relative z-[100] homeDistrictSelect '> */}
             <div className={`${!isHomeDistrict && 'hidden'} bg-transparent fixed top-0 left-0 h-full w-full z-[50]`} onClick={() => clickOutsideField()}></div>
 
-            <div className={`border ${selectedFieldOutline === name ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px] relative`}>
-                <FormControl sx={{ width: '100%' }} variant="outlined">
-                    <InputLabel htmlFor={name}>{<h1 className='comboBoxLabel'>{fieldLabel} {required && <span className='text-[red]'>*</span>}</h1>}</InputLabel>
+
+            <FormControl sx={{ width: '100%' }} variant="outlined">
+                {/* <InputLabel htmlFor={name}>{<h1 className='comboBoxLabel'>{fieldLabel} {required && <span className='text-[red]'>*</span>}</h1>}</InputLabel>
                     <OutlinedInput
                         id={name}
                         autoComplete='off'
@@ -124,12 +125,44 @@ const HomeDistrictSelect = ({ formikValues, formik, data, formikError, formikTou
                             setSelectedFieldOutline("");
                             handleDistrictInputClick()
                         }}
-                    />
-                </FormControl>
-            </div>
+                    /> */}
+                <TextField
+                    id={name}
+                    type='text'
+                    onMouseDown={onHomeDistrictFocus}
+                    name={name}
+                    variant="outlined"
+                    size='small'
+                    sx={{
+                        '&:hover fieldset': {
+                            borderColor: 'rgb(19, 110, 229) !important',
+                        },
+                    }}
+                    label={<div className={`${(focus === name || onTextField !== "") ? "" : "mt-[3px]"}`} ><span className={`${(focus === name || onTextField !== "") ? "font-medium" : "text-[14px] font-semibold"}`}>{fieldLabel} </span><span className='text-[red]'>*</span></div>}
+                    onFocus={() => setFocus(name)}
+                    onBlur={() => setFocus("")}
+                    value={onTextField || ''}
+                    onChange={(e) => {
+                        handleSearch(e);
+                        setOnTextField(e.target.value);
+                    }}
+                    InputProps={{
+                        style: {
+                            color: '#464E5F',
+                            fontWeight: '600',
+                            fontSize: '14px',
+                            caretColor: '#136EE5',
+                            // border: selectedFieldOutline === 'deviceName' ? '1px solid #136EE5' : '1px solid transparent'
+                        },
+                        endAdornment: (
+                            < img className='w-[8.41px] h-[5.37px]' src={Icons.arrow_drop_down_blue_gray_45} alt="" />
+                        )
+                    }}
+                />
+            </FormControl>
             {
                 isHomeDistrict &&
-                <div className={`absolute w-full h-[336px] ${align === "top" ? "-top-[22rem]" : ""} bg-white rounded-[8px] py-[6px] animate-fadeIn z-[51] overflow-auto shadow-bottom-light-blue-20`}>
+                <div className={`absolute w-full h-[236px] custom_scrollbar ${align === "top" ? "-top-[15rem]" : ""} bg-white rounded-[8px] py-[6px] animate-fadeIn z-[100] overflow-auto shadow-bottom-light-blue-20`}>
                     {filteredDistrict.map(({ division, district }) => (
                         <div key={division}>
                             <div className='bg-blue-gray-05 text-xxs text-blue-gray-60 pl-[16px] flex justify-between items-center pr-[9px]'>

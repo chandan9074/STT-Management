@@ -1,35 +1,48 @@
-import { useContext, useEffect, useState } from "react"
+import React, { Dispatch, SetStateAction, useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import Icons from "../../assets/Icons"
 import Buttons from "../../components/Buttons"
-import SideDrawerContent from "../../components/containers/Organizer/device/SideDrawerContent"
 import { Drawer } from "../../components/Drawer"
 import Table from "../../components/Table"
-import { DevcieDataDT } from "../../types/organizerTypes"
+import { DeviceDataDT } from "../../types/organizerTypes"
 import DeviceForm from "./DeviceForm"
 import { OrganizerContext } from "../../context/OrganizerProvider"
+import UpdateForm from "./DeviceForm/UpdateForm"
 
 const Device = () => {
 
-  
-  const [selectedRows, setSelectedRows] = useState<DevcieDataDT[]>([] as DevcieDataDT[])
+  const [open, setOpen] = useState<boolean>(false)
+  const [selectedRows, setSelectedRows] = useState<DeviceDataDT[]>([] as DeviceDataDT[])
+  const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([])
+  const [isEdit, setIsEdit] = useState<boolean>(false);
 
-  const {getDevice,deviceData} = useContext(OrganizerContext)
+
+  const { getDevice, deviceData } = useContext(OrganizerContext)
 
   useEffect(() => {
     getDevice()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const handleSelectRow = (value: DevcieDataDT[]) => {
-    setSelectedRows(value)
+  const handleSelectRow = (value: DeviceDataDT[], keys?: React.Key[]) => {
+    if (value.length > 0) {
+      setSelectedRows(value)
+    }
+    else {
+      setSelectedRows([])
+      setSelectedRowKeys([])
+      console.log("rows selected")
+    }
+    if (keys) {
+      setSelectedRowKeys(keys);
+    }
   }
 
   return (
     <div>
-      <Header  selectedRows={selectedRows} />
-      <Table.Type30 data={deviceData} handleSelectRow={handleSelectRow} />
-      
+      <Header selectedRows={selectedRows} handleSelectRow={handleSelectRow} isEdit={isEdit} setIsEdit={setIsEdit} />
+      <Table.Type30 open={open} setOpen={setOpen} data={deviceData} handleSelectRow={handleSelectRow} selectedRowKeys={selectedRowKeys} isEdit={isEdit} setIsEdit={setIsEdit} />
+
     </div>
   )
 }
@@ -37,13 +50,23 @@ const Device = () => {
 export default Device
 
 type Props = {
-  
-  selectedRows: DevcieDataDT[]
+
+  isEdit: boolean;
+  setIsEdit: Dispatch<SetStateAction<boolean>>;
+  selectedRows: DeviceDataDT[]
+  handleSelectRow: (value: DeviceDataDT[]) => void;
+
 }
-const Header = ({ selectedRows }: Props) => {
+const Header = ({ selectedRows, handleSelectRow, isEdit, setIsEdit }: Props) => {
 
   const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
+  const [selectedData, setSelectedData] = useState<DeviceDataDT>({} as DeviceDataDT);
 
+  const { deleteDevice } = useContext(OrganizerContext)
+
+  const handleEdit = (value: boolean) => {
+    setIsEdit(value)
+  }
 
   return (
     <div className='ml-6 mr-4 mb-5 flex items-center justify-between'>
@@ -58,6 +81,7 @@ const Header = ({ selectedRows }: Props) => {
               // onClick={() => {
               //   scriptContext.deleteScript(commonContext.role, selectedRows.map((item) => item.id).join(",")); setselectedRows([]);
               // }}
+              onClick={() => deleteDevice(selectedRows.map((item) => item.id).join(","))}
               title="Delete"
               paddingY="py-2"
               paddingX="px-4"
@@ -71,6 +95,11 @@ const Header = ({ selectedRows }: Props) => {
             {selectedRows.length === 1 &&
               <Link to={``}>
                 <Buttons.BgHoverBtn
+                  onClick={() => {
+                    setSelectedData(selectedRows[0]);
+                    setIsFormOpen(!isFormOpen);
+                    setIsEdit(true);
+                  }}
                   title="Edit"
                   paddingY="py-2"
                   paddingX="px-4"
@@ -91,17 +120,20 @@ const Header = ({ selectedRows }: Props) => {
           size="small"
           variant="Megenta"
           icon={<img src={Icons.Add} alt="add" />}
-          onClick={() => setIsFormOpen(true)}
+          // onClick={() => setIsFormOpen(true)}
+          onClick={() => { setSelectedData({} as DeviceDataDT); setIsEdit(false); setIsFormOpen(true); }}
+
         />
         <Drawer.Organizer.Type1
           isDrawerOpen={isFormOpen}
           // drawerClose={drawerClose}
           setIsDrawerClose={setIsFormOpen}
           headerBgColor="bg-ct-blue-20"
-          title="Create Device"
-          isEdit={false}
+          title={isEdit ? "Update Device" : "Create Device"}
+          isEdit={isEdit}
+          handleEdit={handleEdit}
         >
-          <DeviceForm setIsFormOpen={setIsFormOpen} />
+          {isEdit ? <UpdateForm setIsFormOpen={setIsFormOpen} handleSelectRow={handleSelectRow} data={selectedData} handleEdit={handleEdit} /> : <DeviceForm setIsFormOpen={setIsFormOpen} />}
         </Drawer.Organizer.Type1>
       </div>
     </div>

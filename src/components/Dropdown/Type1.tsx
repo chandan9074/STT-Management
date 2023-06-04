@@ -41,7 +41,7 @@ const Type1 = ({ data, children, handleSelectedItem, top, width, activeMonth, ha
                 : "text-blue-gray-80"
                 } whitespace-nowrap`}
             > */}
-            {item} {activeMonth && activeMonth.slice(0, 3)})
+            {item} {activeMonth && activeMonth.slice(0, 3)}
             {/* </h3> */}
           </button>
         ))}

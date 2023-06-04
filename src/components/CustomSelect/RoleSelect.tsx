@@ -1,9 +1,9 @@
 import { FormControl, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
 import React, { useContext, useState } from 'react';
-import { organizeRole } from '../../../data/organize/OrganizerData';
-import RoleImage from '../../../components/Image/RoleImage';
-import Icons from '../../../assets/Icons';
-import { UserManagementContext } from '../../../context/UserManagementProvider';
+import { organizeRole } from '../../data/organize/OrganizerData';
+import Icons from '../../assets/Icons';
+import RoleImage from '../Image/RoleImage';
+
 
 type Prop =
     {
@@ -88,6 +88,7 @@ const RoleSelect = ({ formikValues, formik, data, formikError, formikTouched, na
                         handleSearch(e);
                         setOnTextField(e.target.value);
                     }}
+                    
                     InputProps={{
                         style: {
                             color: '#464E5F',
@@ -105,14 +106,14 @@ const RoleSelect = ({ formikValues, formik, data, formikError, formikTouched, na
             {/* </div> */}
             {
                 isRole &&
-                <div className='absolute z-[100] bg-white mt-2 rounded-lg w-[429px] flex flex-wrap justify-between shadow-bottom-light-blue-20 cursor-pointer'>
+                <div className='absolute z-[100] bg-white mt-2 rounded-lg w-[380px] flex flex-col justify-between shadow-bottom-light-blue-20 cursor-pointer'>
 
                     {
                         filteredDistrict.map((item: string, i: number) => (
                             <div
                                 key={i}
                                 onClick={() => onSelect(item)}
-                                className={`w-[50%] justify-between flex item-center pl-4 py-[11.5px] pr-2 rounded-lg ${formik.values.role === item ? 'activeColor' : 'deactiveColor'}`}>
+                                className={`w-full justify-between flex item-center pl-4 py-[11.5px] pr-2 rounded-lg ${formik.values.role === item ? 'activeColor' : 'deactiveColor'}`}>
                                 <div
                                     key={i} className={`flex items-center gap-x-3 cursor-pointer`}>
                                     {

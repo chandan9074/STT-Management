@@ -8,21 +8,27 @@ import { Drawer } from "../Drawer"
 import SideDrawerContent from "../containers/Organizer/role/SideDrawerContent"
 import { useState } from "react"
 import RoleForm from "../../pages/Organizer/RoleForm"
+import UpdateForm from "../../pages/Organizer/RoleForm/UpdateForm"
 
 type Props = {
     data: RoleDataDT[]
-    handleSelectRow: (value: RoleDataDT[]) => void;
+    handleSelectRow: (value: RoleDataDT[], keys?: React.Key[]) => void;
     open: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    selectedRowKeys: React.Key[];
+    setIsEdit: React.Dispatch<React.SetStateAction<boolean>>
+    isEdit: boolean;
 }
 
-const Type28 = ({ data, handleSelectRow, open, setOpen }: Props) => {
+const Type28 = ({ data, handleSelectRow, open, setOpen, selectedRowKeys, setIsEdit, isEdit }: Props) => {
 
     const [selectedRoleData, setSelectedRoleData] = useState<RoleDataDT>({} as RoleDataDT);
     const [isFormDrawer, setIsFormDrawer] = useState(false);
+    console.log(isEdit, "isedit")
 
     const handleEdit = () => {
-        setIsFormDrawer(!isFormDrawer);
+        // setIsFormDrawer(!isFormDrawer);
+        setIsEdit(true)
     }
 
     const Type28columns: ColumnsType<RoleDataDT> = [
@@ -70,7 +76,7 @@ const Type28 = ({ data, handleSelectRow, open, setOpen }: Props) => {
                         //     showDrawer(record)
                         //     setSingleTargetData(record)
                         // }}
-                        onClick={() => { setOpen(true); setSelectedRoleData(data) }}>
+                        onClick={() => { setOpen(true); setSelectedRoleData(data); setIsEdit(false) }}>
                         <img
                             className='w-[14px] h-[14px]'
                             src={Icons.open_in_new}
@@ -84,7 +90,7 @@ const Type28 = ({ data, handleSelectRow, open, setOpen }: Props) => {
     const rowSelection = {
         onChange: (selectedRowKeys: React.Key[], selectedRows: RoleDataDT[]) => {
             // setSelectedTarget(selectedRows);
-            handleSelectRow(selectedRows)
+            handleSelectRow(selectedRows, selectedRowKeys)
 
         },
         getCheckboxProps: (record: RoleDataDT) => ({
@@ -98,12 +104,13 @@ const Type28 = ({ data, handleSelectRow, open, setOpen }: Props) => {
     }
 
     return (
-        <div className="billing-table billing-table-even-bg type4-table horizontal-table-padding">
+        <div className="billing-table billing-table-even-bg type4-table horizontal-table-padding w-full">
             <Table
                 dataSource={data}
                 columns={Type28columns}
                 rowSelection={{
                     // type: selectionType,
+                    selectedRowKeys,
                     columnWidth: 48,
                     fixed: 'left',
                     ...rowSelection,
@@ -111,21 +118,23 @@ const Type28 = ({ data, handleSelectRow, open, setOpen }: Props) => {
                 rowKey="id"
                 pagination={false}
             />
-            <Drawer.Organizer.Type1
-                isDrawerOpen={open}
-                // drawerClose={drawerClose}
-                setIsDrawerClose={setOpen}
-                isEdit={true}
-                headerBgColor="bg-ct-blue-05"
-                title="Role Details"
-                handleEdit={handleEdit}
-            >
-                <div className=' flex items-center'>
-                    {
-                        isFormDrawer ? <RoleForm setIsDrawerOpen={setOpen} data={selectedRoleData} /> : <SideDrawerContent data={selectedRoleData} />
-                    }
-                </div>
-            </Drawer.Organizer.Type1>
+            <div className="w-full">
+                <Drawer.Organizer.Type1
+                    isDrawerOpen={open}
+                    // drawerClose={drawerClose}
+                    setIsDrawerClose={setOpen}
+                    isEdit={true}
+                    headerBgColor="bg-ct-blue-05"
+                    title={isEdit ? "Update Role" : "Role Details"}
+                    handleEdit={handleEdit}
+                >
+                    <div className='w-full'>
+                        {
+                            isEdit ? <UpdateForm setIsDrawerOpen={setOpen} data={selectedRoleData} handleEdit={handleEdit} /> : <SideDrawerContent data={selectedRoleData} />
+                        }
+                    </div>
+                </Drawer.Organizer.Type1>
+            </div>
             {/* <div className='flex w-full justify-end mt-4 mb-2'>
                 <Pagination.Type2
                     total={100}

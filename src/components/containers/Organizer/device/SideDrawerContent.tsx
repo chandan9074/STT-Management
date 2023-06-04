@@ -1,8 +1,8 @@
-import { DevcieDataDT } from "../../../../types/organizerTypes"
+import { DeviceDataDT } from "../../../../types/organizerTypes"
 import DeviceImage from "../../../Image/DeviceImage"
 
 type Props = {
-    data: DevcieDataDT
+    data: DeviceDataDT
 }
 
 const SideDrawerContent = ({ data }: Props) => {

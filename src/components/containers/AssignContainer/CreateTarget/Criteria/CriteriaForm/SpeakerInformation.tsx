@@ -4,20 +4,21 @@ import { healthFactors, recordingArea, recordingDistanceAssign } from '../../../
 import MultipleSelect from '../../../../../Form/MultipleSelect';
 import Icons from '../../../../../../assets/Icons';
 import { FormikValues } from 'formik';
-import { useContext, useState } from 'react';
-import { UserManagementContext } from '../../../../../../context/UserManagementProvider';
+import { useState } from 'react';
+import CustomSelect from '../../../../../CustomSelect';
+import HomeDistrictSelect from '../../../../../Form/HomeDistrictSelect';
 
 
 const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
 
     const [clicked, setClicked] = useState(false);
-    const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
+    const [focus, setFocus] = useState("")
 
 
     return (
         <div className=''>
             <div className='w-[308px]'>
-                <div className='mb-[18px]'>
+                <div className='mb-6'>
                     <h1 className='text-ct-blue-60 text-small font-semibold'>Speaker Information</h1>
                 </div>
                 <div className='flex gap-x-[16px] items-center h-[48px]'>
@@ -37,77 +38,104 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                     </div>
                 </div>
 
-                <div className={`personalInfo border ${selectedFieldOutline === 'ageRange' ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px] mt-2`}>
-                    <Autocomplete
-                        disableClearable
-                        placeholder='Choose one'
-                        id="ageRange"
-                        style={{ width: '100%' }}
-                        options={ageRange}
-                        value={formik.values.ageRange}
-                        onChange={(event, value) => {
-                            if (typeof value === 'string') {
 
-                                formik.setFieldValue('ageRange', value)
-                            } else {
-                                formik.setFieldValue('ageRange', '')
-                            }
-                        }}
+                {/* <Autocomplete
+                    disableClearable
+                    placeholder='Choose one'
+                    size='small'
+                    id="ageRange"
+                    style={{ width: '100%' }}
+                    options={ageRange}
+                    value={formik.values.ageRange}
+                    onChange={(event, value) => {
+                        if (typeof value === 'string') {
+
+                            formik.setFieldValue('ageRange', value)
+                        } else {
+                            formik.setFieldValue('ageRange', '')
+                        }
+                    }}
 
 
-                        renderOption={(props, option) => (
-                            <Box key={option} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
-                                <div className='flex justify-between items-center w-full'>
-                                    <h1 className='text-blue-gray-80 text-small font-medium'>{option}</h1>
-                                    <h1 className='text-blue-gray-A20 text-xs font-medium pr-[4pxx]'>year</h1>
-                                </div>
-                            </Box>
-                        )}
+                    renderOption={(props, option) => (
+                        <Box key={option} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
+                            <div className='flex justify-between items-center w-full'>
+                                <h1 className='text-blue-gray-80 text-small font-medium'>{option}</h1>
+                                <h1 className='text-blue-gray-A20 text-xs font-medium pr-[4pxx]'>year</h1>
+                            </div>
+                        </Box>
+                    )}
 
-                        renderInput={(params) => (
-                            <TextField
-                                // style={{border: '1px solid green', borderRadius: '7px'}}
-                                placeholder='Choose one'
-                                {...params}
-                                name="ageRange"
-                                error={formik.touched.ageRange && Boolean(formik.errors.ageRange)}
-                                helperText={formik.touched.ageRange && formik.errors.ageRange}
+                    renderInput={(params) => (
+                        <TextField
+                            // style={{border: '1px solid green', borderRadius: '7px'}}
+                            placeholder='Choose one'
+                            {...params}
+                            name="ageRange"
+                            error={formik.touched.ageRange && Boolean(formik.errors.ageRange)}
+                            helperText={formik.touched.ageRange && formik.errors.ageRange}
 
-                                InputLabelProps={{
-                                    // shrink: true,
-                                    style: {
-                                        display: 'flex',
-                                        justifyContent: 'space-between',
-                                    }
-                                }}
-
-                                label={
-                                    <div className={`${!clicked && "w-[15.7rem]"} flex justify-between`}>
-                                        <h1 className='comboBoxLabel'>
-                                            Age Range
-                                            <span className='text-[red]'>*</span>
-                                        </h1>
-                                        <h1 className={`${clicked && 'hidden'} text-xs font-medium text-blue-gray-A20`}>year</h1>
-                                    </div>
+                            InputLabelProps={{
+                                // shrink: true,
+                                style: {
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
                                 }
+                            }}
 
-                                variant="outlined"
-                                onFocus={() => {
-                                    setSelectedFieldOutline("ageRange");
-                                    setClicked(!clicked)
-                                }}
-                                onBlur={() => {
-                                    setSelectedFieldOutline("")
-                                    setClicked(!clicked)
-                                }}
+                            sx={{
+                                '&:hover fieldset': {
+                                    borderColor: 'rgb(19, 110, 229) !important',
+                                },
+                            }}
+                            label={<div className={`${!clicked && "w-[15.7rem]"} flex justify-between ${focus === "description" ? "" : "mt-[3px]"}`} >
+                                <h1 className='comboBoxLabel'>
+                                    Age Range
+                                    <span className='text-[red]'>*</span>
+                                </h1>
+                                <h1 className={`${clicked && 'hidden'} text-xs font-medium text-blue-gray-A20`}>year</h1>
+                            </div>}
+                            onFocus={() => setFocus("description")}
+                            onBlur={() => setFocus("")}
+                            // label={
+                            //     <div className={`${!clicked && "w-[15.7rem]"} flex justify-between`}>
+                            //         <h1 className='comboBoxLabel'>
+                            //             Age Range
+                            //             <span className='text-[red]'>*</span>
+                            //         </h1>
+                            //         <h1 className={`${clicked && 'hidden'} text-xs font-medium text-blue-gray-A20`}>year</h1>
+                            //     </div>
+                            // }
 
-                            />
-                        )}
+                            variant="outlined"
+                        // onFocus={() => {
+                        //     setSelectedFieldOutline("ageRange");
+                        //     setClicked(!clicked)
+                        // }}
+                        // onBlur={() => {
+                        //     setSelectedFieldOutline("")
+                        //     setClicked(!clicked)
+                        // }}
+
+                        />
+                    )}
+                /> */}
+
+                <div className='mt-4'>
+                    <CustomSelect.Type1
+                        formikValues={formik.values.ageRange}
+                        data={ageRange}
+                        formikError={formik.errors.ageRange}
+                        formikTouched={formik.touched.ageRange}
+                        formik={formik}
+                        name={'ageRange'}
+                        fieldLabel='Age Range'
+
                     />
                 </div>
 
                 <div className='mt-4'>
-                    <MultipleSelect
+                    <HomeDistrictSelect
                         formikValues={formik.values.district}
                         data={homeDistrict}
                         formikError={formik.errors.district}
@@ -118,131 +146,160 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                     />
                 </div>
 
-                <div className='flex gap-3'>
-                    <div className={`mt-4 personalInfo border ${selectedFieldOutline === 'profession' ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px]`}>
-                        <Autocomplete
-                            disableClearable
-                            placeholder='Choose one'
-                            id="profession"
-                            style={{ width: '122px' }}
-                            options={profession}
-                            value={formik.values.profession}
-                            onChange={(event, value) => {
-                                if (typeof value === 'string') {
+                <div className='flex gap-3 mt-4'>
 
-                                    formik.setFieldValue('profession', value)
-                                } else {
-                                    formik.setFieldValue('profession', '')
-                                }
-                            }}
-
-
-                            renderOption={(props, option) => (
-                                <Box key={option} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
-                                    <div className='flex justify-between items-center w-full'>
-                                        <h1 className='text-blue-gray-80 text-small font-medium'>{option}</h1>
-                                    </div>
-                                </Box>
-                            )}
-
-                            renderInput={(params) => (
-
-                                <TextField
-                                    {...params}
-                                    name="profession"
-                                    error={formik.touched.profession && Boolean(formik.errors.profession)}
-                                    helperText={formik.touched.profession && formik.errors.profession}
-
-                                    label={<h1 className='comboBoxLabel'>Profession
-                                        {/* <span className='text-[red]'>*</span> */}
-                                    </h1>}
-                                    variant="outlined"
-                                    onFocus={() => setSelectedFieldOutline("profession")}
-                                    onBlur={() => setSelectedFieldOutline("")}
-                                />
-                            )}
-                        />
-                    </div>
-
-
-                    <div className={`mt-4 personalInfo border ${selectedFieldOutline === 'economicSituation' ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px]`}>
-                        <Autocomplete
-                            disableClearable
-                            placeholder='Choose one'
-                            id="economicSituation"
-                            style={{ width: '174px' }}
-                            options={educationSituation}
-                            value={formik.values.economicSituation}
-                            onChange={(event, value) => {
-                                if (typeof value === 'string') {
-
-                                    formik.setFieldValue('economicSituation', value)
-                                } else {
-                                    formik.setFieldValue('economicSituation', '')
-                                }
-                            }}
-
-
-                            renderOption={(props, option) => (
-                                <Box key={option} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
-                                    <div className='flex justify-between items-center w-full'>
-                                        <h1 className='text-blue-gray-80 text-small font-medium'>{option}</h1>
-                                    </div>
-                                </Box>
-                            )}
-
-                            renderInput={(params) => (
-
-                                <TextField
-                                    {...params}
-                                    name="economicSituation"
-                                    // error={formik.touched.economicSituation && Boolean(formik.errors.economicSituation)}
-                                    // helperText={formik.touched.economicSituation && formik.errors.economicSituation}
-
-                                    label={<h1 className='comboBoxLabel'>Economic Situation
-                                        {/* <span className='text-[red]'>*</span> */}
-                                    </h1>}
-                                    variant="outlined"
-                                    onFocus={() => setSelectedFieldOutline("economicSituation")}
-                                    onBlur={() => setSelectedFieldOutline("")}
-                                />
-                            )}
-                        />
-                    </div>
-                </div>
-
-                <div className={`mt-4 personalInfo border ${selectedFieldOutline === 'education' ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px]`}>
-                    <Autocomplete
+                    {/* <Autocomplete
                         disableClearable
                         placeholder='Choose one'
-                        id="education"
-                        style={{ width: '100%' }}
-                        options={education}
-                        value={formik.values.education}
+                        id="profession"
+                        style={{ width: '122px' }}
+                        options={profession}
+                        value={formik.values.profession}
                         onChange={(event, value) => {
                             if (typeof value === 'string') {
 
-                                formik.setFieldValue('education', value)
+                                formik.setFieldValue('profession', value)
                             } else {
-                                formik.setFieldValue('education', '')
+                                formik.setFieldValue('profession', '')
                             }
                         }}
 
+
+                        renderOption={(props, option) => (
+                            <Box key={option} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
+                                <div className='flex justify-between items-center w-full'>
+                                    <h1 className='text-blue-gray-80 text-small font-medium'>{option}</h1>
+                                </div>
+                            </Box>
+                        )}
+
                         renderInput={(params) => (
+
                             <TextField
-                                placeholder='Choose one'
                                 {...params}
-                                name="education"
-                                error={formik.touched.education && Boolean(formik.errors.education)}
-                                helperText={formik.touched.education && formik.errors.education}
-                                label={<h1 className='comboBoxLabel'>Education </h1>}
+                                name="profession"
+                                error={formik.touched.profession && Boolean(formik.errors.profession)}
+                                helperText={formik.touched.profession && formik.errors.profession}
+
+                                label={<h1 className='comboBoxLabel'>Profession
+                                </h1>}
                                 variant="outlined"
-                                onFocus={() => setSelectedFieldOutline("education")}
-                                onBlur={() => setSelectedFieldOutline("")}
+                            
                             />
                         )}
+                    /> */}
+                    <div className='w-full flex justify-between'>
+                        <div className='w-[122px]'>
+                            <CustomSelect.Type1
+                                formikValues={formik.values.profession}
+                                data={profession}
+                                formikError={formik.errors.profession}
+                                formikTouched={formik.touched.profession}
+                                formik={formik}
+                                name={'profession'}
+                                fieldLabel='Profession'
+                                optional={true}
+                            />
+                        </div>
+
+
+
+                        {/* <Autocomplete
+                        disableClearable
+                        placeholder='Choose one'
+                        id="economicSituation"
+                        style={{ width: '174px' }}
+                        options={educationSituation}
+                        value={formik.values.economicSituation}
+                        onChange={(event, value) => {
+                            if (typeof value === 'string') {
+
+                                formik.setFieldValue('economicSituation', value)
+                            } else {
+                                formik.setFieldValue('economicSituation', '')
+                            }
+                        }}
+
+
+                        renderOption={(props, option) => (
+                            <Box key={option} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
+                                <div className='flex justify-between items-center w-full'>
+                                    <h1 className='text-blue-gray-80 text-small font-medium'>{option}</h1>
+                                </div>
+                            </Box>
+                        )}
+
+                        renderInput={(params) => (
+
+                            <TextField
+                                {...params}
+                                name="economicSituation"
+                                
+
+                                label={<h1 className='comboBoxLabel'>Economic Situation</h1>}
+                                variant="outlined"
+                            />
+                        )}
+                    /> */}
+                        <div className='w-[174px]'>
+                            <CustomSelect.Type1
+                                formikValues={formik.values.economicSituation}
+                                data={educationSituation}
+                                formikError={formik.errors.economicSituation}
+                                formikTouched={formik.touched.economicSituation}
+                                formik={formik}
+                                name={'economicSituation'}
+                                fieldLabel='Economic Situation'
+                                optional={true}
+                            />
+                        </div>
+                    </div>
+                </div>
+
+
+                {/* <Autocomplete
+                    disableClearable
+                    placeholder='Choose one'
+                    id="education"
+                    style={{ width: '100%' }}
+                    options={education}
+                    value={formik.values.education}
+                    onChange={(event, value) => {
+                        if (typeof value === 'string') {
+
+                            formik.setFieldValue('education', value)
+                        } else {
+                            formik.setFieldValue('education', '')
+                        }
+                    }}
+
+                    renderInput={(params) => (
+                        <TextField
+                            placeholder='Choose one'
+                            {...params}
+                            name="education"
+                            error={formik.touched.education && Boolean(formik.errors.education)}
+                            helperText={formik.touched.education && formik.errors.education}
+                            label={<h1 className='comboBoxLabel'>Education </h1>}
+                            variant="outlined"
+                        // onFocus={() => setSelectedFieldOutline("education")}
+                        // onBlur={() => setSelectedFieldOutline("")}
+                        />
+                    )}
+                /> */}
+                <div className='mt-4'>
+                    <CustomSelect.Type1
+                        formikValues={formik.values.education}
+                        data={education}
+                        formikError={formik.errors.education}
+                        formikTouched={formik.touched.education}
+                        formik={formik}
+                        name={'education'}
+                        fieldLabel='Education'
+                        optional={true}
                     />
                 </div>
+
 
                 <div className='mt-4'>
                     <FormGroup row>
@@ -272,77 +329,95 @@ const SpeakerInformation = ({ formik }: { formik: FormikValues }) => {
                     </FormGroup>
                 </div>
 
-                <div className={`mt-4 personalInfo border ${selectedFieldOutline === 'recordingArea' ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px]`}>
-                    <Autocomplete
-                        disableClearable
-                        placeholder='Choose one'
-                        id="recordingArea"
-                        style={{ width: '100%' }}
-                        options={recordingArea}
-                        value={formik.values.recordingArea}
-                        onChange={(event, value) => {
-                            if (typeof value === 'string') {
 
-                                formik.setFieldValue('recordingArea', value)
-                            } else {
-                                formik.setFieldValue('recordingArea', '')
-                            }
-                        }}
+                {/* <Autocomplete
+                    disableClearable
+                    placeholder='Choose one'
+                    id="recordingArea"
+                    style={{ width: '100%' }}
+                    options={recordingArea}
+                    value={formik.values.recordingArea}
+                    onChange={(event, value) => {
+                        if (typeof value === 'string') {
 
-                        renderInput={(params) => (
+                            formik.setFieldValue('recordingArea', value)
+                        } else {
+                            formik.setFieldValue('recordingArea', '')
+                        }
+                    }}
 
-                            <TextField
-                                placeholder='Choose one'
-                                {...params}
-                                name="recordingArea"
-                                // error={formik.touched.recordingArea && Boolean(formik.errors.recordingArea)}
-                                // helperText={formik.touched.recordingArea && formik.errors.recordingArea}
+                    renderInput={(params) => (
 
-                                label={<h1 className='comboBoxLabel'>Recording Area
-                                    {/* <span className='text-[red]'>*</span> */}
-                                </h1>}
-                                variant="outlined"
-                                onFocus={() => setSelectedFieldOutline("recordingArea")}
-                                onBlur={() => setSelectedFieldOutline("")}
-                            />
-                        )}
+                        <TextField
+                            placeholder='Choose one'
+                            {...params}
+                            name="recordingArea"
+                            
+
+                            label={<h1 className='comboBoxLabel'>Recording Area
+                            </h1>}
+                            variant="outlined"
+                        
+                        />
+                    )}
+                /> */}
+                <div className='mt-4'>
+                    <CustomSelect.Type1
+                        formikValues={formik.values.recordingArea}
+                        data={recordingArea}
+                        formikError={formik.errors.recordingArea}
+                        formikTouched={formik.touched.recordingArea}
+                        formik={formik}
+                        name={'recordingArea'}
+                        fieldLabel='Recording Area'
+                        optional={true}
+                        dropdownAlign='top'
                     />
                 </div>
 
-                <div className={`mt-4 personalInfo border ${selectedFieldOutline === 'recordingDistance' ? 'border-secondary-blue-50' : 'border-transparent'} rounded-[7px]`}>
-                    <Autocomplete
-                        disableClearable
-                        placeholder='Choose one'
-                        id="recordingDistance"
-                        style={{ width: '100%' }}
-                        options={recordingDistanceAssign}
-                        value={formik.values.recordingDistance}
-                        onChange={(event, value) => {
-                            if (typeof value === 'string') {
 
-                                formik.setFieldValue('recordingDistance', value)
-                            } else {
-                                formik.setFieldValue('recordingDistance', '')
-                            }
-                        }}
+                {/* <Autocomplete
+                    disableClearable
+                    placeholder='Choose one'
+                    id="recordingDistance"
+                    style={{ width: '100%' }}
+                    options={recordingDistanceAssign}
+                    value={formik.values.recordingDistance}
+                    onChange={(event, value) => {
+                        if (typeof value === 'string') {
 
-                        renderInput={(params) => (
+                            formik.setFieldValue('recordingDistance', value)
+                        } else {
+                            formik.setFieldValue('recordingDistance', '')
+                        }
+                    }}
 
-                            <TextField
-                                placeholder='Choose one'
-                                {...params}
-                                name="recordingDistance"
-                                // error={formik.touched.recordingDistance && Boolean(formik.errors.recordingDistance)}
-                                // helperText={formik.touched.recordingDistance && formik.errors.recordingDistance}
+                    renderInput={(params) => (
 
-                                label={<h1 className='comboBoxLabel'>Recording Distance/ Mode
-                                    {/* <span className='text-[red]'>*</span> */}
-                                </h1>}
-                                variant="outlined"
-                                onFocus={() => setSelectedFieldOutline("recordingDistance")}
-                                onBlur={() => setSelectedFieldOutline("")}
-                            />
-                        )}
+                        <TextField
+                            placeholder='Choose one'
+                            {...params}
+                            name="recordingDistance"
+
+                            label={<h1 className='comboBoxLabel'>Recording Distance/ Mode
+                            </h1>}
+                            variant="outlined"
+                       
+                        />
+                    )}
+                /> */}
+
+                <div className='mt-4'>
+                    <CustomSelect.Type1
+                        formikValues={formik.values.recordingDistance}
+                        data={recordingDistanceAssign}
+                        formikError={formik.errors.recordingDistance}
+                        formikTouched={formik.touched.recordingDistance}
+                        formik={formik}
+                        name={'recordingDistance'}
+                        fieldLabel='Recording Distance'
+                        optional={true}
+                        dropdownAlign='top'
                     />
                 </div>
 

@@ -3,7 +3,6 @@ import * as yup from 'yup';
 import { Dispatch, SetStateAction, useContext, useState } from 'react';
 import { OrganizerContext } from '../../../context/OrganizerProvider';
 import { Grid, TextField } from '@mui/material';
-import { UserManagementContext } from '../../../context/UserManagementProvider';
 import ActionButton from '../RoleForm/ActionButton';
 import { TagDataDT, tagBodyDT } from '../../../types/organizerTypes';
 
@@ -14,39 +13,32 @@ const validationSchema = yup.object({
 type Props = {
     setIsFormOpen: Dispatch<SetStateAction<boolean>>;
     data?: TagDataDT;
-    isEdit?: boolean;
-    handleEdit?: () => void;
+    handleEdit?: (value: boolean) => void;
     handleSelectRow?: (value: TagDataDT[]) => void;
 }
 
-const TagForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }: Props) => {
+const UpdateForm = ({ setIsFormOpen, data, handleEdit, handleSelectRow }: Props) => {
+
+    const [focus, setFocus] = useState("")
 
     const organizerContext = useContext(OrganizerContext);
     // const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
-    const [focus, setFocus] = useState("")
-
 
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            tagName: isEdit ? data ? data?.tagName : '' : "",
-            shortCut: isEdit ? data ? data?.shortCut : '' : "",
-            description: isEdit ? data ? data?.description : '' : "",
+            tagName: data ? data?.tagName : '',
+            shortCut: data ? data?.shortCut : '',
+            description: data ? data?.description : '',
         },
         validationSchema: validationSchema,
         onSubmit: (values: tagBodyDT) => {
 
-            if (isEdit && data) {
-                console.log("edit activate");
-                values.id = data.id;
-                organizerContext.updateTag(values);
-                handleSelectRow && handleSelectRow([])
-                handleEdit && handleEdit();
-            }
-            else {
-                organizerContext.postTag(values)
-            }
-            // console.log('value-----', values);
+            values.id = data?.id;
+            organizerContext.updateTag(values);
+            handleSelectRow && handleSelectRow([])
+            handleEdit && handleEdit(false);
+
             formik.resetForm();
             setIsFormOpen(false)
 
@@ -68,7 +60,7 @@ const TagForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }: P
                                     borderColor: 'rgb(19, 110, 229) !important',
                                 },
                             }}
-                            label={<div className={`${focus === "tagName" ? "" : "mt-[3px]"}`} ><span className={`${focus === "tagName" ? "font-medium" : "text-[14px] font-semibold"}`}>Tag Name </span><span className='text-[red]'>*</span></div>}
+                            label={<div className={`${(focus === "tagName" || formik.values.tagName !== "") ? "" : "mt-[3px]"}`} ><span className={`${(focus === "tagName" || formik.values.tagName !== "") ? "font-medium" : "text-[14px] font-semibold"}`}>Tag Name </span><span className='text-[red]'>*</span></div>}
                             onFocus={() => setFocus("tagName")}
                             onBlur={() => setFocus("")}
                             value={formik.values.tagName}
@@ -105,7 +97,7 @@ const TagForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }: P
                                     borderColor: 'rgb(19, 110, 229) !important',
                                 },
                             }}
-                            label={<div className={`${focus === "shortCut" ? "" : "mt-[3px]"}`} ><span className={`${focus === "shortCut" ? "font-medium" : "text-[14px] font-semibold"}`}>Shortcut </span><span className='text-[red]'>*</span></div>}
+                            label={<div className={`${(focus === "shortCut" || formik.values.shortCut !== "") ? "" : "mt-[3px]"}`} ><span className={`${(focus === "shortCut" || formik.values.shortCut !== "") ? "font-medium" : "text-[14px] font-semibold"}`}>Shortcut </span><span className='text-[red]'>*</span></div>}
                             onFocus={() => setFocus("shortCut")}
                             onBlur={() => setFocus("")}
                             value={formik.values.shortCut}
@@ -148,7 +140,7 @@ const TagForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }: P
                                 borderColor: 'rgb(19, 110, 229) !important',
                             },
                         }}
-                        label={<div className={`${focus === "description" ? "" : "mt-[3px]"}`} ><span className={`${focus === "description" ? "font-medium" : "text-[14px] font-semibold"}`}>Description </span></div>}
+                        label={<div className={`${(focus === "description" || formik.values.description !== "") ? "" : "mt-[3px]"}`} ><span className={`${(focus === "description" || formik.values.description !== "") ? "font-medium" : "text-[14px] font-semibold"}`}>Description </span></div>}
                         onFocus={() => setFocus("description")}
                         onBlur={() => setFocus("")}
                         value={formik.values.description}
@@ -179,4 +171,4 @@ const TagForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }: P
     );
 };
 
-export default TagForm;
+export default UpdateForm;

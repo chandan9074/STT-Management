@@ -1,36 +1,48 @@
-import { useContext, useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icons from '../../assets/Icons'
 import Buttons from '../../components/Buttons'
-import SideDrawerContent from '../../components/containers/Organizer/tag/SideDrawerContent'
 import { Drawer } from '../../components/Drawer'
 import Table from '../../components/Table'
 import { TagDataDT } from '../../types/organizerTypes'
 import TagForm from './TagForm'
 import { OrganizerContext } from '../../context/OrganizerProvider'
+import UpdateForm from './TagForm/UpdateForm'
 
 const Tag = () => {
 
   const [open, setOpen] = useState<boolean>(false)
   const [selectedRows, setSelectedRows] = useState<TagDataDT[]>([] as TagDataDT[])
+  const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([])
+  const [isEdit, setIsEdit] = useState<boolean>(false);
 
-  const {getTag,tagData} = useContext(OrganizerContext)
+  const { getTag, tagData } = useContext(OrganizerContext)
 
   useEffect(() => {
     getTag()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-
-  const handleSelectRow = (value: TagDataDT[]) => {
-    setSelectedRows(value)
+  const handleSelectRow = (value: TagDataDT[], keys?: React.Key[]) => {
+    console.log("hello")
+    if (value.length > 0) {
+      setSelectedRows(value)
+    }
+    else {
+      setSelectedRows([]);
+      setSelectedRowKeys([]);
+      console.log("rows selected");
+    }
+    if (keys) {
+      setSelectedRowKeys(keys);
+    }
   }
 
   return (
     <div>
-      <Header open={open} setOpen={setOpen} selectedRows={selectedRows} />
-      <Table.Type29 data={tagData} handleSelectRow={handleSelectRow} open={open} setOpen={setOpen} />
-      
+      <Header selectedRows={selectedRows} handleSelectRow={handleSelectRow} isEdit={isEdit} setIsEdit={setIsEdit} />
+      <Table.Type29 data={tagData} handleSelectRow={handleSelectRow} open={open} setOpen={setOpen} selectedRowKeys={selectedRowKeys} isEdit={isEdit} setIsEdit={setIsEdit} />
+
     </div>
   )
 }
@@ -38,14 +50,22 @@ const Tag = () => {
 export default Tag
 
 type Props = {
-  open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isEdit: boolean;
+  setIsEdit: Dispatch<SetStateAction<boolean>>;
   selectedRows: TagDataDT[]
+  handleSelectRow: (value: TagDataDT[]) => void;
 }
-const Header = ({ open, setOpen, selectedRows }: Props) => {
+const Header = ({ selectedRows, handleSelectRow, isEdit, setIsEdit }: Props) => {
 
   const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
+  const [selectedData, setSelectedData] = useState<TagDataDT>({} as TagDataDT);
 
+
+  const { deleteTag } = useContext(OrganizerContext)
+
+  const handleEdit = (value: boolean) => {
+    setIsEdit(value)
+  }
 
   return (
     <div className='ml-6 mr-4 mb-5 flex items-center justify-between'>
@@ -60,6 +80,7 @@ const Header = ({ open, setOpen, selectedRows }: Props) => {
               // onClick={() => {
               //   scriptContext.deleteScript(commonContext.role, selectedRows.map((item) => item.id).join(",")); setselectedRows([]);
               // }}
+              onClick={() => deleteTag(selectedRows.map((item) => item.id).join(","))}
               title="Delete"
               paddingY="py-2"
               paddingX="px-4"
@@ -73,6 +94,11 @@ const Header = ({ open, setOpen, selectedRows }: Props) => {
             {selectedRows.length === 1 &&
               <Link to={``}>
                 <Buttons.BgHoverBtn
+                  onClick={() => {
+                    setSelectedData(selectedRows[0]);
+                    setIsFormOpen(!isFormOpen);
+                    setIsEdit(true);
+                  }}
                   title="Edit"
                   paddingY="py-2"
                   paddingX="px-4"
@@ -93,17 +119,19 @@ const Header = ({ open, setOpen, selectedRows }: Props) => {
           size="small"
           variant="Megenta"
           icon={<img src={Icons.Add} alt="add" />}
-          onClick={() => setIsFormOpen(true)}
+          onClick={() => { setSelectedData({} as TagDataDT); setIsEdit(false); setIsFormOpen(true); }}
+
         />
         <Drawer.Organizer.Type1
           isDrawerOpen={isFormOpen}
           // drawerClose={drawerClose}
           setIsDrawerClose={setIsFormOpen}
           headerBgColor="bg-ct-blue-20"
-          title="Create Tag"
-          isEdit={false}
+          title={isEdit ? "Update Tag" : "Create Tag"}
+          isEdit={isEdit}
+          handleEdit={handleEdit}
         >
-          <TagForm setIsFormOpen={setIsFormOpen} />
+          {isEdit ? <UpdateForm setIsFormOpen={setIsFormOpen} handleSelectRow={handleSelectRow} data={selectedData} handleEdit={handleEdit} /> : <TagForm setIsFormOpen={setIsFormOpen} />}
         </Drawer.Organizer.Type1>
       </div>
     </div>

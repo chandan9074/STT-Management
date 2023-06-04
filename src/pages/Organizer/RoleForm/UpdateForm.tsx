@@ -2,12 +2,10 @@ import RoleSelect from './RoleSelect';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { organizeRole } from '../../../data/organize/OrganizerData';
-import TextArea from 'antd/es/input/TextArea';
 import ActionButton from './ActionButton';
-import { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useContext, useState } from 'react';
 import { OrganizerContext } from '../../../context/OrganizerProvider';
 import { TextField } from '@mui/material';
-import { UserManagementContext } from '../../../context/UserManagementProvider';
 import { RoleDataDT, roleBodyDT } from '../../../types/organizerTypes';
 
 const validationSchema = yup.object({
@@ -17,33 +15,39 @@ const validationSchema = yup.object({
 type Props = {
     setIsDrawerOpen: Dispatch<SetStateAction<boolean>>;
     data?: RoleDataDT;
-    isEdit?: boolean;
-    handleEdit?: () => void;
+    handleEdit?: (value: boolean) => void;
     handleSelectRow?: (value: RoleDataDT[]) => void;
 }
 
-const RoleForm = ({ setIsDrawerOpen, data, isEdit, handleEdit, handleSelectRow }: Props) => {
+const UpdateForm = ({ setIsDrawerOpen, data, handleEdit, handleSelectRow }: Props) => {
 
     const organizerContext = useContext(OrganizerContext);
     // const { selectedFieldOutline, setSelectedFieldOutline } = useContext(UserManagementContext);
+
     const [focus, setFocus] = useState("")
 
 
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            role: "",
-            description: "",
+            role: data ? data?.role : '',
+            description: data ? data.description : '',
         },
         validationSchema: validationSchema,
         onSubmit: (values: roleBodyDT) => {
-            organizerContext.postRole(values)
+            console.log("dhukche")
+
+            values.id = data?.id;
+            organizerContext.updateRole(values);
+            handleSelectRow && handleSelectRow([])
+            handleEdit && handleEdit(false);
+
+            // console.log('value-----', values);
             formik.resetForm();
             setIsDrawerOpen(false)
 
         }
     });
-
 
     return (
         <div className='px-6 py-6'>
@@ -73,7 +77,7 @@ const RoleForm = ({ setIsDrawerOpen, data, isEdit, handleEdit, handleSelectRow }
                                 borderColor: 'rgb(19, 110, 229) !important',
                             },
                         }}
-                        label={<div className={`${focus === "description" ? "" : "mt-[3px]"}`} ><span className={`${focus === "description" ? "font-medium" : "text-[14px] font-semibold"}`}>Description </span></div>}
+                        label={<div className={`${(focus === "description" || formik.values.description !== "") ? "" : "mt-[3px]"}`} ><span className={`${(focus === "description" || formik.values.description !== "") ? "font-medium" : "text-[14px] font-semibold"}`}>Description </span></div>}
                         onFocus={() => setFocus("description")}
                         onBlur={() => setFocus("")}
                         value={formik.values.description}
@@ -105,4 +109,4 @@ const RoleForm = ({ setIsDrawerOpen, data, isEdit, handleEdit, handleSelectRow }
     );
 };
 
-export default RoleForm;
+export default UpdateForm;

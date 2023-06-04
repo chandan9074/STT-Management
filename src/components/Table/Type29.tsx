@@ -6,18 +6,28 @@ import Pagination from "../Pagination";
 import { Drawer } from "../Drawer";
 import SideDrawerContent from "../containers/Organizer/tag/SideDrawerContent";
 import { useState } from "react";
+import UpdateForm from "../../pages/Organizer/TagForm/UpdateForm";
 
 type Props = {
     data: TagDataDT[]
-    handleSelectRow: (value: TagDataDT[]) => void;
+    handleSelectRow: (value: TagDataDT[], keys?: React.Key[]) => void;
     open: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    selectedRowKeys: React.Key[];
+    setIsEdit: React.Dispatch<React.SetStateAction<boolean>>
+    isEdit: boolean;
 }
 
-const Type29 = ({ data, handleSelectRow, open, setOpen }: Props) => {
+const Type29 = ({ data, handleSelectRow, open, setOpen, selectedRowKeys, isEdit, setIsEdit }: Props) => {
 
     const [selectedTagData, setSelectedTagData] = useState<TagDataDT>({} as TagDataDT);
+    const [isFormDrawer, setIsFormDrawer] = useState(false);
 
+
+    const handleEdit = () => {
+        setIsFormDrawer(!isFormDrawer);
+        setIsEdit(true);
+    }
 
     const Type29columns: ColumnsType<TagDataDT> = [
         {
@@ -59,7 +69,7 @@ const Type29 = ({ data, handleSelectRow, open, setOpen }: Props) => {
             render: (data: TagDataDT) => (
                 <div className="flex justify-center items-center">
 
-                    <button className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-ct-blue-10 active:border active:border-ct-blue-10' onClick={() => { setOpen(true); setSelectedTagData(data) }}>
+                    <button className='flex justify-center items-center w-9 h-9 rounded-full transition ease-out duration-300 hover:bg-ct-blue-10 active:border active:border-ct-blue-10' onClick={() => { setOpen(true); setSelectedTagData(data); setIsEdit(false) }}>
                         <img
                             // onClick={() => {
                             //     showDrawer(record);
@@ -77,7 +87,7 @@ const Type29 = ({ data, handleSelectRow, open, setOpen }: Props) => {
     const rowSelection = {
         onChange: (selectedRowKeys: React.Key[], selectedRows: TagDataDT[]) => {
             // setSelectedTarget(selectedRows);
-            handleSelectRow(selectedRows)
+            handleSelectRow(selectedRows, selectedRowKeys)
 
         },
         getCheckboxProps: (record: TagDataDT) => ({
@@ -97,6 +107,7 @@ const Type29 = ({ data, handleSelectRow, open, setOpen }: Props) => {
                 columns={Type29columns}
                 rowSelection={{
                     // type: selectionType,
+                    selectedRowKeys,
                     columnWidth: 48,
                     fixed: 'left',
                     ...rowSelection,
@@ -121,9 +132,16 @@ const Type29 = ({ data, handleSelectRow, open, setOpen }: Props) => {
                 setIsDrawerClose={setOpen}
                 title="Tag Details"
                 isEdit={true}
+                handleEdit={handleEdit}
+                setIsEdit={setIsEdit}
             >
-                <div className=' flex items-center'>
+                {/* <div className=' flex items-center'>
                     <SideDrawerContent data={selectedTagData} />
+                </div> */}
+                <div className='w-full'>
+                    {
+                        isEdit ? <UpdateForm setIsFormOpen={setOpen} data={selectedTagData} handleEdit={handleEdit} /> : <SideDrawerContent data={selectedTagData} />
+                    }
                 </div>
             </Drawer.Organizer.Type1>
         </div>
