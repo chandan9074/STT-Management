@@ -25,7 +25,6 @@ const Type26 = ({ data }: Props) => {
     };
 
     const onChange = (e: CheckboxChangeEvent) => {
-        console.log(`checked = ${e.target.checked}`);
     };
 
     const Type26columns: ColumnsType<annotationUploadDT> = [
@@ -116,19 +115,6 @@ const Type26 = ({ data }: Props) => {
         },
     ]
 
-    // const rowSelection = {
-    //     onChange: (selectedRowKeys: React.Key[], selectedRows: annotationUploadDT[]) => {
-    //         // setSelectedTarget(selectedRows);
-    //         console.log('*******', selectedRows);
-
-
-    //     },
-    //     getCheckboxProps: (record: annotationUploadDT) => ({
-    //         // disabled: record.name === 'Disabled User', // Column configuration not to be checked
-    //         // name: record.assignee.name,
-    //     }),
-    // };
-
     const handlePageChange = (page: number) => {
         // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
     }
@@ -136,15 +122,8 @@ const Type26 = ({ data }: Props) => {
     return (
         <div className='billing-table billing-table-even-bg type4-table horizontal-table-padding'>
             <Table
-                // rowSelection={{
-                //     // type: selectionType,
-                //     columnWidth: 48,
-                //     fixed: 'left',
-                //     ...rowSelection,
-                // }}
                 dataSource={data}
                 columns={Type26columns}
-                // scroll={{ x: 1366 }}
                 rowKey="id"
                 pagination={false}
             />
@@ -152,8 +131,6 @@ const Type26 = ({ data }: Props) => {
                 <Pagination.Type2
                     total={100}
                     pageSize={10}
-                    // total={35}
-                    // pageSize={5}
                     handleDataChange={handlePageChange}
                 />
             </div>

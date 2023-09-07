@@ -35,14 +35,12 @@ const UpdateForm = ({ setIsDrawerOpen, data, handleEdit, handleSelectRow }: Prop
         },
         validationSchema: validationSchema,
         onSubmit: (values: roleBodyDT) => {
-            console.log("dhukche")
 
             values.id = data?.id;
             organizerContext.updateRole(values);
             handleSelectRow && handleSelectRow([])
             handleEdit && handleEdit(false);
 
-            // console.log('value-----', values);
             formik.resetForm();
             setIsDrawerOpen(false)
 

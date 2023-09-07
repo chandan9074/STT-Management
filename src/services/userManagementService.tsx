@@ -5,7 +5,6 @@ import { activityQueryParamsDT, activityTableParamsDT, getUserByIdParamsDT, user
 
 export default class UserManagementService {
   static getActivityStatistics(value: activityQueryParamsDT) {
-    console.log('--------value---------', value);
     return axios.get(PATH.GET_RES_ACTIVITY_STATISTICS_USER_MANAGEMENT_MODULE, { params: value });
   }
 

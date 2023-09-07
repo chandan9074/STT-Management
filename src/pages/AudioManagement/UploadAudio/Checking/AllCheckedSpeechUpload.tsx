@@ -13,13 +13,13 @@ const AllCheckedAudiosUpload = () => {
   const { getAllCheckedAudiosUploadData, allCheckedAudiosUploadData } = useContext(AudioManagementContext);
 
   const [selectedRowsData, setSelectedRowsData] = useState<allCheckedSpeechDT[]>([])
-  const [query, setQuery] = useState({
+  const query ={
     page: 1,
     pageSize: 20,
     audioChecker: "",
     status: "",
     audioSubmissionPeriod: "",
-  })
+  }
 
   useEffect(() => {
     getAllCheckedAudiosUploadData(query)

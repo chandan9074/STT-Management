@@ -70,11 +70,6 @@ const SpeechForm = () => {
             formData.delete('sourceFileName');
             formData.delete('speechFileName');
 
-            // Log the formData values
-            formData.forEach((value, key) => {
-                console.log(key, value);
-            });
-
             const res = await assignContext.postResSpeechUploadAudioMgModule(formData);
             if (res === 200) {
                 navigate(-1);

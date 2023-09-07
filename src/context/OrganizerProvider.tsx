@@ -64,7 +64,6 @@ const OrganizerProvider = ({ children }: { children: any }) => {
     }
 
     const deleteRole = async (id: string) => {
-        console.log("andaje", id);
 
         const res = await OrganizerService.deleteRole(id);
         if (res.status === 200) {

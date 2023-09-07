@@ -12,13 +12,13 @@ const SentenceLevel = () => {
 
   const { getCollectAnnSenData, collectAnnSenData } = useContext(AudioManagementContext);
   const [selectedRowsData, setSelectedRowSData] = useState<collectAnnSenDataDT[]>([]);
-  const [query, setQuery] = useState({
+  const query = {
     page: 1,
     pageSize: 20,
     dateRange: "",
     speaker: "",
     audioChecker: "",
-  })
+  }
 
   useEffect(() => {
     getCollectAnnSenData(query)
@@ -29,7 +29,6 @@ const SentenceLevel = () => {
   return (
     <div>
       <Header selectedRowsData={selectedRowsData} />
-      {/* <Table.Type20 data={collectAnnSenData} setSelectedRowSData={setSelectedRowSData} /> */}
       <Table.Type20 data={collectAnnSenData.data} setSelectedRowSData={setSelectedRowSData} />
     </div>
   )

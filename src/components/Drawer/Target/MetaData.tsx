@@ -11,14 +11,6 @@ type Props = {
 
 const MetaData = ({ setIsMetaData, data }: Props) => {
 
-    // const [imageModal,setImageModal] = useState(false)
-
-    // const handleModal: MouseEventHandler<HTMLButtonElement> = () => {
-    //     setImageModal(!imageModal)
-    //     console.log("modal---------",imageModal);
-        
-    // };
-
     const singleValue1: customSingleCriteriaDT[] = [
         {
             title: 'Script Id',

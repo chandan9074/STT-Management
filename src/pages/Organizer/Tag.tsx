@@ -24,14 +24,12 @@ const Tag = () => {
   }, [])
 
   const handleSelectRow = (value: TagDataDT[], keys?: React.Key[]) => {
-    console.log("hello")
     if (value.length > 0) {
       setSelectedRows(value)
     }
     else {
       setSelectedRows([]);
       setSelectedRowKeys([]);
-      console.log("rows selected");
     }
     if (keys) {
       setSelectedRowKeys(keys);

@@ -12,14 +12,14 @@ const WordLevelValidation = () => {
 
   const { getCollectValWordData, collectValWordData } = useContext(AudioManagementContext);
   const [selectedRowsData, setSelectedRowSData] = useState<collectValSenDataDT[]>([]);
-  const [query, setQuery] = useState({
+  const query = {
     page: 1,
     pageSize: 20,
     dateRange: "",
     annotator: "",
     speaker: "",
     audioChecker: "",
-  })
+  }
 
   useEffect(() => {
     getCollectValWordData(query)
@@ -217,17 +217,6 @@ const Header = ({ selectedRowsData }: { selectedRowsData: collectValSenDataDT[] 
         <p className='text-small text-ct-blue-90-70% mt-1.5'>List of audios that is needed to word validation</p>
       </div>
       <div className='flex items-center gap-x-6'>
-        {/* <Buttons.BgHoverBtn
-          title="Download Script"
-          paddingY="py-2"
-          paddingX="px-4"
-          borderRadius="rounded-[6px]"
-          textColor="text-secondary-blue-50"
-          fontSize="text-small"
-          fontWeight="font-medium"
-          duration="duration-300"
-          hoverBgColor="hover:bg-white"
-        /> */}
         {
           (selectedRowsData.length === 1) &&
           <PDF.Type2 data={selectedRowsData[0].script} />

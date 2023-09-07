@@ -33,7 +33,6 @@ const Waveform = ({ data, audioMin }: Props) => {
     const canvas = document.createElement("canvas");
     const ctx: CanvasRenderingContext2D | null = canvas.getContext("2d");
     const containerWidth = ref.clientWidth;
-    console.log(containerWidth, "width");
     const gradientObj: CanvasGradient | null = ctx && ctx.createLinearGradient(0, 0, containerWidth, 0);
 
     gradient.forEach((stop) => gradientObj && gradientObj.addColorStop(stop.stop, stop.color));

@@ -36,7 +36,6 @@ const Type6 = ({
         }
     }, [data.isFromAPI, handleDropdownAPICall, data.key])
 
-    console.log("from type 6", data)
     return (
         <div className="relative w-80">
             <div className={`pt-2 px-2 pb-1.5 border ${open ? "border-secondary-blue-50" : "border-blue-gray-10"} rounded-[7px] bg-white inline-flex`}>

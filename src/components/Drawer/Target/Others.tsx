@@ -13,7 +13,6 @@ type dataType = {
 }
 
 const Others = ({ data }: Props) => {
-    console.log("others data--------_>", data);
 
     const singleValue2: dataType[] = [
         {

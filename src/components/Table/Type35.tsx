@@ -250,8 +250,6 @@ const Type35 = ({ data }: Props) => {
         // ScriptContext.setScriptFilter({ ...scriptContext.scriptFilter, page: page, pageSize: 10 })
     }
 
-    console.log('$$$$$$$$$$$', singleTargetData?.remark);
-
 
     return (
         <div className="billing-table billing-table-odd-bg type4-table horizontal-table-padding">

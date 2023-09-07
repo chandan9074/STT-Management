@@ -19,7 +19,6 @@ const Type34 = ({ data }: Props) => {
 
     const [singleTargetData, setSingleTargetData] = useState<sentenceLevelValUploadDT>();
     const [open, setOpen] = useState(false);
-    console.log("data---------------------",data);
     const showDrawer = (item: sentenceLevelValUploadDT) => {
         setOpen(true);
     };
@@ -174,7 +173,6 @@ const Type34 = ({ data }: Props) => {
     const rowSelection = {
         onChange: (selectedRowKeys: React.Key[], selectedRows: sentenceLevelValUploadDT[]) => {
             // setSelectedTarget(selectedRows);
-            console.log('*******', selectedRows);
 
 
         },
@@ -207,8 +205,6 @@ const Type34 = ({ data }: Props) => {
                 <Pagination.Type2
                     total={100}
                     pageSize={10}
-                    // total={35}
-                    // pageSize={5}
                     handleDataChange={handlePageChange}
                 />
             </div>

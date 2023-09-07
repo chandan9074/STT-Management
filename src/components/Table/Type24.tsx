@@ -96,8 +96,6 @@ const Type24 = ({ data }: Props) => {
 
     const rowSelection = {
         onChange: (selectedRowKeys: React.Key[], selectedRows: checkingStatusUploadDataDT[]) => {
-            // setSelectedTarget(selectedRows);
-            console.log('*******', selectedRows);
 
 
         },

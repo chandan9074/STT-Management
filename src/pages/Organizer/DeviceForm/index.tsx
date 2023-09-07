@@ -38,7 +38,6 @@ const DeviceForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }
         onSubmit: (values: deviceBodyDT) => {
 
             if (isEdit && data) {
-                console.log("edit activate");
                 values.id = data.id;
                 values.deviceType = active;
                 organizerContext.updateDevice(values);
@@ -49,7 +48,6 @@ const DeviceForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }
                 values.deviceType = active;
                 organizerContext.postDevice(values)
             }
-            // console.log('value-----', values);
             formik.resetForm();
             setIsFormOpen(false)
         }

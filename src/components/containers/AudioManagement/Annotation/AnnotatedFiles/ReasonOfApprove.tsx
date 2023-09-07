@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { useState } from 'react';
 import Buttons from '../../../../Buttons';
 import { TextField } from '@mui/material';
 import Icons from '../../../../../assets/Icons';
@@ -19,7 +19,6 @@ const ReasonOfApprove = ({ handleClose, handleSubmit }: Props) => {
     }
 
     const onRemarkSubmit = () => {
-        console.log('remark...', remark);
         handleSubmit(remark);
     }
 

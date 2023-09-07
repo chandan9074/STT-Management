@@ -116,7 +116,6 @@ const Header = ({ activeMonth, year }: HeaderProps) => {
   const [currentYear, setCurrentYear] = useState(year);
 
   const handleWeekData = (value: string) => {
-    console.log(value, 'week data')
     const week = Number(value.split(' ')[1]);
     userManagementContext.setCurrentWeek(week);
 
@@ -136,12 +135,6 @@ const Header = ({ activeMonth, year }: HeaderProps) => {
       return;
     }
     else {
-      // dashboardContext.getOverTheTimeData(
-      //   commonContext.type,
-      //   commonContext.role,
-      //   year,
-      //   month
-      // );
       userManagementContext.setActivityQueryParams({ ...userManagementContext.activityQueryParams, year: year, month: month })
     }
   };

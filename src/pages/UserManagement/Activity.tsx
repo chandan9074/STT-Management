@@ -6,12 +6,10 @@ import { UserManagementContext } from '../../context/UserManagementProvider'
 
 const Activity = () => {
   const { id } = useParams<{ id: string }>()
-  // console.log("from activity page", id)
   const { getActivityStatistics, setActivityQueryParams, activityQueryParams, getActivityTable, activityTableParams, setActivityTableParams } = useContext(UserManagementContext);
 
   useEffect(() => {
     if (id) {
-      console.log("from activity page", id)
       setActivityQueryParams({
         ...activityQueryParams,
         id: id
@@ -25,7 +23,6 @@ const Activity = () => {
   }, [id])
 
   useEffect(() => {
-    console.log("from activity page now", id)
     if (activityQueryParams.id) {
       getActivityStatistics(activityQueryParams)
     }

@@ -6,10 +6,6 @@ import { isEmpty } from '../../../../helpers/Utils';
 
 const Others = ({ data, remark }: { data: othersUploadAudioDT, remark?: historyRemarkDT[] }) => {
 
-
-    console.log('remark----', remark);
-
-
     return (
         <div className='flex flex-col gap-y-6 mb-4'>
             <div>

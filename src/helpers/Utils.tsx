@@ -254,8 +254,6 @@ export const getDateRangeInMonthFormate = (date: { start: string, end: string })
   const endDate = date.end;
   const startMonth = new Date(startDate.split('-').reverse().join('-')).toLocaleString("default", { month: "short" });
   const endMonth = new Date(endDate.split('-').reverse().join('-')).toLocaleString("default", { month: "short" });
-  console.log(date, "date", startDate, endDate)
-  console.log("startMonth", startMonth, "endMonth", endMonth)
   if (startMonth && endMonth) {
     if (startDate.split("-")[2] === endDate.split("-")[2]) {
       return `${startDate.split("-")[0]} ${startMonth} - ${endDate.split("-")[0]} ${endMonth} ${startDate.split("-")[2]}`

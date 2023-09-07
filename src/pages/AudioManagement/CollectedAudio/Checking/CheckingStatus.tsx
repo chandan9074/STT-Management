@@ -12,7 +12,7 @@ const CheckingStatus = () => {
 
     const { getCheckingStatusData, checkingStatusData } = useContext(AudioManagementContext);
     const [selectedRowsData, setSelectedRowSData] = useState<checkingStatusDT[]>([]);
-    const [query, setQuery] = useState({
+    const query = {
         page: 1,
         pageSize: 20,
         script: "",
@@ -20,7 +20,7 @@ const CheckingStatus = () => {
         collector: "",
         audioUploadPeriod: "",
         status: ""
-      })
+      }
 
 
     useEffect(() => {

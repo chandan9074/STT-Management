@@ -120,7 +120,6 @@ const Type5 = ({ data, handleSelectedRow }: Props) => {
                 {/* <Status.Type2 status={data} label={data === "Active" ? "Active" : "Blocked"} /> */}
                 <SpeechStatus data={data} />
             </div>),
-            onFilter: (value, record) => (console.log("reeeeeeeeeeee", record))
         },
         {
             title: `${"Activity".toLocaleUpperCase()}`,

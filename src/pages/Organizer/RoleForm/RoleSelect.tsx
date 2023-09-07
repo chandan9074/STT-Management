@@ -1,9 +1,8 @@
-import { FormControl, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
-import React, { useContext, useState } from 'react';
+import { FormControl, TextField } from '@mui/material';
+import React, { useState } from 'react';
 import { organizeRole } from '../../../data/organize/OrganizerData';
 import RoleImage from '../../../components/Image/RoleImage';
 import Icons from '../../../assets/Icons';
-import { UserManagementContext } from '../../../context/UserManagementProvider';
 
 type Prop =
     {
@@ -23,8 +22,6 @@ const RoleSelect = ({ formikValues, formik, data, formikError, formikTouched, na
     const [isRole, setIsRole] = useState<boolean>(false);
 
     const [filteredDistrict, setFilteredDistrict] = useState<string[]>(data);
-
-    const [clicked, setClicked] = useState<boolean>(false)
 
     const [focus, setFocus] = useState("")
 
@@ -59,9 +56,6 @@ const RoleSelect = ({ formikValues, formik, data, formikError, formikTouched, na
         setIsRole(false)
     }
 
-    const handleRoleInputClick = () => {
-        setClicked(!clicked)
-    }
 
     return (
         <div className='relative z-[9999]'>

@@ -95,13 +95,8 @@ const Type4 = ({ Data, handleSelectRow }: Props) => {
 
     const rowSelection = {
         onChange: (selectedRowKeys: Key[], selectedRows: scriptResDT[]) => {
-            // console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
             handleSelectRow(selectedRows)
         },
-        // getCheckboxProps: (record: any) => ({
-        //     // disabled: record.name === 'Disabled User', // Column configuration not to be checked
-
-        // }),
     }
 
     return (

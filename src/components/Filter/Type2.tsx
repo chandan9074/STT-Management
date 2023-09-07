@@ -27,10 +27,6 @@ const Type2 = ({ filterData, align, count, filterList, handleReset, handleFilter
     const [open, setOpen] = useState(false);
     const [currentState, setCurrentState] = useState<string>(filterData[0]?.key);
 
-    // const onChange: DatePickerProps['onChange'] = (date, dateString) => {
-    //     console.log(date, dateString);
-    // };
-
     return (
         <div className={`relative flex ${align === "left" ? `justify-start` : align === "center" ? "justify-center" : "justify-end"}`}>
             <div className="relative z-[80]">

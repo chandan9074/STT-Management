@@ -65,9 +65,6 @@ const ScriptForms = ({ data }: { data?: scriptResDT }) => {
 
         onSubmit: (values: scriptResDT) => {
 
-            console.log('values', values);
-            
-
             if (scriptModule === 'TTS') {
                 delete values.distributionSource;
                 delete values.isAge;

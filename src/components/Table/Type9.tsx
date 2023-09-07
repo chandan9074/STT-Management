@@ -191,7 +191,6 @@ const Type9 = ({ data, handleSelectedScript, uncheckedScript, isDrawerOpen }: Pr
             width: 112,
             align: "right",
             render: (frequency: number) => <span className='text-blue-gray-80 text-xs'>{frequency}</span>,
-            // onFilter: (value, record) => (console.log("reeeeeeeeeeee", record))
         },
     ];
 

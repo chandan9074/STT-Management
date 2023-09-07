@@ -15,10 +15,8 @@ interface Props {
 }
 const Type2 = ({ data, headerType, module }: Props) => {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-    const [pdf, setPdf] = useState<boolean>(false)
     const [pdfLink, setPdfLink] = useState<any>('')
     const open = Boolean(anchorEl);
-    console.log('pdf', pdf);
     
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
@@ -28,7 +26,6 @@ const Type2 = ({ data, headerType, module }: Props) => {
     };
 
     const handlePrint = () => {
-        // console.log("hello", pdfLink);
 
         const printWindow = window.open(pdfLink, "_blank");
         if (printWindow) {
@@ -167,7 +164,6 @@ const Type2 = ({ data, headerType, module }: Props) => {
                                 />
                             </div>
                             <div className='flex gap-3 px-4 py-2 hover:bg-ct-blue-05 active:bg-ct-blue-10 cursor-pointer'
-                                onClick={() => setPdf(true)}
                             >
                                 <img
                                     src={Icons.PictureAsPdf}

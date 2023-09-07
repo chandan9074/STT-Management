@@ -36,10 +36,7 @@ const Type1 = ({ children, isDrawerOpen, title, headerBgColor, setIsDrawerClose,
                 {
                     (isEdit && !title.includes("Update")) &&
                     <Buttons.BgHoverBtn
-                        // onClick={() => { setIsEdit && setIsEdit(true) }}
                         onClick={() => handleEdit(true)}
-                        // onClick={() => console.log("hello vai")}
-                        // onClick={() => handlecall(true)}
                         title="Edit"
                         paddingY="py-2"
                         paddingX="px-4"

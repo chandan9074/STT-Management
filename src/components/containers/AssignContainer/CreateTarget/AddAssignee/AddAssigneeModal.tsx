@@ -47,8 +47,6 @@ const AddAssigneeModal = ({
 
     const [isDropDownVisible, setIsDropDownVisible] = useState<boolean>(false);
     const [dropDownCount, setDropDownCount] = useState<number>(0);
-    const [isDropDownSelect, setIsDropDownSelect] = useState<boolean>(false);
-    const [isDropItemClick, setIsDropItemClick] = useState<boolean>(false);
 
     const roleParam = {
         roleID: commonContext.roleId,
@@ -66,11 +64,6 @@ const AddAssigneeModal = ({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    useEffect(() => {
-        if (!isDropDownVisible) {
-            setIsDropItemClick(false);
-        }
-    }, [isDropDownVisible]);
 
     const onRoleChange = (e: SelectChangeEvent) => {
         setRole(e.target.value);
@@ -99,7 +92,6 @@ const AddAssigneeModal = ({
     const deleteManager = (id: string | undefined) => {
         const _data = customRoleData?.filter((item: roleDT) => item.id !== id);
         setCustomRoleData(_data);
-        setIsDropDownSelect(false);
         form.resetFields();
     }
 
@@ -107,26 +99,18 @@ const AddAssigneeModal = ({
     const onDropDownVisible = (open: boolean) => {
         setIsDropDownVisible(open);
         setDropDownCount(dropDownCount + 1);
-        setIsDropItemClick(true);
     }
 
 
     const onInputKeyDown = () => {
     }
 
-    const onSelect = () => {
-
-        setIsDropDownSelect(true);
-    }
 
     const onClose = () => {
         setCustomRoleData([]);
         handleModal(false)
     }
 
-    const onDropDownClick = () => {
-        setIsDropItemClick(true);
-    }
 
     const outsideModalClick = () => {
         handleModal(false);
@@ -268,10 +252,8 @@ const AddAssigneeModal = ({
                                             // open={isDropItemClick ? true : isDropDownOpen}
                                             // mode='multiple'
                                             suffixIcon={<StepBackwardOutlined style={{ display: 'none' }} />}
-                                            onClick={onDropDownClick}
                                             onDropdownVisibleChange={onDropDownVisible}
                                             onInputKeyDown={onInputKeyDown}
-                                            onSelect={onSelect}
                                             showSearch
                                             placeholder={`Select ${role} by Login ID/ Name`}
                                             style={{ border: 'none' }}

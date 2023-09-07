@@ -21,11 +21,6 @@ const SpeakerCriteria = ({ data, isParmanentAddress }: Props) => {
             title: 'Age',
             value: data?.target?.ageRange || '-'
         },
-
-        // {
-        //     title: 'profession',
-        //     value: data?.target?.profession || '-'
-        // },
         {
             title: 'Econimic Situation',
             value: data?.target?.economicSituation || '-'
@@ -63,26 +58,20 @@ const SpeakerCriteria = ({ data, isParmanentAddress }: Props) => {
 
     useEffect(() => {
         if (isParmanentAddress) {
-            // console.log("dhukeche")
             const newData = {
                 title: 'Parmanent Address',
                 value: data?.target?.district.join() || "-"
             }
-            // singleValue1.splice(2, 0, newData)
-            // console.log(singleValue1)
             const newArray = [...singleValue1];
             newArray.splice(2, 0, newData);
             setSingleValue1(newArray);
 
         }
         else {
-            // console.log("dhukeche")
             const newData = {
                 title: 'profession',
                 value: data?.target?.profession || '-'
             }
-            // singleValue1.splice(2, 0, newData)
-            // console.log(singleValue1)
             const newArray = [...singleValue1];
             newArray.splice(6, 0, newData);
             setSingleValue1(newArray);

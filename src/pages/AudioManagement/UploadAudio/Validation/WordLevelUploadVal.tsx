@@ -10,14 +10,14 @@ const WordLevelUploadVal = () => {
 
   const { getWordLevelUploadVal, wordLevelUploadVal } = useContext(AudioManagementContext)
 
-  const [query, setQuery] = useState({
+  const query = {
     page: 1,
     pageSize: 20,
     dateRange: "",
     annotator: "",
     speaker: "",
     audioChecker: "",
-  })
+  }
 
   useEffect(() => {
     getWordLevelUploadVal(query);

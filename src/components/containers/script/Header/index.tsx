@@ -91,7 +91,6 @@ const Header = ({ selectedScript, setSelectedScript }: Props) => {
 
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    // console.log("file", file);
     if (file) {
       let formData = new FormData();
       formData.append("csvFile", file);

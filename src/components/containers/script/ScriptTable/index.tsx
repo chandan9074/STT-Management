@@ -20,7 +20,6 @@ const ScriptTable = ({ setSelectedScript }: Props) => {
     }, [scriptContext.scriptFilter, commonContext.role])
 
     const handleSelectRow = (selectedRows: scriptResDT[]) => {
-        // console.log("selected rows------", selectedRows)
         setSelectedScript(selectedRows)
 
     }
@@ -36,8 +35,6 @@ const ScriptTable = ({ setSelectedScript }: Props) => {
                 <Pagination.Type2
                     total={scriptContext.scriptsData.totalNumberOfScripts}
                     pageSize={10}
-                    // total={35}
-                    // pageSize={5}
                     handleDataChange={handlePageChange}
                 />
             </div>

@@ -71,7 +71,6 @@ const DashboardProvider = ({ children }: { children: any }) => {
         module: module,
       });
       setCreateCollectData(response.data);
-      // console.log(response.data);
       setLoading(false);
     } catch (error) {
       setLoading(false);

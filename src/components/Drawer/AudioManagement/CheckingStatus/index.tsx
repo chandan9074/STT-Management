@@ -32,19 +32,14 @@ const CheckingStatus = ({ targetTitle, isDrawerOpen, setIsDrawerOpen: setOpen, i
     const [isMetaData, setIsMetaData] = useState<boolean>(false);
     const [isSpeaker, setIsSpeaker] = useState<boolean>(prevSpeaker ? true : false);
 
-    // const [gender, setIsGender] = useState<any>({ isMale: false, isFemale: false })
     const [isMale, setIsMale] = useState<boolean>(false);
     const [isFemale, setIsFemale] = useState<boolean>(false);
 
     const onClose = () => {
-        // drawerClose();
         setOpen(false);
     };
 
     useEffect(() => {
-        // if (activePanelProp) {
-        //     setActivePanel(activePanelProp);
-        // }
 
         speaker.speakers.map((item: singleSpeakerDT2) => {
             if (item.gender.toLowerCase() === 'male'.toLowerCase()) {
@@ -56,7 +51,6 @@ const CheckingStatus = ({ targetTitle, isDrawerOpen, setIsDrawerOpen: setOpen, i
             return item;
 
         });
-        console.log(activePanel);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activePanelProp]);
 

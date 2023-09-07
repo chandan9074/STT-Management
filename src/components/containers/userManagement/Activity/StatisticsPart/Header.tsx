@@ -10,8 +10,6 @@ const Header = ({ data }: { data: activityDT }) => {
     const userManagementContext = React.useContext(UserManagementContext);
     const [activeRole, setActiveRole] = React.useState<string>(userManagementContext.activeRole);
 
-    console.log(userManagementContext.activeRole[0], 'data role')
-
     useEffect(() => {
         userManagementContext.setActivityQueryParams({ ...userManagementContext.activityQueryParams, role: activeRole })
         // eslint-disable-next-line react-hooks/exhaustive-deps

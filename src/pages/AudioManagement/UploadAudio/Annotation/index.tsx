@@ -9,11 +9,11 @@ import { Filter } from "../../../../components/Filter"
 const AnnotationUpload = () => {
   const { getAnnotationUploadData, annotationUploadData } = useContext(AudioManagementContext)
 
-  const [query, setQuery] = useState({
+  const query = {
     page: 1,
     pageSize: 20,
     speaker: ""
-  })
+  }
 
   useEffect(() => {
     getAnnotationUploadData(query);

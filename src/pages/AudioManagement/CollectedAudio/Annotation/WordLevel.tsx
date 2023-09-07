@@ -12,13 +12,13 @@ const WordLevel = () => {
 
   const { getCollectAnnWordData, collectAnnWordData } = useContext(AudioManagementContext)
   const [selectedRowsData, setSelectedRowSData] = useState<collectAnnSenDataDT[]>([]);
-  const [query, setQuery] = useState({
+  const query = {
     page: 1,
     pageSize: 20,
     dateRange: "",
     speaker: "",
     audioChecker: "",
-  })
+  }
 
   useEffect(() => {
     getCollectAnnWordData(query)

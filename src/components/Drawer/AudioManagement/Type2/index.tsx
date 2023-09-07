@@ -24,18 +24,13 @@ type Props = {
 
 const Type2 = ({ id, isDrawerOpen, setIsDrawerOpen: setOpen, speaker, others, speechInfo, isEditHistory, deadline, submission, history, remark }: Props) => {
 
-    console.log('************', remark);
-
     const [activePanel, setActivePanel] = useState<string>("Speech Info");
-    // const [isMetaData, setIsMetaData] = useState<boolean>(false);
     const [isSpeaker, setIsSpeaker] = useState<boolean>(false);
 
-    // const [gender, setIsGender] = useState<any>({ isMale: false, isFemale: false })
     const [isMale, setIsMale] = useState<boolean>(false);
     const [isFemale, setIsFemale] = useState<boolean>(false);
 
     const onClose = () => {
-        // drawerClose();
         setOpen(false);
 
         speaker.gender.map((item: string) => {
@@ -52,7 +47,6 @@ const Type2 = ({ id, isDrawerOpen, setIsDrawerOpen: setOpen, speaker, others, sp
 
     useEffect(() => {
         setActivePanel('Speech Info');
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

@@ -26,7 +26,6 @@ const Type5 = ({
     placeHolder
 }: Props) => {
     const [open, setOpen] = React.useState(false);
-    // console.log("singledata....", data)
     return (
         <div className="relative w-80">
             <div className={`pt-2 px-2 pb-1.5 border ${open ? "border-secondary-blue-50" : "border-blue-gray-10"} rounded-[7px] bg-white inline-flex`}>

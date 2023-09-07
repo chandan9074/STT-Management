@@ -151,7 +151,6 @@ const CriteriaForm = ({ drawerClose, data, isRecreate }: Props) => {
     }
 
     const onCreate = () => {
-        console.log('onCreate', criterias);
         creteAssignCriteria(criterias);
         emptyCriteria();
         drawerClose();

@@ -39,14 +39,12 @@ const UpdateForm = ({ setIsFormOpen, data, handleEdit, handleSelectRow }: Props)
         validationSchema: validationSchema,
         onSubmit: (values: deviceBodyDT) => {
 
-            console.log("edit activate");
             values.id = data?.id;
             values.deviceType = active;
             organizerContext.updateDevice(values);
             handleSelectRow && handleSelectRow([])
             handleEdit && handleEdit(false);
 
-            // console.log('value-----', values);
             formik.resetForm();
             setIsFormOpen(false)
         }

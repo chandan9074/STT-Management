@@ -31,7 +31,6 @@ const Device = () => {
     else {
       setSelectedRows([])
       setSelectedRowKeys([])
-      console.log("rows selected")
     }
     if (keys) {
       setSelectedRowKeys(keys);

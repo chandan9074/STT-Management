@@ -3,7 +3,6 @@ import * as yup from 'yup';
 import { Dispatch, SetStateAction, useContext, useState } from 'react';
 import { OrganizerContext } from '../../../context/OrganizerProvider';
 import { Grid, TextField } from '@mui/material';
-import { UserManagementContext } from '../../../context/UserManagementProvider';
 import ActionButton from '../RoleForm/ActionButton';
 import { TagDataDT, tagBodyDT } from '../../../types/organizerTypes';
 
@@ -37,7 +36,6 @@ const TagForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }: P
         onSubmit: (values: tagBodyDT) => {
 
             if (isEdit && data) {
-                console.log("edit activate");
                 values.id = data.id;
                 organizerContext.updateTag(values);
                 handleSelectRow && handleSelectRow([])
@@ -46,7 +44,6 @@ const TagForm = ({ setIsFormOpen, data, isEdit, handleEdit, handleSelectRow }: P
             else {
                 organizerContext.postTag(values)
             }
-            // console.log('value-----', values);
             formik.resetForm();
             setIsFormOpen(false)
 

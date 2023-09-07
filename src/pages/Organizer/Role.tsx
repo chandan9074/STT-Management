@@ -23,14 +23,12 @@ const Role = () => {
   }, [])
 
   const handleSelectRow = (value: RoleDataDT[], keys?: React.Key[]) => {
-    console.log("hello")
     if (value.length > 0) {
       setSelectedRows(value)
     }
     else {
       setSelectedRows([])
       setSelectedRowKeys([])
-      console.log("rows selected")
     }
     if (keys) {
       setSelectedRowKeys(keys);
@@ -49,7 +47,6 @@ export default Role
 
 
 type Props = {
-  // open: boolean;
   isEdit: boolean;
   setIsEdit: Dispatch<SetStateAction<boolean>>;
   handleSelectRow: (value: RoleDataDT[]) => void;
@@ -59,10 +56,7 @@ const Header = ({ selectedRows, handleSelectRow, isEdit, setIsEdit }: Props) => 
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [selectedData, setSelectedData] = useState<RoleDataDT>({} as RoleDataDT);
 
-  const [isCreate, setIsCreate] = useState<boolean>(false);
-
   const handleEdit = (value: boolean) => {
-    console.log("hello 2")
     setIsEdit(value)
   }
 
@@ -72,7 +66,7 @@ const Header = ({ selectedRows, handleSelectRow, isEdit, setIsEdit }: Props) => 
     <div className='ml-6 mr-4 mb-5 flex items-center justify-between'>
       <div>
         <h1 className='text-heading-6 font-semibold text-ct-blue-95 leading-6'>Role</h1>
-        <p className='text-small text-ct-blue-90-70% mt-1.5 font-normal'>List of Roles, Creat Role</p>
+        <p className='text-small text-ct-blue-90-70% mt-1.5 font-normal'>List of Roles, Create Role</p>
       </div>
       <div className='flex items-center gap-x-6'>
         <div className="flex items-center">
@@ -115,7 +109,7 @@ const Header = ({ selectedRows, handleSelectRow, isEdit, setIsEdit }: Props) => 
           size="small"
           variant="Megenta"
           icon={<img src={Icons.Add} alt="add" />}
-          onClick={() => { setSelectedData({} as RoleDataDT); setIsCreate(true); setIsDrawerOpen(true); setIsEdit(false) }}
+          onClick={() => { setSelectedData({} as RoleDataDT); setIsDrawerOpen(true); setIsEdit(false) }}
         />
       </div>
 

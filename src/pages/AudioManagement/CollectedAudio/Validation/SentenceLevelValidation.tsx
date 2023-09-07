@@ -12,14 +12,14 @@ const SentenceLevelValidation = () => {
 
   const { getCollectValSenData, collectValSenData } = useContext(AudioManagementContext);
   const [selectedRowsData, setSelectedRowSData] = useState<collectValSenDataDT[]>([]);
-  const [query, setQuery] = useState({
+  const query = {
     page: 1,
     pageSize: 20,
     dateRange: "",
     annotator: "",
     speaker: "",
     audioChecker: "",
-  })
+  }
 
   useEffect(() => {
     getCollectValSenData(query)

@@ -84,15 +84,11 @@ const UserManagementProvider = ({ children }: { children: any }) => {
 
     const updateUser = async (params: FormData) => {
         try {
-            //   setLoading(true);
             await UserManagementService.updateUser(params);
-            //   setLoading(false);
             callingToast("User updated successfully");
             return 200;
 
-            //   getAllScript({ role: commonContext?.role });
         } catch (error) {
-            //   setLoading(false);
 
         }
     }
@@ -110,11 +106,6 @@ const UserManagementProvider = ({ children }: { children: any }) => {
         try {
             await UserManagementService.createUser(params);
             callingToast("User created successfully");
-            //   getAllScript({ role: commonContext?.role });
-            // return {
-            //     message: response?.data?.message,
-            //     status: response?.status
-            // }
             return 200;
 
         } catch (error) {
@@ -126,7 +117,6 @@ const UserManagementProvider = ({ children }: { children: any }) => {
     const getActivityStatistics = async (value: activityQueryParamsDT) => {
         const res = await UserManagementService.getActivityStatistics(value);
         setActivityStatistics(res.data);
-        console.log(res.data, "res.data from provider")
         setActiveRole(res.data.roleList[0])
     }
 
@@ -145,13 +135,11 @@ const UserManagementProvider = ({ children }: { children: any }) => {
 
     const getUserTargetPendingSpeeches = async (id: string) => {
         const res = UserManagementService.getUserTargetPendingSpeeches(id);
-        // setPendingSpeeches(res.data);
         setTargetPendingSpeeches(res);
     }
 
     const getUserManagementTable = async (values: userManagementParamsDT) => {
         const res = await UserManagementService.getUserManagementTable(values);
-        console.log(res.data, "res.data")
         setUserManagementTable(res.data);
     }
 

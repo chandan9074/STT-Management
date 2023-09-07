@@ -12,14 +12,14 @@ const CollectedAudio = () => {
 
     const { getCollectedAudioData, collectedAudio } = useContext(AudioManagementContext);
 
-    const [query, setQuery] = useState({
+    const query = {
         page: 1,
         pageSize: 20,
         script: "",
         speaker: "",
         collector: "",
         audioSubmissionPeriod: "",
-      })
+      }
 
     useEffect(() => {
         getCollectedAudioData(query)
@@ -27,13 +27,10 @@ const CollectedAudio = () => {
     }, [])
 
     return (
-        // <Layouts.Third>
         <div>
             <Header />
             <Table.Type16 data={collectedAudio.data} />
-            {/* <Outlet /> */}
         </div>
-        // </Layouts.Third>
     );
 };
 
@@ -92,7 +89,6 @@ const Header = () => {
         if (collectorList !== prevCollectedAudioCollectorRef.current) {
             const collectorObject = collectedAudioFilterData.find(obj => obj.key === "collector");
             if (collectorObject && collectorObject.selects) {
-                // collectorDetailsObject.child = collectorList;
                 const collectorDetailsObject = collectorObject.selects.find(obj => obj.key === "collector_details");
                 if (collectorDetailsObject) {
                     collectorDetailsObject.child = collectorList;
@@ -102,7 +98,6 @@ const Header = () => {
         if (speakerList !== prevCollectedAudioSpeakersRef.current) {
             const speakerObject = collectedAudioFilterData.find(obj => obj.key === "speaker");
             if (speakerObject) {
-                // collectorDetailsObject.child = collectorList;
                 const selectObject = speakerObject.formData && speakerObject.formData.find(obj => obj.type === "multiple-select");
                 if (selectObject && selectObject.selects) {
                     const speakers = selectObject.selects.find(obj => obj.key === "speaker_details");

@@ -29,8 +29,6 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
   const [singleTargetData, setSingleTargetData] = useState<TargetItemDT>();
 
 
-  // const [drawerData, setDrawerData] = useState<any>();
-
   const changeScriptModal = (open: boolean, target: TargetItemDT) => {
     setOpenScriptModal(open);
     setSelectedTarget(target);
@@ -43,10 +41,6 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
     setOpenAssigneeModal(open);
     setSelectedTarget(target);
   };
-  // const changeDeadlineModal = (open: boolean, target: TargetItemDT) => {
-  //   setOpenDeadlineModal(open);
-  //   setSelectedTarget(target);
-  // };
   const changeRemarkModal = (open: boolean, target: TargetItemDT) => {
     setRemrkModal(open);
     setSelectedTarget(target);
@@ -54,33 +48,17 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
 
   const showDrawer = (key: TargetItemDT) => {
     setOpen(true);
-    // setDrawerData(key);
   };
 
   const handleSelectItem = (item: ScriptItemDT | CriteriaItemDT | AssigneeItemDT, params?: updateDraftTargetQueryParams) => {
-    // const params = {
-    //   id: selectedTargetId,
-    //   script: item.id,
-    // }
     if (params) {
       updateDraftTarget(params);
     }
     setOpenScriptModal(false);
     setOpenAssigneeModal(false);
     setOpenTargetModal(false);
-    console.log("hello")
-    // }
   };
 
-  // const onDateChange: DatePickerProps['onChange'] = (date, dateString) => {
-  //   const newDate = DDMMYYFormater(dateString)
-  //   const params = {
-  //     id: selectedTarget?.id,
-  //     deadline: newDate
-  //   }
-  //   handleSelectItem(params)
-  //   setOpenDeadlineModal(false);
-  // };
 
   const Type8columns: ColumnsType<TargetItemDT> = [
     {
@@ -173,13 +151,6 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
       render: (data: TargetItemDT) => (
         <div className="flex items-center gap-1 relative">
           <p className="text-blue-gray-80 text-small">{data.target.deadline ? data.target.deadline : "--"}</p>
-          {/* <Buttons.IconButton.Circle
-            onClick={() => changeDeadlineModal(true, data)}
-            size="medium"
-            variant="CT-Blue"
-            icon={<img src={Icons.calenderIcon} alt="" className="w-5 h-5" />}
-            background="transparent"
-          /> */}
         </div>
       ),
     },
@@ -215,27 +186,8 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
       width: 178,
       render: (value, record) => (
         <div className="flex justify-center items-center">
-          {/* <Buttons.IconButton.Circle
-            onClick={() => {
-              showDrawer(record)
-              console.log("click hoisi");
-
-              setSingleTargetData(record)
-            }}
-            size="medium"
-            variant="CT-Blue"
-            icon={
-              <img
-                className="w-[14px] h-[14px] cursor-pointer"
-                src={Icons.open_in_new}
-                alt=""
-              />
-            }
-            background="transparent"
-          /> */}
           <button onClick={() => {
             showDrawer(record)
-            console.log("click hoisi");
 
             setSingleTargetData(record)
           }} className='flex justify-center items-center hover:bg-ct-blue-10 active:bg-ct-blue-20 h-9 w-9 rounded-full'>
@@ -280,18 +232,6 @@ const Type8 = ({ setSelectedRowsId, setSelectedTargetState }: {
         dataSource={dataList}
         pagination={false}
       />
-      {/* {openDeadlineModal && selectedTarget !== null && (
-        <div className="absolute top-0 right-0">
-          <DatePicker
-            bordered={false}
-            open={openDeadlineModal}
-            popupClassName="target_deadline_date_picker"
-            onChange={onDateChange}
-          />
-        </div>
-      )} */}
-
-      {/* <SideDrawer.Type3 open={open} setOpen={setOpen} drawerData={drawerData} /> */}
       <Drawer.Target.Type1
         isDrawerOpen={open}
         setIsDrawerOpen={setOpen}

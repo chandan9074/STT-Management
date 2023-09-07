@@ -8,12 +8,12 @@ import { collectedAudioAnnotationTypeFilterData } from "../../../../data/audioMa
 
 const Annotation = () => {
 
-  const [query, setQuery] = useState({
+  const query = {
     page: 1,
     pageSize: 20,
     script: "",
     speaker: "",
-  })
+  }
 
   const { getAnnotationData, annotationData } = useContext(AudioManagementContext)
 

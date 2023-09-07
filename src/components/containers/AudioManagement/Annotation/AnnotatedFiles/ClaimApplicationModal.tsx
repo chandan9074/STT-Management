@@ -1,9 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import RoleImage from '../../../../Image/RoleImage';
 import Buttons from '../../../../Buttons';
 import ReasonOfApprove from './ReasonOfApprove';
 import { historyRemarkDT } from '../../../../../types/audioManagementTypes';
-import { AudioManagementContext } from '../../../../../context/AudioManagementProvider';
 
 type props = {
     data: historyRemarkDT[];
@@ -15,8 +14,6 @@ const ClaimApplicationModal = ({ data, setOpen, handleClaimSubmit }: props) => {
     const [activeTitle, setActiveTitle] = useState<string>('');
 
     const handleSubmit = (remark: string) => {
-        console.log('remark...', remark);
-        console.log('remark...', activeTitle);
         handleClaimSubmit(activeTitle, remark);
 
         setOpen(false);

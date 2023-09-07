@@ -10,14 +10,14 @@ const PhonemeLevelUploadVal = () => {
 
   const { getPhonemeLevelUploadVal, phonemeLevelUploadVal } = useContext(AudioManagementContext)
 
-  const [query, setQuery] = useState({
+  const query ={
     page: 1,
     pageSize: 20,
     dateRange: "",
     annotator: "",
     speaker: "",
     audioChecker: "",
-  })
+  }
 
   useEffect(() => {
     getPhonemeLevelUploadVal(query);

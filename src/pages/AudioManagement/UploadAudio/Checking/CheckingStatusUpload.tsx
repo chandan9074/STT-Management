@@ -10,11 +10,11 @@ const CheckingStatusUpload = () => {
 
   const { getCheckingStatusUploadData, checkingStatusUploadData } = useContext(AudioManagementContext);
 
-  const [query, setQuery] = useState({
+  const query = {
     page: 1,
     pageSize: 20,
     status: ""
-  })
+  }
 
   useEffect(() => {
     getCheckingStatusUploadData(query)

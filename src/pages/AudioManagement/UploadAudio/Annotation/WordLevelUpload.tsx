@@ -13,13 +13,13 @@ const WordLevelUpload = () => {
   const { getWordLevelUploadData, wordLevelUploadData } = useContext(AudioManagementContext)
 
   const [selectedRowsData, setSelectedRowsData] = useState<sentenceLevelUploadDT[]>([])
-  const [query, setQuery] = useState({
+  const query = {
     page: 1,
     pageSize: 20,
     dateRange: "",
     speaker: "",
     audioChecker: "",
-  })
+  }
 
 
   useEffect(() => {

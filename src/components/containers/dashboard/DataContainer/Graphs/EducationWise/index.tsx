@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getValueFromHeight, getValueFromPercentage } from "../../../../../../helpers/Utils";
+import { getValueFromPercentage } from "../../../../../../helpers/Utils";
 import { createCollectData } from "../../../../../../data/dashboard/createCollectData";
 import { createCollectSimilarPropertyDT } from '../../../../../../types/dashboardTypes';
 import GraphTooltip from '../../GraphTooltip';
@@ -7,27 +7,13 @@ import GraphTooltip from '../../GraphTooltip';
 const EducationWise = ({ data }: { data: createCollectSimilarPropertyDT[] }) => {
     const maxValue = 324;
     const percentData = [100, 50, 25, 10];
-    // const percentData = [10, 25, 50,100];
     const [dimensionValue, setDimensionValue] = useState<number[]>([]);
-    // const [educationWiseData, setEducationWiseData] = useState<createCollectSimilarPropertyDT[] | undefined>(createCollectData?.data.createData?.educationWise);
     const educationWiseData: createCollectSimilarPropertyDT[] | undefined = createCollectData?.data.createData?.educationWise;
-
-    const [educationWiseDataHeights, setEducationWiseDataHeights] = useState<number[]>([]);
-
-    console.log('education', educationWiseDataHeights);
 
 
     useEffect(() => {
         const _dimensionValue = getValueFromPercentage(maxValue, percentData);
 
-        const _data = educationWiseData?.map((value: createCollectSimilarPropertyDT) => {
-            return value.contribution;
-        })
-
-        if (_data) {
-            const _timeWiseDataHeights = getValueFromHeight(maxValue, _data);
-            setEducationWiseDataHeights(_timeWiseDataHeights);
-        }
         setDimensionValue(_dimensionValue);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);

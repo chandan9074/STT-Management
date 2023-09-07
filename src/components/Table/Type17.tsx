@@ -19,7 +19,6 @@ const Type17 = ({ data, setSelectedRowSData }: Props) => {
     const [remarkOpen, setRemarkOpen] = useState(false);
     const [singleTargetData, setSingleTargetData] = useState<checkingStatusDT>();
     const [open, setOpen] = useState(false);
-    console.log(singleTargetData);
 
 
     const showDrawer = (item: checkingStatusDT) => {
@@ -39,7 +38,6 @@ const Type17 = ({ data, setSelectedRowSData }: Props) => {
         {
             title: `${"# Task ID".toLocaleUpperCase()}`,
             key: 'id',
-            // align: 'center',
             width: 120,
             render: (data: checkingStatusDT) => <h1 className='w-20 truncate whitespace-nowrap'># {data.id}</h1>,
         },
